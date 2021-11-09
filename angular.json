@@ -70,7 +70,7 @@
       "projectType": "application",
       "root": "apps/metaverse",
       "sourceRoot": "apps/metaverse/src",
-      "prefix": "central-factory",
+      "prefix": "cf",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",

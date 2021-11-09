@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Message } from '@central-factory/api-interfaces';
 
 @Component({
-  selector: 'central-factory-root',
+  selector: 'cf-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
