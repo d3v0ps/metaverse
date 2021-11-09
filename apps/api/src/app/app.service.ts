@@ -1,5 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { Message } from '@central-factory/api-interfaces';
+
+export class Message {
+  message: string;
+}
 
 @Injectable()
 export class AppService {

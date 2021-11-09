@@ -1,8 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
+import { AppService, Message } from './app.service';
 
-import { Message } from '@central-factory/api-interfaces';
-
-import { AppService } from './app.service';
 
 @Controller()
 export class AppController {

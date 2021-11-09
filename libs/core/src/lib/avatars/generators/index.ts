@@ -1,0 +1,2 @@
+
+export * from './generate-avatar';

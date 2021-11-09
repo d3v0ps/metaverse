@@ -52,41 +52,74 @@
         }
       }
     },
-    "api-interfaces": {
-      "root": "libs/api-interfaces",
-      "sourceRoot": "libs/api-interfaces/src",
+    "core": {
       "projectType": "library",
+      "root": "libs/core",
+      "sourceRoot": "libs/core/src",
+      "prefix": "cf",
       "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/core"],
+          "options": {
+            "jestConfig": "libs/core/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/core/src/**/*.ts",
+              "libs/core/src/**/*.html"
+            ]
           }
         }
       }
     },
-    "metaverse": {
+    "integrations": {
+      "projectType": "library",
+      "root": "libs/integrations",
+      "sourceRoot": "libs/integrations/src",
+      "prefix": "cf",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/integrations"],
+          "options": {
+            "jestConfig": "libs/integrations/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/integrations/src/**/*.ts",
+              "libs/integrations/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "portal": {
       "projectType": "application",
-      "root": "apps/metaverse",
-      "sourceRoot": "apps/metaverse/src",
+      "root": "apps/portal",
+      "sourceRoot": "apps/portal/src",
       "prefix": "cf",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/apps/metaverse",
-            "index": "apps/metaverse/src/index.html",
-            "main": "apps/metaverse/src/main.ts",
-            "polyfills": "apps/metaverse/src/polyfills.ts",
-            "tsConfig": "apps/metaverse/tsconfig.app.json",
+            "outputPath": "dist/apps/portal",
+            "index": "apps/portal/src/index.html",
+            "main": "apps/portal/src/main.ts",
+            "polyfills": "apps/portal/src/polyfills.ts",
+            "tsConfig": "apps/portal/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "apps/metaverse/src/favicon.ico",
-              "apps/metaverse/src/assets"
-            ],
-            "styles": ["apps/metaverse/src/styles.scss"],
+            "assets": ["apps/portal/src/favicon.ico", "apps/portal/src/assets"],
+            "styles": ["apps/portal/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -105,8 +138,8 @@
               ],
               "fileReplacements": [
                 {
-                  "replace": "apps/metaverse/src/environments/environment.ts",
-                  "with": "apps/metaverse/src/environments/environment.prod.ts"
+                  "replace": "apps/portal/src/environments/environment.ts",
+                  "with": "apps/portal/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -126,57 +159,57 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "metaverse:build:production"
+              "browserTarget": "portal:build:production"
             },
             "development": {
-              "browserTarget": "metaverse:build:development"
+              "browserTarget": "portal:build:development"
             }
           },
           "defaultConfiguration": "development",
           "options": {
-            "proxyConfig": "apps/metaverse/proxy.conf.json"
+            "proxyConfig": "apps/portal/proxy.conf.json"
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "metaverse:build"
+            "browserTarget": "portal:build"
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "apps/metaverse/src/**/*.ts",
-              "apps/metaverse/src/**/*.html"
+              "apps/portal/src/**/*.ts",
+              "apps/portal/src/**/*.html"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/metaverse"],
+          "outputs": ["coverage/apps/portal"],
           "options": {
-            "jestConfig": "apps/metaverse/jest.config.js",
+            "jestConfig": "apps/portal/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "metaverse-e2e": {
-      "root": "apps/metaverse-e2e",
-      "sourceRoot": "apps/metaverse-e2e/src",
+    "portal-e2e": {
+      "root": "apps/portal-e2e",
+      "sourceRoot": "apps/portal-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/metaverse-e2e/cypress.json",
-            "devServerTarget": "metaverse:serve:development",
-            "tsConfig": "apps/metaverse-e2e/tsconfig.json"
+            "cypressConfig": "apps/portal-e2e/cypress.json",
+            "devServerTarget": "portal:serve:development",
+            "tsConfig": "apps/portal-e2e/tsconfig.json"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "metaverse:serve:production"
+              "devServerTarget": "portal:serve:production"
             }
           }
         },
@@ -184,7 +217,57 @@
           "builder": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": ["apps/metaverse-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": ["apps/portal-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "gatekeeper": {
+      "projectType": "library",
+      "root": "libs/gatekeeper",
+      "sourceRoot": "libs/gatekeeper/src",
+      "prefix": "cf",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/gatekeeper"],
+          "options": {
+            "jestConfig": "libs/gatekeeper/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/gatekeeper/src/**/*.ts",
+              "libs/gatekeeper/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "web-components": {
+      "projectType": "library",
+      "root": "libs/web-components",
+      "sourceRoot": "libs/web-components/src",
+      "prefix": "cf",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web-components"],
+          "options": {
+            "jestConfig": "libs/web-components/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web-components/src/**/*.ts",
+              "libs/web-components/src/**/*.html"
+            ]
           }
         }
       }
@@ -221,5 +304,5 @@
       "style": "scss"
     }
   },
-  "defaultProject": "metaverse"
+  "defaultProject": "portal"
 }

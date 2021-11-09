@@ -30,15 +30,24 @@
     "api": {
       "tags": []
     },
-    "api-interfaces": {
+    "core": {
       "tags": []
     },
-    "metaverse": {
+    "gatekeeper": {
       "tags": []
     },
-    "metaverse-e2e": {
+    "integrations": {
+      "tags": []
+    },
+    "portal": {
+      "tags": []
+    },
+    "portal-e2e": {
       "tags": [],
-      "implicitDependencies": ["metaverse"]
+      "implicitDependencies": ["portal"]
+    },
+    "web-components": {
+      "tags": []
     }
   }
 }
