@@ -83,7 +83,15 @@
             "polyfills": "apps/portal/src/polyfills.ts",
             "tsConfig": "apps/portal/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["apps/portal/src/favicon.ico", "apps/portal/src/assets"],
+            "assets": [
+              "apps/portal/src/favicon.ico",
+              "apps/portal/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@mdi/svg/svg",
+                "output": "./assets/icons/mdi"
+              }
+            ],
             "styles": ["apps/portal/src/styles.scss"],
             "scripts": []
           },
