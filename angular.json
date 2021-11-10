@@ -1,6 +1,26 @@
 {
   "version": 1,
   "projects": {
+    "codex": {
+      "projectType": "application",
+      "root": "apps/codex",
+      "sourceRoot": "apps/codex/src",
+      "architect": {
+        "build": {
+          "builder": "@nx-plus/docusaurus:browser",
+          "options": {
+            "outputPath": "dist/apps/codex"
+          }
+        },
+        "serve": {
+          "builder": "@nx-plus/docusaurus:dev-server",
+          "options": {
+            "port": 3000
+          }
+        }
+      },
+      "tags": []
+    },
     "core": {
       "projectType": "library",
       "root": "libs/core",
@@ -27,12 +47,61 @@
         "compodoc": {
           "builder": "@twittwer/compodoc:compodoc",
           "configurations": {
-            "serve": { "watch": true },
-            "json": { "exportFormat": "json" },
-            "json.watch": { "exportFormat": "json", "watch": true }
+            "serve": {
+              "watch": true
+            },
+            "json": {
+              "exportFormat": "json"
+            },
+            "json.watch": {
+              "exportFormat": "json",
+              "watch": true
+            }
           }
         }
-      }
+      },
+      "tags": []
+    },
+    "gatekeeper": {
+      "projectType": "library",
+      "root": "libs/gatekeeper",
+      "sourceRoot": "libs/gatekeeper/src",
+      "prefix": "cf",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/gatekeeper"],
+          "options": {
+            "jestConfig": "libs/gatekeeper/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/gatekeeper/src/**/*.ts",
+              "libs/gatekeeper/src/**/*.html"
+            ]
+          }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "configurations": {
+            "serve": {
+              "watch": true
+            },
+            "json": {
+              "exportFormat": "json"
+            },
+            "json.watch": {
+              "exportFormat": "json",
+              "watch": true
+            }
+          }
+        }
+      },
+      "tags": []
     },
     "integrations": {
       "projectType": "library",
@@ -60,12 +129,20 @@
         "compodoc": {
           "builder": "@twittwer/compodoc:compodoc",
           "configurations": {
-            "serve": { "watch": true },
-            "json": { "exportFormat": "json" },
-            "json.watch": { "exportFormat": "json", "watch": true }
+            "serve": {
+              "watch": true
+            },
+            "json": {
+              "exportFormat": "json"
+            },
+            "json.watch": {
+              "exportFormat": "json",
+              "watch": true
+            }
           }
         }
-      }
+      },
+      "tags": []
     },
     "portal": {
       "projectType": "application",
@@ -169,12 +246,20 @@
         "compodoc": {
           "builder": "@twittwer/compodoc:compodoc",
           "configurations": {
-            "serve": { "watch": true },
-            "json": { "exportFormat": "json" },
-            "json.watch": { "exportFormat": "json", "watch": true }
+            "serve": {
+              "watch": true
+            },
+            "json": {
+              "exportFormat": "json"
+            },
+            "json.watch": {
+              "exportFormat": "json",
+              "watch": true
+            }
           }
         }
-      }
+      },
+      "tags": []
     },
     "portal-e2e": {
       "root": "apps/portal-e2e",
@@ -201,40 +286,9 @@
             "lintFilePatterns": ["apps/portal-e2e/**/*.{js,ts}"]
           }
         }
-      }
-    },
-    "gatekeeper": {
-      "projectType": "library",
-      "root": "libs/gatekeeper",
-      "sourceRoot": "libs/gatekeeper/src",
-      "prefix": "cf",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/gatekeeper"],
-          "options": {
-            "jestConfig": "libs/gatekeeper/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/gatekeeper/src/**/*.ts",
-              "libs/gatekeeper/src/**/*.html"
-            ]
-          }
-        },
-        "compodoc": {
-          "builder": "@twittwer/compodoc:compodoc",
-          "configurations": {
-            "serve": { "watch": true },
-            "json": { "exportFormat": "json" },
-            "json.watch": { "exportFormat": "json", "watch": true }
-          }
-        }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["portal"]
     },
     "web-components": {
       "projectType": "library",
@@ -262,17 +316,21 @@
         "compodoc": {
           "builder": "@twittwer/compodoc:compodoc",
           "configurations": {
-            "serve": { "watch": true },
-            "json": { "exportFormat": "json" },
-            "json.watch": { "exportFormat": "json", "watch": true }
+            "serve": {
+              "watch": true
+            },
+            "json": {
+              "exportFormat": "json"
+            },
+            "json.watch": {
+              "exportFormat": "json",
+              "watch": true
+            }
           }
         }
-      }
+      },
+      "tags": []
     }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/angular",
-    "packageManager": "npm"
   },
   "schematics": {
     "@nrwl/angular": {
@@ -300,6 +358,5 @@
     "@nrwl/angular:component": {
       "style": "scss"
     }
-  },
-  "defaultProject": "portal"
+  }
 }
