@@ -1,7 +1,11 @@
-import { NgModule } from "@angular/core";
-import { DashboardView } from "./views/dashboard.view";
+import { NgModule } from '@angular/core';
+import { DashboardRoutingModule } from './dashboard-routing.module';
+import { DashboardView } from './views/dashboard.view';
 
 @NgModule({
+  imports: [
+    DashboardRoutingModule
+  ],
   declarations: [
     DashboardView,
   ]

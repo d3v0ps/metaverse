@@ -1,21 +1,16 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginView } from './views/login.view';
-import { RegisterView } from './views/register.view';
+import { DashboardView } from './views/dashboard.view';
 
 export const routes: Routes = [
   {
-    path: 'login',
-    component: LoginView
-  },
-  {
-    path: 'register',
-    component: RegisterView
+    path: 'dashboard',
+    component: DashboardView
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   }
 ];
@@ -24,4 +19,4 @@ export const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class GatekeeperRoutingModule {}
+export class DashboardRoutingModule {}
