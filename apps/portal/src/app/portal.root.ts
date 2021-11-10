@@ -1,6 +1,7 @@
 
 import { Component } from '@angular/core';
 
+/** Metaverse's Portal root component */
 @Component({
   selector: 'cf-portal-root',
   template: `

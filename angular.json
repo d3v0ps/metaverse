@@ -74,6 +74,14 @@
               "libs/core/src/**/*.html"
             ]
           }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "configurations": {
+            "serve": { "watch": true },
+            "json": { "exportFormat": "json" },
+            "json.watch": { "exportFormat": "json", "watch": true }
+          }
         }
       }
     },
@@ -98,6 +106,14 @@
               "libs/integrations/src/**/*.ts",
               "libs/integrations/src/**/*.html"
             ]
+          }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "configurations": {
+            "serve": { "watch": true },
+            "json": { "exportFormat": "json" },
+            "json.watch": { "exportFormat": "json", "watch": true }
           }
         }
       }
@@ -192,6 +208,14 @@
             "jestConfig": "apps/portal/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "configurations": {
+            "serve": { "watch": true },
+            "json": { "exportFormat": "json" },
+            "json.watch": { "exportFormat": "json", "watch": true }
+          }
         }
       }
     },
@@ -244,6 +268,14 @@
               "libs/gatekeeper/src/**/*.html"
             ]
           }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "configurations": {
+            "serve": { "watch": true },
+            "json": { "exportFormat": "json" },
+            "json.watch": { "exportFormat": "json", "watch": true }
+          }
         }
       }
     },
@@ -268,6 +300,14 @@
               "libs/web-components/src/**/*.ts",
               "libs/web-components/src/**/*.html"
             ]
+          }
+        },
+        "compodoc": {
+          "builder": "@twittwer/compodoc:compodoc",
+          "configurations": {
+            "serve": { "watch": true },
+            "json": { "exportFormat": "json" },
+            "json.watch": { "exportFormat": "json", "watch": true }
           }
         }
       }
