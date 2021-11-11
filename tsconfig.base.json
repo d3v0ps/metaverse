@@ -17,9 +17,9 @@
     "paths": {
       "@central-factory/core": ["libs/core/src/index.ts"],
       "@central-factory/core/*": ["libs/core/src/lib/*"],
+      "@central-factory/gatekeeper": ["libs/gatekeeper/src/index.ts"],
       "@central-factory/integrations": ["libs/integrations/src/index.ts"],
       "@central-factory/integrations/*": ["libs/integrations/src/lib/*"],
-      "@central-factory/gatekeeper": ["libs/gatekeeper/src/index.ts"],
       "@central-factory/web-components": ["libs/web-components/src/index.ts"],
       "@central-factory/web-components/*": ["libs/web-components/src/lib/*"]
     }

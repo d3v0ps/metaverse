@@ -1,4 +1,3 @@
-
 /** Environment interface for the portal app */
 export interface Environment {
   /** Is production environment */
@@ -6,4 +5,4 @@ export interface Environment {
 
   /** Url with the Metaverse's documentation */
   documentationUrl: string;
-};
+}

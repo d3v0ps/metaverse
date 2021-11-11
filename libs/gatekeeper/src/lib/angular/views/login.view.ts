@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'cf-login',
-  template: 'Login'
+  template: 'Login',
 })
-export class LoginView {
-
-}
+export class LoginView {}

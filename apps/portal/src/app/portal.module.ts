@@ -12,7 +12,7 @@ import { PortalRoot } from './portal.root';
     HttpClientModule,
     AngularSvgIconModule.forRoot(),
 
-    PortalRoutingModule
+    PortalRoutingModule,
   ],
   providers: [],
   bootstrap: [PortalRoot],

@@ -2,7 +2,6 @@ import { Environment } from './environment.interface';
 
 /** Development environment config */
 export const environment: Environment = {
-
   production: false,
 
   documentationUrl: 'http://localhost:8080',

@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardView } from './views/dashboard.view';
@@ -6,17 +5,17 @@ import { DashboardView } from './views/dashboard.view';
 export const routes: Routes = [
   {
     path: 'dashboard',
-    component: DashboardView
+    component: DashboardView,
   },
   {
     path: '',
     redirectTo: 'dashboard',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class DashboardRoutingModule {}

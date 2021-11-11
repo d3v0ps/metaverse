@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'cf-register',
-  template: 'Register'
+  template: 'Register',
 })
-export class RegisterView {
-
-}
+export class RegisterView {}

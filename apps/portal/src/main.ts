@@ -3,7 +3,6 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { PortalModule } from './app/portal.module';
 import { environment } from './environments/environment';
 
-
 if (environment.production) {
   enableProdMode();
 }

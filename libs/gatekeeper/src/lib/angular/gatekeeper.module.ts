@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { GatekeeperRoutingModule } from './gatekeeper-routing.module';
 
 @NgModule({
-  imports: [GatekeeperRoutingModule]
+  imports: [GatekeeperRoutingModule],
 })
-export class GatekeeperModule {
-
-}
+export class GatekeeperModule {}
