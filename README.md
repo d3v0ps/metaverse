@@ -7,6 +7,15 @@ Property of [The Central Factory Foundation](https://github.com/central-factory/
 
 ## Development
 
+### Serve apps
+
+```sh
+# run the portal app
+nx run portal
+# run the codex website
+nx run codex
+```
+
 ### Serve documentation
 
 ```bash
