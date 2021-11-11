@@ -1,18 +1,23 @@
 module.exports = {
-  title: 'My Site',
-  tagline: 'The tagline of my site',
-  url: 'https://your-docusaurus-test-site.com',
+  title: 'Metaverse Codex',
+  tagline: 'Central Factory\'s Metaverse website and documentation',
+  url: 'https://central-factory.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'central-factory', // Usually your GitHub org/user name.
+  projectName: 'metaverse', // Usually your repo name.
   themeConfig: {
+    colorMode: {
+      defaultMode: 'dark',
+      disableSwitch: true,
+      respectPrefersColorScheme: false
+    },
     navbar: {
-      title: 'My Site',
+      title: 'Metaverse Codex',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Metaverse Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -22,17 +27,31 @@ module.exports = {
           label: 'Docs',
           position: 'left',
         },
-        { to: 'blog', label: 'Blog', position: 'left' },
         {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
-          position: 'right',
+          to: 'blog',
+          label: 'Blog',
+          position: 'left'
+        },
+        {
+          to: 'developers/',
+          activeBasePath: 'developers',
+          label: 'Developers',
+          position: 'left',
         },
       ],
     },
     footer: {
       style: 'dark',
       links: [
+        {
+          title: 'Sites',
+          items: [
+            {
+              label: 'Portal',
+              href: 'http://localhost:4200',
+            }
+          ],
+        },
         {
           title: 'Docs',
           items: [
@@ -51,15 +70,15 @@ module.exports = {
           items: [
             {
               label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              href: 'https://stackoverflow.com/questions/tagged/central-factory-metaverse',
             },
             {
               label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              href: 'https://discordapp.com/invite/central-factory',
             },
             {
               label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              href: 'https://twitter.com/central-factory',
             },
           ],
         },
@@ -72,12 +91,12 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/central-factory/metaverse',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Central Factory`,
     },
   },
   presets: [
@@ -88,13 +107,13 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+            'https://github.com/central-factory/metaverse/edit/main/website/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/blog/',
+            'https://github.com/central-factory/metaverse/edit/main/website/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

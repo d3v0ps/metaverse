@@ -45,17 +45,35 @@
           }
         },
         "compodoc": {
-          "builder": "@twittwer/compodoc:compodoc",
+          "builder": "@nrwl/workspace:run-commands",
           "configurations": {
+            "build-codex": {
+              "commands": [
+                {
+                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/core"
+                }
+              ]
+            },
             "serve": {
-              "watch": true
+              "commands": [
+                {
+                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -w"
+                }
+              ]
             },
             "json": {
-              "exportFormat": "json"
+              "commands": [
+                {
+                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -e json"
+                }
+              ]
             },
             "json.watch": {
-              "exportFormat": "json",
-              "watch": true
+              "commands": [
+                {
+                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -e json -w"
+                }
+              ]
             }
           }
         }
@@ -86,17 +104,35 @@
           }
         },
         "compodoc": {
-          "builder": "@twittwer/compodoc:compodoc",
+          "builder": "@nrwl/workspace:run-commands",
           "configurations": {
+            "build-codex": {
+              "commands": [
+                {
+                  "command": "cd libs/gatekeeper && npx compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/gatekeeper"
+                }
+              ]
+            },
             "serve": {
-              "watch": true
+              "commands": [
+                {
+                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -w"
+                }
+              ]
             },
             "json": {
-              "exportFormat": "json"
+              "commands": [
+                {
+                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -e json"
+                }
+              ]
             },
             "json.watch": {
-              "exportFormat": "json",
-              "watch": true
+              "commands": [
+                {
+                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -e json -w"
+                }
+              ]
             }
           }
         }
@@ -127,17 +163,35 @@
           }
         },
         "compodoc": {
-          "builder": "@twittwer/compodoc:compodoc",
+          "builder": "@nrwl/workspace:run-commands",
           "configurations": {
+            "build-codex": {
+              "commands": [
+                {
+                  "command": "cd libs/integrations && npx compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/integrations"
+                }
+              ]
+            },
             "serve": {
-              "watch": true
+              "commands": [
+                {
+                  "command": "cd libs/integrations && npx compodoc -p ./tsconfig.json -w"
+                }
+              ]
             },
             "json": {
-              "exportFormat": "json"
+              "commands": [
+                {
+                  "command": "cd libs/integrations && npx compodoc -p ./tsconfig.json -e json"
+                }
+              ]
             },
             "json.watch": {
-              "exportFormat": "json",
-              "watch": true
+              "commands": [
+                {
+                  "command": "cd libs/integrations && npx compodoc -p ./tsconfig.json -e json -w"
+                }
+              ]
             }
           }
         }
@@ -244,17 +298,35 @@
           }
         },
         "compodoc": {
-          "builder": "@twittwer/compodoc:compodoc",
+          "builder": "@nrwl/workspace:run-commands",
           "configurations": {
+            "build-codex": {
+              "commands": [
+                {
+                  "command": "cd apps/portal && npx compodoc -p ./tsconfig.json -d ../codex/static/compodoc/portal"
+                }
+              ]
+            },
             "serve": {
-              "watch": true
+              "commands": [
+                {
+                  "command": "cd apps/portal && npx compodoc -p ./tsconfig.json -w"
+                }
+              ]
             },
             "json": {
-              "exportFormat": "json"
+              "commands": [
+                {
+                  "command": "cd apps/portal && npx compodoc -p ./tsconfig.json -e json"
+                }
+              ]
             },
             "json.watch": {
-              "exportFormat": "json",
-              "watch": true
+              "commands": [
+                {
+                  "command": "cd apps/portal && npx compodoc -p ./tsconfig.json -e json -w"
+                }
+              ]
             }
           }
         }
@@ -314,17 +386,35 @@
           }
         },
         "compodoc": {
-          "builder": "@twittwer/compodoc:compodoc",
+          "builder": "@nrwl/workspace:run-commands",
           "configurations": {
+            "build-codex": {
+              "commands": [
+                {
+                  "command": "cd libs/web-components && npx compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/web-components"
+                }
+              ]
+            },
             "serve": {
-              "watch": true
+              "commands": [
+                {
+                  "command": "cd libs/web-components && npx compodoc -p ./tsconfig.json -w"
+                }
+              ]
             },
             "json": {
-              "exportFormat": "json"
+              "commands": [
+                {
+                  "command": "cd libs/web-components && npx compodoc -p ./tsconfig.json -e json"
+                }
+              ]
             },
             "json.watch": {
-              "exportFormat": "json",
-              "watch": true
+              "commands": [
+                {
+                  "command": "cd libs/web-components && npx compodoc -p ./tsconfig.json -e json -w"
+                }
+              ]
             }
           }
         }

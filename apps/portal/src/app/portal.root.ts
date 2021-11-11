@@ -11,8 +11,20 @@ import { environment } from '../environments/environment';
 
     <ng-container *ngIf="!environment.production">
       <div class="card" style="width: 200px;">
+        <svg-icon src="assets/icons/mdi/web.svg"></svg-icon>
+        <a [href]="environment.webUrl">Website</a>
+      </div>
+      <div class="card" style="width: 200px;">
         <svg-icon src="assets/icons/mdi/text-box-search-outline.svg"></svg-icon>
         <a [href]="environment.documentationUrl">Documentation</a>
+      </div>
+      <div class="card" style="width: 200px;">
+        <svg-icon src="assets/icons/mdi/post-outline.svg"></svg-icon>
+        <a [href]="environment.blogUrl">Blog</a>
+      </div>
+      <div class="card" style="width: 200px;">
+        <svg-icon src="assets/icons/mdi/code-tags.svg"></svg-icon>
+        <a [href]="environment.developersUrl">Developers</a>
       </div>
     </ng-container>
   `,

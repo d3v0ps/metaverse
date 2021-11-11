@@ -41,3 +41,7 @@ Thumbs.db
 # Generated Docusaurus files
 .docusaurus/
 .cache-loader/
+
+# Generated Compodoc files
+documentation/
+apps/codex/static/compodoc/

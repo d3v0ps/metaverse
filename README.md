@@ -5,12 +5,25 @@ This code includes The Central Factory's Metaverse Core packages and Community E
 Property of [The Central Factory Foundation](https://github.com/central-factory/foundation). [MIT Licensed software](https://github.com/central-factory/metaverse/raw/main/LICENSE)
 
 
+## Development
+
+### Serve documentation
+
+```bash
+# generate compodoc documentation from all projects into codex
+nx run-many --target=compodoc --all --configuration build-codex
+
+# serve codex
+nx serve codex
+```
+
+
 ## Libraries
 
 ### Icons
 
 - [Material Design Icons: Pictogrammers Free License](https://github.com/templarian/MaterialDesign) You may use it
-for commercial projects, open source projects, or anything really.
+  for commercial projects, open source projects, or anything really.
 - [Boxicons: CC BY-SA 4.0](https://github.com/atisawd/boxicons) 1500+ icons
 - [Bootstrap Icons: MIT](https://github.com/twbs/icons) 1500 icons.
 - [Ionicons: MIT](https://github.com/ionic-team/ionicons) 1300 icons.
@@ -25,6 +38,5 @@ for commercial projects, open source projects, or anything really.
 - [Pixel Art Icons](https://pixelarticons.com/)
 - [Weather Icons](https://github.com/erikflowers/weather-icons) Weather icons.
 - [Flag Icons](https://github.com/lipis/flag-icons) A curated collection of all country flags in SVG.
-
 - [The Noun Project](https://thenounproject.com/vinzencestudio/collection/futuristic-technology)
 - [Awesome Icons](https://github.com/vkarampinis/awesome-icons)

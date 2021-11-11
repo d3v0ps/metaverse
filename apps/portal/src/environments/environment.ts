@@ -4,7 +4,10 @@ import { Environment } from './environment.interface';
 export const environment: Environment = {
   production: false,
 
-  documentationUrl: 'http://localhost:8080',
+  webUrl: 'http://localhost:3000',
+  documentationUrl: 'http://localhost:3000/docs',
+  blogUrl: 'http://localhost:3000/blog',
+  developersUrl: 'http://localhost:3000/developers',
 };
 
 /*
