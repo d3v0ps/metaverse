@@ -17,9 +17,3 @@ This is a place where you can find all the tools you need to build your own virt
 - [Spaces](/places)
 - [Marketplaces](/marketplaces)
 - [Integrations](/integrations)
-
-
-## Developers
-
-- [Creating a World](/creating-a-world)
-- - [FAQ + (Creating a World in a World)](/faq)

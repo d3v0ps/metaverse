@@ -6,10 +6,13 @@ import { environment } from '../environments/environment';
   selector: 'cf-portal-root',
   template: `
     <div style="text-align: center">
-      <h1>Welcome to Metaverse!</h1>
+      <svg-icon [svgStyle]="{ 'width.px': 144, 'height.px': 144 }" src="assets/logo.svg"></svg-icon>
+      <h1>Metaverse Portal</h1>
     </div>
 
-    <ng-container *ngIf="!environment.production">
+    <router-outlet></router-outlet>
+
+    <div *ngIf="!environment.production" class="devtools">
       <div class="card" style="width: 200px;">
         <svg-icon src="assets/icons/mdi/web.svg"></svg-icon>
         <a [href]="environment.webUrl">Website</a>
@@ -26,10 +29,18 @@ import { environment } from '../environments/environment';
         <svg-icon src="assets/icons/mdi/code-tags.svg"></svg-icon>
         <a [href]="environment.developersUrl">Developers</a>
       </div>
-    </ng-container>
+    </div>
   `,
   styles: [
     `
+      .devtools {
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+
       .card {
         margin: 1em;
         padding: 1em;
@@ -75,6 +86,15 @@ import { environment } from '../environments/environment';
           text-align: center;
 
           cursor: pointer;
+        }
+
+        ::ng-deep svg-icon > svg {
+          fill: #706fd3;
+        }
+
+        a {
+          text-decoration: none;
+          color: #706fd3;
         }
       }
     `,
