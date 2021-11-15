@@ -56,12 +56,16 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'Style Guide',
-              to: 'docs/',
+              label: 'Getting Started',
+              to: 'docs/getting-started',
             },
             {
-              label: 'Second Doc',
-              to: 'docs/doc2/',
+              label: 'Integrations',
+              to: 'docs/integrations',
+            },
+            {
+              label: 'Brand Guidelines',
+              to: 'developers/brand-guidelines',
             },
           ],
         },
@@ -119,6 +123,28 @@ module.exports = {
           customCss: require.resolve('./src/css/custom.css'),
         },
       },
-    ],
+    ]
   ],
+  plugins: [
+    // [
+    //   '@docusaurus/plugin-content-docs',
+    //   {
+    //     id: 'docs',
+    //     path: 'docs',
+    //     routeBasePath: 'docs',
+    //     sidebarPath: require.resolve('./sidebars.js'),
+    //     // ... other options
+    //   },
+    // ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'developers',
+        path: 'developers',
+        routeBasePath: 'developers',
+        sidebarPath: require.resolve('./sidebarsDevelopers.js'),
+        // ... other options
+      },
+    ]
+  ]
 };

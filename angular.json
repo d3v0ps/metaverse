@@ -50,28 +50,28 @@
             "build-codex": {
               "commands": [
                 {
-                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/core"
+                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/core --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             },
             "serve": {
               "commands": [
                 {
-                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -w"
+                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             },
             "json": {
               "commands": [
                 {
-                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -e json"
+                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -e json --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             },
             "json.watch": {
               "commands": [
                 {
-                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -e json -w"
+                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -e json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             }
@@ -109,28 +109,28 @@
             "build-codex": {
               "commands": [
                 {
-                  "command": "cd libs/gatekeeper && npx compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/gatekeeper"
+                  "command": "cd libs/gatekeeper && npx compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/gatekeeper --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             },
             "serve": {
               "commands": [
                 {
-                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -w"
+                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             },
             "json": {
               "commands": [
                 {
-                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -e json"
+                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -e json --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             },
             "json.watch": {
               "commands": [
                 {
-                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -e json -w"
+                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -e json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             }
@@ -168,28 +168,28 @@
             "build-codex": {
               "commands": [
                 {
-                  "command": "cd libs/integrations && npx compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/integrations"
+                  "command": "cd libs/integrations && npx compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/integrations --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             },
             "serve": {
               "commands": [
                 {
-                  "command": "cd libs/integrations && npx compodoc -p ./tsconfig.json -w"
+                  "command": "cd libs/integrations && npx compodoc -p ./tsconfig.json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             },
             "json": {
               "commands": [
                 {
-                  "command": "cd libs/integrations && npx compodoc -p ./tsconfig.json -e json"
+                  "command": "cd libs/integrations && npx compodoc -p ./tsconfig.json -e json --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             },
             "json.watch": {
               "commands": [
                 {
-                  "command": "cd libs/integrations && npx compodoc -p ./tsconfig.json -e json -w"
+                  "command": "cd libs/integrations && npx compodoc -p ./tsconfig.json -e json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             }
@@ -303,28 +303,28 @@
             "build-codex": {
               "commands": [
                 {
-                  "command": "cd apps/portal && npx compodoc -p ./tsconfig.json -d ../codex/static/compodoc/portal"
+                  "command": "cd apps/portal && npx compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/portal --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             },
             "serve": {
               "commands": [
                 {
-                  "command": "cd apps/portal && npx compodoc -p ./tsconfig.json -w"
+                  "command": "cd apps/portal && npx compodoc -p ./tsconfig.json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             },
             "json": {
               "commands": [
                 {
-                  "command": "cd apps/portal && npx compodoc -p ./tsconfig.json -e json"
+                  "command": "cd apps/portal && npx compodoc -p ./tsconfig.json -e json --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             },
             "json.watch": {
               "commands": [
                 {
-                  "command": "cd apps/portal && npx compodoc -p ./tsconfig.json -e json -w"
+                  "command": "cd apps/portal && npx compodoc -p ./tsconfig.json -e json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             }
@@ -391,28 +391,28 @@
             "build-codex": {
               "commands": [
                 {
-                  "command": "cd libs/web-components && npx compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/web-components"
+                  "command": "cd libs/web-components && npx compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/web-components --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             },
             "serve": {
               "commands": [
                 {
-                  "command": "cd libs/web-components && npx compodoc -p ./tsconfig.json -w"
+                  "command": "cd libs/web-components && npx compodoc -p ./tsconfig.json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             },
             "json": {
               "commands": [
                 {
-                  "command": "cd libs/web-components && npx compodoc -p ./tsconfig.json -e json"
+                  "command": "cd libs/web-components && npx compodoc -p ./tsconfig.json -e json --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             },
             "json.watch": {
               "commands": [
                 {
-                  "command": "cd libs/web-components && npx compodoc -p ./tsconfig.json -e json -w"
+                  "command": "cd libs/web-components && npx compodoc -p ./tsconfig.json -e json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
                 }
               ]
             }
