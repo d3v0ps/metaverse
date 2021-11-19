@@ -16,7 +16,7 @@ module.exports = {
       {
         type: 'category',
         label: 'Apps',
-        items: ['framework/apps/managing-dependencies', 'framework/apps/features', 'framework/apps/services', 'framework/apps/scenes', 'framework/apps/forms', 'framework/apps/services',  'framework/apps/commands', 'framework/apps/queries'],
+        items: ['framework/apps/managing-dependencies', 'framework/apps/features', 'framework/apps/services', 'framework/apps/scenes', 'framework/apps/forms',  'framework/apps/commands', 'framework/apps/queries'],
       },
       {
         type: 'category',

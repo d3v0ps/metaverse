@@ -1,8 +1,8 @@
 ---
-id: infrastructure-repository
-title: Infrastructure Repository
-sidebar_label: Infrastructure Repository
-slug: /framework/infrastructure/repository
+id: infrastructure-adapters
+title: Infrastructure Adapters
+sidebar_label: Adapters
+slug: /framework/infrastructure/adapters
 ---
 
 A Persistence Adapter is a class that implements the Persistence API for an specific storage engine.
