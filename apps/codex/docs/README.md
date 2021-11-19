@@ -1,6 +1,6 @@
 ---
-id: README
-title: Central Factory's Metaverse
+id: about-this
+title: About this
 sidebar_label: About this project
 slug: /
 ---
