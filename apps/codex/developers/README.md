@@ -5,6 +5,12 @@ sidebar_label: Developers
 slug: /
 ---
 
+<img src="/img/undraw_hacker_mind_-6-y85.svg" style={{
+  width: "500px",
+  display: "block", 
+  margin: "10px auto"
+}} />
+
 Welcome to the Metaverse Developers Center
 
 - [Brand Guidelines](brand-guidelines)

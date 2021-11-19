@@ -5,7 +5,11 @@ sidebar_label: About this project
 slug: /
 ---
 
-![Codex Image](/img/undraw_book_lover_re_rwjy.svg)
+<img src="/img//undraw_book_lover_re_rwjy.svg" style={{
+  width: "500px",
+  display: "block", 
+  margin: "10px auto"
+}} />
 
 Welcome to The Central Factory's Metaverse!
 
