@@ -78,11 +78,11 @@ module.exports = {
             },
             {
               label: 'Discord',
-              href: 'https://discordapp.com/invite/central-factory',
+              href: 'https://discord.gg/KKJ83Tgk',
             },
             {
               label: 'Twitter',
-              href: 'https://twitter.com/central-factory',
+              href: 'https://twitter.com',
             },
           ],
         },
