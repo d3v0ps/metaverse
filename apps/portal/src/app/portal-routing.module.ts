@@ -10,17 +10,28 @@ export const routes: Routes = [
   {
     path: 'create-avatar',
     loadChildren: () =>
-      import('./create-avatar/create-avatar.module').then((m) => m.CreateAvatarModule),
+      import('./create-avatar/create-avatar.module').then(
+        (m) => m.CreateAvatarModule
+      ),
   },
   {
     path: 'marketplace',
     loadChildren: () =>
-      import('./marketplace/marketplace.module').then((m) => m.MarketplaceModule),
+      import('./marketplace/marketplace.module').then(
+        (m) => m.MarketplaceModule
+      ),
   },
   {
     path: 'gatekeeper',
     loadChildren: () =>
       import('@central-factory/gatekeeper').then((m) => m.GatekeeperModule),
+  },
+  {
+    path: 'selected-avatar',
+    loadChildren: () =>
+      import('./selected-avatar/selected-avatar.module').then(
+        (m) => m.SelectedAvatarModule
+      ),
   },
   {
     path: '',
