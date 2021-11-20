@@ -16,7 +16,7 @@ import { Component } from '@angular/core';
           <cf-sidebar
             [(opened)]="sidebarIsOpen"
             [dock]="true"
-            [dockedSize]="'40px'"
+            [dockedSize]="'0px'"
             [showBackdrop]="true"
             [closeOnClickBackdrop]="true"
             [closeOnClickOutside]="true"

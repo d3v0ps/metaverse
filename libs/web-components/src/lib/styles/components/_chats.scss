@@ -1,0 +1,49 @@
+
+@use '../abstracts/variables/colors' as colors;
+
+.chatbox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.chatbox__message {
+  background: colors.$dark-darkest;
+
+}
+
+.chatbox__username {
+  background: colors.$primary;
+  font-weight: bold;
+}
+
+
+.chatbox__message,
+.chatbox__username {
+  color: colors.$light;
+  padding: 5px;
+  border-radius: 4px;
+  display: inline-block;
+
+  .icon__svg {
+    fill: colors.$light;
+    width: 14px;
+    height: 14px;
+  }
+
+  textarea, input {
+    border: none;
+    background: transparent;
+    border-radius: 4px;
+    color: colors.$light;
+    &:active, &:focus, &:focus-visible {
+      border: 1px solid colors.$secondary;
+      outline-color: colors.$secondary;
+    }
+  }
+
+  p {
+    margin: 2px;
+  }
+}

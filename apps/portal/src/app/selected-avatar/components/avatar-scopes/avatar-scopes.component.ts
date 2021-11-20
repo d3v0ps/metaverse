@@ -1,0 +1,75 @@
+import { Component, Input } from '@angular/core';
+import { FormArray, FormControl, FormGroup } from '@ng-stack/forms';
+import { Scope } from '../../models/scope';
+
+export class AvatarScopesInput {
+  scopes!: Scope[];
+}
+
+@Component({
+  selector: 'cf-avatar-scopes',
+  template: `
+    <form [formGroup]="form" block="avatar">
+      <div class="form-array" formArrayName="scopes">
+        <h2>Scopes</h2>
+        <button type="button">+ Add another scope</button>
+
+        <div
+          *ngFor="let scope of scopesForm.controls; let i = index"
+          class="scope-form"
+        >
+          I have access to {{ scope.value.scope }} {{ scope.value.integration }}
+          {{ scope.value.domain }}
+
+          <div [formGroupName]="i" *ngIf="false">
+            <div class="form-control">
+              <label for="integration-{{ i }}">Integration:</label>
+              <input
+                id="integration-{{ i }}"
+                type="text"
+                formControlName="integration"
+              />
+            </div>
+
+            <div class="form-control">
+              <label for="domain-{{ i }}">Domain:</label>
+              <input id="domain-{{ i }}" type="text" formControlName="domain" />
+            </div>
+
+            <div class="form-control">
+              <label for="scope-{{ i }}">Scope:</label>
+              <input id="scope-{{ i }}" type="text" formControlName="scope" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  `,
+})
+export class AvatarScopesComponent {
+  @Input() set scopes(value: AvatarScopesInput) {
+    if (value) {
+      value.scopes.forEach((appearance) => {
+        this.addScope(appearance);
+      });
+    }
+  }
+
+  form = new FormGroup<AvatarScopesInput>({
+    scopes: new FormArray<Scope>([]),
+  });
+
+  get scopesForm() {
+    return this.form.controls.scopes as FormArray<Scope>;
+  }
+
+  addScope(scope: Scope) {
+    this.scopesForm.push(
+      new FormGroup({
+        domain: new FormControl(scope.domain),
+        integration: new FormControl(scope.integration),
+        scope: new FormControl(scope.scope),
+      })
+    );
+  }
+}

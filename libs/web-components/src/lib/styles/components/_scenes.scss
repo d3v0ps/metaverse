@@ -1,0 +1,19 @@
+
+@use '../abstracts/variables/colors' as colors;
+
+:root {
+  --scene-width: 80%
+};
+
+.scene {
+  background-color: colors.$dark;
+}
+
+.scene-content {
+  padding: 20px;
+  background-color: colors.$dark-darker;
+  color: colors.$light-darkest;
+  width: var(--scene-width);
+  margin: 2rem auto;
+  border-radius: 20px;
+}
