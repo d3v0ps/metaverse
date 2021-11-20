@@ -1,7 +1,7 @@
 ---
-id: developers
-title: Developers
-sidebar_label: Developers
+id: about-this
+title: About this
+sidebar_label: About this docs
 slug: /
 ---
 
@@ -13,9 +13,14 @@ slug: /
 
 Welcome to the Metaverse Developers Center
 
-- [Brand Guidelines](brand-guidelines)
-- [The Framework](framework/oddd)
-- [Core](core/api-docs)
-- [Web Components](web-components/api-docs)
-- [Gatekeeper](gatekeeper/api-docs)
-- [Portal](portal/api-docs)
+###  [Brand Guidelines](brand-guidelines)
+
+### [The Framework](framework/oddd)
+
+### [Core](core/api-docs)
+
+### [Web Components](web-components/api-docs)
+
+### [Gatekeeper](gatekeeper/api-docs)
+
+### [Portal](portal/api-docs)

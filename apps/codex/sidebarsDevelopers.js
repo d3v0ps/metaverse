@@ -1,5 +1,6 @@
 module.exports = {
   developersSidebar: {
+    'Developers': ['about-this'],
     'Metaverse': ['brand-guidelines'],
     'Framework': [
       'framework/oddd',
