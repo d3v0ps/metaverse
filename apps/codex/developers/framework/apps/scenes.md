@@ -38,7 +38,7 @@ export class CreateAvatarScene extends Scene<CreateAvatarAction> {
 ## NestJS Scenes
 
 NestJS Scenes are server-side scenes that are served over the network with NestJS. Supported kind of scenes include RESTful APIs, GraphQL, and more.
-You can learn more about it at [API definition](framework/api-definitions/async-api).
+You can learn more about it at [API definition](../api-definitions/async-api).
 
 
 ```gql
