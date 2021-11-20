@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { WebComponentsModule } from '@central-factory/web-components/angular';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { PortalRoutingModule } from './portal-routing.module';
 import { PortalRoot } from './portal.root';
@@ -12,6 +13,7 @@ import { PortalRoot } from './portal.root';
     HttpClientModule,
     AngularSvgIconModule.forRoot(),
 
+    WebComponentsModule,
     PortalRoutingModule,
   ],
   providers: [],

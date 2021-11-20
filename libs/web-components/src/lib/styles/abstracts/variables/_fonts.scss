@@ -1,0 +1,44 @@
+@use 'sass:map';
+
+$font-families: (
+  inter: (
+    font-family: 'Inter',
+    variants: (
+      (
+        font-family: 'Inter',
+        font-style: normal,
+        font-weight: 300,
+        src: (
+          ttf: 'Inter/static/Inter-Light',
+        ),
+      ),
+      (
+        font-family: 'Inter',
+        font-style: normal,
+        font-weight: 500,
+        src: (
+          ttf: 'Inter/static/Inter-Medium',
+        ),
+      ),
+      (
+        font-family: 'Inter',
+        font-style: normal,
+        font-weight: 600,
+        src: (
+          ttf: 'Inter/static/Inter-Regular',
+        ),
+      ),
+      (
+        font-family: 'Inter',
+        font-style: normal,
+        font-weight: 900,
+        src: (
+          ttf: 'Inter/static/Inter-Bold',
+        ),
+      ),
+    ),
+  ),
+);
+
+$default-font: map.get($font-families, 'inter');
+$default-font-family: map.get($default-font, 'font-family');

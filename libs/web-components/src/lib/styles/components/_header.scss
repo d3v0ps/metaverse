@@ -1,0 +1,65 @@
+
+@use '../abstracts/variables/colors' as colors;
+
+.header {
+  border-bottom: 1px solid colors.$dark-darker;
+  height: 44px;
+  background: colors.$primary;
+  color: colors.$light;
+  display: block;
+
+  &--right {
+    display: flex;
+    float: right;
+    // justify-content: flex-end;
+  }
+
+  &__title {
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    color: colors.$primary-darkest;
+    margin-left: 24px;
+    margin-right: 24px;
+    margin-top: 6px;
+
+    .header__icon {
+      vertical-align: middle;
+      .icon__svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+
+
+    &:hover {
+      color: colors.$primary-light;
+    }
+  }
+
+  .list {
+    &__item {
+      .icon__svg {
+        fill: colors.$primary-darkest;
+      }
+
+      a {
+        color: colors.$primary-darkest;
+      }
+
+
+      &:hover {
+        .icon__svg {
+          fill: colors.$primary-light;
+        }
+
+        a {
+          color: colors.$primary-light;
+        }
+      }
+
+    }
+  }
+
+}

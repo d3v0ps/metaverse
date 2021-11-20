@@ -4,37 +4,10 @@ import { environment } from '../environments/environment';
 /** Metaverse's Portal root component */
 @Component({
   selector: 'cf-portal-root',
-  template: `
-    <div style="text-align: center">
-      <svg-icon [svgStyle]="{ 'width.px': 144, 'height.px': 144 }" src="assets/logo.svg"></svg-icon>
-      <h1>Metaverse Portal</h1>
-    </div>
-
-    <router-outlet></router-outlet>
-
-    <div *ngIf="!environment.production" class="devtools">
-      <div class="card" style="width: 200px;">
-        <svg-icon src="assets/icons/mdi/web.svg"></svg-icon>
-        <a [href]="environment.webUrl">Website</a>
-      </div>
-      <div class="card" style="width: 200px;">
-        <svg-icon src="assets/icons/mdi/text-box-search-outline.svg"></svg-icon>
-        <a [href]="environment.documentationUrl">Documentation</a>
-      </div>
-      <div class="card" style="width: 200px;">
-        <svg-icon src="assets/icons/mdi/post-outline.svg"></svg-icon>
-        <a [href]="environment.blogUrl">Blog</a>
-      </div>
-      <div class="card" style="width: 200px;">
-        <svg-icon src="assets/icons/mdi/code-tags.svg"></svg-icon>
-        <a [href]="environment.developersUrl">Developers</a>
-      </div>
-    </div>
-  `,
+  template: ` <router-outlet></router-outlet> `,
   styles: [
     `
       .devtools {
-
         display: flex;
         flex-direction: row;
         align-items: center;

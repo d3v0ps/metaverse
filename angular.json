@@ -221,9 +221,17 @@
                 "glob": "**/*",
                 "input": "./node_modules/@mdi/svg/svg",
                 "output": "./assets/icons/mdi"
+              },
+              {
+                "glob": "**/*",
+                "input": "./libs/web-components/src/assets/fonts/Inter/static",
+                "output": "./assets/fonts"
               }
             ],
             "styles": ["apps/portal/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": [ "libs/web-components/src/lib/styles" ]
+            },
             "scripts": []
           },
           "configurations": {

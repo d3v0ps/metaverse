@@ -1,0 +1,34 @@
+
+@use '../abstracts/variables/colors' as colors;
+
+button, .btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+
+  background: colors.$primary;
+  background-image: -webkit-linear-gradient(top, colors.$primary, colors.$primary-dark);
+  background-image: -moz-linear-gradient(top, colors.$primary, colors.$primary-dark);
+  background-image: -ms-linear-gradient(top, colors.$primary, colors.$primary-dark);
+  background-image: -o-linear-gradient(top, colors.$primary, colors.$primary-dark);
+  background-image: linear-gradient(to bottom, colors.$primary, colors.$primary-dark);
+  -webkit-border-radius: 14;
+  -moz-border-radius: 14;
+  border-radius: 14px;
+  font-family: Arial;
+  color: colors.$light;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+
+  &:hover {
+    background: colors.$primary;
+    background-image: -webkit-linear-gradient(top, colors.$primary, colors.$primary-darker);
+    background-image: -moz-linear-gradient(top, colors.$primary, colors.$primary-darker);
+    background-image: -ms-linear-gradient(top, colors.$primary, colors.$primary-darker);
+    background-image: -o-linear-gradient(top, colors.$primary, colors.$primary-darker);
+    background-image: linear-gradient(to bottom, colors.$primary, colors.$primary-darker);
+    text-decoration: none;
+  }
+
+}

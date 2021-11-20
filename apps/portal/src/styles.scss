@@ -1,5 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'abstracts';
+@use 'core';
 
+// @use 'vendors/material';
+// @use 'vendors/ngx-toastr';
+
+// @use 'layout';
+@use 'components';
+
+@use "abstracts/variables/colors" as colors;
+
+.avatar__small-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+}
+
+
+
+/** Animated changing background
 body {
   color: white;
   background-color: #706fd3;
@@ -114,3 +133,5 @@ to {
 .st13{opacity:0.2;}
 .st14{clip-path:url(#SVGID_16_);}
 .st15{opacity:0.3;fill:#FFFFFF;enable-background:new    ;}
+
+**/

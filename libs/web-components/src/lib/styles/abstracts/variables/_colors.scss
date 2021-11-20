@@ -1,0 +1,88 @@
+
+$purple-metaverse: #706fd3;
+$purple-metaverse-dark: #5c5ca7;
+$purple-metaverse-darker: #4c4c8f;
+$purple-metaverse-darkest: #3c3c6e;
+$purple-metaverse-light: #9fa8da;
+$purple-metaverse-lighter: #e8eaf6;
+$purple-metaverse-lightest: #f5f7fa;
+
+$yellow-foundation: #d1d36f;
+$yellow-foundation-dark: #b9b857;
+$yellow-foundation-darker: #a5a53d;
+$yellow-foundation-darkest: #8c8b2f;
+$yellow-foundation-light: #e6e8a1;
+$yellow-foundation-lighter: #faf0b3;
+$yellow-foundation-lightest: #fef9d7;
+
+$primary: $purple-metaverse;
+$primary-dark: $purple-metaverse-dark;
+$primary-darker: $purple-metaverse-darker;
+$primary-darkest: $purple-metaverse-darkest;
+$primary-light: $purple-metaverse-light;
+$primary-lighter: $purple-metaverse-lighter;
+$primary-lightest: $purple-metaverse-lightest;
+
+$secondary: $yellow-foundation;
+$secondary-dark: $yellow-foundation-dark;
+$secondary-darker: $yellow-foundation-darker;
+$secondary-darkest: $yellow-foundation-darkest;
+$secondary-light: $yellow-foundation-light;
+$secondary-lighter: $yellow-foundation-lighter;
+$secondary-lightest: $yellow-foundation-lightest;
+
+$light: #fefefe;
+$light-dark: #fafafa;
+$light-darker: #f5f5f5;
+$light-darkest: #f1f1f1;
+$dark: #212121;
+$dark-dark: #303030;
+$dark-darker: #404040;
+$dark-darkest: #505050;
+
+$colors: (
+  purple-metaverse: $purple-metaverse,
+  purple-metaverse-dark: $purple-metaverse-dark,
+  purple-metaverse-darker: $purple-metaverse-darker,
+  purple-metaverse-darkest: $purple-metaverse-darkest,
+  purple-metaverse-light: $purple-metaverse-light,
+  purple-metaverse-lighter: $purple-metaverse-lighter,
+  purple-metaverse-lightest: $purple-metaverse-lightest,
+  yellow-foundation: $yellow-foundation,
+  yellow-foundation-dark: $yellow-foundation-dark,
+  yellow-foundation-darker: $yellow-foundation-darker,
+  yellow-foundation-darkest: $yellow-foundation-darkest,
+  yellow-foundation-light: $yellow-foundation-light,
+  yellow-foundation-lighter: $yellow-foundation-lighter,
+  yellow-foundation-lightest: $yellow-foundation-lightest,
+  primary: $primary,
+  primary-dark: $primary-dark,
+  primary-darker: $primary-darker,
+  primary-darkest: $primary-darkest,
+  primary-light: $primary-light,
+  primary-lighter: $primary-lighter,
+  primary-lightest: $primary-lightest,
+  secondary: $secondary,
+  secondary-dark: $secondary-dark,
+  secondary-darker: $secondary-darker,
+  secondary-darkest: $secondary-darkest,
+  secondary-light: $secondary-light,
+  secondary-lighter: $secondary-lighter,
+  secondary-lightest: $secondary-lightest,
+  light: $light,
+  light-dark: $light-dark,
+  light-darker: $light-darker,
+  light-darkest: $light-darkest,
+  dark: $dark,
+  dark-dark: $dark-dark,
+  dark-darker: $dark-darker,
+  dark-darkest: $dark-darkest
+);
+
+
+:root {
+  // SPACING Custom Properties
+  @each $color, $value in $colors {
+    --color-#{$color}: #{$value};
+  }
+}

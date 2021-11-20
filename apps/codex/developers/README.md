@@ -13,7 +13,7 @@ slug: /
 
 Welcome to the Metaverse Developers Center
 
-###  [Brand Guidelines](brand-guidelines)
+### [Brand Guidelines](brand-guidelines)
 
 ### [The Framework](framework/oddd)
 

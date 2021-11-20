@@ -34,11 +34,11 @@ export interface Skill {
 @Component({
   selector: 'cf-selected-avatar',
   template: `
-    <form
-      [formGroup]="selectedAvatarForm"
-      style="height: 80vh; overflow: auto;"
-    >
-      <img [src]="selectedAvatarForm?.value?.appearances[0]?.smallPreviewUrl" />
+    <form [formGroup]="selectedAvatarForm" block="avatar">
+      <img
+        elem="small-preview"
+        [src]="selectedAvatarForm?.value?.appearances[0]?.smallPreviewUrl"
+      />
 
       <div class="form-control">
         <label for="welcomeMessage">Welcome message:</label>
@@ -187,7 +187,7 @@ export class SelectedAvatarScene implements OnInit {
       this.addAppearance({
         protocol: 'readyplayer.me',
         largePreviewUrl: 'assets/avatar-large.png',
-        smallPreviewUrl: 'assets/avatar-small.png',
+        smallPreviewUrl: 'assets/avatar-144.png',
       });
 
       this.addScope({

@@ -15,7 +15,7 @@ Welcome to The Central Factory's Metaverse!
 
 This is a place where you can find all the tools you need to build your own virtual world.
 
-##  [Getting Started with the Metaverse](getting-started)
+## [Getting Started with the Metaverse](getting-started)
 
 ### [The Network](the-network)
 
