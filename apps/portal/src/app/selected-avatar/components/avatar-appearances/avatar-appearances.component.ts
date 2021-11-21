@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Appearance } from '@central-factory/core';
 import { FormArray, FormControl, FormGroup } from '@ng-stack/forms';
-import { Appearance } from '../../models/appearance';
 
 export class AvatarAppeareancesInput {
   //#endregion
@@ -102,6 +102,7 @@ export class AvatarAppeareancesInput {
 export class AvatarAppearancesComponent {
   @Input() set appearances(value: AvatarAppeareancesInput) {
     if (value) {
+      this.appearancesForm.clear();
       value.appearances.forEach((appearance) => {
         this.addAppearance(appearance);
       });

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Avatar } from '@central-factory/core';
 import { FormControl, FormGroup } from '@ng-stack/forms';
 
 export interface AvatarOverviewInput {
@@ -80,12 +81,12 @@ export interface AvatarOverviewInput {
   `,
 })
 export class AvatarOverviewComponent {
-  @Input() set avatar(value: AvatarOverviewInput) {
-    this.form.setValue({
+  @Input() set avatar(value: Avatar) {
+    this.form.reset({
       name: value.name,
       title: value.title,
       welcomeMessage: value.welcomeMessage,
-      smallPreviewUrl: value.smallPreviewUrl,
+      smallPreviewUrl: value.selectedAppearance.smallPreviewUrl,
     });
   }
 

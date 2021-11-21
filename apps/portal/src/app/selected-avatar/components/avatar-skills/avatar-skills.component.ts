@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Skill } from '@central-factory/core';
 import { FormArray, FormControl, FormGroup } from '@ng-stack/forms';
-import { Skill } from '../../models/skill';
 
 export class AvatarSkillsInput {
   //#endregion
@@ -80,6 +80,7 @@ export class AvatarSkillsInput {
 export class AvatarSkillsComponent {
   @Input() set skills(value: AvatarSkillsInput) {
     if (value) {
+      this.skillsForm.clear();
       value.skills.forEach((skill) => {
         this.addScope(skill);
       });

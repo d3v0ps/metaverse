@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { Scope } from '@central-factory/core';
 import { FormArray, FormControl, FormGroup } from '@ng-stack/forms';
-import { Scope } from '../../models/scope';
 
 export class AvatarScopesInput {
   scopes!: Scope[];
@@ -61,6 +61,7 @@ export class AvatarScopesInput {
 export class AvatarScopesComponent {
   @Input() set scopes(value: AvatarScopesInput) {
     if (value) {
+      this.scopesForm.clear();
       value.scopes.forEach((appearance) => {
         this.addScope(appearance);
       });

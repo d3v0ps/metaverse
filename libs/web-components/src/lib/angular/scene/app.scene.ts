@@ -4,12 +4,6 @@ import { Component } from '@angular/core';
   selector: 'cf-scene',
   template: `
     <div block="scene">
-      <cf-header
-        elem="header"
-        [title]="title"
-        (titleClick)="sidebarIsOpen = !sidebarIsOpen"
-      >
-      </cf-header>
       <div class="scene__body">
         <cf-sidebar-container>
           <!-- A sidebar -->
@@ -93,6 +87,12 @@ import { Component } from '@angular/core';
           </div>
         </cf-sidebar-container>
       </div>
+      <cf-navbar
+        elem="navbar"
+        [title]="title"
+        (titleClick)="sidebarIsOpen = !sidebarIsOpen"
+      >
+      </cf-navbar>
     </div>
   `,
   styles: [

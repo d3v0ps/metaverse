@@ -1,5 +1,20 @@
 import { Avatar } from '../models';
 
 export const generateAvatar = (): Avatar => {
-  return new Avatar();
+  return {
+    appearances: [],
+    name: '',
+    physics: [],
+    skills: [],
+    title: '',
+    roles: [],
+    routines: [],
+    scopes: [],
+    welcomeMessage: '',
+    selectedAppearance: {
+      largePreviewUrl: '',
+      smallPreviewUrl: '',
+      protocol: '',
+    },
+  };
 };

@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { FormArray, FormGroup } from '@ng-stack/forms';
-import { Scope } from '../../models/scope';
+import { Component, Input } from '@angular/core';
+import { Avatar } from '@central-factory/core';
 
 @Component({
   selector: 'cf-selected-avatar',
@@ -10,22 +9,32 @@ import { Scope } from '../../models/scope';
         <div fxFlex="40">
           <cf-avatar-overview
             style="display: block; min-height: 200px;"
-            [avatar]="avatarOverviewInput"
+            [avatar]="avatar"
           ></cf-avatar-overview>
         </div>
         <div fxFlex="60">
           <div style="margin-bottom: 100px;">
-            <cf-avatar-skills [skills]="avatarSkillsInput"></cf-avatar-skills>
+            <cf-avatar-skills
+              [skills]="{
+                skills: avatar.skills
+              }"
+            ></cf-avatar-skills>
           </div>
           <div fxLayout="row" fxFlexFill>
-            <div fxFlex="33">
+            <div fxFlex="40">
               <cf-avatar-appearances
-                [appearances]="avatarAppearancesInput"
+                [appearances]="{
+                  appearances: avatar.appearances
+                }"
               ></cf-avatar-appearances>
             </div>
 
-            <div fxFlex="33">
-              <cf-avatar-scopes [scopes]="avatarScopesInput"></cf-avatar-scopes>
+            <div fxFlex="40">
+              <cf-avatar-scopes
+                [scopes]="{
+                  scopes: avatar.scopes
+                }"
+              ></cf-avatar-scopes>
             </div>
           </div>
         </div>
@@ -34,14 +43,15 @@ import { Scope } from '../../models/scope';
   `,
 })
 export class SelectedAvatarScene {
-  avatarOverviewInput = {
+  @Input() avatar: Avatar = {
     welcomeMessage: "Hi! I'm a developing avatar!",
     name: 'John',
     title: 'Software Engineer',
-    smallPreviewUrl: 'assets/avatar-144.png',
-  };
-
-  avatarAppearancesInput = {
+    selectedAppearance: {
+      protocol: 'readyplayer.me',
+      largePreviewUrl: 'assets/avatar-large.png',
+      smallPreviewUrl: 'assets/avatar-144.png',
+    },
     appearances: [
       {
         protocol: 'readyplayer.me',
@@ -49,19 +59,16 @@ export class SelectedAvatarScene {
         smallPreviewUrl: 'assets/avatar-144.png',
       },
       {
-        protocol: 'readyplayer.one',
+        protocol: 'Meta',
         largePreviewUrl: 'assets/avatar-large.png',
         smallPreviewUrl: 'assets/avatar-144.png',
       },
       {
-        protocol: 'readyplayer.two',
+        protocol: 'NVDIA Omniverse',
         largePreviewUrl: 'assets/avatar-large.png',
         smallPreviewUrl: 'assets/avatar-144.png',
       },
     ],
-  };
-
-  avatarScopesInput = {
     scopes: [
       {
         integration: 'CF',
@@ -74,9 +81,6 @@ export class SelectedAvatarScene {
         scope: 'manage',
       },
     ],
-  };
-
-  avatarSkillsInput = {
     skills: [
       {
         domain: 'calendar',
@@ -89,27 +93,8 @@ export class SelectedAvatarScene {
         skill: 'create',
       },
     ],
+    physics: [],
+    roles: [],
+    routines: [],
   };
-
-  selectedAvatarForm = new FormGroup<any>({
-    // physics: new FormArray<any>([]),
-    // roles: new FormArray<any>([]),
-    // routines: new FormArray<any>([]),
-  });
-
-  get physics() {
-    return this.selectedAvatarForm.controls.physics as FormArray<any>;
-  }
-
-  get roles() {
-    return this.selectedAvatarForm.controls.roles as FormArray<any>;
-  }
-
-  get routines() {
-    return this.selectedAvatarForm.controls.routines as FormArray<any>;
-  }
-
-  get scopes() {
-    return this.selectedAvatarForm.controls.scopes as FormArray<Scope>;
-  }
 }

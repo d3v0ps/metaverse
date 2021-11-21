@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'cf-header',
+  selector: 'cf-navbar',
   template: `
-    <div block="header">
+    <div block="navbar">
       <div fxLayout="row" fxFlexFill fxLayoutAlign="space-between center">
-        <div block="header" mod="left" fxFlex="50">
+        <div block="navbar" mod="left" fxFlex="50">
           <h1 elem="title" (click)="onTitleClick()">
             <svg-icon
               elem="icon"
@@ -18,7 +18,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
         </div>
 
         <div fxFlex="50">
-          <div block="header" mod="right">
+          <div block="navbar" mod="right">
             <ul block="list" mod="horizontal">
               <li elem="item">
                 <svg-icon
@@ -63,7 +63,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     </div>
   `,
 })
-export class HeaderComponent {
+export class NavbarComponent {
   @Input() environment: any;
   @Input() title = 'CF Portal';
 

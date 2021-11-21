@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BemModule } from 'angular-bem';
 import { AngularSvgIconModule } from 'angular-svg-icon';
-import { HeaderModule } from './header/header.module';
+import { NavbarModule } from './navbar/navbar.module';
 import { SceneModule } from './scene/scene.module';
 import { SidebarModule } from './sidebar/sidebar.module';
 
@@ -14,7 +14,7 @@ import { SidebarModule } from './sidebar/sidebar.module';
     BemModule,
     FlexLayoutModule,
     AngularSvgIconModule,
-    HeaderModule,
+    NavbarModule,
     SceneModule,
   ],
   exports: [
@@ -22,7 +22,7 @@ import { SidebarModule } from './sidebar/sidebar.module';
     SidebarModule,
     BemModule,
     AngularSvgIconModule,
-    HeaderModule,
+    NavbarModule,
     SceneModule,
   ],
 })
