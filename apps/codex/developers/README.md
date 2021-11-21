@@ -5,7 +5,7 @@ sidebar_label: About this docs
 slug: /
 ---
 
-<img src="/img/undraw_hacker_mind_-6-y85.svg" style={{
+<img src="/metaverse/apps/codex/img/undraw_hacker_mind_-6-y85.svg" style={{
   maxWidth: "500px",
   display: "block", 
   margin: "10px auto"

@@ -5,7 +5,7 @@ sidebar_label: Offline-first Domain Driven Development
 slug: /framework/oddd
 ---
 
-<img src="/img/oddd-diagram.png" style={{
+<img src="/metaverse/apps/codex/img/oddd-diagram.png" style={{
   maxWidth: "800px",
   display: "block", 
   margin: "10px auto"

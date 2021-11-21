@@ -5,7 +5,7 @@ sidebar_label: About this project
 slug: /
 ---
 
-<img src="/img//undraw_book_lover_re_rwjy.svg" style={{
+<img src="/metaverse/apps/codex/img//undraw_book_lover_re_rwjy.svg" style={{
   maxWidth: "500px",
   display: "block", 
   margin: "10px auto"
