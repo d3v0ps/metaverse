@@ -1,0 +1,1407 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Application documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/postmark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Application documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  SidebarContainerComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/lib/angular/sidebar/sidebar-container.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/AfterContentInit" target="_blank" >AfterContentInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>cf-sidebar-container</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>
+      :host {
+        box-sizing: border-box;
+        display: block;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .cf-sidebar__backdrop {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #000;
+        opacity: 0.75;
+        pointer-events: auto;
+        z-index: 1;
+      }
+
+      .cf-sidebar__content {
+        -webkit-overflow-scrolling: touch;
+        overflow: auto;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      .cf-sidebar__content--animate {
+        -webkit-transition: -webkit-transform 0.3s cubic-bezier(0, 0, 0.3, 1),
+          padding 0.3s cubic-bezier(0, 0, 0.3, 1);
+        transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1),
+          padding 0.3s cubic-bezier(0, 0, 0.3, 1);
+      }
+    </code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div
+  *ngIf&#x3D;&quot;showBackdrop&quot;
+  aria-hidden&#x3D;&quot;true&quot;
+  class&#x3D;&quot;cf-sidebar__backdrop&quot;
+  [ngClass]&#x3D;&quot;backdropClass&quot;
+  (click)&#x3D;&quot;_onBackdropClicked()&quot;
+&gt;&lt;/div&gt;
+
+&lt;ng-content select&#x3D;&quot;cf-sidebar,[cf-sidebar]&quot;&gt;&lt;/ng-content&gt;
+
+&lt;div
+  class&#x3D;&quot;cf-sidebar__content&quot;
+  [class.cf-sidebar__content--animate]&#x3D;&quot;animate&quot;
+  [ngClass]&#x3D;&quot;contentClass&quot;
+  [ngStyle]&#x3D;&quot;_getContentStyle()&quot;
+&gt;
+  &lt;ng-content select&#x3D;&quot;[cf-sidebar-content]&quot;&gt;&lt;/ng-content&gt;
+&lt;/div&gt;
+</code></pre></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_isBrowser" >_isBrowser</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_sidebars" >_sidebars</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_markForCheck" >_markForCheck</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_onToggle" >_onToggle</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_subscribe" >_subscribe</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_unsubscribe" >_unsubscribe</a>
+                            </li>
+                            <li>
+                                <a href="#ngAfterContentInit" >ngAfterContentInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#allowSidebarBackdropControl" >allowSidebarBackdropControl</a>
+                            </li>
+                            <li>
+                                <a href="#animate" >animate</a>
+                            </li>
+                            <li>
+                                <a href="#backdropClass" >backdropClass</a>
+                            </li>
+                            <li>
+                                <a href="#contentClass" >contentClass</a>
+                            </li>
+                            <li>
+                                <a href="#showBackdrop" >showBackdrop</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#backdropClick" >backdropClick</a>
+                            </li>
+                            <li>
+                                <a href="#showBackdropChange" >showBackdropChange</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_ref: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>, platformId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/lib/angular/sidebar/sidebar-container.component.ts:99</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_ref</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>platformId</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" >Object</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="allowSidebarBackdropControl"></a>
+                        <b>allowSidebarBackdropControl</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/lib/angular/sidebar/sidebar-container.component.ts:89</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="animate"></a>
+                        <b>animate</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/lib/angular/sidebar/sidebar-container.component.ts:87</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="backdropClass"></a>
+                        <b>backdropClass</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/lib/angular/sidebar/sidebar-container.component.ts:95</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="contentClass"></a>
+                        <b>contentClass</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/lib/angular/sidebar/sidebar-container.component.ts:94</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showBackdrop"></a>
+                        <b>showBackdrop</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/lib/angular/sidebar/sidebar-container.component.ts:90</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="backdropClick"></a>
+                        <b>backdropClick</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/lib/angular/sidebar/sidebar-container.component.ts:92</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showBackdropChange"></a>
+                        <b>showBackdropChange</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/lib/angular/sidebar/sidebar-container.component.ts:91</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_markForCheck"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_markForCheck</b></span>
+                        <a href="#_markForCheck"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_markForCheck()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="320"
+                            class="link-to-prism">src/lib/angular/sidebar/sidebar-container.component.ts:320</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Triggers change detection to recompute styles.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_onToggle"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_onToggle</b></span>
+                        <a href="#_onToggle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_onToggle()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="301"
+                            class="link-to-prism">src/lib/angular/sidebar/sidebar-container.component.ts:301</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Check if we should show the backdrop when a sidebar is toggled.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_subscribe"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_subscribe</b></span>
+                        <a href="#_subscribe"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_subscribe(sidebar: <a href="../components/SidebarComponent.html" target="_self">SidebarComponent</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="267"
+                            class="link-to-prism">src/lib/angular/sidebar/sidebar-container.component.ts:267</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Subscribes from a sidebar events to react properly.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sidebar</td>
+                                    <td>
+                                                <code><a href="../components/SidebarComponent.html" target="_self" >SidebarComponent</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_unsubscribe"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>_unsubscribe</b></span>
+                        <a href="#_unsubscribe"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_unsubscribe()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="283"
+                            class="link-to-prism">src/lib/angular/sidebar/sidebar-container.component.ts:283</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Unsubscribes from all sidebars.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterContentInit"></a>
+                    <span class="name">
+                        <span ><b>ngAfterContentInit</b></span>
+                        <a href="#ngAfterContentInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngAfterContentInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="109"
+                            class="link-to-prism">src/lib/angular/sidebar/sidebar-container.component.ts:109</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges(changes: <a href="https://angular.io/api/core/SimpleChanges" target="_blank">SimpleChanges</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="117"
+                            class="link-to-prism">src/lib/angular/sidebar/sidebar-container.component.ts:117</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>changes</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/core/SimpleChanges" target="_blank" >SimpleChanges</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="127"
+                            class="link-to-prism">src/lib/angular/sidebar/sidebar-container.component.ts:127</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_isBrowser"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_isBrowser</b></span>
+                        <a href="#_isBrowser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/lib/angular/sidebar/sidebar-container.component.ts:99</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_sidebars"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_sidebars</b></span>
+                        <a href="#_sidebars"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/SidebarComponent.html" target="_self" >Array&lt;SidebarComponent&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">src/lib/angular/sidebar/sidebar-container.component.ts:97</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { isPlatformBrowser } from &#x27;@angular/common&#x27;;
+import {
+  AfterContentInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Inject,
+  Input,
+  OnChanges,
+  OnDestroy,
+  Output,
+  PLATFORM_ID,
+  SimpleChanges,
+} from &#x27;@angular/core&#x27;;
+import { SidebarComponent } from &#x27;./sidebar.component&#x27;;
+
+// Based on https://github.com/central-factory/ng-sidebar
+@Component({
+  selector: &#x27;cf-sidebar-container&#x27;,
+  template: &#x60;
+    &lt;div
+      *ngIf&#x3D;&quot;showBackdrop&quot;
+      aria-hidden&#x3D;&quot;true&quot;
+      class&#x3D;&quot;cf-sidebar__backdrop&quot;
+      [ngClass]&#x3D;&quot;backdropClass&quot;
+      (click)&#x3D;&quot;_onBackdropClicked()&quot;
+    &gt;&lt;/div&gt;
+
+    &lt;ng-content select&#x3D;&quot;cf-sidebar,[cf-sidebar]&quot;&gt;&lt;/ng-content&gt;
+
+    &lt;div
+      class&#x3D;&quot;cf-sidebar__content&quot;
+      [class.cf-sidebar__content--animate]&#x3D;&quot;animate&quot;
+      [ngClass]&#x3D;&quot;contentClass&quot;
+      [ngStyle]&#x3D;&quot;_getContentStyle()&quot;
+    &gt;
+      &lt;ng-content select&#x3D;&quot;[cf-sidebar-content]&quot;&gt;&lt;/ng-content&gt;
+    &lt;/div&gt;
+  &#x60;,
+  styles: [
+    &#x60;
+      :host {
+        box-sizing: border-box;
+        display: block;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .cf-sidebar__backdrop {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #000;
+        opacity: 0.75;
+        pointer-events: auto;
+        z-index: 1;
+      }
+
+      .cf-sidebar__content {
+        -webkit-overflow-scrolling: touch;
+        overflow: auto;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      .cf-sidebar__content--animate {
+        -webkit-transition: -webkit-transform 0.3s cubic-bezier(0, 0, 0.3, 1),
+          padding 0.3s cubic-bezier(0, 0, 0.3, 1);
+        transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1),
+          padding 0.3s cubic-bezier(0, 0, 0.3, 1);
+      }
+    &#x60;,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class SidebarContainerComponent
+  implements AfterContentInit, OnChanges, OnDestroy
+{
+  @Input() animate &#x3D; true;
+
+  @Input() allowSidebarBackdropControl &#x3D; true;
+  @Input() showBackdrop &#x3D; false;
+  @Output() showBackdropChange &#x3D; new EventEmitter&lt;boolean&gt;();
+  @Output() backdropClick &#x3D; new EventEmitter&lt;null&gt;();
+
+  @Input() contentClass!: string;
+  @Input() backdropClass!: string;
+
+  private _sidebars: Array&lt;SidebarComponent&gt; &#x3D; [];
+
+  private _isBrowser: boolean;
+
+  constructor(
+    private _ref: ChangeDetectorRef,
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+    this._isBrowser &#x3D; isPlatformBrowser(platformId);
+  }
+
+  ngAfterContentInit(): void {
+    if (!this._isBrowser) {
+      return;
+    }
+
+    this._onToggle();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (!this._isBrowser) {
+      return;
+    }
+
+    if (changes[&#x27;showBackdrop&#x27;]) {
+      this.showBackdropChange.emit(changes[&#x27;showBackdrop&#x27;].currentValue);
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (!this._isBrowser) {
+      return;
+    }
+
+    this._unsubscribe();
+  }
+
+  /**
+   * @internal
+   *
+   * Adds a sidebar to the container&#x27;s list of sidebars.
+   *
+   * @param sidebar {Sidebar} A sidebar within the container to register.
+   */
+  _addSidebar(sidebar: SidebarComponent) {
+    this._sidebars.push(sidebar);
+    this._subscribe(sidebar);
+  }
+
+  /**
+   * @internal
+   *
+   * Removes a sidebar from the container&#x27;s list of sidebars.
+   *
+   * @param sidebar {Sidebar} The sidebar to remove.
+   */
+  _removeSidebar(sidebar: SidebarComponent) {
+    const index &#x3D; this._sidebars.indexOf(sidebar);
+    if (index !&#x3D;&#x3D; -1) {
+      this._sidebars.splice(index, 1);
+    }
+  }
+
+  /**
+   * @internal
+   *
+   * Computes &#x60;margin&#x60; value to push page contents to accommodate open sidebars as needed.
+   *
+   * @return {CSSStyleDeclaration} margin styles for the page content.
+   */
+  _getContentStyle(): CSSStyleDeclaration {
+    let left &#x3D; 0,
+      right &#x3D; 0,
+      top &#x3D; 0,
+      bottom &#x3D; 0;
+
+    let transformStyle &#x3D; &#x27;&#x27;;
+    let heightStyle &#x3D; &#x27;&#x27;;
+    let widthStyle &#x3D; &#x27;&#x27;;
+
+    for (const sidebar of this._sidebars) {
+      // Slide mode: we need to translate the entire container
+      if (sidebar._isModeSlide) {
+        if (sidebar.opened) {
+          const transformDir &#x3D; sidebar._isLeftOrRight ? &#x27;X&#x27; : &#x27;Y&#x27;;
+          const transformAmt &#x3D; &#x60;${sidebar._isLeftOrTop ? &#x27;&#x27; : &#x27;-&#x27;}${
+            sidebar._isLeftOrRight ? sidebar._width : sidebar._height
+          }&#x60;;
+
+          transformStyle &#x3D; &#x60;translate${transformDir}(${transformAmt}px)&#x60;;
+        }
+      }
+
+      // Create a space for the sidebar
+      if ((sidebar._isModePush &amp;&amp; sidebar.opened) || sidebar.dock) {
+        let paddingAmt &#x3D; 0;
+
+        if (sidebar._isModeSlide &amp;&amp; sidebar.opened) {
+          if (sidebar._isLeftOrRight) {
+            widthStyle &#x3D; &#x27;100%&#x27;;
+          } else {
+            heightStyle &#x3D; &#x27;100%&#x27;;
+          }
+        } else {
+          if (sidebar._isDocked || (sidebar._isModeOver &amp;&amp; sidebar.dock)) {
+            paddingAmt &#x3D; sidebar._dockedSize;
+          } else {
+            paddingAmt &#x3D; sidebar._isLeftOrRight
+              ? sidebar._width
+              : sidebar._height;
+          }
+        }
+
+        switch (sidebar.position) {
+          case &#x27;left&#x27;:
+            left &#x3D; Math.max(left, paddingAmt);
+            break;
+
+          case &#x27;right&#x27;:
+            right &#x3D; Math.max(right, paddingAmt);
+            break;
+
+          case &#x27;top&#x27;:
+            top &#x3D; Math.max(top, paddingAmt);
+            break;
+
+          case &#x27;bottom&#x27;:
+            bottom &#x3D; Math.max(bottom, paddingAmt);
+            break;
+        }
+      }
+    }
+
+    return {
+      padding: &#x60;${top}px ${right}px ${bottom}px ${left}px&#x60;,
+      webkitTransform: transformStyle,
+      transform: transformStyle,
+      height: heightStyle,
+      width: widthStyle,
+    } as CSSStyleDeclaration;
+  }
+
+  /**
+   * @internal
+   *
+   * Closes sidebars when the backdrop is clicked, if they have the
+   * &#x60;closeOnClickBackdrop&#x60; option set.
+   */
+  _onBackdropClicked(): void {
+    let backdropClicked &#x3D; false;
+    for (const sidebar of this._sidebars) {
+      if (
+        sidebar.opened &amp;&amp;
+        sidebar.showBackdrop &amp;&amp;
+        sidebar.closeOnClickBackdrop
+      ) {
+        sidebar.close();
+        backdropClicked &#x3D; true;
+      }
+    }
+
+    if (backdropClicked) {
+      this.backdropClick.emit();
+    }
+  }
+
+  /**
+   * Subscribes from a sidebar events to react properly.
+   */
+  private _subscribe(sidebar: SidebarComponent): void {
+    sidebar.openStart.subscribe(() &#x3D;&gt; this._onToggle());
+    sidebar.sidebarOpen.subscribe(() &#x3D;&gt; this._markForCheck());
+
+    sidebar.closeStart.subscribe(() &#x3D;&gt; this._onToggle());
+    sidebar.sidebarClose.subscribe(() &#x3D;&gt; this._markForCheck());
+
+    sidebar.modeChange.subscribe(() &#x3D;&gt; this._markForCheck());
+    sidebar.positionChange.subscribe(() &#x3D;&gt; this._markForCheck());
+
+    sidebar._onRerender.subscribe(() &#x3D;&gt; this._markForCheck());
+  }
+
+  /**
+   * Unsubscribes from all sidebars.
+   */
+  private _unsubscribe(): void {
+    for (const sidebar of this._sidebars) {
+      sidebar.openStart.unsubscribe();
+      sidebar.sidebarOpen.unsubscribe();
+
+      sidebar.closeStart.unsubscribe();
+      sidebar.sidebarClose.unsubscribe();
+
+      sidebar.modeChange.unsubscribe();
+      sidebar.positionChange.unsubscribe();
+
+      sidebar._onRerender.unsubscribe();
+    }
+  }
+
+  /**
+   * Check if we should show the backdrop when a sidebar is toggled.
+   */
+  private _onToggle(): void {
+    if (this._sidebars.length &gt; 0 &amp;&amp; this.allowSidebarBackdropControl) {
+      // Show backdrop if a single open sidebar has it set
+      const hasOpen &#x3D; this._sidebars.some(
+        (sidebar) &#x3D;&gt; sidebar.opened &amp;&amp; sidebar.showBackdrop
+      );
+
+      this.showBackdrop &#x3D; hasOpen;
+      this.showBackdropChange.emit(hasOpen);
+    }
+
+    setTimeout(() &#x3D;&gt; {
+      this._markForCheck();
+    });
+  }
+
+  /**
+   * Triggers change detection to recompute styles.
+   */
+  private _markForCheck(): void {
+    this._ref.markForCheck();
+  }
+}
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="c-styleData">
+            <pre class="line-numbers"><code class="language-scss">
+      :host {
+        box-sizing: border-box;
+        display: block;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .cf-sidebar__backdrop {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #000;
+        opacity: 0.75;
+        pointer-events: auto;
+        z-index: 1;
+      }
+
+      .cf-sidebar__content {
+        -webkit-overflow-scrolling: touch;
+        overflow: auto;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      .cf-sidebar__content--animate {
+        -webkit-transition: -webkit-transform 0.3s cubic-bezier(0, 0, 0.3, 1),
+          padding 0.3s cubic-bezier(0, 0, 0.3, 1);
+        transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1),
+          padding 0.3s cubic-bezier(0, 0, 0.3, 1);
+      }
+    
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div  *ngIf="showBackdrop"  aria-hidden="true"  class="cf-sidebar__backdrop"  [ngClass]="backdropClass"  (click)="_onBackdropClicked()"></div><ng-content select="cf-sidebar,[cf-sidebar]"></ng-content><div  class="cf-sidebar__content"  [class.cf-sidebar__content--animate]="animate"  [ngClass]="contentClass"  [ngStyle]="_getContentStyle()">  <ng-content select="[cf-sidebar-content]"></ng-content></div></div>'
+    var COMPONENTS = [{'name': 'AppScene', 'selector': 'cf-scene'},{'name': 'NavbarComponent', 'selector': 'cf-navbar'},{'name': 'SidebarComponent', 'selector': 'cf-sidebar'},{'name': 'SidebarContainerComponent', 'selector': 'cf-sidebar-container'}];
+    var DIRECTIVES = [{'name': 'CloseSidebarDirective', 'selector': '[cfCloseSidebar]'}];
+    var ACTUAL_COMPONENT = {'name': 'SidebarContainerComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SidebarContainerComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
