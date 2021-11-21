@@ -18,8 +18,6 @@ jobs:
       - run: git fetch origin main
       - name: npm install
         run: npm install
-      - name: npm install
-        run: npm install
       - name: Build API Docs
         shell: bash
         run: nx run-many --target=compodoc --all --configuration build-codex
