@@ -15,11 +15,13 @@ button, .btn {
   -webkit-border-radius: 14;
   -moz-border-radius: 14;
   border-radius: 14px;
-  font-family: Arial;
   color: colors.$light;
-  font-size: 20px;
-  padding: 10px 20px 10px 20px;
+  font-size: 14px;
+  padding: 5px 10px 5px 10px;
   text-decoration: none;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
 
   &:hover {
     background: colors.$primary;

@@ -6,9 +6,10 @@ import { Scope } from '../../models/scope';
   selector: 'cf-selected-avatar',
   template: `
     <div block="scene-content">
-      <div fxLayout="column" fxLayoutAlign="center center">
+      <div fxLayout="column" fxFlexFill>
         <div fxFlex="40">
           <cf-avatar-overview
+            style="display: block; min-height: 200px;"
             [avatar]="avatarOverviewInput"
           ></cf-avatar-overview>
         </div>
@@ -37,6 +38,16 @@ export class SelectedAvatarScene {
     appearances: [
       {
         protocol: 'readyplayer.me',
+        largePreviewUrl: 'assets/avatar-large.png',
+        smallPreviewUrl: 'assets/avatar-144.png',
+      },
+      {
+        protocol: 'readyplayer.one',
+        largePreviewUrl: 'assets/avatar-large.png',
+        smallPreviewUrl: 'assets/avatar-144.png',
+      },
+      {
+        protocol: 'readyplayer.two',
         largePreviewUrl: 'assets/avatar-large.png',
         smallPreviewUrl: 'assets/avatar-144.png',
       },

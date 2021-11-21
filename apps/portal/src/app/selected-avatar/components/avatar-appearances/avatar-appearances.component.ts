@@ -11,41 +11,86 @@ export class AvatarAppeareancesInput {
   selector: 'cf-avatar-appearances',
   template: `
     <form [formGroup]="form" block="avatar-overview">
-      <div class="form-array" formArrayName="appearances">
-        <h2>Appearances</h2>
-        <button type="button">+ Add another appearance</button>
+      <h2>Appearances</h2>
 
-        <div
-          *ngFor="let appearance of appearancesForm.controls; let i = index"
-          class="appearance-form"
-        >
-          I have an appearance registered at {{ appearance.value.protocol }}
+      <div fxLayout="column" fxLayoutGap="10px">
+        <div fxLayout="row" fxLayoutGap="10px">
+          <div>
+            <button type="button">+ Add another appearance</button>
+          </div>
+        </div>
 
-          <img style="width: 200px;" [src]="appearance.value.largePreviewUrl" />
+        <div fxLayout="row" fxLayoutGap="5px">
+          <div
+            block="card"
+            class="form-array appearance-card"
+            formArrayName="appearances"
+            *ngFor="let appearance of appearancesForm.controls; let i = index"
+          >
+            <!-- I have an appearance registered at -->
 
-          <div [formGroupName]="i" *ngIf="false">
-            <div class="form-control">
-              <label for="protocol-{{ i }}">Protocol:</label>
-              <input
-                id="protocol-{{ i }}"
-                type="text"
-                formControlName="protocol"
-              />
+            <div
+              elem="picture"
+              style="background-image: url('{{
+                appearance.value.largePreviewUrl
+              }}')"
+            >
+              <!-- img
+                    elem="image"
+                    style="width: 200px;"
+                    [src]="appearance.value.largePreviewUrl"
+                  / -->
+
+              <div elem="footer">
+                <h4 elem="title">{{ appearance.value.protocol }}</h4>
+              </div>
             </div>
 
-            <div class="form-control">
-              <label for="preview-url-{{ i }}">Preview Url:</label>
-              <input
-                id="preview-url-{{ i }}"
-                type="text"
-                formControlName="largePreviewUrl"
-              />
+            <div [formGroupName]="i" *ngIf="false">
+              <div class="form-control">
+                <label for="protocol-{{ i }}">Protocol:</label>
+                <input
+                  id="protocol-{{ i }}"
+                  type="text"
+                  formControlName="protocol"
+                />
+              </div>
+
+              <div class="form-control">
+                <label for="preview-url-{{ i }}">Preview Url:</label>
+                <input
+                  id="preview-url-{{ i }}"
+                  type="text"
+                  formControlName="largePreviewUrl"
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
     </form>
   `,
+  styles: [
+    `
+      $card-width: 140px;
+      $card-height: 100px;
+
+      .appearance-card {
+        width: $card-width;
+        max-width: $card-width;
+        min-height: $card-height;
+
+        .card__picture {
+          max-width: $card-width;
+          min-height: $card-height;
+        }
+
+        .card__footer {
+          font-size: 12px;
+        }
+      }
+    `,
+  ],
 })
 export class AvatarAppearancesComponent {
   @Input() set appearances(value: AvatarAppeareancesInput) {
