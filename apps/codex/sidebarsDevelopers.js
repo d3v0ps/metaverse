@@ -1,7 +1,6 @@
 module.exports = {
   developersSidebar: {
     'Developers': ['about-this'],
-    'Metaverse': ['brand-guidelines'],
     'Framework': [
       'framework/oddd',
       {
@@ -32,7 +31,20 @@ module.exports = {
     ],
     'Core': ['core/api-docs'],
     'Web Components': ['web-components/api-docs', 'web-components/components'],
-    'Gatekeeper': ['gatekeeper/api-docs'],
+    'Metaverse': ['brand-guidelines'],
     'Portal': ['portal/api-docs', 'portal/components'],
+    'Gatekeeper': ['gatekeeper/identity', 'gatekeeper/agent', 'gatekeeper/api-docs'],
+    'Avatars': [
+      {
+        type: 'category',
+        label: 'Skills',
+        items: ['avatars/skills/plan', 'avatars/skills/calendar', 'avatars/skills/addresses', 'avatars/skills/subscriptions', 'avatars/skills/rpg-stats', 'avatars/skills/jrpg-stats', 'avatars/skills/quest', ]
+      },
+      {
+        type: 'category',
+        label: 'Integrations',
+        items: ['avatars/integrations/meta', 'avatars/integrations/microsoft', 'avatars/integrations/google'],
+      }
+    ],
   },
 };
