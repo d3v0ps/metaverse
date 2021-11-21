@@ -80,6 +80,11 @@ export class SelectedAvatarScene {
         domain: 'Calendars',
         scope: 'manage',
       },
+      {
+        integration: 'NFT',
+        domain: 'Tokens',
+        scope: 'manage',
+      },
     ],
     skills: [
       {
@@ -91,6 +96,11 @@ export class SelectedAvatarScene {
         domain: 'event',
         scope: 'manage',
         skill: 'create',
+      },
+      {
+        domain: 'assets',
+        scope: 'manage',
+        skill: 'trade',
       },
     ],
     physics: [],

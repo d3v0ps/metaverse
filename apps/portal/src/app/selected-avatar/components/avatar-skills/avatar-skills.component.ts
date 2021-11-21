@@ -72,7 +72,7 @@ export class AvatarSkillsInput {
           elem="icon"
           [svgClass]="'icon__svg'"
         ></svg-icon>
-        Add another skills
+        Add more skills
       </button>
     </form>
   `,
@@ -92,6 +92,7 @@ export class AvatarSkillsComponent {
   } = {
     'create-calendar': 'calendar-edit',
     'create-event': 'calendar',
+    'trade-assets': 'store',
   };
 
   form = new FormGroup<AvatarSkillsInput>({
