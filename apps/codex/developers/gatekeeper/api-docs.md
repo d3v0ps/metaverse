@@ -7,4 +7,4 @@ slug: /gatekeeper/api-docs
 
 # Gatekeeper API Docs
 
-<iframe style={{ width: "100%", height: "calc(100vh - 328px)"}} src="/compodoc/gatekeeper"></iframe>
+<iframe style={{ width: "100%", height: "calc(100vh - 328px)"}} src="/metaverse/apps/codex/compodoc/gatekeeper"></iframe>
