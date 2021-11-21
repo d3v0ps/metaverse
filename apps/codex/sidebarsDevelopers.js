@@ -38,7 +38,7 @@ module.exports = {
       {
         type: 'category',
         label: 'Skills',
-        items: ['avatars/skills/plan', 'avatars/skills/calendar', 'avatars/skills/addresses', 'avatars/skills/subscriptions', 'avatars/skills/rpg-stats', 'avatars/skills/jrpg-stats', 'avatars/skills/quest', ]
+        items: ['avatars/skills/appearances', 'avatars/skills/plan', 'avatars/skills/calendar', 'avatars/skills/addresses', 'avatars/skills/assets', 'avatars/skills/subscriptions', 'avatars/skills/work', 'avatars/skills/rpg-stats', 'avatars/skills/jrpg-stats', 'avatars/skills/quest', ]
       },
       {
         type: 'category',
