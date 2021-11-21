@@ -1,0 +1,34 @@
+name: Nx Affected Test Release
+on:
+  push:
+    branches: [master]
+env:
+  BEFORE_SHA: ${{ github.event.before }}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - run: git fetch origin master
+      - name: npm install
+        run: npm install
+      - name: npm install
+        run: npm install
+      - name: Build API Docs
+        shell: bash
+        run: nx run-many --target=compodoc --all --configuration build-codex
+      - name: Build docs
+        shell: bash
+        run: nx build codex
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.6
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: dist/ # 
