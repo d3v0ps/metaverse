@@ -12,14 +12,26 @@ export class AvatarScopesInput {
     <form [formGroup]="form" block="avatar">
       <div class="form-array" formArrayName="scopes">
         <h2>Scopes</h2>
-        <button type="button">+ Add another scope</button>
+        <button type="button" block="button" mod="secondary uppercase">
+          <svg-icon
+            src="assets/icons/mdi/plus.svg"
+            elem="icon"
+            [svgClass]="'icon__svg'"
+          ></svg-icon>
+          Add another scope
+        </button>
 
         <div
           *ngFor="let scope of scopesForm.controls; let i = index"
           class="scope-form"
         >
-          I have access to {{ scope.value.scope }} {{ scope.value.integration }}
-          {{ scope.value.domain }}
+          <p>
+            I have access to <span block="badge">{{ scope.value.scope }}</span
+            >&nbsp;
+            <span block="badge"
+              >{{ scope.value.integration }} {{ scope.value.domain }}</span
+            >
+          </p>
 
           <div [formGroupName]="i" *ngIf="false">
             <div class="form-control">

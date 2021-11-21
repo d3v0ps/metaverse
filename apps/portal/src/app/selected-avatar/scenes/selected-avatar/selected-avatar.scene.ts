@@ -14,13 +14,20 @@ import { Scope } from '../../models/scope';
           ></cf-avatar-overview>
         </div>
         <div fxFlex="60">
-          <cf-avatar-appearances
-            [appearances]="avatarAppearancesInput"
-          ></cf-avatar-appearances>
+          <div style="margin-bottom: 100px;">
+            <cf-avatar-skills [skills]="avatarSkillsInput"></cf-avatar-skills>
+          </div>
+          <div fxLayout="row" fxFlexFill>
+            <div fxFlex="33">
+              <cf-avatar-appearances
+                [appearances]="avatarAppearancesInput"
+              ></cf-avatar-appearances>
+            </div>
 
-          <cf-avatar-scopes [scopes]="avatarScopesInput"></cf-avatar-scopes>
-
-          <cf-avatar-skills [skills]="avatarSkillsInput"></cf-avatar-skills>
+            <div fxFlex="33">
+              <cf-avatar-scopes [scopes]="avatarScopesInput"></cf-avatar-scopes>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -58,12 +65,12 @@ export class SelectedAvatarScene {
     scopes: [
       {
         integration: 'CF',
-        domain: 'Calendar',
+        domain: 'Calendars',
         scope: 'manage',
       },
       {
         integration: 'Google',
-        domain: 'Calendar',
+        domain: 'Calendars',
         scope: 'manage',
       },
     ],
@@ -72,9 +79,14 @@ export class SelectedAvatarScene {
   avatarSkillsInput = {
     skills: [
       {
-        domain: 'Calendar',
+        domain: 'calendar',
         scope: 'manage',
-        skill: 'create-calendar',
+        skill: 'create',
+      },
+      {
+        domain: 'event',
+        scope: 'manage',
+        skill: 'create',
       },
     ],
   };

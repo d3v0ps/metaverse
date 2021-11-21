@@ -16,13 +16,74 @@ import { Component } from '@angular/core';
           <cf-sidebar
             [(opened)]="sidebarIsOpen"
             [dock]="true"
-            [dockedSize]="'0px'"
+            [dockedSize]="'80px'"
             [showBackdrop]="true"
             [closeOnClickBackdrop]="true"
             [closeOnClickOutside]="true"
           >
+            <img
+              src="assets/avatar-144.png"
+              style="
+              display: block;
+              width: 55px;
+              height: 55px;
+              border-radius: 50%;
+              margin-top: 35px;"
+            />
+
+            <button
+              class="d-block"
+              block="button"
+              mod="fab primary"
+              style="margin-top: 15px;"
+            >
+              <svg-icon
+                src="assets/icons/mdi/account.svg"
+                elem="icon"
+                [svgClass]="'icon__svg'"
+              ></svg-icon>
+            </button>
+
+            <button
+              class="d-block"
+              block="button"
+              mod="fab secondary"
+              style="margin-top: 15px;"
+            >
+              <svg-icon
+                src="assets/icons/mdi/play.svg"
+                elem="icon"
+                [svgClass]="'icon__svg'"
+              ></svg-icon>
+            </button>
+
+            <button
+              class="d-block"
+              block="button"
+              mod="fab secondary"
+              style="margin-top: 15px;"
+            >
+              <svg-icon
+                src="assets/icons/mdi/bag-personal.svg"
+                elem="icon"
+                [svgClass]="'icon__svg'"
+              ></svg-icon>
+            </button>
+
+            <button
+              class="d-block"
+              block="button"
+              mod="fab secondary"
+              style="margin-top: 15px;"
+            >
+              <svg-icon
+                src="assets/icons/mdi/store.svg"
+                elem="icon"
+                [svgClass]="'icon__svg'"
+              ></svg-icon>
+            </button>
+
             <router-outlet name="sidebar"></router-outlet>
-            <p>Sidebar contents</p>
           </cf-sidebar>
 
           <div cf-sidebar-content>

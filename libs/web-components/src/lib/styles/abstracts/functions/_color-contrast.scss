@@ -1,0 +1,20 @@
+
+@use "../variables/colors" as colors;
+@use "brightness" as brightness;
+
+$dark-text-default: colors.$dark;
+$light-text-default: colors.$light;
+
+// Compares contrast of a given color to the light/dark arguments and returns whichever is most "contrasty"
+@function color-contrast($color, $dark: $dark-text-default, $light: $light-text-default) {
+    @if $color == null {
+        @return null;
+    }
+    @else {
+        $color-brightness: brightness.brightness($color);
+        $light-text-brightness: brightness.brightness($light);
+        $dark-text-brightness: brightness.brightness($dark);
+
+        @return if(abs($color-brightness - $light-text-brightness) > abs($color-brightness - $dark-text-brightness), $light, $dark);
+    }
+}

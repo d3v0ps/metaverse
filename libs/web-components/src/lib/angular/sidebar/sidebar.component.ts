@@ -50,7 +50,6 @@ import { SidebarContainerComponent } from './sidebar-container.component';
         touch-action: auto;
         will-change: initial;
         z-index: 2;
-        background-color: white;
       }
 
       .cf-sidebar--left {

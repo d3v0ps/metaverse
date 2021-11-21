@@ -4,8 +4,7 @@
 .header {
   border-bottom: 1px solid colors.$dark-darker;
   height: 44px;
-  background: colors.$primary;
-  color: colors.$primary-darkest;
+  color: colors.$light-darkest;
   display: block;
 
   &--right {
@@ -18,7 +17,6 @@
     cursor: pointer;
     font-size: 24px;
     font-weight: bold;
-    color: colors.$primary-darkest;
     margin-left: 24px;
     margin-right: 24px;
     margin-top: 6px;
@@ -26,6 +24,7 @@
     .header__icon {
       vertical-align: middle;
       .icon__svg {
+        margin-right: 10px;
         width: 24px;
         height: 24px;
       }
@@ -39,23 +38,24 @@
   }
 
   .list {
+    margin: 0 10px;
     &__item {
       .icon__svg {
-        fill: colors.$primary-darkest;
+        fill: colors.$light-darkest;
       }
 
       a {
-        color: colors.$primary-darkest;
+        color: colors.$light-darkest;
       }
 
 
       &:hover {
         .icon__svg {
-          fill: colors.$primary-light;
+          fill: colors.$light;
         }
 
         a {
-          color: colors.$primary-light;
+          color: colors.$light;
         }
       }
 

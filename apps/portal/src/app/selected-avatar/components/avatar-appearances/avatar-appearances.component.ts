@@ -16,11 +16,18 @@ export class AvatarAppeareancesInput {
       <div fxLayout="column" fxLayoutGap="10px">
         <div fxLayout="row" fxLayoutGap="10px">
           <div>
-            <button type="button">+ Add another appearance</button>
+            <button type="button" block="button" mod="secondary uppercase">
+              <svg-icon
+                src="assets/icons/mdi/plus.svg"
+                elem="icon"
+                [svgClass]="'icon__svg'"
+              ></svg-icon>
+              Add another appearance
+            </button>
           </div>
         </div>
 
-        <div fxLayout="row" fxLayoutGap="5px">
+        <div fxLayout="row wrap" fxLayoutGap="5px">
           <div
             block="card"
             class="form-array appearance-card"
