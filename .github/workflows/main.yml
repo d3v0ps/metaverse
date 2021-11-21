@@ -20,7 +20,7 @@ jobs:
         run: npm install
       - name: Build API Docs
         shell: bash
-        run: npx nx run-many --target=compodoc --all --configuration build-codex
+        run: npx nx run-many --target=compodoc --configuration=build-codex --projects=core --only-failed
       - name: Build docs
         shell: bash
         run: npx nx build codex
