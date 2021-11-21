@@ -40,7 +40,7 @@ jobs:
 
       - name: Build API Docs
         shell: bash
-        run: npx nx run-many --target=compodoc --configuration=build-codex --projects=core --only-failed
+        run: npx nx run-many --target=compodoc --configuration=build-codex --all --only-failed
 
       - name: Build docs
         shell: bash

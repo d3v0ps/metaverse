@@ -5,4 +5,4 @@ sidebar_label: Subscriptions
 slug: /subscriptions
 ---
 
-[Transaction-based](avatars/skills/transaction) subscriptions management module for avatars.
+[Transaction-based](transactions) subscriptions management module for avatars.

@@ -5,4 +5,4 @@ sidebar_label: Work
 slug: /work
 ---
 
-[Plan-based](avatars/skills/work) work management module for avatars.
+[Plan-based](plan) work management module for avatars.
