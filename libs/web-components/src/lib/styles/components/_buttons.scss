@@ -7,12 +7,6 @@
   font-weight: 400;
   text-align: center;
 
-  background: colors.$primary;
-  background-image: -webkit-linear-gradient(top, colors.$primary, colors.$primary-dark);
-  background-image: -moz-linear-gradient(top, colors.$primary, colors.$primary-dark);
-  background-image: -ms-linear-gradient(top, colors.$primary, colors.$primary-dark);
-  background-image: -o-linear-gradient(top, colors.$primary, colors.$primary-dark);
-  background-image: linear-gradient(to bottom, colors.$primary, colors.$primary-dark);
   -webkit-border-radius: 14;
   -moz-border-radius: 14;
   border-radius: 14px;
@@ -23,21 +17,12 @@
   border: none;
   box-shadow: none;
   cursor: pointer;
+  text-decoration: none;
 
   .icon__svg {
     vertical-align: bottom;
     width: 18px;
     height: 18px;
-  }
-
-  &:hover {
-    background: colors.$primary;
-    background-image: -webkit-linear-gradient(top, colors.$primary, colors.$primary-darker);
-    background-image: -moz-linear-gradient(top, colors.$primary, colors.$primary-darker);
-    background-image: -ms-linear-gradient(top, colors.$primary, colors.$primary-darker);
-    background-image: -o-linear-gradient(top, colors.$primary, colors.$primary-darker);
-    background-image: linear-gradient(to bottom, colors.$primary, colors.$primary-darker);
-    text-decoration: none;
   }
 
   &--uppercase {

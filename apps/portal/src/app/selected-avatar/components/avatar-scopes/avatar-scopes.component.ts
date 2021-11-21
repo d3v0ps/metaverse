@@ -12,22 +12,13 @@ export class AvatarScopesInput {
     <form [formGroup]="form" block="avatar">
       <div class="form-array" formArrayName="scopes">
         <h2>Scopes</h2>
-        <button type="button" block="button" mod="secondary uppercase">
-          <svg-icon
-            src="assets/icons/mdi/plus.svg"
-            elem="icon"
-            [svgClass]="'icon__svg'"
-          ></svg-icon>
-          Add another scope
-        </button>
 
         <div
           *ngFor="let scope of scopesForm.controls; let i = index"
           class="scope-form"
         >
           <p>
-            I have access to <span block="badge">{{ scope.value.scope }}</span
-            >&nbsp;
+            I can {{ scope.value.scope }}
             <span block="badge"
               >{{ scope.value.integration }} {{ scope.value.domain }}</span
             >
@@ -54,6 +45,15 @@ export class AvatarScopesInput {
             </div>
           </div>
         </div>
+
+        <button type="button" block="button" mod="secondary">
+          <svg-icon
+            src="assets/icons/mdi/plus.svg"
+            elem="icon"
+            [svgClass]="'icon__svg'"
+          ></svg-icon>
+          Add another scope
+        </button>
       </div>
     </form>
   `,

@@ -14,19 +14,6 @@ export class AvatarAppeareancesInput {
       <h2>Appearances</h2>
 
       <div fxLayout="column" fxLayoutGap="10px">
-        <div fxLayout="row" fxLayoutGap="10px">
-          <div>
-            <button type="button" block="button" mod="secondary uppercase">
-              <svg-icon
-                src="assets/icons/mdi/plus.svg"
-                elem="icon"
-                [svgClass]="'icon__svg'"
-              ></svg-icon>
-              Add another appearance
-            </button>
-          </div>
-        </div>
-
         <div fxLayout="row wrap" fxLayoutGap="5px">
           <div
             block="card"
@@ -73,6 +60,13 @@ export class AvatarAppeareancesInput {
               </div>
             </div>
           </div>
+          <div block="card" class="appearance-card">
+            <svg-icon
+              src="assets/icons/mdi/plus.svg"
+              elem="icon"
+              [svgClass]="'icon__svg'"
+            ></svg-icon>
+          </div>
         </div>
       </div>
     </form>
@@ -86,6 +80,7 @@ export class AvatarAppeareancesInput {
         width: $card-width;
         max-width: $card-width;
         min-height: $card-height;
+        margin-bottom: 10px;
 
         .card__picture {
           max-width: $card-width;
@@ -94,6 +89,11 @@ export class AvatarAppeareancesInput {
 
         .card__footer {
           font-size: 12px;
+        }
+
+        .card__icon .icon__svg {
+          width: $card-width;
+          height: $card-height;
         }
       }
     `,

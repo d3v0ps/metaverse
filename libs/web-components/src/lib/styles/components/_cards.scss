@@ -50,4 +50,10 @@
     margin: 0;
   }
 
+
+
+  &__icon .icon__svg {
+    fill: colors.$secondary-darkest;
+  }
+
 }
