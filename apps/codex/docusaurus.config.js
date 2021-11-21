@@ -2,7 +2,7 @@ module.exports = {
   title: 'Metaverse Codex',
   tagline: 'Central Factory\'s Metaverse website and documentation',
   url: 'https://central-factory.com',
-  baseUrl: '/',
+  baseUrl: '/metaverse/apps/codex/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
