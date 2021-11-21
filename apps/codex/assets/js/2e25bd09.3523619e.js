@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkcentral_factory=self.webpackChunkcentral_factory||[]).push([[1933],{2680:e=>{e.exports=JSON.parse('{"allTagsPath":"/metaverse/apps/codex/blog/tags","slug":"/metaverse/apps/codex/blog/tags/hello","name":"hello","count":2,"permalink":"/metaverse/apps/codex/blog/tags/hello"}')}}]);
