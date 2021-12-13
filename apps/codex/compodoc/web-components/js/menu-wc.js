@@ -68,13 +68,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SceneModule.html" data-type="entity-link" >SceneModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SceneModule-40ac27dfd96b66d07b6eb99de1cc62a7"' : 'data-target="#xs-components-links-module-SceneModule-40ac27dfd96b66d07b6eb99de1cc62a7"' }>
+                                            'data-target="#components-links-module-SceneModule-2f119915b30f0a42f8252d385a82516c"' : 'data-target="#xs-components-links-module-SceneModule-2f119915b30f0a42f8252d385a82516c"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SceneModule-40ac27dfd96b66d07b6eb99de1cc62a7"' :
-                                            'id="xs-components-links-module-SceneModule-40ac27dfd96b66d07b6eb99de1cc62a7"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SceneModule-2f119915b30f0a42f8252d385a82516c"' :
+                                            'id="xs-components-links-module-SceneModule-2f119915b30f0a42f8252d385a82516c"' }>
                                             <li class="link">
                                                 <a href="components/AppScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AppScene</a>
                                             </li>
@@ -120,6 +120,19 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                 </ul>
                 </li>
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#interfaces-links"' :
+                            'data-target="#xs-interfaces-links"' }>
+                            <span class="icon ion-md-information-circle-outline"></span>
+                            <span>Interfaces</span>
+                            <span class="icon ion-ios-arrow-down"></span>
+                        </div>
+                        <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
+                            <li class="link">
+                                <a href="interfaces/SidebarItem.html" data-type="entity-link" >SidebarItem</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#miscellaneous-links"'
                             : 'data-target="#xs-miscellaneous-links"' }>

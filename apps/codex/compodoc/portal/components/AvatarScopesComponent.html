@@ -266,7 +266,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>addScope(scope: <a href="../interfaces/Scope.html" target="_self">Scope</a>)</code>
+<code>addScope(scope: Scope)</code>
                 </td>
             </tr>
 
@@ -297,7 +297,7 @@
                                 <tr>
                                     <td>scope</td>
                                     <td>
-                                                <code><a href="../interfaces/Scope.html" target="_self" >Scope</a></code>
+                                            <code>Scope</code>
                                     </td>
 
                                     <td>
@@ -373,7 +373,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>scopes(value: <a href="../interfaces/Scope.html" target="_self">AvatarScopesInput</a>)</code></span>
+                        <span class="accessor"><b>set</b><code>scopes(value: <a href="../classes/AvatarScopesInput.html" target="_self">AvatarScopesInput</a>)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -399,7 +399,7 @@
                                                             <td>value</td>
                                                     
                                                             <td>
-                                                                            <code><a href="../interfaces/Scope.html" target="_self" >AvatarScopesInput</a></code>
+                                                                            <code><a href="../classes/AvatarScopesInput.html" target="_self" >AvatarScopesInput</a></code>
                                                             </td>
                                                     
                                                         <td>
@@ -566,7 +566,7 @@ export class AvatarScopesComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><form [formGroup]="form" block="avatar">  <div class="form-array" formArrayName="scopes">    <h2>Scopes</h2>    <div      *ngFor="let scope of scopesForm.controls; let i = index"      class="scope-form"    >      <p>        I can {{ scope.value.scope }}        <span block="badge"          >{{ scope.value.integration }} {{ scope.value.domain }}</span        >      </p>      <div [formGroupName]="i" *ngIf="false">        <div class="form-control">          <label for="integration-{{ i }}">Integration:</label>          <input            id="integration-{{ i }}"            type="text"            formControlName="integration"          />        </div>        <div class="form-control">          <label for="domain-{{ i }}">Domain:</label>          <input id="domain-{{ i }}" type="text" formControlName="domain" />        </div>        <div class="form-control">          <label for="scope-{{ i }}">Scope:</label>          <input id="scope-{{ i }}" type="text" formControlName="scope" />        </div>      </div>    </div>    <button type="button" block="button" mod="secondary">      <svg-icon        src="assets/icons/mdi/plus.svg"        elem="icon"        [svgClass]="\'icon__svg\'"      ></svg-icon>      Add another scope    </button>  </div></form></div>'
-    var COMPONENTS = [{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'CreateAvatarView', 'selector': 'cf-create-avatar'},{'name': 'DashboardView', 'selector': 'cf-dashboard'},{'name': 'MarketplaceView', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
+    var COMPONENTS = [{'name': 'AssetDetailComponent', 'selector': 'cf-asset-detail'},{'name': 'AssetsGridComponent', 'selector': 'cf-assets-grid'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'CreateAvatarView', 'selector': 'cf-create-avatar'},{'name': 'DashboardView', 'selector': 'cf-dashboard'},{'name': 'InventoryScene', 'selector': 'cf-inventory'},{'name': 'MarketplaceScene', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'PreviewAvatarAppearanceScene', 'selector': 'cf-preview-avatar-appearance'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarScopesComponent'};
 </script>

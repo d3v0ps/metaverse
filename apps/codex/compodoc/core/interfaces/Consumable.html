@@ -47,7 +47,7 @@
   <li>Interfaces</li>
   <li
   >
-  Appearance</li>
+  Consumable</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -65,11 +65,24 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/selected-avatar/models/appearance.ts</code>
+            <code>src/lib/assets/models/value-objects/asset-kinds/consumable.ts</code>
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>A Consumable</p>
 
+            </p>
+
+            <p class="comment">
+                <h3>Extends</h3>
+            </p>
+            <p class="comment">
+                        <code><a href="../interfaces/Physics.html" target="_self" >Physics</a></code>
+            </p>
 
         <section>
             <h3 id="index">Index</h3>
@@ -84,21 +97,31 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#largePreviewUrl" 
+                                            <span class="modifier">Optional</span>
+                                        <a href="#time" 
 >
-                                            largePreviewUrl
+                                            time
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#protocol" 
+                                            <span class="modifier">Optional</span>
+                                        <a href="#timeLeft" 
 >
-                                            protocol
+                                            timeLeft
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#smallPreviewUrl" 
+                                            <span class="modifier">Optional</span>
+                                        <a href="#usages" 
 >
-                                            smallPreviewUrl
+                                            usages
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#usagesLeft" 
+>
+                                            usagesLeft
                                         </a>
                                 </li>
                             </ul>
@@ -116,9 +139,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="largePreviewUrl"></a>
-                                        <span class="name "><b>largePreviewUrl</b>
-                                            <a href="#largePreviewUrl">
+                                        <a name="time"></a>
+                                        <span class="name "><b>time</b>
+                                            <a href="#time">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -126,7 +149,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>largePreviewUrl:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>time:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -134,24 +157,35 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
                                         </td>
                                     </tr>
 
 
 
 
-
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The amount of time this consumable can be used</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="protocol"></a>
-                                        <span class="name "><b>protocol</b>
-                                            <a href="#protocol">
+                                        <a name="timeLeft"></a>
+                                        <span class="name "><b>timeLeft</b>
+                                            <a href="#timeLeft">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -159,7 +193,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>protocol:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>timeLeft:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -167,24 +201,35 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
                                         </td>
                                     </tr>
 
 
 
 
-
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The amount of time this consumable has left</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="smallPreviewUrl"></a>
-                                        <span class="name "><b>smallPreviewUrl</b>
-                                            <a href="#smallPreviewUrl">
+                                        <a name="usages"></a>
+                                        <span class="name "><b>usages</b>
+                                            <a href="#usages">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -192,7 +237,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>smallPreviewUrl:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>usages:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -200,15 +245,70 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
                                         </td>
                                     </tr>
 
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The amount of usages this consumable can be used</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="usagesLeft"></a>
+                                        <span class="name "><b>usagesLeft</b>
+                                            <a href="#usagesLeft">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>usagesLeft:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+</code>
+                                    </td>
+                                </tr>
 
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The amount of usages this consumable has left</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -216,10 +316,21 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface Appearance {
-  protocol: string;
-  largePreviewUrl: string;
-  smallPreviewUrl: string;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Physics } from &#x27;@central-factory/core&#x27;;
+
+/** A Consumable */
+export interface Consumable extends Physics {
+  /** The amount of usages this consumable can be used */
+  usages?: number;
+
+  /** The amount of usages this consumable has left */
+  usagesLeft?: number;
+
+  /** The amount of time this consumable can be used */
+  time?: number;
+
+  /** The amount of time this consumable has left */
+  timeLeft?: number;
 }
 </code></pre>
     </div>
@@ -248,7 +359,7 @@
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'Appearance.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'Consumable.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

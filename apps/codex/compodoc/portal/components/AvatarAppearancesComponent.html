@@ -94,8 +94,8 @@
             <tr>
                 <td class="col-md-3">styles</td>
                 <td class="col-md-9"><code>
-      $card-width: 140px;
-      $card-height: 100px;
+      $card-width: 200px;
+      $card-height: 240px;
 
       .appearance-card {
         width: $card-width;
@@ -133,32 +133,30 @@
         formArrayName&#x3D;&quot;appearances&quot;
         *ngFor&#x3D;&quot;let appearance of appearancesForm.controls; let i &#x3D; index&quot;
       &gt;
-        &lt;!-- I have an appearance registered at --&gt;
+        &lt;cf-preview-avatar-appearance
+          *ngIf&#x3D;&quot;appearance.value.format &#x3D;&#x3D;&#x3D; &#x27;gltf&#x27;&quot;
+          width&#x3D;&quot;100%&quot;
+          height&#x3D;&quot;300px&quot;
+          [appearance]&#x3D;&quot;appearance.value&quot;
+        &gt;&lt;/cf-preview-avatar-appearance&gt;
 
         &lt;div
           elem&#x3D;&quot;picture&quot;
-          style&#x3D;&quot;background-image: url(&#x27;{{
-            appearance.value.largePreviewUrl
-          }}&#x27;)&quot;
+          style&#x3D;&quot;background-image: url(&#x27;{{ appearance.value.src }}&#x27;)&quot;
+          *ngIf&#x3D;&quot;appearance.value.format !&#x3D;&#x3D; &#x27;gltf&#x27;&quot;
         &gt;
-          &lt;!-- img
-                elem&#x3D;&quot;image&quot;
-                style&#x3D;&quot;width: 200px;&quot;
-                [src]&#x3D;&quot;appearance.value.largePreviewUrl&quot;
-              / --&gt;
-
           &lt;div elem&#x3D;&quot;footer&quot;&gt;
-            &lt;h4 elem&#x3D;&quot;title&quot;&gt;{{ appearance.value.protocol }}&lt;/h4&gt;
+            &lt;h4 elem&#x3D;&quot;title&quot;&gt;{{ appearance.value.format }}&lt;/h4&gt;
           &lt;/div&gt;
         &lt;/div&gt;
 
         &lt;div [formGroupName]&#x3D;&quot;i&quot; *ngIf&#x3D;&quot;false&quot;&gt;
           &lt;div class&#x3D;&quot;form-control&quot;&gt;
-            &lt;label for&#x3D;&quot;protocol-{{ i }}&quot;&gt;Protocol:&lt;/label&gt;
+            &lt;label for&#x3D;&quot;format-{{ i }}&quot;&gt;Format:&lt;/label&gt;
             &lt;input
-              id&#x3D;&quot;protocol-{{ i }}&quot;
+              id&#x3D;&quot;format-{{ i }}&quot;
               type&#x3D;&quot;text&quot;
-              formControlName&#x3D;&quot;protocol&quot;
+              formControlName&#x3D;&quot;format&quot;
             /&gt;
           &lt;/div&gt;
 
@@ -283,7 +281,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/app/selected-avatar/components/avatar-appearances/avatar-appearances.component.ts:103</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/app/selected-avatar/components/avatar-appearances/avatar-appearances.component.ts:114</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -310,15 +308,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>addAppearance(appearance: <a href="../interfaces/Appearance.html" target="_self">Appearance</a>)</code>
+<code>addAppearance(appearance: Appearance)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="120"
-                            class="link-to-prism">src/app/selected-avatar/components/avatar-appearances/avatar-appearances.component.ts:120</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="131"
+                            class="link-to-prism">src/app/selected-avatar/components/avatar-appearances/avatar-appearances.component.ts:131</a></div>
                 </td>
             </tr>
 
@@ -341,7 +339,7 @@
                                 <tr>
                                     <td>appearance</td>
                                     <td>
-                                                <code><a href="../interfaces/Appearance.html" target="_self" >Appearance</a></code>
+                                            <code>Appearance</code>
                                     </td>
 
                                     <td>
@@ -385,14 +383,14 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>new FormGroup&lt;AvatarAppeareancesInput&gt;({
-    appearances: new FormArray&lt;Appearance&gt;([]),
+                        <i>Default value : </i><code>new FormGroup&lt;AvatarAppearancesForm&gt;({
+    appearances: new FormArray&lt;FormAppearance&gt;([]),
   })</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/app/selected-avatar/components/avatar-appearances/avatar-appearances.component.ts:112</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/app/selected-avatar/components/avatar-appearances/avatar-appearances.component.ts:123</a></div>
                         </td>
                     </tr>
 
@@ -422,7 +420,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/app/selected-avatar/components/avatar-appearances/avatar-appearances.component.ts:103</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/app/selected-avatar/components/avatar-appearances/avatar-appearances.component.ts:114</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -480,7 +478,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">src/app/selected-avatar/components/avatar-appearances/avatar-appearances.component.ts:116</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/app/selected-avatar/components/avatar-appearances/avatar-appearances.component.ts:127</a></div>
                                 </td>
                             </tr>
 
@@ -493,11 +491,24 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
 import { Appearance } from &#x27;@central-factory/core&#x27;;
-import { FormArray, FormControl, FormGroup } from &#x27;@ng-stack/forms&#x27;;
+import { Control, FormArray, FormControl, FormGroup } from &#x27;@ng-stack/forms&#x27;;
 
 export class AvatarAppeareancesInput {
-  //#endregion
   appearances!: Appearance[];
+}
+
+export type AppearancePreviewCameraControl &#x3D; Control&lt;{
+  position?: string | undefined;
+  rotation?: string | undefined;
+  scale?: string | undefined;
+}&gt;;
+
+export interface FormAppearance extends Appearance {
+  previewCamera?: AppearancePreviewCameraControl;
+}
+
+export interface AvatarAppearancesForm {
+  appearances: FormAppearance[];
 }
 
 @Component({
@@ -514,32 +525,30 @@ export class AvatarAppeareancesInput {
             formArrayName&#x3D;&quot;appearances&quot;
             *ngFor&#x3D;&quot;let appearance of appearancesForm.controls; let i &#x3D; index&quot;
           &gt;
-            &lt;!-- I have an appearance registered at --&gt;
+            &lt;cf-preview-avatar-appearance
+              *ngIf&#x3D;&quot;appearance.value.format &#x3D;&#x3D;&#x3D; &#x27;gltf&#x27;&quot;
+              width&#x3D;&quot;100%&quot;
+              height&#x3D;&quot;300px&quot;
+              [appearance]&#x3D;&quot;appearance.value&quot;
+            &gt;&lt;/cf-preview-avatar-appearance&gt;
 
             &lt;div
               elem&#x3D;&quot;picture&quot;
-              style&#x3D;&quot;background-image: url(&#x27;{{
-                appearance.value.largePreviewUrl
-              }}&#x27;)&quot;
+              style&#x3D;&quot;background-image: url(&#x27;{{ appearance.value.src }}&#x27;)&quot;
+              *ngIf&#x3D;&quot;appearance.value.format !&#x3D;&#x3D; &#x27;gltf&#x27;&quot;
             &gt;
-              &lt;!-- img
-                    elem&#x3D;&quot;image&quot;
-                    style&#x3D;&quot;width: 200px;&quot;
-                    [src]&#x3D;&quot;appearance.value.largePreviewUrl&quot;
-                  / --&gt;
-
               &lt;div elem&#x3D;&quot;footer&quot;&gt;
-                &lt;h4 elem&#x3D;&quot;title&quot;&gt;{{ appearance.value.protocol }}&lt;/h4&gt;
+                &lt;h4 elem&#x3D;&quot;title&quot;&gt;{{ appearance.value.format }}&lt;/h4&gt;
               &lt;/div&gt;
             &lt;/div&gt;
 
             &lt;div [formGroupName]&#x3D;&quot;i&quot; *ngIf&#x3D;&quot;false&quot;&gt;
               &lt;div class&#x3D;&quot;form-control&quot;&gt;
-                &lt;label for&#x3D;&quot;protocol-{{ i }}&quot;&gt;Protocol:&lt;/label&gt;
+                &lt;label for&#x3D;&quot;format-{{ i }}&quot;&gt;Format:&lt;/label&gt;
                 &lt;input
-                  id&#x3D;&quot;protocol-{{ i }}&quot;
+                  id&#x3D;&quot;format-{{ i }}&quot;
                   type&#x3D;&quot;text&quot;
-                  formControlName&#x3D;&quot;protocol&quot;
+                  formControlName&#x3D;&quot;format&quot;
                 /&gt;
               &lt;/div&gt;
 
@@ -566,8 +575,8 @@ export class AvatarAppeareancesInput {
   &#x60;,
   styles: [
     &#x60;
-      $card-width: 140px;
-      $card-height: 100px;
+      $card-width: 200px;
+      $card-height: 240px;
 
       .appearance-card {
         width: $card-width;
@@ -602,20 +611,21 @@ export class AvatarAppearancesComponent {
     }
   }
 
-  form &#x3D; new FormGroup&lt;AvatarAppeareancesInput&gt;({
-    appearances: new FormArray&lt;Appearance&gt;([]),
+  form &#x3D; new FormGroup&lt;AvatarAppearancesForm&gt;({
+    appearances: new FormArray&lt;FormAppearance&gt;([]),
   });
 
   get appearancesForm() {
-    return this.form.controls.appearances as FormArray&lt;Appearance&gt;;
+    return this.form.controls.appearances as FormArray&lt;FormAppearance&gt;;
   }
 
   addAppearance(appearance: Appearance) {
     this.appearancesForm.push(
-      new FormGroup({
-        protocol: new FormControl(appearance.protocol),
+      new FormGroup&lt;FormAppearance&gt;({
+        format: new FormControl(appearance.format),
         smallPreviewUrl: new FormControl(appearance.smallPreviewUrl),
-        largePreviewUrl: new FormControl(appearance.largePreviewUrl),
+        src: new FormControl(appearance.src),
+        previewCamera: new FormControl(appearance.previewCamera as any),
       })
     );
   }
@@ -626,8 +636,8 @@ export class AvatarAppearancesComponent {
 
     <div class="tab-pane fade " id="c-styleData">
             <pre class="line-numbers"><code class="language-scss">
-      $card-width: 140px;
-      $card-height: 100px;
+      $card-width: 200px;
+      $card-height: 240px;
 
       .appearance-card {
         width: $card-width;
@@ -678,8 +688,8 @@ export class AvatarAppearancesComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form [formGroup]="form" block="avatar-overview">  <h2>Appearances</h2>  <div fxLayout="column" fxLayoutGap="10px">    <div fxLayout="row wrap" fxLayoutGap="5px">      <div        block="card"        class="form-array appearance-card"        formArrayName="appearances"        *ngFor="let appearance of appearancesForm.controls; let i = index"      >        <!-- I have an appearance registered at -->        <div          elem="picture"          style="background-image: url(\'{{            appearance.value.largePreviewUrl          }}\')"        >          <!-- img                elem="image"                style="width: 200px;"                [src]="appearance.value.largePreviewUrl"              / -->          <div elem="footer">            <h4 elem="title">{{ appearance.value.protocol }}</h4>          </div>        </div>        <div [formGroupName]="i" *ngIf="false">          <div class="form-control">            <label for="protocol-{{ i }}">Protocol:</label>            <input              id="protocol-{{ i }}"              type="text"              formControlName="protocol"            />          </div>          <div class="form-control">            <label for="preview-url-{{ i }}">Preview Url:</label>            <input              id="preview-url-{{ i }}"              type="text"              formControlName="largePreviewUrl"            />          </div>        </div>      </div>      <div block="card" class="appearance-card">        <svg-icon          src="assets/icons/mdi/plus.svg"          elem="icon"          [svgClass]="\'icon__svg\'"        ></svg-icon>      </div>    </div>  </div></form></div>'
-    var COMPONENTS = [{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'CreateAvatarView', 'selector': 'cf-create-avatar'},{'name': 'DashboardView', 'selector': 'cf-dashboard'},{'name': 'MarketplaceView', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
+        var COMPONENT_TEMPLATE = '<div><form [formGroup]="form" block="avatar-overview">  <h2>Appearances</h2>  <div fxLayout="column" fxLayoutGap="10px">    <div fxLayout="row wrap" fxLayoutGap="5px">      <div        block="card"        class="form-array appearance-card"        formArrayName="appearances"        *ngFor="let appearance of appearancesForm.controls; let i = index"      >        <cf-preview-avatar-appearance          *ngIf="appearance.value.format === \'gltf\'"          width="100%"          height="300px"          [appearance]="appearance.value"        ></cf-preview-avatar-appearance>        <div          elem="picture"          style="background-image: url(\'{{ appearance.value.src }}\')"          *ngIf="appearance.value.format !== \'gltf\'"        >          <div elem="footer">            <h4 elem="title">{{ appearance.value.format }}</h4>          </div>        </div>        <div [formGroupName]="i" *ngIf="false">          <div class="form-control">            <label for="format-{{ i }}">Format:</label>            <input              id="format-{{ i }}"              type="text"              formControlName="format"            />          </div>          <div class="form-control">            <label for="preview-url-{{ i }}">Preview Url:</label>            <input              id="preview-url-{{ i }}"              type="text"              formControlName="largePreviewUrl"            />          </div>        </div>      </div>      <div block="card" class="appearance-card">        <svg-icon          src="assets/icons/mdi/plus.svg"          elem="icon"          [svgClass]="\'icon__svg\'"        ></svg-icon>      </div>    </div>  </div></form></div>'
+    var COMPONENTS = [{'name': 'AssetDetailComponent', 'selector': 'cf-asset-detail'},{'name': 'AssetsGridComponent', 'selector': 'cf-assets-grid'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'CreateAvatarView', 'selector': 'cf-create-avatar'},{'name': 'DashboardView', 'selector': 'cf-dashboard'},{'name': 'InventoryScene', 'selector': 'cf-inventory'},{'name': 'MarketplaceScene', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'PreviewAvatarAppearanceScene', 'selector': 'cf-preview-avatar-appearance'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarAppearancesComponent'};
 </script>

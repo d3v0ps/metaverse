@@ -200,7 +200,8 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
+import { NgModule } from &#x27;@angular/core&#x27;;
 import { FlexLayoutModule } from &#x27;@angular/flex-layout&#x27;;
 import { RouterModule } from &#x27;@angular/router&#x27;;
 import { BemModule } from &#x27;angular-bem&#x27;;
@@ -211,6 +212,7 @@ import { AppScene } from &#x27;./app.scene&#x27;;
 
 @NgModule({
   imports: [
+    CommonModule,
     AngularSvgIconModule,
     FlexLayoutModule,
     BemModule,

@@ -91,32 +91,36 @@ export const routes: Routes &#x3D; [
   //       (m) &#x3D;&gt; m.CreateAvatarModule
   //     ),
   // },
-  // {
-  //   path: &#x27;marketplace&#x27;,
-  //   loadChildren: () &#x3D;&gt;
-  //     import(&#x27;./marketplace/marketplace.module&#x27;).then(
-  //       (m) &#x3D;&gt; m.MarketplaceModule
-  //     ),
-  // },
-  // {
-  //   path: &#x27;gatekeeper&#x27;,
-  //   loadChildren: () &#x3D;&gt;
-  //     import(&#x27;@central-factory/gatekeeper&#x27;).then((m) &#x3D;&gt; m.GatekeeperModule),
-  // },
   {
-    path: &#x27;selected-avatar&#x27;,
+    path: &#x27;&#x27;,
     component: AppScene,
     children: [
       {
-        path: &#x27;&#x27;,
-        pathMatch: &#x27;full&#x27;,
+        path: &#x27;selected-avatar&#x27;,
         loadChildren: () &#x3D;&gt;
           &quot;import(&#x27;./selected-avatar/selected-avatar.module&#x27;).then(\
             (m) &#x3D;&gt; m.SelectedAvatarModule\
           )&quot;,
       },
+      {
+        path: &#x27;inventory&#x27;,
+        loadChildren: () &#x3D;&gt;
+          &quot;import(&#x27;./inventory/inventory.module&#x27;).then((m) &#x3D;&gt; m.InventoryModule)&quot;,
+      },
+      {
+        path: &#x27;marketplace&#x27;,
+        loadChildren: () &#x3D;&gt;
+          &quot;import(&#x27;./marketplace/marketplace.module&#x27;).then(\
+            (m) &#x3D;&gt; m.MarketplaceModule\
+          )&quot;,
+      },
     ],
   },
+  // {
+  //   path: &#x27;gatekeeper&#x27;,
+  //   loadChildren: () &#x3D;&gt;
+  //     import(&#x27;@central-factory/gatekeeper&#x27;).then((m) &#x3D;&gt; m.GatekeeperModule),
+  // },
   {
     path: &#x27;&#x27;,
     redirectTo: &#x27;selected-avatar&#x27;,

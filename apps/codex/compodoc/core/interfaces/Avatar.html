@@ -69,6 +69,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>An Avatar</p>
+
+            </p>
 
 
         <section>
@@ -185,6 +192,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The avatar&#39;s appearances</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -218,6 +231,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The avatar&#39;s name</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -251,6 +270,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The avatar&#39;s physics</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -284,6 +309,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The avatar&#39;s roles</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -317,6 +348,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The avatar&#39;s routines</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -350,6 +387,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The avatar&#39;s scopes</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -383,6 +426,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The avatar&#39;s selected appearance</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -416,6 +465,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The avatar&#39;s skills</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -449,6 +504,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The avatar&#39;s title</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -482,6 +543,12 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The avatar&#39;s welcome message</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -493,16 +560,27 @@
 import { Scope } from &#x27;./scope&#x27;;
 import { Skill } from &#x27;./skill&#x27;;
 
+/** An Avatar */
 export interface Avatar {
+  /** The avatar&#x27;s selected appearance */
   selectedAppearance: Appearance;
+  /** The avatar&#x27;s welcome message */
   welcomeMessage: string;
+  /** The avatar&#x27;s name */
   name: string;
+  /** The avatar&#x27;s title */
   title: string;
+  /** The avatar&#x27;s appearances */
   appearances: Appearance[];
+  /** The avatar&#x27;s physics */
   physics: any[];
+  /** The avatar&#x27;s roles */
   roles: any[];
+  /** The avatar&#x27;s routines */
   routines: any[];
+  /** The avatar&#x27;s scopes */
   scopes: Scope[];
+  /** The avatar&#x27;s skills */
   skills: Skill[];
 }
 </code></pre>

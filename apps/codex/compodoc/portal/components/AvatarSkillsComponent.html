@@ -287,7 +287,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>addScope(skill: <a href="../interfaces/Skill.html" target="_self">Skill</a>)</code>
+<code>addScope(skill: Skill)</code>
                 </td>
             </tr>
 
@@ -318,7 +318,7 @@
                                 <tr>
                                     <td>skill</td>
                                     <td>
-                                                <code><a href="../interfaces/Skill.html" target="_self" >Skill</a></code>
+                                            <code>Skill</code>
                                     </td>
 
                                     <td>
@@ -429,7 +429,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>skills(value: <a href="../interfaces/Skill.html" target="_self">AvatarSkillsInput</a>)</code></span>
+                        <span class="accessor"><b>set</b><code>skills(value: <a href="../classes/AvatarSkillsInput.html" target="_self">AvatarSkillsInput</a>)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -455,7 +455,7 @@
                                                             <td>value</td>
                                                     
                                                             <td>
-                                                                            <code><a href="../interfaces/Skill.html" target="_self" >AvatarSkillsInput</a></code>
+                                                                            <code><a href="../classes/AvatarSkillsInput.html" target="_self" >AvatarSkillsInput</a></code>
                                                             </td>
                                                     
                                                         <td>
@@ -649,7 +649,7 @@ export class AvatarSkillsComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><form [formGroup]="form" block="avatar">  <div    class="form-array"    formArrayName="skills"    style="margin-bottom: 15px;"  >    <h2>Skills</h2>    <div fxLayout="row wrap" fxLayoutGap="15px">      <div        *ngFor="let skill of skillsForm.controls; let i = index"        class="skill-form"      >        <button type="button" block="button" mod="primary uppercase big">          <svg-icon            src="assets/icons/mdi/{{              skillsIcons[skill.value.skill + \'-\' + skill.value.domain]            }}.svg"            elem="icon"            [svgClass]="\'icon__svg\'"          ></svg-icon>          {{ skill.value.skill }} {{ skill.value.domain }}        </button>        <div [formGroupName]="i" *ngIf="false">          <div class="form-control">            <label for="skill-domain-{{ i }}">Domain:</label>            <input              id="skill-domain-{{ i }}"              type="text"              formControlName="domain"            />          </div>          <div class="form-control">            <label for="skill-scope-{{ i }}">Scope:</label>            <input              id="skill-scope-{{ i }}"              type="text"              formControlName="scope"            />          </div>          <div class="form-control">            <label for="skill-skill-{{ i }}">Skill:</label>            <input              id="skill-skill-{{ i }}"              type="text"              formControlName="skill"            />          </div>        </div>      </div>    </div>  </div>  <button type="button" block="button" mod="primary uppercase big">    <svg-icon      src="assets/icons/mdi/plus.svg"      elem="icon"      [svgClass]="\'icon__svg\'"    ></svg-icon>    Add more skills  </button></form></div>'
-    var COMPONENTS = [{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'CreateAvatarView', 'selector': 'cf-create-avatar'},{'name': 'DashboardView', 'selector': 'cf-dashboard'},{'name': 'MarketplaceView', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
+    var COMPONENTS = [{'name': 'AssetDetailComponent', 'selector': 'cf-asset-detail'},{'name': 'AssetsGridComponent', 'selector': 'cf-assets-grid'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'CreateAvatarView', 'selector': 'cf-create-avatar'},{'name': 'DashboardView', 'selector': 'cf-dashboard'},{'name': 'InventoryScene', 'selector': 'cf-inventory'},{'name': 'MarketplaceScene', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'PreviewAvatarAppearanceScene', 'selector': 'cf-preview-avatar-appearance'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarSkillsComponent'};
 </script>

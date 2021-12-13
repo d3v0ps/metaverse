@@ -108,7 +108,7 @@
         &gt;&lt;/cf-avatar-skills&gt;
       &lt;/div&gt;
       &lt;div fxLayout&#x3D;&quot;row&quot; fxFlexFill&gt;
-        &lt;div fxFlex&#x3D;&quot;40&quot;&gt;
+        &lt;div fxFlex&#x3D;&quot;60&quot;&gt;
           &lt;cf-avatar-appearances
             [appearances]&#x3D;&quot;{
               appearances: avatar.appearances
@@ -194,26 +194,46 @@
     name: &#x27;John&#x27;,
     title: &#x27;Software Engineer&#x27;,
     selectedAppearance: {
-      protocol: &#x27;readyplayer.me&#x27;,
-      largePreviewUrl: &#x27;assets/avatar-large.png&#x27;,
+      format: &#x27;readyplayer.me&#x27;,
+      src: &#x27;assets/avatar-large.png&#x27;,
       smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
     },
     appearances: [
       {
-        protocol: &#x27;readyplayer.me&#x27;,
-        largePreviewUrl: &#x27;assets/avatar-large.png&#x27;,
+        format: &#x27;gltf&#x27;,
+        src: &#x27;assets/avatars/samples/ed4aa425-9e13-4e51-9f2c-557dfe0db7ab/ed4aa425-9e13-4e51-9f2c-557dfe0db7ab.glb&#x27;,
         smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
+        previewCamera: {
+          position: &#x27;0 1.5 0.7&#x27;,
+          rotation: &#x27;-5 0 0&#x27;,
+          scale: &#x27;0.4 0.4 0.4&#x27;,
+        },
       },
       {
-        protocol: &#x27;Meta&#x27;,
-        largePreviewUrl: &#x27;assets/avatar-large.png&#x27;,
+        format: &#x27;gltf&#x27;,
+        src: &#x27;assets/avatars/samples/65989f77-c8bf-4542-9e8a-d0f39eb76662/65989f77-c8bf-4542-9e8a-d0f39eb76662.glb&#x27;,
         smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
+        previewCamera: {
+          position: &#x27;0 1.5 0.7&#x27;,
+          rotation: &#x27;-5 0 0&#x27;,
+          scale: &#x27;1 1 1&#x27;,
+        },
       },
-      {
-        protocol: &#x27;NVDIA Omniverse&#x27;,
-        largePreviewUrl: &#x27;assets/avatar-large.png&#x27;,
-        smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
-      },
+      // {
+      //   format: &#x27;readyplayer.me&#x27;,
+      //   src: &#x27;assets/avatar-large.png&#x27;,
+      //   smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
+      // },
+      // {
+      //   format: &#x27;Meta&#x27;,
+      //   src: &#x27;assets/avatar-large.png&#x27;,
+      //   smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
+      // },
+      // {
+      //   format: &#x27;NVDIA Omniverse&#x27;,
+      //   src: &#x27;assets/avatar-large.png&#x27;,
+      //   smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
+      // },
     ],
     scopes: [
       {
@@ -295,7 +315,7 @@ import { Avatar } from &#x27;@central-factory/core&#x27;;
             &gt;&lt;/cf-avatar-skills&gt;
           &lt;/div&gt;
           &lt;div fxLayout&#x3D;&quot;row&quot; fxFlexFill&gt;
-            &lt;div fxFlex&#x3D;&quot;40&quot;&gt;
+            &lt;div fxFlex&#x3D;&quot;60&quot;&gt;
               &lt;cf-avatar-appearances
                 [appearances]&#x3D;&quot;{
                   appearances: avatar.appearances
@@ -322,26 +342,46 @@ export class SelectedAvatarScene {
     name: &#x27;John&#x27;,
     title: &#x27;Software Engineer&#x27;,
     selectedAppearance: {
-      protocol: &#x27;readyplayer.me&#x27;,
-      largePreviewUrl: &#x27;assets/avatar-large.png&#x27;,
+      format: &#x27;readyplayer.me&#x27;,
+      src: &#x27;assets/avatar-large.png&#x27;,
       smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
     },
     appearances: [
       {
-        protocol: &#x27;readyplayer.me&#x27;,
-        largePreviewUrl: &#x27;assets/avatar-large.png&#x27;,
+        format: &#x27;gltf&#x27;,
+        src: &#x27;assets/avatars/samples/ed4aa425-9e13-4e51-9f2c-557dfe0db7ab/ed4aa425-9e13-4e51-9f2c-557dfe0db7ab.glb&#x27;,
         smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
+        previewCamera: {
+          position: &#x27;0 1.5 0.7&#x27;,
+          rotation: &#x27;-5 0 0&#x27;,
+          scale: &#x27;0.4 0.4 0.4&#x27;,
+        },
       },
       {
-        protocol: &#x27;Meta&#x27;,
-        largePreviewUrl: &#x27;assets/avatar-large.png&#x27;,
+        format: &#x27;gltf&#x27;,
+        src: &#x27;assets/avatars/samples/65989f77-c8bf-4542-9e8a-d0f39eb76662/65989f77-c8bf-4542-9e8a-d0f39eb76662.glb&#x27;,
         smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
+        previewCamera: {
+          position: &#x27;0 1.5 0.7&#x27;,
+          rotation: &#x27;-5 0 0&#x27;,
+          scale: &#x27;1 1 1&#x27;,
+        },
       },
-      {
-        protocol: &#x27;NVDIA Omniverse&#x27;,
-        largePreviewUrl: &#x27;assets/avatar-large.png&#x27;,
-        smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
-      },
+      // {
+      //   format: &#x27;readyplayer.me&#x27;,
+      //   src: &#x27;assets/avatar-large.png&#x27;,
+      //   smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
+      // },
+      // {
+      //   format: &#x27;Meta&#x27;,
+      //   src: &#x27;assets/avatar-large.png&#x27;,
+      //   smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
+      // },
+      // {
+      //   format: &#x27;NVDIA Omniverse&#x27;,
+      //   src: &#x27;assets/avatar-large.png&#x27;,
+      //   smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
+      // },
     ],
     scopes: [
       {
@@ -412,8 +452,8 @@ export class SelectedAvatarScene {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div block="scene-content">  <div fxLayout="column" fxFlexFill>    <div fxFlex="40">      <cf-avatar-overview        style="display: block; min-height: 200px;"        [avatar]="avatar"      ></cf-avatar-overview>    </div>    <div fxFlex="60">      <div style="margin-bottom: 100px;">        <cf-avatar-skills          [skills]="{            skills: avatar.skills          }"        ></cf-avatar-skills>      </div>      <div fxLayout="row" fxFlexFill>        <div fxFlex="40">          <cf-avatar-appearances            [appearances]="{              appearances: avatar.appearances            }"          ></cf-avatar-appearances>        </div>        <div fxFlex="40">          <cf-avatar-scopes            [scopes]="{              scopes: avatar.scopes            }"          ></cf-avatar-scopes>        </div>      </div>    </div>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'CreateAvatarView', 'selector': 'cf-create-avatar'},{'name': 'DashboardView', 'selector': 'cf-dashboard'},{'name': 'MarketplaceView', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
+        var COMPONENT_TEMPLATE = '<div><div block="scene-content">  <div fxLayout="column" fxFlexFill>    <div fxFlex="40">      <cf-avatar-overview        style="display: block; min-height: 200px;"        [avatar]="avatar"      ></cf-avatar-overview>    </div>    <div fxFlex="60">      <div style="margin-bottom: 100px;">        <cf-avatar-skills          [skills]="{            skills: avatar.skills          }"        ></cf-avatar-skills>      </div>      <div fxLayout="row" fxFlexFill>        <div fxFlex="60">          <cf-avatar-appearances            [appearances]="{              appearances: avatar.appearances            }"          ></cf-avatar-appearances>        </div>        <div fxFlex="40">          <cf-avatar-scopes            [scopes]="{              scopes: avatar.scopes            }"          ></cf-avatar-scopes>        </div>      </div>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AssetDetailComponent', 'selector': 'cf-asset-detail'},{'name': 'AssetsGridComponent', 'selector': 'cf-assets-grid'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'CreateAvatarView', 'selector': 'cf-create-avatar'},{'name': 'DashboardView', 'selector': 'cf-dashboard'},{'name': 'InventoryScene', 'selector': 'cf-inventory'},{'name': 'MarketplaceScene', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'PreviewAvatarAppearanceScene', 'selector': 'cf-preview-avatar-appearance'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SelectedAvatarScene'};
 </script>

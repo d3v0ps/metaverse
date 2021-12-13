@@ -49,13 +49,76 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/Appearance.html" data-type="entity-link" >Appearance</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/Asset.html" data-type="entity-link" >Asset</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/Avatar.html" data-type="entity-link" >Avatar</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Building.html" data-type="entity-link" >Building</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Consumable.html" data-type="entity-link" >Consumable</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Coordinates.html" data-type="entity-link" >Coordinates</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Currency.html" data-type="entity-link" >Currency</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Dimensions.html" data-type="entity-link" >Dimensions</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Equipment.html" data-type="entity-link" >Equipment</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Furniture.html" data-type="entity-link" >Furniture</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/FurnitureSlot.html" data-type="entity-link" >FurnitureSlot</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/GeoJSON.html" data-type="entity-link" >GeoJSON</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Land.html" data-type="entity-link" >Land</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Machine.html" data-type="entity-link" >Machine</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/MachineFunction.html" data-type="entity-link" >MachineFunction</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/MachineFunctionParameterDefinition.html" data-type="entity-link" >MachineFunctionParameterDefinition</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Material.html" data-type="entity-link" >Material</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/MediaResource.html" data-type="entity-link" >MediaResource</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Other.html" data-type="entity-link" >Other</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Permission.html" data-type="entity-link" >Permission</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Physics.html" data-type="entity-link" >Physics</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/Scope.html" data-type="entity-link" >Scope</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/Skill.html" data-type="entity-link" >Skill</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Space.html" data-type="entity-link" >Space</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Vehicle.html" data-type="entity-link" >Vehicle</a>
                             </li>
                         </ul>
                     </li>
@@ -67,6 +130,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"' }>
+                            <li class="link">
+                                <a href="miscellaneous/enumerations.html" data-type="entity-link">Enums</a>
+                            </li>
+                            <li class="link">
+                                <a href="miscellaneous/typealiases.html" data-type="entity-link">Type aliases</a>
+                            </li>
                             <li class="link">
                                 <a href="miscellaneous/variables.html" data-type="entity-link">Variables</a>
                             </li>

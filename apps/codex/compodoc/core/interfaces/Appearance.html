@@ -69,6 +69,13 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>An Avatar&#39;s appearance</p>
+
+            </p>
 
 
         <section>
@@ -84,21 +91,28 @@
                         <td class="col-md-4">
                             <ul class="index-list">
                                 <li>
-                                        <a href="#largePreviewUrl" 
+                                        <a href="#format" 
 >
-                                            largePreviewUrl
+                                            format
                                         </a>
                                 </li>
                                 <li>
-                                        <a href="#protocol" 
+                                            <span class="modifier">Optional</span>
+                                        <a href="#previewCamera" 
 >
-                                            protocol
+                                            previewCamera
                                         </a>
                                 </li>
                                 <li>
                                         <a href="#smallPreviewUrl" 
 >
                                             smallPreviewUrl
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#src" 
+>
+                                            src
                                         </a>
                                 </li>
                             </ul>
@@ -116,9 +130,9 @@
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="largePreviewUrl"></a>
-                                        <span class="name "><b>largePreviewUrl</b>
-                                            <a href="#largePreviewUrl">
+                                        <a name="format"></a>
+                                        <span class="name "><b>format</b>
+                                            <a href="#format">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -126,7 +140,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>largePreviewUrl:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>format:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -143,15 +157,21 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The appearance&#39;s format</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
-                                        <a name="protocol"></a>
-                                        <span class="name "><b>protocol</b>
-                                            <a href="#protocol">
+                                        <a name="previewCamera"></a>
+                                        <span class="name "><b>previewCamera</b>
+                                            <a href="#previewCamera">
                                                 <span class="icon ion-ios-link"></span>
                                             </a>
                                         </span>
@@ -159,7 +179,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>protocol:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>previewCamera:     <code>literal type</code>
 </code>
                                     </td>
                                 </tr>
@@ -167,15 +187,26 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            <i>Type : </i>    <code>literal type</code>
 
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
                                         </td>
                                     </tr>
 
 
 
 
-
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The appearance&#39;s preview camera configuration</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -209,6 +240,51 @@
 
 
 
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The appearance&#39;s small preview url</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="src"></a>
+                                        <span class="name "><b>src</b>
+                                            <a href="#src">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>src:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The appearance&#39;s src url</p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -217,9 +293,21 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface Appearance {
-  protocol: string;
-  largePreviewUrl: string;
+  /** The appearance&#x27;s format */
+  format: string;
+  /** The appearance&#x27;s src url */
+  src: string;
+  /** The appearance&#x27;s small preview url */
   smallPreviewUrl: string;
+  /** The appearance&#x27;s preview camera configuration */
+  previewCamera?: {
+    /** The appearance&#x27;s preview camera position */
+    position?: string;
+    /** The appearance&#x27;s preview camera rotation */
+    rotation?: string;
+    /** The appearance&#x27;s preview camera scale */
+    scale?: string;
+  };
 }
 </code></pre>
     </div>

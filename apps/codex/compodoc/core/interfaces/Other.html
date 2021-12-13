@@ -29,17 +29,25 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content component">
+               <div class="content interface">
                    <div class="content-data">
 
 
 
 
+
+
+
+
+
+
+
+
 <ol class="breadcrumb">
-  <li>Components</li>
+  <li>Interfaces</li>
   <li
   >
-  MarketplaceView</li>
+  Other</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -49,134 +57,52 @@
         <li >
             <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
         </li>
-        <li >
-            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
-        </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info"><p class="comment">
-    <h3>File</h3>
-</p>
-<p class="comment">
-    <code>src/app/marketplace/views/marketplace.view.ts</code>
-</p>
-
-
-    <p class="comment">
-        <h3>Description</h3>
-    </p>
-    <p class="comment">
-        <p>Marketplace main view</p>
-
-    </p>
-
-
-
-
-<section>
-    <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
-        <tbody>
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/lib/assets/models/value-objects/asset-kinds/other.ts</code>
+        </p>
 
 
 
 
 
 
-
-
-
-
-
-            <tr>
-                <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>cf-marketplace</code></td>
-            </tr>
-
-
-
-            <tr>
-                <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">Marketplace</code></pre></td>
-            </tr>
-
-
-
-
-
-
-
-
-
-        </tbody>
-    </table>
+            <section>
+    <h3 id="inputs">Indexable</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <code>[key: string]:        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="1" class="link-to-prism">src/lib/assets/models/value-objects/asset-kinds/other.ts:1</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
 </section>
 
-
-
-
-
-
-
-
-
-</div>
+    </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
-
-/** Marketplace main view */
-@Component({
-  selector: &#x27;cf-marketplace&#x27;,
-  template: &#x27;Marketplace&#x27;,
-})
-export class MarketplaceView {}
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export interface Other {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
+}
 </code></pre>
     </div>
-
-
-
-    <div class="tab-pane fade " id="c-tree">
-        <div id="tree-container"></div>
-        <div class="tree-legend">
-            <div class="title">
-                <b>Legend</b>
-            </div>
-            <div>
-                <div class="color htmlelement"></div><span>Html element</span>
-            </div>
-            <div>
-                <div class="color component"></div><span>Component</span>
-            </div>
-            <div>
-                <div class="color directive"></div><span>Html element with directive</span>
-            </div>
-        </div>
-    </div>
-
-    
 </div>
-
-<script src="../js/libs/vis.min.js"></script>
-<script src="../js/libs/htmlparser.js"></script>
-<script src="../js/libs/deep-iterator.js"></script>
-<script>
-        var COMPONENT_TEMPLATE = '<div>Marketplace</div>'
-    var COMPONENTS = [{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'CreateAvatarView', 'selector': 'cf-create-avatar'},{'name': 'DashboardView', 'selector': 'cf-dashboard'},{'name': 'MarketplaceView', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
-    var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'MarketplaceView'};
-</script>
-<script src="../js/tree.js"></script>
-
-
-
-
-
-
-
-
 
 
 
@@ -200,8 +126,8 @@ export class MarketplaceView {}
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'MarketplaceView.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'Other.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

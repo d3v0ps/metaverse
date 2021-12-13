@@ -14,59 +14,59 @@
 <title>cluster_PortalModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-230.8 278,-230.8 278,-32.8 8,-32.8"/>
 </g>
+<g id="clust2" class="cluster">
+<title>cluster_PortalModule_declarations</title>
+<polygon fill="none" stroke="black" points="178,-40.8 178,-92.8 270,-92.8 270,-40.8 178,-40.8"/>
+</g>
 <g id="clust4" class="cluster">
 <title>cluster_PortalModule_imports</title>
-<polygon fill="none" stroke="black" points="116,-40.8 116,-92.8 270,-92.8 270,-40.8 116,-40.8"/>
+<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 170,-92.8 170,-40.8 16,-40.8"/>
 </g>
 <g id="clust6" class="cluster">
 <title>cluster_PortalModule_bootstrap</title>
-<polygon fill="none" stroke="black" points="80,-170.8 80,-222.8 176,-222.8 176,-170.8 80,-170.8"/>
-</g>
-<g id="clust2" class="cluster">
-<title>cluster_PortalModule_declarations</title>
-<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 108,-92.8 108,-40.8 16,-40.8"/>
+<polygon fill="none" stroke="black" points="109,-170.8 109,-222.8 205,-222.8 205,-170.8 109,-170.8"/>
 </g>
 <!-- PortalRoot -->
 <g id="node1" class="node">
 <title>PortalRoot</title>
-<polygon fill="#ffffb3" stroke="black" points="100.17,-84.8 23.83,-84.8 23.83,-48.8 100.17,-48.8 100.17,-84.8"/>
-<text text-anchor="middle" x="62" y="-62.6" font-family="Times,serif" font-size="14.00">PortalRoot</text>
+<polygon fill="#ffffb3" stroke="black" points="262.17,-84.8 185.83,-84.8 185.83,-48.8 262.17,-48.8 262.17,-84.8"/>
+<text text-anchor="middle" x="224" y="-62.6" font-family="Times,serif" font-size="14.00">PortalRoot</text>
 </g>
 <!-- PortalModule -->
 <g id="node2" class="node">
 <title>PortalModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="174.49,-149.8 171.49,-153.8 150.49,-153.8 147.49,-149.8 81.51,-149.8 81.51,-113.8 174.49,-113.8 174.49,-149.8"/>
-<text text-anchor="middle" x="128" y="-127.6" font-family="Times,serif" font-size="14.00">PortalModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="203.49,-149.8 200.49,-153.8 179.49,-153.8 176.49,-149.8 110.51,-149.8 110.51,-113.8 203.49,-113.8 203.49,-149.8"/>
+<text text-anchor="middle" x="157" y="-127.6" font-family="Times,serif" font-size="14.00">PortalModule</text>
 </g>
 <!-- PortalRoot&#45;&gt;PortalModule -->
 <g id="edge1" class="edge">
 <title>PortalRoot&#45;&gt;PortalModule</title>
-<path fill="none" stroke="black" d="M90.92,-84.91C90.92,-84.91 90.92,-103.79 90.92,-103.79"/>
-<polygon fill="black" stroke="black" points="87.42,-103.79 90.92,-113.79 94.42,-103.79 87.42,-103.79"/>
+<path fill="none" stroke="black" d="M194.58,-84.91C194.58,-84.91 194.58,-103.79 194.58,-103.79"/>
+<polygon fill="black" stroke="black" points="191.08,-103.79 194.58,-113.79 198.08,-103.79 191.08,-103.79"/>
 </g>
 <!-- PortalRoot  -->
 <g id="node4" class="node">
 <title>PortalRoot </title>
-<polygon fill="#80b1d3" stroke="black" points="168.17,-214.8 87.83,-214.8 87.83,-178.8 168.17,-178.8 168.17,-214.8"/>
-<text text-anchor="middle" x="128" y="-192.6" font-family="Times,serif" font-size="14.00">PortalRoot </text>
+<polygon fill="#80b1d3" stroke="black" points="197.17,-214.8 116.83,-214.8 116.83,-178.8 197.17,-178.8 197.17,-214.8"/>
+<text text-anchor="middle" x="157" y="-192.6" font-family="Times,serif" font-size="14.00">PortalRoot </text>
 </g>
 <!-- PortalModule&#45;&gt;PortalRoot  -->
 <g id="edge3" class="edge">
 <title>PortalModule&#45;&gt;PortalRoot </title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M128,-149.91C128,-149.91 128,-168.79 128,-168.79"/>
-<polygon fill="black" stroke="black" points="124.5,-168.79 128,-178.79 131.5,-168.79 124.5,-168.79"/>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M157,-149.91C157,-149.91 157,-168.79 157,-168.79"/>
+<polygon fill="black" stroke="black" points="153.5,-168.79 157,-178.79 160.5,-168.79 153.5,-168.79"/>
 </g>
 <!-- PortalRoutingModule -->
 <g id="node3" class="node">
 <title>PortalRoutingModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="262.11,-84.8 259.11,-88.8 238.11,-88.8 235.11,-84.8 123.89,-84.8 123.89,-48.8 262.11,-48.8 262.11,-84.8"/>
-<text text-anchor="middle" x="193" y="-62.6" font-family="Times,serif" font-size="14.00">PortalRoutingModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="162.11,-84.8 159.11,-88.8 138.11,-88.8 135.11,-84.8 23.89,-84.8 23.89,-48.8 162.11,-48.8 162.11,-84.8"/>
+<text text-anchor="middle" x="93" y="-62.6" font-family="Times,serif" font-size="14.00">PortalRoutingModule</text>
 </g>
 <!-- PortalRoutingModule&#45;&gt;PortalModule -->
 <g id="edge2" class="edge">
 <title>PortalRoutingModule&#45;&gt;PortalModule</title>
-<path fill="none" stroke="black" d="M149.22,-84.91C149.22,-84.91 149.22,-103.79 149.22,-103.79"/>
-<polygon fill="black" stroke="black" points="145.72,-103.79 149.22,-113.79 152.72,-103.79 145.72,-103.79"/>
+<path fill="none" stroke="black" d="M136.28,-84.91C136.28,-84.91 136.28,-103.79 136.28,-103.79"/>
+<polygon fill="black" stroke="black" points="132.78,-103.79 136.28,-113.79 139.78,-103.79 132.78,-103.79"/>
 </g>
 </g>
 </svg>
