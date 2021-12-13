@@ -7,7 +7,7 @@ slug: /
 
 <img src="/metaverse/apps/codex/img/undraw_hacker_mind_-6-y85.svg" style={{
   maxWidth: "500px",
-  display: "block", 
+  display: "block",
   margin: "10px auto"
 }} />
 

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MarketplaceView } from './views/marketplace.view';
+import { MarketplaceScene } from './scenes/marketplace.scene';
 
 export const routes: Routes = [
   {
     path: '',
-    component: MarketplaceView,
-  }
+    component: MarketplaceScene,
+  },
 ];
 
 @NgModule({

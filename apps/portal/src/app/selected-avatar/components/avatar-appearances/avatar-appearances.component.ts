@@ -1,10 +1,23 @@
 import { Component, Input } from '@angular/core';
 import { Appearance } from '@central-factory/core';
-import { FormArray, FormControl, FormGroup } from '@ng-stack/forms';
+import { Control, FormArray, FormControl, FormGroup } from '@ng-stack/forms';
 
 export class AvatarAppeareancesInput {
-  //#endregion
   appearances!: Appearance[];
+}
+
+export type AppearancePreviewCameraControl = Control<{
+  position?: string | undefined;
+  rotation?: string | undefined;
+  scale?: string | undefined;
+}>;
+
+export interface FormAppearance extends Appearance {
+  previewCamera?: AppearancePreviewCameraControl;
+}
+
+export interface AvatarAppearancesForm {
+  appearances: FormAppearance[];
 }
 
 @Component({
@@ -21,32 +34,30 @@ export class AvatarAppeareancesInput {
             formArrayName="appearances"
             *ngFor="let appearance of appearancesForm.controls; let i = index"
           >
-            <!-- I have an appearance registered at -->
+            <cf-preview-avatar-appearance
+              *ngIf="appearance.value.format === 'gltf'"
+              width="100%"
+              height="300px"
+              [appearance]="appearance.value"
+            ></cf-preview-avatar-appearance>
 
             <div
               elem="picture"
-              style="background-image: url('{{
-                appearance.value.largePreviewUrl
-              }}')"
+              style="background-image: url('{{ appearance.value.src }}')"
+              *ngIf="appearance.value.format !== 'gltf'"
             >
-              <!-- img
-                    elem="image"
-                    style="width: 200px;"
-                    [src]="appearance.value.largePreviewUrl"
-                  / -->
-
               <div elem="footer">
-                <h4 elem="title">{{ appearance.value.protocol }}</h4>
+                <h4 elem="title">{{ appearance.value.format }}</h4>
               </div>
             </div>
 
             <div [formGroupName]="i" *ngIf="false">
               <div class="form-control">
-                <label for="protocol-{{ i }}">Protocol:</label>
+                <label for="format-{{ i }}">Format:</label>
                 <input
-                  id="protocol-{{ i }}"
+                  id="format-{{ i }}"
                   type="text"
-                  formControlName="protocol"
+                  formControlName="format"
                 />
               </div>
 
@@ -73,8 +84,8 @@ export class AvatarAppeareancesInput {
   `,
   styles: [
     `
-      $card-width: 140px;
-      $card-height: 100px;
+      $card-width: 200px;
+      $card-height: 240px;
 
       .appearance-card {
         width: $card-width;
@@ -109,20 +120,21 @@ export class AvatarAppearancesComponent {
     }
   }
 
-  form = new FormGroup<AvatarAppeareancesInput>({
-    appearances: new FormArray<Appearance>([]),
+  form = new FormGroup<AvatarAppearancesForm>({
+    appearances: new FormArray<FormAppearance>([]),
   });
 
   get appearancesForm() {
-    return this.form.controls.appearances as FormArray<Appearance>;
+    return this.form.controls.appearances as FormArray<FormAppearance>;
   }
 
   addAppearance(appearance: Appearance) {
     this.appearancesForm.push(
-      new FormGroup({
-        protocol: new FormControl(appearance.protocol),
+      new FormGroup<FormAppearance>({
+        format: new FormControl(appearance.format),
         smallPreviewUrl: new FormControl(appearance.smallPreviewUrl),
-        largePreviewUrl: new FormControl(appearance.largePreviewUrl),
+        src: new FormControl(appearance.src),
+        previewCamera: new FormControl(appearance.previewCamera as any),
       })
     );
   }

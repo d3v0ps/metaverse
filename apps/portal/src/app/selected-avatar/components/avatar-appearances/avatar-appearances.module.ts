@@ -4,6 +4,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BemModule } from 'angular-bem';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { PreviewAvatarAppearanceModule } from '../preview-avatar-appearance/preview-avatar-appearance.module';
 import { AvatarAppearancesComponent } from './avatar-appearances.component';
 
 @NgModule({
@@ -13,6 +14,7 @@ import { AvatarAppearancesComponent } from './avatar-appearances.component';
     FlexLayoutModule,
     BemModule,
     AngularSvgIconModule,
+    PreviewAvatarAppearanceModule,
   ],
   declarations: [AvatarAppearancesComponent],
   exports: [AvatarAppearancesComponent],

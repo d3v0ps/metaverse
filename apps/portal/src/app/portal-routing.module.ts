@@ -16,32 +16,36 @@ export const routes: Routes = [
   //       (m) => m.CreateAvatarModule
   //     ),
   // },
-  // {
-  //   path: 'marketplace',
-  //   loadChildren: () =>
-  //     import('./marketplace/marketplace.module').then(
-  //       (m) => m.MarketplaceModule
-  //     ),
-  // },
-  // {
-  //   path: 'gatekeeper',
-  //   loadChildren: () =>
-  //     import('@central-factory/gatekeeper').then((m) => m.GatekeeperModule),
-  // },
   {
-    path: 'selected-avatar',
+    path: '',
     component: AppScene,
     children: [
       {
-        path: '',
-        pathMatch: 'full',
+        path: 'selected-avatar',
         loadChildren: () =>
           import('./selected-avatar/selected-avatar.module').then(
             (m) => m.SelectedAvatarModule
           ),
       },
+      {
+        path: 'inventory',
+        loadChildren: () =>
+          import('./inventory/inventory.module').then((m) => m.InventoryModule),
+      },
+      {
+        path: 'marketplace',
+        loadChildren: () =>
+          import('./marketplace/marketplace.module').then(
+            (m) => m.MarketplaceModule
+          ),
+      },
     ],
   },
+  // {
+  //   path: 'gatekeeper',
+  //   loadChildren: () =>
+  //     import('@central-factory/gatekeeper').then((m) => m.GatekeeperModule),
+  // },
   {
     path: '',
     redirectTo: 'selected-avatar',

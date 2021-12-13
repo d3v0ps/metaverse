@@ -12,9 +12,9 @@ export const generateAvatar = (): Avatar => {
     scopes: [],
     welcomeMessage: '',
     selectedAppearance: {
-      largePreviewUrl: '',
+      src: '',
       smallPreviewUrl: '',
-      protocol: '',
+      format: '',
     },
   };
 };

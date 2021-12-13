@@ -40,6 +40,39 @@ $dark-dark: #303030;
 $dark-darker: #404040;
 $dark-darkest: #505050;
 
+$success: #4caf50;
+$success-dark: #43a047;
+$success-darker: #388e3c;
+$success-darkest: #2e7d32;
+$success-light: #dcedc8;
+$success-lighter: #f0f4c3;
+$success-lightest: #f9fbe7;
+
+$warning: #ff9800;
+$warning-dark: #fb8c00;
+$warning-darker: #f57c00;
+$warning-darkest: #ef6c00;
+$warning-light: #ffcc80;
+$warning-lighter: #ffecb3;
+$warning-lightest: #fff9c4;
+
+$danger: #f44336;
+$danger-dark: #e53935;
+$danger-darker: #d32f2f;
+$danger-darkest: #c62828;
+$danger-light: #ef9a9a;
+$danger-lighter: #f8bbd0;
+$danger-lightest: #fcebea;
+
+$info: #2196f3;
+$info-dark: #1976d2;
+$info-darker: #1565c0;
+$info-darkest: #0d47a1;
+$info-light: #bbdefb;
+$info-lighter: #e3f2fd;
+$info-lightest: #ede7f6;
+
+
 $colors: (
   purple-metaverse: $purple-metaverse,
   purple-metaverse-dark: $purple-metaverse-dark,
@@ -76,7 +109,35 @@ $colors: (
   dark: $dark,
   dark-dark: $dark-dark,
   dark-darker: $dark-darker,
-  dark-darkest: $dark-darkest
+  dark-darkest: $dark-darkest,
+  success: $success,
+  success-dark: $success-dark,
+  success-darker: $success-darker,
+  success-darkest: $success-darkest,
+  success-light: $success-light,
+  success-lighter: $success-lighter,
+  success-lightest: $success-lightest,
+  warning: $warning,
+  warning-dark: $warning-dark,
+  warning-darker: $warning-darker,
+  warning-darkest: $warning-darkest,
+  warning-light: $warning-light,
+  warning-lighter: $warning-lighter,
+  warning-lightest: $warning-lightest,
+  danger: $danger,
+  danger-dark: $danger-dark,
+  danger-darker: $danger-darker,
+  danger-darkest: $danger-darkest,
+  danger-light: $danger-light,
+  danger-lighter: $danger-lighter,
+  danger-lightest: $danger-lightest,
+  info: $info,
+  info-dark: $info-dark,
+  info-darker: $info-darker,
+  info-darkest: $info-darkest,
+  info-light: $info-light,
+  info-lighter: $info-lighter,
+  info-lightest: $info-lightest
 );
 
 

@@ -1,9 +1,20 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BemModule } from 'angular-bem';
 import { MarketplaceRoutingModule } from './marketplace-routing.module';
-import { MarketplaceView } from './views/marketplace.view';
+import { MarketplaceScene } from './scenes/marketplace.scene';
 
 @NgModule({
-  imports: [MarketplaceRoutingModule],
-  declarations: [MarketplaceView],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FlexLayoutModule,
+    BemModule,
+    MarketplaceRoutingModule,
+  ],
+  declarations: [MarketplaceScene],
 })
 export class MarketplaceModule {}
