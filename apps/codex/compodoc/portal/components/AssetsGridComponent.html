@@ -120,7 +120,7 @@
         }
 
         &amp;--active {
-          border-color: #d1d36f;
+          border-color: var(--color-secondary);
         }
 
         &amp;__empty {
@@ -466,7 +466,7 @@ import { Asset } from &#x27;@central-factory/core&#x27;;
         }
 
         &amp;--active {
-          border-color: #d1d36f;
+          border-color: var(--color-secondary);
         }
 
         &amp;__empty {
@@ -584,7 +584,7 @@ export class AssetsGridComponent {
         }
 
         &amp;--active {
-          border-color: #d1d36f;
+          border-color: var(--color-secondary);
         }
 
         &amp;__empty {
@@ -689,7 +689,7 @@ export class AssetsGridComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div block="assets-grid">  <div    block="assets-grid-item"    *ngFor="let slot of slots; let i = index"    [ngClass]="{      \'assets-grid-item--active\':        assets[i] && assets[i]?.id === activeAsset?.id    }"    [mod]="{      \'is-filled\': assets[i] ? true : false    }"    (click)="assetClick.emit(assets[i])"  >    <ng-container *ngIf="assets[i] as asset; else empty">      <img elem="image" [src]="asset.previewUrl" />      <div elem="name">        <span>{{ asset.name }}</span>      </div>    </ng-container>    <ng-template #empty>      <div elem="empty"></div>    </ng-template>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AssetDetailComponent', 'selector': 'cf-asset-detail'},{'name': 'AssetsGridComponent', 'selector': 'cf-assets-grid'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'CreateAvatarView', 'selector': 'cf-create-avatar'},{'name': 'DashboardView', 'selector': 'cf-dashboard'},{'name': 'InventoryScene', 'selector': 'cf-inventory'},{'name': 'MarketplaceScene', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'PreviewAvatarAppearanceScene', 'selector': 'cf-preview-avatar-appearance'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
+    var COMPONENTS = [{'name': 'AssetDetailComponent', 'selector': 'cf-asset-detail'},{'name': 'AssetsGridComponent', 'selector': 'cf-assets-grid'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'CreateAvatarView', 'selector': 'cf-create-avatar'},{'name': 'DashboardView', 'selector': 'cf-dashboard'},{'name': 'InventoryScene', 'selector': 'cf-inventory'},{'name': 'MarketplaceScene', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'PreviewAvatarAppearanceScene', 'selector': 'cf-preview-avatar-appearance'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AssetsGridComponent'};
 </script>

@@ -36,7 +36,7 @@
 
 <ol class="breadcrumb">
     <li>Modules</li>
-    <li >PortalRoutingModule</li>
+    <li >SettingsRoutingModule</li>
 </ol>
 
 
@@ -56,7 +56,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/portal-routing.module.ts</code>
+            <code>src/app/settings/settings-routing.module.ts</code>
         </p>
 
 
@@ -75,69 +75,20 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { RouterModule, Routes } from &#x27;@angular/router&#x27;;
-import { AppScene } from &#x27;@central-factory/web-components/angular/scene/app.scene&#x27;;
+import { SettingsScene } from &#x27;./scenes/settings.scene&#x27;;
 
 export const routes: Routes &#x3D; [
-  // {
-  //   path: &#x27;dashboard&#x27;,
-  //   component: AppScene,
-  //   loadChildren: () &#x3D;&gt;
-  //     import(&#x27;./dashboard/dashboard.module&#x27;).then((m) &#x3D;&gt; m.DashboardModule),
-  // },
-  // {
-  //   path: &#x27;create-avatar&#x27;,
-  //   loadChildren: () &#x3D;&gt;
-  //     import(&#x27;./create-avatar/create-avatar.module&#x27;).then(
-  //       (m) &#x3D;&gt; m.CreateAvatarModule
-  //     ),
-  // },
   {
     path: &#x27;&#x27;,
-    component: AppScene,
-    children: [
-      {
-        path: &#x27;selected-avatar&#x27;,
-        loadChildren: () &#x3D;&gt;
-          &quot;import(&#x27;./selected-avatar/selected-avatar.module&#x27;).then(\
-            (m) &#x3D;&gt; m.SelectedAvatarModule\
-          )&quot;,
-      },
-      {
-        path: &#x27;inventory&#x27;,
-        loadChildren: () &#x3D;&gt;
-          &quot;import(&#x27;./inventory/inventory.module&#x27;).then((m) &#x3D;&gt; m.InventoryModule)&quot;,
-      },
-      {
-        path: &#x27;marketplace&#x27;,
-        loadChildren: () &#x3D;&gt;
-          &quot;import(&#x27;./marketplace/marketplace.module&#x27;).then(\
-            (m) &#x3D;&gt; m.MarketplaceModule\
-          )&quot;,
-      },
-      {
-        path: &#x27;settings&#x27;,
-        loadChildren: () &#x3D;&gt;
-          &quot;import(&#x27;./settings/settings.module&#x27;).then((m) &#x3D;&gt; m.SettingsModule)&quot;,
-      },
-    ],
-  },
-  // {
-  //   path: &#x27;gatekeeper&#x27;,
-  //   loadChildren: () &#x3D;&gt;
-  //     import(&#x27;@central-factory/gatekeeper&#x27;).then((m) &#x3D;&gt; m.GatekeeperModule),
-  // },
-  {
-    path: &#x27;&#x27;,
-    redirectTo: &#x27;selected-avatar&#x27;,
-    pathMatch: &#x27;full&#x27;,
+    component: SettingsScene,
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PortalRoutingModule {}
+export class SettingsRoutingModule {}
 </code></pre>
     </div>
 </div>
@@ -173,7 +124,7 @@ export class PortalRoutingModule {}
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
-            var COMPODOC_CURRENT_PAGE_URL = 'PortalRoutingModule.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'SettingsRoutingModule.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

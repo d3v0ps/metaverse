@@ -281,6 +281,26 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <li class="link">
                                 <a href="modules/SelectedAvatarRoutingModule.html" data-type="entity-link" >SelectedAvatarRoutingModule</a>
                             </li>
+                            <li class="link">
+                                <a href="modules/SettingsModule.html" data-type="entity-link" >SettingsModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-SettingsModule-da5a96a1abd390e63d8f9ddf368125e0"' : 'data-target="#xs-components-links-module-SettingsModule-da5a96a1abd390e63d8f9ddf368125e0"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SettingsModule-da5a96a1abd390e63d8f9ddf368125e0"' :
+                                            'id="xs-components-links-module-SettingsModule-da5a96a1abd390e63d8f9ddf368125e0"' }>
+                                            <li class="link">
+                                                <a href="components/SettingsScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SettingsScene</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/SettingsRoutingModule.html" data-type="entity-link" >SettingsRoutingModule</a>
+                            </li>
                 </ul>
                 </li>
                     <li class="chapter">
