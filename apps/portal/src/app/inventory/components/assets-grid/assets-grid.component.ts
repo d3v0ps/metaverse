@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Asset } from '@central-factory/core';
 
 @Component({
@@ -9,8 +9,13 @@ import { Asset } from '@central-factory/core';
         block="assets-grid-item"
         *ngFor="let slot of slots; let i = index"
         [ngClass]="{
-          'assets-grid-item--active': assets[i]?.id === activeAssetId
+          'assets-grid-item--active':
+            assets[i] && assets[i]?.id === activeAsset?.id
         }"
+        [mod]="{
+          'is-filled': assets[i] ? true : false
+        }"
+        (click)="assetClick.emit(assets[i])"
       >
         <ng-container *ngIf="assets[i] as asset; else empty">
           <img elem="image" [src]="asset.previewUrl" />
@@ -26,10 +31,16 @@ import { Asset } from '@central-factory/core';
   `,
   styles: [
     `
+      $grid-xl-size: 180px;
+      $grid-l-size: 140px;
+      $grid-m-size: 140px;
+      $grid-s-size: 140px;
+      $grid-size: $grid-xl-size;
+
       .assets-grid {
         display: grid;
-        grid-template-columns: auto auto auto auto;
-        grid-template-rows: auto auto auto auto;
+        grid-template-columns: $grid-size $grid-size $grid-size $grid-size;
+        grid-template-rows: $grid-size $grid-size $grid-size $grid-size;
         column-gap: 10px;
         row-gap: 15px;
       }
@@ -38,25 +49,33 @@ import { Asset } from '@central-factory/core';
         display: flex;
         flex-direction: column;
         border-radius: 10px;
-        border: 2px solid #303030;
-        max-height: 140px;
+        border: 5px solid #303030;
+        max-height: $grid-size;
+
+        &--is-filled {
+          cursor: pointer;
+        }
 
         &--active {
           border-color: #d1d36f;
         }
 
         &__empty {
-          height: 140px;
+          height: $grid-size;
+          background: url('https://www.toptal.com/designers/subtlepatterns/patterns/dark-honeycomb.png');
+          background: url('https://www.toptal.com/designers/subtlepatterns/patterns/mosaic.png');
         }
 
         &__name {
-          font-size: 1.2rem;
+          font-size: 1rem;
           font-weight: bold;
           text-align: center;
           /** position: relative; **/
           bottom: 30px;
           height: 36px;
           background: rgba(0, 0, 0, 0.6);
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
           span {
             padding: 0.25rem;
             width: 100%;
@@ -66,10 +85,51 @@ import { Asset } from '@central-factory/core';
         }
 
         &__image {
-          width: auto;
+          width: 100%;
           height: calc(100% - 36px);
           object-fit: cover;
-          border-radius: 10px;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          /** border-radius: 10px; **/
+        }
+      }
+
+      @media (max-width: 1200px) {
+        .assets-grid {
+          grid-template-columns: $grid-l-size $grid-l-size $grid-l-size;
+          grid-template-rows: $grid-l-size $grid-l-size $grid-l-size;
+        }
+        .assets-grid-item {
+          max-height: $grid-l-size;
+          &__empty {
+            height: $grid-l-size;
+          }
+        }
+      }
+
+      @media (max-width: 960px) {
+        .assets-grid {
+          grid-template-columns: $grid-l-size $grid-l-size;
+          grid-template-rows: $grid-l-size $grid-l-size;
+        }
+        .assets-grid-item {
+          max-height: $grid-l-size;
+          &__empty {
+            height: $grid-l-size;
+          }
+        }
+      }
+
+      @media (max-width: 860px) {
+        .assets-grid {
+          grid-template-columns: $grid-l-size;
+          grid-template-rows: $grid-l-size;
+        }
+        .assets-grid-item {
+          max-height: $grid-l-size;
+          &__empty {
+            height: $grid-l-size;
+          }
         }
       }
     `,
@@ -77,8 +137,9 @@ import { Asset } from '@central-factory/core';
 })
 export class AssetsGridComponent {
   @Input() assets!: Asset[];
+  @Input() activeAsset?: Asset;
 
-  activeAssetId = '1';
+  @Output() assetClick = new EventEmitter<Asset>();
 
   slots = new Array(16).fill(null);
 }

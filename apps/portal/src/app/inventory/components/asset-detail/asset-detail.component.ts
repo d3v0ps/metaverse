@@ -41,6 +41,18 @@ import { Asset } from '@central-factory/core';
               <td elem="label">Purchase Date</td>
               <td elem="value">{{ asset.purchaseDate | date }}</td>
             </tr>
+            <tr elem="row">
+              <td elem="label">URL</td>
+              <td elem="value">
+                <a [href]="asset.url" target="_blank">
+                  <svg-icon
+                    src="assets/icons/mdi/link.svg"
+                    elem="icon"
+                    [svgClass]="'icon__svg'"
+                  ></svg-icon>
+                </a>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -54,6 +66,12 @@ import { Asset } from '@central-factory/core';
         align-items: center;
         border-radius: 10px;
         border: 2px solid #303030;
+        padding: 1rem;
+
+        &__image {
+          width: 100%;
+          border-radius: 10px;
+        }
       }
 
       .asset-stats {
@@ -69,6 +87,12 @@ import { Asset } from '@central-factory/core';
           }
           &--positive {
             color: var(--color-success);
+          }
+        }
+
+        &__icon {
+          .icon__svg {
+            fill: white;
           }
         }
       }
