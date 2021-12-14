@@ -100,6 +100,12 @@
         align-items: center;
         border-radius: 10px;
         border: 2px solid #303030;
+        padding: 1rem;
+
+        &amp;__image {
+          width: 100%;
+          border-radius: 10px;
+        }
       }
 
       .asset-stats {
@@ -115,6 +121,12 @@
           }
           &amp;--positive {
             color: var(--color-success);
+          }
+        }
+
+        &amp;__icon {
+          .icon__svg {
+            fill: white;
           }
         }
       }
@@ -159,6 +171,18 @@
         &lt;tr elem&#x3D;&quot;row&quot;&gt;
           &lt;td elem&#x3D;&quot;label&quot;&gt;Purchase Date&lt;/td&gt;
           &lt;td elem&#x3D;&quot;value&quot;&gt;{{ asset.purchaseDate | date }}&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr elem&#x3D;&quot;row&quot;&gt;
+          &lt;td elem&#x3D;&quot;label&quot;&gt;URL&lt;/td&gt;
+          &lt;td elem&#x3D;&quot;value&quot;&gt;
+            &lt;a [href]&#x3D;&quot;asset.url&quot; target&#x3D;&quot;_blank&quot;&gt;
+              &lt;svg-icon
+                src&#x3D;&quot;assets/icons/mdi/link.svg&quot;
+                elem&#x3D;&quot;icon&quot;
+                [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+              &gt;&lt;/svg-icon&gt;
+            &lt;/a&gt;
+          &lt;/td&gt;
         &lt;/tr&gt;
       &lt;/tbody&gt;
     &lt;/table&gt;
@@ -226,7 +250,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/inventory/components/asset-detail/asset-detail.component.ts:79</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/app/inventory/components/asset-detail/asset-detail.component.ts:103</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -284,6 +308,18 @@ import { Asset } from &#x27;@central-factory/core&#x27;;
               &lt;td elem&#x3D;&quot;label&quot;&gt;Purchase Date&lt;/td&gt;
               &lt;td elem&#x3D;&quot;value&quot;&gt;{{ asset.purchaseDate | date }}&lt;/td&gt;
             &lt;/tr&gt;
+            &lt;tr elem&#x3D;&quot;row&quot;&gt;
+              &lt;td elem&#x3D;&quot;label&quot;&gt;URL&lt;/td&gt;
+              &lt;td elem&#x3D;&quot;value&quot;&gt;
+                &lt;a [href]&#x3D;&quot;asset.url&quot; target&#x3D;&quot;_blank&quot;&gt;
+                  &lt;svg-icon
+                    src&#x3D;&quot;assets/icons/mdi/link.svg&quot;
+                    elem&#x3D;&quot;icon&quot;
+                    [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+                  &gt;&lt;/svg-icon&gt;
+                &lt;/a&gt;
+              &lt;/td&gt;
+            &lt;/tr&gt;
           &lt;/tbody&gt;
         &lt;/table&gt;
       &lt;/div&gt;
@@ -297,6 +333,12 @@ import { Asset } from &#x27;@central-factory/core&#x27;;
         align-items: center;
         border-radius: 10px;
         border: 2px solid #303030;
+        padding: 1rem;
+
+        &amp;__image {
+          width: 100%;
+          border-radius: 10px;
+        }
       }
 
       .asset-stats {
@@ -312,6 +354,12 @@ import { Asset } from &#x27;@central-factory/core&#x27;;
           }
           &amp;--positive {
             color: var(--color-success);
+          }
+        }
+
+        &amp;__icon {
+          .icon__svg {
+            fill: white;
           }
         }
       }
@@ -333,6 +381,12 @@ export class AssetDetailComponent {
         align-items: center;
         border-radius: 10px;
         border: 2px solid #303030;
+        padding: 1rem;
+
+        &amp;__image {
+          width: 100%;
+          border-radius: 10px;
+        }
       }
 
       .asset-stats {
@@ -348,6 +402,12 @@ export class AssetDetailComponent {
           }
           &amp;--positive {
             color: var(--color-success);
+          }
+        }
+
+        &amp;__icon {
+          .icon__svg {
+            fill: white;
           }
         }
       }
@@ -380,7 +440,7 @@ export class AssetDetailComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div block="asset-detail">  <h3 elem="name">{{ asset.name }}</h3>  <img elem="image" [src]="asset.previewUrl" alt="" />  <div elem="info">    <p>{{ asset.description }}</p>    <table block="asset-stats">      <tbody>        <tr elem="row">          <td elem="label">Model</td>          <td elem="value">{{ asset.model }}</td>        </tr>        <tr elem="row">          <td elem="label">Producer</td>          <td elem="value">{{ asset.producer }}</td>        </tr>        <tr elem="row">          <td elem="label">Current Value</td>          <td            elem="value"            [ngClass]="{              \'asset-stats__value--negative\':                asset.currentValue < asset.purchaseValue,              \'asset-stats__value--positive\':                asset.currentValue > asset.purchaseValue            }"          >            {{ asset.currentValue | currency }}          </td>        </tr>        <tr elem="row">          <td elem="label">Purchase Value</td>          <td elem="value">{{ asset.purchaseValue | currency }}</td>        </tr>        <tr elem="row">          <td elem="label">Purchase Date</td>          <td elem="value">{{ asset.purchaseDate | date }}</td>        </tr>      </tbody>    </table>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div block="asset-detail">  <h3 elem="name">{{ asset.name }}</h3>  <img elem="image" [src]="asset.previewUrl" alt="" />  <div elem="info">    <p>{{ asset.description }}</p>    <table block="asset-stats">      <tbody>        <tr elem="row">          <td elem="label">Model</td>          <td elem="value">{{ asset.model }}</td>        </tr>        <tr elem="row">          <td elem="label">Producer</td>          <td elem="value">{{ asset.producer }}</td>        </tr>        <tr elem="row">          <td elem="label">Current Value</td>          <td            elem="value"            [ngClass]="{              \'asset-stats__value--negative\':                asset.currentValue < asset.purchaseValue,              \'asset-stats__value--positive\':                asset.currentValue > asset.purchaseValue            }"          >            {{ asset.currentValue | currency }}          </td>        </tr>        <tr elem="row">          <td elem="label">Purchase Value</td>          <td elem="value">{{ asset.purchaseValue | currency }}</td>        </tr>        <tr elem="row">          <td elem="label">Purchase Date</td>          <td elem="value">{{ asset.purchaseDate | date }}</td>        </tr>        <tr elem="row">          <td elem="label">URL</td>          <td elem="value">            <a [href]="asset.url" target="_blank">              <svg-icon                src="assets/icons/mdi/link.svg"                elem="icon"                [svgClass]="\'icon__svg\'"              ></svg-icon>            </a>          </td>        </tr>      </tbody>    </table>  </div></div></div>'
     var COMPONENTS = [{'name': 'AssetDetailComponent', 'selector': 'cf-asset-detail'},{'name': 'AssetsGridComponent', 'selector': 'cf-assets-grid'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'CreateAvatarView', 'selector': 'cf-create-avatar'},{'name': 'DashboardView', 'selector': 'cf-dashboard'},{'name': 'InventoryScene', 'selector': 'cf-inventory'},{'name': 'MarketplaceScene', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'PreviewAvatarAppearanceScene', 'selector': 'cf-preview-avatar-appearance'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AssetDetailComponent'};

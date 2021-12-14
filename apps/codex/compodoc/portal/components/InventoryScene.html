@@ -100,10 +100,14 @@
                 <td class="col-md-3">template</td>
                 <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div block&#x3D;&quot;scene-content&quot;&gt;
   &lt;div fxLayout&#x3D;&quot;row&quot; fxFlexFill fxLayoutGap&#x3D;&quot;1rem&quot;&gt;
-    &lt;div fxFlex&#x3D;&quot;70&quot;&gt;
-      &lt;cf-assets-grid [assets]&#x3D;&quot;assets&quot;&gt;&lt;/cf-assets-grid&gt;
+    &lt;div fxFlex&#x3D;&quot;70&quot; fxFlex.lt-md&#x3D;&quot;50&quot; fxFlex.lt-sm&#x3D;&quot;30&quot;&gt;
+      &lt;cf-assets-grid
+        [assets]&#x3D;&quot;assets&quot;
+        [activeAsset]&#x3D;&quot;selectedAsset&quot;
+        (assetClick)&#x3D;&quot;onGridAssetClick($event)&quot;
+      &gt;&lt;/cf-assets-grid&gt;
     &lt;/div&gt;
-    &lt;div fxFlex&#x3D;&quot;30&quot;&gt;
+    &lt;div fxFlex&#x3D;&quot;30&quot; fxFlex.lt-md&#x3D;&quot;50&quot; fxFlex.lt-sm&#x3D;&quot;70&quot;&gt;
       &lt;cf-asset-detail [asset]&#x3D;&quot;selectedAsset&quot;&gt;&lt;/cf-asset-detail&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -128,6 +132,20 @@
     <table class="table table-sm table-bordered index-table">
         <tbody>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#onGridAssetClick" >onGridAssetClick</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -176,106 +194,106 @@
                         <i>Default value : </i><code>[
     {
       id: &#x27;1&#x27;,
-      name: &#x27;Asset 1&#x27;,
-      model: &#x27;Scarf 1&#x27;,
-      producer: &#x27;Central Factory&#x27;,
-      owner: &#x27;John Doe&#x27;,
-      description: &#x27;This is the first asset&#x27;,
+      name: &quot;Raven&#x27;s Cloak&quot;,
+      model: &quot;Raven&#x27;s Cloak&quot;,
+      producer: &#x27;Shop5363155 Store&#x27;,
+      owner: &#x27;Metam&#x27;,
+      description: &#x27;Microfiber hooded cloak with fleece lining&#x27;,
       kind: AssetKind.Equipment,
-      previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      currentValue: 150,
-      purchaseValue: 100,
+      previewUrl: &#x27;https://i.imgur.com/ukcsu1q.png&#x27;,
+      url: &#x27;https://es.aliexpress.com/item/1005001952208453.html&#x27;,
+      currentValue: 23.62,
+      purchaseValue: 23.62,
       purchaseDate: new Date(),
-      digital: true,
+      digital: false,
       private: true,
     },
     {
       id: &#x27;2&#x27;,
-      name: &#x27;Asset 2&#x27;,
-      model: &#x27;Scarf 1&#x27;,
-      producer: &#x27;Central Factory&#x27;,
-      owner: &#x27;John Doe&#x27;,
-      description: &#x27;This is the first asset&#x27;,
+      name: &quot;Foundation&#x27;s Coat&quot;,
+      model: &quot;Foundation&#x27;s Coat&quot;,
+      producer: &#x27;Shop1948549 Store&#x27;,
+      owner: &#x27;Metam&#x27;,
+      description: &#x27;Hooded coat with thick fleece lining&#x27;,
       kind: AssetKind.Equipment,
-      previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      currentValue: 150,
-      purchaseValue: 100,
+      previewUrl: &#x27;https://i.imgur.com/w1XmjIj.png&#x27;,
+      url: &#x27;https://es.aliexpress.com/item/1005003209038453.html&#x27;,
+      currentValue: 43.9,
+      purchaseValue: 43.9,
       purchaseDate: new Date(),
-      digital: true,
+      digital: false,
       private: true,
     },
-    {
-      id: &#x27;3&#x27;,
-      name: &#x27;Asset 3&#x27;,
-      model: &#x27;Scarf 1&#x27;,
-      producer: &#x27;Central Factory&#x27;,
-      owner: &#x27;John Doe&#x27;,
-      description: &#x27;This is the first asset&#x27;,
-      kind: AssetKind.Equipment,
-      previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      currentValue: 150,
-      purchaseValue: 100,
-      purchaseDate: new Date(),
-      digital: true,
-      private: true,
-    },
-    {
-      id: &#x27;4&#x27;,
-      name: &#x27;Asset 4&#x27;,
-      model: &#x27;Scarf 1&#x27;,
-      producer: &#x27;Central Factory&#x27;,
-      owner: &#x27;John Doe&#x27;,
-      description: &#x27;This is the first asset&#x27;,
-      kind: AssetKind.Equipment,
-      previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      currentValue: 150,
-      purchaseValue: 100,
-      purchaseDate: new Date(),
-      digital: true,
-      private: true,
-    },
-    {
-      id: &#x27;5&#x27;,
-      name: &#x27;Asset 5&#x27;,
-      model: &#x27;Scarf 1&#x27;,
-      producer: &#x27;Central Factory&#x27;,
-      owner: &#x27;John Doe&#x27;,
-      description: &#x27;This is the first asset&#x27;,
-      kind: AssetKind.Equipment,
-      previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      currentValue: 150,
-      purchaseValue: 100,
-      purchaseDate: new Date(),
-      digital: true,
-      private: true,
-    },
-    {
-      id: &#x27;6&#x27;,
-      name: &#x27;Asset 6&#x27;,
-      model: &#x27;Scarf 1&#x27;,
-      producer: &#x27;Central Factory&#x27;,
-      owner: &#x27;John Doe&#x27;,
-      description: &#x27;This is the first asset&#x27;,
-      kind: AssetKind.Equipment,
-      previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      currentValue: 150,
-      purchaseValue: 100,
-      purchaseDate: new Date(),
-      digital: true,
-      private: true,
-    },
+    // {
+    //   id: &#x27;4&#x27;,
+    //   name: &#x27;Asset 4&#x27;,
+    //   model: &#x27;Scarf 1&#x27;,
+    //   producer: &#x27;Central Factory&#x27;,
+    //   owner: &#x27;John Doe&#x27;,
+    //   description: &#x27;This is the first asset&#x27;,
+    //   kind: AssetKind.Equipment,
+    //   previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
+    //   url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
+    //   currentValue: 150,
+    //   purchaseValue: 100,
+    //   purchaseDate: new Date(),
+    //   digital: true,
+    //   private: true,
+    // },
+    // {
+    //   id: &#x27;1&#x27;,
+    //   name: &#x27;Asset 1&#x27;,
+    //   model: &#x27;Scarf 1&#x27;,
+    //   producer: &#x27;Central Factory&#x27;,
+    //   owner: &#x27;John Doe&#x27;,
+    //   description: &#x27;This is the first asset&#x27;,
+    //   kind: AssetKind.Equipment,
+    //   previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
+    //   url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
+    //   currentValue: 150,
+    //   purchaseValue: 100,
+    //   purchaseDate: new Date(),
+    //   digital: true,
+    //   private: true,
+    // },
+    // {
+    //   id: &#x27;5&#x27;,
+    //   name: &#x27;Asset 5&#x27;,
+    //   model: &#x27;Scarf 1&#x27;,
+    //   producer: &#x27;Central Factory&#x27;,
+    //   owner: &#x27;John Doe&#x27;,
+    //   description: &#x27;This is the first asset&#x27;,
+    //   kind: AssetKind.Equipment,
+    //   previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
+    //   url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
+    //   currentValue: 150,
+    //   purchaseValue: 100,
+    //   purchaseDate: new Date(),
+    //   digital: true,
+    //   private: true,
+    // },
+    // {
+    //   id: &#x27;6&#x27;,
+    //   name: &#x27;Asset 6&#x27;,
+    //   model: &#x27;Scarf 1&#x27;,
+    //   producer: &#x27;Central Factory&#x27;,
+    //   owner: &#x27;John Doe&#x27;,
+    //   description: &#x27;This is the first asset&#x27;,
+    //   kind: AssetKind.Equipment,
+    //   previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
+    //   url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
+    //   currentValue: 150,
+    //   purchaseValue: 100,
+    //   purchaseDate: new Date(),
+    //   digital: true,
+    //   private: true,
+    // },
   ]</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/inventory/scenes/inventory.scene.ts:21</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/inventory/scenes/inventory.scene.ts:25</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -298,25 +316,25 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
     id: &#x27;1&#x27;,
-    name: &#x27;Asset 1&#x27;,
-    model: &#x27;Scarf 1&#x27;,
-    producer: &#x27;Central Factory&#x27;,
-    owner: &#x27;John Doe&#x27;,
-    description: &#x27;This is the first asset&#x27;,
+    name: &quot;Raven&#x27;s Cloak&quot;,
+    model: &quot;Raven&#x27;s Cloak&quot;,
+    producer: &#x27;Shop5363155 Store&#x27;,
+    owner: &#x27;Metam&#x27;,
+    description: &#x27;Microfiber hooded cloak with fleece lining&#x27;,
     kind: AssetKind.Equipment,
-    previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-    url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-    currentValue: 150,
-    purchaseValue: 100,
+    previewUrl: &#x27;https://i.imgur.com/ukcsu1q.png&#x27;,
+    url: &#x27;https://es.aliexpress.com/item/1005001952208453.html&#x27;,
+    currentValue: 23.62,
+    purchaseValue: 23.62,
     purchaseDate: new Date(),
-    digital: true,
+    digital: false,
     private: true,
   }</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">src/app/inventory/scenes/inventory.scene.ts:120</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">src/app/inventory/scenes/inventory.scene.ts:124</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -325,7 +343,81 @@
 
 
 
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onGridAssetClick"></a>
+                    <span class="name">
+                        <span ><b>onGridAssetClick</b></span>
+                        <a href="#onGridAssetClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onGridAssetClick(asset: Asset)</code>
+                </td>
+            </tr>
 
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="141"
+                            class="link-to-prism">src/app/inventory/scenes/inventory.scene.ts:141</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>asset</td>
+                                    <td>
+                                            <code>Asset</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
 
 </div>
 
@@ -340,10 +432,14 @@ import { Asset, AssetKind } from &#x27;@central-factory/core&#x27;;
   template: &#x60;
     &lt;div block&#x3D;&quot;scene-content&quot;&gt;
       &lt;div fxLayout&#x3D;&quot;row&quot; fxFlexFill fxLayoutGap&#x3D;&quot;1rem&quot;&gt;
-        &lt;div fxFlex&#x3D;&quot;70&quot;&gt;
-          &lt;cf-assets-grid [assets]&#x3D;&quot;assets&quot;&gt;&lt;/cf-assets-grid&gt;
+        &lt;div fxFlex&#x3D;&quot;70&quot; fxFlex.lt-md&#x3D;&quot;50&quot; fxFlex.lt-sm&#x3D;&quot;30&quot;&gt;
+          &lt;cf-assets-grid
+            [assets]&#x3D;&quot;assets&quot;
+            [activeAsset]&#x3D;&quot;selectedAsset&quot;
+            (assetClick)&#x3D;&quot;onGridAssetClick($event)&quot;
+          &gt;&lt;/cf-assets-grid&gt;
         &lt;/div&gt;
-        &lt;div fxFlex&#x3D;&quot;30&quot;&gt;
+        &lt;div fxFlex&#x3D;&quot;30&quot; fxFlex.lt-md&#x3D;&quot;50&quot; fxFlex.lt-sm&#x3D;&quot;70&quot;&gt;
           &lt;cf-asset-detail [asset]&#x3D;&quot;selectedAsset&quot;&gt;&lt;/cf-asset-detail&gt;
         &lt;/div&gt;
       &lt;/div&gt;
@@ -354,118 +450,122 @@ export class InventoryScene {
   @Input() assets: Asset[] &#x3D; [
     {
       id: &#x27;1&#x27;,
-      name: &#x27;Asset 1&#x27;,
-      model: &#x27;Scarf 1&#x27;,
-      producer: &#x27;Central Factory&#x27;,
-      owner: &#x27;John Doe&#x27;,
-      description: &#x27;This is the first asset&#x27;,
+      name: &quot;Raven&#x27;s Cloak&quot;,
+      model: &quot;Raven&#x27;s Cloak&quot;,
+      producer: &#x27;Shop5363155 Store&#x27;,
+      owner: &#x27;Metam&#x27;,
+      description: &#x27;Microfiber hooded cloak with fleece lining&#x27;,
       kind: AssetKind.Equipment,
-      previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      currentValue: 150,
-      purchaseValue: 100,
+      previewUrl: &#x27;https://i.imgur.com/ukcsu1q.png&#x27;,
+      url: &#x27;https://es.aliexpress.com/item/1005001952208453.html&#x27;,
+      currentValue: 23.62,
+      purchaseValue: 23.62,
       purchaseDate: new Date(),
-      digital: true,
+      digital: false,
       private: true,
     },
     {
       id: &#x27;2&#x27;,
-      name: &#x27;Asset 2&#x27;,
-      model: &#x27;Scarf 1&#x27;,
-      producer: &#x27;Central Factory&#x27;,
-      owner: &#x27;John Doe&#x27;,
-      description: &#x27;This is the first asset&#x27;,
+      name: &quot;Foundation&#x27;s Coat&quot;,
+      model: &quot;Foundation&#x27;s Coat&quot;,
+      producer: &#x27;Shop1948549 Store&#x27;,
+      owner: &#x27;Metam&#x27;,
+      description: &#x27;Hooded coat with thick fleece lining&#x27;,
       kind: AssetKind.Equipment,
-      previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      currentValue: 150,
-      purchaseValue: 100,
+      previewUrl: &#x27;https://i.imgur.com/w1XmjIj.png&#x27;,
+      url: &#x27;https://es.aliexpress.com/item/1005003209038453.html&#x27;,
+      currentValue: 43.9,
+      purchaseValue: 43.9,
       purchaseDate: new Date(),
-      digital: true,
+      digital: false,
       private: true,
     },
-    {
-      id: &#x27;3&#x27;,
-      name: &#x27;Asset 3&#x27;,
-      model: &#x27;Scarf 1&#x27;,
-      producer: &#x27;Central Factory&#x27;,
-      owner: &#x27;John Doe&#x27;,
-      description: &#x27;This is the first asset&#x27;,
-      kind: AssetKind.Equipment,
-      previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      currentValue: 150,
-      purchaseValue: 100,
-      purchaseDate: new Date(),
-      digital: true,
-      private: true,
-    },
-    {
-      id: &#x27;4&#x27;,
-      name: &#x27;Asset 4&#x27;,
-      model: &#x27;Scarf 1&#x27;,
-      producer: &#x27;Central Factory&#x27;,
-      owner: &#x27;John Doe&#x27;,
-      description: &#x27;This is the first asset&#x27;,
-      kind: AssetKind.Equipment,
-      previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      currentValue: 150,
-      purchaseValue: 100,
-      purchaseDate: new Date(),
-      digital: true,
-      private: true,
-    },
-    {
-      id: &#x27;5&#x27;,
-      name: &#x27;Asset 5&#x27;,
-      model: &#x27;Scarf 1&#x27;,
-      producer: &#x27;Central Factory&#x27;,
-      owner: &#x27;John Doe&#x27;,
-      description: &#x27;This is the first asset&#x27;,
-      kind: AssetKind.Equipment,
-      previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      currentValue: 150,
-      purchaseValue: 100,
-      purchaseDate: new Date(),
-      digital: true,
-      private: true,
-    },
-    {
-      id: &#x27;6&#x27;,
-      name: &#x27;Asset 6&#x27;,
-      model: &#x27;Scarf 1&#x27;,
-      producer: &#x27;Central Factory&#x27;,
-      owner: &#x27;John Doe&#x27;,
-      description: &#x27;This is the first asset&#x27;,
-      kind: AssetKind.Equipment,
-      previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-      currentValue: 150,
-      purchaseValue: 100,
-      purchaseDate: new Date(),
-      digital: true,
-      private: true,
-    },
+    // {
+    //   id: &#x27;4&#x27;,
+    //   name: &#x27;Asset 4&#x27;,
+    //   model: &#x27;Scarf 1&#x27;,
+    //   producer: &#x27;Central Factory&#x27;,
+    //   owner: &#x27;John Doe&#x27;,
+    //   description: &#x27;This is the first asset&#x27;,
+    //   kind: AssetKind.Equipment,
+    //   previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
+    //   url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
+    //   currentValue: 150,
+    //   purchaseValue: 100,
+    //   purchaseDate: new Date(),
+    //   digital: true,
+    //   private: true,
+    // },
+    // {
+    //   id: &#x27;1&#x27;,
+    //   name: &#x27;Asset 1&#x27;,
+    //   model: &#x27;Scarf 1&#x27;,
+    //   producer: &#x27;Central Factory&#x27;,
+    //   owner: &#x27;John Doe&#x27;,
+    //   description: &#x27;This is the first asset&#x27;,
+    //   kind: AssetKind.Equipment,
+    //   previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
+    //   url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
+    //   currentValue: 150,
+    //   purchaseValue: 100,
+    //   purchaseDate: new Date(),
+    //   digital: true,
+    //   private: true,
+    // },
+    // {
+    //   id: &#x27;5&#x27;,
+    //   name: &#x27;Asset 5&#x27;,
+    //   model: &#x27;Scarf 1&#x27;,
+    //   producer: &#x27;Central Factory&#x27;,
+    //   owner: &#x27;John Doe&#x27;,
+    //   description: &#x27;This is the first asset&#x27;,
+    //   kind: AssetKind.Equipment,
+    //   previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
+    //   url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
+    //   currentValue: 150,
+    //   purchaseValue: 100,
+    //   purchaseDate: new Date(),
+    //   digital: true,
+    //   private: true,
+    // },
+    // {
+    //   id: &#x27;6&#x27;,
+    //   name: &#x27;Asset 6&#x27;,
+    //   model: &#x27;Scarf 1&#x27;,
+    //   producer: &#x27;Central Factory&#x27;,
+    //   owner: &#x27;John Doe&#x27;,
+    //   description: &#x27;This is the first asset&#x27;,
+    //   kind: AssetKind.Equipment,
+    //   previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
+    //   url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
+    //   currentValue: 150,
+    //   purchaseValue: 100,
+    //   purchaseDate: new Date(),
+    //   digital: true,
+    //   private: true,
+    // },
   ];
 
   @Input() selectedAsset: Asset &#x3D; {
     id: &#x27;1&#x27;,
-    name: &#x27;Asset 1&#x27;,
-    model: &#x27;Scarf 1&#x27;,
-    producer: &#x27;Central Factory&#x27;,
-    owner: &#x27;John Doe&#x27;,
-    description: &#x27;This is the first asset&#x27;,
+    name: &quot;Raven&#x27;s Cloak&quot;,
+    model: &quot;Raven&#x27;s Cloak&quot;,
+    producer: &#x27;Shop5363155 Store&#x27;,
+    owner: &#x27;Metam&#x27;,
+    description: &#x27;Microfiber hooded cloak with fleece lining&#x27;,
     kind: AssetKind.Equipment,
-    previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-    url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-    currentValue: 150,
-    purchaseValue: 100,
+    previewUrl: &#x27;https://i.imgur.com/ukcsu1q.png&#x27;,
+    url: &#x27;https://es.aliexpress.com/item/1005001952208453.html&#x27;,
+    currentValue: 23.62,
+    purchaseValue: 23.62,
     purchaseDate: new Date(),
-    digital: true,
+    digital: false,
     private: true,
   };
+
+  onGridAssetClick(asset: Asset) {
+    this.selectedAsset &#x3D; asset;
+  }
 }
 </code></pre>
     </div>
@@ -497,7 +597,7 @@ export class InventoryScene {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div block="scene-content">  <div fxLayout="row" fxFlexFill fxLayoutGap="1rem">    <div fxFlex="70">      <cf-assets-grid [assets]="assets"></cf-assets-grid>    </div>    <div fxFlex="30">      <cf-asset-detail [asset]="selectedAsset"></cf-asset-detail>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div block="scene-content">  <div fxLayout="row" fxFlexFill fxLayoutGap="1rem">    <div fxFlex="70" fxFlex.lt-md="50" fxFlex.lt-sm="30">      <cf-assets-grid        [assets]="assets"        [activeAsset]="selectedAsset"        (assetClick)="onGridAssetClick($event)"      ></cf-assets-grid>    </div>    <div fxFlex="30" fxFlex.lt-md="50" fxFlex.lt-sm="70">      <cf-asset-detail [asset]="selectedAsset"></cf-asset-detail>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'AssetDetailComponent', 'selector': 'cf-asset-detail'},{'name': 'AssetsGridComponent', 'selector': 'cf-assets-grid'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'CreateAvatarView', 'selector': 'cf-create-avatar'},{'name': 'DashboardView', 'selector': 'cf-dashboard'},{'name': 'InventoryScene', 'selector': 'cf-inventory'},{'name': 'MarketplaceScene', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'PreviewAvatarAppearanceScene', 'selector': 'cf-preview-avatar-appearance'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'InventoryScene'};

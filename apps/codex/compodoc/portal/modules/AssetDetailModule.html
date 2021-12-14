@@ -163,10 +163,11 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
 import { NgModule } from &#x27;@angular/core&#x27;;
 import { BemModule } from &#x27;angular-bem&#x27;;
+import { AngularSvgIconModule } from &#x27;angular-svg-icon&#x27;;
 import { AssetDetailComponent } from &#x27;./asset-detail.component&#x27;;
 
 @NgModule({
-  imports: [CommonModule, BemModule],
+  imports: [CommonModule, BemModule, AngularSvgIconModule],
   declarations: [AssetDetailComponent],
   exports: [AssetDetailComponent],
 })

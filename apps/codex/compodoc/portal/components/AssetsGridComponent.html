@@ -94,10 +94,16 @@
             <tr>
                 <td class="col-md-3">styles</td>
                 <td class="col-md-9"><code>
+      $grid-xl-size: 180px;
+      $grid-l-size: 140px;
+      $grid-m-size: 140px;
+      $grid-s-size: 140px;
+      $grid-size: $grid-xl-size;
+
       .assets-grid {
         display: grid;
-        grid-template-columns: auto auto auto auto;
-        grid-template-rows: auto auto auto auto;
+        grid-template-columns: $grid-size $grid-size $grid-size $grid-size;
+        grid-template-rows: $grid-size $grid-size $grid-size $grid-size;
         column-gap: 10px;
         row-gap: 15px;
       }
@@ -106,25 +112,33 @@
         display: flex;
         flex-direction: column;
         border-radius: 10px;
-        border: 2px solid #303030;
-        max-height: 140px;
+        border: 5px solid #303030;
+        max-height: $grid-size;
+
+        &amp;--is-filled {
+          cursor: pointer;
+        }
 
         &amp;--active {
           border-color: #d1d36f;
         }
 
         &amp;__empty {
-          height: 140px;
+          height: $grid-size;
+          background: url(&#x27;https://www.toptal.com/designers/subtlepatterns/patterns/dark-honeycomb.png&#x27;);
+          background: url(&#x27;https://www.toptal.com/designers/subtlepatterns/patterns/mosaic.png&#x27;);
         }
 
         &amp;__name {
-          font-size: 1.2rem;
+          font-size: 1rem;
           font-weight: bold;
           text-align: center;
           /** position: relative; **/
           bottom: 30px;
           height: 36px;
           background: rgba(0, 0, 0, 0.6);
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
           span {
             padding: 0.25rem;
             width: 100%;
@@ -134,10 +148,51 @@
         }
 
         &amp;__image {
-          width: auto;
+          width: 100%;
           height: calc(100% - 36px);
           object-fit: cover;
-          border-radius: 10px;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          /** border-radius: 10px; **/
+        }
+      }
+
+      @media (max-width: 1200px) {
+        .assets-grid {
+          grid-template-columns: $grid-l-size $grid-l-size $grid-l-size;
+          grid-template-rows: $grid-l-size $grid-l-size $grid-l-size;
+        }
+        .assets-grid-item {
+          max-height: $grid-l-size;
+          &amp;__empty {
+            height: $grid-l-size;
+          }
+        }
+      }
+
+      @media (max-width: 960px) {
+        .assets-grid {
+          grid-template-columns: $grid-l-size $grid-l-size;
+          grid-template-rows: $grid-l-size $grid-l-size;
+        }
+        .assets-grid-item {
+          max-height: $grid-l-size;
+          &amp;__empty {
+            height: $grid-l-size;
+          }
+        }
+      }
+
+      @media (max-width: 860px) {
+        .assets-grid {
+          grid-template-columns: $grid-l-size;
+          grid-template-rows: $grid-l-size;
+        }
+        .assets-grid-item {
+          max-height: $grid-l-size;
+          &amp;__empty {
+            height: $grid-l-size;
+          }
         }
       }
     </code></td>
@@ -150,8 +205,13 @@
     block&#x3D;&quot;assets-grid-item&quot;
     *ngFor&#x3D;&quot;let slot of slots; let i &#x3D; index&quot;
     [ngClass]&#x3D;&quot;{
-      &#x27;assets-grid-item--active&#x27;: assets[i]?.id &#x3D;&#x3D;&#x3D; activeAssetId
+      &#x27;assets-grid-item--active&#x27;:
+        assets[i] &amp;&amp; assets[i]?.id &#x3D;&#x3D;&#x3D; activeAsset?.id
     }&quot;
+    [mod]&#x3D;&quot;{
+      &#x27;is-filled&#x27;: assets[i] ? true : false
+    }&quot;
+    (click)&#x3D;&quot;assetClick.emit(assets[i])&quot;
   &gt;
     &lt;ng-container *ngIf&#x3D;&quot;assets[i] as asset; else empty&quot;&gt;
       &lt;img elem&#x3D;&quot;image&quot; [src]&#x3D;&quot;asset.previewUrl&quot; /&gt;
@@ -192,9 +252,6 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#activeAssetId" >activeAssetId</a>
-                            </li>
-                            <li>
                                 <a href="#slots" >slots</a>
                             </li>
                         </ul>
@@ -211,12 +268,29 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#activeAsset" >activeAsset</a>
+                            </li>
+                            <li>
                                 <a href="#assets" >assets</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#assetClick" >assetClick</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
@@ -227,6 +301,27 @@
 
     <section>
     <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="activeAsset"></a>
+                        <b>activeAsset</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Asset</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">src/app/inventory/components/assets-grid/assets-grid.component.ts:140</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
@@ -243,7 +338,31 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/inventory/components/assets-grid/assets-grid.component.ts:79</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">src/app/inventory/components/assets-grid/assets-grid.component.ts:139</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="assetClick"></a>
+                        <b>assetClick</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">src/app/inventory/components/assets-grid/assets-grid.component.ts:142</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -252,43 +371,11 @@
 
 
 
-
     <section>
     
     <h3 id="inputs">
         Properties
     </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="activeAssetId"></a>
-                    <span class="name">
-                        <span ><b>activeAssetId</b></span>
-                        <a href="#activeAssetId"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;1&#x27;</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/app/inventory/components/assets-grid/assets-grid.component.ts:81</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -307,7 +394,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/app/inventory/components/assets-grid/assets-grid.component.ts:83</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">src/app/inventory/components/assets-grid/assets-grid.component.ts:144</a></div>
                         </td>
                     </tr>
 
@@ -320,7 +407,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
 import { Asset } from &#x27;@central-factory/core&#x27;;
 
 @Component({
@@ -331,8 +418,13 @@ import { Asset } from &#x27;@central-factory/core&#x27;;
         block&#x3D;&quot;assets-grid-item&quot;
         *ngFor&#x3D;&quot;let slot of slots; let i &#x3D; index&quot;
         [ngClass]&#x3D;&quot;{
-          &#x27;assets-grid-item--active&#x27;: assets[i]?.id &#x3D;&#x3D;&#x3D; activeAssetId
+          &#x27;assets-grid-item--active&#x27;:
+            assets[i] &amp;&amp; assets[i]?.id &#x3D;&#x3D;&#x3D; activeAsset?.id
         }&quot;
+        [mod]&#x3D;&quot;{
+          &#x27;is-filled&#x27;: assets[i] ? true : false
+        }&quot;
+        (click)&#x3D;&quot;assetClick.emit(assets[i])&quot;
       &gt;
         &lt;ng-container *ngIf&#x3D;&quot;assets[i] as asset; else empty&quot;&gt;
           &lt;img elem&#x3D;&quot;image&quot; [src]&#x3D;&quot;asset.previewUrl&quot; /&gt;
@@ -348,10 +440,16 @@ import { Asset } from &#x27;@central-factory/core&#x27;;
   &#x60;,
   styles: [
     &#x60;
+      $grid-xl-size: 180px;
+      $grid-l-size: 140px;
+      $grid-m-size: 140px;
+      $grid-s-size: 140px;
+      $grid-size: $grid-xl-size;
+
       .assets-grid {
         display: grid;
-        grid-template-columns: auto auto auto auto;
-        grid-template-rows: auto auto auto auto;
+        grid-template-columns: $grid-size $grid-size $grid-size $grid-size;
+        grid-template-rows: $grid-size $grid-size $grid-size $grid-size;
         column-gap: 10px;
         row-gap: 15px;
       }
@@ -360,25 +458,33 @@ import { Asset } from &#x27;@central-factory/core&#x27;;
         display: flex;
         flex-direction: column;
         border-radius: 10px;
-        border: 2px solid #303030;
-        max-height: 140px;
+        border: 5px solid #303030;
+        max-height: $grid-size;
+
+        &amp;--is-filled {
+          cursor: pointer;
+        }
 
         &amp;--active {
           border-color: #d1d36f;
         }
 
         &amp;__empty {
-          height: 140px;
+          height: $grid-size;
+          background: url(&#x27;https://www.toptal.com/designers/subtlepatterns/patterns/dark-honeycomb.png&#x27;);
+          background: url(&#x27;https://www.toptal.com/designers/subtlepatterns/patterns/mosaic.png&#x27;);
         }
 
         &amp;__name {
-          font-size: 1.2rem;
+          font-size: 1rem;
           font-weight: bold;
           text-align: center;
           /** position: relative; **/
           bottom: 30px;
           height: 36px;
           background: rgba(0, 0, 0, 0.6);
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
           span {
             padding: 0.25rem;
             width: 100%;
@@ -388,10 +494,51 @@ import { Asset } from &#x27;@central-factory/core&#x27;;
         }
 
         &amp;__image {
-          width: auto;
+          width: 100%;
           height: calc(100% - 36px);
           object-fit: cover;
-          border-radius: 10px;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          /** border-radius: 10px; **/
+        }
+      }
+
+      @media (max-width: 1200px) {
+        .assets-grid {
+          grid-template-columns: $grid-l-size $grid-l-size $grid-l-size;
+          grid-template-rows: $grid-l-size $grid-l-size $grid-l-size;
+        }
+        .assets-grid-item {
+          max-height: $grid-l-size;
+          &amp;__empty {
+            height: $grid-l-size;
+          }
+        }
+      }
+
+      @media (max-width: 960px) {
+        .assets-grid {
+          grid-template-columns: $grid-l-size $grid-l-size;
+          grid-template-rows: $grid-l-size $grid-l-size;
+        }
+        .assets-grid-item {
+          max-height: $grid-l-size;
+          &amp;__empty {
+            height: $grid-l-size;
+          }
+        }
+      }
+
+      @media (max-width: 860px) {
+        .assets-grid {
+          grid-template-columns: $grid-l-size;
+          grid-template-rows: $grid-l-size;
+        }
+        .assets-grid-item {
+          max-height: $grid-l-size;
+          &amp;__empty {
+            height: $grid-l-size;
+          }
         }
       }
     &#x60;,
@@ -399,8 +546,9 @@ import { Asset } from &#x27;@central-factory/core&#x27;;
 })
 export class AssetsGridComponent {
   @Input() assets!: Asset[];
+  @Input() activeAsset?: Asset;
 
-  activeAssetId &#x3D; &#x27;1&#x27;;
+  @Output() assetClick &#x3D; new EventEmitter&lt;Asset&gt;();
 
   slots &#x3D; new Array(16).fill(null);
 }
@@ -410,10 +558,16 @@ export class AssetsGridComponent {
 
     <div class="tab-pane fade " id="c-styleData">
             <pre class="line-numbers"><code class="language-scss">
+      $grid-xl-size: 180px;
+      $grid-l-size: 140px;
+      $grid-m-size: 140px;
+      $grid-s-size: 140px;
+      $grid-size: $grid-xl-size;
+
       .assets-grid {
         display: grid;
-        grid-template-columns: auto auto auto auto;
-        grid-template-rows: auto auto auto auto;
+        grid-template-columns: $grid-size $grid-size $grid-size $grid-size;
+        grid-template-rows: $grid-size $grid-size $grid-size $grid-size;
         column-gap: 10px;
         row-gap: 15px;
       }
@@ -422,25 +576,33 @@ export class AssetsGridComponent {
         display: flex;
         flex-direction: column;
         border-radius: 10px;
-        border: 2px solid #303030;
-        max-height: 140px;
+        border: 5px solid #303030;
+        max-height: $grid-size;
+
+        &amp;--is-filled {
+          cursor: pointer;
+        }
 
         &amp;--active {
           border-color: #d1d36f;
         }
 
         &amp;__empty {
-          height: 140px;
+          height: $grid-size;
+          background: url(&#x27;https://www.toptal.com/designers/subtlepatterns/patterns/dark-honeycomb.png&#x27;);
+          background: url(&#x27;https://www.toptal.com/designers/subtlepatterns/patterns/mosaic.png&#x27;);
         }
 
         &amp;__name {
-          font-size: 1.2rem;
+          font-size: 1rem;
           font-weight: bold;
           text-align: center;
           /** position: relative; **/
           bottom: 30px;
           height: 36px;
           background: rgba(0, 0, 0, 0.6);
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
           span {
             padding: 0.25rem;
             width: 100%;
@@ -450,10 +612,51 @@ export class AssetsGridComponent {
         }
 
         &amp;__image {
-          width: auto;
+          width: 100%;
           height: calc(100% - 36px);
           object-fit: cover;
-          border-radius: 10px;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          /** border-radius: 10px; **/
+        }
+      }
+
+      @media (max-width: 1200px) {
+        .assets-grid {
+          grid-template-columns: $grid-l-size $grid-l-size $grid-l-size;
+          grid-template-rows: $grid-l-size $grid-l-size $grid-l-size;
+        }
+        .assets-grid-item {
+          max-height: $grid-l-size;
+          &amp;__empty {
+            height: $grid-l-size;
+          }
+        }
+      }
+
+      @media (max-width: 960px) {
+        .assets-grid {
+          grid-template-columns: $grid-l-size $grid-l-size;
+          grid-template-rows: $grid-l-size $grid-l-size;
+        }
+        .assets-grid-item {
+          max-height: $grid-l-size;
+          &amp;__empty {
+            height: $grid-l-size;
+          }
+        }
+      }
+
+      @media (max-width: 860px) {
+        .assets-grid {
+          grid-template-columns: $grid-l-size;
+          grid-template-rows: $grid-l-size;
+        }
+        .assets-grid-item {
+          max-height: $grid-l-size;
+          &amp;__empty {
+            height: $grid-l-size;
+          }
         }
       }
     
@@ -485,7 +688,7 @@ export class AssetsGridComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div block="assets-grid">  <div    block="assets-grid-item"    *ngFor="let slot of slots; let i = index"    [ngClass]="{      \'assets-grid-item--active\': assets[i]?.id === activeAssetId    }"  >    <ng-container *ngIf="assets[i] as asset; else empty">      <img elem="image" [src]="asset.previewUrl" />      <div elem="name">        <span>{{ asset.name }}</span>      </div>    </ng-container>    <ng-template #empty>      <div elem="empty"></div>    </ng-template>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div block="assets-grid">  <div    block="assets-grid-item"    *ngFor="let slot of slots; let i = index"    [ngClass]="{      \'assets-grid-item--active\':        assets[i] && assets[i]?.id === activeAsset?.id    }"    [mod]="{      \'is-filled\': assets[i] ? true : false    }"    (click)="assetClick.emit(assets[i])"  >    <ng-container *ngIf="assets[i] as asset; else empty">      <img elem="image" [src]="asset.previewUrl" />      <div elem="name">        <span>{{ asset.name }}</span>      </div>    </ng-container>    <ng-template #empty>      <div elem="empty"></div>    </ng-template>  </div></div></div>'
     var COMPONENTS = [{'name': 'AssetDetailComponent', 'selector': 'cf-asset-detail'},{'name': 'AssetsGridComponent', 'selector': 'cf-assets-grid'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'CreateAvatarView', 'selector': 'cf-create-avatar'},{'name': 'DashboardView', 'selector': 'cf-dashboard'},{'name': 'InventoryScene', 'selector': 'cf-inventory'},{'name': 'MarketplaceScene', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'PreviewAvatarAppearanceScene', 'selector': 'cf-preview-avatar-appearance'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AssetsGridComponent'};

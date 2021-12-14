@@ -46,13 +46,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/AssetDetailModule.html" data-type="entity-link" >AssetDetailModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AssetDetailModule-fa57ee47882ab0768cf30e7bc00f1eb4"' : 'data-target="#xs-components-links-module-AssetDetailModule-fa57ee47882ab0768cf30e7bc00f1eb4"' }>
+                                            'data-target="#components-links-module-AssetDetailModule-eb7dd1eb58f815b5d7c8c85dd34640dd"' : 'data-target="#xs-components-links-module-AssetDetailModule-eb7dd1eb58f815b5d7c8c85dd34640dd"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AssetDetailModule-fa57ee47882ab0768cf30e7bc00f1eb4"' :
-                                            'id="xs-components-links-module-AssetDetailModule-fa57ee47882ab0768cf30e7bc00f1eb4"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AssetDetailModule-eb7dd1eb58f815b5d7c8c85dd34640dd"' :
+                                            'id="xs-components-links-module-AssetDetailModule-eb7dd1eb58f815b5d7c8c85dd34640dd"' }>
                                             <li class="link">
                                                 <a href="components/AssetDetailComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AssetDetailComponent</a>
                                             </li>
