@@ -39,6 +39,11 @@ export const routes: Routes = [
             (m) => m.MarketplaceModule
           ),
       },
+      {
+        path: 'settings',
+        loadChildren: () =>
+          import('./settings/settings.module').then((m) => m.SettingsModule),
+      },
     ],
   },
   // {

@@ -53,7 +53,8 @@
 
 
   &__icon .icon__svg {
-    fill: colors.$secondary-darkest;
+    fill: var(--color-secondary);
+    // fill: var(--color-secondary-darkest);
   }
 
 }

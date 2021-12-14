@@ -57,7 +57,7 @@ import { Asset } from '@central-factory/core';
         }
 
         &--active {
-          border-color: #d1d36f;
+          border-color: var(--color-secondary);
         }
 
         &__empty {
