@@ -65,9 +65,6 @@
                         <li>
                             <a href="#environment" title="src/environments/environment.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(src/.../environment.ts)</a>
                         </li>
-                        <li>
-                            <a href="#previewAvatarAppearanceAframeScene" title="src/app/selected-avatar/components/preview-avatar-appearance/preview-avatar-appearance.aframe-scene.ts" ><b>previewAvatarAppearanceAframeScene</b>&nbsp;&nbsp;&nbsp;(src/.../preview-avatar-appearance.aframe-scene.ts)</a>
-                        </li>
                     </ul>
                 </td>
             </tr>
@@ -155,96 +152,6 @@
 </div>
                 </td>
             </tr>
-
-        </tbody>
-    </table>
-</section>
-    <h3>src/app/selected-avatar/components/preview-avatar-appearance/preview-avatar-appearance.aframe-scene.ts</h3>
-    <section>
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="previewAvatarAppearanceAframeScene"></a>
-                    <span class="name">
-                        <span ><b>previewAvatarAppearanceAframeScene</b></span>
-                        <a href="#previewAvatarAppearanceAframeScene"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>(
-  appearance: Appearance,
-  width: string,
-  height: string
-) &#x3D;&gt; &#x60;
-  &lt;!DOCTYPE html&gt;
-  &lt;html&gt;
-    &lt;head&gt;
-      &lt;style&gt;
-        body {
-          margin: 0;
-          padding: 0;
-        }
-        html, body, a-scene {
-          width: ${width};
-          height: ${height};
-        }
-      &lt;/style&gt;
-      &lt;script src&#x3D;&quot;https://cdnjs.cloudflare.com/ajax/libs/aframe/1.2.0/aframe.min.js&quot; integrity&#x3D;&quot;sha512-/gO16YMp20RIqCZXZyvMlzALQqEoiDU0akshw25wFiXCRGl+0p/HPWkOd8HWFn6bnatGhxakGLfYhWaPPVQIyA&#x3D;&#x3D;&quot; crossorigin&#x3D;&quot;anonymous&quot; referrerpolicy&#x3D;&quot;no-referrer&quot;&gt;&lt;/script&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-
-
-      &lt;a-scene
-          id&#x3D;&quot;${appearance.src}&quot;
-          style&#x3D;&quot;width: ${width}; height: ${height};&quot;
-          embedded
-          #scene
-        &gt;
-          &lt;!-- Skybox --&gt;
-          &lt;!-- a-sky color&#x3D;&quot;#9fbfff&quot;&gt;&lt;/a-sky --&gt;
-
-          &lt;!-- Camera --&gt;
-          &lt;a-entity
-            camera
-            id&#x3D;&quot;camera-${appearance.src}&quot;
-            position&#x3D;&quot;${appearance.previewCamera?.position || &#x27;0 1.5 0.7&#x27;}&quot;
-            rotation&#x3D;&quot;${appearance.previewCamera?.rotation || &#x27;-5 0 0&#x27;}&quot;
-            scale&#x3D;&quot;${appearance.previewCamera?.scale || &#x27;0.4 0.4 0.4&#x27;}&quot;
-          &gt;&lt;/a-entity&gt;
-
-          &lt;!-- Lights --&gt;
-          &lt;a-entity
-            light&#x3D;&quot;type: ambient; color: #EEE&quot;
-            id&#x3D;&quot;light-${appearance.src}&quot;
-          &gt;&lt;/a-entity&gt;
-          &lt;a-entity
-            light&#x3D;&quot;type: point; intensity: 0.35; distance: 50; decay: 2&quot;
-            position&#x3D;&quot;0 10 0&quot;
-            id&#x3D;&quot;light2-${appearance.src}&quot;
-          &gt;&lt;/a-entity&gt;
-          &lt;a-entity
-            light&#x3D;&quot;type: directional; color: #FFF; intensity: 0.4&quot;
-            position&#x3D;&quot;-0.5 1 1&quot;
-            id&#x3D;&quot;light3-${appearance.src}&quot;
-          &gt;&lt;/a-entity&gt;
-
-          &lt;a-entity
-            [attr.id]&#x3D;&quot;&#x27;avatar-&#x27; + src&quot;
-            position&#x3D;&quot;0 0 0&quot;
-            scale&#x3D;&quot;1 1 1&quot;
-            rotation&#x3D;&quot;0 0 0&quot;
-            gltf-model&#x3D;&quot;url(${appearance.src})&quot;
-          &gt;&lt;/a-entity&gt;
-        &lt;/a-scene&gt;
-
-    &lt;/BODY&gt;
-&#x60;</code>
-                    </td>
-                </tr>
-
 
         </tbody>
     </table>

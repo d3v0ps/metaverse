@@ -77,111 +77,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                             </li>
                             <li class="link">
-                                <a href="modules/AvatarAppearancesModule.html" data-type="entity-link" >AvatarAppearancesModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AvatarAppearancesModule-375092de34777aea6fc873973c55d3c5"' : 'data-target="#xs-components-links-module-AvatarAppearancesModule-375092de34777aea6fc873973c55d3c5"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarAppearancesModule-375092de34777aea6fc873973c55d3c5"' :
-                                            'id="xs-components-links-module-AvatarAppearancesModule-375092de34777aea6fc873973c55d3c5"' }>
-                                            <li class="link">
-                                                <a href="components/AvatarAppearancesComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarAppearancesComponent</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                            <li class="link">
-                                <a href="modules/AvatarOverviewModule.html" data-type="entity-link" >AvatarOverviewModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AvatarOverviewModule-f5c43ae9e534376bb33b739e896ab251"' : 'data-target="#xs-components-links-module-AvatarOverviewModule-f5c43ae9e534376bb33b739e896ab251"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarOverviewModule-f5c43ae9e534376bb33b739e896ab251"' :
-                                            'id="xs-components-links-module-AvatarOverviewModule-f5c43ae9e534376bb33b739e896ab251"' }>
-                                            <li class="link">
-                                                <a href="components/AvatarOverviewComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarOverviewComponent</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                            <li class="link">
-                                <a href="modules/AvatarsCarouselModule.html" data-type="entity-link" >AvatarsCarouselModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AvatarsCarouselModule-e19738cd6157a4c592a1b6a923d21aa9"' : 'data-target="#xs-components-links-module-AvatarsCarouselModule-e19738cd6157a4c592a1b6a923d21aa9"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarsCarouselModule-e19738cd6157a4c592a1b6a923d21aa9"' :
-                                            'id="xs-components-links-module-AvatarsCarouselModule-e19738cd6157a4c592a1b6a923d21aa9"' }>
-                                            <li class="link">
-                                                <a href="components/AvatarsCarouselComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarsCarouselComponent</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                            <li class="link">
-                                <a href="modules/AvatarScopesModule.html" data-type="entity-link" >AvatarScopesModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AvatarScopesModule-36f7b3e4a0e2d703adcc77efedf890e6"' : 'data-target="#xs-components-links-module-AvatarScopesModule-36f7b3e4a0e2d703adcc77efedf890e6"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarScopesModule-36f7b3e4a0e2d703adcc77efedf890e6"' :
-                                            'id="xs-components-links-module-AvatarScopesModule-36f7b3e4a0e2d703adcc77efedf890e6"' }>
-                                            <li class="link">
-                                                <a href="components/AvatarScopesComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarScopesComponent</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                            <li class="link">
-                                <a href="modules/AvatarSkillsModule.html" data-type="entity-link" >AvatarSkillsModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AvatarSkillsModule-89cf0086527a888a8dc62d83877b7206"' : 'data-target="#xs-components-links-module-AvatarSkillsModule-89cf0086527a888a8dc62d83877b7206"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarSkillsModule-89cf0086527a888a8dc62d83877b7206"' :
-                                            'id="xs-components-links-module-AvatarSkillsModule-89cf0086527a888a8dc62d83877b7206"' }>
-                                            <li class="link">
-                                                <a href="components/AvatarSkillsComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarSkillsComponent</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                            <li class="link">
-                                <a href="modules/CreateAvatarModule.html" data-type="entity-link" >CreateAvatarModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-CreateAvatarModule-7b940a60b37068c7e6e5bcbbe7f2010c"' : 'data-target="#xs-components-links-module-CreateAvatarModule-7b940a60b37068c7e6e5bcbbe7f2010c"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CreateAvatarModule-7b940a60b37068c7e6e5bcbbe7f2010c"' :
-                                            'id="xs-components-links-module-CreateAvatarModule-7b940a60b37068c7e6e5bcbbe7f2010c"' }>
-                                            <li class="link">
-                                                <a href="components/CreateAvatarScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CreateAvatarScene</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                            <li class="link">
-                                <a href="modules/CreateAvatarRoutingModule.html" data-type="entity-link" >CreateAvatarRoutingModule</a>
-                            </li>
-                            <li class="link">
                                 <a href="modules/DashboardModule.html" data-type="entity-link" >DashboardModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
@@ -262,63 +157,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/PortalRoutingModule.html" data-type="entity-link" >PortalRoutingModule</a>
                             </li>
                             <li class="link">
-                                <a href="modules/PreviewAvatarAppearanceModule.html" data-type="entity-link" >PreviewAvatarAppearanceModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-PreviewAvatarAppearanceModule-74c3f8e3efbbec73880200ed2b68aa93"' : 'data-target="#xs-components-links-module-PreviewAvatarAppearanceModule-74c3f8e3efbbec73880200ed2b68aa93"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PreviewAvatarAppearanceModule-74c3f8e3efbbec73880200ed2b68aa93"' :
-                                            'id="xs-components-links-module-PreviewAvatarAppearanceModule-74c3f8e3efbbec73880200ed2b68aa93"' }>
-                                            <li class="link">
-                                                <a href="components/PreviewAvatarAppearanceScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >PreviewAvatarAppearanceScene</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                            <li class="link">
-                                <a href="modules/SelectAvatarModule.html" data-type="entity-link" >SelectAvatarModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SelectAvatarModule-88969940e35747fadcfdda1ca0b4a3b4"' : 'data-target="#xs-components-links-module-SelectAvatarModule-88969940e35747fadcfdda1ca0b4a3b4"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SelectAvatarModule-88969940e35747fadcfdda1ca0b4a3b4"' :
-                                            'id="xs-components-links-module-SelectAvatarModule-88969940e35747fadcfdda1ca0b4a3b4"' }>
-                                            <li class="link">
-                                                <a href="components/SelectAvatarScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SelectAvatarScene</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                            <li class="link">
-                                <a href="modules/SelectAvatarRoutingModule.html" data-type="entity-link" >SelectAvatarRoutingModule</a>
-                            </li>
-                            <li class="link">
-                                <a href="modules/SelectedAvatarModule.html" data-type="entity-link" >SelectedAvatarModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SelectedAvatarModule-0dbbe87f13072fc6251555f6ac189d69"' : 'data-target="#xs-components-links-module-SelectedAvatarModule-0dbbe87f13072fc6251555f6ac189d69"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SelectedAvatarModule-0dbbe87f13072fc6251555f6ac189d69"' :
-                                            'id="xs-components-links-module-SelectedAvatarModule-0dbbe87f13072fc6251555f6ac189d69"' }>
-                                            <li class="link">
-                                                <a href="components/SelectedAvatarScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SelectedAvatarScene</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                            <li class="link">
-                                <a href="modules/SelectedAvatarRoutingModule.html" data-type="entity-link" >SelectedAvatarRoutingModule</a>
-                            </li>
-                            <li class="link">
                                 <a href="modules/SettingsModule.html" data-type="entity-link" >SettingsModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
@@ -341,25 +179,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                 </ul>
                 </li>
                     <li class="chapter">
-                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#classes-links"' :
-                            'data-target="#xs-classes-links"' }>
-                            <span class="icon ion-ios-paper"></span>
-                            <span>Classes</span>
-                            <span class="icon ion-ios-arrow-down"></span>
-                        </div>
-                        <ul class="links collapse " ${ isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"' }>
-                            <li class="link">
-                                <a href="classes/AvatarAppeareancesInput.html" data-type="entity-link" >AvatarAppeareancesInput</a>
-                            </li>
-                            <li class="link">
-                                <a href="classes/AvatarScopesInput.html" data-type="entity-link" >AvatarScopesInput</a>
-                            </li>
-                            <li class="link">
-                                <a href="classes/AvatarSkillsInput.html" data-type="entity-link" >AvatarSkillsInput</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#interfaces-links"' :
                             'data-target="#xs-interfaces-links"' }>
                             <span class="icon ion-md-information-circle-outline"></span>
@@ -368,16 +187,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
                             <li class="link">
-                                <a href="interfaces/AvatarAppearancesForm.html" data-type="entity-link" >AvatarAppearancesForm</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/AvatarOverviewInput.html" data-type="entity-link" >AvatarOverviewInput</a>
-                            </li>
-                            <li class="link">
                                 <a href="interfaces/Environment.html" data-type="entity-link" >Environment</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/FormAppearance.html" data-type="entity-link" >FormAppearance</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/PortalStateModel.html" data-type="entity-link" >PortalStateModel</a>
@@ -392,9 +202,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"' }>
-                            <li class="link">
-                                <a href="miscellaneous/typealiases.html" data-type="entity-link">Type aliases</a>
-                            </li>
                             <li class="link">
                                 <a href="miscellaneous/variables.html" data-type="entity-link">Variables</a>
                             </li>
