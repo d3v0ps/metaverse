@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@central-factory/agent-avatars/*": ["apps/agent-avatars/src/app/*"],
       "@central-factory/assets": ["libs/assets/src/index.ts"],
       "@central-factory/assets/*": ["libs/assets/src/lib/*"],
       "@central-factory/avatars": ["libs/avatars/src/index.ts"],

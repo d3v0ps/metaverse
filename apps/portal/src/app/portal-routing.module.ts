@@ -23,23 +23,23 @@ export const routes: Routes = [
       {
         path: 'select-avatar',
         loadChildren: () =>
-          import('./select-avatar/select-avatar.module').then(
-            (m) => m.SelectAvatarModule
-          ),
+          import(
+            '@central-factory/agent-avatars/scenes/select-avatar/select-avatar.module'
+          ).then((m) => m.SelectAvatarModule),
       },
       {
         path: 'create-avatar',
         loadChildren: () =>
-          import('./create-avatar/create-avatar.module').then(
-            (m) => m.CreateAvatarModule
-          ),
+          import(
+            '@central-factory/agent-avatars/scenes/create-avatar/create-avatar.module'
+          ).then((m) => m.CreateAvatarModule),
       },
       {
         path: 'selected-avatar',
         loadChildren: () =>
-          import('./selected-avatar/selected-avatar.module').then(
-            (m) => m.SelectedAvatarModule
-          ),
+          import(
+            '@central-factory/agent-avatars/scenes/selected-avatar/selected-avatar.module'
+          ).then((m) => m.SelectedAvatarModule),
       },
       {
         path: 'inventory',

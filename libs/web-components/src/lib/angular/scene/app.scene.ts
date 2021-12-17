@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { SelectedAvatarState } from '@central-factory/agent-avatars/states/selected-avatar/selected-avatar.state';
 import { Avatar } from '@central-factory/core';
+import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 export interface SidebarItem {
@@ -13,93 +15,96 @@ export interface SidebarItem {
 @Component({
   selector: 'cf-scene',
   template: `
-    <div block="scene">
-      <div class="scene__body">
-        <cf-sidebar-container
-          *ngIf="selectedAvatar; else notSelectedAvatarLayout"
-        >
-          <!-- A sidebar -->
-          <cf-sidebar
-            [(opened)]="sidebarIsOpen"
-            [dock]="true"
-            [dockedSize]="'80px'"
-            [showBackdrop]="true"
-            [closeOnClickBackdrop]="true"
-            [closeOnClickOutside]="true"
+    <ng-container
+      *ngIf="{
+        selectedAvatar: selectedAvatar$ | async
+      } as data"
+    >
+      <div block="scene">
+        <div class="scene__body">
+          <cf-sidebar-container
+            *ngIf="data.selectedAvatar; else notSelectedAvatarLayout"
           >
-            <div style="margin-top: 20px">
-              <a
-                [routerLink]="['/selected-avatar']"
-                class="d-block"
-                block="sidebarItem"
-              >
-                <div elem="text">
-                  <span elem="text-content">Account</span>
-                </div>
-                <img
-                  [src]="selectedAvatar.selectedAppearance.smallPreviewUrl"
-                  style="
-                  width: 55px;
-                  height: 55px;
-                  border-radius: 50%;
-                  margin-top: 15px;"
-                />
-              </a>
-
-              <ng-container *ngFor="let item of sidebarItems">
+            <!-- A sidebar -->
+            <cf-sidebar
+              [(opened)]="sidebarIsOpen"
+              [dock]="true"
+              [dockedSize]="'80px'"
+              [showBackdrop]="true"
+              [closeOnClickBackdrop]="true"
+              [closeOnClickOutside]="true"
+            >
+              <div style="margin-top: 20px">
                 <a
-                  *ngIf="selectedAvatar"
-                  [routerLink]="item.routerLink"
+                  [routerLink]="['/select-avatar']"
                   class="d-block"
                   block="sidebarItem"
                 >
                   <div elem="text">
-                    <span elem="text-content">{{ item.name }}</span>
+                    <span elem="text-content">Account</span>
                   </div>
-                  <button
-                    block="button"
-                    mod="fab"
-                    [ngClass]="{
-                      'button--primary': item.active,
-                      'button--secondary': !item.active
-                    }"
-                    style="margin-top: 15px;"
-                  >
-                    <svg-icon
-                      [src]="item.icon"
-                      elem="icon"
-                      [svgClass]="'icon__svg'"
-                    ></svg-icon>
-                  </button>
+                  <img
+                    elem="image"
+                    [src]="
+                      data.selectedAvatar.selectedAppearance.smallPreviewUrl
+                    "
+                  />
                 </a>
-              </ng-container>
 
-              <router-outlet name="sidebar"></router-outlet>
-            </div>
-          </cf-sidebar>
+                <ng-container *ngFor="let item of sidebarItems">
+                  <a
+                    [routerLink]="item.routerLink"
+                    class="d-block"
+                    block="sidebarItem"
+                  >
+                    <div elem="text">
+                      <span elem="text-content">{{ item.name }}</span>
+                    </div>
+                    <button
+                      block="button"
+                      mod="fab"
+                      [ngClass]="{
+                        'button--primary': item.active,
+                        'button--secondary': !item.active
+                      }"
+                      style="margin-top: 15px;"
+                    >
+                      <svg-icon
+                        [src]="item.icon"
+                        elem="icon"
+                        [svgClass]="'icon__svg'"
+                      ></svg-icon>
+                    </button>
+                  </a>
+                </ng-container>
 
-          <div cf-sidebar-content>
-            <div class="scene__content">
-              <router-outlet></router-outlet>
-            </div>
-          </div>
-        </cf-sidebar-container>
+                <router-outlet name="sidebar"></router-outlet>
+              </div>
+            </cf-sidebar>
 
-        <ng-template #notSelectedAvatarLayout>
-          <div class="scene__container">
-            <div class="scene__content">
-              <router-outlet></router-outlet>
+            <div cf-sidebar-content>
+              <div class="scene__content">
+                <router-outlet></router-outlet>
+              </div>
             </div>
-          </div>
-        </ng-template>
+          </cf-sidebar-container>
+
+          <ng-template #notSelectedAvatarLayout>
+            <div class="scene__container">
+              <div class="scene__content">
+                <router-outlet></router-outlet>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+        <cf-navbar
+          elem="navbar"
+          [title]="title"
+          (titleClick)="sidebarIsOpen = !sidebarIsOpen"
+        >
+        </cf-navbar>
       </div>
-      <cf-navbar
-        elem="navbar"
-        [title]="title"
-        (titleClick)="sidebarIsOpen = !sidebarIsOpen"
-      >
-      </cf-navbar>
-    </div>
+    </ng-container>
   `,
   styles: [
     `
@@ -123,6 +128,16 @@ export interface SidebarItem {
           vertical-align: top;
         }
 
+        &__image {
+          width: 55px;
+          height: 55px;
+          border-radius: 50%;
+          margin-top: 15px;
+          &:hover {
+            border: 3px solid var(--color-primary);
+          }
+        }
+
         &__text-content {
           padding-left: 15px;
           color: white;
@@ -130,6 +145,18 @@ export interface SidebarItem {
           display: inline-block;
           vertical-align: middle;
           line-height: 55px;
+        }
+
+        .button {
+          &--secondary {
+            &:hover {
+              background-color: var(--color-primary);
+              color: var(--color-light);
+              .icon__svg {
+                fill: var(--color-light);
+              }
+            }
+          }
         }
       }
     `,
@@ -172,19 +199,12 @@ export class AppScene implements OnInit {
     },
   ];
 
-  selectedAvatar?: Avatar;
-  // selectedAvatar = {
-  //   welcomeMessage: "Hi! I'm a developing avatar!",
-  //   name: 'John',
-  //   title: 'Software Engineer',
-  //   selectedAppearance: {
-  //     format: 'readyplayer.me',
-  //     src: 'assets/avatar-large.png',
-  //     smallPreviewUrl: 'assets/avatar-144.png',
-  //   },
-  // };
+  selectedAvatar$: Observable<Avatar> = this.selectedAvatarState.avatar$;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private selectedAvatarState: SelectedAvatarState
+  ) {}
 
   ngOnInit() {
     this.setSidebarItemsActive();
