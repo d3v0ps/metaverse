@@ -104,12 +104,29 @@
         height: calc(100vh - 44px);
       }
 
+      .scene__container {
+        height: 100%;
+        width: 100%;
+        /* margin: 0; */
+        padding: 0;
+        overflow: auto;
+      }
+
       .sidebarItem {
         &amp;__text {
+          display: inline-block;
+          height: 55px;
+          margin-top: 15px;
+          vertical-align: top;
+        }
+
+        &amp;__text-content {
           padding-left: 15px;
           color: white;
           width: 200px;
           display: inline-block;
+          vertical-align: middle;
+          line-height: 55px;
         }
       }
     </code></td>
@@ -119,7 +136,9 @@
                 <td class="col-md-3">template</td>
                 <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div block&#x3D;&quot;scene&quot;&gt;
   &lt;div class&#x3D;&quot;scene__body&quot;&gt;
-    &lt;cf-sidebar-container&gt;
+    &lt;cf-sidebar-container
+      *ngIf&#x3D;&quot;selectedAvatar; else notSelectedAvatarLayout&quot;
+    &gt;
       &lt;!-- A sidebar --&gt;
       &lt;cf-sidebar
         [(opened)]&#x3D;&quot;sidebarIsOpen&quot;
@@ -129,47 +148,55 @@
         [closeOnClickBackdrop]&#x3D;&quot;true&quot;
         [closeOnClickOutside]&#x3D;&quot;true&quot;
       &gt;
-        &lt;a
-          [routerLink]&#x3D;&quot;[&#x27;/selected-avatar&#x27;]&quot;
-          class&#x3D;&quot;d-block&quot;
-          block&#x3D;&quot;sidebarItem&quot;
-        &gt;
-          &lt;span elem&#x3D;&quot;text&quot;&gt;Account&lt;/span&gt;
-          &lt;img
-            src&#x3D;&quot;assets/avatar-144.png&quot;
-            style&#x3D;&quot;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            margin-top: 35px;&quot;
-          /&gt;
-        &lt;/a&gt;
-
-        &lt;a
-          *ngFor&#x3D;&quot;let item of sidebarItems&quot;
-          [routerLink]&#x3D;&quot;item.routerLink&quot;
-          class&#x3D;&quot;d-block&quot;
-          block&#x3D;&quot;sidebarItem&quot;
-        &gt;
-          &lt;span elem&#x3D;&quot;text&quot;&gt;{{ item.name }}&lt;/span&gt;
-          &lt;button
-            block&#x3D;&quot;button&quot;
-            mod&#x3D;&quot;fab&quot;
-            [ngClass]&#x3D;&quot;{
-              &#x27;button--primary&#x27;: item.active,
-              &#x27;button--secondary&#x27;: !item.active
-            }&quot;
-            style&#x3D;&quot;margin-top: 15px;&quot;
+        &lt;div style&#x3D;&quot;margin-top: 20px&quot;&gt;
+          &lt;a
+            [routerLink]&#x3D;&quot;[&#x27;/selected-avatar&#x27;]&quot;
+            class&#x3D;&quot;d-block&quot;
+            block&#x3D;&quot;sidebarItem&quot;
           &gt;
-            &lt;svg-icon
-              [src]&#x3D;&quot;item.icon&quot;
-              elem&#x3D;&quot;icon&quot;
-              [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-            &gt;&lt;/svg-icon&gt;
-          &lt;/button&gt;
-        &lt;/a&gt;
+            &lt;div elem&#x3D;&quot;text&quot;&gt;
+              &lt;span elem&#x3D;&quot;text-content&quot;&gt;Account&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;img
+              [src]&#x3D;&quot;selectedAvatar.selectedAppearance.smallPreviewUrl&quot;
+              style&#x3D;&quot;
+              width: 55px;
+              height: 55px;
+              border-radius: 50%;
+              margin-top: 15px;&quot;
+            /&gt;
+          &lt;/a&gt;
 
-        &lt;router-outlet name&#x3D;&quot;sidebar&quot;&gt;&lt;/router-outlet&gt;
+          &lt;ng-container *ngFor&#x3D;&quot;let item of sidebarItems&quot;&gt;
+            &lt;a
+              *ngIf&#x3D;&quot;selectedAvatar&quot;
+              [routerLink]&#x3D;&quot;item.routerLink&quot;
+              class&#x3D;&quot;d-block&quot;
+              block&#x3D;&quot;sidebarItem&quot;
+            &gt;
+              &lt;div elem&#x3D;&quot;text&quot;&gt;
+                &lt;span elem&#x3D;&quot;text-content&quot;&gt;{{ item.name }}&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;button
+                block&#x3D;&quot;button&quot;
+                mod&#x3D;&quot;fab&quot;
+                [ngClass]&#x3D;&quot;{
+                  &#x27;button--primary&#x27;: item.active,
+                  &#x27;button--secondary&#x27;: !item.active
+                }&quot;
+                style&#x3D;&quot;margin-top: 15px;&quot;
+              &gt;
+                &lt;svg-icon
+                  [src]&#x3D;&quot;item.icon&quot;
+                  elem&#x3D;&quot;icon&quot;
+                  [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+                &gt;&lt;/svg-icon&gt;
+              &lt;/button&gt;
+            &lt;/a&gt;
+          &lt;/ng-container&gt;
+
+          &lt;router-outlet name&#x3D;&quot;sidebar&quot;&gt;&lt;/router-outlet&gt;
+        &lt;/div&gt;
       &lt;/cf-sidebar&gt;
 
       &lt;div cf-sidebar-content&gt;
@@ -178,6 +205,14 @@
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/cf-sidebar-container&gt;
+
+    &lt;ng-template #notSelectedAvatarLayout&gt;
+      &lt;div class&#x3D;&quot;scene__container&quot;&gt;
+        &lt;div class&#x3D;&quot;scene__content&quot;&gt;
+          &lt;router-outlet&gt;&lt;/router-outlet&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/ng-template&gt;
   &lt;/div&gt;
   &lt;cf-navbar
     elem&#x3D;&quot;navbar&quot;
@@ -213,6 +248,10 @@
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#selectedAvatar" >selectedAvatar</a>
+                            </li>
                             <li>
                                 <a href="#sidebarIsOpen" >sidebarIsOpen</a>
                             </li>
@@ -264,7 +303,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">src/lib/angular/scene/app.scene.ts:137</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="175" class="link-to-prism">src/lib/angular/scene/app.scene.ts:175</a></div>
                             </td>
                         </tr>
 
@@ -331,8 +370,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="141"
-                            class="link-to-prism">src/lib/angular/scene/app.scene.ts:141</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="189"
+                            class="link-to-prism">src/lib/angular/scene/app.scene.ts:189</a></div>
                 </td>
             </tr>
 
@@ -370,8 +409,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="149"
-                            class="link-to-prism">src/lib/angular/scene/app.scene.ts:149</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="197"
+                            class="link-to-prism">src/lib/angular/scene/app.scene.ts:197</a></div>
                 </td>
             </tr>
 
@@ -397,6 +436,33 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="selectedAvatar"></a>
+                    <span class="name">
+                            <span class="modifier">Optional</span>
+                        <span ><b>selectedAvatar</b></span>
+                        <a href="#selectedAvatar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Avatar</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="175" class="link-to-prism">src/lib/angular/scene/app.scene.ts:175</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="sidebarIsOpen"></a>
                     <span class="name">
                         <span ><b>sidebarIsOpen</b></span>
@@ -411,7 +477,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/lib/angular/scene/app.scene.ts:104</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">src/lib/angular/scene/app.scene.ts:140</a></div>
                         </td>
                     </tr>
 
@@ -473,7 +539,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/lib/angular/scene/app.scene.ts:106</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">src/lib/angular/scene/app.scene.ts:142</a></div>
                         </td>
                     </tr>
 
@@ -504,7 +570,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/lib/angular/scene/app.scene.ts:103</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">src/lib/angular/scene/app.scene.ts:139</a></div>
                         </td>
                     </tr>
 
@@ -519,6 +585,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { NavigationEnd, Router } from &#x27;@angular/router&#x27;;
+import { Avatar } from &#x27;@central-factory/core&#x27;;
 import { filter } from &#x27;rxjs/operators&#x27;;
 
 export interface SidebarItem {
@@ -533,7 +600,9 @@ export interface SidebarItem {
   template: &#x60;
     &lt;div block&#x3D;&quot;scene&quot;&gt;
       &lt;div class&#x3D;&quot;scene__body&quot;&gt;
-        &lt;cf-sidebar-container&gt;
+        &lt;cf-sidebar-container
+          *ngIf&#x3D;&quot;selectedAvatar; else notSelectedAvatarLayout&quot;
+        &gt;
           &lt;!-- A sidebar --&gt;
           &lt;cf-sidebar
             [(opened)]&#x3D;&quot;sidebarIsOpen&quot;
@@ -543,47 +612,55 @@ export interface SidebarItem {
             [closeOnClickBackdrop]&#x3D;&quot;true&quot;
             [closeOnClickOutside]&#x3D;&quot;true&quot;
           &gt;
-            &lt;a
-              [routerLink]&#x3D;&quot;[&#x27;/selected-avatar&#x27;]&quot;
-              class&#x3D;&quot;d-block&quot;
-              block&#x3D;&quot;sidebarItem&quot;
-            &gt;
-              &lt;span elem&#x3D;&quot;text&quot;&gt;Account&lt;/span&gt;
-              &lt;img
-                src&#x3D;&quot;assets/avatar-144.png&quot;
-                style&#x3D;&quot;
-                width: 55px;
-                height: 55px;
-                border-radius: 50%;
-                margin-top: 35px;&quot;
-              /&gt;
-            &lt;/a&gt;
-
-            &lt;a
-              *ngFor&#x3D;&quot;let item of sidebarItems&quot;
-              [routerLink]&#x3D;&quot;item.routerLink&quot;
-              class&#x3D;&quot;d-block&quot;
-              block&#x3D;&quot;sidebarItem&quot;
-            &gt;
-              &lt;span elem&#x3D;&quot;text&quot;&gt;{{ item.name }}&lt;/span&gt;
-              &lt;button
-                block&#x3D;&quot;button&quot;
-                mod&#x3D;&quot;fab&quot;
-                [ngClass]&#x3D;&quot;{
-                  &#x27;button--primary&#x27;: item.active,
-                  &#x27;button--secondary&#x27;: !item.active
-                }&quot;
-                style&#x3D;&quot;margin-top: 15px;&quot;
+            &lt;div style&#x3D;&quot;margin-top: 20px&quot;&gt;
+              &lt;a
+                [routerLink]&#x3D;&quot;[&#x27;/selected-avatar&#x27;]&quot;
+                class&#x3D;&quot;d-block&quot;
+                block&#x3D;&quot;sidebarItem&quot;
               &gt;
-                &lt;svg-icon
-                  [src]&#x3D;&quot;item.icon&quot;
-                  elem&#x3D;&quot;icon&quot;
-                  [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-                &gt;&lt;/svg-icon&gt;
-              &lt;/button&gt;
-            &lt;/a&gt;
+                &lt;div elem&#x3D;&quot;text&quot;&gt;
+                  &lt;span elem&#x3D;&quot;text-content&quot;&gt;Account&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;img
+                  [src]&#x3D;&quot;selectedAvatar.selectedAppearance.smallPreviewUrl&quot;
+                  style&#x3D;&quot;
+                  width: 55px;
+                  height: 55px;
+                  border-radius: 50%;
+                  margin-top: 15px;&quot;
+                /&gt;
+              &lt;/a&gt;
 
-            &lt;router-outlet name&#x3D;&quot;sidebar&quot;&gt;&lt;/router-outlet&gt;
+              &lt;ng-container *ngFor&#x3D;&quot;let item of sidebarItems&quot;&gt;
+                &lt;a
+                  *ngIf&#x3D;&quot;selectedAvatar&quot;
+                  [routerLink]&#x3D;&quot;item.routerLink&quot;
+                  class&#x3D;&quot;d-block&quot;
+                  block&#x3D;&quot;sidebarItem&quot;
+                &gt;
+                  &lt;div elem&#x3D;&quot;text&quot;&gt;
+                    &lt;span elem&#x3D;&quot;text-content&quot;&gt;{{ item.name }}&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;button
+                    block&#x3D;&quot;button&quot;
+                    mod&#x3D;&quot;fab&quot;
+                    [ngClass]&#x3D;&quot;{
+                      &#x27;button--primary&#x27;: item.active,
+                      &#x27;button--secondary&#x27;: !item.active
+                    }&quot;
+                    style&#x3D;&quot;margin-top: 15px;&quot;
+                  &gt;
+                    &lt;svg-icon
+                      [src]&#x3D;&quot;item.icon&quot;
+                      elem&#x3D;&quot;icon&quot;
+                      [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+                    &gt;&lt;/svg-icon&gt;
+                  &lt;/button&gt;
+                &lt;/a&gt;
+              &lt;/ng-container&gt;
+
+              &lt;router-outlet name&#x3D;&quot;sidebar&quot;&gt;&lt;/router-outlet&gt;
+            &lt;/div&gt;
           &lt;/cf-sidebar&gt;
 
           &lt;div cf-sidebar-content&gt;
@@ -592,6 +669,14 @@ export interface SidebarItem {
             &lt;/div&gt;
           &lt;/div&gt;
         &lt;/cf-sidebar-container&gt;
+
+        &lt;ng-template #notSelectedAvatarLayout&gt;
+          &lt;div class&#x3D;&quot;scene__container&quot;&gt;
+            &lt;div class&#x3D;&quot;scene__content&quot;&gt;
+              &lt;router-outlet&gt;&lt;/router-outlet&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/ng-template&gt;
       &lt;/div&gt;
       &lt;cf-navbar
         elem&#x3D;&quot;navbar&quot;
@@ -607,12 +692,29 @@ export interface SidebarItem {
         height: calc(100vh - 44px);
       }
 
+      .scene__container {
+        height: 100%;
+        width: 100%;
+        /* margin: 0; */
+        padding: 0;
+        overflow: auto;
+      }
+
       .sidebarItem {
         &amp;__text {
+          display: inline-block;
+          height: 55px;
+          margin-top: 15px;
+          vertical-align: top;
+        }
+
+        &amp;__text-content {
           padding-left: 15px;
           color: white;
           width: 200px;
           display: inline-block;
+          vertical-align: middle;
+          line-height: 55px;
         }
       }
     &#x60;,
@@ -655,6 +757,18 @@ export class AppScene implements OnInit {
     },
   ];
 
+  selectedAvatar?: Avatar;
+  // selectedAvatar &#x3D; {
+  //   welcomeMessage: &quot;Hi! I&#x27;m a developing avatar!&quot;,
+  //   name: &#x27;John&#x27;,
+  //   title: &#x27;Software Engineer&#x27;,
+  //   selectedAppearance: {
+  //     format: &#x27;readyplayer.me&#x27;,
+  //     src: &#x27;assets/avatar-large.png&#x27;,
+  //     smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
+  //   },
+  // };
+
   constructor(private router: Router) {}
 
   ngOnInit() {
@@ -681,12 +795,29 @@ export class AppScene implements OnInit {
         height: calc(100vh - 44px);
       }
 
+      .scene__container {
+        height: 100%;
+        width: 100%;
+        /* margin: 0; */
+        padding: 0;
+        overflow: auto;
+      }
+
       .sidebarItem {
         &amp;__text {
+          display: inline-block;
+          height: 55px;
+          margin-top: 15px;
+          vertical-align: top;
+        }
+
+        &amp;__text-content {
           padding-left: 15px;
           color: white;
           width: 200px;
           display: inline-block;
+          vertical-align: middle;
+          line-height: 55px;
         }
       }
     
@@ -718,7 +849,7 @@ export class AppScene implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div block="scene">  <div class="scene__body">    <cf-sidebar-container>      <!-- A sidebar -->      <cf-sidebar        [(opened)]="sidebarIsOpen"        [dock]="true"        [dockedSize]="\'80px\'"        [showBackdrop]="true"        [closeOnClickBackdrop]="true"        [closeOnClickOutside]="true"      >        <a          [routerLink]="[\'/selected-avatar\']"          class="d-block"          block="sidebarItem"        >          <span elem="text">Account</span>          <img            src="assets/avatar-144.png"            style="            width: 55px;            height: 55px;            border-radius: 50%;            margin-top: 35px;"          />        </a>        <a          *ngFor="let item of sidebarItems"          [routerLink]="item.routerLink"          class="d-block"          block="sidebarItem"        >          <span elem="text">{{ item.name }}</span>          <button            block="button"            mod="fab"            [ngClass]="{              \'button--primary\': item.active,              \'button--secondary\': !item.active            }"            style="margin-top: 15px;"          >            <svg-icon              [src]="item.icon"              elem="icon"              [svgClass]="\'icon__svg\'"            ></svg-icon>          </button>        </a>        <router-outlet name="sidebar"></router-outlet>      </cf-sidebar>      <div cf-sidebar-content>        <div class="scene__content">          <router-outlet></router-outlet>        </div>      </div>    </cf-sidebar-container>  </div>  <cf-navbar    elem="navbar"    [title]="title"    (titleClick)="sidebarIsOpen = !sidebarIsOpen"  >  </cf-navbar></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div block="scene">  <div class="scene__body">    <cf-sidebar-container      *ngIf="selectedAvatar; else notSelectedAvatarLayout"    >      <!-- A sidebar -->      <cf-sidebar        [(opened)]="sidebarIsOpen"        [dock]="true"        [dockedSize]="\'80px\'"        [showBackdrop]="true"        [closeOnClickBackdrop]="true"        [closeOnClickOutside]="true"      >        <div style="margin-top: 20px">          <a            [routerLink]="[\'/selected-avatar\']"            class="d-block"            block="sidebarItem"          >            <div elem="text">              <span elem="text-content">Account</span>            </div>            <img              [src]="selectedAvatar.selectedAppearance.smallPreviewUrl"              style="              width: 55px;              height: 55px;              border-radius: 50%;              margin-top: 15px;"            />          </a>          <ng-container *ngFor="let item of sidebarItems">            <a              *ngIf="selectedAvatar"              [routerLink]="item.routerLink"              class="d-block"              block="sidebarItem"            >              <div elem="text">                <span elem="text-content">{{ item.name }}</span>              </div>              <button                block="button"                mod="fab"                [ngClass]="{                  \'button--primary\': item.active,                  \'button--secondary\': !item.active                }"                style="margin-top: 15px;"              >                <svg-icon                  [src]="item.icon"                  elem="icon"                  [svgClass]="\'icon__svg\'"                ></svg-icon>              </button>            </a>          </ng-container>          <router-outlet name="sidebar"></router-outlet>        </div>      </cf-sidebar>      <div cf-sidebar-content>        <div class="scene__content">          <router-outlet></router-outlet>        </div>      </div>    </cf-sidebar-container>    <ng-template #notSelectedAvatarLayout>      <div class="scene__container">        <div class="scene__content">          <router-outlet></router-outlet>        </div>      </div>    </ng-template>  </div>  <cf-navbar    elem="navbar"    [title]="title"    (titleClick)="sidebarIsOpen = !sidebarIsOpen"  >  </cf-navbar></div></div>'
     var COMPONENTS = [{'name': 'AppScene', 'selector': 'cf-scene'},{'name': 'NavbarComponent', 'selector': 'cf-navbar'},{'name': 'SidebarComponent', 'selector': 'cf-sidebar'},{'name': 'SidebarContainerComponent', 'selector': 'cf-sidebar-container'}];
     var DIRECTIVES = [{'name': 'CloseSidebarDirective', 'selector': '[cfCloseSidebar]'}];
     var ACTUAL_COMPONENT = {'name': 'AppScene'};

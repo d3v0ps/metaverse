@@ -39,7 +39,7 @@
   <li>Components</li>
   <li
   >
-  CreateAvatarView</li>
+  CreateAvatarScene</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -59,7 +59,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/create-avatar/views/create-avatar.view.ts</code>
+    <code>src/app/create-avatar/scenes/create-avatar.scene.ts</code>
 </p>
 
 
@@ -98,7 +98,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">Create Avatar</code></pre></td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div block&#x3D;&quot;scene-content&quot;&gt;Create Avatar&lt;/div&gt;</code></pre></td>
             </tr>
 
 
@@ -130,9 +130,9 @@
 /** Create Avatar view */
 @Component({
   selector: &#x27;cf-create-avatar&#x27;,
-  template: &#x27;Create Avatar&#x27;,
+  template: &#x60; &lt;div block&#x3D;&quot;scene-content&quot;&gt;Create Avatar&lt;/div&gt; &#x60;,
 })
-export class CreateAvatarView {}
+export class CreateAvatarScene {}
 </code></pre>
     </div>
 
@@ -163,10 +163,10 @@ export class CreateAvatarView {}
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div>Create Avatar</div>'
-    var COMPONENTS = [{'name': 'AssetDetailComponent', 'selector': 'cf-asset-detail'},{'name': 'AssetsGridComponent', 'selector': 'cf-assets-grid'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'CreateAvatarView', 'selector': 'cf-create-avatar'},{'name': 'DashboardView', 'selector': 'cf-dashboard'},{'name': 'InventoryScene', 'selector': 'cf-inventory'},{'name': 'MarketplaceScene', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'PreviewAvatarAppearanceScene', 'selector': 'cf-preview-avatar-appearance'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
+        var COMPONENT_TEMPLATE = '<div><div block="scene-content">Create Avatar</div></div>'
+    var COMPONENTS = [{'name': 'AssetDetailComponent', 'selector': 'cf-asset-detail'},{'name': 'AssetsGridComponent', 'selector': 'cf-assets-grid'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'CreateAvatarScene', 'selector': 'cf-create-avatar'},{'name': 'DashboardView', 'selector': 'cf-dashboard'},{'name': 'InventoryScene', 'selector': 'cf-inventory'},{'name': 'MarketplaceScene', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'PreviewAvatarAppearanceScene', 'selector': 'cf-preview-avatar-appearance'},{'name': 'SelectAvatarScene', 'selector': 'cf-select-avatar'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
     var DIRECTIVES = [];
-    var ACTUAL_COMPONENT = {'name': 'CreateAvatarView'};
+    var ACTUAL_COMPONENT = {'name': 'CreateAvatarScene'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -201,7 +201,7 @@ export class CreateAvatarView {}
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'CreateAvatarView.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'CreateAvatarScene.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

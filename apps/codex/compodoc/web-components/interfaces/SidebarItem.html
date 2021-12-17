@@ -257,6 +257,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { NavigationEnd, Router } from &#x27;@angular/router&#x27;;
+import { Avatar } from &#x27;@central-factory/core&#x27;;
 import { filter } from &#x27;rxjs/operators&#x27;;
 
 export interface SidebarItem {
@@ -271,7 +272,9 @@ export interface SidebarItem {
   template: &#x60;
     &lt;div block&#x3D;&quot;scene&quot;&gt;
       &lt;div class&#x3D;&quot;scene__body&quot;&gt;
-        &lt;cf-sidebar-container&gt;
+        &lt;cf-sidebar-container
+          *ngIf&#x3D;&quot;selectedAvatar; else notSelectedAvatarLayout&quot;
+        &gt;
           &lt;!-- A sidebar --&gt;
           &lt;cf-sidebar
             [(opened)]&#x3D;&quot;sidebarIsOpen&quot;
@@ -281,47 +284,55 @@ export interface SidebarItem {
             [closeOnClickBackdrop]&#x3D;&quot;true&quot;
             [closeOnClickOutside]&#x3D;&quot;true&quot;
           &gt;
-            &lt;a
-              [routerLink]&#x3D;&quot;[&#x27;/selected-avatar&#x27;]&quot;
-              class&#x3D;&quot;d-block&quot;
-              block&#x3D;&quot;sidebarItem&quot;
-            &gt;
-              &lt;span elem&#x3D;&quot;text&quot;&gt;Account&lt;/span&gt;
-              &lt;img
-                src&#x3D;&quot;assets/avatar-144.png&quot;
-                style&#x3D;&quot;
-                width: 55px;
-                height: 55px;
-                border-radius: 50%;
-                margin-top: 35px;&quot;
-              /&gt;
-            &lt;/a&gt;
-
-            &lt;a
-              *ngFor&#x3D;&quot;let item of sidebarItems&quot;
-              [routerLink]&#x3D;&quot;item.routerLink&quot;
-              class&#x3D;&quot;d-block&quot;
-              block&#x3D;&quot;sidebarItem&quot;
-            &gt;
-              &lt;span elem&#x3D;&quot;text&quot;&gt;{{ item.name }}&lt;/span&gt;
-              &lt;button
-                block&#x3D;&quot;button&quot;
-                mod&#x3D;&quot;fab&quot;
-                [ngClass]&#x3D;&quot;{
-                  &#x27;button--primary&#x27;: item.active,
-                  &#x27;button--secondary&#x27;: !item.active
-                }&quot;
-                style&#x3D;&quot;margin-top: 15px;&quot;
+            &lt;div style&#x3D;&quot;margin-top: 20px&quot;&gt;
+              &lt;a
+                [routerLink]&#x3D;&quot;[&#x27;/selected-avatar&#x27;]&quot;
+                class&#x3D;&quot;d-block&quot;
+                block&#x3D;&quot;sidebarItem&quot;
               &gt;
-                &lt;svg-icon
-                  [src]&#x3D;&quot;item.icon&quot;
-                  elem&#x3D;&quot;icon&quot;
-                  [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-                &gt;&lt;/svg-icon&gt;
-              &lt;/button&gt;
-            &lt;/a&gt;
+                &lt;div elem&#x3D;&quot;text&quot;&gt;
+                  &lt;span elem&#x3D;&quot;text-content&quot;&gt;Account&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;img
+                  [src]&#x3D;&quot;selectedAvatar.selectedAppearance.smallPreviewUrl&quot;
+                  style&#x3D;&quot;
+                  width: 55px;
+                  height: 55px;
+                  border-radius: 50%;
+                  margin-top: 15px;&quot;
+                /&gt;
+              &lt;/a&gt;
 
-            &lt;router-outlet name&#x3D;&quot;sidebar&quot;&gt;&lt;/router-outlet&gt;
+              &lt;ng-container *ngFor&#x3D;&quot;let item of sidebarItems&quot;&gt;
+                &lt;a
+                  *ngIf&#x3D;&quot;selectedAvatar&quot;
+                  [routerLink]&#x3D;&quot;item.routerLink&quot;
+                  class&#x3D;&quot;d-block&quot;
+                  block&#x3D;&quot;sidebarItem&quot;
+                &gt;
+                  &lt;div elem&#x3D;&quot;text&quot;&gt;
+                    &lt;span elem&#x3D;&quot;text-content&quot;&gt;{{ item.name }}&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;button
+                    block&#x3D;&quot;button&quot;
+                    mod&#x3D;&quot;fab&quot;
+                    [ngClass]&#x3D;&quot;{
+                      &#x27;button--primary&#x27;: item.active,
+                      &#x27;button--secondary&#x27;: !item.active
+                    }&quot;
+                    style&#x3D;&quot;margin-top: 15px;&quot;
+                  &gt;
+                    &lt;svg-icon
+                      [src]&#x3D;&quot;item.icon&quot;
+                      elem&#x3D;&quot;icon&quot;
+                      [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+                    &gt;&lt;/svg-icon&gt;
+                  &lt;/button&gt;
+                &lt;/a&gt;
+              &lt;/ng-container&gt;
+
+              &lt;router-outlet name&#x3D;&quot;sidebar&quot;&gt;&lt;/router-outlet&gt;
+            &lt;/div&gt;
           &lt;/cf-sidebar&gt;
 
           &lt;div cf-sidebar-content&gt;
@@ -330,6 +341,14 @@ export interface SidebarItem {
             &lt;/div&gt;
           &lt;/div&gt;
         &lt;/cf-sidebar-container&gt;
+
+        &lt;ng-template #notSelectedAvatarLayout&gt;
+          &lt;div class&#x3D;&quot;scene__container&quot;&gt;
+            &lt;div class&#x3D;&quot;scene__content&quot;&gt;
+              &lt;router-outlet&gt;&lt;/router-outlet&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/ng-template&gt;
       &lt;/div&gt;
       &lt;cf-navbar
         elem&#x3D;&quot;navbar&quot;
@@ -345,12 +364,29 @@ export interface SidebarItem {
         height: calc(100vh - 44px);
       }
 
+      .scene__container {
+        height: 100%;
+        width: 100%;
+        /* margin: 0; */
+        padding: 0;
+        overflow: auto;
+      }
+
       .sidebarItem {
         &amp;__text {
+          display: inline-block;
+          height: 55px;
+          margin-top: 15px;
+          vertical-align: top;
+        }
+
+        &amp;__text-content {
           padding-left: 15px;
           color: white;
           width: 200px;
           display: inline-block;
+          vertical-align: middle;
+          line-height: 55px;
         }
       }
     &#x60;,
@@ -392,6 +428,18 @@ export class AppScene implements OnInit {
       active: false,
     },
   ];
+
+  selectedAvatar?: Avatar;
+  // selectedAvatar &#x3D; {
+  //   welcomeMessage: &quot;Hi! I&#x27;m a developing avatar!&quot;,
+  //   name: &#x27;John&#x27;,
+  //   title: &#x27;Software Engineer&#x27;,
+  //   selectedAppearance: {
+  //     format: &#x27;readyplayer.me&#x27;,
+  //     src: &#x27;assets/avatar-large.png&#x27;,
+  //     smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
+  //   },
+  // };
 
   constructor(private router: Router) {}
 

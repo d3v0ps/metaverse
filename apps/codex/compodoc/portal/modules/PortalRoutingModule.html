@@ -96,6 +96,20 @@ export const routes: Routes &#x3D; [
     component: AppScene,
     children: [
       {
+        path: &#x27;select-avatar&#x27;,
+        loadChildren: () &#x3D;&gt;
+          &quot;import(&#x27;./select-avatar/select-avatar.module&#x27;).then(\
+            (m) &#x3D;&gt; m.SelectAvatarModule\
+          )&quot;,
+      },
+      {
+        path: &#x27;create-avatar&#x27;,
+        loadChildren: () &#x3D;&gt;
+          &quot;import(&#x27;./create-avatar/create-avatar.module&#x27;).then(\
+            (m) &#x3D;&gt; m.CreateAvatarModule\
+          )&quot;,
+      },
+      {
         path: &#x27;selected-avatar&#x27;,
         loadChildren: () &#x3D;&gt;
           &quot;import(&#x27;./selected-avatar/selected-avatar.module&#x27;).then(\

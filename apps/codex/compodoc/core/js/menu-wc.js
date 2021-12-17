@@ -38,6 +38,22 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                     </ul>
                 </li>
                     <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#classes-links"' :
+                            'data-target="#xs-classes-links"' }>
+                            <span class="icon ion-ios-paper"></span>
+                            <span>Classes</span>
+                            <span class="icon ion-ios-arrow-down"></span>
+                        </div>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"' }>
+                            <li class="link">
+                                <a href="classes/CommandRunnerResolver.html" data-type="entity-link" >CommandRunnerResolver</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/EventBus.html" data-type="entity-link" >EventBus</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#interfaces-links"' :
                             'data-target="#xs-interfaces-links"' }>
                             <span class="icon ion-md-information-circle-outline"></span>
@@ -49,13 +65,28 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/Appearance.html" data-type="entity-link" >Appearance</a>
                             </li>
                             <li class="link">
+                                <a href="interfaces/Application.html" data-type="entity-link" >Application</a>
+                            </li>
+                            <li class="link">
                                 <a href="interfaces/Asset.html" data-type="entity-link" >Asset</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Author.html" data-type="entity-link" >Author</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/Avatar.html" data-type="entity-link" >Avatar</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/Building.html" data-type="entity-link" >Building</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/Command.html" data-type="entity-link" >Command</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/CommandHandler.html" data-type="entity-link" >CommandHandler</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/CommandRunner.html" data-type="entity-link" >CommandRunner</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/Consumable.html" data-type="entity-link" >Consumable</a>
