@@ -1,4 +1,4 @@
-import { Physics } from '../../../../physics/models/physics';
+import { Physics } from '../../../../physics';
 import { Space } from './space';
 
 /** A Building, such as houses, offices, factories, castles... */

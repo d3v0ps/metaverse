@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CreateAvatarView } from './views/create-avatar.view';
+import { CreateAvatarScene } from './scenes/create-avatar.scene';
 
 export const routes: Routes = [
   {
     path: '',
-    component: CreateAvatarView,
+    component: CreateAvatarScene,
   },
 ];
 

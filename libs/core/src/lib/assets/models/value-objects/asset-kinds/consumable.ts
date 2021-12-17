@@ -1,4 +1,4 @@
-import { Physics } from '@central-factory/core';
+import { Physics } from '../../../../physics';
 
 /** A Consumable */
 export interface Consumable extends Physics {

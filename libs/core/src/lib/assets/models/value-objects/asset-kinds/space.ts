@@ -1,4 +1,4 @@
-import { Physics } from '@central-factory/core';
+import { Physics } from '../../../../physics';
 
 /** The Space kind */
 export type SpaceKind = 'land' | 'building' | 'unknown';

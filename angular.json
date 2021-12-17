@@ -1,6 +1,58 @@
 {
   "version": 1,
   "projects": {
+    "assets": {
+      "projectType": "library",
+      "root": "libs/assets",
+      "sourceRoot": "libs/assets/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/assets"],
+          "options": {
+            "jestConfig": "libs/assets/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/assets/src/**/*.ts",
+              "libs/assets/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "avatars": {
+      "projectType": "library",
+      "root": "libs/avatars",
+      "sourceRoot": "libs/avatars/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/avatars"],
+          "options": {
+            "jestConfig": "libs/avatars/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/avatars/src/**/*.ts",
+              "libs/avatars/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "codex": {
       "projectType": "application",
       "root": "apps/codex",
@@ -75,6 +127,32 @@
                 }
               ]
             }
+          }
+        }
+      },
+      "tags": []
+    },
+    "crawler": {
+      "projectType": "library",
+      "root": "libs/crawler",
+      "sourceRoot": "libs/crawler/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/crawler"],
+          "options": {
+            "jestConfig": "libs/crawler/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/crawler/src/**/*.ts",
+              "libs/crawler/src/**/*.html"
+            ]
           }
         }
       },
@@ -230,7 +308,7 @@
             ],
             "styles": ["apps/portal/src/styles.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": [ "libs/web-components/src/lib/styles" ]
+              "includePaths": ["libs/web-components/src/lib/styles"]
             },
             "scripts": []
           },
@@ -370,6 +448,32 @@
       "tags": [],
       "implicitDependencies": ["portal"]
     },
+    "seeder": {
+      "projectType": "library",
+      "root": "libs/seeder",
+      "sourceRoot": "libs/seeder/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/seeder"],
+          "options": {
+            "jestConfig": "libs/seeder/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/seeder/src/**/*.ts",
+              "libs/seeder/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "web-components": {
       "projectType": "library",
       "root": "libs/web-components",
@@ -428,33 +532,6 @@
         }
       },
       "tags": []
-    }
-  },
-  "schematics": {
-    "@nrwl/angular": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/angular:application": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "scss"
     }
   }
 }

@@ -1,9 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { BemModule } from 'angular-bem';
 import { CreateAvatarRoutingModule } from './create-avatar-routing.module';
-import { CreateAvatarView } from './views/create-avatar.view';
+import { CreateAvatarScene } from './scenes/create-avatar.scene';
 
 @NgModule({
-  imports: [CreateAvatarRoutingModule],
-  declarations: [CreateAvatarView],
+  imports: [CommonModule, BemModule, CreateAvatarRoutingModule],
+  declarations: [CreateAvatarScene],
 })
 export class CreateAvatarModule {}

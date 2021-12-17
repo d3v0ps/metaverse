@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { Avatar } from '@central-factory/core';
 import { filter } from 'rxjs/operators';
 
 export interface SidebarItem {
@@ -14,7 +15,9 @@ export interface SidebarItem {
   template: `
     <div block="scene">
       <div class="scene__body">
-        <cf-sidebar-container>
+        <cf-sidebar-container
+          *ngIf="selectedAvatar; else notSelectedAvatarLayout"
+        >
           <!-- A sidebar -->
           <cf-sidebar
             [(opened)]="sidebarIsOpen"
@@ -24,47 +27,55 @@ export interface SidebarItem {
             [closeOnClickBackdrop]="true"
             [closeOnClickOutside]="true"
           >
-            <a
-              [routerLink]="['/selected-avatar']"
-              class="d-block"
-              block="sidebarItem"
-            >
-              <span elem="text">Account</span>
-              <img
-                src="assets/avatar-144.png"
-                style="
-                width: 55px;
-                height: 55px;
-                border-radius: 50%;
-                margin-top: 35px;"
-              />
-            </a>
-
-            <a
-              *ngFor="let item of sidebarItems"
-              [routerLink]="item.routerLink"
-              class="d-block"
-              block="sidebarItem"
-            >
-              <span elem="text">{{ item.name }}</span>
-              <button
-                block="button"
-                mod="fab"
-                [ngClass]="{
-                  'button--primary': item.active,
-                  'button--secondary': !item.active
-                }"
-                style="margin-top: 15px;"
+            <div style="margin-top: 20px">
+              <a
+                [routerLink]="['/selected-avatar']"
+                class="d-block"
+                block="sidebarItem"
               >
-                <svg-icon
-                  [src]="item.icon"
-                  elem="icon"
-                  [svgClass]="'icon__svg'"
-                ></svg-icon>
-              </button>
-            </a>
+                <div elem="text">
+                  <span elem="text-content">Account</span>
+                </div>
+                <img
+                  [src]="selectedAvatar.selectedAppearance.smallPreviewUrl"
+                  style="
+                  width: 55px;
+                  height: 55px;
+                  border-radius: 50%;
+                  margin-top: 15px;"
+                />
+              </a>
 
-            <router-outlet name="sidebar"></router-outlet>
+              <ng-container *ngFor="let item of sidebarItems">
+                <a
+                  *ngIf="selectedAvatar"
+                  [routerLink]="item.routerLink"
+                  class="d-block"
+                  block="sidebarItem"
+                >
+                  <div elem="text">
+                    <span elem="text-content">{{ item.name }}</span>
+                  </div>
+                  <button
+                    block="button"
+                    mod="fab"
+                    [ngClass]="{
+                      'button--primary': item.active,
+                      'button--secondary': !item.active
+                    }"
+                    style="margin-top: 15px;"
+                  >
+                    <svg-icon
+                      [src]="item.icon"
+                      elem="icon"
+                      [svgClass]="'icon__svg'"
+                    ></svg-icon>
+                  </button>
+                </a>
+              </ng-container>
+
+              <router-outlet name="sidebar"></router-outlet>
+            </div>
           </cf-sidebar>
 
           <div cf-sidebar-content>
@@ -73,6 +84,14 @@ export interface SidebarItem {
             </div>
           </div>
         </cf-sidebar-container>
+
+        <ng-template #notSelectedAvatarLayout>
+          <div class="scene__container">
+            <div class="scene__content">
+              <router-outlet></router-outlet>
+            </div>
+          </div>
+        </ng-template>
       </div>
       <cf-navbar
         elem="navbar"
@@ -88,12 +107,29 @@ export interface SidebarItem {
         height: calc(100vh - 44px);
       }
 
+      .scene__container {
+        height: 100%;
+        width: 100%;
+        /* margin: 0; */
+        padding: 0;
+        overflow: auto;
+      }
+
       .sidebarItem {
         &__text {
+          display: inline-block;
+          height: 55px;
+          margin-top: 15px;
+          vertical-align: top;
+        }
+
+        &__text-content {
           padding-left: 15px;
           color: white;
           width: 200px;
           display: inline-block;
+          vertical-align: middle;
+          line-height: 55px;
         }
       }
     `,
@@ -135,6 +171,18 @@ export class AppScene implements OnInit {
       active: false,
     },
   ];
+
+  selectedAvatar?: Avatar;
+  // selectedAvatar = {
+  //   welcomeMessage: "Hi! I'm a developing avatar!",
+  //   name: 'John',
+  //   title: 'Software Engineer',
+  //   selectedAppearance: {
+  //     format: 'readyplayer.me',
+  //     src: 'assets/avatar-large.png',
+  //     smallPreviewUrl: 'assets/avatar-144.png',
+  //   },
+  // };
 
   constructor(private router: Router) {}
 

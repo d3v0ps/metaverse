@@ -1,6 +1,7 @@
 module.exports = {
   developersSidebar: {
     'Developers': ['about-this'],
+    'Resources': ['resources/blockconf'],
     'Framework': [
       'framework/oddd',
       {

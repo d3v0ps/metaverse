@@ -3,6 +3,6 @@ import { Component } from '@angular/core';
 /** Create Avatar view */
 @Component({
   selector: 'cf-create-avatar',
-  template: 'Create Avatar',
+  template: ` <div block="scene-content">Create Avatar</div> `,
 })
-export class CreateAvatarView {}
+export class CreateAvatarScene {}

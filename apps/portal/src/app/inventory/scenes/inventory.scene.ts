@@ -1,5 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { Asset, AssetKind } from '@central-factory/core';
+import {
+  Asset,
+  AssetKind,
+  Equipment,
+  EquipmentSlot,
+} from '@central-factory/assets';
 
 /** Inventory main scene */
 @Component({
@@ -22,7 +27,7 @@ import { Asset, AssetKind } from '@central-factory/core';
   `,
 })
 export class InventoryScene {
-  @Input() assets: Asset[] = [
+  @Input() assets: Asset<Equipment>[] = [
     {
       id: '1',
       name: "Raven's Cloak",
@@ -38,6 +43,11 @@ export class InventoryScene {
       purchaseDate: new Date(),
       digital: false,
       private: true,
+      data: {
+        allowedSlots: [EquipmentSlot.Back],
+        colors: ['#ff0000', '#00ff00', '#0000ff'],
+        isEquipped: false,
+      },
     },
     {
       id: '2',
@@ -54,6 +64,11 @@ export class InventoryScene {
       purchaseDate: new Date(),
       digital: false,
       private: true,
+      data: {
+        allowedSlots: [EquipmentSlot.Chest],
+        colors: ['#ff0000', '#00ff00', '#0000ff'],
+        isEquipped: false,
+      },
     },
     // {
     //   id: '4',

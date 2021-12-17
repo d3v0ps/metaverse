@@ -21,6 +21,20 @@ export const routes: Routes = [
     component: AppScene,
     children: [
       {
+        path: 'select-avatar',
+        loadChildren: () =>
+          import('./select-avatar/select-avatar.module').then(
+            (m) => m.SelectAvatarModule
+          ),
+      },
+      {
+        path: 'create-avatar',
+        loadChildren: () =>
+          import('./create-avatar/create-avatar.module').then(
+            (m) => m.CreateAvatarModule
+          ),
+      },
+      {
         path: 'selected-avatar',
         loadChildren: () =>
           import('./selected-avatar/selected-avatar.module').then(

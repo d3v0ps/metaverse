@@ -1,4 +1,4 @@
-import { Physics } from '@central-factory/core';
+import { Physics } from '../../../../physics';
 
 /** The slots an equipment can be equiped to */
 export type EquipmentSlot =

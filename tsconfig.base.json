@@ -15,11 +15,19 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@central-factory/assets": ["libs/assets/src/index.ts"],
+      "@central-factory/assets/*": ["libs/assets/src/lib/*"],
+      "@central-factory/avatars": ["libs/avatars/src/index.ts"],
+      "@central-factory/avatars/*": ["libs/avatars/src/lib/*"],
       "@central-factory/core": ["libs/core/src/index.ts"],
       "@central-factory/core/*": ["libs/core/src/lib/*"],
+      "@central-factory/crawler": ["libs/crawler/src/index.ts"],
+      "@central-factory/crawler/*": ["libs/crawler/src/lib/*"],
       "@central-factory/gatekeeper": ["libs/gatekeeper/src/index.ts"],
       "@central-factory/integrations": ["libs/integrations/src/index.ts"],
       "@central-factory/integrations/*": ["libs/integrations/src/lib/*"],
+      "@central-factory/seeder": ["libs/seeder/src/index.ts"],
+      "@central-factory/seeder/*": ["libs/seeder/src/lib/*"],
       "@central-factory/web-components": ["libs/web-components/src/index.ts"],
       "@central-factory/web-components/*": ["libs/web-components/src/lib/*"]
     }
