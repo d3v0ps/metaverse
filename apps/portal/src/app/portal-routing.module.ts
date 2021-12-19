@@ -29,6 +29,13 @@ export const routes: Routes = [
           ).then((m) => m.SelectedAvatarModule),
       },
       {
+        path: 'play',
+        loadChildren: () =>
+          import('@central-factory/play/scenes/play/play.module').then(
+            (m) => m.PlayModule
+          ),
+      },
+      {
         path: 'inventory',
         loadChildren: () =>
           import(
@@ -49,7 +56,7 @@ export const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'select-avatar',
+        redirectTo: 'play',
         pathMatch: 'full',
       },
     ],

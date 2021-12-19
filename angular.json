@@ -849,6 +849,125 @@
       "tags": [],
       "implicitDependencies": ["marketplace"]
     },
+    "play": {
+      "projectType": "application",
+      "root": "apps/play",
+      "sourceRoot": "apps/play/src",
+      "prefix": "central-factory",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/play",
+            "index": "apps/play/src/index.html",
+            "main": "apps/play/src/main.ts",
+            "polyfills": "apps/play/src/polyfills.ts",
+            "tsConfig": "apps/play/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": ["apps/play/src/favicon.ico", "apps/play/src/assets"],
+            "styles": ["apps/play/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/play/src/environments/environment.ts",
+                  "with": "apps/play/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "play:build:production"
+            },
+            "development": {
+              "browserTarget": "play:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "play:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/play/src/**/*.ts",
+              "apps/play/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/play"],
+          "options": {
+            "jestConfig": "apps/play/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "play-e2e": {
+      "root": "apps/play-e2e",
+      "sourceRoot": "apps/play-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/play-e2e/cypress.json",
+            "devServerTarget": "play:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "play:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/play-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["play"]
+    },
     "portal": {
       "projectType": "application",
       "root": "apps/portal",

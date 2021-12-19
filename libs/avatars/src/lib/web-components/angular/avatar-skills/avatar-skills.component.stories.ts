@@ -36,14 +36,10 @@ const Template: Story<AvatarSkillsComponent> = (
 
 export const Empty = Template.bind({});
 Empty.args = {
-  skills: {
-    skills: [],
-  },
+  skills: [],
 };
 
 export const Filled = Template.bind({});
 Filled.args = {
-  skills: {
-    skills: skillsMocks,
-  },
+  skills: skillsMocks,
 };

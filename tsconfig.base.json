@@ -29,6 +29,7 @@
       "@central-factory/integrations/*": ["libs/integrations/src/lib/*"],
       "@central-factory/inventory/*": ["apps/inventory/src/app/*"],
       "@central-factory/marketplace/*": ["apps/marketplace/src/app/*"],
+      "@central-factory/play/*": ["apps/play/src/app/*"],
       "@central-factory/seeder": ["libs/seeder/src/index.ts"],
       "@central-factory/seeder/*": ["libs/seeder/src/lib/*"],
       "@central-factory/web-components": ["libs/web-components/src/index.ts"],

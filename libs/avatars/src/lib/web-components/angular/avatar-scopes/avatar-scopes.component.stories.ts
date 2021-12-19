@@ -34,14 +34,10 @@ const Template: Story<AvatarScopesComponent> = (
 
 export const Empty = Template.bind({});
 Empty.args = {
-  scopes: {
-    scopes: [],
-  },
+  scopes: [],
 };
 
 export const Filled = Template.bind({});
 Filled.args = {
-  scopes: {
-    scopes: scopesMocks,
-  },
+  scopes: scopesMocks,
 };

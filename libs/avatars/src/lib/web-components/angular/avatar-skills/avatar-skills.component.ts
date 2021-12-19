@@ -82,10 +82,10 @@ export class AvatarSkillsInput {
   `,
 })
 export class AvatarSkillsComponent {
-  @Input() set skills(value: AvatarSkillsInput) {
+  @Input() set skills(value: Skill[]) {
     if (value) {
       this.skillsForm.clear();
-      value.skills.forEach((skill) => {
+      value.forEach((skill) => {
         this.addScope(skill);
       });
     }

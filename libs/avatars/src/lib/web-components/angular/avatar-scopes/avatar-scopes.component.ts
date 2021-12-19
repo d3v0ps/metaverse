@@ -59,10 +59,10 @@ export class AvatarScopesInput {
   `,
 })
 export class AvatarScopesComponent {
-  @Input() set scopes(value: AvatarScopesInput) {
+  @Input() set scopes(value: Scope[]) {
     if (value) {
       this.scopesForm.clear();
-      value.scopes.forEach((appearance) => {
+      value.forEach((appearance) => {
         this.addScope(appearance);
       });
     }
