@@ -1,0 +1,431 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Application documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/postmark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">Application documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Miscellaneous</li>
+  <li>Variables</li>
+</ol>
+
+<section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#isBuilding" title="src/lib/domain/models/type-guards/is-building.ts" ><b>isBuilding</b>&nbsp;&nbsp;&nbsp;(src/.../is-building.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#isConsumable" title="src/lib/domain/models/type-guards/is-consumable.ts" ><b>isConsumable</b>&nbsp;&nbsp;&nbsp;(src/.../is-consumable.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#isCurrency" title="src/lib/domain/models/type-guards/is-currency.ts" ><b>isCurrency</b>&nbsp;&nbsp;&nbsp;(src/.../is-currency.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#isEquipment" title="src/lib/domain/models/type-guards/is-equipment.ts" ><b>isEquipment</b>&nbsp;&nbsp;&nbsp;(src/.../is-equipment.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#isFurniture" title="src/lib/domain/models/type-guards/is-furniture.ts" ><b>isFurniture</b>&nbsp;&nbsp;&nbsp;(src/.../is-furniture.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#isLand" title="src/lib/domain/models/type-guards/is-land.ts" ><b>isLand</b>&nbsp;&nbsp;&nbsp;(src/.../is-land.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#isMachine" title="src/lib/domain/models/type-guards/is-machine.ts" ><b>isMachine</b>&nbsp;&nbsp;&nbsp;(src/.../is-machine.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#isMaterial" title="src/lib/domain/models/type-guards/is-material.ts" ><b>isMaterial</b>&nbsp;&nbsp;&nbsp;(src/.../is-material.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#isMediaResource" title="src/lib/domain/models/type-guards/is-media-resource.ts" ><b>isMediaResource</b>&nbsp;&nbsp;&nbsp;(src/.../is-media-resource.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#isOther" title="src/lib/domain/models/type-guards/is-other.ts" ><b>isOther</b>&nbsp;&nbsp;&nbsp;(src/.../is-other.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#isVehicle" title="src/lib/domain/models/type-guards/is-vehicle.ts" ><b>isVehicle</b>&nbsp;&nbsp;&nbsp;(src/.../is-vehicle.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/lib/domain/models/type-guards/is-building.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isBuilding"></a>
+                    <span class="name">
+                        <span ><b>isBuilding</b></span>
+                        <a href="#isBuilding"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(asset: Asset): asset is Asset&lt;Building&gt; &#x3D;&gt; {
+  return asset.kind &#x3D;&#x3D;&#x3D; AssetKind.Building;
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/lib/domain/models/type-guards/is-consumable.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isConsumable"></a>
+                    <span class="name">
+                        <span ><b>isConsumable</b></span>
+                        <a href="#isConsumable"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(asset: Asset): asset is Asset&lt;Consumable&gt; &#x3D;&gt; {
+  return asset.kind &#x3D;&#x3D;&#x3D; AssetKind.Consumable;
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/lib/domain/models/type-guards/is-currency.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isCurrency"></a>
+                    <span class="name">
+                        <span ><b>isCurrency</b></span>
+                        <a href="#isCurrency"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(asset: Asset): asset is Asset&lt;Currency&gt; &#x3D;&gt; {
+  return asset.kind &#x3D;&#x3D;&#x3D; AssetKind.Currency;
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/lib/domain/models/type-guards/is-equipment.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isEquipment"></a>
+                    <span class="name">
+                        <span ><b>isEquipment</b></span>
+                        <a href="#isEquipment"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(asset: Asset): asset is Asset&lt;Equipment&gt; &#x3D;&gt; {
+  return asset.kind &#x3D;&#x3D;&#x3D; AssetKind.Equipment;
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/lib/domain/models/type-guards/is-furniture.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isFurniture"></a>
+                    <span class="name">
+                        <span ><b>isFurniture</b></span>
+                        <a href="#isFurniture"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(asset: Asset): asset is Asset&lt;Furniture&gt; &#x3D;&gt; {
+  return asset.kind &#x3D;&#x3D;&#x3D; AssetKind.Furniture;
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/lib/domain/models/type-guards/is-land.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLand"></a>
+                    <span class="name">
+                        <span ><b>isLand</b></span>
+                        <a href="#isLand"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(asset: Asset): asset is Asset&lt;Land&gt; &#x3D;&gt; {
+  return asset.kind &#x3D;&#x3D;&#x3D; AssetKind.Land;
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/lib/domain/models/type-guards/is-machine.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isMachine"></a>
+                    <span class="name">
+                        <span ><b>isMachine</b></span>
+                        <a href="#isMachine"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(asset: Asset): asset is Asset&lt;Machine&gt; &#x3D;&gt; {
+  return asset.kind &#x3D;&#x3D;&#x3D; AssetKind.Machine;
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/lib/domain/models/type-guards/is-material.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isMaterial"></a>
+                    <span class="name">
+                        <span ><b>isMaterial</b></span>
+                        <a href="#isMaterial"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(asset: Asset): asset is Asset&lt;Material&gt; &#x3D;&gt; {
+  return asset.kind &#x3D;&#x3D;&#x3D; AssetKind.Material;
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/lib/domain/models/type-guards/is-media-resource.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isMediaResource"></a>
+                    <span class="name">
+                        <span ><b>isMediaResource</b></span>
+                        <a href="#isMediaResource"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+  asset: Asset
+): asset is Asset&lt;MediaResource&gt; &#x3D;&gt; {
+  return asset.kind &#x3D;&#x3D;&#x3D; AssetKind.MediaResource;
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/lib/domain/models/type-guards/is-other.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isOther"></a>
+                    <span class="name">
+                        <span ><b>isOther</b></span>
+                        <a href="#isOther"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(asset: Asset): asset is Asset&lt;Other&gt; &#x3D;&gt; {
+  return asset.kind &#x3D;&#x3D;&#x3D; AssetKind.Other;
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/lib/domain/models/type-guards/is-vehicle.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isVehicle"></a>
+                    <span class="name">
+                        <span ><b>isVehicle</b></span>
+                        <a href="#isVehicle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(asset: Asset): asset is Asset&lt;Vehicle&gt; &#x3D;&gt; {
+  return asset.kind &#x3D;&#x3D;&#x3D; AssetKind.Vehicle;
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
