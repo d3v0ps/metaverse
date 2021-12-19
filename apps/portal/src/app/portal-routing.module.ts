@@ -3,19 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppScene } from '@central-factory/web-components/angular/scene/app.scene';
 
 export const routes: Routes = [
-  // {
-  //   path: 'dashboard',
-  //   component: AppScene,
-  //   loadChildren: () =>
-  //     import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
-  // },
-  // {
-  //   path: 'create-avatar',
-  //   loadChildren: () =>
-  //     import('./create-avatar/create-avatar.module').then(
-  //       (m) => m.CreateAvatarModule
-  //     ),
-  // },
   {
     path: '',
     component: AppScene,
@@ -44,14 +31,16 @@ export const routes: Routes = [
       {
         path: 'inventory',
         loadChildren: () =>
-          import('./inventory/inventory.module').then((m) => m.InventoryModule),
+          import(
+            '@central-factory/inventory/scenes/inventory/inventory.module'
+          ).then((m) => m.InventoryModule),
       },
       {
         path: 'marketplace',
         loadChildren: () =>
-          import('./marketplace/marketplace.module').then(
-            (m) => m.MarketplaceModule
-          ),
+          import(
+            '@central-factory/marketplace/scenes/marketplace/marketplace.module'
+          ).then((m) => m.MarketplaceModule),
       },
       {
         path: 'settings',
@@ -65,11 +54,6 @@ export const routes: Routes = [
       },
     ],
   },
-  // {
-  //   path: 'gatekeeper',
-  //   loadChildren: () =>
-  //     import('@central-factory/gatekeeper').then((m) => m.GatekeeperModule),
-  // },
 ];
 
 @NgModule({

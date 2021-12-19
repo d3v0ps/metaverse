@@ -404,6 +404,250 @@
       },
       "tags": []
     },
+    "inventory": {
+      "projectType": "application",
+      "root": "apps/inventory",
+      "sourceRoot": "apps/inventory/src",
+      "prefix": "central-factory",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/inventory",
+            "index": "apps/inventory/src/index.html",
+            "main": "apps/inventory/src/main.ts",
+            "polyfills": "apps/inventory/src/polyfills.ts",
+            "tsConfig": "apps/inventory/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/inventory/src/favicon.ico",
+              "apps/inventory/src/assets"
+            ],
+            "styles": ["apps/inventory/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/inventory/src/environments/environment.ts",
+                  "with": "apps/inventory/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "inventory:build:production"
+            },
+            "development": {
+              "browserTarget": "inventory:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "inventory:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/inventory/src/**/*.ts",
+              "apps/inventory/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/inventory"],
+          "options": {
+            "jestConfig": "apps/inventory/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "inventory-e2e": {
+      "root": "apps/inventory-e2e",
+      "sourceRoot": "apps/inventory-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/inventory-e2e/cypress.json",
+            "devServerTarget": "inventory:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "inventory:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/inventory-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["inventory"]
+    },
+    "marketplace": {
+      "projectType": "application",
+      "root": "apps/marketplace",
+      "sourceRoot": "apps/marketplace/src",
+      "prefix": "central-factory",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/marketplace",
+            "index": "apps/marketplace/src/index.html",
+            "main": "apps/marketplace/src/main.ts",
+            "polyfills": "apps/marketplace/src/polyfills.ts",
+            "tsConfig": "apps/marketplace/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/marketplace/src/favicon.ico",
+              "apps/marketplace/src/assets"
+            ],
+            "styles": ["apps/marketplace/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/marketplace/src/environments/environment.ts",
+                  "with": "apps/marketplace/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "marketplace:build:production"
+            },
+            "development": {
+              "browserTarget": "marketplace:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "marketplace:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/marketplace/src/**/*.ts",
+              "apps/marketplace/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/marketplace"],
+          "options": {
+            "jestConfig": "apps/marketplace/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "marketplace-e2e": {
+      "root": "apps/marketplace-e2e",
+      "sourceRoot": "apps/marketplace-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/marketplace-e2e/cypress.json",
+            "devServerTarget": "marketplace:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "marketplace:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/marketplace-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["marketplace"]
+    },
     "portal": {
       "projectType": "application",
       "root": "apps/portal",
@@ -439,7 +683,8 @@
               "includePaths": [
                 "libs/web-components/src/lib/styles",
                 "libs/avatars/src/lib/styles",
-                "apps/agent-avatars/src/styles"
+                "apps/agent-avatars/src/styles",
+                "libs/assets/src/lib/styles"
               ]
             },
             "scripts": []
