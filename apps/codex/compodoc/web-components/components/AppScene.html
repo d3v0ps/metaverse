@@ -50,9 +50,6 @@
             <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
         </li>
         <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
-        </li>
-        <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
@@ -97,62 +94,6 @@
             </tr>
 
 
-            <tr>
-                <td class="col-md-3">styles</td>
-                <td class="col-md-9"><code>
-      .scene__body {
-        height: calc(100vh - 44px);
-      }
-
-      .scene__container {
-        height: 100%;
-        width: 100%;
-        /* margin: 0; */
-        padding: 0;
-        overflow: auto;
-      }
-
-      .sidebarItem {
-        &amp;__text {
-          display: inline-block;
-          height: 55px;
-          margin-top: 15px;
-          vertical-align: top;
-        }
-
-        &amp;__image {
-          width: 55px;
-          height: 55px;
-          border-radius: 50%;
-          margin-top: 15px;
-          &amp;:hover {
-            border: 3px solid var(--color-primary);
-          }
-        }
-
-        &amp;__text-content {
-          padding-left: 15px;
-          color: white;
-          width: 200px;
-          display: inline-block;
-          vertical-align: middle;
-          line-height: 55px;
-        }
-
-        .button {
-          &amp;--secondary {
-            &amp;:hover {
-              background-color: var(--color-primary);
-              color: var(--color-light);
-              .icon__svg {
-                fill: var(--color-light);
-              }
-            }
-          }
-        }
-      }
-    </code></td>
-            </tr>
 
             <tr>
                 <td class="col-md-3">template</td>
@@ -179,7 +120,7 @@
             &lt;a
               [routerLink]&#x3D;&quot;[&#x27;/select-avatar&#x27;]&quot;
               class&#x3D;&quot;d-block&quot;
-              cfBlock&#x3D;&quot;sidebarItem&quot;
+              cfBlock&#x3D;&quot;sidebar-item&quot;
             &gt;
               &lt;div cfElem&#x3D;&quot;text&quot;&gt;
                 &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;Account&lt;/span&gt;
@@ -196,7 +137,7 @@
               &lt;a
                 [routerLink]&#x3D;&quot;item.routerLink&quot;
                 class&#x3D;&quot;d-block&quot;
-                cfBlock&#x3D;&quot;sidebarItem&quot;
+                cfBlock&#x3D;&quot;sidebar-item&quot;
               &gt;
                 &lt;div cfElem&#x3D;&quot;text&quot;&gt;
                   &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;{{ item.name }}&lt;/span&gt;
@@ -327,7 +268,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="203" class="link-to-prism">src/lib/angular/scene/app.scene.ts:203</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">src/lib/angular/scene/app.scene.ts:148</a></div>
                             </td>
                         </tr>
 
@@ -406,8 +347,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="210"
-                            class="link-to-prism">src/lib/angular/scene/app.scene.ts:210</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="155"
+                            class="link-to-prism">src/lib/angular/scene/app.scene.ts:155</a></div>
                 </td>
             </tr>
 
@@ -445,8 +386,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="218"
-                            class="link-to-prism">src/lib/angular/scene/app.scene.ts:218</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="163"
+                            class="link-to-prism">src/lib/angular/scene/app.scene.ts:163</a></div>
                 </td>
             </tr>
 
@@ -492,7 +433,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="202" class="link-to-prism">src/lib/angular/scene/app.scene.ts:202</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">src/lib/angular/scene/app.scene.ts:147</a></div>
                         </td>
                     </tr>
 
@@ -517,7 +458,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">src/lib/angular/scene/app.scene.ts:167</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/lib/angular/scene/app.scene.ts:112</a></div>
                         </td>
                     </tr>
 
@@ -545,15 +486,15 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>[
     {
-      name: &#x27;Avatar&#x27;,
-      routerLink: [&#x27;/selected-avatar&#x27;],
-      icon: &#x27;assets/icons/mdi/account.svg&#x27;,
-      active: false,
-    },
-    {
       name: &#x27;Play&#x27;,
       routerLink: [&#x27;/play&#x27;],
       icon: &#x27;assets/icons/mdi/play.svg&#x27;,
+      active: false,
+    },
+    {
+      name: &#x27;Avatar&#x27;,
+      routerLink: [&#x27;/selected-avatar&#x27;],
+      icon: &#x27;assets/icons/mdi/account.svg&#x27;,
       active: false,
     },
     {
@@ -579,7 +520,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">src/lib/angular/scene/app.scene.ts:169</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/lib/angular/scene/app.scene.ts:114</a></div>
                         </td>
                     </tr>
 
@@ -610,7 +551,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">src/lib/angular/scene/app.scene.ts:166</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/lib/angular/scene/app.scene.ts:111</a></div>
                         </td>
                     </tr>
 
@@ -663,7 +604,7 @@ export interface SidebarItem {
                 &lt;a
                   [routerLink]&#x3D;&quot;[&#x27;/select-avatar&#x27;]&quot;
                   class&#x3D;&quot;d-block&quot;
-                  cfBlock&#x3D;&quot;sidebarItem&quot;
+                  cfBlock&#x3D;&quot;sidebar-item&quot;
                 &gt;
                   &lt;div cfElem&#x3D;&quot;text&quot;&gt;
                     &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;Account&lt;/span&gt;
@@ -680,7 +621,7 @@ export interface SidebarItem {
                   &lt;a
                     [routerLink]&#x3D;&quot;item.routerLink&quot;
                     class&#x3D;&quot;d-block&quot;
-                    cfBlock&#x3D;&quot;sidebarItem&quot;
+                    cfBlock&#x3D;&quot;sidebar-item&quot;
                   &gt;
                     &lt;div cfElem&#x3D;&quot;text&quot;&gt;
                       &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;{{ item.name }}&lt;/span&gt;
@@ -731,61 +672,6 @@ export interface SidebarItem {
       &lt;/div&gt;
     &lt;/ng-container&gt;
   &#x60;,
-  styles: [
-    &#x60;
-      .scene__body {
-        height: calc(100vh - 44px);
-      }
-
-      .scene__container {
-        height: 100%;
-        width: 100%;
-        /* margin: 0; */
-        padding: 0;
-        overflow: auto;
-      }
-
-      .sidebarItem {
-        &amp;__text {
-          display: inline-block;
-          height: 55px;
-          margin-top: 15px;
-          vertical-align: top;
-        }
-
-        &amp;__image {
-          width: 55px;
-          height: 55px;
-          border-radius: 50%;
-          margin-top: 15px;
-          &amp;:hover {
-            border: 3px solid var(--color-primary);
-          }
-        }
-
-        &amp;__text-content {
-          padding-left: 15px;
-          color: white;
-          width: 200px;
-          display: inline-block;
-          vertical-align: middle;
-          line-height: 55px;
-        }
-
-        .button {
-          &amp;--secondary {
-            &amp;:hover {
-              background-color: var(--color-primary);
-              color: var(--color-light);
-              .icon__svg {
-                fill: var(--color-light);
-              }
-            }
-          }
-        }
-      }
-    &#x60;,
-  ],
 })
 export class AppScene implements OnInit {
   title &#x3D; &#x27;Metaverse Portal&#x27;;
@@ -793,15 +679,15 @@ export class AppScene implements OnInit {
 
   sidebarItems: SidebarItem[] &#x3D; [
     {
-      name: &#x27;Avatar&#x27;,
-      routerLink: [&#x27;/selected-avatar&#x27;],
-      icon: &#x27;assets/icons/mdi/account.svg&#x27;,
-      active: false,
-    },
-    {
       name: &#x27;Play&#x27;,
       routerLink: [&#x27;/play&#x27;],
       icon: &#x27;assets/icons/mdi/play.svg&#x27;,
+      active: false,
+    },
+    {
+      name: &#x27;Avatar&#x27;,
+      routerLink: [&#x27;/selected-avatar&#x27;],
+      icon: &#x27;assets/icons/mdi/account.svg&#x27;,
       active: false,
     },
     {
@@ -850,62 +736,6 @@ export class AppScene implements OnInit {
     </div>
 
 
-    <div class="tab-pane fade " id="c-styleData">
-            <pre class="line-numbers"><code class="language-scss">
-      .scene__body {
-        height: calc(100vh - 44px);
-      }
-
-      .scene__container {
-        height: 100%;
-        width: 100%;
-        /* margin: 0; */
-        padding: 0;
-        overflow: auto;
-      }
-
-      .sidebarItem {
-        &amp;__text {
-          display: inline-block;
-          height: 55px;
-          margin-top: 15px;
-          vertical-align: top;
-        }
-
-        &amp;__image {
-          width: 55px;
-          height: 55px;
-          border-radius: 50%;
-          margin-top: 15px;
-          &amp;:hover {
-            border: 3px solid var(--color-primary);
-          }
-        }
-
-        &amp;__text-content {
-          padding-left: 15px;
-          color: white;
-          width: 200px;
-          display: inline-block;
-          vertical-align: middle;
-          line-height: 55px;
-        }
-
-        .button {
-          &amp;--secondary {
-            &amp;:hover {
-              background-color: var(--color-primary);
-              color: var(--color-light);
-              .icon__svg {
-                fill: var(--color-light);
-              }
-            }
-          }
-        }
-      }
-    
-</code></pre>
-    </div>
 
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
@@ -932,7 +762,7 @@ export class AppScene implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    selectedAvatar: selectedAvatar$ | async  } as data">  <div cfBlock="scene">    <div class="scene__body">      <cf-sidebar-container        *ngIf="data.selectedAvatar; else notSelectedAvatarLayout"      >        <!-- A sidebar -->        <cf-sidebar          [(opened)]="sidebarIsOpen"          [dock]="true"          [dockedSize]="\'80px\'"          [showBackdrop]="true"          [closeOnClickBackdrop]="true"          [closeOnClickOutside]="true"        >          <div style="margin-top: 20px">            <a              [routerLink]="[\'/select-avatar\']"              class="d-block"              cfBlock="sidebarItem"            >              <div cfElem="text">                <span cfElem="text-content">Account</span>              </div>              <img                cfElem="image"                [src]="                  data.selectedAvatar.selectedAppearance.smallPreviewUrl                "              />            </a>            <ng-container *ngFor="let item of sidebarItems">              <a                [routerLink]="item.routerLink"                class="d-block"                cfBlock="sidebarItem"              >                <div cfElem="text">                  <span cfElem="text-content">{{ item.name }}</span>                </div>                <button                  cfBlock="button"                  cfMod="fab"                  [ngClass]="{                    \'button--primary\': item.active,                    \'button--secondary\': !item.active                  }"                  style="margin-top: 15px;"                >                  <cf-svg-icon                    [src]="item.icon"                    cfElem="icon"                    [svgClass]="\'icon__svg\'"                  ></cf-svg-icon>                </button>              </a>            </ng-container>            <router-outlet name="sidebar"></router-outlet>          </div>        </cf-sidebar>        <div cf-sidebar-content>          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </cf-sidebar-container>      <ng-template #notSelectedAvatarLayout>        <div class="scene__container">          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </ng-template>    </div>    <cf-navbar      cfElem="navbar"      [title]="title"      (titleClick)="sidebarIsOpen = !sidebarIsOpen"    >    </cf-navbar>  </div></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    selectedAvatar: selectedAvatar$ | async  } as data">  <div cfBlock="scene">    <div class="scene__body">      <cf-sidebar-container        *ngIf="data.selectedAvatar; else notSelectedAvatarLayout"      >        <!-- A sidebar -->        <cf-sidebar          [(opened)]="sidebarIsOpen"          [dock]="true"          [dockedSize]="\'80px\'"          [showBackdrop]="true"          [closeOnClickBackdrop]="true"          [closeOnClickOutside]="true"        >          <div style="margin-top: 20px">            <a              [routerLink]="[\'/select-avatar\']"              class="d-block"              cfBlock="sidebar-item"            >              <div cfElem="text">                <span cfElem="text-content">Account</span>              </div>              <img                cfElem="image"                [src]="                  data.selectedAvatar.selectedAppearance.smallPreviewUrl                "              />            </a>            <ng-container *ngFor="let item of sidebarItems">              <a                [routerLink]="item.routerLink"                class="d-block"                cfBlock="sidebar-item"              >                <div cfElem="text">                  <span cfElem="text-content">{{ item.name }}</span>                </div>                <button                  cfBlock="button"                  cfMod="fab"                  [ngClass]="{                    \'button--primary\': item.active,                    \'button--secondary\': !item.active                  }"                  style="margin-top: 15px;"                >                  <cf-svg-icon                    [src]="item.icon"                    cfElem="icon"                    [svgClass]="\'icon__svg\'"                  ></cf-svg-icon>                </button>              </a>            </ng-container>            <router-outlet name="sidebar"></router-outlet>          </div>        </cf-sidebar>        <div cf-sidebar-content>          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </cf-sidebar-container>      <ng-template #notSelectedAvatarLayout>        <div class="scene__container">          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </ng-template>    </div>    <cf-navbar      cfElem="navbar"      [title]="title"      (titleClick)="sidebarIsOpen = !sidebarIsOpen"    >    </cf-navbar>  </div></ng-container></div>'
     var COMPONENTS = [{'name': 'AppScene', 'selector': 'cf-scene'},{'name': 'NavbarComponent', 'selector': 'cf-navbar'},{'name': 'SidebarComponent', 'selector': 'cf-sidebar'},{'name': 'SidebarContainerComponent', 'selector': 'cf-sidebar-container'},{'name': 'SvgIconComponent', 'selector': 'cf-svg-icon'}];
     var DIRECTIVES = [{'name': 'BlockDirective', 'selector': '[cfBlock]'},{'name': 'CloseSidebarDirective', 'selector': '[cfCloseSidebar]'},{'name': 'ElemDirective', 'selector': '[cfElem]'},{'name': 'ModDirective', 'selector': '[cfMod]'}];
     var ACTUAL_COMPONENT = {'name': 'AppScene'};

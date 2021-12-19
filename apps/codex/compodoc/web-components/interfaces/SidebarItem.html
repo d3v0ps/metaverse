@@ -295,7 +295,7 @@ export interface SidebarItem {
                 &lt;a
                   [routerLink]&#x3D;&quot;[&#x27;/select-avatar&#x27;]&quot;
                   class&#x3D;&quot;d-block&quot;
-                  cfBlock&#x3D;&quot;sidebarItem&quot;
+                  cfBlock&#x3D;&quot;sidebar-item&quot;
                 &gt;
                   &lt;div cfElem&#x3D;&quot;text&quot;&gt;
                     &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;Account&lt;/span&gt;
@@ -312,7 +312,7 @@ export interface SidebarItem {
                   &lt;a
                     [routerLink]&#x3D;&quot;item.routerLink&quot;
                     class&#x3D;&quot;d-block&quot;
-                    cfBlock&#x3D;&quot;sidebarItem&quot;
+                    cfBlock&#x3D;&quot;sidebar-item&quot;
                   &gt;
                     &lt;div cfElem&#x3D;&quot;text&quot;&gt;
                       &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;{{ item.name }}&lt;/span&gt;
@@ -363,61 +363,6 @@ export interface SidebarItem {
       &lt;/div&gt;
     &lt;/ng-container&gt;
   &#x60;,
-  styles: [
-    &#x60;
-      .scene__body {
-        height: calc(100vh - 44px);
-      }
-
-      .scene__container {
-        height: 100%;
-        width: 100%;
-        /* margin: 0; */
-        padding: 0;
-        overflow: auto;
-      }
-
-      .sidebarItem {
-        &amp;__text {
-          display: inline-block;
-          height: 55px;
-          margin-top: 15px;
-          vertical-align: top;
-        }
-
-        &amp;__image {
-          width: 55px;
-          height: 55px;
-          border-radius: 50%;
-          margin-top: 15px;
-          &amp;:hover {
-            border: 3px solid var(--color-primary);
-          }
-        }
-
-        &amp;__text-content {
-          padding-left: 15px;
-          color: white;
-          width: 200px;
-          display: inline-block;
-          vertical-align: middle;
-          line-height: 55px;
-        }
-
-        .button {
-          &amp;--secondary {
-            &amp;:hover {
-              background-color: var(--color-primary);
-              color: var(--color-light);
-              .icon__svg {
-                fill: var(--color-light);
-              }
-            }
-          }
-        }
-      }
-    &#x60;,
-  ],
 })
 export class AppScene implements OnInit {
   title &#x3D; &#x27;Metaverse Portal&#x27;;
@@ -425,15 +370,15 @@ export class AppScene implements OnInit {
 
   sidebarItems: SidebarItem[] &#x3D; [
     {
-      name: &#x27;Avatar&#x27;,
-      routerLink: [&#x27;/selected-avatar&#x27;],
-      icon: &#x27;assets/icons/mdi/account.svg&#x27;,
-      active: false,
-    },
-    {
       name: &#x27;Play&#x27;,
       routerLink: [&#x27;/play&#x27;],
       icon: &#x27;assets/icons/mdi/play.svg&#x27;,
+      active: false,
+    },
+    {
+      name: &#x27;Avatar&#x27;,
+      routerLink: [&#x27;/selected-avatar&#x27;],
+      icon: &#x27;assets/icons/mdi/account.svg&#x27;,
       active: false,
     },
     {
