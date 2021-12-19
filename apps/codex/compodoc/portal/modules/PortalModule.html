@@ -188,8 +188,8 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
 import { NgModule } from &#x27;@angular/core&#x27;;
 import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
-import { WebComponentsModule } from &#x27;@central-factory/web-components/angular&#x27;;
-import { AngularSvgIconModule } from &#x27;angular-svg-icon&#x27;;
+import { SceneModule } from &#x27;@central-factory/web-components/angular/scene/scene.module&#x27;;
+import { SvgIconModule } from &#x27;@central-factory/web-components/angular/svg-icon/svg-icon.module&#x27;;
 import { PortalRoutingModule } from &#x27;./portal-routing.module&#x27;;
 import { PortalRoot } from &#x27;./portal.root&#x27;;
 
@@ -198,9 +198,9 @@ import { PortalRoot } from &#x27;./portal.root&#x27;;
   imports: [
     BrowserModule,
     HttpClientModule,
-    AngularSvgIconModule.forRoot(),
+    SvgIconModule.forRoot(),
+    SceneModule,
 
-    WebComponentsModule,
     PortalRoutingModule,
   ],
   providers: [],

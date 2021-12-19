@@ -65,6 +65,12 @@
                         <li>
                             <a href="#isLTR" title="src/lib/shared/platform/browser/is-ltr.ts" ><b>isLTR</b>&nbsp;&nbsp;&nbsp;(src/.../is-ltr.ts)</a>
                         </li>
+                        <li>
+                            <a href="#SERVER_URL" title="src/lib/angular/svg-icon/svg-icon-registry.service.ts" ><b>SERVER_URL</b>&nbsp;&nbsp;&nbsp;(src/.../svg-icon-registry.service.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SVG_ICON_REGISTRY_PROVIDER" title="src/lib/angular/svg-icon/svg-icon-registry.service.ts" ><b>SVG_ICON_REGISTRY_PROVIDER</b>&nbsp;&nbsp;&nbsp;(src/.../svg-icon-registry.service.ts)</a>
+                        </li>
                     </ul>
                 </td>
             </tr>
@@ -150,6 +156,65 @@
 </div>
                 </td>
             </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/lib/angular/svg-icon/svg-icon-registry.service.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SERVER_URL"></a>
+                    <span class="name">
+                        <span ><b>SERVER_URL</b></span>
+                        <a href="#SERVER_URL"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new InjectionToken&lt;string&gt;(&#x27;SERVER_URL&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SVG_ICON_REGISTRY_PROVIDER"></a>
+                    <span class="name">
+                        <span ><b>SVG_ICON_REGISTRY_PROVIDER</b></span>
+                        <a href="#SVG_ICON_REGISTRY_PROVIDER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  provide: SvgIconRegistryService,
+  deps: [
+    [new Optional(), new SkipSelf(), SvgIconRegistryService],
+    SvgLoader,
+    [PLATFORM_ID as InjectionToken&lt;any&gt;],
+    [new Optional(), SERVER_URL as InjectionToken&lt;string&gt;],
+    [new Optional(), DOCUMENT as InjectionToken&lt;any&gt;],
+  ],
+  useFactory: SVG_ICON_REGISTRY_PROVIDER_FACTORY,
+}</code>
+                    </td>
+                </tr>
+
 
         </tbody>
     </table>
