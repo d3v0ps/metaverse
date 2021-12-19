@@ -219,6 +219,41 @@
               ]
             }
           }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/assets/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/assets",
+            "config": {
+              "configFolder": "libs/assets/.storybook"
+            }
+          },
+          "configurations": {
+            "build-codex": {
+              "quiet": true,
+              "outputPath": "apps/codex/static/storybook/assets"
+            },
+            "ci": {
+              "quiet": true
+            }
+          }
         }
       },
       "tags": []
@@ -306,6 +341,7 @@
           },
           "configurations": {
             "build-codex": {
+              "quiet": true,
               "outputPath": "apps/codex/static/storybook/avatars"
             },
             "ci": {
