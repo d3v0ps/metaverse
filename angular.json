@@ -21,7 +21,7 @@
               "apps/agent-avatars/src/favicon.ico",
               "apps/agent-avatars/src/assets"
             ],
-            "styles": ["apps/agent-avatars/src/styles/index.scss"],
+            "styles": ["apps/agent-avatars/src/styles/agent-avatars/index.scss"],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "libs/web-components/src/lib/styles",
