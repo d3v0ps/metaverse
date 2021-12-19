@@ -456,7 +456,8 @@ export class AppScene implements OnInit {
     },
   ];
 
-  selectedAvatar$: Observable&lt;Avatar&gt; &#x3D; this.selectedAvatarState.avatar$;
+  selectedAvatar$: Observable&lt;Avatar | undefined&gt; &#x3D;
+    this.selectedAvatarState.avatar$;
 
   constructor(
     private router: Router,

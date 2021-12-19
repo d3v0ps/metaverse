@@ -133,6 +133,11 @@ export const routes: Routes &#x3D; [
         loadChildren: () &#x3D;&gt;
           &quot;import(&#x27;./settings/settings.module&#x27;).then((m) &#x3D;&gt; m.SettingsModule)&quot;,
       },
+      {
+        path: &#x27;&#x27;,
+        redirectTo: &#x27;select-avatar&#x27;,
+        pathMatch: &#x27;full&#x27;,
+      },
     ],
   },
   // {
@@ -140,11 +145,6 @@ export const routes: Routes &#x3D; [
   //   loadChildren: () &#x3D;&gt;
   //     import(&#x27;@central-factory/gatekeeper&#x27;).then((m) &#x3D;&gt; m.GatekeeperModule),
   // },
-  {
-    path: &#x27;&#x27;,
-    redirectTo: &#x27;selected-avatar&#x27;,
-    pathMatch: &#x27;full&#x27;,
-  },
 ];
 
 @NgModule({

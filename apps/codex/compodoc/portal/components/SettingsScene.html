@@ -206,8 +206,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="66"
-                            class="link-to-prism">src/app/settings/scenes/settings.scene.ts:66</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/app/settings/scenes/settings.scene.ts:61</a></div>
                 </td>
             </tr>
 
@@ -388,11 +388,6 @@ export class SettingsScene implements OnInit {
   private readonly documentRoot &#x3D; document.documentElement;
 
   ngOnInit() {
-    console.log(
-      getComputedStyle(document.documentElement)
-        .getPropertyValue(&#x27;--color-primary&#x27;)
-        .trim()
-    );
     this.form.patchValue(
       {
         primaryColor: getComputedStyle(this.documentRoot)
@@ -459,7 +454,7 @@ export class SettingsScene implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div block="scene-content">  Settings  <form [formGroup]="form">    <label>Primary Color</label>    <input type="color" formControlName="primaryColor" />    <label>Secondary Color</label>    <input type="color" formControlName="secondaryColor" />  </form></div></div>'
-    var COMPONENTS = [{'name': 'AssetDetailComponent', 'selector': 'cf-asset-detail'},{'name': 'AssetsGridComponent', 'selector': 'cf-assets-grid'},{'name': 'DashboardView', 'selector': 'cf-dashboard'},{'name': 'InventoryScene', 'selector': 'cf-inventory'},{'name': 'MarketplaceScene', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
+    var COMPONENTS = [{'name': 'AssetDetailComponent', 'selector': 'cf-asset-detail'},{'name': 'AssetsGridComponent', 'selector': 'cf-assets-grid'},{'name': 'DashboardScene', 'selector': 'cf-dashboard'},{'name': 'InventoryScene', 'selector': 'cf-inventory'},{'name': 'MarketplaceScene', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SettingsScene'};
 </script>

@@ -80,15 +80,15 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/DashboardModule.html" data-type="entity-link" >DashboardModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-DashboardModule-a96f2390cd6c3f0244b51d64efc165cb"' : 'data-target="#xs-components-links-module-DashboardModule-a96f2390cd6c3f0244b51d64efc165cb"' }>
+                                            'data-target="#components-links-module-DashboardModule-441a995af2e48fc691b7aae8d4808e33"' : 'data-target="#xs-components-links-module-DashboardModule-441a995af2e48fc691b7aae8d4808e33"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-DashboardModule-a96f2390cd6c3f0244b51d64efc165cb"' :
-                                            'id="xs-components-links-module-DashboardModule-a96f2390cd6c3f0244b51d64efc165cb"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-DashboardModule-441a995af2e48fc691b7aae8d4808e33"' :
+                                            'id="xs-components-links-module-DashboardModule-441a995af2e48fc691b7aae8d4808e33"' }>
                                             <li class="link">
-                                                <a href="components/DashboardView.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >DashboardView</a>
+                                                <a href="components/DashboardScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >DashboardScene</a>
                                             </li>
                                         </ul>
                                     </li>

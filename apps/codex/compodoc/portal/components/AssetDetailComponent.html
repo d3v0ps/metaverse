@@ -135,7 +135,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div block&#x3D;&quot;asset-detail&quot;&gt;
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div block&#x3D;&quot;asset-detail&quot; *ngIf&#x3D;&quot;asset&quot;&gt;
   &lt;h3 elem&#x3D;&quot;name&quot;&gt;{{ asset.name }}&lt;/h3&gt;
   &lt;img elem&#x3D;&quot;image&quot; [src]&#x3D;&quot;asset.previewUrl&quot; alt&#x3D;&quot;&quot; /&gt;
   &lt;div elem&#x3D;&quot;info&quot;&gt;
@@ -271,7 +271,7 @@ import { Asset } from &#x27;@central-factory/core&#x27;;
 @Component({
   selector: &#x27;cf-asset-detail&#x27;,
   template: &#x60;
-    &lt;div block&#x3D;&quot;asset-detail&quot;&gt;
+    &lt;div block&#x3D;&quot;asset-detail&quot; *ngIf&#x3D;&quot;asset&quot;&gt;
       &lt;h3 elem&#x3D;&quot;name&quot;&gt;{{ asset.name }}&lt;/h3&gt;
       &lt;img elem&#x3D;&quot;image&quot; [src]&#x3D;&quot;asset.previewUrl&quot; alt&#x3D;&quot;&quot; /&gt;
       &lt;div elem&#x3D;&quot;info&quot;&gt;
@@ -440,8 +440,8 @@ export class AssetDetailComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div block="asset-detail">  <h3 elem="name">{{ asset.name }}</h3>  <img elem="image" [src]="asset.previewUrl" alt="" />  <div elem="info">    <p>{{ asset.description }}</p>    <table block="asset-stats">      <tbody>        <tr elem="row">          <td elem="label">Model</td>          <td elem="value">{{ asset.model }}</td>        </tr>        <tr elem="row">          <td elem="label">Producer</td>          <td elem="value">{{ asset.producer }}</td>        </tr>        <tr elem="row">          <td elem="label">Current Value</td>          <td            elem="value"            [ngClass]="{              \'asset-stats__value--negative\':                asset.currentValue < asset.purchaseValue,              \'asset-stats__value--positive\':                asset.currentValue > asset.purchaseValue            }"          >            {{ asset.currentValue | currency }}          </td>        </tr>        <tr elem="row">          <td elem="label">Purchase Value</td>          <td elem="value">{{ asset.purchaseValue | currency }}</td>        </tr>        <tr elem="row">          <td elem="label">Purchase Date</td>          <td elem="value">{{ asset.purchaseDate | date }}</td>        </tr>        <tr elem="row">          <td elem="label">URL</td>          <td elem="value">            <a [href]="asset.url" target="_blank">              <svg-icon                src="assets/icons/mdi/link.svg"                elem="icon"                [svgClass]="\'icon__svg\'"              ></svg-icon>            </a>          </td>        </tr>      </tbody>    </table>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AssetDetailComponent', 'selector': 'cf-asset-detail'},{'name': 'AssetsGridComponent', 'selector': 'cf-assets-grid'},{'name': 'DashboardView', 'selector': 'cf-dashboard'},{'name': 'InventoryScene', 'selector': 'cf-inventory'},{'name': 'MarketplaceScene', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
+        var COMPONENT_TEMPLATE = '<div><div block="asset-detail" *ngIf="asset">  <h3 elem="name">{{ asset.name }}</h3>  <img elem="image" [src]="asset.previewUrl" alt="" />  <div elem="info">    <p>{{ asset.description }}</p>    <table block="asset-stats">      <tbody>        <tr elem="row">          <td elem="label">Model</td>          <td elem="value">{{ asset.model }}</td>        </tr>        <tr elem="row">          <td elem="label">Producer</td>          <td elem="value">{{ asset.producer }}</td>        </tr>        <tr elem="row">          <td elem="label">Current Value</td>          <td            elem="value"            [ngClass]="{              \'asset-stats__value--negative\':                asset.currentValue < asset.purchaseValue,              \'asset-stats__value--positive\':                asset.currentValue > asset.purchaseValue            }"          >            {{ asset.currentValue | currency }}          </td>        </tr>        <tr elem="row">          <td elem="label">Purchase Value</td>          <td elem="value">{{ asset.purchaseValue | currency }}</td>        </tr>        <tr elem="row">          <td elem="label">Purchase Date</td>          <td elem="value">{{ asset.purchaseDate | date }}</td>        </tr>        <tr elem="row">          <td elem="label">URL</td>          <td elem="value">            <a [href]="asset.url" target="_blank">              <svg-icon                src="assets/icons/mdi/link.svg"                elem="icon"                [svgClass]="\'icon__svg\'"              ></svg-icon>            </a>          </td>        </tr>      </tbody>    </table>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AssetDetailComponent', 'selector': 'cf-asset-detail'},{'name': 'AssetsGridComponent', 'selector': 'cf-assets-grid'},{'name': 'DashboardScene', 'selector': 'cf-dashboard'},{'name': 'InventoryScene', 'selector': 'cf-inventory'},{'name': 'MarketplaceScene', 'selector': 'cf-marketplace'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AssetDetailComponent'};
 </script>
