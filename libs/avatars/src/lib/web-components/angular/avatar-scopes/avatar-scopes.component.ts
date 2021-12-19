@@ -47,11 +47,11 @@ export class AvatarScopesInput {
         </div>
 
         <button type="button" block="button" mod="secondary">
-          <svg-icon
+          <cf-svg-icon
             src="assets/icons/mdi/plus.svg"
             elem="icon"
             [svgClass]="'icon__svg'"
-          ></svg-icon>
+          ></cf-svg-icon>
           Add another scope
         </button>
       </div>

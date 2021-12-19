@@ -7,11 +7,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       <div fxLayout="row" fxFlexFill fxLayoutAlign="space-between center">
         <div block="navbar" mod="left" fxFlex="50">
           <h1 elem="title" (click)="onTitleClick()">
-            <svg-icon
+            <cf-svg-icon
               elem="icon"
               [svgClass]="'icon__svg'"
               src="assets/logo.svg"
-            ></svg-icon>
+            ></cf-svg-icon>
 
             <span elem="text">{{ title }}</span>
           </h1>
@@ -21,40 +21,40 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
           <div block="navbar" mod="right">
             <ul block="list" mod="horizontal">
               <li elem="item">
-                <svg-icon
+                <cf-svg-icon
                   src="assets/icons/mdi/web.svg"
                   elem="icon"
                   [svgClass]="'icon__svg'"
-                ></svg-icon>
+                ></cf-svg-icon>
                 <a [href]="environment?.webUrl" elem="link">Website</a>
               </li>
               <li elem="item">
-                <svg-icon
+                <cf-svg-icon
                   src="assets/icons/mdi/text-box-search-outline.svg"
                   elem="icon"
                   [svgClass]="'icon__svg'"
-                ></svg-icon>
+                ></cf-svg-icon>
                 <a [href]="environment?.documentationUrl" elem="link"
                   >Documentation</a
                 >
               </li>
               <li elem="item">
-                <svg-icon
+                <cf-svg-icon
                   src="assets/icons/mdi/post-outline.svg"
                   elem="icon"
                   [svgClass]="'icon__svg'"
-                ></svg-icon>
+                ></cf-svg-icon>
                 <a [href]="environment?.blogUrl" elem="link">Blog</a>
               </li>
               <li elem="item">
-                <svg-icon
+                <cf-svg-icon
                   src="assets/icons/mdi/code-tags.svg"
                   elem="icon"
                   [svgClass]="'icon__svg'"
-                ></svg-icon>
-                <a [href]="environment?.developersUrl" elem="link"
-                  >Developers</a
-                >
+                ></cf-svg-icon>
+                <a [href]="environment?.developersUrl" elem="link">
+                  Developers
+                </a>
               </li>
             </ul>
           </div>

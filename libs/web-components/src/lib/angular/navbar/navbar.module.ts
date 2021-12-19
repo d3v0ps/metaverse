@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BemModule } from 'angular-bem';
-import { AngularSvgIconModule } from 'angular-svg-icon';
+import { SvgIconModule } from '../svg-icon/svg-icon.module';
 import { NavbarComponent } from './navbar.component';
 
 @NgModule({
-  imports: [AngularSvgIconModule, FlexLayoutModule, BemModule],
+  imports: [SvgIconModule, FlexLayoutModule, BemModule],
   declarations: [NavbarComponent],
   exports: [NavbarComponent],
 })

@@ -61,7 +61,7 @@ import { environment } from '../environments/environment';
           cursor: pointer;
         }
 
-        ::ng-deep svg-icon > svg {
+        ::ng-deep cf-svg-icon > svg {
           fill: #706fd3;
         }
 

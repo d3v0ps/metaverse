@@ -69,11 +69,11 @@ export interface SidebarItem {
                       }"
                       style="margin-top: 15px;"
                     >
-                      <svg-icon
+                      <cf-svg-icon
                         [src]="item.icon"
                         elem="icon"
                         [svgClass]="'icon__svg'"
-                      ></svg-icon>
+                      ></cf-svg-icon>
                     </button>
                   </a>
                 </ng-container>

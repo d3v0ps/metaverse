@@ -72,11 +72,11 @@ export interface AvatarAppearancesForm {
             </div>
           </div>
           <div block="card" class="appearance-card">
-            <svg-icon
+            <cf-svg-icon
               src="assets/icons/mdi/plus.svg"
               elem="icon"
               [svgClass]="'icon__svg'"
-            ></svg-icon>
+            ></cf-svg-icon>
           </div>
         </div>
       </div>

@@ -24,13 +24,13 @@ export class AvatarSkillsInput {
             class="skill-form"
           >
             <button type="button" block="button" mod="primary uppercase big">
-              <svg-icon
+              <cf-svg-icon
                 src="assets/icons/mdi/{{
                   skillsIcons[skill.value.skill + '-' + skill.value.domain]
                 }}.svg"
                 elem="icon"
                 [svgClass]="'icon__svg'"
-              ></svg-icon>
+              ></cf-svg-icon>
               {{ skill.value.skill }} {{ skill.value.domain }}
             </button>
 
@@ -67,11 +67,11 @@ export class AvatarSkillsInput {
       </div>
 
       <button type="button" block="button" mod="primary uppercase big">
-        <svg-icon
+        <cf-svg-icon
           src="assets/icons/mdi/plus.svg"
           elem="icon"
           [svgClass]="'icon__svg'"
-        ></svg-icon>
+        ></cf-svg-icon>
         Add more skills
       </button>
     </form>

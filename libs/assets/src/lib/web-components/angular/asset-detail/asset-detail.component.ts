@@ -45,11 +45,11 @@ import { Asset } from '../../../domain/models/asset';
               <td elem="label">URL</td>
               <td elem="value">
                 <a [href]="asset.url" target="_blank">
-                  <svg-icon
+                  <cf-svg-icon
                     src="assets/icons/mdi/link.svg"
                     elem="icon"
                     [svgClass]="'icon__svg'"
-                  ></svg-icon>
+                  ></cf-svg-icon>
                 </a>
               </td>
             </tr>

@@ -28,12 +28,12 @@ export interface AvatarOverviewInput {
                     id="welcomeMessage"
                     formControlName="welcomeMessage"
                   ></textarea>
-                  <svg-icon
+                  <cf-svg-icon
                     src="assets/icons/mdi/check.svg"
                     elem="icon"
                     [svgClass]="'icon__svg'"
                     (click)="editing.welcomeMessage = !editing.welcomeMessage"
-                  ></svg-icon>
+                  ></cf-svg-icon>
                 </div>
 
                 <p
@@ -41,11 +41,11 @@ export interface AvatarOverviewInput {
                   (click)="editing.welcomeMessage = !editing.welcomeMessage"
                 >
                   {{ form.value.welcomeMessage }}
-                  <svg-icon
+                  <cf-svg-icon
                     src="assets/icons/mdi/pencil-outline.svg"
                     elem="icon"
                     [svgClass]="'icon__svg'"
-                  ></svg-icon>
+                  ></cf-svg-icon>
                 </p>
               </div>
 
@@ -54,23 +54,23 @@ export interface AvatarOverviewInput {
 
                 <div class="form-control" *ngIf="editing.name">
                   <input id="name" type="text" formControlName="name" />
-                  <svg-icon
+                  <cf-svg-icon
                     src="assets/icons/mdi/check.svg"
                     elem="icon"
                     [svgClass]="'icon__svg'"
                     (click)="editing.name = !editing.name"
-                  ></svg-icon>
+                  ></cf-svg-icon>
                 </div>
 
                 <span
                   (click)="editing.name = !editing.name"
                   *ngIf="!editing.name"
                   >{{ form.value.name }}
-                  <svg-icon
+                  <cf-svg-icon
                     src="assets/icons/mdi/pencil-outline.svg"
                     elem="icon"
                     [svgClass]="'icon__svg'"
-                  ></svg-icon>
+                  ></cf-svg-icon>
                 </span>
               </div>
             </div>

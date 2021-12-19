@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
 import { BemModule } from 'angular-bem';
-import { AngularSvgIconModule } from 'angular-svg-icon';
 import { PreviewAvatarAppearanceModule } from '../preview-avatar-appearance/preview-avatar-appearance.module';
 import { AvatarAppearancesComponent } from './avatar-appearances.component';
 
@@ -13,7 +13,7 @@ import { AvatarAppearancesComponent } from './avatar-appearances.component';
     ReactiveFormsModule,
     FlexLayoutModule,
     BemModule,
-    AngularSvgIconModule,
+    SvgIconModule,
     PreviewAvatarAppearanceModule,
   ],
   declarations: [AvatarAppearancesComponent],
