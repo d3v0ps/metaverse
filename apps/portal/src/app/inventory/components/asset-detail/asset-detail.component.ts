@@ -4,7 +4,7 @@ import { Asset } from '@central-factory/core';
 @Component({
   selector: 'cf-asset-detail',
   template: `
-    <div block="asset-detail">
+    <div block="asset-detail" *ngIf="asset">
       <h3 elem="name">{{ asset.name }}</h3>
       <img elem="image" [src]="asset.previewUrl" alt="" />
       <div elem="info">

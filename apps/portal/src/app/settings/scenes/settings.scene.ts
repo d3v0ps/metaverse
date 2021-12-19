@@ -27,11 +27,6 @@ export class SettingsScene implements OnInit {
   private readonly documentRoot = document.documentElement;
 
   ngOnInit() {
-    console.log(
-      getComputedStyle(document.documentElement)
-        .getPropertyValue('--color-primary')
-        .trim()
-    );
     this.form.patchValue(
       {
         primaryColor: getComputedStyle(this.documentRoot)

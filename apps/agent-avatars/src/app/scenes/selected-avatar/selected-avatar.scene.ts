@@ -51,7 +51,7 @@ import { Observable } from 'rxjs';
   `,
 })
 export class SelectedAvatarScene {
-  avatar$: Observable<Avatar> = this.selectedAvatarState.avatar$;
+  avatar$: Observable<Avatar | undefined> = this.selectedAvatarState.avatar$;
 
   constructor(private selectedAvatarState: SelectedAvatarState) {}
 }

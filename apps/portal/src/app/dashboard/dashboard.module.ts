@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { DashboardView } from './views/dashboard.view';
+import { DashboardScene } from './scenes/dashboard.scene';
 
 @NgModule({
   imports: [DashboardRoutingModule],
-  declarations: [DashboardView],
+  declarations: [DashboardScene],
 })
 export class DashboardModule {}

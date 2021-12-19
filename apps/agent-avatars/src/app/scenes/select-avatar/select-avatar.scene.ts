@@ -41,26 +41,6 @@ import { Observable } from 'rxjs';
       </div>
     </ng-container>
   `,
-  styles: [
-    `
-      .select-avatar {
-        display: flex;
-        height: 80vh;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        &__title {
-          font-size: 2.5rem;
-          margin: 0;
-        }
-
-        &__avatars-carousel {
-          margin: 2rem 0;
-        }
-      }
-    `,
-  ],
 })
 export class SelectAvatarScene {
   avatars$: Observable<Avatar[]> = this.availableAvatarsState.avatars$;

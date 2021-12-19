@@ -21,7 +21,13 @@
               "apps/agent-avatars/src/favicon.ico",
               "apps/agent-avatars/src/assets"
             ],
-            "styles": ["apps/agent-avatars/src/styles.scss"],
+            "styles": ["apps/agent-avatars/src/styles/index.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/web-components/src/lib/styles",
+                "libs/avatars/src/lib/styles"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -428,9 +434,13 @@
                 "output": "./assets/fonts"
               }
             ],
-            "styles": ["apps/portal/src/styles.scss"],
+            "styles": ["apps/portal/src/styles/index.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": ["libs/web-components/src/lib/styles"]
+              "includePaths": [
+                "libs/web-components/src/lib/styles",
+                "libs/avatars/src/lib/styles",
+                "apps/agent-avatars/src/styles"
+              ]
             },
             "scripts": []
           },

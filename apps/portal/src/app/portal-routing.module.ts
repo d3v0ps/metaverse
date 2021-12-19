@@ -58,6 +58,11 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./settings/settings.module').then((m) => m.SettingsModule),
       },
+      {
+        path: '',
+        redirectTo: 'select-avatar',
+        pathMatch: 'full',
+      },
     ],
   },
   // {
@@ -65,11 +70,6 @@ export const routes: Routes = [
   //   loadChildren: () =>
   //     import('@central-factory/gatekeeper').then((m) => m.GatekeeperModule),
   // },
-  {
-    path: '',
-    redirectTo: 'selected-avatar',
-    pathMatch: 'full',
-  },
 ];
 
 @NgModule({
