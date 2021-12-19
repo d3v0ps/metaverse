@@ -45,3 +45,4 @@ Thumbs.db
 # Generated Compodoc files
 documentation/
 apps/codex/static/compodoc/
+apps/codex/static/storybook/

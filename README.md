@@ -21,6 +21,7 @@ nx run codex
 ```bash
 # generate compodoc documentation from all projects into codex
 nx run-many --target=compodoc --all --configuration build-codex
+nx run-many --target=build-storybook --all --configuration build-codex
 
 # serve codex
 nx serve codex

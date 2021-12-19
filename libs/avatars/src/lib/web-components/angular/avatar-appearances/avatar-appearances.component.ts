@@ -2,10 +2,6 @@ import { Component, Input } from '@angular/core';
 import { Control, FormArray, FormControl, FormGroup } from '@ng-stack/forms';
 import { Appearance } from '../../../domain/models/appearance';
 
-export class AvatarAppeareancesInput {
-  appearances!: Appearance[];
-}
-
 export type AppearancePreviewCameraControl = Control<{
   position?: string | undefined;
   rotation?: string | undefined;
@@ -84,10 +80,10 @@ export interface AvatarAppearancesForm {
   `,
 })
 export class AvatarAppearancesComponent {
-  @Input() set appearances(value: AvatarAppeareancesInput) {
+  @Input() set appearances(value: Appearance[]) {
     if (value) {
       this.appearancesForm.clear();
-      value.appearances.forEach((appearance) => {
+      value.forEach((appearance) => {
         this.addAppearance(appearance);
       });
     }

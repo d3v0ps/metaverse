@@ -42,6 +42,10 @@ jobs:
         shell: bash
         run: npx nx run-many --target=compodoc --configuration=build-codex --all --only-failed
 
+      - name: Build Storybooks
+        shell: bash
+        run: npx nx run-many --target=build-storybook --all --configuration build-codex --all --only-failed
+
       - name: Build docs
         shell: bash
         run: npx nx build codex

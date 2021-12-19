@@ -12,7 +12,7 @@ export interface AvatarOverviewInput {
 @Component({
   selector: 'cf-avatar-overview',
   template: `
-    <form [formGroup]="form" cfBlock="avatar-overview">
+    <form [formGroup]="form" cfBlock="avatar-overview" *ngIf="form.value?.name">
       <div fxLayout="column" fxLayoutGap="10px">
         <div fxLayout="row" fxLayoutGap="10px">
           <div fxFlex="100px">
@@ -82,6 +82,10 @@ export interface AvatarOverviewInput {
 })
 export class AvatarOverviewComponent {
   @Input() set avatar(value: Avatar) {
+    if (!value) {
+      return;
+    }
+
     this.form.reset({
       name: value.name,
       title: value.title,

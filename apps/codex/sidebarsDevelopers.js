@@ -36,6 +36,8 @@ module.exports = {
     'Portal': ['portal/api-docs', 'portal/components'],
     'Gatekeeper': ['gatekeeper/identity', 'gatekeeper/agent', 'gatekeeper/api-docs'],
     'Avatars': [
+      'avatars/api-docs',
+      'avatars/components',
       {
         type: 'category',
         label: 'Skills',
@@ -47,5 +49,9 @@ module.exports = {
         items: ['avatars/integrations/meta', 'avatars/integrations/microsoft', 'avatars/integrations/google'],
       }
     ],
+    'Assets': [
+      'assets/api-docs',
+      'assets/components',
+    ]
   },
 };

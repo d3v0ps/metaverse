@@ -1,10 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 // import 'aframe';
-import { PreviewAvatarAppearanceScene } from './preview-avatar-appearance.scene';
+import { PreviewAvatarAppearanceComponent } from './preview-avatar-appearance.component';
 
 @NgModule({
-  schemas: [],
-  declarations: [PreviewAvatarAppearanceScene],
-  exports: [PreviewAvatarAppearanceScene],
+  imports: [CommonModule],
+  declarations: [PreviewAvatarAppearanceComponent],
+  exports: [PreviewAvatarAppearanceComponent],
 })
 export class PreviewAvatarAppearanceModule {}

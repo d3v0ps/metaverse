@@ -30,9 +30,7 @@ import { Observable } from 'rxjs';
             <div fxLayout="row" fxFlexFill>
               <div fxFlex="60">
                 <cf-avatar-appearances
-                  [appearances]="{
-                    appearances: data.avatar.appearances
-                  }"
+                  [appearances]="data.avatar.appearances"
                 ></cf-avatar-appearances>
               </div>
 

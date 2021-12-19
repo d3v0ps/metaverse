@@ -7,13 +7,18 @@ import { previewAvatarAppearanceAframeScene } from './preview-avatar-appearance.
   selector: 'cf-preview-avatar-appearance',
   template: `
     <iframe
+      *ngIf="frameDoc"
       style="width: {{ width }}; height: {{ height }};"
       [srcdoc]="frameDoc"
     ></iframe>
   `,
 })
-export class PreviewAvatarAppearanceScene {
+export class PreviewAvatarAppearanceComponent {
   @Input() set appearance(value: Appearance) {
+    if (!value) {
+      return;
+    }
+
     this.frameDoc = this.sanitizer.bypassSecurityTrustHtml(
       previewAvatarAppearanceAframeScene(value, this.width, this.height)
     );
