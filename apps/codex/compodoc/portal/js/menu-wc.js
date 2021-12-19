@@ -86,13 +86,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SettingsModule.html" data-type="entity-link" >SettingsModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SettingsModule-da5a96a1abd390e63d8f9ddf368125e0"' : 'data-target="#xs-components-links-module-SettingsModule-da5a96a1abd390e63d8f9ddf368125e0"' }>
+                                            'data-target="#components-links-module-SettingsModule-b28bd478399fd86541d75688c8e7130b"' : 'data-target="#xs-components-links-module-SettingsModule-b28bd478399fd86541d75688c8e7130b"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SettingsModule-da5a96a1abd390e63d8f9ddf368125e0"' :
-                                            'id="xs-components-links-module-SettingsModule-da5a96a1abd390e63d8f9ddf368125e0"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SettingsModule-b28bd478399fd86541d75688c8e7130b"' :
+                                            'id="xs-components-links-module-SettingsModule-b28bd478399fd86541d75688c8e7130b"' }>
                                             <li class="link">
                                                 <a href="components/SettingsScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SettingsScene</a>
                                             </li>

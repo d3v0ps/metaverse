@@ -277,7 +277,7 @@ export interface SidebarItem {
         selectedAvatar: selectedAvatar$ | async
       } as data&quot;
     &gt;
-      &lt;div block&#x3D;&quot;scene&quot;&gt;
+      &lt;div cfBlock&#x3D;&quot;scene&quot;&gt;
         &lt;div class&#x3D;&quot;scene__body&quot;&gt;
           &lt;cf-sidebar-container
             *ngIf&#x3D;&quot;data.selectedAvatar; else notSelectedAvatarLayout&quot;
@@ -295,13 +295,13 @@ export interface SidebarItem {
                 &lt;a
                   [routerLink]&#x3D;&quot;[&#x27;/select-avatar&#x27;]&quot;
                   class&#x3D;&quot;d-block&quot;
-                  block&#x3D;&quot;sidebarItem&quot;
+                  cfBlock&#x3D;&quot;sidebarItem&quot;
                 &gt;
-                  &lt;div elem&#x3D;&quot;text&quot;&gt;
-                    &lt;span elem&#x3D;&quot;text-content&quot;&gt;Account&lt;/span&gt;
+                  &lt;div cfElem&#x3D;&quot;text&quot;&gt;
+                    &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;Account&lt;/span&gt;
                   &lt;/div&gt;
                   &lt;img
-                    elem&#x3D;&quot;image&quot;
+                    cfElem&#x3D;&quot;image&quot;
                     [src]&#x3D;&quot;
                       data.selectedAvatar.selectedAppearance.smallPreviewUrl
                     &quot;
@@ -312,14 +312,14 @@ export interface SidebarItem {
                   &lt;a
                     [routerLink]&#x3D;&quot;item.routerLink&quot;
                     class&#x3D;&quot;d-block&quot;
-                    block&#x3D;&quot;sidebarItem&quot;
+                    cfBlock&#x3D;&quot;sidebarItem&quot;
                   &gt;
-                    &lt;div elem&#x3D;&quot;text&quot;&gt;
-                      &lt;span elem&#x3D;&quot;text-content&quot;&gt;{{ item.name }}&lt;/span&gt;
+                    &lt;div cfElem&#x3D;&quot;text&quot;&gt;
+                      &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;{{ item.name }}&lt;/span&gt;
                     &lt;/div&gt;
                     &lt;button
-                      block&#x3D;&quot;button&quot;
-                      mod&#x3D;&quot;fab&quot;
+                      cfBlock&#x3D;&quot;button&quot;
+                      cfMod&#x3D;&quot;fab&quot;
                       [ngClass]&#x3D;&quot;{
                         &#x27;button--primary&#x27;: item.active,
                         &#x27;button--secondary&#x27;: !item.active
@@ -328,7 +328,7 @@ export interface SidebarItem {
                     &gt;
                       &lt;cf-svg-icon
                         [src]&#x3D;&quot;item.icon&quot;
-                        elem&#x3D;&quot;icon&quot;
+                        cfElem&#x3D;&quot;icon&quot;
                         [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
                       &gt;&lt;/cf-svg-icon&gt;
                     &lt;/button&gt;
@@ -355,7 +355,7 @@ export interface SidebarItem {
           &lt;/ng-template&gt;
         &lt;/div&gt;
         &lt;cf-navbar
-          elem&#x3D;&quot;navbar&quot;
+          cfElem&#x3D;&quot;navbar&quot;
           [title]&#x3D;&quot;title&quot;
           (titleClick)&#x3D;&quot;sidebarIsOpen &#x3D; !sidebarIsOpen&quot;
         &gt;

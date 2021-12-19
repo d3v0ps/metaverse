@@ -97,7 +97,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div block&#x3D;&quot;scene-content&quot;&gt;
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div cfBlock&#x3D;&quot;scene-content&quot;&gt;
   Settings
 
   &lt;form [formGroup]&#x3D;&quot;form&quot;&gt;
@@ -366,7 +366,7 @@ import { filter, tap } from &#x27;rxjs/operators&#x27;;
 @Component({
   selector: &#x27;cf-settings&#x27;,
   template: &#x60;
-    &lt;div block&#x3D;&quot;scene-content&quot;&gt;
+    &lt;div cfBlock&#x3D;&quot;scene-content&quot;&gt;
       Settings
 
       &lt;form [formGroup]&#x3D;&quot;form&quot;&gt;
@@ -453,7 +453,7 @@ export class SettingsScene implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div block="scene-content">  Settings  <form [formGroup]="form">    <label>Primary Color</label>    <input type="color" formControlName="primaryColor" />    <label>Secondary Color</label>    <input type="color" formControlName="secondaryColor" />  </form></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="scene-content">  Settings  <form [formGroup]="form">    <label>Primary Color</label>    <input type="color" formControlName="primaryColor" />    <label>Secondary Color</label>    <input type="color" formControlName="secondaryColor" />  </form></div></div>'
     var COMPONENTS = [{'name': 'DashboardScene', 'selector': 'cf-dashboard'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SettingsScene'};

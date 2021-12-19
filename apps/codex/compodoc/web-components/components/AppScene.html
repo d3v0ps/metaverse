@@ -161,7 +161,7 @@
     selectedAvatar: selectedAvatar$ | async
   } as data&quot;
 &gt;
-  &lt;div block&#x3D;&quot;scene&quot;&gt;
+  &lt;div cfBlock&#x3D;&quot;scene&quot;&gt;
     &lt;div class&#x3D;&quot;scene__body&quot;&gt;
       &lt;cf-sidebar-container
         *ngIf&#x3D;&quot;data.selectedAvatar; else notSelectedAvatarLayout&quot;
@@ -179,13 +179,13 @@
             &lt;a
               [routerLink]&#x3D;&quot;[&#x27;/select-avatar&#x27;]&quot;
               class&#x3D;&quot;d-block&quot;
-              block&#x3D;&quot;sidebarItem&quot;
+              cfBlock&#x3D;&quot;sidebarItem&quot;
             &gt;
-              &lt;div elem&#x3D;&quot;text&quot;&gt;
-                &lt;span elem&#x3D;&quot;text-content&quot;&gt;Account&lt;/span&gt;
+              &lt;div cfElem&#x3D;&quot;text&quot;&gt;
+                &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;Account&lt;/span&gt;
               &lt;/div&gt;
               &lt;img
-                elem&#x3D;&quot;image&quot;
+                cfElem&#x3D;&quot;image&quot;
                 [src]&#x3D;&quot;
                   data.selectedAvatar.selectedAppearance.smallPreviewUrl
                 &quot;
@@ -196,14 +196,14 @@
               &lt;a
                 [routerLink]&#x3D;&quot;item.routerLink&quot;
                 class&#x3D;&quot;d-block&quot;
-                block&#x3D;&quot;sidebarItem&quot;
+                cfBlock&#x3D;&quot;sidebarItem&quot;
               &gt;
-                &lt;div elem&#x3D;&quot;text&quot;&gt;
-                  &lt;span elem&#x3D;&quot;text-content&quot;&gt;{{ item.name }}&lt;/span&gt;
+                &lt;div cfElem&#x3D;&quot;text&quot;&gt;
+                  &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;{{ item.name }}&lt;/span&gt;
                 &lt;/div&gt;
                 &lt;button
-                  block&#x3D;&quot;button&quot;
-                  mod&#x3D;&quot;fab&quot;
+                  cfBlock&#x3D;&quot;button&quot;
+                  cfMod&#x3D;&quot;fab&quot;
                   [ngClass]&#x3D;&quot;{
                     &#x27;button--primary&#x27;: item.active,
                     &#x27;button--secondary&#x27;: !item.active
@@ -212,7 +212,7 @@
                 &gt;
                   &lt;cf-svg-icon
                     [src]&#x3D;&quot;item.icon&quot;
-                    elem&#x3D;&quot;icon&quot;
+                    cfElem&#x3D;&quot;icon&quot;
                     [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
                   &gt;&lt;/cf-svg-icon&gt;
                 &lt;/button&gt;
@@ -239,7 +239,7 @@
       &lt;/ng-template&gt;
     &lt;/div&gt;
     &lt;cf-navbar
-      elem&#x3D;&quot;navbar&quot;
+      cfElem&#x3D;&quot;navbar&quot;
       [title]&#x3D;&quot;title&quot;
       (titleClick)&#x3D;&quot;sidebarIsOpen &#x3D; !sidebarIsOpen&quot;
     &gt;
@@ -645,7 +645,7 @@ export interface SidebarItem {
         selectedAvatar: selectedAvatar$ | async
       } as data&quot;
     &gt;
-      &lt;div block&#x3D;&quot;scene&quot;&gt;
+      &lt;div cfBlock&#x3D;&quot;scene&quot;&gt;
         &lt;div class&#x3D;&quot;scene__body&quot;&gt;
           &lt;cf-sidebar-container
             *ngIf&#x3D;&quot;data.selectedAvatar; else notSelectedAvatarLayout&quot;
@@ -663,13 +663,13 @@ export interface SidebarItem {
                 &lt;a
                   [routerLink]&#x3D;&quot;[&#x27;/select-avatar&#x27;]&quot;
                   class&#x3D;&quot;d-block&quot;
-                  block&#x3D;&quot;sidebarItem&quot;
+                  cfBlock&#x3D;&quot;sidebarItem&quot;
                 &gt;
-                  &lt;div elem&#x3D;&quot;text&quot;&gt;
-                    &lt;span elem&#x3D;&quot;text-content&quot;&gt;Account&lt;/span&gt;
+                  &lt;div cfElem&#x3D;&quot;text&quot;&gt;
+                    &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;Account&lt;/span&gt;
                   &lt;/div&gt;
                   &lt;img
-                    elem&#x3D;&quot;image&quot;
+                    cfElem&#x3D;&quot;image&quot;
                     [src]&#x3D;&quot;
                       data.selectedAvatar.selectedAppearance.smallPreviewUrl
                     &quot;
@@ -680,14 +680,14 @@ export interface SidebarItem {
                   &lt;a
                     [routerLink]&#x3D;&quot;item.routerLink&quot;
                     class&#x3D;&quot;d-block&quot;
-                    block&#x3D;&quot;sidebarItem&quot;
+                    cfBlock&#x3D;&quot;sidebarItem&quot;
                   &gt;
-                    &lt;div elem&#x3D;&quot;text&quot;&gt;
-                      &lt;span elem&#x3D;&quot;text-content&quot;&gt;{{ item.name }}&lt;/span&gt;
+                    &lt;div cfElem&#x3D;&quot;text&quot;&gt;
+                      &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;{{ item.name }}&lt;/span&gt;
                     &lt;/div&gt;
                     &lt;button
-                      block&#x3D;&quot;button&quot;
-                      mod&#x3D;&quot;fab&quot;
+                      cfBlock&#x3D;&quot;button&quot;
+                      cfMod&#x3D;&quot;fab&quot;
                       [ngClass]&#x3D;&quot;{
                         &#x27;button--primary&#x27;: item.active,
                         &#x27;button--secondary&#x27;: !item.active
@@ -696,7 +696,7 @@ export interface SidebarItem {
                     &gt;
                       &lt;cf-svg-icon
                         [src]&#x3D;&quot;item.icon&quot;
-                        elem&#x3D;&quot;icon&quot;
+                        cfElem&#x3D;&quot;icon&quot;
                         [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
                       &gt;&lt;/cf-svg-icon&gt;
                     &lt;/button&gt;
@@ -723,7 +723,7 @@ export interface SidebarItem {
           &lt;/ng-template&gt;
         &lt;/div&gt;
         &lt;cf-navbar
-          elem&#x3D;&quot;navbar&quot;
+          cfElem&#x3D;&quot;navbar&quot;
           [title]&#x3D;&quot;title&quot;
           (titleClick)&#x3D;&quot;sidebarIsOpen &#x3D; !sidebarIsOpen&quot;
         &gt;
@@ -932,9 +932,9 @@ export class AppScene implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    selectedAvatar: selectedAvatar$ | async  } as data">  <div block="scene">    <div class="scene__body">      <cf-sidebar-container        *ngIf="data.selectedAvatar; else notSelectedAvatarLayout"      >        <!-- A sidebar -->        <cf-sidebar          [(opened)]="sidebarIsOpen"          [dock]="true"          [dockedSize]="\'80px\'"          [showBackdrop]="true"          [closeOnClickBackdrop]="true"          [closeOnClickOutside]="true"        >          <div style="margin-top: 20px">            <a              [routerLink]="[\'/select-avatar\']"              class="d-block"              block="sidebarItem"            >              <div elem="text">                <span elem="text-content">Account</span>              </div>              <img                elem="image"                [src]="                  data.selectedAvatar.selectedAppearance.smallPreviewUrl                "              />            </a>            <ng-container *ngFor="let item of sidebarItems">              <a                [routerLink]="item.routerLink"                class="d-block"                block="sidebarItem"              >                <div elem="text">                  <span elem="text-content">{{ item.name }}</span>                </div>                <button                  block="button"                  mod="fab"                  [ngClass]="{                    \'button--primary\': item.active,                    \'button--secondary\': !item.active                  }"                  style="margin-top: 15px;"                >                  <cf-svg-icon                    [src]="item.icon"                    elem="icon"                    [svgClass]="\'icon__svg\'"                  ></cf-svg-icon>                </button>              </a>            </ng-container>            <router-outlet name="sidebar"></router-outlet>          </div>        </cf-sidebar>        <div cf-sidebar-content>          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </cf-sidebar-container>      <ng-template #notSelectedAvatarLayout>        <div class="scene__container">          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </ng-template>    </div>    <cf-navbar      elem="navbar"      [title]="title"      (titleClick)="sidebarIsOpen = !sidebarIsOpen"    >    </cf-navbar>  </div></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    selectedAvatar: selectedAvatar$ | async  } as data">  <div cfBlock="scene">    <div class="scene__body">      <cf-sidebar-container        *ngIf="data.selectedAvatar; else notSelectedAvatarLayout"      >        <!-- A sidebar -->        <cf-sidebar          [(opened)]="sidebarIsOpen"          [dock]="true"          [dockedSize]="\'80px\'"          [showBackdrop]="true"          [closeOnClickBackdrop]="true"          [closeOnClickOutside]="true"        >          <div style="margin-top: 20px">            <a              [routerLink]="[\'/select-avatar\']"              class="d-block"              cfBlock="sidebarItem"            >              <div cfElem="text">                <span cfElem="text-content">Account</span>              </div>              <img                cfElem="image"                [src]="                  data.selectedAvatar.selectedAppearance.smallPreviewUrl                "              />            </a>            <ng-container *ngFor="let item of sidebarItems">              <a                [routerLink]="item.routerLink"                class="d-block"                cfBlock="sidebarItem"              >                <div cfElem="text">                  <span cfElem="text-content">{{ item.name }}</span>                </div>                <button                  cfBlock="button"                  cfMod="fab"                  [ngClass]="{                    \'button--primary\': item.active,                    \'button--secondary\': !item.active                  }"                  style="margin-top: 15px;"                >                  <cf-svg-icon                    [src]="item.icon"                    cfElem="icon"                    [svgClass]="\'icon__svg\'"                  ></cf-svg-icon>                </button>              </a>            </ng-container>            <router-outlet name="sidebar"></router-outlet>          </div>        </cf-sidebar>        <div cf-sidebar-content>          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </cf-sidebar-container>      <ng-template #notSelectedAvatarLayout>        <div class="scene__container">          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </ng-template>    </div>    <cf-navbar      cfElem="navbar"      [title]="title"      (titleClick)="sidebarIsOpen = !sidebarIsOpen"    >    </cf-navbar>  </div></ng-container></div>'
     var COMPONENTS = [{'name': 'AppScene', 'selector': 'cf-scene'},{'name': 'NavbarComponent', 'selector': 'cf-navbar'},{'name': 'SidebarComponent', 'selector': 'cf-sidebar'},{'name': 'SidebarContainerComponent', 'selector': 'cf-sidebar-container'},{'name': 'SvgIconComponent', 'selector': 'cf-svg-icon'}];
-    var DIRECTIVES = [{'name': 'CloseSidebarDirective', 'selector': '[cfCloseSidebar]'}];
+    var DIRECTIVES = [{'name': 'BlockDirective', 'selector': '[cfBlock]'},{'name': 'CloseSidebarDirective', 'selector': '[cfCloseSidebar]'},{'name': 'ElemDirective', 'selector': '[cfElem]'},{'name': 'ModDirective', 'selector': '[cfMod]'}];
     var ACTUAL_COMPONENT = {'name': 'AppScene'};
 </script>
 <script src="../js/tree.js"></script>
