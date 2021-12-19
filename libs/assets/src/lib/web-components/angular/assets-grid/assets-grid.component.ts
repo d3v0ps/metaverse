@@ -4,27 +4,27 @@ import { Asset } from '../../../domain/models/asset';
 @Component({
   selector: 'cf-assets-grid',
   template: `
-    <div block="assets-grid">
+    <div cfBlock="assets-grid">
       <div
-        block="assets-grid-item"
+        cfBlock="assets-grid-item"
         *ngFor="let slot of slots; let i = index"
         [ngClass]="{
           'assets-grid-item--active':
             assets[i] && assets[i]?.id === activeAsset?.id
         }"
-        [mod]="{
+        [cfMod]="{
           'is-filled': assets[i] ? true : false
         }"
         (click)="assetClick.emit(assets[i])"
       >
         <ng-container *ngIf="assets[i] as asset; else empty">
-          <img elem="image" [src]="asset.previewUrl" />
-          <div elem="name">
+          <img cfElem="image" [src]="asset.previewUrl" />
+          <div cfElem="name">
             <span>{{ asset.name }}</span>
           </div>
         </ng-container>
         <ng-template #empty>
-          <div elem="empty"></div>
+          <div cfElem="empty"></div>
         </ng-template>
       </div>
     </div>

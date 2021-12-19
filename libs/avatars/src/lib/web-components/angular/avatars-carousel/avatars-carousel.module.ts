@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { BemModule } from 'angular-bem';
+import { BemModule } from '@central-factory/web-components/angular/bem/bem.module';
 import { AvatarsCarouselComponent } from './avatars-carousel.component';
 
 @NgModule({

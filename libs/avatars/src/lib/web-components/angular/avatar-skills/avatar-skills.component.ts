@@ -10,7 +10,7 @@ export class AvatarSkillsInput {
 @Component({
   selector: 'cf-avatar-skills',
   template: `
-    <form [formGroup]="form" block="avatar">
+    <form [formGroup]="form" cfBlock="avatar">
       <div
         class="form-array"
         formArrayName="skills"
@@ -23,12 +23,16 @@ export class AvatarSkillsInput {
             *ngFor="let skill of skillsForm.controls; let i = index"
             class="skill-form"
           >
-            <button type="button" block="button" mod="primary uppercase big">
+            <button
+              type="button"
+              cfBlock="button"
+              cfMod="primary uppercase big"
+            >
               <cf-svg-icon
                 src="assets/icons/mdi/{{
                   skillsIcons[skill.value.skill + '-' + skill.value.domain]
                 }}.svg"
-                elem="icon"
+                cfElem="icon"
                 [svgClass]="'icon__svg'"
               ></cf-svg-icon>
               {{ skill.value.skill }} {{ skill.value.domain }}
@@ -66,10 +70,10 @@ export class AvatarSkillsInput {
         </div>
       </div>
 
-      <button type="button" block="button" mod="primary uppercase big">
+      <button type="button" cfBlock="button" cfMod="primary uppercase big">
         <cf-svg-icon
           src="assets/icons/mdi/plus.svg"
-          elem="icon"
+          cfElem="icon"
           [svgClass]="'icon__svg'"
         ></cf-svg-icon>
         Add more skills

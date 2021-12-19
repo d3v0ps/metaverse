@@ -5,7 +5,7 @@ import { filter, tap } from 'rxjs/operators';
 @Component({
   selector: 'cf-settings',
   template: `
-    <div block="scene-content">
+    <div cfBlock="scene-content">
       Settings
 
       <form [formGroup]="form">

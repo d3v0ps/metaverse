@@ -10,7 +10,7 @@ import {
 @Component({
   selector: 'cf-inventory',
   template: `
-    <div block="scene-content">
+    <div cfBlock="scene-content">
       <div fxLayout="row" fxFlexFill fxLayoutGap="1rem">
         <div fxFlex="70" fxFlex.lt-md="50" fxFlex.lt-sm="30">
           <cf-assets-grid

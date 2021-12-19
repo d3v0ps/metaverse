@@ -9,7 +9,7 @@ export class AvatarScopesInput {
 @Component({
   selector: 'cf-avatar-scopes',
   template: `
-    <form [formGroup]="form" block="avatar">
+    <form [formGroup]="form" cfBlock="avatar">
       <div class="form-array" formArrayName="scopes">
         <h2>Scopes</h2>
 
@@ -19,7 +19,7 @@ export class AvatarScopesInput {
         >
           <p>
             I can {{ scope.value.scope }}
-            <span block="badge"
+            <span cfBlock="badge"
               >{{ scope.value.integration }} {{ scope.value.domain }}</span
             >
           </p>
@@ -46,10 +46,10 @@ export class AvatarScopesInput {
           </div>
         </div>
 
-        <button type="button" block="button" mod="secondary">
+        <button type="button" cfBlock="button" cfMod="secondary">
           <cf-svg-icon
             src="assets/icons/mdi/plus.svg"
-            elem="icon"
+            cfElem="icon"
             [svgClass]="'icon__svg'"
           ></cf-svg-icon>
           Add another scope

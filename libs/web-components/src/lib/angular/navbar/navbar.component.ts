@@ -3,56 +3,56 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   selector: 'cf-navbar',
   template: `
-    <div block="navbar">
+    <div cfBlock="navbar">
       <div fxLayout="row" fxFlexFill fxLayoutAlign="space-between center">
-        <div block="navbar" mod="left" fxFlex="50">
-          <h1 elem="title" (click)="onTitleClick()">
+        <div cfBlock="navbar" cfMod="left" fxFlex="50">
+          <h1 cfElem="title" (click)="onTitleClick()">
             <cf-svg-icon
-              elem="icon"
+              cfElem="icon"
               [svgClass]="'icon__svg'"
               src="assets/logo.svg"
             ></cf-svg-icon>
 
-            <span elem="text">{{ title }}</span>
+            <span cfElem="text">{{ title }}</span>
           </h1>
         </div>
 
         <div fxFlex="50">
-          <div block="navbar" mod="right">
-            <ul block="list" mod="horizontal">
-              <li elem="item">
+          <div cfBlock="navbar" cfMod="right">
+            <ul cfBlock="list" cfMod="horizontal">
+              <li cfElem="item">
                 <cf-svg-icon
                   src="assets/icons/mdi/web.svg"
-                  elem="icon"
+                  cfElem="icon"
                   [svgClass]="'icon__svg'"
                 ></cf-svg-icon>
-                <a [href]="environment?.webUrl" elem="link">Website</a>
+                <a [href]="environment?.webUrl" cfElem="link">Website</a>
               </li>
-              <li elem="item">
+              <li cfElem="item">
                 <cf-svg-icon
                   src="assets/icons/mdi/text-box-search-outline.svg"
-                  elem="icon"
+                  cfElem="icon"
                   [svgClass]="'icon__svg'"
                 ></cf-svg-icon>
-                <a [href]="environment?.documentationUrl" elem="link"
+                <a [href]="environment?.documentationUrl" cfElem="link"
                   >Documentation</a
                 >
               </li>
-              <li elem="item">
+              <li cfElem="item">
                 <cf-svg-icon
                   src="assets/icons/mdi/post-outline.svg"
-                  elem="icon"
+                  cfElem="icon"
                   [svgClass]="'icon__svg'"
                 ></cf-svg-icon>
-                <a [href]="environment?.blogUrl" elem="link">Blog</a>
+                <a [href]="environment?.blogUrl" cfElem="link">Blog</a>
               </li>
-              <li elem="item">
+              <li cfElem="item">
                 <cf-svg-icon
                   src="assets/icons/mdi/code-tags.svg"
-                  elem="icon"
+                  cfElem="icon"
                   [svgClass]="'icon__svg'"
                 ></cf-svg-icon>
-                <a [href]="environment?.developersUrl" elem="link">
+                <a [href]="environment?.developersUrl" cfElem="link">
                   Developers
                 </a>
               </li>

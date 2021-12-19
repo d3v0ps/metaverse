@@ -4,25 +4,25 @@ import { Asset } from '../../../domain/models/asset';
 @Component({
   selector: 'cf-asset-detail',
   template: `
-    <div block="asset-detail" *ngIf="asset">
-      <h3 elem="name">{{ asset.name }}</h3>
-      <img elem="image" [src]="asset.previewUrl" alt="" />
-      <div elem="info">
+    <div cfBlock="asset-detail" *ngIf="asset">
+      <h3 cfElem="name">{{ asset.name }}</h3>
+      <img cfElem="image" [src]="asset.previewUrl" alt="" />
+      <div cfElem="info">
         <p>{{ asset.description }}</p>
-        <table block="asset-stats">
+        <table cfBlock="asset-stats">
           <tbody>
-            <tr elem="row">
-              <td elem="label">Model</td>
-              <td elem="value">{{ asset.model }}</td>
+            <tr cfElem="row">
+              <td cfElem="label">Model</td>
+              <td cfElem="value">{{ asset.model }}</td>
             </tr>
-            <tr elem="row">
-              <td elem="label">Producer</td>
-              <td elem="value">{{ asset.producer }}</td>
+            <tr cfElem="row">
+              <td cfElem="label">Producer</td>
+              <td cfElem="value">{{ asset.producer }}</td>
             </tr>
-            <tr elem="row">
-              <td elem="label">Current Value</td>
+            <tr cfElem="row">
+              <td cfElem="label">Current Value</td>
               <td
-                elem="value"
+                cfElem="value"
                 [ngClass]="{
                   'asset-stats__value--negative':
                     asset.currentValue < asset.purchaseValue,
@@ -33,21 +33,21 @@ import { Asset } from '../../../domain/models/asset';
                 {{ asset.currentValue | currency }}
               </td>
             </tr>
-            <tr elem="row">
-              <td elem="label">Purchase Value</td>
-              <td elem="value">{{ asset.purchaseValue | currency }}</td>
+            <tr cfElem="row">
+              <td cfElem="label">Purchase Value</td>
+              <td cfElem="value">{{ asset.purchaseValue | currency }}</td>
             </tr>
-            <tr elem="row">
-              <td elem="label">Purchase Date</td>
-              <td elem="value">{{ asset.purchaseDate | date }}</td>
+            <tr cfElem="row">
+              <td cfElem="label">Purchase Date</td>
+              <td cfElem="value">{{ asset.purchaseDate | date }}</td>
             </tr>
-            <tr elem="row">
-              <td elem="label">URL</td>
-              <td elem="value">
+            <tr cfElem="row">
+              <td cfElem="label">URL</td>
+              <td cfElem="value">
                 <a [href]="asset.url" target="_blank">
                   <cf-svg-icon
                     src="assets/icons/mdi/link.svg"
-                    elem="icon"
+                    cfElem="icon"
                     [svgClass]="'icon__svg'"
                   ></cf-svg-icon>
                 </a>

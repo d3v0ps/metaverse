@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
         avatar: avatar$ | async
       } as data"
     >
-      <div block="scene-content" *ngIf="data.avatar">
+      <div cfBlock="scene-content" *ngIf="data.avatar">
         <div fxLayout="column" fxFlexFill>
           <div fxFlex="40">
             <cf-avatar-overview

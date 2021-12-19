@@ -12,16 +12,16 @@ export interface AvatarOverviewInput {
 @Component({
   selector: 'cf-avatar-overview',
   template: `
-    <form [formGroup]="form" block="avatar-overview">
+    <form [formGroup]="form" cfBlock="avatar-overview">
       <div fxLayout="column" fxLayoutGap="10px">
         <div fxLayout="row" fxLayoutGap="10px">
           <div fxFlex="100px">
-            <img elem="small-preview" [src]="form.value.smallPreviewUrl" />
+            <img cfElem="small-preview" [src]="form.value.smallPreviewUrl" />
           </div>
 
           <div fxFlex>
-            <div block="chatbox">
-              <div elem="message">
+            <div cfBlock="chatbox">
+              <div cfElem="message">
                 <div class="form-control" *ngIf="editing.welcomeMessage">
                   <!-- label for="welcomeMessage">Welcome message:</label -->
                   <textarea
@@ -30,7 +30,7 @@ export interface AvatarOverviewInput {
                   ></textarea>
                   <cf-svg-icon
                     src="assets/icons/mdi/check.svg"
-                    elem="icon"
+                    cfElem="icon"
                     [svgClass]="'icon__svg'"
                     (click)="editing.welcomeMessage = !editing.welcomeMessage"
                   ></cf-svg-icon>
@@ -43,20 +43,20 @@ export interface AvatarOverviewInput {
                   {{ form.value.welcomeMessage }}
                   <cf-svg-icon
                     src="assets/icons/mdi/pencil-outline.svg"
-                    elem="icon"
+                    cfElem="icon"
                     [svgClass]="'icon__svg'"
                   ></cf-svg-icon>
                 </p>
               </div>
 
-              <div elem="username">
+              <div cfElem="username">
                 <!-- label for="name">Name:</label -->
 
                 <div class="form-control" *ngIf="editing.name">
                   <input id="name" type="text" formControlName="name" />
                   <cf-svg-icon
                     src="assets/icons/mdi/check.svg"
-                    elem="icon"
+                    cfElem="icon"
                     [svgClass]="'icon__svg'"
                     (click)="editing.name = !editing.name"
                   ></cf-svg-icon>
@@ -68,7 +68,7 @@ export interface AvatarOverviewInput {
                   >{{ form.value.name }}
                   <cf-svg-icon
                     src="assets/icons/mdi/pencil-outline.svg"
-                    elem="icon"
+                    cfElem="icon"
                     [svgClass]="'icon__svg'"
                   ></cf-svg-icon>
                 </span>

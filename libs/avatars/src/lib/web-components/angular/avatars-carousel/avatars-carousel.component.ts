@@ -4,14 +4,14 @@ import { Avatar } from '../../../domain/models/avatar';
 @Component({
   selector: 'cf-avatars-carousel',
   template: `
-    <div block="avatars-carousel">
+    <div cfBlock="avatars-carousel">
       <ng-container *ngFor="let avatar of avatars">
-        <div block="avatars-carousel-item" (click)="avatarClick.emit(avatar)">
+        <div cfBlock="avatars-carousel-item" (click)="avatarClick.emit(avatar)">
           <img
-            elem="image"
+            cfElem="image"
             [src]="avatar.selectedAppearance.smallPreviewUrl"
           /><br />
-          <h4 elem="name">{{ avatar.name }}</h4>
+          <h4 cfElem="name">{{ avatar.name }}</h4>
         </div>
       </ng-container>
     </div>

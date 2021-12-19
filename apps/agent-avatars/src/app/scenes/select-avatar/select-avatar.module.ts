@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { AvatarsCarouselModule } from '@central-factory/avatars/web-components/angular/avatars-carousel/avatars-carousel.module';
-import { BemModule } from 'angular-bem';
+import { BemModule } from '@central-factory/web-components/angular/bem/bem.module';
 import { SelectAvatarRoutingModule } from './select-avatar-routing.module';
 import { SelectAvatarScene } from './select-avatar.scene';
 

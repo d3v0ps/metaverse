@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
-import { BemModule } from 'angular-bem';
+import { BemModule } from '../bem/bem.module';
 import { NavbarModule } from '../navbar/navbar.module';
 import { SidebarModule } from '../sidebar/sidebar.module';
 import { SvgIconModule } from '../svg-icon/svg-icon.module';

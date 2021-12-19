@@ -23,13 +23,13 @@ export interface AvatarAppearancesForm {
 @Component({
   selector: 'cf-avatar-appearances',
   template: `
-    <form [formGroup]="form" block="avatar-overview">
+    <form [formGroup]="form" cfBlock="avatar-overview">
       <h2>Appearances</h2>
 
       <div fxLayout="column" fxLayoutGap="10px">
         <div fxLayout="row wrap" fxLayoutGap="5px">
           <div
-            block="card"
+            cfBlock="card"
             class="form-array appearance-card"
             formArrayName="appearances"
             *ngFor="let appearance of appearancesForm.controls; let i = index"
@@ -42,12 +42,12 @@ export interface AvatarAppearancesForm {
             ></cf-preview-avatar-appearance>
 
             <div
-              elem="picture"
+              cfElem="picture"
               style="background-image: url('{{ appearance.value.src }}')"
               *ngIf="appearance.value.format !== 'gltf'"
             >
-              <div elem="footer">
-                <h4 elem="title">{{ appearance.value.format }}</h4>
+              <div cfElem="footer">
+                <h4 cfElem="title">{{ appearance.value.format }}</h4>
               </div>
             </div>
 
@@ -71,10 +71,10 @@ export interface AvatarAppearancesForm {
               </div>
             </div>
           </div>
-          <div block="card" class="appearance-card">
+          <div cfBlock="card" class="appearance-card">
             <cf-svg-icon
               src="assets/icons/mdi/plus.svg"
-              elem="icon"
+              cfElem="icon"
               [svgClass]="'icon__svg'"
             ></cf-svg-icon>
           </div>

@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'cf-marketplace',
   template: `
-    <div block="scene-content">
+    <div cfBlock="scene-content">
       <div fxLayout="column" fxFlexFill>
         <div fxFlex="40">Marketplace</div>
       </div>

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AvailableAvatarsState } from '@central-factory/agent-avatars/states/available-avatars/available-avatars.state';
-import { SelectedAvatarState } from '@central-factory/agent-avatars/states/selected-avatar/selected-avatar.state';
 import { Avatar } from '@central-factory/avatars/domain/models/avatar';
 import { Observable } from 'rxjs';
+import { AvailableAvatarsState } from '../../states/available-avatars/available-avatars.state';
+import { SelectedAvatarState } from '../../states/selected-avatar/selected-avatar.state';
 
 /** Select Avatar scene */
 @Component({
@@ -14,13 +14,13 @@ import { Observable } from 'rxjs';
         avatars: avatars$ | async
       } as data"
     >
-      <div block="scene-content">
-        <div block="select-avatar">
-          <h2 elem="title" *ngIf="data.avatars && data.avatars.length > 0">
+      <div cfBlock="scene-content">
+        <div cfBlock="select-avatar">
+          <h2 cfElem="title" *ngIf="data.avatars && data.avatars.length > 0">
             Select an Avatar
           </h2>
           <div
-            elem="avatars-carousel"
+            cfElem="avatars-carousel"
             *ngIf="data.avatars && data.avatars.length > 0"
           >
             <cf-avatars-carousel
@@ -28,10 +28,10 @@ import { Observable } from 'rxjs';
               (avatarClick)="onAvatarClick($event)"
             ></cf-avatars-carousel>
           </div>
-          <div elem="create-avatar">
+          <div cfElem="create-avatar">
             <button
-              block="button"
-              [mod]="['primary', 'big']"
+              cfBlock="button"
+              [cfMod]="['primary', 'big']"
               (click)="onCreateAvatarClick()"
             >
               Create a new Avatar

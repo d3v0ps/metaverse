@@ -20,7 +20,7 @@ export interface SidebarItem {
         selectedAvatar: selectedAvatar$ | async
       } as data"
     >
-      <div block="scene">
+      <div cfBlock="scene">
         <div class="scene__body">
           <cf-sidebar-container
             *ngIf="data.selectedAvatar; else notSelectedAvatarLayout"
@@ -38,13 +38,13 @@ export interface SidebarItem {
                 <a
                   [routerLink]="['/select-avatar']"
                   class="d-block"
-                  block="sidebarItem"
+                  cfBlock="sidebarItem"
                 >
-                  <div elem="text">
-                    <span elem="text-content">Account</span>
+                  <div cfElem="text">
+                    <span cfElem="text-content">Account</span>
                   </div>
                   <img
-                    elem="image"
+                    cfElem="image"
                     [src]="
                       data.selectedAvatar.selectedAppearance.smallPreviewUrl
                     "
@@ -55,14 +55,14 @@ export interface SidebarItem {
                   <a
                     [routerLink]="item.routerLink"
                     class="d-block"
-                    block="sidebarItem"
+                    cfBlock="sidebarItem"
                   >
-                    <div elem="text">
-                      <span elem="text-content">{{ item.name }}</span>
+                    <div cfElem="text">
+                      <span cfElem="text-content">{{ item.name }}</span>
                     </div>
                     <button
-                      block="button"
-                      mod="fab"
+                      cfBlock="button"
+                      cfMod="fab"
                       [ngClass]="{
                         'button--primary': item.active,
                         'button--secondary': !item.active
@@ -71,7 +71,7 @@ export interface SidebarItem {
                     >
                       <cf-svg-icon
                         [src]="item.icon"
-                        elem="icon"
+                        cfElem="icon"
                         [svgClass]="'icon__svg'"
                       ></cf-svg-icon>
                     </button>
@@ -98,7 +98,7 @@ export interface SidebarItem {
           </ng-template>
         </div>
         <cf-navbar
-          elem="navbar"
+          cfElem="navbar"
           [title]="title"
           (titleClick)="sidebarIsOpen = !sidebarIsOpen"
         >
