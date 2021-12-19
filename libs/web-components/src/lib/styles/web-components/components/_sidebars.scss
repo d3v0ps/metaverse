@@ -1,0 +1,122 @@
+cf-sidebar-container {
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.cf-sidebar {
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+  pointer-events: auto;
+  position: absolute;
+  touch-action: auto;
+  will-change: initial;
+  z-index: 2;
+
+  &--left {
+    bottom: 0;
+    left: 0;
+    top: 0;
+  }
+
+  &--right {
+    bottom: 0;
+    right: 0;
+    top: 0;
+  }
+
+  &--top {
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
+  &--bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &--inert {
+    pointer-events: none;
+    touch-action: none;
+    will-change: transform;
+  }
+
+  &--animate {
+    -webkit-transition: -webkit-transform 0.3s cubic-bezier(0, 0, 0.3, 1);
+    transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1);
+  }
+
+  &__backdrop {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #000;
+    opacity: 0.75;
+    pointer-events: auto;
+    z-index: 1;
+  }
+
+  &__content {
+    -webkit-overflow-scrolling: touch;
+    overflow: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  &__content--animate {
+    -webkit-transition: -webkit-transform 0.3s cubic-bezier(0, 0, 0.3, 1),
+      padding 0.3s cubic-bezier(0, 0, 0.3, 1);
+    transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1),
+      padding 0.3s cubic-bezier(0, 0, 0.3, 1);
+  }
+}
+
+.sidebar-item {
+  &__text {
+    display: inline-block;
+    height: 55px;
+    margin-top: 15px;
+    vertical-align: top;
+  }
+
+  &__image {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    margin-top: 15px;
+    &:hover {
+      border: 3px solid var(--color-primary);
+    }
+  }
+
+  &__text-content {
+    padding-left: 15px;
+    color: white;
+    width: 200px;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 55px;
+  }
+
+  .button {
+    &--secondary {
+      &:hover {
+        background-color: var(--color-primary);
+        color: var(--color-light);
+        .icon__svg {
+          fill: var(--color-light);
+        }
+      }
+    }
+  }
+}

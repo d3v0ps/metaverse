@@ -38,7 +38,7 @@ export interface SidebarItem {
                 <a
                   [routerLink]="['/select-avatar']"
                   class="d-block"
-                  cfBlock="sidebarItem"
+                  cfBlock="sidebar-item"
                 >
                   <div cfElem="text">
                     <span cfElem="text-content">Account</span>
@@ -55,7 +55,7 @@ export interface SidebarItem {
                   <a
                     [routerLink]="item.routerLink"
                     class="d-block"
-                    cfBlock="sidebarItem"
+                    cfBlock="sidebar-item"
                   >
                     <div cfElem="text">
                       <span cfElem="text-content">{{ item.name }}</span>
@@ -106,61 +106,6 @@ export interface SidebarItem {
       </div>
     </ng-container>
   `,
-  styles: [
-    `
-      .scene__body {
-        height: calc(100vh - 44px);
-      }
-
-      .scene__container {
-        height: 100%;
-        width: 100%;
-        /* margin: 0; */
-        padding: 0;
-        overflow: auto;
-      }
-
-      .sidebarItem {
-        &__text {
-          display: inline-block;
-          height: 55px;
-          margin-top: 15px;
-          vertical-align: top;
-        }
-
-        &__image {
-          width: 55px;
-          height: 55px;
-          border-radius: 50%;
-          margin-top: 15px;
-          &:hover {
-            border: 3px solid var(--color-primary);
-          }
-        }
-
-        &__text-content {
-          padding-left: 15px;
-          color: white;
-          width: 200px;
-          display: inline-block;
-          vertical-align: middle;
-          line-height: 55px;
-        }
-
-        .button {
-          &--secondary {
-            &:hover {
-              background-color: var(--color-primary);
-              color: var(--color-light);
-              .icon__svg {
-                fill: var(--color-light);
-              }
-            }
-          }
-        }
-      }
-    `,
-  ],
 })
 export class AppScene implements OnInit {
   title = 'Metaverse Portal';
@@ -168,15 +113,15 @@ export class AppScene implements OnInit {
 
   sidebarItems: SidebarItem[] = [
     {
-      name: 'Avatar',
-      routerLink: ['/selected-avatar'],
-      icon: 'assets/icons/mdi/account.svg',
-      active: false,
-    },
-    {
       name: 'Play',
       routerLink: ['/play'],
       icon: 'assets/icons/mdi/play.svg',
+      active: false,
+    },
+    {
+      name: 'Avatar',
+      routerLink: ['/selected-avatar'],
+      icon: 'assets/icons/mdi/account.svg',
       active: false,
     },
     {

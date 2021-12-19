@@ -40,54 +40,6 @@ import { SidebarContainerComponent } from './sidebar-container.component';
       <ng-content></ng-content>
     </aside>
   `,
-  styles: [
-    `
-      .cf-sidebar {
-        -webkit-overflow-scrolling: touch;
-        overflow: auto;
-        pointer-events: auto;
-        position: absolute;
-        touch-action: auto;
-        will-change: initial;
-        z-index: 2;
-      }
-
-      .cf-sidebar--left {
-        bottom: 0;
-        left: 0;
-        top: 0;
-      }
-
-      .cf-sidebar--right {
-        bottom: 0;
-        right: 0;
-        top: 0;
-      }
-
-      .cf-sidebar--top {
-        left: 0;
-        right: 0;
-        top: 0;
-      }
-
-      .cf-sidebar--bottom {
-        bottom: 0;
-        left: 0;
-        right: 0;
-      }
-
-      .cf-sidebar--inert {
-        pointer-events: none;
-        touch-action: none;
-        will-change: transform;
-      }
-
-      .cf-sidebar--animate {
-        -webkit-transition: -webkit-transform 0.3s cubic-bezier(0, 0, 0.3, 1);
-        transition: transform 0.3s cubic-bezier(0, 0, 0.3, 1);
-      }
-    `,
-  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent
