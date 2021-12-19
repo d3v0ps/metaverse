@@ -203,10 +203,10 @@ export class AvatarScopesInput {
   &#x60;,
 })
 export class AvatarScopesComponent {
-  @Input() set scopes(value: AvatarScopesInput) {
+  @Input() set scopes(value: Scope[]) {
     if (value) {
       this.scopesForm.clear();
-      value.scopes.forEach((appearance) &#x3D;&gt; {
+      value.forEach((appearance) &#x3D;&gt; {
         this.addScope(appearance);
       });
     }

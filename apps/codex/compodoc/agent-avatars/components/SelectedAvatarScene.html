@@ -107,9 +107,7 @@
       &lt;div fxFlex&#x3D;&quot;60&quot;&gt;
         &lt;div style&#x3D;&quot;margin-bottom: 100px;&quot;&gt;
           &lt;cf-avatar-skills
-            [skills]&#x3D;&quot;{
-              skills: data.avatar.skills
-            }&quot;
+            [skills]&#x3D;&quot;data.avatar.skills&quot;
           &gt;&lt;/cf-avatar-skills&gt;
         &lt;/div&gt;
         &lt;div fxLayout&#x3D;&quot;row&quot; fxFlexFill&gt;
@@ -121,9 +119,7 @@
 
           &lt;div fxFlex&#x3D;&quot;40&quot;&gt;
             &lt;cf-avatar-scopes
-              [scopes]&#x3D;&quot;{
-                scopes: data.avatar.scopes
-              }&quot;
+              [scopes]&#x3D;&quot;data.avatar.scopes&quot;
             &gt;&lt;/cf-avatar-scopes&gt;
           &lt;/div&gt;
         &lt;/div&gt;
@@ -185,7 +181,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/scenes/selected-avatar/selected-avatar.scene.ts:52</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/scenes/selected-avatar/selected-avatar.scene.ts:48</a></div>
                             </td>
                         </tr>
 
@@ -257,7 +253,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/scenes/selected-avatar/selected-avatar.scene.ts:52</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/scenes/selected-avatar/selected-avatar.scene.ts:48</a></div>
                         </td>
                     </tr>
 
@@ -294,9 +290,7 @@ import { Observable } from &#x27;rxjs&#x27;;
           &lt;div fxFlex&#x3D;&quot;60&quot;&gt;
             &lt;div style&#x3D;&quot;margin-bottom: 100px;&quot;&gt;
               &lt;cf-avatar-skills
-                [skills]&#x3D;&quot;{
-                  skills: data.avatar.skills
-                }&quot;
+                [skills]&#x3D;&quot;data.avatar.skills&quot;
               &gt;&lt;/cf-avatar-skills&gt;
             &lt;/div&gt;
             &lt;div fxLayout&#x3D;&quot;row&quot; fxFlexFill&gt;
@@ -308,9 +302,7 @@ import { Observable } from &#x27;rxjs&#x27;;
 
               &lt;div fxFlex&#x3D;&quot;40&quot;&gt;
                 &lt;cf-avatar-scopes
-                  [scopes]&#x3D;&quot;{
-                    scopes: data.avatar.scopes
-                  }&quot;
+                  [scopes]&#x3D;&quot;data.avatar.scopes&quot;
                 &gt;&lt;/cf-avatar-scopes&gt;
               &lt;/div&gt;
             &lt;/div&gt;
@@ -355,7 +347,7 @@ export class SelectedAvatarScene {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    avatar: avatar$ | async  } as data">  <div cfBlock="scene-content" *ngIf="data.avatar">    <div fxLayout="column" fxFlexFill>      <div fxFlex="40">        <cf-avatar-overview          style="display: block; min-height: 200px;"          [avatar]="data.avatar"        ></cf-avatar-overview>      </div>      <div fxFlex="60">        <div style="margin-bottom: 100px;">          <cf-avatar-skills            [skills]="{              skills: data.avatar.skills            }"          ></cf-avatar-skills>        </div>        <div fxLayout="row" fxFlexFill>          <div fxFlex="60">            <cf-avatar-appearances              [appearances]="data.avatar.appearances"            ></cf-avatar-appearances>          </div>          <div fxFlex="40">            <cf-avatar-scopes              [scopes]="{                scopes: data.avatar.scopes              }"            ></cf-avatar-scopes>          </div>        </div>      </div>    </div>  </div></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    avatar: avatar$ | async  } as data">  <div cfBlock="scene-content" *ngIf="data.avatar">    <div fxLayout="column" fxFlexFill>      <div fxFlex="40">        <cf-avatar-overview          style="display: block; min-height: 200px;"          [avatar]="data.avatar"        ></cf-avatar-overview>      </div>      <div fxFlex="60">        <div style="margin-bottom: 100px;">          <cf-avatar-skills            [skills]="data.avatar.skills"          ></cf-avatar-skills>        </div>        <div fxLayout="row" fxFlexFill>          <div fxFlex="60">            <cf-avatar-appearances              [appearances]="data.avatar.appearances"            ></cf-avatar-appearances>          </div>          <div fxFlex="40">            <cf-avatar-scopes              [scopes]="data.avatar.scopes"            ></cf-avatar-scopes>          </div>        </div>      </div>    </div>  </div></ng-container></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'central-factory-root'},{'name': 'CreateAvatarScene', 'selector': 'cf-create-avatar'},{'name': 'SelectAvatarScene', 'selector': 'cf-select-avatar'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SelectedAvatarScene'};
