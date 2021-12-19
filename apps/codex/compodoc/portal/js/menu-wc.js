@@ -43,40 +43,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </a>
                         <ul class="links collapse " ${ isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"' }>
                             <li class="link">
-                                <a href="modules/AssetDetailModule.html" data-type="entity-link" >AssetDetailModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AssetDetailModule-eb7dd1eb58f815b5d7c8c85dd34640dd"' : 'data-target="#xs-components-links-module-AssetDetailModule-eb7dd1eb58f815b5d7c8c85dd34640dd"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AssetDetailModule-eb7dd1eb58f815b5d7c8c85dd34640dd"' :
-                                            'id="xs-components-links-module-AssetDetailModule-eb7dd1eb58f815b5d7c8c85dd34640dd"' }>
-                                            <li class="link">
-                                                <a href="components/AssetDetailComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AssetDetailComponent</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                            <li class="link">
-                                <a href="modules/AssetsGridModule.html" data-type="entity-link" >AssetsGridModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AssetsGridModule-952b5d13f0c1deb514551e8f91b12ca3"' : 'data-target="#xs-components-links-module-AssetsGridModule-952b5d13f0c1deb514551e8f91b12ca3"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AssetsGridModule-952b5d13f0c1deb514551e8f91b12ca3"' :
-                                            'id="xs-components-links-module-AssetsGridModule-952b5d13f0c1deb514551e8f91b12ca3"' }>
-                                            <li class="link">
-                                                <a href="components/AssetsGridComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AssetsGridComponent</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                            <li class="link">
                                 <a href="modules/DashboardModule.html" data-type="entity-link" >DashboardModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
@@ -95,46 +61,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="modules/DashboardRoutingModule.html" data-type="entity-link" >DashboardRoutingModule</a>
-                            </li>
-                            <li class="link">
-                                <a href="modules/InventoryModule.html" data-type="entity-link" >InventoryModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-InventoryModule-7045d98e4f93f8be8f122b5b201d8c59"' : 'data-target="#xs-components-links-module-InventoryModule-7045d98e4f93f8be8f122b5b201d8c59"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-InventoryModule-7045d98e4f93f8be8f122b5b201d8c59"' :
-                                            'id="xs-components-links-module-InventoryModule-7045d98e4f93f8be8f122b5b201d8c59"' }>
-                                            <li class="link">
-                                                <a href="components/InventoryScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >InventoryScene</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                            <li class="link">
-                                <a href="modules/InventoryRoutingModule.html" data-type="entity-link" >InventoryRoutingModule</a>
-                            </li>
-                            <li class="link">
-                                <a href="modules/MarketplaceModule.html" data-type="entity-link" >MarketplaceModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-MarketplaceModule-46e584c2343078df14753b345ec62317"' : 'data-target="#xs-components-links-module-MarketplaceModule-46e584c2343078df14753b345ec62317"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-MarketplaceModule-46e584c2343078df14753b345ec62317"' :
-                                            'id="xs-components-links-module-MarketplaceModule-46e584c2343078df14753b345ec62317"' }>
-                                            <li class="link">
-                                                <a href="components/MarketplaceScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >MarketplaceScene</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                            <li class="link">
-                                <a href="modules/MarketplaceRoutingModule.html" data-type="entity-link" >MarketplaceRoutingModule</a>
                             </li>
                             <li class="link">
                                 <a href="modules/PortalModule.html" data-type="entity-link" >PortalModule</a>

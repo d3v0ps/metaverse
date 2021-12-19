@@ -78,19 +78,6 @@ import { RouterModule, Routes } from &#x27;@angular/router&#x27;;
 import { AppScene } from &#x27;@central-factory/web-components/angular/scene/app.scene&#x27;;
 
 export const routes: Routes &#x3D; [
-  // {
-  //   path: &#x27;dashboard&#x27;,
-  //   component: AppScene,
-  //   loadChildren: () &#x3D;&gt;
-  //     import(&#x27;./dashboard/dashboard.module&#x27;).then((m) &#x3D;&gt; m.DashboardModule),
-  // },
-  // {
-  //   path: &#x27;create-avatar&#x27;,
-  //   loadChildren: () &#x3D;&gt;
-  //     import(&#x27;./create-avatar/create-avatar.module&#x27;).then(
-  //       (m) &#x3D;&gt; m.CreateAvatarModule
-  //     ),
-  // },
   {
     path: &#x27;&#x27;,
     component: AppScene,
@@ -119,14 +106,16 @@ export const routes: Routes &#x3D; [
       {
         path: &#x27;inventory&#x27;,
         loadChildren: () &#x3D;&gt;
-          &quot;import(&#x27;./inventory/inventory.module&#x27;).then((m) &#x3D;&gt; m.InventoryModule)&quot;,
+          &quot;import(\
+            &#x27;@central-factory/inventory/scenes/inventory/inventory.module&#x27;\
+          ).then((m) &#x3D;&gt; m.InventoryModule)&quot;,
       },
       {
         path: &#x27;marketplace&#x27;,
         loadChildren: () &#x3D;&gt;
-          &quot;import(&#x27;./marketplace/marketplace.module&#x27;).then(\
-            (m) &#x3D;&gt; m.MarketplaceModule\
-          )&quot;,
+          &quot;import(\
+            &#x27;@central-factory/marketplace/scenes/marketplace/marketplace.module&#x27;\
+          ).then((m) &#x3D;&gt; m.MarketplaceModule)&quot;,
       },
       {
         path: &#x27;settings&#x27;,
@@ -140,11 +129,6 @@ export const routes: Routes &#x3D; [
       },
     ],
   },
-  // {
-  //   path: &#x27;gatekeeper&#x27;,
-  //   loadChildren: () &#x3D;&gt;
-  //     import(&#x27;@central-factory/gatekeeper&#x27;).then((m) &#x3D;&gt; m.GatekeeperModule),
-  // },
 ];
 
 @NgModule({
