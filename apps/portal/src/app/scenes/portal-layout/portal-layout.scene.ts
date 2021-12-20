@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { SelectedAvatarState } from '@central-factory/agent-avatars/states/selected-avatar/selected-avatar.state';
 import type { Avatar } from '@central-factory/avatars/models/avatar';
+import { AudioService } from '@central-factory/core/angular/services/audio.service';
+import { Howl } from 'howler';
 import { Observable } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { filter, take, tap } from 'rxjs/operators';
+import { CustomizationSettingsState } from '../../settings/states/customization-settings/customization-settings.state';
 
 export interface SidebarItem {
   name: string;
@@ -56,6 +59,7 @@ export interface SidebarItem {
                     [routerLink]="item.routerLink"
                     class="d-block"
                     cfBlock="sidebar-item"
+                    (click)="onMenuItemClick()"
                   >
                     <div cfElem="text">
                       <span cfElem="text-content">{{ item.name }}</span>
@@ -146,9 +150,13 @@ export class PortalLayoutScene implements OnInit {
   selectedAvatar$: Observable<Avatar | undefined> =
     this.selectedAvatarState.avatar$;
 
+  private bgAudio?: Howl;
+
   constructor(
     private router: Router,
-    private selectedAvatarState: SelectedAvatarState
+    private selectedAvatarState: SelectedAvatarState,
+    private audioService: AudioService,
+    private customizationSettingsState: CustomizationSettingsState
   ) {}
 
   ngOnInit() {
@@ -157,6 +165,45 @@ export class PortalLayoutScene implements OnInit {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => this.setSidebarItemsActive());
+
+    // this.customizationSettingsState.customizationSettings$
+    //   .pipe(
+    //     map(
+    //       (customizationSettings) =>
+    //         customizationSettings.playAudio && customizationSettings.playMusic
+    //     ),
+    //     tap((playMusic) => {
+    //       if (playMusic) {
+    //         this.bgAudio = this.audioService.loop(
+    //           'assets/sounds/bg/541979__rob-marion__gasp-ambience-loop-city.wav'
+    //         );
+    //         return;
+    //       }
+
+    //       if (this.bgAudio) {
+    //         this.bgAudio.stop();
+    //       }
+    //     })
+    //   )
+    //   .subscribe();
+  }
+
+  onMenuItemClick() {
+    console.log('on click');
+    this.customizationSettingsState.customizationSettings$
+      .pipe(
+        take(1),
+        filter(
+          (customizationSettings) =>
+            customizationSettings.playAudio && customizationSettings.playSFX
+        ),
+        tap(() =>
+          this.audioService.play(
+            'assets/sounds/sfx/542023__rob-marion__gasp-ui-clicks-4.wav'
+          )
+        )
+      )
+      .subscribe();
   }
 
   private setSidebarItemsActive() {

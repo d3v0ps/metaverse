@@ -13,6 +13,9 @@ import { CustomizationSettingsState } from './settings/states/customization-sett
     >
       <cf-splash-screen
         *ngIf="data.customization.showSplashScreen"
+        [playMusic]="
+          data.customization.playAudio && data.customization.playMusic
+        "
       ></cf-splash-screen>
       <router-outlet></router-outlet>
     </ng-container>

@@ -8,7 +8,9 @@ export const mockData = {
     path: 'assets/themes/default/variables.css',
   },
   showSplashScreen: true,
-  playSounds: true,
+  playAudio: true,
+  playSFX: true,
+  playMusic: true,
 };
 
 @Injectable({

@@ -13,7 +13,9 @@ export interface Theme {
 export interface CustomizationForm {
   theme: Control<Theme>;
   showSplashScreen: boolean;
-  playSounds: boolean;
+  playAudio: boolean;
+  playSFX: boolean;
+  playMusic: boolean;
 }
 
 @Component({
@@ -51,14 +53,30 @@ export interface CustomizationForm {
           </tr>
         </table>
 
-        <h4>Sounds</h4>
+        <h4>Audio</h4>
         <table>
           <tr>
             <td>
-              <label> Play Sounds </label>
+              <label> Play Audio </label>
             </td>
             <td>
-              <input type="checkbox" formControlName="playSounds" />
+              <input type="checkbox" formControlName="playAudio" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label> Play SFX </label>
+            </td>
+            <td>
+              <input type="checkbox" formControlName="playSFX" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label> Play Music </label>
+            </td>
+            <td>
+              <input type="checkbox" formControlName="playMusic" />
             </td>
           </tr>
         </table>
@@ -92,7 +110,9 @@ export class CustomizationScene implements OnInit, OnDestroy {
   form = new FormGroup<CustomizationForm>({
     theme: new FormControl<Theme>(null),
     showSplashScreen: new FormControl<boolean>(true),
-    playSounds: new FormControl<boolean>(true),
+    playAudio: new FormControl<boolean>(true),
+    playSFX: new FormControl<boolean>(true),
+    playMusic: new FormControl<boolean>(true),
   });
 
   themes$ = this.availableThemesState.themes$;

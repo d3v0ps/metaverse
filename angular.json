@@ -861,6 +861,11 @@
               },
               {
                 "glob": "**/*",
+                "input": "./libs/web-components/src/assets/sounds",
+                "output": "./assets/sounds"
+              },
+              {
+                "glob": "**/*",
                 "input": "./dist/libs/themes",
                 "output": "./assets/themes"
               }

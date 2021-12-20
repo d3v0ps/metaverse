@@ -6,6 +6,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
+import { AudioService } from '@central-factory/core/angular/services/audio.service';
 
 export enum SplashScreenState {
   Visible = 'visible',
@@ -97,6 +98,9 @@ export class SplashScreenComponent implements OnInit {
     'Jumping to the cyber space...',
   ];
   @Input() welcomeMessage = 'Welcome to the Metaverse';
+  @Input() musicSrc =
+    'assets/sounds/sfx/twin-musicom__operating_system_sting.mp3';
+  @Input() playMusic = true;
 
   loadingText?: string;
   state = SplashScreenState.Visible;
@@ -104,8 +108,14 @@ export class SplashScreenComponent implements OnInit {
 
   private selectedLoadingTextIndex?: number = undefined;
 
+  constructor(private audioService: AudioService) {}
+
   ngOnInit() {
     this.displaySplashScreen();
+
+    if (this.playMusic) {
+      this.audioService.play(this.musicSrc);
+    }
   }
 
   private async displaySplashScreen() {
