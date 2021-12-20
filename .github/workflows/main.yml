@@ -1,4 +1,4 @@
-name: Nx Affected Test Release
+name: Deploy on GH Pages
 on:
   push:
     branches: [main]
@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - uses: actions/checkout@v2
+      - name: Checkout the repository
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
@@ -35,7 +36,7 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - name: npm install
+      - name: Install dependencies
         run: npm install
 
       - name: Build API Docs
