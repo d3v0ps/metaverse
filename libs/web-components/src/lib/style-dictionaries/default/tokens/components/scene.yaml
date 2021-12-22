@@ -1,0 +1,13 @@
+component:
+  scene:
+    background-color:
+      value: "{color.base.dark.medium}"
+
+    content:
+      # width automatically gets converted into rem
+      expand:
+        value: 80%
+      background-color:
+        value: "{color.base.dark.darker}"
+      color:
+        value: "{color.base.light.darkest}"

@@ -1,0 +1,118 @@
+color:
+  base:
+
+    primary:
+      lightest:
+        value: "#22b455"
+      lighter:
+        value: "#22b455"
+      light:
+        value: "#22b455"
+      medium:
+        value: "#22b455"
+      dark:
+        value: "#22b455"
+      darker:
+        value: "#22b455"
+      darkest:
+        value: "#22b455"
+
+    secondary:
+      lightest:
+        value: "#80ce87"
+      lighter:
+        value: "#80ce87"
+      light:
+        value: "#80ce87"
+      medium:
+        value: "#80ce87"
+      dark:
+        value: "#80ce87"
+      darker:
+        value: "#80ce87"
+      darkest:
+        value: "#80ce87"
+
+    light:
+      medium:
+        value: "#fefefe"
+      dark:
+        value: "#fafafa"
+      darker:
+        value: "#f5f5f5"
+      darkest:
+        value: "#f1f1f1"
+
+    dark:
+      medium:
+        value: "#212121"
+      dark:
+        value: "#303030"
+      darker:
+        value: "#404040"
+      darkest:
+        value: "#505050"
+
+    success:
+      lightest:
+        value: "#f9fbe7"
+      lighter:
+        value: "#f0f4c3"
+      light:
+        value: "#dcedc8"
+      medium:
+        value: "#4caf50"
+      dark:
+        value: "#43a047"
+      darker:
+        value: "#388e3c"
+      darkest:
+        value: "#2e7d32"
+
+    warning:
+      lightest:
+        value: "#fff9c4"
+      lighter:
+        value: "#ffecb3"
+      light:
+        value: "#ffcc80"
+      medium:
+        value: "#ff9800"
+      dark:
+        value: "#fb8c00"
+      darker:
+        value: "#f57c00"
+      darkest:
+        value: "#ef6c00"
+
+    danger:
+      lightest:
+        value: "#fcebea"
+      lighter:
+        value: "#f8bbd0"
+      light:
+        value: "#ef9a9a"
+      medium:
+        value: "#f44336"
+      dark:
+        value: "#e53935"
+      darker:
+        value: "#d32f2f"
+      darkest:
+        value: "#c62828"
+
+    info:
+      lightest:
+        value: "#ede7f6"
+      lighter:
+        value: "#e3f2fd"
+      light:
+        value: "#bbdefb"
+      medium:
+        value: "#2196f3"
+      dark:
+        value: "#1976d2"
+      darker:
+        value: "#1565c0"
+      darkest:
+        value: "#0d47a1"

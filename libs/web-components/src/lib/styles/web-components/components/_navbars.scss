@@ -1,13 +1,11 @@
 
-@use '../abstracts/variables/colors' as colors;
-
 .navbar {
-  border-top: 1px solid colors.$dark-darker;
-  border-bottom: 1px solid colors.$dark-darker;
+  border-top: 1px solid var(--component-navbar-border-color);
+  border-bottom: 1px solid var(--component-navbar-border-color);
   height: 44px;
-  color: colors.$light-darkest;
+  color: var(--component-navbar-color);
   display: block;
-  background-color: colors.$dark;
+  background-color: var(--component-navbar-background-color);
 
   &--right {
     display: flex;
@@ -16,6 +14,7 @@
   }
 
   &__title {
+    color: var(--component-navbar-title-color);
     cursor: pointer;
     font-size: 24px;
     font-weight: bold;
@@ -35,7 +34,7 @@
 
 
     &:hover {
-      color: colors.$primary-light;
+      color: var(--component-navbar-title-hover-color);
     }
   }
 
@@ -43,21 +42,21 @@
     margin: 0 10px;
     &__item {
       .icon__svg {
-        fill: colors.$light-darkest;
+        fill: var(--component-navbar-list-item-color);
       }
 
       a {
-        color: colors.$light-darkest;
+        color: var(--component-navbar-list-item-color);
       }
 
 
       &:hover {
         .icon__svg {
-          fill: colors.$light;
+          fill: var(--component-navbar-list-item-hover-color);
         }
 
         a {
-          color: colors.$light;
+          color: var(--component-navbar-list-item-hover-color);
         }
       }
 

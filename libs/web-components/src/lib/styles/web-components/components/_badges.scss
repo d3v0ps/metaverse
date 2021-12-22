@@ -1,6 +1,4 @@
 
-@use '../abstracts/variables/colors' as colors;
-
 .badge {
   display: inline-block;
   padding: 0.25em 0.4em;
@@ -12,8 +10,8 @@
   vertical-align: baseline;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  background-color: var(--colors-secondary);
-  color: var(--colors-dark-darkest);
+  background-color: var(--component-badge-background-color);
+  color: var(--component-badge-color);
 
   &--uppercase {
     text-transform: uppercase;

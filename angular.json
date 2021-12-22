@@ -1032,6 +1032,16 @@
                 "glob": "**/*",
                 "input": "./libs/web-components/src/assets/fonts/Inter/static",
                 "output": "./assets/fonts"
+              },
+              {
+                "glob": "**/*",
+                "input": "./libs/web-components/src/lib/style-dictionaries/default/build/css",
+                "output": "./assets/themes/default"
+              },
+              {
+                "glob": "**/*",
+                "input": "./libs/web-components/src/lib/style-dictionaries/matrix/build/css",
+                "output": "./assets/themes/matrix"
               }
             ],
             "styles": ["apps/portal/src/styles/index.scss"],
@@ -1261,6 +1271,19 @@
                 }
               ]
             }
+          }
+        },
+        "build-style-dictionaries": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd libs/web-components/src/lib/style-dictionaries/default && npx style-dictionary build"
+              },
+              {
+                "command": "cd libs/web-components/src/lib/style-dictionaries/matrix && npx style-dictionary build"
+              }
+            ]
           }
         }
       },

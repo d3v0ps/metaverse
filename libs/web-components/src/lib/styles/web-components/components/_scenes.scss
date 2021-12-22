@@ -1,13 +1,8 @@
 
-@use '../abstracts/variables/colors' as colors;
-
-:root {
-  --scene-width: 80%
-};
-
 .scene {
-  background-color: colors.$dark;
-  background: url("https://www.toptal.com/designers/subtlepatterns/patterns/diagonal-squares.png");
+  background-color: var(--component-scene-background-color);
+  // TODO: this pattern was removed
+  // background: url("https://www.toptal.com/designers/subtlepatterns/patterns/moroccan-flower-pattern.png");
 
   &__body {
     height: calc(100vh - 44px);
@@ -24,9 +19,9 @@
 
 .scene-content {
   padding: 20px;
-  background-color: colors.$dark-darker;
-  color: colors.$light-darkest;
-  width: var(--scene-width);
+  background-color: var(--component-scene-content-background-color);
+  color: var(--component-scene-content-color);
+  width: var(--component-scene-content-expand);
   margin: 2rem auto;
   border-radius: 20px;
 }

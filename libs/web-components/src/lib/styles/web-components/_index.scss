@@ -2,3 +2,6 @@
 @use 'abstracts';
 @use 'core';
 @use 'components';
+
+// Default theme variables
+@use '../../style-dictionaries/default/build/css/variables.css';

@@ -95,7 +95,7 @@ cf-sidebar-container {
     border-radius: 50%;
     margin-top: 15px;
     &:hover {
-      border: 3px solid var(--color-primary);
+      border: 3px solid var(--component-sidebar-button-active-background-color);
     }
   }
 
@@ -109,13 +109,28 @@ cf-sidebar-container {
   }
 
   .button {
-    &--secondary {
-      &:hover {
-        background-color: var(--color-primary);
-        color: var(--color-light);
-        .icon__svg {
-          fill: var(--color-light);
-        }
+    background-color: var(--component-sidebar-button-background-color);
+    color: var(--component-sidebar-button-color);
+
+    .icon__svg {
+      fill: var(--component-sidebar-button-color);
+    }
+
+    &:hover {
+      background-color: var(--component-sidebar-button-active-background-color);
+      color: var(--component-sidebar-button-active-color);
+
+      .icon__svg {
+        fill: var(--component-sidebar-button-active-color);
+      }
+    }
+
+    &--active {
+      background-color: var(--component-sidebar-button-active-background-color);
+      color: var(--component-sidebar-button-active-color);
+
+      .icon__svg {
+        fill: var(--component-sidebar-button-active-color);
       }
     }
   }

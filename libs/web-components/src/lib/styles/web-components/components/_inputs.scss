@@ -1,20 +1,11 @@
 
-@use '../abstracts/variables/colors' as colors;
-
-:root {
-  --input-border: colors.$primary-dark;
-  --input-focus-h: 245;
-  --input-focus-s: 100%;
-  --input-focus-l: 42%;
-}
-
 input, .input {
   font-size: 16px;
   font-size: max(16px, 1em);
   font-family: inherit;
   padding: 0.25em 0.5em;
-  background-color: #fff;
-  border: 2px solid var(--input-border);
+  background-color: var(--component-input-background-color);
+  border: 2px solid var(--component-input-border-color);
   border-radius: 4px;
   transition: 180ms box-shadow ease-in-out;
 
@@ -31,19 +22,18 @@ input, .input {
   &[readonly] {
     border-style: dotted;
     cursor: not-allowed;
-    color: #777;
+    color: var(--component-input-readonly-color);
   }
 
   &[disabled] {
-    --input-border: #ccc;
-
-    background-color: #eee;
+    border-color: var(--component-input-disabled-border-color);
+    background-color: var(--component-input-disabled-background-color);
     cursor: not-allowed;
   }
 
   &:focus {
-    border-color: hsl(var(--input-focus-h), var(--input-focus-s), var(--input-focus-l));
-    box-shadow: 0 0 0 3px hsla(var(--input-focus-h), var(--input-focus-s), calc(var(--input-focus-l) +
+    border-color: hsl(var(--component-input-focus-h), var(--component-input-focus-s), var(--component-input-focus-l));
+    box-shadow: 0 0 0 3px hsla(var(--component-input-focus-h), var(--component-input-focus-s), calc(var(--component-input-focus-l) +
             40%), 0.8);
     outline: 3px solid transparent;
   }

@@ -1,10 +1,6 @@
 
-@use 'sass:color' as color;
-
-@use '../abstracts/variables/colors' as colors;
-
 .card {
-  background: colors.$dark-dark;
+  background: var(--component-card-background-color);
   border-radius: 10px;
   padding: 3px;
 
@@ -32,12 +28,16 @@
 
   &__header, &__footer {
     padding: 0.25rem;
-    background: #{colors.$secondary-darkest}#{"AA"};
     font-weight: bold;
     text-align: center;
   }
 
+  &__header {
+    background: var(--component-card-header-background-color);
+  }
+
   &__footer {
+    background: var(--component-card-footer-background-color);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     position: absolute;
@@ -46,14 +46,14 @@
   }
 
   &__title {
-    color: colors.$light-darkest;
+    color: var(--component-card-title-color);
     margin: 0;
   }
 
 
 
   &__icon .icon__svg {
-    fill: var(--color-secondary);
+    fill: var(--component-card-icon-color);
     // fill: var(--color-secondary-darkest);
   }
 

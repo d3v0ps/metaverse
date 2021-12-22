@@ -1,0 +1,23 @@
+component:
+  input:
+    border-color:
+      value: "{color.base.primary.dark}"
+    background-color:
+      value: "#fff"
+
+    focus-h:
+      value: 245
+    focus-s:
+      value: 100%
+    focus-l:
+      value: 42%
+
+    readonly:
+      color:
+        value: "#777"
+
+    disabled:
+      border-color:
+        value: "#ccc"
+      background-color:
+        value: "#eee"

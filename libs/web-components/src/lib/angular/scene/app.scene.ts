@@ -64,8 +64,7 @@ export interface SidebarItem {
                       cfBlock="button"
                       cfMod="fab"
                       [ngClass]="{
-                        'button--primary': item.active,
-                        'button--secondary': !item.active
+                        'button--active': item.active
                       }"
                       style="margin-top: 15px;"
                     >

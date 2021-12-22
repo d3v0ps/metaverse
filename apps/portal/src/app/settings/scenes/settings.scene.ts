@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@ng-stack/forms';
-import { filter, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'cf-settings',
@@ -9,56 +10,66 @@ import { filter, tap } from 'rxjs/operators';
       Settings
 
       <form [formGroup]="form">
-        <label>Primary Color</label>
+        <!-- label>Primary Color</label>
         <input type="color" formControlName="primaryColor" />
 
         <label>Secondary Color</label>
-        <input type="color" formControlName="secondaryColor" />
+        <input type="color" formControlName="secondaryColor" / -->
+
+        <label>Theme</label>
+        <select formControlName="theme">
+          <option>Choose a Theme</option>
+          <option *ngFor="let theme of themes" [ngValue]="theme.path">
+            {{ theme.name }}
+          </option>
+        </select>
+
+        <!-- input type="file" / -->
       </form>
     </div>
   `,
 })
 export class SettingsScene implements OnInit {
   form = new FormGroup({
-    primaryColor: new FormControl<string>(null),
-    secondaryColor: new FormControl<string>(null),
+    theme: new FormControl('assets/themes/default/variables.css'),
+    // primaryColor: new FormControl<string>(null),
+    // secondaryColor: new FormControl<string>(null),
   });
 
-  private readonly documentRoot = document.documentElement;
+  themes = [
+    {
+      name: 'Default',
+      path: 'assets/themes/default/variables.css',
+    },
+    {
+      name: 'Matrix',
+      path: 'assets/themes/matrix/variables.css',
+    },
+  ];
+
+  private activeThemeLinkElem?: HTMLLinkElement;
+
+  constructor(@Inject(DOCUMENT) private document: Document) {}
 
   ngOnInit() {
-    this.form.patchValue(
-      {
-        primaryColor: getComputedStyle(this.documentRoot)
-          .getPropertyValue('--color-primary')
-          .trim(),
-        secondaryColor: getComputedStyle(this.documentRoot)
-          .getPropertyValue('--color-secondary')
-          .trim(),
-      },
-      { emitEvent: false }
-    );
-
-    this.form.controls.primaryColor.valueChanges
-      .pipe(
-        filter((value) => this.isColor(value)),
-        tap((value) =>
-          this.documentRoot.style.setProperty('--color-primary', value)
-        )
-      )
-      .subscribe();
-
-    this.form.controls.secondaryColor.valueChanges
-      .pipe(
-        filter((value) => this.isColor(value)),
-        tap((value) =>
-          this.documentRoot.style.setProperty('--color-secondary', value)
-        )
-      )
+    this.form.controls.theme.valueChanges
+      .pipe(tap((themeUrl) => this.loadThemeFromUrl(themeUrl)))
       .subscribe();
   }
 
-  private isColor(value: string): boolean {
-    return /^#[0-9a-f]{6}$/i.test(value);
+  private loadThemeFromUrl(url: string) {
+    const headElem = this.document.getElementsByTagName('head')[0];
+
+    const newThemeLinkElem = this.document.createElement('link');
+    newThemeLinkElem.rel = 'stylesheet';
+    newThemeLinkElem.href = url;
+
+    headElem.appendChild(newThemeLinkElem);
+
+    if (this.activeThemeLinkElem) {
+      headElem.removeChild(this.activeThemeLinkElem);
+    }
+
+    this.activeThemeLinkElem = newThemeLinkElem;
   }
 }

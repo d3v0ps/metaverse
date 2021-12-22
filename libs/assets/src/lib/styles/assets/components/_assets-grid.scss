@@ -25,13 +25,14 @@ $grid-size: $grid-xl-size;
   }
 
   &--active {
-    border-color: var(--color-secondary);
+    border-color: var(--color-base-secondary-medium);
   }
 
   &__empty {
     height: $grid-size;
-    background: url('https://www.toptal.com/designers/subtlepatterns/patterns/dark-honeycomb.png');
-    background: url('https://www.toptal.com/designers/subtlepatterns/patterns/mosaic.png');
+    background: var(--color-base-dark-dark);
+    // background: url('https://www.toptal.com/designers/subtlepatterns/patterns/dark-honeycomb.png');
+    // background: url('https://www.toptal.com/designers/subtlepatterns/patterns/mosaic.png');
   }
 
   &__name {

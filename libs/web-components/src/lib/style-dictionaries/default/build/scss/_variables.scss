@@ -1,0 +1,118 @@
+/**
+ * Do not edit directly
+ * Generated on Wed, 22 Dec 2021 19:56:09 GMT
+ */
+
+:root {
+  --color-base-primary-lightest: #f5f7fa;
+  --color-base-primary-lighter: #e8eaf6;
+  --color-base-primary-light: #9fa8da;
+  --color-base-primary-medium: #706fd3;
+  --color-base-primary-dark: #5c5ca7;
+  --color-base-primary-darker: #4c4c8f;
+  --color-base-primary-darkest: #3c3c6e;
+  --color-base-secondary-lightest: #fef9d7;
+  --color-base-secondary-lighter: #faf0b3;
+  --color-base-secondary-light: #e6e8a1;
+  --color-base-secondary-medium: #d1d36f;
+  --color-base-secondary-dark: #b9b857;
+  --color-base-secondary-darker: #a5a53d;
+  --color-base-secondary-darkest: #8c8b2f;
+  --color-base-light-medium: #fefefe;
+  --color-base-light-dark: #fafafa;
+  --color-base-light-darker: #f5f5f5;
+  --color-base-light-darkest: #f1f1f1;
+  --color-base-dark-medium: #212121;
+  --color-base-dark-dark: #303030;
+  --color-base-dark-darker: #404040;
+  --color-base-dark-darkest: #505050;
+  --color-base-success-lightest: #f9fbe7;
+  --color-base-success-lighter: #f0f4c3;
+  --color-base-success-light: #dcedc8;
+  --color-base-success-medium: #4caf50;
+  --color-base-success-dark: #43a047;
+  --color-base-success-darker: #388e3c;
+  --color-base-success-darkest: #2e7d32;
+  --color-base-warning-lightest: #fff9c4;
+  --color-base-warning-lighter: #ffecb3;
+  --color-base-warning-light: #ffcc80;
+  --color-base-warning-medium: #ff9800;
+  --color-base-warning-dark: #fb8c00;
+  --color-base-warning-darker: #f57c00;
+  --color-base-warning-darkest: #ef6c00;
+  --color-base-danger-lightest: #fcebea;
+  --color-base-danger-lighter: #f8bbd0;
+  --color-base-danger-light: #ef9a9a;
+  --color-base-danger-medium: #f44336;
+  --color-base-danger-dark: #e53935;
+  --color-base-danger-darker: #d32f2f;
+  --color-base-danger-darkest: #c62828;
+  --color-base-info-lightest: #ede7f6;
+  --color-base-info-lighter: #e3f2fd;
+  --color-base-info-light: #bbdefb;
+  --color-base-info-medium: #2196f3;
+  --color-base-info-dark: #1976d2;
+  --color-base-info-darker: #1565c0;
+  --color-base-info-darkest: #0d47a1;
+  --color-font-primary: #9fa8da;
+  --color-font-secondary: #e6e8a1;
+  --component-badge-color: #505050;
+  --component-badge-background-color: #d1d36f;
+  --component-button-font-size: 1rem;
+  --component-button-color: #fefefe;
+  --component-button-background-color: #212121;
+  --component-button-primary-background-color: #706fd3;
+  --component-button-primary-color: #fefefe;
+  --component-button-secondary-background-color: #d1d36f;
+  --component-button-secondary-color: #212121;
+  --component-button-success-background-color: #4caf50;
+  --component-button-success-color: #fefefe;
+  --component-button-warning-background-color: #ff9800;
+  --component-button-warning-color: #212121;
+  --component-button-danger-background-color: #f44336;
+  --component-button-danger-color: #fefefe;
+  --component-button-info-background-color: #2196f3;
+  --component-button-info-color: #fefefe;
+  --component-button-big-font-size: 1.5rem;
+  --component-card-color: #505050;
+  --component-card-background-color: #303030;
+  --component-card-header-background-color: #8c8b2f;
+  --component-card-footer-background-color: #8c8b2f;
+  --component-card-title-color: #f1f1f1;
+  --component-card-icon-color: #d1d36f;
+  --component-chatbox-message-background-color: #505050;
+  --component-chatbox-message-color: #fefefe;
+  --component-chatbox-username-background-color: #706fd3;
+  --component-chatbox-username-color: #fefefe;
+  --component-chatbox-icon-color: #fefefe;
+  --component-chatbox-input-color: #fefefe;
+  --component-chatbox-input-active-border-color: #d1d36f;
+  --component-input-border-color: #5c5ca7;
+  --component-input-background-color: #ffffff;
+  --component-input-focus-h: 245;
+  --component-input-focus-s: 100%;
+  --component-input-focus-l: 42%;
+  --component-input-readonly-color: #777777;
+  --component-input-disabled-border-color: #cccccc;
+  --component-input-disabled-background-color: #eeeeee;
+  --component-navbar-background-color: #212121;
+  --component-navbar-border-color: #404040;
+  --component-navbar-color: #f1f1f1;
+  --component-navbar-title-color: #f1f1f1;
+  --component-navbar-title-hover-color: #9fa8da;
+  --component-navbar-list-item-color: #f1f1f1;
+  --component-navbar-list-item-hover-color: #fefefe;
+  --component-scene-background-color: #212121;
+  --component-scene-content-expand: 80%;
+  --component-scene-content-background-color: #404040;
+  --component-scene-content-color: #f1f1f1;
+  --component-sidebar-button-background-color: #d1d36f;
+  --component-sidebar-button-color: #212121;
+  --component-sidebar-button-active-background-color: #706fd3;
+  --component-sidebar-button-active-color: #fefefe;
+  --size-font-small: 0.75rem; /* the small size of the font */
+  --size-font-medium: 1rem; /* the medium size of the font */
+  --size-font-large: 1.5rem; /* the large size of the font */
+  --size-font-extra-large: 2rem; /* the extra large size of the font */
+  --size-font-base: 1rem; /* the base size of the font */
+}

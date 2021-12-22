@@ -1,6 +1,5 @@
 
 @use '../abstracts/variables/colors' as colors;
-@use '../abstracts/functions' as functions;
 
 .button {
   display: inline-block;
@@ -10,8 +9,9 @@
   -webkit-border-radius: 14;
   -moz-border-radius: 14;
   border-radius: 14px;
-  color: colors.$light;
-  font-size: 14px;
+  color: var(--component-button-color);
+  background-color: var(--component-button-background-color);
+  font-size: var(--component-button-font-size);
   padding: 5px 10px 5px 10px;
   text-decoration: none;
   border: none;
@@ -30,12 +30,12 @@
   }
 
   &--big {
-    font-size: 16px;
+    font-size: var(--component-button-big-font-size);
     padding: 10px 20px 10px 20px;
     .icon__svg {
       margin-right: 2px;
-      width: 20px;
-      height: 20px;
+      width: 30px;
+      height: 30px;
     }
   }
 
@@ -52,13 +52,13 @@
 
 }
 
-@each $name, $color in colors.$colors {
+@each $color in colors.$color-variations {
   .button {
-    &.button--#{$name} {
-      background: var(--color-#{$name});
-      color: functions.color-contrast($color);
+   &.button--#{$color} {
+      background: var(--component-button-#{$color}-background-color);
+      color: var(--component-button-#{$color}-color);
       .icon__svg {
-        fill: functions.color-contrast($color);
+        fill: var(--component-button-#{$color}-color);
       }
     }
   }

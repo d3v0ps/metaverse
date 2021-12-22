@@ -1,6 +1,4 @@
 
-@use '../abstracts/variables/colors' as colors;
-
 .chatbox {
   display: flex;
   flex-direction: column;
@@ -9,25 +7,32 @@
 }
 
 .chatbox__message {
-  background: colors.$dark-darkest;
+  background: var(--component-chatbox-message-background-color);
+  color: var(--component-chatbox-message-color);
 
+  .icon__svg {
+    fill: var(--component-chatbox-message-color);
+  }
 }
 
 .chatbox__username {
-  background: var(--color-primary);
+  background: var(--component-chatbox-username-background-color);
+  color: var(--component-chatbox-username-color);
   font-weight: bold;
+
+  .icon__svg {
+    fill: var(--component-chatbox-username-color);
+  }
 }
 
 
 .chatbox__message,
 .chatbox__username {
-  color: colors.$light;
   padding: 5px;
   border-radius: 4px;
   display: inline-block;
 
   .icon__svg {
-    fill: colors.$light;
     width: 14px;
     height: 14px;
   }
@@ -36,10 +41,10 @@
     border: none;
     background: transparent;
     border-radius: 4px;
-    color: colors.$light;
+    color: var(--component-chatbox-input-color);
     &:active, &:focus, &:focus-visible {
-      border: 1px solid var(--color-secondary);
-      outline-color: var(--color-secondary);
+      border: 1px solid var(--component-chatbox-input-active-border-color);
+      outline-color: var(--component-chatbox-input-active-border-color);
     }
   }
 

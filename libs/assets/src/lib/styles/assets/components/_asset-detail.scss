@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  border: 2px solid #303030;
+  border: 2px solid var(--color-base-dark-dark);
   padding: 1rem;
 
   &__image {
@@ -22,16 +22,16 @@
 
   &__value {
     &--negative {
-      color: var(--color-danger);
+      color: var(--color-base-danger-medium);
     }
     &--positive {
-      color: var(--color-success);
+      color: var(--color-base-success-medium);
     }
   }
 
   &__icon {
     .icon__svg {
-      fill: white;
+      fill: var(--color-base-light-medium);
     }
   }
 }
