@@ -146,8 +146,7 @@
                   cfBlock&#x3D;&quot;button&quot;
                   cfMod&#x3D;&quot;fab&quot;
                   [ngClass]&#x3D;&quot;{
-                    &#x27;button--primary&#x27;: item.active,
-                    &#x27;button--secondary&#x27;: !item.active
+                    &#x27;button--active&#x27;: item.active
                   }&quot;
                   style&#x3D;&quot;margin-top: 15px;&quot;
                 &gt;
@@ -268,7 +267,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">src/lib/angular/scene/app.scene.ts:148</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">src/lib/angular/scene/app.scene.ts:147</a></div>
                             </td>
                         </tr>
 
@@ -347,8 +346,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="155"
-                            class="link-to-prism">src/lib/angular/scene/app.scene.ts:155</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="154"
+                            class="link-to-prism">src/lib/angular/scene/app.scene.ts:154</a></div>
                 </td>
             </tr>
 
@@ -386,8 +385,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="163"
-                            class="link-to-prism">src/lib/angular/scene/app.scene.ts:163</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="162"
+                            class="link-to-prism">src/lib/angular/scene/app.scene.ts:162</a></div>
                 </td>
             </tr>
 
@@ -433,7 +432,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">src/lib/angular/scene/app.scene.ts:147</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">src/lib/angular/scene/app.scene.ts:146</a></div>
                         </td>
                     </tr>
 
@@ -458,7 +457,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/lib/angular/scene/app.scene.ts:112</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/lib/angular/scene/app.scene.ts:111</a></div>
                         </td>
                     </tr>
 
@@ -520,7 +519,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/lib/angular/scene/app.scene.ts:114</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/lib/angular/scene/app.scene.ts:113</a></div>
                         </td>
                     </tr>
 
@@ -551,7 +550,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/lib/angular/scene/app.scene.ts:111</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">src/lib/angular/scene/app.scene.ts:110</a></div>
                         </td>
                     </tr>
 
@@ -630,8 +629,7 @@ export interface SidebarItem {
                       cfBlock&#x3D;&quot;button&quot;
                       cfMod&#x3D;&quot;fab&quot;
                       [ngClass]&#x3D;&quot;{
-                        &#x27;button--primary&#x27;: item.active,
-                        &#x27;button--secondary&#x27;: !item.active
+                        &#x27;button--active&#x27;: item.active
                       }&quot;
                       style&#x3D;&quot;margin-top: 15px;&quot;
                     &gt;
@@ -762,7 +760,7 @@ export class AppScene implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    selectedAvatar: selectedAvatar$ | async  } as data">  <div cfBlock="scene">    <div class="scene__body">      <cf-sidebar-container        *ngIf="data.selectedAvatar; else notSelectedAvatarLayout"      >        <!-- A sidebar -->        <cf-sidebar          [(opened)]="sidebarIsOpen"          [dock]="true"          [dockedSize]="\'80px\'"          [showBackdrop]="true"          [closeOnClickBackdrop]="true"          [closeOnClickOutside]="true"        >          <div style="margin-top: 20px">            <a              [routerLink]="[\'/select-avatar\']"              class="d-block"              cfBlock="sidebar-item"            >              <div cfElem="text">                <span cfElem="text-content">Account</span>              </div>              <img                cfElem="image"                [src]="                  data.selectedAvatar.selectedAppearance.smallPreviewUrl                "              />            </a>            <ng-container *ngFor="let item of sidebarItems">              <a                [routerLink]="item.routerLink"                class="d-block"                cfBlock="sidebar-item"              >                <div cfElem="text">                  <span cfElem="text-content">{{ item.name }}</span>                </div>                <button                  cfBlock="button"                  cfMod="fab"                  [ngClass]="{                    \'button--primary\': item.active,                    \'button--secondary\': !item.active                  }"                  style="margin-top: 15px;"                >                  <cf-svg-icon                    [src]="item.icon"                    cfElem="icon"                    [svgClass]="\'icon__svg\'"                  ></cf-svg-icon>                </button>              </a>            </ng-container>            <router-outlet name="sidebar"></router-outlet>          </div>        </cf-sidebar>        <div cf-sidebar-content>          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </cf-sidebar-container>      <ng-template #notSelectedAvatarLayout>        <div class="scene__container">          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </ng-template>    </div>    <cf-navbar      cfElem="navbar"      [title]="title"      (titleClick)="sidebarIsOpen = !sidebarIsOpen"    >    </cf-navbar>  </div></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    selectedAvatar: selectedAvatar$ | async  } as data">  <div cfBlock="scene">    <div class="scene__body">      <cf-sidebar-container        *ngIf="data.selectedAvatar; else notSelectedAvatarLayout"      >        <!-- A sidebar -->        <cf-sidebar          [(opened)]="sidebarIsOpen"          [dock]="true"          [dockedSize]="\'80px\'"          [showBackdrop]="true"          [closeOnClickBackdrop]="true"          [closeOnClickOutside]="true"        >          <div style="margin-top: 20px">            <a              [routerLink]="[\'/select-avatar\']"              class="d-block"              cfBlock="sidebar-item"            >              <div cfElem="text">                <span cfElem="text-content">Account</span>              </div>              <img                cfElem="image"                [src]="                  data.selectedAvatar.selectedAppearance.smallPreviewUrl                "              />            </a>            <ng-container *ngFor="let item of sidebarItems">              <a                [routerLink]="item.routerLink"                class="d-block"                cfBlock="sidebar-item"              >                <div cfElem="text">                  <span cfElem="text-content">{{ item.name }}</span>                </div>                <button                  cfBlock="button"                  cfMod="fab"                  [ngClass]="{                    \'button--active\': item.active                  }"                  style="margin-top: 15px;"                >                  <cf-svg-icon                    [src]="item.icon"                    cfElem="icon"                    [svgClass]="\'icon__svg\'"                  ></cf-svg-icon>                </button>              </a>            </ng-container>            <router-outlet name="sidebar"></router-outlet>          </div>        </cf-sidebar>        <div cf-sidebar-content>          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </cf-sidebar-container>      <ng-template #notSelectedAvatarLayout>        <div class="scene__container">          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </ng-template>    </div>    <cf-navbar      cfElem="navbar"      [title]="title"      (titleClick)="sidebarIsOpen = !sidebarIsOpen"    >    </cf-navbar>  </div></ng-container></div>'
     var COMPONENTS = [{'name': 'AppScene', 'selector': 'cf-scene'},{'name': 'NavbarComponent', 'selector': 'cf-navbar'},{'name': 'SidebarComponent', 'selector': 'cf-sidebar'},{'name': 'SidebarContainerComponent', 'selector': 'cf-sidebar-container'},{'name': 'SvgIconComponent', 'selector': 'cf-svg-icon'}];
     var DIRECTIVES = [{'name': 'BlockDirective', 'selector': '[cfBlock]'},{'name': 'CloseSidebarDirective', 'selector': '[cfCloseSidebar]'},{'name': 'ElemDirective', 'selector': '[cfElem]'},{'name': 'ModDirective', 'selector': '[cfMod]'}];
     var ACTUAL_COMPONENT = {'name': 'AppScene'};
