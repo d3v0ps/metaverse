@@ -359,18 +359,49 @@
       "architect": {
         "build": {
           "builder": "@nx-plus/docusaurus:browser",
+          "dependsOn": [
+            {
+              "target": "build-storybook:build-codex",
+              "projects": "dependencies"
+            },
+            {
+              "target": "compodoc:build-codex",
+              "projects": "dependencies"
+            }
+          ],
           "options": {
             "outputPath": "dist/apps/codex"
           }
         },
         "serve": {
           "builder": "@nx-plus/docusaurus:dev-server",
+          "dependsOn": [
+            {
+              "target": "build-storybook:build-codex",
+              "projects": "dependencies"
+            },
+            {
+              "target": "compodoc:build-codex",
+              "projects": "dependencies"
+            }
+          ],
           "options": {
             "port": 3000
           }
         }
       },
-      "tags": []
+      "tags": [],
+      "implicitDependencies": [
+        "core",
+        "web-components",
+        "avatars",
+        "assets",
+        "gatekeeper",
+        "agent-avatars",
+        "inventory",
+        "marketplace",
+        "portal"
+      ]
     },
     "core": {
       "projectType": "library",
@@ -1013,6 +1044,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "outputs": ["{options.outputPath}"],
+          "dependsOn": [
+            {
+              "target": "build-themes",
+              "projects": "dependencies"
+            }
+          ],
           "options": {
             "outputPath": "dist/apps/portal",
             "index": "apps/portal/src/index.html",
@@ -1035,12 +1072,12 @@
               },
               {
                 "glob": "**/*",
-                "input": "./libs/web-components/src/lib/style-dictionaries/default/build/css",
+                "input": "./dist/libs/themes/default/css",
                 "output": "./assets/themes/default"
               },
               {
                 "glob": "**/*",
-                "input": "./libs/web-components/src/lib/style-dictionaries/matrix/build/css",
+                "input": "./dist/libs/themes/matrix/css",
                 "output": "./assets/themes/matrix"
               }
             ],
@@ -1090,6 +1127,12 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "dependsOn": [
+            {
+              "target": "build-themes",
+              "projects": "dependencies"
+            }
+          ],
           "configurations": {
             "production": {
               "browserTarget": "portal:build:production"
@@ -1273,15 +1316,15 @@
             }
           }
         },
-        "build-style-dictionaries": {
+        "build-themes": {
           "builder": "@nrwl/workspace:run-commands",
           "options": {
             "commands": [
               {
-                "command": "cd libs/web-components/src/lib/style-dictionaries/default && npx style-dictionary build"
+                "command": "npx style-dictionary build -c libs/web-components/src/lib/themes/default/config.js"
               },
               {
-                "command": "cd libs/web-components/src/lib/style-dictionaries/matrix && npx style-dictionary build"
+                "command": "npx style-dictionary build -c libs/web-components/src/lib/themes/matrix/config.js"
               }
             ]
           }

@@ -49,53 +49,5 @@ module.exports = {
   ],
   transform: {
     'attribute/cti': CTITransform
-  },
-  source: ['tokens/**/*.json', 'tokens/**/*.yaml'],
-  platforms: {
-    css: {
-      transformGroup: 'css',
-      buildPath: 'build/css/',
-      files: [
-        {
-          format: 'css/variables',
-          destination: 'variables.css'
-        }
-      ]
-    },
-    scss: {
-      // We can still use this transformGroup because we are overriding
-      // the underlying transform
-      transformGroup: 'scss',
-      buildPath: 'build/scss/',
-      files: [
-        {
-          format: 'scss/variables',
-          destination: '_tokens.scss',
-        }
-      ]
-    },
-    ts: {
-      transformGroup: 'js',
-      buildPath: 'build/ts/',
-      files: [
-        {
-          format: 'javascript/es6',
-          destination: 'tokens.js'
-        },
-        {
-          format: 'typescript/es6-declarations',
-          destination: 'tokens.d.ts'
-        }
-      ]
-    },
-    json: {
-      buildPath: 'build/json/',
-      files: [
-        {
-          format: 'json/nested',
-          destination: 'tokens.json'
-        }
-      ]
-    }
   }
 }
