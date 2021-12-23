@@ -108,12 +108,11 @@
     &lt;input type&#x3D;&quot;color&quot; formControlName&#x3D;&quot;secondaryColor&quot; / --&gt;
 
     &lt;label&gt;Theme&lt;/label&gt;
-    &lt;select formControlName&#x3D;&quot;theme&quot;&gt;
-      &lt;option&gt;Choose a Theme&lt;/option&gt;
-      &lt;option *ngFor&#x3D;&quot;let theme of themes&quot; [ngValue]&#x3D;&quot;theme.path&quot;&gt;
+    &lt;ng-select formControlName&#x3D;&quot;theme&quot;&gt;
+      &lt;ng-option *ngFor&#x3D;&quot;let theme of themes&quot; [value]&#x3D;&quot;theme.path&quot;&gt;
         {{ theme.name }}
-      &lt;/option&gt;
-    &lt;/select&gt;
+      &lt;/ng-option&gt;
+    &lt;/ng-select&gt;
 
     &lt;!-- input type&#x3D;&quot;file&quot; / --&gt;
   &lt;/form&gt;
@@ -198,7 +197,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/settings/scenes/settings.scene.ts:50</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/settings/scenes/settings.scene.ts:49</a></div>
                             </td>
                         </tr>
 
@@ -267,8 +266,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="60"
-                            class="link-to-prism">src/app/settings/scenes/settings.scene.ts:60</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/app/settings/scenes/settings.scene.ts:59</a></div>
                 </td>
             </tr>
 
@@ -336,8 +335,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="54"
-                            class="link-to-prism">src/app/settings/scenes/settings.scene.ts:54</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">src/app/settings/scenes/settings.scene.ts:53</a></div>
                 </td>
             </tr>
 
@@ -380,7 +379,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/settings/scenes/settings.scene.ts:50</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/settings/scenes/settings.scene.ts:49</a></div>
                         </td>
                     </tr>
 
@@ -409,7 +408,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/settings/scenes/settings.scene.ts:33</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/settings/scenes/settings.scene.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -449,7 +448,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/settings/scenes/settings.scene.ts:39</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/settings/scenes/settings.scene.ts:38</a></div>
                         </td>
                     </tr>
 
@@ -481,12 +480,11 @@ import { tap } from &#x27;rxjs/operators&#x27;;
         &lt;input type&#x3D;&quot;color&quot; formControlName&#x3D;&quot;secondaryColor&quot; / --&gt;
 
         &lt;label&gt;Theme&lt;/label&gt;
-        &lt;select formControlName&#x3D;&quot;theme&quot;&gt;
-          &lt;option&gt;Choose a Theme&lt;/option&gt;
-          &lt;option *ngFor&#x3D;&quot;let theme of themes&quot; [ngValue]&#x3D;&quot;theme.path&quot;&gt;
+        &lt;ng-select formControlName&#x3D;&quot;theme&quot;&gt;
+          &lt;ng-option *ngFor&#x3D;&quot;let theme of themes&quot; [value]&#x3D;&quot;theme.path&quot;&gt;
             {{ theme.name }}
-          &lt;/option&gt;
-        &lt;/select&gt;
+          &lt;/ng-option&gt;
+        &lt;/ng-select&gt;
 
         &lt;!-- input type&#x3D;&quot;file&quot; / --&gt;
       &lt;/form&gt;
@@ -567,7 +565,7 @@ export class SettingsScene implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="scene-content">  Settings  <form [formGroup]="form">    <!-- label>Primary Color</label>    <input type="color" formControlName="primaryColor" />    <label>Secondary Color</label>    <input type="color" formControlName="secondaryColor" / -->    <label>Theme</label>    <select formControlName="theme">      <option>Choose a Theme</option>      <option *ngFor="let theme of themes" [ngValue]="theme.path">        {{ theme.name }}      </option>    </select>    <!-- input type="file" / -->  </form></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="scene-content">  Settings  <form [formGroup]="form">    <!-- label>Primary Color</label>    <input type="color" formControlName="primaryColor" />    <label>Secondary Color</label>    <input type="color" formControlName="secondaryColor" / -->    <label>Theme</label>    <ng-select formControlName="theme">      <ng-option *ngFor="let theme of themes" [value]="theme.path">        {{ theme.name }}      </ng-option>    </ng-select>    <!-- input type="file" / -->  </form></div></div>'
     var COMPONENTS = [{'name': 'DashboardScene', 'selector': 'cf-dashboard'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SettingsScene'};
