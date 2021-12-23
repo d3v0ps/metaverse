@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 22 Dec 2021 20:28:01 GMT
+ * Generated on Thu, 23 Dec 2021 01:09:51 GMT
  */
 
 export const ColorBasePrimaryLightest : string;
@@ -105,6 +105,16 @@ export const ComponentSceneBackgroundColor : string;
 export const ComponentSceneContentExpand : string;
 export const ComponentSceneContentBackgroundColor : string;
 export const ComponentSceneContentColor : string;
+export const ComponentSelectBackgroundColor : string;
+export const ComponentSelectBorderColor : string;
+export const ComponentSelectOpenedBorderColor : string;
+export const ComponentSelectSelectedBackgroundColor : string;
+export const ComponentSelectSelectedColor : string;
+export const ComponentSelectMarkedBackgroundColor : string;
+export const ComponentSelectMarkedColor : string;
+export const ComponentSelectFocusedBorderColor : string;
+export const ComponentSelectDisabledColor : string;
+export const ComponentSelectTextColor : string;
 export const ComponentSidebarButtonBackgroundColor : string;
 export const ComponentSidebarButtonColor : string;
 export const ComponentSidebarButtonActiveBackgroundColor : string;

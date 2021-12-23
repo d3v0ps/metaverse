@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 22 Dec 2021 20:28:01 GMT
+ * Generated on Thu, 23 Dec 2021 01:09:51 GMT
  */
 
 export const ColorBasePrimaryLightest = "#22b455";
@@ -105,6 +105,16 @@ export const ComponentSceneBackgroundColor = "#212121";
 export const ComponentSceneContentExpand = "80%";
 export const ComponentSceneContentBackgroundColor = "#404040";
 export const ComponentSceneContentColor = "#f1f1f1";
+export const ComponentSelectBackgroundColor = "#212121";
+export const ComponentSelectBorderColor = "#cccccc";
+export const ComponentSelectOpenedBorderColor = "#22b455";
+export const ComponentSelectSelectedBackgroundColor = "#22b455";
+export const ComponentSelectSelectedColor = "#fefefe";
+export const ComponentSelectMarkedBackgroundColor = "#22b455";
+export const ComponentSelectMarkedColor = "#fefefe";
+export const ComponentSelectFocusedBorderColor = "#22b455";
+export const ComponentSelectDisabledColor = "#f9f9f9";
+export const ComponentSelectTextColor = "#fefefe";
 export const ComponentSidebarButtonBackgroundColor = "#80ce87";
 export const ComponentSidebarButtonColor = "#fefefe";
 export const ComponentSidebarButtonActiveBackgroundColor = "#22b455";

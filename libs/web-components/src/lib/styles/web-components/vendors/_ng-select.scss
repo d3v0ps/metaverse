@@ -1,0 +1,136 @@
+
+@use "~@ng-select/ng-select/scss/default.theme";
+
+.ng-select {
+  &.ng-select-opened {
+    > .ng-select-container {
+      background: var(--component-select-background-color);
+      border-color: var(--component-select-opened-border-color);
+      .ng-arrow {
+        border-color: transparent transparent var(--component-select-opened-border-color);
+        &:hover {
+          border-color: transparent transparent var(--component-select-opened-border-color);
+        }
+      }
+    }
+  }
+  &.ng-select-focused {
+      &:not(.ng-select-opened) > .ng-select-container {
+          border-color: var(--component-select-focused-border-color);
+      }
+  }
+  &.ng-select-disabled {
+      > .ng-select-container {
+          background-color: var(--component-select-disabled-text);
+      }
+  }
+  .ng-select-container {
+    color: var(--component-select-text-color);
+    background-color: var(--component-select-background-color);
+    border: 1px solid var(--component-select-border-color);
+    .ng-value-container {
+      .ng-placeholder {
+        color: var(--component-select-text-color);
+      }
+    }
+  }
+  &.ng-select-multiple {
+    &.ng-select-disabled {
+      > .ng-select-container .ng-value-container .ng-value {
+          background-color: var(--component-select-disabled-text);
+          border: 1px solid var(--component-select-border-color);
+      }
+    }
+    .ng-select-container {
+      .ng-value-container {
+        .ng-value {
+          color: var(--component-select-text-color);
+          background-color: var(--component-select-selected-background-color);
+          &.ng-value-disabled {
+            background-color: var(--component-select-disabled-text);
+          }
+          .ng-value-icon {
+            &:hover {
+              background-color: var(--component-select-selected-background-color);
+            }
+            &.left {
+              border-right: 1px solid var(--component-select-selected-background-color);
+            }
+            &.right {
+              border-left: 1px solid var(--component-select-selected-background-color);
+            }
+          }
+        }
+      }
+      .ng-input {
+        > input {
+          color: var(--component-select-text-color);
+        }
+      }
+    }
+  }
+  .ng-clear-wrapper {
+      color: var(--component-select-border-color);
+  }
+
+  .ng-arrow-wrapper {
+    &:hover {
+        .ng-arrow {
+            border-top-color: var(--component-select-border-color);
+        }
+    }
+    .ng-arrow {
+        border-color: var(--component-select-border-color) transparent transparent;
+    }
+  }
+}
+
+.ng-dropdown-panel {
+  background-color: var(--component-select-background-color);
+  border: 1px solid var(--component-select-border-color);
+  &.ng-select-top {
+    border-bottom-color: var(--component-select-border-color);
+  }
+  &.ng-select-right {
+    border-bottom-color: var(--component-select-border-color);
+  }
+  &.ng-select-bottom {
+    border-top-color: var(--component-select-border-color);
+  }
+  &.ng-select-left {
+    border-bottom-color: var(--component-select-border-color);
+  }
+
+  .ng-dropdown-header {
+    border-bottom: 1px solid var(--component-select-border-color);
+  }
+  .ng-dropdown-footer {
+    border-top: 1px solid var(--component-select-border-color);
+  }
+  .ng-dropdown-panel-items {
+    .ng-optgroup {
+      &.ng-option-marked {
+          background-color: var(--component-select-marked-background-color);
+      }
+      &.ng-option-selected, &.ng-option-selected.ng-option-marked {
+        color: var(--component-select-marked-color);
+        background-color: var(--component-select-selected-background-color);
+      }
+    }
+    .ng-option {
+      background-color: var(--component-select-background-color);
+      color: var(--component-select-text-color);
+      &.ng-option-selected, &.ng-option-selected.ng-option-marked {
+        color: var(--component-select-selected-color);
+        background-color: var(--component-select-selected-background-color);
+      }
+      &.ng-option-marked {
+        background-color: var(--component-select-marked-background-color);
+        color: var(--component-select-marked-color);
+      }
+      &.ng-option-disabled {
+        color: var(--component-select-disabled-color);
+      }
+    }
+  }
+}

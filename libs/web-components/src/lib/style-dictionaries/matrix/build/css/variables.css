@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 22 Dec 2021 20:28:01 GMT
+ * Generated on Thu, 23 Dec 2021 01:09:51 GMT
  */
 
 :root {
@@ -106,6 +106,16 @@
   --component-scene-content-expand: 80%;
   --component-scene-content-background-color: #404040;
   --component-scene-content-color: #f1f1f1;
+  --component-select-background-color: #212121;
+  --component-select-border-color: #cccccc;
+  --component-select-opened-border-color: #22b455;
+  --component-select-selected-background-color: #22b455;
+  --component-select-selected-color: #fefefe;
+  --component-select-marked-background-color: #22b455;
+  --component-select-marked-color: #fefefe;
+  --component-select-focused-border-color: #22b455;
+  --component-select-disabled-color: #f9f9f9;
+  --component-select-text-color: #fefefe;
   --component-sidebar-button-background-color: #80ce87;
   --component-sidebar-button-color: #fefefe;
   --component-sidebar-button-active-background-color: #22b455;

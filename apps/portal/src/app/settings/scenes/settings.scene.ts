@@ -17,12 +17,11 @@ import { tap } from 'rxjs/operators';
         <input type="color" formControlName="secondaryColor" / -->
 
         <label>Theme</label>
-        <select formControlName="theme">
-          <option>Choose a Theme</option>
-          <option *ngFor="let theme of themes" [ngValue]="theme.path">
+        <ng-select formControlName="theme">
+          <ng-option *ngFor="let theme of themes" [value]="theme.path">
             {{ theme.name }}
-          </option>
-        </select>
+          </ng-option>
+        </ng-select>
 
         <!-- input type="file" / -->
       </form>
