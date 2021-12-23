@@ -4,6 +4,7 @@
 /dist
 /tmp
 /out-tsc
+/libs/web-components/src/lib/style-dictionaries/**/build
 
 # dependencies
 /node_modules
