@@ -1,0 +1,811 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>central-factory documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/postmark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">central-factory documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >SvgIconRegistryService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/web-components/src/lib/angular/svg-icon/svg-icon-registry.service.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#document" >document</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#iconsByUrl" >iconsByUrl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#iconsLoadingByUrl" >iconsLoadingByUrl</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addSvg" >addSvg</a>
+                            </li>
+                            <li>
+                                <a href="#getSvgByName" >getSvgByName</a>
+                            </li>
+                            <li>
+                                <a href="#loadSvg" >loadSvg</a>
+                            </li>
+                            <li>
+                                <a href="#unloadSvg" >unloadSvg</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(loader: <a href="../classes/SvgLoader.html" target="_self">SvgLoader</a>, platformId: Record<string | any>, serverUrl: string | undefined, _document: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">libs/web-components/src/lib/angular/svg-icon/svg-icon-registry.service.ts:25</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>loader</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../classes/SvgLoader.html" target="_self" >SvgLoader</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>platformId</td>
+                                                  
+                                                        <td>
+                                                                    <code>Record&lt;string | any&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>serverUrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>string | undefined</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>_document</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addSvg"></a>
+                    <span class="name">
+                        <span ><b>addSvg</b></span>
+                        <a href="#addSvg"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addSvg(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, data: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">libs/web-components/src/lib/angular/svg-icon/svg-icon-registry.service.ts:37</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Add a SVG to the registry by passing a name and the SVG.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>name</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>data</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSvgByName"></a>
+                    <span class="name">
+                        <span ><b>getSvgByName</b></span>
+                        <a href="#getSvgByName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSvgByName(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">libs/web-components/src/lib/angular/svg-icon/svg-icon-registry.service.ts:84</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get loaded SVG from registry by name. (also works by url because of blended map)</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>name</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable | undefined</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadSvg"></a>
+                    <span class="name">
+                        <span ><b>loadSvg</b></span>
+                        <a href="#loadSvg"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadSvg(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="47"
+                            class="link-to-prism">libs/web-components/src/lib/angular/svg-icon/svg-icon-registry.service.ts:47</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Load a SVG to the registry from a URL.</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>url</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>name</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>url</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable | undefined</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="unloadSvg"></a>
+                    <span class="name">
+                        <span ><b>unloadSvg</b></span>
+                        <a href="#unloadSvg"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>unloadSvg(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">libs/web-components/src/lib/angular/svg-icon/svg-icon-registry.service.ts:94</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Remove a SVG from the registry by URL (or name).</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>url</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="document"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>document</b></span>
+                        <a href="#document"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Document</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">libs/web-components/src/lib/angular/svg-icon/svg-icon-registry.service.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="iconsByUrl"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>iconsByUrl</b></span>
+                        <a href="#iconsByUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Map&lt;string, SVGElement&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">libs/web-components/src/lib/angular/svg-icon/svg-icon-registry.service.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="iconsLoadingByUrl"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>iconsLoadingByUrl</b></span>
+                        <a href="#iconsLoadingByUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Map&lt;string, Observable&lt;SVGElement&gt;&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">libs/web-components/src/lib/angular/svg-icon/svg-icon-registry.service.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { DOCUMENT } from &#x27;@angular/common&#x27;;
+import {
+  Inject,
+  Injectable,
+  InjectionToken,
+  Optional,
+  PLATFORM_ID,
+  SkipSelf,
+} from &#x27;@angular/core&#x27;;
+import {
+  Observable,
+  of as observableOf,
+  throwError as observableThrowError,
+} from &#x27;rxjs&#x27;;
+import { catchError, finalize, map, share, tap } from &#x27;rxjs/operators&#x27;;
+import { SvgLoader } from &#x27;./svg-loader&#x27;;
+
+export const SERVER_URL &#x3D; new InjectionToken&lt;string&gt;(&#x27;SERVER_URL&#x27;);
+
+@Injectable()
+export class SvgIconRegistryService {
+  private document: Document;
+  private iconsByUrl &#x3D; new Map&lt;string, SVGElement&gt;();
+  private iconsLoadingByUrl &#x3D; new Map&lt;string, Observable&lt;SVGElement&gt;&gt;();
+
+  constructor(
+    private loader: SvgLoader,
+    @Inject(PLATFORM_ID) private platformId: Record&lt;string, any&gt;,
+    @Optional() @Inject(SERVER_URL) protected serverUrl: string | undefined,
+    @Optional() @Inject(DOCUMENT) private _document: any
+  ) {
+    this.document &#x3D; this._document;
+  }
+
+  /** Add a SVG to the registry by passing a name and the SVG. */
+  addSvg(name: string, data: string) {
+    if (!this.iconsByUrl.has(name)) {
+      const div &#x3D; this.document.createElement(&#x27;DIV&#x27;);
+      div.innerHTML &#x3D; data;
+      const svg &#x3D; div.querySelector(&#x27;svg&#x27;) as SVGElement;
+      this.iconsByUrl.set(name, svg);
+    }
+  }
+
+  /** Load a SVG to the registry from a URL. */
+  loadSvg(
+    url: string,
+    name: string &#x3D; url
+  ): Observable&lt;SVGElement | undefined&gt; | undefined {
+    // not sure if there should be a possibility to use name for server usage
+    // so overriding it for now if provided
+    // maybe should separate functionality for url and name use-cases
+    if (this.serverUrl &amp;&amp; url.match(/^(http(s)?):/) &#x3D;&#x3D;&#x3D; null) {
+      url &#x3D; this.serverUrl + url;
+      name &#x3D; url;
+    }
+
+    if (this.iconsByUrl.has(name)) {
+      return observableOf(this.iconsByUrl.get(name));
+    } else if (this.iconsLoadingByUrl.has(name)) {
+      return this.iconsLoadingByUrl.get(name);
+    }
+    const o &#x3D; this.loader.getSvg(url).pipe(
+      map((svg) &#x3D;&gt; {
+        const div &#x3D; this.document.createElement(&#x27;DIV&#x27;);
+        div.innerHTML &#x3D; svg;
+        return div.querySelector(&#x27;svg&#x27;) as SVGElement;
+      }),
+      tap((svg) &#x3D;&gt; this.iconsByUrl.set(name, svg)),
+      catchError((err) &#x3D;&gt; {
+        console.error(err);
+        return observableThrowError(err);
+      }),
+      finalize(() &#x3D;&gt; this.iconsLoadingByUrl.delete(name)),
+      share()
+    ) as Observable&lt;SVGElement&gt;;
+
+    this.iconsLoadingByUrl.set(name, o);
+    return o;
+  }
+
+  /** Get loaded SVG from registry by name. (also works by url because of blended map) */
+  getSvgByName(name: string): Observable&lt;SVGElement | undefined&gt; | undefined {
+    if (this.iconsByUrl.has(name)) {
+      return observableOf(this.iconsByUrl.get(name));
+    } else if (this.iconsLoadingByUrl.has(name)) {
+      return this.iconsLoadingByUrl.get(name);
+    }
+    return observableThrowError(&#x60;No svg with name &#x27;${name}&#x27; has been loaded&#x60;);
+  }
+
+  /** Remove a SVG from the registry by URL (or name). */
+  unloadSvg(url: string) {
+    if (this.iconsByUrl.has(url)) {
+      this.iconsByUrl.delete(url);
+    }
+  }
+}
+
+export function SVG_ICON_REGISTRY_PROVIDER_FACTORY(
+  parentRegistry: SvgIconRegistryService,
+  loader: SvgLoader,
+  platformId: any,
+  serverUrl?: string,
+  document?: any
+) {
+  return (
+    parentRegistry ||
+    new SvgIconRegistryService(loader, platformId, serverUrl, document)
+  );
+}
+
+export const SVG_ICON_REGISTRY_PROVIDER &#x3D; {
+  provide: SvgIconRegistryService,
+  deps: [
+    [new Optional(), new SkipSelf(), SvgIconRegistryService],
+    SvgLoader,
+    [PLATFORM_ID as InjectionToken&lt;any&gt;],
+    [new Optional(), SERVER_URL as InjectionToken&lt;string&gt;],
+    [new Optional(), DOCUMENT as InjectionToken&lt;any&gt;],
+  ],
+  useFactory: SVG_ICON_REGISTRY_PROVIDER_FACTORY,
+};
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'SvgIconRegistryService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

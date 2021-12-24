@@ -1,0 +1,735 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>central-factory documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/postmark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">central-factory documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  AvatarSkillsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>libs/avatars/src/lib/web-components/angular/avatar-skills/avatar-skills.component.ts</code>
+</p>
+
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>cf-avatar-skills</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;form [formGroup]&#x3D;&quot;form&quot; cfBlock&#x3D;&quot;avatar&quot;&gt;
+  &lt;div
+    class&#x3D;&quot;form-array&quot;
+    formArrayName&#x3D;&quot;skills&quot;
+    style&#x3D;&quot;margin-bottom: 15px;&quot;
+  &gt;
+    &lt;h2&gt;Skills&lt;/h2&gt;
+
+    &lt;div fxLayout&#x3D;&quot;row wrap&quot; fxLayoutGap&#x3D;&quot;15px&quot;&gt;
+      &lt;div
+        *ngFor&#x3D;&quot;let skill of skillsForm.controls; let i &#x3D; index&quot;
+        class&#x3D;&quot;skill-form&quot;
+      &gt;
+        &lt;button
+          type&#x3D;&quot;button&quot;
+          cfBlock&#x3D;&quot;button&quot;
+          cfMod&#x3D;&quot;primary uppercase big&quot;
+        &gt;
+          &lt;cf-svg-icon
+            src&#x3D;&quot;assets/icons/mdi/{{
+              skillsIcons[skill.value.skill + &#x27;-&#x27; + skill.value.domain]
+            }}.svg&quot;
+            cfElem&#x3D;&quot;icon&quot;
+            [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+          &gt;&lt;/cf-svg-icon&gt;
+          {{ skill.value.skill }} {{ skill.value.domain }}
+        &lt;/button&gt;
+
+        &lt;div [formGroupName]&#x3D;&quot;i&quot; *ngIf&#x3D;&quot;false&quot;&gt;
+          &lt;div class&#x3D;&quot;form-control&quot;&gt;
+            &lt;label for&#x3D;&quot;skill-domain-{{ i }}&quot;&gt;Domain:&lt;/label&gt;
+            &lt;input
+              id&#x3D;&quot;skill-domain-{{ i }}&quot;
+              type&#x3D;&quot;text&quot;
+              formControlName&#x3D;&quot;domain&quot;
+            /&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;form-control&quot;&gt;
+            &lt;label for&#x3D;&quot;skill-scope-{{ i }}&quot;&gt;Scope:&lt;/label&gt;
+            &lt;input
+              id&#x3D;&quot;skill-scope-{{ i }}&quot;
+              type&#x3D;&quot;text&quot;
+              formControlName&#x3D;&quot;scope&quot;
+            /&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;form-control&quot;&gt;
+            &lt;label for&#x3D;&quot;skill-skill-{{ i }}&quot;&gt;Skill:&lt;/label&gt;
+            &lt;input
+              id&#x3D;&quot;skill-skill-{{ i }}&quot;
+              type&#x3D;&quot;text&quot;
+              formControlName&#x3D;&quot;skill&quot;
+            /&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;button type&#x3D;&quot;button&quot; cfBlock&#x3D;&quot;button&quot; cfMod&#x3D;&quot;primary uppercase big&quot;&gt;
+    &lt;cf-svg-icon
+      src&#x3D;&quot;assets/icons/mdi/plus.svg&quot;
+      cfElem&#x3D;&quot;icon&quot;
+      [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+    &gt;&lt;/cf-svg-icon&gt;
+    Add more skills
+  &lt;/button&gt;
+&lt;/form&gt;
+</code></pre></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                <a href="#skillsIcons" >skillsIcons</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addScope" >addScope</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#skills" >skills</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#skills" >skills</a>
+                                </li>
+                                <li>
+                                    <a href="#skillsForm" >skillsForm</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="skills"></a>
+                        <b>skills</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-skills/avatar-skills.component.ts:85</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addScope"></a>
+                    <span class="name">
+                        <span ><b>addScope</b></span>
+                        <a href="#addScope"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>addScope(skill: <a href="../interfaces/Skill.html" target="_self">Skill</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="110"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-skills/avatar-skills.component.ts:110</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>skill</td>
+                                    <td>
+                                                <code><a href="../interfaces/Skill.html" target="_self" >Skill</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new FormGroup&lt;AvatarSkillsInput&gt;({
+    skills: new FormArray&lt;Skill&gt;([]),
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-skills/avatar-skills.component.ts:102</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="skillsIcons"></a>
+                    <span class="name">
+                        <span ><b>skillsIcons</b></span>
+                        <a href="#skillsIcons"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    &#x27;create-calendar&#x27;: &#x27;calendar-edit&#x27;,
+    &#x27;create-event&#x27;: &#x27;calendar&#x27;,
+    &#x27;trade-assets&#x27;: &#x27;store&#x27;,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-skills/avatar-skills.component.ts:94</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="skills"></a>
+                        <span class="name"><b>skills</b><a href="#skills"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>skills(value: <a href="../interfaces/Skill.html" target="_self">Skill[]</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-skills/avatar-skills.component.ts:85</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="../interfaces/Skill.html" target="_self" >Skill[]</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="skillsForm"></a>
+                        <span class="name"><b>skillsForm</b><a href="#skillsForm"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>skillsForm()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-skills/avatar-skills.component.ts:106</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
+import { FormArray, FormControl, FormGroup } from &#x27;@ng-stack/forms&#x27;;
+import { Skill } from &#x27;../../../domain/models/skill&#x27;;
+
+export class AvatarSkillsInput {
+  //#endregion
+  skills!: Skill[];
+}
+
+@Component({
+  selector: &#x27;cf-avatar-skills&#x27;,
+  template: &#x60;
+    &lt;form [formGroup]&#x3D;&quot;form&quot; cfBlock&#x3D;&quot;avatar&quot;&gt;
+      &lt;div
+        class&#x3D;&quot;form-array&quot;
+        formArrayName&#x3D;&quot;skills&quot;
+        style&#x3D;&quot;margin-bottom: 15px;&quot;
+      &gt;
+        &lt;h2&gt;Skills&lt;/h2&gt;
+
+        &lt;div fxLayout&#x3D;&quot;row wrap&quot; fxLayoutGap&#x3D;&quot;15px&quot;&gt;
+          &lt;div
+            *ngFor&#x3D;&quot;let skill of skillsForm.controls; let i &#x3D; index&quot;
+            class&#x3D;&quot;skill-form&quot;
+          &gt;
+            &lt;button
+              type&#x3D;&quot;button&quot;
+              cfBlock&#x3D;&quot;button&quot;
+              cfMod&#x3D;&quot;primary uppercase big&quot;
+            &gt;
+              &lt;cf-svg-icon
+                src&#x3D;&quot;assets/icons/mdi/{{
+                  skillsIcons[skill.value.skill + &#x27;-&#x27; + skill.value.domain]
+                }}.svg&quot;
+                cfElem&#x3D;&quot;icon&quot;
+                [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+              &gt;&lt;/cf-svg-icon&gt;
+              {{ skill.value.skill }} {{ skill.value.domain }}
+            &lt;/button&gt;
+
+            &lt;div [formGroupName]&#x3D;&quot;i&quot; *ngIf&#x3D;&quot;false&quot;&gt;
+              &lt;div class&#x3D;&quot;form-control&quot;&gt;
+                &lt;label for&#x3D;&quot;skill-domain-{{ i }}&quot;&gt;Domain:&lt;/label&gt;
+                &lt;input
+                  id&#x3D;&quot;skill-domain-{{ i }}&quot;
+                  type&#x3D;&quot;text&quot;
+                  formControlName&#x3D;&quot;domain&quot;
+                /&gt;
+              &lt;/div&gt;
+
+              &lt;div class&#x3D;&quot;form-control&quot;&gt;
+                &lt;label for&#x3D;&quot;skill-scope-{{ i }}&quot;&gt;Scope:&lt;/label&gt;
+                &lt;input
+                  id&#x3D;&quot;skill-scope-{{ i }}&quot;
+                  type&#x3D;&quot;text&quot;
+                  formControlName&#x3D;&quot;scope&quot;
+                /&gt;
+              &lt;/div&gt;
+
+              &lt;div class&#x3D;&quot;form-control&quot;&gt;
+                &lt;label for&#x3D;&quot;skill-skill-{{ i }}&quot;&gt;Skill:&lt;/label&gt;
+                &lt;input
+                  id&#x3D;&quot;skill-skill-{{ i }}&quot;
+                  type&#x3D;&quot;text&quot;
+                  formControlName&#x3D;&quot;skill&quot;
+                /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;button type&#x3D;&quot;button&quot; cfBlock&#x3D;&quot;button&quot; cfMod&#x3D;&quot;primary uppercase big&quot;&gt;
+        &lt;cf-svg-icon
+          src&#x3D;&quot;assets/icons/mdi/plus.svg&quot;
+          cfElem&#x3D;&quot;icon&quot;
+          [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+        &gt;&lt;/cf-svg-icon&gt;
+        Add more skills
+      &lt;/button&gt;
+    &lt;/form&gt;
+  &#x60;,
+})
+export class AvatarSkillsComponent {
+  @Input() set skills(value: Skill[]) {
+    if (value) {
+      this.skillsForm.clear();
+      value.forEach((skill) &#x3D;&gt; {
+        this.addScope(skill);
+      });
+    }
+  }
+
+  skillsIcons: {
+    [key: string]: string;
+  } &#x3D; {
+    &#x27;create-calendar&#x27;: &#x27;calendar-edit&#x27;,
+    &#x27;create-event&#x27;: &#x27;calendar&#x27;,
+    &#x27;trade-assets&#x27;: &#x27;store&#x27;,
+  };
+
+  form &#x3D; new FormGroup&lt;AvatarSkillsInput&gt;({
+    skills: new FormArray&lt;Skill&gt;([]),
+  });
+
+  get skillsForm() {
+    return this.form.controls.skills as FormArray&lt;Skill&gt;;
+  }
+
+  addScope(skill: Skill) {
+    this.skillsForm.push(
+      new FormGroup({
+        domain: new FormControl(skill.domain),
+        scope: new FormControl(skill.scope),
+        skill: new FormControl(skill.skill),
+      })
+    );
+  }
+}
+</code></pre>
+    </div>
+
+
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><form [formGroup]="form" cfBlock="avatar">  <div    class="form-array"    formArrayName="skills"    style="margin-bottom: 15px;"  >    <h2>Skills</h2>    <div fxLayout="row wrap" fxLayoutGap="15px">      <div        *ngFor="let skill of skillsForm.controls; let i = index"        class="skill-form"      >        <button          type="button"          cfBlock="button"          cfMod="primary uppercase big"        >          <cf-svg-icon            src="assets/icons/mdi/{{              skillsIcons[skill.value.skill + \'-\' + skill.value.domain]            }}.svg"            cfElem="icon"            [svgClass]="\'icon__svg\'"          ></cf-svg-icon>          {{ skill.value.skill }} {{ skill.value.domain }}        </button>        <div [formGroupName]="i" *ngIf="false">          <div class="form-control">            <label for="skill-domain-{{ i }}">Domain:</label>            <input              id="skill-domain-{{ i }}"              type="text"              formControlName="domain"            />          </div>          <div class="form-control">            <label for="skill-scope-{{ i }}">Scope:</label>            <input              id="skill-scope-{{ i }}"              type="text"              formControlName="scope"            />          </div>          <div class="form-control">            <label for="skill-skill-{{ i }}">Skill:</label>            <input              id="skill-skill-{{ i }}"              type="text"              formControlName="skill"            />          </div>        </div>      </div>    </div>  </div>  <button type="button" cfBlock="button" cfMod="primary uppercase big">    <cf-svg-icon      src="assets/icons/mdi/plus.svg"      cfElem="icon"      [svgClass]="\'icon__svg\'"    ></cf-svg-icon>    Add more skills  </button></form></div>'
+    var COMPONENTS = [{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'PreviewAvatarAppearanceComponent', 'selector': 'cf-preview-avatar-appearance'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AvatarSkillsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AvatarSkillsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
