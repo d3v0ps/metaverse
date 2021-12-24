@@ -97,7 +97,7 @@
           "options": {
             "commands": [
               {
-                "command": "npx compodoc -p apps/agent-avatars/tsconfig.json -d apps/codex/static/compodoc/agent-avatars --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+                "command": "npx compodoc -p apps/agent-avatars/tsconfig.json -d dist/compodoc/agent-avatars --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
               }
             ]
           }
@@ -169,7 +169,7 @@
           "options": {
             "commands": [
               {
-                "command": "npx compodoc -p libs/assets/tsconfig.json -d apps/codex/static/compodoc/assets --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+                "command": "npx compodoc -p libs/assets/tsconfig.json -d dist/compodoc/assets --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
               }
             ]
           }
@@ -195,7 +195,7 @@
           "options": {
             "quiet": true,
             "uiFramework": "@storybook/angular",
-            "outputPath": "apps/codex/static/storybook/assets",
+            "outputPath": "dist/storybook/assets",
             "config": {
               "configFolder": "libs/assets/.storybook"
             }
@@ -232,7 +232,7 @@
           "options": {
             "commands": [
               {
-                "command": "npx compodoc -p libs/avatars/tsconfig.json -d apps/codex/static/compodoc/avatars --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+                "command": "npx compodoc -p libs/avatars/tsconfig.json -d dist/compodoc/avatars --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
               }
             ]
           }
@@ -258,7 +258,7 @@
           "options": {
             "quiet": true,
             "uiFramework": "@storybook/angular",
-            "outputPath": "apps/codex/static/storybook/avatars",
+            "outputPath": "dist/storybook/avatars",
             "config": {
               "configFolder": "libs/avatars/.storybook"
             }
@@ -276,12 +276,8 @@
           "builder": "@nx-plus/docusaurus:browser",
           "dependsOn": [
             {
-              "target": "build-storybook",
-              "projects": "dependencies"
-            },
-            {
-              "target": "build-api-docs",
-              "projects": "dependencies"
+              "target": "copy-assets",
+              "projects": "self"
             }
           ],
           "options": {
@@ -290,6 +286,18 @@
         },
         "serve": {
           "builder": "@nx-plus/docusaurus:dev-server",
+          "dependsOn": [
+            {
+              "target": "copy-assets",
+              "projects": "self"
+            }
+          ],
+          "options": {
+            "port": 3000
+          }
+        },
+        "copy-assets": {
+          "builder": "@nrwl/workspace:run-commands",
           "dependsOn": [
             {
               "target": "build-storybook",
@@ -301,7 +309,14 @@
             }
           ],
           "options": {
-            "port": 3000
+            "commands": [
+              {
+                "command": "cp -r dist/compodoc apps/codex/static/compodoc"
+              },
+              {
+                "command": "cp -r dist/storybook apps/codex/static/storybook"
+              }
+            ]
           }
         }
       },
@@ -346,7 +361,7 @@
           "options": {
             "commands": [
               {
-                "command": "npx compodoc -p libs/core/tsconfig.json -d apps/codex/static/compodoc/core --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+                "command": "npx compodoc -p libs/core/tsconfig.json -d dist/compodoc/core --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
               }
             ]
           }
@@ -408,7 +423,7 @@
           "options": {
             "commands": [
               {
-                "command": "npx compodoc -p libs/gatekeeper/tsconfig.json -d apps/codex/static/compodoc/gatekeeper --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+                "command": "npx compodoc -p libs/gatekeeper/tsconfig.json -d dist/compodoc/gatekeeper --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
               }
             ]
           }
@@ -444,7 +459,7 @@
           "options": {
             "commands": [
               {
-                "command": "npx compodoc -p libs/integrations/tsconfig.json -d apps/codex/static/compodoc/integrations --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+                "command": "npx compodoc -p libs/integrations/tsconfig.json -d dist/compodoc/integrations --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
               }
             ]
           }
@@ -540,7 +555,7 @@
           "options": {
             "commands": [
               {
-                "command": "npx compodoc -p apps/inventory/tsconfig.json -d apps/codex/static/compodoc/inventory --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+                "command": "npx compodoc -p apps/inventory/tsconfig.json -d dist/compodoc/inventory --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
               }
             ]
           }
@@ -672,7 +687,7 @@
           "options": {
             "commands": [
               {
-                "command": "npx compodoc -p apps/marketplace/tsconfig.json -d apps/codex/static/compodoc/marketplace --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+                "command": "npx compodoc -p apps/marketplace/tsconfig.json -d dist/compodoc/marketplace --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
               }
             ]
           }
@@ -974,7 +989,7 @@
           "options": {
             "commands": [
               {
-                "command": "npx compodoc -p apps/portal/tsconfig.json -d apps/codex/static/compodoc/portal --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+                "command": "npx compodoc -p apps/portal/tsconfig.json -d dist/compodoc/portal --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
               }
             ]
           }
@@ -1065,7 +1080,7 @@
           "options": {
             "commands": [
               {
-                "command": "npx compodoc -p libs/web-components/tsconfig.json -d apps/codex/static/compodoc/web-components --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+                "command": "npx compodoc -p libs/web-components/tsconfig.json -d dist/compodoc/web-components --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
               }
             ]
           }
