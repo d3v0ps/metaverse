@@ -13,18 +13,7 @@ Property of [The Central Factory Foundation](https://github.com/central-factory/
 
 ```sh
 # run the portal app
-nx run portal
+nx serve portal
 # run the codex website
-nx run codex
-```
-
-### Serve documentation
-
-```bash
-# generate compodoc documentation from all projects into codex
-nx run-many --target=compodoc --all --configuration build-codex
-nx run-many --target=build-storybook --all --configuration build-codex
-
-# serve codex
 nx serve codex
 ```

@@ -92,37 +92,14 @@
             ]
           }
         },
-        "compodoc": {
+        "build-api-docs": {
           "builder": "@nrwl/workspace:run-commands",
-          "configurations": {
-            "build-codex": {
-              "commands": [
-                {
-                  "command": "cd apps/agent-avatars && ../../node_modules/.bin/compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/agent-avatars --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "serve": {
-              "commands": [
-                {
-                  "command": "cd apps/agent-avatars && ../../node_modules/.bin/compodoc -p ./tsconfig.json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json": {
-              "commands": [
-                {
-                  "command": "cd apps/agent-avatars && ../../node_modules/.bin/compodoc -p ./tsconfig.json -e json --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json.watch": {
-              "commands": [
-                {
-                  "command": "cd libs/agent-avatars && ../../node_modules/.bin/compodoc -p ./tsconfig.json -e json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            }
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p apps/agent-avatars/tsconfig.json -d apps/codex/static/compodoc/agent-avatars --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
           }
         },
         "test": {
@@ -187,37 +164,14 @@
             ]
           }
         },
-        "compodoc": {
+        "build-api-docs": {
           "builder": "@nrwl/workspace:run-commands",
-          "configurations": {
-            "build-codex": {
-              "commands": [
-                {
-                  "command": "cd libs/assets && ../../node_modules/.bin/compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/assets --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "serve": {
-              "commands": [
-                {
-                  "command": "cd libs/assets && ../../node_modules/.bin/compodoc -p ./tsconfig.json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json": {
-              "commands": [
-                {
-                  "command": "cd libs/assets && ../../node_modules/.bin/compodoc -p ./tsconfig.json -e json --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json.watch": {
-              "commands": [
-                {
-                  "command": "cd libs/assets && ../../node_modules/.bin/compodoc -p ./tsconfig.json -e json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            }
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p libs/assets/tsconfig.json -d apps/codex/static/compodoc/assets --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
           }
         },
         "storybook": {
@@ -239,19 +193,11 @@
           "builder": "@nrwl/storybook:build",
           "outputs": ["{options.outputPath}"],
           "options": {
+            "quiet": true,
             "uiFramework": "@storybook/angular",
-            "outputPath": "dist/storybook/assets",
+            "outputPath": "apps/codex/static/storybook/assets",
             "config": {
               "configFolder": "libs/assets/.storybook"
-            }
-          },
-          "configurations": {
-            "build-codex": {
-              "quiet": true,
-              "outputPath": "apps/codex/static/storybook/assets"
-            },
-            "ci": {
-              "quiet": true
             }
           }
         }
@@ -281,37 +227,14 @@
             ]
           }
         },
-        "compodoc": {
+        "build-api-docs": {
           "builder": "@nrwl/workspace:run-commands",
-          "configurations": {
-            "build-codex": {
-              "commands": [
-                {
-                  "command": "cd libs/avatars && ../../node_modules/.bin/compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/avatars --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "serve": {
-              "commands": [
-                {
-                  "command": "cd libs/avatars && ../../node_modules/.bin/compodoc -p ./tsconfig.json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json": {
-              "commands": [
-                {
-                  "command": "cd libs/avatars && ../../node_modules/.bin/compodoc -p ./tsconfig.json -e json --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json.watch": {
-              "commands": [
-                {
-                  "command": "cd libs/core && ../../node_modules/.bin/compodoc -p ./tsconfig.json -e json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            }
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p libs/avatars/tsconfig.json -d apps/codex/static/compodoc/avatars --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
           }
         },
         "storybook": {
@@ -333,19 +256,11 @@
           "builder": "@nrwl/storybook:build",
           "outputs": ["{options.outputPath}"],
           "options": {
+            "quiet": true,
             "uiFramework": "@storybook/angular",
-            "outputPath": "dist/storybook/avatars",
+            "outputPath": "apps/codex/static/storybook/avatars",
             "config": {
               "configFolder": "libs/avatars/.storybook"
-            }
-          },
-          "configurations": {
-            "build-codex": {
-              "quiet": true,
-              "outputPath": "apps/codex/static/storybook/avatars"
-            },
-            "ci": {
-              "quiet": true
             }
           }
         }
@@ -361,11 +276,11 @@
           "builder": "@nx-plus/docusaurus:browser",
           "dependsOn": [
             {
-              "target": "build-storybook:build-codex",
+              "target": "build-storybook",
               "projects": "dependencies"
             },
             {
-              "target": "compodoc:build-codex",
+              "target": "build-api-docs",
               "projects": "dependencies"
             }
           ],
@@ -377,11 +292,11 @@
           "builder": "@nx-plus/docusaurus:dev-server",
           "dependsOn": [
             {
-              "target": "build-storybook:build-codex",
+              "target": "build-storybook",
               "projects": "dependencies"
             },
             {
-              "target": "compodoc:build-codex",
+              "target": "build-api-docs",
               "projects": "dependencies"
             }
           ],
@@ -426,37 +341,14 @@
             ]
           }
         },
-        "compodoc": {
+        "build-api-docs": {
           "builder": "@nrwl/workspace:run-commands",
-          "configurations": {
-            "build-codex": {
-              "commands": [
-                {
-                  "command": "cd libs/core && ../../node_modules/.bin/compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/core --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "serve": {
-              "commands": [
-                {
-                  "command": "cd libs/core && ../../node_modules/.bin/compodoc -p ./tsconfig.json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json": {
-              "commands": [
-                {
-                  "command": "cd libs/core && ../../node_modules/.bin/compodoc -p ./tsconfig.json -e json --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json.watch": {
-              "commands": [
-                {
-                  "command": "cd libs/core && ../../node_modules/.bin/compodoc -p ./tsconfig.json -e json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            }
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p libs/core/tsconfig.json -d apps/codex/static/compodoc/core --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
           }
         }
       },
@@ -511,37 +403,14 @@
             ]
           }
         },
-        "compodoc": {
+        "build-api-docs": {
           "builder": "@nrwl/workspace:run-commands",
-          "configurations": {
-            "build-codex": {
-              "commands": [
-                {
-                  "command": "cd libs/gatekeeper && npx compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/gatekeeper --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "serve": {
-              "commands": [
-                {
-                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json": {
-              "commands": [
-                {
-                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -e json --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json.watch": {
-              "commands": [
-                {
-                  "command": "cd libs/core && npx compodoc -p ./tsconfig.json -e json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            }
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p libs/gatekeeper/tsconfig.json -d apps/codex/static/compodoc/gatekeeper --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
           }
         }
       },
@@ -570,37 +439,14 @@
             ]
           }
         },
-        "compodoc": {
+        "build-api-docs": {
           "builder": "@nrwl/workspace:run-commands",
-          "configurations": {
-            "build-codex": {
-              "commands": [
-                {
-                  "command": "cd libs/integrations && npx compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/integrations --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "serve": {
-              "commands": [
-                {
-                  "command": "cd libs/integrations && npx compodoc -p ./tsconfig.json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json": {
-              "commands": [
-                {
-                  "command": "cd libs/integrations && npx compodoc -p ./tsconfig.json -e json --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json.watch": {
-              "commands": [
-                {
-                  "command": "cd libs/integrations && npx compodoc -p ./tsconfig.json -e json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            }
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p libs/integrations/tsconfig.json -d apps/codex/static/compodoc/integrations --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
           }
         }
       },
@@ -689,37 +535,14 @@
             ]
           }
         },
-        "compodoc": {
+        "build-api-docs": {
           "builder": "@nrwl/workspace:run-commands",
-          "configurations": {
-            "build-codex": {
-              "commands": [
-                {
-                  "command": "cd apps/inventory && ../../node_modules/.bin/compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/inventory --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "serve": {
-              "commands": [
-                {
-                  "command": "cd apps/inventory && ../../node_modules/.bin/compodoc -p ./tsconfig.json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json": {
-              "commands": [
-                {
-                  "command": "cd libs/inventory && ../../node_modules/.bin/compodoc -p ./tsconfig.json -e json --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json.watch": {
-              "commands": [
-                {
-                  "command": "cd libs/inventory && ../../node_modules/.bin/compodoc -p ./tsconfig.json -e json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            }
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p apps/inventory/tsconfig.json -d apps/codex/static/compodoc/inventory --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
           }
         },
         "test": {
@@ -844,37 +667,14 @@
             ]
           }
         },
-        "compodoc": {
+        "build-api-docs": {
           "builder": "@nrwl/workspace:run-commands",
-          "configurations": {
-            "build-codex": {
-              "commands": [
-                {
-                  "command": "cd apps/marketplace && ../../node_modules/.bin/compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/marketplace --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "serve": {
-              "commands": [
-                {
-                  "command": "cd apps/marketplace && ../../node_modules/.bin/compodoc -p ./tsconfig.json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json": {
-              "commands": [
-                {
-                  "command": "cd apps/marketplace && ../../node_modules/.bin/compodoc -p ./tsconfig.json -e json --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json.watch": {
-              "commands": [
-                {
-                  "command": "cd apps/core && ../../node_modules/.bin/compodoc -p ./tsconfig.json -e json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            }
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p apps/marketplace/tsconfig.json -d apps/codex/static/compodoc/marketplace --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
           }
         },
         "test": {
@@ -1169,37 +969,14 @@
             "passWithNoTests": true
           }
         },
-        "compodoc": {
+        "build-api-docs": {
           "builder": "@nrwl/workspace:run-commands",
-          "configurations": {
-            "build-codex": {
-              "commands": [
-                {
-                  "command": "cd apps/portal && npx compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/portal --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "serve": {
-              "commands": [
-                {
-                  "command": "cd apps/portal && npx compodoc -p ./tsconfig.json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json": {
-              "commands": [
-                {
-                  "command": "cd apps/portal && npx compodoc -p ./tsconfig.json -e json --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json.watch": {
-              "commands": [
-                {
-                  "command": "cd apps/portal && npx compodoc -p ./tsconfig.json -e json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            }
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p apps/portal/tsconfig.json -d apps/codex/static/compodoc/portal --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
           }
         }
       },
@@ -1283,37 +1060,14 @@
             ]
           }
         },
-        "compodoc": {
+        "build-api-docs": {
           "builder": "@nrwl/workspace:run-commands",
-          "configurations": {
-            "build-codex": {
-              "commands": [
-                {
-                  "command": "cd libs/web-components && npx compodoc -p ./tsconfig.json -d ../../apps/codex/static/compodoc/web-components --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "serve": {
-              "commands": [
-                {
-                  "command": "cd libs/web-components && npx compodoc -p ./tsconfig.json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json": {
-              "commands": [
-                {
-                  "command": "cd libs/web-components && npx compodoc -p ./tsconfig.json -e json --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            },
-            "json.watch": {
-              "commands": [
-                {
-                  "command": "cd libs/web-components && npx compodoc -p ./tsconfig.json -e json -w --theme postmark --hideGenerator --disableInternal --customFavicon ../../apps/codex/static/img/favicon.ico --customLogo ../../apps/codex/static/img/logo.svg"
-                }
-              ]
-            }
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p libs/web-components/tsconfig.json -d apps/codex/static/compodoc/web-components --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
           }
         },
         "build-themes": {
