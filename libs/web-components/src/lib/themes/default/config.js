@@ -7,7 +7,7 @@ module.exports = {
   platforms: {
     css: {
       transformGroup: 'css',
-      buildPath: 'dist/libs/themes/default/css/',
+      buildPath: 'dist/libs/themes/default/',
       files: [
         {
           format: 'css/variables',

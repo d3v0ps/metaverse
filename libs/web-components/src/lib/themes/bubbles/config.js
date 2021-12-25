@@ -7,7 +7,7 @@ module.exports = {
   platforms: {
     css: {
       transformGroup: 'css',
-      buildPath: 'dist/libs/themes/bubbles/css/',
+      buildPath: 'dist/libs/themes/bubbles/',
       files: [
         {
           format: 'css/variables',

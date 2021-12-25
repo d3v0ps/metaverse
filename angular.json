@@ -887,18 +887,8 @@
               },
               {
                 "glob": "**/*",
-                "input": "./dist/libs/themes/default/css",
-                "output": "./assets/themes/default"
-              },
-              {
-                "glob": "**/*",
-                "input": "./dist/libs/themes/matrix/css",
-                "output": "./assets/themes/matrix"
-              },
-              {
-                "glob": "**/*",
-                "input": "./dist/libs/themes/bubbles/css",
-                "output": "./assets/themes/bubbles"
+                "input": "./dist/libs/themes",
+                "output": "./assets/themes"
               }
             ],
             "styles": ["apps/portal/src/styles/index.scss"],
