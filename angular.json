@@ -894,6 +894,11 @@
                 "glob": "**/*",
                 "input": "./dist/libs/themes/matrix/css",
                 "output": "./assets/themes/matrix"
+              },
+              {
+                "glob": "**/*",
+                "input": "./dist/libs/themes/bubbles/css",
+                "output": "./assets/themes/bubbles"
               }
             ],
             "styles": ["apps/portal/src/styles/index.scss"],
@@ -1094,6 +1099,9 @@
               },
               {
                 "command": "npx style-dictionary build -c libs/web-components/src/lib/themes/matrix/config.js"
+              },
+              {
+                "command": "npx style-dictionary build -c libs/web-components/src/lib/themes/bubbles/config.js"
               }
             ]
           }

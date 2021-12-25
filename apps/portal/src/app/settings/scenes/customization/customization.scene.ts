@@ -1,7 +1,17 @@
-import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@ng-stack/forms';
-import { tap } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { Control, FormControl, FormGroup } from '@ng-stack/forms';
+import { filter, tap } from 'rxjs/operators';
+import { AvailableThemesState } from '../../states/available-themes/available-themes.state';
+import { SelectedThemeState } from '../../states/selected-theme/selected-theme.state';
+
+export interface Theme {
+  name: string;
+  path: string;
+}
+
+export interface CustomizationForm {
+  theme: Control<Theme>;
+}
 
 @Component({
   selector: 'cf-customization',
@@ -16,10 +26,14 @@ import { tap } from 'rxjs/operators';
               <label> Theme </label>
             </td>
             <td>
-              <ng-select formControlName="theme">
-                <ng-option *ngFor="let theme of themes" [value]="theme.path">
-                  {{ theme.name }}
-                </ng-option>
+              <ng-select
+                formControlName="theme"
+                [items]="themes$ | async"
+                bindLabel="name"
+              >
+                <ng-template ng-option-tmp let-item="item">
+                  {{ item.name }}
+                </ng-template>
               </ng-select>
             </td>
           </tr>
@@ -36,48 +50,37 @@ import { tap } from 'rxjs/operators';
       table {
         width: 100%;
       }
+
+      ng-select {
+        max-width: 400px;
+      }
     `,
   ],
 })
 export class CustomizationScene implements OnInit {
-  form = new FormGroup({
-    theme: new FormControl('assets/themes/default/variables.css'),
+  form = new FormGroup<CustomizationForm>({
+    theme: new FormControl<Theme>(null),
   });
 
-  themes = [
-    {
-      name: 'Default',
-      path: 'assets/themes/default/variables.css',
-    },
-    {
-      name: 'Matrix',
-      path: 'assets/themes/matrix/variables.css',
-    },
-  ];
+  themes$ = this.availableThemesState.themes$;
 
-  private activeThemeLinkElem?: HTMLLinkElement;
-
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(
+    private availableThemesState: AvailableThemesState,
+    private selectedThemeState: SelectedThemeState
+  ) {}
 
   ngOnInit() {
+    this.themes$.subscribe((value) => console.log(value));
+
+    this.selectedThemeState.theme$.subscribe((theme) => {
+      this.form.patchValue({ theme }, { emitEvent: false });
+    });
+
     this.form.controls.theme.valueChanges
-      .pipe(tap((themeUrl) => this.loadThemeFromUrl(themeUrl)))
+      .pipe(
+        filter((theme) => (theme ? true : false)),
+        tap((theme) => this.selectedThemeState.selectTheme(theme))
+      )
       .subscribe();
-  }
-
-  private loadThemeFromUrl(url: string) {
-    const headElem = this.document.getElementsByTagName('head')[0];
-
-    const newThemeLinkElem = this.document.createElement('link');
-    newThemeLinkElem.rel = 'stylesheet';
-    newThemeLinkElem.href = url;
-
-    headElem.appendChild(newThemeLinkElem);
-
-    if (this.activeThemeLinkElem) {
-      headElem.removeChild(this.activeThemeLinkElem);
-    }
-
-    this.activeThemeLinkElem = newThemeLinkElem;
   }
 }
