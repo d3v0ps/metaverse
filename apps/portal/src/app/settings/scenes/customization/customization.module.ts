@@ -4,12 +4,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BemModule } from '@central-factory/web-components/angular/bem/bem.module';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { SettingsNavComponent } from './components/settings-nav/settings-nav.component';
-import { SettingsRoutingModule } from './settings-routing.module';
-import { SettingsScene } from './settings.scene';
+import { CustomizationRoutingModule } from './customization.routing-module';
+import { CustomizationScene } from './customization.scene';
 
 @NgModule({
-  declarations: [SettingsScene, SettingsNavComponent],
+  declarations: [CustomizationScene],
   imports: [
     CommonModule,
     FormsModule,
@@ -17,8 +16,8 @@ import { SettingsScene } from './settings.scene';
     FlexLayoutModule,
     BemModule,
     NgSelectModule,
-    SettingsRoutingModule,
+    CustomizationRoutingModule,
   ],
   exports: [],
 })
-export class SettingsModule {}
+export class CustomizationModule {}

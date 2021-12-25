@@ -15,7 +15,7 @@ color:
       darker:
         value: "#22b455"
       darkest:
-        value: "#22b455"
+        value: "#74837D"
 
     secondary:
       lightest:

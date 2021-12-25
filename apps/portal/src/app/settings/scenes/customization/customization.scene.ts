@@ -4,35 +4,44 @@ import { FormControl, FormGroup } from '@ng-stack/forms';
 import { tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'cf-settings',
+  selector: 'cf-customization',
   template: `
-    <div cfBlock="scene-content">
-      Settings
+    <div>
+      <h4>Customization</h4>
 
       <form [formGroup]="form">
-        <!-- label>Primary Color</label>
-        <input type="color" formControlName="primaryColor" />
-
-        <label>Secondary Color</label>
-        <input type="color" formControlName="secondaryColor" / -->
-
-        <label>Theme</label>
-        <ng-select formControlName="theme">
-          <ng-option *ngFor="let theme of themes" [value]="theme.path">
-            {{ theme.name }}
-          </ng-option>
-        </ng-select>
-
-        <!-- input type="file" / -->
+        <table>
+          <tr>
+            <td>
+              <label> Theme </label>
+            </td>
+            <td>
+              <ng-select formControlName="theme">
+                <ng-option *ngFor="let theme of themes" [value]="theme.path">
+                  {{ theme.name }}
+                </ng-option>
+              </ng-select>
+            </td>
+          </tr>
+        </table>
       </form>
     </div>
   `,
+  styles: [
+    `
+      h4 {
+        margin-block-start: 0;
+      }
+
+      table {
+        width: 100%;
+      }
+    `,
+  ],
 })
-export class SettingsScene implements OnInit {
+export class CustomizationScene implements OnInit {
   form = new FormGroup({
     theme: new FormControl('assets/themes/default/variables.css'),
-    // primaryColor: new FormControl<string>(null),
-    // secondaryColor: new FormControl<string>(null),
   });
 
   themes = [
