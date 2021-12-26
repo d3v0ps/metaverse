@@ -21,7 +21,8 @@ module.exports = {
       files: [
         {
           format: 'css/variables',
-          destination: '_theme.scss'
+          destination: '_theme.scss',
+          options: { showFileHeader: false },
         }
       ]
     }

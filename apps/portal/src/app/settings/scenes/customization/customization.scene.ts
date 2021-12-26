@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Control, FormControl, FormGroup } from '@ng-stack/forms';
-import { filter, tap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { filter, takeUntil, tap } from 'rxjs/operators';
 import { AvailableThemesState } from '../../states/available-themes/available-themes.state';
 import { SelectedThemeState } from '../../states/selected-theme/selected-theme.state';
 
@@ -57,30 +58,38 @@ export interface CustomizationForm {
     `,
   ],
 })
-export class CustomizationScene implements OnInit {
+export class CustomizationScene implements OnInit, OnDestroy {
   form = new FormGroup<CustomizationForm>({
     theme: new FormControl<Theme>(null),
   });
 
   themes$ = this.availableThemesState.themes$;
 
+  private destroy$ = new Subject();
+
   constructor(
     private availableThemesState: AvailableThemesState,
     private selectedThemeState: SelectedThemeState
   ) {}
 
-  ngOnInit() {
-    this.themes$.subscribe((value) => console.log(value));
-
-    this.selectedThemeState.theme$.subscribe((theme) => {
-      this.form.patchValue({ theme }, { emitEvent: false });
-    });
+  ngOnInit(): void {
+    this.selectedThemeState.theme$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((theme) => {
+        this.form.patchValue({ theme }, { emitEvent: false });
+      });
 
     this.form.controls.theme.valueChanges
       .pipe(
+        takeUntil(this.destroy$),
         filter((theme) => (theme ? true : false)),
         tap((theme) => this.selectedThemeState.selectTheme(theme))
       )
       .subscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

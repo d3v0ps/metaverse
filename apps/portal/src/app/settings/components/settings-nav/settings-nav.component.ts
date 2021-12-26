@@ -12,6 +12,14 @@ import { Component } from '@angular/core';
           >Customization</a
         >
       </li>
+      <li>
+        <a
+          class="button"
+          routerLink="/settings/credits"
+          routerLinkActive="button--primary"
+          >Credits</a
+        >
+      </li>
       <!-- li>
         <a class="button" routerLink="/settings/account">Account</a>
       </li -->

@@ -15,6 +15,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'credits',
+        loadChildren: () =>
+          import('./scenes/credits/credits.module').then(
+            (m) => m.CreditsModule
+          ),
+      },
+      {
         path: '',
         redirectTo: 'customization',
         pathMatch: 'full',
