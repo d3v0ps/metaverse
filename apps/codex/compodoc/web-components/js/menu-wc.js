@@ -137,16 +137,33 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                             </li>
                             <li class="link">
-                                <a href="modules/SplashScreenModule.html" data-type="entity-link" >SplashScreenModule</a>
+                                <a href="modules/SpinnerModule.html" data-type="entity-link" >SpinnerModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SplashScreenModule-02224fc260456c47b1a608fa636cfd40"' : 'data-target="#xs-components-links-module-SplashScreenModule-02224fc260456c47b1a608fa636cfd40"' }>
+                                            'data-target="#components-links-module-SpinnerModule-584ca970117705362aa35810ad5ab541"' : 'data-target="#xs-components-links-module-SpinnerModule-584ca970117705362aa35810ad5ab541"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SplashScreenModule-02224fc260456c47b1a608fa636cfd40"' :
-                                            'id="xs-components-links-module-SplashScreenModule-02224fc260456c47b1a608fa636cfd40"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SpinnerModule-584ca970117705362aa35810ad5ab541"' :
+                                            'id="xs-components-links-module-SpinnerModule-584ca970117705362aa35810ad5ab541"' }>
+                                            <li class="link">
+                                                <a href="components/SpinnerComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SpinnerComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/SplashScreenModule.html" data-type="entity-link" >SplashScreenModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-SplashScreenModule-f7e7be304ab107c7ae6a16d2397cd1c6"' : 'data-target="#xs-components-links-module-SplashScreenModule-f7e7be304ab107c7ae6a16d2397cd1c6"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SplashScreenModule-f7e7be304ab107c7ae6a16d2397cd1c6"' :
+                                            'id="xs-components-links-module-SplashScreenModule-f7e7be304ab107c7ae6a16d2397cd1c6"' }>
                                             <li class="link">
                                                 <a href="components/SplashScreenComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SplashScreenComponent</a>
                                             </li>

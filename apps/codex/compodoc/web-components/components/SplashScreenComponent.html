@@ -104,7 +104,9 @@
       &lt;div cfElem&#x3D;&quot;logo&quot; [@logoState]&#x3D;&quot;logoState&quot;&gt;
         &lt;img cfElem&#x3D;&quot;logo-image&quot; [src]&#x3D;&quot;logo&quot; alt&#x3D;&quot;logo&quot; /&gt;
       &lt;/div&gt;
-      &lt;ngx-spinner [fullScreen]&#x3D;&quot;false&quot; name&#x3D;&quot;splashSpinner&quot;&gt;&lt;/ngx-spinner&gt;
+      &lt;div cfElem&#x3D;&quot;spinner-content&quot; *ngIf&#x3D;&quot;logoState !&#x3D;&#x3D; &#x27;visible&#x27;&quot;&gt;
+        &lt;cf-spinner&gt;&lt;/cf-spinner&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
     &lt;p cfElem&#x3D;&quot;loading-text&quot; *ngIf&#x3D;&quot;loadingText&quot;&gt;
       {{ loadingText }}
@@ -206,6 +208,9 @@
                             <li>
                                 <a href="#title" >title</a>
                             </li>
+                            <li>
+                                <a href="#welcomeMessage" >welcomeMessage</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -217,54 +222,6 @@
     </table>
 </section>
 
-    <section>
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(spinner: NgxSpinnerService)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:103</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>spinner</td>
-                                                  
-                                                        <td>
-                                                                    <code>NgxSpinnerService</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
 
     <section>
     <h3 id="inputs">Inputs</h3>
@@ -293,7 +250,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:93</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:94</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -319,7 +276,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:91</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:92</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -345,7 +302,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:92</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:93</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -371,7 +328,33 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:90</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:91</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="welcomeMessage"></a>
+                        <b>welcomeMessage</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;Welcome to the Metaverse&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:99</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -408,8 +391,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="130"
-                            class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:130</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="125"
+                            class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:125</a></div>
                 </td>
             </tr>
 
@@ -524,8 +507,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="156"
-                            class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:156</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="153"
+                            class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:153</a></div>
                 </td>
             </tr>
 
@@ -599,7 +582,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:99</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:101</a></div>
                         </td>
                     </tr>
 
@@ -624,7 +607,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:101</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:103</a></div>
                         </td>
                     </tr>
 
@@ -657,7 +640,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:103</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:105</a></div>
                         </td>
                     </tr>
 
@@ -682,7 +665,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:100</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">libs/web-components/src/lib/angular/splash-screen/splash-screen.component.ts:102</a></div>
                         </td>
                     </tr>
 
@@ -703,7 +686,6 @@
   trigger,
 } from &#x27;@angular/animations&#x27;;
 import { Component, Input, OnInit } from &#x27;@angular/core&#x27;;
-import { NgxSpinnerService } from &#x27;ngx-spinner&#x27;;
 
 export enum SplashScreenState {
   Visible &#x3D; &#x27;visible&#x27;,
@@ -725,7 +707,9 @@ export enum LogoState {
           &lt;div cfElem&#x3D;&quot;logo&quot; [@logoState]&#x3D;&quot;logoState&quot;&gt;
             &lt;img cfElem&#x3D;&quot;logo-image&quot; [src]&#x3D;&quot;logo&quot; alt&#x3D;&quot;logo&quot; /&gt;
           &lt;/div&gt;
-          &lt;ngx-spinner [fullScreen]&#x3D;&quot;false&quot; name&#x3D;&quot;splashSpinner&quot;&gt;&lt;/ngx-spinner&gt;
+          &lt;div cfElem&#x3D;&quot;spinner-content&quot; *ngIf&#x3D;&quot;logoState !&#x3D;&#x3D; &#x27;visible&#x27;&quot;&gt;
+            &lt;cf-spinner&gt;&lt;/cf-spinner&gt;
+          &lt;/div&gt;
         &lt;/div&gt;
         &lt;p cfElem&#x3D;&quot;loading-text&quot; *ngIf&#x3D;&quot;loadingText&quot;&gt;
           {{ loadingText }}
@@ -792,6 +776,7 @@ export class SplashScreenComponent implements OnInit {
     &#x27;Calling the crew..&#x27;,
     &#x27;Jumping to the cyber space...&#x27;,
   ];
+  @Input() welcomeMessage &#x3D; &#x27;Welcome to the Metaverse&#x27;;
 
   loadingText?: string;
   state &#x3D; SplashScreenState.Visible;
@@ -799,25 +784,18 @@ export class SplashScreenComponent implements OnInit {
 
   private selectedLoadingTextIndex?: number &#x3D; undefined;
 
-  constructor(private spinner: NgxSpinnerService) {}
-
   ngOnInit() {
     this.displaySplashScreen();
   }
 
   private async displaySplashScreen() {
-    this.spinner.show(&#x27;splashSpinner&#x27;, {
-      bdColor: &#x27;transparent&#x27;,
-      fullScreen: false,
-      type: this.spinnerType,
-    });
     this.displayLoadingText();
 
     await this.wait(5000);
 
-    this.spinner.hide(&#x27;splashSpinner&#x27;);
-
     this.logoState &#x3D; LogoState.Visible;
+    this.selectedLoadingTextIndex &#x3D; undefined;
+    this.loadingText &#x3D; this.welcomeMessage;
 
     await this.wait(3000);
 
@@ -825,7 +803,9 @@ export class SplashScreenComponent implements OnInit {
   }
 
   private async displayLoadingText() {
-    if (this.state &#x3D;&#x3D;&#x3D; SplashScreenState.Hidden) {
+    if (this.logoState &#x3D;&#x3D;&#x3D; LogoState.Visible) {
+      this.selectedLoadingTextIndex &#x3D; undefined;
+      this.loadingText &#x3D; this.welcomeMessage;
       return;
     }
 
@@ -884,8 +864,8 @@ export class SplashScreenComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="splash-screen" [@splashState]="state">  <div cfElem="content">    <h1 cfElem="title">{{ title }}</h1>    <div cfElem="spinner">      <div cfElem="logo" [@logoState]="logoState">        <img cfElem="logo-image" [src]="logo" alt="logo" />      </div>      <ngx-spinner [fullScreen]="false" name="splashSpinner"></ngx-spinner>    </div>    <p cfElem="loading-text" *ngIf="loadingText">      {{ loadingText }}    </p>  </div></div></div>'
-    var COMPONENTS = [{'name': 'NavbarComponent', 'selector': 'cf-navbar'},{'name': 'SidebarComponent', 'selector': 'cf-sidebar'},{'name': 'SidebarContainerComponent', 'selector': 'cf-sidebar-container'},{'name': 'SplashScreenComponent', 'selector': 'cf-splash-screen'},{'name': 'SvgIconComponent', 'selector': 'cf-svg-icon'}];
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="splash-screen" [@splashState]="state">  <div cfElem="content">    <h1 cfElem="title">{{ title }}</h1>    <div cfElem="spinner">      <div cfElem="logo" [@logoState]="logoState">        <img cfElem="logo-image" [src]="logo" alt="logo" />      </div>      <div cfElem="spinner-content" *ngIf="logoState !== \'visible\'">        <cf-spinner></cf-spinner>      </div>    </div>    <p cfElem="loading-text" *ngIf="loadingText">      {{ loadingText }}    </p>  </div></div></div>'
+    var COMPONENTS = [{'name': 'NavbarComponent', 'selector': 'cf-navbar'},{'name': 'SidebarComponent', 'selector': 'cf-sidebar'},{'name': 'SidebarContainerComponent', 'selector': 'cf-sidebar-container'},{'name': 'SpinnerComponent', 'selector': 'cf-spinner'},{'name': 'SplashScreenComponent', 'selector': 'cf-splash-screen'},{'name': 'SvgIconComponent', 'selector': 'cf-svg-icon'}];
     var DIRECTIVES = [{'name': 'BlockDirective', 'selector': '[cfBlock]'},{'name': 'CloseSidebarDirective', 'selector': '[cfCloseSidebar]'},{'name': 'ElemDirective', 'selector': '[cfElem]'},{'name': 'ModDirective', 'selector': '[cfMod]'}];
     var ACTUAL_COMPONENT = {'name': 'SplashScreenComponent'};
 </script>
