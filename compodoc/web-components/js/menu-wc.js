@@ -89,13 +89,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/NavbarModule.html" data-type="entity-link" >NavbarModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-NavbarModule-3bf70956cc4794482423d9e1a98299f9"' : 'data-target="#xs-components-links-module-NavbarModule-3bf70956cc4794482423d9e1a98299f9"' }>
+                                            'data-target="#components-links-module-NavbarModule-01709e3a9a1f9c38505fec4e38a01a3c"' : 'data-target="#xs-components-links-module-NavbarModule-01709e3a9a1f9c38505fec4e38a01a3c"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-NavbarModule-3bf70956cc4794482423d9e1a98299f9"' :
-                                            'id="xs-components-links-module-NavbarModule-3bf70956cc4794482423d9e1a98299f9"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-NavbarModule-01709e3a9a1f9c38505fec4e38a01a3c"' :
+                                            'id="xs-components-links-module-NavbarModule-01709e3a9a1f9c38505fec4e38a01a3c"' }>
                                             <li class="link">
                                                 <a href="components/NavbarComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >NavbarComponent</a>
                                             </li>

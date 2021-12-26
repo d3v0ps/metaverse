@@ -92,61 +92,57 @@
             <tr>
                 <td class="col-md-3">template</td>
                 <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div cfBlock&#x3D;&quot;navbar&quot;&gt;
-  &lt;div fxLayout&#x3D;&quot;row&quot; fxFlexFill fxLayoutAlign&#x3D;&quot;space-between center&quot;&gt;
-    &lt;div cfBlock&#x3D;&quot;navbar&quot; cfMod&#x3D;&quot;left&quot; fxFlex&#x3D;&quot;50&quot;&gt;
-      &lt;h1 cfElem&#x3D;&quot;title&quot; (click)&#x3D;&quot;onTitleClick()&quot;&gt;
+  &lt;div cfBlock&#x3D;&quot;navbar-section&quot; cfMod&#x3D;&quot;left&quot;&gt;
+    &lt;h1 cfElem&#x3D;&quot;title&quot; (click)&#x3D;&quot;onTitleClick()&quot;&gt;
+      &lt;cf-svg-icon
+        cfElem&#x3D;&quot;icon&quot;
+        [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+        src&#x3D;&quot;assets/logo.svg&quot;
+      &gt;&lt;/cf-svg-icon&gt;
+
+      &lt;span cfElem&#x3D;&quot;text&quot;&gt;{{ title }}&lt;/span&gt;
+    &lt;/h1&gt;
+  &lt;/div&gt;
+
+  &lt;div cfBlock&#x3D;&quot;navbar-section&quot; cfMod&#x3D;&quot;right&quot;&gt;
+    &lt;ul cfBlock&#x3D;&quot;list&quot; cfMod&#x3D;&quot;horizontal&quot;&gt;
+      &lt;li cfElem&#x3D;&quot;item&quot;&gt;
         &lt;cf-svg-icon
+          src&#x3D;&quot;assets/icons/mdi/web.svg&quot;
           cfElem&#x3D;&quot;icon&quot;
           [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-          src&#x3D;&quot;assets/logo.svg&quot;
         &gt;&lt;/cf-svg-icon&gt;
-
-        &lt;span cfElem&#x3D;&quot;text&quot;&gt;{{ title }}&lt;/span&gt;
-      &lt;/h1&gt;
-    &lt;/div&gt;
-
-    &lt;div fxFlex&#x3D;&quot;50&quot;&gt;
-      &lt;div cfBlock&#x3D;&quot;navbar&quot; cfMod&#x3D;&quot;right&quot;&gt;
-        &lt;ul cfBlock&#x3D;&quot;list&quot; cfMod&#x3D;&quot;horizontal&quot;&gt;
-          &lt;li cfElem&#x3D;&quot;item&quot;&gt;
-            &lt;cf-svg-icon
-              src&#x3D;&quot;assets/icons/mdi/web.svg&quot;
-              cfElem&#x3D;&quot;icon&quot;
-              [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-            &gt;&lt;/cf-svg-icon&gt;
-            &lt;a [href]&#x3D;&quot;environment?.webUrl&quot; cfElem&#x3D;&quot;link&quot;&gt;Website&lt;/a&gt;
-          &lt;/li&gt;
-          &lt;li cfElem&#x3D;&quot;item&quot;&gt;
-            &lt;cf-svg-icon
-              src&#x3D;&quot;assets/icons/mdi/text-box-search-outline.svg&quot;
-              cfElem&#x3D;&quot;icon&quot;
-              [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-            &gt;&lt;/cf-svg-icon&gt;
-            &lt;a [href]&#x3D;&quot;environment?.documentationUrl&quot; cfElem&#x3D;&quot;link&quot;
-              &gt;Documentation&lt;/a
-            &gt;
-          &lt;/li&gt;
-          &lt;li cfElem&#x3D;&quot;item&quot;&gt;
-            &lt;cf-svg-icon
-              src&#x3D;&quot;assets/icons/mdi/post-outline.svg&quot;
-              cfElem&#x3D;&quot;icon&quot;
-              [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-            &gt;&lt;/cf-svg-icon&gt;
-            &lt;a [href]&#x3D;&quot;environment?.blogUrl&quot; cfElem&#x3D;&quot;link&quot;&gt;Blog&lt;/a&gt;
-          &lt;/li&gt;
-          &lt;li cfElem&#x3D;&quot;item&quot;&gt;
-            &lt;cf-svg-icon
-              src&#x3D;&quot;assets/icons/mdi/code-tags.svg&quot;
-              cfElem&#x3D;&quot;icon&quot;
-              [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-            &gt;&lt;/cf-svg-icon&gt;
-            &lt;a [href]&#x3D;&quot;environment?.developersUrl&quot; cfElem&#x3D;&quot;link&quot;&gt;
-              Developers
-            &lt;/a&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
+        &lt;a [href]&#x3D;&quot;environment?.webUrl&quot; cfElem&#x3D;&quot;link&quot;&gt;Website&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li cfElem&#x3D;&quot;item&quot;&gt;
+        &lt;cf-svg-icon
+          src&#x3D;&quot;assets/icons/mdi/text-box-search-outline.svg&quot;
+          cfElem&#x3D;&quot;icon&quot;
+          [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+        &gt;&lt;/cf-svg-icon&gt;
+        &lt;a [href]&#x3D;&quot;environment?.documentationUrl&quot; cfElem&#x3D;&quot;link&quot;
+          &gt;Documentation&lt;/a
+        &gt;
+      &lt;/li&gt;
+      &lt;li cfElem&#x3D;&quot;item&quot;&gt;
+        &lt;cf-svg-icon
+          src&#x3D;&quot;assets/icons/mdi/post-outline.svg&quot;
+          cfElem&#x3D;&quot;icon&quot;
+          [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+        &gt;&lt;/cf-svg-icon&gt;
+        &lt;a [href]&#x3D;&quot;environment?.blogUrl&quot; cfElem&#x3D;&quot;link&quot;&gt;Blog&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li cfElem&#x3D;&quot;item&quot;&gt;
+        &lt;cf-svg-icon
+          src&#x3D;&quot;assets/icons/mdi/code-tags.svg&quot;
+          cfElem&#x3D;&quot;icon&quot;
+          [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+        &gt;&lt;/cf-svg-icon&gt;
+        &lt;a [href]&#x3D;&quot;environment?.developersUrl&quot; cfElem&#x3D;&quot;link&quot;&gt;
+          Developers
+        &lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </code></pre></td>
@@ -242,7 +238,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">libs/web-components/src/lib/angular/navbar/navbar.component.ts:67</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">libs/web-components/src/lib/angular/navbar/navbar.component.ts:63</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -268,7 +264,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">libs/web-components/src/lib/angular/navbar/navbar.component.ts:68</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">libs/web-components/src/lib/angular/navbar/navbar.component.ts:64</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -292,7 +288,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">libs/web-components/src/lib/angular/navbar/navbar.component.ts:70</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">libs/web-components/src/lib/angular/navbar/navbar.component.ts:66</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -325,8 +321,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="72"
-                            class="link-to-prism">libs/web-components/src/lib/angular/navbar/navbar.component.ts:72</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">libs/web-components/src/lib/angular/navbar/navbar.component.ts:68</a></div>
                 </td>
             </tr>
 
@@ -354,61 +350,57 @@
   selector: &#x27;cf-navbar&#x27;,
   template: &#x60;
     &lt;div cfBlock&#x3D;&quot;navbar&quot;&gt;
-      &lt;div fxLayout&#x3D;&quot;row&quot; fxFlexFill fxLayoutAlign&#x3D;&quot;space-between center&quot;&gt;
-        &lt;div cfBlock&#x3D;&quot;navbar&quot; cfMod&#x3D;&quot;left&quot; fxFlex&#x3D;&quot;50&quot;&gt;
-          &lt;h1 cfElem&#x3D;&quot;title&quot; (click)&#x3D;&quot;onTitleClick()&quot;&gt;
+      &lt;div cfBlock&#x3D;&quot;navbar-section&quot; cfMod&#x3D;&quot;left&quot;&gt;
+        &lt;h1 cfElem&#x3D;&quot;title&quot; (click)&#x3D;&quot;onTitleClick()&quot;&gt;
+          &lt;cf-svg-icon
+            cfElem&#x3D;&quot;icon&quot;
+            [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+            src&#x3D;&quot;assets/logo.svg&quot;
+          &gt;&lt;/cf-svg-icon&gt;
+
+          &lt;span cfElem&#x3D;&quot;text&quot;&gt;{{ title }}&lt;/span&gt;
+        &lt;/h1&gt;
+      &lt;/div&gt;
+
+      &lt;div cfBlock&#x3D;&quot;navbar-section&quot; cfMod&#x3D;&quot;right&quot;&gt;
+        &lt;ul cfBlock&#x3D;&quot;list&quot; cfMod&#x3D;&quot;horizontal&quot;&gt;
+          &lt;li cfElem&#x3D;&quot;item&quot;&gt;
             &lt;cf-svg-icon
+              src&#x3D;&quot;assets/icons/mdi/web.svg&quot;
               cfElem&#x3D;&quot;icon&quot;
               [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-              src&#x3D;&quot;assets/logo.svg&quot;
             &gt;&lt;/cf-svg-icon&gt;
-
-            &lt;span cfElem&#x3D;&quot;text&quot;&gt;{{ title }}&lt;/span&gt;
-          &lt;/h1&gt;
-        &lt;/div&gt;
-
-        &lt;div fxFlex&#x3D;&quot;50&quot;&gt;
-          &lt;div cfBlock&#x3D;&quot;navbar&quot; cfMod&#x3D;&quot;right&quot;&gt;
-            &lt;ul cfBlock&#x3D;&quot;list&quot; cfMod&#x3D;&quot;horizontal&quot;&gt;
-              &lt;li cfElem&#x3D;&quot;item&quot;&gt;
-                &lt;cf-svg-icon
-                  src&#x3D;&quot;assets/icons/mdi/web.svg&quot;
-                  cfElem&#x3D;&quot;icon&quot;
-                  [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-                &gt;&lt;/cf-svg-icon&gt;
-                &lt;a [href]&#x3D;&quot;environment?.webUrl&quot; cfElem&#x3D;&quot;link&quot;&gt;Website&lt;/a&gt;
-              &lt;/li&gt;
-              &lt;li cfElem&#x3D;&quot;item&quot;&gt;
-                &lt;cf-svg-icon
-                  src&#x3D;&quot;assets/icons/mdi/text-box-search-outline.svg&quot;
-                  cfElem&#x3D;&quot;icon&quot;
-                  [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-                &gt;&lt;/cf-svg-icon&gt;
-                &lt;a [href]&#x3D;&quot;environment?.documentationUrl&quot; cfElem&#x3D;&quot;link&quot;
-                  &gt;Documentation&lt;/a
-                &gt;
-              &lt;/li&gt;
-              &lt;li cfElem&#x3D;&quot;item&quot;&gt;
-                &lt;cf-svg-icon
-                  src&#x3D;&quot;assets/icons/mdi/post-outline.svg&quot;
-                  cfElem&#x3D;&quot;icon&quot;
-                  [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-                &gt;&lt;/cf-svg-icon&gt;
-                &lt;a [href]&#x3D;&quot;environment?.blogUrl&quot; cfElem&#x3D;&quot;link&quot;&gt;Blog&lt;/a&gt;
-              &lt;/li&gt;
-              &lt;li cfElem&#x3D;&quot;item&quot;&gt;
-                &lt;cf-svg-icon
-                  src&#x3D;&quot;assets/icons/mdi/code-tags.svg&quot;
-                  cfElem&#x3D;&quot;icon&quot;
-                  [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-                &gt;&lt;/cf-svg-icon&gt;
-                &lt;a [href]&#x3D;&quot;environment?.developersUrl&quot; cfElem&#x3D;&quot;link&quot;&gt;
-                  Developers
-                &lt;/a&gt;
-              &lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
+            &lt;a [href]&#x3D;&quot;environment?.webUrl&quot; cfElem&#x3D;&quot;link&quot;&gt;Website&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li cfElem&#x3D;&quot;item&quot;&gt;
+            &lt;cf-svg-icon
+              src&#x3D;&quot;assets/icons/mdi/text-box-search-outline.svg&quot;
+              cfElem&#x3D;&quot;icon&quot;
+              [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+            &gt;&lt;/cf-svg-icon&gt;
+            &lt;a [href]&#x3D;&quot;environment?.documentationUrl&quot; cfElem&#x3D;&quot;link&quot;
+              &gt;Documentation&lt;/a
+            &gt;
+          &lt;/li&gt;
+          &lt;li cfElem&#x3D;&quot;item&quot;&gt;
+            &lt;cf-svg-icon
+              src&#x3D;&quot;assets/icons/mdi/post-outline.svg&quot;
+              cfElem&#x3D;&quot;icon&quot;
+              [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+            &gt;&lt;/cf-svg-icon&gt;
+            &lt;a [href]&#x3D;&quot;environment?.blogUrl&quot; cfElem&#x3D;&quot;link&quot;&gt;Blog&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li cfElem&#x3D;&quot;item&quot;&gt;
+            &lt;cf-svg-icon
+              src&#x3D;&quot;assets/icons/mdi/code-tags.svg&quot;
+              cfElem&#x3D;&quot;icon&quot;
+              [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+            &gt;&lt;/cf-svg-icon&gt;
+            &lt;a [href]&#x3D;&quot;environment?.developersUrl&quot; cfElem&#x3D;&quot;link&quot;&gt;
+              Developers
+            &lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &#x60;,
@@ -453,7 +445,7 @@ export class NavbarComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="navbar">  <div fxLayout="row" fxFlexFill fxLayoutAlign="space-between center">    <div cfBlock="navbar" cfMod="left" fxFlex="50">      <h1 cfElem="title" (click)="onTitleClick()">        <cf-svg-icon          cfElem="icon"          [svgClass]="\'icon__svg\'"          src="assets/logo.svg"        ></cf-svg-icon>        <span cfElem="text">{{ title }}</span>      </h1>    </div>    <div fxFlex="50">      <div cfBlock="navbar" cfMod="right">        <ul cfBlock="list" cfMod="horizontal">          <li cfElem="item">            <cf-svg-icon              src="assets/icons/mdi/web.svg"              cfElem="icon"              [svgClass]="\'icon__svg\'"            ></cf-svg-icon>            <a [href]="environment?.webUrl" cfElem="link">Website</a>          </li>          <li cfElem="item">            <cf-svg-icon              src="assets/icons/mdi/text-box-search-outline.svg"              cfElem="icon"              [svgClass]="\'icon__svg\'"            ></cf-svg-icon>            <a [href]="environment?.documentationUrl" cfElem="link"              >Documentation</a            >          </li>          <li cfElem="item">            <cf-svg-icon              src="assets/icons/mdi/post-outline.svg"              cfElem="icon"              [svgClass]="\'icon__svg\'"            ></cf-svg-icon>            <a [href]="environment?.blogUrl" cfElem="link">Blog</a>          </li>          <li cfElem="item">            <cf-svg-icon              src="assets/icons/mdi/code-tags.svg"              cfElem="icon"              [svgClass]="\'icon__svg\'"            ></cf-svg-icon>            <a [href]="environment?.developersUrl" cfElem="link">              Developers            </a>          </li>        </ul>      </div>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="navbar">  <div cfBlock="navbar-section" cfMod="left">    <h1 cfElem="title" (click)="onTitleClick()">      <cf-svg-icon        cfElem="icon"        [svgClass]="\'icon__svg\'"        src="assets/logo.svg"      ></cf-svg-icon>      <span cfElem="text">{{ title }}</span>    </h1>  </div>  <div cfBlock="navbar-section" cfMod="right">    <ul cfBlock="list" cfMod="horizontal">      <li cfElem="item">        <cf-svg-icon          src="assets/icons/mdi/web.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>        <a [href]="environment?.webUrl" cfElem="link">Website</a>      </li>      <li cfElem="item">        <cf-svg-icon          src="assets/icons/mdi/text-box-search-outline.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>        <a [href]="environment?.documentationUrl" cfElem="link"          >Documentation</a        >      </li>      <li cfElem="item">        <cf-svg-icon          src="assets/icons/mdi/post-outline.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>        <a [href]="environment?.blogUrl" cfElem="link">Blog</a>      </li>      <li cfElem="item">        <cf-svg-icon          src="assets/icons/mdi/code-tags.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>        <a [href]="environment?.developersUrl" cfElem="link">          Developers        </a>      </li>    </ul>  </div></div></div>'
     var COMPONENTS = [{'name': 'NavbarComponent', 'selector': 'cf-navbar'},{'name': 'SidebarComponent', 'selector': 'cf-sidebar'},{'name': 'SidebarContainerComponent', 'selector': 'cf-sidebar-container'},{'name': 'SpinnerComponent', 'selector': 'cf-spinner'},{'name': 'SplashScreenComponent', 'selector': 'cf-splash-screen'},{'name': 'SvgIconComponent', 'selector': 'cf-svg-icon'}];
     var DIRECTIVES = [{'name': 'BlockDirective', 'selector': '[cfBlock]'},{'name': 'CloseSidebarDirective', 'selector': '[cfCloseSidebar]'},{'name': 'ElemDirective', 'selector': '[cfElem]'},{'name': 'ModDirective', 'selector': '[cfMod]'}];
     var ACTUAL_COMPONENT = {'name': 'NavbarComponent'};
