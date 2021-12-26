@@ -3,6 +3,7 @@ import { Environment } from './environment.interface';
 /** Production environment config */
 export const environment: Environment = {
   production: true,
+  showSplashScreen: true,
 
   webUrl: 'https://central-factory.com/',
   documentationUrl: 'https://docs.central-factory.com/',

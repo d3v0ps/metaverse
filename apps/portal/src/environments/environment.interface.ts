@@ -10,4 +10,5 @@ export interface Environment {
   blogUrl: string;
   /** Url with the Metaverse's developers site */
   developersUrl: string;
+  showSplashScreen?: boolean;
 }
