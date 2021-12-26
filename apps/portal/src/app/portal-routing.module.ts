@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppScene } from '@central-factory/web-components/angular/scene/app.scene';
+import { PortalLayoutScene } from './scenes/portal-layout/portal-layout.scene';
 
 export const routes: Routes = [
   {
     path: '',
-    component: AppScene,
+    component: PortalLayoutScene,
     children: [
       {
         path: 'select-avatar',

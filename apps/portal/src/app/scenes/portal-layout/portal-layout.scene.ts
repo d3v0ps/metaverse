@@ -13,7 +13,7 @@ export interface SidebarItem {
 }
 
 @Component({
-  selector: 'cf-scene',
+  selector: 'cf-portal-layout',
   template: `
     <ng-container
       *ngIf="{
@@ -106,7 +106,7 @@ export interface SidebarItem {
     </ng-container>
   `,
 })
-export class AppScene implements OnInit {
+export class PortalLayoutScene implements OnInit {
   title = 'Metaverse Portal';
   sidebarIsOpen = false;
 
