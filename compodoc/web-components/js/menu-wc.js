@@ -103,23 +103,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                             </li>
                             <li class="link">
-                                <a href="modules/SceneModule.html" data-type="entity-link" >SceneModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SceneModule-76ea4b566c46e6452a712eee16ef7d6c"' : 'data-target="#xs-components-links-module-SceneModule-76ea4b566c46e6452a712eee16ef7d6c"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SceneModule-76ea4b566c46e6452a712eee16ef7d6c"' :
-                                            'id="xs-components-links-module-SceneModule-76ea4b566c46e6452a712eee16ef7d6c"' }>
-                                            <li class="link">
-                                                <a href="components/AppScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AppScene</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                            <li class="link">
                                 <a href="modules/SidebarModule.html" data-type="entity-link" >SidebarModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
@@ -235,9 +218,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
-                            <li class="link">
-                                <a href="interfaces/SidebarItem.html" data-type="entity-link" >SidebarItem</a>
-                            </li>
                             <li class="link">
                                 <a href="interfaces/SvgIconConfig.html" data-type="entity-link" >SvgIconConfig</a>
                             </li>

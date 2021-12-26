@@ -39,7 +39,7 @@
   <li>Components</li>
   <li
   >
-  AppScene</li>
+  PortalLayoutScene</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -59,7 +59,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>libs/web-components/src/lib/angular/scene/app.scene.ts</code>
+    <code>apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts</code>
 </p>
 
 
@@ -90,7 +90,7 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>cf-scene</code></td>
+                <td class="col-md-9"><code>cf-portal-layout</code></td>
             </tr>
 
 
@@ -267,7 +267,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">libs/web-components/src/lib/angular/scene/app.scene.ts:147</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:147</a></div>
                             </td>
                         </tr>
 
@@ -347,7 +347,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="154"
-                            class="link-to-prism">libs/web-components/src/lib/angular/scene/app.scene.ts:154</a></div>
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:154</a></div>
                 </td>
             </tr>
 
@@ -386,7 +386,7 @@
             <tr>
                 <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="162"
-                            class="link-to-prism">libs/web-components/src/lib/angular/scene/app.scene.ts:162</a></div>
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:162</a></div>
                 </td>
             </tr>
 
@@ -432,7 +432,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">libs/web-components/src/lib/angular/scene/app.scene.ts:146</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:146</a></div>
                         </td>
                     </tr>
 
@@ -457,7 +457,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">libs/web-components/src/lib/angular/scene/app.scene.ts:111</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:111</a></div>
                         </td>
                     </tr>
 
@@ -519,7 +519,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">libs/web-components/src/lib/angular/scene/app.scene.ts:113</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:113</a></div>
                         </td>
                     </tr>
 
@@ -550,7 +550,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">libs/web-components/src/lib/angular/scene/app.scene.ts:110</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:110</a></div>
                         </td>
                     </tr>
 
@@ -578,7 +578,7 @@ export interface SidebarItem {
 }
 
 @Component({
-  selector: &#x27;cf-scene&#x27;,
+  selector: &#x27;cf-portal-layout&#x27;,
   template: &#x60;
     &lt;ng-container
       *ngIf&#x3D;&quot;{
@@ -671,7 +671,7 @@ export interface SidebarItem {
     &lt;/ng-container&gt;
   &#x60;,
 })
-export class AppScene implements OnInit {
+export class PortalLayoutScene implements OnInit {
   title &#x3D; &#x27;Metaverse Portal&#x27;;
   sidebarIsOpen &#x3D; false;
 
@@ -761,9 +761,9 @@ export class AppScene implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    selectedAvatar: selectedAvatar$ | async  } as data">  <div cfBlock="scene">    <div class="scene__body">      <cf-sidebar-container        *ngIf="data.selectedAvatar; else notSelectedAvatarLayout"      >        <!-- A sidebar -->        <cf-sidebar          [(opened)]="sidebarIsOpen"          [dock]="true"          [dockedSize]="\'80px\'"          [showBackdrop]="true"          [closeOnClickBackdrop]="true"          [closeOnClickOutside]="true"        >          <div style="margin-top: 20px">            <a              [routerLink]="[\'/select-avatar\']"              class="d-block"              cfBlock="sidebar-item"            >              <div cfElem="text">                <span cfElem="text-content">Account</span>              </div>              <img                cfElem="image"                [src]="                  data.selectedAvatar.selectedAppearance.smallPreviewUrl                "              />            </a>            <ng-container *ngFor="let item of sidebarItems">              <a                [routerLink]="item.routerLink"                class="d-block"                cfBlock="sidebar-item"              >                <div cfElem="text">                  <span cfElem="text-content">{{ item.name }}</span>                </div>                <button                  cfBlock="button"                  cfMod="fab"                  [ngClass]="{                    \'button--active\': item.active                  }"                  style="margin-top: 15px;"                >                  <cf-svg-icon                    [src]="item.icon"                    cfElem="icon"                    [svgClass]="\'icon__svg\'"                  ></cf-svg-icon>                </button>              </a>            </ng-container>            <router-outlet name="sidebar"></router-outlet>          </div>        </cf-sidebar>        <div cf-sidebar-content>          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </cf-sidebar-container>      <ng-template #notSelectedAvatarLayout>        <div class="scene__container">          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </ng-template>    </div>    <cf-navbar      cfElem="navbar"      [title]="title"      (titleClick)="sidebarIsOpen = !sidebarIsOpen"    >    </cf-navbar>  </div></ng-container></div>'
-    var COMPONENTS = [{'name': 'AppScene', 'selector': 'cf-scene'},{'name': 'NavbarComponent', 'selector': 'cf-navbar'},{'name': 'SidebarComponent', 'selector': 'cf-sidebar'},{'name': 'SidebarContainerComponent', 'selector': 'cf-sidebar-container'},{'name': 'SplashScreenComponent', 'selector': 'cf-splash-screen'},{'name': 'SvgIconComponent', 'selector': 'cf-svg-icon'}];
-    var DIRECTIVES = [{'name': 'BlockDirective', 'selector': '[cfBlock]'},{'name': 'CloseSidebarDirective', 'selector': '[cfCloseSidebar]'},{'name': 'ElemDirective', 'selector': '[cfElem]'},{'name': 'ModDirective', 'selector': '[cfMod]'}];
-    var ACTUAL_COMPONENT = {'name': 'AppScene'};
+    var COMPONENTS = [{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'PortalLayoutScene'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -798,7 +798,7 @@ export class AppScene implements OnInit {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'AppScene.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'PortalLayoutScene.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

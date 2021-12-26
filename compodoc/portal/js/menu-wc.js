@@ -103,36 +103,33 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/CustomizationRoutingModule.html" data-type="entity-link" >CustomizationRoutingModule</a>
                             </li>
                             <li class="link">
-                                <a href="modules/DashboardModule.html" data-type="entity-link" >DashboardModule</a>
+                                <a href="modules/PortalLayoutSceneModule.html" data-type="entity-link" >PortalLayoutSceneModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-DashboardModule-441a995af2e48fc691b7aae8d4808e33"' : 'data-target="#xs-components-links-module-DashboardModule-441a995af2e48fc691b7aae8d4808e33"' }>
+                                            'data-target="#components-links-module-PortalLayoutSceneModule-b4a62854288780e904dde8946947a30f"' : 'data-target="#xs-components-links-module-PortalLayoutSceneModule-b4a62854288780e904dde8946947a30f"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-DashboardModule-441a995af2e48fc691b7aae8d4808e33"' :
-                                            'id="xs-components-links-module-DashboardModule-441a995af2e48fc691b7aae8d4808e33"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PortalLayoutSceneModule-b4a62854288780e904dde8946947a30f"' :
+                                            'id="xs-components-links-module-PortalLayoutSceneModule-b4a62854288780e904dde8946947a30f"' }>
                                             <li class="link">
-                                                <a href="components/DashboardScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >DashboardScene</a>
+                                                <a href="components/PortalLayoutScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >PortalLayoutScene</a>
                                             </li>
                                         </ul>
                                     </li>
                             </li>
                             <li class="link">
-                                <a href="modules/DashboardRoutingModule.html" data-type="entity-link" >DashboardRoutingModule</a>
-                            </li>
-                            <li class="link">
                                 <a href="modules/PortalModule.html" data-type="entity-link" >PortalModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-PortalModule-12339775e8c2c888dec54a0aba65baa4"' : 'data-target="#xs-components-links-module-PortalModule-12339775e8c2c888dec54a0aba65baa4"' }>
+                                            'data-target="#components-links-module-PortalModule-35a0fc3219410f714e3933ee55bdbd9a"' : 'data-target="#xs-components-links-module-PortalModule-35a0fc3219410f714e3933ee55bdbd9a"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PortalModule-12339775e8c2c888dec54a0aba65baa4"' :
-                                            'id="xs-components-links-module-PortalModule-12339775e8c2c888dec54a0aba65baa4"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PortalModule-35a0fc3219410f714e3933ee55bdbd9a"' :
+                                            'id="xs-components-links-module-PortalModule-35a0fc3219410f714e3933ee55bdbd9a"' }>
                                             <li class="link">
                                                 <a href="components/PortalRoot.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >PortalRoot</a>
                                             </li>
@@ -196,6 +193,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/Environment.html" data-type="entity-link" >Environment</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/SidebarItem.html" data-type="entity-link" >SidebarItem</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/Theme.html" data-type="entity-link" >Theme</a>

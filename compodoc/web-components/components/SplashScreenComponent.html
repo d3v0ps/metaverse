@@ -885,7 +885,7 @@ export class SplashScreenComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div cfBlock="splash-screen" [@splashState]="state">  <div cfElem="content">    <h1 cfElem="title">{{ title }}</h1>    <div cfElem="spinner">      <div cfElem="logo" [@logoState]="logoState">        <img cfElem="logo-image" [src]="logo" alt="logo" />      </div>      <ngx-spinner [fullScreen]="false" name="splashSpinner"></ngx-spinner>    </div>    <p cfElem="loading-text" *ngIf="loadingText">      {{ loadingText }}    </p>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AppScene', 'selector': 'cf-scene'},{'name': 'NavbarComponent', 'selector': 'cf-navbar'},{'name': 'SidebarComponent', 'selector': 'cf-sidebar'},{'name': 'SidebarContainerComponent', 'selector': 'cf-sidebar-container'},{'name': 'SplashScreenComponent', 'selector': 'cf-splash-screen'},{'name': 'SvgIconComponent', 'selector': 'cf-svg-icon'}];
+    var COMPONENTS = [{'name': 'NavbarComponent', 'selector': 'cf-navbar'},{'name': 'SidebarComponent', 'selector': 'cf-sidebar'},{'name': 'SidebarContainerComponent', 'selector': 'cf-sidebar-container'},{'name': 'SplashScreenComponent', 'selector': 'cf-splash-screen'},{'name': 'SvgIconComponent', 'selector': 'cf-svg-icon'}];
     var DIRECTIVES = [{'name': 'BlockDirective', 'selector': '[cfBlock]'},{'name': 'CloseSidebarDirective', 'selector': '[cfCloseSidebar]'},{'name': 'ElemDirective', 'selector': '[cfElem]'},{'name': 'ModDirective', 'selector': '[cfMod]'}];
     var ACTUAL_COMPONENT = {'name': 'SplashScreenComponent'};
 </script>
