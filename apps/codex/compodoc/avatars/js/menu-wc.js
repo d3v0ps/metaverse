@@ -175,22 +175,10 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"' }>
                             <li class="link">
-                                <a href="classes/AvatarCreatedEvent.html" data-type="entity-link" >AvatarCreatedEvent</a>
-                            </li>
-                            <li class="link">
                                 <a href="classes/AvatarScopesInput.html" data-type="entity-link" >AvatarScopesInput</a>
                             </li>
                             <li class="link">
                                 <a href="classes/AvatarSkillsInput.html" data-type="entity-link" >AvatarSkillsInput</a>
-                            </li>
-                            <li class="link">
-                                <a href="classes/CreateAvatarCommand.html" data-type="entity-link" >CreateAvatarCommand</a>
-                            </li>
-                            <li class="link">
-                                <a href="classes/CreateAvatarCommandHandler.html" data-type="entity-link" >CreateAvatarCommandHandler</a>
-                            </li>
-                            <li class="link">
-                                <a href="classes/LocalCreateAvatarRunner.html" data-type="entity-link" >LocalCreateAvatarRunner</a>
                             </li>
                         </ul>
                     </li>
@@ -213,9 +201,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/AvatarOverviewInput.html" data-type="entity-link" >AvatarOverviewInput</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/CreateAvatarPayload.html" data-type="entity-link" >CreateAvatarPayload</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/FormAppearance.html" data-type="entity-link" >FormAppearance</a>

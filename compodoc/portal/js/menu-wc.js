@@ -198,9 +198,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/Environment.html" data-type="entity-link" >Environment</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/PortalStateModel.html" data-type="entity-link" >PortalStateModel</a>
-                            </li>
-                            <li class="link">
                                 <a href="interfaces/Theme.html" data-type="entity-link" >Theme</a>
                             </li>
                         </ul>
