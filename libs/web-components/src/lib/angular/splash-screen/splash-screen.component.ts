@@ -6,7 +6,6 @@ import {
   trigger,
 } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
-import { NgxSpinnerService } from 'ngx-spinner';
 
 export enum SplashScreenState {
   Visible = 'visible',
@@ -28,7 +27,9 @@ export enum LogoState {
           <div cfElem="logo" [@logoState]="logoState">
             <img cfElem="logo-image" [src]="logo" alt="logo" />
           </div>
-          <ngx-spinner [fullScreen]="false" name="splashSpinner"></ngx-spinner>
+          <div cfElem="spinner-content" *ngIf="logoState !== 'visible'">
+            <cf-spinner></cf-spinner>
+          </div>
         </div>
         <p cfElem="loading-text" *ngIf="loadingText">
           {{ loadingText }}
@@ -95,6 +96,7 @@ export class SplashScreenComponent implements OnInit {
     'Calling the crew..',
     'Jumping to the cyber space...',
   ];
+  @Input() welcomeMessage = 'Welcome to the Metaverse';
 
   loadingText?: string;
   state = SplashScreenState.Visible;
@@ -102,25 +104,18 @@ export class SplashScreenComponent implements OnInit {
 
   private selectedLoadingTextIndex?: number = undefined;
 
-  constructor(private spinner: NgxSpinnerService) {}
-
   ngOnInit() {
     this.displaySplashScreen();
   }
 
   private async displaySplashScreen() {
-    this.spinner.show('splashSpinner', {
-      bdColor: 'transparent',
-      fullScreen: false,
-      type: this.spinnerType,
-    });
     this.displayLoadingText();
 
     await this.wait(5000);
 
-    this.spinner.hide('splashSpinner');
-
     this.logoState = LogoState.Visible;
+    this.selectedLoadingTextIndex = undefined;
+    this.loadingText = this.welcomeMessage;
 
     await this.wait(3000);
 
@@ -128,7 +123,9 @@ export class SplashScreenComponent implements OnInit {
   }
 
   private async displayLoadingText() {
-    if (this.state === SplashScreenState.Hidden) {
+    if (this.logoState === LogoState.Visible) {
+      this.selectedLoadingTextIndex = undefined;
+      this.loadingText = this.welcomeMessage;
       return;
     }
 

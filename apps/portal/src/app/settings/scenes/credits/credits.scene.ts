@@ -16,10 +16,6 @@ import { Component } from '@angular/core';
           <p></p>
         </li>
         <li>
-          <a href="https://angular.io/">ngx-spinner v13.0.0</a>
-          <p></p>
-        </li>
-        <li>
           <a href="https://angular.io/">ng-selet v8.1.1</a>
           <p></p>
         </li>

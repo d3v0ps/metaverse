@@ -27,6 +27,18 @@
     margin: 0 auto;
   }
 
+  &__spinner-content {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+
+    .spinner {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
   &__logo {
     width: 200px;
     height: 200px;
