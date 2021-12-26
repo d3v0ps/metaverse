@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Avatar } from '@central-factory/avatars/domain/models/avatar';
+import type { Avatar } from '@central-factory/avatars/models/avatar';
 import { BehaviorSubject } from 'rxjs';
 
 export const mockData = [

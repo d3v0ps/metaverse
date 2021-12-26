@@ -1,4 +1,4 @@
-import { Appearance } from '../../../domain/models/appearance';
+import type { Appearance } from '../../../models/appearance';
 
 export const previewAvatarAppearanceAframeScene = (
   appearance: Appearance,

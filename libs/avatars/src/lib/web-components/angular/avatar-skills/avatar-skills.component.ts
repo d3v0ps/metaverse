@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@ng-stack/forms';
-import { Skill } from '../../../domain/models/skill';
+import type { Skill } from '../../../models/skill';
 
 export class AvatarSkillsInput {
   //#endregion

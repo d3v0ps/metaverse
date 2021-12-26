@@ -1,4 +1,4 @@
-import { Skill } from '../domain/models/skill';
+import { Skill } from '../models/skill';
 
 export const createCalendarSkill: Skill = {
   domain: 'calendar',

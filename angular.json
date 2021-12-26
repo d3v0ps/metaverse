@@ -369,32 +369,6 @@
       },
       "tags": []
     },
-    "crawler": {
-      "projectType": "library",
-      "root": "libs/crawler",
-      "sourceRoot": "libs/crawler/src",
-      "prefix": "central-factory",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/crawler"],
-          "options": {
-            "jestConfig": "libs/crawler/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/crawler/src/**/*.ts",
-              "libs/crawler/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "tags": []
-    },
     "gatekeeper": {
       "projectType": "library",
       "root": "libs/gatekeeper",
@@ -424,42 +398,6 @@
             "commands": [
               {
                 "command": "npx compodoc -p libs/gatekeeper/tsconfig.json -d dist/compodoc/gatekeeper --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
-              }
-            ]
-          }
-        }
-      },
-      "tags": []
-    },
-    "integrations": {
-      "projectType": "library",
-      "root": "libs/integrations",
-      "sourceRoot": "libs/integrations/src",
-      "prefix": "cf",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/integrations"],
-          "options": {
-            "jestConfig": "libs/integrations/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/integrations/src/**/*.ts",
-              "libs/integrations/src/**/*.html"
-            ]
-          }
-        },
-        "build-api-docs": {
-          "builder": "@nrwl/workspace:run-commands",
-          "options": {
-            "commands": [
-              {
-                "command": "npx compodoc -p libs/integrations/tsconfig.json -d dist/compodoc/integrations --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
               }
             ]
           }
@@ -730,6 +668,42 @@
       },
       "tags": [],
       "implicitDependencies": ["marketplace"]
+    },
+    "physics": {
+      "projectType": "library",
+      "root": "libs/physics",
+      "sourceRoot": "libs/physics/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/physics"],
+          "options": {
+            "jestConfig": "libs/physics/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/physics/src/**/*.ts",
+              "libs/physics/src/**/*.html"
+            ]
+          }
+        },
+        "build-api-docs": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p libs/physics/tsconfig.json -d dist/compodoc/physics --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
+          }
+        }
+      },
+      "tags": []
     },
     "play": {
       "projectType": "application",
@@ -1020,32 +994,6 @@
       },
       "tags": [],
       "implicitDependencies": ["portal"]
-    },
-    "seeder": {
-      "projectType": "library",
-      "root": "libs/seeder",
-      "sourceRoot": "libs/seeder/src",
-      "prefix": "central-factory",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/seeder"],
-          "options": {
-            "jestConfig": "libs/seeder/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/seeder/src/**/*.ts",
-              "libs/seeder/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "tags": []
     },
     "web-components": {
       "projectType": "library",

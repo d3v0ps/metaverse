@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { Appearance } from '../../../domain/models/appearance';
+import type { Appearance } from '../../../models/appearance';
 import { previewAvatarAppearanceAframeScene } from './preview-avatar-appearance.aframe-scene';
 
 @Component({

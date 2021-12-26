@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Control, FormArray, FormControl, FormGroup } from '@ng-stack/forms';
-import { Appearance } from '../../../domain/models/appearance';
+import type { Appearance } from '../../../models/appearance';
 
 export type AppearancePreviewCameraControl = Control<{
   position?: string | undefined;

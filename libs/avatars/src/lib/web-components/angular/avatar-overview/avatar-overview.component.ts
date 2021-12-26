@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@ng-stack/forms';
-import { Avatar } from '../../../domain/models/avatar';
+import type { Avatar } from '../../../models/avatar';
 
 export interface AvatarOverviewInput {
   welcomeMessage: string;

@@ -1,4 +1,4 @@
-import { Appearance } from '../domain/models/appearance';
+import { Appearance } from '../models/appearance';
 
 export const gltfAppearanceMock: Appearance = {
   format: 'gltf',

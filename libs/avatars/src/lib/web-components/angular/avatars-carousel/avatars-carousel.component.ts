@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Avatar } from '../../../domain/models/avatar';
+import type { Avatar } from '../../../models/avatar';
 
 @Component({
   selector: 'cf-avatars-carousel',

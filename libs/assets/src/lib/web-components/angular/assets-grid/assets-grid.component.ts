@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Asset } from '../../../domain/models/asset';
+import type { Asset } from '../../../models/asset';
 
 @Component({
   selector: 'cf-assets-grid',

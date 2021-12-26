@@ -1,4 +1,4 @@
-import { Scope } from '../domain/models/scope';
+import { Scope } from '../models/scope';
 
 export const centralFactoryManageCalendarsScopeMock: Scope = {
   integration: 'CF',

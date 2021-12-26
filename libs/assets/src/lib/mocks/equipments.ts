@@ -1,9 +1,9 @@
-import { Asset } from '../domain/models/asset';
-import { AssetKind } from '../domain/models/value-objects/asset-kind';
+import { Asset } from '../models/asset';
+import { AssetKind } from '../models/value-objects/asset-kind';
 import {
   Equipment,
   EquipmentSlot,
-} from '../domain/models/value-objects/asset-kinds/equipment';
+} from '../models/value-objects/asset-kinds/equipment';
 
 export const ravensCloackAssetMock: Asset<Equipment> = {
   id: '1',

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@ng-stack/forms';
-import { Scope } from '../../../domain/models/scope';
+import type { Scope } from '../../../models/scope';
 
 export class AvatarScopesInput {
   scopes!: Scope[];

@@ -1,4 +1,4 @@
-import { Avatar } from '../domain/models/avatar';
+import { Avatar } from '../models/avatar';
 import { appearancesMocks } from './appearances';
 import { scopesMocks } from './scopes';
 import { skillsMocks } from './skills';

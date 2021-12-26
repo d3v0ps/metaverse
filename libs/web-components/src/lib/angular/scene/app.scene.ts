@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { SelectedAvatarState } from '@central-factory/agent-avatars/states/selected-avatar/selected-avatar.state';
-import { Avatar } from '@central-factory/core';
+import type { Avatar } from '@central-factory/avatars/models/avatar';
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
