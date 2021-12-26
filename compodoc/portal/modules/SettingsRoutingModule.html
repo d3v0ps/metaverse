@@ -75,12 +75,33 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { RouterModule, Routes } from &#x27;@angular/router&#x27;;
-import { SettingsScene } from &#x27;./scenes/settings.scene&#x27;;
+import { SettingsScene } from &#x27;./settings.scene&#x27;;
 
 export const routes: Routes &#x3D; [
   {
     path: &#x27;&#x27;,
     component: SettingsScene,
+    children: [
+      {
+        path: &#x27;customization&#x27;,
+        loadChildren: () &#x3D;&gt;
+          &quot;import(&#x27;./scenes/customization/customization.module&#x27;).then(\
+            (m) &#x3D;&gt; m.CustomizationModule\
+          )&quot;,
+      },
+      {
+        path: &#x27;credits&#x27;,
+        loadChildren: () &#x3D;&gt;
+          &quot;import(&#x27;./scenes/credits/credits.module&#x27;).then(\
+            (m) &#x3D;&gt; m.CreditsModule\
+          )&quot;,
+      },
+      {
+        path: &#x27;&#x27;,
+        redirectTo: &#x27;customization&#x27;,
+        pathMatch: &#x27;full&#x27;,
+      },
+    ],
   },
 ];
 

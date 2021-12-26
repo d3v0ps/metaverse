@@ -133,8 +133,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="102"
-                            class="link-to-prism">apps/agent-avatars/src/app/states/selected-avatar/selected-avatar.state.ts:102</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="17"
+                            class="link-to-prism">apps/agent-avatars/src/app/states/selected-avatar/selected-avatar.state.ts:17</a></div>
                 </td>
             </tr>
 
@@ -212,7 +212,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">apps/agent-avatars/src/app/states/selected-avatar/selected-avatar.state.ts:94</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">apps/agent-avatars/src/app/states/selected-avatar/selected-avatar.state.ts:9</a></div>
                         </td>
                     </tr>
 
@@ -228,91 +228,6 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { Avatar } from &#x27;@central-factory/avatars/domain/models/avatar&#x27;;
 import { BehaviorSubject } from &#x27;rxjs&#x27;;
-
-export const mockData &#x3D; {
-  welcomeMessage: &#x27;Hello!&#x27;,
-  name: &#x27;John&#x27;,
-  title: &#x27;Software Engineer&#x27;,
-  selectedAppearance: {
-    format: &#x27;readyplayer.me&#x27;,
-    src: &#x27;assets/avatar-large.png&#x27;,
-    smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
-  },
-  appearances: [
-    {
-      format: &#x27;gltf&#x27;,
-      src: &#x27;assets/avatars/samples/ed4aa425-9e13-4e51-9f2c-557dfe0db7ab/ed4aa425-9e13-4e51-9f2c-557dfe0db7ab.glb&#x27;,
-      smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
-      previewCamera: {
-        position: &#x27;0 1.5 0.7&#x27;,
-        rotation: &#x27;-5 0 0&#x27;,
-        scale: &#x27;0.4 0.4 0.4&#x27;,
-      },
-    },
-    {
-      format: &#x27;gltf&#x27;,
-      src: &#x27;assets/avatars/samples/65989f77-c8bf-4542-9e8a-d0f39eb76662/65989f77-c8bf-4542-9e8a-d0f39eb76662.glb&#x27;,
-      smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
-      previewCamera: {
-        position: &#x27;0 1.5 0.7&#x27;,
-        rotation: &#x27;-5 0 0&#x27;,
-        scale: &#x27;1 1 1&#x27;,
-      },
-    },
-    // {
-    //   format: &#x27;readyplayer.me&#x27;,
-    //   src: &#x27;assets/avatar-large.png&#x27;,
-    //   smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
-    // },
-    // {
-    //   format: &#x27;Meta&#x27;,
-    //   src: &#x27;assets/avatar-large.png&#x27;,
-    //   smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
-    // },
-    // {
-    //   format: &#x27;NVDIA Omniverse&#x27;,
-    //   src: &#x27;assets/avatar-large.png&#x27;,
-    //   smallPreviewUrl: &#x27;assets/avatar-144.png&#x27;,
-    // },
-  ],
-  scopes: [
-    {
-      integration: &#x27;CF&#x27;,
-      domain: &#x27;Calendars&#x27;,
-      scope: &#x27;manage&#x27;,
-    },
-    {
-      integration: &#x27;Google&#x27;,
-      domain: &#x27;Calendars&#x27;,
-      scope: &#x27;manage&#x27;,
-    },
-    {
-      integration: &#x27;NFT&#x27;,
-      domain: &#x27;Tokens&#x27;,
-      scope: &#x27;manage&#x27;,
-    },
-  ],
-  skills: [
-    {
-      domain: &#x27;calendar&#x27;,
-      scope: &#x27;manage&#x27;,
-      skill: &#x27;create&#x27;,
-    },
-    {
-      domain: &#x27;event&#x27;,
-      scope: &#x27;manage&#x27;,
-      skill: &#x27;create&#x27;,
-    },
-    {
-      domain: &#x27;assets&#x27;,
-      scope: &#x27;manage&#x27;,
-      skill: &#x27;trade&#x27;,
-    },
-  ],
-  physics: [],
-  roles: [],
-  routines: [],
-};
 
 @Injectable({
   providedIn: &#x27;root&#x27;,

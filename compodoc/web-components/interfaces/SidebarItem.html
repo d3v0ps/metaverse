@@ -418,7 +418,7 @@ export class AppScene implements OnInit {
 
   private setSidebarItemsActive() {
     this.sidebarItems.forEach((item) &#x3D;&gt; {
-      item.active &#x3D; this.router.url.endsWith(item.routerLink.join(&#x27;/&#x27;));
+      item.active &#x3D; this.router.url.startsWith(item.routerLink.join(&#x27;/&#x27;));
     });
   }
 }

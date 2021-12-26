@@ -50,6 +50,9 @@
             <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
         </li>
         <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
@@ -59,18 +62,12 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>apps/portal/src/app/settings/scenes/settings.scene.ts</code>
+    <code>apps/portal/src/app/settings/settings.scene.ts</code>
 </p>
 
 
 
 
-    <p class="comment">
-        <h3>Implements</h3>
-    </p>
-    <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
-    </p>
 
 
 <section>
@@ -94,28 +91,35 @@
             </tr>
 
 
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>
+      .settings {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        gap: 1rem;
+
+        &amp;__content {
+          width: 100%;
+        }
+      }
+    </code></td>
+            </tr>
 
             <tr>
                 <td class="col-md-3">template</td>
                 <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div cfBlock&#x3D;&quot;scene-content&quot;&gt;
-  Settings
+  &lt;h2&gt;Settings&lt;/h2&gt;
 
-  &lt;form [formGroup]&#x3D;&quot;form&quot;&gt;
-    &lt;!-- label&gt;Primary Color&lt;/label&gt;
-    &lt;input type&#x3D;&quot;color&quot; formControlName&#x3D;&quot;primaryColor&quot; /&gt;
-
-    &lt;label&gt;Secondary Color&lt;/label&gt;
-    &lt;input type&#x3D;&quot;color&quot; formControlName&#x3D;&quot;secondaryColor&quot; / --&gt;
-
-    &lt;label&gt;Theme&lt;/label&gt;
-    &lt;ng-select formControlName&#x3D;&quot;theme&quot;&gt;
-      &lt;ng-option *ngFor&#x3D;&quot;let theme of themes&quot; [value]&#x3D;&quot;theme.path&quot;&gt;
-        {{ theme.name }}
-      &lt;/ng-option&gt;
-    &lt;/ng-select&gt;
-
-    &lt;!-- input type&#x3D;&quot;file&quot; / --&gt;
-  &lt;/form&gt;
+  &lt;div cfBlock&#x3D;&quot;settings&quot;&gt;
+    &lt;div cfElem&#x3D;&quot;nav&quot;&gt;
+      &lt;cf-settings-nav&gt;&lt;/cf-settings-nav&gt;
+    &lt;/div&gt;
+    &lt;div cfElem&#x3D;&quot;content&quot;&gt;
+      &lt;router-outlet&gt;&lt;/router-outlet&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
 &lt;/div&gt;
 </code></pre></td>
             </tr>
@@ -132,413 +136,71 @@
     </table>
 </section>
 
-    <section>
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Private</span>
-                                    <span class="modifier">Optional</span>
-                                <a href="#activeThemeLinkElem" >activeThemeLinkElem</a>
-                            </li>
-                            <li>
-                                <a href="#form" >form</a>
-                            </li>
-                            <li>
-                                <a href="#themes" >themes</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#loadThemeFromUrl" >loadThemeFromUrl</a>
-                            </li>
-                            <li>
-                                <a href="#ngOnInit" >ngOnInit</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
 
 
 
 
-        </tbody>
-    </table>
-</section>
-
-    <section>
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(document: Document)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">apps/portal/src/app/settings/scenes/settings.scene.ts:49</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>document</td>
-                                                  
-                                                        <td>
-                                                                    <code>Document</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
 
 
-
-
-
-    <section>
-    
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="loadThemeFromUrl"></a>
-                    <span class="name">
-                        <span class="modifier">Private</span>
-                        <span ><b>loadThemeFromUrl</b></span>
-                        <a href="#loadThemeFromUrl"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>loadThemeFromUrl(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="59"
-                            class="link-to-prism">apps/portal/src/app/settings/scenes/settings.scene.ts:59</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>url</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ngOnInit"></a>
-                    <span class="name">
-                        <span ><b>ngOnInit</b></span>
-                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>ngOnInit()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="53"
-                            class="link-to-prism">apps/portal/src/app/settings/scenes/settings.scene.ts:53</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-    <section>
-    
-    <h3 id="inputs">
-        Properties
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="activeThemeLinkElem"></a>
-                    <span class="name">
-                            <span class="modifier">Private</span>
-                            <span class="modifier">Optional</span>
-                        <span ><b>activeThemeLinkElem</b></span>
-                        <a href="#activeThemeLinkElem"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>HTMLLinkElement</code>
-
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">apps/portal/src/app/settings/scenes/settings.scene.ts:49</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="form"></a>
-                    <span class="name">
-                        <span ><b>form</b></span>
-                        <a href="#form"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>new FormGroup({
-    theme: new FormControl(&#x27;assets/themes/default/variables.css&#x27;),
-    // primaryColor: new FormControl&lt;string&gt;(null),
-    // secondaryColor: new FormControl&lt;string&gt;(null),
-  })</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">apps/portal/src/app/settings/scenes/settings.scene.ts:32</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="themes"></a>
-                    <span class="name">
-                        <span ><b>themes</b></span>
-                        <a href="#themes"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>[]</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>[
-    {
-      name: &#x27;Default&#x27;,
-      path: &#x27;assets/themes/default/variables.css&#x27;,
-    },
-    {
-      name: &#x27;Matrix&#x27;,
-      path: &#x27;assets/themes/matrix/variables.css&#x27;,
-    },
-  ]</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">apps/portal/src/app/settings/scenes/settings.scene.ts:38</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
-</section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { DOCUMENT } from &#x27;@angular/common&#x27;;
-import { Component, Inject, OnInit } from &#x27;@angular/core&#x27;;
-import { FormControl, FormGroup } from &#x27;@ng-stack/forms&#x27;;
-import { tap } from &#x27;rxjs/operators&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 
 @Component({
   selector: &#x27;cf-settings&#x27;,
   template: &#x60;
     &lt;div cfBlock&#x3D;&quot;scene-content&quot;&gt;
-      Settings
+      &lt;h2&gt;Settings&lt;/h2&gt;
 
-      &lt;form [formGroup]&#x3D;&quot;form&quot;&gt;
-        &lt;!-- label&gt;Primary Color&lt;/label&gt;
-        &lt;input type&#x3D;&quot;color&quot; formControlName&#x3D;&quot;primaryColor&quot; /&gt;
-
-        &lt;label&gt;Secondary Color&lt;/label&gt;
-        &lt;input type&#x3D;&quot;color&quot; formControlName&#x3D;&quot;secondaryColor&quot; / --&gt;
-
-        &lt;label&gt;Theme&lt;/label&gt;
-        &lt;ng-select formControlName&#x3D;&quot;theme&quot;&gt;
-          &lt;ng-option *ngFor&#x3D;&quot;let theme of themes&quot; [value]&#x3D;&quot;theme.path&quot;&gt;
-            {{ theme.name }}
-          &lt;/ng-option&gt;
-        &lt;/ng-select&gt;
-
-        &lt;!-- input type&#x3D;&quot;file&quot; / --&gt;
-      &lt;/form&gt;
+      &lt;div cfBlock&#x3D;&quot;settings&quot;&gt;
+        &lt;div cfElem&#x3D;&quot;nav&quot;&gt;
+          &lt;cf-settings-nav&gt;&lt;/cf-settings-nav&gt;
+        &lt;/div&gt;
+        &lt;div cfElem&#x3D;&quot;content&quot;&gt;
+          &lt;router-outlet&gt;&lt;/router-outlet&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
   &#x60;,
+  styles: [
+    &#x60;
+      .settings {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        gap: 1rem;
+
+        &amp;__content {
+          width: 100%;
+        }
+      }
+    &#x60;,
+  ],
 })
-export class SettingsScene implements OnInit {
-  form &#x3D; new FormGroup({
-    theme: new FormControl(&#x27;assets/themes/default/variables.css&#x27;),
-    // primaryColor: new FormControl&lt;string&gt;(null),
-    // secondaryColor: new FormControl&lt;string&gt;(null),
-  });
-
-  themes &#x3D; [
-    {
-      name: &#x27;Default&#x27;,
-      path: &#x27;assets/themes/default/variables.css&#x27;,
-    },
-    {
-      name: &#x27;Matrix&#x27;,
-      path: &#x27;assets/themes/matrix/variables.css&#x27;,
-    },
-  ];
-
-  private activeThemeLinkElem?: HTMLLinkElement;
-
-  constructor(@Inject(DOCUMENT) private document: Document) {}
-
-  ngOnInit() {
-    this.form.controls.theme.valueChanges
-      .pipe(tap((themeUrl) &#x3D;&gt; this.loadThemeFromUrl(themeUrl)))
-      .subscribe();
-  }
-
-  private loadThemeFromUrl(url: string) {
-    const headElem &#x3D; this.document.getElementsByTagName(&#x27;head&#x27;)[0];
-
-    const newThemeLinkElem &#x3D; this.document.createElement(&#x27;link&#x27;);
-    newThemeLinkElem.rel &#x3D; &#x27;stylesheet&#x27;;
-    newThemeLinkElem.href &#x3D; url;
-
-    headElem.appendChild(newThemeLinkElem);
-
-    if (this.activeThemeLinkElem) {
-      headElem.removeChild(this.activeThemeLinkElem);
-    }
-
-    this.activeThemeLinkElem &#x3D; newThemeLinkElem;
-  }
-}
+export class SettingsScene {}
 </code></pre>
     </div>
 
 
+    <div class="tab-pane fade " id="c-styleData">
+            <pre class="line-numbers"><code class="language-scss">
+      .settings {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        gap: 1rem;
+
+        &amp;__content {
+          width: 100%;
+        }
+      }
+    
+</code></pre>
+    </div>
 
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
@@ -565,8 +227,8 @@ export class SettingsScene implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="scene-content">  Settings  <form [formGroup]="form">    <!-- label>Primary Color</label>    <input type="color" formControlName="primaryColor" />    <label>Secondary Color</label>    <input type="color" formControlName="secondaryColor" / -->    <label>Theme</label>    <ng-select formControlName="theme">      <ng-option *ngFor="let theme of themes" [value]="theme.path">        {{ theme.name }}      </ng-option>    </ng-select>    <!-- input type="file" / -->  </form></div></div>'
-    var COMPONENTS = [{'name': 'DashboardScene', 'selector': 'cf-dashboard'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="scene-content">  <h2>Settings</h2>  <div cfBlock="settings">    <div cfElem="nav">      <cf-settings-nav></cf-settings-nav>    </div>    <div cfElem="content">      <router-outlet></router-outlet>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'DashboardScene', 'selector': 'cf-dashboard'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SettingsScene'};
 </script>

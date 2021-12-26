@@ -57,10 +57,6 @@
 <title>cluster_PortalModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-230.8 278,-230.8 278,-32.8 8,-32.8"/>
 </g>
-<g id="clust6" class="cluster">
-<title>cluster_PortalModule_bootstrap</title>
-<polygon fill="none" stroke="black" points="109,-170.8 109,-222.8 205,-222.8 205,-170.8 109,-170.8"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_PortalModule_declarations</title>
 <polygon fill="none" stroke="black" points="178,-40.8 178,-92.8 270,-92.8 270,-40.8 178,-40.8"/>
@@ -68,6 +64,10 @@
 <g id="clust4" class="cluster">
 <title>cluster_PortalModule_imports</title>
 <polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 170,-92.8 170,-40.8 16,-40.8"/>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster_PortalModule_bootstrap</title>
+<polygon fill="none" stroke="black" points="109,-170.8 109,-222.8 205,-222.8 205,-170.8 109,-170.8"/>
 </g>
 <!-- PortalRoot -->
 <g id="node1" class="node">
@@ -186,24 +186,40 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
-import { NgModule } from &#x27;@angular/core&#x27;;
+import { APP_INITIALIZER, NgModule } from &#x27;@angular/core&#x27;;
 import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
+import { BrowserAnimationsModule } from &#x27;@angular/platform-browser/animations&#x27;;
 import { SceneModule } from &#x27;@central-factory/web-components/angular/scene/scene.module&#x27;;
+import { SplashScreenModule } from &#x27;@central-factory/web-components/angular/splash-screen/splash-screen.module&#x27;;
 import { SvgIconModule } from &#x27;@central-factory/web-components/angular/svg-icon/svg-icon.module&#x27;;
 import { PortalRoutingModule } from &#x27;./portal-routing.module&#x27;;
 import { PortalRoot } from &#x27;./portal.root&#x27;;
+import { SelectedThemeState } from &#x27;./settings/states/selected-theme/selected-theme.state&#x27;;
 
 @NgModule({
   declarations: [PortalRoot],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     SvgIconModule.forRoot(),
     SceneModule,
+    SplashScreenModule,
 
     PortalRoutingModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (): (() &#x3D;&gt; void) &#x3D;&gt; {
+        return (): void &#x3D;&gt; {
+          console.log(&#x27;App initialized&#x27;);
+        };
+      },
+      multi: true,
+      deps: [SelectedThemeState],
+    },
+  ],
   bootstrap: [PortalRoot],
 })
 export class PortalModule {}
