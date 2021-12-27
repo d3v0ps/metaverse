@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SplashScreenModule } from '@central-factory/web-components/angular/splash-screen/splash-screen.module';
@@ -7,7 +7,6 @@ import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/
 import { PortalRoutingModule } from './portal-routing.module';
 import { PortalRoot } from './portal.root';
 import { PortalLayoutSceneModule } from './scenes/portal-layout/portal-layout.module';
-import { SelectedThemeState } from './settings/states/selected-theme/selected-theme.state';
 
 @NgModule({
   declarations: [PortalRoot],
@@ -21,18 +20,7 @@ import { SelectedThemeState } from './settings/states/selected-theme/selected-th
 
     PortalRoutingModule,
   ],
-  providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: (): (() => void) => {
-        return (): void => {
-          console.log('App initialized');
-        };
-      },
-      multi: true,
-      deps: [SelectedThemeState],
-    },
-  ],
+  providers: [],
   bootstrap: [PortalRoot],
 })
 export class PortalModule {}

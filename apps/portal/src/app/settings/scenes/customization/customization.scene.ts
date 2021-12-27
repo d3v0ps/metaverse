@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Control, FormControl, FormGroup } from '@ng-stack/forms';
 import { Subject } from 'rxjs';
-import { filter, takeUntil, tap } from 'rxjs/operators';
+import { takeUntil, tap } from 'rxjs/operators';
 import { AvailableThemesState } from '../../states/available-themes/available-themes.state';
-import { SelectedThemeState } from '../../states/selected-theme/selected-theme.state';
+import { CustomizationSettingsState } from '../../states/customization-settings/customization-settings.state';
 
 export interface Theme {
   name: string;
@@ -12,15 +12,18 @@ export interface Theme {
 
 export interface CustomizationForm {
   theme: Control<Theme>;
+  showSplashScreen: boolean;
+  playSounds: boolean;
 }
 
 @Component({
   selector: 'cf-customization',
   template: `
     <div>
-      <h4>Customization</h4>
+      <h3>Customization</h3>
 
       <form [formGroup]="form">
+        <h4>Appearance</h4>
         <table>
           <tr>
             <td>
@@ -38,22 +41,49 @@ export interface CustomizationForm {
               </ng-select>
             </td>
           </tr>
+          <tr>
+            <td>
+              <label> Show Splash Screen </label>
+            </td>
+            <td>
+              <input type="checkbox" formControlName="showSplashScreen" />
+            </td>
+          </tr>
+        </table>
+
+        <h4>Sounds</h4>
+        <table>
+          <tr>
+            <td>
+              <label> Play Sounds </label>
+            </td>
+            <td>
+              <input type="checkbox" formControlName="playSounds" />
+            </td>
+          </tr>
         </table>
       </form>
     </div>
   `,
   styles: [
     `
+      h3,
       h4 {
         margin-block-start: 0;
       }
 
       table {
         width: 100%;
+        border-spacing: 0 1em;
+        margin-bottom: 2em;
       }
 
       ng-select {
         max-width: 400px;
+      }
+
+      td {
+        width: 200px;
       }
     `,
   ],
@@ -61,6 +91,8 @@ export interface CustomizationForm {
 export class CustomizationScene implements OnInit, OnDestroy {
   form = new FormGroup<CustomizationForm>({
     theme: new FormControl<Theme>(null),
+    showSplashScreen: new FormControl<boolean>(true),
+    playSounds: new FormControl<boolean>(true),
   });
 
   themes$ = this.availableThemesState.themes$;
@@ -69,21 +101,23 @@ export class CustomizationScene implements OnInit, OnDestroy {
 
   constructor(
     private availableThemesState: AvailableThemesState,
-    private selectedThemeState: SelectedThemeState
+    private customizationSettingsState: CustomizationSettingsState
   ) {}
 
   ngOnInit(): void {
-    this.selectedThemeState.theme$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((theme) => {
-        this.form.patchValue({ theme }, { emitEvent: false });
-      });
-
-    this.form.controls.theme.valueChanges
+    this.customizationSettingsState.customizationSettings$
       .pipe(
         takeUntil(this.destroy$),
-        filter((theme) => (theme ? true : false)),
-        tap((theme) => this.selectedThemeState.selectTheme(theme))
+        tap((settings) => this.form.patchValue(settings, { emitEvent: false }))
+      )
+      .subscribe();
+
+    this.form.valueChanges
+      .pipe(
+        takeUntil(this.destroy$),
+        tap((settings) =>
+          this.customizationSettingsState.setCustomizationSettings(settings)
+        )
       )
       .subscribe();
   }

@@ -3,7 +3,6 @@ import { Environment } from './environment.interface';
 /** Development environment config */
 export const environment: Environment = {
   production: false,
-  showSplashScreen: false,
 
   webUrl: 'http://localhost:3000',
   documentationUrl: 'http://localhost:3000/docs',
