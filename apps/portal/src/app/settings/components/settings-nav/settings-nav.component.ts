@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     <ul>
       <li>
         <a
-          class="button"
+          class="button button--big"
           routerLink="/settings/customization"
           routerLinkActive="button--primary"
           >Customization</a
@@ -14,7 +14,7 @@ import { Component } from '@angular/core';
       </li>
       <li>
         <a
-          class="button"
+          class="button button--big"
           routerLink="/settings/credits"
           routerLinkActive="button--primary"
           >Credits</a
@@ -29,6 +29,10 @@ import { Component } from '@angular/core';
     `
       .button {
         display: block;
+      }
+
+      li {
+        margin-bottom: 0.5rem;
       }
     `,
   ],

@@ -6,7 +6,7 @@ component:
     content:
       # width automatically gets converted into rem
       expand:
-        value: 80%
+        value: 90%
       background-color:
         value: "{color.base.light.darker}"
       color:
