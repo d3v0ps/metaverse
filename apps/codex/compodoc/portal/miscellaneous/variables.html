@@ -69,7 +69,7 @@
                             <a href="#mockData" title="apps/portal/src/app/settings/states/available-themes/available-themes.state.ts" ><b>mockData</b>&nbsp;&nbsp;&nbsp;(apps/.../available-themes.state.ts)</a>
                         </li>
                         <li>
-                            <a href="#mockData" title="apps/portal/src/app/settings/states/selected-theme/selected-theme.state.ts" ><b>mockData</b>&nbsp;&nbsp;&nbsp;(apps/.../selected-theme.state.ts)</a>
+                            <a href="#mockData" title="apps/portal/src/app/settings/states/customization-settings/customization-settings.state.ts" ><b>mockData</b>&nbsp;&nbsp;&nbsp;(apps/.../customization-settings.state.ts)</a>
                         </li>
                     </ul>
                 </td>
@@ -101,7 +101,6 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
   production: true,
-  showSplashScreen: true,
 
   webUrl: &#x27;https://central-factory.com/&#x27;,
   documentationUrl: &#x27;https://docs.central-factory.com/&#x27;,
@@ -144,7 +143,6 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
   production: false,
-  showSplashScreen: false,
 
   webUrl: &#x27;http://localhost:3000&#x27;,
   documentationUrl: &#x27;http://localhost:3000/docs&#x27;,
@@ -206,7 +204,7 @@
         </tbody>
     </table>
 </section>
-    <h3>apps/portal/src/app/settings/states/selected-theme/selected-theme.state.ts</h3>
+    <h3>apps/portal/src/app/settings/states/customization-settings/customization-settings.state.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
@@ -228,8 +226,12 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
-  name: &#x27;Default&#x27;,
-  path: &#x27;assets/themes/default/variables.css&#x27;,
+  theme: {
+    name: &#x27;Default&#x27;,
+    path: &#x27;assets/themes/default/variables.css&#x27;,
+  },
+  showSplashScreen: true,
+  playSounds: true,
 }</code>
                     </td>
                 </tr>

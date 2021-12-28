@@ -40,7 +40,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li >SelectedThemeState</li>
+  <li >CustomizationSettingsState</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -58,7 +58,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>apps/portal/src/app/settings/states/selected-theme/selected-theme.state.ts</code>
+            <code>apps/portal/src/app/settings/states/customization-settings/customization-settings.state.ts</code>
         </p>
 
 
@@ -83,7 +83,7 @@
                                 <a href="#activeThemeLinkElem" >activeThemeLinkElem</a>
                             </li>
                             <li>
-                                <a href="#theme$" >theme$</a>
+                                <a href="#customizationSettings$" >customizationSettings$</a>
                             </li>
                         </ul>
                     </td>
@@ -102,7 +102,7 @@
                                 <a href="#loadThemeFromUrl" >loadThemeFromUrl</a>
                             </li>
                             <li>
-                                <a href="#selectTheme" >selectTheme</a>
+                                <a href="#setCustomizationSettings" >setCustomizationSettings</a>
                             </li>
                         </ul>
                     </td>
@@ -127,7 +127,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">apps/portal/src/app/settings/states/selected-theme/selected-theme.state.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">apps/portal/src/app/settings/states/customization-settings/customization-settings.state.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -192,8 +192,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="33"
-                            class="link-to-prism">apps/portal/src/app/settings/states/selected-theme/selected-theme.state.ts:33</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">apps/portal/src/app/settings/states/customization-settings/customization-settings.state.ts:41</a></div>
                 </td>
             </tr>
 
@@ -245,24 +245,24 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="selectTheme"></a>
+                    <a name="setCustomizationSettings"></a>
                     <span class="name">
-                        <span ><b>selectTheme</b></span>
-                        <a href="#selectTheme"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>setCustomizationSettings</b></span>
+                        <a href="#setCustomizationSettings"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>selectTheme(theme: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+<code>setCustomizationSettings(settings: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">apps/portal/src/app/settings/states/selected-theme/selected-theme.state.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">apps/portal/src/app/settings/states/customization-settings/customization-settings.state.ts:34</a></div>
                 </td>
             </tr>
 
@@ -283,7 +283,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>theme</td>
+                                    <td>settings</td>
                                     <td>
                                                 <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
                                     </td>
@@ -337,7 +337,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">apps/portal/src/app/settings/states/selected-theme/selected-theme.state.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">apps/portal/src/app/settings/states/customization-settings/customization-settings.state.ts:24</a></div>
                         </td>
                     </tr>
 
@@ -348,25 +348,25 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="theme$"></a>
+                    <a name="customizationSettings$"></a>
                     <span class="name">
-                        <span ><b>theme$</b></span>
-                        <a href="#theme$"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>customizationSettings$</b></span>
+                        <a href="#customizationSettings$"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>new BehaviorSubject&lt;any | undefined&gt;(
-    localStorage.getItem(&#x27;settings.selectedTheme&#x27;)
-      ? JSON.parse(localStorage.getItem(&#x27;settings.selectedTheme&#x27;) as string)
+    localStorage.getItem(&#x27;settings.customization&#x27;)
+      ? JSON.parse(localStorage.getItem(&#x27;settings.customization&#x27;) as string)
       : mockData
   )</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">apps/portal/src/app/settings/states/selected-theme/selected-theme.state.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">apps/portal/src/app/settings/states/customization-settings/customization-settings.state.ts:18</a></div>
                         </td>
                     </tr>
 
@@ -384,34 +384,49 @@ import { Inject, Injectable } from &#x27;@angular/core&#x27;;
 import { BehaviorSubject } from &#x27;rxjs&#x27;;
 
 export const mockData &#x3D; {
-  name: &#x27;Default&#x27;,
-  path: &#x27;assets/themes/default/variables.css&#x27;,
+  theme: {
+    name: &#x27;Default&#x27;,
+    path: &#x27;assets/themes/default/variables.css&#x27;,
+  },
+  showSplashScreen: true,
+  playSounds: true,
 };
 
 @Injectable({
   providedIn: &#x27;root&#x27;,
 })
-export class SelectedThemeState {
-  theme$ &#x3D; new BehaviorSubject&lt;any | undefined&gt;(
-    localStorage.getItem(&#x27;settings.selectedTheme&#x27;)
-      ? JSON.parse(localStorage.getItem(&#x27;settings.selectedTheme&#x27;) as string)
+export class CustomizationSettingsState {
+  customizationSettings$ &#x3D; new BehaviorSubject&lt;any | undefined&gt;(
+    localStorage.getItem(&#x27;settings.customization&#x27;)
+      ? JSON.parse(localStorage.getItem(&#x27;settings.customization&#x27;) as string)
       : mockData
   );
 
   private activeThemeLinkElem?: HTMLLinkElement;
 
   constructor(@Inject(DOCUMENT) private document: Document) {
-    const theme &#x3D; this.theme$.getValue();
-    this.loadThemeFromUrl(theme.path);
+    const customizationSettings &#x3D; this.customizationSettings$.getValue();
+
+    if (customizationSettings.theme) {
+      this.loadThemeFromUrl(customizationSettings.theme.path);
+    }
   }
 
-  selectTheme(theme: any) {
-    this.loadThemeFromUrl(theme.path);
-    localStorage.setItem(&#x27;settings.selectedTheme&#x27;, JSON.stringify(theme));
-    this.theme$.next(theme);
+  setCustomizationSettings(settings: any) {
+    localStorage.setItem(&#x27;settings.customization&#x27;, JSON.stringify(settings));
+    this.customizationSettings$.next(settings);
+
+    this.loadThemeFromUrl(settings.theme.path);
   }
 
   private loadThemeFromUrl(url: string) {
+    const themeAlreadyLoaded &#x3D;
+      this.activeThemeLinkElem &amp;&amp; this.activeThemeLinkElem?.href.endsWith(url);
+
+    if (themeAlreadyLoaded) {
+      return;
+    }
+
     const headElem &#x3D; this.document.getElementsByTagName(&#x27;head&#x27;)[0];
 
     const newThemeLinkElem &#x3D; this.document.createElement(&#x27;link&#x27;);
@@ -460,7 +475,7 @@ export class SelectedThemeState {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'SelectedThemeState.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'CustomizationSettingsState.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

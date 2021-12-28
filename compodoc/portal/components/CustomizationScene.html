@@ -101,16 +101,23 @@
             <tr>
                 <td class="col-md-3">styles</td>
                 <td class="col-md-9"><code>
+      h3,
       h4 {
         margin-block-start: 0;
       }
 
       table {
         width: 100%;
+        border-spacing: 0 1em;
+        margin-bottom: 2em;
       }
 
       ng-select {
         max-width: 400px;
+      }
+
+      td {
+        width: 200px;
       }
     </code></td>
             </tr>
@@ -118,9 +125,10 @@
             <tr>
                 <td class="col-md-3">template</td>
                 <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div&gt;
-  &lt;h4&gt;Customization&lt;/h4&gt;
+  &lt;h3&gt;Customization&lt;/h3&gt;
 
   &lt;form [formGroup]&#x3D;&quot;form&quot;&gt;
+    &lt;h4&gt;Appearance&lt;/h4&gt;
     &lt;table&gt;
       &lt;tr&gt;
         &lt;td&gt;
@@ -136,6 +144,26 @@
               {{ item.name }}
             &lt;/ng-template&gt;
           &lt;/ng-select&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;
+          &lt;label&gt; Show Splash Screen &lt;/label&gt;
+        &lt;/td&gt;
+        &lt;td&gt;
+          &lt;input type&#x3D;&quot;checkbox&quot; formControlName&#x3D;&quot;showSplashScreen&quot; /&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+
+    &lt;h4&gt;Sounds&lt;/h4&gt;
+    &lt;table&gt;
+      &lt;tr&gt;
+        &lt;td&gt;
+          &lt;label&gt; Play Sounds &lt;/label&gt;
+        &lt;/td&gt;
+        &lt;td&gt;
+          &lt;input type&#x3D;&quot;checkbox&quot; formControlName&#x3D;&quot;playSounds&quot; /&gt;
         &lt;/td&gt;
       &lt;/tr&gt;
     &lt;/table&gt;
@@ -214,12 +242,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(availableThemesState: <a href="../injectables/AvailableThemesState.html" target="_self">AvailableThemesState</a>, selectedThemeState: <a href="../injectables/SelectedThemeState.html" target="_self">SelectedThemeState</a>)</code>
+<code>constructor(availableThemesState: <a href="../injectables/AvailableThemesState.html" target="_self">AvailableThemesState</a>, customizationSettingsState: <a href="../injectables/CustomizationSettingsState.html" target="_self">CustomizationSettingsState</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:68</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:100</a></div>
                             </td>
                         </tr>
 
@@ -249,10 +277,10 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>selectedThemeState</td>
+                                                        <td>customizationSettingsState</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/SelectedThemeState.html" target="_self" >SelectedThemeState</a></code>
+                                                                        <code><a href="../injectables/CustomizationSettingsState.html" target="_self" >CustomizationSettingsState</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -298,8 +326,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="91"
-                            class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:91</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="125"
+                            class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:125</a></div>
                 </td>
             </tr>
 
@@ -335,8 +363,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="75"
-                            class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:75</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="107"
+                            class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:107</a></div>
                 </td>
             </tr>
 
@@ -377,7 +405,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:68</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:100</a></div>
                         </td>
                     </tr>
 
@@ -399,12 +427,14 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>new FormGroup&lt;CustomizationForm&gt;({
     theme: new FormControl&lt;Theme&gt;(null),
+    showSplashScreen: new FormControl&lt;boolean&gt;(true),
+    playSounds: new FormControl&lt;boolean&gt;(true),
   })</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:62</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:92</a></div>
                         </td>
                     </tr>
 
@@ -429,7 +459,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:66</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:98</a></div>
                         </td>
                     </tr>
 
@@ -445,9 +475,9 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
 import { Control, FormControl, FormGroup } from &#x27;@ng-stack/forms&#x27;;
 import { Subject } from &#x27;rxjs&#x27;;
-import { filter, takeUntil, tap } from &#x27;rxjs/operators&#x27;;
+import { takeUntil, tap } from &#x27;rxjs/operators&#x27;;
 import { AvailableThemesState } from &#x27;../../states/available-themes/available-themes.state&#x27;;
-import { SelectedThemeState } from &#x27;../../states/selected-theme/selected-theme.state&#x27;;
+import { CustomizationSettingsState } from &#x27;../../states/customization-settings/customization-settings.state&#x27;;
 
 export interface Theme {
   name: string;
@@ -456,15 +486,18 @@ export interface Theme {
 
 export interface CustomizationForm {
   theme: Control&lt;Theme&gt;;
+  showSplashScreen: boolean;
+  playSounds: boolean;
 }
 
 @Component({
   selector: &#x27;cf-customization&#x27;,
   template: &#x60;
     &lt;div&gt;
-      &lt;h4&gt;Customization&lt;/h4&gt;
+      &lt;h3&gt;Customization&lt;/h3&gt;
 
       &lt;form [formGroup]&#x3D;&quot;form&quot;&gt;
+        &lt;h4&gt;Appearance&lt;/h4&gt;
         &lt;table&gt;
           &lt;tr&gt;
             &lt;td&gt;
@@ -482,22 +515,49 @@ export interface CustomizationForm {
               &lt;/ng-select&gt;
             &lt;/td&gt;
           &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;
+              &lt;label&gt; Show Splash Screen &lt;/label&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+              &lt;input type&#x3D;&quot;checkbox&quot; formControlName&#x3D;&quot;showSplashScreen&quot; /&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+        &lt;/table&gt;
+
+        &lt;h4&gt;Sounds&lt;/h4&gt;
+        &lt;table&gt;
+          &lt;tr&gt;
+            &lt;td&gt;
+              &lt;label&gt; Play Sounds &lt;/label&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+              &lt;input type&#x3D;&quot;checkbox&quot; formControlName&#x3D;&quot;playSounds&quot; /&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
         &lt;/table&gt;
       &lt;/form&gt;
     &lt;/div&gt;
   &#x60;,
   styles: [
     &#x60;
+      h3,
       h4 {
         margin-block-start: 0;
       }
 
       table {
         width: 100%;
+        border-spacing: 0 1em;
+        margin-bottom: 2em;
       }
 
       ng-select {
         max-width: 400px;
+      }
+
+      td {
+        width: 200px;
       }
     &#x60;,
   ],
@@ -505,6 +565,8 @@ export interface CustomizationForm {
 export class CustomizationScene implements OnInit, OnDestroy {
   form &#x3D; new FormGroup&lt;CustomizationForm&gt;({
     theme: new FormControl&lt;Theme&gt;(null),
+    showSplashScreen: new FormControl&lt;boolean&gt;(true),
+    playSounds: new FormControl&lt;boolean&gt;(true),
   });
 
   themes$ &#x3D; this.availableThemesState.themes$;
@@ -513,21 +575,23 @@ export class CustomizationScene implements OnInit, OnDestroy {
 
   constructor(
     private availableThemesState: AvailableThemesState,
-    private selectedThemeState: SelectedThemeState
+    private customizationSettingsState: CustomizationSettingsState
   ) {}
 
   ngOnInit(): void {
-    this.selectedThemeState.theme$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((theme) &#x3D;&gt; {
-        this.form.patchValue({ theme }, { emitEvent: false });
-      });
-
-    this.form.controls.theme.valueChanges
+    this.customizationSettingsState.customizationSettings$
       .pipe(
         takeUntil(this.destroy$),
-        filter((theme) &#x3D;&gt; (theme ? true : false)),
-        tap((theme) &#x3D;&gt; this.selectedThemeState.selectTheme(theme))
+        tap((settings) &#x3D;&gt; this.form.patchValue(settings, { emitEvent: false }))
+      )
+      .subscribe();
+
+    this.form.valueChanges
+      .pipe(
+        takeUntil(this.destroy$),
+        tap((settings) &#x3D;&gt;
+          this.customizationSettingsState.setCustomizationSettings(settings)
+        )
       )
       .subscribe();
   }
@@ -543,16 +607,23 @@ export class CustomizationScene implements OnInit, OnDestroy {
 
     <div class="tab-pane fade " id="c-styleData">
             <pre class="line-numbers"><code class="language-scss">
+      h3,
       h4 {
         margin-block-start: 0;
       }
 
       table {
         width: 100%;
+        border-spacing: 0 1em;
+        margin-bottom: 2em;
       }
 
       ng-select {
         max-width: 400px;
+      }
+
+      td {
+        width: 200px;
       }
     
 </code></pre>
@@ -583,7 +654,7 @@ export class CustomizationScene implements OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div>  <h4>Customization</h4>  <form [formGroup]="form">    <table>      <tr>        <td>          <label> Theme </label>        </td>        <td>          <ng-select            formControlName="theme"            [items]="themes$ | async"            bindLabel="name"          >            <ng-template ng-option-tmp let-item="item">              {{ item.name }}            </ng-template>          </ng-select>        </td>      </tr>    </table>  </form></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div>  <h3>Customization</h3>  <form [formGroup]="form">    <h4>Appearance</h4>    <table>      <tr>        <td>          <label> Theme </label>        </td>        <td>          <ng-select            formControlName="theme"            [items]="themes$ | async"            bindLabel="name"          >            <ng-template ng-option-tmp let-item="item">              {{ item.name }}            </ng-template>          </ng-select>        </td>      </tr>      <tr>        <td>          <label> Show Splash Screen </label>        </td>        <td>          <input type="checkbox" formControlName="showSplashScreen" />        </td>      </tr>    </table>    <h4>Sounds</h4>    <table>      <tr>        <td>          <label> Play Sounds </label>        </td>        <td>          <input type="checkbox" formControlName="playSounds" />        </td>      </tr>    </table>  </form></div></div>'
     var COMPONENTS = [{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CustomizationScene'};

@@ -123,13 +123,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/PortalModule.html" data-type="entity-link" >PortalModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-PortalModule-35a0fc3219410f714e3933ee55bdbd9a"' : 'data-target="#xs-components-links-module-PortalModule-35a0fc3219410f714e3933ee55bdbd9a"' }>
+                                            'data-target="#components-links-module-PortalModule-769898d57c6907a368691e0ac682f138"' : 'data-target="#xs-components-links-module-PortalModule-769898d57c6907a368691e0ac682f138"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PortalModule-35a0fc3219410f714e3933ee55bdbd9a"' :
-                                            'id="xs-components-links-module-PortalModule-35a0fc3219410f714e3933ee55bdbd9a"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PortalModule-769898d57c6907a368691e0ac682f138"' :
+                                            'id="xs-components-links-module-PortalModule-769898d57c6907a368691e0ac682f138"' }>
                                             <li class="link">
                                                 <a href="components/PortalRoot.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >PortalRoot</a>
                                             </li>
@@ -176,7 +176,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/AvailableThemesState.html" data-type="entity-link" >AvailableThemesState</a>
                                 </li>
                                 <li class="link">
-                                    <a href="injectables/SelectedThemeState.html" data-type="entity-link" >SelectedThemeState</a>
+                                    <a href="injectables/CustomizationSettingsState.html" data-type="entity-link" >CustomizationSettingsState</a>
                                 </li>
                             </ul>
                         </li>

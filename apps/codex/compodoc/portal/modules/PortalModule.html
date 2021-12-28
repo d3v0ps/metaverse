@@ -201,7 +201,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
-import { APP_INITIALIZER, NgModule } from &#x27;@angular/core&#x27;;
+import { NgModule } from &#x27;@angular/core&#x27;;
 import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
 import { BrowserAnimationsModule } from &#x27;@angular/platform-browser/animations&#x27;;
 import { SplashScreenModule } from &#x27;@central-factory/web-components/angular/splash-screen/splash-screen.module&#x27;;
@@ -209,7 +209,6 @@ import { SvgIconModule } from &#x27;@central-factory/web-components/angular/svg-
 import { PortalRoutingModule } from &#x27;./portal-routing.module&#x27;;
 import { PortalRoot } from &#x27;./portal.root&#x27;;
 import { PortalLayoutSceneModule } from &#x27;./scenes/portal-layout/portal-layout.module&#x27;;
-import { SelectedThemeState } from &#x27;./settings/states/selected-theme/selected-theme.state&#x27;;
 
 @NgModule({
   declarations: [PortalRoot],
@@ -223,18 +222,7 @@ import { SelectedThemeState } from &#x27;./settings/states/selected-theme/select
 
     PortalRoutingModule,
   ],
-  providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: (): (() &#x3D;&gt; void) &#x3D;&gt; {
-        return (): void &#x3D;&gt; {
-          console.log(&#x27;App initialized&#x27;);
-        };
-      },
-      multi: true,
-      deps: [SelectedThemeState],
-    },
-  ],
+  providers: [],
   bootstrap: [PortalRoot],
 })
 export class PortalModule {}
