@@ -2,6 +2,11 @@
 export interface Environment {
   /** Is production environment */
   production: boolean;
+  /** Use mocks */
+  useMocks: boolean;
+  /** Show splash screen */
+  showSplashScreen: boolean;
+
   /** Url with the Metaverse's web site */
   webUrl: string;
   /** Url with the Metaverse's documentation site */

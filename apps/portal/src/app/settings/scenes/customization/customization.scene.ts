@@ -1,19 +1,16 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Customization,
+  Theme,
+} from '@central-factory/preferences/models/customization';
+import { AvailableThemesState } from '@central-factory/preferences/states/customization/available-themes.state';
+import { CustomizationSettingsState } from '@central-factory/preferences/states/customization/customization-settings.state';
 import { Control, FormControl, FormGroup } from '@ng-stack/forms';
 import { Subject } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';
-import { AvailableThemesState } from '../../states/available-themes/available-themes.state';
-import { CustomizationSettingsState } from '../../states/customization-settings/customization-settings.state';
-
-export interface Theme {
-  name: string;
-  path: string;
-}
+import { filter, takeUntil, tap } from 'rxjs/operators';
 
 export interface CustomizationForm {
   theme: Control<Theme>;
-  showSplashScreen: boolean;
-  playSounds: boolean;
 }
 
 @Component({
@@ -41,17 +38,9 @@ export interface CustomizationForm {
               </ng-select>
             </td>
           </tr>
-          <tr>
-            <td>
-              <label> Show Splash Screen </label>
-            </td>
-            <td>
-              <input type="checkbox" formControlName="showSplashScreen" />
-            </td>
-          </tr>
         </table>
 
-        <h4>Sounds</h4>
+        <!-- h4>Sounds</h4>
         <table>
           <tr>
             <td>
@@ -61,7 +50,7 @@ export interface CustomizationForm {
               <input type="checkbox" formControlName="playSounds" />
             </td>
           </tr>
-        </table>
+        </table -->
       </form>
     </div>
   `,
@@ -78,37 +67,38 @@ export interface CustomizationForm {
         margin-bottom: 2em;
       }
 
-      ng-select {
-        max-width: 400px;
-      }
-
       td {
         width: 200px;
+      }
+
+      ng-select {
+        max-width: 400px;
       }
     `,
   ],
 })
 export class CustomizationScene implements OnInit, OnDestroy {
-  form = new FormGroup<CustomizationForm>({
+  public readonly form = new FormGroup<CustomizationForm>({
     theme: new FormControl<Theme>(null),
-    showSplashScreen: new FormControl<boolean>(true),
-    playSounds: new FormControl<boolean>(true),
   });
 
-  themes$ = this.availableThemesState.themes$;
+  public readonly themes$ = this.availableThemesState.themes$;
 
-  private destroy$ = new Subject();
+  private destroy$ = new Subject<void>();
 
   constructor(
-    private availableThemesState: AvailableThemesState,
-    private customizationSettingsState: CustomizationSettingsState
+    private readonly availableThemesState: AvailableThemesState,
+    private readonly customizationSettingsState: CustomizationSettingsState
   ) {}
 
   ngOnInit(): void {
     this.customizationSettingsState.customizationSettings$
       .pipe(
-        takeUntil(this.destroy$),
-        tap((settings) => this.form.patchValue(settings, { emitEvent: false }))
+        filter((customizationSettings) => !!customizationSettings),
+        tap((settings) =>
+          this.form.patchValue(settings as Customization, { emitEvent: false })
+        ),
+        takeUntil(this.destroy$)
       )
       .subscribe();
 
@@ -116,7 +106,9 @@ export class CustomizationScene implements OnInit, OnDestroy {
       .pipe(
         takeUntil(this.destroy$),
         tap((settings) =>
-          this.customizationSettingsState.setCustomizationSettings(settings)
+          this.customizationSettingsState
+            .setCustomizationSettings(settings)
+            .subscribe()
         )
       )
       .subscribe();

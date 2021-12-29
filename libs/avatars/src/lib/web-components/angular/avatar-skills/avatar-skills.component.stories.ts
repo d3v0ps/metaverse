@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BemModule } from '@central-factory/web-components/angular/bem/bem.module';
 import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { skillsMocks } from '../../../mocks/skills';
+import { skillsMocks } from '../../../data/storybook/skills';
 import { AvatarSkillsComponent } from './avatar-skills.component';
 
 export default {

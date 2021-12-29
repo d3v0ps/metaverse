@@ -1,9 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { SelectedAvatarState } from '@central-factory/agent-avatars/states/selected-avatar/selected-avatar.state';
+import {
+  Application,
+  ApplicationShortcut,
+} from '@central-factory/applications/models/application';
 import type { Avatar } from '@central-factory/avatars/models/avatar';
-import { Observable } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
+import { EntityManager } from '@central-factory/persistence/services/entity-manager';
+import { Repository } from '@central-factory/persistence/services/repository';
+import { DeepReadonlyObject } from 'rxdb/dist/types/types';
+import { forkJoin, Observable, Subject } from 'rxjs';
+import { filter, switchMap, takeUntil, tap } from 'rxjs/operators';
 
 export interface SidebarItem {
   name: string;
@@ -106,57 +113,109 @@ export interface SidebarItem {
     </ng-container>
   `,
 })
-export class PortalLayoutScene implements OnInit {
-  title = 'Metaverse Portal';
-  sidebarIsOpen = false;
+export class PortalLayoutScene implements OnInit, OnDestroy {
+  public title = 'Metaverse Portal';
+  public sidebarIsOpen = false;
 
-  sidebarItems: SidebarItem[] = [
-    {
-      name: 'Play',
-      routerLink: ['/play'],
-      icon: 'assets/icons/mdi/play.svg',
-      active: false,
-    },
-    {
-      name: 'Avatar',
-      routerLink: ['/selected-avatar'],
-      icon: 'assets/icons/mdi/account.svg',
-      active: false,
-    },
-    {
-      name: 'Inventory',
-      routerLink: ['/inventory'],
-      icon: 'assets/icons/mdi/bag-personal.svg',
-      active: false,
-    },
-    {
-      name: 'Marketplace',
-      routerLink: ['/marketplace'],
-      icon: 'assets/icons/mdi/store.svg',
-      active: false,
-    },
-    {
-      name: 'Settings',
-      routerLink: ['/settings'],
-      icon: 'assets/icons/mdi/cog.svg',
-      active: false,
-    },
-  ];
+  public sidebarItems: SidebarItem[] = [];
 
-  selectedAvatar$: Observable<Avatar | undefined> =
+  public readonly selectedAvatar$: Observable<Avatar | null | undefined> =
     this.selectedAvatarState.avatar$;
 
+  private readonly destroy$ = new Subject<void>();
+
   constructor(
-    private router: Router,
-    private selectedAvatarState: SelectedAvatarState
+    private readonly router: Router,
+    private readonly entityManager: EntityManager,
+    private readonly selectedAvatarState: SelectedAvatarState
   ) {}
 
-  ngOnInit() {
-    this.setSidebarItemsActive();
-
+  public ngOnInit(): void {
     this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        takeUntil(this.destroy$)
+      )
       .subscribe(() => this.setSidebarItemsActive());
+
+    this.entityManager.initialize$
+      .pipe(
+        switchMap(() =>
+          forkJoin([
+            this.entityManager.getRepository<Application>(
+              'userapplications',
+              'com.central-factory.portal'
+            ),
+          ])
+        ),
+        tap(([userApplicationsRepository]) =>
+          this.subscribeToDataChanges(userApplicationsRepository)
+        )
+      )
+      .subscribe();
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  private subscribeToDataChanges(
+    userApplicationsRepository: Repository<Application>
+  ) {
+    userApplicationsRepository
+      .find({
+        selector: {
+          'additionalProperties.sidebarShortcuts': {
+            $exists: true,
+          },
+        },
+      })
+      .pipe(
+        tap((applications) => this.generateSidebarItems(applications)),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+  }
+
+  private generateSidebarItems(
+    applications: DeepReadonlyObject<Application>[]
+  ) {
+    this.sidebarItems = applications
+      .sort((a, b) => {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        return a.createdAt!.localeCompare(b.createdAt!);
+      })
+      .reduce<SidebarItem[]>((result, current) => {
+        const additionalProperties = current.additionalProperties;
+        const sidebarShortcutNames =
+          additionalProperties?.sidebarShortcuts || [];
+        const shortcuts = current.shortcuts || [];
+
+        const sidebarShortcuts = sidebarShortcutNames
+          .map((shortcutName) =>
+            shortcuts.find((shortcut) => shortcut.name === shortcutName)
+          )
+          .filter((shortcut) =>
+            shortcut ? true : false
+          ) as ApplicationShortcut[];
+
+        const sidebarItems = sidebarShortcuts.map(
+          (shortcut: ApplicationShortcut) => ({
+            name: shortcut.name,
+            routerLink: [shortcut.url],
+            icon:
+              shortcut.icons && shortcut.icons.length > 0
+                ? shortcut.icons[0].src
+                : '',
+            active: false,
+          })
+        );
+
+        return result.concat(sidebarItems);
+      }, []);
+
+    this.setSidebarItemsActive();
   }
 
   private setSidebarItemsActive() {

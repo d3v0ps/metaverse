@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BemModule } from '@central-factory/web-components/angular/bem/bem.module';
 import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { ravensCloackAssetMock } from '../../../mocks/equipments';
+import { ravensCloackAssetMock } from '../../../data/storybook/equipments';
 import { AssetDetailComponent } from './asset-detail.component';
 
 export default {
