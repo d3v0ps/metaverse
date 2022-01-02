@@ -98,16 +98,8 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;ng-container
-  *ngIf&#x3D;&quot;{
-    customization: customizationSettings$ | async
-  } as data&quot;
-&gt;
-  &lt;cf-splash-screen
-    *ngIf&#x3D;&quot;data.customization.showSplashScreen&quot;
-  &gt;&lt;/cf-splash-screen&gt;
-  &lt;router-outlet&gt;&lt;/router-outlet&gt;
-&lt;/ng-container&gt;
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;cf-splash-screen *ngIf&#x3D;&quot;environment.showSplashScreen&quot;&gt;&lt;/cf-splash-screen&gt;
+&lt;router-outlet&gt;&lt;/router-outlet&gt;
 </code></pre></td>
             </tr>
 
@@ -136,9 +128,6 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#customizationSettings$" >customizationSettings$</a>
-                            </li>
-                            <li>
                                 <a href="#environment" >environment</a>
                             </li>
                         </ul>
@@ -154,54 +143,6 @@
     </table>
 </section>
 
-    <section>
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(customizationSettingsState: <a href="../injectables/CustomizationSettingsState.html" target="_self">CustomizationSettingsState</a>)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">apps/portal/src/app/portal.root.ts:25</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>customizationSettingsState</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/CustomizationSettingsState.html" target="_self" >CustomizationSettingsState</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
 
 
 
@@ -213,31 +154,6 @@
     <h3 id="inputs">
         Properties
     </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="customizationSettings$"></a>
-                    <span class="name">
-                        <span ><b>customizationSettings$</b></span>
-                        <a href="#customizationSettings$"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>this.customizationSettingsState.customizationSettings$</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">apps/portal/src/app/portal.root.ts:24</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -256,7 +172,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">apps/portal/src/app/portal.root.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">apps/portal/src/app/portal.root.ts:13</a></div>
                         </td>
                     </tr>
 
@@ -271,33 +187,17 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { environment } from &#x27;../environments/environment&#x27;;
-import { CustomizationSettingsState } from &#x27;./settings/states/customization-settings/customization-settings.state&#x27;;
 
 /** Metaverse&#x27;s Portal root component */
 @Component({
   selector: &#x27;cf-portal-root&#x27;,
   template: &#x60;
-    &lt;ng-container
-      *ngIf&#x3D;&quot;{
-        customization: customizationSettings$ | async
-      } as data&quot;
-    &gt;
-      &lt;cf-splash-screen
-        *ngIf&#x3D;&quot;data.customization.showSplashScreen&quot;
-      &gt;&lt;/cf-splash-screen&gt;
-      &lt;router-outlet&gt;&lt;/router-outlet&gt;
-    &lt;/ng-container&gt;
+    &lt;cf-splash-screen *ngIf&#x3D;&quot;environment.showSplashScreen&quot;&gt;&lt;/cf-splash-screen&gt;
+    &lt;router-outlet&gt;&lt;/router-outlet&gt;
   &#x60;,
 })
 export class PortalRoot {
   environment &#x3D; environment;
-
-  customizationSettings$ &#x3D;
-    this.customizationSettingsState.customizationSettings$;
-
-  constructor(
-    private readonly customizationSettingsState: CustomizationSettingsState
-  ) {}
 }
 </code></pre>
     </div>
@@ -329,7 +229,7 @@ export class PortalRoot {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    customization: customizationSettings$ | async  } as data">  <cf-splash-screen    *ngIf="data.customization.showSplashScreen"  ></cf-splash-screen>  <router-outlet></router-outlet></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div><cf-splash-screen *ngIf="environment.showSplashScreen"></cf-splash-screen><router-outlet></router-outlet></div>'
     var COMPONENTS = [{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PortalRoot'};

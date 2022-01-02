@@ -1,0 +1,1010 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>central-factory documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/postmark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">central-factory documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >EntityManager</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/persistence/src/lib/services/entity-manager.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#_dbInstance" >_dbInstance</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#initialize$" >initialize$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#addBaseCollections" >addBaseCollections</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#addInitialData" >addInitialData</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#createDatabase" >createDatabase</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#getRepository" >getRepository</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#isDatabaseCreated" >isDatabaseCreated</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#setupDatabase" >setupDatabase</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(acl: <a href="../injectables/ACL.html" target="_self">ACL</a>, baseCollections: literal type[], initialData: literal type[])</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">libs/persistence/src/lib/services/entity-manager.ts:67</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>acl</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ACL.html" target="_self" >ACL</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>baseCollections</td>
+                                                  
+                                                        <td>
+                                                                    <code>literal type[]</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>initialData</td>
+                                                  
+                                                        <td>
+                                                                    <code>literal type[]</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addBaseCollections"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>addBaseCollections</b></span>
+                        <a href="#addBaseCollections"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addBaseCollections(db: RxDatabase<DatabaseCollections>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="142"
+                            class="link-to-prism">libs/persistence/src/lib/services/entity-manager.ts:142</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>db</td>
+                                    <td>
+                                            <code>RxDatabase&lt;DatabaseCollections&gt;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;RxDatabase&lt;DatabaseCollections&gt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="addInitialData"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>addInitialData</b></span>
+                        <a href="#addInitialData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>addInitialData(db: RxDatabase<DatabaseCollections>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="178"
+                            class="link-to-prism">libs/persistence/src/lib/services/entity-manager.ts:178</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>db</td>
+                                    <td>
+                                            <code>RxDatabase&lt;DatabaseCollections&gt;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;any&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createDatabase"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>createDatabase</b></span>
+                        <a href="#createDatabase"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createDatabase(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, password: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="127"
+                            class="link-to-prism">libs/persistence/src/lib/services/entity-manager.ts:127</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>name</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>password</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;RxDatabase&lt;DatabaseCollections&gt;&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getRepository"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>getRepository</b></span>
+                        <a href="#getRepository"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getRepository(collectionName, appId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="98"
+                            class="link-to-prism">libs/persistence/src/lib/services/entity-manager.ts:98</a></div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Type parameters :</b>
+                    <ul class="type-parameters">
+                        <li>RxDocumentType</li>
+                        <li>OrmMethods</li>
+                        <li>StaticMethods</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>collectionName</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>appId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/Repository.html" target="_self" >Observable&lt;Repository&lt;RxDocumentType, OrmMethods, StaticMethods&gt;&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isDatabaseCreated"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>isDatabaseCreated</b></span>
+                        <a href="#isDatabaseCreated"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>isDatabaseCreated()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">libs/persistence/src/lib/services/entity-manager.ts:94</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setupDatabase"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>setupDatabase</b></span>
+                        <a href="#setupDatabase"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>setupDatabase(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, password: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">libs/persistence/src/lib/services/entity-manager.ts:84</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>name</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>password</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Observable&lt;void&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_dbInstance"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>_dbInstance</b></span>
+                        <a href="#_dbInstance"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>RxDatabase&lt;DatabaseCollections&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">libs/persistence/src/lib/services/entity-manager.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initialize$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>initialize$</b></span>
+                        <a href="#initialize$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new ReplaySubject&lt;void&gt;(0)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">libs/persistence/src/lib/services/entity-manager.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Inject, Injectable, InjectionToken } from &#x27;@angular/core&#x27;;
+import * as PouchdbAdapterIdb from &#x27;pouchdb-adapter-idb&#x27;;
+import {
+  addRxPlugin,
+  createRxDatabase,
+  RxCollection,
+  RxCollectionCreator,
+  RxDatabase,
+} from &#x27;rxdb/plugins/core&#x27;;
+import { RxDBDevModePlugin } from &#x27;rxdb/plugins/dev-mode&#x27;;
+import { RxDBEncryptionPlugin } from &#x27;rxdb/plugins/encryption&#x27;;
+import { addPouchPlugin, getRxStoragePouch } from &#x27;rxdb/plugins/pouchdb&#x27;;
+import { RxDBQueryBuilderPlugin } from &#x27;rxdb/plugins/query-builder&#x27;;
+import { RxDBValidatePlugin } from &#x27;rxdb/plugins/validate&#x27;;
+import {
+  defer,
+  forkJoin,
+  from,
+  map,
+  Observable,
+  of,
+  ReplaySubject,
+  switchMap,
+  tap,
+  throwError,
+} from &#x27;rxjs&#x27;;
+import { v4 as uuidv4 } from &#x27;uuid&#x27;;
+import { ACL } from &#x27;./acl&#x27;;
+import { Repository } from &#x27;./repository&#x27;;
+
+addPouchPlugin(PouchdbAdapterIdb);
+addRxPlugin(RxDBDevModePlugin);
+addRxPlugin(RxDBValidatePlugin);
+addRxPlugin(RxDBEncryptionPlugin);
+addRxPlugin(RxDBQueryBuilderPlugin);
+
+export const ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN &#x3D; new InjectionToken&lt;
+  {
+    name: string;
+    creator: RxCollectionCreator;
+  }[]
+&gt;(&#x27;ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN&#x27;);
+
+export const ENTITY_MANAGER_INITIAL_DATA_TOKEN &#x3D; new InjectionToken&lt;
+  {
+    name: string;
+    data: any[];
+    upsert?: boolean;
+  }[]
+&gt;(&#x27;ENTITY_MANAGER_INITIAL_DATA_TOKEN&#x27;);
+
+@Injectable({
+  providedIn: &#x27;root&#x27;,
+})
+export class EntityManager&lt;
+  DatabaseCollections extends {
+    applicationpermissions: RxCollection;
+    [collectionName: string]: RxCollection;
+  } &#x3D; {
+    applicationpermissions: RxCollection;
+    [collectionName: string]: RxCollection;
+  }
+&gt; {
+  public initialize$ &#x3D; new ReplaySubject&lt;void&gt;(0);
+
+  private _dbInstance?: RxDatabase&lt;DatabaseCollections&gt;;
+
+  constructor(
+    private readonly acl: ACL,
+    @Inject(ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN)
+    private readonly baseCollections: {
+      name: string;
+      creator: RxCollectionCreator;
+    }[],
+    @Inject(ENTITY_MANAGER_INITIAL_DATA_TOKEN)
+    private readonly initialData: {
+      name: string;
+      data: any[];
+      upsert?: boolean;
+    }[]
+  ) {}
+
+  public setupDatabase(name: string, password: string): Observable&lt;void&gt; {
+    return this.createDatabase(name, password).pipe(
+      switchMap((db) &#x3D;&gt; this.addBaseCollections(db)),
+      tap((db) &#x3D;&gt; this.acl.initialize(db.applicationpermissions)),
+      switchMap((db) &#x3D;&gt; this.addInitialData(db)),
+      tap(() &#x3D;&gt; this.initialize$.next()),
+      map(() &#x3D;&gt; undefined)
+    );
+  }
+
+  public isDatabaseCreated() {
+    return this._dbInstance !&#x3D;&#x3D; undefined;
+  }
+
+  public getRepository&lt;
+    RxDocumentType &#x3D; any,
+    OrmMethods &#x3D; any,
+    StaticMethods &#x3D; any
+  &gt;(
+    collectionName: keyof DatabaseCollections,
+    appId: string
+  ): Observable&lt;Repository&lt;RxDocumentType, OrmMethods, StaticMethods&gt;&gt; {
+    if (!this._dbInstance) {
+      return throwError(() &#x3D;&gt; new Error(&#x27;Database not initialized&#x27;));
+    }
+
+    const collection &#x3D; this._dbInstance.collections[
+      collectionName
+    ] as unknown as RxCollection&lt;RxDocumentType, OrmMethods, StaticMethods&gt;;
+
+    if (!collection) {
+      return throwError(() &#x3D;&gt; new Error(&#x27;Collection not initialized&#x27;));
+    }
+
+    const repository &#x3D; new Repository&lt;
+      RxDocumentType,
+      OrmMethods,
+      StaticMethods
+    &gt;(appId, collection, this.acl);
+
+    return of(repository);
+  }
+
+  private createDatabase(
+    name: string,
+    password: string
+  ): Observable&lt;RxDatabase&lt;DatabaseCollections&gt;&gt; {
+    return defer(() &#x3D;&gt;
+      from(
+        createRxDatabase&lt;RxDatabase&lt;DatabaseCollections&gt;&gt;({
+          name,
+          password,
+          storage: getRxStoragePouch(&#x27;idb&#x27;),
+        })
+      ).pipe(tap((db) &#x3D;&gt; (this._dbInstance &#x3D; db)))
+    );
+  }
+
+  private addBaseCollections(
+    db: RxDatabase&lt;DatabaseCollections&gt;
+  ): Observable&lt;RxDatabase&lt;DatabaseCollections&gt;&gt; {
+    const baseCollections: {
+      [key: string]: RxCollectionCreator;
+    } &#x3D; this.baseCollections.reduce(
+      (result, current) &#x3D;&gt;
+        Object.assign(result, { [current.name]: current.creator }),
+      {}
+    );
+
+    return defer(() &#x3D;&gt;
+      from(
+        db.addCollections(baseCollections) as unknown as Promise&lt;
+          RxDatabase&lt;DatabaseCollections&gt;
+        &gt;
+      ).pipe(
+        tap((db) &#x3D;&gt; {
+          Object.values(db).forEach((collection) &#x3D;&gt; {
+            collection.preInsert((data: any) &#x3D;&gt; {
+              const now &#x3D; new Date().toISOString();
+              data.id &#x3D; data.id || uuidv4();
+              data.createdAt &#x3D; data.createdAt || now;
+              data.updatedAt &#x3D; data.updatedAt || now;
+            }, false);
+            collection.preSave((data: any, document: any) &#x3D;&gt; {
+              const now &#x3D; new Date().toISOString();
+              data.createdAt &#x3D; document.createdAt || now;
+              data.updatedAt &#x3D; now;
+            }, false);
+          });
+        })
+      )
+    );
+  }
+
+  private addInitialData(db: RxDatabase&lt;DatabaseCollections&gt;): Observable&lt;any&gt; {
+    return forkJoin(
+      this.initialData.map((data) &#x3D;&gt; {
+        const collection &#x3D; db[data.name];
+        const upsert &#x3D; &#x27;upsert&#x27; in data ? data.upsert : true;
+
+        return forkJoin(
+          data.data.map((doc) &#x3D;&gt; {
+            const shouldInsert$ &#x3D; upsert
+              ? of(true)
+              : from(
+                  collection.findOne({ selector: { id: doc.id } }).exec()
+                ).pipe(map((result) &#x3D;&gt; !result));
+
+            return shouldInsert$.pipe(
+              switchMap((shouldInsert) &#x3D;&gt; {
+                if (!shouldInsert) {
+                  return of(undefined);
+                }
+
+                return from(collection.upsert(doc)).pipe(
+                  switchMap(() &#x3D;&gt; {
+                    if (data.name !&#x3D;&#x3D; &#x27;userapplications&#x27;) {
+                      return of(undefined);
+                    }
+
+                    const permissions &#x3D; (
+                      doc.additionalProperties?.permissions || []
+                    ).map((permission: any) &#x3D;&gt; ({
+                      ...permission,
+                      appId: doc.id,
+                      id: &#x60;${doc.id}:${permission.kind}:${permission.mode}:${permission.target}&#x60;,
+                    }));
+
+                    return forkJoin(
+                      permissions.map((permission: any) &#x3D;&gt;
+                        db.applicationpermissions.upsert(permission)
+                      )
+                    );
+                  })
+                );
+              })
+            );
+          })
+        );
+      })
+    );
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'EntityManager.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

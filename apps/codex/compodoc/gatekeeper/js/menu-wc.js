@@ -63,26 +63,57 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </a>
                         <ul class="links collapse " ${ isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"' }>
                             <li class="link">
-                                <a href="modules/GatekeeperModule.html" data-type="entity-link" >GatekeeperModule</a>
+                                <a href="modules/AppModule.html" data-type="entity-link" >AppModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-AppModule-bc98c6f1f9eb5ce45dce1d1490709927"' : 'data-target="#xs-components-links-module-AppModule-bc98c6f1f9eb5ce45dce1d1490709927"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AppModule-bc98c6f1f9eb5ce45dce1d1490709927"' :
+                                            'id="xs-components-links-module-AppModule-bc98c6f1f9eb5ce45dce1d1490709927"' }>
+                                            <li class="link">
+                                                <a href="components/AppComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AppComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                             </li>
                             <li class="link">
-                                <a href="modules/GatekeeperRoutingModule.html" data-type="entity-link" >GatekeeperRoutingModule</a>
+                                <a href="modules/LoginModule.html" data-type="entity-link" >LoginModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-LoginModule-be17254460e08bc7d5c9c0f8363defdc"' : 'data-target="#xs-components-links-module-LoginModule-be17254460e08bc7d5c9c0f8363defdc"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-LoginModule-be17254460e08bc7d5c9c0f8363defdc"' :
+                                            'id="xs-components-links-module-LoginModule-be17254460e08bc7d5c9c0f8363defdc"' }>
+                                            <li class="link">
+                                                <a href="components/LoginScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >LoginScene</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/LoginRoutingModule.html" data-type="entity-link" >LoginRoutingModule</a>
                             </li>
                 </ul>
                 </li>
                     <li class="chapter">
-                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#components-links"' :
-                            'data-target="#xs-components-links"' }>
-                            <span class="icon ion-md-cog"></span>
-                            <span>Components</span>
+                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#miscellaneous-links"'
+                            : 'data-target="#xs-miscellaneous-links"' }>
+                            <span class="icon ion-ios-cube"></span>
+                            <span>Miscellaneous</span>
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
-                        <ul class="links collapse " ${ isNormalMode ? 'id="components-links"' : 'id="xs-components-links"' }>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"' }>
                             <li class="link">
-                                <a href="components/LoginView.html" data-type="entity-link" >LoginView</a>
+                                <a href="miscellaneous/typealiases.html" data-type="entity-link">Type aliases</a>
                             </li>
                             <li class="link">
-                                <a href="components/RegisterView.html" data-type="entity-link" >RegisterView</a>
+                                <a href="miscellaneous/variables.html" data-type="entity-link">Variables</a>
                             </li>
                         </ul>
                     </li>
