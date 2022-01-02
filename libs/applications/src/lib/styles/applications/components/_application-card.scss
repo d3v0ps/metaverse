@@ -1,0 +1,53 @@
+
+.application-card {
+  border-radius: 10px;
+  box-shadow: 0 1px 2px 0 #0000000d;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 1rem;
+  cursor: pointer;
+
+  color: var(---component-application-card-font-color, #fff);
+
+  &:hover {
+    box-shadow: 0 1px 2px 0 #0000000d;
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+  }
+
+  &--is-internal {
+    filter: brightness(70%);
+  }
+
+  .icon__svg {
+    fill: var(---component-application-card-font-color, #fff);
+    width: 120px;
+    height: 120px;
+  }
+
+  .application-content {
+    padding: 0.5rem;
+  }
+
+  .application-title {
+    margin-bottom: 0.5rem;
+
+    &__name {
+      margin-bottom: 0;
+    }
+
+    &__author {
+      margin: 0;
+    }
+  }
+
+  .application-description {
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 0;
+  }
+}

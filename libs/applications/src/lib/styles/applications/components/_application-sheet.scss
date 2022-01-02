@@ -1,0 +1,22 @@
+:root {
+  --component-application-sheet-background-color: var(--color-base-dark-darkest);
+};
+
+
+.application-sheet {
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 20px;
+
+  color: var(---component-application-sheet-font-color, #fff);
+  background-color: var( --component-application-sheet-background-color);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
+
+  .icon__svg {
+    fill: var(---component-application-sheet-font-color, #fff);
+  }
+}

@@ -916,24 +916,30 @@
       },
       "tags": []
     },
-    "play": {
+    "player": {
       "projectType": "application",
-      "root": "apps/play",
-      "sourceRoot": "apps/play/src",
+      "root": "apps/player",
+      "sourceRoot": "apps/player/src",
       "prefix": "central-factory",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/apps/play",
-            "index": "apps/play/src/index.html",
-            "main": "apps/play/src/main.ts",
-            "polyfills": "apps/play/src/polyfills.ts",
-            "tsConfig": "apps/play/tsconfig.app.json",
+            "outputPath": "dist/apps/player",
+            "index": "apps/player/src/index.html",
+            "main": "apps/player/src/main.ts",
+            "polyfills": "apps/player/src/polyfills.ts",
+            "tsConfig": "apps/player/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["apps/play/src/favicon.ico", "apps/play/src/assets"],
-            "styles": ["apps/play/src/styles.scss"],
+            "assets": ["apps/player/src/favicon.ico", "apps/player/src/assets"],
+            "styles": ["apps/player/src/styles/index.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/web-components/src/lib/styles",
+                "libs/applications/src/lib/styles"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -952,8 +958,8 @@
               ],
               "fileReplacements": [
                 {
-                  "replace": "apps/play/src/environments/environment.ts",
-                  "with": "apps/play/src/environments/environment.prod.ts"
+                  "replace": "apps/player/src/environments/environment.ts",
+                  "with": "apps/player/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -973,10 +979,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "play:build:production"
+              "browserTarget": "player:build:production"
             },
             "development": {
-              "browserTarget": "play:build:development"
+              "browserTarget": "player:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -984,43 +990,43 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "play:build"
+            "browserTarget": "player:build"
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "apps/play/src/**/*.ts",
-              "apps/play/src/**/*.html"
+              "apps/player/src/**/*.ts",
+              "apps/player/src/**/*.html"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/play"],
+          "outputs": ["coverage/apps/player"],
           "options": {
-            "jestConfig": "apps/play/jest.config.js",
+            "jestConfig": "apps/player/jest.config.js",
             "passWithNoTests": true
           }
         }
       },
       "tags": []
     },
-    "play-e2e": {
-      "root": "apps/play-e2e",
-      "sourceRoot": "apps/play-e2e/src",
+    "player-e2e": {
+      "root": "apps/player-e2e",
+      "sourceRoot": "apps/player-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/play-e2e/cypress.json",
-            "devServerTarget": "play:serve:development"
+            "cypressConfig": "apps/player-e2e/cypress.json",
+            "devServerTarget": "player:serve:development"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "play:serve:production"
+              "devServerTarget": "player:serve:production"
             }
           }
         },
@@ -1028,12 +1034,12 @@
           "builder": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": ["apps/play-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": ["apps/player-e2e/**/*.{js,ts}"]
           }
         }
       },
       "tags": [],
-      "implicitDependencies": ["play"]
+      "implicitDependencies": ["player"]
     },
     "portal": {
       "projectType": "application",
@@ -1080,9 +1086,11 @@
             "stylePreprocessorOptions": {
               "includePaths": [
                 "libs/web-components/src/lib/styles",
+                "libs/applications/src/lib/styles",
                 "libs/avatars/src/lib/styles",
+                "libs/assets/src/lib/styles",
                 "apps/manage-avatars/src/styles",
-                "libs/assets/src/lib/styles"
+                "apps/player/src/styles"
               ]
             },
             "scripts": [],

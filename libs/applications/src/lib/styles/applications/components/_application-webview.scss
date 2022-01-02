@@ -1,0 +1,14 @@
+
+.application-webview {
+  border: 0;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  width: 100%;
+  height: calc(90vh - var(--component-application-toolbar-height));
+
+  &--no-toolbar {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 90vh;
+  }
+}

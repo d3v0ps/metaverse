@@ -46,9 +46,17 @@ export const routes: Routes = [
       {
         path: 'play',
         loadChildren: () =>
-          import('@central-factory/play/scenes/play/play.module').then(
+          import('apps/player/src/app/scenes/play/play.module').then(
             (m) => m.PlayModule
           ),
+        canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
+      },
+      {
+        path: 'manage-applications',
+        loadChildren: () =>
+          import(
+            '@central-factory/player/scenes/manage-applications/manage-applications.module'
+          ).then((m) => m.ManageApplicationsModule),
         canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
       },
       {

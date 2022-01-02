@@ -31,7 +31,7 @@
       "@central-factory/persistence/*": ["libs/persistence/src/lib/*"],
       "@central-factory/physics": ["libs/physics/src/index.ts"],
       "@central-factory/physics/*": ["libs/physics/src/lib/*"],
-      "@central-factory/play/*": ["apps/play/src/app/*"],
+      "@central-factory/player/*": ["apps/player/src/app/*"],
       "@central-factory/preferences/*": ["libs/preferences/src/lib/*"],
       "@central-factory/web-components": ["libs/web-components/src/index.ts"],
       "@central-factory/web-components/*": ["libs/web-components/src/lib/*"]

@@ -7,14 +7,15 @@ import type {
 } from 'rxdb/dist/types/types';
 import type { Application } from '../models/application';
 import { applicationsSchema } from './applications.schema';
-export type UserApplicationDocType = Application;
+export type StoreApplicationDocType = Application;
 
-export type UserApplicationDocument = RxDocument<UserApplicationDocType>;
+export type StoreApplicationDocument = RxDocument<StoreApplicationDocType>;
 
-export type UserApplicationsCollection = RxCollection<UserApplicationDocType>;
+export type StoreApplicationsCollection =
+  RxCollection<StoreApplicationDocument>;
 
-export const userApplicationsSchema: RxJsonSchema<UserApplicationDocType> = {
-  title: 'User Applications',
+export const storeApplicationsSchema: RxJsonSchema<StoreApplicationDocType> = {
+  title: 'Store Store',
   description: 'User Applications',
   version: 0,
   keyCompression: true,
@@ -24,12 +25,12 @@ export const userApplicationsSchema: RxJsonSchema<UserApplicationDocType> = {
   required: ['id', 'name', 'startUrl', 'createdAt', 'updatedAt'],
 };
 
-export const USER_APPLICATIONS_COLLECTION_PROVIDER: Provider = {
+export const STORE_APPLICATIONS_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'userapplications',
+    name: 'storeapplications',
     creator: {
-      schema: userApplicationsSchema,
+      schema: storeApplicationsSchema,
     },
   },
   multi: true,

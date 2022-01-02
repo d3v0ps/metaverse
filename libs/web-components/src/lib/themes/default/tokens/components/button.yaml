@@ -43,6 +43,18 @@ component:
       color:
         value: "{color.base.light.medium}"
 
+    dark:
+      background-color:
+        value: "{color.base.dark.medium}"
+      color:
+        value: "{color.base.light.medium}"
+
+    light:
+      background-color:
+        value: "{color.base.light.medium}"
+      color:
+        value: "{color.base.dark.medium}"
+
     big:
       font-size:
         value: "{size.font.large}"
