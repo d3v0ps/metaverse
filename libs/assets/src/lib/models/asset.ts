@@ -27,7 +27,7 @@ export interface Asset<TAssetData extends AssetData = AssetDataDefault> {
   /** The asset purchase market value */
   purchaseValue: number;
   /** The asset purchase date */
-  purchaseDate: Date;
+  purchaseDate: string;
   /** The asset data */
   data?: TAssetData;
   /** The owner of the asset */
@@ -36,4 +36,8 @@ export interface Asset<TAssetData extends AssetData = AssetDataDefault> {
   producer: string;
   /** The permissions of the asset */
   permissions?: Permission[];
+  /** The asset's created at */
+  createdAt?: Date;
+  /** The asset's updated at */
+  updatedAt?: Date;
 }

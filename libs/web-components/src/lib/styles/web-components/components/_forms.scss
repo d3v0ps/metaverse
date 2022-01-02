@@ -1,0 +1,82 @@
+
+.form {
+  display: block;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+
+  .form-control {
+    flex: 1 1 auto;
+    margin-bottom: 0;
+    width: auto;
+  }
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  background-clip: padding-box;
+}
+
+.input-group-append {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  background-clip: padding-box;
+  border-end-start-radius: 0;
+  border-start-start-radius: 0;
+  border-end-end-radius: 4px;
+  border-start-end-radius: 4px;
+
+  .icon__svg {
+    width: 1rem;
+    height: 1rem;
+    fill: currentColor;
+  }
+}
+
+.form-info {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 400;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-error {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 400;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  color: #f44336;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}

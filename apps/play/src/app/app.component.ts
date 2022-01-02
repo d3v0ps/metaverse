@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'central-factory-root',
+  selector: 'cf-play-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

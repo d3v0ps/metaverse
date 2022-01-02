@@ -1,33 +1,44 @@
-import { Component, Input } from '@angular/core';
-import { Asset, Equipment } from '@central-factory/assets';
-import { equipmentsMocks } from '@central-factory/assets/mocks/equipments';
+import { Component } from '@angular/core';
+import { Asset } from '@central-factory/assets';
+import { UserAssetsState } from '@central-factory/assets/states/user-assets.state';
 
 /** Inventory main scene */
 @Component({
   selector: 'cf-inventory',
   template: `
-    <div cfBlock="scene-content">
-      <div fxLayout="row" fxFlexFill fxLayoutGap="1rem">
-        <div fxFlex="70" fxFlex.lt-md="50" fxFlex.lt-sm="30">
-          <cf-assets-grid
-            [assets]="assets"
-            [activeAsset]="selectedAsset"
-            (assetClick)="onGridAssetClick($event)"
-          ></cf-assets-grid>
-        </div>
-        <div fxFlex="30" fxFlex.lt-md="50" fxFlex.lt-sm="70">
-          <cf-asset-detail [asset]="selectedAsset"></cf-asset-detail>
+    <ng-container
+      *ngIf="{
+        assets: assets$ | async
+      } as data"
+    >
+      <div cfBlock="scene-content" *ngIf="data.assets">
+        <div fxLayout="row" fxFlexFill fxLayoutGap="1rem">
+          <div fxFlex="70" fxFlex.lt-md="50" fxFlex.lt-sm="30">
+            <cf-assets-grid
+              [assets]="data.assets"
+              [activeAsset]="selectedAsset"
+              (assetClick)="onGridAssetClick($event)"
+            ></cf-assets-grid>
+          </div>
+          <div fxFlex="30" fxFlex.lt-md="50" fxFlex.lt-sm="70">
+            <cf-asset-detail
+              *ngIf="selectedAsset"
+              [asset]="selectedAsset"
+            ></cf-asset-detail>
+          </div>
         </div>
       </div>
-    </div>
+    </ng-container>
   `,
 })
 export class InventoryScene {
-  @Input() assets: Asset<Equipment>[] = equipmentsMocks;
+  public readonly assets$ = this.userAssetsRepository.assets$;
 
-  @Input() selectedAsset: Asset<Equipment> = equipmentsMocks[0];
+  selectedAsset?: Asset;
 
-  onGridAssetClick(asset: Asset<Equipment>) {
+  constructor(private readonly userAssetsRepository: UserAssetsState) {}
+
+  onGridAssetClick(asset: Asset) {
     this.selectedAsset = asset;
   }
 }

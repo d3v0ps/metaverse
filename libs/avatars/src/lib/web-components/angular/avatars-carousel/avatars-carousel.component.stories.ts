@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { BemModule } from '@central-factory/web-components/angular/bem/bem.module';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { avatarsMocks } from '../../../mocks/avatars';
+import { avatarsMocks } from '../../../data/storybook/avatars';
 import { AvatarsCarouselComponent } from './avatars-carousel.component';
 
 export default {

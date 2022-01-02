@@ -60,6 +60,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   `,
 })
 export class NavbarComponent {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Input() environment: any;
   @Input() title = 'CF Portal';
 
