@@ -209,6 +209,10 @@ export class EntityManager<
                       id: `${doc.id}:${permission.kind}:${permission.mode}:${permission.target}`,
                     }));
 
+                    if (!permissions.length) {
+                      return of(undefined);
+                    }
+
                     return forkJoin(
                       permissions.map((permission: any) =>
                         db.applicationpermissions.upsert(permission)
