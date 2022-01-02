@@ -29,7 +29,10 @@ import { PortalLayoutSceneModule } from './scenes/portal-layout/portal-layout.mo
     SplashScreenModule,
 
     PortalRoutingModule,
-    PortalMocksModule.forRoot({ enabled: environment.useMocks }),
+    PortalMocksModule.forRoot({
+      enabled: environment.useMocks,
+      autologin: environment.autologin,
+    }),
   ],
   providers: [
     {

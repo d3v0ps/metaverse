@@ -4,6 +4,7 @@ import { Environment } from './environment.interface';
 export const environment: Environment = {
   production: false,
   useMocks: true,
+  autologin: true,
   showSplashScreen: false,
 
   webUrl: 'http://localhost:3000',

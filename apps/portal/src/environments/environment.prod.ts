@@ -4,6 +4,7 @@ import { Environment } from './environment.interface';
 export const environment: Environment = {
   production: true,
   useMocks: false,
+  autologin: false,
   showSplashScreen: true,
 
   webUrl: 'https://central-factory.com/',

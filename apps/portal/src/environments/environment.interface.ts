@@ -4,6 +4,8 @@ export interface Environment {
   production: boolean;
   /** Use mocks */
   useMocks: boolean;
+  /** Autologin */
+  autologin: boolean;
   /** Show splash screen */
   showSplashScreen: boolean;
 
