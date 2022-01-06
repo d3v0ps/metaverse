@@ -21,9 +21,9 @@ import { Observable } from 'rxjs';
           </div>
           <div fxFlex="60">
             <div style="margin-bottom: 100px;">
-              <cf-avatar-skills
+              <!-- cf-avatar-skills
                 [skills]="data.avatar.skills"
-              ></cf-avatar-skills>
+              ></cf-avatar-skills -->
             </div>
             <div fxLayout="row" fxFlexFill>
               <div fxFlex="60">
@@ -33,9 +33,9 @@ import { Observable } from 'rxjs';
               </div>
 
               <div fxFlex="40">
-                <cf-avatar-scopes
+                <!-- cf-avatar-scopes
                   [scopes]="data.avatar.scopes"
-                ></cf-avatar-scopes>
+                ></cf-avatar-scopes-->
               </div>
             </div>
           </div>

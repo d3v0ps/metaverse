@@ -3,14 +3,13 @@ import { Router } from '@angular/router';
 import { Application } from '@central-factory/applications/models/application';
 import { ExternalUserApplicationsState } from '@central-factory/applications/states/external-user-applications.state';
 import { InternalUserApplicationsState } from '@central-factory/applications/states/internal-user-applications.state';
-import { AvailableApplicationsState } from '@central-factory/applications/states/manage-applications.state';
-import { map } from 'rxjs';
+import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
 
 /** Play main scene */
 @Component({
   selector: 'cf-play',
   template: `
-    <div cfBlock="scene-content" cfMod="no-padding">
+    <div cfBlock="scene-content" [cfMod]="['no-padding', 'play']">
       <cf-sidebar-container>
         <cf-sidebar
           [(opened)]="sidebarIsOpen"
@@ -63,7 +62,14 @@ import { map } from 'rxjs';
 
           <ng-container *ngIf="!openedApplication">
             <div style="padding: 20px">
-              <h2 cfElem="section-title">Select an application</h2>
+              <h2 cfElem="section-title">
+                Welcome back,
+                <strong class="text text--primary">{{
+                  (selectedAvatar$ | async)?.name
+                }}</strong
+                ><br />
+                What would you like to do?
+              </h2>
 
               <ng-container
                 *ngIf="externalUserApplications$ | async as applications"
@@ -133,27 +139,7 @@ import { map } from 'rxjs';
 export class PlayScene {
   externalUserApplications$ = this.externalUserApplicationsState.applications$;
   internalUserApplications$ = this.internalUserApplicationsState.applications$;
-
-  availableApplications$ = this.availableApplicationsState.applications$.pipe(
-    map((applications) =>
-      applications
-        .filter(
-          (application) =>
-            !application.application.additionalProperties?.internal
-        )
-        .sort((a, b) => a.application.name.localeCompare(b.application.name))
-        .sort((a, b) => {
-          if (
-            a.application.additionalProperties?.internal ===
-            b.application.additionalProperties?.internal
-          )
-            return 0;
-          if (!a.application.additionalProperties?.internal) return -1;
-          return 1;
-        })
-        .sort((a, b) => b.origin - a.origin)
-    )
-  );
+  selectedAvatar$ = this.selectedAvatarState.avatar$;
 
   selectedApplication?: Application;
   openedApplication?: Application;
@@ -163,8 +149,8 @@ export class PlayScene {
   constructor(
     private externalUserApplicationsState: ExternalUserApplicationsState,
     private internalUserApplicationsState: InternalUserApplicationsState,
-    private availableApplicationsState: AvailableApplicationsState,
-    private router: Router
+    private router: Router,
+    private selectedAvatarState: SelectedAvatarState
   ) {}
 
   onApplicationCardClick(application: Application) {

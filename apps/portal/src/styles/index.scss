@@ -7,14 +7,14 @@
 
 
 
-/** Animated changing background
-body {
+// Animated changing background
+.scene-content--play {
   color: white;
   background-color: #706fd3;
 }
 
 
-body {
+.scene-content--play {
   background: -moz-linear-gradient(45deg, #02e1ba 0%, #26c9f2 29%, #d911f2 66%, #ffa079 100%);
   background: -webkit-linear-gradient(45deg, #02e1ba 0%,#26c9f2 29%,#d911f2 66%,#ffa079 100%);
   background: linear-gradient(45deg, #02e1ba 0%,#26c9f2 29%,#d911f2 66%,#ffa079 100%);
@@ -31,8 +31,8 @@ overflow: hidden;
 position: relative;
 }
 
-body::before,
-body::after {
+.scene-content--play::before,
+.scene-content--play::after {
 content: "";
 width: 70vmax;
 height: 70vmax;
@@ -47,7 +47,7 @@ transform-origin: 30% 30%;
 pointer-events: none;
 }
 
-body::after {
+.scene-content--play::after {
   width: 70vmin;
   height: 70vmin;
   left: auto;
@@ -122,5 +122,3 @@ to {
 .st13{opacity:0.2;}
 .st14{clip-path:url(#SVGID_16_);}
 .st15{opacity:0.3;fill:#FFFFFF;enable-background:new    ;}
-
-**/

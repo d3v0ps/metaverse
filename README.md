@@ -32,3 +32,8 @@ nx run <module>:storybook
 ## Example:
 nx run assets:storybook
 ```
+## Running linters & tests
+
+```sh
+nx run-many --target=lint --all
+```

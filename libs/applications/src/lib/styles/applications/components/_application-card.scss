@@ -25,6 +25,7 @@
 
   .icon__svg {
     fill: var(---component-application-card-font-color, #fff);
+    filter: drop-shadow(3px 3px 2px rgb(0 0 0 / 0.4));
     width: 120px;
     height: 120px;
   }
