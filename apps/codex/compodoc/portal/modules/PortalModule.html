@@ -219,7 +219,9 @@
 import { APP_INITIALIZER, NgModule } from &#x27;@angular/core&#x27;;
 import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
 import { BrowserAnimationsModule } from &#x27;@angular/platform-browser/animations&#x27;;
+import { STORE_APPLICATIONS_COLLECTION_PROVIDER } from &#x27;@central-factory/applications/collections/store-applications.collection&#x27;;
 import { USER_APPLICATIONS_COLLECTION_PROVIDER } from &#x27;@central-factory/applications/collections/user-applications.collection&#x27;;
+import { STORE_APPLICATIONS_INITIAL_DATA_PROVIDER } from &#x27;@central-factory/applications/data/base/store-applications.data&#x27;;
 import { USER_APPLICATIONS_INITIAL_DATA_PROVIDER } from &#x27;@central-factory/applications/data/base/user-applications.data&#x27;;
 import { USER_ASSETS_COLLECTION_PROVIDER } from &#x27;@central-factory/assets/collections/user-assets.collection&#x27;;
 import { USER_AVATARS_COLLECTION_PROVIDER } from &#x27;@central-factory/avatars/collections/user-avatars.collection&#x27;;
@@ -234,6 +236,7 @@ import { PortalMocksModule } from &#x27;./portal-mocks.module&#x27;;
 import { PortalRoutingModule } from &#x27;./portal-routing.module&#x27;;
 import { PortalRoot } from &#x27;./portal.root&#x27;;
 import { PortalLayoutSceneModule } from &#x27;./scenes/portal-layout/portal-layout.module&#x27;;
+import { BackgroundRenderer } from &#x27;./services/background.renderer&#x27;;
 
 @NgModule({
   declarations: [PortalRoot],
@@ -246,22 +249,26 @@ import { PortalLayoutSceneModule } from &#x27;./scenes/portal-layout/portal-layo
     SplashScreenModule,
 
     PortalRoutingModule,
-    PortalMocksModule.forRoot({ enabled: environment.useMocks }),
+    PortalMocksModule.forRoot({
+      enabled: environment.useMocks,
+      autologin: environment.autologin,
+    }),
   ],
   providers: [
     {
       provide: APP_INITIALIZER,
       useFactory: () &#x3D;&gt; () &#x3D;&gt; null,
-      deps: [CustomizationSettingsState],
+      deps: [CustomizationSettingsState, BackgroundRenderer],
       multi: true,
     },
-
+    STORE_APPLICATIONS_COLLECTION_PROVIDER,
     USER_APPLICATIONS_COLLECTION_PROVIDER,
     APPLICATION_PERMISSIONS_COLLECTION_PROVIDER,
     USER_PREFERENCES_COLLECTION_PROVIDER,
     USER_AVATARS_COLLECTION_PROVIDER,
     USER_ASSETS_COLLECTION_PROVIDER,
 
+    STORE_APPLICATIONS_INITIAL_DATA_PROVIDER,
     USER_APPLICATIONS_INITIAL_DATA_PROVIDER,
     CUSTOMIZATION_INITIAL_DATA_PROVIDER,
   ],

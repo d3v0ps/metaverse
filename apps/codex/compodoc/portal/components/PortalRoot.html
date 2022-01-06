@@ -50,6 +50,9 @@
             <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
         </li>
         <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
@@ -95,11 +98,27 @@
             </tr>
 
 
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>
+      #bgcanvas {
+        display: block;
+        margin: 0 auto;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        z-index: -1;
+      }
+    </code></td>
+            </tr>
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;cf-splash-screen *ngIf&#x3D;&quot;environment.showSplashScreen&quot;&gt;&lt;/cf-splash-screen&gt;
-&lt;router-outlet&gt;&lt;/router-outlet&gt;
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;canvas id&#x3D;&quot;bgcanvas&quot;&gt;&lt;/canvas&gt;
+&lt;cf-splash-screen *ngIf&#x3D;&quot;environment.showSplashScreen&quot;&gt;&lt;/cf-splash-screen&gt;
+&lt;div class&#x3D;&quot;application&quot;&gt;
+  &lt;router-outlet&gt;&lt;/router-outlet&gt;
+&lt;/div&gt;
 </code></pre></td>
             </tr>
 
@@ -172,7 +191,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">apps/portal/src/app/portal.root.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">apps/portal/src/app/portal.root.ts:28</a></div>
                         </td>
                     </tr>
 
@@ -192,9 +211,24 @@ import { environment } from &#x27;../environments/environment&#x27;;
 @Component({
   selector: &#x27;cf-portal-root&#x27;,
   template: &#x60;
+    &lt;canvas id&#x3D;&quot;bgcanvas&quot;&gt;&lt;/canvas&gt;
     &lt;cf-splash-screen *ngIf&#x3D;&quot;environment.showSplashScreen&quot;&gt;&lt;/cf-splash-screen&gt;
-    &lt;router-outlet&gt;&lt;/router-outlet&gt;
+    &lt;div class&#x3D;&quot;application&quot;&gt;
+      &lt;router-outlet&gt;&lt;/router-outlet&gt;
+    &lt;/div&gt;
   &#x60;,
+  styles: [
+    &#x60;
+      #bgcanvas {
+        display: block;
+        margin: 0 auto;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        z-index: -1;
+      }
+    &#x60;,
+  ],
 })
 export class PortalRoot {
   environment &#x3D; environment;
@@ -203,6 +237,19 @@ export class PortalRoot {
     </div>
 
 
+    <div class="tab-pane fade " id="c-styleData">
+            <pre class="line-numbers"><code class="language-scss">
+      #bgcanvas {
+        display: block;
+        margin: 0 auto;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        z-index: -1;
+      }
+    
+</code></pre>
+    </div>
 
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
@@ -229,7 +276,7 @@ export class PortalRoot {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><cf-splash-screen *ngIf="environment.showSplashScreen"></cf-splash-screen><router-outlet></router-outlet></div>'
+        var COMPONENT_TEMPLATE = '<div><canvas id="bgcanvas"></canvas><cf-splash-screen *ngIf="environment.showSplashScreen"></cf-splash-screen><div class="application">  <router-outlet></router-outlet></div></div>'
     var COMPONENTS = [{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PortalRoot'};

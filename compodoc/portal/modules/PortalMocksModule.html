@@ -95,8 +95,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="11"
-                            class="link-to-prism">apps/portal/src/app/portal-mocks.module.ts:11</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="19"
+                            class="link-to-prism">apps/portal/src/app/portal-mocks.module.ts:19</a></div>
                 </td>
             </tr>
 
@@ -148,24 +148,43 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ModuleWithProviders, NgModule, Provider } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  APP_INITIALIZER,
+  ModuleWithProviders,
+  NgModule,
+  Provider,
+} from &#x27;@angular/core&#x27;;
 import { USER_ASSETS_MOCKS_DATA_PROVIDER } from &#x27;@central-factory/assets/data/mocks/user-assets.data&#x27;;
 import { USER_AVATARS_MOCKS_DATA_PROVIDER } from &#x27;@central-factory/avatars/data/mocks/user-avatars.data&#x27;;
+import { EntityManager } from &#x27;@central-factory/persistence/services/entity-manager&#x27;;
+import { firstValueFrom } from &#x27;rxjs&#x27;;
 
 export type PortalMocksModuleConfig &#x3D; {
   enabled: boolean;
+  autologin: boolean;
 };
 
 @NgModule()
 export class PortalMocksModule {
   static forRoot({
     enabled &#x3D; false,
+    autologin &#x3D; false,
   }: PortalMocksModuleConfig): ModuleWithProviders&lt;PortalMocksModule&gt; {
     const providers: Provider[] &#x3D; [];
 
     if (enabled) {
       providers.push(USER_AVATARS_MOCKS_DATA_PROVIDER);
       providers.push(USER_ASSETS_MOCKS_DATA_PROVIDER);
+    }
+
+    if (autologin) {
+      providers.push({
+        provide: APP_INITIALIZER,
+        useFactory: (entityManager: EntityManager) &#x3D;&gt; () &#x3D;&gt;
+          firstValueFrom(entityManager.setupDatabase(&#x27;test&#x27;, &#x27;test1234&#x27;)),
+        deps: [EntityManager],
+        multi: true,
+      });
     }
 
     return {

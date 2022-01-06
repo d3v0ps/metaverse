@@ -41,7 +41,12 @@
 <div><pre class="line-numbers"><code class="language-sh"># run the portal app
 nx serve portal
 # run the codex website
-nx serve codex</code></pre></div>
+nx serve codex</code></pre></div><h3 id="building-themes">Building themes</h3>
+<div><pre class="line-numbers"><code class="language-sh">nx run web-components:build-themes</code></pre></div><h2 id="running-storybook">Running storybook</h2>
+<div><pre class="line-numbers"><code class="language-sh">nx run &lt;module&gt;:storybook
+## Example:
+nx run assets:storybook</code></pre></div><h2 id="running-linters--tests">Running linters &amp; tests</h2>
+<div><pre class="line-numbers"><code class="language-sh">nx run-many --target=lint --all</code></pre></div>
 
 
 

@@ -60,6 +60,21 @@
                 <td class="col-md-4">
                     <ul class="index-list">
                         <li>
+                            <a href="#applicationsSchema" title="libs/applications/src/lib/collections/applications.schema.ts" ><b>applicationsSchema</b>&nbsp;&nbsp;&nbsp;(libs/.../applications.schema.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#STORE_APPLICATIONS_COLLECTION_PROVIDER" title="libs/applications/src/lib/collections/store-applications.collection.ts" ><b>STORE_APPLICATIONS_COLLECTION_PROVIDER</b>&nbsp;&nbsp;&nbsp;(libs/.../store-applications.collection.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#STORE_APPLICATIONS_INITIAL_DATA_PROVIDER" title="libs/applications/src/lib/data/base/store-applications.data.ts" ><b>STORE_APPLICATIONS_INITIAL_DATA_PROVIDER</b>&nbsp;&nbsp;&nbsp;(libs/.../store-applications.data.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#storeApplications" title="libs/applications/src/lib/data/base/store-applications.data.ts" ><b>storeApplications</b>&nbsp;&nbsp;&nbsp;(libs/.../store-applications.data.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#storeApplicationsSchema" title="libs/applications/src/lib/collections/store-applications.collection.ts" ><b>storeApplicationsSchema</b>&nbsp;&nbsp;&nbsp;(libs/.../store-applications.collection.ts)</a>
+                        </li>
+                        <li>
                             <a href="#USER_APPLICATIONS_COLLECTION_PROVIDER" title="libs/applications/src/lib/collections/user-applications.collection.ts" ><b>USER_APPLICATIONS_COLLECTION_PROVIDER</b>&nbsp;&nbsp;&nbsp;(libs/.../user-applications.collection.ts)</a>
                         </li>
                         <li>
@@ -78,69 +93,28 @@
     </table>
 </section>
 
-    <h3>libs/applications/src/lib/collections/user-applications.collection.ts</h3>
+    <h3>libs/applications/src/lib/collections/applications.schema.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="USER_APPLICATIONS_COLLECTION_PROVIDER"></a>
+                    <a name="applicationsSchema"></a>
                     <span class="name">
-                        <span ><b>USER_APPLICATIONS_COLLECTION_PROVIDER</b></span>
-                        <a href="#USER_APPLICATIONS_COLLECTION_PROVIDER"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>applicationsSchema</b></span>
+                        <a href="#applicationsSchema"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/core/Provider" target="_blank" >Provider</a></code>
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
 
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
-  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
-  useValue: {
-    name: &#x27;userapplications&#x27;,
-    creator: {
-      schema: userApplicationsSchema,
-    },
-  },
-  multi: true,
-}</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="userApplicationsSchema"></a>
-                    <span class="name">
-                        <span ><b>userApplicationsSchema</b></span>
-                        <a href="#userApplicationsSchema"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>    <code>RxJsonSchema&lt;UserApplicationDocType&gt;</code>
-
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>{
-  title: &#x27;User Applications&#x27;,
-  description: &#x27;User Applications&#x27;,
-  version: 0,
-  keyCompression: true,
-  primaryKey: &#x27;id&#x27;,
-  type: &#x27;object&#x27;,
   properties: {
     id: {
       type: &#x27;string&#x27;,
@@ -262,6 +236,14 @@
             required: [&#x27;kind&#x27;, &#x27;mode&#x27;, &#x27;target&#x27;],
           },
         },
+        internal: {
+          type: &#x27;boolean&#x27;,
+          description: &#x27;Internal&#x27;,
+        },
+        defaultShortcut: {
+          type: &#x27;string&#x27;,
+          description: &#x27;Default shortcut&#x27;,
+        },
         sidebarShortcuts: {
           type: &#x27;array&#x27;,
           description: &#x27;Sidebar shortcuts&#x27;,
@@ -338,6 +320,259 @@
         </tbody>
     </table>
 </section>
+    <h3>libs/applications/src/lib/collections/store-applications.collection.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="STORE_APPLICATIONS_COLLECTION_PROVIDER"></a>
+                    <span class="name">
+                        <span ><b>STORE_APPLICATIONS_COLLECTION_PROVIDER</b></span>
+                        <a href="#STORE_APPLICATIONS_COLLECTION_PROVIDER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/Provider" target="_blank" >Provider</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: &#x27;storeapplications&#x27;,
+    creator: {
+      schema: storeApplicationsSchema,
+    },
+  },
+  multi: true,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="storeApplicationsSchema"></a>
+                    <span class="name">
+                        <span ><b>storeApplicationsSchema</b></span>
+                        <a href="#storeApplicationsSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>RxJsonSchema&lt;StoreApplicationDocType&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  title: &#x27;Store Store&#x27;,
+  description: &#x27;User Applications&#x27;,
+  version: 0,
+  keyCompression: true,
+  primaryKey: &#x27;id&#x27;,
+  type: &#x27;object&#x27;,
+  properties: applicationsSchema.properties,
+  required: [&#x27;id&#x27;, &#x27;name&#x27;, &#x27;startUrl&#x27;, &#x27;createdAt&#x27;, &#x27;updatedAt&#x27;],
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/applications/src/lib/data/base/store-applications.data.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="STORE_APPLICATIONS_INITIAL_DATA_PROVIDER"></a>
+                    <span class="name">
+                        <span ><b>STORE_APPLICATIONS_INITIAL_DATA_PROVIDER</b></span>
+                        <a href="#STORE_APPLICATIONS_INITIAL_DATA_PROVIDER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  provide: ENTITY_MANAGER_INITIAL_DATA_TOKEN,
+  useValue: {
+    name: &#x27;storeapplications&#x27;,
+    upsert: true,
+    data: storeApplications,
+  },
+  multi: true,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="storeApplications"></a>
+                    <span class="name">
+                        <span ><b>storeApplications</b></span>
+                        <a href="#storeApplications"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>StoreApplicationDocType[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  {
+    id: &#x27;com.central-factory.metadrones&#x27;,
+    name: &#x27;Metadrones&#x27;,
+    description: &#x27;Game demo on how to integrate with the metaverse&#x27;,
+    startUrl: &#x27;codex&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/mdi/drone.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Codex&#x27;,
+        url: &#x27;https://www.aitorllamas.com/metaverse/apps/codex&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mid/book-open-page-variant.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.central-factory&#x27;,
+        name: &#x27;Central Factory&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Codex&#x27;,
+      sidebarShortcuts: [],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#d1d36f&#x27;,
+        },
+      ],
+    },
+  },
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/applications/src/lib/collections/user-applications.collection.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="USER_APPLICATIONS_COLLECTION_PROVIDER"></a>
+                    <span class="name">
+                        <span ><b>USER_APPLICATIONS_COLLECTION_PROVIDER</b></span>
+                        <a href="#USER_APPLICATIONS_COLLECTION_PROVIDER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/Provider" target="_blank" >Provider</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: &#x27;userapplications&#x27;,
+    creator: {
+      schema: userApplicationsSchema,
+    },
+  },
+  multi: true,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userApplicationsSchema"></a>
+                    <span class="name">
+                        <span ><b>userApplicationsSchema</b></span>
+                        <a href="#userApplicationsSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>RxJsonSchema&lt;UserApplicationDocType&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  title: &#x27;User Applications&#x27;,
+  description: &#x27;User Applications&#x27;,
+  version: 0,
+  keyCompression: true,
+  primaryKey: &#x27;id&#x27;,
+  type: &#x27;object&#x27;,
+  properties: applicationsSchema.properties,
+  required: [&#x27;id&#x27;, &#x27;name&#x27;, &#x27;startUrl&#x27;, &#x27;createdAt&#x27;, &#x27;updatedAt&#x27;],
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
     <h3>libs/applications/src/lib/data/base/user-applications.data.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -401,12 +636,17 @@
     startUrl: &#x27;/&#x27;,
     icons: [
       {
-        src: &#x27;assets/images/logo.png&#x27;,
+        src: &#x27;assets/icons/mdi/open-in-app.svg&#x27;,
         sizes: &#x27;512x512&#x27;,
-        type: &#x27;image/png&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
       },
     ],
     additionalProperties: {
+      author: {
+        id: &#x27;com.central-factory&#x27;,
+        name: &#x27;Central Factory&#x27;,
+      },
+      internal: true,
       permissions: [
         {
           kind: PermissionKind.Collection,
@@ -427,13 +667,13 @@
     },
   },
   {
-    id: &#x27;com.central-factory.play&#x27;,
-    name: &#x27;Play&#x27;,
-    description: &#x27;Play&#x27;,
+    id: &#x27;com.central-factory.player&#x27;,
+    name: &#x27;Player&#x27;,
+    description: &#x27;Applications Player&#x27;,
     startUrl: &#x27;play&#x27;,
     icons: [
       {
-        src: &#x27;assets/icons/play.svg&#x27;,
+        src: &#x27;assets/icons/mdi/play.svg&#x27;,
         sizes: &#x27;512x512&#x27;,
         type: &#x27;image/svg+xml&#x27;,
       },
@@ -452,6 +692,11 @@
       },
     ],
     additionalProperties: {
+      author: {
+        id: &#x27;com.central-factory&#x27;,
+        name: &#x27;Central Factory&#x27;,
+      },
+      internal: true,
       permissions: [
         {
           kind: PermissionKind.Collection,
@@ -468,6 +713,21 @@
           mode: PermissionMode.Delete,
           target: &#x27;userapplications&#x27;,
         },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Read,
+          target: &#x27;storeapplications&#x27;,
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Write,
+          target: &#x27;storeapplications&#x27;,
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Delete,
+          target: &#x27;storeapplications&#x27;,
+        },
       ],
       sidebarShortcuts: [&#x27;Play&#x27;],
     },
@@ -475,11 +735,11 @@
   {
     id: &#x27;com.central-factory.user-avatars&#x27;,
     name: &#x27;User Avatars&#x27;,
-    description: &#x27;User Avatars&#x27;,
+    description: &#x27;Avatars management module&#x27;,
     startUrl: &#x27;user-avatars&#x27;,
     icons: [
       {
-        src: &#x27;assets/icons/user-avatars.svg&#x27;,
+        src: &#x27;assets/icons/mdi/account.svg&#x27;,
         sizes: &#x27;512x512&#x27;,
         type: &#x27;image/svg+xml&#x27;,
       },
@@ -509,6 +769,11 @@
       },
     ],
     additionalProperties: {
+      author: {
+        id: &#x27;com.central-factory&#x27;,
+        name: &#x27;Central Factory&#x27;,
+      },
+      internal: true,
       permissions: [
         {
           kind: PermissionKind.Collection,
@@ -542,11 +807,11 @@
   {
     id: &#x27;com.central-factory.inventory&#x27;,
     name: &#x27;Inventory&#x27;,
-    description: &#x27;Inventory&#x27;,
+    description: &#x27;Assets management module&#x27;,
     startUrl: &#x27;inventory&#x27;,
     icons: [
       {
-        src: &#x27;assets/icons/inventory.svg&#x27;,
+        src: &#x27;assets/icons/mdi/bag-personal.svg&#x27;,
         sizes: &#x27;512x512&#x27;,
         type: &#x27;image/svg+xml&#x27;,
       },
@@ -565,6 +830,11 @@
       },
     ],
     additionalProperties: {
+      author: {
+        id: &#x27;com.central-factory&#x27;,
+        name: &#x27;Central Factory&#x27;,
+      },
+      internal: true,
       permissions: [
         {
           kind: PermissionKind.Collection,
@@ -588,11 +858,11 @@
   {
     id: &#x27;com.central-factory.marketplace&#x27;,
     name: &#x27;Marketplace&#x27;,
-    description: &#x27;Marketplace&#x27;,
+    description: &#x27;Trade with Assets&#x27;,
     startUrl: &#x27;marketplace&#x27;,
     icons: [
       {
-        src: &#x27;assets/icons/marketplace.svg&#x27;,
+        src: &#x27;assets/icons/mdi/store.svg&#x27;,
         sizes: &#x27;512x512&#x27;,
         type: &#x27;image/svg+xml&#x27;,
       },
@@ -611,6 +881,11 @@
       },
     ],
     additionalProperties: {
+      author: {
+        id: &#x27;com.central-factory&#x27;,
+        name: &#x27;Central Factory&#x27;,
+      },
+      internal: true,
       permissions: [
         {
           kind: PermissionKind.Collection,
@@ -638,7 +913,7 @@
     startUrl: &#x27;settings&#x27;,
     icons: [
       {
-        src: &#x27;assets/icons/settings.svg&#x27;,
+        src: &#x27;assets/icons/mdi/cog.svg&#x27;,
         sizes: &#x27;512x512&#x27;,
         type: &#x27;image/svg+xml&#x27;,
       },
@@ -657,6 +932,11 @@
       },
     ],
     additionalProperties: {
+      internal: true,
+      author: {
+        id: &#x27;com.central-factory&#x27;,
+        name: &#x27;Central Factory&#x27;,
+      },
       permissions: [
         {
           kind: PermissionKind.Collection,
@@ -670,6 +950,49 @@
         },
       ],
       sidebarShortcuts: [&#x27;Settings&#x27;],
+    },
+  },
+  {
+    id: &#x27;com.central-factory.codex&#x27;,
+    name: &#x27;Codex&#x27;,
+    description: &#x27;Official documentation for the Central Factory Metaverse&#x27;,
+    startUrl: &#x27;codex&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/mdi/book-open-page-variant.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Codex&#x27;,
+        url: &#x27;https://www.aitorllamas.com/metaverse/apps/codex&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mid/book-open-page-variant.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.central-factory&#x27;,
+        name: &#x27;Central Factory&#x27;,
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      permissions: [],
+      defaultShortcut: &#x27;Codex&#x27;,
+      sidebarShortcuts: [],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#706fd3&#x27;,
+        },
+      ],
     },
   },
 ]</code>

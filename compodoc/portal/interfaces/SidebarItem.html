@@ -285,7 +285,12 @@ export interface SidebarItem {
       } as data&quot;
     &gt;
       &lt;div cfBlock&#x3D;&quot;scene&quot;&gt;
-        &lt;div class&#x3D;&quot;scene__body&quot;&gt;
+        &lt;div
+          cfElem&#x3D;&quot;body&quot;
+          [cfMod]&#x3D;&quot;{
+            &#x27;no-navbar&#x27;: !showNavbar
+          }&quot;
+        &gt;
           &lt;cf-sidebar-container
             *ngIf&#x3D;&quot;data.selectedAvatar; else notSelectedAvatarLayout&quot;
           &gt;
@@ -361,6 +366,7 @@ export interface SidebarItem {
           &lt;/ng-template&gt;
         &lt;/div&gt;
         &lt;cf-navbar
+          *ngIf&#x3D;&quot;showNavbar&quot;
           cfElem&#x3D;&quot;navbar&quot;
           [title]&#x3D;&quot;title&quot;
           (titleClick)&#x3D;&quot;sidebarIsOpen &#x3D; !sidebarIsOpen&quot;
@@ -375,6 +381,8 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
   public sidebarIsOpen &#x3D; false;
 
   public sidebarItems: SidebarItem[] &#x3D; [];
+
+  public showNavbar &#x3D; false;
 
   public readonly selectedAvatar$: Observable&lt;Avatar | null | undefined&gt; &#x3D;
     this.selectedAvatarState.avatar$;

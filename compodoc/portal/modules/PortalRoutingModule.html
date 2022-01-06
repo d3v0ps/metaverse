@@ -121,9 +121,17 @@ export const routes: Routes &#x3D; [
       {
         path: &#x27;play&#x27;,
         loadChildren: () &#x3D;&gt;
-          &quot;import(&#x27;@central-factory/play/scenes/play/play.module&#x27;).then(\
+          &quot;import(&#x27;apps/player/src/app/scenes/play/play.module&#x27;).then(\
             (m) &#x3D;&gt; m.PlayModule\
           )&quot;,
+        canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
+      },
+      {
+        path: &#x27;manage-applications&#x27;,
+        loadChildren: () &#x3D;&gt;
+          &quot;import(\
+            &#x27;@central-factory/player/scenes/manage-applications/manage-applications.module&#x27;\
+          ).then((m) &#x3D;&gt; m.ManageApplicationsModule)&quot;,
         canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
       },
       {

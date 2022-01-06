@@ -927,6 +927,10 @@ export class EntityManager&lt;
                       id: &#x60;${doc.id}:${permission.kind}:${permission.mode}:${permission.target}&#x60;,
                     }));
 
+                    if (!permissions.length) {
+                      return of(undefined);
+                    }
+
                     return forkJoin(
                       permissions.map((permission: any) &#x3D;&gt;
                         db.applicationpermissions.upsert(permission)

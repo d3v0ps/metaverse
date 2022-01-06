@@ -104,7 +104,12 @@
   } as data&quot;
 &gt;
   &lt;div cfBlock&#x3D;&quot;scene&quot;&gt;
-    &lt;div class&#x3D;&quot;scene__body&quot;&gt;
+    &lt;div
+      cfElem&#x3D;&quot;body&quot;
+      [cfMod]&#x3D;&quot;{
+        &#x27;no-navbar&#x27;: !showNavbar
+      }&quot;
+    &gt;
       &lt;cf-sidebar-container
         *ngIf&#x3D;&quot;data.selectedAvatar; else notSelectedAvatarLayout&quot;
       &gt;
@@ -180,6 +185,7 @@
       &lt;/ng-template&gt;
     &lt;/div&gt;
     &lt;cf-navbar
+      *ngIf&#x3D;&quot;showNavbar&quot;
       cfElem&#x3D;&quot;navbar&quot;
       [title]&#x3D;&quot;title&quot;
       (titleClick)&#x3D;&quot;sidebarIsOpen &#x3D; !sidebarIsOpen&quot;
@@ -223,6 +229,10 @@
                                     <span class="modifier">Public</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#selectedAvatar$" >selectedAvatar$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#showNavbar" >showNavbar</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -291,7 +301,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:125</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:133</a></div>
                             </td>
                         </tr>
 
@@ -384,8 +394,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="181"
-                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:181</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="189"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:189</a></div>
                 </td>
             </tr>
 
@@ -455,8 +465,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="158"
-                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:158</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="166"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:166</a></div>
                 </td>
             </tr>
 
@@ -494,8 +504,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="133"
-                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:133</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="141"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:141</a></div>
                 </td>
             </tr>
 
@@ -533,8 +543,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="221"
-                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:221</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="229"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:229</a></div>
                 </td>
             </tr>
 
@@ -572,8 +582,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="163"
-                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:163</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="171"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:171</a></div>
                 </td>
             </tr>
 
@@ -647,7 +657,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:125</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:133</a></div>
                         </td>
                     </tr>
 
@@ -680,7 +690,33 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:122</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:130</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showNavbar"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>showNavbar</b></span>
+                        <a href="#showNavbar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:128</a></div>
                         </td>
                     </tr>
 
@@ -706,7 +742,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:118</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:124</a></div>
                         </td>
                     </tr>
 
@@ -738,7 +774,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:120</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:126</a></div>
                         </td>
                     </tr>
 
@@ -770,7 +806,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:117</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:123</a></div>
                         </td>
                     </tr>
 
@@ -813,7 +849,12 @@ export interface SidebarItem {
       } as data&quot;
     &gt;
       &lt;div cfBlock&#x3D;&quot;scene&quot;&gt;
-        &lt;div class&#x3D;&quot;scene__body&quot;&gt;
+        &lt;div
+          cfElem&#x3D;&quot;body&quot;
+          [cfMod]&#x3D;&quot;{
+            &#x27;no-navbar&#x27;: !showNavbar
+          }&quot;
+        &gt;
           &lt;cf-sidebar-container
             *ngIf&#x3D;&quot;data.selectedAvatar; else notSelectedAvatarLayout&quot;
           &gt;
@@ -889,6 +930,7 @@ export interface SidebarItem {
           &lt;/ng-template&gt;
         &lt;/div&gt;
         &lt;cf-navbar
+          *ngIf&#x3D;&quot;showNavbar&quot;
           cfElem&#x3D;&quot;navbar&quot;
           [title]&#x3D;&quot;title&quot;
           (titleClick)&#x3D;&quot;sidebarIsOpen &#x3D; !sidebarIsOpen&quot;
@@ -903,6 +945,8 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
   public sidebarIsOpen &#x3D; false;
 
   public sidebarItems: SidebarItem[] &#x3D; [];
+
+  public showNavbar &#x3D; false;
 
   public readonly selectedAvatar$: Observable&lt;Avatar | null | undefined&gt; &#x3D;
     this.selectedAvatarState.avatar$;
@@ -1039,7 +1083,7 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    selectedAvatar: selectedAvatar$ | async  } as data">  <div cfBlock="scene">    <div class="scene__body">      <cf-sidebar-container        *ngIf="data.selectedAvatar; else notSelectedAvatarLayout"      >        <!-- A sidebar -->        <cf-sidebar          [(opened)]="sidebarIsOpen"          [dock]="true"          [dockedSize]="\'80px\'"          [showBackdrop]="true"          [closeOnClickBackdrop]="true"          [closeOnClickOutside]="true"        >          <div style="margin-top: 20px">            <a              [routerLink]="[\'/select-avatar\']"              class="d-block"              cfBlock="sidebar-item"            >              <div cfElem="text">                <span cfElem="text-content">Account</span>              </div>              <img                cfElem="image"                [src]="                  data.selectedAvatar.selectedAppearance.smallPreviewUrl                "              />            </a>            <ng-container *ngFor="let item of sidebarItems">              <a                [routerLink]="item.routerLink"                class="d-block"                cfBlock="sidebar-item"              >                <div cfElem="text">                  <span cfElem="text-content">{{ item.name }}</span>                </div>                <button                  cfBlock="button"                  cfMod="fab"                  [ngClass]="{                    \'button--active\': item.active                  }"                  style="margin-top: 15px;"                >                  <cf-svg-icon                    [src]="item.icon"                    cfElem="icon"                    [svgClass]="\'icon__svg\'"                  ></cf-svg-icon>                </button>              </a>            </ng-container>            <router-outlet name="sidebar"></router-outlet>          </div>        </cf-sidebar>        <div cf-sidebar-content>          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </cf-sidebar-container>      <ng-template #notSelectedAvatarLayout>        <div class="scene__container">          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </ng-template>    </div>    <cf-navbar      cfElem="navbar"      [title]="title"      (titleClick)="sidebarIsOpen = !sidebarIsOpen"    >    </cf-navbar>  </div></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    selectedAvatar: selectedAvatar$ | async  } as data">  <div cfBlock="scene">    <div      cfElem="body"      [cfMod]="{        \'no-navbar\': !showNavbar      }"    >      <cf-sidebar-container        *ngIf="data.selectedAvatar; else notSelectedAvatarLayout"      >        <!-- A sidebar -->        <cf-sidebar          [(opened)]="sidebarIsOpen"          [dock]="true"          [dockedSize]="\'80px\'"          [showBackdrop]="true"          [closeOnClickBackdrop]="true"          [closeOnClickOutside]="true"        >          <div style="margin-top: 20px">            <a              [routerLink]="[\'/select-avatar\']"              class="d-block"              cfBlock="sidebar-item"            >              <div cfElem="text">                <span cfElem="text-content">Account</span>              </div>              <img                cfElem="image"                [src]="                  data.selectedAvatar.selectedAppearance.smallPreviewUrl                "              />            </a>            <ng-container *ngFor="let item of sidebarItems">              <a                [routerLink]="item.routerLink"                class="d-block"                cfBlock="sidebar-item"              >                <div cfElem="text">                  <span cfElem="text-content">{{ item.name }}</span>                </div>                <button                  cfBlock="button"                  cfMod="fab"                  [ngClass]="{                    \'button--active\': item.active                  }"                  style="margin-top: 15px;"                >                  <cf-svg-icon                    [src]="item.icon"                    cfElem="icon"                    [svgClass]="\'icon__svg\'"                  ></cf-svg-icon>                </button>              </a>            </ng-container>            <router-outlet name="sidebar"></router-outlet>          </div>        </cf-sidebar>        <div cf-sidebar-content>          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </cf-sidebar-container>      <ng-template #notSelectedAvatarLayout>        <div class="scene__container">          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </ng-template>    </div>    <cf-navbar      *ngIf="showNavbar"      cfElem="navbar"      [title]="title"      (titleClick)="sidebarIsOpen = !sidebarIsOpen"    >    </cf-navbar>  </div></ng-container></div>'
     var COMPONENTS = [{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PortalLayoutScene'};
