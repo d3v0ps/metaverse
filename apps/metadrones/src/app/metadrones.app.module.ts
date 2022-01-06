@@ -11,8 +11,8 @@ import { MetadronesRootModule } from './metadrones.root.module';
     CommonModule,
     BrowserModule,
     MetadronesRootModule,
-    RouterModule.forChild(routes),
+    RouterModule.forRoot(routes),
   ],
   bootstrap: [MetadronesRoot],
 })
-export class MetadronesModule {}
+export class MetadronesAppModule {}

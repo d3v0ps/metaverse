@@ -1,6 +1,6 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { MetadronesModule } from './app/metadrones.module';
+import { MetadronesAppModule } from './app/metadrones.app.module';
 import { environment } from './environments/environment';
 
 if (environment.production) {
@@ -8,5 +8,5 @@ if (environment.production) {
 }
 
 platformBrowserDynamic()
-  .bootstrapModule(MetadronesModule)
+  .bootstrapModule(MetadronesAppModule)
   .catch((err) => console.error(err));
