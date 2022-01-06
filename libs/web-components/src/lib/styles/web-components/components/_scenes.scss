@@ -1,11 +1,23 @@
 
-.scene {
+.application {
   background-color: var(--component-scene-background-color);
+
+  &--no-background-color {
+    background-color: transparent;
+  }
+}
+
+.scene {
+  background: transparent;
   // TODO: this pattern was removed
   // background: url("https://www.toptal.com/designers/subtlepatterns/patterns/moroccan-flower-pattern.png");
 
   &__body {
     height: calc(100vh - 44px);
+
+    &--no-navbar {
+      height: 100vh;
+    }
   }
 
   &__container {
@@ -22,6 +34,11 @@
   background-color: var(--component-scene-content-background-color);
   color: var(--component-scene-content-color);
   width: var(--component-scene-content-expand);
-  margin: 2rem auto;
+  margin: 2rem auto 0 auto;
   border-radius: 20px;
+  height: calc(100vh - 80px);
+
+  &--no-padding {
+    padding: 0;
+  }
 }

@@ -3,6 +3,11 @@ import {
   PermissionMode,
 } from '@central-factory/permissions/models/permission';
 
+export enum ApplicationRenderingType {
+  Webview = 'webview',
+  Unknown = 'unknown',
+}
+
 export type ApplicationIcon = {
   src: string;
   sizes: string;
@@ -17,14 +22,33 @@ export type ApplicationScreenshot = {
   label: string;
 };
 
+export enum ColorVariation {
+  Primary = 'primary',
+  Secondary = 'secondary',
+  Success = 'success',
+  Warning = 'warning',
+  Danger = 'danger',
+  Info = 'info',
+  Light = 'light',
+  Dark = 'dark',
+}
+
 /** Non Web Manifest standard included properties */
 export type ApplicationAdditionalProperties = {
+  author: {
+    id: string;
+    name: string;
+  };
+  renderingType?: ApplicationRenderingType;
+  internal?: boolean;
   permissions?: {
     kind: PermissionKind;
     mode: PermissionMode;
     target: string;
   }[];
+  defaultShortcut?: string;
   sidebarShortcuts?: string[];
+  colors?: { color: string; variation: ColorVariation }[];
 };
 
 export type ApplicationShortcut = {

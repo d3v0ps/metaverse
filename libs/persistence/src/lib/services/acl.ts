@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { ApplicationPermissionsCollection } from '@central-factory/permissions/collections/application-permissions.collection';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import {
   Permission,
   PermissionKind,

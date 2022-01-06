@@ -28,7 +28,12 @@ export interface SidebarItem {
       } as data"
     >
       <div cfBlock="scene">
-        <div class="scene__body">
+        <div
+          cfElem="body"
+          [cfMod]="{
+            'no-navbar': !showNavbar
+          }"
+        >
           <cf-sidebar-container
             *ngIf="data.selectedAvatar; else notSelectedAvatarLayout"
           >
@@ -104,6 +109,7 @@ export interface SidebarItem {
           </ng-template>
         </div>
         <cf-navbar
+          *ngIf="showNavbar"
           cfElem="navbar"
           [title]="title"
           (titleClick)="sidebarIsOpen = !sidebarIsOpen"
@@ -118,6 +124,8 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
   public sidebarIsOpen = false;
 
   public sidebarItems: SidebarItem[] = [];
+
+  public showNavbar = false;
 
   public readonly selectedAvatar$: Observable<Avatar | null | undefined> =
     this.selectedAvatarState.avatar$;

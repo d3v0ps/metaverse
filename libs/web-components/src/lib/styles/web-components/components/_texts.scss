@@ -1,0 +1,13 @@
+
+@use '../abstracts/variables/colors' as colors;
+
+@each $color in colors.$color-variations {
+  .text {
+   &.text--#{$color} {
+      color: var(--component-text-#{$color}-color, var(--color-base-#{$color}-medium));
+      .icon__svg {
+        fill: var(--component-text-#{$color}-color, var(--color-base-#{$color}-medium));
+      }
+    }
+  }
+}

@@ -17,3 +17,23 @@ nx serve portal
 # run the codex website
 nx serve codex
 ```
+
+### Building themes
+
+```sh
+nx run web-components:build-themes
+```
+
+
+## Running storybook
+
+```sh
+nx run <module>:storybook
+## Example:
+nx run assets:storybook
+```
+## Running linters & tests
+
+```sh
+nx run-many --target=lint --all
+```

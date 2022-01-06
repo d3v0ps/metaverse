@@ -4,6 +4,10 @@ import {
 } from '@central-factory/permissions/models/permission';
 import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
 import type { UserApplicationDocType } from '../../collections/user-applications.collection';
+import {
+  ApplicationRenderingType,
+  ColorVariation,
+} from '../../models/application';
 
 export const userApplications: UserApplicationDocType[] = [
   {
@@ -13,12 +17,17 @@ export const userApplications: UserApplicationDocType[] = [
     startUrl: '/',
     icons: [
       {
-        src: 'assets/images/logo.png',
+        src: 'assets/icons/mdi/open-in-app.svg',
         sizes: '512x512',
-        type: 'image/png',
+        type: 'image/svg+xml',
       },
     ],
     additionalProperties: {
+      author: {
+        id: 'com.central-factory',
+        name: 'Central Factory',
+      },
+      internal: true,
       permissions: [
         {
           kind: PermissionKind.Collection,
@@ -39,13 +48,13 @@ export const userApplications: UserApplicationDocType[] = [
     },
   },
   {
-    id: 'com.central-factory.play',
-    name: 'Play',
-    description: 'Play',
+    id: 'com.central-factory.player',
+    name: 'Player',
+    description: 'Applications Player',
     startUrl: 'play',
     icons: [
       {
-        src: 'assets/icons/play.svg',
+        src: 'assets/icons/mdi/play.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -64,6 +73,11 @@ export const userApplications: UserApplicationDocType[] = [
       },
     ],
     additionalProperties: {
+      author: {
+        id: 'com.central-factory',
+        name: 'Central Factory',
+      },
+      internal: true,
       permissions: [
         {
           kind: PermissionKind.Collection,
@@ -80,6 +94,21 @@ export const userApplications: UserApplicationDocType[] = [
           mode: PermissionMode.Delete,
           target: 'userapplications',
         },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Read,
+          target: 'storeapplications',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Write,
+          target: 'storeapplications',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Delete,
+          target: 'storeapplications',
+        },
       ],
       sidebarShortcuts: ['Play'],
     },
@@ -87,11 +116,11 @@ export const userApplications: UserApplicationDocType[] = [
   {
     id: 'com.central-factory.user-avatars',
     name: 'User Avatars',
-    description: 'User Avatars',
+    description: 'Avatars management module',
     startUrl: 'user-avatars',
     icons: [
       {
-        src: 'assets/icons/user-avatars.svg',
+        src: 'assets/icons/mdi/account.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -121,6 +150,11 @@ export const userApplications: UserApplicationDocType[] = [
       },
     ],
     additionalProperties: {
+      author: {
+        id: 'com.central-factory',
+        name: 'Central Factory',
+      },
+      internal: true,
       permissions: [
         {
           kind: PermissionKind.Collection,
@@ -154,11 +188,11 @@ export const userApplications: UserApplicationDocType[] = [
   {
     id: 'com.central-factory.inventory',
     name: 'Inventory',
-    description: 'Inventory',
+    description: 'Assets management module',
     startUrl: 'inventory',
     icons: [
       {
-        src: 'assets/icons/inventory.svg',
+        src: 'assets/icons/mdi/bag-personal.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -177,6 +211,11 @@ export const userApplications: UserApplicationDocType[] = [
       },
     ],
     additionalProperties: {
+      author: {
+        id: 'com.central-factory',
+        name: 'Central Factory',
+      },
+      internal: true,
       permissions: [
         {
           kind: PermissionKind.Collection,
@@ -200,11 +239,11 @@ export const userApplications: UserApplicationDocType[] = [
   {
     id: 'com.central-factory.marketplace',
     name: 'Marketplace',
-    description: 'Marketplace',
+    description: 'Trade with Assets',
     startUrl: 'marketplace',
     icons: [
       {
-        src: 'assets/icons/marketplace.svg',
+        src: 'assets/icons/mdi/store.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -223,6 +262,11 @@ export const userApplications: UserApplicationDocType[] = [
       },
     ],
     additionalProperties: {
+      author: {
+        id: 'com.central-factory',
+        name: 'Central Factory',
+      },
+      internal: true,
       permissions: [
         {
           kind: PermissionKind.Collection,
@@ -250,7 +294,7 @@ export const userApplications: UserApplicationDocType[] = [
     startUrl: 'settings',
     icons: [
       {
-        src: 'assets/icons/settings.svg',
+        src: 'assets/icons/mdi/cog.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -269,6 +313,11 @@ export const userApplications: UserApplicationDocType[] = [
       },
     ],
     additionalProperties: {
+      internal: true,
+      author: {
+        id: 'com.central-factory',
+        name: 'Central Factory',
+      },
       permissions: [
         {
           kind: PermissionKind.Collection,
@@ -282,6 +331,49 @@ export const userApplications: UserApplicationDocType[] = [
         },
       ],
       sidebarShortcuts: ['Settings'],
+    },
+  },
+  {
+    id: 'com.central-factory.codex',
+    name: 'Codex',
+    description: 'Official documentation for the Central Factory Metaverse',
+    startUrl: 'codex',
+    icons: [
+      {
+        src: 'assets/icons/mdi/book-open-page-variant.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Codex',
+        url: 'https://www.aitorllamas.com/metaverse/apps/codex',
+        icons: [
+          {
+            src: 'assets/icons/mid/book-open-page-variant.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.central-factory',
+        name: 'Central Factory',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Codex',
+      sidebarShortcuts: [],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#706fd3',
+        },
+      ],
     },
   },
 ];
