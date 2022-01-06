@@ -1,10 +1,13 @@
 /* eslint-disable @nrwl/nx/enforce-module-boundaries */
+import { loadRemoteModule } from '@angular-architects/module-federation';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IsAvatarSelectedGuard } from '@central-factory/avatars/guards/is-avatar-selected.guard';
 import { IsDatabaseCreatedGuard } from '@central-factory/persistence/guards/is-database-created.guard';
 import { IsNotDatabaseCreatedGuard } from '@central-factory/persistence/guards/is-not-database-created.guard';
 import { PortalLayoutScene } from './scenes/portal-layout/portal-layout.scene';
+
+const METADRONES_URL = 'http://localhost:3000/remoteEntry.js';
 
 export const routes: Routes = [
   {
@@ -50,6 +53,15 @@ export const routes: Routes = [
             (m) => m.PlayModule
           ),
         canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
+      },
+      {
+        path: 'metadrones',
+        loadChildren: () =>
+          loadRemoteModule({
+            type: 'module',
+            remoteEntry: METADRONES_URL,
+            exposedModule: './Module',
+          }).then((m) => m.MetadronesModule),
       },
       {
         path: 'manage-applications',

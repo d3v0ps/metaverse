@@ -10,7 +10,7 @@ export const storeApplications: StoreApplicationDocType[] = [
     id: 'com.central-factory.metadrones',
     name: 'Metadrones',
     description: 'Game demo on how to integrate with the metaverse',
-    startUrl: 'codex',
+    startUrl: 'metadrones',
     icons: [
       {
         src: 'assets/icons/mdi/drone.svg',
@@ -20,8 +20,8 @@ export const storeApplications: StoreApplicationDocType[] = [
     ],
     shortcuts: [
       {
-        name: 'Codex',
-        url: 'https://www.aitorllamas.com/metaverse/apps/codex',
+        name: 'Metadrones',
+        url: 'metadrones',
         icons: [
           {
             src: 'assets/icons/mid/book-open-page-variant.svg',
@@ -39,7 +39,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       permissions: [],
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
-      defaultShortcut: 'Codex',
+      defaultShortcut: 'Metadrones',
       sidebarShortcuts: [],
       colors: [
         {

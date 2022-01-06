@@ -4,13 +4,17 @@
   "license": "MIT",
   "scripts": {
     "ng": "nx",
-    "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
+    "postinstall": "npm run decorate:patch-package && npm run decorate:angular-cli",
+    "decorate:patch-package": "node_modules/.bin/patch-package",
+    "decorate:angular-cli": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
   "dependencies": {
+    "@angular-architects/module-federation": "^14.0.1",
     "@angular/animations": "~13.1.0",
     "@angular/cdk": "^13.0.2",
     "@angular/common": "~13.1.0",
