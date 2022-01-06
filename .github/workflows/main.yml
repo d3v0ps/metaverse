@@ -40,8 +40,11 @@ jobs:
         run: npm install
 
       - name: Build docs
-        shell: bash
-        run: npx nx build codex
+        uses: nick-invision/retry@v2
+        with:
+          max_attempts: 3
+          shell: bash
+          command: npx nx build codex
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.6
