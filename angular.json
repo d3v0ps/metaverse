@@ -808,6 +808,128 @@
       "tags": [],
       "implicitDependencies": ["marketplace"]
     },
+    "metadrones": {
+      "projectType": "application",
+      "root": "apps/metadrones",
+      "sourceRoot": "apps/metadrones/src",
+      "prefix": "central-factory",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/metadrones",
+            "index": "apps/metadrones/src/index.html",
+            "main": "apps/metadrones/src/main.ts",
+            "polyfills": "apps/metadrones/src/polyfills.ts",
+            "tsConfig": "apps/metadrones/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/metadrones/src/favicon.ico",
+              "apps/metadrones/src/assets"
+            ],
+            "styles": ["apps/metadrones/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/metadrones/src/environments/environment.ts",
+                  "with": "apps/metadrones/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "metadrones:build:production"
+            },
+            "development": {
+              "browserTarget": "metadrones:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "metadrones:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/metadrones/src/**/*.ts",
+              "apps/metadrones/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/metadrones"],
+          "options": {
+            "jestConfig": "apps/metadrones/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "metadrones-e2e": {
+      "root": "apps/metadrones-e2e",
+      "sourceRoot": "apps/metadrones-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/metadrones-e2e/cypress.json",
+            "devServerTarget": "metadrones:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "metadrones:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/metadrones-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["metadrones"]
+    },
     "permissions": {
       "projectType": "library",
       "root": "libs/permissions",
