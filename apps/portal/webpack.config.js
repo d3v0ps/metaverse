@@ -3,6 +3,8 @@ const mf = require("@angular-architects/module-federation/webpack");
 const path = require("path");
 const share = mf.share;
 
+const metadronesUrl = process.env.METADRONES_URL || 'http://localhost:3000/remoteEntry.js';
+
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
   path.join(__dirname, '../../tsconfig.base.json'),
@@ -37,7 +39,7 @@ module.exports = {
 
         // For hosts (please adjust)
         remotes: {
-            "@central-factory/metadrones": "http://localhost:3000/remoteEntry.js",
+            "@central-factory/metadrones": metadronesUrl,
         },
 
         shared: share({
