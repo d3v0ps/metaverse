@@ -1,13 +1,13 @@
 import {
-  ApplicationRenderingType,
-  ColorVariation,
-} from '@central-factory/applications/models/application';
-import {
   PermissionKind,
   PermissionMode,
 } from '@central-factory/permissions/models/permission';
 import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
 import type { UserApplicationDocType } from '../../collections/user-applications.collection';
+import {
+  ApplicationRenderingType,
+  ColorVariation,
+} from '../../models/application';
 
 export const userApplications: UserApplicationDocType[] = [
   {

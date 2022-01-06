@@ -178,6 +178,7 @@ export class PlayScene {
     this.sidebarIsOpen = false;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onApplicationOptionsButtonClick(application: Application) {
     this.sidebarIsOpen = true;
   }

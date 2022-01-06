@@ -1,9 +1,9 @@
+import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
+import type { StoreApplicationDocType } from '../../collections/store-applications.collection';
 import {
   ApplicationRenderingType,
   ColorVariation,
-} from '@central-factory/applications/models/application';
-import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
-import type { StoreApplicationDocType } from '../../collections/store-applications.collection';
+} from '../../models/application';
 
 export const storeApplications: StoreApplicationDocType[] = [
   {

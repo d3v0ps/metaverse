@@ -130,6 +130,7 @@ export class ManageApplicationsScene {
     this.sidebarIsOpen = true;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onApplicationSheetOpenApplicationClick(application: Application) {
     console.log('open application');
   }

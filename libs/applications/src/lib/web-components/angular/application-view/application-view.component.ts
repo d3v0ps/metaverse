@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Application } from '@central-factory/applications/models/application';
+import { Application } from '../../../models/application';
 
 @Component({
   selector: 'cf-application-view',
