@@ -1,3 +1,4 @@
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BemModule } from '@central-factory/web-components/angular/bem/bem.module';
@@ -7,7 +8,13 @@ import { ApplicationSheetComponent } from './application-sheet.component';
 
 @NgModule({
   declarations: [ApplicationSheetComponent],
-  imports: [CommonModule, BemModule, SvgIconModule, ApplicationCardModule],
+  imports: [
+    CommonModule,
+    BemModule,
+    SvgIconModule,
+    DragDropModule,
+    ApplicationCardModule,
+  ],
   exports: [ApplicationSheetComponent],
 })
 export class ApplicationSheetModule {}

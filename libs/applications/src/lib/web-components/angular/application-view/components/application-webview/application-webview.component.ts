@@ -1,12 +1,24 @@
 import { Component, Input } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { isElectron } from '@central-factory/web-components/shared/platform/desktop/is-electron';
 import type { Application } from '../../../../../models/application';
 
 @Component({
   selector: 'cf-application-webview',
   template: `
     <ng-container *ngIf="application">
-      <iframe cfBlock="application-webview" [src]="applicationUrl"></iframe>
+      <iframe
+        *ngIf="!isElectron"
+        cfBlock="application-webview"
+        [src]="applicationUrl"
+      ></iframe>
+      <webview
+        *ngIf="isElectron"
+        cfBlock="application-webview"
+        [attr.src]="applicationUrlString"
+        disablewebsecurity
+        allowpopups
+      ></webview>
     </ng-container>
   `,
 })
@@ -22,7 +34,10 @@ export class ApplicationWebviewComponent {
     return this._application;
   }
 
+  public applicationUrlString?: string;
   public applicationUrl?: SafeUrl;
+
+  public isElectron = isElectron();
 
   private _application?: Application;
 
@@ -44,6 +59,8 @@ export class ApplicationWebviewComponent {
     if (!applicationDefaultShortcut) {
       throw new Error('Application does not have default shortcut');
     }
+
+    this.applicationUrlString = applicationDefaultShortcut.url;
 
     return this.domSanitizer.bypassSecurityTrustResourceUrl(
       applicationDefaultShortcut.url

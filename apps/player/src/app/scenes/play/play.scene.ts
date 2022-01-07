@@ -1,9 +1,11 @@
+import { CdkDragDrop } from '@angular/cdk/drag-drop/drag-events';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Application } from '@central-factory/applications/models/application';
 import { ExternalUserApplicationsState } from '@central-factory/applications/states/external-user-applications.state';
 import { InternalUserApplicationsState } from '@central-factory/applications/states/internal-user-applications.state';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
+import { map } from 'rxjs/operators';
 
 /** Play main scene */
 @Component({
@@ -22,7 +24,7 @@ import { SelectedAvatarState } from '@central-factory/avatars/states/selected-av
         >
           <div
             style="
-            width: 40%;
+            width: 80%;
             margin: 0 auto;
           "
           >
@@ -30,9 +32,11 @@ import { SelectedAvatarState } from '@central-factory/avatars/states/selected-av
               #applicationSheet
               [application]="selectedApplication"
               [isApplicationOpened]="openedApplication ? true : false"
+              (applicationCardClick)="sidebarIsOpen = !sidebarIsOpen"
               (openApplicationClick)="
                 onApplicationSheetOpenApplicationClick($event)
               "
+              (applicationCardDrop)="selectedApplication = $event"
               (closeApplicationClick)="openedApplication = undefined"
             ></cf-application-sheet>
           </div>
@@ -72,15 +76,54 @@ import { SelectedAvatarState } from '@central-factory/avatars/states/selected-av
               </h2>
 
               <ng-container
-                *ngIf="externalUserApplications$ | async as applications"
+                *ngFor="let banner of applicationBanners$ | async | keyvalue"
               >
-                <div cfBlock="application-list">
-                  <ng-container *ngFor="let application of applications">
+                <h2 cfElem="section-title">
+                  {{ banner.value.bannerTitle }}
+                </h2>
+
+                <div
+                  cfBlock="applications-carousel"
+                  cdkDropList
+                  cdkDropListSortingDisabled
+                  [cdkDropListData]="banner.value.applications"
+                  [cdkDropListConnectedTo]="[
+                    applicationSheet.applicationCardDropList
+                  ]"
+                  (cdkDropListDropped)="onApplicationCardDropped($event)"
+                >
+                  <div
+                    cdkDrag
+                    [cdkDragData]="application"
+                    cfBlock="applications-carousel-item"
+                    *ngFor="let application of banner.value.applications"
+                  >
+                    <div cfBlock="drag-placeholder" *cdkDragPlaceholder></div>
                     <cf-application-card
                       [application]="application"
                       (applicationClick)="onApplicationCardClick(application)"
                     ></cf-application-card>
-                  </ng-container>
+                  </div>
+                </div>
+              </ng-container>
+
+              <h2 cfElem="section-title">All Applications</h2>
+
+              <ng-container
+                *ngIf="externalUserApplications$ | async as applications"
+              >
+                <div cfBlock="applications-carousel">
+                  <div
+                    cdkDrag
+                    *ngFor="let application of applications"
+                    cfBlock="applications-carousel-item"
+                  >
+                    <div cfBlock="drag-placeholder" *cdkDragPlaceholder></div>
+                    <cf-application-card
+                      [application]="application"
+                      (applicationClick)="onApplicationCardClick(application)"
+                    ></cf-application-card>
+                  </div>
                 </div>
               </ng-container>
 
@@ -126,12 +169,8 @@ import { SelectedAvatarState } from '@central-factory/avatars/states/selected-av
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
-        gap: 2rem;
-      }
-
-      cf-application-card {
-        max-width: 400px;
-        width: 100%;
+        gap: 1rem;
+        margin-bottom: 3rem;
       }
     `,
   ],
@@ -139,12 +178,49 @@ import { SelectedAvatarState } from '@central-factory/avatars/states/selected-av
 export class PlayScene {
   externalUserApplications$ = this.externalUserApplicationsState.applications$;
   internalUserApplications$ = this.internalUserApplicationsState.applications$;
+
+  applicationBanners$ = this.externalUserApplicationsState.applications$.pipe(
+    map((applications) =>
+      applications.reduce<{
+        [key: string]: {
+          applications: Application[];
+          bannerTitle: string;
+        };
+      }>((acc, application) => {
+        application.categories?.forEach((category) => {
+          if (!this.banners[category]) {
+            return;
+          }
+
+          acc[category] = acc[category] || {
+            applications: [],
+            bannerTitle: this.banners[category],
+          };
+
+          acc[category]?.applications.push(application);
+        });
+
+        return acc;
+      }, {})
+    )
+  );
+
   selectedAvatar$ = this.selectedAvatarState.avatar$;
 
   selectedApplication?: Application;
   openedApplication?: Application;
 
   sidebarIsOpen = false;
+
+  private readonly banners: {
+    [key: string]: string;
+  } = {
+    travel: 'Travel',
+    productivity: 'Productivity',
+    shopping: 'Shopping',
+    entertainment: 'Entertainment',
+    games: 'Video Games',
+  };
 
   constructor(
     private externalUserApplicationsState: ExternalUserApplicationsState,
@@ -157,6 +233,10 @@ export class PlayScene {
     this.selectedApplication = application;
     this.sidebarIsOpen = false;
     setTimeout(() => (this.sidebarIsOpen = true), 0);
+  }
+
+  onApplicationCardDropped(event: CdkDragDrop<Application[]>) {
+    this.selectedApplication = event.item.data;
   }
 
   onApplicationSheetOpenApplicationClick(application: Application) {

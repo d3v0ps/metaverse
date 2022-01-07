@@ -4,7 +4,8 @@
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   width: 100%;
-  height: calc(90vh - var(--component-application-toolbar-height));
+  height:  calc(100vh - 80px);
+  // height: calc(100vh - 2rem - var(--component-application-toolbar-height, 2rem))
 
   &--no-toolbar {
     border-top-left-radius: 20px;

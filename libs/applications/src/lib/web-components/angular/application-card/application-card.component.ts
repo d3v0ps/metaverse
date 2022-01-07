@@ -5,6 +5,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
+import { isElectron } from '@central-factory/web-components/shared/platform/desktop/is-electron';
 import { Application } from '../../../models/application';
 
 @Component({
@@ -17,7 +18,8 @@ import { Application } from '../../../models/application';
         'background-color': this.applicationPrimaryColor
       }"
       [cfMod]="{
-        'is-internal': application.additionalProperties?.internal
+        'is-internal': application.additionalProperties?.internal,
+        'is-not-supported': !applicationIsSupported
       }"
       (click)="applicationClick.emit(application)"
     >
@@ -55,6 +57,14 @@ import { Application } from '../../../models/application';
           </p>
         </div>
       </div>
+
+      <div class="bottom-section">
+        <ng-container *ngIf="!applicationIsSupported">
+          <h5 class="text text--warning">
+            Application is not supported oh this platform
+          </h5>
+        </ng-container>
+      </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -67,6 +77,24 @@ import { Application } from '../../../models/application';
         color: var(--color-base-light-medium);
         &__icon {
           fill: var(--color-base-light-medium);
+        }
+
+        .text {
+          margin: 0;
+        }
+      }
+
+      .bottom-section {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        color: var(--color-base-light-medium);
+        &__icon {
+          fill: var(--color-base-light-medium);
+        }
+
+        .text {
+          margin: 0;
         }
       }
     `,
@@ -89,6 +117,10 @@ export class ApplicationCardComponent {
       (application.additionalProperties?.internal === true
         ? 'var(--color-base-primary-medium)'
         : undefined);
+
+    this.applicationIsSupported = isElectron()
+      ? true
+      : application.additionalProperties?.supportsBrowser === true;
   }
 
   public get application(): Application | undefined {
@@ -99,6 +131,7 @@ export class ApplicationCardComponent {
 
   @Output() public applicationClick = new EventEmitter<Application>();
 
+  applicationIsSupported?: boolean;
   applicationIcon?: string;
   applicationPrimaryColor?: string;
 

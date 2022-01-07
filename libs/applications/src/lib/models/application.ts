@@ -5,6 +5,7 @@ import {
 
 export enum ApplicationRenderingType {
   Webview = 'webview',
+  WebpackModuleFederation = 'webpack-module-federation',
   Unknown = 'unknown',
 }
 
@@ -41,6 +42,7 @@ export type ApplicationAdditionalProperties = {
   };
   renderingType?: ApplicationRenderingType;
   internal?: boolean;
+  supportsBrowser?: boolean;
   permissions?: {
     kind: PermissionKind;
     mode: PermissionMode;

@@ -1421,6 +1421,32 @@
             "passWithNoTests": true
           }
         },
+        "electron": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd apps/portal && npx electron"
+              }
+            ]
+          }
+        },
+        "electron-serve": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "wait-on tcp:5000"
+              },
+              {
+                "command": "npx tsc -p apps/portal/tsconfig.electron.json"
+              },
+              {
+                "command": "npx electron apps/portal/src/main.electron.js --serve"
+              }
+            ]
+          }
+        },
         "build-api-docs": {
           "builder": "@nrwl/workspace:run-commands",
           "options": {

@@ -44,6 +44,9 @@ Thumbs.db
 .docusaurus/
 .cache-loader/
 
+main.electron.js
+main.electron.js.map
+
 # Generated Compodoc files
 documentation/
 apps/codex/static/compodoc/

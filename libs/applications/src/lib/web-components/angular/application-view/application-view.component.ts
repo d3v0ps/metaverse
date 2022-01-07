@@ -1,5 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { Application } from '../../../models/application';
+import { Router } from '@angular/router';
+import {
+  Application,
+  ApplicationRenderingType,
+} from '../../../models/application';
 
 @Component({
   selector: 'cf-application-view',
@@ -19,6 +23,8 @@ import { Application } from '../../../models/application';
             [application]="application"
           ></cf-application-webview>
         </ng-container>
+        <ng-container *ngSwitchCase="'webpack-module-federation'">
+        </ng-container>
         <ng-container *ngSwitchDefault>
           Unrecognized renderingType
           {{ application.additionalProperties?.renderingType }}
@@ -28,5 +34,20 @@ import { Application } from '../../../models/application';
   `,
 })
 export class ApplicationViewComponent {
-  @Input() application?: Application;
+  @Input() set application(application: Application | undefined) {
+    this._application = application;
+    if (
+      this.application?.additionalProperties?.renderingType ===
+      ApplicationRenderingType.WebpackModuleFederation
+    ) {
+      this.router.navigate([application?.startUrl]);
+    }
+  }
+  get application(): Application | undefined {
+    return this._application;
+  }
+
+  private _application: Application | undefined;
+
+  constructor(private router: Router) {}
 }

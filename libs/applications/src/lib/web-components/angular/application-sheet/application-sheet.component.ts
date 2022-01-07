@@ -1,16 +1,39 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Application } from '../../../models/application';
+import { CdkDropList } from '@angular/cdk/drag-drop';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { isElectron } from '@central-factory/web-components/shared/platform/desktop/is-electron';
+import { Application, ApplicationShortcut } from '../../../models/application';
 
 @Component({
   selector: 'cf-application-sheet',
   template: `
     <div cfBlock="application-sheet" *ngIf="application">
-      <cf-application-card [application]="application"></cf-application-card>
+      <div
+        cfBlock="drop-shadow"
+        cdkDropList
+        [cdkDropListData]="[application]"
+        #applicationCardDropList="cdkDropList"
+        (cdkDropListDropped)="onApplicationCardDrop(application)"
+      >
+        <div cdkDrag [cdkDragData]="application">
+          <div cfBlock="drag-placeholder" *cdkDragPlaceholder></div>
+          <cf-application-card
+            [application]="application"
+            (applicationClick)="onApplicationCardClick(application)"
+          >
+          </cf-application-card>
+        </div>
+      </div>
 
       <ul cfBlock="application-actions">
         <li cfElem="item">
           <button
-            *ngIf="!isApplicationOpened"
+            *ngIf="!isApplicationOpened && applicationIsSupported"
             cfBlock="button"
             cfMod="big"
             (click)="onApplicationOpenClick(application)"
@@ -22,6 +45,19 @@ import { Application } from '../../../models/application';
               [svgClass]="'icon__svg'"
             ></cf-svg-icon>
           </button>
+          <a
+            [href]="applicationUrl"
+            target="__blank"
+            cfBlock="button"
+            cfMod="big"
+          >
+            Open {{ application.name }} in a new tab
+            <cf-svg-icon
+              src="assets/icons/mdi/web.svg"
+              cfElem="icon"
+              [svgClass]="'icon__svg'"
+            ></cf-svg-icon>
+          </a>
         </li>
         <li cfElem="item">
           <button
@@ -30,19 +66,40 @@ import { Application } from '../../../models/application';
             [cfMod]="['big', 'danger']"
             (click)="onApplicationCloseClick(application)"
           >
-            Close {{ application.name }}
             <cf-svg-icon
               src="assets/icons/mdi/close.svg"
               cfElem="icon"
               [svgClass]="'icon__svg'"
             ></cf-svg-icon>
+            Close {{ application.name }}
           </button>
+        </li>
+        <li cfElem="item">
+          <h3 cfBlock="text" cfMod="secondary">Shortcuts</h3>
+          <div cfBlock="application-shortcuts">
+            <button
+              *ngFor="let shortcut of application.shortcuts"
+              cfBlock="button"
+              [cfMod]="['big']"
+            >
+              <cf-svg-icon
+                *ngIf="shortcut && shortcut.icons && shortcut.icons.length > 0"
+                [src]="getShortcutIcon(shortcut) || 'assets/icons/mdi/link.svg'"
+                cfElem="icon"
+                [svgClass]="'icon__svg'"
+              ></cf-svg-icon>
+              {{ shortcut.name }}
+            </button>
+          </div>
         </li>
       </ul>
     </div>
   `,
 })
 export class ApplicationSheetComponent {
+  @ViewChild('applicationCardDropList', { static: true })
+  applicationCardDropList!: CdkDropList;
+
   @Input() public set application(application: Application | undefined) {
     this._application = application;
 
@@ -59,6 +116,12 @@ export class ApplicationSheetComponent {
       (application.additionalProperties?.internal === true
         ? 'var(--color-base-primary-medium)'
         : undefined);
+
+    this.applicationIsSupported = isElectron()
+      ? true
+      : application.additionalProperties?.supportsBrowser === true;
+
+    this.applicationUrl = this.extractApplicationUrl(application);
   }
 
   public get application(): Application | undefined {
@@ -67,9 +130,13 @@ export class ApplicationSheetComponent {
 
   @Input() public isApplicationOpened = false;
 
+  @Output() public applicationCardDrop = new EventEmitter<Application>();
+  @Output() public applicationCardClick = new EventEmitter<Application>();
   @Output() public openApplicationClick = new EventEmitter<Application>();
   @Output() public closeApplicationClick = new EventEmitter<Application>();
 
+  applicationIsSupported?: boolean;
+  applicationUrl?: string;
   applicationIcon?: string;
   applicationPrimaryColor?: string;
 
@@ -103,8 +170,25 @@ export class ApplicationSheetComponent {
     return undefined;
   }
 
+  getShortcutIcon(shortcut: ApplicationShortcut): string | undefined {
+    if (!shortcut.icons || shortcut.icons.length === 0) {
+      return;
+    }
+
+    return shortcut.icons[0].src;
+  }
+
   show(application?: Application) {
     this.application = application || this.application;
+  }
+
+  onApplicationCardDrop(application: Application) {
+    console.log(application);
+    this.applicationCardDrop.emit(application);
+  }
+
+  onApplicationCardClick(application: Application) {
+    this.applicationCardClick.emit(application);
   }
 
   onApplicationOpenClick(application: Application) {
@@ -113,5 +197,25 @@ export class ApplicationSheetComponent {
 
   onApplicationCloseClick(application: Application) {
     this.closeApplicationClick.emit(application);
+  }
+
+  extractApplicationUrl(application: Application): string | undefined {
+    if (!application.shortcuts) {
+      throw new Error('Application does not have shortcuts');
+    }
+
+    const applicationDefaultShortcut = application.additionalProperties
+      ?.defaultShortcut
+      ? application.shortcuts.find(
+          (shortcut) =>
+            shortcut.name === application.additionalProperties?.defaultShortcut
+        )
+      : application.shortcuts[0];
+
+    if (!applicationDefaultShortcut) {
+      throw new Error('Application does not have default shortcut');
+    }
+
+    return applicationDefaultShortcut.url;
   }
 }

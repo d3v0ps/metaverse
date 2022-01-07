@@ -1,3 +1,4 @@
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ApplicationCardModule } from '@central-factory/applications/web-components/angular/application-card/application-card.module';
@@ -16,6 +17,7 @@ import { PlayScene } from './play.scene';
     BemModule,
     SidebarModule,
     SvgIconModule,
+    DragDropModule,
     ApplicationCardModule,
     ApplicationToolbarModule,
     ApplicationViewModule,

@@ -1,0 +1,21 @@
+
+.applications-carousel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.applications-carousel-item {
+  margin: 0.5rem;
+  max-width: 300px;
+  display: flex;
+
+  .application-card {
+    width: 300px;
+    height: 180px;
+    overflow-x: auto;
+  }
+}
