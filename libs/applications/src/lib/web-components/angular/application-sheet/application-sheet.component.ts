@@ -3,10 +3,13 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnDestroy,
+  OnInit,
   Output,
   ViewChild,
 } from '@angular/core';
 import { isElectron } from '@central-factory/web-components/shared/platform/desktop/is-electron';
+import hotkeys from 'hotkeys-js';
 import { Application, ApplicationShortcut } from '../../../models/application';
 
 @Component({
@@ -24,17 +27,17 @@ import { Application, ApplicationShortcut } from '../../../models/application';
         <div cdkDrag [cdkDragData]="application">
           <div cfBlock="drag-placeholder" *cdkDragPlaceholder></div>
           <cf-application-card
+            [showDescription]="false"
             [application]="application"
             (applicationClick)="onApplicationCardClick(application)"
+            (playClick)="onApplicationCardPlayClick(application)"
           >
           </cf-application-card>
         </div>
       </div>
 
       <div cfBlock="application-description">
-        <p>
-          {{ application?.description }}
-        </p>
+        <p [innerHtml]="application?.description"></p>
       </div>
 
       <ul cfBlock="application-actions">
@@ -84,26 +87,21 @@ import { Application, ApplicationShortcut } from '../../../models/application';
         <li cfElem="item">
           <h3 cfBlock="text" cfMod="secondary">Shortcuts</h3>
           <div cfBlock="application-shortcuts">
-            <button
-              *ngFor="let shortcut of application.shortcuts"
-              cfBlock="button"
-              [cfMod]="['big']"
-            >
-              <cf-svg-icon
-                *ngIf="shortcut && shortcut.icons && shortcut.icons.length > 0"
-                [src]="getShortcutIcon(shortcut) || 'assets/icons/mdi/link.svg'"
-                cfElem="icon"
-                [svgClass]="'icon__svg'"
-              ></cf-svg-icon>
-              {{ shortcut.name }}
-            </button>
+            <cf-application-shortcut
+              *ngFor="let shortcut of application.shortcuts; let i = index"
+              [shortcutIndex]="i + 1"
+              [theme]="'application'"
+              [shortcut]="shortcut"
+              [application]="application"
+              (shortcutClick)="applicationShortcutTrigger.emit(shortcut)"
+            ></cf-application-shortcut>
           </div>
         </li>
       </ul>
     </div>
   `,
 })
-export class ApplicationSheetComponent {
+export class ApplicationSheetComponent implements OnInit, OnDestroy {
   @ViewChild('applicationCardDropList', { static: true })
   applicationCardDropList!: CdkDropList;
 
@@ -137,8 +135,11 @@ export class ApplicationSheetComponent {
 
   @Input() public isApplicationOpened = false;
 
+  @Output() public applicationShortcutTrigger =
+    new EventEmitter<ApplicationShortcut>();
   @Output() public applicationCardDrop = new EventEmitter<Application>();
   @Output() public applicationCardClick = new EventEmitter<Application>();
+  @Output() public applicationCardPlayClick = new EventEmitter<Application>();
   @Output() public openApplicationClick = new EventEmitter<Application>();
   @Output() public closeApplicationClick = new EventEmitter<Application>();
 
@@ -148,6 +149,42 @@ export class ApplicationSheetComponent {
   applicationPrimaryColor?: string;
 
   private _application?: Application | null;
+
+  ngOnInit() {
+    hotkeys('ctrl + alt + 1', () => {
+      if (this.application?.shortcuts && this.application.shortcuts[0]) {
+        this.onApplicationShortcutTrigger(this.application.shortcuts[0]);
+      }
+    });
+    hotkeys('ctrl + alt + 2', () => {
+      if (this.application?.shortcuts && this.application.shortcuts[1]) {
+        this.onApplicationShortcutTrigger(this.application.shortcuts[1]);
+      }
+    });
+    hotkeys('ctrl1 + alt + 3', () => {
+      if (this.application?.shortcuts && this.application.shortcuts[2]) {
+        this.onApplicationShortcutTrigger(this.application.shortcuts[2]);
+      }
+    });
+    hotkeys('⌘ + alt + 4', () => {
+      if (this.application?.shortcuts && this.application.shortcuts[3]) {
+        this.onApplicationShortcutTrigger(this.application.shortcuts[3]);
+      }
+    });
+    hotkeys('⌘ + alt + 5', () => {
+      if (this.application?.shortcuts && this.application.shortcuts[4]) {
+        this.onApplicationShortcutTrigger(this.application.shortcuts[4]);
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    hotkeys.unbind('⌘ + alt + 1');
+    hotkeys.unbind('⌘ + alt + 2');
+    hotkeys.unbind('⌘ + alt + 3');
+    hotkeys.unbind('⌘ + alt + 4');
+    hotkeys.unbind('⌘ + alt + 5');
+  }
 
   private extractApplicationIcon(application: Application): string | undefined {
     if (application.icons && application.icons.length > 0) {
@@ -197,6 +234,10 @@ export class ApplicationSheetComponent {
     this.applicationCardClick.emit(application);
   }
 
+  onApplicationCardPlayClick(application: Application) {
+    this.applicationCardPlayClick.emit(application);
+  }
+
   onApplicationOpenClick(application: Application) {
     this.openApplicationClick.emit(application);
   }
@@ -223,5 +264,13 @@ export class ApplicationSheetComponent {
     }
 
     return applicationDefaultShortcut.url;
+  }
+
+  onApplicationShortcutTrigger(shortcut: ApplicationShortcut) {
+    if (!shortcut) {
+      return;
+    }
+
+    this.applicationShortcutTrigger.emit(shortcut);
   }
 }

@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { BemModule } from '@central-factory/web-components/angular/bem/bem.module';
 import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
 import { ApplicationCardModule } from '../application-card/application-card.module';
+import { ApplicationShortcutModule } from '../application-shortcut/application-shortcut.module';
 import { ApplicationSheetComponent } from './application-sheet.component';
 
 @NgModule({
@@ -14,6 +15,7 @@ import { ApplicationSheetComponent } from './application-sheet.component';
     SvgIconModule,
     DragDropModule,
     ApplicationCardModule,
+    ApplicationShortcutModule,
   ],
   exports: [ApplicationSheetComponent],
 })

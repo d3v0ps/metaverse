@@ -41,24 +41,28 @@ import { Application } from '../../../models/application';
         ></cf-svg-icon>
       </div>
 
-      <div cfBlock="application-icon">
-        <cf-svg-icon
-          *ngIf="applicationIcon"
-          [src]="applicationIcon"
-          cfElem="icon"
-          [svgClass]="'icon__svg'"
-        ></cf-svg-icon>
+      <div cfBlock="application-header">
+        <div cfBlock="application-icon">
+          <cf-svg-icon
+            *ngIf="applicationIcon"
+            [src]="applicationIcon"
+            cfElem="icon"
+            [svgClass]="'icon__svg'"
+          ></cf-svg-icon>
+        </div>
+        <div cfBlock="application-content">
+          <div cfBlock="application-title">
+            <h2 cfElem="name">
+              {{ application?.name }}
+            </h2>
+            <h4 cfElem="author">
+              {{ application?.additionalProperties?.author?.name }}
+            </h4>
+          </div>
+        </div>
       </div>
 
-      <div cfBlock="application-content">
-        <div cfBlock="application-title">
-          <h2 cfElem="name">
-            {{ application?.name }}
-          </h2>
-          <h4 cfElem="author">
-            {{ application?.additionalProperties?.author?.name }}
-          </h4>
-        </div>
+      <div cfBlock="application-content" *ngIf="showDescription">
         <div cfBlock="application-description">
           <p>
             {{ application?.description }}
@@ -66,26 +70,26 @@ import { Application } from '../../../models/application';
         </div>
       </div>
 
-      <div class="bottom-section">
-        <ng-container *ngIf="!applicationIsSupported">
-          <h5 class="text text--warning">
-            Application is not supported oh this platform
-          </h5>
-        </ng-container>
+      <div class="top-section">
+        <h5
+          cfBlock="text"
+          [cfMod]="{
+            warning: !applicationIsSupported,
+            success: applicationIsSupported
+          }"
+        >
+          <cf-svg-icon
+            [src]="'assets/icons/mdi/application-settings.svg'"
+            cfElem="icon"
+            [svgClass]="'icon__svg'"
+          ></cf-svg-icon>
+        </h5>
       </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
     `
-      .application-description p {
-        width: 10em;
-        box-sizing: border-box;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-      }
-
       .top-section {
         position: absolute;
         top: 10px;
@@ -117,6 +121,8 @@ import { Application } from '../../../models/application';
   ],
 })
 export class ApplicationCardComponent {
+  @Input() showDescription = true;
+
   @Input() public set application(application: Application | undefined) {
     this._application = application;
 

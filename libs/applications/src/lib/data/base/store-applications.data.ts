@@ -54,12 +54,12 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.google.search',
     name: 'Google Search',
-    description: 'Search Engine by Google',
+    description: `Search the world's information, including webpages, images, videos and more.`,
     startUrl: 'https://google.com',
     categories: ['productivity', 'utilities'],
     icons: [
       {
-        src: 'assets/icons/mdi/magnify.svg',
+        src: 'assets/icons/simple-icons/google.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -70,7 +70,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://google.com',
         icons: [
           {
-            src: 'assets/icons/mdi/magnify.svg',
+            src: 'assets/icons/simple-icons/google.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -98,11 +98,11 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.google.drive',
     name: 'Google Drive',
-    description: 'Drive Cloud by Google',
+    description: `Create and share your work online and access your documents from anywhere. Manage documents, spreadsheets, presentations, surveys...`,
     startUrl: 'https://drive.google.com',
     icons: [
       {
-        src: 'assets/icons/mdi/google-drive.svg',
+        src: 'assets/icons/simple-icons/googledrive.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -114,7 +114,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://drive.google.com',
         icons: [
           {
-            src: 'assets/icons/mdi/google-drive.svg',
+            src: 'assets/icons/simple-icons/googledrive.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -142,11 +142,11 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.google.keep',
     name: 'Google Keep',
-    description: 'Notes Application by Google',
+    description: `Quickly capture what's on your mind and get a reminder later at the right place or time. Speak a voice memo on the go and have it automatically transcribed.`,
     startUrl: 'https://keep.google.com',
     icons: [
       {
-        src: 'assets/icons/mdi/google-keep.svg',
+        src: 'assets/icons/simple-icons/googlekeep.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -157,7 +157,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://keep.google.com',
         icons: [
           {
-            src: 'assets/icons/mdi/google-keeps.svg',
+            src: 'assets/icons/simple-icons/googlekeep.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -186,11 +186,11 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.google.maps',
     name: 'Google Maps',
-    description: 'Maps Application by Google',
+    description: `Get real-time navigation and more in the Maps app. Stay on web. Use the app. Directions. Drive. Walk. Bike. Public transport.`,
     startUrl: 'https://maps.google.com',
     icons: [
       {
-        src: 'assets/icons/mdi/map.svg',
+        src: 'assets/icons/simple-icons/googlemaps.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -201,7 +201,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://maps.google.com',
         icons: [
           {
-            src: 'assets/icons/mdi/map.svg',
+            src: 'assets/icons/simple-icons/googlemaps.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -230,7 +230,8 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.google.travel',
     name: 'Google Travel',
-    description: 'Travel Application by Google',
+    description:
+      'Find the best flights fast, track prices, and book with confidence.',
     startUrl: 'https://travel.google.com',
     icons: [
       {
@@ -254,6 +255,8 @@ export const storeApplications: StoreApplicationDocType[] = [
     ],
     categories: ['finances', 'travel'],
     additionalProperties: {
+      originalManifest:
+        'https://www.google.com/_/TravelFrontendUi/manifest.json',
       author: {
         id: 'com.alphabet',
         name: 'Alphabet',
@@ -274,7 +277,8 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.google.flights',
     name: 'Google Flights',
-    description: 'Flights Application by Google',
+    description:
+      'Find the best flights fast, track prices, and book with confidence.',
     startUrl: 'https://flights.google.com',
     icons: [
       {
@@ -318,7 +322,8 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.freenow.freenow',
     name: 'Free Now',
-    description: 'Taxis Application',
+    description:
+      'FREE NOW is a licensed ride-hailing and multi-mobility app in 10 European countries. Book easily, pay in-app quickly and complete your trip safely!',
     startUrl: 'https://free-now.com/',
     icons: [
       {
@@ -362,11 +367,19 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.spotify.player',
     name: 'Spotify',
-    description: 'Music Player',
+    description: `
+      Spotify is all the music you'll ever need.
+
+      Stream free albums and hits, find a song, discover music, and download songs and podcasts with the Spotify free streaming and music player app.
+
+      Free streaming, music search and hits library – Spotify is all that and much more.
+
+      Play songs, sync music, discover music and free albums with Spotify, your go-to music downloader.
+    `,
     startUrl: 'https://open.spotify.com',
     icons: [
       {
-        src: 'assets/icons/mdi/spotify.svg',
+        src: 'assets/icons/simple-icons/spotify.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -377,7 +390,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://open.spotify.com',
         icons: [
           {
-            src: 'assets/icons/mdi/spotify.svg',
+            src: 'assets/icons/simple-icons/spotify.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -405,8 +418,11 @@ export const storeApplications: StoreApplicationDocType[] = [
   },
   {
     id: 'com.ivoox.player',
-    name: 'IVoox',
-    description: 'Podcasts Player',
+    name: 'iVoox',
+    description: `
+      With Podcast & Radio iVoox you can listen, share and download podcasts, radio shows and much more for free, when you want, where you want.
+      Courses, conferences, classes, lectures, audio books, children’s stories, audio guides, stand up comedy, stories, music and concerts, poems, biographies and even meditation sessions.
+    `,
     startUrl: 'https://ivoox.com',
     icons: [
       {
@@ -432,7 +448,7 @@ export const storeApplications: StoreApplicationDocType[] = [
     additionalProperties: {
       author: {
         id: 'com.ivoox',
-        name: 'IVoox',
+        name: 'iVoox Podcast y Radio',
       },
       permissions: [],
       renderingType: ApplicationRenderingType.Webview,
@@ -450,11 +466,15 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.netflix.player',
     name: 'Netflix',
-    description: 'Movies & TV Shows',
+    description: `
+      Looking for the most talked-about TV programs and films from the around the world? They’re all on Netflix.
+
+      We’ve got award-winning series, films, documentaries and stand-up specials.
+    `,
     startUrl: 'https://netflix.com',
     icons: [
       {
-        src: 'assets/icons/mdi/netflix.svg',
+        src: 'assets/icons/simple-icons/netflix.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -465,7 +485,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://netflix.com',
         icons: [
           {
-            src: 'assets/icons/mdi/netflix.svg',
+            src: 'assets/icons/simple-icons/netflix.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -476,7 +496,7 @@ export const storeApplications: StoreApplicationDocType[] = [
     additionalProperties: {
       author: {
         id: 'com.netflix',
-        name: 'Netflix',
+        name: 'Netflix, Inc',
       },
       permissions: [],
       renderingType: ApplicationRenderingType.Webview,
@@ -494,11 +514,20 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.amazon.primevideo',
     name: 'Prime Video',
-    description: 'Movies & TV Shows',
+    description: `
+      Watch movies, TV, and sports, including Amazon Originals like The Boys, The Marvelous Mrs. Maisel, and Tom Clancy’s Jack Ryan as well as recommendations just for you.
+
+      App features:
+      • Download videos to watch offline.
+      • Rent or buy new-release movies and popular TV shows (availability varies by market).
+      • Cast from your phone or tablet to the big screen with Chromecast and Fire TV.
+      • Multi-user profiles allow creating personalized entertainment experiences.
+      • Go behind the scenes of movies and TV shows with exclusive X-Ray access, powered by IMDb (availability varies by market).
+    `,
     startUrl: 'https://primevideo.com',
     icons: [
       {
-        src: 'assets/icons/mdi/movie.svg',
+        src: 'assets/icons/simple-icons/primevideo.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -509,7 +538,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://primevideo.com',
         icons: [
           {
-            src: 'assets/icons/mdi/movie.svg',
+            src: 'assets/icons/simple-icons/primevideo.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -538,11 +567,13 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.google.youtube',
     name: 'Youtube',
-    description: 'Youtube Videos',
+    description: `
+      See what the world is watching -- from the hottest music videos to what’s popular in gaming, fashion, beauty, news, learning and more. Subscribe to channels you love, create content of your own, share with friends, and watch on any device.
+    `,
     startUrl: 'https://youtube.com',
     icons: [
       {
-        src: 'assets/icons/mdi/youtube.svg',
+        src: 'assets/icons/simple-icons/youtube.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -553,7 +584,51 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://youtube.com',
         icons: [
           {
-            src: 'assets/icons/mdi/youtube.svg',
+            src: 'assets/icons/simple-icons/youtube.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'Subscriptions',
+        url: 'https://www.youtube.com/feed/subscriptions',
+        icons: [
+          {
+            src: 'assets/icons/simple-icons/youtube.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'Library',
+        url: 'https://www.youtube.com/feed/library',
+        icons: [
+          {
+            src: 'assets/icons/simple-icons/youtube.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'History',
+        url: 'https://www.youtube.com/feed/history',
+        icons: [
+          {
+            src: 'assets/icons/simple-icons/youtube.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'Watch Later',
+        url: 'https://www.youtube.com/playlist?list=WL',
+        icons: [
+          {
+            src: 'assets/icons/simple-icons/youtube.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -582,11 +657,12 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.meta.instagram',
     name: 'Instagram',
-    description: 'Pictures Social Network',
+    description:
+      'A simple, fun & creative way to capture, edit & share photos, videos & messages with friends & family.',
     startUrl: 'https://instagram.com',
     icons: [
       {
-        src: 'assets/icons/mdi/instagram.svg',
+        src: 'assets/icons/simple-icons/instagram.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -597,7 +673,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://instagram.com',
         icons: [
           {
-            src: 'assets/icons/mdi/instagram.svg',
+            src: 'assets/icons/simple-icons/instagram.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -630,7 +706,7 @@ export const storeApplications: StoreApplicationDocType[] = [
     startUrl: 'https://web.whatsapp.com',
     icons: [
       {
-        src: 'assets/icons/mdi/whatsapp.svg',
+        src: 'assets/icons/simple-icons/whatsapp.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -641,7 +717,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://web.whatsapp.com',
         icons: [
           {
-            src: 'assets/icons/mdi/whatsapp.svg',
+            src: 'assets/icons/simple-icons/whatsapp.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -670,11 +746,12 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.evernote.evernote',
     name: 'Evernote',
-    description: 'Notes Application',
+    description:
+      'Evernote is a powerful tool that can help executives, entrepreneurs and creative people capture and arrange their ideas. All you have to do is use it. — Forbes.',
     startUrl: 'https://evernote.com/intl/es/',
     icons: [
       {
-        src: 'assets/icons/mdi/evernote.svg',
+        src: 'assets/icons/simple-icons/evernote.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -685,7 +762,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://evernote.com/intl/es/',
         icons: [
           {
-            src: 'assets/icons/mdi/evernote.svg',
+            src: 'assets/icons/simple-icons/evernote.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -714,11 +791,12 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.microsoft.github',
     name: 'Github',
-    description: 'Code Repositories',
+    description:
+      'GitHub is where over 73 million developers shape the future of software, together.  Contribute to the open source community, manage your Git repositories and much more.',
     startUrl: 'https://github.com',
     icons: [
       {
-        src: 'assets/icons/mdi/github.svg',
+        src: 'assets/icons/simple-icons/github.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -729,7 +807,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://github.com',
         icons: [
           {
-            src: 'assets/icons/mdi/github.svg',
+            src: 'assets/icons/simple-icons/github.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -758,11 +836,11 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.google.mail',
     name: 'Gmail',
-    description: 'Mail Inbox',
+    description: `Gmail is email that's intuitive, efficient, and useful. 15 GB of storage, less spam, and mobile access.`,
     startUrl: 'https://mail.google.com',
     icons: [
       {
-        src: 'assets/icons/mdi/gmail.svg',
+        src: 'assets/icons/simple-icons/gmail.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -773,7 +851,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://mail.google.com',
         icons: [
           {
-            src: 'assets/icons/mdi/gmail.svg',
+            src: 'assets/icons/simple-icons/gmail.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -802,11 +880,11 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.google.calendar',
     name: 'Google Calendar',
-    description: 'Calendar Application',
+    description: 'The Google Calendar app helps you spend less time managing',
     startUrl: 'https://calendar.google.com',
     icons: [
       {
-        src: 'assets/icons/mdi/calendar.svg',
+        src: 'assets/icons/simple-icons/googlecalendar.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -817,7 +895,18 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://calendar.google.com',
         icons: [
           {
-            src: 'assets/icons/mdi/calendar.svg',
+            src: 'assets/icons/simple-icons/googlecalendar.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'Create Event',
+        url: 'https://calendar.google.com',
+        icons: [
+          {
+            src: 'assets/icons/mdi/calendar-edit.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -846,11 +935,12 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.doist.todoist',
     name: 'Todoist',
-    description: 'Tasks management',
+    description:
+      'The Ultimate Task Management Software To Organize Your Work And Life. Get All Those Tasks Out Of Your Head And Onto Your To-Do List To Regain Clarity & Do More. Trusted By Top Companies. Simple Pricing. Easy Integrations. Free Plan Available.',
     startUrl: 'https://todoist.com/app/',
     icons: [
       {
-        src: 'assets/icons/mdi/format-list-checks.svg',
+        src: 'assets/icons/simple-icons/todoist.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -861,7 +951,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://todoist.com/app/',
         icons: [
           {
-            src: 'assets/icons/mdi/format-list-checks.svg',
+            src: 'assets/icons/simple-icons/todoist.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -890,11 +980,12 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.amazon.shopping',
     name: 'Amazon Shopping',
-    description: 'Online Store',
+    description:
+      'Free shipping on millions of items. Get the best of Shopping and Entertainment with Prime.',
     startUrl: 'https://amazon.es',
     icons: [
       {
-        src: 'assets/icons/mdi/basket.svg',
+        src: 'assets/icons/simple-icons/amazon.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -916,7 +1007,7 @@ export const storeApplications: StoreApplicationDocType[] = [
     additionalProperties: {
       author: {
         id: 'com.amazon',
-        name: 'Amazon Shopping',
+        name: 'Amazon',
       },
       permissions: [],
       renderingType: ApplicationRenderingType.Webview,
@@ -933,12 +1024,13 @@ export const storeApplications: StoreApplicationDocType[] = [
   },
   {
     id: 'com.microsoft.xbox',
-    name: 'Xbox',
-    description: 'Xbox Cloud',
+    name: 'Xbox Cloud Gaming',
+    description:
+      'Enjoy the console games you love on the devices you already have with Xbox Game Pass Ultimate and a compatible controller. You can play using an Xbox controller, Sony DualShock 4, Razer Kishi, and more.',
     startUrl: 'https://xbox.com/play',
     icons: [
       {
-        src: 'assets/icons/mdi/microsoft-xbox.svg',
+        src: 'assets/icons/simple-icons/xbox.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -971,6 +1063,51 @@ export const storeApplications: StoreApplicationDocType[] = [
         {
           variation: ColorVariation.Primary,
           color: '#52b043',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.sony.psnow',
+    name: 'PS Now',
+    description:
+      'Discover all the PS2, PS3 and PS4 games available to stream or download on demand on PS4 from the PS Now library',
+    startUrl: 'https://playstation.com/ps-now',
+    icons: [
+      {
+        src: 'assets/icons/simple-icons/playstation.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Player',
+        url: 'https://playstation.com/ps-now',
+        icons: [
+          {
+            src: 'assets/icons/simple-icons/playstation.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    categories: ['games'],
+    additionalProperties: {
+      author: {
+        id: 'com.sony',
+        name: 'Sony Interactive',
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: 'Player',
+      sidebarShortcuts: ['Player'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#00a4e8',
         },
       ],
     },
@@ -1021,9 +1158,55 @@ export const storeApplications: StoreApplicationDocType[] = [
     },
   },
   {
+    id: 'com.zalando.shopping',
+    name: 'Zalando',
+    description:
+      'Descubre las últimas tendencias en ropa, calzado y complementos para mujer, hombre y niño en Zalando.',
+    startUrl: 'https://zalando.com/',
+    categories: ['shopping', 'finance'],
+    icons: [
+      {
+        src: 'assets/icons/simple-icons/zalando.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Store',
+        url: 'https://zalando.com',
+        icons: [
+          {
+            src: 'assets/icons/simple-icons/zalando.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.zalando',
+        name: 'Zalando',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Store',
+      sidebarShortcuts: ['Store'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#F96902',
+        },
+      ],
+    },
+  },
+  {
     id: 'com.zara.shopping',
     name: 'Zara',
-    description: 'Discover, collect, and sell extraordinary NFTs',
+    description: 'Latest trends in clothing for women, men & kids at ZARA',
     startUrl: 'https://zara.com/',
     categories: ['shopping', 'finance'],
     icons: [
@@ -1068,12 +1251,13 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.uber.eats',
     name: 'Uber Eats',
-    description: 'Deliver food',
+    description:
+      'Enjoy your local restaurant favorites from the comfort of your own home. The food you want, when you want it. ',
     startUrl: 'https://ubereats.com/',
     categories: ['food', 'shopping', 'finance'],
     icons: [
       {
-        src: 'assets/icons/mdi/food.svg',
+        src: 'assets/icons/simple-icons/ubereats.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -1084,7 +1268,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://ubereats.com',
         icons: [
           {
-            src: 'assets/icons/mdi/food.svg',
+            src: 'assets/icons/simple-icons/ubereats.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -1113,12 +1297,13 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.just-eat.just-eat',
     name: 'Just Eat',
-    description: 'Deliver food',
+    description:
+      'Order your favourite takeaway from restaurants all over Spain on the app you love. Freshly cooked from your favourite restaurants directly to your door. Order today. More than 15k restaurants. Exclusive Offers. Pizza, sushi, thai & more. Contactless Delivery.',
     startUrl: 'https://just-eat.es/',
     categories: ['food', 'shopping', 'finance'],
     icons: [
       {
-        src: 'assets/icons/mdi/food.svg',
+        src: 'assets/icons/simple-icons/justeat.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -1129,7 +1314,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://just-eat.es/',
         icons: [
           {
-            src: 'assets/icons/mdi/food.svg',
+            src: 'assets/icons/simple-icons/justeat.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -1156,14 +1341,61 @@ export const storeApplications: StoreApplicationDocType[] = [
     },
   },
   {
+    id: 'com.burgerking.burgerking',
+    name: 'Burger King',
+    description:
+      'Order your favourite takeaway from restaurants all over Spain on the app you love. Freshly cooked from your favourite restaurants directly to your door. Order today. More than 15k restaurants. Exclusive Offers. Pizza, sushi, thai & more. Contactless Delivery.',
+    startUrl: 'https://burgerking.es/',
+    categories: ['food', 'shopping', 'finance'],
+    icons: [
+      {
+        src: 'assets/icons/simple-icons/burgerking.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Order',
+        url: 'https://burgerking.es/',
+        icons: [
+          {
+            src: 'assets/icons/simple-icons/burgerking.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.burgerking',
+        name: 'Burger King',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Order',
+      sidebarShortcuts: ['Order'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#F96101',
+        },
+      ],
+    },
+  },
+  {
     id: 'com.discord',
     name: 'Discord',
-    description: 'Discord',
+    description:
+      'Discord is the easiest way to talk over voice, video, and text. Talk, chat, hang out, and stay close with your friends and communities.',
     startUrl: 'https://discord.com/',
     categories: ['social'],
     icons: [
       {
-        src: 'assets/icons/mdi/discord.svg',
+        src: 'assets/icons/simple-icons/discord.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -1174,7 +1406,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://discord.com/',
         icons: [
           {
-            src: 'assets/icons/mdi/discord.svg',
+            src: 'assets/icons/simple-icons/discord.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -1203,12 +1435,12 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.amazon.twitchtv',
     name: 'Twitch',
-    description: 'Twitch',
+    description: `Twitch is an interactive livestreaming service for content spanning gaming, entertainment, sports, music, and more.`,
     startUrl: 'https://twitch.tv/',
     categories: ['entertainment'],
     icons: [
       {
-        src: 'assets/icons/mdi/twitch.svg',
+        src: 'assets/icons/simple-icons/twitch.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -1219,7 +1451,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://twitch.tv/',
         icons: [
           {
-            src: 'assets/icons/mdi/twitch.svg',
+            src: 'assets/icons/simple-icons/twitch.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -1248,12 +1480,14 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.feedly.feedly',
     name: 'Feedly',
-    description: 'Feedly',
+    description: `
+      Your central place to organize, read, and share the information you need to stay ahead of the next big trend in your industry.
+    `,
     startUrl: 'https://feedly.com/',
     categories: ['news', 'entertainment'],
     icons: [
       {
-        src: 'assets/icons/mdi/newspaper.svg',
+        src: 'assets/icons/simple-icons/feedly.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -1264,7 +1498,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://feedly.com/',
         icons: [
           {
-            src: 'assets/icons/mdi/newspaper.svg',
+            src: 'assets/icons/simple-icons/feedly.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -1293,12 +1527,14 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.wikipedia.wikipedia',
     name: 'Wikipedia',
-    description: 'Wikipedia',
+    description: `
+      Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.
+    `,
     startUrl: 'https://wikipedia.com/',
     categories: ['news', 'entertainment', 'magazines'],
     icons: [
       {
-        src: 'assets/icons/mdi/wikipedia.svg',
+        src: 'assets/icons/simple-icons/wikipedia.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -1309,7 +1545,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://wikipedia.com/',
         icons: [
           {
-            src: 'assets/icons/mdi/wikipedia.svg',
+            src: 'assets/icons/simple-icons/wikipedia.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -1337,24 +1573,25 @@ export const storeApplications: StoreApplicationDocType[] = [
   },
   {
     id: 'com.nintendo.my',
-    name: 'My Nintendo',
-    description: 'Nintendo',
+    name: 'Nintendo',
+    description:
+      'My Nintendo makes playing games and interacting with Nintendo even more fun. You can earn points and redeem them to get rewards like in-game content',
     startUrl: 'https://my.nintendo.com/',
     categories: ['news', 'games'],
     icons: [
       {
-        src: 'assets/icons/mdi/nintendo-switch.svg',
+        src: 'assets/icons/simple-icons/nintendoswitch.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
     ],
     shortcuts: [
       {
-        name: 'Portal',
-        url: 'https://my.nintendo.com.com/',
+        name: 'My Nintendo',
+        url: 'https://my.nintendo.com/',
         icons: [
           {
-            src: 'assets/icons/mdi/nintendo-switch.svg',
+            src: 'assets/icons/simple-icons/nintendoswitch.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -1381,14 +1618,60 @@ export const storeApplications: StoreApplicationDocType[] = [
     },
   },
   {
+    id: 'com.ea.origin',
+    name: 'Origin',
+    description:
+      'Get great PC and Mac games on Origin. Play the latest RPGs, shooters, Sims games & more.',
+    startUrl: 'https://origin.com/',
+    categories: ['news', 'games'],
+    icons: [
+      {
+        src: 'assets/icons/simple-icons/origin.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://origin.com/',
+        icons: [
+          {
+            src: 'assets/icons/simple-icons/origin.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.ea',
+        name: 'EA Games',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#EB5722',
+        },
+      ],
+    },
+  },
+  {
     id: 'com.epic.store',
     name: 'Epic Games',
-    description: 'Epic Games Store',
+    description: `Epic Games, Inc. is an American video game and software developer and publisher based in Cary, North Carolina. The company was founded by Tim Sweeney as Potomac Computer Systems in 1991, originally located in his parents' house in Potomac, Maryland.`,
     startUrl: 'https://www.epicgames.com/store/',
     categories: ['news', 'games'],
     icons: [
       {
-        src: 'assets/icons/mdi/microsoft-xbox-controller.svg',
+        src: 'assets/icons/simple-icons/epicgames.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -1399,7 +1682,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://www.epicgames.com/store/',
         icons: [
           {
-            src: 'assets/icons/mdi/microsoft-xbox-controller.svg',
+            src: 'assets/icons/simple-icons/epicgames.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -1428,12 +1711,14 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.valve.store',
     name: 'Steam Store',
-    description: 'Steam Games Store',
+    description: `
+      Steam is a video game digital distribution service by Valve. It was launched as a standalone software client in September 2003 as a way for Valve to provide automatic updates for their games, and expanded to include games from third-party publishers
+    `,
     startUrl: 'https://store.steampowered.com',
     categories: ['news', 'games'],
     icons: [
       {
-        src: 'assets/icons/mdi/steam.svg',
+        src: 'assets/icons/simple-icons/steam.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -1444,7 +1729,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://store.steampowered.com',
         icons: [
           {
-            src: 'assets/icons/mdi/steam.svg',
+            src: 'assets/icons/simple-icons/steam.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -1519,7 +1804,8 @@ export const storeApplications: StoreApplicationDocType[] = [
   {
     id: 'com.bbva.wallet',
     name: 'BBVA',
-    description: '',
+    description:
+      'The latest banks and financial services company and industry news with expert analysis from the BBVA, Banco Bilbao Vizcaya Argentaria.',
     startUrl: 'https://www.bbva.es',
     categories: ['finances', 'shopping'],
     icons: [

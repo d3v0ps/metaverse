@@ -1,20 +1,45 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Component, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
-import { Application } from '@central-factory/applications/models/application';
+import {
+  Application,
+  ApplicationShortcut,
+} from '@central-factory/applications/models/application';
 import { ExternalUserApplicationsState } from '@central-factory/applications/states/external-user-applications.state';
 import { InternalUserApplicationsState } from '@central-factory/applications/states/internal-user-applications.state';
 import { RecentlyOpenedApplicationsState } from '@central-factory/applications/states/recently-opened-applications.state';
 import { SelectedApplicationState } from '@central-factory/applications/states/selected-application.state';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
 import { SidebarComponent } from '@central-factory/web-components/angular/sidebar/sidebar.component';
-import { delay, map, tap } from 'rxjs/operators';
+import { FormControl, FormGroup } from '@ng-stack/forms';
+import { BehaviorSubject, Subject } from 'rxjs';
+import { delay, takeUntil, tap } from 'rxjs/operators';
+
+export interface ApplicationBanners {
+  [key: string]: {
+    applications: Application[];
+    bannerTitle: string;
+  };
+}
 
 /** Play main scene */
 @Component({
   selector: 'cf-play',
   template: `
-    <div cfBlock="scene-content" [cfMod]="['no-padding', 'play']">
+    <div
+      cfBlock="scene-content"
+      [cfMod]="{
+        'no-padding': true,
+        play: true,
+        'application-opened': openedApplication ? true : false
+      }"
+    >
       <cf-sidebar-container>
         <cf-sidebar
           #sidebar
@@ -28,7 +53,7 @@ import { delay, map, tap } from 'rxjs/operators';
         >
           <div
             style="
-            width: 80%;
+            width: 90%;
             margin: 0 auto;
           "
           >
@@ -41,8 +66,14 @@ import { delay, map, tap } from 'rxjs/operators';
                   : false
               "
               (applicationCardClick)="onApplicationSheetCardClick($event)"
+              (applicationCardPlayClick)="
+                onApplicationSheetCardPlayClick($event)
+              "
               (openApplicationClick)="
                 onApplicationSheetOpenApplicationClick($event)
+              "
+              (applicationShortcutTrigger)="
+                onApplicationSheetShortcutTrigger($event)
               "
               (applicationCardDrop)="onApplicationCardDropped($event)"
               (closeApplicationClick)="openedApplication = undefined"
@@ -76,12 +107,24 @@ import { delay, map, tap } from 'rxjs/operators';
             <div style="padding: 20px">
               <h2 cfElem="section-title">
                 Welcome back,
-                <strong class="text text--primary">{{
+                <strong class="text text--secondary">{{
                   (selectedAvatar$ | async)?.name
                 }}</strong
                 ><br />
                 What would you like to do?
               </h2>
+
+              <form cfBlock="form" [formGroup]="searchBarForm">
+                <div class="form-control">
+                  <input
+                    #queryStringSearchInput
+                    cfBlock="form-control"
+                    cfMod="primary"
+                    type="text"
+                    formControlName="queryString"
+                  />
+                </div>
+              </form>
 
               <ng-container
                 *ngFor="let banner of applicationBanners$ | async | keyvalue"
@@ -199,39 +242,20 @@ import { delay, map, tap } from 'rxjs/operators';
     `,
   ],
 })
-export class PlayScene {
+export class PlayScene implements OnInit, OnDestroy {
   @ViewChild('sidebar', { static: true }) sidebar!: SidebarComponent;
+  @ViewChild('queryStringSearchInput', { static: false })
+  queryStringSearchInput!: ElementRef<HTMLInputElement>;
+
+  searchBarForm = new FormGroup({
+    queryString: new FormControl<string>(undefined),
+  });
 
   externalUserApplications$ = this.externalUserApplicationsState.applications$;
   internalUserApplications$ = this.internalUserApplicationsState.applications$;
 
-  applicationBanners$ = this.externalUserApplicationsState.applications$.pipe(
-    map((applications) =>
-      applications.reduce<{
-        [key: string]: {
-          applications: Application[];
-          bannerTitle: string;
-        };
-      }>((acc, application) => {
-        application.categories?.forEach((category) => {
-          if (!this.banners[category]) {
-            return;
-          }
-
-          acc[category] = acc[category] || {
-            applications: [],
-            bannerTitle: this.banners[category],
-          };
-
-          acc['all'];
-
-          acc[category]?.applications.push(application);
-        });
-
-        return acc;
-      }, {})
-    )
-  );
+  applications$ = new BehaviorSubject<Application[]>([]);
+  applicationBanners$ = new BehaviorSubject<ApplicationBanners>({});
 
   selectedAvatar$ = this.selectedAvatarState.avatar$;
 
@@ -259,6 +283,8 @@ export class PlayScene {
     games: 'Video Games',
   };
 
+  private readonly destroy$ = new Subject<void>();
+
   constructor(
     private externalUserApplicationsState: ExternalUserApplicationsState,
     private internalUserApplicationsState: InternalUserApplicationsState,
@@ -267,6 +293,34 @@ export class PlayScene {
     private selectedAvatarState: SelectedAvatarState,
     private selectedApplicationState: SelectedApplicationState
   ) {}
+
+  ngOnInit() {
+    this.externalUserApplications$
+      .pipe(
+        tap((applications) => {
+          this.applications$.next(applications);
+          this.generateBanners(applications);
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+
+    this.searchBarForm.controls.queryString.valueChanges
+      .pipe(
+        tap((search) => {
+          this.generateBanners(this.applications$.getValue());
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+
+    this.searchBarForm.controls.queryString.setValue('');
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   onApplicationCardClick(application: Application) {
     this.selectedApplicationState.selectApplication(application);
@@ -284,7 +338,21 @@ export class PlayScene {
       application.additionalProperties?.supportsBrowser;
 
     if (!applicationIsSupported) {
-      window.open(application.startUrl, '_newtab' + Date.now());
+      window.open(application.startUrl, '__blank' + Date.now());
+      return;
+    }
+
+    this.openedApplication = application;
+  }
+
+  onApplicationSheetShortcutTrigger(applicationShortcut: ApplicationShortcut) {
+    const application = this.selectedApplication$.getValue();
+
+    const applicationIsSupported =
+      application?.additionalProperties?.supportsBrowser;
+
+    if (!applicationIsSupported) {
+      window.open(applicationShortcut.url, '__blank' + Date.now());
       return;
     }
 
@@ -293,6 +361,23 @@ export class PlayScene {
 
   onApplicationSheetCardClick(application: Application) {
     this.selectedApplicationState.closeSidebar();
+  }
+
+  onApplicationSheetCardPlayClick(application: Application) {
+    console.log(application);
+    this.selectedApplicationState.selectApplication(application);
+    this.recentlyOpenedApplicationsState.addApplication(application);
+    this.selectedApplicationState.closeSidebar();
+
+    const applicationIsSupported =
+      application.additionalProperties?.supportsBrowser;
+
+    if (!applicationIsSupported) {
+      window.open(application.startUrl, '__blank' + Date.now());
+      return;
+    }
+
+    this.openedApplication = application;
   }
 
   onApplicationCardDropped(application: Application) {
@@ -320,5 +405,81 @@ export class PlayScene {
 
   onManageApplicationsClick() {
     this.router.navigate(['/manage-applications']);
+  }
+
+  private generateBanners(applications: Application[]) {
+    const applicationsBanners = this.reduceApplicationsToBanners(applications);
+
+    this.applicationBanners$.next(
+      this.reduceApplicationsToBanners(applications)
+    );
+
+    const bannersApplications: Application[] = Object.values(
+      applicationsBanners
+    ).reduce<Application[]>(
+      (acc, banner) => acc.concat(banner.applications),
+      []
+    );
+
+    const singleApplication: Application | undefined =
+      bannersApplications.length === 1 ? bannersApplications[0] : undefined;
+
+    if (singleApplication) {
+      this.selectedApplicationState.selectApplication(singleApplication);
+      this.selectedApplicationState.openSidebar();
+      setTimeout(() => this.queryStringSearchInput.nativeElement.focus(), 1000);
+    }
+  }
+
+  private reduceApplicationsToBanners(
+    applications: Application[]
+  ): ApplicationBanners {
+    const banners = applications.reduce<ApplicationBanners>(
+      (acc, application) => {
+        application.categories?.forEach((category) => {
+          if (!this.banners[category]) {
+            return;
+          }
+
+          let mustInclude = true;
+
+          if (
+            this.searchBarForm.value.queryString &&
+            this.searchBarForm.value.queryString.length > 0
+          ) {
+            const nameMatches = application.name
+              .toLowerCase()
+              .includes(this.searchBarForm.value.queryString.toLowerCase());
+            const shortcutMatches =
+              application.shortcuts &&
+              application.shortcuts.some((shortcut) =>
+                shortcut.name
+                  .toLowerCase()
+                  .includes(this.searchBarForm.value.queryString.toLowerCase())
+              )
+                ? true
+                : false;
+
+            mustInclude = nameMatches || shortcutMatches;
+          }
+
+          if (!mustInclude) {
+            return;
+          }
+
+          acc[category] = acc[category] || {
+            applications: [],
+            bannerTitle: this.banners[category],
+          };
+
+          acc[category]?.applications.push(application);
+        });
+
+        return acc;
+      },
+      {}
+    );
+
+    return banners;
   }
 }

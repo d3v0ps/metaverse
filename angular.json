@@ -1301,6 +1301,11 @@
                 "output": "./assets/icons/mdi"
               },
               {
+                "glob": "**/*.svg",
+                "input": "./node_modules/simple-icons/icons",
+                "output": "./assets/icons/simple-icons"
+              },
+              {
                 "glob": "**/*",
                 "input": "./libs/web-components/src/assets/fonts/Inter/static",
                 "output": "./assets/fonts"

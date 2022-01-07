@@ -1,6 +1,7 @@
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApplicationCardModule } from '@central-factory/applications/web-components/angular/application-card/application-card.module';
 import { ApplicationSheetModule } from '@central-factory/applications/web-components/angular/application-sheet/application-sheet.module';
 import { ApplicationToolbarModule } from '@central-factory/applications/web-components/angular/application-toolbar/application-toolbar.module';
@@ -15,6 +16,8 @@ import { PlayScene } from './play.scene';
   imports: [
     CommonModule,
     BemModule,
+    FormsModule,
+    ReactiveFormsModule,
     SidebarModule,
     SvgIconModule,
     DragDropModule,

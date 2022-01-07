@@ -7,6 +7,7 @@
 
   display: flex;
   flex-direction: row;
+  justify-content: center;
   gap: 2rem;
   padding: 20px;
 
@@ -16,9 +17,16 @@
   border-top-right-radius: 20px;
 
   .application-card {
-    max-width: 300px;
-    max-height: 180px;
+    max-width: 350px;
+    max-height: 220px;
     overflow-x: auto;
+    .application-description {
+      max-width: 100%;
+    }
+  }
+
+  .application-description {
+    max-width: 30%;
   }
 
 
@@ -28,6 +36,7 @@
 
   .application-actions {
     display: flex;
+    width: 35%;
     flex-direction: column;
     gap: 2rem;
 
@@ -40,6 +49,8 @@
   .application-shortcuts {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
     gap: 1rem;
 
     > * {

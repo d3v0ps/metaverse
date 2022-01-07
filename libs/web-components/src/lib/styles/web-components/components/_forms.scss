@@ -1,4 +1,6 @@
 
+@use '../abstracts/variables/colors' as colors;
+
 .form {
   display: block;
   margin-bottom: 1rem;
@@ -31,11 +33,65 @@
 .form-control {
   display: block;
   width: 100%;
+  padding: .35rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.5;
+  background-clip: padding-box;
+  background: transparent;
+  color: var(--color-base-primary-medium);
+
+  input {
+    border: 3px solid var(--color-base-primary-medium);
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+    padding: 1.5rem 1rem;
+    &:active, &:focus {
+      // font-size: 1.2rem;
+      outline: none;
+      font-weight: 700;
+    }
+  }
+
+
+  @each $color in colors.$color-variations {
+    input {
+      &.form-control--#{$color} {
+        color: var(--component-input-#{$color}-color);
+        border-color: var(--component-input-#{$color}-background-color);
+        .icon__svg {
+          fill: var(--color-base-#{$color}-medium);
+        }
+        &:active, &:focus {
+          color: var(--component-input-#{$color}-background-color);
+          background-color: var(--component-input-#{$color}-color);
+          border: 3px solid var(--component-input-#{$color}-background-color);
+        }
+      }
+    }
+  }
+
+}
+.input-group-prepend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   padding: .375rem .75rem;
   font-size: 1rem;
   font-weight: 400;
-  line-height: 1.5;
   background-clip: padding-box;
+  border-end-start-radius: 0;
+  border-start-start-radius: 0;
+  border-end-end-radius: 4px;
+  border-start-end-radius: 4px;
+
+  .icon__svg {
+    width: 1rem;
+    height: 1rem;
+    fill: currentColor;
+  }
 }
 
 .input-group-append {

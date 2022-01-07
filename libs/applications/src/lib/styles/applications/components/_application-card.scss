@@ -3,7 +3,7 @@
   border-radius: 10px;
   box-shadow: 0 1px 2px 0 #0000000d;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100%;
   overflow: hidden;
   position: relative;
@@ -31,15 +31,25 @@
     filter: brightness(70%);
   }
 
-  .icon__svg {
-    fill: var(---component-application-card-font-color, #fff);
-    filter: drop-shadow(3px 3px 2px rgb(0 0 0 / 0.4));
-    width: 120px;
-    height: 120px;
+  .application-icon {
+    .icon__svg {
+      fill: var(---component-application-card-font-color, #fff);
+      filter: drop-shadow(3px 3px 2px rgb(0 0 0 / 0.4));
+      width: 120px;
+      height: 120px;
+    }
+  }
+
+  .application-header {
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: row;
   }
 
   .application-content {
-    padding: 0.5rem;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: row;
   }
 
   .application-title {
@@ -47,27 +57,31 @@
 
     &__name {
       margin-bottom: 0;
+      font-size: 100%;
     }
 
     &__author {
       margin: 0;
+      font-weight: 300;
     }
   }
 
   .play-icon {
     position: absolute;
+    right: 1rem;
+    bottom: 1rem;
     display: none;
     &:hover {
       filter: brightness(1.1);
       .icon__svg {
-        fill: var(---component-application-play-hover-icon-color, var(--color-base-dark-darkest));
+        fill: var(---component-application-play-hover-icon-color, var(--color-base-primary-light));
       }
     }
     .icon__svg {
-      fill: var(---component-application-play-icon-color, var(--color-base-dark-darker));
+      fill: var(---component-application-play-icon-color, var(--color-base-primary-darker));
       filter: drop-shadow(3px 3px 2px rgb(0 0 0 / 0.4));
-      width: 120px;
-      height: 120px;
+      width: 5rem;
+      height: 5rem;
     }
 
   }
@@ -76,5 +90,13 @@
     font-size: 1rem;
     font-weight: 300;
     margin-bottom: 0;
+
+    p {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 }

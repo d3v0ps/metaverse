@@ -36,6 +36,7 @@ export enum ColorVariation {
 
 /** Non Web Manifest standard included properties */
 export type ApplicationAdditionalProperties = {
+  originalManifest?: string;
   author: {
     id: string;
     name: string;
