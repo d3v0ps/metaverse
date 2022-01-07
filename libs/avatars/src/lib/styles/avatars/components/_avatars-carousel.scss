@@ -10,7 +10,7 @@
 
 .avatars-carousel-item {
   margin: 0.5rem;
-  width: 144px;
+  width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,8 +28,8 @@
   }
 
   &__image {
-    width: 100%;
-    height: auto;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     margin-top: 15px;
   }

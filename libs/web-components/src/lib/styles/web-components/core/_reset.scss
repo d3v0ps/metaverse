@@ -9,6 +9,15 @@
   box-sizing: border-box;
 }
 
+* {
+  ::-webkit-scrollbar {
+    background-color: var(--color-base-dark-medium);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-base-primary-medium);
+  }
+}
+
 html,
 body {
   height: 100%;
