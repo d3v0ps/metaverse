@@ -1,3 +1,4 @@
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -12,6 +13,7 @@ import { PortalLayoutScene } from './portal-layout.scene';
     CommonModule,
     SvgIconModule,
     BemModule,
+    DragDropModule,
     RouterModule,
     NavbarModule,
     SidebarModule,

@@ -4,19 +4,23 @@ import {
   Application,
   ApplicationShortcut,
 } from '@central-factory/applications/models/application';
+import { RecentlyOpenedApplicationsState } from '@central-factory/applications/states/recently-opened-applications.state';
+import { SelectedApplicationState } from '@central-factory/applications/states/selected-application.state';
 import type { Avatar } from '@central-factory/avatars/models/avatar';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
 import { EntityManager } from '@central-factory/persistence/services/entity-manager';
 import { Repository } from '@central-factory/persistence/services/repository';
 import { DeepReadonlyObject } from 'rxdb/dist/types/types';
 import { forkJoin, Observable, Subject } from 'rxjs';
-import { filter, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { filter, map, switchMap, takeUntil, tap } from 'rxjs/operators';
 
 export interface SidebarItem {
   name: string;
   routerLink: string[];
   icon: string;
   active: boolean;
+  color?: string;
+  application?: DeepReadonlyObject<Application>;
 }
 
 @Component({
@@ -89,6 +93,45 @@ export interface SidebarItem {
                   </a>
                 </ng-container>
 
+                <div
+                  cdkDropList
+                  cdkDropListSortingDisabled
+                  [cdkDropListData]="recentlyOpenedSidebarItems"
+                  [cdkDropListConnectedTo]="['applications-carousel']"
+                >
+                  <div
+                    *ngFor="let item of recentlyOpenedSidebarItems"
+                    class="d-block"
+                    cfBlock="sidebar-item"
+                  >
+                    <div class="d-block" cfBlock="sidebar-item">
+                      <div cfElem="text">
+                        <span cfElem="text-content">{{ item.name }}</span>
+                      </div>
+                      <button
+                        cdkDrag
+                        [cdkDragData]="item.application"
+                        cfBlock="button"
+                        cfMod="fab"
+                        [ngClass]="{
+                          'button--active': item.active
+                        }"
+                        [ngStyle]="{
+                          'background-color': item.color,
+                          'margin-top': '15px'
+                        }"
+                        (click)="onRecentlyOpenedItemClick(item)"
+                      >
+                        <cf-svg-icon
+                          [src]="item.icon"
+                          cfElem="icon"
+                          [svgClass]="'icon__svg'"
+                        ></cf-svg-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
                 <router-outlet name="sidebar"></router-outlet>
               </div>
             </cf-sidebar>
@@ -124,27 +167,45 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
   public sidebarIsOpen = false;
 
   public sidebarItems: SidebarItem[] = [];
+  public recentlyOpenedSidebarItems: SidebarItem[] = [];
 
   public showNavbar = false;
 
   public readonly selectedAvatar$: Observable<Avatar | null | undefined> =
     this.selectedAvatarState.avatar$;
 
+  public readonly recentlyOpenedApplications$ =
+    this.recentlyOpenedApplicationsState.applications$.pipe(
+      map((applications) => applications.reverse()),
+      map((applications) => this.generateSidebarItems(applications))
+    );
+
   private readonly destroy$ = new Subject<void>();
 
   constructor(
     private readonly router: Router,
     private readonly entityManager: EntityManager,
-    private readonly selectedAvatarState: SelectedAvatarState
+    private readonly selectedAvatarState: SelectedAvatarState,
+    private readonly selectedApplicationState: SelectedApplicationState,
+    private readonly recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState
   ) {}
 
   public ngOnInit(): void {
+    this.recentlyOpenedApplications$
+      .pipe(
+        takeUntil(this.destroy$),
+        tap((sidebarItems) => (this.recentlyOpenedSidebarItems = sidebarItems))
+      )
+      .subscribe();
+
     this.router.events
       .pipe(
         filter((event) => event instanceof NavigationEnd),
         takeUntil(this.destroy$)
       )
-      .subscribe(() => this.setSidebarItemsActive());
+      .subscribe(() => {
+        this.setSidebarItemsActive(this.sidebarItems);
+      });
 
     this.entityManager.initialize$
       .pipe(
@@ -168,6 +229,15 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
+  public onRecentlyOpenedItemClick(sidebarItem: SidebarItem) {
+    if (sidebarItem.application) {
+      this.selectedApplicationState.selectApplication(
+        sidebarItem.application as Application
+      );
+      this.selectedApplicationState.openSidebar();
+    }
+  }
+
   private subscribeToDataChanges(
     userApplicationsRepository: Repository<Application>
   ) {
@@ -180,7 +250,9 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
         },
       })
       .pipe(
-        tap((applications) => this.generateSidebarItems(applications)),
+        tap((applications) => {
+          this.sidebarItems = this.generateSidebarItems(applications);
+        }),
         takeUntil(this.destroy$)
       )
       .subscribe();
@@ -189,7 +261,7 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
   private generateSidebarItems(
     applications: DeepReadonlyObject<Application>[]
   ) {
-    this.sidebarItems = applications
+    const sidebarItems = applications
       .sort((a, b) => {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         return a.createdAt!.localeCompare(b.createdAt!);
@@ -216,18 +288,28 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
               shortcut.icons && shortcut.icons.length > 0
                 ? shortcut.icons[0].src
                 : '',
+            color:
+              current.additionalProperties?.colors?.find(
+                (color) => color.variation === 'primary'
+              )?.color ||
+              (current.additionalProperties?.internal === true
+                ? 'var(--color-base-primary-medium)'
+                : undefined),
             active: false,
+            application: current,
           })
         );
 
         return result.concat(sidebarItems);
       }, []);
 
-    this.setSidebarItemsActive();
+    this.setSidebarItemsActive(sidebarItems);
+
+    return sidebarItems;
   }
 
-  private setSidebarItemsActive() {
-    this.sidebarItems.forEach((item) => {
+  private setSidebarItemsActive(sidebarItems: SidebarItem[]) {
+    sidebarItems.forEach((item) => {
       item.active = this.router.url.startsWith(item.routerLink.join('/'));
     });
   }

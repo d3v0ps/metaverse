@@ -1,11 +1,14 @@
-import { CdkDragDrop } from '@angular/cdk/drag-drop/drag-events';
-import { Component } from '@angular/core';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Application } from '@central-factory/applications/models/application';
 import { ExternalUserApplicationsState } from '@central-factory/applications/states/external-user-applications.state';
 import { InternalUserApplicationsState } from '@central-factory/applications/states/internal-user-applications.state';
+import { RecentlyOpenedApplicationsState } from '@central-factory/applications/states/recently-opened-applications.state';
+import { SelectedApplicationState } from '@central-factory/applications/states/selected-application.state';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
-import { map } from 'rxjs/operators';
+import { SidebarComponent } from '@central-factory/web-components/angular/sidebar/sidebar.component';
+import { delay, map, tap } from 'rxjs/operators';
 
 /** Play main scene */
 @Component({
@@ -14,7 +17,8 @@ import { map } from 'rxjs/operators';
     <div cfBlock="scene-content" [cfMod]="['no-padding', 'play']">
       <cf-sidebar-container>
         <cf-sidebar
-          [(opened)]="sidebarIsOpen"
+          #sidebar
+          [opened]="(sidebarIsOpen$ | async) ? true : false"
           [dock]="false"
           [showBackdrop]="false"
           [closeOnClickBackdrop]="true"
@@ -30,13 +34,17 @@ import { map } from 'rxjs/operators';
           >
             <cf-application-sheet
               #applicationSheet
-              [application]="selectedApplication"
-              [isApplicationOpened]="openedApplication ? true : false"
-              (applicationCardClick)="sidebarIsOpen = !sidebarIsOpen"
+              [application]="selectedApplication$ | async"
+              [isApplicationOpened]="
+                (selectedApplication$ | async)?.id === openedApplication?.id
+                  ? true
+                  : false
+              "
+              (applicationCardClick)="onApplicationSheetCardClick($event)"
               (openApplicationClick)="
                 onApplicationSheetOpenApplicationClick($event)
               "
-              (applicationCardDrop)="selectedApplication = $event"
+              (applicationCardDrop)="onApplicationCardDropped($event)"
               (closeApplicationClick)="openedApplication = undefined"
             ></cf-application-sheet>
           </div>
@@ -83,6 +91,7 @@ import { map } from 'rxjs/operators';
                 </h2>
 
                 <div
+                  id="applications-carousel"
                   cfBlock="applications-carousel"
                   cdkDropList
                   cdkDropListSortingDisabled
@@ -90,7 +99,9 @@ import { map } from 'rxjs/operators';
                   [cdkDropListConnectedTo]="[
                     applicationSheet.applicationCardDropList
                   ]"
-                  (cdkDropListDropped)="onApplicationCardDropped($event)"
+                  (cdkDropListDropped)="
+                    onApplicationCarouselCardDropped($event)
+                  "
                 >
                   <div
                     cdkDrag
@@ -102,6 +113,7 @@ import { map } from 'rxjs/operators';
                     <cf-application-card
                       [application]="application"
                       (applicationClick)="onApplicationCardClick(application)"
+                      (playClick)="onApplicationCardPlayClick(application)"
                     ></cf-application-card>
                   </div>
                 </div>
@@ -112,9 +124,21 @@ import { map } from 'rxjs/operators';
               <ng-container
                 *ngIf="externalUserApplications$ | async as applications"
               >
-                <div cfBlock="applications-carousel">
+                <div
+                  cfBlock="applications-carousel"
+                  cdkDropList
+                  cdkDropListSortingDisabled
+                  [cdkDropListData]="applications"
+                  [cdkDropListConnectedTo]="[
+                    applicationSheet.applicationCardDropList
+                  ]"
+                  (cdkDropListDropped)="
+                    onApplicationCarouselCardDropped($event)
+                  "
+                >
                   <div
                     cdkDrag
+                    [cdkDragData]="application"
                     *ngFor="let application of applications"
                     cfBlock="applications-carousel-item"
                   >
@@ -176,6 +200,8 @@ import { map } from 'rxjs/operators';
   ],
 })
 export class PlayScene {
+  @ViewChild('sidebar', { static: true }) sidebar!: SidebarComponent;
+
   externalUserApplications$ = this.externalUserApplicationsState.applications$;
   internalUserApplications$ = this.internalUserApplicationsState.applications$;
 
@@ -197,6 +223,8 @@ export class PlayScene {
             bannerTitle: this.banners[category],
           };
 
+          acc['all'];
+
           acc[category]?.applications.push(application);
         });
 
@@ -207,10 +235,19 @@ export class PlayScene {
 
   selectedAvatar$ = this.selectedAvatarState.avatar$;
 
-  selectedApplication?: Application;
-  openedApplication?: Application;
+  selectedApplication$ = this.selectedApplicationState.application$;
+  sidebarIsOpen$ = this.selectedApplicationState.sidebarIsOpen$.pipe(
+    delay(500),
+    tap((isOpen) => {
+      if (!this.sidebar) {
+        return;
+      }
 
-  sidebarIsOpen = false;
+      isOpen ? this.sidebar.open() : this.sidebar.close();
+    })
+  );
+
+  openedApplication?: Application;
 
   private readonly banners: {
     [key: string]: string;
@@ -225,28 +262,60 @@ export class PlayScene {
   constructor(
     private externalUserApplicationsState: ExternalUserApplicationsState,
     private internalUserApplicationsState: InternalUserApplicationsState,
+    private recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState,
     private router: Router,
-    private selectedAvatarState: SelectedAvatarState
+    private selectedAvatarState: SelectedAvatarState,
+    private selectedApplicationState: SelectedApplicationState
   ) {}
 
   onApplicationCardClick(application: Application) {
-    this.selectedApplication = application;
-    this.sidebarIsOpen = false;
-    setTimeout(() => (this.sidebarIsOpen = true), 0);
+    this.selectedApplicationState.selectApplication(application);
+    this.recentlyOpenedApplicationsState.addApplication(application);
+    this.selectedApplicationState.closeSidebar();
+    setTimeout(() => this.selectedApplicationState.openSidebar(), 0);
   }
 
-  onApplicationCardDropped(event: CdkDragDrop<Application[]>) {
-    this.selectedApplication = event.item.data;
+  onApplicationCardPlayClick(application: Application) {
+    this.selectedApplicationState.selectApplication(application);
+    this.recentlyOpenedApplicationsState.addApplication(application);
+    this.selectedApplicationState.closeSidebar();
+
+    const applicationIsSupported =
+      application.additionalProperties?.supportsBrowser;
+
+    if (!applicationIsSupported) {
+      window.open(application.startUrl, '_newtab' + Date.now());
+      return;
+    }
+
+    this.openedApplication = application;
+  }
+
+  onApplicationSheetCardClick(application: Application) {
+    this.selectedApplicationState.closeSidebar();
+  }
+
+  onApplicationCardDropped(application: Application) {
+    this.selectedApplicationState.selectApplication(application);
+    this.recentlyOpenedApplicationsState.addApplication(application);
+  }
+
+  onApplicationCarouselCardDropped(
+    event: CdkDragDrop<Application[], any, any>
+  ) {
+    const application = event.item.data;
+    this.selectedApplicationState.selectApplication(application);
+    this.recentlyOpenedApplicationsState.addApplication(application);
   }
 
   onApplicationSheetOpenApplicationClick(application: Application) {
     this.openedApplication = application;
-    this.sidebarIsOpen = false;
+    this.selectedApplicationState.closeSidebar();
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onApplicationOptionsButtonClick(application: Application) {
-    this.sidebarIsOpen = true;
+    this.selectedApplicationState.openSidebar();
   }
 
   onManageApplicationsClick() {

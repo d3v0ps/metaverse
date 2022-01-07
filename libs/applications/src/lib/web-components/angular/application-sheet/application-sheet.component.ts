@@ -14,6 +14,7 @@ import { Application, ApplicationShortcut } from '../../../models/application';
   template: `
     <div cfBlock="application-sheet" *ngIf="application">
       <div
+        id="application-sheet-card"
         cfBlock="drop-shadow"
         cdkDropList
         [cdkDropListData]="[application]"
@@ -28,6 +29,12 @@ import { Application, ApplicationShortcut } from '../../../models/application';
           >
           </cf-application-card>
         </div>
+      </div>
+
+      <div cfBlock="application-description">
+        <p>
+          {{ application?.description }}
+        </p>
       </div>
 
       <ul cfBlock="application-actions">
@@ -100,7 +107,7 @@ export class ApplicationSheetComponent {
   @ViewChild('applicationCardDropList', { static: true })
   applicationCardDropList!: CdkDropList;
 
-  @Input() public set application(application: Application | undefined) {
+  @Input() public set application(application: Application | undefined | null) {
     this._application = application;
 
     if (!application) {
@@ -124,7 +131,7 @@ export class ApplicationSheetComponent {
     this.applicationUrl = this.extractApplicationUrl(application);
   }
 
-  public get application(): Application | undefined {
+  public get application(): Application | undefined | null {
     return this._application;
   }
 
@@ -140,7 +147,7 @@ export class ApplicationSheetComponent {
   applicationIcon?: string;
   applicationPrimaryColor?: string;
 
-  private _application?: Application;
+  private _application?: Application | null;
 
   private extractApplicationIcon(application: Application): string | undefined {
     if (application.icons && application.icons.length > 0) {
@@ -183,7 +190,6 @@ export class ApplicationSheetComponent {
   }
 
   onApplicationCardDrop(application: Application) {
-    console.log(application);
     this.applicationCardDrop.emit(application);
   }
 

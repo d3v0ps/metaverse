@@ -17,6 +17,10 @@
     box-shadow: 0 1px 2px 0 #0000000d;
     filter: brightness(1.1);
     transform: translateY(-1px);
+    .play-icon {
+      z-index: 1;
+      display: block;
+    }
   }
 
   &--is-not-supported {
@@ -48,6 +52,24 @@
     &__author {
       margin: 0;
     }
+  }
+
+  .play-icon {
+    position: absolute;
+    display: none;
+    &:hover {
+      filter: brightness(1.1);
+      .icon__svg {
+        fill: var(---component-application-play-hover-icon-color, var(--color-base-dark-darkest));
+      }
+    }
+    .icon__svg {
+      fill: var(---component-application-play-icon-color, var(--color-base-dark-darker));
+      filter: drop-shadow(3px 3px 2px rgb(0 0 0 / 0.4));
+      width: 120px;
+      height: 120px;
+    }
+
   }
 
   .application-description {

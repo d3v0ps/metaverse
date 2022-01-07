@@ -23,6 +23,14 @@ import { Application } from '../../../models/application';
       }"
       (click)="applicationClick.emit(application)"
     >
+      <div cfBlock="play-icon" (click)="playClick.emit(application)">
+        <cf-svg-icon
+          [src]="'assets/icons/mdi/play-circle-outline.svg'"
+          cfElem="icon"
+          [svgClass]="'icon__svg'"
+        ></cf-svg-icon>
+      </div>
+
       <div class="top-section">
         <cf-svg-icon
           *ngIf="
@@ -70,6 +78,14 @@ import { Application } from '../../../models/application';
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
     `
+      .application-description p {
+        width: 10em;
+        box-sizing: border-box;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
       .top-section {
         position: absolute;
         top: 10px;
@@ -130,6 +146,7 @@ export class ApplicationCardComponent {
   @Input() showUninstallButton?: boolean;
 
   @Output() public applicationClick = new EventEmitter<Application>();
+  @Output() public playClick = new EventEmitter<Application>();
 
   applicationIsSupported?: boolean;
   applicationIcon?: string;

@@ -42,7 +42,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       supportsBrowser: true,
       internal: false,
       defaultShortcut: 'Metadrones',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Metadrones'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -86,7 +86,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
       defaultShortcut: 'Search',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Search'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -130,7 +130,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
       defaultShortcut: 'Search',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Search'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -174,7 +174,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
       defaultShortcut: 'Keep',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Keep'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -218,7 +218,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
       defaultShortcut: 'Maps',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Maps'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -262,7 +262,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
       defaultShortcut: 'Travel',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Travel'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -306,7 +306,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
       defaultShortcut: 'Flights',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Flights'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -350,7 +350,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
       defaultShortcut: 'Order',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Order'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -394,7 +394,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
       defaultShortcut: 'Player',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Player'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -438,7 +438,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
       defaultShortcut: 'Portal',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Portal'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -482,7 +482,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
       defaultShortcut: 'Player',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Player'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -509,7 +509,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://primevideo.com',
         icons: [
           {
-            src: 'assets/icons/mdi/nemovietflix.svg',
+            src: 'assets/icons/mdi/movie.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -526,7 +526,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
       defaultShortcut: 'Player',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Player'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -570,7 +570,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
       defaultShortcut: 'Portal',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Portal'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -593,7 +593,7 @@ export const storeApplications: StoreApplicationDocType[] = [
     ],
     shortcuts: [
       {
-        name: 'Player',
+        name: 'Portal',
         url: 'https://instagram.com',
         icons: [
           {
@@ -613,8 +613,8 @@ export const storeApplications: StoreApplicationDocType[] = [
       permissions: [],
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
-      defaultShortcut: 'Player',
-      sidebarShortcuts: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -637,7 +637,7 @@ export const storeApplications: StoreApplicationDocType[] = [
     ],
     shortcuts: [
       {
-        name: 'Player',
+        name: 'Portal',
         url: 'https://web.whatsapp.com',
         icons: [
           {
@@ -657,8 +657,8 @@ export const storeApplications: StoreApplicationDocType[] = [
       permissions: [],
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
-      defaultShortcut: 'Player',
-      sidebarShortcuts: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -681,7 +681,7 @@ export const storeApplications: StoreApplicationDocType[] = [
     ],
     shortcuts: [
       {
-        name: 'Player',
+        name: 'Portal',
         url: 'https://evernote.com/intl/es/',
         icons: [
           {
@@ -701,8 +701,8 @@ export const storeApplications: StoreApplicationDocType[] = [
       permissions: [],
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
-      defaultShortcut: 'Player',
-      sidebarShortcuts: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -746,7 +746,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
       defaultShortcut: 'Portal',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Portal'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -790,7 +790,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
       defaultShortcut: 'Inbox',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Inbox'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -834,7 +834,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
       defaultShortcut: 'Agenda',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Agenda'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -878,7 +878,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
       defaultShortcut: 'Portal',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Portal'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -922,7 +922,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
       defaultShortcut: 'Shopping',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Shopping'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -966,7 +966,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
       defaultShortcut: 'Player',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Player'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -1011,7 +1011,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       internal: false,
       permissions: [],
       defaultShortcut: 'Store',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Store'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -1056,7 +1056,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       internal: false,
       permissions: [],
       defaultShortcut: 'Store',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Store'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -1101,7 +1101,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       internal: false,
       permissions: [],
       defaultShortcut: 'Order',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Order'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -1146,7 +1146,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       internal: false,
       permissions: [],
       defaultShortcut: 'Order',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Order'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -1191,7 +1191,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       internal: false,
       permissions: [],
       defaultShortcut: 'Portal',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Portal'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -1236,11 +1236,327 @@ export const storeApplications: StoreApplicationDocType[] = [
       internal: false,
       permissions: [],
       defaultShortcut: 'Portal',
-      sidebarShortcuts: [],
+      sidebarShortcuts: ['Portal'],
       colors: [
         {
           variation: ColorVariation.Primary,
           color: '#9146ff',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.feedly.feedly',
+    name: 'Feedly',
+    description: 'Feedly',
+    startUrl: 'https://feedly.com/',
+    categories: ['news', 'entertainment'],
+    icons: [
+      {
+        src: 'assets/icons/mdi/newspaper.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Inbox',
+        url: 'https://feedly.com/',
+        icons: [
+          {
+            src: 'assets/icons/mdi/newspaper.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.feedly',
+        name: 'Feedly',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Inbox',
+      sidebarShortcuts: ['Inbox'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#2bb24c',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.wikipedia.wikipedia',
+    name: 'Wikipedia',
+    description: 'Wikipedia',
+    startUrl: 'https://wikipedia.com/',
+    categories: ['news', 'entertainment', 'magazines'],
+    icons: [
+      {
+        src: 'assets/icons/mdi/wikipedia.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://wikipedia.com/',
+        icons: [
+          {
+            src: 'assets/icons/mdi/wikipedia.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.wikipedia',
+        name: 'Wikipedia',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#636466',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.nintendo.my',
+    name: 'My Nintendo',
+    description: 'Nintendo',
+    startUrl: 'https://my.nintendo.com/',
+    categories: ['news', 'games'],
+    icons: [
+      {
+        src: 'assets/icons/mdi/nintendo-switch.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://my.nintendo.com.com/',
+        icons: [
+          {
+            src: 'assets/icons/mdi/nintendo-switch.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.nintendo',
+        name: 'Nintendo',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#e60012',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.epic.store',
+    name: 'Epic Games',
+    description: 'Epic Games Store',
+    startUrl: 'https://www.epicgames.com/store/',
+    categories: ['news', 'games'],
+    icons: [
+      {
+        src: 'assets/icons/mdi/microsoft-xbox-controller.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://www.epicgames.com/store/',
+        icons: [
+          {
+            src: 'assets/icons/mdi/microsoft-xbox-controller.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.epic',
+        name: 'Epic Games',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#2A2A2A',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.valve.store',
+    name: 'Steam Store',
+    description: 'Steam Games Store',
+    startUrl: 'https://store.steampowered.com',
+    categories: ['news', 'games'],
+    icons: [
+      {
+        src: 'assets/icons/mdi/steam.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://store.steampowered.com',
+        icons: [
+          {
+            src: 'assets/icons/mdi/steam.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.valve',
+        name: 'Valve',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#00adee',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.cdprojekt.gog',
+    name: 'GOG',
+    description:
+      'GOG.com is a digital distribution platform – an online store with a curated selection of games, an optional gaming client giving you freedom of choice',
+    startUrl: 'https://www.gog.com',
+    categories: ['news', 'games'],
+    icons: [
+      {
+        src: 'assets/icons/mdi/gog.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://www.gog.com',
+        icons: [
+          {
+            src: 'assets/icons/mdi/gog.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.cdprojekt',
+        name: 'CD Projekt',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#A8DD36',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.bbva.wallet',
+    name: 'BBVA',
+    description: '',
+    startUrl: 'https://www.bbva.es',
+    categories: ['finances', 'shopping'],
+    icons: [
+      {
+        src: 'assets/icons/mdi/bank.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://www.bbva.es',
+        icons: [
+          {
+            src: 'assets/icons/mdi/bank.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.bbva',
+        name: 'BBVA',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#072146',
         },
       ],
     },
