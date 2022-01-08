@@ -1642,6 +1642,10 @@ li {
   fill: var(--color-base-primary-medium);
 }
 
+.form-control input.form-control--primary::placeholder {
+  color: var(--component-input-primary-background-color);
+}
+
 .form-control input.form-control--primary:active, .form-control input.form-control--primary:focus {
   color: var(--component-input-primary-background-color);
   background-color: var(--component-input-primary-color);
@@ -1655,6 +1659,10 @@ li {
 
 .form-control input.form-control--secondary .icon__svg {
   fill: var(--color-base-secondary-medium);
+}
+
+.form-control input.form-control--secondary::placeholder {
+  color: var(--component-input-secondary-background-color);
 }
 
 .form-control input.form-control--secondary:active, .form-control input.form-control--secondary:focus {
@@ -1672,6 +1680,10 @@ li {
   fill: var(--color-base-success-medium);
 }
 
+.form-control input.form-control--success::placeholder {
+  color: var(--component-input-success-background-color);
+}
+
 .form-control input.form-control--success:active, .form-control input.form-control--success:focus {
   color: var(--component-input-success-background-color);
   background-color: var(--component-input-success-color);
@@ -1685,6 +1697,10 @@ li {
 
 .form-control input.form-control--warning .icon__svg {
   fill: var(--color-base-warning-medium);
+}
+
+.form-control input.form-control--warning::placeholder {
+  color: var(--component-input-warning-background-color);
 }
 
 .form-control input.form-control--warning:active, .form-control input.form-control--warning:focus {
@@ -1702,6 +1718,10 @@ li {
   fill: var(--color-base-danger-medium);
 }
 
+.form-control input.form-control--danger::placeholder {
+  color: var(--component-input-danger-background-color);
+}
+
 .form-control input.form-control--danger:active, .form-control input.form-control--danger:focus {
   color: var(--component-input-danger-background-color);
   background-color: var(--component-input-danger-color);
@@ -1715,6 +1735,10 @@ li {
 
 .form-control input.form-control--info .icon__svg {
   fill: var(--color-base-info-medium);
+}
+
+.form-control input.form-control--info::placeholder {
+  color: var(--component-input-info-background-color);
 }
 
 .form-control input.form-control--info:active, .form-control input.form-control--info:focus {
@@ -1732,6 +1756,10 @@ li {
   fill: var(--color-base-dark-medium);
 }
 
+.form-control input.form-control--dark::placeholder {
+  color: var(--component-input-dark-background-color);
+}
+
 .form-control input.form-control--dark:active, .form-control input.form-control--dark:focus {
   color: var(--component-input-dark-background-color);
   background-color: var(--component-input-dark-color);
@@ -1745,6 +1773,10 @@ li {
 
 .form-control input.form-control--light .icon__svg {
   fill: var(--color-base-light-medium);
+}
+
+.form-control input.form-control--light::placeholder {
+  color: var(--component-input-light-background-color);
 }
 
 .form-control input.form-control--light:active, .form-control input.form-control--light:focus {
@@ -2826,8 +2858,8 @@ cf-sidebar-container {
 .application-card .application-icon .icon__svg {
   fill: var(---component-application-card-font-color, #fff);
   filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.4));
-  width: 120px;
-  height: 120px;
+  width: 64px;
+  height: 64px;
 }
 
 .application-card .application-header {
@@ -2910,7 +2942,7 @@ cf-sidebar-container {
 
 .applications-carousel-item .application-card {
   width: 300px;
-  height: 220px;
+  height: 180px;
 }
 
 :root {

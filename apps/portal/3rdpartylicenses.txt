@@ -1678,6 +1678,9 @@ THE SOFTWARE.
 modifyjs
 ISC
 
+ng-animate
+MIT
+
 object-is
 MIT
 The MIT License (MIT)

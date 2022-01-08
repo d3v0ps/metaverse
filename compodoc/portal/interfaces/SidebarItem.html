@@ -345,7 +345,8 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { transition, trigger, useAnimation } from &#x27;@angular/animations&#x27;;
+import { Component, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
 import { NavigationEnd, Router } from &#x27;@angular/router&#x27;;
 import {
   Application,
@@ -357,9 +358,19 @@ import type { Avatar } from &#x27;@central-factory/avatars/models/avatar&#x27;;
 import { SelectedAvatarState } from &#x27;@central-factory/avatars/states/selected-avatar.state&#x27;;
 import { EntityManager } from &#x27;@central-factory/persistence/services/entity-manager&#x27;;
 import { Repository } from &#x27;@central-factory/persistence/services/repository&#x27;;
+import { CustomizationSettingsState } from &#x27;@central-factory/preferences/states/customization/customization-settings.state&#x27;;
+import { bounceIn, fadeInUp } from &#x27;ng-animate&#x27;;
 import { DeepReadonlyObject } from &#x27;rxdb/dist/types/types&#x27;;
 import { forkJoin, Observable, Subject } from &#x27;rxjs&#x27;;
-import { filter, map, switchMap, takeUntil, tap } from &#x27;rxjs/operators&#x27;;
+import {
+  distinctUntilChanged,
+  filter,
+  map,
+  skip,
+  switchMap,
+  takeUntil,
+  tap,
+} from &#x27;rxjs/operators&#x27;;
 
 export interface SidebarItem {
   name: string;
@@ -368,6 +379,12 @@ export interface SidebarItem {
   active: boolean;
   color?: string;
   application?: DeepReadonlyObject&lt;Application&gt;;
+}
+
+export enum SceneContentAnimationState {
+  Idle &#x3D; &#x27;Idle&#x27;,
+  Opened &#x3D; &#x27;Opened&#x27;,
+  Animated &#x3D; &#x27;Animated&#x27;,
 }
 
 @Component({
@@ -399,6 +416,15 @@ export interface SidebarItem {
             &gt;
               &lt;div style&#x3D;&quot;margin-top: 20px&quot;&gt;
                 &lt;a
+                  (click)&#x3D;&quot;
+                    onSidebarItemClick({
+                      name: &#x27;Select Avatar&#x27;,
+                      routerLink: [&#x27;/select-avatar&#x27;],
+                      icon: data.selectedAvatar.selectedAppearance
+                        .smallPreviewUrl,
+                      active: false
+                    })
+                  &quot;
                   [routerLink]&#x3D;&quot;[&#x27;/select-avatar&#x27;]&quot;
                   class&#x3D;&quot;d-block&quot;
                   cfBlock&#x3D;&quot;sidebar-item&quot;
@@ -416,7 +442,7 @@ export interface SidebarItem {
 
                 &lt;ng-container *ngFor&#x3D;&quot;let item of sidebarItems&quot;&gt;
                   &lt;a
-                    [routerLink]&#x3D;&quot;item.routerLink&quot;
+                    (click)&#x3D;&quot;onSidebarItemClick(item)&quot;
                     class&#x3D;&quot;d-block&quot;
                     cfBlock&#x3D;&quot;sidebar-item&quot;
                   &gt;
@@ -484,7 +510,10 @@ export interface SidebarItem {
             &lt;/cf-sidebar&gt;
 
             &lt;div cf-sidebar-content&gt;
-              &lt;div class&#x3D;&quot;scene__content&quot;&gt;
+              &lt;div
+                class&#x3D;&quot;scene__content&quot;
+                [@sceneContentAnimationState]&#x3D;&quot;sceneContentAnimationState&quot;
+              &gt;
                 &lt;router-outlet&gt;&lt;/router-outlet&gt;
               &lt;/div&gt;
             &lt;/div&gt;
@@ -508,6 +537,20 @@ export interface SidebarItem {
       &lt;/div&gt;
     &lt;/ng-container&gt;
   &#x60;,
+  animations: [
+    trigger(&#x27;sceneContentAnimationState&#x27;, [
+      transition(
+        &#x60;${SceneContentAnimationState.Idle} &#x3D;&gt; ${SceneContentAnimationState.Animated}&#x60;,
+        useAnimation(bounceIn)
+      ),
+      transition(
+        &#x60;${SceneContentAnimationState.Idle} &#x3D;&gt; ${SceneContentAnimationState.Opened}&#x60;,
+        useAnimation(fadeInUp, {
+          params: { timing: 0.5 },
+        })
+      ),
+    ]),
+  ],
 })
 export class PortalLayoutScene implements OnInit, OnDestroy {
   public title &#x3D; &#x27;Metaverse Portal&#x27;;
@@ -517,6 +560,7 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
   public recentlyOpenedSidebarItems: SidebarItem[] &#x3D; [];
 
   public showNavbar &#x3D; false;
+  public sceneContentAnimationState &#x3D; SceneContentAnimationState.Idle;
 
   public readonly selectedAvatar$: Observable&lt;Avatar | null | undefined&gt; &#x3D;
     this.selectedAvatarState.avatar$;
@@ -534,16 +578,51 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
     private readonly entityManager: EntityManager,
     private readonly selectedAvatarState: SelectedAvatarState,
     private readonly selectedApplicationState: SelectedApplicationState,
-    private readonly recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState
+    private readonly recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState,
+    private readonly customizationSettingsState: CustomizationSettingsState
   ) {}
 
   public ngOnInit(): void {
+    this.customizationSettingsState.customizationSettings$
+      .pipe(
+        map((customizationSettings) &#x3D;&gt; customizationSettings?.theme),
+        filter((theme) &#x3D;&gt; theme !&#x3D;&#x3D; undefined),
+        distinctUntilChanged((a, b) &#x3D;&gt; a?.path &#x3D;&#x3D;&#x3D; b?.path),
+        skip(1),
+        tap((theme) &#x3D;&gt; {
+          this.sceneContentAnimationState &#x3D; SceneContentAnimationState.Idle;
+          setTimeout(
+            () &#x3D;&gt;
+              (this.sceneContentAnimationState &#x3D;
+                SceneContentAnimationState.Animated),
+            100
+          );
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+
     this.recentlyOpenedApplications$
       .pipe(
         takeUntil(this.destroy$),
         tap((sidebarItems) &#x3D;&gt; (this.recentlyOpenedSidebarItems &#x3D; sidebarItems))
       )
       .subscribe();
+
+    // this.router.events
+    //   .pipe(
+    //     filter((event) &#x3D;&gt; event instanceof NavigationStart),
+    //     takeUntil(this.destroy$)
+    //   )
+    //   .subscribe(() &#x3D;&gt; {
+    //     this.sceneContentAnimationState &#x3D; SceneContentAnimationState.Idle;
+    //     setTimeout(
+    //       () &#x3D;&gt;
+    //         (this.sceneContentAnimationState &#x3D;
+    //           SceneContentAnimationState.Opened),
+    //       100
+    //     );
+    //   });
 
     this.router.events
       .pipe(
@@ -577,12 +656,28 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
   }
 
   public onRecentlyOpenedItemClick(sidebarItem: SidebarItem) {
-    if (sidebarItem.application) {
-      this.selectedApplicationState.selectApplication(
-        sidebarItem.application as Application
-      );
-      this.selectedApplicationState.openSidebar();
-    }
+    this.sceneContentAnimationState &#x3D; SceneContentAnimationState.Idle;
+    setTimeout(() &#x3D;&gt; {
+      this.sceneContentAnimationState &#x3D; SceneContentAnimationState.Opened;
+
+      if (sidebarItem.application) {
+        this.selectedApplicationState.selectApplication(
+          sidebarItem.application as Application
+        );
+        this.selectedApplicationState.openSidebar();
+      }
+    }, 100);
+  }
+
+  public onSidebarItemClick(sidebarItem: SidebarItem) {
+    this.sceneContentAnimationState &#x3D; SceneContentAnimationState.Idle;
+    setTimeout(() &#x3D;&gt; {
+      this.sceneContentAnimationState &#x3D; SceneContentAnimationState.Opened;
+
+      if (sidebarItem.routerLink) {
+        this.router.navigate(sidebarItem.routerLink);
+      }
+    }, 100);
   }
 
   private subscribeToDataChanges(
