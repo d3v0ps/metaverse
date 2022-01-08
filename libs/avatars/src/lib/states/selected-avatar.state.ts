@@ -54,6 +54,7 @@ export class SelectedAvatarState {
 
     return this.userPreferencesRepository.upsert({
       id: 'userAvatars.selectedAvatar',
+      key: 'userAvatars.selectedAvatar',
       value: avatar.id,
     });
   }

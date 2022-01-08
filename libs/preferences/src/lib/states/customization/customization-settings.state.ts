@@ -2,7 +2,14 @@ import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { EntityManager } from '@central-factory/persistence/services/entity-manager';
 import { Repository } from '@central-factory/persistence/services/repository';
-import { BehaviorSubject, forkJoin, switchMap, tap, throwError } from 'rxjs';
+import {
+  BehaviorSubject,
+  combineLatest,
+  forkJoin,
+  switchMap,
+  tap,
+  throwError,
+} from 'rxjs';
 import { UserPreferenceDocType } from '../../collections/user-preferences.collection';
 import { Customization } from '../../models/customization';
 
@@ -43,14 +50,16 @@ export class CustomizationSettingsState {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public setCustomizationSettings(settings: any) {
+  public setCustomizationSettings(settings: any, avatar?: string) {
     if (!this.userPreferencesRepository) {
       return throwError(() => new Error('Repositories not initialized'));
     }
 
     return this.userPreferencesRepository.upsert({
-      id: 'settings.customization',
+      id: `settings.customization${avatar ? `.${avatar}` : ''}`,
+      key: 'settings.customization',
       value: settings,
+      avatar,
     });
   }
 
@@ -73,15 +82,34 @@ export class CustomizationSettingsState {
       )
       .subscribe();
 
-    this.userPreferencesRepository
-      .observeOne({
+    combineLatest([
+      this.userPreferencesRepository.observeOne({
         selector: {
-          id: 'settings.customization',
+          key: 'userAvatars.selectedAvatar',
         },
-      })
+      }),
+      this.userPreferencesRepository.observe({
+        selector: {
+          key: 'settings.customization',
+        },
+      }),
+    ])
       .pipe(
-        tap((customizationSettings) => {
-          this.customizationSettings$.next(customizationSettings?.value);
+        tap(([avatarSettings, customizationSettings]) => {
+          console.log(customizationSettings);
+          if (customizationSettings.length <= 0) {
+            return;
+          }
+
+          const settings =
+            customizationSettings.find(
+              (settings) => settings.avatar === avatarSettings?.value
+            ) || customizationSettings[0];
+
+          console.log(avatarSettings);
+          console.log(settings.avatar, settings.value);
+
+          this.customizationSettings$.next(settings.value);
         })
       )
       .subscribe();

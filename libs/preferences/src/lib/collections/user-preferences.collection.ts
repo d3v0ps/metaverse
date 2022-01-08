@@ -23,10 +23,17 @@ export const userPreferencesSchema: RxJsonSchema<UserPreferenceDocType> = {
   properties: {
     id: {
       type: 'string',
+      description: 'Id',
+    },
+    key: {
+      type: 'string',
       description: 'Key',
     },
     value: {
       description: 'Value',
+    },
+    avatar: {
+      type: 'string',
     },
     createdAt: {
       format: 'date-time',
