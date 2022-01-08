@@ -785,7 +785,9 @@ export class BackgroundRenderer {
 
     // pick a font slightly smaller than the tile size
     ctx.font &#x3D; tileSize - 2 + &#x27;px monospace&#x27;;
-    ctx.fillStyle &#x3D; &#x27;rgb( 0 , 255 , 0 )&#x27;;
+    // ctx.fillStyle &#x3D; &#x27;rgb( 0 , 255 , 0 )&#x27;;
+    ctx.fillStyle &#x3D; &#x27;#22b455&#x27;;
+
     for (let i &#x3D; 0; i &lt; columns.length; ++i) {
       // pick a random ascii character (change the 94 to a higher number to include more characters)
       const randomCharacter &#x3D; String.fromCharCode(

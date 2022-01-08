@@ -719,11 +719,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
 }
 
 * ::-webkit-scrollbar {
-  background-color: var(--color-base-dark-medium);
+  background: transparent;
+  width: 0.5rem;
 }
 
 * ::-webkit-scrollbar-thumb {
-  background: var(--color-base-primary-medium);
+  background: var(--color-base-secondary-medium);
+  border-radius: 20px;
+  width: 0.5rem;
 }
 
 html,
