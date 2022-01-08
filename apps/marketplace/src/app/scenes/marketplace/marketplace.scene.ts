@@ -3,12 +3,6 @@ import { Component } from '@angular/core';
 /** Marketplace main scene */
 @Component({
   selector: 'cf-marketplace',
-  template: `
-    <div cfBlock="scene-content">
-      <div fxLayout="column" fxFlexFill>
-        <div fxFlex="40">Marketplace</div>
-      </div>
-    </div>
-  `,
+  template: ` <h5>Marketplace</h5> `,
 })
 export class MarketplaceScene {}

@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AvatarAppearancesModule } from '@central-factory/avatars/web-components/angular/avatar-appearances/avatar-appearances.module';
 import { AvatarOverviewModule } from '@central-factory/avatars/web-components/angular/avatar-overview/avatar-overview.module';
@@ -15,7 +14,6 @@ import { SelectedAvatarScene } from './selected-avatar.scene';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule,
     BemModule,
     SelectedAvatarRoutingModule,
     AvatarOverviewModule,

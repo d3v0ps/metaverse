@@ -11,25 +11,29 @@ import { UserAssetsState } from '@central-factory/assets/states/user-assets.stat
         assets: assets$ | async
       } as data"
     >
-      <div cfBlock="scene-content" *ngIf="data.assets">
-        <div fxLayout="row" fxFlexFill fxLayoutGap="1rem">
-          <div fxFlex="70" fxFlex.lt-md="50" fxFlex.lt-sm="30">
-            <cf-assets-grid
-              [assets]="data.assets"
-              [activeAsset]="selectedAsset"
-              (assetClick)="onGridAssetClick($event)"
-            ></cf-assets-grid>
-          </div>
-          <div fxFlex="30" fxFlex.lt-md="50" fxFlex.lt-sm="70">
-            <cf-asset-detail
-              *ngIf="selectedAsset"
-              [asset]="selectedAsset"
-            ></cf-asset-detail>
-          </div>
-        </div>
+      <div cfBlock="scene-content" cfMod="inventory" *ngIf="data.assets">
+        <cf-assets-grid
+          [assets]="data.assets"
+          [activeAsset]="selectedAsset"
+          (assetClick)="onGridAssetClick($event)"
+        ></cf-assets-grid>
+        <cf-asset-detail
+          *ngIf="selectedAsset"
+          [asset]="selectedAsset"
+        ></cf-asset-detail>
       </div>
     </ng-container>
   `,
+  styles: [
+    `
+      .scene-content {
+        &--inventory {
+          display: flex;
+          gap: 2rem;
+        }
+      }
+    `,
+  ],
 })
 export class InventoryScene {
   public readonly assets$ = this.userAssetsRepository.assets$;

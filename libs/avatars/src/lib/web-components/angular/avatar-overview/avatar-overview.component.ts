@@ -13,72 +13,72 @@ export interface AvatarOverviewInput {
   selector: 'cf-avatar-overview',
   template: `
     <form [formGroup]="form" cfBlock="avatar-overview" *ngIf="form.value?.name">
-      <div fxLayout="column" fxLayoutGap="10px">
-        <div fxLayout="row" fxLayoutGap="10px">
-          <div fxFlex="100px">
-            <img cfElem="small-preview" [src]="form.value.smallPreviewUrl" />
+      <img cfElem="small-preview" [src]="form.value.smallPreviewUrl" />
+
+      <div cfBlock="chatbox">
+        <div cfElem="message">
+          <div class="form-control" *ngIf="editing.welcomeMessage">
+            <!-- label for="welcomeMessage">Welcome message:</label -->
+            <textarea
+              id="welcomeMessage"
+              formControlName="welcomeMessage"
+            ></textarea>
+            <cf-svg-icon
+              src="assets/icons/mdi/check.svg"
+              cfElem="icon"
+              [svgClass]="'icon__svg'"
+              (click)="editing.welcomeMessage = !editing.welcomeMessage"
+            ></cf-svg-icon>
           </div>
 
-          <div fxFlex>
-            <div cfBlock="chatbox">
-              <div cfElem="message">
-                <div class="form-control" *ngIf="editing.welcomeMessage">
-                  <!-- label for="welcomeMessage">Welcome message:</label -->
-                  <textarea
-                    id="welcomeMessage"
-                    formControlName="welcomeMessage"
-                  ></textarea>
-                  <cf-svg-icon
-                    src="assets/icons/mdi/check.svg"
-                    cfElem="icon"
-                    [svgClass]="'icon__svg'"
-                    (click)="editing.welcomeMessage = !editing.welcomeMessage"
-                  ></cf-svg-icon>
-                </div>
+          <p
+            *ngIf="!editing.welcomeMessage"
+            (click)="editing.welcomeMessage = !editing.welcomeMessage"
+          >
+            {{ form.value.welcomeMessage }}
+            <cf-svg-icon
+              src="assets/icons/mdi/pencil-outline.svg"
+              cfElem="icon"
+              [svgClass]="'icon__svg'"
+            ></cf-svg-icon>
+          </p>
+        </div>
 
-                <p
-                  *ngIf="!editing.welcomeMessage"
-                  (click)="editing.welcomeMessage = !editing.welcomeMessage"
-                >
-                  {{ form.value.welcomeMessage }}
-                  <cf-svg-icon
-                    src="assets/icons/mdi/pencil-outline.svg"
-                    cfElem="icon"
-                    [svgClass]="'icon__svg'"
-                  ></cf-svg-icon>
-                </p>
-              </div>
+        <div cfElem="username">
+          <!-- label for="name">Name:</label -->
 
-              <div cfElem="username">
-                <!-- label for="name">Name:</label -->
-
-                <div class="form-control" *ngIf="editing.name">
-                  <input id="name" type="text" formControlName="name" />
-                  <cf-svg-icon
-                    src="assets/icons/mdi/check.svg"
-                    cfElem="icon"
-                    [svgClass]="'icon__svg'"
-                    (click)="editing.name = !editing.name"
-                  ></cf-svg-icon>
-                </div>
-
-                <span
-                  (click)="editing.name = !editing.name"
-                  *ngIf="!editing.name"
-                  >{{ form.value.name }}
-                  <cf-svg-icon
-                    src="assets/icons/mdi/pencil-outline.svg"
-                    cfElem="icon"
-                    [svgClass]="'icon__svg'"
-                  ></cf-svg-icon>
-                </span>
-              </div>
-            </div>
+          <div class="form-control" *ngIf="editing.name">
+            <input id="name" type="text" formControlName="name" />
+            <cf-svg-icon
+              src="assets/icons/mdi/check.svg"
+              cfElem="icon"
+              [svgClass]="'icon__svg'"
+              (click)="editing.name = !editing.name"
+            ></cf-svg-icon>
           </div>
+
+          <span (click)="editing.name = !editing.name" *ngIf="!editing.name"
+            >{{ form.value.name }}
+            <cf-svg-icon
+              src="assets/icons/mdi/pencil-outline.svg"
+              cfElem="icon"
+              [svgClass]="'icon__svg'"
+            ></cf-svg-icon>
+          </span>
         </div>
       </div>
     </form>
   `,
+  styles: [
+    `
+      .avatar-overview {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+      }
+    `,
+  ],
 })
 export class AvatarOverviewComponent {
   @Input() set avatar(value: Avatar) {

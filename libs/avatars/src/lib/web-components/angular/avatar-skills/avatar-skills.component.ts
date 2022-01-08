@@ -18,7 +18,7 @@ export class AvatarSkillsInput {
       >
         <h2>Skills</h2>
 
-        <div fxLayout="row wrap" fxLayoutGap="15px">
+        <div cfBlock="avatar-skills-carousel">
           <div
             *ngFor="let skill of skillsForm.controls; let i = index"
             class="skill-form"
@@ -80,6 +80,15 @@ export class AvatarSkillsInput {
       </button>
     </form>
   `,
+  styles: [
+    `
+      .avatar-skills-carousel {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+    `,
+  ],
 })
 export class AvatarSkillsComponent {
   @Input() set skills(value: Skill[]) {

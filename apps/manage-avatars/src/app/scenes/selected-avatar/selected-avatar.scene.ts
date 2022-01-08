@@ -12,34 +12,22 @@ import { Observable } from 'rxjs';
       } as data"
     >
       <div cfBlock="scene-content" *ngIf="data.avatar">
-        <div fxLayout="column" fxFlexFill style="overflow: auto">
-          <div fxFlex="10">
-            <cf-avatar-overview
-              style="display: block; min-height: 200px;"
-              [avatar]="data.avatar"
-            ></cf-avatar-overview>
-          </div>
-          <div fxFlex="90">
-            <div style="margin-bottom: 100px;">
-              <!-- cf-avatar-skills
-                [skills]="data.avatar.skills"
-              ></cf-avatar-skills -->
-            </div>
-            <div fxLayout="row" fxFlexFill>
-              <div fxFlex="60">
-                <cf-avatar-appearances
-                  [appearances]="data.avatar.appearances"
-                ></cf-avatar-appearances>
-              </div>
+        <cf-avatar-overview
+          style="display: block; min-height: 200px;"
+          [avatar]="data.avatar"
+        ></cf-avatar-overview>
 
-              <div fxFlex="40">
-                <!-- cf-avatar-scopes
-                  [scopes]="data.avatar.scopes"
-                ></cf-avatar-scopes-->
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- cf-avatar-skills
+            [skills]="data.avatar.skills"
+          ></cf-avatar-skills -->
+
+        <cf-avatar-appearances
+          [appearances]="data.avatar.appearances"
+        ></cf-avatar-appearances>
+
+        <!-- cf-avatar-scopes
+            [scopes]="data.avatar.scopes"
+          ></cf-avatar-scopes-->
       </div>
     </ng-container>
   `,

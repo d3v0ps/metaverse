@@ -22,7 +22,7 @@ export const storeApplications: StoreApplicationDocType[] = [
     shortcuts: [
       {
         name: 'Metadrones',
-        url: 'metadrones',
+        url: 'https://aitorllamas.com/metaverse/apps/metadrones/remoteEntry.js',
         icons: [
           {
             src: 'assets/icons/mdi/drone.svg',

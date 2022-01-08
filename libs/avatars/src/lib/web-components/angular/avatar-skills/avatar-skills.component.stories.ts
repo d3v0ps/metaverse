@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BemModule } from '@central-factory/web-components/angular/bem/bem.module';
 import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
@@ -20,7 +19,6 @@ export default {
         CommonModule,
         ReactiveFormsModule,
         BemModule,
-        FlexLayoutModule,
         SvgIconModule,
       ],
     }),
