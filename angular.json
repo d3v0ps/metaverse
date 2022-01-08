@@ -199,7 +199,7 @@
             }
           ],
           "options": {
-            "port": 3000
+            "port": 5100
           }
         },
         "copy-assets": {
