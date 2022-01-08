@@ -2,6 +2,10 @@
   "name": "@central-factory/metaverse",
   "version": "0.0.0",
   "license": "MIT",
+  "author": {
+    "name": "Central Factory"
+  },
+  "description": "A metaverse for the Central Factory",
   "scripts": {
     "ng": "nx",
     "postinstall": "npm run decorate:patch-package && npm run decorate:angular-cli",
@@ -29,6 +33,7 @@
     "@cliqz/adblocker-electron": "^1.23.2",
     "@docusaurus/core": "^2.0.0-alpha.70",
     "@docusaurus/preset-classic": "^2.0.0-alpha.70",
+    "@google/model-viewer": "^1.9.2",
     "@mdi/svg": "^6.4.95",
     "@mdx-js/react": "^1.6.21",
     "@nestjs/common": "^8.2.4",

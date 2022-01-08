@@ -6,15 +6,26 @@ import { previewAvatarAppearanceAframeScene } from './preview-avatar-appearance.
 @Component({
   selector: 'cf-preview-avatar-appearance',
   template: `
-    <iframe
+    <!-- iframe
       *ngIf="frameDoc"
       style="width: {{ width }}; height: {{ height }};"
       [srcdoc]="frameDoc"
-    ></iframe>
+    ></iframe-->
+    <model-viewer
+      style="width: {{ width }}; height: {{ height }};"
+      *ngIf="appearance?.src"
+      [src]="appearance?.src"
+      ar
+      ar-modes="webxr scene-viewer quick-look"
+      seamless-poster
+      shadow-intensity="1"
+      camera-controls
+    ></model-viewer>
   `,
 })
 export class PreviewAvatarAppearanceComponent {
-  @Input() set appearance(value: Appearance) {
+  @Input() set appearance(value: Appearance | undefined) {
+    this._appearance = value;
     if (!value) {
       return;
     }
@@ -23,11 +34,16 @@ export class PreviewAvatarAppearanceComponent {
       previewAvatarAppearanceAframeScene(value, this.width, this.height)
     );
   }
+  get appearance(): Appearance | undefined {
+    return this._appearance;
+  }
 
   frameDoc!: SafeHtml;
 
   @Input() height = '300px';
   @Input() width = '100%';
+
+  private _appearance?: Appearance;
 
   constructor(private sanitizer: DomSanitizer) {}
 }

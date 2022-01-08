@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import '@google/model-viewer';
 // import 'aframe';
 import { PreviewAvatarAppearanceComponent } from './preview-avatar-appearance.component';
 
@@ -7,5 +8,6 @@ import { PreviewAvatarAppearanceComponent } from './preview-avatar-appearance.co
   imports: [CommonModule],
   declarations: [PreviewAvatarAppearanceComponent],
   exports: [PreviewAvatarAppearanceComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class PreviewAvatarAppearanceModule {}

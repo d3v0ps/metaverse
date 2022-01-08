@@ -4,15 +4,11 @@
     "output": "release/"
   },
   "files": [
-    "**/*",
-    "!**/*.ts",
-    "!*.map",
-    "!package.json",
-    "!package-lock.json"
+    "src/main.electron.js"
   ],
   "extraResources": [
     {
-      "from": "dist",
+      "from": "dist/apps/portal",
       "to": "app",
       "filter": [
         "**/*"

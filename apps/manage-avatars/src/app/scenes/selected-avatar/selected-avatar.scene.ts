@@ -12,14 +12,14 @@ import { Observable } from 'rxjs';
       } as data"
     >
       <div cfBlock="scene-content" *ngIf="data.avatar">
-        <div fxLayout="column" fxFlexFill>
-          <div fxFlex="40">
+        <div fxLayout="column" fxFlexFill style="overflow: auto">
+          <div fxFlex="10">
             <cf-avatar-overview
               style="display: block; min-height: 200px;"
               [avatar]="data.avatar"
             ></cf-avatar-overview>
           </div>
-          <div fxFlex="60">
+          <div fxFlex="90">
             <div style="margin-bottom: 100px;">
               <!-- cf-avatar-skills
                 [skills]="data.avatar.skills"

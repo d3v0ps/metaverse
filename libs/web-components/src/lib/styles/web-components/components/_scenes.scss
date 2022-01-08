@@ -36,7 +36,7 @@
   width: var(--component-scene-content-expand);
   margin: 2rem auto 0 auto;
   border-radius: 20px;
-  height: calc(100vh - 80px);
+  max-height: calc(100vh - 80px);
 
   &--no-padding {
     padding: 0;
