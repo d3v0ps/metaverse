@@ -1,4 +1,4 @@
-name: Deploy on GH Pages
+name: Deploy Web
 on:
   push:
     branches: [main]
@@ -6,6 +6,34 @@ env:
   BEFORE_SHA: ${{ github.event.before }}
   cache-name: npm
 jobs:
+
+  test:
+
+    name: Run Lint & Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 13.x
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Run lint
+        run: npm run lint
+
+      - name: Send notification to Discord
+        uses: sarisia/actions-status-discord@v1
+        if: always()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          title: 'Deploy Web: Run Tests'
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -47,8 +75,21 @@ jobs:
           shell: bash
           command: npx nx build codex
 
+      - name: Build portal
+        run: npx nx build portal
+
+      - name: Build metadrones
+        run: npx nx build metadrones
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.6
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: dist/ #
+
+      - name: Send notification to Discord
+        uses: sarisia/actions-status-discord@v1
+        if: always()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          title: 'Generate Release: Publish Release'
