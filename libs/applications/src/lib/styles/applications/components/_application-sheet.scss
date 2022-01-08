@@ -36,9 +36,10 @@
 
   .application-actions {
     display: flex;
-    width: 35%;
+    width: 100%;
     flex-direction: column;
     gap: 1rem;
+    padding: 1rem;
 
     &__item {
       max-width: 200px;

@@ -140,156 +140,88 @@ export interface ApplicationBanners {
                 </div>
               </form>
 
-              <h2 cfElem="section-title">Recently Opened</h2>
-
               <ng-container
                 *ngIf="recentlyOpenedApplications$ | async as applications"
               >
-                <div
-                  cfBlock="applications-carousel"
-                  cdkDropList
-                  cdkDropListSortingDisabled
-                  [cdkDropListData]="applications"
-                  [cdkDropListConnectedTo]="[
+                <h2 cfElem="section-title" *ngIf="applications.length > 0">
+                  Recently Opened
+                </h2>
+                <cf-applications-carousel
+                  [applications]="applications"
+                  [dropListConnectedTo]="[
                     applicationSheet.applicationCardDropList
                   ]"
-                  (cdkDropListDropped)="
+                  (applicationCardClick)="onApplicationCardClick($event)"
+                  (applicationStarClick)="onApplicationStarClick($event)"
+                  (applicationCardDrop)="
                     onApplicationCarouselCardDropped($event)
                   "
                 >
-                  <div
-                    cdkDrag
-                    [cdkDragData]="application"
-                    *ngFor="let application of applications"
-                    cfBlock="applications-carousel-item"
-                  >
-                    <div cfBlock="drag-placeholder" *cdkDragPlaceholder></div>
-                    <cf-application-card
-                      [application]="application"
-                      (applicationClick)="onApplicationCardClick(application)"
-                      (starClick)="onApplicationStarClick(application)"
-                    ></cf-application-card>
-                  </div>
-                </div>
+                </cf-applications-carousel>
               </ng-container>
-
-              <h2 cfElem="section-title">Starred Applications</h2>
 
               <ng-container
                 *ngIf="starredApplications$ | async as applications"
               >
-                <div
-                  cfBlock="applications-carousel"
-                  cdkDropList
-                  cdkDropListSortingDisabled
-                  [cdkDropListData]="applications"
-                  [cdkDropListConnectedTo]="[
+                <h2 cfElem="section-title" *ngIf="applications.length > 0">
+                  Starred Applications
+                </h2>
+                <cf-applications-carousel
+                  [applications]="applications"
+                  [dropListConnectedTo]="[
                     applicationSheet.applicationCardDropList
                   ]"
-                  (cdkDropListDropped)="
+                  (applicationCardClick)="onApplicationCardClick($event)"
+                  (applicationStarClick)="onApplicationStarClick($event)"
+                  (applicationCardDrop)="
                     onApplicationCarouselCardDropped($event)
                   "
                 >
-                  <div
-                    cdkDrag
-                    [cdkDragData]="application"
-                    *ngFor="let application of applications"
-                    cfBlock="applications-carousel-item"
-                  >
-                    <div cfBlock="drag-placeholder" *cdkDragPlaceholder></div>
-                    <cf-application-card
-                      [application]="application"
-                      (applicationClick)="onApplicationCardClick(application)"
-                      (starClick)="onApplicationStarClick(application)"
-                    ></cf-application-card>
-                  </div>
-                </div>
+                </cf-applications-carousel>
               </ng-container>
 
               <ng-container
                 *ngFor="let banner of applicationBanners$ | async | keyvalue"
               >
-                <h2 cfElem="section-title">
+                <h2
+                  cfElem="section-title"
+                  *ngIf="banner.value.applications.length > 0"
+                >
                   {{ banner.value.bannerTitle }}
                 </h2>
-
-                <div
-                  id="applications-carousel"
-                  cfBlock="applications-carousel"
-                  cdkDropList
-                  cdkDropListSortingDisabled
-                  [cdkDropListData]="banner.value.applications"
-                  [cdkDropListConnectedTo]="[
+                <cf-applications-carousel
+                  [applications]="banner.value.applications"
+                  [dropListConnectedTo]="[
                     applicationSheet.applicationCardDropList
                   ]"
-                  (cdkDropListDropped)="
+                  (applicationCardClick)="onApplicationCardClick($event)"
+                  (applicationStarClick)="onApplicationStarClick($event)"
+                  (applicationCardDrop)="
                     onApplicationCarouselCardDropped($event)
                   "
                 >
-                  <div
-                    cdkDrag
-                    [cdkDragData]="application"
-                    cfBlock="applications-carousel-item"
-                    *ngFor="let application of banner.value.applications"
-                  >
-                    <div cfBlock="drag-placeholder" *cdkDragPlaceholder></div>
-                    <cf-application-card
-                      [application]="application"
-                      (applicationClick)="onApplicationCardClick(application)"
-                      (playClick)="onApplicationCardPlayClick(application)"
-                      (starClick)="onApplicationStarClick(application)"
-                    ></cf-application-card>
-                  </div>
-                </div>
+                </cf-applications-carousel>
               </ng-container>
-
-              <h2 cfElem="section-title">All Applications</h2>
 
               <ng-container
                 *ngIf="externalUserApplications$ | async as applications"
               >
-                <div
-                  cfBlock="applications-carousel"
-                  cdkDropList
-                  cdkDropListSortingDisabled
-                  [cdkDropListData]="applications"
-                  [cdkDropListConnectedTo]="[
+                <h2 cfElem="section-title" *ngIf="applications.length > 0">
+                  All Applications
+                </h2>
+                <cf-applications-carousel
+                  [applications]="applications"
+                  [dropListConnectedTo]="[
                     applicationSheet.applicationCardDropList
                   ]"
-                  (cdkDropListDropped)="
+                  (applicationCardClick)="onApplicationCardClick($event)"
+                  (applicationStarClick)="onApplicationStarClick($event)"
+                  (applicationCardDrop)="
                     onApplicationCarouselCardDropped($event)
                   "
                 >
-                  <div
-                    cdkDrag
-                    [cdkDragData]="application"
-                    *ngFor="let application of applications"
-                    cfBlock="applications-carousel-item"
-                  >
-                    <div cfBlock="drag-placeholder" *cdkDragPlaceholder></div>
-                    <cf-application-card
-                      [application]="application"
-                      (applicationClick)="onApplicationCardClick(application)"
-                      (starClick)="onApplicationStarClick(application)"
-                    ></cf-application-card>
-                  </div>
-                </div>
+                </cf-applications-carousel>
               </ng-container>
-
-              <!-- h2 cfElem="section-title">Internal Applications</h2>
-
-              <ng-container
-                *ngIf="internalUserApplications$ | async as applications"
-              >
-                <div cfBlock="application-list">
-                  <ng-container *ngFor="let application of applications">
-                    <cf-application-card
-                      [application]="application"
-                      (applicationClick)="onApplicationCardClick(application)"
-                    ></cf-application-card>
-                  </ng-container>
-                </div>
-              </ng-container -->
             </div>
           </ng-container>
         </div>
@@ -312,14 +244,6 @@ export interface ApplicationBanners {
         &__icon {
           fill: var(--color-base-light-medium);
         }
-      }
-
-      .application-list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        gap: 1rem;
-        margin-bottom: 3rem;
       }
     `,
   ],
