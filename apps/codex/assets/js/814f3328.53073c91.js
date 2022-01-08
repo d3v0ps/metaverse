@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkcentral_factory=self.webpackChunkcentral_factory||[]).push([[2535],{2285:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Welcome","permalink":"/metaverse/apps/codex/blog/welcome"},{"title":"Hello","permalink":"/metaverse/apps/codex/blog/hello-world"},{"title":"Hola","permalink":"/metaverse/apps/codex/blog/hola"}]}')}}]);

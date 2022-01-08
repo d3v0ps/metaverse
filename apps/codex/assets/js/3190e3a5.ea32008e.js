@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkcentral_factory=self.webpackChunkcentral_factory||[]).push([[4452],{4622:a=>{a.exports=JSON.parse('{"allTagsPath":"/metaverse/apps/codex/blog/tags","slug":"/metaverse/apps/codex/blog/tags/docusaurus","name":"docusaurus","count":3,"permalink":"/metaverse/apps/codex/blog/tags/docusaurus"}')}}]);

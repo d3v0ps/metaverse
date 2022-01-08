@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>central-factory documentation</title>
+        <title>@central-factory/metaverse documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,7 +15,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">central-factory documentation</a>
+            <a href="../" class="navbar-brand">@central-factory/metaverse documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -60,10 +60,25 @@
                 <td class="col-md-4">
                     <ul class="index-list">
                         <li>
+                            <a href="#args" title="apps/portal/src/main.electron.ts" ><b>args</b>&nbsp;&nbsp;&nbsp;(apps/.../main.electron.ts)</a>
+                        </li>
+                        <li>
                             <a href="#environment" title="apps/portal/src/environments/environment.prod.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.prod.ts)</a>
                         </li>
                         <li>
                             <a href="#environment" title="apps/portal/src/environments/environment.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#METADRONES_URL" title="apps/portal/src/app/portal-routing.module.ts" ><b>METADRONES_URL</b>&nbsp;&nbsp;&nbsp;(apps/.../portal-routing.module.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#platform" title="apps/portal/src/main.electron.ts" ><b>platform</b>&nbsp;&nbsp;&nbsp;(apps/.../main.electron.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#widevinePaths" title="apps/portal/src/main.electron.ts" ><b>widevinePaths</b>&nbsp;&nbsp;&nbsp;(apps/.../main.electron.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#win" title="apps/portal/src/main.electron.ts" ><b>win</b>&nbsp;&nbsp;&nbsp;(apps/.../main.electron.ts)</a>
                         </li>
                     </ul>
                 </td>
@@ -72,6 +87,106 @@
     </table>
 </section>
 
+    <h3>apps/portal/src/main.electron.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="args"></a>
+                    <span class="name">
+                        <span ><b>args</b></span>
+                        <a href="#args"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>process.argv.slice(1)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="platform"></a>
+                    <span class="name">
+                        <span ><b>platform</b></span>
+                        <a href="#platform"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(process.env.APPLICATION_PLATFORM &#x3D; &#x27;macos&#x27;)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="widevinePaths"></a>
+                    <span class="name">
+                        <span ><b>widevinePaths</b></span>
+                        <a href="#widevinePaths"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  windows:
+    &#x27;C/Program Files(x86)/Google/Chrome/Application/CHROME_VERSION/WidevineCdm/_platform_specific/win_(x86|x64)/&#x27;,
+  macos:
+    &#x27;/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/Current/Libraries/WidevineCdm/_platform_specific/mac_x64/libwidevinecdm.dylib&#x27;,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="win"></a>
+                    <span class="name">
+                        <span ><b>win</b></span>
+                        <a href="#win"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>BrowserWindow | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
     <h3>apps/portal/src/environments/environment.prod.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -158,6 +273,35 @@
 </div>
                 </td>
             </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>apps/portal/src/app/portal-routing.module.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="METADRONES_URL"></a>
+                    <span class="name">
+                        <span ><b>METADRONES_URL</b></span>
+                        <a href="#METADRONES_URL"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;http://localhost:3000/remoteEntry.js&#x27;</code>
+                    </td>
+                </tr>
+
 
         </tbody>
     </table>

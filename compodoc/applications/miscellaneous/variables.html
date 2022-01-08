@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>central-factory documentation</title>
+        <title>@central-factory/metaverse documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,7 +15,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">central-factory documentation</a>
+            <a href="../" class="navbar-brand">@central-factory/metaverse documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -240,6 +240,10 @@
           type: &#x27;boolean&#x27;,
           description: &#x27;Internal&#x27;,
         },
+        starred: {
+          type: &#x27;boolean&#x27;,
+          description: &#x27;Internal&#x27;,
+        },
         defaultShortcut: {
           type: &#x27;string&#x27;,
           description: &#x27;Default shortcut&#x27;,
@@ -453,7 +457,7 @@
     id: &#x27;com.central-factory.metadrones&#x27;,
     name: &#x27;Metadrones&#x27;,
     description: &#x27;Game demo on how to integrate with the metaverse&#x27;,
-    startUrl: &#x27;codex&#x27;,
+    startUrl: &#x27;metadrones&#x27;,
     icons: [
       {
         src: &#x27;assets/icons/mdi/drone.svg&#x27;,
@@ -463,11 +467,57 @@
     ],
     shortcuts: [
       {
-        name: &#x27;Codex&#x27;,
-        url: &#x27;https://www.aitorllamas.com/metaverse/apps/codex&#x27;,
+        name: &#x27;Metadrones&#x27;,
+        url: &#x27;metadrones&#x27;,
         icons: [
           {
-            src: &#x27;assets/icons/mid/book-open-page-variant.svg&#x27;,
+            src: &#x27;assets/icons/mdi/drone.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;games&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.central-factory&#x27;,
+        name: &#x27;Central Factory&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.WebpackModuleFederation,
+      supportsBrowser: true,
+      internal: false,
+      defaultShortcut: &#x27;Metadrones&#x27;,
+      sidebarShortcuts: [&#x27;Metadrones&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#d1d36f&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.google.search&#x27;,
+    name: &#x27;Google Search&#x27;,
+    description: &#x60;Search the world&#x27;s information, including webpages, images, videos and more.&#x60;,
+    startUrl: &#x27;https://google.com&#x27;,
+    categories: [&#x27;productivity&#x27;, &#x27;utilities&#x27;],
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/google.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Search&#x27;,
+        url: &#x27;https://google.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/google.svg&#x27;,
             sizes: &#x27;512x512&#x27;,
             type: &#x27;image/svg+xml&#x27;,
           },
@@ -476,18 +526,1946 @@
     ],
     additionalProperties: {
       author: {
-        id: &#x27;com.central-factory&#x27;,
-        name: &#x27;Central Factory&#x27;,
+        id: &#x27;com.alphabet&#x27;,
+        name: &#x27;Alphabet&#x27;,
       },
       permissions: [],
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
-      defaultShortcut: &#x27;Codex&#x27;,
-      sidebarShortcuts: [],
+      defaultShortcut: &#x27;Search&#x27;,
+      sidebarShortcuts: [&#x27;Search&#x27;],
       colors: [
         {
           variation: ColorVariation.Primary,
-          color: &#x27;#d1d36f&#x27;,
+          color: &#x27;#4285f4&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.google.drive&#x27;,
+    name: &#x27;Google Drive&#x27;,
+    description: &#x60;Create and share your work online and access your documents from anywhere. Manage documents, spreadsheets, presentations, surveys...&#x60;,
+    startUrl: &#x27;https://drive.google.com&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/googledrive.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    categories: [&#x27;productivity&#x27;, &#x27;utilities&#x27;],
+    shortcuts: [
+      {
+        name: &#x27;Search&#x27;,
+        url: &#x27;https://drive.google.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/googledrive.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.alphabet&#x27;,
+        name: &#x27;Alphabet&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Search&#x27;,
+      sidebarShortcuts: [&#x27;Search&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#4285f4&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.google.keep&#x27;,
+    name: &#x27;Google Keep&#x27;,
+    description: &#x60;Quickly capture what&#x27;s on your mind and get a reminder later at the right place or time. Speak a voice memo on the go and have it automatically transcribed.&#x60;,
+    startUrl: &#x27;https://keep.google.com&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/googlekeep.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Keep&#x27;,
+        url: &#x27;https://keep.google.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/googlekeep.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;productivity&#x27;, &#x27;utilities&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.alphabet&#x27;,
+        name: &#x27;Alphabet&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Keep&#x27;,
+      sidebarShortcuts: [&#x27;Keep&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#fbbc05&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.google.maps&#x27;,
+    name: &#x27;Google Maps&#x27;,
+    description: &#x60;Get real-time navigation and more in the Maps app. Stay on web. Use the app. Directions. Drive. Walk. Bike. Public transport.&#x60;,
+    startUrl: &#x27;https://maps.google.com&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/googlemaps.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Maps&#x27;,
+        url: &#x27;https://maps.google.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/googlemaps.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;travel&#x27;, &#x27;utilites&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.alphabet&#x27;,
+        name: &#x27;Alphabet&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Maps&#x27;,
+      sidebarShortcuts: [&#x27;Maps&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#34a853&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.google.travel&#x27;,
+    name: &#x27;Google Travel&#x27;,
+    description:
+      &#x27;Find the best flights fast, track prices, and book with confidence.&#x27;,
+    startUrl: &#x27;https://travel.google.com&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/mdi/bag-checked.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Travel&#x27;,
+        url: &#x27;https://travel.google.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/bag-checked.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;finances&#x27;, &#x27;travel&#x27;],
+    additionalProperties: {
+      originalManifest:
+        &#x27;https://www.google.com/_/TravelFrontendUi/manifest.json&#x27;,
+      author: {
+        id: &#x27;com.alphabet&#x27;,
+        name: &#x27;Alphabet&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Travel&#x27;,
+      sidebarShortcuts: [&#x27;Travel&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#4285f4&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.google.flights&#x27;,
+    name: &#x27;Google Flights&#x27;,
+    description:
+      &#x27;Find the best flights fast, track prices, and book with confidence.&#x27;,
+    startUrl: &#x27;https://flights.google.com&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/mdi/airplane.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Flights&#x27;,
+        url: &#x27;https://flights.google.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/airplane.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;finances&#x27;, &#x27;travel&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.alphabet&#x27;,
+        name: &#x27;Alphabet&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Flights&#x27;,
+      sidebarShortcuts: [&#x27;Flights&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#4285f4&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.freenow.freenow&#x27;,
+    name: &#x27;Free Now&#x27;,
+    description:
+      &#x27;FREE NOW is a licensed ride-hailing and multi-mobility app in 10 European countries. Book easily, pay in-app quickly and complete your trip safely!&#x27;,
+    startUrl: &#x27;https://free-now.com/&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/mdi/taxi.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Order&#x27;,
+        url: &#x27;https://free-now.com/&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/taxi.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;finances&#x27;, &#x27;travel&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.freenow&#x27;,
+        name: &#x27;Free Now&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Order&#x27;,
+      sidebarShortcuts: [&#x27;Order&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#F80B2B&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.spotify.player&#x27;,
+    name: &#x27;Spotify&#x27;,
+    description: &#x60;
+      Spotify is all the music you&#x27;ll ever need.
+
+      Stream free albums and hits, find a song, discover music, and download songs and podcasts with the Spotify free streaming and music player app.
+
+      Free streaming, music search and hits library – Spotify is all that and much more.
+
+      Play songs, sync music, discover music and free albums with Spotify, your go-to music downloader.
+    &#x60;,
+    startUrl: &#x27;https://open.spotify.com&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/spotify.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Player&#x27;,
+        url: &#x27;https://open.spotify.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/spotify.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;Search&#x27;,
+        url: &#x27;https://open.spotify.com/search&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/magnify.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;Library&#x27;,
+        url: &#x27;https://open.spotify.com/collection/playlists&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/music-box-multiple.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;Liked&#x27;,
+        url: &#x27;https://open.spotify.com/collection/tracks&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/heart.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;entertainment&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.spotify&#x27;,
+        name: &#x27;Spotify&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Player&#x27;,
+      sidebarShortcuts: [&#x27;Player&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#1db954&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.ivoox.player&#x27;,
+    name: &#x27;iVoox&#x27;,
+    description: &#x60;
+      With Podcast &amp; Radio iVoox you can listen, share and download podcasts, radio shows and much more for free, when you want, where you want.
+      Courses, conferences, classes, lectures, audio books, children’s stories, audio guides, stand up comedy, stories, music and concerts, poems, biographies and even meditation sessions.
+    &#x60;,
+    startUrl: &#x27;https://ivoox.com&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/mdi/podcast.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Portal&#x27;,
+        url: &#x27;https://ivoox.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/podcast.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;Explore&#x27;,
+        url: &#x27;https://www.ivoox.com/audios_sa_f_1.html&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/compass.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;My Subscriptions&#x27;,
+        url: &#x27;https://www.ivoox.com/gestionar-suscripciones_je_1.html?order&#x3D;date&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/eye.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;Play Later&#x27;,
+        url: &#x27;https://www.ivoox.com/mis-audios_hn.html&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/bookmark.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;Favorites&#x27;,
+        url: &#x27;https://www.ivoox.com/audios-que-me-gustan_hc_recomendados_1.html&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/heart.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;My Radios&#x27;,
+        url: &#x27;https://www.ivoox.com/radios-que-me-gustan_hc_recomendados_1.html&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/music-box-multiple.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;entertainment&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.ivoox&#x27;,
+        name: &#x27;iVoox Podcast y Radio&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Portal&#x27;,
+      sidebarShortcuts: [&#x27;Portal&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#f47721&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.netflix.netflix&#x27;,
+    name: &#x27;Netflix&#x27;,
+    description: &#x60;
+      Looking for the most talked-about TV programs and films from the around the world? They’re all on Netflix.
+
+      We’ve got award-winning series, films, documentaries and stand-up specials.
+    &#x60;,
+    startUrl: &#x27;https://netflix.com&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/netflix.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Portal&#x27;,
+        url: &#x27;https://netflix.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/netflix.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;My List&#x27;,
+        url: &#x27;https://netflix.com/browse/my-list&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/filmstrip-box-multiple.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;Latest&#x27;,
+        url: &#x27;https://netflix.com/latest&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/new-box.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;entertainment&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.netflix&#x27;,
+        name: &#x27;Netflix, Inc&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Portal&#x27;,
+      sidebarShortcuts: [&#x27;Portal&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#e50914&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.amazon.primevideo&#x27;,
+    name: &#x27;Prime Video&#x27;,
+    description: &#x60;
+      Watch movies, TV, and sports, including Amazon Originals like The Boys, The Marvelous Mrs. Maisel, and Tom Clancy’s Jack Ryan as well as recommendations just for you.
+
+      App features:
+      • Download videos to watch offline.
+      • Rent or buy new-release movies and popular TV shows (availability varies by market).
+      • Cast from your phone or tablet to the big screen with Chromecast and Fire TV.
+      • Multi-user profiles allow creating personalized entertainment experiences.
+      • Go behind the scenes of movies and TV shows with exclusive X-Ray access, powered by IMDb (availability varies by market).
+    &#x60;,
+    startUrl: &#x27;https://primevideo.com&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/primevideo.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Portal&#x27;,
+        url: &#x27;https://primevideo.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/primevideo.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;My Stuff&#x27;,
+        url: &#x27;https://primevideo.com/mystuff&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/filmstrip-box-multiple.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;Channels&#x27;,
+        url: &#x27;https://primevideo.com/storefront/channels&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/youtube-tv.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;entertainment&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.amazon&#x27;,
+        name: &#x27;Amazon&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Portal&#x27;,
+      sidebarShortcuts: [&#x27;Portal&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#146eb4&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.google.youtube&#x27;,
+    name: &#x27;Youtube&#x27;,
+    description: &#x60;
+      See what the world is watching -- from the hottest music videos to what’s popular in gaming, fashion, beauty, news, learning and more. Subscribe to channels you love, create content of your own, share with friends, and watch on any device.
+    &#x60;,
+    startUrl: &#x27;https://youtube.com&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/youtube.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Portal&#x27;,
+        url: &#x27;https://youtube.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/youtube.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;Subscriptions&#x27;,
+        url: &#x27;https://www.youtube.com/feed/subscriptions&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/youtube-tv.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;Library&#x27;,
+        url: &#x27;https://www.youtube.com/feed/library&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/filmstrip-box-multiple.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;History&#x27;,
+        url: &#x27;https://www.youtube.com/feed/history&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/history.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;Watch Later&#x27;,
+        url: &#x27;https://www.youtube.com/playlist?list&#x3D;WL&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/bookmark.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;entertainment&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.aplhabet&#x27;,
+        name: &#x27;Alphabet&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Portal&#x27;,
+      sidebarShortcuts: [&#x27;Portal&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#ea4335&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.meta.instagram&#x27;,
+    name: &#x27;Instagram&#x27;,
+    description:
+      &#x27;A simple, fun &amp; creative way to capture, edit &amp; share photos, videos &amp; messages with friends &amp; family.&#x27;,
+    startUrl: &#x27;https://instagram.com&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/instagram.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Portal&#x27;,
+        url: &#x27;https://instagram.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/instagram.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;social&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.meta&#x27;,
+        name: &#x27;Meta&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Portal&#x27;,
+      sidebarShortcuts: [&#x27;Portal&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#405de6&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.meta.whatsapp&#x27;,
+    name: &#x27;WhatsApp&#x27;,
+    description: &#x27;Messaging Application&#x27;,
+    startUrl: &#x27;https://web.whatsapp.com&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/whatsapp.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Portal&#x27;,
+        url: &#x27;https://web.whatsapp.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/whatsapp.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;social&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.meta&#x27;,
+        name: &#x27;Meta&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Portal&#x27;,
+      sidebarShortcuts: [&#x27;Portal&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#128c7e&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.evernote.evernote&#x27;,
+    name: &#x27;Evernote&#x27;,
+    description:
+      &#x27;Evernote is a powerful tool that can help executives, entrepreneurs and creative people capture and arrange their ideas. All you have to do is use it. — Forbes.&#x27;,
+    startUrl: &#x27;https://evernote.com/intl/es/&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/evernote.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Portal&#x27;,
+        url: &#x27;https://evernote.com/intl/es/&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/evernote.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;productivity&#x27;, &#x27;utilities&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.evernote&#x27;,
+        name: &#x27;Evernote&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Portal&#x27;,
+      sidebarShortcuts: [&#x27;Portal&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#2dbe60&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.microsoft.github&#x27;,
+    name: &#x27;Github&#x27;,
+    description:
+      &#x27;GitHub is where over 73 million developers shape the future of software, together.  Contribute to the open source community, manage your Git repositories and much more.&#x27;,
+    startUrl: &#x27;https://github.com&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/github.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Portal&#x27;,
+        url: &#x27;https://github.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/github.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;productivity&#x27;, &#x27;utilities&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.microsoft&#x27;,
+        name: &#x27;Microsoft&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Portal&#x27;,
+      sidebarShortcuts: [&#x27;Portal&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#333&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.google.mail&#x27;,
+    name: &#x27;Gmail&#x27;,
+    description: &#x60;Gmail is email that&#x27;s intuitive, efficient, and useful. 15 GB of storage, less spam, and mobile access.&#x60;,
+    startUrl: &#x27;https://mail.google.com&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/gmail.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Inbox&#x27;,
+        url: &#x27;https://mail.google.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/gmail.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;productivity&#x27;, &#x27;utilities&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.alphabet&#x27;,
+        name: &#x27;Alphabet&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Inbox&#x27;,
+      sidebarShortcuts: [&#x27;Inbox&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#ea4335&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.google.calendar&#x27;,
+    name: &#x27;Google Calendar&#x27;,
+    description: &#x27;The Google Calendar app helps you spend less time managing&#x27;,
+    startUrl: &#x27;https://calendar.google.com&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/googlecalendar.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Agenda&#x27;,
+        url: &#x27;https://calendar.google.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/googlecalendar.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;Create Event&#x27;,
+        url: &#x27;https://calendar.google.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/calendar-edit.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;productivity&#x27;, &#x27;utilities&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.alphabet&#x27;,
+        name: &#x27;Alphabet&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Agenda&#x27;,
+      sidebarShortcuts: [&#x27;Agenda&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#4285f4&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.doist.todoist&#x27;,
+    name: &#x27;Todoist&#x27;,
+    description:
+      &#x27;The Ultimate Task Management Software To Organize Your Work And Life. Get All Those Tasks Out Of Your Head And Onto Your To-Do List To Regain Clarity &amp; Do More. Trusted By Top Companies. Simple Pricing. Easy Integrations. Free Plan Available.&#x27;,
+    startUrl: &#x27;https://todoist.com/app/&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/todoist.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Portal&#x27;,
+        url: &#x27;https://todoist.com/app/&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/todoist.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;productivity&#x27;, &#x27;utilities&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.doist&#x27;,
+        name: &#x27;Doist&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Portal&#x27;,
+      sidebarShortcuts: [&#x27;Portal&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#E44433&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.amazon.shopping&#x27;,
+    name: &#x27;Amazon Shopping&#x27;,
+    description:
+      &#x27;Free shipping on millions of items. Get the best of Shopping and Entertainment with Prime.&#x27;,
+    startUrl: &#x27;https://amazon.es&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/amazon.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Shopping&#x27;,
+        url: &#x27;https://amazon.es&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/basket.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;shopping&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.amazon&#x27;,
+        name: &#x27;Amazon&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Shopping&#x27;,
+      sidebarShortcuts: [&#x27;Shopping&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#ff9900&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.microsoft.xbox&#x27;,
+    name: &#x27;Xbox Cloud Gaming&#x27;,
+    description:
+      &#x27;Enjoy the console games you love on the devices you already have with Xbox Game Pass Ultimate and a compatible controller. You can play using an Xbox controller, Sony DualShock 4, Razer Kishi, and more.&#x27;,
+    startUrl: &#x27;https://xbox.com/play&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/xbox.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Player&#x27;,
+        url: &#x27;https://xbox.com/play&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/microsoft-xbox-controller.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;games&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.microsoft&#x27;,
+        name: &#x27;Microsoft&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Player&#x27;,
+      sidebarShortcuts: [&#x27;Player&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#52b043&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.sony.psnow&#x27;,
+    name: &#x27;PS Now&#x27;,
+    description:
+      &#x27;Discover all the PS2, PS3 and PS4 games available to stream or download on demand on PS4 from the PS Now library&#x27;,
+    startUrl: &#x27;https://playstation.com/ps-now&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/playstation.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Player&#x27;,
+        url: &#x27;https://playstation.com/ps-now&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/playstation.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    categories: [&#x27;games&#x27;],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.sony&#x27;,
+        name: &#x27;Sony Interactive&#x27;,
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: &#x27;Player&#x27;,
+      sidebarShortcuts: [&#x27;Player&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#00a4e8&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.opensea.store&#x27;,
+    name: &#x27;OpenSea&#x27;,
+    description: &#x27;Discover, collect, and sell extraordinary NFTs&#x27;,
+    startUrl: &#x27;https://opensea.io/&#x27;,
+    categories: [&#x27;shopping&#x27;, &#x27;finance&#x27;],
+    icons: [
+      {
+        src: &#x27;assets/icons/mdi/bitcoin.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Store&#x27;,
+        url: &#x27;https://opensea.io&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/bitcoin.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.opensea&#x27;,
+        name: &#x27;OpenSea&#x27;,
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: &#x27;Store&#x27;,
+      sidebarShortcuts: [&#x27;Store&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#2081E2&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.zalando.shopping&#x27;,
+    name: &#x27;Zalando&#x27;,
+    description:
+      &#x27;Descubre las últimas tendencias en ropa, calzado y complementos para mujer, hombre y niño en Zalando.&#x27;,
+    startUrl: &#x27;https://zalando.com/&#x27;,
+    categories: [&#x27;shopping&#x27;, &#x27;finance&#x27;],
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/zalando.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Store&#x27;,
+        url: &#x27;https://zalando.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/zalando.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.zalando&#x27;,
+        name: &#x27;Zalando&#x27;,
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: &#x27;Store&#x27;,
+      sidebarShortcuts: [&#x27;Store&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#F96902&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.zara.shopping&#x27;,
+    name: &#x27;Zara&#x27;,
+    description: &#x27;Latest trends in clothing for women, men &amp; kids at ZARA&#x27;,
+    startUrl: &#x27;https://zara.com/&#x27;,
+    categories: [&#x27;shopping&#x27;, &#x27;finance&#x27;],
+    icons: [
+      {
+        src: &#x27;assets/icons/mdi/hanger.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Store&#x27;,
+        url: &#x27;https://zara.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/hanger.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.zara&#x27;,
+        name: &#x27;Zara&#x27;,
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: &#x27;Store&#x27;,
+      sidebarShortcuts: [&#x27;Store&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#000000&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.uber.eats&#x27;,
+    name: &#x27;Uber Eats&#x27;,
+    description:
+      &#x27;Enjoy your local restaurant favorites from the comfort of your own home. The food you want, when you want it. &#x27;,
+    startUrl: &#x27;https://ubereats.com/&#x27;,
+    categories: [&#x27;food&#x27;, &#x27;shopping&#x27;, &#x27;finance&#x27;],
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/ubereats.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Order&#x27;,
+        url: &#x27;https://ubereats.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/ubereats.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.uber&#x27;,
+        name: &#x27;Uber&#x27;,
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: &#x27;Order&#x27;,
+      sidebarShortcuts: [&#x27;Order&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#09091a&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.just-eat.just-eat&#x27;,
+    name: &#x27;Just Eat&#x27;,
+    description:
+      &#x27;Order your favourite takeaway from restaurants all over Spain on the app you love. Freshly cooked from your favourite restaurants directly to your door. Order today. More than 15k restaurants. Exclusive Offers. Pizza, sushi, thai &amp; more. Contactless Delivery.&#x27;,
+    startUrl: &#x27;https://just-eat.es/&#x27;,
+    categories: [&#x27;food&#x27;, &#x27;shopping&#x27;, &#x27;finance&#x27;],
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/justeat.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Order&#x27;,
+        url: &#x27;https://just-eat.es/&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/justeat.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.just-eat&#x27;,
+        name: &#x27;Just Eat&#x27;,
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: &#x27;Order&#x27;,
+      sidebarShortcuts: [&#x27;Order&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#F96101&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.burgerking.burgerking&#x27;,
+    name: &#x27;Burger King&#x27;,
+    description:
+      &#x27;Order your favourite takeaway from restaurants all over Spain on the app you love. Freshly cooked from your favourite restaurants directly to your door. Order today. More than 15k restaurants. Exclusive Offers. Pizza, sushi, thai &amp; more. Contactless Delivery.&#x27;,
+    startUrl: &#x27;https://burgerking.es/&#x27;,
+    categories: [&#x27;food&#x27;, &#x27;shopping&#x27;, &#x27;finance&#x27;],
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/burgerking.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Order&#x27;,
+        url: &#x27;https://burgerking.es/&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/burgerking.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.burgerking&#x27;,
+        name: &#x27;Burger King&#x27;,
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: &#x27;Order&#x27;,
+      sidebarShortcuts: [&#x27;Order&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#F96101&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.discord&#x27;,
+    name: &#x27;Discord&#x27;,
+    description:
+      &#x27;Discord is the easiest way to talk over voice, video, and text. Talk, chat, hang out, and stay close with your friends and communities.&#x27;,
+    startUrl: &#x27;https://discord.com/&#x27;,
+    categories: [&#x27;social&#x27;],
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/discord.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Portal&#x27;,
+        url: &#x27;https://discord.com/&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/discord.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.discord&#x27;,
+        name: &#x27;Discord&#x27;,
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: &#x27;Portal&#x27;,
+      sidebarShortcuts: [&#x27;Portal&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#7289da&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.amazon.twitchtv&#x27;,
+    name: &#x27;Twitch&#x27;,
+    description: &#x60;Twitch is an interactive livestreaming service for content spanning gaming, entertainment, sports, music, and more.&#x60;,
+    startUrl: &#x27;https://twitch.tv/&#x27;,
+    categories: [&#x27;entertainment&#x27;],
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/twitch.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Portal&#x27;,
+        url: &#x27;https://twitch.tv/&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/twitch.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;Following&#x27;,
+        url: &#x27;https://twitch.tv/directory/following&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/heart.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;Explore&#x27;,
+        url: &#x27;https://twitch.tv/directory&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/compass.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.amazon&#x27;,
+        name: &#x27;Amazon&#x27;,
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: &#x27;Portal&#x27;,
+      sidebarShortcuts: [&#x27;Portal&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#9146ff&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.feedly.feedly&#x27;,
+    name: &#x27;Feedly&#x27;,
+    description: &#x60;
+      Your central place to organize, read, and share the information you need to stay ahead of the next big trend in your industry.
+    &#x60;,
+    startUrl: &#x27;https://feedly.com/&#x27;,
+    categories: [&#x27;news&#x27;, &#x27;entertainment&#x27;],
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/feedly.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Feed&#x27;,
+        url: &#x27;https://feedly.com/i/my/me&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/feedly.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;Read Later&#x27;,
+        url: &#x27;https://feedly.com/i/saved/&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/bookmark.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+      {
+        name: &#x27;Explore&#x27;,
+        url: &#x27;https://feedly.com/i/my/explore/&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/compass.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.feedly&#x27;,
+        name: &#x27;Feedly&#x27;,
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: &#x27;Feed&#x27;,
+      sidebarShortcuts: [&#x27;Feed&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#2bb24c&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.wikipedia.wikipedia&#x27;,
+    name: &#x27;Wikipedia&#x27;,
+    description: &#x60;
+      Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.
+    &#x60;,
+    startUrl: &#x27;https://wikipedia.com/&#x27;,
+    categories: [&#x27;news&#x27;, &#x27;entertainment&#x27;, &#x27;magazines&#x27;],
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/wikipedia.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Portal&#x27;,
+        url: &#x27;https://wikipedia.com/&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/wikipedia.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.wikipedia&#x27;,
+        name: &#x27;Wikipedia&#x27;,
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: &#x27;Portal&#x27;,
+      sidebarShortcuts: [&#x27;Portal&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#636466&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.nintendo.my&#x27;,
+    name: &#x27;Nintendo&#x27;,
+    description:
+      &#x27;My Nintendo makes playing games and interacting with Nintendo even more fun. You can earn points and redeem them to get rewards like in-game content&#x27;,
+    startUrl: &#x27;https://my.nintendo.com/&#x27;,
+    categories: [&#x27;news&#x27;, &#x27;games&#x27;],
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/nintendoswitch.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;My Nintendo&#x27;,
+        url: &#x27;https://my.nintendo.com/&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/nintendoswitch.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.nintendo&#x27;,
+        name: &#x27;Nintendo&#x27;,
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: &#x27;Portal&#x27;,
+      sidebarShortcuts: [&#x27;Portal&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#e60012&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.ea.origin&#x27;,
+    name: &#x27;Origin&#x27;,
+    description:
+      &#x27;Get great PC and Mac games on Origin. Play the latest RPGs, shooters, Sims games &amp; more.&#x27;,
+    startUrl: &#x27;https://origin.com/&#x27;,
+    categories: [&#x27;news&#x27;, &#x27;games&#x27;],
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/origin.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Portal&#x27;,
+        url: &#x27;https://origin.com/&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/origin.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.ea&#x27;,
+        name: &#x27;EA Games&#x27;,
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: &#x27;Portal&#x27;,
+      sidebarShortcuts: [&#x27;Portal&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#EB5722&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.epic.store&#x27;,
+    name: &#x27;Epic Games&#x27;,
+    description: &#x60;Epic Games, Inc. is an American video game and software developer and publisher based in Cary, North Carolina. The company was founded by Tim Sweeney as Potomac Computer Systems in 1991, originally located in his parents&#x27; house in Potomac, Maryland.&#x60;,
+    startUrl: &#x27;https://www.epicgames.com/store/&#x27;,
+    categories: [&#x27;news&#x27;, &#x27;games&#x27;],
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/epicgames.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Portal&#x27;,
+        url: &#x27;https://www.epicgames.com/store/&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/epicgames.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.epic&#x27;,
+        name: &#x27;Epic Games&#x27;,
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: &#x27;Portal&#x27;,
+      sidebarShortcuts: [&#x27;Portal&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#2A2A2A&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.valve.store&#x27;,
+    name: &#x27;Steam Store&#x27;,
+    description: &#x60;
+      Steam is a video game digital distribution service by Valve. It was launched as a standalone software client in September 2003 as a way for Valve to provide automatic updates for their games, and expanded to include games from third-party publishers
+    &#x60;,
+    startUrl: &#x27;https://store.steampowered.com&#x27;,
+    categories: [&#x27;news&#x27;, &#x27;games&#x27;],
+    icons: [
+      {
+        src: &#x27;assets/icons/simple-icons/steam.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Portal&#x27;,
+        url: &#x27;https://store.steampowered.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/simple-icons/steam.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.valve&#x27;,
+        name: &#x27;Valve&#x27;,
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: &#x27;Portal&#x27;,
+      sidebarShortcuts: [&#x27;Portal&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#00adee&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.cdprojekt.gog&#x27;,
+    name: &#x27;GOG&#x27;,
+    description:
+      &#x27;GOG.com is a digital distribution platform – an online store with a curated selection of games, an optional gaming client giving you freedom of choice&#x27;,
+    startUrl: &#x27;https://www.gog.com&#x27;,
+    categories: [&#x27;news&#x27;, &#x27;games&#x27;],
+    icons: [
+      {
+        src: &#x27;assets/icons/mdi/gog.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Portal&#x27;,
+        url: &#x27;https://www.gog.com&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/gog.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.cdprojekt&#x27;,
+        name: &#x27;CD Projekt&#x27;,
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: &#x27;Portal&#x27;,
+      sidebarShortcuts: [&#x27;Portal&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#A8DD36&#x27;,
+        },
+      ],
+    },
+  },
+  {
+    id: &#x27;com.bbva.wallet&#x27;,
+    name: &#x27;BBVA&#x27;,
+    description:
+      &#x27;The latest banks and financial services company and industry news with expert analysis from the BBVA, Banco Bilbao Vizcaya Argentaria.&#x27;,
+    startUrl: &#x27;https://www.bbva.es&#x27;,
+    categories: [&#x27;finances&#x27;, &#x27;shopping&#x27;],
+    icons: [
+      {
+        src: &#x27;assets/icons/mdi/bank.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;Portal&#x27;,
+        url: &#x27;https://www.bbva.es&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/bank.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.bbva&#x27;,
+        name: &#x27;BBVA&#x27;,
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: &#x27;Portal&#x27;,
+      sidebarShortcuts: [&#x27;Portal&#x27;],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: &#x27;#072146&#x27;,
         },
       ],
     },
@@ -957,6 +2935,7 @@
     name: &#x27;Codex&#x27;,
     description: &#x27;Official documentation for the Central Factory Metaverse&#x27;,
     startUrl: &#x27;codex&#x27;,
+    categories: [&#x27;productivity&#x27;],
     icons: [
       {
         src: &#x27;assets/icons/mdi/book-open-page-variant.svg&#x27;,
@@ -970,7 +2949,7 @@
         url: &#x27;https://www.aitorllamas.com/metaverse/apps/codex&#x27;,
         icons: [
           {
-            src: &#x27;assets/icons/mid/book-open-page-variant.svg&#x27;,
+            src: &#x27;assets/icons/mdi/book-open-page-variant.svg&#x27;,
             sizes: &#x27;512x512&#x27;,
             type: &#x27;image/svg+xml&#x27;,
           },
@@ -983,6 +2962,7 @@
         name: &#x27;Central Factory&#x27;,
       },
       renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: true,
       internal: false,
       permissions: [],
       defaultShortcut: &#x27;Codex&#x27;,

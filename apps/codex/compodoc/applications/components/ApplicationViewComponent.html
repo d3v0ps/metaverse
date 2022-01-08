@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>central-factory documentation</title>
+        <title>@central-factory/metaverse documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,7 +15,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">central-factory documentation</a>
+            <a href="../" class="navbar-brand">@central-factory/metaverse documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -95,6 +95,7 @@
   &lt;ng-container *ngIf&#x3D;&quot;!application.additionalProperties?.renderingType&quot;&gt;
     &lt;cf-application-webview
       [application]&#x3D;&quot;application&quot;
+      [applicationShortcut]&#x3D;&quot;applicationShortcut&quot;
     &gt;&lt;/cf-application-webview&gt;
   &lt;/ng-container&gt;
 
@@ -104,7 +105,13 @@
     &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;webview&#x27;&quot;&gt;
       &lt;cf-application-webview
         [application]&#x3D;&quot;application&quot;
+        [applicationShortcut]&#x3D;&quot;applicationShortcut&quot;
       &gt;&lt;/cf-application-webview&gt;
+    &lt;/ng-container&gt;
+    &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;webpack-module-federation&#x27;&quot;&gt;
+      &lt;div cfBlock&#x3D;&quot;application-remote-module&quot;&gt;
+        &lt;ng-template #lazyloadedApplication&gt;&lt;/ng-template&gt;
+      &lt;/div&gt;
     &lt;/ng-container&gt;
     &lt;ng-container *ngSwitchDefault&gt;
       Unrecognized renderingType
@@ -131,7 +138,44 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_application" >_application</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_applicationShortcut" >_applicationShortcut</a>
+                            </li>
+                            <li>
+                                <a href="#lazyloadedApplication" >lazyloadedApplication</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#loadDynamic" >loadDynamic</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -144,6 +188,9 @@
                             <li>
                                 <a href="#application" >application</a>
                             </li>
+                            <li>
+                                <a href="#applicationShortcut" >applicationShortcut</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -151,10 +198,75 @@
 
 
 
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#application" >application</a>
+                                </li>
+                                <li>
+                                    <a href="#applicationShortcut" >applicationShortcut</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
         </tbody>
     </table>
 </section>
 
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-view/application-view.component.ts:74</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
     <section>
     <h3 id="inputs">Inputs</h3>
@@ -166,15 +278,24 @@
                         <b>application</b>
                     </td>
                 </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-view/application-view.component.ts:47</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#Application" target="_self" >Application</a></code>
-
+                        <a name="applicationShortcut"></a>
+                        <b>applicationShortcut</b>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-view/application-view.component.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-view/application-view.component.ts:60</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -183,14 +304,302 @@
 
 
 
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadDynamic"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>loadDynamic</b></span>
+                        <a href="#loadDynamic"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>loadDynamic()</code>
+                </td>
+            </tr>
 
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">libs/applications/src/lib/web-components/angular/application-view/application-view.component.ts:78</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_application"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_application</b></span>
+                        <a href="#_application"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#Application" target="_self" >Application | undefined</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-view/application-view.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_applicationShortcut"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_applicationShortcut</b></span>
+                        <a href="#_applicationShortcut"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ApplicationShortcut | undefined</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-view/application-view.component.ts:74</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="lazyloadedApplication"></a>
+                    <span class="name">
+                        <span ><b>lazyloadedApplication</b></span>
+                        <a href="#lazyloadedApplication"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/ViewContainerRef" target="_blank" >ViewContainerRef</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;lazyloadedApplication&#x27;, {read: ViewContainerRef})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-view/application-view.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="application"></a>
+                        <span class="name"><b>application</b><a href="#application"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>application()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-view/application-view.component.ts:56</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>application(application: <a href="../undefineds/Application.html" target="_self">Application | undefined</a>)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-view/application-view.component.ts:47</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>application</td>
+                                                    
+                                                            <td>
+                                                                            <code><a href="../miscellaneous/typealiases.html#Application" target="_self" >Application | undefined</a></code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="applicationShortcut"></a>
+                        <span class="name"><b>applicationShortcut</b><a href="#applicationShortcut"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>applicationShortcut()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-view/application-view.component.ts:69</a></div>
+                                </td>
+                            </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>applicationShortcut(value: ApplicationShortcut | undefined)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-view/application-view.component.ts:60</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                        <code>ApplicationShortcut | undefined</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+</section>
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
-import { Application } from &#x27;../../../models/application&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { loadRemoteModule } from &#x27;@angular-architects/module-federation&#x27;;
+import { Component, Input, ViewChild, ViewContainerRef } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import {
+  Application,
+  ApplicationRenderingType,
+  ApplicationShortcut
+} from &#x27;../../../models/application&#x27;;
 
 @Component({
   selector: &#x27;cf-application-view&#x27;,
@@ -199,6 +608,7 @@ import { Application } from &#x27;../../../models/application&#x27;;
       &lt;ng-container *ngIf&#x3D;&quot;!application.additionalProperties?.renderingType&quot;&gt;
         &lt;cf-application-webview
           [application]&#x3D;&quot;application&quot;
+          [applicationShortcut]&#x3D;&quot;applicationShortcut&quot;
         &gt;&lt;/cf-application-webview&gt;
       &lt;/ng-container&gt;
 
@@ -208,7 +618,13 @@ import { Application } from &#x27;../../../models/application&#x27;;
         &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;webview&#x27;&quot;&gt;
           &lt;cf-application-webview
             [application]&#x3D;&quot;application&quot;
+            [applicationShortcut]&#x3D;&quot;applicationShortcut&quot;
           &gt;&lt;/cf-application-webview&gt;
+        &lt;/ng-container&gt;
+        &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;webpack-module-federation&#x27;&quot;&gt;
+          &lt;div cfBlock&#x3D;&quot;application-remote-module&quot;&gt;
+            &lt;ng-template #lazyloadedApplication&gt;&lt;/ng-template&gt;
+          &lt;/div&gt;
         &lt;/ng-container&gt;
         &lt;ng-container *ngSwitchDefault&gt;
           Unrecognized renderingType
@@ -219,7 +635,56 @@ import { Application } from &#x27;../../../models/application&#x27;;
   &#x60;,
 })
 export class ApplicationViewComponent {
-  @Input() application?: Application;
+  @ViewChild(&#x27;lazyloadedApplication&#x27;, { read: ViewContainerRef })
+  lazyloadedApplication!: ViewContainerRef;
+
+  @Input() set application(application: Application | undefined) {
+    this._application &#x3D; application;
+    if (
+      this.application?.additionalProperties?.renderingType &#x3D;&#x3D;&#x3D;
+      ApplicationRenderingType.WebpackModuleFederation
+    ) {
+      this.loadDynamic();
+    }
+  }
+  get application(): Application | undefined {
+    return this._application;
+  }
+
+  @Input() set applicationShortcut(value: ApplicationShortcut | undefined) {
+    this._applicationShortcut &#x3D; value;
+    // if (
+    //   this.application?.additionalProperties?.renderingType &#x3D;&#x3D;&#x3D;
+    //   ApplicationRenderingType.WebpackModuleFederation
+    // ) {
+    //   this.loadDynamic();
+    // }
+  }
+  get applicationShortcut(): ApplicationShortcut | undefined {
+    return this._applicationShortcut;
+  }
+
+  private _application: Application | undefined;
+  private _applicationShortcut: ApplicationShortcut | undefined;
+
+  constructor(private router: Router) {}
+
+  async loadDynamic() {
+    const federatedUrl &#x3D;
+      &#x27;http://localhost:3000/remoteEntry.js&#x27; || this.application?.startUrl;
+
+    if (!federatedUrl) {
+      return;
+    }
+    const module &#x3D; await loadRemoteModule({
+      type: &#x27;module&#x27;,
+      remoteEntry: federatedUrl,
+      exposedModule: &#x27;./Module&#x27;,
+    }).then((m) &#x3D;&gt; m.MetadronesModule);
+
+    this.lazyloadedApplication.clear();
+    this.lazyloadedApplication.createComponent(module.Component);
+  }
 }
 </code></pre>
     </div>
@@ -251,8 +716,8 @@ export class ApplicationViewComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container *ngIf="application">  <ng-container *ngIf="!application.additionalProperties?.renderingType">    <cf-application-webview      [application]="application"    ></cf-application-webview>  </ng-container>  <ng-container    [ngSwitch]="application.additionalProperties?.renderingType"  >    <ng-container *ngSwitchCase="\'webview\'">      <cf-application-webview        [application]="application"      ></cf-application-webview>    </ng-container>    <ng-container *ngSwitchDefault>      Unrecognized renderingType      {{ application.additionalProperties?.renderingType }}    </ng-container>  </ng-container></ng-container></div>'
-    var COMPONENTS = [{'name': 'ApplicationCardComponent', 'selector': 'cf-application-card'},{'name': 'ApplicationSheetComponent', 'selector': 'cf-application-sheet'},{'name': 'ApplicationToolbarComponent', 'selector': 'cf-application-toolbar'},{'name': 'ApplicationViewComponent', 'selector': 'cf-application-view'},{'name': 'ApplicationWebviewComponent', 'selector': 'cf-application-webview'}];
+        var COMPONENT_TEMPLATE = '<div><ng-container *ngIf="application">  <ng-container *ngIf="!application.additionalProperties?.renderingType">    <cf-application-webview      [application]="application"      [applicationShortcut]="applicationShortcut"    ></cf-application-webview>  </ng-container>  <ng-container    [ngSwitch]="application.additionalProperties?.renderingType"  >    <ng-container *ngSwitchCase="\'webview\'">      <cf-application-webview        [application]="application"        [applicationShortcut]="applicationShortcut"      ></cf-application-webview>    </ng-container>    <ng-container *ngSwitchCase="\'webpack-module-federation\'">      <div cfBlock="application-remote-module">        <ng-template #lazyloadedApplication></ng-template>      </div>    </ng-container>    <ng-container *ngSwitchDefault>      Unrecognized renderingType      {{ application.additionalProperties?.renderingType }}    </ng-container>  </ng-container></ng-container></div>'
+    var COMPONENTS = [{'name': 'ApplicationActionsComponent', 'selector': 'cf-application-actions'},{'name': 'ApplicationCardComponent', 'selector': 'cf-application-card'},{'name': 'ApplicationsCarouselComponent', 'selector': 'cf-applications-carousel'},{'name': 'ApplicationSheetComponent', 'selector': 'cf-application-sheet'},{'name': 'ApplicationShortcutComponent', 'selector': 'cf-application-shortcut'},{'name': 'ApplicationToolbarComponent', 'selector': 'cf-application-toolbar'},{'name': 'ApplicationViewComponent', 'selector': 'cf-application-view'},{'name': 'ApplicationWebviewComponent', 'selector': 'cf-application-webview'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ApplicationViewComponent'};
 </script>

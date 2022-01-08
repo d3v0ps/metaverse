@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkcentral_factory=self.webpackChunkcentral_factory||[]).push([[7789],{6768:e=>{e.exports=JSON.parse('{"permalink":"/metaverse/apps/codex/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":3,"previousPage":null,"nextPage":null,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

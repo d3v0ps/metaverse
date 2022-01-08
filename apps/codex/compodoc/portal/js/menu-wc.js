@@ -106,13 +106,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/PortalLayoutSceneModule.html" data-type="entity-link" >PortalLayoutSceneModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-PortalLayoutSceneModule-b4a62854288780e904dde8946947a30f"' : 'data-target="#xs-components-links-module-PortalLayoutSceneModule-b4a62854288780e904dde8946947a30f"' }>
+                                            'data-target="#components-links-module-PortalLayoutSceneModule-9bf807bdab42a5dbe09cb559cc28cf23"' : 'data-target="#xs-components-links-module-PortalLayoutSceneModule-9bf807bdab42a5dbe09cb559cc28cf23"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PortalLayoutSceneModule-b4a62854288780e904dde8946947a30f"' :
-                                            'id="xs-components-links-module-PortalLayoutSceneModule-b4a62854288780e904dde8946947a30f"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PortalLayoutSceneModule-9bf807bdab42a5dbe09cb559cc28cf23"' :
+                                            'id="xs-components-links-module-PortalLayoutSceneModule-9bf807bdab42a5dbe09cb559cc28cf23"' }>
                                             <li class="link">
                                                 <a href="components/PortalLayoutScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >PortalLayoutScene</a>
                                             </li>
@@ -207,6 +207,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"' }>
+                            <li class="link">
+                                <a href="miscellaneous/functions.html" data-type="entity-link">Functions</a>
+                            </li>
                             <li class="link">
                                 <a href="miscellaneous/typealiases.html" data-type="entity-link">Type aliases</a>
                             </li>

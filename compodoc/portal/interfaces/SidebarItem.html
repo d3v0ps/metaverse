@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>central-factory documentation</title>
+        <title>@central-factory/metaverse documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,7 +15,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">central-factory documentation</a>
+            <a href="../" class="navbar-brand">@central-factory/metaverse documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -90,6 +90,20 @@
                                         </a>
                                 </li>
                                 <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#application" 
+>
+                                            application
+                                        </a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#color" 
+>
+                                            color
+                                        </a>
+                                </li>
+                                <li>
                                         <a href="#icon" 
 >
                                             icon
@@ -145,6 +159,82 @@
                                         </td>
                                     </tr>
 
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="application"></a>
+                                        <span class="name "><b>application</b>
+                                            <a href="#application">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>application:     <code>DeepReadonlyObject&lt;Application&gt;</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>DeepReadonlyObject&lt;Application&gt;</code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="color"></a>
+                                        <span class="name "><b>color</b>
+                                            <a href="#color">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>color:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
@@ -261,19 +351,23 @@ import {
   Application,
   ApplicationShortcut,
 } from &#x27;@central-factory/applications/models/application&#x27;;
+import { RecentlyOpenedApplicationsState } from &#x27;@central-factory/applications/states/recently-opened-applications.state&#x27;;
+import { SelectedApplicationState } from &#x27;@central-factory/applications/states/selected-application.state&#x27;;
 import type { Avatar } from &#x27;@central-factory/avatars/models/avatar&#x27;;
 import { SelectedAvatarState } from &#x27;@central-factory/avatars/states/selected-avatar.state&#x27;;
 import { EntityManager } from &#x27;@central-factory/persistence/services/entity-manager&#x27;;
 import { Repository } from &#x27;@central-factory/persistence/services/repository&#x27;;
 import { DeepReadonlyObject } from &#x27;rxdb/dist/types/types&#x27;;
 import { forkJoin, Observable, Subject } from &#x27;rxjs&#x27;;
-import { filter, switchMap, takeUntil, tap } from &#x27;rxjs/operators&#x27;;
+import { filter, map, switchMap, takeUntil, tap } from &#x27;rxjs/operators&#x27;;
 
 export interface SidebarItem {
   name: string;
   routerLink: string[];
   icon: string;
   active: boolean;
+  color?: string;
+  application?: DeepReadonlyObject&lt;Application&gt;;
 }
 
 @Component({
@@ -346,6 +440,45 @@ export interface SidebarItem {
                   &lt;/a&gt;
                 &lt;/ng-container&gt;
 
+                &lt;div
+                  cdkDropList
+                  cdkDropListSortingDisabled
+                  [cdkDropListData]&#x3D;&quot;recentlyOpenedSidebarItems&quot;
+                  [cdkDropListConnectedTo]&#x3D;&quot;[&#x27;applications-carousel&#x27;]&quot;
+                &gt;
+                  &lt;div
+                    *ngFor&#x3D;&quot;let item of recentlyOpenedSidebarItems&quot;
+                    class&#x3D;&quot;d-block&quot;
+                    cfBlock&#x3D;&quot;sidebar-item&quot;
+                  &gt;
+                    &lt;div class&#x3D;&quot;d-block&quot; cfBlock&#x3D;&quot;sidebar-item&quot;&gt;
+                      &lt;div cfElem&#x3D;&quot;text&quot;&gt;
+                        &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;{{ item.name }}&lt;/span&gt;
+                      &lt;/div&gt;
+                      &lt;button
+                        cdkDrag
+                        [cdkDragData]&#x3D;&quot;item.application&quot;
+                        cfBlock&#x3D;&quot;button&quot;
+                        cfMod&#x3D;&quot;fab&quot;
+                        [ngClass]&#x3D;&quot;{
+                          &#x27;button--active&#x27;: item.active
+                        }&quot;
+                        [ngStyle]&#x3D;&quot;{
+                          &#x27;background-color&#x27;: item.color,
+                          &#x27;margin-top&#x27;: &#x27;15px&#x27;
+                        }&quot;
+                        (click)&#x3D;&quot;onRecentlyOpenedItemClick(item)&quot;
+                      &gt;
+                        &lt;cf-svg-icon
+                          [src]&#x3D;&quot;item.icon&quot;
+                          cfElem&#x3D;&quot;icon&quot;
+                          [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+                        &gt;&lt;/cf-svg-icon&gt;
+                      &lt;/button&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
                 &lt;router-outlet name&#x3D;&quot;sidebar&quot;&gt;&lt;/router-outlet&gt;
               &lt;/div&gt;
             &lt;/cf-sidebar&gt;
@@ -381,27 +514,45 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
   public sidebarIsOpen &#x3D; false;
 
   public sidebarItems: SidebarItem[] &#x3D; [];
+  public recentlyOpenedSidebarItems: SidebarItem[] &#x3D; [];
 
   public showNavbar &#x3D; false;
 
   public readonly selectedAvatar$: Observable&lt;Avatar | null | undefined&gt; &#x3D;
     this.selectedAvatarState.avatar$;
 
+  public readonly recentlyOpenedApplications$ &#x3D;
+    this.recentlyOpenedApplicationsState.applications$.pipe(
+      map((applications) &#x3D;&gt; applications.reverse()),
+      map((applications) &#x3D;&gt; this.generateSidebarItems(applications))
+    );
+
   private readonly destroy$ &#x3D; new Subject&lt;void&gt;();
 
   constructor(
     private readonly router: Router,
     private readonly entityManager: EntityManager,
-    private readonly selectedAvatarState: SelectedAvatarState
+    private readonly selectedAvatarState: SelectedAvatarState,
+    private readonly selectedApplicationState: SelectedApplicationState,
+    private readonly recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState
   ) {}
 
   public ngOnInit(): void {
+    this.recentlyOpenedApplications$
+      .pipe(
+        takeUntil(this.destroy$),
+        tap((sidebarItems) &#x3D;&gt; (this.recentlyOpenedSidebarItems &#x3D; sidebarItems))
+      )
+      .subscribe();
+
     this.router.events
       .pipe(
         filter((event) &#x3D;&gt; event instanceof NavigationEnd),
         takeUntil(this.destroy$)
       )
-      .subscribe(() &#x3D;&gt; this.setSidebarItemsActive());
+      .subscribe(() &#x3D;&gt; {
+        this.setSidebarItemsActive(this.sidebarItems);
+      });
 
     this.entityManager.initialize$
       .pipe(
@@ -425,6 +576,15 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
+  public onRecentlyOpenedItemClick(sidebarItem: SidebarItem) {
+    if (sidebarItem.application) {
+      this.selectedApplicationState.selectApplication(
+        sidebarItem.application as Application
+      );
+      this.selectedApplicationState.openSidebar();
+    }
+  }
+
   private subscribeToDataChanges(
     userApplicationsRepository: Repository&lt;Application&gt;
   ) {
@@ -437,7 +597,9 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
         },
       })
       .pipe(
-        tap((applications) &#x3D;&gt; this.generateSidebarItems(applications)),
+        tap((applications) &#x3D;&gt; {
+          this.sidebarItems &#x3D; this.generateSidebarItems(applications);
+        }),
         takeUntil(this.destroy$)
       )
       .subscribe();
@@ -446,7 +608,7 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
   private generateSidebarItems(
     applications: DeepReadonlyObject&lt;Application&gt;[]
   ) {
-    this.sidebarItems &#x3D; applications
+    const sidebarItems &#x3D; applications
       .sort((a, b) &#x3D;&gt; {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         return a.createdAt!.localeCompare(b.createdAt!);
@@ -473,18 +635,28 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
               shortcut.icons &amp;&amp; shortcut.icons.length &gt; 0
                 ? shortcut.icons[0].src
                 : &#x27;&#x27;,
+            color:
+              current.additionalProperties?.colors?.find(
+                (color) &#x3D;&gt; color.variation &#x3D;&#x3D;&#x3D; &#x27;primary&#x27;
+              )?.color ||
+              (current.additionalProperties?.internal &#x3D;&#x3D;&#x3D; true
+                ? &#x27;var(--color-base-primary-medium)&#x27;
+                : undefined),
             active: false,
+            application: current,
           })
         );
 
         return result.concat(sidebarItems);
       }, []);
 
-    this.setSidebarItemsActive();
+    this.setSidebarItemsActive(sidebarItems);
+
+    return sidebarItems;
   }
 
-  private setSidebarItemsActive() {
-    this.sidebarItems.forEach((item) &#x3D;&gt; {
+  private setSidebarItemsActive(sidebarItems: SidebarItem[]) {
+    sidebarItems.forEach((item) &#x3D;&gt; {
       item.active &#x3D; this.router.url.startsWith(item.routerLink.join(&#x27;/&#x27;));
     });
   }

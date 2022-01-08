@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>central-factory documentation</title>
+        <title>@central-factory/metaverse documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,7 +15,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">central-factory documentation</a>
+            <a href="../" class="navbar-brand">@central-factory/metaverse documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -165,6 +165,45 @@
               &lt;/a&gt;
             &lt;/ng-container&gt;
 
+            &lt;div
+              cdkDropList
+              cdkDropListSortingDisabled
+              [cdkDropListData]&#x3D;&quot;recentlyOpenedSidebarItems&quot;
+              [cdkDropListConnectedTo]&#x3D;&quot;[&#x27;applications-carousel&#x27;]&quot;
+            &gt;
+              &lt;div
+                *ngFor&#x3D;&quot;let item of recentlyOpenedSidebarItems&quot;
+                class&#x3D;&quot;d-block&quot;
+                cfBlock&#x3D;&quot;sidebar-item&quot;
+              &gt;
+                &lt;div class&#x3D;&quot;d-block&quot; cfBlock&#x3D;&quot;sidebar-item&quot;&gt;
+                  &lt;div cfElem&#x3D;&quot;text&quot;&gt;
+                    &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;{{ item.name }}&lt;/span&gt;
+                  &lt;/div&gt;
+                  &lt;button
+                    cdkDrag
+                    [cdkDragData]&#x3D;&quot;item.application&quot;
+                    cfBlock&#x3D;&quot;button&quot;
+                    cfMod&#x3D;&quot;fab&quot;
+                    [ngClass]&#x3D;&quot;{
+                      &#x27;button--active&#x27;: item.active
+                    }&quot;
+                    [ngStyle]&#x3D;&quot;{
+                      &#x27;background-color&#x27;: item.color,
+                      &#x27;margin-top&#x27;: &#x27;15px&#x27;
+                    }&quot;
+                    (click)&#x3D;&quot;onRecentlyOpenedItemClick(item)&quot;
+                  &gt;
+                    &lt;cf-svg-icon
+                      [src]&#x3D;&quot;item.icon&quot;
+                      cfElem&#x3D;&quot;icon&quot;
+                      [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+                    &gt;&lt;/cf-svg-icon&gt;
+                  &lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+
             &lt;router-outlet name&#x3D;&quot;sidebar&quot;&gt;&lt;/router-outlet&gt;
           &lt;/div&gt;
         &lt;/cf-sidebar&gt;
@@ -228,6 +267,15 @@
                             <li>
                                     <span class="modifier">Public</span>
                                     <span class="modifier">Readonly</span>
+                                <a href="#recentlyOpenedApplications$" >recentlyOpenedApplications$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#recentlyOpenedSidebarItems" >recentlyOpenedSidebarItems</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
                                 <a href="#selectedAvatar$" >selectedAvatar$</a>
                             </li>
                             <li>
@@ -271,6 +319,10 @@
                                 <a href="#ngOnInit" >ngOnInit</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#onRecentlyOpenedItemClick" >onRecentlyOpenedItemClick</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Private</span>
                                 <a href="#setSidebarItemsActive" >setSidebarItemsActive</a>
                             </li>
@@ -296,12 +348,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, entityManager: EntityManager, selectedAvatarState: SelectedAvatarState)</code>
+<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, entityManager: EntityManager, selectedAvatarState: SelectedAvatarState, selectedApplicationState: SelectedApplicationState, recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:133</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="183" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:183</a></div>
                             </td>
                         </tr>
 
@@ -354,6 +406,30 @@
                                                     </td>
                                                     
                                                 </tr>
+                                                <tr>
+                                                        <td>selectedApplicationState</td>
+                                                  
+                                                        <td>
+                                                                    <code>SelectedApplicationState</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>recentlyOpenedApplicationsState</td>
+                                                  
+                                                        <td>
+                                                                    <code>RecentlyOpenedApplicationsState</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -394,8 +470,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="189"
-                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:189</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="261"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:261</a></div>
                 </td>
             </tr>
 
@@ -433,7 +509,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
@@ -465,8 +541,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="166"
-                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:166</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="227"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:227</a></div>
                 </td>
             </tr>
 
@@ -504,8 +580,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="141"
-                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:141</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="193"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:193</a></div>
                 </td>
             </tr>
 
@@ -516,6 +592,77 @@
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onRecentlyOpenedItemClick"></a>
+                    <span class="name">
+                        <span class="modifier">Public</span>
+                        <span ><b>onRecentlyOpenedItemClick</b></span>
+                        <a href="#onRecentlyOpenedItemClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onRecentlyOpenedItemClick(sidebarItem: <a href="../interfaces/SidebarItem.html" target="_self">SidebarItem</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="232"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:232</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sidebarItem</td>
+                                    <td>
+                                                <code><a href="../interfaces/SidebarItem.html" target="_self" >SidebarItem</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -536,15 +683,15 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>setSidebarItemsActive()</code>
+                    <code>setSidebarItemsActive(sidebarItems: <a href="../interfaces/SidebarItem.html" target="_self">SidebarItem[]</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="229"
-                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:229</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="311"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:311</a></div>
                 </td>
             </tr>
 
@@ -553,8 +700,40 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sidebarItems</td>
+                                    <td>
+                                                <code><a href="../interfaces/SidebarItem.html" target="_self" >SidebarItem[]</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -582,8 +761,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="171"
-                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:171</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="241"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:241</a></div>
                 </td>
             </tr>
 
@@ -657,7 +836,69 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:133</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="183" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:183</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="recentlyOpenedApplications$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>recentlyOpenedApplications$</b></span>
+                        <a href="#recentlyOpenedApplications$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.recentlyOpenedApplicationsState.applications$.pipe(
+      map((applications) &#x3D;&gt; applications.reverse()),
+      map((applications) &#x3D;&gt; this.generateSidebarItems(applications))
+    )</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="177" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:177</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="recentlyOpenedSidebarItems"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>recentlyOpenedSidebarItems</b></span>
+                        <a href="#recentlyOpenedSidebarItems"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/SidebarItem.html" target="_self" >SidebarItem[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:170</a></div>
                         </td>
                     </tr>
 
@@ -690,7 +931,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:130</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:174</a></div>
                         </td>
                     </tr>
 
@@ -716,7 +957,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:128</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="172" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:172</a></div>
                         </td>
                     </tr>
 
@@ -742,7 +983,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:124</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:167</a></div>
                         </td>
                     </tr>
 
@@ -774,7 +1015,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:126</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:169</a></div>
                         </td>
                     </tr>
 
@@ -806,7 +1047,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:123</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:166</a></div>
                         </td>
                     </tr>
 
@@ -825,19 +1066,23 @@ import {
   Application,
   ApplicationShortcut,
 } from &#x27;@central-factory/applications/models/application&#x27;;
+import { RecentlyOpenedApplicationsState } from &#x27;@central-factory/applications/states/recently-opened-applications.state&#x27;;
+import { SelectedApplicationState } from &#x27;@central-factory/applications/states/selected-application.state&#x27;;
 import type { Avatar } from &#x27;@central-factory/avatars/models/avatar&#x27;;
 import { SelectedAvatarState } from &#x27;@central-factory/avatars/states/selected-avatar.state&#x27;;
 import { EntityManager } from &#x27;@central-factory/persistence/services/entity-manager&#x27;;
 import { Repository } from &#x27;@central-factory/persistence/services/repository&#x27;;
 import { DeepReadonlyObject } from &#x27;rxdb/dist/types/types&#x27;;
 import { forkJoin, Observable, Subject } from &#x27;rxjs&#x27;;
-import { filter, switchMap, takeUntil, tap } from &#x27;rxjs/operators&#x27;;
+import { filter, map, switchMap, takeUntil, tap } from &#x27;rxjs/operators&#x27;;
 
 export interface SidebarItem {
   name: string;
   routerLink: string[];
   icon: string;
   active: boolean;
+  color?: string;
+  application?: DeepReadonlyObject&lt;Application&gt;;
 }
 
 @Component({
@@ -910,6 +1155,45 @@ export interface SidebarItem {
                   &lt;/a&gt;
                 &lt;/ng-container&gt;
 
+                &lt;div
+                  cdkDropList
+                  cdkDropListSortingDisabled
+                  [cdkDropListData]&#x3D;&quot;recentlyOpenedSidebarItems&quot;
+                  [cdkDropListConnectedTo]&#x3D;&quot;[&#x27;applications-carousel&#x27;]&quot;
+                &gt;
+                  &lt;div
+                    *ngFor&#x3D;&quot;let item of recentlyOpenedSidebarItems&quot;
+                    class&#x3D;&quot;d-block&quot;
+                    cfBlock&#x3D;&quot;sidebar-item&quot;
+                  &gt;
+                    &lt;div class&#x3D;&quot;d-block&quot; cfBlock&#x3D;&quot;sidebar-item&quot;&gt;
+                      &lt;div cfElem&#x3D;&quot;text&quot;&gt;
+                        &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;{{ item.name }}&lt;/span&gt;
+                      &lt;/div&gt;
+                      &lt;button
+                        cdkDrag
+                        [cdkDragData]&#x3D;&quot;item.application&quot;
+                        cfBlock&#x3D;&quot;button&quot;
+                        cfMod&#x3D;&quot;fab&quot;
+                        [ngClass]&#x3D;&quot;{
+                          &#x27;button--active&#x27;: item.active
+                        }&quot;
+                        [ngStyle]&#x3D;&quot;{
+                          &#x27;background-color&#x27;: item.color,
+                          &#x27;margin-top&#x27;: &#x27;15px&#x27;
+                        }&quot;
+                        (click)&#x3D;&quot;onRecentlyOpenedItemClick(item)&quot;
+                      &gt;
+                        &lt;cf-svg-icon
+                          [src]&#x3D;&quot;item.icon&quot;
+                          cfElem&#x3D;&quot;icon&quot;
+                          [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+                        &gt;&lt;/cf-svg-icon&gt;
+                      &lt;/button&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;
+                &lt;/div&gt;
+
                 &lt;router-outlet name&#x3D;&quot;sidebar&quot;&gt;&lt;/router-outlet&gt;
               &lt;/div&gt;
             &lt;/cf-sidebar&gt;
@@ -945,27 +1229,45 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
   public sidebarIsOpen &#x3D; false;
 
   public sidebarItems: SidebarItem[] &#x3D; [];
+  public recentlyOpenedSidebarItems: SidebarItem[] &#x3D; [];
 
   public showNavbar &#x3D; false;
 
   public readonly selectedAvatar$: Observable&lt;Avatar | null | undefined&gt; &#x3D;
     this.selectedAvatarState.avatar$;
 
+  public readonly recentlyOpenedApplications$ &#x3D;
+    this.recentlyOpenedApplicationsState.applications$.pipe(
+      map((applications) &#x3D;&gt; applications.reverse()),
+      map((applications) &#x3D;&gt; this.generateSidebarItems(applications))
+    );
+
   private readonly destroy$ &#x3D; new Subject&lt;void&gt;();
 
   constructor(
     private readonly router: Router,
     private readonly entityManager: EntityManager,
-    private readonly selectedAvatarState: SelectedAvatarState
+    private readonly selectedAvatarState: SelectedAvatarState,
+    private readonly selectedApplicationState: SelectedApplicationState,
+    private readonly recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState
   ) {}
 
   public ngOnInit(): void {
+    this.recentlyOpenedApplications$
+      .pipe(
+        takeUntil(this.destroy$),
+        tap((sidebarItems) &#x3D;&gt; (this.recentlyOpenedSidebarItems &#x3D; sidebarItems))
+      )
+      .subscribe();
+
     this.router.events
       .pipe(
         filter((event) &#x3D;&gt; event instanceof NavigationEnd),
         takeUntil(this.destroy$)
       )
-      .subscribe(() &#x3D;&gt; this.setSidebarItemsActive());
+      .subscribe(() &#x3D;&gt; {
+        this.setSidebarItemsActive(this.sidebarItems);
+      });
 
     this.entityManager.initialize$
       .pipe(
@@ -989,6 +1291,15 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
+  public onRecentlyOpenedItemClick(sidebarItem: SidebarItem) {
+    if (sidebarItem.application) {
+      this.selectedApplicationState.selectApplication(
+        sidebarItem.application as Application
+      );
+      this.selectedApplicationState.openSidebar();
+    }
+  }
+
   private subscribeToDataChanges(
     userApplicationsRepository: Repository&lt;Application&gt;
   ) {
@@ -1001,7 +1312,9 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
         },
       })
       .pipe(
-        tap((applications) &#x3D;&gt; this.generateSidebarItems(applications)),
+        tap((applications) &#x3D;&gt; {
+          this.sidebarItems &#x3D; this.generateSidebarItems(applications);
+        }),
         takeUntil(this.destroy$)
       )
       .subscribe();
@@ -1010,7 +1323,7 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
   private generateSidebarItems(
     applications: DeepReadonlyObject&lt;Application&gt;[]
   ) {
-    this.sidebarItems &#x3D; applications
+    const sidebarItems &#x3D; applications
       .sort((a, b) &#x3D;&gt; {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         return a.createdAt!.localeCompare(b.createdAt!);
@@ -1037,18 +1350,28 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
               shortcut.icons &amp;&amp; shortcut.icons.length &gt; 0
                 ? shortcut.icons[0].src
                 : &#x27;&#x27;,
+            color:
+              current.additionalProperties?.colors?.find(
+                (color) &#x3D;&gt; color.variation &#x3D;&#x3D;&#x3D; &#x27;primary&#x27;
+              )?.color ||
+              (current.additionalProperties?.internal &#x3D;&#x3D;&#x3D; true
+                ? &#x27;var(--color-base-primary-medium)&#x27;
+                : undefined),
             active: false,
+            application: current,
           })
         );
 
         return result.concat(sidebarItems);
       }, []);
 
-    this.setSidebarItemsActive();
+    this.setSidebarItemsActive(sidebarItems);
+
+    return sidebarItems;
   }
 
-  private setSidebarItemsActive() {
-    this.sidebarItems.forEach((item) &#x3D;&gt; {
+  private setSidebarItemsActive(sidebarItems: SidebarItem[]) {
+    sidebarItems.forEach((item) &#x3D;&gt; {
       item.active &#x3D; this.router.url.startsWith(item.routerLink.join(&#x27;/&#x27;));
     });
   }
@@ -1083,7 +1406,7 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    selectedAvatar: selectedAvatar$ | async  } as data">  <div cfBlock="scene">    <div      cfElem="body"      [cfMod]="{        \'no-navbar\': !showNavbar      }"    >      <cf-sidebar-container        *ngIf="data.selectedAvatar; else notSelectedAvatarLayout"      >        <!-- A sidebar -->        <cf-sidebar          [(opened)]="sidebarIsOpen"          [dock]="true"          [dockedSize]="\'80px\'"          [showBackdrop]="true"          [closeOnClickBackdrop]="true"          [closeOnClickOutside]="true"        >          <div style="margin-top: 20px">            <a              [routerLink]="[\'/select-avatar\']"              class="d-block"              cfBlock="sidebar-item"            >              <div cfElem="text">                <span cfElem="text-content">Account</span>              </div>              <img                cfElem="image"                [src]="                  data.selectedAvatar.selectedAppearance.smallPreviewUrl                "              />            </a>            <ng-container *ngFor="let item of sidebarItems">              <a                [routerLink]="item.routerLink"                class="d-block"                cfBlock="sidebar-item"              >                <div cfElem="text">                  <span cfElem="text-content">{{ item.name }}</span>                </div>                <button                  cfBlock="button"                  cfMod="fab"                  [ngClass]="{                    \'button--active\': item.active                  }"                  style="margin-top: 15px;"                >                  <cf-svg-icon                    [src]="item.icon"                    cfElem="icon"                    [svgClass]="\'icon__svg\'"                  ></cf-svg-icon>                </button>              </a>            </ng-container>            <router-outlet name="sidebar"></router-outlet>          </div>        </cf-sidebar>        <div cf-sidebar-content>          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </cf-sidebar-container>      <ng-template #notSelectedAvatarLayout>        <div class="scene__container">          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </ng-template>    </div>    <cf-navbar      *ngIf="showNavbar"      cfElem="navbar"      [title]="title"      (titleClick)="sidebarIsOpen = !sidebarIsOpen"    >    </cf-navbar>  </div></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    selectedAvatar: selectedAvatar$ | async  } as data">  <div cfBlock="scene">    <div      cfElem="body"      [cfMod]="{        \'no-navbar\': !showNavbar      }"    >      <cf-sidebar-container        *ngIf="data.selectedAvatar; else notSelectedAvatarLayout"      >        <!-- A sidebar -->        <cf-sidebar          [(opened)]="sidebarIsOpen"          [dock]="true"          [dockedSize]="\'80px\'"          [showBackdrop]="true"          [closeOnClickBackdrop]="true"          [closeOnClickOutside]="true"        >          <div style="margin-top: 20px">            <a              [routerLink]="[\'/select-avatar\']"              class="d-block"              cfBlock="sidebar-item"            >              <div cfElem="text">                <span cfElem="text-content">Account</span>              </div>              <img                cfElem="image"                [src]="                  data.selectedAvatar.selectedAppearance.smallPreviewUrl                "              />            </a>            <ng-container *ngFor="let item of sidebarItems">              <a                [routerLink]="item.routerLink"                class="d-block"                cfBlock="sidebar-item"              >                <div cfElem="text">                  <span cfElem="text-content">{{ item.name }}</span>                </div>                <button                  cfBlock="button"                  cfMod="fab"                  [ngClass]="{                    \'button--active\': item.active                  }"                  style="margin-top: 15px;"                >                  <cf-svg-icon                    [src]="item.icon"                    cfElem="icon"                    [svgClass]="\'icon__svg\'"                  ></cf-svg-icon>                </button>              </a>            </ng-container>            <div              cdkDropList              cdkDropListSortingDisabled              [cdkDropListData]="recentlyOpenedSidebarItems"              [cdkDropListConnectedTo]="[\'applications-carousel\']"            >              <div                *ngFor="let item of recentlyOpenedSidebarItems"                class="d-block"                cfBlock="sidebar-item"              >                <div class="d-block" cfBlock="sidebar-item">                  <div cfElem="text">                    <span cfElem="text-content">{{ item.name }}</span>                  </div>                  <button                    cdkDrag                    [cdkDragData]="item.application"                    cfBlock="button"                    cfMod="fab"                    [ngClass]="{                      \'button--active\': item.active                    }"                    [ngStyle]="{                      \'background-color\': item.color,                      \'margin-top\': \'15px\'                    }"                    (click)="onRecentlyOpenedItemClick(item)"                  >                    <cf-svg-icon                      [src]="item.icon"                      cfElem="icon"                      [svgClass]="\'icon__svg\'"                    ></cf-svg-icon>                  </button>                </div>              </div>            </div>            <router-outlet name="sidebar"></router-outlet>          </div>        </cf-sidebar>        <div cf-sidebar-content>          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </cf-sidebar-container>      <ng-template #notSelectedAvatarLayout>        <div class="scene__container">          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </ng-template>    </div>    <cf-navbar      *ngIf="showNavbar"      cfElem="navbar"      [title]="title"      (titleClick)="sidebarIsOpen = !sidebarIsOpen"    >    </cf-navbar>  </div></ng-container></div>'
     var COMPONENTS = [{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PortalLayoutScene'};

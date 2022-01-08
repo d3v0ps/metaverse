@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>central-factory documentation</title>
+        <title>@central-factory/metaverse documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,7 +15,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">central-factory documentation</a>
+            <a href="../" class="navbar-brand">@central-factory/metaverse documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -238,12 +238,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(availableThemesState: AvailableThemesState, customizationSettingsState: CustomizationSettingsState)</code>
+<code>constructor(availableThemesState: AvailableThemesState, customizationSettingsState: CustomizationSettingsState, selectedAvatarState: SelectedAvatarState)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:87</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:88</a></div>
                             </td>
                         </tr>
 
@@ -277,6 +277,18 @@
                                                   
                                                         <td>
                                                                     <code>CustomizationSettingsState</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>selectedAvatarState</td>
+                                                  
+                                                        <td>
+                                                                    <code>SelectedAvatarState</code>
                                                         </td>
                                                   
                                                     <td>
@@ -322,8 +334,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="117"
-                            class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:117</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="122"
+                            class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:122</a></div>
                 </td>
             </tr>
 
@@ -359,8 +371,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="94"
-                            class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:94</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="96"
+                            class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:96</a></div>
                 </td>
             </tr>
 
@@ -401,7 +413,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:87</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:88</a></div>
                         </td>
                     </tr>
 
@@ -430,7 +442,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:81</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:82</a></div>
                         </td>
                     </tr>
 
@@ -457,7 +469,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:85</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:86</a></div>
                         </td>
                     </tr>
 
@@ -471,6 +483,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
+import { SelectedAvatarState } from &#x27;@central-factory/avatars/states/selected-avatar.state&#x27;;
 import {
   Customization,
   Theme,
@@ -560,7 +573,8 @@ export class CustomizationScene implements OnInit, OnDestroy {
 
   constructor(
     private readonly availableThemesState: AvailableThemesState,
-    private readonly customizationSettingsState: CustomizationSettingsState
+    private readonly customizationSettingsState: CustomizationSettingsState,
+    private readonly selectedAvatarState: SelectedAvatarState
   ) {}
 
   ngOnInit(): void {
@@ -579,7 +593,10 @@ export class CustomizationScene implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
         tap((settings) &#x3D;&gt;
           this.customizationSettingsState
-            .setCustomizationSettings(settings)
+            .setCustomizationSettings(
+              settings,
+              this.selectedAvatarState.avatar$.getValue()?.id
+            )
             .subscribe()
         )
       )
