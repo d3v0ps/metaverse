@@ -42,6 +42,7 @@ jobs:
       - name: Build docs
         uses: nick-invision/retry@v2
         with:
+          timeout_minutes: 10
           max_attempts: 3
           shell: bash
           command: npx nx build codex
