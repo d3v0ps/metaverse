@@ -50,6 +50,9 @@
             <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
         </li>
         <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
@@ -95,6 +98,17 @@
             </tr>
 
 
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>
+      .scene-content {
+        &amp;--inventory {
+          display: flex;
+          gap: 2rem;
+        }
+      }
+    </code></td>
+            </tr>
 
             <tr>
                 <td class="col-md-3">template</td>
@@ -103,22 +117,16 @@
     assets: assets$ | async
   } as data&quot;
 &gt;
-  &lt;div cfBlock&#x3D;&quot;scene-content&quot; *ngIf&#x3D;&quot;data.assets&quot;&gt;
-    &lt;div fxLayout&#x3D;&quot;row&quot; fxFlexFill fxLayoutGap&#x3D;&quot;1rem&quot;&gt;
-      &lt;div fxFlex&#x3D;&quot;70&quot; fxFlex.lt-md&#x3D;&quot;50&quot; fxFlex.lt-sm&#x3D;&quot;30&quot;&gt;
-        &lt;cf-assets-grid
-          [assets]&#x3D;&quot;data.assets&quot;
-          [activeAsset]&#x3D;&quot;selectedAsset&quot;
-          (assetClick)&#x3D;&quot;onGridAssetClick($event)&quot;
-        &gt;&lt;/cf-assets-grid&gt;
-      &lt;/div&gt;
-      &lt;div fxFlex&#x3D;&quot;30&quot; fxFlex.lt-md&#x3D;&quot;50&quot; fxFlex.lt-sm&#x3D;&quot;70&quot;&gt;
-        &lt;cf-asset-detail
-          *ngIf&#x3D;&quot;selectedAsset&quot;
-          [asset]&#x3D;&quot;selectedAsset&quot;
-        &gt;&lt;/cf-asset-detail&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
+  &lt;div cfBlock&#x3D;&quot;scene-content&quot; cfMod&#x3D;&quot;inventory&quot; *ngIf&#x3D;&quot;data.assets&quot;&gt;
+    &lt;cf-assets-grid
+      [assets]&#x3D;&quot;data.assets&quot;
+      [activeAsset]&#x3D;&quot;selectedAsset&quot;
+      (assetClick)&#x3D;&quot;onGridAssetClick($event)&quot;
+    &gt;&lt;/cf-assets-grid&gt;
+    &lt;cf-asset-detail
+      *ngIf&#x3D;&quot;selectedAsset&quot;
+      [asset]&#x3D;&quot;selectedAsset&quot;
+    &gt;&lt;/cf-asset-detail&gt;
   &lt;/div&gt;
 &lt;/ng-container&gt;
 </code></pre></td>
@@ -195,7 +203,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">apps/inventory/src/app/scenes/inventory/inventory.scene.ts:37</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">apps/inventory/src/app/scenes/inventory/inventory.scene.ts:41</a></div>
                             </td>
                         </tr>
 
@@ -262,8 +270,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="41"
-                            class="link-to-prism">apps/inventory/src/app/scenes/inventory/inventory.scene.ts:41</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">apps/inventory/src/app/scenes/inventory/inventory.scene.ts:45</a></div>
                 </td>
             </tr>
 
@@ -337,7 +345,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">apps/inventory/src/app/scenes/inventory/inventory.scene.ts:35</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">apps/inventory/src/app/scenes/inventory/inventory.scene.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -364,7 +372,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">apps/inventory/src/app/scenes/inventory/inventory.scene.ts:37</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">apps/inventory/src/app/scenes/inventory/inventory.scene.ts:41</a></div>
                         </td>
                     </tr>
 
@@ -390,25 +398,29 @@ import { UserAssetsState } from &#x27;@central-factory/assets/states/user-assets
         assets: assets$ | async
       } as data&quot;
     &gt;
-      &lt;div cfBlock&#x3D;&quot;scene-content&quot; *ngIf&#x3D;&quot;data.assets&quot;&gt;
-        &lt;div fxLayout&#x3D;&quot;row&quot; fxFlexFill fxLayoutGap&#x3D;&quot;1rem&quot;&gt;
-          &lt;div fxFlex&#x3D;&quot;70&quot; fxFlex.lt-md&#x3D;&quot;50&quot; fxFlex.lt-sm&#x3D;&quot;30&quot;&gt;
-            &lt;cf-assets-grid
-              [assets]&#x3D;&quot;data.assets&quot;
-              [activeAsset]&#x3D;&quot;selectedAsset&quot;
-              (assetClick)&#x3D;&quot;onGridAssetClick($event)&quot;
-            &gt;&lt;/cf-assets-grid&gt;
-          &lt;/div&gt;
-          &lt;div fxFlex&#x3D;&quot;30&quot; fxFlex.lt-md&#x3D;&quot;50&quot; fxFlex.lt-sm&#x3D;&quot;70&quot;&gt;
-            &lt;cf-asset-detail
-              *ngIf&#x3D;&quot;selectedAsset&quot;
-              [asset]&#x3D;&quot;selectedAsset&quot;
-            &gt;&lt;/cf-asset-detail&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
+      &lt;div cfBlock&#x3D;&quot;scene-content&quot; cfMod&#x3D;&quot;inventory&quot; *ngIf&#x3D;&quot;data.assets&quot;&gt;
+        &lt;cf-assets-grid
+          [assets]&#x3D;&quot;data.assets&quot;
+          [activeAsset]&#x3D;&quot;selectedAsset&quot;
+          (assetClick)&#x3D;&quot;onGridAssetClick($event)&quot;
+        &gt;&lt;/cf-assets-grid&gt;
+        &lt;cf-asset-detail
+          *ngIf&#x3D;&quot;selectedAsset&quot;
+          [asset]&#x3D;&quot;selectedAsset&quot;
+        &gt;&lt;/cf-asset-detail&gt;
       &lt;/div&gt;
     &lt;/ng-container&gt;
   &#x60;,
+  styles: [
+    &#x60;
+      .scene-content {
+        &amp;--inventory {
+          display: flex;
+          gap: 2rem;
+        }
+      }
+    &#x60;,
+  ],
 })
 export class InventoryScene {
   public readonly assets$ &#x3D; this.userAssetsRepository.assets$;
@@ -425,6 +437,17 @@ export class InventoryScene {
     </div>
 
 
+    <div class="tab-pane fade " id="c-styleData">
+            <pre class="line-numbers"><code class="language-scss">
+      .scene-content {
+        &amp;--inventory {
+          display: flex;
+          gap: 2rem;
+        }
+      }
+    
+</code></pre>
+    </div>
 
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
@@ -451,7 +474,7 @@ export class InventoryScene {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    assets: assets$ | async  } as data">  <div cfBlock="scene-content" *ngIf="data.assets">    <div fxLayout="row" fxFlexFill fxLayoutGap="1rem">      <div fxFlex="70" fxFlex.lt-md="50" fxFlex.lt-sm="30">        <cf-assets-grid          [assets]="data.assets"          [activeAsset]="selectedAsset"          (assetClick)="onGridAssetClick($event)"        ></cf-assets-grid>      </div>      <div fxFlex="30" fxFlex.lt-md="50" fxFlex.lt-sm="70">        <cf-asset-detail          *ngIf="selectedAsset"          [asset]="selectedAsset"        ></cf-asset-detail>      </div>    </div>  </div></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    assets: assets$ | async  } as data">  <div cfBlock="scene-content" cfMod="inventory" *ngIf="data.assets">    <cf-assets-grid      [assets]="data.assets"      [activeAsset]="selectedAsset"      (assetClick)="onGridAssetClick($event)"    ></cf-assets-grid>    <cf-asset-detail      *ngIf="selectedAsset"      [asset]="selectedAsset"    ></cf-asset-detail>  </div></ng-container></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'cf-inventory-root'},{'name': 'InventoryScene', 'selector': 'cf-inventory'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'InventoryScene'};

@@ -598,7 +598,7 @@ import { Router } from &#x27;@angular/router&#x27;;
 import {
   Application,
   ApplicationRenderingType,
-  ApplicationShortcut
+  ApplicationShortcut,
 } from &#x27;../../../models/application&#x27;;
 
 @Component({
@@ -670,8 +670,7 @@ export class ApplicationViewComponent {
   constructor(private router: Router) {}
 
   async loadDynamic() {
-    const federatedUrl &#x3D;
-      &#x27;http://localhost:3000/remoteEntry.js&#x27; || this.application?.startUrl;
+    const federatedUrl &#x3D; this.application?.startUrl;
 
     if (!federatedUrl) {
       return;

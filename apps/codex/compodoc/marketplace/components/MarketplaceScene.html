@@ -98,12 +98,7 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div cfBlock&#x3D;&quot;scene-content&quot;&gt;
-  &lt;div fxLayout&#x3D;&quot;column&quot; fxFlexFill&gt;
-    &lt;div fxFlex&#x3D;&quot;40&quot;&gt;Marketplace&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</code></pre></td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;h5&gt;Marketplace&lt;/h5&gt;</code></pre></td>
             </tr>
 
 
@@ -135,13 +130,7 @@
 /** Marketplace main scene */
 @Component({
   selector: &#x27;cf-marketplace&#x27;,
-  template: &#x60;
-    &lt;div cfBlock&#x3D;&quot;scene-content&quot;&gt;
-      &lt;div fxLayout&#x3D;&quot;column&quot; fxFlexFill&gt;
-        &lt;div fxFlex&#x3D;&quot;40&quot;&gt;Marketplace&lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &#x60;,
+  template: &#x60; &lt;h5&gt;Marketplace&lt;/h5&gt; &#x60;,
 })
 export class MarketplaceScene {}
 </code></pre>
@@ -174,7 +163,7 @@ export class MarketplaceScene {}
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="scene-content">  <div fxLayout="column" fxFlexFill>    <div fxFlex="40">Marketplace</div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><h5>Marketplace</h5></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'cf-marketplace-root'},{'name': 'MarketplaceScene', 'selector': 'cf-marketplace'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'MarketplaceScene'};

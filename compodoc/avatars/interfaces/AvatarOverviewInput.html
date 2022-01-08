@@ -270,72 +270,72 @@ export interface AvatarOverviewInput {
   selector: &#x27;cf-avatar-overview&#x27;,
   template: &#x60;
     &lt;form [formGroup]&#x3D;&quot;form&quot; cfBlock&#x3D;&quot;avatar-overview&quot; *ngIf&#x3D;&quot;form.value?.name&quot;&gt;
-      &lt;div fxLayout&#x3D;&quot;column&quot; fxLayoutGap&#x3D;&quot;10px&quot;&gt;
-        &lt;div fxLayout&#x3D;&quot;row&quot; fxLayoutGap&#x3D;&quot;10px&quot;&gt;
-          &lt;div fxFlex&#x3D;&quot;100px&quot;&gt;
-            &lt;img cfElem&#x3D;&quot;small-preview&quot; [src]&#x3D;&quot;form.value.smallPreviewUrl&quot; /&gt;
+      &lt;img cfElem&#x3D;&quot;small-preview&quot; [src]&#x3D;&quot;form.value.smallPreviewUrl&quot; /&gt;
+
+      &lt;div cfBlock&#x3D;&quot;chatbox&quot;&gt;
+        &lt;div cfElem&#x3D;&quot;message&quot;&gt;
+          &lt;div class&#x3D;&quot;form-control&quot; *ngIf&#x3D;&quot;editing.welcomeMessage&quot;&gt;
+            &lt;!-- label for&#x3D;&quot;welcomeMessage&quot;&gt;Welcome message:&lt;/label --&gt;
+            &lt;textarea
+              id&#x3D;&quot;welcomeMessage&quot;
+              formControlName&#x3D;&quot;welcomeMessage&quot;
+            &gt;&lt;/textarea&gt;
+            &lt;cf-svg-icon
+              src&#x3D;&quot;assets/icons/mdi/check.svg&quot;
+              cfElem&#x3D;&quot;icon&quot;
+              [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+              (click)&#x3D;&quot;editing.welcomeMessage &#x3D; !editing.welcomeMessage&quot;
+            &gt;&lt;/cf-svg-icon&gt;
           &lt;/div&gt;
 
-          &lt;div fxFlex&gt;
-            &lt;div cfBlock&#x3D;&quot;chatbox&quot;&gt;
-              &lt;div cfElem&#x3D;&quot;message&quot;&gt;
-                &lt;div class&#x3D;&quot;form-control&quot; *ngIf&#x3D;&quot;editing.welcomeMessage&quot;&gt;
-                  &lt;!-- label for&#x3D;&quot;welcomeMessage&quot;&gt;Welcome message:&lt;/label --&gt;
-                  &lt;textarea
-                    id&#x3D;&quot;welcomeMessage&quot;
-                    formControlName&#x3D;&quot;welcomeMessage&quot;
-                  &gt;&lt;/textarea&gt;
-                  &lt;cf-svg-icon
-                    src&#x3D;&quot;assets/icons/mdi/check.svg&quot;
-                    cfElem&#x3D;&quot;icon&quot;
-                    [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-                    (click)&#x3D;&quot;editing.welcomeMessage &#x3D; !editing.welcomeMessage&quot;
-                  &gt;&lt;/cf-svg-icon&gt;
-                &lt;/div&gt;
+          &lt;p
+            *ngIf&#x3D;&quot;!editing.welcomeMessage&quot;
+            (click)&#x3D;&quot;editing.welcomeMessage &#x3D; !editing.welcomeMessage&quot;
+          &gt;
+            {{ form.value.welcomeMessage }}
+            &lt;cf-svg-icon
+              src&#x3D;&quot;assets/icons/mdi/pencil-outline.svg&quot;
+              cfElem&#x3D;&quot;icon&quot;
+              [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+            &gt;&lt;/cf-svg-icon&gt;
+          &lt;/p&gt;
+        &lt;/div&gt;
 
-                &lt;p
-                  *ngIf&#x3D;&quot;!editing.welcomeMessage&quot;
-                  (click)&#x3D;&quot;editing.welcomeMessage &#x3D; !editing.welcomeMessage&quot;
-                &gt;
-                  {{ form.value.welcomeMessage }}
-                  &lt;cf-svg-icon
-                    src&#x3D;&quot;assets/icons/mdi/pencil-outline.svg&quot;
-                    cfElem&#x3D;&quot;icon&quot;
-                    [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-                  &gt;&lt;/cf-svg-icon&gt;
-                &lt;/p&gt;
-              &lt;/div&gt;
+        &lt;div cfElem&#x3D;&quot;username&quot;&gt;
+          &lt;!-- label for&#x3D;&quot;name&quot;&gt;Name:&lt;/label --&gt;
 
-              &lt;div cfElem&#x3D;&quot;username&quot;&gt;
-                &lt;!-- label for&#x3D;&quot;name&quot;&gt;Name:&lt;/label --&gt;
-
-                &lt;div class&#x3D;&quot;form-control&quot; *ngIf&#x3D;&quot;editing.name&quot;&gt;
-                  &lt;input id&#x3D;&quot;name&quot; type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;name&quot; /&gt;
-                  &lt;cf-svg-icon
-                    src&#x3D;&quot;assets/icons/mdi/check.svg&quot;
-                    cfElem&#x3D;&quot;icon&quot;
-                    [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-                    (click)&#x3D;&quot;editing.name &#x3D; !editing.name&quot;
-                  &gt;&lt;/cf-svg-icon&gt;
-                &lt;/div&gt;
-
-                &lt;span
-                  (click)&#x3D;&quot;editing.name &#x3D; !editing.name&quot;
-                  *ngIf&#x3D;&quot;!editing.name&quot;
-                  &gt;{{ form.value.name }}
-                  &lt;cf-svg-icon
-                    src&#x3D;&quot;assets/icons/mdi/pencil-outline.svg&quot;
-                    cfElem&#x3D;&quot;icon&quot;
-                    [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-                  &gt;&lt;/cf-svg-icon&gt;
-                &lt;/span&gt;
-              &lt;/div&gt;
-            &lt;/div&gt;
+          &lt;div class&#x3D;&quot;form-control&quot; *ngIf&#x3D;&quot;editing.name&quot;&gt;
+            &lt;input id&#x3D;&quot;name&quot; type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;name&quot; /&gt;
+            &lt;cf-svg-icon
+              src&#x3D;&quot;assets/icons/mdi/check.svg&quot;
+              cfElem&#x3D;&quot;icon&quot;
+              [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+              (click)&#x3D;&quot;editing.name &#x3D; !editing.name&quot;
+            &gt;&lt;/cf-svg-icon&gt;
           &lt;/div&gt;
+
+          &lt;span (click)&#x3D;&quot;editing.name &#x3D; !editing.name&quot; *ngIf&#x3D;&quot;!editing.name&quot;
+            &gt;{{ form.value.name }}
+            &lt;cf-svg-icon
+              src&#x3D;&quot;assets/icons/mdi/pencil-outline.svg&quot;
+              cfElem&#x3D;&quot;icon&quot;
+              [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+            &gt;&lt;/cf-svg-icon&gt;
+          &lt;/span&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/form&gt;
   &#x60;,
+  styles: [
+    &#x60;
+      .avatar-overview {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+      }
+    &#x60;,
+  ],
 })
 export class AvatarOverviewComponent {
   @Input() set avatar(value: Avatar) {

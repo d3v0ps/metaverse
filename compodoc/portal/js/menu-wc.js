@@ -86,13 +86,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/CustomizationModule.html" data-type="entity-link" >CustomizationModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-CustomizationModule-8f6b397f70ecf5650a075fc4514c9da3"' : 'data-target="#xs-components-links-module-CustomizationModule-8f6b397f70ecf5650a075fc4514c9da3"' }>
+                                            'data-target="#components-links-module-CustomizationModule-8762cccfeb36a509b42dcb01415c232f"' : 'data-target="#xs-components-links-module-CustomizationModule-8762cccfeb36a509b42dcb01415c232f"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CustomizationModule-8f6b397f70ecf5650a075fc4514c9da3"' :
-                                            'id="xs-components-links-module-CustomizationModule-8f6b397f70ecf5650a075fc4514c9da3"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CustomizationModule-8762cccfeb36a509b42dcb01415c232f"' :
+                                            'id="xs-components-links-module-CustomizationModule-8762cccfeb36a509b42dcb01415c232f"' }>
                                             <li class="link">
                                                 <a href="components/CustomizationScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CustomizationScene</a>
                                             </li>
@@ -146,13 +146,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SettingsModule.html" data-type="entity-link" >SettingsModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SettingsModule-26e224493c7fe23c96513fa1c591d75b"' : 'data-target="#xs-components-links-module-SettingsModule-26e224493c7fe23c96513fa1c591d75b"' }>
+                                            'data-target="#components-links-module-SettingsModule-c6bdb027205a335559256db082421cb6"' : 'data-target="#xs-components-links-module-SettingsModule-c6bdb027205a335559256db082421cb6"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SettingsModule-26e224493c7fe23c96513fa1c591d75b"' :
-                                            'id="xs-components-links-module-SettingsModule-26e224493c7fe23c96513fa1c591d75b"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SettingsModule-c6bdb027205a335559256db082421cb6"' :
+                                            'id="xs-components-links-module-SettingsModule-c6bdb027205a335559256db082421cb6"' }>
                                             <li class="link">
                                                 <a href="components/SettingsNavComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SettingsNavComponent</a>
                                             </li>

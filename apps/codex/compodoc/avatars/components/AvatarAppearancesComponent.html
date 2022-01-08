@@ -50,6 +50,9 @@
             <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
         </li>
         <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
@@ -88,64 +91,74 @@
             </tr>
 
 
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>
+      .avatar-appearances {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .appearances-carousel {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+      }
+    </code></td>
+            </tr>
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;form [formGroup]&#x3D;&quot;form&quot; cfBlock&#x3D;&quot;avatar-overview&quot;&gt;
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;form [formGroup]&#x3D;&quot;form&quot; cfBlock&#x3D;&quot;avatar-appearances&quot;&gt;
   &lt;h2&gt;Appearances&lt;/h2&gt;
 
-  &lt;div fxLayout&#x3D;&quot;column&quot; fxLayoutGap&#x3D;&quot;10px&quot;&gt;
-    &lt;div fxLayout&#x3D;&quot;row wrap&quot; fxLayoutGap&#x3D;&quot;5px&quot;&gt;
+  &lt;div cfBlock&#x3D;&quot;appearances-carousel&quot;&gt;
+    &lt;div
+      cfBlock&#x3D;&quot;card&quot;
+      class&#x3D;&quot;form-array appearance-card&quot;
+      formArrayName&#x3D;&quot;appearances&quot;
+      *ngFor&#x3D;&quot;let appearance of appearancesForm.controls; let i &#x3D; index&quot;
+    &gt;
+      &lt;cf-preview-avatar-appearance
+        *ngIf&#x3D;&quot;appearance.value.format &#x3D;&#x3D;&#x3D; &#x27;gltf&#x27;&quot;
+        width&#x3D;&quot;100%&quot;
+        height&#x3D;&quot;300px&quot;
+        [appearance]&#x3D;&quot;appearance.value&quot;
+      &gt;&lt;/cf-preview-avatar-appearance&gt;
+
       &lt;div
-        cfBlock&#x3D;&quot;card&quot;
-        class&#x3D;&quot;form-array appearance-card&quot;
-        formArrayName&#x3D;&quot;appearances&quot;
-        *ngFor&#x3D;&quot;let appearance of appearancesForm.controls; let i &#x3D; index&quot;
+        cfElem&#x3D;&quot;picture&quot;
+        style&#x3D;&quot;background-image: url(&#x27;{{ appearance.value.src }}&#x27;)&quot;
+        *ngIf&#x3D;&quot;appearance.value.format !&#x3D;&#x3D; &#x27;gltf&#x27;&quot;
       &gt;
-        &lt;cf-preview-avatar-appearance
-          *ngIf&#x3D;&quot;appearance.value.format &#x3D;&#x3D;&#x3D; &#x27;gltf&#x27;&quot;
-          width&#x3D;&quot;100%&quot;
-          height&#x3D;&quot;300px&quot;
-          [appearance]&#x3D;&quot;appearance.value&quot;
-        &gt;&lt;/cf-preview-avatar-appearance&gt;
-
-        &lt;div
-          cfElem&#x3D;&quot;picture&quot;
-          style&#x3D;&quot;background-image: url(&#x27;{{ appearance.value.src }}&#x27;)&quot;
-          *ngIf&#x3D;&quot;appearance.value.format !&#x3D;&#x3D; &#x27;gltf&#x27;&quot;
-        &gt;
-          &lt;div cfElem&#x3D;&quot;footer&quot;&gt;
-            &lt;h4 cfElem&#x3D;&quot;title&quot;&gt;{{ appearance.value.format }}&lt;/h4&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-
-        &lt;div [formGroupName]&#x3D;&quot;i&quot; *ngIf&#x3D;&quot;false&quot;&gt;
-          &lt;div class&#x3D;&quot;form-control&quot;&gt;
-            &lt;label for&#x3D;&quot;format-{{ i }}&quot;&gt;Format:&lt;/label&gt;
-            &lt;input
-              id&#x3D;&quot;format-{{ i }}&quot;
-              type&#x3D;&quot;text&quot;
-              formControlName&#x3D;&quot;format&quot;
-            /&gt;
-          &lt;/div&gt;
-
-          &lt;div class&#x3D;&quot;form-control&quot;&gt;
-            &lt;label for&#x3D;&quot;preview-url-{{ i }}&quot;&gt;Preview Url:&lt;/label&gt;
-            &lt;input
-              id&#x3D;&quot;preview-url-{{ i }}&quot;
-              type&#x3D;&quot;text&quot;
-              formControlName&#x3D;&quot;largePreviewUrl&quot;
-            /&gt;
-          &lt;/div&gt;
+        &lt;div cfElem&#x3D;&quot;footer&quot;&gt;
+          &lt;h4 cfElem&#x3D;&quot;title&quot;&gt;{{ appearance.value.format }}&lt;/h4&gt;
         &lt;/div&gt;
       &lt;/div&gt;
-      &lt;div cfBlock&#x3D;&quot;card&quot; class&#x3D;&quot;appearance-card&quot;&gt;
-        &lt;cf-svg-icon
-          src&#x3D;&quot;assets/icons/mdi/plus.svg&quot;
-          cfElem&#x3D;&quot;icon&quot;
-          [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-        &gt;&lt;/cf-svg-icon&gt;
+
+      &lt;div [formGroupName]&#x3D;&quot;i&quot; *ngIf&#x3D;&quot;false&quot;&gt;
+        &lt;div class&#x3D;&quot;form-control&quot;&gt;
+          &lt;label for&#x3D;&quot;format-{{ i }}&quot;&gt;Format:&lt;/label&gt;
+          &lt;input id&#x3D;&quot;format-{{ i }}&quot; type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;format&quot; /&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;form-control&quot;&gt;
+          &lt;label for&#x3D;&quot;preview-url-{{ i }}&quot;&gt;Preview Url:&lt;/label&gt;
+          &lt;input
+            id&#x3D;&quot;preview-url-{{ i }}&quot;
+            type&#x3D;&quot;text&quot;
+            formControlName&#x3D;&quot;largePreviewUrl&quot;
+          /&gt;
+        &lt;/div&gt;
       &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div cfBlock&#x3D;&quot;card&quot; class&#x3D;&quot;appearance-card&quot;&gt;
+      &lt;cf-svg-icon
+        src&#x3D;&quot;assets/icons/mdi/plus.svg&quot;
+        cfElem&#x3D;&quot;icon&quot;
+        [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+      &gt;&lt;/cf-svg-icon&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/form&gt;
@@ -256,7 +269,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances/avatar-appearances.component.ts:83</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances/avatar-appearances.component.ts:92</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -290,8 +303,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="100"
-                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances/avatar-appearances.component.ts:100</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="109"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances/avatar-appearances.component.ts:109</a></div>
                 </td>
             </tr>
 
@@ -365,7 +378,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances/avatar-appearances.component.ts:92</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances/avatar-appearances.component.ts:101</a></div>
                         </td>
                     </tr>
 
@@ -395,7 +408,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances/avatar-appearances.component.ts:83</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances/avatar-appearances.component.ts:92</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -453,7 +466,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances/avatar-appearances.component.ts:96</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances/avatar-appearances.component.ts:105</a></div>
                                 </td>
                             </tr>
 
@@ -485,65 +498,74 @@ export interface AvatarAppearancesForm {
 @Component({
   selector: &#x27;cf-avatar-appearances&#x27;,
   template: &#x60;
-    &lt;form [formGroup]&#x3D;&quot;form&quot; cfBlock&#x3D;&quot;avatar-overview&quot;&gt;
+    &lt;form [formGroup]&#x3D;&quot;form&quot; cfBlock&#x3D;&quot;avatar-appearances&quot;&gt;
       &lt;h2&gt;Appearances&lt;/h2&gt;
 
-      &lt;div fxLayout&#x3D;&quot;column&quot; fxLayoutGap&#x3D;&quot;10px&quot;&gt;
-        &lt;div fxLayout&#x3D;&quot;row wrap&quot; fxLayoutGap&#x3D;&quot;5px&quot;&gt;
+      &lt;div cfBlock&#x3D;&quot;appearances-carousel&quot;&gt;
+        &lt;div
+          cfBlock&#x3D;&quot;card&quot;
+          class&#x3D;&quot;form-array appearance-card&quot;
+          formArrayName&#x3D;&quot;appearances&quot;
+          *ngFor&#x3D;&quot;let appearance of appearancesForm.controls; let i &#x3D; index&quot;
+        &gt;
+          &lt;cf-preview-avatar-appearance
+            *ngIf&#x3D;&quot;appearance.value.format &#x3D;&#x3D;&#x3D; &#x27;gltf&#x27;&quot;
+            width&#x3D;&quot;100%&quot;
+            height&#x3D;&quot;300px&quot;
+            [appearance]&#x3D;&quot;appearance.value&quot;
+          &gt;&lt;/cf-preview-avatar-appearance&gt;
+
           &lt;div
-            cfBlock&#x3D;&quot;card&quot;
-            class&#x3D;&quot;form-array appearance-card&quot;
-            formArrayName&#x3D;&quot;appearances&quot;
-            *ngFor&#x3D;&quot;let appearance of appearancesForm.controls; let i &#x3D; index&quot;
+            cfElem&#x3D;&quot;picture&quot;
+            style&#x3D;&quot;background-image: url(&#x27;{{ appearance.value.src }}&#x27;)&quot;
+            *ngIf&#x3D;&quot;appearance.value.format !&#x3D;&#x3D; &#x27;gltf&#x27;&quot;
           &gt;
-            &lt;cf-preview-avatar-appearance
-              *ngIf&#x3D;&quot;appearance.value.format &#x3D;&#x3D;&#x3D; &#x27;gltf&#x27;&quot;
-              width&#x3D;&quot;100%&quot;
-              height&#x3D;&quot;300px&quot;
-              [appearance]&#x3D;&quot;appearance.value&quot;
-            &gt;&lt;/cf-preview-avatar-appearance&gt;
-
-            &lt;div
-              cfElem&#x3D;&quot;picture&quot;
-              style&#x3D;&quot;background-image: url(&#x27;{{ appearance.value.src }}&#x27;)&quot;
-              *ngIf&#x3D;&quot;appearance.value.format !&#x3D;&#x3D; &#x27;gltf&#x27;&quot;
-            &gt;
-              &lt;div cfElem&#x3D;&quot;footer&quot;&gt;
-                &lt;h4 cfElem&#x3D;&quot;title&quot;&gt;{{ appearance.value.format }}&lt;/h4&gt;
-              &lt;/div&gt;
-            &lt;/div&gt;
-
-            &lt;div [formGroupName]&#x3D;&quot;i&quot; *ngIf&#x3D;&quot;false&quot;&gt;
-              &lt;div class&#x3D;&quot;form-control&quot;&gt;
-                &lt;label for&#x3D;&quot;format-{{ i }}&quot;&gt;Format:&lt;/label&gt;
-                &lt;input
-                  id&#x3D;&quot;format-{{ i }}&quot;
-                  type&#x3D;&quot;text&quot;
-                  formControlName&#x3D;&quot;format&quot;
-                /&gt;
-              &lt;/div&gt;
-
-              &lt;div class&#x3D;&quot;form-control&quot;&gt;
-                &lt;label for&#x3D;&quot;preview-url-{{ i }}&quot;&gt;Preview Url:&lt;/label&gt;
-                &lt;input
-                  id&#x3D;&quot;preview-url-{{ i }}&quot;
-                  type&#x3D;&quot;text&quot;
-                  formControlName&#x3D;&quot;largePreviewUrl&quot;
-                /&gt;
-              &lt;/div&gt;
+            &lt;div cfElem&#x3D;&quot;footer&quot;&gt;
+              &lt;h4 cfElem&#x3D;&quot;title&quot;&gt;{{ appearance.value.format }}&lt;/h4&gt;
             &lt;/div&gt;
           &lt;/div&gt;
-          &lt;div cfBlock&#x3D;&quot;card&quot; class&#x3D;&quot;appearance-card&quot;&gt;
-            &lt;cf-svg-icon
-              src&#x3D;&quot;assets/icons/mdi/plus.svg&quot;
-              cfElem&#x3D;&quot;icon&quot;
-              [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-            &gt;&lt;/cf-svg-icon&gt;
+
+          &lt;div [formGroupName]&#x3D;&quot;i&quot; *ngIf&#x3D;&quot;false&quot;&gt;
+            &lt;div class&#x3D;&quot;form-control&quot;&gt;
+              &lt;label for&#x3D;&quot;format-{{ i }}&quot;&gt;Format:&lt;/label&gt;
+              &lt;input id&#x3D;&quot;format-{{ i }}&quot; type&#x3D;&quot;text&quot; formControlName&#x3D;&quot;format&quot; /&gt;
+            &lt;/div&gt;
+
+            &lt;div class&#x3D;&quot;form-control&quot;&gt;
+              &lt;label for&#x3D;&quot;preview-url-{{ i }}&quot;&gt;Preview Url:&lt;/label&gt;
+              &lt;input
+                id&#x3D;&quot;preview-url-{{ i }}&quot;
+                type&#x3D;&quot;text&quot;
+                formControlName&#x3D;&quot;largePreviewUrl&quot;
+              /&gt;
+            &lt;/div&gt;
           &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div cfBlock&#x3D;&quot;card&quot; class&#x3D;&quot;appearance-card&quot;&gt;
+          &lt;cf-svg-icon
+            src&#x3D;&quot;assets/icons/mdi/plus.svg&quot;
+            cfElem&#x3D;&quot;icon&quot;
+            [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+          &gt;&lt;/cf-svg-icon&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/form&gt;
   &#x60;,
+  styles: [
+    &#x60;
+      .avatar-appearances {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .appearances-carousel {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+      }
+    &#x60;,
+  ],
 })
 export class AvatarAppearancesComponent {
   @Input() set appearances(value: Appearance[]) {
@@ -579,6 +601,22 @@ export class AvatarAppearancesComponent {
     </div>
 
 
+    <div class="tab-pane fade " id="c-styleData">
+            <pre class="line-numbers"><code class="language-scss">
+      .avatar-appearances {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .appearances-carousel {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+      }
+    
+</code></pre>
+    </div>
 
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
@@ -605,7 +643,7 @@ export class AvatarAppearancesComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form [formGroup]="form" cfBlock="avatar-overview">  <h2>Appearances</h2>  <div fxLayout="column" fxLayoutGap="10px">    <div fxLayout="row wrap" fxLayoutGap="5px">      <div        cfBlock="card"        class="form-array appearance-card"        formArrayName="appearances"        *ngFor="let appearance of appearancesForm.controls; let i = index"      >        <cf-preview-avatar-appearance          *ngIf="appearance.value.format === \'gltf\'"          width="100%"          height="300px"          [appearance]="appearance.value"        ></cf-preview-avatar-appearance>        <div          cfElem="picture"          style="background-image: url(\'{{ appearance.value.src }}\')"          *ngIf="appearance.value.format !== \'gltf\'"        >          <div cfElem="footer">            <h4 cfElem="title">{{ appearance.value.format }}</h4>          </div>        </div>        <div [formGroupName]="i" *ngIf="false">          <div class="form-control">            <label for="format-{{ i }}">Format:</label>            <input              id="format-{{ i }}"              type="text"              formControlName="format"            />          </div>          <div class="form-control">            <label for="preview-url-{{ i }}">Preview Url:</label>            <input              id="preview-url-{{ i }}"              type="text"              formControlName="largePreviewUrl"            />          </div>        </div>      </div>      <div cfBlock="card" class="appearance-card">        <cf-svg-icon          src="assets/icons/mdi/plus.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>      </div>    </div>  </div></form></div>'
+        var COMPONENT_TEMPLATE = '<div><form [formGroup]="form" cfBlock="avatar-appearances">  <h2>Appearances</h2>  <div cfBlock="appearances-carousel">    <div      cfBlock="card"      class="form-array appearance-card"      formArrayName="appearances"      *ngFor="let appearance of appearancesForm.controls; let i = index"    >      <cf-preview-avatar-appearance        *ngIf="appearance.value.format === \'gltf\'"        width="100%"        height="300px"        [appearance]="appearance.value"      ></cf-preview-avatar-appearance>      <div        cfElem="picture"        style="background-image: url(\'{{ appearance.value.src }}\')"        *ngIf="appearance.value.format !== \'gltf\'"      >        <div cfElem="footer">          <h4 cfElem="title">{{ appearance.value.format }}</h4>        </div>      </div>      <div [formGroupName]="i" *ngIf="false">        <div class="form-control">          <label for="format-{{ i }}">Format:</label>          <input id="format-{{ i }}" type="text" formControlName="format" />        </div>        <div class="form-control">          <label for="preview-url-{{ i }}">Preview Url:</label>          <input            id="preview-url-{{ i }}"            type="text"            formControlName="largePreviewUrl"          />        </div>      </div>    </div>    <div cfBlock="card" class="appearance-card">      <cf-svg-icon        src="assets/icons/mdi/plus.svg"        cfElem="icon"        [svgClass]="\'icon__svg\'"      ></cf-svg-icon>    </div>  </div></form></div>'
     var COMPONENTS = [{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'PreviewAvatarAppearanceComponent', 'selector': 'cf-preview-avatar-appearance'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarAppearancesComponent'};

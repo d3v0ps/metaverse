@@ -83,13 +83,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/InventoryModule.html" data-type="entity-link" >InventoryModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-InventoryModule-27e63a70b3d9a1bf680991a611bcd16e"' : 'data-target="#xs-components-links-module-InventoryModule-27e63a70b3d9a1bf680991a611bcd16e"' }>
+                                            'data-target="#components-links-module-InventoryModule-a396c2cc83bec7f47230c918fa78be4e"' : 'data-target="#xs-components-links-module-InventoryModule-a396c2cc83bec7f47230c918fa78be4e"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-InventoryModule-27e63a70b3d9a1bf680991a611bcd16e"' :
-                                            'id="xs-components-links-module-InventoryModule-27e63a70b3d9a1bf680991a611bcd16e"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-InventoryModule-a396c2cc83bec7f47230c918fa78be4e"' :
+                                            'id="xs-components-links-module-InventoryModule-a396c2cc83bec7f47230c918fa78be4e"' }>
                                             <li class="link">
                                                 <a href="components/InventoryScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >InventoryScene</a>
                                             </li>

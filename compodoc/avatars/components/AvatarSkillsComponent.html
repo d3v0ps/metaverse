@@ -50,6 +50,9 @@
             <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
         </li>
         <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
@@ -88,6 +91,16 @@
             </tr>
 
 
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>
+      .avatar-skills-carousel {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+    </code></td>
+            </tr>
 
             <tr>
                 <td class="col-md-3">template</td>
@@ -99,7 +112,7 @@
   &gt;
     &lt;h2&gt;Skills&lt;/h2&gt;
 
-    &lt;div fxLayout&#x3D;&quot;row wrap&quot; fxLayoutGap&#x3D;&quot;15px&quot;&gt;
+    &lt;div cfBlock&#x3D;&quot;avatar-skills-carousel&quot;&gt;
       &lt;div
         *ngFor&#x3D;&quot;let skill of skillsForm.controls; let i &#x3D; index&quot;
         class&#x3D;&quot;skill-form&quot;
@@ -270,7 +283,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-skills/avatar-skills.component.ts:85</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-skills/avatar-skills.component.ts:94</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -304,8 +317,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="110"
-                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-skills/avatar-skills.component.ts:110</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="119"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-skills/avatar-skills.component.ts:119</a></div>
                 </td>
             </tr>
 
@@ -379,7 +392,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-skills/avatar-skills.component.ts:102</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-skills/avatar-skills.component.ts:111</a></div>
                         </td>
                     </tr>
 
@@ -414,7 +427,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-skills/avatar-skills.component.ts:94</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-skills/avatar-skills.component.ts:103</a></div>
                         </td>
                     </tr>
 
@@ -444,7 +457,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-skills/avatar-skills.component.ts:85</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-skills/avatar-skills.component.ts:94</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -502,7 +515,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-skills/avatar-skills.component.ts:106</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-skills/avatar-skills.component.ts:115</a></div>
                                 </td>
                             </tr>
 
@@ -533,7 +546,7 @@ export class AvatarSkillsInput {
       &gt;
         &lt;h2&gt;Skills&lt;/h2&gt;
 
-        &lt;div fxLayout&#x3D;&quot;row wrap&quot; fxLayoutGap&#x3D;&quot;15px&quot;&gt;
+        &lt;div cfBlock&#x3D;&quot;avatar-skills-carousel&quot;&gt;
           &lt;div
             *ngFor&#x3D;&quot;let skill of skillsForm.controls; let i &#x3D; index&quot;
             class&#x3D;&quot;skill-form&quot;
@@ -595,6 +608,15 @@ export class AvatarSkillsInput {
       &lt;/button&gt;
     &lt;/form&gt;
   &#x60;,
+  styles: [
+    &#x60;
+      .avatar-skills-carousel {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+    &#x60;,
+  ],
 })
 export class AvatarSkillsComponent {
   @Input() set skills(value: Skill[]) {
@@ -636,6 +658,16 @@ export class AvatarSkillsComponent {
     </div>
 
 
+    <div class="tab-pane fade " id="c-styleData">
+            <pre class="line-numbers"><code class="language-scss">
+      .avatar-skills-carousel {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+    
+</code></pre>
+    </div>
 
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
@@ -662,7 +694,7 @@ export class AvatarSkillsComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form [formGroup]="form" cfBlock="avatar">  <div    class="form-array"    formArrayName="skills"    style="margin-bottom: 15px;"  >    <h2>Skills</h2>    <div fxLayout="row wrap" fxLayoutGap="15px">      <div        *ngFor="let skill of skillsForm.controls; let i = index"        class="skill-form"      >        <button          type="button"          cfBlock="button"          cfMod="primary uppercase big"        >          <cf-svg-icon            src="assets/icons/mdi/{{              skillsIcons[skill.value.skill + \'-\' + skill.value.domain]            }}.svg"            cfElem="icon"            [svgClass]="\'icon__svg\'"          ></cf-svg-icon>          {{ skill.value.skill }} {{ skill.value.domain }}        </button>        <div [formGroupName]="i" *ngIf="false">          <div class="form-control">            <label for="skill-domain-{{ i }}">Domain:</label>            <input              id="skill-domain-{{ i }}"              type="text"              formControlName="domain"            />          </div>          <div class="form-control">            <label for="skill-scope-{{ i }}">Scope:</label>            <input              id="skill-scope-{{ i }}"              type="text"              formControlName="scope"            />          </div>          <div class="form-control">            <label for="skill-skill-{{ i }}">Skill:</label>            <input              id="skill-skill-{{ i }}"              type="text"              formControlName="skill"            />          </div>        </div>      </div>    </div>  </div>  <button type="button" cfBlock="button" cfMod="primary uppercase big">    <cf-svg-icon      src="assets/icons/mdi/plus.svg"      cfElem="icon"      [svgClass]="\'icon__svg\'"    ></cf-svg-icon>    Add more skills  </button></form></div>'
+        var COMPONENT_TEMPLATE = '<div><form [formGroup]="form" cfBlock="avatar">  <div    class="form-array"    formArrayName="skills"    style="margin-bottom: 15px;"  >    <h2>Skills</h2>    <div cfBlock="avatar-skills-carousel">      <div        *ngFor="let skill of skillsForm.controls; let i = index"        class="skill-form"      >        <button          type="button"          cfBlock="button"          cfMod="primary uppercase big"        >          <cf-svg-icon            src="assets/icons/mdi/{{              skillsIcons[skill.value.skill + \'-\' + skill.value.domain]            }}.svg"            cfElem="icon"            [svgClass]="\'icon__svg\'"          ></cf-svg-icon>          {{ skill.value.skill }} {{ skill.value.domain }}        </button>        <div [formGroupName]="i" *ngIf="false">          <div class="form-control">            <label for="skill-domain-{{ i }}">Domain:</label>            <input              id="skill-domain-{{ i }}"              type="text"              formControlName="domain"            />          </div>          <div class="form-control">            <label for="skill-scope-{{ i }}">Scope:</label>            <input              id="skill-scope-{{ i }}"              type="text"              formControlName="scope"            />          </div>          <div class="form-control">            <label for="skill-skill-{{ i }}">Skill:</label>            <input              id="skill-skill-{{ i }}"              type="text"              formControlName="skill"            />          </div>        </div>      </div>    </div>  </div>  <button type="button" cfBlock="button" cfMod="primary uppercase big">    <cf-svg-icon      src="assets/icons/mdi/plus.svg"      cfElem="icon"      [svgClass]="\'icon__svg\'"    ></cf-svg-icon>    Add more skills  </button></form></div>'
     var COMPONENTS = [{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'PreviewAvatarAppearanceComponent', 'selector': 'cf-preview-avatar-appearance'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarSkillsComponent'};
