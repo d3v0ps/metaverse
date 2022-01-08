@@ -203,9 +203,7 @@ export interface ApplicationBanners {
                 </cf-applications-carousel>
               </ng-container>
 
-              <ng-container
-                *ngIf="externalUserApplications$ | async as applications"
-              >
+              <ng-container *ngIf="allApplications$ | async as applications">
                 <h2 cfElem="section-title" *ngIf="applications.length > 0">
                   All Applications
                 </h2>
@@ -264,6 +262,7 @@ export class PlayScene implements OnInit, OnDestroy {
     this.recentlyOpenedApplicationsState.applications$;
 
   applications$ = new BehaviorSubject<Application[]>([]);
+  allApplications$ = new BehaviorSubject<Application[]>([]);
   applicationBanners$ = new BehaviorSubject<ApplicationBanners>({});
 
   selectedAvatar$ = this.selectedAvatarState.avatar$;
@@ -328,8 +327,12 @@ export class PlayScene implements OnInit, OnDestroy {
     this.externalUserApplications$
       .pipe(
         tap((applications) => {
+          const filtered = applications.filter((application) =>
+            this.applicationMatchesSearch(application)
+          );
           this.applications$.next(applications);
-          this.generateBanners(applications);
+          this.allApplications$.next(filtered);
+          this.generateBanners(filtered);
         }),
         takeUntil(this.destroy$)
       )
@@ -338,7 +341,14 @@ export class PlayScene implements OnInit, OnDestroy {
     this.searchBarForm.controls.queryString.valueChanges
       .pipe(
         tap((search) => {
-          this.generateBanners(this.applications$.getValue());
+          const applications = this.applications$.getValue();
+
+          const filtered = applications.filter((application) =>
+            this.applicationMatchesSearch(application)
+          );
+          this.applications$.next(applications);
+          this.allApplications$.next(filtered);
+          this.generateBanners(filtered);
         }),
         takeUntil(this.destroy$)
       )
@@ -495,29 +505,9 @@ export class PlayScene implements OnInit, OnDestroy {
             return;
           }
 
-          let mustInclude = true;
+          const matchesSearch = this.applicationMatchesSearch(application);
 
-          if (
-            this.searchBarForm.value.queryString &&
-            this.searchBarForm.value.queryString.length > 0
-          ) {
-            const nameMatches = application.name
-              .toLowerCase()
-              .includes(this.searchBarForm.value.queryString.toLowerCase());
-            const shortcutMatches =
-              application.shortcuts &&
-              application.shortcuts.some((shortcut) =>
-                shortcut.name
-                  .toLowerCase()
-                  .includes(this.searchBarForm.value.queryString.toLowerCase())
-              )
-                ? true
-                : false;
-
-            mustInclude = nameMatches || shortcutMatches;
-          }
-
-          if (!mustInclude) {
+          if (!matchesSearch) {
             return;
           }
 
@@ -535,5 +525,38 @@ export class PlayScene implements OnInit, OnDestroy {
     );
 
     return banners;
+  }
+
+  private applicationMatchesSearch(application: Application): boolean {
+    if (
+      !this.searchBarForm.value.queryString ||
+      this.searchBarForm.value.queryString.length <= 0
+    ) {
+      return true;
+    }
+
+    const nameMatches = application.name
+      .toLowerCase()
+      .includes(this.searchBarForm.value.queryString.toLowerCase());
+
+    const categoryMatches = application.categories?.reduce<boolean>(
+      (acc, category) =>
+        acc ||
+        category
+          .toLowerCase()
+          .startsWith(this.searchBarForm.value.queryString.toLowerCase()),
+      false
+    );
+    const shortcutMatches =
+      application.shortcuts &&
+      application.shortcuts.some((shortcut) =>
+        shortcut.name
+          .toLowerCase()
+          .includes(this.searchBarForm.value.queryString.toLowerCase())
+      )
+        ? true
+        : false;
+
+    return nameMatches || categoryMatches || shortcutMatches;
   }
 }

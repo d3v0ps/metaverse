@@ -2024,6 +2024,142 @@ export const storeApplications: StoreApplicationDocType[] = [
       ],
     },
   },
+  {
+    id: 'net.brandcolors.brandcolors',
+    name: 'BrandColors',
+    description:
+      'The biggest collection of official brand color codes around. Curated by @brandcolors and friends.',
+    startUrl: 'https://brandcolors.net/',
+    categories: ['personalization', 'utilities'],
+    icons: [
+      {
+        src: 'assets/icons/mdi/palette.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://brandcolors.net/',
+        icons: [
+          {
+            src: 'assets/icons/mdi/palette.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'net.brandcolors',
+        name: 'BrandColors',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['PortalPortal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#E91F63',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.templarian.materialdesignicons',
+    name: 'Material Design Icons',
+    description: `Material Design Icons' growing icon collection allows designers and developers targeting various platforms to download icons in the format, color and size they need for any project.`,
+    startUrl: 'https://materialdesignicons.com/',
+    categories: ['personalization', 'utilities'],
+    icons: [
+      {
+        src: 'assets/icons/mdi/palette-advanced.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://brandcolors.net/',
+        icons: [
+          {
+            src: 'assets/icons/mdi/palette-advanced.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.templarian',
+        name: 'Templarian',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#2196F3',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.simpleicons.simpleicons',
+    name: 'Simple Icons',
+    description: `2135+ Free SVG icons for popular brands`,
+    startUrl: 'https://simpleicons.org/',
+    categories: ['personalization', 'utilities'],
+    icons: [
+      {
+        src: 'assets/icons/mdi/palette-advanced.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://brandcolors.net/',
+        icons: [
+          {
+            src: 'assets/icons/mdi/palette-advanced.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.simpleicons',
+        name: 'Simple Icons',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#222222',
+        },
+      ],
+    },
+  },
 ];
 
 export const STORE_APPLICATIONS_INITIAL_DATA_PROVIDER = {

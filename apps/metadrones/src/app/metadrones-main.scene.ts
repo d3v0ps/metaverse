@@ -115,5 +115,5 @@ export class MetadronesMainScene implements OnInit, OnDestroy {
     hotkeys.unbind('right');
   }
 
-  constructor(/** private selectedAvatarState: SelectedAvatarState **/) {}
+  /** constructor(private selectedAvatarState: SelectedAvatarState) {} **/
 }
