@@ -1,0 +1,51 @@
+
+@use 'web-components/abstracts/variables/colors' as colors;
+
+.application-shortcut {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  .button {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: .5rem;
+
+  }
+
+  .button__label {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .button__icon {
+    font-size: 2rem;
+    .icon__svg {
+      width: 2rem;;
+      height: 100%;
+    }
+  }
+}
+
+.keyboard-shortcut {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  float: left;
+  background-color: var(--color-base-dark-darker);
+  padding: .25rem;
+  border-radius: 5px;
+  margin-left: -40px;
+
+
+  color: var(--color-base-light-medium);
+  .icon__svg {
+    fill: var(--color-base-light-medium) !important;
+  }
+}

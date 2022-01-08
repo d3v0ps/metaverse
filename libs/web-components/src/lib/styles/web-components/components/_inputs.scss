@@ -31,12 +31,12 @@ input, .input {
     cursor: not-allowed;
   }
 
-  &:focus {
-    border-color: hsl(var(--component-input-focus-h), var(--component-input-focus-s), var(--component-input-focus-l));
-    box-shadow: 0 0 0 3px hsla(var(--component-input-focus-h), var(--component-input-focus-s), calc(var(--component-input-focus-l) +
-            40%), 0.8);
-    outline: 3px solid transparent;
-  }
+  // &:focus {
+  //   border-color: hsl(var(--component-input-focus-h), var(--component-input-focus-s), var(--component-input-focus-l));
+  //   box-shadow: 0 0 0 3px hsla(var(--component-input-focus-h), var(--component-input-focus-s), calc(var(--component-input-focus-l) +
+  //           40%), 0.8);
+  //   outline: 3px solid transparent;
+  // }
 
 }
 

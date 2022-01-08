@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
 import {
   Customization,
   Theme,
@@ -88,7 +89,8 @@ export class CustomizationScene implements OnInit, OnDestroy {
 
   constructor(
     private readonly availableThemesState: AvailableThemesState,
-    private readonly customizationSettingsState: CustomizationSettingsState
+    private readonly customizationSettingsState: CustomizationSettingsState,
+    private readonly selectedAvatarState: SelectedAvatarState
   ) {}
 
   ngOnInit(): void {
@@ -107,7 +109,10 @@ export class CustomizationScene implements OnInit, OnDestroy {
         takeUntil(this.destroy$),
         tap((settings) =>
           this.customizationSettingsState
-            .setCustomizationSettings(settings)
+            .setCustomizationSettings(
+              settings,
+              this.selectedAvatarState.avatar$.getValue()?.id
+            )
             .subscribe()
         )
       )

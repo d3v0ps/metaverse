@@ -124,6 +124,10 @@ export const applicationsSchema = {
           type: 'boolean',
           description: 'Internal',
         },
+        starred: {
+          type: 'boolean',
+          description: 'Internal',
+        },
         defaultShortcut: {
           type: 'string',
           description: 'Default shortcut',

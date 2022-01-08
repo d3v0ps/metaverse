@@ -13,22 +13,35 @@
   background-color: #706fd3;
 }
 
-
-.scene-content--play {
+.scene-content {
+  &--play {
   background: -moz-linear-gradient(45deg, #02e1ba 0%, #26c9f2 29%, #d911f2 66%, #ffa079 100%);
   background: -webkit-linear-gradient(45deg, #02e1ba 0%,#26c9f2 29%,#d911f2 66%,#ffa079 100%);
   background: linear-gradient(45deg, #02e1ba 0%,#26c9f2 29%,#d911f2 66%,#ffa079 100%);
   background-size: 400% 400%;
   -webkit-animation: Gradient 15s ease infinite;
--moz-animation: Gradient 15s ease infinite;
-animation: Gradient 15s ease infinite;
-min-height: calc(100vh - 2rem);
-display: flex;
-flex-direction: column;
-align-items: stretch;
-justify-content: space-evenly;
-overflow: hidden;
-position: relative;
+  -moz-animation: Gradient 15s ease infinite;
+  animation: Gradient 15s ease infinite;
+  min-height: calc(100vh - 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-evenly;
+  overflow: hidden;
+  position: relative;
+  }
+
+  &--application-opened {
+    background: transparent !important;
+    animation: none !important;
+
+    &::before,
+    &::after {
+      animation: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+  }
 }
 
 .scene-content--play::before,

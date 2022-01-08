@@ -6,6 +6,8 @@ import { IsDatabaseCreatedGuard } from '@central-factory/persistence/guards/is-d
 import { IsNotDatabaseCreatedGuard } from '@central-factory/persistence/guards/is-not-database-created.guard';
 import { PortalLayoutScene } from './scenes/portal-layout/portal-layout.scene';
 
+const METADRONES_URL = 'http://localhost:3000/remoteEntry.js';
+
 export const routes: Routes = [
   {
     path: '',

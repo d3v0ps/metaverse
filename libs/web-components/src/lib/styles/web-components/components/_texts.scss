@@ -3,7 +3,8 @@
 
 @each $color in colors.$color-variations {
   .text {
-   &.text--#{$color} {
+    margin: 0;
+    &.text--#{$color} {
       color: var(--component-text-#{$color}-color, var(--color-base-#{$color}-medium));
       .icon__svg {
         fill: var(--component-text-#{$color}-color, var(--color-base-#{$color}-medium));

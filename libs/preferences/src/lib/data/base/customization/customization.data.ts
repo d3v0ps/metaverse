@@ -4,6 +4,7 @@ import { Preference } from '../../../models/preference';
 
 export const customization: Preference<Customization> = {
   id: 'settings.customization',
+  key: 'settings.customization',
   value: {
     theme: {
       name: 'Default',

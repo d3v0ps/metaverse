@@ -5,6 +5,7 @@ import {
 
 export enum ApplicationRenderingType {
   Webview = 'webview',
+  WebpackModuleFederation = 'webpack-module-federation',
   Unknown = 'unknown',
 }
 
@@ -35,12 +36,15 @@ export enum ColorVariation {
 
 /** Non Web Manifest standard included properties */
 export type ApplicationAdditionalProperties = {
+  originalManifest?: string;
   author: {
     id: string;
     name: string;
   };
   renderingType?: ApplicationRenderingType;
+  starred?: boolean;
   internal?: boolean;
+  supportsBrowser?: boolean;
   permissions?: {
     kind: PermissionKind;
     mode: PermissionMode;

@@ -38,9 +38,14 @@ testem.log
 .DS_Store
 Thumbs.db
 
+.angular
+
 # Generated Docusaurus files
 .docusaurus/
 .cache-loader/
+
+main.electron.js
+main.electron.js.map
 
 # Generated Compodoc files
 documentation/

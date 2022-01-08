@@ -32,3 +32,11 @@
   justify-content: flex-end;
   gap: var(--component-application-toolbar-buttons-gap);
 }
+
+.application-toolbar-title {
+  .icon__svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--component-application-toolbar-color);
+  }
+}

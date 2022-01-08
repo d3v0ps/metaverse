@@ -338,6 +338,7 @@ export const userApplications: UserApplicationDocType[] = [
     name: 'Codex',
     description: 'Official documentation for the Central Factory Metaverse',
     startUrl: 'codex',
+    categories: ['productivity'],
     icons: [
       {
         src: 'assets/icons/mdi/book-open-page-variant.svg',
@@ -351,7 +352,7 @@ export const userApplications: UserApplicationDocType[] = [
         url: 'https://www.aitorllamas.com/metaverse/apps/codex',
         icons: [
           {
-            src: 'assets/icons/mid/book-open-page-variant.svg',
+            src: 'assets/icons/mdi/book-open-page-variant.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -364,6 +365,7 @@ export const userApplications: UserApplicationDocType[] = [
         name: 'Central Factory',
       },
       renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: true,
       internal: false,
       permissions: [],
       defaultShortcut: 'Codex',

@@ -9,7 +9,7 @@ import styles from './styles.module.css';
 const features = [
   {
     title: 'Customize',
-    imageUrl: 'img/undraw_female_avatar_w3jk.svg',
+    imageUrl: 'img/themes.png',
     description: (
       <>
         You can own as many avatars as you want and make them completely different from each other.

@@ -6,7 +6,8 @@
 .application-sheet {
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
   gap: 2rem;
   padding: 20px;
 
@@ -15,8 +16,47 @@
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
 
+  .application-card {
+    max-width: 350px;
+    max-height: 220px;
+    overflow-x: auto;
+    .application-description {
+      max-width: 100%;
+    }
+  }
+
+  .application-description {
+    max-width: 30%;
+  }
+
 
   .icon__svg {
     fill: var(---component-application-sheet-font-color, #fff);
+  }
+
+  .application-actions {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+
+    &__item {
+      max-width: 200px;
+      display: contents;
+    }
+  }
+
+  .application-shortcuts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+
+    > * {
+      max-width: 200px;
+    }
+
   }
 }

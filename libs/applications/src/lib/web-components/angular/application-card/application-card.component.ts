@@ -5,6 +5,7 @@ import {
   Input,
   Output,
 } from '@angular/core';
+import { isElectron } from '@central-factory/web-components/shared/platform/desktop/is-electron';
 import { Application } from '../../../models/application';
 
 @Component({
@@ -17,38 +18,80 @@ import { Application } from '../../../models/application';
         'background-color': this.applicationPrimaryColor
       }"
       [cfMod]="{
-        'is-internal': application.additionalProperties?.internal
+        'is-internal': application.additionalProperties?.internal,
+        'is-not-supported': !applicationIsSupported
       }"
       (click)="applicationClick.emit(application)"
     >
-      <div class="top-section">
+      <div cfBlock="play-icon" (click)="playClick.emit(application)">
         <cf-svg-icon
-          *ngIf="
-            showUninstallButton && !application.additionalProperties?.internal
-          "
-          src="assets/icons/mdi/delete.svg"
-          [svgClass]="'top-section__icon'"
-        ></cf-svg-icon>
-      </div>
-
-      <div cfBlock="application-icon">
-        <cf-svg-icon
-          *ngIf="applicationIcon"
-          [src]="applicationIcon"
+          [src]="'assets/icons/mdi/play-circle-outline.svg'"
           cfElem="icon"
           [svgClass]="'icon__svg'"
         ></cf-svg-icon>
       </div>
 
-      <div cfBlock="application-content">
-        <div cfBlock="application-title">
-          <h2 cfElem="name">
-            {{ application?.name }}
-          </h2>
-          <h4 cfElem="author">
-            {{ application?.additionalProperties?.author?.name }}
-          </h4>
+      <div class="top-section">
+        <h5 cfBlock="text" cfMod="secondary">
+          <cf-svg-icon
+            [src]="
+              application.additionalProperties?.starred
+                ? 'assets/icons/mdi/star.svg'
+                : 'assets/icons/mdi/star-outline.svg'
+            "
+            cfElem="icon"
+            [svgClass]="'icon__svg'"
+            (click)="$event.stopPropagation(); starClick.emit(application)"
+          ></cf-svg-icon>
+        </h5>
+        <h5
+          cfBlock="text"
+          *ngIf="
+            showUninstallButton && !application.additionalProperties?.internal
+          "
+        >
+          <cf-svg-icon
+            src="assets/icons/mdi/delete.svg"
+            [svgClass]="'top-section__icon'"
+          ></cf-svg-icon>
+        </h5>
+        <h5
+          cfBlock="text"
+          [cfMod]="{
+            warning: !applicationIsSupported,
+            success: applicationIsSupported
+          }"
+        >
+          <cf-svg-icon
+            [src]="'assets/icons/mdi/application-settings.svg'"
+            cfElem="icon"
+            [svgClass]="'icon__svg'"
+          ></cf-svg-icon>
+        </h5>
+      </div>
+
+      <div cfBlock="application-header">
+        <div cfBlock="application-icon">
+          <cf-svg-icon
+            *ngIf="applicationIcon"
+            [src]="applicationIcon"
+            cfElem="icon"
+            [svgClass]="'icon__svg'"
+          ></cf-svg-icon>
         </div>
+        <div cfBlock="application-content">
+          <div cfBlock="application-title">
+            <h2 cfElem="name">
+              {{ application?.name }}
+            </h2>
+            <h4 cfElem="author">
+              {{ application?.additionalProperties?.author?.name }}
+            </h4>
+          </div>
+        </div>
+      </div>
+
+      <div cfBlock="application-content" *ngIf="showDescription">
         <div cfBlock="application-description">
           <p>
             {{ application?.description }}
@@ -64,15 +107,43 @@ import { Application } from '../../../models/application';
         position: absolute;
         top: 10px;
         right: 10px;
+        width: 100%;
+        padding-left: 15px;
+        color: var(--color-base-light-medium);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        &__icon {
+          fill: var(--color-base-light-medium);
+        }
+
+        .text {
+          margin: 0;
+        }
+      }
+
+      .bottom-section {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
         color: var(--color-base-light-medium);
         &__icon {
           fill: var(--color-base-light-medium);
+        }
+
+        .text {
+          margin: 0;
         }
       }
     `,
   ],
 })
 export class ApplicationCardComponent {
+  @Input() showDescription = true;
+
   @Input() public set application(application: Application | undefined) {
     this._application = application;
 
@@ -89,6 +160,10 @@ export class ApplicationCardComponent {
       (application.additionalProperties?.internal === true
         ? 'var(--color-base-primary-medium)'
         : undefined);
+
+    this.applicationIsSupported = isElectron()
+      ? true
+      : application.additionalProperties?.supportsBrowser === true;
   }
 
   public get application(): Application | undefined {
@@ -98,7 +173,10 @@ export class ApplicationCardComponent {
   @Input() showUninstallButton?: boolean;
 
   @Output() public applicationClick = new EventEmitter<Application>();
+  @Output() public playClick = new EventEmitter<Application>();
+  @Output() public starClick = new EventEmitter<Application>();
 
+  applicationIsSupported?: boolean;
   applicationIcon?: string;
   applicationPrimaryColor?: string;
 
