@@ -1,5 +1,5 @@
 ---
-id: services
+id: states
 title: States
 sidebar_label: States
 slug: /framework/apps/states

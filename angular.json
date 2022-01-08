@@ -1431,6 +1431,9 @@
           "options": {
             "commands": [
               {
+                "command": "tsc -p apps/portal/tsconfig.electron.json"
+              },
+              {
                 "command": "cd apps/portal && npx electron"
               }
             ]
@@ -1440,6 +1443,9 @@
           "builder": "@nrwl/workspace:run-commands",
           "options": {
             "commands": [
+              {
+                "command": "tsc -p apps/portal/tsconfig.electron.json"
+              },
               {
                 "command": "npx electron-builder --linux -c apps/portal/electron-builder.json --dir"
               }
