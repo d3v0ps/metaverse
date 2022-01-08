@@ -3,21 +3,11 @@ module.exports = {
     'Developers': ['about-this'],
     'Resources': ['resources/blockconf'],
     'Framework': [
-      'framework/oddd',
-      {
-        type: 'category',
-        label: 'Domain',
-        items: ['framework/domain/value-objects', 'framework/domain/domain-entity', 'framework/domain/domain-repository', 'framework/domain/use-cases']
-      },
-      {
-        type: 'category',
-        label: 'Infrastructure',
-        items: ['framework/infrastructure/infrastructure-repository'],
-      },
+      'framework/shell',
       {
         type: 'category',
         label: 'Apps',
-        items: ['framework/apps/managing-dependencies', 'framework/apps/features', 'framework/apps/services', 'framework/apps/scenes', 'framework/apps/forms',  'framework/apps/commands', 'framework/apps/queries'],
+        items: ['framework/apps/managing-dependencies',  'framework/apps/states', 'framework/apps/scenes', 'framework/apps/forms'],
       },
       {
         type: 'category',

@@ -45,7 +45,7 @@ Respetando la libertad, y diciendo el que pise la libertad de mi vecino me está
 
 ### [Brand Guidelines](brand-guidelines)
 
-### [The Framework](framework/oddd)
+### [The Framework](framework/shell)
 
 ### [Core](core/api-docs)
 
