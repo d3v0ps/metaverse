@@ -11,10 +11,14 @@
 
 * {
   ::-webkit-scrollbar {
-    background-color: var(--color-base-dark-medium);
+    // background-color: var(--color-base-primary-darkest);
+    background: transparent;
+    width: .5rem;
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-base-primary-medium);
+    background: var(--color-base-secondary-medium);
+    border-radius: 20px;
+    width: .5rem;
   }
 }
 

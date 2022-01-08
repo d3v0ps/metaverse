@@ -27,7 +27,7 @@ const droneMarker = marker([39.465985, -0.3838337], {
       @import '~leaflet/dist/leaflet.css';
 
       .scene-content--metadrones {
-        height: 100%;
+        height: 100vh;
       }
     `,
   ],

@@ -155,7 +155,9 @@ export class BackgroundRenderer {
 
     // pick a font slightly smaller than the tile size
     ctx.font = tileSize - 2 + 'px monospace';
-    ctx.fillStyle = 'rgb( 0 , 255 , 0 )';
+    // ctx.fillStyle = 'rgb( 0 , 255 , 0 )';
+    ctx.fillStyle = '#22b455';
+
     for (let i = 0; i < columns.length; ++i) {
       // pick a random ascii character (change the 94 to a higher number to include more characters)
       const randomCharacter = String.fromCharCode(
