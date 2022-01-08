@@ -3,12 +3,12 @@ import { Environment } from './environment.interface';
 /** Production environment config */
 export const environment: Environment = {
   production: true,
-  useMocks: false,
+  useMocks: true,
   autologin: false,
   showSplashScreen: true,
 
-  webUrl: 'https://central-factory.com/',
-  documentationUrl: 'https://docs.central-factory.com/',
-  blogUrl: 'https://blog.central-factory.com/',
-  developersUrl: 'https://dev.central-factory.com/',
+  webUrl: 'https://aitorllamas.com/metaverse/apps/codex',
+  documentationUrl: 'https://aitorllamas.com/metaverse/apps/codex/docs',
+  blogUrl: 'https://aitorllamas.com/metaverse/apps/codex/blog',
+  developersUrl: 'https://aitorllamas.com/metaverse/apps/codex/developers',
 };
