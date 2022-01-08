@@ -92,10 +92,10 @@ jobs:
           command: npx nx build codex
 
       - name: Build Portal
-        run: npx nx build portal
+        run: npx nx build portal --base-href=/metaverse/apps/portal/
 
       - name: Build Metadrones
-        run: npx nx build metadrones
+        run: npx nx build metadrones --base-href=/metaverse/apps/metadrones/
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.6

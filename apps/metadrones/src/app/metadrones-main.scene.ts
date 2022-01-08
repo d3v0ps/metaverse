@@ -46,26 +46,62 @@ export class MetadronesMainScene implements OnInit, OnDestroy {
   };
 
   ngOnInit() {
-    hotkeys('up', () => {
-      const previousLatLng = droneMarker.getLatLng();
-      droneMarker.setLatLng([previousLatLng.lat + 0.0002, previousLatLng.lng]);
-      this.map?.setView(droneMarker.getLatLng(), this.map?.getZoom());
-    });
-    hotkeys('down', () => {
-      const previousLatLng = droneMarker.getLatLng();
-      droneMarker.setLatLng([previousLatLng.lat - 0.0002, previousLatLng.lng]);
-      this.map?.setView(droneMarker.getLatLng(), this.map?.getZoom());
-    });
-    hotkeys('left', () => {
-      const previousLatLng = droneMarker.getLatLng();
-      droneMarker.setLatLng([previousLatLng.lat, previousLatLng.lng - 0.0002]);
-      this.map?.setView(droneMarker.getLatLng(), this.map?.getZoom());
-    });
-    hotkeys('right', () => {
-      const previousLatLng = droneMarker.getLatLng();
-      droneMarker.setLatLng([previousLatLng.lat, previousLatLng.lng + 0.0002]);
-      this.map?.setView(droneMarker.getLatLng(), this.map?.getZoom());
-    });
+    hotkeys(
+      'up',
+      {
+        keydown: true,
+      },
+      () => {
+        const previousLatLng = droneMarker.getLatLng();
+        droneMarker.setLatLng([
+          previousLatLng.lat + 0.0002,
+          previousLatLng.lng,
+        ]);
+        this.map?.setView(droneMarker.getLatLng(), this.map?.getZoom());
+      }
+    );
+    hotkeys(
+      'down',
+      {
+        keydown: true,
+      },
+      () => {
+        const previousLatLng = droneMarker.getLatLng();
+        droneMarker.setLatLng([
+          previousLatLng.lat - 0.0002,
+          previousLatLng.lng,
+        ]);
+        this.map?.setView(droneMarker.getLatLng(), this.map?.getZoom());
+      }
+    );
+    hotkeys(
+      'left',
+      {
+        keydown: true,
+      },
+      () => {
+        const previousLatLng = droneMarker.getLatLng();
+        droneMarker.setLatLng([
+          previousLatLng.lat,
+          previousLatLng.lng - 0.0002,
+        ]);
+        this.map?.setView(droneMarker.getLatLng(), this.map?.getZoom());
+      }
+    );
+    hotkeys(
+      'right',
+      {
+        keydown: true,
+      },
+      () => {
+        const previousLatLng = droneMarker.getLatLng();
+        droneMarker.setLatLng([
+          previousLatLng.lat,
+          previousLatLng.lng + 0.0002,
+        ]);
+        this.map?.setView(droneMarker.getLatLng(), this.map?.getZoom());
+      }
+    );
   }
 
   ngOnDestroy(): void {
