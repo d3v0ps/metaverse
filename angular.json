@@ -1334,7 +1334,8 @@
               "immediate",
               "crypto-js/aes",
               "crypto-js/enc-utf8",
-              "is-my-json-valid"
+              "is-my-json-valid",
+              "modifyjs"
             ],
             "customWebpackConfig": {
               "path": "apps/portal/webpack.config.js"

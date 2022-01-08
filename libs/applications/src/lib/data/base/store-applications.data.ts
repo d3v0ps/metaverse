@@ -10,7 +10,8 @@ export const storeApplications: StoreApplicationDocType[] = [
     id: 'com.central-factory.metadrones',
     name: 'Metadrones',
     description: 'Game demo on how to integrate with the metaverse',
-    startUrl: 'metadrones',
+    startUrl:
+      'https://aitorllamas.com/metaverse/apps/metadrones/remoteEntry.js',
     icons: [
       {
         src: 'assets/icons/mdi/drone.svg',
