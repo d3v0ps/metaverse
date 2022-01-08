@@ -23,6 +23,7 @@ import { Application } from '@central-factory/applications/models/application';
         <cf-application-card
           [application]="application"
           (applicationClick)="applicationCardClick.emit(application)"
+          (playClick)="applicationPlayClick.emit(application)"
           (starClick)="applicationStarClick.emit(application)"
         ></cf-application-card>
       </div>
@@ -34,6 +35,7 @@ export class ApplicationsCarouselComponent {
   @Input() dropListConnectedTo?: CdkDropList<any>[];
 
   @Output() applicationCardClick = new EventEmitter<Application>();
+  @Output() applicationPlayClick = new EventEmitter<Application>();
   @Output() applicationStarClick = new EventEmitter<Application>();
   @Output() applicationCardDrop = new EventEmitter<
     CdkDragDrop<Application[]>

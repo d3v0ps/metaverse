@@ -7,6 +7,10 @@ cf-sidebar-container {
   overflow: hidden;
 }
 
+cf-sidebar {
+  z-index: 1;
+}
+
 .cf-sidebar {
   -webkit-overflow-scrolling: touch;
   overflow: auto;
@@ -71,6 +75,7 @@ cf-sidebar-container {
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 0;
   }
 
   &__content--animate {

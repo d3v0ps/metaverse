@@ -153,6 +153,7 @@ export interface ApplicationBanners {
                     applicationSheet.applicationCardDropList
                   ]"
                   (applicationCardClick)="onApplicationCardClick($event)"
+                  (applicationPlayClick)="onApplicationCardPlayClick($event)"
                   (applicationStarClick)="onApplicationStarClick($event)"
                   (applicationCardDrop)="
                     onApplicationCarouselCardDropped($event)
@@ -173,6 +174,7 @@ export interface ApplicationBanners {
                     applicationSheet.applicationCardDropList
                   ]"
                   (applicationCardClick)="onApplicationCardClick($event)"
+                  (applicationPlayClick)="onApplicationCardPlayClick($event)"
                   (applicationStarClick)="onApplicationStarClick($event)"
                   (applicationCardDrop)="
                     onApplicationCarouselCardDropped($event)
@@ -196,6 +198,7 @@ export interface ApplicationBanners {
                     applicationSheet.applicationCardDropList
                   ]"
                   (applicationCardClick)="onApplicationCardClick($event)"
+                  (applicationPlayClick)="onApplicationCardPlayClick($event)"
                   (applicationStarClick)="onApplicationStarClick($event)"
                   (applicationCardDrop)="
                     onApplicationCarouselCardDropped($event)
@@ -214,6 +217,7 @@ export interface ApplicationBanners {
                     applicationSheet.applicationCardDropList
                   ]"
                   (applicationCardClick)="onApplicationCardClick($event)"
+                  (applicationPlayClick)="onApplicationCardPlayClick($event)"
                   (applicationStarClick)="onApplicationStarClick($event)"
                   (applicationCardDrop)="
                     onApplicationCarouselCardDropped($event)

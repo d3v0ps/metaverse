@@ -2160,6 +2160,63 @@ export const storeApplications: StoreApplicationDocType[] = [
       ],
     },
   },
+  {
+    id: 'com.plex.plex',
+    name: 'Plex',
+    description: `Plex marks the spot for free streaming.
+    Say goodbye to free movie websites and hello to the app that brings you over 50,000 on-demand titles, plus live TV on all your favorite devices.`,
+    startUrl: 'https://app.plex.tv/desktop/#!/',
+    categories: ['entertainment'],
+    icons: [
+      {
+        src: 'assets/icons/simple-icons/plex.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://www.plex.tv/',
+        icons: [
+          {
+            src: 'assets/icons/simple-icons/plex.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'App',
+        url: 'https://app.plex.tv/desktop/#!/',
+        icons: [
+          {
+            src: 'assets/icons/simple-icons/plex.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.plex',
+        name: 'Plex',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#E5A00E',
+        },
+      ],
+    },
+  },
 ];
 
 export const STORE_APPLICATIONS_INITIAL_DATA_PROVIDER = {

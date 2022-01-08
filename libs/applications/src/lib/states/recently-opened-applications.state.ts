@@ -8,7 +8,7 @@ import { Application } from '../models/application';
 export class RecentlyOpenedApplicationsState {
   applications$ = new BehaviorSubject<Application[]>([]);
 
-  private readonly maxApplications = 10;
+  private readonly maxApplications = 4;
 
   addApplication(application: Application) {
     const applications = this.applications$.getValue();
