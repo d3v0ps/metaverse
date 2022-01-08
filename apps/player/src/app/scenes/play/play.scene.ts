@@ -136,6 +136,7 @@ export interface ApplicationBanners {
                     cfMod="primary"
                     type="text"
                     formControlName="queryString"
+                    placeholder="..."
                   />
                 </div>
               </form>
@@ -232,6 +233,10 @@ export interface ApplicationBanners {
         &__section-title {
           margin-bottom: 1rem;
         }
+      }
+
+      .section-title {
+        padding: 2rem;
       }
 
       .top-section {

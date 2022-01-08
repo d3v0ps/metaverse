@@ -1,3 +1,4 @@
+import { transition, trigger, useAnimation } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import {
@@ -10,9 +11,19 @@ import type { Avatar } from '@central-factory/avatars/models/avatar';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
 import { EntityManager } from '@central-factory/persistence/services/entity-manager';
 import { Repository } from '@central-factory/persistence/services/repository';
+import { CustomizationSettingsState } from '@central-factory/preferences/states/customization/customization-settings.state';
+import { bounceIn, fadeInUp } from 'ng-animate';
 import { DeepReadonlyObject } from 'rxdb/dist/types/types';
 import { forkJoin, Observable, Subject } from 'rxjs';
-import { filter, map, switchMap, takeUntil, tap } from 'rxjs/operators';
+import {
+  distinctUntilChanged,
+  filter,
+  map,
+  skip,
+  switchMap,
+  takeUntil,
+  tap,
+} from 'rxjs/operators';
 
 export interface SidebarItem {
   name: string;
@@ -21,6 +32,12 @@ export interface SidebarItem {
   active: boolean;
   color?: string;
   application?: DeepReadonlyObject<Application>;
+}
+
+export enum SceneContentAnimationState {
+  Idle = 'Idle',
+  Opened = 'Opened',
+  Animated = 'Animated',
 }
 
 @Component({
@@ -52,6 +69,15 @@ export interface SidebarItem {
             >
               <div style="margin-top: 20px">
                 <a
+                  (click)="
+                    onSidebarItemClick({
+                      name: 'Select Avatar',
+                      routerLink: ['/select-avatar'],
+                      icon: data.selectedAvatar.selectedAppearance
+                        .smallPreviewUrl,
+                      active: false
+                    })
+                  "
                   [routerLink]="['/select-avatar']"
                   class="d-block"
                   cfBlock="sidebar-item"
@@ -69,7 +95,7 @@ export interface SidebarItem {
 
                 <ng-container *ngFor="let item of sidebarItems">
                   <a
-                    [routerLink]="item.routerLink"
+                    (click)="onSidebarItemClick(item)"
                     class="d-block"
                     cfBlock="sidebar-item"
                   >
@@ -137,7 +163,10 @@ export interface SidebarItem {
             </cf-sidebar>
 
             <div cf-sidebar-content>
-              <div class="scene__content">
+              <div
+                class="scene__content"
+                [@sceneContentAnimationState]="sceneContentAnimationState"
+              >
                 <router-outlet></router-outlet>
               </div>
             </div>
@@ -161,6 +190,20 @@ export interface SidebarItem {
       </div>
     </ng-container>
   `,
+  animations: [
+    trigger('sceneContentAnimationState', [
+      transition(
+        `${SceneContentAnimationState.Idle} => ${SceneContentAnimationState.Animated}`,
+        useAnimation(bounceIn)
+      ),
+      transition(
+        `${SceneContentAnimationState.Idle} => ${SceneContentAnimationState.Opened}`,
+        useAnimation(fadeInUp, {
+          params: { timing: 0.5 },
+        })
+      ),
+    ]),
+  ],
 })
 export class PortalLayoutScene implements OnInit, OnDestroy {
   public title = 'Metaverse Portal';
@@ -170,6 +213,7 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
   public recentlyOpenedSidebarItems: SidebarItem[] = [];
 
   public showNavbar = false;
+  public sceneContentAnimationState = SceneContentAnimationState.Idle;
 
   public readonly selectedAvatar$: Observable<Avatar | null | undefined> =
     this.selectedAvatarState.avatar$;
@@ -187,16 +231,51 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
     private readonly entityManager: EntityManager,
     private readonly selectedAvatarState: SelectedAvatarState,
     private readonly selectedApplicationState: SelectedApplicationState,
-    private readonly recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState
+    private readonly recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState,
+    private readonly customizationSettingsState: CustomizationSettingsState
   ) {}
 
   public ngOnInit(): void {
+    this.customizationSettingsState.customizationSettings$
+      .pipe(
+        map((customizationSettings) => customizationSettings?.theme),
+        filter((theme) => theme !== undefined),
+        distinctUntilChanged((a, b) => a?.path === b?.path),
+        skip(1),
+        tap((theme) => {
+          this.sceneContentAnimationState = SceneContentAnimationState.Idle;
+          setTimeout(
+            () =>
+              (this.sceneContentAnimationState =
+                SceneContentAnimationState.Animated),
+            100
+          );
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+
     this.recentlyOpenedApplications$
       .pipe(
         takeUntil(this.destroy$),
         tap((sidebarItems) => (this.recentlyOpenedSidebarItems = sidebarItems))
       )
       .subscribe();
+
+    // this.router.events
+    //   .pipe(
+    //     filter((event) => event instanceof NavigationStart),
+    //     takeUntil(this.destroy$)
+    //   )
+    //   .subscribe(() => {
+    //     this.sceneContentAnimationState = SceneContentAnimationState.Idle;
+    //     setTimeout(
+    //       () =>
+    //         (this.sceneContentAnimationState =
+    //           SceneContentAnimationState.Opened),
+    //       100
+    //     );
+    //   });
 
     this.router.events
       .pipe(
@@ -230,12 +309,28 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
   }
 
   public onRecentlyOpenedItemClick(sidebarItem: SidebarItem) {
-    if (sidebarItem.application) {
-      this.selectedApplicationState.selectApplication(
-        sidebarItem.application as Application
-      );
-      this.selectedApplicationState.openSidebar();
-    }
+    this.sceneContentAnimationState = SceneContentAnimationState.Idle;
+    setTimeout(() => {
+      this.sceneContentAnimationState = SceneContentAnimationState.Opened;
+
+      if (sidebarItem.application) {
+        this.selectedApplicationState.selectApplication(
+          sidebarItem.application as Application
+        );
+        this.selectedApplicationState.openSidebar();
+      }
+    }, 100);
+  }
+
+  public onSidebarItemClick(sidebarItem: SidebarItem) {
+    this.sceneContentAnimationState = SceneContentAnimationState.Idle;
+    setTimeout(() => {
+      this.sceneContentAnimationState = SceneContentAnimationState.Opened;
+
+      if (sidebarItem.routerLink) {
+        this.router.navigate(sidebarItem.routerLink);
+      }
+    }, 100);
   }
 
   private subscribeToDataChanges(

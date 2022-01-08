@@ -64,6 +64,9 @@
         .icon__svg {
           fill: var(--color-base-#{$color}-medium);
         }
+        &::placeholder {
+          color: var(--component-input-#{$color}-background-color);
+        }
         &:active, &:focus {
           color: var(--component-input-#{$color}-background-color);
           background-color: var(--component-input-#{$color}-color);
