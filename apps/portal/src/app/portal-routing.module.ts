@@ -1,5 +1,4 @@
 /* eslint-disable @nrwl/nx/enforce-module-boundaries */
-import { loadRemoteModule } from '@angular-architects/module-federation';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IsAvatarSelectedGuard } from '@central-factory/avatars/guards/is-avatar-selected.guard';
@@ -53,15 +52,6 @@ export const routes: Routes = [
             (m) => m.PlayModule
           ),
         canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
-      },
-      {
-        path: 'metadrones',
-        loadChildren: () =>
-          loadRemoteModule({
-            type: 'module',
-            remoteEntry: METADRONES_URL,
-            exposedModule: './Module',
-          }).then((m) => m.MetadronesModule),
       },
       {
         path: 'manage-applications',

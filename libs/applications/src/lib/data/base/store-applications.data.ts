@@ -396,6 +396,39 @@ export const storeApplications: StoreApplicationDocType[] = [
           },
         ],
       },
+      {
+        name: 'Search',
+        url: 'https://open.spotify.com/search',
+        icons: [
+          {
+            src: 'assets/icons/mdi/magnify.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'Library',
+        url: 'https://open.spotify.com/collection/playlists',
+        icons: [
+          {
+            src: 'assets/icons/mdi/music-box-multiple.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'Liked',
+        url: 'https://open.spotify.com/collection/tracks',
+        icons: [
+          {
+            src: 'assets/icons/mdi/heart.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
     ],
     categories: ['entertainment'],
     additionalProperties: {
@@ -443,6 +476,61 @@ export const storeApplications: StoreApplicationDocType[] = [
           },
         ],
       },
+      {
+        name: 'Explore',
+        url: 'https://www.ivoox.com/audios_sa_f_1.html',
+        icons: [
+          {
+            src: 'assets/icons/mdi/compass.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'My Subscriptions',
+        url: 'https://www.ivoox.com/gestionar-suscripciones_je_1.html?order=date',
+        icons: [
+          {
+            src: 'assets/icons/mdi/eye.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'Play Later',
+        url: 'https://www.ivoox.com/mis-audios_hn.html',
+        icons: [
+          {
+            src: 'assets/icons/mdi/bookmark.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'Favorites',
+        url: 'https://www.ivoox.com/audios-que-me-gustan_hc_recomendados_1.html',
+        icons: [
+          {
+            src: 'assets/icons/mdi/heart.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'My Radios',
+        url: 'https://www.ivoox.com/radios-que-me-gustan_hc_recomendados_1.html',
+        icons: [
+          {
+            src: 'assets/icons/mdi/music-box-multiple.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
     ],
     categories: ['entertainment'],
     additionalProperties: {
@@ -464,7 +552,7 @@ export const storeApplications: StoreApplicationDocType[] = [
     },
   },
   {
-    id: 'com.netflix.player',
+    id: 'com.netflix.netflix',
     name: 'Netflix',
     description: `
       Looking for the most talked-about TV programs and films from the around the world? They’re all on Netflix.
@@ -481,11 +569,33 @@ export const storeApplications: StoreApplicationDocType[] = [
     ],
     shortcuts: [
       {
-        name: 'Player',
+        name: 'Portal',
         url: 'https://netflix.com',
         icons: [
           {
             src: 'assets/icons/simple-icons/netflix.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'My List',
+        url: 'https://netflix.com/browse/my-list',
+        icons: [
+          {
+            src: 'assets/icons/mdi/filmstrip-box-multiple.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'Latest',
+        url: 'https://netflix.com/latest',
+        icons: [
+          {
+            src: 'assets/icons/mdi/new-box.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -501,8 +611,8 @@ export const storeApplications: StoreApplicationDocType[] = [
       permissions: [],
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
-      defaultShortcut: 'Player',
-      sidebarShortcuts: ['Player'],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -534,11 +644,33 @@ export const storeApplications: StoreApplicationDocType[] = [
     ],
     shortcuts: [
       {
-        name: 'Player',
+        name: 'Portal',
         url: 'https://primevideo.com',
         icons: [
           {
             src: 'assets/icons/simple-icons/primevideo.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'My Stuff',
+        url: 'https://primevideo.com/mystuff',
+        icons: [
+          {
+            src: 'assets/icons/mdi/filmstrip-box-multiple.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'Channels',
+        url: 'https://primevideo.com/storefront/channels',
+        icons: [
+          {
+            src: 'assets/icons/mdi/youtube-tv.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -554,8 +686,8 @@ export const storeApplications: StoreApplicationDocType[] = [
       permissions: [],
       renderingType: ApplicationRenderingType.Webview,
       internal: false,
-      defaultShortcut: 'Player',
-      sidebarShortcuts: ['Player'],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -595,7 +727,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://www.youtube.com/feed/subscriptions',
         icons: [
           {
-            src: 'assets/icons/simple-icons/youtube.svg',
+            src: 'assets/icons/mdi/youtube-tv.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -606,7 +738,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://www.youtube.com/feed/library',
         icons: [
           {
-            src: 'assets/icons/simple-icons/youtube.svg',
+            src: 'assets/icons/mdi/filmstrip-box-multiple.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -617,7 +749,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://www.youtube.com/feed/history',
         icons: [
           {
-            src: 'assets/icons/simple-icons/youtube.svg',
+            src: 'assets/icons/mdi/history.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -628,7 +760,7 @@ export const storeApplications: StoreApplicationDocType[] = [
         url: 'https://www.youtube.com/playlist?list=WL',
         icons: [
           {
-            src: 'assets/icons/simple-icons/youtube.svg',
+            src: 'assets/icons/mdi/bookmark.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -1457,6 +1589,28 @@ export const storeApplications: StoreApplicationDocType[] = [
           },
         ],
       },
+      {
+        name: 'Following',
+        url: 'https://twitch.tv/directory/following',
+        icons: [
+          {
+            src: 'assets/icons/mdi/heart.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'Explore',
+        url: 'https://twitch.tv/directory',
+        icons: [
+          {
+            src: 'assets/icons/mdi/compass.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
     ],
     additionalProperties: {
       author: {
@@ -1494,11 +1648,33 @@ export const storeApplications: StoreApplicationDocType[] = [
     ],
     shortcuts: [
       {
-        name: 'Inbox',
-        url: 'https://feedly.com/',
+        name: 'Feed',
+        url: 'https://feedly.com/i/my/me',
         icons: [
           {
             src: 'assets/icons/simple-icons/feedly.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'Read Later',
+        url: 'https://feedly.com/i/saved/',
+        icons: [
+          {
+            src: 'assets/icons/mdi/bookmark.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'Explore',
+        url: 'https://feedly.com/i/my/explore/',
+        icons: [
+          {
+            src: 'assets/icons/mdi/compass.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -1514,8 +1690,8 @@ export const storeApplications: StoreApplicationDocType[] = [
       supportsBrowser: false,
       internal: false,
       permissions: [],
-      defaultShortcut: 'Inbox',
-      sidebarShortcuts: ['Inbox'],
+      defaultShortcut: 'Feed',
+      sidebarShortcuts: ['Feed'],
       colors: [
         {
           variation: ColorVariation.Primary,

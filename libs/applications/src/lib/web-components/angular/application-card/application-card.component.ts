@@ -32,13 +32,42 @@ import { Application } from '../../../models/application';
       </div>
 
       <div class="top-section">
-        <cf-svg-icon
+        <h5 cfBlock="text" cfMod="secondary">
+          <cf-svg-icon
+            [src]="
+              application.additionalProperties?.starred
+                ? 'assets/icons/mdi/star.svg'
+                : 'assets/icons/mdi/star-outline.svg'
+            "
+            cfElem="icon"
+            [svgClass]="'icon__svg'"
+            (click)="$event.stopPropagation(); starClick.emit(application)"
+          ></cf-svg-icon>
+        </h5>
+        <h5
+          cfBlock="text"
           *ngIf="
             showUninstallButton && !application.additionalProperties?.internal
           "
-          src="assets/icons/mdi/delete.svg"
-          [svgClass]="'top-section__icon'"
-        ></cf-svg-icon>
+        >
+          <cf-svg-icon
+            src="assets/icons/mdi/delete.svg"
+            [svgClass]="'top-section__icon'"
+          ></cf-svg-icon>
+        </h5>
+        <h5
+          cfBlock="text"
+          [cfMod]="{
+            warning: !applicationIsSupported,
+            success: applicationIsSupported
+          }"
+        >
+          <cf-svg-icon
+            [src]="'assets/icons/mdi/application-settings.svg'"
+            cfElem="icon"
+            [svgClass]="'icon__svg'"
+          ></cf-svg-icon>
+        </h5>
       </div>
 
       <div cfBlock="application-header">
@@ -69,22 +98,6 @@ import { Application } from '../../../models/application';
           </p>
         </div>
       </div>
-
-      <div class="top-section">
-        <h5
-          cfBlock="text"
-          [cfMod]="{
-            warning: !applicationIsSupported,
-            success: applicationIsSupported
-          }"
-        >
-          <cf-svg-icon
-            [src]="'assets/icons/mdi/application-settings.svg'"
-            cfElem="icon"
-            [svgClass]="'icon__svg'"
-          ></cf-svg-icon>
-        </h5>
-      </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -94,7 +107,15 @@ import { Application } from '../../../models/application';
         position: absolute;
         top: 10px;
         right: 10px;
+        width: 100%;
+        padding-left: 15px;
         color: var(--color-base-light-medium);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+
         &__icon {
           fill: var(--color-base-light-medium);
         }
@@ -153,6 +174,7 @@ export class ApplicationCardComponent {
 
   @Output() public applicationClick = new EventEmitter<Application>();
   @Output() public playClick = new EventEmitter<Application>();
+  @Output() public starClick = new EventEmitter<Application>();
 
   applicationIsSupported?: boolean;
   applicationIcon?: string;

@@ -1,11 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Application } from '../../../models/application';
+import { Application, ColorVariation } from '../../../models/application';
 
 @Component({
   selector: 'cf-application-toolbar',
   template: `
     <ng-container *ngIf="application">
-      <div cfBlock="application-toolbar">
+      <div
+        cfBlock="application-toolbar"
+        [ngStyle]="{
+          'background-color': toolbarColor
+        }"
+      >
         <div cfElem="content">
           <div cfBlock="application-toolbar-buttons">
             <button
@@ -32,6 +37,12 @@ import { Application } from '../../../models/application';
             </button>
           </div>
           <h3 cfBlock="application-toolbar-title">
+            <cf-svg-icon
+              *ngIf="icon"
+              [src]="icon"
+              cfElem="icon"
+              [svgClass]="'icon__svg'"
+            ></cf-svg-icon>
             {{ application.name }}
           </h3>
         </div>
@@ -40,8 +51,23 @@ import { Application } from '../../../models/application';
   `,
 })
 export class ApplicationToolbarComponent {
-  @Input() application?: Application;
+  @Input() set application(value: Application | undefined) {
+    this._application = value;
+    this.toolbarColor =
+      value?.additionalProperties?.colors?.find(
+        (color) => color.variation === ColorVariation.Primary
+      )?.color || value?.themeColor;
+    this.icon = value?.icons?.find((icon) => icon.src)?.src;
+  }
+  get application(): Application | undefined {
+    return this._application;
+  }
 
   @Output() closeButtonClick = new EventEmitter<Application>();
   @Output() optionsButtonClick = new EventEmitter<Application>();
+
+  toolbarColor?: string;
+  icon?: string;
+
+  private _application?: Application;
 }

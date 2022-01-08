@@ -20,73 +20,25 @@ export type ApplicationShortcutView = {
   selector: 'cf-application-shortcut',
   template: `
     <div cfBlock="application-shortcut" *ngIf="view">
-      <ng-container *ngIf="view.isRoute">
-        <ng-container *ngIf="view.isExternal">
-          <a
-            cfBlock="button"
-            [cfMod]="[theme, 'big']"
-            [href]="view.url"
-            target="_blank"
-            [ngStyle]="{
-              'background-color': theme === 'application' ? view.color : ''
-            }"
-          >
-            <ng-container [ngTemplateOutlet]="keyboardShortcut"></ng-container>
-            <cf-svg-icon
-              *ngIf="view.icon && showShortcutIcon"
-              [src]="view.icon"
-              cfElem="icon"
-              [svgClass]="'icon__svg'"
-            ></cf-svg-icon>
-            <p cfElem="label" *ngIf="view.label && showShortcutLabel">
-              {{ view.label }}
-            </p>
-          </a>
-        </ng-container>
-        <ng-container *ngIf="!view.isExternal">
-          <a
-            cfBlock="button"
-            [cfMod]="[theme, 'big']"
-            [ngStyle]="{
-              'background-color': theme === 'application' ? view.color : ''
-            }"
-            [routerLink]="[view.url]"
-          >
-            <ng-container [ngTemplateOutlet]="keyboardShortcut"></ng-container>
-            <cf-svg-icon
-              *ngIf="view.icon && showShortcutIcon"
-              [src]="view.icon"
-              cfElem="icon"
-              [svgClass]="'icon__svg'"
-            ></cf-svg-icon>
-            <p cfElem="label" *ngIf="view.label && showShortcutLabel">
-              {{ view.label }}
-            </p>
-          </a>
-        </ng-container>
-      </ng-container>
-
-      <ng-container *ngIf="!view.isRoute">
-        <button
-          cfBlock="button"
-          [cfMod]="[theme, 'big']"
-          (click)="shortcutClick.emit(view)"
-          [ngStyle]="{
-            'background-color': theme === 'application' ? view.color : ''
-          }"
-        >
-          <ng-container [ngTemplateOutlet]="keyboardShortcut"></ng-container>
-          <cf-svg-icon
-            *ngIf="view.icon && showShortcutIcon"
-            [src]="view.icon"
-            cfElem="icon"
-            [svgClass]="'icon__svg'"
-          ></cf-svg-icon>
-          <p cfElem="label" *ngIf="view.label && showShortcutLabel">
-            {{ view.label }}
-          </p>
-        </button>
-      </ng-container>
+      <button
+        cfBlock="button"
+        [cfMod]="[theme, 'big']"
+        (click)="shortcutClick.emit(view)"
+        [ngStyle]="{
+          'background-color': theme === 'application' ? view.color : ''
+        }"
+      >
+        <ng-container [ngTemplateOutlet]="keyboardShortcut"></ng-container>
+        <cf-svg-icon
+          *ngIf="view.icon && showShortcutIcon"
+          [src]="view.icon"
+          cfElem="icon"
+          [svgClass]="'icon__svg'"
+        ></cf-svg-icon>
+        <p cfElem="label" *ngIf="view.label && showShortcutLabel">
+          {{ view.label }}
+        </p>
+      </button>
 
       <ng-template #keyboardShortcut>
         <div cfBlock="keyboard-shortcut">

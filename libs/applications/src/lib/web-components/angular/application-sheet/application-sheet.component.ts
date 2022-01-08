@@ -30,6 +30,7 @@ import { Application, ApplicationShortcut } from '../../../models/application';
             [showDescription]="false"
             [application]="application"
             (applicationClick)="onApplicationCardClick(application)"
+            (starClick)="applicationCardStarClick.emit(application)"
             (playClick)="onApplicationCardPlayClick(application)"
           >
           </cf-application-card>
@@ -40,7 +41,24 @@ import { Application, ApplicationShortcut } from '../../../models/application';
         <p [innerHtml]="application?.description"></p>
       </div>
 
-      <ul cfBlock="application-actions">
+      <ul cfBlock="application-actions" *ngIf="mustBeInstalled">
+        <li cfElem="item">
+          <button
+            cfBlock="button"
+            cfMod="big"
+            (click)="onApplicationInstallClick(application)"
+          >
+            Install {{ application.name }}
+            <cf-svg-icon
+              src="assets/icons/mdi/view-grid-plus.svg"
+              cfElem="icon"
+              [svgClass]="'icon__svg'"
+            ></cf-svg-icon>
+          </button>
+        </li>
+      </ul>
+
+      <ul cfBlock="application-actions" *ngIf="!mustBeInstalled">
         <li cfElem="item">
           <button
             *ngIf="!isApplicationOpened && applicationIsSupported"
@@ -86,6 +104,41 @@ import { Application, ApplicationShortcut } from '../../../models/application';
         </li>
         <li cfElem="item">
           <h3 cfBlock="text" cfMod="secondary">Shortcuts</h3>
+          <form
+            (submit)="
+              onShortcutFormSubmit({
+                event: $event,
+                shortcut: {
+                  name: shortcutInput.value,
+                  url: application.startUrl + shortcutInput.value,
+                  icons: application.icons
+                }
+              })
+            "
+          >
+            <div cfBlock="input-group">
+              <input
+                type="text"
+                class="input"
+                cfBlock="form-control"
+                cfMod="secondary"
+                placeholder="Custom URL"
+                #shortcutInput
+              />
+              <button
+                cfBlock="input-group-append"
+                type="submit"
+                class="button button--secondary"
+              >
+                Open URL
+                <cf-svg-icon
+                  src="assets/icons/mdi/link.svg"
+                  cfElem="icon"
+                  [svgClass]="'icon__svg'"
+                ></cf-svg-icon>
+              </button>
+            </div>
+          </form>
           <div cfBlock="application-shortcuts">
             <cf-application-shortcut
               *ngFor="let shortcut of application.shortcuts; let i = index"
@@ -104,6 +157,8 @@ import { Application, ApplicationShortcut } from '../../../models/application';
 export class ApplicationSheetComponent implements OnInit, OnDestroy {
   @ViewChild('applicationCardDropList', { static: true })
   applicationCardDropList!: CdkDropList;
+
+  @Input() mustBeInstalled = true;
 
   @Input() public set application(application: Application | undefined | null) {
     this._application = application;
@@ -139,9 +194,11 @@ export class ApplicationSheetComponent implements OnInit, OnDestroy {
     new EventEmitter<ApplicationShortcut>();
   @Output() public applicationCardDrop = new EventEmitter<Application>();
   @Output() public applicationCardClick = new EventEmitter<Application>();
+  @Output() public applicationCardStarClick = new EventEmitter<Application>();
   @Output() public applicationCardPlayClick = new EventEmitter<Application>();
   @Output() public openApplicationClick = new EventEmitter<Application>();
   @Output() public closeApplicationClick = new EventEmitter<Application>();
+  @Output() public installApplicationClick = new EventEmitter<Application>();
 
   applicationIsSupported?: boolean;
   applicationUrl?: string;
@@ -184,6 +241,10 @@ export class ApplicationSheetComponent implements OnInit, OnDestroy {
     hotkeys.unbind('⌘ + alt + 3');
     hotkeys.unbind('⌘ + alt + 4');
     hotkeys.unbind('⌘ + alt + 5');
+  }
+
+  onApplicationInstallClick(application: Application) {
+    this.installApplicationClick.emit(application);
   }
 
   private extractApplicationIcon(application: Application): string | undefined {
@@ -267,6 +328,22 @@ export class ApplicationSheetComponent implements OnInit, OnDestroy {
   }
 
   onApplicationShortcutTrigger(shortcut: ApplicationShortcut) {
+    if (!shortcut) {
+      return;
+    }
+
+    this.applicationShortcutTrigger.emit(shortcut);
+  }
+
+  onShortcutFormSubmit({
+    event,
+    shortcut,
+  }: {
+    event: any;
+    shortcut: ApplicationShortcut;
+  }) {
+    event.preventDefault();
+
     if (!shortcut) {
       return;
     }

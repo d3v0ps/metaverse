@@ -96,7 +96,6 @@ export class CustomizationSettingsState {
     ])
       .pipe(
         tap(([avatarSettings, customizationSettings]) => {
-          console.log(customizationSettings);
           if (customizationSettings.length <= 0) {
             return;
           }
@@ -105,9 +104,6 @@ export class CustomizationSettingsState {
             customizationSettings.find(
               (settings) => settings.avatar === avatarSettings?.value
             ) || customizationSettings[0];
-
-          console.log(avatarSettings);
-          console.log(settings.avatar, settings.value);
 
           this.customizationSettings$.next(settings.value);
         })

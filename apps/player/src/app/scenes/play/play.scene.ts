@@ -9,17 +9,25 @@ import {
 import { Router } from '@angular/router';
 import {
   Application,
+  ApplicationRenderingType,
   ApplicationShortcut,
 } from '@central-factory/applications/models/application';
 import { ExternalUserApplicationsState } from '@central-factory/applications/states/external-user-applications.state';
+import { InstallApplicationsState } from '@central-factory/applications/states/install-application.state';
 import { InternalUserApplicationsState } from '@central-factory/applications/states/internal-user-applications.state';
+import {
+  ApplicationOrigin,
+  AvailableApplicationsState,
+} from '@central-factory/applications/states/manage-applications.state';
 import { RecentlyOpenedApplicationsState } from '@central-factory/applications/states/recently-opened-applications.state';
 import { SelectedApplicationState } from '@central-factory/applications/states/selected-application.state';
+import { StarredApplicationsState } from '@central-factory/applications/states/starred-applications.state';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
 import { SidebarComponent } from '@central-factory/web-components/angular/sidebar/sidebar.component';
+import { isElectron } from '@central-factory/web-components/shared/platform/desktop/is-electron';
 import { FormControl, FormGroup } from '@ng-stack/forms';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { delay, takeUntil, tap } from 'rxjs/operators';
+import { BehaviorSubject, of, Subject } from 'rxjs';
+import { delay, map, switchMap, take, takeUntil, tap } from 'rxjs/operators';
 
 export interface ApplicationBanners {
   [key: string]: {
@@ -60,6 +68,7 @@ export interface ApplicationBanners {
             <cf-application-sheet
               #applicationSheet
               [application]="selectedApplication$ | async"
+              [mustBeInstalled]="mustBeInstalled"
               [isApplicationOpened]="
                 (selectedApplication$ | async)?.id === openedApplication?.id
                   ? true
@@ -69,14 +78,18 @@ export interface ApplicationBanners {
               (applicationCardPlayClick)="
                 onApplicationSheetCardPlayClick($event)
               "
+              (applicationCardStarClick)="onApplicationStarClick($event)"
               (openApplicationClick)="
                 onApplicationSheetOpenApplicationClick($event)
+              "
+              (installApplicationClick)="
+                onApplicationSheetInstallApplicationClick($event)
               "
               (applicationShortcutTrigger)="
                 onApplicationSheetShortcutTrigger($event)
               "
               (applicationCardDrop)="onApplicationCardDropped($event)"
-              (closeApplicationClick)="openedApplication = undefined"
+              (closeApplicationClick)="onApplicationCloseClick()"
             ></cf-application-sheet>
           </div>
         </cf-sidebar>
@@ -85,13 +98,14 @@ export interface ApplicationBanners {
           <ng-container *ngIf="openedApplication">
             <cf-application-toolbar
               [application]="openedApplication"
-              (closeButtonClick)="openedApplication = undefined"
+              (closeButtonClick)="onApplicationCloseClick()"
               (optionsButtonClick)="
                 onApplicationOptionsButtonClick(openedApplication)
               "
             ></cf-application-toolbar>
             <cf-application-view
               [application]="openedApplication"
+              [applicationShortcut]="openedApplicationShortcut"
             ></cf-application-view>
           </ng-container>
 
@@ -126,6 +140,72 @@ export interface ApplicationBanners {
                 </div>
               </form>
 
+              <h2 cfElem="section-title">Recently Opened</h2>
+
+              <ng-container
+                *ngIf="recentlyOpenedApplications$ | async as applications"
+              >
+                <div
+                  cfBlock="applications-carousel"
+                  cdkDropList
+                  cdkDropListSortingDisabled
+                  [cdkDropListData]="applications"
+                  [cdkDropListConnectedTo]="[
+                    applicationSheet.applicationCardDropList
+                  ]"
+                  (cdkDropListDropped)="
+                    onApplicationCarouselCardDropped($event)
+                  "
+                >
+                  <div
+                    cdkDrag
+                    [cdkDragData]="application"
+                    *ngFor="let application of applications"
+                    cfBlock="applications-carousel-item"
+                  >
+                    <div cfBlock="drag-placeholder" *cdkDragPlaceholder></div>
+                    <cf-application-card
+                      [application]="application"
+                      (applicationClick)="onApplicationCardClick(application)"
+                      (starClick)="onApplicationStarClick(application)"
+                    ></cf-application-card>
+                  </div>
+                </div>
+              </ng-container>
+
+              <h2 cfElem="section-title">Starred Applications</h2>
+
+              <ng-container
+                *ngIf="starredApplications$ | async as applications"
+              >
+                <div
+                  cfBlock="applications-carousel"
+                  cdkDropList
+                  cdkDropListSortingDisabled
+                  [cdkDropListData]="applications"
+                  [cdkDropListConnectedTo]="[
+                    applicationSheet.applicationCardDropList
+                  ]"
+                  (cdkDropListDropped)="
+                    onApplicationCarouselCardDropped($event)
+                  "
+                >
+                  <div
+                    cdkDrag
+                    [cdkDragData]="application"
+                    *ngFor="let application of applications"
+                    cfBlock="applications-carousel-item"
+                  >
+                    <div cfBlock="drag-placeholder" *cdkDragPlaceholder></div>
+                    <cf-application-card
+                      [application]="application"
+                      (applicationClick)="onApplicationCardClick(application)"
+                      (starClick)="onApplicationStarClick(application)"
+                    ></cf-application-card>
+                  </div>
+                </div>
+              </ng-container>
+
               <ng-container
                 *ngFor="let banner of applicationBanners$ | async | keyvalue"
               >
@@ -157,6 +237,7 @@ export interface ApplicationBanners {
                       [application]="application"
                       (applicationClick)="onApplicationCardClick(application)"
                       (playClick)="onApplicationCardPlayClick(application)"
+                      (starClick)="onApplicationStarClick(application)"
                     ></cf-application-card>
                   </div>
                 </div>
@@ -189,6 +270,7 @@ export interface ApplicationBanners {
                     <cf-application-card
                       [application]="application"
                       (applicationClick)="onApplicationCardClick(application)"
+                      (starClick)="onApplicationStarClick(application)"
                     ></cf-application-card>
                   </div>
                 </div>
@@ -253,13 +335,32 @@ export class PlayScene implements OnInit, OnDestroy {
 
   externalUserApplications$ = this.externalUserApplicationsState.applications$;
   internalUserApplications$ = this.internalUserApplicationsState.applications$;
+  starredApplications$ = this.starredApplicationsState.applications$;
+  recentlyOpenedApplications$ =
+    this.recentlyOpenedApplicationsState.applications$;
 
   applications$ = new BehaviorSubject<Application[]>([]);
   applicationBanners$ = new BehaviorSubject<ApplicationBanners>({});
 
   selectedAvatar$ = this.selectedAvatarState.avatar$;
 
-  selectedApplication$ = this.selectedApplicationState.application$;
+  selectedApplication$ = this.selectedApplicationState.application$.pipe(
+    switchMap((application) =>
+      this.availableApplicationsState.applications$.pipe(
+        take(1),
+        map((applications) =>
+          applications.find((app) => app.application.id === application?.id)
+        ),
+        tap((application) => {
+          this.mustBeInstalled =
+            application?.origin !== ApplicationOrigin.User &&
+            application?.application.additionalProperties?.renderingType !==
+              ApplicationRenderingType.Webview;
+        }),
+        map((application) => application?.application)
+      )
+    )
+  );
   sidebarIsOpen$ = this.selectedApplicationState.sidebarIsOpen$.pipe(
     delay(500),
     tap((isOpen) => {
@@ -272,6 +373,8 @@ export class PlayScene implements OnInit, OnDestroy {
   );
 
   openedApplication?: Application;
+  openedApplicationShortcut?: ApplicationShortcut;
+  mustBeInstalled = false;
 
   private readonly banners: {
     [key: string]: string;
@@ -286,12 +389,15 @@ export class PlayScene implements OnInit, OnDestroy {
   private readonly destroy$ = new Subject<void>();
 
   constructor(
+    private availableApplicationsState: AvailableApplicationsState,
     private externalUserApplicationsState: ExternalUserApplicationsState,
     private internalUserApplicationsState: InternalUserApplicationsState,
     private recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState,
+    private starredApplicationsState: StarredApplicationsState,
     private router: Router,
     private selectedAvatarState: SelectedAvatarState,
-    private selectedApplicationState: SelectedApplicationState
+    private selectedApplicationState: SelectedApplicationState,
+    private installApplicationsState: InstallApplicationsState
   ) {}
 
   ngOnInit() {
@@ -322,67 +428,61 @@ export class PlayScene implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
+  onApplicationCloseClick() {
+    this.openedApplication = undefined;
+    this.openedApplicationShortcut = undefined;
+  }
+
   onApplicationCardClick(application: Application) {
     this.selectedApplicationState.selectApplication(application);
-    this.recentlyOpenedApplicationsState.addApplication(application);
     this.selectedApplicationState.closeSidebar();
     setTimeout(() => this.selectedApplicationState.openSidebar(), 0);
   }
 
+  onApplicationStarClick(application: Application) {
+    this.availableApplicationsState.applications$
+      .pipe(
+        take(1),
+        map((applications) =>
+          applications.find((app) => app.application.id === application.id)
+        ),
+        switchMap((availableApplication) =>
+          availableApplication
+            ? this.starredApplicationsState.toggleApplication(
+                application,
+                availableApplication.origin
+              )
+            : of(undefined)
+        )
+      )
+      .subscribe();
+  }
+
   onApplicationCardPlayClick(application: Application) {
     this.selectedApplicationState.selectApplication(application);
-    this.recentlyOpenedApplicationsState.addApplication(application);
+    this.openApplication(application);
     this.selectedApplicationState.closeSidebar();
-
-    const applicationIsSupported =
-      application.additionalProperties?.supportsBrowser;
-
-    if (!applicationIsSupported) {
-      window.open(application.startUrl, '__blank' + Date.now());
-      return;
-    }
-
-    this.openedApplication = application;
   }
 
   onApplicationSheetShortcutTrigger(applicationShortcut: ApplicationShortcut) {
-    const application = this.selectedApplication$.getValue();
-
-    const applicationIsSupported =
-      application?.additionalProperties?.supportsBrowser;
-
-    if (!applicationIsSupported) {
-      window.open(applicationShortcut.url, '__blank' + Date.now());
-      return;
-    }
-
-    this.openedApplication = application;
+    const application = this.selectedApplicationState.application$.getValue();
+    this.openApplication(application as Application, applicationShortcut);
+    this.selectedApplicationState.closeSidebar();
   }
 
   onApplicationSheetCardClick(application: Application) {
+    this.openApplication(application);
     this.selectedApplicationState.closeSidebar();
   }
 
   onApplicationSheetCardPlayClick(application: Application) {
-    console.log(application);
     this.selectedApplicationState.selectApplication(application);
-    this.recentlyOpenedApplicationsState.addApplication(application);
+    this.openApplication(application);
     this.selectedApplicationState.closeSidebar();
-
-    const applicationIsSupported =
-      application.additionalProperties?.supportsBrowser;
-
-    if (!applicationIsSupported) {
-      window.open(application.startUrl, '__blank' + Date.now());
-      return;
-    }
-
-    this.openedApplication = application;
   }
 
   onApplicationCardDropped(application: Application) {
     this.selectedApplicationState.selectApplication(application);
-    this.recentlyOpenedApplicationsState.addApplication(application);
   }
 
   onApplicationCarouselCardDropped(
@@ -394,7 +494,13 @@ export class PlayScene implements OnInit, OnDestroy {
   }
 
   onApplicationSheetOpenApplicationClick(application: Application) {
-    this.openedApplication = application;
+    this.openApplication(application);
+    this.selectedApplicationState.closeSidebar();
+  }
+
+  onApplicationSheetInstallApplicationClick(application: Application) {
+    this.installApplicationsState.install(application);
+    this.openApplication(application);
     this.selectedApplicationState.closeSidebar();
   }
 
@@ -405,6 +511,30 @@ export class PlayScene implements OnInit, OnDestroy {
 
   onManageApplicationsClick() {
     this.router.navigate(['/manage-applications']);
+  }
+
+  private openApplication(
+    application: Application,
+    applicationShortcut?: ApplicationShortcut
+  ) {
+    const applicationIsSupported = isElectron()
+      ? true
+      : application?.additionalProperties?.supportsBrowser;
+
+    this.recentlyOpenedApplicationsState.addApplication(
+      application as Application
+    );
+
+    if (!applicationIsSupported) {
+      window.open(
+        applicationShortcut?.url || application.startUrl,
+        '__blank' + Date.now()
+      );
+      return;
+    }
+
+    this.openedApplication = application;
+    this.openedApplicationShortcut = applicationShortcut;
   }
 
   private generateBanners(applications: Application[]) {

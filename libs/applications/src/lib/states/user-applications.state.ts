@@ -33,6 +33,14 @@ export class UserApplicationsState {
       .subscribe();
   }
 
+  addApplication(application: Application) {
+    if (!this.userApplicationsRepository) {
+      throw new Error('Repositories not initialized');
+    }
+
+    return this.userApplicationsRepository.upsert(application);
+  }
+
   private subscribeToDataChanges() {
     if (!this.userApplicationsRepository) {
       throw new Error('Repositories not initialized');

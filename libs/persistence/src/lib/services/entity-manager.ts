@@ -12,6 +12,7 @@ import { RxDBDevModePlugin } from 'rxdb/plugins/dev-mode';
 import { RxDBEncryptionPlugin } from 'rxdb/plugins/encryption';
 import { addPouchPlugin, getRxStoragePouch } from 'rxdb/plugins/pouchdb';
 import { RxDBQueryBuilderPlugin } from 'rxdb/plugins/query-builder';
+import { RxDBUpdatePlugin } from 'rxdb/plugins/update';
 import { RxDBValidatePlugin } from 'rxdb/plugins/validate';
 import {
   defer,
@@ -34,6 +35,7 @@ addRxPlugin(RxDBDevModePlugin);
 addRxPlugin(RxDBValidatePlugin);
 addRxPlugin(RxDBEncryptionPlugin);
 addRxPlugin(RxDBQueryBuilderPlugin);
+addRxPlugin(RxDBUpdatePlugin);
 
 export const ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN = new InjectionToken<
   {

@@ -42,6 +42,7 @@ export type ApplicationAdditionalProperties = {
     name: string;
   };
   renderingType?: ApplicationRenderingType;
+  starred?: boolean;
   internal?: boolean;
   supportsBrowser?: boolean;
   permissions?: {

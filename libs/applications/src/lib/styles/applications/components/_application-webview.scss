@@ -13,3 +13,25 @@
     height: 90vh;
   }
 }
+
+.application-remote-module {
+  border: 0;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  width: 100%;
+  height:  calc(100vh - 300px);
+  // height: calc(100vh - 2rem - var(--component-application-toolbar-height, 2rem))
+
+  &--no-toolbar {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 90vh;
+  }
+
+  .scene-content {
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+}
