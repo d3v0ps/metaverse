@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { routes } from './metadrones-routing.module';
+import { MetadronesModule } from './metadrones.module';
 import { MetadronesRoot } from './metadrones.root';
 import { MetadronesRootModule } from './metadrones.root.module';
 
@@ -12,6 +13,7 @@ import { MetadronesRootModule } from './metadrones.root.module';
     BrowserModule,
     MetadronesRootModule,
     RouterModule.forRoot(routes),
+    MetadronesModule,
   ],
   bootstrap: [MetadronesRoot],
 })
