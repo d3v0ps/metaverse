@@ -961,7 +961,7 @@ export const storeApplications: StoreApplicationDocType[] = [
       colors: [
         {
           variation: ColorVariation.Primary,
-          color: '#333',
+          color: '#2D333B',
         },
       ],
     },
@@ -1105,7 +1105,52 @@ export const storeApplications: StoreApplicationDocType[] = [
       colors: [
         {
           variation: ColorVariation.Primary,
-          color: '#E44433',
+          color: '#DB4C3F',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.notion.notion',
+    name: 'Notion',
+    description:
+      'Too many tools? Too much chaos? With Notion, all your work is in one place. Notion is the best way to collaborate. For desktop and mobile. Infinite flexibility. Hassle-free wiki software. Better shared docs. All your projects tracked. Types: Personal Free, Personal Pro, Team.',
+    startUrl: 'https://www.notion.so/',
+    icons: [
+      {
+        src: 'assets/icons/simple-icons/notion.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://www.notion.so/',
+        icons: [
+          {
+            src: 'assets/icons/simple-icons/notion.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    categories: ['productivity', 'utilities'],
+    additionalProperties: {
+      author: {
+        id: 'com.notion',
+        name: 'Notion',
+      },
+      permissions: [],
+      renderingType: ApplicationRenderingType.Webview,
+      internal: false,
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#000000',
         },
       ],
     },
@@ -1784,8 +1829,8 @@ export const storeApplications: StoreApplicationDocType[] = [
       supportsBrowser: false,
       internal: false,
       permissions: [],
-      defaultShortcut: 'Portal',
-      sidebarShortcuts: ['Portal'],
+      defaultShortcut: 'My Nintendo',
+      sidebarShortcuts: ['My Nintendo'],
       colors: [
         {
           variation: ColorVariation.Primary,
@@ -2213,6 +2258,445 @@ export const storeApplications: StoreApplicationDocType[] = [
         {
           variation: ColorVariation.Primary,
           color: '#E5A00E',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.microsoft.office',
+    name: 'Office',
+    description: `Collaborate for free with online versions of Microsoft Word, PowerPoint, Excel, and OneNote. Save documents, spreadsheets, and presentations online`,
+    startUrl: 'https://www.office.com',
+    categories: ['productivity'],
+    icons: [
+      {
+        src: 'assets/icons/simple-icons/microsoftoffice.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://www.office.com',
+        icons: [
+          {
+            src: 'assets/icons/simple-icons/microsoftoffice.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.microsoft',
+        name: 'Microsoft',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#ea3e23',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.microsoft.onenote',
+    name: 'Onenote',
+    description: `Capture thoughts, ideas, and to-dos and sync them to all your devices · Store and share your notebooks on OneDrive with your free Microsoft account`,
+    startUrl: 'https://www.onenote.com',
+    categories: ['productivity'],
+    icons: [
+      {
+        src: 'assets/icons/simple-icons/microsoftonenote.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://www.onenote.com',
+        icons: [
+          {
+            src: 'assets/icons/simple-icons/microsoftonenote.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.microsoft',
+        name: 'Microsoft',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#733781',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.airtable.airtable',
+    name: 'Airtable',
+    description: `Connect everything. Achieve anything.
+    Accelerate work and unlock potential with powerful apps that connect your data, workflows and teams.`,
+    startUrl: 'https://www.airtable.com',
+    categories: ['productivity'],
+    icons: [
+      {
+        src: 'assets/icons/simple-icons/airtable.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://www.airtable.com',
+        icons: [
+          {
+            src: 'assets/icons/simple-icons/airtable.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.airtable',
+        name: 'Airtable',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#FCB400',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.airbnb.airbnb',
+    name: 'Airbnb',
+    description: `Find vacation rentals, cabins, beach houses, unique homes and experiences around the world - all made possible by hosts on Airbnb.`,
+    startUrl: 'https://www.airbnb.com',
+    categories: ['travel'],
+    icons: [
+      {
+        src: 'assets/icons/simple-icons/airbnb.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://www.airbnb.com',
+        icons: [
+          {
+            src: 'assets/icons/simple-icons/airbnb.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.airbnb',
+        name: 'Airbnb',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#F8385D',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.booking.booking',
+    name: 'Booking',
+    description: `Book at over 2,563,000 hotels online. No Reservation Fees. Great Rates! Choose From a Wide Range of Properties Which Booking.com Offers. Search Now! Secure Booking. Hostels.`,
+    startUrl: 'https://www.booking.com',
+    categories: ['travel'],
+    icons: [
+      {
+        src: 'assets/icons/mdi/bed.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://www.booking.com',
+        icons: [
+          {
+            src: 'assets/icons/mdi/bed.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.booking',
+        name: 'Booking',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#003580',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.microsoft.azure',
+    name: 'Azure',
+    description: `Plan smarter, collaborate better, and ship faster with Azure DevOps Services, formerly known as Visual Studio Team Services. Get agile tools, CI/CD...`,
+    startUrl: 'https://dev.azure.com',
+    categories: ['productivity'],
+    icons: [
+      {
+        src: 'assets/icons/simple-icons/azuredevops.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://www.portal.azure.com',
+        icons: [
+          {
+            src: 'assets/icons/simple-icons/azureartifacts.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'DevOps',
+        url: 'https://www.dev.azure.com',
+        icons: [
+          {
+            src: 'assets/icons/simple-icons/azuredevops.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.microsoft',
+        name: 'Microsoft',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'DevOps',
+      sidebarShortcuts: ['DevOps'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#0074D0',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.amazon.aws',
+    name: 'Amazon Web Services',
+    description: `Amazon Web Services offers reliable, scalable, and inexpensive cloud computing services. Free to join, pay only for what you use.`,
+    startUrl: 'https://aws.amazon.com',
+    categories: ['productivity'],
+    icons: [
+      {
+        src: 'assets/icons/simple-icons/amazonaws.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://aws.amazon.com',
+        icons: [
+          {
+            src: 'assets/icons/simple-icons/amazonaws.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.amazon',
+        name: 'Amazon',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#ff9900',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.telegram.telegram',
+    name: 'Telegram',
+    description: `Telegram messages are heavily encrypted and can self-destruct. Synced. Telegram lets you access your chats from multiple devices.`,
+    startUrl: 'https://web.telegram.org',
+    categories: ['social'],
+    icons: [
+      {
+        src: 'assets/icons/simple-icons/telegram.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://web.telegram.com',
+        icons: [
+          {
+            src: 'assets/icons/simple-icons/telegram.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.telegram',
+        name: 'Telegram',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#0088cc',
+        },
+      ],
+    },
+  },
+  {
+    id: 'com.olympics.olympics',
+    name: 'Olympics',
+    description: `Official website of the Olympic Games. Access breaking Tokyo 2020 news, plus records and video highlights from the best historic moments in global sport.`,
+    startUrl: 'https://olympics.com',
+    categories: ['sport'],
+    icons: [
+      {
+        src: 'assets/icons/mdi/torch.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portal',
+        url: 'https://olympics.com',
+        icons: [
+          {
+            src: 'assets/icons/mdi/torch.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'Sports',
+        url: 'https://olympics.com/sports',
+        icons: [
+          {
+            src: 'assets/icons/mdi/basketball.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'Results',
+        url: 'https://olympics.com/olympic-games/olympic-results',
+        icons: [
+          {
+            src: 'assets/icons/mdi/medal.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.olympics',
+        name: 'Olympics',
+      },
+      renderingType: ApplicationRenderingType.Webview,
+      supportsBrowser: false,
+      internal: false,
+      permissions: [],
+      defaultShortcut: 'Portal',
+      sidebarShortcuts: ['Portal'],
+      colors: [
+        {
+          variation: ColorVariation.Primary,
+          color: '#0078D0',
         },
       ],
     },

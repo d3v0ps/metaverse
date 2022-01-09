@@ -1,5 +1,8 @@
 
-@use "~@ng-select/ng-select/scss/default.theme";
+@use "~@ng-select/ng-select/scss/default.theme" with (
+  $ng-select-border-radius: 10px
+);
+@use "../abstracts/variables/colors" as colors;
 
 .ng-select {
   &.ng-select-opened {
@@ -130,6 +133,47 @@
       }
       &.ng-option-disabled {
         color: var(--component-select-disabled-color);
+      }
+    }
+  }
+}
+
+@each $color in colors.$color-variations {
+  .ng-select {
+   &.ng-select--#{$color} {
+      .ng-select-container {
+        color: var(--color-base-dark-medium);
+        background-color: var(--color-base-light-medium);
+        border: 1px solid var(--color-base-light-medium);
+        .ng-value-container {
+          .ng-placeholder {
+            color: var(--color-base-dark-medium);
+          }
+          .icon__svg {
+            fill: var(--color-base-dark-medium);
+          }
+        }
+      }
+      .ng-option {
+        background-color: var(--color-base-light-medium);
+        color: var(--color-base-dark-medium);
+        * {
+          color: var(--color-base-dark-medium);
+        }
+        .icon__svg {
+          fill: var(--color-base-dark-medium);
+        }
+        &:hover,
+        &.ng-option-marked {
+          background-color: var(--color-base-#{$color}-medium);
+          color: var(--color-base-light-medium);
+          * {
+            color: var(--color-base-light-medium);
+          }
+          .icon__svg {
+            fill: var(--color-base-light-medium);
+          }
+        }
       }
     }
   }

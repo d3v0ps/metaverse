@@ -4,7 +4,7 @@ import {
   EventEmitter,
   Input,
   Output,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { isElectron } from '@central-factory/web-components/shared/platform/desktop/is-electron';
 import { Application, ApplicationShortcut } from '../../../models/application';
@@ -13,29 +13,31 @@ import { Application, ApplicationShortcut } from '../../../models/application';
   selector: 'cf-application-sheet',
   template: `
     <div cfBlock="application-sheet" *ngIf="application">
-      <div
-        id="application-sheet-card"
-        cfBlock="drop-shadow"
-        cdkDropList
-        [cdkDropListData]="[application]"
-        #applicationCardDropList="cdkDropList"
-        (cdkDropListDropped)="applicationCardDrop.emit(application)"
-      >
-        <div cdkDrag [cdkDragData]="application">
-          <div cfBlock="drag-placeholder" *cdkDragPlaceholder></div>
-          <cf-application-card
-            [showDescription]="false"
-            [application]="application"
-            (applicationClick)="applicationCardClick.emit(application)"
-            (starClick)="applicationCardStarClick.emit(application)"
-            (playClick)="applicationCardPlayClick.emit(application)"
-          >
-          </cf-application-card>
+      <div cfElem="column">
+        <div
+          class="application-sheet__card"
+          cfBlock="drop-shadow"
+          cdkDropList
+          [cdkDropListData]="[application]"
+          #applicationCardDropList="cdkDropList"
+          (cdkDropListDropped)="applicationCardDrop.emit(application)"
+        >
+          <div cdkDrag [cdkDragData]="application">
+            <div cfBlock="drag-placeholder" *cdkDragPlaceholder></div>
+            <cf-application-card
+              [showDescription]="false"
+              [application]="application"
+              (applicationClick)="applicationCardClick.emit(application)"
+              (starClick)="applicationCardStarClick.emit(application)"
+              (playClick)="applicationCardPlayClick.emit(application)"
+            >
+            </cf-application-card>
+          </div>
         </div>
-      </div>
 
-      <div cfBlock="application-description">
-        <p [innerHtml]="application?.description"></p>
+        <div cfBlock="application-description">
+          <p [innerHtml]="application?.description"></p>
+        </div>
       </div>
 
       <cf-application-actions

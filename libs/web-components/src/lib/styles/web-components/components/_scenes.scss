@@ -27,6 +27,17 @@
     padding: 0;
     overflow: auto;
   }
+
+  &__content {
+    &--splash-screen {
+      .scene-content {
+        display: none !important;
+        &--splash-screen {
+          display: block !important;
+        }
+      }
+    }
+  }
 }
 
 .scene-content {

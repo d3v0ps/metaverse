@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import {
   Application,
-  ApplicationShortcut,
+  ApplicationShortcut
 } from '@central-factory/applications/models/application';
 import { RecentlyOpenedApplicationsState } from '@central-factory/applications/states/recently-opened-applications.state';
 import { SelectedApplicationState } from '@central-factory/applications/states/selected-application.state';
@@ -22,7 +22,7 @@ import {
   skip,
   switchMap,
   takeUntil,
-  tap,
+  tap
 } from 'rxjs/operators';
 
 export interface SidebarItem {
@@ -165,8 +165,31 @@ export enum SceneContentAnimationState {
             <div cf-sidebar-content>
               <div
                 class="scene__content"
+                [ngClass]="{
+                  'scene__content--splash-screen': showSplashScreen
+                }"
                 [@sceneContentAnimationState]="sceneContentAnimationState"
               >
+                <div
+                  cfBlock="scene-content"
+                  cfMod="splash-screen"
+                  *ngIf="showSplashScreen"
+                >
+                  <cf-splash-screen
+                    [mods]="'in-scene'"
+                    [displayLoadingTime]="2000"
+                    [displayWelcomeTime]="1000"
+                    [title]="openedSidebarItem?.name || ''"
+                    [logo]="openedSidebarItem?.icon || ''"
+                    [backgroundColor]="openedSidebarItem?.color || ''"
+                    welcomeMessage="Welcome to {{ openedSidebarItem?.name }}"
+                    [loadingTexts]="
+                      openedSidebarItem?.application?.description?.split('.') ||
+                      []
+                    "
+                    (splashScreenHide)="showSplashScreen = false"
+                  ></cf-splash-screen>
+                </div>
                 <router-outlet></router-outlet>
               </div>
             </div>
@@ -210,8 +233,10 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
   public sidebarIsOpen = false;
 
   public sidebarItems: SidebarItem[] = [];
+  public openedSidebarItem?: SidebarItem;
   public recentlyOpenedSidebarItems: SidebarItem[] = [];
 
+  public showSplashScreen = false;
   public showNavbar = false;
   public sceneContentAnimationState = SceneContentAnimationState.Idle;
 
@@ -283,6 +308,7 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       )
       .subscribe(() => {
+        // this.showSplashScreen = false;
         this.setSidebarItemsActive(this.sidebarItems);
       });
 
@@ -326,10 +352,14 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
     this.sceneContentAnimationState = SceneContentAnimationState.Idle;
     setTimeout(() => {
       this.sceneContentAnimationState = SceneContentAnimationState.Opened;
+      this.showSplashScreen = true;
+      this.openedSidebarItem = sidebarItem;
 
       if (sidebarItem.routerLink) {
         this.router.navigate(sidebarItem.routerLink);
       }
+
+      // setTimeout(() => (this.showSplashScreen = false), 3000);
     }, 100);
   }
 

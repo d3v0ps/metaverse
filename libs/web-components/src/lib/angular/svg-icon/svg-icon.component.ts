@@ -36,7 +36,7 @@ export class SvgIconComponent implements OnInit, OnDestroy, OnChanges, DoCheck {
   @Input() name?: string;
   @Input() stretch = false;
   @Input() applyClass = false;
-  @Input() svgClass?: any;
+  @Input() svgClass?: any = 'icon__svg';
   // eslint-disable-next-line @angular-eslint/no-input-rename
   @Input('class') klass?: any;
   @Input() viewBox?: string;

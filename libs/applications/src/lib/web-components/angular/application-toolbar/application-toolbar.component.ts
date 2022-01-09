@@ -45,6 +45,31 @@ import { Application, ColorVariation } from '../../../models/application';
             ></cf-svg-icon>
             {{ application.name }}
           </h3>
+          <div cfBlock="application-toolbar-buttons">
+            <ng-select
+              [items]="application.shortcuts || []"
+              [classList]="'ng-select--primary'"
+              bindLabel="name"
+              style="width: 300px;"
+              placeholder="Select a shortcut"
+            >
+              <ng-template ng-option-tmp let-item="item">
+                <div cfBlock="application-toolbar-shortcut">
+                  <cf-svg-icon
+                    *ngIf="icon"
+                    [src]="
+                      item.icons && item.icons.length > 0
+                        ? item.icons[0].src
+                        : ''
+                    "
+                    cfElem="icon"
+                    [svgClass]="'icon__svg'"
+                  ></cf-svg-icon>
+                  {{ item.name }}
+                </div>
+              </ng-template>
+            </ng-select>
+          </div>
         </div>
       </div>
     </ng-container>

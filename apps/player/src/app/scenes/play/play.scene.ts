@@ -118,7 +118,7 @@ export interface ApplicationBanners {
           </div>
 
           <ng-container *ngIf="!openedApplication">
-            <div style="padding: 20px">
+            <div style="padding: 2rem">
               <h2 cfElem="section-title">
                 Welcome back,
                 <strong class="text text--secondary">{{

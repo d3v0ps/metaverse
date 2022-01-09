@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { BemModule } from '@central-factory/web-components/angular/bem/bem.module';
 import { NavbarModule } from '@central-factory/web-components/angular/navbar/navbar.module';
 import { SidebarModule } from '@central-factory/web-components/angular/sidebar/sidebar.module';
+import { SplashScreenModule } from '@central-factory/web-components/angular/splash-screen/splash-screen.module';
 import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
 import { PortalLayoutScene } from './portal-layout.scene';
 
@@ -17,6 +18,7 @@ import { PortalLayoutScene } from './portal-layout.scene';
     RouterModule,
     NavbarModule,
     SidebarModule,
+    SplashScreenModule,
   ],
   declarations: [PortalLayoutScene],
   exports: [PortalLayoutScene],

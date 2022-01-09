@@ -40,3 +40,13 @@
     fill: var(--component-application-toolbar-color);
   }
 }
+
+.application-toolbar-shortcut {
+  display: flex;
+  color: var(--component-application-toolbar-color);
+  .icon__svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--component-application-toolbar-color);
+  }
+}

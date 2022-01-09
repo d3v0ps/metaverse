@@ -10,6 +10,23 @@
   color: var(--component-splash-screen-color, #000);
   z-index: 9999;
 
+  &--in-scene,
+  &--in-application {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 140px);
+    border-radius: 20px;
+
+    .scene-content {
+      display: none;
+    }
+  }
+
+  &--in-application {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+
   &__content {
     position: absolute;
     top: 50%;
@@ -51,6 +68,11 @@
     margin: 0 auto;
     width: 100px;
     height: 100px;
+    .icon__svg {
+      width: 100px;
+      height: 100px;
+      fill: var(--component-splash-screen-color, #000);
+    }
   }
 
   &__loading-text {

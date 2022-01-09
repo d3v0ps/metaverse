@@ -1,10 +1,19 @@
 
+.application-view {
+  &--hidden {
+    .application-webview,
+    .application-remote-module {
+      display: none;
+    }
+  }
+}
+
 .application-webview {
   border: 0;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   width: 100%;
-  height:  calc(100vh - 100px);
+  height: calc(100vh - 120px);
   // height: calc(100vh - 2rem - var(--component-application-toolbar-height, 2rem))
 
   &--no-toolbar {
@@ -19,7 +28,7 @@
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   width: 100%;
-  height:  calc(100vh - 300px);
+  height: calc(100vh - 120px);
   // height: calc(100vh - 2rem - var(--component-application-toolbar-height, 2rem))
 
   &--no-toolbar {

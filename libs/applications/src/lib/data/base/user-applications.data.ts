@@ -49,23 +49,24 @@ export const userApplications: UserApplicationDocType[] = [
   },
   {
     id: 'com.central-factory.player',
-    name: 'Player',
-    description: 'Applications Player',
+    name: 'Application Player',
+    description:
+      'Access to many local and hosted web applications. Applications can be loaded through a webview or through a webpack module federation.',
     startUrl: 'play',
     icons: [
       {
-        src: 'assets/icons/mdi/play.svg',
+        src: 'assets/icons/mdi/view-grid.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
     ],
     shortcuts: [
       {
-        name: 'Play',
+        name: 'Application Player',
         url: '/play',
         icons: [
           {
-            src: 'assets/icons/mdi/play.svg',
+            src: 'assets/icons/mdi/view-grid.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -110,13 +111,13 @@ export const userApplications: UserApplicationDocType[] = [
           target: 'storeapplications',
         },
       ],
-      sidebarShortcuts: ['Play'],
+      sidebarShortcuts: ['Application Player'],
     },
   },
   {
     id: 'com.central-factory.user-avatars',
     name: 'User Avatars',
-    description: 'Avatars management module',
+    description: 'Avatars management module. Customize your user avatars.',
     startUrl: 'user-avatars',
     icons: [
       {
@@ -127,7 +128,7 @@ export const userApplications: UserApplicationDocType[] = [
     ],
     shortcuts: [
       {
-        name: 'Avatar',
+        name: 'Selected Avatar',
         url: '/selected-avatar',
         icons: [
           {
@@ -182,13 +183,13 @@ export const userApplications: UserApplicationDocType[] = [
           target: 'userpreferences',
         },
       ],
-      sidebarShortcuts: ['Avatar'],
+      sidebarShortcuts: ['Selected Avatar'],
     },
   },
   {
     id: 'com.central-factory.inventory',
     name: 'Inventory',
-    description: 'Assets management module',
+    description: 'Assets management module. Manage and preview your assets.',
     startUrl: 'inventory',
     icons: [
       {
@@ -239,7 +240,7 @@ export const userApplications: UserApplicationDocType[] = [
   {
     id: 'com.central-factory.marketplace',
     name: 'Marketplace',
-    description: 'Trade with Assets',
+    description: 'Portal Marketplace. Sell your assets and acquire new ones.',
     startUrl: 'marketplace',
     icons: [
       {
@@ -290,7 +291,7 @@ export const userApplications: UserApplicationDocType[] = [
   {
     id: 'com.central-factory.settings',
     name: 'Settings',
-    description: 'Settings for the Portal',
+    description: 'Customize your portal experience. Manage your preferences.',
     startUrl: 'settings',
     icons: [
       {

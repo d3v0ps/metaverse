@@ -5,7 +5,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 export enum SplashScreenState {
   Visible = 'visible',
@@ -20,12 +20,19 @@ export enum LogoState {
 @Component({
   selector: 'cf-splash-screen',
   template: `
-    <div cfBlock="splash-screen" [@splashState]="state">
+    <div
+      cfBlock="splash-screen"
+      [@splashState]="state"
+      [cfMod]="mods"
+      [ngStyle]="{
+        'background-color': backgroundColor
+      }"
+    >
       <div cfElem="content">
         <h1 cfElem="title">{{ title }}</h1>
         <div cfElem="spinner">
           <div cfElem="logo" [@logoState]="logoState">
-            <img cfElem="logo-image" [src]="logo" alt="logo" />
+            <cf-svg-icon cfElem="logo-image" [src]="logo"> </cf-svg-icon>
           </div>
           <div cfElem="spinner-content" *ngIf="logoState !== 'visible'">
             <cf-spinner></cf-spinner>
@@ -91,12 +98,18 @@ export class SplashScreenComponent implements OnInit {
   @Input() title = 'Portal';
   @Input() logo = 'assets/logo.svg';
   @Input() spinnerType = 'cog';
+  @Input() backgroundColor?: string;
   @Input() loadingTexts = [
     'Setting up the rockets...',
     'Calling the crew..',
     'Jumping to the cyber space...',
   ];
   @Input() welcomeMessage = 'Welcome to the Metaverse';
+  @Input() displayLoadingTime = 5000;
+  @Input() displayWelcomeTime = 3000;
+  @Input() mods: string | string[] = '';
+
+  @Output() splashScreenHide = new EventEmitter<void>();
 
   loadingText?: string;
   state = SplashScreenState.Visible;
@@ -111,15 +124,16 @@ export class SplashScreenComponent implements OnInit {
   private async displaySplashScreen() {
     this.displayLoadingText();
 
-    await this.wait(5000);
+    await this.wait(this.displayLoadingTime);
 
     this.logoState = LogoState.Visible;
     this.selectedLoadingTextIndex = undefined;
     this.loadingText = this.welcomeMessage;
 
-    await this.wait(3000);
+    await this.wait(this.displayWelcomeTime);
 
     this.state = SplashScreenState.Hidden;
+    this.splashScreenHide.emit();
   }
 
   private async displayLoadingText() {
