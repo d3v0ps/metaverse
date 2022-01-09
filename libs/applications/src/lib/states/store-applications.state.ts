@@ -1,9 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { EntityManager } from '@central-factory/persistence/services/entity-manager';
-import { Repository } from '@central-factory/persistence/services/repository';
-import { BehaviorSubject, forkJoin, switchMap, tap } from 'rxjs';
-import { StoreApplicationDocType } from '../collections/store-applications.collection';
-import type { Application } from '../models/application';
+import { BehaviorSubject, tap } from 'rxjs';
+import {
+  Application,
+  ApplicationRenderingType,
+  ColorVariation,
+} from '../models/application';
 
 @Injectable({
   providedIn: 'root',
@@ -11,40 +13,78 @@ import type { Application } from '../models/application';
 export class StoreApplicationsState {
   public readonly applications$ = new BehaviorSubject<Application[]>([]);
 
-  private storeApplicationsRepository?: Repository<StoreApplicationDocType>;
+  private readonly storeDataUrl =
+    'https://raw.githubusercontent.com/central-factory/web-application-manifests/main/applications.json';
 
-  constructor(private entityManager: EntityManager) {
-    this.entityManager.initialize$
+  constructor(private httpClient: HttpClient) {
+    this.httpClient
+      .get<Application[]>(this.storeDataUrl)
       .pipe(
-        switchMap(() =>
-          forkJoin([
-            this.entityManager.getRepository<StoreApplicationDocType>(
-              'storeapplications',
-              'com.central-factory.player'
-            ),
-          ])
-        ),
-        tap(([storeApplicationsRepository]) => {
-          this.storeApplicationsRepository = storeApplicationsRepository;
+        tap((applications) => {
+          this.applications$.next(
+            applications.map((application) => {
+              const primaryColor: string | undefined =
+                this.getPrimaryColor(application);
+              const primaryColorProperty = {
+                color: primaryColor || '#000000',
+                variation: ColorVariation.Primary,
+              };
 
-          this.subscribeToDataChanges();
+              return {
+                ...application,
+                createdAt: application.createdAt || new Date().toISOString(),
+                updatedAt: application.updatedAt || new Date().toISOString(),
+                additionalProperties: {
+                  ...application.additionalProperties,
+                  author: application.additionalProperties?.author || {
+                    id: application.id,
+                    name: application.name,
+                  },
+                  renderingType:
+                    application.additionalProperties?.renderingType ||
+                    ApplicationRenderingType.Webview,
+                  supportsBrowser:
+                    application.additionalProperties?.supportsBrowser || false,
+                  internal: false,
+                  permissions:
+                    application.additionalProperties?.permissions || [],
+                  defaultShortcut:
+                    application.additionalProperties?.defaultShortcut ||
+                    (application.shortcuts
+                      ? application.shortcuts[0].name
+                      : undefined),
+                  sidebarShortcuts:
+                    application.additionalProperties?.sidebarShortcuts ||
+                    (application.shortcuts
+                      ? [application.shortcuts[0].name]
+                      : []),
+                  colors: application.additionalProperties?.colors || [
+                    primaryColorProperty,
+                  ],
+                },
+              };
+            })
+          );
         })
       )
       .subscribe();
   }
 
-  private subscribeToDataChanges() {
-    if (!this.storeApplicationsRepository) {
-      throw new Error('Repositories not initialized');
+  private getPrimaryColor(application: Application): string | undefined {
+    const hasColors =
+      application.additionalProperties?.colors &&
+      application.additionalProperties?.colors.length > 0;
+
+    if (hasColors) {
+      const primaryColor = application.additionalProperties?.colors?.find(
+        (c) => c.variation === ColorVariation.Primary
+      );
+
+      if (primaryColor) {
+        return primaryColor?.color;
+      }
     }
 
-    this.storeApplicationsRepository
-      .observe()
-      .pipe(
-        tap((applications) =>
-          this.applications$.next(applications as Application[])
-        )
-      )
-      .subscribe();
+    return application.themeColor || application.backgroundColor;
   }
 }

@@ -548,6 +548,10 @@ export class PlayScene implements OnInit, OnDestroy {
       .toLowerCase()
       .includes(this.searchBarForm.value.queryString.toLowerCase());
 
+    const authorMatches = application.additionalProperties?.author?.name
+      .toLowerCase()
+      .includes(this.searchBarForm.value.queryString.toLowerCase());
+
     const categoryMatches = application.categories?.reduce<boolean>(
       (acc, category) =>
         acc ||
@@ -566,6 +570,6 @@ export class PlayScene implements OnInit, OnDestroy {
         ? true
         : false;
 
-    return nameMatches || categoryMatches || shortcutMatches;
+    return nameMatches || authorMatches || categoryMatches || shortcutMatches;
   }
 }
