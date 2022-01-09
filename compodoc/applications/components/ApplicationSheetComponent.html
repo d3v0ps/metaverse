@@ -92,29 +92,31 @@
             <tr>
                 <td class="col-md-3">template</td>
                 <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div cfBlock&#x3D;&quot;application-sheet&quot; *ngIf&#x3D;&quot;application&quot;&gt;
-  &lt;div
-    id&#x3D;&quot;application-sheet-card&quot;
-    cfBlock&#x3D;&quot;drop-shadow&quot;
-    cdkDropList
-    [cdkDropListData]&#x3D;&quot;[application]&quot;
-    #applicationCardDropList&#x3D;&quot;cdkDropList&quot;
-    (cdkDropListDropped)&#x3D;&quot;applicationCardDrop.emit(application)&quot;
-  &gt;
-    &lt;div cdkDrag [cdkDragData]&#x3D;&quot;application&quot;&gt;
-      &lt;div cfBlock&#x3D;&quot;drag-placeholder&quot; *cdkDragPlaceholder&gt;&lt;/div&gt;
-      &lt;cf-application-card
-        [showDescription]&#x3D;&quot;false&quot;
-        [application]&#x3D;&quot;application&quot;
-        (applicationClick)&#x3D;&quot;applicationCardClick.emit(application)&quot;
-        (starClick)&#x3D;&quot;applicationCardStarClick.emit(application)&quot;
-        (playClick)&#x3D;&quot;applicationCardPlayClick.emit(application)&quot;
-      &gt;
-      &lt;/cf-application-card&gt;
+  &lt;div cfElem&#x3D;&quot;column&quot;&gt;
+    &lt;div
+      class&#x3D;&quot;application-sheet__card&quot;
+      cfBlock&#x3D;&quot;drop-shadow&quot;
+      cdkDropList
+      [cdkDropListData]&#x3D;&quot;[application]&quot;
+      #applicationCardDropList&#x3D;&quot;cdkDropList&quot;
+      (cdkDropListDropped)&#x3D;&quot;applicationCardDrop.emit(application)&quot;
+    &gt;
+      &lt;div cdkDrag [cdkDragData]&#x3D;&quot;application&quot;&gt;
+        &lt;div cfBlock&#x3D;&quot;drag-placeholder&quot; *cdkDragPlaceholder&gt;&lt;/div&gt;
+        &lt;cf-application-card
+          [showDescription]&#x3D;&quot;false&quot;
+          [application]&#x3D;&quot;application&quot;
+          (applicationClick)&#x3D;&quot;applicationCardClick.emit(application)&quot;
+          (starClick)&#x3D;&quot;applicationCardStarClick.emit(application)&quot;
+          (playClick)&#x3D;&quot;applicationCardPlayClick.emit(application)&quot;
+        &gt;
+        &lt;/cf-application-card&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
-  &lt;/div&gt;
 
-  &lt;div cfBlock&#x3D;&quot;application-description&quot;&gt;
-    &lt;p [innerHtml]&#x3D;&quot;application?.description&quot;&gt;&lt;/p&gt;
+    &lt;div cfBlock&#x3D;&quot;application-description&quot;&gt;
+      &lt;p [innerHtml]&#x3D;&quot;application?.description&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
 
   &lt;cf-application-actions
@@ -300,7 +302,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:63</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:65</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -326,7 +328,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:91</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:93</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -352,7 +354,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:61</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:63</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -376,7 +378,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:96</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:98</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -397,7 +399,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:95</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:97</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -418,7 +420,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:98</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:100</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -439,7 +441,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:97</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:99</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -460,7 +462,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:93</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:95</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -481,7 +483,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:100</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:102</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -502,7 +504,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:101</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:103</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -523,7 +525,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:99</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:101</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -558,8 +560,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="110"
-                            class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:110</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="112"
+                            class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:112</a></div>
                 </td>
             </tr>
 
@@ -627,8 +629,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="150"
-                            class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:150</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="152"
+                            class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:152</a></div>
                 </td>
             </tr>
 
@@ -696,8 +698,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="138"
-                            class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:138</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="140"
+                            class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:140</a></div>
                 </td>
             </tr>
 
@@ -765,8 +767,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="146"
-                            class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:146</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="148"
+                            class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:148</a></div>
                 </td>
             </tr>
 
@@ -841,7 +843,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:108</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:110</a></div>
                         </td>
                     </tr>
 
@@ -876,7 +878,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:59</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:61</a></div>
                         </td>
                     </tr>
 
@@ -903,7 +905,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:105</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:107</a></div>
                         </td>
                     </tr>
 
@@ -928,7 +930,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:103</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:105</a></div>
                         </td>
                     </tr>
 
@@ -955,7 +957,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:106</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:108</a></div>
                         </td>
                     </tr>
 
@@ -982,7 +984,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:104</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:106</a></div>
                         </td>
                     </tr>
 
@@ -1011,7 +1013,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:87</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:89</a></div>
                                 </td>
                             </tr>
 
@@ -1022,7 +1024,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:63</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-sheet/application-sheet.component.ts:65</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -1075,7 +1077,7 @@ import {
   EventEmitter,
   Input,
   Output,
-  ViewChild,
+  ViewChild
 } from &#x27;@angular/core&#x27;;
 import { isElectron } from &#x27;@central-factory/web-components/shared/platform/desktop/is-electron&#x27;;
 import { Application, ApplicationShortcut } from &#x27;../../../models/application&#x27;;
@@ -1084,29 +1086,31 @@ import { Application, ApplicationShortcut } from &#x27;../../../models/applicati
   selector: &#x27;cf-application-sheet&#x27;,
   template: &#x60;
     &lt;div cfBlock&#x3D;&quot;application-sheet&quot; *ngIf&#x3D;&quot;application&quot;&gt;
-      &lt;div
-        id&#x3D;&quot;application-sheet-card&quot;
-        cfBlock&#x3D;&quot;drop-shadow&quot;
-        cdkDropList
-        [cdkDropListData]&#x3D;&quot;[application]&quot;
-        #applicationCardDropList&#x3D;&quot;cdkDropList&quot;
-        (cdkDropListDropped)&#x3D;&quot;applicationCardDrop.emit(application)&quot;
-      &gt;
-        &lt;div cdkDrag [cdkDragData]&#x3D;&quot;application&quot;&gt;
-          &lt;div cfBlock&#x3D;&quot;drag-placeholder&quot; *cdkDragPlaceholder&gt;&lt;/div&gt;
-          &lt;cf-application-card
-            [showDescription]&#x3D;&quot;false&quot;
-            [application]&#x3D;&quot;application&quot;
-            (applicationClick)&#x3D;&quot;applicationCardClick.emit(application)&quot;
-            (starClick)&#x3D;&quot;applicationCardStarClick.emit(application)&quot;
-            (playClick)&#x3D;&quot;applicationCardPlayClick.emit(application)&quot;
-          &gt;
-          &lt;/cf-application-card&gt;
+      &lt;div cfElem&#x3D;&quot;column&quot;&gt;
+        &lt;div
+          class&#x3D;&quot;application-sheet__card&quot;
+          cfBlock&#x3D;&quot;drop-shadow&quot;
+          cdkDropList
+          [cdkDropListData]&#x3D;&quot;[application]&quot;
+          #applicationCardDropList&#x3D;&quot;cdkDropList&quot;
+          (cdkDropListDropped)&#x3D;&quot;applicationCardDrop.emit(application)&quot;
+        &gt;
+          &lt;div cdkDrag [cdkDragData]&#x3D;&quot;application&quot;&gt;
+            &lt;div cfBlock&#x3D;&quot;drag-placeholder&quot; *cdkDragPlaceholder&gt;&lt;/div&gt;
+            &lt;cf-application-card
+              [showDescription]&#x3D;&quot;false&quot;
+              [application]&#x3D;&quot;application&quot;
+              (applicationClick)&#x3D;&quot;applicationCardClick.emit(application)&quot;
+              (starClick)&#x3D;&quot;applicationCardStarClick.emit(application)&quot;
+              (playClick)&#x3D;&quot;applicationCardPlayClick.emit(application)&quot;
+            &gt;
+            &lt;/cf-application-card&gt;
+          &lt;/div&gt;
         &lt;/div&gt;
-      &lt;/div&gt;
 
-      &lt;div cfBlock&#x3D;&quot;application-description&quot;&gt;
-        &lt;p [innerHtml]&#x3D;&quot;application?.description&quot;&gt;&lt;/p&gt;
+        &lt;div cfBlock&#x3D;&quot;application-description&quot;&gt;
+          &lt;p [innerHtml]&#x3D;&quot;application?.description&quot;&gt;&lt;/p&gt;
+        &lt;/div&gt;
       &lt;/div&gt;
 
       &lt;cf-application-actions
@@ -1268,7 +1272,7 @@ export class ApplicationSheetComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="application-sheet" *ngIf="application">  <div    id="application-sheet-card"    cfBlock="drop-shadow"    cdkDropList    [cdkDropListData]="[application]"    #applicationCardDropList="cdkDropList"    (cdkDropListDropped)="applicationCardDrop.emit(application)"  >    <div cdkDrag [cdkDragData]="application">      <div cfBlock="drag-placeholder" *cdkDragPlaceholder></div>      <cf-application-card        [showDescription]="false"        [application]="application"        (applicationClick)="applicationCardClick.emit(application)"        (starClick)="applicationCardStarClick.emit(application)"        (playClick)="applicationCardPlayClick.emit(application)"      >      </cf-application-card>    </div>  </div>  <div cfBlock="application-description">    <p [innerHtml]="application?.description"></p>  </div>  <cf-application-actions    [application]="application"    [applicationUrl]="applicationUrl"    [mustBeInstalled]="mustBeInstalled"    [isApplicationOpened]="isApplicationOpened"    [applicationIsSupported]="applicationIsSupported"    [enabledKeyboardShortcuts]="true"    (applicationShortcutTrigger)="applicationShortcutTrigger.emit($event)"    (applicationInstallTrigger)="installApplicationClick.emit($event)"    (applicationOpenTrigger)="openApplicationClick.emit($event)"    (applicationCloseTrigger)="closeApplicationClick.emit($event)"  >  </cf-application-actions></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="application-sheet" *ngIf="application">  <div cfElem="column">    <div      class="application-sheet__card"      cfBlock="drop-shadow"      cdkDropList      [cdkDropListData]="[application]"      #applicationCardDropList="cdkDropList"      (cdkDropListDropped)="applicationCardDrop.emit(application)"    >      <div cdkDrag [cdkDragData]="application">        <div cfBlock="drag-placeholder" *cdkDragPlaceholder></div>        <cf-application-card          [showDescription]="false"          [application]="application"          (applicationClick)="applicationCardClick.emit(application)"          (starClick)="applicationCardStarClick.emit(application)"          (playClick)="applicationCardPlayClick.emit(application)"        >        </cf-application-card>      </div>    </div>    <div cfBlock="application-description">      <p [innerHtml]="application?.description"></p>    </div>  </div>  <cf-application-actions    [application]="application"    [applicationUrl]="applicationUrl"    [mustBeInstalled]="mustBeInstalled"    [isApplicationOpened]="isApplicationOpened"    [applicationIsSupported]="applicationIsSupported"    [enabledKeyboardShortcuts]="true"    (applicationShortcutTrigger)="applicationShortcutTrigger.emit($event)"    (applicationInstallTrigger)="installApplicationClick.emit($event)"    (applicationOpenTrigger)="openApplicationClick.emit($event)"    (applicationCloseTrigger)="closeApplicationClick.emit($event)"  >  </cf-application-actions></div></div>'
     var COMPONENTS = [{'name': 'ApplicationActionsComponent', 'selector': 'cf-application-actions'},{'name': 'ApplicationCardComponent', 'selector': 'cf-application-card'},{'name': 'ApplicationsCarouselComponent', 'selector': 'cf-applications-carousel'},{'name': 'ApplicationSheetComponent', 'selector': 'cf-application-sheet'},{'name': 'ApplicationShortcutComponent', 'selector': 'cf-application-shortcut'},{'name': 'ApplicationToolbarComponent', 'selector': 'cf-application-toolbar'},{'name': 'ApplicationViewComponent', 'selector': 'cf-application-view'},{'name': 'ApplicationWebviewComponent', 'selector': 'cf-application-webview'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ApplicationSheetComponent'};

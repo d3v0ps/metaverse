@@ -350,7 +350,7 @@ import { Component, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
 import { NavigationEnd, Router } from &#x27;@angular/router&#x27;;
 import {
   Application,
-  ApplicationShortcut,
+  ApplicationShortcut
 } from &#x27;@central-factory/applications/models/application&#x27;;
 import { RecentlyOpenedApplicationsState } from &#x27;@central-factory/applications/states/recently-opened-applications.state&#x27;;
 import { SelectedApplicationState } from &#x27;@central-factory/applications/states/selected-application.state&#x27;;
@@ -369,7 +369,7 @@ import {
   skip,
   switchMap,
   takeUntil,
-  tap,
+  tap
 } from &#x27;rxjs/operators&#x27;;
 
 export interface SidebarItem {
@@ -512,8 +512,31 @@ export enum SceneContentAnimationState {
             &lt;div cf-sidebar-content&gt;
               &lt;div
                 class&#x3D;&quot;scene__content&quot;
+                [ngClass]&#x3D;&quot;{
+                  &#x27;scene__content--splash-screen&#x27;: showSplashScreen
+                }&quot;
                 [@sceneContentAnimationState]&#x3D;&quot;sceneContentAnimationState&quot;
               &gt;
+                &lt;div
+                  cfBlock&#x3D;&quot;scene-content&quot;
+                  cfMod&#x3D;&quot;splash-screen&quot;
+                  *ngIf&#x3D;&quot;showSplashScreen&quot;
+                &gt;
+                  &lt;cf-splash-screen
+                    [mods]&#x3D;&quot;&#x27;in-scene&#x27;&quot;
+                    [displayLoadingTime]&#x3D;&quot;2000&quot;
+                    [displayWelcomeTime]&#x3D;&quot;1000&quot;
+                    [title]&#x3D;&quot;openedSidebarItem?.name || &#x27;&#x27;&quot;
+                    [logo]&#x3D;&quot;openedSidebarItem?.icon || &#x27;&#x27;&quot;
+                    [backgroundColor]&#x3D;&quot;openedSidebarItem?.color || &#x27;&#x27;&quot;
+                    welcomeMessage&#x3D;&quot;Welcome to {{ openedSidebarItem?.name }}&quot;
+                    [loadingTexts]&#x3D;&quot;
+                      openedSidebarItem?.application?.description?.split(&#x27;.&#x27;) ||
+                      []
+                    &quot;
+                    (splashScreenHide)&#x3D;&quot;showSplashScreen &#x3D; false&quot;
+                  &gt;&lt;/cf-splash-screen&gt;
+                &lt;/div&gt;
                 &lt;router-outlet&gt;&lt;/router-outlet&gt;
               &lt;/div&gt;
             &lt;/div&gt;
@@ -557,8 +580,10 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
   public sidebarIsOpen &#x3D; false;
 
   public sidebarItems: SidebarItem[] &#x3D; [];
+  public openedSidebarItem?: SidebarItem;
   public recentlyOpenedSidebarItems: SidebarItem[] &#x3D; [];
 
+  public showSplashScreen &#x3D; false;
   public showNavbar &#x3D; false;
   public sceneContentAnimationState &#x3D; SceneContentAnimationState.Idle;
 
@@ -630,6 +655,7 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       )
       .subscribe(() &#x3D;&gt; {
+        // this.showSplashScreen &#x3D; false;
         this.setSidebarItemsActive(this.sidebarItems);
       });
 
@@ -673,10 +699,14 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
     this.sceneContentAnimationState &#x3D; SceneContentAnimationState.Idle;
     setTimeout(() &#x3D;&gt; {
       this.sceneContentAnimationState &#x3D; SceneContentAnimationState.Opened;
+      this.showSplashScreen &#x3D; true;
+      this.openedSidebarItem &#x3D; sidebarItem;
 
       if (sidebarItem.routerLink) {
         this.router.navigate(sidebarItem.routerLink);
       }
+
+      // setTimeout(() &#x3D;&gt; (this.showSplashScreen &#x3D; false), 3000);
     }, 100);
   }
 

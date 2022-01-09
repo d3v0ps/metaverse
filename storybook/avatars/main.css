@@ -869,7 +869,7 @@ li {
 .ng-select .ng-select-container {
   color: #333;
   background-color: #ffffff;
-  border-radius: 4px;
+  border-radius: 10px;
   border: 1px solid #ccc;
   min-height: 36px;
   align-items: center;
@@ -1055,56 +1055,56 @@ li {
 
 .ng-dropdown-panel.ng-select-top {
   bottom: 100%;
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
   border-bottom-color: #e6e6e6;
   margin-bottom: -1px;
 }
 
 .ng-dropdown-panel.ng-select-top .ng-dropdown-panel-items .ng-option:first-child {
-  border-top-right-radius: 4px;
-  border-top-left-radius: 4px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 .ng-dropdown-panel.ng-select-right {
   left: 100%;
   top: 0;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
   border-bottom-color: #e6e6e6;
   margin-bottom: -1px;
 }
 
 .ng-dropdown-panel.ng-select-right .ng-dropdown-panel-items .ng-option:first-child {
-  border-top-right-radius: 4px;
+  border-top-right-radius: 10px;
 }
 
 .ng-dropdown-panel.ng-select-bottom {
   top: 100%;
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
   border-top-color: #e6e6e6;
   margin-top: -1px;
 }
 
 .ng-dropdown-panel.ng-select-bottom .ng-dropdown-panel-items .ng-option:last-child {
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .ng-dropdown-panel.ng-select-left {
   left: -100%;
   top: 0;
-  border-top-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
   border-bottom-color: #e6e6e6;
   margin-bottom: -1px;
 }
 
 .ng-dropdown-panel.ng-select-left .ng-dropdown-panel-items .ng-option:first-child {
-  border-top-left-radius: 4px;
+  border-top-left-radius: 10px;
 }
 
 .ng-dropdown-panel .ng-dropdown-header {
@@ -1317,6 +1317,326 @@ li {
 
 .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-disabled {
   color: var(--component-select-disabled-color);
+}
+
+.ng-select.ng-select--primary .ng-select-container {
+  color: var(--color-base-dark-medium);
+  background-color: var(--color-base-light-medium);
+  border: 1px solid var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--primary .ng-select-container .ng-value-container .ng-placeholder {
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--primary .ng-select-container .ng-value-container .icon__svg {
+  fill: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--primary .ng-option {
+  background-color: var(--color-base-light-medium);
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--primary .ng-option * {
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--primary .ng-option .icon__svg {
+  fill: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--primary .ng-option:hover, .ng-select.ng-select--primary .ng-option.ng-option-marked {
+  background-color: var(--color-base-primary-medium);
+  color: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--primary .ng-option:hover *, .ng-select.ng-select--primary .ng-option.ng-option-marked * {
+  color: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--primary .ng-option:hover .icon__svg, .ng-select.ng-select--primary .ng-option.ng-option-marked .icon__svg {
+  fill: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--secondary .ng-select-container {
+  color: var(--color-base-dark-medium);
+  background-color: var(--color-base-light-medium);
+  border: 1px solid var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--secondary .ng-select-container .ng-value-container .ng-placeholder {
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--secondary .ng-select-container .ng-value-container .icon__svg {
+  fill: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--secondary .ng-option {
+  background-color: var(--color-base-light-medium);
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--secondary .ng-option * {
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--secondary .ng-option .icon__svg {
+  fill: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--secondary .ng-option:hover, .ng-select.ng-select--secondary .ng-option.ng-option-marked {
+  background-color: var(--color-base-secondary-medium);
+  color: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--secondary .ng-option:hover *, .ng-select.ng-select--secondary .ng-option.ng-option-marked * {
+  color: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--secondary .ng-option:hover .icon__svg, .ng-select.ng-select--secondary .ng-option.ng-option-marked .icon__svg {
+  fill: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--success .ng-select-container {
+  color: var(--color-base-dark-medium);
+  background-color: var(--color-base-light-medium);
+  border: 1px solid var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--success .ng-select-container .ng-value-container .ng-placeholder {
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--success .ng-select-container .ng-value-container .icon__svg {
+  fill: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--success .ng-option {
+  background-color: var(--color-base-light-medium);
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--success .ng-option * {
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--success .ng-option .icon__svg {
+  fill: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--success .ng-option:hover, .ng-select.ng-select--success .ng-option.ng-option-marked {
+  background-color: var(--color-base-success-medium);
+  color: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--success .ng-option:hover *, .ng-select.ng-select--success .ng-option.ng-option-marked * {
+  color: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--success .ng-option:hover .icon__svg, .ng-select.ng-select--success .ng-option.ng-option-marked .icon__svg {
+  fill: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--warning .ng-select-container {
+  color: var(--color-base-dark-medium);
+  background-color: var(--color-base-light-medium);
+  border: 1px solid var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--warning .ng-select-container .ng-value-container .ng-placeholder {
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--warning .ng-select-container .ng-value-container .icon__svg {
+  fill: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--warning .ng-option {
+  background-color: var(--color-base-light-medium);
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--warning .ng-option * {
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--warning .ng-option .icon__svg {
+  fill: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--warning .ng-option:hover, .ng-select.ng-select--warning .ng-option.ng-option-marked {
+  background-color: var(--color-base-warning-medium);
+  color: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--warning .ng-option:hover *, .ng-select.ng-select--warning .ng-option.ng-option-marked * {
+  color: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--warning .ng-option:hover .icon__svg, .ng-select.ng-select--warning .ng-option.ng-option-marked .icon__svg {
+  fill: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--danger .ng-select-container {
+  color: var(--color-base-dark-medium);
+  background-color: var(--color-base-light-medium);
+  border: 1px solid var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--danger .ng-select-container .ng-value-container .ng-placeholder {
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--danger .ng-select-container .ng-value-container .icon__svg {
+  fill: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--danger .ng-option {
+  background-color: var(--color-base-light-medium);
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--danger .ng-option * {
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--danger .ng-option .icon__svg {
+  fill: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--danger .ng-option:hover, .ng-select.ng-select--danger .ng-option.ng-option-marked {
+  background-color: var(--color-base-danger-medium);
+  color: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--danger .ng-option:hover *, .ng-select.ng-select--danger .ng-option.ng-option-marked * {
+  color: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--danger .ng-option:hover .icon__svg, .ng-select.ng-select--danger .ng-option.ng-option-marked .icon__svg {
+  fill: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--info .ng-select-container {
+  color: var(--color-base-dark-medium);
+  background-color: var(--color-base-light-medium);
+  border: 1px solid var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--info .ng-select-container .ng-value-container .ng-placeholder {
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--info .ng-select-container .ng-value-container .icon__svg {
+  fill: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--info .ng-option {
+  background-color: var(--color-base-light-medium);
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--info .ng-option * {
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--info .ng-option .icon__svg {
+  fill: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--info .ng-option:hover, .ng-select.ng-select--info .ng-option.ng-option-marked {
+  background-color: var(--color-base-info-medium);
+  color: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--info .ng-option:hover *, .ng-select.ng-select--info .ng-option.ng-option-marked * {
+  color: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--info .ng-option:hover .icon__svg, .ng-select.ng-select--info .ng-option.ng-option-marked .icon__svg {
+  fill: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--dark .ng-select-container {
+  color: var(--color-base-dark-medium);
+  background-color: var(--color-base-light-medium);
+  border: 1px solid var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--dark .ng-select-container .ng-value-container .ng-placeholder {
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--dark .ng-select-container .ng-value-container .icon__svg {
+  fill: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--dark .ng-option {
+  background-color: var(--color-base-light-medium);
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--dark .ng-option * {
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--dark .ng-option .icon__svg {
+  fill: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--dark .ng-option:hover, .ng-select.ng-select--dark .ng-option.ng-option-marked {
+  background-color: var(--color-base-dark-medium);
+  color: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--dark .ng-option:hover *, .ng-select.ng-select--dark .ng-option.ng-option-marked * {
+  color: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--dark .ng-option:hover .icon__svg, .ng-select.ng-select--dark .ng-option.ng-option-marked .icon__svg {
+  fill: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--light .ng-select-container {
+  color: var(--color-base-dark-medium);
+  background-color: var(--color-base-light-medium);
+  border: 1px solid var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--light .ng-select-container .ng-value-container .ng-placeholder {
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--light .ng-select-container .ng-value-container .icon__svg {
+  fill: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--light .ng-option {
+  background-color: var(--color-base-light-medium);
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--light .ng-option * {
+  color: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--light .ng-option .icon__svg {
+  fill: var(--color-base-dark-medium);
+}
+
+.ng-select.ng-select--light .ng-option:hover, .ng-select.ng-select--light .ng-option.ng-option-marked {
+  background-color: var(--color-base-light-medium);
+  color: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--light .ng-option:hover *, .ng-select.ng-select--light .ng-option.ng-option-marked * {
+  color: var(--color-base-light-medium);
+}
+
+.ng-select.ng-select--light .ng-option:hover .icon__svg, .ng-select.ng-select--light .ng-option.ng-option-marked .icon__svg {
+  fill: var(--color-base-light-medium);
 }
 
 .badge {
@@ -2049,6 +2369,14 @@ input[type=checkbox]:disabled {
   overflow: auto;
 }
 
+.scene__content--splash-screen .scene-content {
+  display: none !important;
+}
+
+.scene__content--splash-screen .scene-content--splash-screen {
+  display: block !important;
+}
+
 .scene-content {
   padding: 20px;
   background-color: var(--component-scene-content-background-color);
@@ -2070,6 +2398,10 @@ cf-sidebar-container {
   height: 100%;
   width: 100%;
   overflow: hidden;
+}
+
+cf-sidebar {
+  z-index: 1;
 }
 
 .cf-sidebar {
@@ -2136,6 +2468,7 @@ cf-sidebar-container {
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 0;
 }
 
 .cf-sidebar__content--animate {
@@ -2301,6 +2634,22 @@ cf-sidebar-container {
   z-index: 9999;
 }
 
+.splash-screen--in-scene, .splash-screen--in-application {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 140px);
+  border-radius: 20px;
+}
+
+.splash-screen--in-scene .scene-content, .splash-screen--in-application .scene-content {
+  display: none;
+}
+
+.splash-screen--in-application {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
 .splash-screen__content {
   position: absolute;
   top: 50%;
@@ -2342,6 +2691,12 @@ cf-sidebar-container {
   margin: 0 auto;
   width: 100px;
   height: 100px;
+}
+
+.splash-screen__logo-image .icon__svg {
+  width: 100px;
+  height: 100px;
+  fill: var(--component-splash-screen-color, #000);
 }
 
 .splash-screen__loading-text {
@@ -2952,7 +3307,7 @@ cf-sidebar-container {
 .application-sheet {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   grid-gap: 2rem;
   gap: 2rem;
   padding: 20px;
@@ -2962,18 +3317,26 @@ cf-sidebar-container {
   border-top-right-radius: 20px;
 }
 
-.application-sheet .application-card {
-  max-width: 350px;
+.application-sheet__column {
+  display: flex;
+  flex-direction: column;
+  max-width: 60%;
+}
+
+.application-sheet .application-sheet__card {
+  max-width: 400px;
   max-height: 220px;
+  width: 100%;
+}
+
+.application-sheet .application-card {
+  max-width: 400px;
+  height: 120px;
   overflow-x: auto;
 }
 
 .application-sheet .application-card .application-description {
   max-width: 100%;
-}
-
-.application-sheet .application-description {
-  max-width: 30%;
 }
 
 .application-sheet .icon__svg {
@@ -3098,12 +3461,28 @@ cf-sidebar-container {
   fill: var(--component-application-toolbar-color);
 }
 
+.application-toolbar-shortcut {
+  display: flex;
+  color: var(--component-application-toolbar-color);
+}
+
+.application-toolbar-shortcut .icon__svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--component-application-toolbar-color);
+}
+
+.application-view--hidden .application-webview,
+.application-view--hidden .application-remote-module {
+  display: none;
+}
+
 .application-webview {
   border: 0;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   width: 100%;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 120px);
 }
 
 .application-webview--no-toolbar {
@@ -3117,7 +3496,7 @@ cf-sidebar-container {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   width: 100%;
-  height: calc(100vh - 300px);
+  height: calc(100vh - 120px);
 }
 
 .application-remote-module--no-toolbar {
@@ -3143,7 +3522,7 @@ cf-sidebar-container {
   background: linear-gradient(45deg, #02e1ba 0%, #26c9f2 29%, #d911f2 66%, #ffa079 100%);
   background-size: 400% 400%;
   animation: Gradient 15s ease infinite;
-  min-height: calc(100vh - 2rem);
+  min-height: calc(100vh - 4rem);
   display: flex;
   flex-direction: column;
   align-items: stretch;

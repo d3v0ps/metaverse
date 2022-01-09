@@ -239,7 +239,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>10</code>
+                        <i>Default value : </i><code>4</code>
                     </td>
                 </tr>
                     <tr>
@@ -267,7 +267,7 @@ import { Application } from &#x27;../models/application&#x27;;
 export class RecentlyOpenedApplicationsState {
   applications$ &#x3D; new BehaviorSubject&lt;Application[]&gt;([]);
 
-  private readonly maxApplications &#x3D; 10;
+  private readonly maxApplications &#x3D; 4;
 
   addApplication(application: Application) {
     const applications &#x3D; this.applications$.getValue();

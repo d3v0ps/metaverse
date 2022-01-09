@@ -151,13 +151,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/ApplicationToolbarModule.html" data-type="entity-link" >ApplicationToolbarModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-ApplicationToolbarModule-0fbbacb03824158596828c6688fbb06b"' : 'data-target="#xs-components-links-module-ApplicationToolbarModule-0fbbacb03824158596828c6688fbb06b"' }>
+                                            'data-target="#components-links-module-ApplicationToolbarModule-0d70644d160d6031655ff80a3f347807"' : 'data-target="#xs-components-links-module-ApplicationToolbarModule-0d70644d160d6031655ff80a3f347807"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ApplicationToolbarModule-0fbbacb03824158596828c6688fbb06b"' :
-                                            'id="xs-components-links-module-ApplicationToolbarModule-0fbbacb03824158596828c6688fbb06b"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ApplicationToolbarModule-0d70644d160d6031655ff80a3f347807"' :
+                                            'id="xs-components-links-module-ApplicationToolbarModule-0d70644d160d6031655ff80a3f347807"' }>
                                             <li class="link">
                                                 <a href="components/ApplicationToolbarComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ApplicationToolbarComponent</a>
                                             </li>
@@ -168,13 +168,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/ApplicationViewModule.html" data-type="entity-link" >ApplicationViewModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-ApplicationViewModule-df4414f3f1947e1d8da48849f67ee7b5"' : 'data-target="#xs-components-links-module-ApplicationViewModule-df4414f3f1947e1d8da48849f67ee7b5"' }>
+                                            'data-target="#components-links-module-ApplicationViewModule-91689559f0f557c690ad8577eedbae0a"' : 'data-target="#xs-components-links-module-ApplicationViewModule-91689559f0f557c690ad8577eedbae0a"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ApplicationViewModule-df4414f3f1947e1d8da48849f67ee7b5"' :
-                                            'id="xs-components-links-module-ApplicationViewModule-df4414f3f1947e1d8da48849f67ee7b5"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ApplicationViewModule-91689559f0f557c690ad8577eedbae0a"' :
+                                            'id="xs-components-links-module-ApplicationViewModule-91689559f0f557c690ad8577eedbae0a"' }>
                                             <li class="link">
                                                 <a href="components/ApplicationViewComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ApplicationViewComponent</a>
                                             </li>

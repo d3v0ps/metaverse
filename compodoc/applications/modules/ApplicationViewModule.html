@@ -188,11 +188,17 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
 import { NgModule } from &#x27;@angular/core&#x27;;
 import { BemModule } from &#x27;@central-factory/web-components/angular/bem/bem.module&#x27;;
+import { SplashScreenModule } from &#x27;@central-factory/web-components/angular/splash-screen/splash-screen.module&#x27;;
 import { ApplicationViewComponent } from &#x27;./application-view.component&#x27;;
 import { ApplicationWebviewModule } from &#x27;./components/application-webview/application-webview.module&#x27;;
 
 @NgModule({
-  imports: [CommonModule, BemModule, ApplicationWebviewModule],
+  imports: [
+    CommonModule,
+    BemModule,
+    ApplicationWebviewModule,
+    SplashScreenModule,
+  ],
   declarations: [ApplicationViewComponent],
   exports: [ApplicationViewComponent],
 })

@@ -132,6 +132,31 @@
         &gt;&lt;/cf-svg-icon&gt;
         {{ application.name }}
       &lt;/h3&gt;
+      &lt;div cfBlock&#x3D;&quot;application-toolbar-buttons&quot;&gt;
+        &lt;ng-select
+          [items]&#x3D;&quot;application.shortcuts || []&quot;
+          [classList]&#x3D;&quot;&#x27;ng-select--primary&#x27;&quot;
+          bindLabel&#x3D;&quot;name&quot;
+          style&#x3D;&quot;width: 300px;&quot;
+          placeholder&#x3D;&quot;Select a shortcut&quot;
+        &gt;
+          &lt;ng-template ng-option-tmp let-item&#x3D;&quot;item&quot;&gt;
+            &lt;div cfBlock&#x3D;&quot;application-toolbar-shortcut&quot;&gt;
+              &lt;cf-svg-icon
+                *ngIf&#x3D;&quot;icon&quot;
+                [src]&#x3D;&quot;
+                  item.icons &amp;&amp; item.icons.length &gt; 0
+                    ? item.icons[0].src
+                    : &#x27;&#x27;
+                &quot;
+                cfElem&#x3D;&quot;icon&quot;
+                [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+              &gt;&lt;/cf-svg-icon&gt;
+              {{ item.name }}
+            &lt;/div&gt;
+          &lt;/ng-template&gt;
+        &lt;/ng-select&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/ng-container&gt;
@@ -246,7 +271,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-toolbar/application-toolbar.component.ts:54</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-toolbar/application-toolbar.component.ts:79</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -270,7 +295,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-toolbar/application-toolbar.component.ts:66</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-toolbar/application-toolbar.component.ts:91</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -291,7 +316,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-toolbar/application-toolbar.component.ts:67</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-toolbar/application-toolbar.component.ts:92</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -326,7 +351,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-toolbar/application-toolbar.component.ts:72</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-toolbar/application-toolbar.component.ts:97</a></div>
                         </td>
                     </tr>
 
@@ -353,7 +378,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-toolbar/application-toolbar.component.ts:70</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-toolbar/application-toolbar.component.ts:95</a></div>
                         </td>
                     </tr>
 
@@ -380,7 +405,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-toolbar/application-toolbar.component.ts:69</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-toolbar/application-toolbar.component.ts:94</a></div>
                         </td>
                     </tr>
 
@@ -409,7 +434,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-toolbar/application-toolbar.component.ts:62</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-toolbar/application-toolbar.component.ts:87</a></div>
                                 </td>
                             </tr>
 
@@ -420,7 +445,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-toolbar/application-toolbar.component.ts:54</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-toolbar/application-toolbar.component.ts:79</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -514,6 +539,31 @@ import { Application, ColorVariation } from &#x27;../../../models/application&#x
             &gt;&lt;/cf-svg-icon&gt;
             {{ application.name }}
           &lt;/h3&gt;
+          &lt;div cfBlock&#x3D;&quot;application-toolbar-buttons&quot;&gt;
+            &lt;ng-select
+              [items]&#x3D;&quot;application.shortcuts || []&quot;
+              [classList]&#x3D;&quot;&#x27;ng-select--primary&#x27;&quot;
+              bindLabel&#x3D;&quot;name&quot;
+              style&#x3D;&quot;width: 300px;&quot;
+              placeholder&#x3D;&quot;Select a shortcut&quot;
+            &gt;
+              &lt;ng-template ng-option-tmp let-item&#x3D;&quot;item&quot;&gt;
+                &lt;div cfBlock&#x3D;&quot;application-toolbar-shortcut&quot;&gt;
+                  &lt;cf-svg-icon
+                    *ngIf&#x3D;&quot;icon&quot;
+                    [src]&#x3D;&quot;
+                      item.icons &amp;&amp; item.icons.length &gt; 0
+                        ? item.icons[0].src
+                        : &#x27;&#x27;
+                    &quot;
+                    cfElem&#x3D;&quot;icon&quot;
+                    [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+                  &gt;&lt;/cf-svg-icon&gt;
+                  {{ item.name }}
+                &lt;/div&gt;
+              &lt;/ng-template&gt;
+            &lt;/ng-select&gt;
+          &lt;/div&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/ng-container&gt;
@@ -570,7 +620,7 @@ export class ApplicationToolbarComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container *ngIf="application">  <div    cfBlock="application-toolbar"    [ngStyle]="{      \'background-color\': toolbarColor    }"  >    <div cfElem="content">      <div cfBlock="application-toolbar-buttons">        <button          cfBlock="button"          cfMod="danger"          (click)="closeButtonClick.emit(application)"        >          <cf-svg-icon            src="assets/icons/mdi/close.svg"            cfElem="icon"            [svgClass]="\'icon__svg\'"          ></cf-svg-icon>        </button>        <button          cfBlock="button"          cfMod="light"          (click)="optionsButtonClick.emit(application)"        >          <cf-svg-icon            src="assets/icons/mdi/dots-vertical.svg"            cfElem="icon"            [svgClass]="\'icon__svg\'"          ></cf-svg-icon>        </button>      </div>      <h3 cfBlock="application-toolbar-title">        <cf-svg-icon          *ngIf="icon"          [src]="icon"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>        {{ application.name }}      </h3>    </div>  </div></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-container *ngIf="application">  <div    cfBlock="application-toolbar"    [ngStyle]="{      \'background-color\': toolbarColor    }"  >    <div cfElem="content">      <div cfBlock="application-toolbar-buttons">        <button          cfBlock="button"          cfMod="danger"          (click)="closeButtonClick.emit(application)"        >          <cf-svg-icon            src="assets/icons/mdi/close.svg"            cfElem="icon"            [svgClass]="\'icon__svg\'"          ></cf-svg-icon>        </button>        <button          cfBlock="button"          cfMod="light"          (click)="optionsButtonClick.emit(application)"        >          <cf-svg-icon            src="assets/icons/mdi/dots-vertical.svg"            cfElem="icon"            [svgClass]="\'icon__svg\'"          ></cf-svg-icon>        </button>      </div>      <h3 cfBlock="application-toolbar-title">        <cf-svg-icon          *ngIf="icon"          [src]="icon"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>        {{ application.name }}      </h3>      <div cfBlock="application-toolbar-buttons">        <ng-select          [items]="application.shortcuts || []"          [classList]="\'ng-select--primary\'"          bindLabel="name"          style="width: 300px;"          placeholder="Select a shortcut"        >          <ng-template ng-option-tmp let-item="item">            <div cfBlock="application-toolbar-shortcut">              <cf-svg-icon                *ngIf="icon"                [src]="                  item.icons && item.icons.length > 0                    ? item.icons[0].src                    : \'\'                "                cfElem="icon"                [svgClass]="\'icon__svg\'"              ></cf-svg-icon>              {{ item.name }}            </div>          </ng-template>        </ng-select>      </div>    </div>  </div></ng-container></div>'
     var COMPONENTS = [{'name': 'ApplicationActionsComponent', 'selector': 'cf-application-actions'},{'name': 'ApplicationCardComponent', 'selector': 'cf-application-card'},{'name': 'ApplicationsCarouselComponent', 'selector': 'cf-applications-carousel'},{'name': 'ApplicationSheetComponent', 'selector': 'cf-application-sheet'},{'name': 'ApplicationShortcutComponent', 'selector': 'cf-application-shortcut'},{'name': 'ApplicationToolbarComponent', 'selector': 'cf-application-toolbar'},{'name': 'ApplicationViewComponent', 'selector': 'cf-application-view'},{'name': 'ApplicationWebviewComponent', 'selector': 'cf-application-webview'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ApplicationToolbarComponent'};

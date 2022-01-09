@@ -520,6 +520,11 @@
 
                     </td>
                 </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;icon__svg&#x27;</code>
+                    </td>
+                </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
                                     <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">libs/web-components/src/lib/angular/svg-icon/svg-icon.component.ts:39</a></div>
@@ -1705,7 +1710,7 @@ export class SvgIconComponent implements OnInit, OnDestroy, OnChanges, DoCheck {
   @Input() name?: string;
   @Input() stretch &#x3D; false;
   @Input() applyClass &#x3D; false;
-  @Input() svgClass?: any;
+  @Input() svgClass?: any &#x3D; &#x27;icon__svg&#x27;;
   // eslint-disable-next-line @angular-eslint/no-input-rename
   @Input(&#x27;class&#x27;) klass?: any;
   @Input() viewBox?: string;
