@@ -48,6 +48,68 @@ jobs:
   #       with:
   #         webhook: ${{ secrets.DISCORD_WEBHOOK }}
   #         title: 'Deploy Web: Run Tests'
+  # build_on_mac:
+  #   runs-on: macos-latest
+  #   steps:
+  #     - name: Checkout the repository
+  #       uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0
+
+  #     - name: Use Node.js 16.x
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 16.
+
+  # build_on_windows:
+  #   runs-on: windows-2016
+  #   steps:
+  #     - name: Checkout the repository
+  #       uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0
+
+  #     - name: Use Node.js 16.x
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 16.x
+  #     - name: install node tools
+  #       run: npm install --global --production windows-build-tools@4.0.0
+  #     - name: install node-gyp
+  #       run: npm install --global node-gyp@latest
+  #     - name: Set node config to use python2.7
+  #       run: npm config set python python2.7
+  #     - name: Set node config to set msvs_version to 2015
+  #       run: npm config set msvs_version 2015
+  #     - name: Work around for Windows Server 2019
+  #       run: set path=%path%;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin
+
+  #     - name: Install dependencies
+  #       run: npm ci
+  #     - name: check env
+  #       env:
+  #         ELECTRON: true
+  #         APP_VERSION_NUMBER: 0.5.9
+  #       run: set
+
+  #     - name: Build Portal
+  #       run: npx nx build portal --base-href=/metaverse/apps/portal/
+
+  #     - name: Build Electron
+  #       env:
+  #         ELECTRON: true
+  #         APP_VERSION_NUMBER: 0.5.9
+  #       run: npx nx run electron:build
+  #     - name: see directory
+  #       run: ls ./electron_dist
+  #     - uses: lucyio/upload-to-release@master
+  #       with:
+  #         name: portal-win
+  #         path: ./electron_dist/squirrel-windows
+  #         action: unpublished
+  #         release_id: 0.5.9
+  #         release-repo: d3v0ps/metaverse
+
 
   build:
     runs-on: ubuntu-latest

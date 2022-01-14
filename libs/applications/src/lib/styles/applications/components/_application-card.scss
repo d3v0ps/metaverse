@@ -32,6 +32,8 @@
   }
 
   .application-icon {
+    padding: 0 0.5rem;
+
     .icon__svg {
       fill: var(---component-application-card-font-color, #fff);
       filter: drop-shadow(3px 3px 2px rgb(0 0 0 / 0.4));
