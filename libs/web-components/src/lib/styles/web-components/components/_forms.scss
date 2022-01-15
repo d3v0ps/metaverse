@@ -1,6 +1,12 @@
 
 @use '../abstracts/variables/colors' as colors;
 
+:root {
+  --component-form-control-text-color: var(--color-base-primary-medium);
+  --component-form-control-border-color: var(--color-base-primary-medium);
+  --component-form-control-error-color: var(--color-base-danger-medium);
+}
+
 .form {
   display: block;
   margin-bottom: 1rem;
@@ -39,10 +45,10 @@
   line-height: 1.5;
   background-clip: padding-box;
   background: transparent;
-  color: var(--color-base-primary-medium);
+  color: var(--component-form-control-text-color);
 
   input {
-    border: 3px solid var(--color-base-primary-medium);
+    border: 3px solid var(--component-form-control-border-color);
     border-top: 0;
     border-right: 0;
     border-left: 0;
@@ -131,7 +137,7 @@
   font-weight: 400;
   margin-top: 0.25rem;
   margin-bottom: 0.5rem;
-  color: #f44336;
+  color: var(--component-form-control-error-color);
 }
 
 .form-buttons {

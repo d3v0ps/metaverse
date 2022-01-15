@@ -1,6 +1,11 @@
 
+:root {
+  --component-avatar-overview-small-preview-width: 100px;
+  --component-avatar-overview-small-preview-height: 100px;
+}
+
 .avatar-overview__small-preview {
-  width: 100px;
-  height: 100px;
+  width: var(--component-avatar-overview-small-preview-width);
+  height: var(--component-avatar-overview-small-preview-height);
   border-radius: 50px;
 }

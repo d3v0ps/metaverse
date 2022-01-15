@@ -1,14 +1,26 @@
 
+:root {
+  --component-asset-detail-border-color: var(--color-base-dark-dark);
+  --component-asset-detail-text-color: var(--component-scene-content-color);
+  --component-asset-detail-icon-color: var(--component-scene-content-color);
+  --component-asset-detail-stats-value-negative-color: var(--color-base-danger-medium);
+  --component-asset-detail-stats-value-positive-color: var(--color-base-success-medium);
+}
+
 .asset-detail {
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  border: 2px solid var(--color-base-dark-dark);
+  border: 2px solid var(--component-asset-detail-border-color);
   padding: 1rem;
+  color: var(--component-asset-detail-text-color);
+  height: 100%;
+  overflow: auto;
 
   &__image {
-    width: 100%;
+    max-width: 40%;
+    max-height: 40%;
     border-radius: 10px;
   }
 }
@@ -22,16 +34,16 @@
 
   &__value {
     &--negative {
-      color: var(--color-base-danger-medium);
+      color: var(--component-asset-detail-stats-value-negative-color);
     }
     &--positive {
-      color: var(--color-base-success-medium);
+      color: var(--component-asset-detail-stats-value-positive-color);
     }
   }
 
   &__icon {
     .icon__svg {
-      fill: var(--color-base-light-medium);
+      fill: var(--component-asset-detail-icon-color);
     }
   }
 }

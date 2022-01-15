@@ -1,4 +1,10 @@
 
+:root {
+  --component-avatars-carousel-item-text-color: var(--component-scene-content-color);
+  --component-avatars-carousel-item-hover-text-color: var(--color-base-primary-medium);
+  --component-avatars-carousel-item-hover-border-color: var(--color-base-primary-medium);
+}
+
 .avatars-carousel {
   display: flex;
   flex-direction: row;
@@ -20,10 +26,10 @@
   &:hover {
     transform: scale(1.05);
     & > .avatars-carousel-item__image {
-      border: 0.5rem solid var(--color-base-primary-medium);
+      border: 0.5rem solid var(--component-avatars-carousel-item-hover-border-color);
     }
     & > .avatars-carousel-item__name {
-      color: var(--color-base-primary-medium);
+      color: var(--component-avatars-carousel-item-hover-text-color);
     }
   }
 
@@ -38,6 +44,6 @@
     font-size: 1.5rem;
     font-weight: bold;
     margin: 0.5rem 0;
-    color: var(--color-base-light-medium);
+    color: var(--component-avatars-carousel-item-text-color);
   }
 }

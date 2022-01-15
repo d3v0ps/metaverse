@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import {
   Application,
-  ApplicationShortcut
+  ApplicationShortcut,
 } from '@central-factory/applications/models/application';
 import { RecentlyOpenedApplicationsState } from '@central-factory/applications/states/recently-opened-applications.state';
 import { SelectedApplicationState } from '@central-factory/applications/states/selected-application.state';
@@ -22,7 +22,7 @@ import {
   skip,
   switchMap,
   takeUntil,
-  tap
+  tap,
 } from 'rxjs/operators';
 
 export interface SidebarItem {
@@ -62,7 +62,7 @@ export enum SceneContentAnimationState {
             <cf-sidebar
               [(opened)]="sidebarIsOpen"
               [dock]="true"
-              [dockedSize]="'80px'"
+              [dockedSize]="'100px'"
               [showBackdrop]="true"
               [closeOnClickBackdrop]="true"
               [closeOnClickOutside]="true"

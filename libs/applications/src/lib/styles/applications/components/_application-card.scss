@@ -1,7 +1,14 @@
 
+
+:root {
+  --component-application-card-shadow-outset: 8px 8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-application-card-shadow-inset-primary:  -8px -8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-application-card-shadow-inset-secondary:  8px 8px 16px 0 rgba(255, 255, 255, 0.2);
+}
+
 .application-card {
   border-radius: 10px;
-  box-shadow: 0 1px 2px 0 #0000000d;
+  box-shadow: var(--component-application-card-shadow-outset), inset var(--component-application-card-shadow-inset-primary), inset var(--component-application-card-shadow-inset-secondary);
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -32,6 +39,8 @@
   }
 
   .application-icon {
+    padding: 0 0.5rem;
+
     .icon__svg {
       fill: var(---component-application-card-font-color, #fff);
       filter: drop-shadow(3px 3px 2px rgb(0 0 0 / 0.4));

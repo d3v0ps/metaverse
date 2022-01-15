@@ -1,4 +1,8 @@
 
+:root {
+  --component-spinner-color: var(--color-base-light-medium);
+}
+
 .spinner,
 .spinner > div {
   position: relative;
@@ -10,7 +14,7 @@
 .spinner {
   display: block;
   font-size: 0;
-  color: #fff;
+  color: var(--component-spinner-color);
 }
 
 .spinner > div {

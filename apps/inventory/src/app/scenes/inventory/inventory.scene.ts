@@ -12,15 +12,19 @@ import { UserAssetsState } from '@central-factory/assets/states/user-assets.stat
       } as data"
     >
       <div cfBlock="scene-content" cfMod="inventory" *ngIf="data.assets">
-        <cf-assets-grid
-          [assets]="data.assets"
-          [activeAsset]="selectedAsset"
-          (assetClick)="onGridAssetClick($event)"
-        ></cf-assets-grid>
-        <cf-asset-detail
-          *ngIf="selectedAsset"
-          [asset]="selectedAsset"
-        ></cf-asset-detail>
+        <div cfElem="assets-grid">
+          <cf-assets-grid
+            [assets]="data.assets"
+            [activeAsset]="selectedAsset"
+            (assetClick)="onGridAssetClick($event)"
+          ></cf-assets-grid>
+        </div>
+        <div cfElem="asset-detail">
+          <cf-asset-detail
+            *ngIf="selectedAsset"
+            [asset]="selectedAsset"
+          ></cf-asset-detail>
+        </div>
       </div>
     </ng-container>
   `,
@@ -28,8 +32,17 @@ import { UserAssetsState } from '@central-factory/assets/states/user-assets.stat
     `
       .scene-content {
         &--inventory {
-          display: flex;
+          display: grid;
+          grid-template-columns: 1.5fr 1fr;
+          grid-template-rows: 1fr;
           gap: 2rem;
+
+          .scene-content__assets-grid {
+            overflow: auto;
+          }
+
+          .scene-content__asset-detail {
+          }
         }
       }
     `,

@@ -1,3 +1,8 @@
+:root {
+  --component-scene-content-shadow-outset: 8px 8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-scene-content-shadow-inset-primary:  -8px -8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-scene-content-shadow-inset-secondary:  8px 8px 16px 0 rgba(255, 255, 255, 0.2);
+}
 
 .application {
   background-color: var(--component-scene-background-color);
@@ -48,6 +53,7 @@
   margin: 2rem auto 0 auto;
   border-radius: 20px;
   max-height: calc(100vh - 80px);
+  box-shadow: var(--component-scene-content-shadow-outset), inset var(--component-scene-content-shadow-inset-primary), inset var(--component-scene-content-shadow-inset-secondary);
 
   &--no-padding {
     padding: 0;

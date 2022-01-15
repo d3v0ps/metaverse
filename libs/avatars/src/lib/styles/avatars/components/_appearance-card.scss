@@ -1,16 +1,21 @@
 
-$card-width: 200px;
-$card-height: 240px;
+:root {
+  --component-appearance-card-width: 200px;
+  --component-appearance-card-height: 240px;
+}
+
+$card-width: var(--component-appearance-card-width);
+$card-height: var(--component-appearance-card-height);
 
 .appearance-card {
-  width: $card-width;
-  max-width: $card-width;
-  min-height: $card-height;
+  width: var(--component-appearance-card-width);
+  max-width: var(--component-appearance-card-width);
+  min-height: var(--component-appearance-card-height);
   margin-bottom: 10px;
 
   .card__picture {
-    max-width: $card-width;
-    min-height: $card-height;
+    max-width:  var(--component-appearance-card-width);
+    min-height: var(--component-appearance-card-height);
   }
 
   .card__footer {
@@ -18,7 +23,7 @@ $card-height: 240px;
   }
 
   .card__icon .icon__svg {
-    width: $card-width;
-    height: $card-height;
+    width:  var(--component-appearance-card-width);
+    height: var(--component-appearance-card-height);
   }
 }
