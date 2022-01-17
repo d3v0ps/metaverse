@@ -25,17 +25,17 @@ import type { Asset } from '../../../models/asset';
                 cfElem="value"
                 [ngClass]="{
                   'asset-stats__value--negative':
-                    asset.currentValue < asset.purchaseValue,
+                    asset.currentValue.eth < asset.purchaseValue.eth,
                   'asset-stats__value--positive':
-                    asset.currentValue > asset.purchaseValue
+                    asset.currentValue.eth > asset.purchaseValue.eth
                 }"
               >
-                {{ asset.currentValue | currency }}
+                {{ asset.currentValue.usd | currency }}
               </td>
             </tr>
             <tr cfElem="row">
               <td cfElem="label">Purchase Value</td>
-              <td cfElem="value">{{ asset.purchaseValue | currency }}</td>
+              <td cfElem="value">{{ asset.purchaseValue.usd | currency }}</td>
             </tr>
             <tr cfElem="row">
               <td cfElem="label">Purchase Date</td>

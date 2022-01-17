@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { AppearanceFormat } from '@central-factory/avatars';
 import { FormControl, FormGroup } from '@ng-stack/forms';
 import type { Avatar } from '../../../models/avatar';
 
@@ -7,13 +8,24 @@ export interface AvatarOverviewInput {
   name: string;
   title: string;
   smallPreviewUrl: string;
+  appearance: {
+    id: string;
+    format: AppearanceFormat;
+    src: string;
+    portrait: {
+      format: AppearanceFormat;
+      src: string;
+    };
+  };
 }
 
 @Component({
   selector: 'cf-avatar-overview',
   template: `
     <form [formGroup]="form" cfBlock="avatar-overview" *ngIf="form.value?.name">
-      <img cfElem="small-preview" [src]="form.value.smallPreviewUrl" />
+      <cf-avatar-appearance-portrait
+        [appearance]="form.value.appearance"
+      ></cf-avatar-appearance-portrait>
 
       <div cfBlock="chatbox">
         <div cfElem="message">
@@ -90,7 +102,8 @@ export class AvatarOverviewComponent {
       name: value.name,
       title: value.title,
       welcomeMessage: value.welcomeMessage,
-      smallPreviewUrl: value.selectedAppearance.smallPreviewUrl,
+      smallPreviewUrl: value.selectedAppearance.portrait.src,
+      appearance: value.selectedAppearance,
     });
   }
 
@@ -108,5 +121,14 @@ export class AvatarOverviewComponent {
     name: new FormControl(''),
     title: new FormControl(''),
     smallPreviewUrl: new FormControl(''),
+    appearance: new FormGroup({
+      id: new FormControl(''),
+      src: new FormControl(''),
+      format: new FormControl<AppearanceFormat>(null),
+      portrait: new FormGroup({
+        src: new FormControl(''),
+        format: new FormControl<AppearanceFormat>(null),
+      }),
+    }),
   });
 }

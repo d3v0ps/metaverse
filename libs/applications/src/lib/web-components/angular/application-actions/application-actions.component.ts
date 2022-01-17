@@ -17,64 +17,74 @@ import hotkeys from 'hotkeys-js';
     <ng-container *ngIf="application">
       <ul cfBlock="application-actions" *ngIf="mustBeInstalled">
         <li cfElem="item">
-          <button
-            cfBlock="button"
-            cfMod="big"
-            (click)="applicationInstallTrigger.emit(application)"
-          >
-            Install {{ application.name }}
-            <cf-svg-icon
-              src="assets/icons/mdi/view-grid-plus.svg"
-              cfElem="icon"
-              [svgClass]="'icon__svg'"
-            ></cf-svg-icon>
-          </button>
+          <div cfBlock="application-shortcut">
+            <button
+              cfBlock="button"
+              [cfMod]="['has-icon', 'full-width']"
+              (click)="applicationInstallTrigger.emit(application)"
+            >
+              <cf-svg-icon
+                src="assets/icons/mdi/view-grid-plus.svg"
+                cfElem="icon"
+                [svgClass]="'icon__svg'"
+              ></cf-svg-icon>
+              Install {{ application.name }}
+            </button>
+          </div>
         </li>
       </ul>
 
       <ul cfBlock="application-actions" *ngIf="!mustBeInstalled">
         <li cfElem="item">
-          <button
+          <div
+            cfBlock="application-shortcut"
             *ngIf="!isApplicationOpened && applicationIsSupported"
-            cfBlock="button"
-            cfMod="big"
-            (click)="applicationOpenTrigger.emit(application)"
           >
-            Open {{ application.name }}
-            <cf-svg-icon
-              src="assets/icons/mdi/link.svg"
-              cfElem="icon"
-              [svgClass]="'icon__svg'"
-            ></cf-svg-icon>
-          </button>
-          <a
-            [href]="applicationUrl"
-            target="__blank"
-            cfBlock="button"
-            cfMod="big"
-          >
-            Open {{ application.name }} in a new tab
-            <cf-svg-icon
-              src="assets/icons/mdi/web.svg"
-              cfElem="icon"
-              [svgClass]="'icon__svg'"
-            ></cf-svg-icon>
-          </a>
+            <button
+              cfBlock="button"
+              [cfMod]="['has-icon', 'full-width']"
+              (click)="applicationOpenTrigger.emit(application)"
+            >
+              <cf-svg-icon
+                src="assets/icons/mdi/link.svg"
+                cfElem="icon"
+                [svgClass]="'icon__svg'"
+              ></cf-svg-icon>
+              Open {{ application.name }}
+            </button>
+          </div>
         </li>
         <li cfElem="item">
-          <button
-            *ngIf="isApplicationOpened"
-            cfBlock="button"
-            [cfMod]="['big', 'danger']"
-            (click)="applicationCloseTrigger.emit(application)"
-          >
-            <cf-svg-icon
-              src="assets/icons/mdi/close.svg"
-              cfElem="icon"
-              [svgClass]="'icon__svg'"
-            ></cf-svg-icon>
-            Close {{ application.name }}
-          </button>
+          <div cfBlock="application-shortcut">
+            <button
+              cfBlock="button"
+              [cfMod]="['has-icon', 'full-width']"
+              (click)="onOpenApplicationInNewTabClick()"
+            >
+              <cf-svg-icon
+                src="assets/icons/mdi/web.svg"
+                cfElem="icon"
+                [svgClass]="'icon__svg'"
+              ></cf-svg-icon>
+              Open {{ application.name }} in a new tab
+            </button>
+          </div>
+        </li>
+        <li cfElem="item">
+          <div cfBlock="application-shortcut" *ngIf="isApplicationOpened">
+            <button
+              cfBlock="button"
+              [cfMod]="['has-icon', 'full-width']"
+              (click)="applicationCloseTrigger.emit(application)"
+            >
+              <cf-svg-icon
+                src="assets/icons/mdi/close.svg"
+                cfElem="icon"
+                [svgClass]="'icon__svg'"
+              ></cf-svg-icon>
+              Close {{ application.name }}
+            </button>
+          </div>
         </li>
         <li cfElem="item">
           <h3 cfBlock="text" cfMod="secondary">Shortcuts</h3>
@@ -98,16 +108,17 @@ import hotkeys from 'hotkeys-js';
                 #shortcutInput
               />
               <button
-                cfBlock="input-group-append"
+                cfBlock="button"
+                [cfMod]="['has-icon', 'secondary']"
                 type="submit"
-                class="button button--secondary"
+                class="input-group-append"
               >
-                Open URL
                 <cf-svg-icon
                   src="assets/icons/mdi/link.svg"
                   cfElem="icon"
                   [svgClass]="'icon__svg'"
                 ></cf-svg-icon>
+                Open URL
               </button>
             </div>
           </form>
@@ -191,5 +202,13 @@ export class ApplicationActionsComponent implements OnDestroy {
     this.application.shortcuts.forEach((shortcut, i) => {
       hotkeys.unbind(`ctrl + alt + ${i + 1}`);
     });
+  }
+
+  onOpenApplicationInNewTabClick() {
+    if (!this.applicationUrl) {
+      return;
+    }
+
+    window.open(this.applicationUrl, '_blank');
   }
 }

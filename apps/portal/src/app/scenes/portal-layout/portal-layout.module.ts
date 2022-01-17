@@ -2,6 +2,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AvatarAppearancePortraitModule } from '@central-factory/avatars/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.module';
 import { BemModule } from '@central-factory/web-components/angular/bem/bem.module';
 import { NavbarModule } from '@central-factory/web-components/angular/navbar/navbar.module';
 import { SidebarModule } from '@central-factory/web-components/angular/sidebar/sidebar.module';
@@ -19,6 +20,7 @@ import { PortalLayoutScene } from './portal-layout.scene';
     NavbarModule,
     SidebarModule,
     SplashScreenModule,
+    AvatarAppearancePortraitModule,
   ],
   declarations: [PortalLayoutScene],
   exports: [PortalLayoutScene],

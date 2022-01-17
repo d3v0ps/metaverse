@@ -11,7 +11,7 @@ export interface Asset<TAssetData extends AssetData = AssetDataDefault> {
   /** The producer's model of the asset */
   model: string;
   /** The description of the asset */
-  description: string;
+  description?: string;
   /** Whether the asset is digital or not */
   digital: boolean;
   /** Whether the asset is private or not */
@@ -23,9 +23,15 @@ export interface Asset<TAssetData extends AssetData = AssetDataDefault> {
   /** The preview url of the asset */
   previewUrl: string;
   /** The asset current market value */
-  currentValue: number;
+  currentValue: {
+    usd: string;
+    eth: string;
+  };
   /** The asset purchase market value */
-  purchaseValue: number;
+  purchaseValue: {
+    usd: string;
+    eth: string;
+  };
   /** The asset purchase date */
   purchaseDate: string;
   /** The asset data */

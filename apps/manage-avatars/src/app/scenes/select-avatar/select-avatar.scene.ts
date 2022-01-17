@@ -31,7 +31,7 @@ import { Observable, tap } from 'rxjs';
           <div cfElem="create-avatar">
             <button
               cfBlock="button"
-              [cfMod]="['primary', 'big']"
+              [cfMod]="['primary']"
               (click)="onCreateAvatarClick()"
             >
               Create a new Avatar

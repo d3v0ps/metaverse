@@ -73,8 +73,13 @@ export enum SceneContentAnimationState {
                     onSidebarItemClick({
                       name: 'Select Avatar',
                       routerLink: ['/select-avatar'],
-                      icon: data.selectedAvatar.selectedAppearance
-                        .smallPreviewUrl,
+                      icon: 'assets/icons/mdi/account-switch.svg',
+                      application: {
+                        id: 'com.central-factory.user-avatars',
+                        name: 'User Avatars',
+                        description: 'Select an avatar',
+                        startUrl: '/select-avatar'
+                      },
                       active: false
                     })
                   "
@@ -85,12 +90,14 @@ export enum SceneContentAnimationState {
                   <div cfElem="text">
                     <span cfElem="text-content">Account</span>
                   </div>
-                  <img
+                  <cf-avatar-appearance-portrait
+                    [appearance]="data.selectedAvatar.selectedAppearance"
+                  >
+                  </cf-avatar-appearance-portrait>
+                  <!-- img
                     cfElem="image"
-                    [src]="
-                      data.selectedAvatar.selectedAppearance.smallPreviewUrl
-                    "
-                  />
+                    [src]="data.selectedAvatar.selectedAppearance.portrait.src"
+                  /  -->
                 </a>
 
                 <ng-container *ngFor="let item of sidebarItems">

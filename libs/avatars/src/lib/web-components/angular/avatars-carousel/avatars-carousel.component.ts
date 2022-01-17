@@ -7,10 +7,11 @@ import type { Avatar } from '../../../models/avatar';
     <div cfBlock="avatars-carousel">
       <ng-container *ngFor="let avatar of avatars">
         <div cfBlock="avatars-carousel-item" (click)="avatarClick.emit(avatar)">
-          <img
-            cfElem="image"
-            [src]="avatar.selectedAppearance.smallPreviewUrl"
-          /><br />
+          <cf-avatar-appearance-portrait
+            [appearance]="avatar.selectedAppearance"
+          >
+          </cf-avatar-appearance-portrait>
+          <br />
           <h4 cfElem="name">{{ avatar.name }}</h4>
         </div>
       </ng-container>

@@ -1,4 +1,10 @@
 
+:root {
+  --component-splash-screen-shadow-outset: 8px 8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-splash-screen-screen-shadow-inset-primary:  -8px -8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-button-shadow-inset-secondary:  8px 8px 16px 0 rgba(255, 255, 255, 0.2);
+}
+
 .splash-screen {
   display: block;
   position: absolute;
@@ -16,6 +22,7 @@
     width: 100%;
     height: calc(100vh - 140px);
     border-radius: 20px;
+    box-shadow: var(--component-button-shadow-outset), inset var(--component-button-shadow-inset-primary), inset var(--component-button-shadow-inset-secondary);
 
     .scene-content {
       display: none;

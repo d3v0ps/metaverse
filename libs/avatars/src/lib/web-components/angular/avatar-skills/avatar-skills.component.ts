@@ -23,11 +23,7 @@ export class AvatarSkillsInput {
             *ngFor="let skill of skillsForm.controls; let i = index"
             class="skill-form"
           >
-            <button
-              type="button"
-              cfBlock="button"
-              cfMod="primary uppercase big"
-            >
+            <button type="button" cfBlock="button" cfMod="primary uppercase">
               <cf-svg-icon
                 src="assets/icons/mdi/{{
                   skillsIcons[skill.value.skill + '-' + skill.value.domain]
@@ -70,7 +66,7 @@ export class AvatarSkillsInput {
         </div>
       </div>
 
-      <button type="button" cfBlock="button" cfMod="primary uppercase big">
+      <button type="button" cfBlock="button" cfMod="primary uppercase">
         <cf-svg-icon
           src="assets/icons/mdi/plus.svg"
           cfElem="icon"

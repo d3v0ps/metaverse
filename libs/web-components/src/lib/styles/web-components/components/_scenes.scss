@@ -34,6 +34,7 @@
   }
 
   &__content {
+    padding: 2rem 1rem 2rem 0;
     &--splash-screen {
       .scene-content {
         display: none !important;
@@ -49,13 +50,16 @@
   padding: 20px;
   background-color: var(--component-scene-content-background-color);
   color: var(--component-scene-content-color);
-  width: var(--component-scene-content-expand);
-  margin: 2rem auto 0 auto;
+  width: 100%;
   border-radius: 20px;
   max-height: calc(100vh - 80px);
   box-shadow: var(--component-scene-content-shadow-outset), inset var(--component-scene-content-shadow-inset-primary), inset var(--component-scene-content-shadow-inset-secondary);
 
   &--no-padding {
     padding: 0;
+  }
+
+  &--remote-scene {
+    height: 100%;
   }
 }

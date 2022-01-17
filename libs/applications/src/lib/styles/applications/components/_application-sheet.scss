@@ -55,6 +55,10 @@
     &__item {
       max-width: 200px;
       display: contents;
+
+      .input-group {
+        min-width: max-content;
+      }
     }
   }
 

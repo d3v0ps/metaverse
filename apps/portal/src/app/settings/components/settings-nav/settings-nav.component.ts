@@ -6,19 +6,21 @@ import { Component } from '@angular/core';
     <ul>
       <li>
         <a
-          class="button button--big"
+          class="button button"
           routerLink="/settings/customization"
           routerLinkActive="button--primary"
-          >Customization</a
         >
+          Customization
+        </a>
       </li>
       <li>
         <a
-          class="button button--big"
+          class="button"
           routerLink="/settings/credits"
           routerLinkActive="button--primary"
-          >Credits</a
         >
+          Credits
+        </a>
       </li>
       <!-- li>
         <a class="button" routerLink="/settings/account">Account</a>

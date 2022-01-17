@@ -15,7 +15,7 @@ import { Application, ColorVariation } from '../../../models/application';
           <div cfBlock="application-toolbar-buttons">
             <button
               cfBlock="button"
-              cfMod="danger"
+              [cfMod]="['danger', 'small', 'has-icon', 'only-icon', 'rounded']"
               (click)="closeButtonClick.emit(application)"
             >
               <cf-svg-icon
@@ -26,7 +26,7 @@ import { Application, ColorVariation } from '../../../models/application';
             </button>
             <button
               cfBlock="button"
-              cfMod="light"
+              [cfMod]="['light', 'small', 'has-icon', 'only-icon', 'rounded']"
               (click)="optionsButtonClick.emit(application)"
             >
               <cf-svg-icon

@@ -71,12 +71,32 @@ export const userAssetsSchema: RxJsonSchema<UserAssetDocType> = {
       description: 'Preview url',
     },
     currentValue: {
-      type: 'number',
+      type: 'object',
       description: 'Current value',
+      properties: {
+        usd: {
+          type: 'string',
+          description: 'Usd',
+        },
+        eth: {
+          type: 'string',
+          description: 'Eth',
+        },
+      },
     },
     purchaseValue: {
-      type: 'number',
+      type: 'object',
       description: 'Purchase value',
+      properties: {
+        usd: {
+          type: 'string',
+          description: 'Usd',
+        },
+        eth: {
+          type: 'string',
+          description: 'Eth',
+        },
+      },
     },
     purchaseDate: {
       format: 'date-time',

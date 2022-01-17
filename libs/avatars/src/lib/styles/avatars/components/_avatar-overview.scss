@@ -1,11 +1,15 @@
 
 :root {
-  --component-avatar-overview-small-preview-width: 100px;
-  --component-avatar-overview-small-preview-height: 100px;
+  --component-avatar-overview-small-preview-width: 120px;
+  --component-avatar-overview-small-preview-height: 120px;
+  --component-avatar-overview-small-preview-background-color: var(--color-base-primary-medium);
 }
 
-.avatar-overview__small-preview {
-  width: var(--component-avatar-overview-small-preview-width);
-  height: var(--component-avatar-overview-small-preview-height);
-  border-radius: 50px;
+.avatar-overview {
+  .avatar-appearance-portrait {
+    width: var(--component-avatar-overview-small-preview-width);
+    height: var(--component-avatar-overview-small-preview-height);
+    background-color: var(--component-avatar-overview-small-preview-background-color);
+
+  }
 }

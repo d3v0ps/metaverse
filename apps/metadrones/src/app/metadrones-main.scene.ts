@@ -13,7 +13,9 @@ const droneMarker = marker([39.465985, -0.3838337], {
 @Component({
   selector: 'cf-metadrones-main',
   template: `
-    <div class="scene-content scene-content--metadrones">
+    <div
+      class="scene-content  scene-content--remote-scene scene-content--metadrones"
+    >
       <div
         style="width: 100%; height: 100%;"
         leaflet
@@ -27,7 +29,7 @@ const droneMarker = marker([39.465985, -0.3838337], {
       @import '~leaflet/dist/leaflet.css';
 
       .scene-content--metadrones {
-        height: 100vh;
+        height: 100%;
       }
     `,
   ],

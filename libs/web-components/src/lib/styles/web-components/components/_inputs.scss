@@ -1,28 +1,22 @@
 
-input, .input {
-  font-size: 16px;
-  font-size: max(16px, 1em);
+input, select {
+  font-size: var(--component-input-font-size);
   font-family: inherit;
-  padding: 0.25em 0.5em;
+  line-height: 2;
+
   background-color: var(--component-input-background-color);
-  border: 2px solid var(--component-input-border-color);
-  border-radius: 4px;
+  // border: 1px solid var(--component-input-border-color);
+  border: none;
+  border-radius: var(--component-input-border-radius);
+  color: var(--component-input-text-color);
+  box-shadow: var(--component-input-shadow-outset), inset var(--component-input-shadow-inset-primary), inset var(--component-input-shadow-inset-secondary);
   transition: 180ms box-shadow ease-in-out;
 
-  &:not(textarea) {
-    line-height: 1;
-    height: 2.25rem;
-  }
-
-  &[type="file"] {
-    font-size: 0.9em;
-    padding-top: 0.35rem;
-  }
 
   &[readonly] {
     border-style: dotted;
-    cursor: not-allowed;
     color: var(--component-input-readonly-color);
+    cursor: not-allowed;
   }
 
   &[disabled] {
@@ -31,17 +25,31 @@ input, .input {
     cursor: not-allowed;
   }
 
-  // &:focus {
-  //   border-color: hsl(var(--component-input-focus-h), var(--component-input-focus-s), var(--component-input-focus-l));
-  //   box-shadow: 0 0 0 3px hsla(var(--component-input-focus-h), var(--component-input-focus-s), calc(var(--component-input-focus-l) +
-  //           40%), 0.8);
-  //   outline: 3px solid transparent;
-  // }
+  &:focus {
+    outline: none;
+    border: 2px solid var(--component-input-border-color);
+    //   border-color: hsl(var(--component-input-focus-h), var(--component-input-focus-s), var(--component-input-focus-l));
+    //   box-shadow: 0 0 0 3px hsla(var(--component-input-focus-h), var(--component-input-focus-s), calc(var(--component-input-focus-l) +
+    //           40%), 0.8);
+    //   outline: 3px solid transparent;
+  }
 
+  &:hover {
+    filter: brightness(1.1);
+  }
 }
 
-textarea, .textarea {
-  resize: vertical;
+input {
+  padding: .5rem 1rem;
+}
+
+select {
+  padding: 1rem .5rem;
+}
+
+input[type="file"] {
+  font-size: 0.9em;
+  padding-top: 0.35rem;
 }
 
 input[type="checkbox"] {
@@ -92,4 +100,8 @@ input[type="checkbox"]:focus {
 input[type="checkbox"]:disabled {
   color: var(--component-input-disabled-border-color);
   cursor: not-allowed;
+}
+
+textarea, .textarea {
+  resize: vertical;
 }

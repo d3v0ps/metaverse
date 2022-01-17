@@ -8,13 +8,39 @@
 }
 
 .form {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  gap: 1rem;
   margin-bottom: 1rem;
   position: relative;
+
+  &--horizontal {
+    flex-direction: row;
+    align-items: unset;
+    flex-wrap: wrap;
+
+    .form-group {
+      flex-grow: 1;
+      .form-group {
+        .form-label {
+          word-break: break-word;
+          white-space: break-spaces;
+          max-width: fit-content;
+          display: block;
+        }
+      }
+    }
+
+    .form-buttons {
+      width: 100%;
+    }
+  }
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .form-label {
@@ -26,7 +52,7 @@
 
 .input-group {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin-bottom: 1rem;
 
   .form-control {
@@ -39,21 +65,10 @@
 .form-control {
   display: block;
   width: 100%;
-  padding: .35rem;
-  font-size: 1.2rem;
   font-weight: 700;
-  line-height: 1.5;
   background-clip: padding-box;
-  background: transparent;
-  color: var(--component-form-control-text-color);
 
   input {
-    border: 3px solid var(--component-form-control-border-color);
-    border-top: 0;
-    border-right: 0;
-    border-left: 0;
-    border-radius: 0;
-    padding: 1.5rem 1rem;
     &:active, &:focus {
       // font-size: 1.2rem;
       outline: none;
@@ -67,6 +82,7 @@
       &.form-control--#{$color} {
         color: var(--component-input-#{$color}-color);
         border-color: var(--component-input-#{$color}-background-color);
+        background-color: var(--component-input-#{$color}-color);
         .icon__svg {
           fill: var(--color-base-#{$color}-medium);
         }
@@ -104,9 +120,6 @@
 }
 
 .input-group-append {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   padding: .375rem .75rem;
   font-size: 1rem;
   font-weight: 400;
@@ -117,8 +130,8 @@
   border-start-end-radius: 4px;
 
   .icon__svg {
-    width: 1rem;
-    height: 1rem;
+    width: 2rem;
+    height: 2rem;
     fill: currentColor;
   }
 }

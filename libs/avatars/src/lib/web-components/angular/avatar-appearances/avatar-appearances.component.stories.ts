@@ -5,7 +5,7 @@ import { BemModule } from '@central-factory/web-components/angular/bem/bem.modul
 import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { appearancesMocks } from '../../../data/storybook/appearances';
-import { PreviewAvatarAppearanceModule } from '../preview-avatar-appearance/preview-avatar-appearance.module';
+import { AvatarAppearancesCarouselModule } from '../avatar-appearances-carousel/avatar-appearances-carousel.module';
 import { AvatarAppearancesComponent } from './avatar-appearances.component';
 
 export default {
@@ -20,7 +20,7 @@ export default {
         CommonModule,
         ReactiveFormsModule,
         BemModule,
-        PreviewAvatarAppearanceModule,
+        AvatarAppearancesCarouselModule,
       ],
     }),
   ],

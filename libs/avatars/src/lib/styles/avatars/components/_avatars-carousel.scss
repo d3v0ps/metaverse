@@ -11,7 +11,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 4rem;
 }
 
 .avatars-carousel-item {
@@ -25,19 +25,19 @@
 
   &:hover {
     transform: scale(1.05);
-    & > .avatars-carousel-item__image {
+    .avatar-appearance-portrait {
       border: 0.5rem solid var(--component-avatars-carousel-item-hover-border-color);
+      background-color: var(--component-avatars-carousel-item-hover-text-color);
     }
     & > .avatars-carousel-item__name {
       color: var(--component-avatars-carousel-item-hover-text-color);
     }
   }
 
-  &__image {
+  .avatar-appearance-portrait {
     width: 250px;
     height: 250px;
-    border-radius: 50%;
-    margin-top: 15px;
+    background-color: var(--component-avatars-carousel-item-text-color);
   }
 
   &__name {
