@@ -94,7 +94,7 @@
                 <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div cfBlock&#x3D;&quot;application-shortcut&quot; *ngIf&#x3D;&quot;view&quot;&gt;
   &lt;button
     cfBlock&#x3D;&quot;button&quot;
-    [cfMod]&#x3D;&quot;[theme, &#x27;big&#x27;]&quot;
+    [cfMod]&#x3D;&quot;[theme, showShortcutIcon ? &#x27;has-icon&#x27; : &#x27;&#x27;]&quot;
     (click)&#x3D;&quot;shortcutClick.emit(view)&quot;
     [ngStyle]&#x3D;&quot;{
       &#x27;background-color&#x27;: theme &#x3D;&#x3D;&#x3D; &#x27;application&#x27; ? view.color : &#x27;&#x27;
@@ -767,7 +767,7 @@ export type ApplicationShortcutView &#x3D; {
     &lt;div cfBlock&#x3D;&quot;application-shortcut&quot; *ngIf&#x3D;&quot;view&quot;&gt;
       &lt;button
         cfBlock&#x3D;&quot;button&quot;
-        [cfMod]&#x3D;&quot;[theme, &#x27;big&#x27;]&quot;
+        [cfMod]&#x3D;&quot;[theme, showShortcutIcon ? &#x27;has-icon&#x27; : &#x27;&#x27;]&quot;
         (click)&#x3D;&quot;shortcutClick.emit(view)&quot;
         [ngStyle]&#x3D;&quot;{
           &#x27;background-color&#x27;: theme &#x3D;&#x3D;&#x3D; &#x27;application&#x27; ? view.color : &#x27;&#x27;
@@ -888,7 +888,7 @@ export class ApplicationShortcutComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="application-shortcut" *ngIf="view">  <button    cfBlock="button"    [cfMod]="[theme, \'big\']"    (click)="shortcutClick.emit(view)"    [ngStyle]="{      \'background-color\': theme === \'application\' ? view.color : \'\'    }"  >    <ng-container [ngTemplateOutlet]="keyboardShortcut"></ng-container>    <cf-svg-icon      *ngIf="view.icon && showShortcutIcon"      [src]="view.icon"      cfElem="icon"      [svgClass]="\'icon__svg\'"    ></cf-svg-icon>    <p cfElem="label" *ngIf="view.label && showShortcutLabel">      {{ view.label }}    </p>  </button>  <ng-template #keyboardShortcut>    <div cfBlock="keyboard-shortcut">      <span>ctrl</span>      <span>+</span>      <span>alt</span>      <span>+</span>      <span>{{ shortcutIndex }}</span>    </div>  </ng-template></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="application-shortcut" *ngIf="view">  <button    cfBlock="button"    [cfMod]="[theme, showShortcutIcon ? \'has-icon\' : \'\']"    (click)="shortcutClick.emit(view)"    [ngStyle]="{      \'background-color\': theme === \'application\' ? view.color : \'\'    }"  >    <ng-container [ngTemplateOutlet]="keyboardShortcut"></ng-container>    <cf-svg-icon      *ngIf="view.icon && showShortcutIcon"      [src]="view.icon"      cfElem="icon"      [svgClass]="\'icon__svg\'"    ></cf-svg-icon>    <p cfElem="label" *ngIf="view.label && showShortcutLabel">      {{ view.label }}    </p>  </button>  <ng-template #keyboardShortcut>    <div cfBlock="keyboard-shortcut">      <span>ctrl</span>      <span>+</span>      <span>alt</span>      <span>+</span>      <span>{{ shortcutIndex }}</span>    </div>  </ng-template></div></div>'
     var COMPONENTS = [{'name': 'ApplicationActionsComponent', 'selector': 'cf-application-actions'},{'name': 'ApplicationCardComponent', 'selector': 'cf-application-card'},{'name': 'ApplicationsCarouselComponent', 'selector': 'cf-applications-carousel'},{'name': 'ApplicationSheetComponent', 'selector': 'cf-application-sheet'},{'name': 'ApplicationShortcutComponent', 'selector': 'cf-application-shortcut'},{'name': 'ApplicationToolbarComponent', 'selector': 'cf-application-toolbar'},{'name': 'ApplicationViewComponent', 'selector': 'cf-application-view'},{'name': 'ApplicationWebviewComponent', 'selector': 'cf-application-webview'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ApplicationShortcutComponent'};

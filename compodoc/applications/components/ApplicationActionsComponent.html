@@ -100,64 +100,74 @@
                 <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;ng-container *ngIf&#x3D;&quot;application&quot;&gt;
   &lt;ul cfBlock&#x3D;&quot;application-actions&quot; *ngIf&#x3D;&quot;mustBeInstalled&quot;&gt;
     &lt;li cfElem&#x3D;&quot;item&quot;&gt;
-      &lt;button
-        cfBlock&#x3D;&quot;button&quot;
-        cfMod&#x3D;&quot;big&quot;
-        (click)&#x3D;&quot;applicationInstallTrigger.emit(application)&quot;
-      &gt;
-        Install {{ application.name }}
-        &lt;cf-svg-icon
-          src&#x3D;&quot;assets/icons/mdi/view-grid-plus.svg&quot;
-          cfElem&#x3D;&quot;icon&quot;
-          [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-        &gt;&lt;/cf-svg-icon&gt;
-      &lt;/button&gt;
+      &lt;div cfBlock&#x3D;&quot;application-shortcut&quot;&gt;
+        &lt;button
+          cfBlock&#x3D;&quot;button&quot;
+          [cfMod]&#x3D;&quot;[&#x27;has-icon&#x27;, &#x27;full-width&#x27;]&quot;
+          (click)&#x3D;&quot;applicationInstallTrigger.emit(application)&quot;
+        &gt;
+          &lt;cf-svg-icon
+            src&#x3D;&quot;assets/icons/mdi/view-grid-plus.svg&quot;
+            cfElem&#x3D;&quot;icon&quot;
+            [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+          &gt;&lt;/cf-svg-icon&gt;
+          Install {{ application.name }}
+        &lt;/button&gt;
+      &lt;/div&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
 
   &lt;ul cfBlock&#x3D;&quot;application-actions&quot; *ngIf&#x3D;&quot;!mustBeInstalled&quot;&gt;
     &lt;li cfElem&#x3D;&quot;item&quot;&gt;
-      &lt;button
+      &lt;div
+        cfBlock&#x3D;&quot;application-shortcut&quot;
         *ngIf&#x3D;&quot;!isApplicationOpened &amp;&amp; applicationIsSupported&quot;
-        cfBlock&#x3D;&quot;button&quot;
-        cfMod&#x3D;&quot;big&quot;
-        (click)&#x3D;&quot;applicationOpenTrigger.emit(application)&quot;
       &gt;
-        Open {{ application.name }}
-        &lt;cf-svg-icon
-          src&#x3D;&quot;assets/icons/mdi/link.svg&quot;
-          cfElem&#x3D;&quot;icon&quot;
-          [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-        &gt;&lt;/cf-svg-icon&gt;
-      &lt;/button&gt;
-      &lt;a
-        [href]&#x3D;&quot;applicationUrl&quot;
-        target&#x3D;&quot;__blank&quot;
-        cfBlock&#x3D;&quot;button&quot;
-        cfMod&#x3D;&quot;big&quot;
-      &gt;
-        Open {{ application.name }} in a new tab
-        &lt;cf-svg-icon
-          src&#x3D;&quot;assets/icons/mdi/web.svg&quot;
-          cfElem&#x3D;&quot;icon&quot;
-          [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-        &gt;&lt;/cf-svg-icon&gt;
-      &lt;/a&gt;
+        &lt;button
+          cfBlock&#x3D;&quot;button&quot;
+          [cfMod]&#x3D;&quot;[&#x27;has-icon&#x27;, &#x27;full-width&#x27;]&quot;
+          (click)&#x3D;&quot;applicationOpenTrigger.emit(application)&quot;
+        &gt;
+          &lt;cf-svg-icon
+            src&#x3D;&quot;assets/icons/mdi/link.svg&quot;
+            cfElem&#x3D;&quot;icon&quot;
+            [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+          &gt;&lt;/cf-svg-icon&gt;
+          Open {{ application.name }}
+        &lt;/button&gt;
+      &lt;/div&gt;
     &lt;/li&gt;
     &lt;li cfElem&#x3D;&quot;item&quot;&gt;
-      &lt;button
-        *ngIf&#x3D;&quot;isApplicationOpened&quot;
-        cfBlock&#x3D;&quot;button&quot;
-        [cfMod]&#x3D;&quot;[&#x27;big&#x27;, &#x27;danger&#x27;]&quot;
-        (click)&#x3D;&quot;applicationCloseTrigger.emit(application)&quot;
-      &gt;
-        &lt;cf-svg-icon
-          src&#x3D;&quot;assets/icons/mdi/close.svg&quot;
-          cfElem&#x3D;&quot;icon&quot;
-          [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-        &gt;&lt;/cf-svg-icon&gt;
-        Close {{ application.name }}
-      &lt;/button&gt;
+      &lt;div cfBlock&#x3D;&quot;application-shortcut&quot;&gt;
+        &lt;button
+          cfBlock&#x3D;&quot;button&quot;
+          [cfMod]&#x3D;&quot;[&#x27;has-icon&#x27;, &#x27;full-width&#x27;]&quot;
+          (click)&#x3D;&quot;onOpenApplicationInNewTabClick()&quot;
+        &gt;
+          &lt;cf-svg-icon
+            src&#x3D;&quot;assets/icons/mdi/web.svg&quot;
+            cfElem&#x3D;&quot;icon&quot;
+            [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+          &gt;&lt;/cf-svg-icon&gt;
+          Open {{ application.name }} in a new tab
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li cfElem&#x3D;&quot;item&quot;&gt;
+      &lt;div cfBlock&#x3D;&quot;application-shortcut&quot; *ngIf&#x3D;&quot;isApplicationOpened&quot;&gt;
+        &lt;button
+          cfBlock&#x3D;&quot;button&quot;
+          [cfMod]&#x3D;&quot;[&#x27;has-icon&#x27;, &#x27;full-width&#x27;]&quot;
+          (click)&#x3D;&quot;applicationCloseTrigger.emit(application)&quot;
+        &gt;
+          &lt;cf-svg-icon
+            src&#x3D;&quot;assets/icons/mdi/close.svg&quot;
+            cfElem&#x3D;&quot;icon&quot;
+            [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+          &gt;&lt;/cf-svg-icon&gt;
+          Close {{ application.name }}
+        &lt;/button&gt;
+      &lt;/div&gt;
     &lt;/li&gt;
     &lt;li cfElem&#x3D;&quot;item&quot;&gt;
       &lt;h3 cfBlock&#x3D;&quot;text&quot; cfMod&#x3D;&quot;secondary&quot;&gt;Shortcuts&lt;/h3&gt;
@@ -181,16 +191,17 @@
             #shortcutInput
           /&gt;
           &lt;button
-            cfBlock&#x3D;&quot;input-group-append&quot;
+            cfBlock&#x3D;&quot;button&quot;
+            [cfMod]&#x3D;&quot;[&#x27;has-icon&#x27;, &#x27;secondary&#x27;]&quot;
             type&#x3D;&quot;submit&quot;
-            class&#x3D;&quot;button button--secondary&quot;
+            class&#x3D;&quot;input-group-append&quot;
           &gt;
-            Open URL
             &lt;cf-svg-icon
               src&#x3D;&quot;assets/icons/mdi/link.svg&quot;
               cfElem&#x3D;&quot;icon&quot;
               [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
             &gt;&lt;/cf-svg-icon&gt;
+            Open URL
           &lt;/button&gt;
         &lt;/div&gt;
       &lt;/form&gt;
@@ -263,6 +274,9 @@
                             </li>
                             <li>
                                 <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#onOpenApplicationInNewTabClick" >onOpenApplicationInNewTabClick</a>
                             </li>
                         </ul>
                     </td>
@@ -358,7 +372,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:130</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:141</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -384,7 +398,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:146</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:157</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -405,7 +419,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:142</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:153</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -426,7 +440,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:147</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:158</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -452,7 +466,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="145" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:145</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:156</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -478,7 +492,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:144</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:155</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -502,7 +516,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="163" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:163</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:174</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -523,7 +537,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:161</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="172" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:172</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -544,7 +558,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="162" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:162</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="173" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:173</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -565,7 +579,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:159</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:170</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -598,8 +612,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="186"
-                            class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:186</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="197"
+                            class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:197</a></div>
                 </td>
             </tr>
 
@@ -635,8 +649,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="172"
-                            class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:172</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="183"
+                            class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:183</a></div>
                 </td>
             </tr>
 
@@ -672,8 +686,45 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="168"
-                            class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:168</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="179"
+                            class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:179</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onOpenApplicationInNewTabClick"></a>
+                    <span class="name">
+                        <span ><b>onOpenApplicationInNewTabClick</b></span>
+                        <a href="#onOpenApplicationInNewTabClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onOpenApplicationInNewTabClick()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="207"
+                            class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:207</a></div>
                 </td>
             </tr>
 
@@ -716,7 +767,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:165</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:176</a></div>
                         </td>
                     </tr>
 
@@ -742,7 +793,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:166</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="177" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:177</a></div>
                         </td>
                     </tr>
 
@@ -771,7 +822,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:138</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:149</a></div>
                                 </td>
                             </tr>
 
@@ -782,7 +833,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:130</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:141</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -840,7 +891,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:155</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:166</a></div>
                                 </td>
                             </tr>
 
@@ -851,7 +902,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:147</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-actions/application-actions.component.ts:158</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -917,64 +968,74 @@ import hotkeys from &#x27;hotkeys-js&#x27;;
     &lt;ng-container *ngIf&#x3D;&quot;application&quot;&gt;
       &lt;ul cfBlock&#x3D;&quot;application-actions&quot; *ngIf&#x3D;&quot;mustBeInstalled&quot;&gt;
         &lt;li cfElem&#x3D;&quot;item&quot;&gt;
-          &lt;button
-            cfBlock&#x3D;&quot;button&quot;
-            cfMod&#x3D;&quot;big&quot;
-            (click)&#x3D;&quot;applicationInstallTrigger.emit(application)&quot;
-          &gt;
-            Install {{ application.name }}
-            &lt;cf-svg-icon
-              src&#x3D;&quot;assets/icons/mdi/view-grid-plus.svg&quot;
-              cfElem&#x3D;&quot;icon&quot;
-              [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-            &gt;&lt;/cf-svg-icon&gt;
-          &lt;/button&gt;
+          &lt;div cfBlock&#x3D;&quot;application-shortcut&quot;&gt;
+            &lt;button
+              cfBlock&#x3D;&quot;button&quot;
+              [cfMod]&#x3D;&quot;[&#x27;has-icon&#x27;, &#x27;full-width&#x27;]&quot;
+              (click)&#x3D;&quot;applicationInstallTrigger.emit(application)&quot;
+            &gt;
+              &lt;cf-svg-icon
+                src&#x3D;&quot;assets/icons/mdi/view-grid-plus.svg&quot;
+                cfElem&#x3D;&quot;icon&quot;
+                [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+              &gt;&lt;/cf-svg-icon&gt;
+              Install {{ application.name }}
+            &lt;/button&gt;
+          &lt;/div&gt;
         &lt;/li&gt;
       &lt;/ul&gt;
 
       &lt;ul cfBlock&#x3D;&quot;application-actions&quot; *ngIf&#x3D;&quot;!mustBeInstalled&quot;&gt;
         &lt;li cfElem&#x3D;&quot;item&quot;&gt;
-          &lt;button
+          &lt;div
+            cfBlock&#x3D;&quot;application-shortcut&quot;
             *ngIf&#x3D;&quot;!isApplicationOpened &amp;&amp; applicationIsSupported&quot;
-            cfBlock&#x3D;&quot;button&quot;
-            cfMod&#x3D;&quot;big&quot;
-            (click)&#x3D;&quot;applicationOpenTrigger.emit(application)&quot;
           &gt;
-            Open {{ application.name }}
-            &lt;cf-svg-icon
-              src&#x3D;&quot;assets/icons/mdi/link.svg&quot;
-              cfElem&#x3D;&quot;icon&quot;
-              [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-            &gt;&lt;/cf-svg-icon&gt;
-          &lt;/button&gt;
-          &lt;a
-            [href]&#x3D;&quot;applicationUrl&quot;
-            target&#x3D;&quot;__blank&quot;
-            cfBlock&#x3D;&quot;button&quot;
-            cfMod&#x3D;&quot;big&quot;
-          &gt;
-            Open {{ application.name }} in a new tab
-            &lt;cf-svg-icon
-              src&#x3D;&quot;assets/icons/mdi/web.svg&quot;
-              cfElem&#x3D;&quot;icon&quot;
-              [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-            &gt;&lt;/cf-svg-icon&gt;
-          &lt;/a&gt;
+            &lt;button
+              cfBlock&#x3D;&quot;button&quot;
+              [cfMod]&#x3D;&quot;[&#x27;has-icon&#x27;, &#x27;full-width&#x27;]&quot;
+              (click)&#x3D;&quot;applicationOpenTrigger.emit(application)&quot;
+            &gt;
+              &lt;cf-svg-icon
+                src&#x3D;&quot;assets/icons/mdi/link.svg&quot;
+                cfElem&#x3D;&quot;icon&quot;
+                [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+              &gt;&lt;/cf-svg-icon&gt;
+              Open {{ application.name }}
+            &lt;/button&gt;
+          &lt;/div&gt;
         &lt;/li&gt;
         &lt;li cfElem&#x3D;&quot;item&quot;&gt;
-          &lt;button
-            *ngIf&#x3D;&quot;isApplicationOpened&quot;
-            cfBlock&#x3D;&quot;button&quot;
-            [cfMod]&#x3D;&quot;[&#x27;big&#x27;, &#x27;danger&#x27;]&quot;
-            (click)&#x3D;&quot;applicationCloseTrigger.emit(application)&quot;
-          &gt;
-            &lt;cf-svg-icon
-              src&#x3D;&quot;assets/icons/mdi/close.svg&quot;
-              cfElem&#x3D;&quot;icon&quot;
-              [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-            &gt;&lt;/cf-svg-icon&gt;
-            Close {{ application.name }}
-          &lt;/button&gt;
+          &lt;div cfBlock&#x3D;&quot;application-shortcut&quot;&gt;
+            &lt;button
+              cfBlock&#x3D;&quot;button&quot;
+              [cfMod]&#x3D;&quot;[&#x27;has-icon&#x27;, &#x27;full-width&#x27;]&quot;
+              (click)&#x3D;&quot;onOpenApplicationInNewTabClick()&quot;
+            &gt;
+              &lt;cf-svg-icon
+                src&#x3D;&quot;assets/icons/mdi/web.svg&quot;
+                cfElem&#x3D;&quot;icon&quot;
+                [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+              &gt;&lt;/cf-svg-icon&gt;
+              Open {{ application.name }} in a new tab
+            &lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li cfElem&#x3D;&quot;item&quot;&gt;
+          &lt;div cfBlock&#x3D;&quot;application-shortcut&quot; *ngIf&#x3D;&quot;isApplicationOpened&quot;&gt;
+            &lt;button
+              cfBlock&#x3D;&quot;button&quot;
+              [cfMod]&#x3D;&quot;[&#x27;has-icon&#x27;, &#x27;full-width&#x27;]&quot;
+              (click)&#x3D;&quot;applicationCloseTrigger.emit(application)&quot;
+            &gt;
+              &lt;cf-svg-icon
+                src&#x3D;&quot;assets/icons/mdi/close.svg&quot;
+                cfElem&#x3D;&quot;icon&quot;
+                [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+              &gt;&lt;/cf-svg-icon&gt;
+              Close {{ application.name }}
+            &lt;/button&gt;
+          &lt;/div&gt;
         &lt;/li&gt;
         &lt;li cfElem&#x3D;&quot;item&quot;&gt;
           &lt;h3 cfBlock&#x3D;&quot;text&quot; cfMod&#x3D;&quot;secondary&quot;&gt;Shortcuts&lt;/h3&gt;
@@ -998,16 +1059,17 @@ import hotkeys from &#x27;hotkeys-js&#x27;;
                 #shortcutInput
               /&gt;
               &lt;button
-                cfBlock&#x3D;&quot;input-group-append&quot;
+                cfBlock&#x3D;&quot;button&quot;
+                [cfMod]&#x3D;&quot;[&#x27;has-icon&#x27;, &#x27;secondary&#x27;]&quot;
                 type&#x3D;&quot;submit&quot;
-                class&#x3D;&quot;button button--secondary&quot;
+                class&#x3D;&quot;input-group-append&quot;
               &gt;
-                Open URL
                 &lt;cf-svg-icon
                   src&#x3D;&quot;assets/icons/mdi/link.svg&quot;
                   cfElem&#x3D;&quot;icon&quot;
                   [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
                 &gt;&lt;/cf-svg-icon&gt;
+                Open URL
               &lt;/button&gt;
             &lt;/div&gt;
           &lt;/form&gt;
@@ -1092,6 +1154,14 @@ export class ApplicationActionsComponent implements OnDestroy {
       hotkeys.unbind(&#x60;ctrl + alt + ${i + 1}&#x60;);
     });
   }
+
+  onOpenApplicationInNewTabClick() {
+    if (!this.applicationUrl) {
+      return;
+    }
+
+    window.open(this.applicationUrl, &#x27;_blank&#x27;);
+  }
 }
 </code></pre>
     </div>
@@ -1123,7 +1193,7 @@ export class ApplicationActionsComponent implements OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container *ngIf="application">  <ul cfBlock="application-actions" *ngIf="mustBeInstalled">    <li cfElem="item">      <button        cfBlock="button"        cfMod="big"        (click)="applicationInstallTrigger.emit(application)"      >        Install {{ application.name }}        <cf-svg-icon          src="assets/icons/mdi/view-grid-plus.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>      </button>    </li>  </ul>  <ul cfBlock="application-actions" *ngIf="!mustBeInstalled">    <li cfElem="item">      <button        *ngIf="!isApplicationOpened && applicationIsSupported"        cfBlock="button"        cfMod="big"        (click)="applicationOpenTrigger.emit(application)"      >        Open {{ application.name }}        <cf-svg-icon          src="assets/icons/mdi/link.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>      </button>      <a        [href]="applicationUrl"        target="__blank"        cfBlock="button"        cfMod="big"      >        Open {{ application.name }} in a new tab        <cf-svg-icon          src="assets/icons/mdi/web.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>      </a>    </li>    <li cfElem="item">      <button        *ngIf="isApplicationOpened"        cfBlock="button"        [cfMod]="[\'big\', \'danger\']"        (click)="applicationCloseTrigger.emit(application)"      >        <cf-svg-icon          src="assets/icons/mdi/close.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>        Close {{ application.name }}      </button>    </li>    <li cfElem="item">      <h3 cfBlock="text" cfMod="secondary">Shortcuts</h3>      <form        (submit)="          $event.preventDefault();          applicationShortcutTrigger.emit({            name: shortcutInput.value,            url: application.startUrl + shortcutInput.value,            icons: application.icons          })        "      >        <div cfBlock="input-group">          <input            type="text"            class="input"            cfBlock="form-control"            cfMod="secondary"            placeholder="Custom URL"            #shortcutInput          />          <button            cfBlock="input-group-append"            type="submit"            class="button button--secondary"          >            Open URL            <cf-svg-icon              src="assets/icons/mdi/link.svg"              cfElem="icon"              [svgClass]="\'icon__svg\'"            ></cf-svg-icon>          </button>        </div>      </form>      <div cfBlock="application-shortcuts">        <cf-application-shortcut          *ngFor="let shortcut of application.shortcuts; let i = index"          [shortcutIndex]="i + 1"          [theme]="\'application\'"          [shortcut]="shortcut"          [application]="application"          (shortcutClick)="applicationShortcutTrigger.emit(shortcut)"        ></cf-application-shortcut>      </div>    </li>  </ul></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-container *ngIf="application">  <ul cfBlock="application-actions" *ngIf="mustBeInstalled">    <li cfElem="item">      <div cfBlock="application-shortcut">        <button          cfBlock="button"          [cfMod]="[\'has-icon\', \'full-width\']"          (click)="applicationInstallTrigger.emit(application)"        >          <cf-svg-icon            src="assets/icons/mdi/view-grid-plus.svg"            cfElem="icon"            [svgClass]="\'icon__svg\'"          ></cf-svg-icon>          Install {{ application.name }}        </button>      </div>    </li>  </ul>  <ul cfBlock="application-actions" *ngIf="!mustBeInstalled">    <li cfElem="item">      <div        cfBlock="application-shortcut"        *ngIf="!isApplicationOpened && applicationIsSupported"      >        <button          cfBlock="button"          [cfMod]="[\'has-icon\', \'full-width\']"          (click)="applicationOpenTrigger.emit(application)"        >          <cf-svg-icon            src="assets/icons/mdi/link.svg"            cfElem="icon"            [svgClass]="\'icon__svg\'"          ></cf-svg-icon>          Open {{ application.name }}        </button>      </div>    </li>    <li cfElem="item">      <div cfBlock="application-shortcut">        <button          cfBlock="button"          [cfMod]="[\'has-icon\', \'full-width\']"          (click)="onOpenApplicationInNewTabClick()"        >          <cf-svg-icon            src="assets/icons/mdi/web.svg"            cfElem="icon"            [svgClass]="\'icon__svg\'"          ></cf-svg-icon>          Open {{ application.name }} in a new tab        </button>      </div>    </li>    <li cfElem="item">      <div cfBlock="application-shortcut" *ngIf="isApplicationOpened">        <button          cfBlock="button"          [cfMod]="[\'has-icon\', \'full-width\']"          (click)="applicationCloseTrigger.emit(application)"        >          <cf-svg-icon            src="assets/icons/mdi/close.svg"            cfElem="icon"            [svgClass]="\'icon__svg\'"          ></cf-svg-icon>          Close {{ application.name }}        </button>      </div>    </li>    <li cfElem="item">      <h3 cfBlock="text" cfMod="secondary">Shortcuts</h3>      <form        (submit)="          $event.preventDefault();          applicationShortcutTrigger.emit({            name: shortcutInput.value,            url: application.startUrl + shortcutInput.value,            icons: application.icons          })        "      >        <div cfBlock="input-group">          <input            type="text"            class="input"            cfBlock="form-control"            cfMod="secondary"            placeholder="Custom URL"            #shortcutInput          />          <button            cfBlock="button"            [cfMod]="[\'has-icon\', \'secondary\']"            type="submit"            class="input-group-append"          >            <cf-svg-icon              src="assets/icons/mdi/link.svg"              cfElem="icon"              [svgClass]="\'icon__svg\'"            ></cf-svg-icon>            Open URL          </button>        </div>      </form>      <div cfBlock="application-shortcuts">        <cf-application-shortcut          *ngFor="let shortcut of application.shortcuts; let i = index"          [shortcutIndex]="i + 1"          [theme]="\'application\'"          [shortcut]="shortcut"          [application]="application"          (shortcutClick)="applicationShortcutTrigger.emit(shortcut)"        ></cf-application-shortcut>      </div>    </li>  </ul></ng-container></div>'
     var COMPONENTS = [{'name': 'ApplicationActionsComponent', 'selector': 'cf-application-actions'},{'name': 'ApplicationCardComponent', 'selector': 'cf-application-card'},{'name': 'ApplicationsCarouselComponent', 'selector': 'cf-applications-carousel'},{'name': 'ApplicationSheetComponent', 'selector': 'cf-application-sheet'},{'name': 'ApplicationShortcutComponent', 'selector': 'cf-application-shortcut'},{'name': 'ApplicationToolbarComponent', 'selector': 'cf-application-toolbar'},{'name': 'ApplicationViewComponent', 'selector': 'cf-application-view'},{'name': 'ApplicationWebviewComponent', 'selector': 'cf-application-webview'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ApplicationActionsComponent'};

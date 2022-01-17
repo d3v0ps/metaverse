@@ -120,7 +120,7 @@
       &lt;div cfElem&#x3D;&quot;create-avatar&quot;&gt;
         &lt;button
           cfBlock&#x3D;&quot;button&quot;
-          [cfMod]&#x3D;&quot;[&#x27;primary&#x27;, &#x27;big&#x27;]&quot;
+          [cfMod]&#x3D;&quot;[&#x27;primary&#x27;]&quot;
           (click)&#x3D;&quot;onCreateAvatarClick()&quot;
         &gt;
           Create a new Avatar
@@ -463,7 +463,7 @@ import { Observable, tap } from &#x27;rxjs&#x27;;
           &lt;div cfElem&#x3D;&quot;create-avatar&quot;&gt;
             &lt;button
               cfBlock&#x3D;&quot;button&quot;
-              [cfMod]&#x3D;&quot;[&#x27;primary&#x27;, &#x27;big&#x27;]&quot;
+              [cfMod]&#x3D;&quot;[&#x27;primary&#x27;]&quot;
               (click)&#x3D;&quot;onCreateAvatarClick()&quot;
             &gt;
               Create a new Avatar
@@ -525,8 +525,8 @@ export class SelectAvatarScene {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    avatars: avatars$ | async  } as data">  <div cfBlock="scene-content">    <div cfBlock="select-avatar">      <h2 cfElem="title" *ngIf="data.avatars && data.avatars.length > 0">        Select an Avatar      </h2>      <div        cfElem="avatars-carousel"        *ngIf="data.avatars && data.avatars.length > 0"      >        <cf-avatars-carousel          [avatars]="data.avatars"          (avatarClick)="onAvatarClick($event)"        ></cf-avatars-carousel>      </div>      <div cfElem="create-avatar">        <button          cfBlock="button"          [cfMod]="[\'primary\', \'big\']"          (click)="onCreateAvatarClick()"        >          Create a new Avatar        </button>      </div>    </div>  </div></ng-container></div>'
-    var COMPONENTS = [{'name': 'CreateAvatarScene', 'selector': 'cf-create-avatar'},{'name': 'ManageAvatarsRoot', 'selector': 'cf-manage-avatars-root'},{'name': 'SelectAvatarScene', 'selector': 'cf-select-avatar'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
+        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    avatars: avatars$ | async  } as data">  <div cfBlock="scene-content">    <div cfBlock="select-avatar">      <h2 cfElem="title" *ngIf="data.avatars && data.avatars.length > 0">        Select an Avatar      </h2>      <div        cfElem="avatars-carousel"        *ngIf="data.avatars && data.avatars.length > 0"      >        <cf-avatars-carousel          [avatars]="data.avatars"          (avatarClick)="onAvatarClick($event)"        ></cf-avatars-carousel>      </div>      <div cfElem="create-avatar">        <button          cfBlock="button"          [cfMod]="[\'primary\']"          (click)="onCreateAvatarClick()"        >          Create a new Avatar        </button>      </div>    </div>  </div></ng-container></div>'
+    var COMPONENTS = [{'name': 'CreateAvatarScene', 'selector': 'cf-create-avatar'},{'name': 'ManageAvatarAppearancesScene', 'selector': 'cf-manage-avatar-appearances-scene'},{'name': 'ManageAvatarsRoot', 'selector': 'cf-manage-avatars-root'},{'name': 'SelectAvatarScene', 'selector': 'cf-select-avatar'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SelectAvatarScene'};
 </script>

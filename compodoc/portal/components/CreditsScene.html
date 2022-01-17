@@ -95,25 +95,13 @@
   &lt;h4&gt;Technologies&lt;/h4&gt;
   &lt;p&gt;This app was built with the following technologies:&lt;/p&gt;
   &lt;ul&gt;
-    &lt;li&gt;
-      &lt;a href&#x3D;&quot;https://www.typescriptlang.org/&quot;&gt;TypeScript v4.3.5&lt;/a&gt;
-      &lt;p&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-      &lt;a href&#x3D;&quot;https://angular.io/&quot;&gt;Angular v13&lt;/a&gt;
-      &lt;p&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-      &lt;a href&#x3D;&quot;https://angular.io/&quot;&gt;ng-selet v8.1.1&lt;/a&gt;
-      &lt;p&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-      &lt;a href&#x3D;&quot;https://rxjs.io/&quot;&gt;RxJS v6.6.0&lt;/a&gt;
-      &lt;p&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-      &lt;a href&#x3D;&quot;https://rxdb.io/&quot;&gt;RxDB v10.5.4&lt;/a&gt;
-      &lt;p&gt;&lt;/p&gt;
+    &lt;li *ngFor&#x3D;&quot;let item of technologies&quot;&gt;
+      &lt;ng-container
+        *ngTemplateOutlet&#x3D;&quot;
+          creditsItemTemplate;
+          context: { item: this.item }
+        &quot;
+      &gt;&lt;/ng-container&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
@@ -121,19 +109,57 @@
   &lt;h4&gt;Visual Assets&lt;/h4&gt;
   &lt;p&gt;This app uses the following assets:&lt;/p&gt;
   &lt;ul&gt;
-    &lt;li&gt;
-      &lt;a href&#x3D;&quot;https://materialdesignicons.com/&quot;
-        &gt;Material Design Icons v6.4.95&lt;/a
-      &gt;
-      &lt;p&gt;&lt;/p&gt;
+    &lt;li *ngFor&#x3D;&quot;let item of visualAssets&quot;&gt;
+      &lt;ng-container
+        *ngTemplateOutlet&#x3D;&quot;
+          creditsItemTemplate;
+          context: { item: this.item }
+        &quot;
+      &gt;&lt;/ng-container&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
+&lt;ng-template #creditsItemTemplate let-item&#x3D;&quot;item&quot;&gt;
+  &lt;a [href]&#x3D;&quot;item.link&quot;&gt;{{ item.label }} {{ item.version }}&lt;/a&gt;
+&lt;/ng-template&gt;
 </code></pre></td>
             </tr>
 
 
 
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#technologies" >technologies</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#visualAssets" >visualAssets</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
@@ -150,13 +176,135 @@
 
 
 
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="technologies"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>technologies</b></span>
+                        <a href="#technologies"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#CreditsItem" target="_self" >CreditsItem[]</a></code>
 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    {
+      label: &#x27;TypeScript&#x27;,
+      link: &#x27;https://www.typescriptlang.org/&#x27;,
+      version: &#x27;4.3.5&#x27;,
+    },
+    {
+      label: &#x27;Angular&#x27;,
+      link: &#x27;https://angular.io/&#x27;,
+      version: &#x27;13&#x27;,
+    },
+    {
+      label: &#x27;RxJS&#x27;,
+      link: &#x27;https://rxjs.io/&#x27;,
+      version: &#x27;6.6.0&#x27;,
+    },
+    {
+      label: &#x27;RxDB&#x27;,
+      link: &#x27;https://rxdb.io/&#x27;,
+      version: &#x27;10.5.4&#x27;,
+    },
+    {
+      label: &#x27;ng-select&#x27;,
+      link: &#x27;https://ng-select.github.io/ng-select&#x27;,
+      version: &#x27;8.1.1&#x27;,
+    },
+    {
+      label: &#x27;ng-animate&#x27;,
+      link: &#x27;https://jiayihu.github.io/ng-animate/&#x27;,
+      version: &#x27;1.0.0&#x27;,
+    },
+    {
+      label: &#x27;model-viewer&#x27;,
+      link: &#x27;https://modelviewer.dev/&#x27;,
+      version: &#x27;1.9.2&#x27;,
+    },
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">apps/portal/src/app/settings/scenes/credits/credits.scene.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="visualAssets"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>visualAssets</b></span>
+                        <a href="#visualAssets"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#CreditsItem" target="_self" >CreditsItem[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    {
+      label: &#x27;Material Design Icons&#x27;,
+      link: &#x27;https://materialdesignicons.com/&#x27;,
+      version: &#x27;6.4.95&#x27;,
+    },
+    {
+      label: &#x27;Simple Icons&#x27;,
+      link: &#x27;https://simpleicons.org/&#x27;,
+      version: &#x27;6.5.0&#x27;,
+    },
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">apps/portal/src/app/settings/scenes/credits/credits.scene.ts:84</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
 
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+
+export type CreditsItem &#x3D; {
+  label: string;
+  link: string;
+  version?: string;
+};
 
 @Component({
   selector: &#x27;cf-credits&#x27;,
@@ -165,25 +313,13 @@
       &lt;h4&gt;Technologies&lt;/h4&gt;
       &lt;p&gt;This app was built with the following technologies:&lt;/p&gt;
       &lt;ul&gt;
-        &lt;li&gt;
-          &lt;a href&#x3D;&quot;https://www.typescriptlang.org/&quot;&gt;TypeScript v4.3.5&lt;/a&gt;
-          &lt;p&gt;&lt;/p&gt;
-        &lt;/li&gt;
-        &lt;li&gt;
-          &lt;a href&#x3D;&quot;https://angular.io/&quot;&gt;Angular v13&lt;/a&gt;
-          &lt;p&gt;&lt;/p&gt;
-        &lt;/li&gt;
-        &lt;li&gt;
-          &lt;a href&#x3D;&quot;https://angular.io/&quot;&gt;ng-selet v8.1.1&lt;/a&gt;
-          &lt;p&gt;&lt;/p&gt;
-        &lt;/li&gt;
-        &lt;li&gt;
-          &lt;a href&#x3D;&quot;https://rxjs.io/&quot;&gt;RxJS v6.6.0&lt;/a&gt;
-          &lt;p&gt;&lt;/p&gt;
-        &lt;/li&gt;
-        &lt;li&gt;
-          &lt;a href&#x3D;&quot;https://rxdb.io/&quot;&gt;RxDB v10.5.4&lt;/a&gt;
-          &lt;p&gt;&lt;/p&gt;
+        &lt;li *ngFor&#x3D;&quot;let item of technologies&quot;&gt;
+          &lt;ng-container
+            *ngTemplateOutlet&#x3D;&quot;
+              creditsItemTemplate;
+              context: { item: this.item }
+            &quot;
+          &gt;&lt;/ng-container&gt;
         &lt;/li&gt;
       &lt;/ul&gt;
     &lt;/div&gt;
@@ -191,17 +327,73 @@
       &lt;h4&gt;Visual Assets&lt;/h4&gt;
       &lt;p&gt;This app uses the following assets:&lt;/p&gt;
       &lt;ul&gt;
-        &lt;li&gt;
-          &lt;a href&#x3D;&quot;https://materialdesignicons.com/&quot;
-            &gt;Material Design Icons v6.4.95&lt;/a
-          &gt;
-          &lt;p&gt;&lt;/p&gt;
+        &lt;li *ngFor&#x3D;&quot;let item of visualAssets&quot;&gt;
+          &lt;ng-container
+            *ngTemplateOutlet&#x3D;&quot;
+              creditsItemTemplate;
+              context: { item: this.item }
+            &quot;
+          &gt;&lt;/ng-container&gt;
         &lt;/li&gt;
       &lt;/ul&gt;
     &lt;/div&gt;
+    &lt;ng-template #creditsItemTemplate let-item&#x3D;&quot;item&quot;&gt;
+      &lt;a [href]&#x3D;&quot;item.link&quot;&gt;{{ item.label }} {{ item.version }}&lt;/a&gt;
+    &lt;/ng-template&gt;
   &#x60;,
 })
-export class CreditsScene {}
+export class CreditsScene {
+  public technologies: CreditsItem[] &#x3D; [
+    {
+      label: &#x27;TypeScript&#x27;,
+      link: &#x27;https://www.typescriptlang.org/&#x27;,
+      version: &#x27;4.3.5&#x27;,
+    },
+    {
+      label: &#x27;Angular&#x27;,
+      link: &#x27;https://angular.io/&#x27;,
+      version: &#x27;13&#x27;,
+    },
+    {
+      label: &#x27;RxJS&#x27;,
+      link: &#x27;https://rxjs.io/&#x27;,
+      version: &#x27;6.6.0&#x27;,
+    },
+    {
+      label: &#x27;RxDB&#x27;,
+      link: &#x27;https://rxdb.io/&#x27;,
+      version: &#x27;10.5.4&#x27;,
+    },
+    {
+      label: &#x27;ng-select&#x27;,
+      link: &#x27;https://ng-select.github.io/ng-select&#x27;,
+      version: &#x27;8.1.1&#x27;,
+    },
+    {
+      label: &#x27;ng-animate&#x27;,
+      link: &#x27;https://jiayihu.github.io/ng-animate/&#x27;,
+      version: &#x27;1.0.0&#x27;,
+    },
+    {
+      label: &#x27;model-viewer&#x27;,
+      link: &#x27;https://modelviewer.dev/&#x27;,
+      version: &#x27;1.9.2&#x27;,
+    },
+  ];
+
+  public visualAssets: CreditsItem[] &#x3D; [
+    {
+      label: &#x27;Material Design Icons&#x27;,
+      link: &#x27;https://materialdesignicons.com/&#x27;,
+      version: &#x27;6.4.95&#x27;,
+    },
+    {
+      label: &#x27;Simple Icons&#x27;,
+      link: &#x27;https://simpleicons.org/&#x27;,
+      version: &#x27;6.5.0&#x27;,
+    },
+  ];
+}
 </code></pre>
     </div>
 
@@ -232,7 +424,7 @@ export class CreditsScene {}
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div>  <h4>Technologies</h4>  <p>This app was built with the following technologies:</p>  <ul>    <li>      <a href="https://www.typescriptlang.org/">TypeScript v4.3.5</a>      <p></p>    </li>    <li>      <a href="https://angular.io/">Angular v13</a>      <p></p>    </li>    <li>      <a href="https://angular.io/">ng-selet v8.1.1</a>      <p></p>    </li>    <li>      <a href="https://rxjs.io/">RxJS v6.6.0</a>      <p></p>    </li>    <li>      <a href="https://rxdb.io/">RxDB v10.5.4</a>      <p></p>    </li>  </ul></div><div>  <h4>Visual Assets</h4>  <p>This app uses the following assets:</p>  <ul>    <li>      <a href="https://materialdesignicons.com/"        >Material Design Icons v6.4.95</a      >      <p></p>    </li>  </ul></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div>  <h4>Technologies</h4>  <p>This app was built with the following technologies:</p>  <ul>    <li *ngFor="let item of technologies">      <ng-container        *ngTemplateOutlet="          creditsItemTemplate;          context: { item: this.item }        "      ></ng-container>    </li>  </ul></div><div>  <h4>Visual Assets</h4>  <p>This app uses the following assets:</p>  <ul>    <li *ngFor="let item of visualAssets">      <ng-container        *ngTemplateOutlet="          creditsItemTemplate;          context: { item: this.item }        "      ></ng-container>    </li>  </ul></div><ng-template #creditsItemTemplate let-item="item">  <a [href]="item.link">{{ item.label }} {{ item.version }}</a></ng-template></div>'
     var COMPONENTS = [{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CreditsScene'};

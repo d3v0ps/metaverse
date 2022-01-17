@@ -167,11 +167,7 @@ export class AvatarSkillsInput {
             *ngFor&#x3D;&quot;let skill of skillsForm.controls; let i &#x3D; index&quot;
             class&#x3D;&quot;skill-form&quot;
           &gt;
-            &lt;button
-              type&#x3D;&quot;button&quot;
-              cfBlock&#x3D;&quot;button&quot;
-              cfMod&#x3D;&quot;primary uppercase big&quot;
-            &gt;
+            &lt;button type&#x3D;&quot;button&quot; cfBlock&#x3D;&quot;button&quot; cfMod&#x3D;&quot;primary uppercase&quot;&gt;
               &lt;cf-svg-icon
                 src&#x3D;&quot;assets/icons/mdi/{{
                   skillsIcons[skill.value.skill + &#x27;-&#x27; + skill.value.domain]
@@ -214,7 +210,7 @@ export class AvatarSkillsInput {
         &lt;/div&gt;
       &lt;/div&gt;
 
-      &lt;button type&#x3D;&quot;button&quot; cfBlock&#x3D;&quot;button&quot; cfMod&#x3D;&quot;primary uppercase big&quot;&gt;
+      &lt;button type&#x3D;&quot;button&quot; cfBlock&#x3D;&quot;button&quot; cfMod&#x3D;&quot;primary uppercase&quot;&gt;
         &lt;cf-svg-icon
           src&#x3D;&quot;assets/icons/mdi/plus.svg&quot;
           cfElem&#x3D;&quot;icon&quot;

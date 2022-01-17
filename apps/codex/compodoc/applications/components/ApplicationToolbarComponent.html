@@ -102,7 +102,7 @@
       &lt;div cfBlock&#x3D;&quot;application-toolbar-buttons&quot;&gt;
         &lt;button
           cfBlock&#x3D;&quot;button&quot;
-          cfMod&#x3D;&quot;danger&quot;
+          [cfMod]&#x3D;&quot;[&#x27;danger&#x27;, &#x27;small&#x27;, &#x27;has-icon&#x27;, &#x27;only-icon&#x27;, &#x27;rounded&#x27;]&quot;
           (click)&#x3D;&quot;closeButtonClick.emit(application)&quot;
         &gt;
           &lt;cf-svg-icon
@@ -113,7 +113,7 @@
         &lt;/button&gt;
         &lt;button
           cfBlock&#x3D;&quot;button&quot;
-          cfMod&#x3D;&quot;light&quot;
+          [cfMod]&#x3D;&quot;[&#x27;light&#x27;, &#x27;small&#x27;, &#x27;has-icon&#x27;, &#x27;only-icon&#x27;, &#x27;rounded&#x27;]&quot;
           (click)&#x3D;&quot;optionsButtonClick.emit(application)&quot;
         &gt;
           &lt;cf-svg-icon
@@ -509,7 +509,7 @@ import { Application, ColorVariation } from &#x27;../../../models/application&#x
           &lt;div cfBlock&#x3D;&quot;application-toolbar-buttons&quot;&gt;
             &lt;button
               cfBlock&#x3D;&quot;button&quot;
-              cfMod&#x3D;&quot;danger&quot;
+              [cfMod]&#x3D;&quot;[&#x27;danger&#x27;, &#x27;small&#x27;, &#x27;has-icon&#x27;, &#x27;only-icon&#x27;, &#x27;rounded&#x27;]&quot;
               (click)&#x3D;&quot;closeButtonClick.emit(application)&quot;
             &gt;
               &lt;cf-svg-icon
@@ -520,7 +520,7 @@ import { Application, ColorVariation } from &#x27;../../../models/application&#x
             &lt;/button&gt;
             &lt;button
               cfBlock&#x3D;&quot;button&quot;
-              cfMod&#x3D;&quot;light&quot;
+              [cfMod]&#x3D;&quot;[&#x27;light&#x27;, &#x27;small&#x27;, &#x27;has-icon&#x27;, &#x27;only-icon&#x27;, &#x27;rounded&#x27;]&quot;
               (click)&#x3D;&quot;optionsButtonClick.emit(application)&quot;
             &gt;
               &lt;cf-svg-icon
@@ -620,7 +620,7 @@ export class ApplicationToolbarComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container *ngIf="application">  <div    cfBlock="application-toolbar"    [ngStyle]="{      \'background-color\': toolbarColor    }"  >    <div cfElem="content">      <div cfBlock="application-toolbar-buttons">        <button          cfBlock="button"          cfMod="danger"          (click)="closeButtonClick.emit(application)"        >          <cf-svg-icon            src="assets/icons/mdi/close.svg"            cfElem="icon"            [svgClass]="\'icon__svg\'"          ></cf-svg-icon>        </button>        <button          cfBlock="button"          cfMod="light"          (click)="optionsButtonClick.emit(application)"        >          <cf-svg-icon            src="assets/icons/mdi/dots-vertical.svg"            cfElem="icon"            [svgClass]="\'icon__svg\'"          ></cf-svg-icon>        </button>      </div>      <h3 cfBlock="application-toolbar-title">        <cf-svg-icon          *ngIf="icon"          [src]="icon"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>        {{ application.name }}      </h3>      <div cfBlock="application-toolbar-buttons">        <ng-select          [items]="application.shortcuts || []"          [classList]="\'ng-select--primary\'"          bindLabel="name"          style="width: 300px;"          placeholder="Select a shortcut"        >          <ng-template ng-option-tmp let-item="item">            <div cfBlock="application-toolbar-shortcut">              <cf-svg-icon                *ngIf="icon"                [src]="                  item.icons && item.icons.length > 0                    ? item.icons[0].src                    : \'\'                "                cfElem="icon"                [svgClass]="\'icon__svg\'"              ></cf-svg-icon>              {{ item.name }}            </div>          </ng-template>        </ng-select>      </div>    </div>  </div></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-container *ngIf="application">  <div    cfBlock="application-toolbar"    [ngStyle]="{      \'background-color\': toolbarColor    }"  >    <div cfElem="content">      <div cfBlock="application-toolbar-buttons">        <button          cfBlock="button"          [cfMod]="[\'danger\', \'small\', \'has-icon\', \'only-icon\', \'rounded\']"          (click)="closeButtonClick.emit(application)"        >          <cf-svg-icon            src="assets/icons/mdi/close.svg"            cfElem="icon"            [svgClass]="\'icon__svg\'"          ></cf-svg-icon>        </button>        <button          cfBlock="button"          [cfMod]="[\'light\', \'small\', \'has-icon\', \'only-icon\', \'rounded\']"          (click)="optionsButtonClick.emit(application)"        >          <cf-svg-icon            src="assets/icons/mdi/dots-vertical.svg"            cfElem="icon"            [svgClass]="\'icon__svg\'"          ></cf-svg-icon>        </button>      </div>      <h3 cfBlock="application-toolbar-title">        <cf-svg-icon          *ngIf="icon"          [src]="icon"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>        {{ application.name }}      </h3>      <div cfBlock="application-toolbar-buttons">        <ng-select          [items]="application.shortcuts || []"          [classList]="\'ng-select--primary\'"          bindLabel="name"          style="width: 300px;"          placeholder="Select a shortcut"        >          <ng-template ng-option-tmp let-item="item">            <div cfBlock="application-toolbar-shortcut">              <cf-svg-icon                *ngIf="icon"                [src]="                  item.icons && item.icons.length > 0                    ? item.icons[0].src                    : \'\'                "                cfElem="icon"                [svgClass]="\'icon__svg\'"              ></cf-svg-icon>              {{ item.name }}            </div>          </ng-template>        </ng-select>      </div>    </div>  </div></ng-container></div>'
     var COMPONENTS = [{'name': 'ApplicationActionsComponent', 'selector': 'cf-application-actions'},{'name': 'ApplicationCardComponent', 'selector': 'cf-application-card'},{'name': 'ApplicationsCarouselComponent', 'selector': 'cf-applications-carousel'},{'name': 'ApplicationSheetComponent', 'selector': 'cf-application-sheet'},{'name': 'ApplicationShortcutComponent', 'selector': 'cf-application-shortcut'},{'name': 'ApplicationToolbarComponent', 'selector': 'cf-application-toolbar'},{'name': 'ApplicationViewComponent', 'selector': 'cf-application-view'},{'name': 'ApplicationWebviewComponent', 'selector': 'cf-application-webview'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ApplicationToolbarComponent'};

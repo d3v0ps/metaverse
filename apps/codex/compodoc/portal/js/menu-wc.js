@@ -106,13 +106,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/PortalLayoutSceneModule.html" data-type="entity-link" >PortalLayoutSceneModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-PortalLayoutSceneModule-2d57f300f92a68975f49696b13c2841f"' : 'data-target="#xs-components-links-module-PortalLayoutSceneModule-2d57f300f92a68975f49696b13c2841f"' }>
+                                            'data-target="#components-links-module-PortalLayoutSceneModule-a54c9ac229d7450ee00d8b8c57c5eb43"' : 'data-target="#xs-components-links-module-PortalLayoutSceneModule-a54c9ac229d7450ee00d8b8c57c5eb43"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PortalLayoutSceneModule-2d57f300f92a68975f49696b13c2841f"' :
-                                            'id="xs-components-links-module-PortalLayoutSceneModule-2d57f300f92a68975f49696b13c2841f"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PortalLayoutSceneModule-a54c9ac229d7450ee00d8b8c57c5eb43"' :
+                                            'id="xs-components-links-module-PortalLayoutSceneModule-a54c9ac229d7450ee00d8b8c57c5eb43"' }>
                                             <li class="link">
                                                 <a href="components/PortalLayoutScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >PortalLayoutScene</a>
                                             </li>

@@ -94,10 +94,11 @@
                 <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div cfBlock&#x3D;&quot;avatars-carousel&quot;&gt;
   &lt;ng-container *ngFor&#x3D;&quot;let avatar of avatars&quot;&gt;
     &lt;div cfBlock&#x3D;&quot;avatars-carousel-item&quot; (click)&#x3D;&quot;avatarClick.emit(avatar)&quot;&gt;
-      &lt;img
-        cfElem&#x3D;&quot;image&quot;
-        [src]&#x3D;&quot;avatar.selectedAppearance.smallPreviewUrl&quot;
-      /&gt;&lt;br /&gt;
+      &lt;cf-avatar-appearance-portrait
+        [appearance]&#x3D;&quot;avatar.selectedAppearance&quot;
+      &gt;
+      &lt;/cf-avatar-appearance-portrait&gt;
+      &lt;br /&gt;
       &lt;h4 cfElem&#x3D;&quot;name&quot;&gt;{{ avatar.name }}&lt;/h4&gt;
     &lt;/div&gt;
   &lt;/ng-container&gt;
@@ -183,7 +184,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:21</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:22</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -207,7 +208,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:24</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -230,10 +231,11 @@ import type { Avatar } from &#x27;../../../models/avatar&#x27;;
     &lt;div cfBlock&#x3D;&quot;avatars-carousel&quot;&gt;
       &lt;ng-container *ngFor&#x3D;&quot;let avatar of avatars&quot;&gt;
         &lt;div cfBlock&#x3D;&quot;avatars-carousel-item&quot; (click)&#x3D;&quot;avatarClick.emit(avatar)&quot;&gt;
-          &lt;img
-            cfElem&#x3D;&quot;image&quot;
-            [src]&#x3D;&quot;avatar.selectedAppearance.smallPreviewUrl&quot;
-          /&gt;&lt;br /&gt;
+          &lt;cf-avatar-appearance-portrait
+            [appearance]&#x3D;&quot;avatar.selectedAppearance&quot;
+          &gt;
+          &lt;/cf-avatar-appearance-portrait&gt;
+          &lt;br /&gt;
           &lt;h4 cfElem&#x3D;&quot;name&quot;&gt;{{ avatar.name }}&lt;/h4&gt;
         &lt;/div&gt;
       &lt;/ng-container&gt;
@@ -275,8 +277,8 @@ export class AvatarsCarouselComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatars-carousel">  <ng-container *ngFor="let avatar of avatars">    <div cfBlock="avatars-carousel-item" (click)="avatarClick.emit(avatar)">      <img        cfElem="image"        [src]="avatar.selectedAppearance.smallPreviewUrl"      /><br />      <h4 cfElem="name">{{ avatar.name }}</h4>    </div>  </ng-container></div></div>'
-    var COMPONENTS = [{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'PreviewAvatarAppearanceComponent', 'selector': 'cf-preview-avatar-appearance'}];
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatars-carousel">  <ng-container *ngFor="let avatar of avatars">    <div cfBlock="avatars-carousel-item" (click)="avatarClick.emit(avatar)">      <cf-avatar-appearance-portrait        [appearance]="avatar.selectedAppearance"      >      </cf-avatar-appearance-portrait>      <br />      <h4 cfElem="name">{{ avatar.name }}</h4>    </div>  </ng-container></div></div>'
+    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarsCarouselComponent'};
 </script>

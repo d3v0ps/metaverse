@@ -98,7 +98,27 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div cfBlock&#x3D;&quot;scene-content&quot;&gt;Create Avatar&lt;/div&gt;</code></pre></td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;cf-manage-avatar-appearances-scene&gt;&lt;/cf-manage-avatar-appearances-scene&gt;
+&lt;!-- div cfBlock&#x3D;&quot;scene-content&quot;&gt;
+  &lt;div cfBlock&#x3D;&quot;create-avatar-scene&quot;&gt;
+    &lt;ul class&#x3D;&quot;stepper&quot;&gt;
+      &lt;li class&#x3D;&quot;step active&quot;&gt;
+        &lt;div class&#x3D;&quot;step-title&quot;&gt;&lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li class&#x3D;&quot;step&quot;&gt;
+        &lt;div class&#x3D;&quot;step-title&quot;&gt;Step 2&lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li class&#x3D;&quot;step&quot;&gt;
+        &lt;div class&#x3D;&quot;step-title&quot;&gt;Step 3&lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;div cfBlock&#x3D;&quot;create-avatar-info-form&quot;&gt;&lt;/div&gt;
+    &lt;div cfBlock&#x3D;&quot;create-avatar-appearance&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;h2 cfElem&#x3D;&quot;title&quot;&gt;Create Avatar&lt;/h2&gt;
+&lt;/div --&gt;
+</code></pre></td>
             </tr>
 
 
@@ -130,7 +150,28 @@
 /** Create Avatar view */
 @Component({
   selector: &#x27;cf-create-avatar&#x27;,
-  template: &#x60; &lt;div cfBlock&#x3D;&quot;scene-content&quot;&gt;Create Avatar&lt;/div&gt; &#x60;,
+  template: &#x60;
+    &lt;cf-manage-avatar-appearances-scene&gt;&lt;/cf-manage-avatar-appearances-scene&gt;
+    &lt;!-- div cfBlock&#x3D;&quot;scene-content&quot;&gt;
+      &lt;div cfBlock&#x3D;&quot;create-avatar-scene&quot;&gt;
+        &lt;ul class&#x3D;&quot;stepper&quot;&gt;
+          &lt;li class&#x3D;&quot;step active&quot;&gt;
+            &lt;div class&#x3D;&quot;step-title&quot;&gt;&lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class&#x3D;&quot;step&quot;&gt;
+            &lt;div class&#x3D;&quot;step-title&quot;&gt;Step 2&lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class&#x3D;&quot;step&quot;&gt;
+            &lt;div class&#x3D;&quot;step-title&quot;&gt;Step 3&lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;div cfBlock&#x3D;&quot;create-avatar-info-form&quot;&gt;&lt;/div&gt;
+        &lt;div cfBlock&#x3D;&quot;create-avatar-appearance&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;h2 cfElem&#x3D;&quot;title&quot;&gt;Create Avatar&lt;/h2&gt;
+    &lt;/div --&gt;
+  &#x60;,
 })
 export class CreateAvatarScene {}
 </code></pre>
@@ -163,8 +204,8 @@ export class CreateAvatarScene {}
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="scene-content">Create Avatar</div></div>'
-    var COMPONENTS = [{'name': 'CreateAvatarScene', 'selector': 'cf-create-avatar'},{'name': 'ManageAvatarsRoot', 'selector': 'cf-manage-avatars-root'},{'name': 'SelectAvatarScene', 'selector': 'cf-select-avatar'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
+        var COMPONENT_TEMPLATE = '<div><cf-manage-avatar-appearances-scene></cf-manage-avatar-appearances-scene><!-- div cfBlock="scene-content">  <div cfBlock="create-avatar-scene">    <ul class="stepper">      <li class="step active">        <div class="step-title"></div>      </li>      <li class="step">        <div class="step-title">Step 2</div>      </li>      <li class="step">        <div class="step-title">Step 3</div>      </li>    </ul>    <div cfBlock="create-avatar-info-form"></div>    <div cfBlock="create-avatar-appearance"></div>  </div>  <h2 cfElem="title">Create Avatar</h2></div --></div>'
+    var COMPONENTS = [{'name': 'CreateAvatarScene', 'selector': 'cf-create-avatar'},{'name': 'ManageAvatarAppearancesScene', 'selector': 'cf-manage-avatar-appearances-scene'},{'name': 'ManageAvatarsRoot', 'selector': 'cf-manage-avatars-root'},{'name': 'SelectAvatarScene', 'selector': 'cf-select-avatar'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CreateAvatarScene'};
 </script>

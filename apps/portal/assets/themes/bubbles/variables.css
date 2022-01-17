@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 09 Jan 2022 18:43:29 GMT
+ * Generated on Mon, 17 Jan 2022 02:52:38 GMT
  */
 
 :root {
@@ -58,7 +58,7 @@
   --color-font-secondary: #f72585;
   --component-badge-color: #f1f1f1;
   --component-badge-background-color: #f72585;
-  --component-button-font-size: 0.75rem;
+  --component-button-font-size: 1rem;
   --component-button-color: #fefefe;
   --component-button-background-color: #212121;
   --component-button-primary-background-color: #4cc9f0;
@@ -73,7 +73,7 @@
   --component-button-danger-color: #fefefe;
   --component-button-info-background-color: #2196f3;
   --component-button-info-color: #fefefe;
-  --component-button-big-font-size: 1rem;
+  --component-button-big-font-size: 1.5rem;
   --component-card-color: #f1f1f1;
   --component-card-background-color: #f1f1f1;
   --component-card-header-background-color: #f72585;
@@ -87,8 +87,14 @@
   --component-chatbox-icon-color: #fefefe;
   --component-chatbox-input-color: #212121;
   --component-chatbox-input-active-border-color: #f72585;
-  --component-input-border-color: #4cc9f0;
-  --component-input-background-color: #f5f5f5;
+  --component-input-font-size: 1rem;
+  --component-input-border-color: #212121;
+  --component-input-border-radius: 14px;
+  --component-input-background-color: rgba(0, 0, 0, 0);
+  --component-input-text-color: #303030;
+  --component-input-shadow-outset: 8px 8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-input-shadow-inset-primary: -8px -8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-input-shadow-inset-secondary: 8px 8px 16px 0 rgba(255, 255, 255, 0.2);
   --component-input-focus-h: 245;
   --component-input-focus-s: 100%;
   --component-input-focus-l: 42%;
@@ -107,7 +113,7 @@
   --component-input-danger-color: #fefefe;
   --component-input-info-background-color: #2196f3;
   --component-input-info-color: #fefefe;
-  --component-input-big-font-size: 1rem;
+  --component-input-big-font-size: 1.5rem;
   --component-navbar-background-color: #212121;
   --component-navbar-border-color: #404040;
   --component-navbar-color: #f1f1f1;
@@ -135,9 +141,9 @@
   --component-sidebar-button-active-color: #fefefe;
   --component-splash-screen-background-color: #4cc9f0;
   --component-splash-screen-color: #fefefe;
-  --size-font-small: 0.5rem; /* the small size of the font */
-  --size-font-medium: 0.75rem; /* the medium size of the font */
-  --size-font-large: 1rem; /* the large size of the font */
-  --size-font-extra-large: 1.5rem; /* the extra large size of the font */
-  --size-font-base: 0.75rem; /* the base size of the font */
+  --size-font-small: 0.75rem; /* the small size of the font */
+  --size-font-medium: 1rem; /* the medium size of the font */
+  --size-font-large: 1.5rem; /* the large size of the font */
+  --size-font-extra-large: 2rem; /* the extra large size of the font */
+  --size-font-base: 1rem; /* the base size of the font */
 }

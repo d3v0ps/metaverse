@@ -103,8 +103,17 @@
                 <td class="col-md-9"><code>
       .scene-content {
         &amp;--inventory {
-          display: flex;
+          display: grid;
+          grid-template-columns: 1.5fr 1fr;
+          grid-template-rows: 1fr;
           gap: 2rem;
+
+          .scene-content__assets-grid {
+            overflow: auto;
+          }
+
+          .scene-content__asset-detail {
+          }
         }
       }
     </code></td>
@@ -118,15 +127,19 @@
   } as data&quot;
 &gt;
   &lt;div cfBlock&#x3D;&quot;scene-content&quot; cfMod&#x3D;&quot;inventory&quot; *ngIf&#x3D;&quot;data.assets&quot;&gt;
-    &lt;cf-assets-grid
-      [assets]&#x3D;&quot;data.assets&quot;
-      [activeAsset]&#x3D;&quot;selectedAsset&quot;
-      (assetClick)&#x3D;&quot;onGridAssetClick($event)&quot;
-    &gt;&lt;/cf-assets-grid&gt;
-    &lt;cf-asset-detail
-      *ngIf&#x3D;&quot;selectedAsset&quot;
-      [asset]&#x3D;&quot;selectedAsset&quot;
-    &gt;&lt;/cf-asset-detail&gt;
+    &lt;div cfElem&#x3D;&quot;assets-grid&quot;&gt;
+      &lt;cf-assets-grid
+        [assets]&#x3D;&quot;data.assets&quot;
+        [activeAsset]&#x3D;&quot;selectedAsset&quot;
+        (assetClick)&#x3D;&quot;onGridAssetClick($event)&quot;
+      &gt;&lt;/cf-assets-grid&gt;
+    &lt;/div&gt;
+    &lt;div cfElem&#x3D;&quot;asset-detail&quot;&gt;
+      &lt;cf-asset-detail
+        *ngIf&#x3D;&quot;selectedAsset&quot;
+        [asset]&#x3D;&quot;selectedAsset&quot;
+      &gt;&lt;/cf-asset-detail&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/ng-container&gt;
 </code></pre></td>
@@ -203,7 +216,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">apps/inventory/src/app/scenes/inventory/inventory.scene.ts:41</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">apps/inventory/src/app/scenes/inventory/inventory.scene.ts:54</a></div>
                             </td>
                         </tr>
 
@@ -270,8 +283,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="45"
-                            class="link-to-prism">apps/inventory/src/app/scenes/inventory/inventory.scene.ts:45</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">apps/inventory/src/app/scenes/inventory/inventory.scene.ts:58</a></div>
                 </td>
             </tr>
 
@@ -345,7 +358,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">apps/inventory/src/app/scenes/inventory/inventory.scene.ts:39</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">apps/inventory/src/app/scenes/inventory/inventory.scene.ts:52</a></div>
                         </td>
                     </tr>
 
@@ -372,7 +385,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">apps/inventory/src/app/scenes/inventory/inventory.scene.ts:41</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">apps/inventory/src/app/scenes/inventory/inventory.scene.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -399,15 +412,19 @@ import { UserAssetsState } from &#x27;@central-factory/assets/states/user-assets
       } as data&quot;
     &gt;
       &lt;div cfBlock&#x3D;&quot;scene-content&quot; cfMod&#x3D;&quot;inventory&quot; *ngIf&#x3D;&quot;data.assets&quot;&gt;
-        &lt;cf-assets-grid
-          [assets]&#x3D;&quot;data.assets&quot;
-          [activeAsset]&#x3D;&quot;selectedAsset&quot;
-          (assetClick)&#x3D;&quot;onGridAssetClick($event)&quot;
-        &gt;&lt;/cf-assets-grid&gt;
-        &lt;cf-asset-detail
-          *ngIf&#x3D;&quot;selectedAsset&quot;
-          [asset]&#x3D;&quot;selectedAsset&quot;
-        &gt;&lt;/cf-asset-detail&gt;
+        &lt;div cfElem&#x3D;&quot;assets-grid&quot;&gt;
+          &lt;cf-assets-grid
+            [assets]&#x3D;&quot;data.assets&quot;
+            [activeAsset]&#x3D;&quot;selectedAsset&quot;
+            (assetClick)&#x3D;&quot;onGridAssetClick($event)&quot;
+          &gt;&lt;/cf-assets-grid&gt;
+        &lt;/div&gt;
+        &lt;div cfElem&#x3D;&quot;asset-detail&quot;&gt;
+          &lt;cf-asset-detail
+            *ngIf&#x3D;&quot;selectedAsset&quot;
+            [asset]&#x3D;&quot;selectedAsset&quot;
+          &gt;&lt;/cf-asset-detail&gt;
+        &lt;/div&gt;
       &lt;/div&gt;
     &lt;/ng-container&gt;
   &#x60;,
@@ -415,8 +432,17 @@ import { UserAssetsState } from &#x27;@central-factory/assets/states/user-assets
     &#x60;
       .scene-content {
         &amp;--inventory {
-          display: flex;
+          display: grid;
+          grid-template-columns: 1.5fr 1fr;
+          grid-template-rows: 1fr;
           gap: 2rem;
+
+          .scene-content__assets-grid {
+            overflow: auto;
+          }
+
+          .scene-content__asset-detail {
+          }
         }
       }
     &#x60;,
@@ -441,8 +467,17 @@ export class InventoryScene {
             <pre class="line-numbers"><code class="language-scss">
       .scene-content {
         &amp;--inventory {
-          display: flex;
+          display: grid;
+          grid-template-columns: 1.5fr 1fr;
+          grid-template-rows: 1fr;
           gap: 2rem;
+
+          .scene-content__assets-grid {
+            overflow: auto;
+          }
+
+          .scene-content__asset-detail {
+          }
         }
       }
     
@@ -474,7 +509,7 @@ export class InventoryScene {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    assets: assets$ | async  } as data">  <div cfBlock="scene-content" cfMod="inventory" *ngIf="data.assets">    <cf-assets-grid      [assets]="data.assets"      [activeAsset]="selectedAsset"      (assetClick)="onGridAssetClick($event)"    ></cf-assets-grid>    <cf-asset-detail      *ngIf="selectedAsset"      [asset]="selectedAsset"    ></cf-asset-detail>  </div></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    assets: assets$ | async  } as data">  <div cfBlock="scene-content" cfMod="inventory" *ngIf="data.assets">    <div cfElem="assets-grid">      <cf-assets-grid        [assets]="data.assets"        [activeAsset]="selectedAsset"        (assetClick)="onGridAssetClick($event)"      ></cf-assets-grid>    </div>    <div cfElem="asset-detail">      <cf-asset-detail        *ngIf="selectedAsset"        [asset]="selectedAsset"      ></cf-asset-detail>    </div>  </div></ng-container></div>'
     var COMPONENTS = [{'name': 'AppComponent', 'selector': 'cf-inventory-root'},{'name': 'InventoryScene', 'selector': 'cf-inventory'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'InventoryScene'};

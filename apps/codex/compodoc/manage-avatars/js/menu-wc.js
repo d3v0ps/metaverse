@@ -66,13 +66,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/CreateAvatarModule.html" data-type="entity-link" >CreateAvatarModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-CreateAvatarModule-b2212e39bd02a1216abe125387fc6780"' : 'data-target="#xs-components-links-module-CreateAvatarModule-b2212e39bd02a1216abe125387fc6780"' }>
+                                            'data-target="#components-links-module-CreateAvatarModule-58681d47a8473409cdc4cc4abcae4fc2"' : 'data-target="#xs-components-links-module-CreateAvatarModule-58681d47a8473409cdc4cc4abcae4fc2"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CreateAvatarModule-b2212e39bd02a1216abe125387fc6780"' :
-                                            'id="xs-components-links-module-CreateAvatarModule-b2212e39bd02a1216abe125387fc6780"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CreateAvatarModule-58681d47a8473409cdc4cc4abcae4fc2"' :
+                                            'id="xs-components-links-module-CreateAvatarModule-58681d47a8473409cdc4cc4abcae4fc2"' }>
                                             <li class="link">
                                                 <a href="components/CreateAvatarScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CreateAvatarScene</a>
                                             </li>
@@ -81,6 +81,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="modules/CreateAvatarRoutingModule.html" data-type="entity-link" >CreateAvatarRoutingModule</a>
+                            </li>
+                            <li class="link">
+                                <a href="modules/ManageAvatarAppearancesModule.html" data-type="entity-link" >ManageAvatarAppearancesModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-ManageAvatarAppearancesModule-0ead25ca475b247828ceafcae1a699dc"' : 'data-target="#xs-components-links-module-ManageAvatarAppearancesModule-0ead25ca475b247828ceafcae1a699dc"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ManageAvatarAppearancesModule-0ead25ca475b247828ceafcae1a699dc"' :
+                                            'id="xs-components-links-module-ManageAvatarAppearancesModule-0ead25ca475b247828ceafcae1a699dc"' }>
+                                            <li class="link">
+                                                <a href="components/ManageAvatarAppearancesScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ManageAvatarAppearancesScene</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                             </li>
                             <li class="link">
                                 <a href="modules/ManageAvatarsModule.html" data-type="entity-link" >ManageAvatarsModule</a>

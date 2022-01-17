@@ -106,7 +106,9 @@
             <tr>
                 <td class="col-md-3">template</td>
                 <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;form [formGroup]&#x3D;&quot;form&quot; cfBlock&#x3D;&quot;avatar-overview&quot; *ngIf&#x3D;&quot;form.value?.name&quot;&gt;
-  &lt;img cfElem&#x3D;&quot;small-preview&quot; [src]&#x3D;&quot;form.value.smallPreviewUrl&quot; /&gt;
+  &lt;cf-avatar-appearance-portrait
+    [appearance]&#x3D;&quot;form.value.appearance&quot;
+  &gt;&lt;/cf-avatar-appearance-portrait&gt;
 
   &lt;div cfBlock&#x3D;&quot;chatbox&quot;&gt;
     &lt;div cfElem&#x3D;&quot;message&quot;&gt;
@@ -248,7 +250,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:84</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:96</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -292,7 +294,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:97</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:110</a></div>
                         </td>
                     </tr>
 
@@ -317,12 +319,21 @@
     name: new FormControl(&#x27;&#x27;),
     title: new FormControl(&#x27;&#x27;),
     smallPreviewUrl: new FormControl(&#x27;&#x27;),
+    appearance: new FormGroup({
+      id: new FormControl(&#x27;&#x27;),
+      src: new FormControl(&#x27;&#x27;),
+      format: new FormControl&lt;AppearanceFormat&gt;(null),
+      portrait: new FormGroup({
+        src: new FormControl(&#x27;&#x27;),
+        format: new FormControl&lt;AppearanceFormat&gt;(null),
+      }),
+    }),
   })</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:106</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:119</a></div>
                         </td>
                     </tr>
 
@@ -352,7 +363,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:84</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:96</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -400,6 +411,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
+import { AppearanceFormat } from &#x27;@central-factory/avatars&#x27;;
 import { FormControl, FormGroup } from &#x27;@ng-stack/forms&#x27;;
 import type { Avatar } from &#x27;../../../models/avatar&#x27;;
 
@@ -408,13 +420,24 @@ export interface AvatarOverviewInput {
   name: string;
   title: string;
   smallPreviewUrl: string;
+  appearance: {
+    id: string;
+    format: AppearanceFormat;
+    src: string;
+    portrait: {
+      format: AppearanceFormat;
+      src: string;
+    };
+  };
 }
 
 @Component({
   selector: &#x27;cf-avatar-overview&#x27;,
   template: &#x60;
     &lt;form [formGroup]&#x3D;&quot;form&quot; cfBlock&#x3D;&quot;avatar-overview&quot; *ngIf&#x3D;&quot;form.value?.name&quot;&gt;
-      &lt;img cfElem&#x3D;&quot;small-preview&quot; [src]&#x3D;&quot;form.value.smallPreviewUrl&quot; /&gt;
+      &lt;cf-avatar-appearance-portrait
+        [appearance]&#x3D;&quot;form.value.appearance&quot;
+      &gt;&lt;/cf-avatar-appearance-portrait&gt;
 
       &lt;div cfBlock&#x3D;&quot;chatbox&quot;&gt;
         &lt;div cfElem&#x3D;&quot;message&quot;&gt;
@@ -491,7 +514,8 @@ export class AvatarOverviewComponent {
       name: value.name,
       title: value.title,
       welcomeMessage: value.welcomeMessage,
-      smallPreviewUrl: value.selectedAppearance.smallPreviewUrl,
+      smallPreviewUrl: value.selectedAppearance.portrait.src,
+      appearance: value.selectedAppearance,
     });
   }
 
@@ -509,6 +533,15 @@ export class AvatarOverviewComponent {
     name: new FormControl(&#x27;&#x27;),
     title: new FormControl(&#x27;&#x27;),
     smallPreviewUrl: new FormControl(&#x27;&#x27;),
+    appearance: new FormGroup({
+      id: new FormControl(&#x27;&#x27;),
+      src: new FormControl(&#x27;&#x27;),
+      format: new FormControl&lt;AppearanceFormat&gt;(null),
+      portrait: new FormGroup({
+        src: new FormControl(&#x27;&#x27;),
+        format: new FormControl&lt;AppearanceFormat&gt;(null),
+      }),
+    }),
   });
 }
 </code></pre>
@@ -552,8 +585,8 @@ export class AvatarOverviewComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form [formGroup]="form" cfBlock="avatar-overview" *ngIf="form.value?.name">  <img cfElem="small-preview" [src]="form.value.smallPreviewUrl" />  <div cfBlock="chatbox">    <div cfElem="message">      <div class="form-control" *ngIf="editing.welcomeMessage">        <!-- label for="welcomeMessage">Welcome message:</label -->        <textarea          id="welcomeMessage"          formControlName="welcomeMessage"        ></textarea>        <cf-svg-icon          src="assets/icons/mdi/check.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"          (click)="editing.welcomeMessage = !editing.welcomeMessage"        ></cf-svg-icon>      </div>      <p        *ngIf="!editing.welcomeMessage"        (click)="editing.welcomeMessage = !editing.welcomeMessage"      >        {{ form.value.welcomeMessage }}        <cf-svg-icon          src="assets/icons/mdi/pencil-outline.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>      </p>    </div>    <div cfElem="username">      <!-- label for="name">Name:</label -->      <div class="form-control" *ngIf="editing.name">        <input id="name" type="text" formControlName="name" />        <cf-svg-icon          src="assets/icons/mdi/check.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"          (click)="editing.name = !editing.name"        ></cf-svg-icon>      </div>      <span (click)="editing.name = !editing.name" *ngIf="!editing.name"        >{{ form.value.name }}        <cf-svg-icon          src="assets/icons/mdi/pencil-outline.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>      </span>    </div>  </div></form></div>'
-    var COMPONENTS = [{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'PreviewAvatarAppearanceComponent', 'selector': 'cf-preview-avatar-appearance'}];
+        var COMPONENT_TEMPLATE = '<div><form [formGroup]="form" cfBlock="avatar-overview" *ngIf="form.value?.name">  <cf-avatar-appearance-portrait    [appearance]="form.value.appearance"  ></cf-avatar-appearance-portrait>  <div cfBlock="chatbox">    <div cfElem="message">      <div class="form-control" *ngIf="editing.welcomeMessage">        <!-- label for="welcomeMessage">Welcome message:</label -->        <textarea          id="welcomeMessage"          formControlName="welcomeMessage"        ></textarea>        <cf-svg-icon          src="assets/icons/mdi/check.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"          (click)="editing.welcomeMessage = !editing.welcomeMessage"        ></cf-svg-icon>      </div>      <p        *ngIf="!editing.welcomeMessage"        (click)="editing.welcomeMessage = !editing.welcomeMessage"      >        {{ form.value.welcomeMessage }}        <cf-svg-icon          src="assets/icons/mdi/pencil-outline.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>      </p>    </div>    <div cfElem="username">      <!-- label for="name">Name:</label -->      <div class="form-control" *ngIf="editing.name">        <input id="name" type="text" formControlName="name" />        <cf-svg-icon          src="assets/icons/mdi/check.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"          (click)="editing.name = !editing.name"        ></cf-svg-icon>      </div>      <span (click)="editing.name = !editing.name" *ngIf="!editing.name"        >{{ form.value.name }}        <cf-svg-icon          src="assets/icons/mdi/pencil-outline.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>      </span>    </div>  </div></form></div>'
+    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarOverviewComponent'};
 </script>

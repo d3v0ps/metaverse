@@ -329,7 +329,7 @@ export class SelectedAvatarScene {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    avatar: avatar$ | async  } as data">  <div cfBlock="scene-content" *ngIf="data.avatar">    <cf-avatar-overview      style="display: block; min-height: 200px;"      [avatar]="data.avatar"    ></cf-avatar-overview>    <!-- cf-avatar-skills        [skills]="data.avatar.skills"      ></cf-avatar-skills -->    <cf-avatar-appearances      [appearances]="data.avatar.appearances"    ></cf-avatar-appearances>    <!-- cf-avatar-scopes        [scopes]="data.avatar.scopes"      ></cf-avatar-scopes-->  </div></ng-container></div>'
-    var COMPONENTS = [{'name': 'CreateAvatarScene', 'selector': 'cf-create-avatar'},{'name': 'ManageAvatarsRoot', 'selector': 'cf-manage-avatars-root'},{'name': 'SelectAvatarScene', 'selector': 'cf-select-avatar'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
+    var COMPONENTS = [{'name': 'CreateAvatarScene', 'selector': 'cf-create-avatar'},{'name': 'ManageAvatarAppearancesScene', 'selector': 'cf-manage-avatar-appearances-scene'},{'name': 'ManageAvatarsRoot', 'selector': 'cf-manage-avatars-root'},{'name': 'SelectAvatarScene', 'selector': 'cf-select-avatar'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SelectedAvatarScene'};
 </script>

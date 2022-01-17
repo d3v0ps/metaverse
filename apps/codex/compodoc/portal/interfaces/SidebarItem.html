@@ -350,7 +350,7 @@ import { Component, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
 import { NavigationEnd, Router } from &#x27;@angular/router&#x27;;
 import {
   Application,
-  ApplicationShortcut
+  ApplicationShortcut,
 } from &#x27;@central-factory/applications/models/application&#x27;;
 import { RecentlyOpenedApplicationsState } from &#x27;@central-factory/applications/states/recently-opened-applications.state&#x27;;
 import { SelectedApplicationState } from &#x27;@central-factory/applications/states/selected-application.state&#x27;;
@@ -369,7 +369,7 @@ import {
   skip,
   switchMap,
   takeUntil,
-  tap
+  tap,
 } from &#x27;rxjs/operators&#x27;;
 
 export interface SidebarItem {
@@ -409,7 +409,7 @@ export enum SceneContentAnimationState {
             &lt;cf-sidebar
               [(opened)]&#x3D;&quot;sidebarIsOpen&quot;
               [dock]&#x3D;&quot;true&quot;
-              [dockedSize]&#x3D;&quot;&#x27;80px&#x27;&quot;
+              [dockedSize]&#x3D;&quot;&#x27;100px&#x27;&quot;
               [showBackdrop]&#x3D;&quot;true&quot;
               [closeOnClickBackdrop]&#x3D;&quot;true&quot;
               [closeOnClickOutside]&#x3D;&quot;true&quot;
@@ -420,8 +420,13 @@ export enum SceneContentAnimationState {
                     onSidebarItemClick({
                       name: &#x27;Select Avatar&#x27;,
                       routerLink: [&#x27;/select-avatar&#x27;],
-                      icon: data.selectedAvatar.selectedAppearance
-                        .smallPreviewUrl,
+                      icon: &#x27;assets/icons/mdi/account-switch.svg&#x27;,
+                      application: {
+                        id: &#x27;com.central-factory.user-avatars&#x27;,
+                        name: &#x27;User Avatars&#x27;,
+                        description: &#x27;Select an avatar&#x27;,
+                        startUrl: &#x27;/select-avatar&#x27;
+                      },
                       active: false
                     })
                   &quot;
@@ -432,12 +437,14 @@ export enum SceneContentAnimationState {
                   &lt;div cfElem&#x3D;&quot;text&quot;&gt;
                     &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;Account&lt;/span&gt;
                   &lt;/div&gt;
-                  &lt;img
+                  &lt;cf-avatar-appearance-portrait
+                    [appearance]&#x3D;&quot;data.selectedAvatar.selectedAppearance&quot;
+                  &gt;
+                  &lt;/cf-avatar-appearance-portrait&gt;
+                  &lt;!-- img
                     cfElem&#x3D;&quot;image&quot;
-                    [src]&#x3D;&quot;
-                      data.selectedAvatar.selectedAppearance.smallPreviewUrl
-                    &quot;
-                  /&gt;
+                    [src]&#x3D;&quot;data.selectedAvatar.selectedAppearance.portrait.src&quot;
+                  /  --&gt;
                 &lt;/a&gt;
 
                 &lt;ng-container *ngFor&#x3D;&quot;let item of sidebarItems&quot;&gt;

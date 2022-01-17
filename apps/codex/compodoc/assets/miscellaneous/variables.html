@@ -345,8 +345,14 @@
   kind: AssetKind.Equipment,
   previewUrl: &#x27;https://i.imgur.com/w1XmjIj.png&#x27;,
   url: &#x27;https://es.aliexpress.com/item/1005003209038453.html&#x27;,
-  currentValue: 43.9,
-  purchaseValue: 43.9,
+  currentValue: {
+    usd: &#x27;43.9&#x27;,
+    eth: &#x27;0.01305079404&#x27;,
+  },
+  purchaseValue: {
+    usd: &#x27;43.9&#x27;,
+    eth: &#x27;0.01305079404&#x27;,
+  },
   purchaseDate: new Date().toISOString(),
   digital: false,
   private: true,
@@ -391,8 +397,14 @@
   kind: AssetKind.Equipment,
   previewUrl: &#x27;https://i.imgur.com/ukcsu1q.png&#x27;,
   url: &#x27;https://es.aliexpress.com/item/1005001952208453.html&#x27;,
-  currentValue: 23.62,
-  purchaseValue: 23.62,
+  currentValue: {
+    usd: &#x27;23.62&#x27;,
+    eth: &#x27;0.0070218623&#x27;,
+  },
+  purchaseValue: {
+    usd: &#x27;23.62&#x27;,
+    eth: &#x27;0.0070218623&#x27;,
+  },
   purchaseDate: new Date().toISOString(),
   digital: false,
   private: true,
@@ -437,8 +449,14 @@
   kind: AssetKind.Equipment,
   previewUrl: &#x27;https://picsum.photos/id/758/200/200&#x27;,
   url: &#x27;https://picsum.photos/id/758/200/200&#x27;,
-  currentValue: 150,
-  purchaseValue: 100,
+  currentValue: {
+    usd: &#x27;150&#x27;,
+    eth: &#x27;0.04459269036&#x27;,
+  },
+  purchaseValue: {
+    usd: &#x27;150&#x27;,
+    eth: &#x27;0.04459269036&#x27;,
+  },
   purchaseDate: new Date().toISOString(),
   digital: true,
   private: true,
@@ -841,12 +859,32 @@
       description: &#x27;Preview url&#x27;,
     },
     currentValue: {
-      type: &#x27;number&#x27;,
+      type: &#x27;object&#x27;,
       description: &#x27;Current value&#x27;,
+      properties: {
+        usd: {
+          type: &#x27;string&#x27;,
+          description: &#x27;Usd&#x27;,
+        },
+        eth: {
+          type: &#x27;string&#x27;,
+          description: &#x27;Eth&#x27;,
+        },
+      },
     },
     purchaseValue: {
-      type: &#x27;number&#x27;,
+      type: &#x27;object&#x27;,
       description: &#x27;Purchase value&#x27;,
+      properties: {
+        usd: {
+          type: &#x27;string&#x27;,
+          description: &#x27;Usd&#x27;,
+        },
+        eth: {
+          type: &#x27;string&#x27;,
+          description: &#x27;Eth&#x27;,
+        },
+      },
     },
     purchaseDate: {
       format: &#x27;date-time&#x27;,

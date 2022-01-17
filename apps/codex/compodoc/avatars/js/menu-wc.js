@@ -63,16 +63,152 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </a>
                         <ul class="links collapse " ${ isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"' }>
                             <li class="link">
-                                <a href="modules/AvatarAppearancesModule.html" data-type="entity-link" >AvatarAppearancesModule</a>
+                                <a href="modules/AvatarAppearanceCardModule.html" data-type="entity-link" >AvatarAppearanceCardModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AvatarAppearancesModule-3a97ee8e5a8b1c8923c44562abdb9a82"' : 'data-target="#xs-components-links-module-AvatarAppearancesModule-3a97ee8e5a8b1c8923c44562abdb9a82"' }>
+                                            'data-target="#components-links-module-AvatarAppearanceCardModule-d568d65c25b2a2d8a8e800df1e7c54f0"' : 'data-target="#xs-components-links-module-AvatarAppearanceCardModule-d568d65c25b2a2d8a8e800df1e7c54f0"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarAppearancesModule-3a97ee8e5a8b1c8923c44562abdb9a82"' :
-                                            'id="xs-components-links-module-AvatarAppearancesModule-3a97ee8e5a8b1c8923c44562abdb9a82"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarAppearanceCardModule-d568d65c25b2a2d8a8e800df1e7c54f0"' :
+                                            'id="xs-components-links-module-AvatarAppearanceCardModule-d568d65c25b2a2d8a8e800df1e7c54f0"' }>
+                                            <li class="link">
+                                                <a href="components/AvatarAppearanceCardComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarAppearanceCardComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/AvatarAppearanceEditorModule.html" data-type="entity-link" >AvatarAppearanceEditorModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-AvatarAppearanceEditorModule-ae8cfcc32a5719038549c3f189fb2282"' : 'data-target="#xs-components-links-module-AvatarAppearanceEditorModule-ae8cfcc32a5719038549c3f189fb2282"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarAppearanceEditorModule-ae8cfcc32a5719038549c3f189fb2282"' :
+                                            'id="xs-components-links-module-AvatarAppearanceEditorModule-ae8cfcc32a5719038549c3f189fb2282"' }>
+                                            <li class="link">
+                                                <a href="components/AvatarAppearanceEditorComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarAppearanceEditorComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/AvatarAppearancePortraitModule.html" data-type="entity-link" >AvatarAppearancePortraitModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-AvatarAppearancePortraitModule-73109a5a7e4c4eb159746552941e835d"' : 'data-target="#xs-components-links-module-AvatarAppearancePortraitModule-73109a5a7e4c4eb159746552941e835d"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarAppearancePortraitModule-73109a5a7e4c4eb159746552941e835d"' :
+                                            'id="xs-components-links-module-AvatarAppearancePortraitModule-73109a5a7e4c4eb159746552941e835d"' }>
+                                            <li class="link">
+                                                <a href="components/AvatarAppearancePortraitComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarAppearancePortraitComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/AvatarAppearancePreviewAframeModule.html" data-type="entity-link" >AvatarAppearancePreviewAframeModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-AvatarAppearancePreviewAframeModule-36e8b0239eaf93593fc6e82ff84339fd"' : 'data-target="#xs-components-links-module-AvatarAppearancePreviewAframeModule-36e8b0239eaf93593fc6e82ff84339fd"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarAppearancePreviewAframeModule-36e8b0239eaf93593fc6e82ff84339fd"' :
+                                            'id="xs-components-links-module-AvatarAppearancePreviewAframeModule-36e8b0239eaf93593fc6e82ff84339fd"' }>
+                                            <li class="link">
+                                                <a href="components/AvatarAppearancePreviewAframeComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarAppearancePreviewAframeComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/AvatarAppearancePreviewImageModule.html" data-type="entity-link" >AvatarAppearancePreviewImageModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-AvatarAppearancePreviewImageModule-497fc2eb40a7c990f1f15fdd3ee46418"' : 'data-target="#xs-components-links-module-AvatarAppearancePreviewImageModule-497fc2eb40a7c990f1f15fdd3ee46418"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarAppearancePreviewImageModule-497fc2eb40a7c990f1f15fdd3ee46418"' :
+                                            'id="xs-components-links-module-AvatarAppearancePreviewImageModule-497fc2eb40a7c990f1f15fdd3ee46418"' }>
+                                            <li class="link">
+                                                <a href="components/AvatarAppearancePreviewImageComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarAppearancePreviewImageComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/AvatarAppearancePreviewModelViewerModule.html" data-type="entity-link" >AvatarAppearancePreviewModelViewerModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-AvatarAppearancePreviewModelViewerModule-69423511190cbeb970aad39589c1b2de"' : 'data-target="#xs-components-links-module-AvatarAppearancePreviewModelViewerModule-69423511190cbeb970aad39589c1b2de"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarAppearancePreviewModelViewerModule-69423511190cbeb970aad39589c1b2de"' :
+                                            'id="xs-components-links-module-AvatarAppearancePreviewModelViewerModule-69423511190cbeb970aad39589c1b2de"' }>
+                                            <li class="link">
+                                                <a href="components/AvatarAppearancePreviewModelViewerComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarAppearancePreviewModelViewerComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/AvatarAppearancePreviewModule.html" data-type="entity-link" >AvatarAppearancePreviewModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-AvatarAppearancePreviewModule-e0e37d5da52a9a6e8817c3643a7a9135"' : 'data-target="#xs-components-links-module-AvatarAppearancePreviewModule-e0e37d5da52a9a6e8817c3643a7a9135"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarAppearancePreviewModule-e0e37d5da52a9a6e8817c3643a7a9135"' :
+                                            'id="xs-components-links-module-AvatarAppearancePreviewModule-e0e37d5da52a9a6e8817c3643a7a9135"' }>
+                                            <li class="link">
+                                                <a href="components/AvatarAppearancePreviewComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarAppearancePreviewComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/AvatarAppearancesCarouselModule.html" data-type="entity-link" >AvatarAppearancesCarouselModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-AvatarAppearancesCarouselModule-4fa75203a7b4181a5e645b15e2ab0442"' : 'data-target="#xs-components-links-module-AvatarAppearancesCarouselModule-4fa75203a7b4181a5e645b15e2ab0442"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarAppearancesCarouselModule-4fa75203a7b4181a5e645b15e2ab0442"' :
+                                            'id="xs-components-links-module-AvatarAppearancesCarouselModule-4fa75203a7b4181a5e645b15e2ab0442"' }>
+                                            <li class="link">
+                                                <a href="components/AvatarAppearancesCarouselComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarAppearancesCarouselComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/AvatarAppearancesModule.html" data-type="entity-link" >AvatarAppearancesModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-AvatarAppearancesModule-808a449a56aed74a8296cd689ef25628"' : 'data-target="#xs-components-links-module-AvatarAppearancesModule-808a449a56aed74a8296cd689ef25628"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarAppearancesModule-808a449a56aed74a8296cd689ef25628"' :
+                                            'id="xs-components-links-module-AvatarAppearancesModule-808a449a56aed74a8296cd689ef25628"' }>
                                             <li class="link">
                                                 <a href="components/AvatarAppearancesComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarAppearancesComponent</a>
                                             </li>
@@ -83,13 +219,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/AvatarOverviewModule.html" data-type="entity-link" >AvatarOverviewModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AvatarOverviewModule-7ef547c6a59ab73a19c0ee2318c6ce28"' : 'data-target="#xs-components-links-module-AvatarOverviewModule-7ef547c6a59ab73a19c0ee2318c6ce28"' }>
+                                            'data-target="#components-links-module-AvatarOverviewModule-dcbb41da58fc7af08e783236545aae34"' : 'data-target="#xs-components-links-module-AvatarOverviewModule-dcbb41da58fc7af08e783236545aae34"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarOverviewModule-7ef547c6a59ab73a19c0ee2318c6ce28"' :
-                                            'id="xs-components-links-module-AvatarOverviewModule-7ef547c6a59ab73a19c0ee2318c6ce28"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarOverviewModule-dcbb41da58fc7af08e783236545aae34"' :
+                                            'id="xs-components-links-module-AvatarOverviewModule-dcbb41da58fc7af08e783236545aae34"' }>
                                             <li class="link">
                                                 <a href="components/AvatarOverviewComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarOverviewComponent</a>
                                             </li>
@@ -100,13 +236,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/AvatarsCarouselModule.html" data-type="entity-link" >AvatarsCarouselModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AvatarsCarouselModule-91367af394d84044eb48b23f790f6c63"' : 'data-target="#xs-components-links-module-AvatarsCarouselModule-91367af394d84044eb48b23f790f6c63"' }>
+                                            'data-target="#components-links-module-AvatarsCarouselModule-78d2f735386839c8c9b6ad71ab1079f0"' : 'data-target="#xs-components-links-module-AvatarsCarouselModule-78d2f735386839c8c9b6ad71ab1079f0"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarsCarouselModule-91367af394d84044eb48b23f790f6c63"' :
-                                            'id="xs-components-links-module-AvatarsCarouselModule-91367af394d84044eb48b23f790f6c63"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarsCarouselModule-78d2f735386839c8c9b6ad71ab1079f0"' :
+                                            'id="xs-components-links-module-AvatarsCarouselModule-78d2f735386839c8c9b6ad71ab1079f0"' }>
                                             <li class="link">
                                                 <a href="components/AvatarsCarouselComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarsCarouselComponent</a>
                                             </li>
@@ -143,23 +279,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                             'id="xs-components-links-module-AvatarSkillsModule-1ec601dc0ac7b0a5b68b3c30b729aa57"' }>
                                             <li class="link">
                                                 <a href="components/AvatarSkillsComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarSkillsComponent</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                            </li>
-                            <li class="link">
-                                <a href="modules/PreviewAvatarAppearanceModule.html" data-type="entity-link" >PreviewAvatarAppearanceModule</a>
-                                    <li class="chapter inner">
-                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-PreviewAvatarAppearanceModule-9fd223aa37b1049fde3222220142699e"' : 'data-target="#xs-components-links-module-PreviewAvatarAppearanceModule-9fd223aa37b1049fde3222220142699e"' }>
-                                            <span class="icon ion-md-cog"></span>
-                                            <span>Components</span>
-                                            <span class="icon ion-ios-arrow-down"></span>
-                                        </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PreviewAvatarAppearanceModule-9fd223aa37b1049fde3222220142699e"' :
-                                            'id="xs-components-links-module-PreviewAvatarAppearanceModule-9fd223aa37b1049fde3222220142699e"' }>
-                                            <li class="link">
-                                                <a href="components/PreviewAvatarAppearanceComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >PreviewAvatarAppearanceComponent</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -226,13 +345,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/Avatar.html" data-type="entity-link" >Avatar</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/AvatarAppearancesForm.html" data-type="entity-link" >AvatarAppearancesForm</a>
-                            </li>
-                            <li class="link">
                                 <a href="interfaces/AvatarOverviewInput.html" data-type="entity-link" >AvatarOverviewInput</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/FormAppearance.html" data-type="entity-link" >FormAppearance</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/Scope.html" data-type="entity-link" >Scope</a>
@@ -250,6 +363,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? 'id="miscellaneous-links"' : 'id="xs-miscellaneous-links"' }>
+                            <li class="link">
+                                <a href="miscellaneous/enumerations.html" data-type="entity-link">Enums</a>
+                            </li>
                             <li class="link">
                                 <a href="miscellaneous/typealiases.html" data-type="entity-link">Type aliases</a>
                             </li>
