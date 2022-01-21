@@ -1,0 +1,59 @@
+
+:root {
+  --component-tab-background-color: var(--color-base-dark-dark);
+  --component-tab-text-color: var(--color-base-light-medium);
+  --component-tab-active-background-color: var(--color-base-dark-darkest);
+  --component-tab-active-text-color: var(--color-base-light-medium);
+  --component-tab-border-color: var(--color-base-dark-darker);
+  --component-tab-shadow-outset: 8px 8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-tab-shadow-inset-primary:  -8px -8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-tab-shadow-inset-secondary:  8px 8px 16px 0 rgba(255, 255, 255, 0.2);
+}
+
+.tabset {
+  list-style: none;
+  padding: 0;
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+
+  .tab {
+    background-color: var(--component-tab-background-color);
+    color: var(--component-tab-text-color);
+    min-width: 6rem;
+
+    .button__icon {
+      margin-right: .5rem;
+    }
+
+    &--active {
+      background-color: var(--component-tab-active-background-color);
+      color: var(--component-tab-active-text-color);
+
+      .icon__svg {
+        fill: var(--component-tab-active-text-color);
+      }
+    }
+
+    &--disabled {
+      opacity: .5;
+    }
+
+    &:not(.active):not(.disabled) {
+      cursor: pointer;
+    }
+
+    .icon__svg {
+      fill: var(--component-tab-text-color);
+    }
+  }
+
+}
+
+.tab-content {
+  display: none;
+  &--active {
+    display: block;
+  }
+}

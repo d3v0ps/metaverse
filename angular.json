@@ -1605,6 +1605,36 @@
               }
             ]
           }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "config": {
+              "configFolder": "libs/web-components/.storybook",
+              "jsx": true
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "quiet": true,
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/web-components",
+            "config": {
+              "configFolder": "libs/web-components/.storybook"
+            }
+          }
         }
       },
       "tags": []

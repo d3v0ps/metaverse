@@ -97,7 +97,6 @@ export enum LogoState {
 export class SplashScreenComponent implements OnInit {
   @Input() title = 'Portal';
   @Input() logo = 'assets/logo.svg';
-  @Input() spinnerType = 'cog';
   @Input() backgroundColor?: string;
   @Input() loadingTexts = [
     'Setting up the rockets...',

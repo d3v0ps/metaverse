@@ -22,17 +22,23 @@
   color: var(--component-button-color);
   background-color: var(--component-button-background-color);
   font-size: var(--component-button-font-size);
-  padding: .5rem 1rem;
+  padding: .6rem 1rem;
   text-decoration: none;
   border: none;
   box-shadow: var(--component-button-shadow-outset), inset var(--component-button-shadow-inset-primary), inset var(--component-button-shadow-inset-secondary);
   cursor: pointer;
   line-height: 2;
 
+  &__label {
+    margin: 0;
+    font-size: 1rem;
+  }
+
   .icon__svg {
     vertical-align: bottom;
     width: 2rem;;
     height: 100%;
+    fill: var(--component-button-color);
   }
 
   &--has-icon {

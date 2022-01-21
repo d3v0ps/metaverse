@@ -4,11 +4,39 @@
 );
 @use "../abstracts/variables/colors" as colors;
 
+:root {
+  --component-select-option-background-color: var(--color-base-dark-darker);
+}
+
 .ng-select {
+  .ng-select-container {
+    color: var(--component-select-text-color);
+    background-color: var(--component-input-background-color);
+    box-shadow: var(--component-input-shadow-outset), inset var(--component-input-shadow-inset-primary), inset var(--component-input-shadow-inset-secondary);
+    border: 0;
+    padding: 1.5rem 0.5rem;
+    &:hover {
+      box-shadow: var(--component-input-shadow-outset), inset var(--component-input-shadow-inset-primary), inset var(--component-input-shadow-inset-secondary);
+      filter: brightness(1.1);
+    }
+    .ng-value-container {
+      .ng-placeholder {
+        color: var(--component-select-text-color);
+      }
+    }
+    .ng-input {
+      input {
+        cursor: pointer !important;
+      }
+    }
+  }
   &.ng-select-opened {
     > .ng-select-container {
-      background: var(--component-select-background-color);
-      border-color: var(--component-select-opened-border-color);
+      background-color: var(--component-input-background-color);
+      &:hover {
+        box-shadow: var(--component-input-shadow-outset), inset var(--component-input-shadow-inset-primary), inset var(--component-input-shadow-inset-secondary);
+        filter: brightness(1.1);
+      }
       .ng-arrow {
         border-color: transparent transparent var(--component-select-opened-border-color);
         &:hover {
@@ -19,23 +47,14 @@
   }
   &.ng-select-focused {
       &:not(.ng-select-opened) > .ng-select-container {
-          border-color: var(--component-select-focused-border-color);
+        box-shadow: var(--component-input-shadow-outset), inset var(--component-input-shadow-inset-primary), inset var(--component-input-shadow-inset-secondary);
+        filter: brightness(1.1);
       }
   }
   &.ng-select-disabled {
       > .ng-select-container {
-          background-color: var(--component-select-disabled-text);
+        background-color: var(--component-input-disabled-background-color);
       }
-  }
-  .ng-select-container {
-    color: var(--component-select-text-color);
-    background-color: var(--component-select-background-color);
-    border: 1px solid var(--component-select-border-color);
-    .ng-value-container {
-      .ng-placeholder {
-        color: var(--component-select-text-color);
-      }
-    }
   }
   &.ng-select-multiple {
     &.ng-select-disabled {
@@ -90,7 +109,9 @@
 
 .ng-dropdown-panel {
   background-color: var(--component-select-background-color);
-  border: 1px solid var(--component-select-border-color);
+  border: 0;
+  box-shadow: var(--component-input-shadow-outset), inset var(--component-input-shadow-inset-primary), inset var(--component-input-shadow-inset-secondary);
+
   &.ng-select-top {
     border-bottom-color: var(--component-select-border-color);
   }
@@ -121,8 +142,12 @@
       }
     }
     .ng-option {
-      background-color: var(--component-select-background-color);
+      background-color: var(--component-select-option-background-color);
       color: var(--component-select-text-color);
+      line-height: 2;
+      box-shadow: var(--component-input-shadow-outset);
+      margin-bottom: 0.15rem;
+
       &.ng-option-selected, &.ng-option-selected.ng-option-marked {
         color: var(--component-select-selected-color);
         background-color: var(--component-select-selected-background-color);
