@@ -1,7 +1,7 @@
 ---
 id: shell
-title: Shell Framework
-sidebar_label: Offline-first Micro-frontends Management Shell based on [Angular](https://angular.io/)
+sidebar_label: Shell Framework
+title: Offline-first Micro-frontends Management Shell based on [Angular](https://angular.io/)
 slug: /framework/shell
 ---
 
