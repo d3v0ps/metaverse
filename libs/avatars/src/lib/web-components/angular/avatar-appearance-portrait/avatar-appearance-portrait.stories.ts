@@ -43,11 +43,11 @@ const Template: Story<AvatarAppearancePortraitComponent> = (
 
 export const Normal = Template.bind({});
 Normal.args = {
-  appearance: glbAppearanceMock,
+  appearancePortrait: glbAppearanceMock.portrait,
 };
 
 export const Empty = Template.bind({});
 Empty.args = {
-  appearance: undefined,
+  appearancePortrait: undefined,
   showEmptyIcon: false,
 };

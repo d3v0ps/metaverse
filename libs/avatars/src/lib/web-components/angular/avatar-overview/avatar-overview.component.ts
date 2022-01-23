@@ -24,7 +24,7 @@ export interface AvatarOverviewInput {
   template: `
     <form [formGroup]="form" cfBlock="avatar-overview" *ngIf="form.value?.name">
       <cf-avatar-appearance-portrait
-        [appearance]="form.value.appearance"
+        [appearancePortrait]="form.value.appearance?.portrait"
       ></cf-avatar-appearance-portrait>
 
       <div cfBlock="chatbox">

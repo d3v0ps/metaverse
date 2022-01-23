@@ -8,7 +8,7 @@ import type { Avatar } from '../../../models/avatar';
       <ng-container *ngFor="let avatar of avatars">
         <div cfBlock="avatars-carousel-item" (click)="avatarClick.emit(avatar)">
           <cf-avatar-appearance-portrait
-            [appearance]="avatar.selectedAppearance"
+            [appearancePortrait]="avatar.selectedAppearance?.portrait"
           >
           </cf-avatar-appearance-portrait>
           <br />

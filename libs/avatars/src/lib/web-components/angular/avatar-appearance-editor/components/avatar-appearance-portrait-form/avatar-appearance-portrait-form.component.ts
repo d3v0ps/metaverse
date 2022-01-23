@@ -13,24 +13,19 @@ import {
       <form [formGroup]="form">
         <div
           style="margin-bottom: 1rem;"
-          *ngIf="portrait?.format && portrait?.src"
+          *ngIf="form.value?.format && form.value?.src"
         >
           <cf-avatar-appearance-portrait
-            [appearance]="{
-              id: '',
-              format: portrait!.format,
-              src: portrait!.src,
-              portrait: {
-                format: portrait!.format,
-                src: portrait!.src
-              }
+            [appearancePortrait]="{
+              format: form.value!.format,
+              src: form.value!.src
             }"
           >
           </cf-avatar-appearance-portrait>
         </div>
         <div
           style="margin-bottom: 1rem;"
-          *ngIf="!portrait?.format || !portrait?.src"
+          *ngIf="!form.value?.format || !form.value?.src"
         >
           <cf-avatar-appearance-portrait> </cf-avatar-appearance-portrait>
         </div>
@@ -56,20 +51,21 @@ import {
 })
 export class AvatarAppearancePortraitFormComponent {
   @Input() set portrait(value: AppearancePortrait | undefined) {
+    console.log('portrait', value);
     this.form.reset({
-      format: value?.format || null,
-      src: value?.src || null,
-      file: null,
+      format: (value?.format || null) as AppearanceFormat,
+      src: (value?.src || null) as string,
+      // file: null,
     });
   }
 
-  form = new FormGroup(
+  form = new FormGroup<AppearancePortrait>(
     {
-      format: new FormControl<AppearanceFormat | null>(AppearanceFormat.Image, [
+      format: new FormControl<AppearanceFormat>(AppearanceFormat.Image, [
         Validators.required,
       ]),
-      src: new FormControl<string | null>(null, [Validators.required]),
-      file: new FormControl<any>(null),
+      src: new FormControl<string>(undefined, [Validators.required]),
+      // file: new FormControl<any>(null),
     },
     [Validators.required]
   );
