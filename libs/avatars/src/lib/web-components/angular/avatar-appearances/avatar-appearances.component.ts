@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import type { Appearance } from '../../../models/appearance';
 
 @Component({
@@ -8,8 +8,11 @@ import type { Appearance } from '../../../models/appearance';
       <h2>Appearances</h2>
 
       <cf-avatar-appearances-carousel
+        [selectedAppearanceId]="selectedAppearanceId"
         [appearances]="appearances"
         [showAdd]="true"
+        (appearanceClick)="appearanceClick.emit($event)"
+        (appearanceAddClick)="appearanceAddClick.emit()"
       >
       </cf-avatar-appearances-carousel>
     </div>
@@ -26,4 +29,8 @@ import type { Appearance } from '../../../models/appearance';
 })
 export class AvatarAppearancesComponent {
   @Input() appearances?: Appearance[];
+  @Input() selectedAppearanceId?: string;
+
+  @Output() appearanceClick = new EventEmitter<Appearance>();
+  @Output() appearanceAddClick = new EventEmitter<Appearance>();
 }

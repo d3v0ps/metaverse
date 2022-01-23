@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Appearance } from '@central-factory/avatars';
 import type { Avatar } from '@central-factory/avatars/models/avatar';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
 import { Observable } from 'rxjs';
@@ -23,6 +25,9 @@ import { Observable } from 'rxjs';
 
         <cf-avatar-appearances
           [appearances]="data.avatar.appearances"
+          [selectedAppearanceId]="data.avatar.selectedAppearance?.id"
+          (appearanceClick)="onAppearanceClick($event)"
+          (appearanceAddClick)="onAppearanceAddClick()"
         ></cf-avatar-appearances>
 
         <!-- cf-avatar-scopes
@@ -36,5 +41,16 @@ export class SelectedAvatarScene {
   public readonly avatar$: Observable<Avatar | undefined> =
     this.selectedAvatarState.avatar$;
 
-  constructor(private readonly selectedAvatarState: SelectedAvatarState) {}
+  constructor(
+    private readonly selectedAvatarState: SelectedAvatarState,
+    private readonly router: Router
+  ) {}
+
+  onAppearanceClick(appearance: Appearance) {
+    this.selectedAvatarState.selectAppearance(appearance).subscribe();
+  }
+
+  onAppearanceAddClick() {
+    this.router.navigate(['/create-avatar']);
+  }
 }

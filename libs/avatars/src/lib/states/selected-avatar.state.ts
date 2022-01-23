@@ -11,6 +11,7 @@ import {
   throwError,
 } from 'rxjs';
 import type { UserAvatarDocType } from '../collections/user-avatars.collection';
+import { Appearance } from '../models';
 import type { Avatar } from '../models/avatar';
 
 @Injectable({
@@ -57,6 +58,25 @@ export class SelectedAvatarState {
       key: 'userAvatars.selectedAvatar',
       value: avatar.id,
     });
+  }
+
+  selectAppearance(appearance: Appearance) {
+    if (!this.userAvatarsRepository) {
+      return throwError(() => new Error('Repositories not initialized'));
+    }
+
+    const avatar = this.avatar$.getValue();
+
+    if (!avatar) {
+      return throwError(() => new Error('Avatar not selected'));
+    }
+
+    const avatarUpdate: Avatar = JSON.parse(JSON.stringify(avatar));
+    avatarUpdate.selectedAppearance = appearance;
+
+    return this.userAvatarsRepository
+      .upsert(avatarUpdate)
+      .pipe(tap(() => this.avatar$.next(avatarUpdate)));
   }
 
   private subscribeToDataChanges() {

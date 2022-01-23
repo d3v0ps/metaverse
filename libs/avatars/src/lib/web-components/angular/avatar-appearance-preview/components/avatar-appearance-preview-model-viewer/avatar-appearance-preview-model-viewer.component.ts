@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Appearance } from '../../../../../models/appearance';
 
 @Component({
@@ -6,8 +6,8 @@ import { Appearance } from '../../../../../models/appearance';
   template: `
     <model-viewer
       style="width: {{ width }}; height: {{ height }};"
-      *ngIf="appearance?.src"
-      [src]="appearance?.src"
+      *ngIf="src"
+      [src]="src"
       bounds="tight"
       ar
       ar-modes="webxr scene-viewer quick-look"
@@ -17,10 +17,19 @@ import { Appearance } from '../../../../../models/appearance';
       environment-image="assets/model-viewer/environments/aircraft_workshop_01_1k.hdr"
     ></model-viewer>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarAppearancePreviewModelViewerComponent {
-  @Input() appearance?: Appearance;
+  @Input() set appearance(value: Appearance | undefined) {
+    if (value?.src === this.src) {
+      return;
+    }
+
+    this.src = value?.src;
+  }
 
   @Input() width = '100%';
   @Input() height = '300px';
+
+  src?: string;
 }

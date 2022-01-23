@@ -10,7 +10,7 @@ export const userAvatars: UserAvatarDocType[] = [
     name: 'Thomas Anderson',
     title: 'Software Engineer',
     selectedAppearance: {
-      id: '1',
+      id: '2',
       format: AppearanceFormat.Model,
       src: 'assets/avatars/samples/thomas-anderson/default/appearance.glb',
       portrait: {

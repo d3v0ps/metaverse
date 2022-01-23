@@ -20,7 +20,9 @@ export enum AvatarAppearancesCarouselDisplayMode {
       </ng-container>
 
       <cf-avatar-appearance-card
+        *ngIf="showAdd"
         emptyIcon="assets/icons/mdi/plus.svg"
+        [showEmptyIcon]="true"
         (appearanceClick)="appearanceAddClick.emit()"
       >
       </cf-avatar-appearance-card>
