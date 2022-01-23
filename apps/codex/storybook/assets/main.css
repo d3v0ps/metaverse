@@ -3551,10 +3551,38 @@ cf-sidebar {
   --component-avatar-overview-small-preview-background-color: var(--color-base-primary-medium);
 }
 
+.avatar-overview {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  grid-gap: 10px;
+  gap: 10px;
+}
+
 .avatar-overview .avatar-appearance-portrait {
   width: var(--component-avatar-overview-small-preview-width);
   height: var(--component-avatar-overview-small-preview-height);
   background-color: var(--component-avatar-overview-small-preview-background-color);
+}
+
+.avatar-appearance-editor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.avatar-appearance-editor__body {
+  flex: 1;
+}
+
+.avatar-appearance-editor__body .appearance-tab-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.avatar-appearance-editor__footer {
+  flex: 0;
+  padding: 0rem 1.1rem 1rem;
 }
 
 :root {

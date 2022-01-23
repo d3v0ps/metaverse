@@ -1,0 +1,848 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@central-factory/metaverse documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/postmark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">@central-factory/metaverse documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  AvatarAppearanceInfoFormComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-info-form/avatar-appearance-info-form.component.ts</code>
+</p>
+
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>cf-avatar-appearance-info-form</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div cfBlock&#x3D;&quot;avatar-appearance-info-form&quot;&gt;
+  &lt;h2 cfElem&#x3D;&quot;title&quot;&gt;Info&lt;/h2&gt;
+  &lt;form cfBlock&#x3D;&quot;form&quot; cfMod&#x3D;&quot;horizontal&quot; [formGroup]&#x3D;&quot;form&quot;&gt;
+    &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+      &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+        &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;skinColor&quot;&gt; Skin Color &lt;/label&gt;
+        &lt;cf-color-picker-select
+          id&#x3D;&quot;skinColor&quot;
+          [options]&#x3D;&quot;appearanceSkinColors&quot;
+        &gt;&lt;/cf-color-picker-select&gt;
+      &lt;/div&gt;
+
+      &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+        &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;hairColor&quot;&gt; Hair Color &lt;/label&gt;
+        &lt;cf-color-picker-select
+          id&#x3D;&quot;hairColor&quot;
+          [options]&#x3D;&quot;appearanceHairColors&quot;
+        &gt;&lt;/cf-color-picker-select&gt;
+      &lt;/div&gt;
+
+      &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+        &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;hairStyle&quot;&gt; Hair Style &lt;/label&gt;
+        &lt;select
+          formControlName&#x3D;&quot;hairStyle&quot;
+          id&#x3D;&quot;hairStyle&quot;
+          class&#x3D;&quot;form-control&quot;
+        &gt;
+          &lt;option [value]&#x3D;&quot;null&quot;&gt;Select hair style&lt;/option&gt;
+          &lt;option
+            *ngFor&#x3D;&quot;let style of appearanceHairStyles&quot;
+            [value]&#x3D;&quot;style.value&quot;
+          &gt;
+            {{ style.label }}
+          &lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+
+      &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+        &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;eyeColor&quot;&gt; Eye Color &lt;/label&gt;
+        &lt;cf-color-picker-select
+          id&#x3D;&quot;eyeColor&quot;
+          [options]&#x3D;&quot;appearanceEyeColors&quot;
+        &gt;&lt;/cf-color-picker-select&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+      &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+        &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;bodyType&quot;&gt; Body Type &lt;/label&gt;
+        &lt;select
+          formControlName&#x3D;&quot;bodyType&quot;
+          id&#x3D;&quot;bodyType&quot;
+          class&#x3D;&quot;form-control&quot;
+        &gt;
+          &lt;option [value]&#x3D;&quot;null&quot;&gt;Select body type&lt;/option&gt;
+          &lt;option
+            *ngFor&#x3D;&quot;let type of appearanceBodyTypes&quot;
+            [value]&#x3D;&quot;type.value&quot;
+          &gt;
+            {{ type.label }}
+          &lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+
+      &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+        &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;fatPercentage&quot;&gt;
+          Fat Percentage
+        &lt;/label&gt;
+        &lt;input
+          class&#x3D;&quot;input&quot;
+          cfBlock&#x3D;&quot;form-control&quot;
+          type&#x3D;&quot;number&quot;
+          id&#x3D;&quot;fatPercentage&quot;
+          formControlName&#x3D;&quot;fatPercentage&quot;
+          min&#x3D;&quot;0&quot;
+          max&#x3D;&quot;100&quot;
+          step&#x3D;&quot;1&quot;
+        /&gt;
+      &lt;/div&gt;
+
+      &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+        &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;height&quot;&gt; Height &lt;/label&gt;
+        &lt;input
+          class&#x3D;&quot;input&quot;
+          cfBlock&#x3D;&quot;form-control&quot;
+          type&#x3D;&quot;number&quot;
+          id&#x3D;&quot;height&quot;
+          formControlName&#x3D;&quot;height&quot;
+        /&gt;
+      &lt;/div&gt;
+
+      &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+        &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;weight&quot;&gt; Weight &lt;/label&gt;
+        &lt;input
+          class&#x3D;&quot;input&quot;
+          cfBlock&#x3D;&quot;form-control&quot;
+          type&#x3D;&quot;number&quot;
+          id&#x3D;&quot;weight&quot;
+          formControlName&#x3D;&quot;weight&quot;
+        /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;
+</code></pre></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#appearanceBodyTypes" >appearanceBodyTypes</a>
+                            </li>
+                            <li>
+                                <a href="#appearanceEyeColors" >appearanceEyeColors</a>
+                            </li>
+                            <li>
+                                <a href="#appearanceHairColors" >appearanceHairColors</a>
+                            </li>
+                            <li>
+                                <a href="#appearanceHairStyles" >appearanceHairStyles</a>
+                            </li>
+                            <li>
+                                <a href="#appearanceSkinColors" >appearanceSkinColors</a>
+                            </li>
+                            <li>
+                                <a href="#form" >form</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#info" >info</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#info" >info</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="info"></a>
+                        <b>info</b>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-info-form/avatar-appearance-info-form.component.ts:152</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="appearanceBodyTypes"></a>
+                    <span class="name">
+                        <span ><b>appearanceBodyTypes</b></span>
+                        <a href="#appearanceBodyTypes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Object.keys(AppearanceInfoBodyType).map((key) &#x3D;&gt; ({
+    label: key,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    value: (AppearanceInfoBodyType as any)[key],
+  }))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-info-form/avatar-appearance-info-form.component.ts:146</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="appearanceEyeColors"></a>
+                    <span class="name">
+                        <span ><b>appearanceEyeColors</b></span>
+                        <a href="#appearanceEyeColors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Object.keys(AppearanceInfoEyeColor).map((key) &#x3D;&gt; ({
+    label: key,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    value: (AppearanceInfoEyeColor as any)[key],
+  }))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-info-form/avatar-appearance-info-form.component.ts:140</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="appearanceHairColors"></a>
+                    <span class="name">
+                        <span ><b>appearanceHairColors</b></span>
+                        <a href="#appearanceHairColors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Object.keys(AppearanceInfoHairColor).map((key) &#x3D;&gt; ({
+    label: key,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    value: (AppearanceInfoHairColor as any)[key],
+  }))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-info-form/avatar-appearance-info-form.component.ts:128</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="appearanceHairStyles"></a>
+                    <span class="name">
+                        <span ><b>appearanceHairStyles</b></span>
+                        <a href="#appearanceHairStyles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Object.keys(AppearanceInfoHairStyle).map((key) &#x3D;&gt; ({
+    label: key,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    value: (AppearanceInfoHairStyle as any)[key],
+  }))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-info-form/avatar-appearance-info-form.component.ts:134</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="appearanceSkinColors"></a>
+                    <span class="name">
+                        <span ><b>appearanceSkinColors</b></span>
+                        <a href="#appearanceSkinColors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Object.keys(AppearanceInfoSkinColor).map((key) &#x3D;&gt; ({
+    label: key,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    value: (AppearanceInfoSkinColor as any)[key],
+  }))</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-info-form/avatar-appearance-info-form.component.ts:122</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="form"></a>
+                    <span class="name">
+                        <span ><b>form</b></span>
+                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new FormGroup({
+    bodyType: new FormControl&lt;AppearanceInfoBodyType | null&gt;(null),
+    eyeColor: new FormControl&lt;string | null&gt;(null),
+    fatPercentage: new FormControl&lt;number | null&gt;(null, [
+      Validators.min(0),
+      Validators.max(100),
+    ]),
+    hairColor: new FormControl&lt;string | null&gt;(null),
+    hairLength: new FormControl&lt;number | null&gt;(null),
+    hairStyle: new FormControl&lt;string | null&gt;(null),
+    height: new FormControl&lt;number | null&gt;(null),
+    skinColor: new FormControl&lt;string | null&gt;(null),
+    weight: new FormControl&lt;number | null&gt;(null),
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-info-form/avatar-appearance-info-form.component.ts:169</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="info"></a>
+                        <span class="name"><b>info</b><a href="#info"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>info(value: AppearanceInfo | undefined)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-info-form/avatar-appearance-info-form.component.ts:152</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                        <code>AppearanceInfo | undefined</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
+import { FormControl, FormGroup, Validators } from &#x27;@ng-stack/forms&#x27;;
+import {
+  AppearanceInfo,
+  AppearanceInfoBodyType,
+  AppearanceInfoEyeColor,
+  AppearanceInfoHairColor,
+  AppearanceInfoHairStyle,
+  AppearanceInfoSkinColor,
+} from &#x27;../../../../../models/appearance-info&#x27;;
+
+@Component({
+  selector: &#x27;cf-avatar-appearance-info-form&#x27;,
+  template: &#x60;
+    &lt;div cfBlock&#x3D;&quot;avatar-appearance-info-form&quot;&gt;
+      &lt;h2 cfElem&#x3D;&quot;title&quot;&gt;Info&lt;/h2&gt;
+      &lt;form cfBlock&#x3D;&quot;form&quot; cfMod&#x3D;&quot;horizontal&quot; [formGroup]&#x3D;&quot;form&quot;&gt;
+        &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+          &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+            &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;skinColor&quot;&gt; Skin Color &lt;/label&gt;
+            &lt;cf-color-picker-select
+              id&#x3D;&quot;skinColor&quot;
+              [options]&#x3D;&quot;appearanceSkinColors&quot;
+            &gt;&lt;/cf-color-picker-select&gt;
+          &lt;/div&gt;
+
+          &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+            &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;hairColor&quot;&gt; Hair Color &lt;/label&gt;
+            &lt;cf-color-picker-select
+              id&#x3D;&quot;hairColor&quot;
+              [options]&#x3D;&quot;appearanceHairColors&quot;
+            &gt;&lt;/cf-color-picker-select&gt;
+          &lt;/div&gt;
+
+          &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+            &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;hairStyle&quot;&gt; Hair Style &lt;/label&gt;
+            &lt;select
+              formControlName&#x3D;&quot;hairStyle&quot;
+              id&#x3D;&quot;hairStyle&quot;
+              class&#x3D;&quot;form-control&quot;
+            &gt;
+              &lt;option [value]&#x3D;&quot;null&quot;&gt;Select hair style&lt;/option&gt;
+              &lt;option
+                *ngFor&#x3D;&quot;let style of appearanceHairStyles&quot;
+                [value]&#x3D;&quot;style.value&quot;
+              &gt;
+                {{ style.label }}
+              &lt;/option&gt;
+            &lt;/select&gt;
+          &lt;/div&gt;
+
+          &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+            &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;eyeColor&quot;&gt; Eye Color &lt;/label&gt;
+            &lt;cf-color-picker-select
+              id&#x3D;&quot;eyeColor&quot;
+              [options]&#x3D;&quot;appearanceEyeColors&quot;
+            &gt;&lt;/cf-color-picker-select&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+          &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+            &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;bodyType&quot;&gt; Body Type &lt;/label&gt;
+            &lt;select
+              formControlName&#x3D;&quot;bodyType&quot;
+              id&#x3D;&quot;bodyType&quot;
+              class&#x3D;&quot;form-control&quot;
+            &gt;
+              &lt;option [value]&#x3D;&quot;null&quot;&gt;Select body type&lt;/option&gt;
+              &lt;option
+                *ngFor&#x3D;&quot;let type of appearanceBodyTypes&quot;
+                [value]&#x3D;&quot;type.value&quot;
+              &gt;
+                {{ type.label }}
+              &lt;/option&gt;
+            &lt;/select&gt;
+          &lt;/div&gt;
+
+          &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+            &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;fatPercentage&quot;&gt;
+              Fat Percentage
+            &lt;/label&gt;
+            &lt;input
+              class&#x3D;&quot;input&quot;
+              cfBlock&#x3D;&quot;form-control&quot;
+              type&#x3D;&quot;number&quot;
+              id&#x3D;&quot;fatPercentage&quot;
+              formControlName&#x3D;&quot;fatPercentage&quot;
+              min&#x3D;&quot;0&quot;
+              max&#x3D;&quot;100&quot;
+              step&#x3D;&quot;1&quot;
+            /&gt;
+          &lt;/div&gt;
+
+          &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+            &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;height&quot;&gt; Height &lt;/label&gt;
+            &lt;input
+              class&#x3D;&quot;input&quot;
+              cfBlock&#x3D;&quot;form-control&quot;
+              type&#x3D;&quot;number&quot;
+              id&#x3D;&quot;height&quot;
+              formControlName&#x3D;&quot;height&quot;
+            /&gt;
+          &lt;/div&gt;
+
+          &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
+            &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;weight&quot;&gt; Weight &lt;/label&gt;
+            &lt;input
+              class&#x3D;&quot;input&quot;
+              cfBlock&#x3D;&quot;form-control&quot;
+              type&#x3D;&quot;number&quot;
+              id&#x3D;&quot;weight&quot;
+              formControlName&#x3D;&quot;weight&quot;
+            /&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &#x60;,
+})
+export class AvatarAppearanceInfoFormComponent {
+  appearanceSkinColors &#x3D; Object.keys(AppearanceInfoSkinColor).map((key) &#x3D;&gt; ({
+    label: key,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    value: (AppearanceInfoSkinColor as any)[key],
+  }));
+
+  appearanceHairColors &#x3D; Object.keys(AppearanceInfoHairColor).map((key) &#x3D;&gt; ({
+    label: key,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    value: (AppearanceInfoHairColor as any)[key],
+  }));
+
+  appearanceHairStyles &#x3D; Object.keys(AppearanceInfoHairStyle).map((key) &#x3D;&gt; ({
+    label: key,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    value: (AppearanceInfoHairStyle as any)[key],
+  }));
+
+  appearanceEyeColors &#x3D; Object.keys(AppearanceInfoEyeColor).map((key) &#x3D;&gt; ({
+    label: key,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    value: (AppearanceInfoEyeColor as any)[key],
+  }));
+
+  appearanceBodyTypes &#x3D; Object.keys(AppearanceInfoBodyType).map((key) &#x3D;&gt; ({
+    label: key,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    value: (AppearanceInfoBodyType as any)[key],
+  }));
+
+  @Input() set info(value: AppearanceInfo | undefined) {
+    this.form.reset(
+      {
+        bodyType: value?.bodyType || null,
+        eyeColor: value?.eyeColor || null,
+        fatPercentage: value?.fatPercentage || null,
+        hairColor: value?.hairColor || null,
+        hairLength: value?.hairLength || null,
+        hairStyle: value?.hairStyle || null,
+        height: value?.height || null,
+        skinColor: value?.skinColor || null,
+        weight: value?.weight || null,
+      },
+      { emitEvent: false }
+    );
+  }
+
+  form &#x3D; new FormGroup({
+    bodyType: new FormControl&lt;AppearanceInfoBodyType | null&gt;(null),
+    eyeColor: new FormControl&lt;string | null&gt;(null),
+    fatPercentage: new FormControl&lt;number | null&gt;(null, [
+      Validators.min(0),
+      Validators.max(100),
+    ]),
+    hairColor: new FormControl&lt;string | null&gt;(null),
+    hairLength: new FormControl&lt;number | null&gt;(null),
+    hairStyle: new FormControl&lt;string | null&gt;(null),
+    height: new FormControl&lt;number | null&gt;(null),
+    skinColor: new FormControl&lt;string | null&gt;(null),
+    weight: new FormControl&lt;number | null&gt;(null),
+  });
+}
+</code></pre>
+    </div>
+
+
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-info-form">  <h2 cfElem="title">Info</h2>  <form cfBlock="form" cfMod="horizontal" [formGroup]="form">    <div cfBlock="form-group">      <div cfBlock="form-group">        <label cfBlock="form-label" for="skinColor"> Skin Color </label>        <cf-color-picker-select          id="skinColor"          [options]="appearanceSkinColors"        ></cf-color-picker-select>      </div>      <div cfBlock="form-group">        <label cfBlock="form-label" for="hairColor"> Hair Color </label>        <cf-color-picker-select          id="hairColor"          [options]="appearanceHairColors"        ></cf-color-picker-select>      </div>      <div cfBlock="form-group">        <label cfBlock="form-label" for="hairStyle"> Hair Style </label>        <select          formControlName="hairStyle"          id="hairStyle"          class="form-control"        >          <option [value]="null">Select hair style</option>          <option            *ngFor="let style of appearanceHairStyles"            [value]="style.value"          >            {{ style.label }}          </option>        </select>      </div>      <div cfBlock="form-group">        <label cfBlock="form-label" for="eyeColor"> Eye Color </label>        <cf-color-picker-select          id="eyeColor"          [options]="appearanceEyeColors"        ></cf-color-picker-select>      </div>    </div>    <div cfBlock="form-group">      <div cfBlock="form-group">        <label cfBlock="form-label" for="bodyType"> Body Type </label>        <select          formControlName="bodyType"          id="bodyType"          class="form-control"        >          <option [value]="null">Select body type</option>          <option            *ngFor="let type of appearanceBodyTypes"            [value]="type.value"          >            {{ type.label }}          </option>        </select>      </div>      <div cfBlock="form-group">        <label cfBlock="form-label" for="fatPercentage">          Fat Percentage        </label>        <input          class="input"          cfBlock="form-control"          type="number"          id="fatPercentage"          formControlName="fatPercentage"          min="0"          max="100"          step="1"        />      </div>      <div cfBlock="form-group">        <label cfBlock="form-label" for="height"> Height </label>        <input          class="input"          cfBlock="form-control"          type="number"          id="height"          formControlName="height"        />      </div>      <div cfBlock="form-group">        <label cfBlock="form-label" for="weight"> Weight </label>        <input          class="input"          cfBlock="form-control"          type="number"          id="weight"          formControlName="weight"        />      </div>    </div>  </form></div></div>'
+    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AvatarAppearanceInfoFormComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AvatarAppearanceInfoFormComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

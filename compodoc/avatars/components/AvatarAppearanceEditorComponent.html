@@ -91,148 +91,54 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;form
-  cfBlock&#x3D;&quot;form&quot;
-  cfMod&#x3D;&quot;horizontal&quot;
-  [formGroup]&#x3D;&quot;form&quot;
-  (submit)&#x3D;&quot;onFormSubmit()&quot;
-&gt;
-  &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
-    &lt;h2 cfElem&#x3D;&quot;title&quot;&gt;Appearance&lt;/h2&gt;
-
-    &lt;ng-container *ngIf&#x3D;&quot;form.value.format &amp;&amp; form.value.src&quot;&gt;
-      &lt;cf-avatar-appearance-card
-        [appearance]&#x3D;&quot;{
-          id: form.value.id,
-          format: form.value.format,
-          src: form.value.src,
-          portrait: {
-            format: form.value.format,
-            src: form.value.src
-          }
-        }&quot;
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div cfBlock&#x3D;&quot;avatar-appearance-editor&quot;&gt;
+  &lt;div cfElem&#x3D;&quot;body&quot;&gt;
+    &lt;cf-tabset&gt;
+      &lt;cf-tab
+        [title]&#x3D;&quot;&#x27;Appearance&#x27;&quot;
+        [active]&#x3D;&quot;true&quot;
+        icon&#x3D;&quot;assets/icons/mdi/human.svg&quot;
+        [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
       &gt;
-      &lt;/cf-avatar-appearance-card&gt;
-    &lt;/ng-container&gt;
-    &lt;ng-container *ngIf&#x3D;&quot;!form.value.format || !form.value.src&quot;&gt;
-      &lt;cf-avatar-appearance-card [showEmptyIcon]&#x3D;&quot;false&quot;&gt;
-      &lt;/cf-avatar-appearance-card&gt;
-    &lt;/ng-container&gt;
-
-    &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
-      &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;appearanceFormar&quot;&gt;
-        The Appearance file format. Only images and glb files are supported.
-      &lt;/label&gt;
-      &lt;select
-        formControlName&#x3D;&quot;format&quot;
-        id&#x3D;&quot;appearanceFormar&quot;
-        class&#x3D;&quot;form-control&quot;
+        &lt;div cfBlock&#x3D;&quot;appearance-tab-content&quot;&gt;
+          &lt;div cfElem&#x3D;&quot;appearance-tab-content-model&quot;&gt;
+            &lt;cf-avatar-appearance-model-form [appearance]&#x3D;&quot;appearance&quot;&gt;
+            &lt;/cf-avatar-appearance-model-form&gt;
+          &lt;/div&gt;
+          &lt;div cfElem&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
+            &lt;cf-avatar-appearance-portrait-form
+              [portrait]&#x3D;&quot;appearance?.portrait&quot;
+            &gt;
+            &lt;/cf-avatar-appearance-portrait-form&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/cf-tab&gt;
+      &lt;cf-tab
+        [title]&#x3D;&quot;&#x27;Info&#x27;&quot;
+        [active]&#x3D;&quot;false&quot;
+        icon&#x3D;&quot;assets/icons/mdi/information.svg&quot;
+        [customClass]&#x3D;&quot;&#x27;appearance-info-tab&#x27;&quot;
       &gt;
-        &lt;option [value]&#x3D;&quot;null&quot;&gt;Select an appearance format&lt;/option&gt;
-        &lt;option
-          *ngFor&#x3D;&quot;let format of appearanceFormats&quot;
-          [value]&#x3D;&quot;format.value&quot;
-        &gt;
-          {{ format.label }}
-        &lt;/option&gt;
-      &lt;/select&gt;
-    &lt;/div&gt;
-
-    &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
-      &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;appearanceSrc&quot;&gt;
-        Url of the appearance file
-      &lt;/label&gt;
-      &lt;input
-        class&#x3D;&quot;input&quot;
-        cfBlock&#x3D;&quot;form-control&quot;
-        type&#x3D;&quot;text&quot;
-        id&#x3D;&quot;appearanceSrc&quot;
-        formControlName&#x3D;&quot;src&quot;
-        placeholder&#x3D;&quot;&quot;
-        [disabled]&#x3D;&quot;!form.value.format&quot;
-      /&gt;
-    &lt;/div&gt;
-
-    &lt;!-- input type&#x3D;&quot;file&quot; formControlName&#x3D;&quot;file&quot; class&#x3D;&quot;form-control&quot; / --&gt;
+        &lt;cf-avatar-appearance-info-form
+          [info]&#x3D;&quot;appearance?.info&quot;
+        &gt;&lt;/cf-avatar-appearance-info-form&gt;
+      &lt;/cf-tab&gt;
+    &lt;/cf-tabset&gt;
   &lt;/div&gt;
 
-  &lt;div cfBlock&#x3D;&quot;form-group&quot; formGroupName&#x3D;&quot;portrait&quot;&gt;
-    &lt;h2 cfElem&#x3D;&quot;title&quot;&gt;Portrait&lt;/h2&gt;
-
-    &lt;div
-      style&#x3D;&quot;margin-bottom: 1rem;&quot;
-      *ngIf&#x3D;&quot;form.value.portrait.format &amp;&amp; form.value.portrait.src&quot;
-    &gt;
-      &lt;cf-avatar-appearance-portrait
-        [appearance]&#x3D;&quot;{
-          id: form.value.id,
-          format: form.value.portrait.format,
-          src: form.value.portrait.src,
-          portrait: {
-            format: form.value.portrait.format,
-            src: form.value.portrait.src
-          }
-        }&quot;
+  &lt;div cfElem&#x3D;&quot;footer&quot;&gt;
+    &lt;div cfBlock&#x3D;&quot;form-buttons&quot;&gt;
+      &lt;button
+        type&#x3D;&quot;submit&quot;
+        cfBlock&#x3D;&quot;button&quot;
+        [cfMod]&#x3D;&quot;[&#x27;primary&#x27;]&quot;
+        [disabled]&#x3D;&quot;false&quot;
       &gt;
-      &lt;/cf-avatar-appearance-portrait&gt;
+        Save
+      &lt;/button&gt;
     &lt;/div&gt;
-    &lt;div
-      style&#x3D;&quot;margin-bottom: 1rem;&quot;
-      *ngIf&#x3D;&quot;!form.value.portrait.format || !form.value.portrait.src&quot;
-    &gt;
-      &lt;cf-avatar-appearance-portrait [showEmptyIcon]&#x3D;&quot;false&quot;&gt;
-      &lt;/cf-avatar-appearance-portrait&gt;
-    &lt;/div&gt;
-
-    &lt;!-- div cfBlock&#x3D;&quot;form-group&quot;&gt;
-      &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;portraitFormat&quot;&gt;
-        The Portrait file format. Only images and glb files are supported.
-      &lt;/label&gt;
-      &lt;select
-        formControlName&#x3D;&quot;format&quot;
-        id&#x3D;&quot;portraitFormat&quot;
-        class&#x3D;&quot;form-control&quot;
-      &gt;
-        &lt;option [value]&#x3D;&quot;null&quot;&gt;Select an appearance format&lt;/option&gt;
-        &lt;option
-          *ngFor&#x3D;&quot;let format of appearanceFormats&quot;
-          [value]&#x3D;&quot;format.value&quot;
-        &gt;
-          {{ format.label }}
-        &lt;/option&gt;
-      &lt;/select&gt;
-    &lt;/div --&gt;
-
-    &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
-      &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;portraitSrc&quot;&gt;
-        Url of the portrait file. Only png and jpg images are supported.
-        144x144 images are recommended.
-      &lt;/label&gt;
-      &lt;input
-        class&#x3D;&quot;input&quot;
-        cfBlock&#x3D;&quot;form-control&quot;
-        type&#x3D;&quot;text&quot;
-        id&#x3D;&quot;portraitSrc&quot;
-        formControlName&#x3D;&quot;src&quot;
-        placeholder&#x3D;&quot;&quot;
-        [disabled]&#x3D;&quot;!form.value.portrait.format&quot;
-      /&gt;
-    &lt;/div&gt;
-
-    &lt;!-- input type&#x3D;&quot;file&quot; formControlName&#x3D;&quot;file&quot; class&#x3D;&quot;form-control&quot; / --&gt;
   &lt;/div&gt;
-
-  &lt;div cfBlock&#x3D;&quot;form-buttons&quot;&gt;
-    &lt;button
-      type&#x3D;&quot;submit&quot;
-      cfBlock&#x3D;&quot;button&quot;
-      [cfMod]&#x3D;&quot;[&#x27;primary&#x27;]&quot;
-      [disabled]&#x3D;&quot;!form.valid&quot;
-    &gt;
-      Save
-    &lt;/button&gt;
-  &lt;/div&gt;
-&lt;/form&gt;
+&lt;/div&gt;
 </code></pre></td>
             </tr>
 
@@ -261,10 +167,20 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#appearanceFormats" >appearanceFormats</a>
+                                    <span class="modifier">Optional</span>
+                                <a href="#appearanceInfo" >appearanceInfo</a>
                             </li>
                             <li>
-                                <a href="#form" >form</a>
+                                    <span class="modifier">Optional</span>
+                                <a href="#infoForm" >infoForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#modelForm" >modelForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#portraitForm" >portraitForm</a>
                             </li>
                         </ul>
                     </td>
@@ -317,20 +233,6 @@
 
 
 
-                    <tr>
-                        <td class="col-md-4">
-                            <h6><b>Accessors</b></h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <ul class="index-list">
-                                <li>
-                                    <a href="#appearance" >appearance</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
         </tbody>
     </table>
 </section>
@@ -346,9 +248,15 @@
                         <b>appearance</b>
                     </td>
                 </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#Appearance" target="_self" >Appearance</a></code>
+
+                    </td>
+                </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:154</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:75</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -372,7 +280,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:168</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:77</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -405,8 +313,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="196"
-                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:196</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:81</a></div>
                 </td>
             </tr>
 
@@ -432,25 +340,23 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="appearanceFormats"></a>
+                    <a name="appearanceInfo"></a>
                     <span class="name">
-                        <span ><b>appearanceFormats</b></span>
-                        <a href="#appearanceFormats"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Optional</span>
+                        <span ><b>appearanceInfo</b></span>
+                        <a href="#appearanceInfo"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>Object.keys(AppearanceFormat).map((key) &#x3D;&gt; ({
-    label: key,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    value: (AppearanceFormat as any)[key],
-  }))</code>
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#AppearanceInfo" target="_self" >AppearanceInfo</a></code>
+
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:170</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:79</a></div>
                         </td>
                     </tr>
 
@@ -461,39 +367,104 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="form"></a>
+                    <a name="infoForm"></a>
                     <span class="name">
-                        <span ><b>form</b></span>
-                        <a href="#form"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Optional</span>
+                        <span ><b>infoForm</b></span>
+                        <a href="#infoForm"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>new FormGroup({
-    id: new FormControl&lt;string&gt;(uuid(), [Validators.required]),
-    format: new FormControl&lt;AppearanceFormat | null&gt;(null, [
-      Validators.required,
-    ]),
-    src: new FormControl&lt;string | null&gt;(null, [Validators.required]),
-    file: new FormControl&lt;any&gt;(null),
-    portrait: new FormGroup(
-      {
-        format: new FormControl&lt;AppearanceFormat | null&gt;(
-          AppearanceFormat.Image,
-          [Validators.required]
-        ),
-        src: new FormControl&lt;string | null&gt;(null, [Validators.required]),
-        file: new FormControl&lt;any&gt;(null),
-      },
-      [Validators.required]
-    ),
-  })</code>
+                        <i>Type : </i>        <code><a href="../interfaces/Avatar.html" target="_self" >AvatarAppearanceInfoFormComponent</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(AvatarAppearanceInfoFormComponent)<br />
+                        </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:176</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modelForm"></a>
+                    <span class="name">
+                            <span class="modifier">Optional</span>
+                        <span ><b>modelForm</b></span>
+                        <a href="#modelForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Avatar.html" target="_self" >AvatarAppearanceModelFormComponent</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(AvatarAppearanceModelFormComponent)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="portraitForm"></a>
+                    <span class="name">
+                            <span class="modifier">Optional</span>
+                        <span ><b>portraitForm</b></span>
+                        <a href="#portraitForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Avatar.html" target="_self" >AvatarAppearancePortraitFormComponent</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(AvatarAppearancePortraitFormComponent)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:69</a></div>
                         </td>
                     </tr>
 
@@ -502,281 +473,92 @@
     </table>
 </section>
 
-    <section>
-    <h3 id="accessors">
-        Accessors
-    </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="appearance"></a>
-                        <span class="name"><b>appearance</b><a href="#appearance"><span class="icon ion-ios-link"></span></a></span>
-                    </td>
-                </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>appearance(value: <a href="../interfaces/Appearance.html" target="_self">Partial&lt;Appearance&gt; | undefined</a>)</code></span>
-                    </td>
-                </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:154</a></div>
-                                </td>
-                            </tr>
-                    <tr>
-                        <td class="col-md-4">
-
-                                <div class="io-description">
-                                        <b>Parameters :</b>
-                                        <table class="params">
-                                            <thead>
-                                                <tr>
-                                                    <td>Name</td>
-                                                        <td>Type</td>
-                                                    <td>Optional</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                    <tr>
-                                                            <td>value</td>
-                                                    
-                                                            <td>
-                                                                            <code><a href="../interfaces/Appearance.html" target="_self" >Partial&lt;Appearance&gt; | undefined</a></code>
-                                                            </td>
-                                                    
-                                                        <td>
-                                                                No
-                                                        </td>
-                                                        
-                                                    </tr>
-                                            </tbody>
-                                        </table>
-                                </div>
-                                <div>
-                                </div>
-                                <div class="io-description">
-                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                                </div>
-                        </td>
-                    </tr>
-            </tbody>
-        </table>
-</section>
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
-import { FormControl, FormGroup, Validators } from &#x27;@ng-stack/forms&#x27;;
-import { v4 as uuid } from &#x27;uuid&#x27;;
-import { Appearance, AppearanceFormat } from &#x27;../../../models/appearance&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from &#x27;@angular/core&#x27;;
+import { Appearance } from &#x27;../../../models/appearance&#x27;;
+import { AppearanceInfo } from &#x27;../../../models/appearance-info&#x27;;
+import { AvatarAppearanceInfoFormComponent } from &#x27;./components/avatar-appearance-info-form/avatar-appearance-info-form.component&#x27;;
+import { AvatarAppearanceModelFormComponent } from &#x27;./components/avatar-appearance-model-form/avatar-appearance-model-form.component&#x27;;
+import { AvatarAppearancePortraitFormComponent } from &#x27;./components/avatar-appearance-portrait-form/avatar-appearance-portrait-form.component&#x27;;
 
 @Component({
   selector: &#x27;cf-avatar-appearance-editor&#x27;,
   template: &#x60;
-    &lt;form
-      cfBlock&#x3D;&quot;form&quot;
-      cfMod&#x3D;&quot;horizontal&quot;
-      [formGroup]&#x3D;&quot;form&quot;
-      (submit)&#x3D;&quot;onFormSubmit()&quot;
-    &gt;
-      &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
-        &lt;h2 cfElem&#x3D;&quot;title&quot;&gt;Appearance&lt;/h2&gt;
-
-        &lt;ng-container *ngIf&#x3D;&quot;form.value.format &amp;&amp; form.value.src&quot;&gt;
-          &lt;cf-avatar-appearance-card
-            [appearance]&#x3D;&quot;{
-              id: form.value.id,
-              format: form.value.format,
-              src: form.value.src,
-              portrait: {
-                format: form.value.format,
-                src: form.value.src
-              }
-            }&quot;
+    &lt;div cfBlock&#x3D;&quot;avatar-appearance-editor&quot;&gt;
+      &lt;div cfElem&#x3D;&quot;body&quot;&gt;
+        &lt;cf-tabset&gt;
+          &lt;cf-tab
+            [title]&#x3D;&quot;&#x27;Appearance&#x27;&quot;
+            [active]&#x3D;&quot;true&quot;
+            icon&#x3D;&quot;assets/icons/mdi/human.svg&quot;
+            [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
           &gt;
-          &lt;/cf-avatar-appearance-card&gt;
-        &lt;/ng-container&gt;
-        &lt;ng-container *ngIf&#x3D;&quot;!form.value.format || !form.value.src&quot;&gt;
-          &lt;cf-avatar-appearance-card [showEmptyIcon]&#x3D;&quot;false&quot;&gt;
-          &lt;/cf-avatar-appearance-card&gt;
-        &lt;/ng-container&gt;
-
-        &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
-          &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;appearanceFormar&quot;&gt;
-            The Appearance file format. Only images and glb files are supported.
-          &lt;/label&gt;
-          &lt;select
-            formControlName&#x3D;&quot;format&quot;
-            id&#x3D;&quot;appearanceFormar&quot;
-            class&#x3D;&quot;form-control&quot;
+            &lt;div cfBlock&#x3D;&quot;appearance-tab-content&quot;&gt;
+              &lt;div cfElem&#x3D;&quot;appearance-tab-content-model&quot;&gt;
+                &lt;cf-avatar-appearance-model-form [appearance]&#x3D;&quot;appearance&quot;&gt;
+                &lt;/cf-avatar-appearance-model-form&gt;
+              &lt;/div&gt;
+              &lt;div cfElem&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
+                &lt;cf-avatar-appearance-portrait-form
+                  [portrait]&#x3D;&quot;appearance?.portrait&quot;
+                &gt;
+                &lt;/cf-avatar-appearance-portrait-form&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/cf-tab&gt;
+          &lt;cf-tab
+            [title]&#x3D;&quot;&#x27;Info&#x27;&quot;
+            [active]&#x3D;&quot;false&quot;
+            icon&#x3D;&quot;assets/icons/mdi/information.svg&quot;
+            [customClass]&#x3D;&quot;&#x27;appearance-info-tab&#x27;&quot;
           &gt;
-            &lt;option [value]&#x3D;&quot;null&quot;&gt;Select an appearance format&lt;/option&gt;
-            &lt;option
-              *ngFor&#x3D;&quot;let format of appearanceFormats&quot;
-              [value]&#x3D;&quot;format.value&quot;
-            &gt;
-              {{ format.label }}
-            &lt;/option&gt;
-          &lt;/select&gt;
-        &lt;/div&gt;
-
-        &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
-          &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;appearanceSrc&quot;&gt;
-            Url of the appearance file
-          &lt;/label&gt;
-          &lt;input
-            class&#x3D;&quot;input&quot;
-            cfBlock&#x3D;&quot;form-control&quot;
-            type&#x3D;&quot;text&quot;
-            id&#x3D;&quot;appearanceSrc&quot;
-            formControlName&#x3D;&quot;src&quot;
-            placeholder&#x3D;&quot;&quot;
-            [disabled]&#x3D;&quot;!form.value.format&quot;
-          /&gt;
-        &lt;/div&gt;
-
-        &lt;!-- input type&#x3D;&quot;file&quot; formControlName&#x3D;&quot;file&quot; class&#x3D;&quot;form-control&quot; / --&gt;
+            &lt;cf-avatar-appearance-info-form
+              [info]&#x3D;&quot;appearance?.info&quot;
+            &gt;&lt;/cf-avatar-appearance-info-form&gt;
+          &lt;/cf-tab&gt;
+        &lt;/cf-tabset&gt;
       &lt;/div&gt;
 
-      &lt;div cfBlock&#x3D;&quot;form-group&quot; formGroupName&#x3D;&quot;portrait&quot;&gt;
-        &lt;h2 cfElem&#x3D;&quot;title&quot;&gt;Portrait&lt;/h2&gt;
-
-        &lt;div
-          style&#x3D;&quot;margin-bottom: 1rem;&quot;
-          *ngIf&#x3D;&quot;form.value.portrait.format &amp;&amp; form.value.portrait.src&quot;
-        &gt;
-          &lt;cf-avatar-appearance-portrait
-            [appearance]&#x3D;&quot;{
-              id: form.value.id,
-              format: form.value.portrait.format,
-              src: form.value.portrait.src,
-              portrait: {
-                format: form.value.portrait.format,
-                src: form.value.portrait.src
-              }
-            }&quot;
+      &lt;div cfElem&#x3D;&quot;footer&quot;&gt;
+        &lt;div cfBlock&#x3D;&quot;form-buttons&quot;&gt;
+          &lt;button
+            type&#x3D;&quot;submit&quot;
+            cfBlock&#x3D;&quot;button&quot;
+            [cfMod]&#x3D;&quot;[&#x27;primary&#x27;]&quot;
+            [disabled]&#x3D;&quot;false&quot;
           &gt;
-          &lt;/cf-avatar-appearance-portrait&gt;
+            Save
+          &lt;/button&gt;
         &lt;/div&gt;
-        &lt;div
-          style&#x3D;&quot;margin-bottom: 1rem;&quot;
-          *ngIf&#x3D;&quot;!form.value.portrait.format || !form.value.portrait.src&quot;
-        &gt;
-          &lt;cf-avatar-appearance-portrait [showEmptyIcon]&#x3D;&quot;false&quot;&gt;
-          &lt;/cf-avatar-appearance-portrait&gt;
-        &lt;/div&gt;
-
-        &lt;!-- div cfBlock&#x3D;&quot;form-group&quot;&gt;
-          &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;portraitFormat&quot;&gt;
-            The Portrait file format. Only images and glb files are supported.
-          &lt;/label&gt;
-          &lt;select
-            formControlName&#x3D;&quot;format&quot;
-            id&#x3D;&quot;portraitFormat&quot;
-            class&#x3D;&quot;form-control&quot;
-          &gt;
-            &lt;option [value]&#x3D;&quot;null&quot;&gt;Select an appearance format&lt;/option&gt;
-            &lt;option
-              *ngFor&#x3D;&quot;let format of appearanceFormats&quot;
-              [value]&#x3D;&quot;format.value&quot;
-            &gt;
-              {{ format.label }}
-            &lt;/option&gt;
-          &lt;/select&gt;
-        &lt;/div --&gt;
-
-        &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
-          &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;portraitSrc&quot;&gt;
-            Url of the portrait file. Only png and jpg images are supported.
-            144x144 images are recommended.
-          &lt;/label&gt;
-          &lt;input
-            class&#x3D;&quot;input&quot;
-            cfBlock&#x3D;&quot;form-control&quot;
-            type&#x3D;&quot;text&quot;
-            id&#x3D;&quot;portraitSrc&quot;
-            formControlName&#x3D;&quot;src&quot;
-            placeholder&#x3D;&quot;&quot;
-            [disabled]&#x3D;&quot;!form.value.portrait.format&quot;
-          /&gt;
-        &lt;/div&gt;
-
-        &lt;!-- input type&#x3D;&quot;file&quot; formControlName&#x3D;&quot;file&quot; class&#x3D;&quot;form-control&quot; / --&gt;
       &lt;/div&gt;
-
-      &lt;div cfBlock&#x3D;&quot;form-buttons&quot;&gt;
-        &lt;button
-          type&#x3D;&quot;submit&quot;
-          cfBlock&#x3D;&quot;button&quot;
-          [cfMod]&#x3D;&quot;[&#x27;primary&#x27;]&quot;
-          [disabled]&#x3D;&quot;!form.valid&quot;
-        &gt;
-          Save
-        &lt;/button&gt;
-      &lt;/div&gt;
-    &lt;/form&gt;
+    &lt;/div&gt;
   &#x60;,
 })
 export class AvatarAppearanceEditorComponent {
-  @Input() set appearance(value: Partial&lt;Appearance&gt; | undefined) {
-    this.form.reset({
-      id: value?.id || uuid(),
-      format: value?.format || null,
-      src: value?.src || null,
-      file: null,
-      portrait: {
-        format: value?.portrait?.format || AppearanceFormat.Image,
-        src: value?.portrait?.src || null,
-        file: null,
-      },
-    });
-  }
+  @ViewChild(AvatarAppearancePortraitFormComponent)
+  portraitForm?: AvatarAppearancePortraitFormComponent;
+  @ViewChild(AvatarAppearanceModelFormComponent)
+  modelForm?: AvatarAppearanceModelFormComponent;
+  @ViewChild(AvatarAppearanceInfoFormComponent)
+  infoForm?: AvatarAppearanceInfoFormComponent;
+
+  @Input() appearance?: Appearance;
 
   @Output() appearanceSubmit &#x3D; new EventEmitter&lt;Appearance&gt;();
 
-  appearanceFormats &#x3D; Object.keys(AppearanceFormat).map((key) &#x3D;&gt; ({
-    label: key,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    value: (AppearanceFormat as any)[key],
-  }));
-
-  form &#x3D; new FormGroup({
-    id: new FormControl&lt;string&gt;(uuid(), [Validators.required]),
-    format: new FormControl&lt;AppearanceFormat | null&gt;(null, [
-      Validators.required,
-    ]),
-    src: new FormControl&lt;string | null&gt;(null, [Validators.required]),
-    file: new FormControl&lt;any&gt;(null),
-    portrait: new FormGroup(
-      {
-        format: new FormControl&lt;AppearanceFormat | null&gt;(
-          AppearanceFormat.Image,
-          [Validators.required]
-        ),
-        src: new FormControl&lt;string | null&gt;(null, [Validators.required]),
-        file: new FormControl&lt;any&gt;(null),
-      },
-      [Validators.required]
-    ),
-  });
+  appearanceInfo?: AppearanceInfo;
 
   onFormSubmit() {
-    if (!this.form.valid) {
-      return;
-    }
-
-    const appearance &#x3D; {
-      id: this.form.value.id,
-      format: this.form.value.format,
-      src: this.form.value.src,
-    };
-
-    this.appearanceSubmit.emit(appearance as Appearance);
+    // this.appearanceSubmit.emit(appearance as Appearance);
   }
 }
 </code></pre>
@@ -809,8 +591,8 @@ export class AvatarAppearanceEditorComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form  cfBlock="form"  cfMod="horizontal"  [formGroup]="form"  (submit)="onFormSubmit()">  <div cfBlock="form-group">    <h2 cfElem="title">Appearance</h2>    <ng-container *ngIf="form.value.format && form.value.src">      <cf-avatar-appearance-card        [appearance]="{          id: form.value.id,          format: form.value.format,          src: form.value.src,          portrait: {            format: form.value.format,            src: form.value.src          }        }"      >      </cf-avatar-appearance-card>    </ng-container>    <ng-container *ngIf="!form.value.format || !form.value.src">      <cf-avatar-appearance-card [showEmptyIcon]="false">      </cf-avatar-appearance-card>    </ng-container>    <div cfBlock="form-group">      <label cfBlock="form-label" for="appearanceFormar">        The Appearance file format. Only images and glb files are supported.      </label>      <select        formControlName="format"        id="appearanceFormar"        class="form-control"      >        <option [value]="null">Select an appearance format</option>        <option          *ngFor="let format of appearanceFormats"          [value]="format.value"        >          {{ format.label }}        </option>      </select>    </div>    <div cfBlock="form-group">      <label cfBlock="form-label" for="appearanceSrc">        Url of the appearance file      </label>      <input        class="input"        cfBlock="form-control"        type="text"        id="appearanceSrc"        formControlName="src"        placeholder=""        [disabled]="!form.value.format"      />    </div>    <!-- input type="file" formControlName="file" class="form-control" / -->  </div>  <div cfBlock="form-group" formGroupName="portrait">    <h2 cfElem="title">Portrait</h2>    <div      style="margin-bottom: 1rem;"      *ngIf="form.value.portrait.format && form.value.portrait.src"    >      <cf-avatar-appearance-portrait        [appearance]="{          id: form.value.id,          format: form.value.portrait.format,          src: form.value.portrait.src,          portrait: {            format: form.value.portrait.format,            src: form.value.portrait.src          }        }"      >      </cf-avatar-appearance-portrait>    </div>    <div      style="margin-bottom: 1rem;"      *ngIf="!form.value.portrait.format || !form.value.portrait.src"    >      <cf-avatar-appearance-portrait [showEmptyIcon]="false">      </cf-avatar-appearance-portrait>    </div>    <!-- div cfBlock="form-group">      <label cfBlock="form-label" for="portraitFormat">        The Portrait file format. Only images and glb files are supported.      </label>      <select        formControlName="format"        id="portraitFormat"        class="form-control"      >        <option [value]="null">Select an appearance format</option>        <option          *ngFor="let format of appearanceFormats"          [value]="format.value"        >          {{ format.label }}        </option>      </select>    </div -->    <div cfBlock="form-group">      <label cfBlock="form-label" for="portraitSrc">        Url of the portrait file. Only png and jpg images are supported.        144x144 images are recommended.      </label>      <input        class="input"        cfBlock="form-control"        type="text"        id="portraitSrc"        formControlName="src"        placeholder=""        [disabled]="!form.value.portrait.format"      />    </div>    <!-- input type="file" formControlName="file" class="form-control" / -->  </div>  <div cfBlock="form-buttons">    <button      type="submit"      cfBlock="button"      [cfMod]="[\'primary\']"      [disabled]="!form.valid"    >      Save    </button>  </div></form></div>'
-    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-editor">  <div cfElem="body">    <cf-tabset>      <cf-tab        [title]="\'Appearance\'"        [active]="true"        icon="assets/icons/mdi/human.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content">          <div cfElem="appearance-tab-content-model">            <cf-avatar-appearance-model-form [appearance]="appearance">            </cf-avatar-appearance-model-form>          </div>          <div cfElem="appearance-tab-content-portrait">            <cf-avatar-appearance-portrait-form              [portrait]="appearance?.portrait"            >            </cf-avatar-appearance-portrait-form>          </div>        </div>      </cf-tab>      <cf-tab        [title]="\'Info\'"        [active]="false"        icon="assets/icons/mdi/information.svg"        [customClass]="\'appearance-info-tab\'"      >        <cf-avatar-appearance-info-form          [info]="appearance?.info"        ></cf-avatar-appearance-info-form>      </cf-tab>    </cf-tabset>  </div>  <div cfElem="footer">    <div cfBlock="form-buttons">      <button        type="submit"        cfBlock="button"        [cfMod]="[\'primary\']"        [disabled]="false"      >        Save      </button>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarAppearanceEditorComponent'};
 </script>

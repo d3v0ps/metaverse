@@ -83,15 +83,24 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/AvatarAppearanceEditorModule.html" data-type="entity-link" >AvatarAppearanceEditorModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AvatarAppearanceEditorModule-ae8cfcc32a5719038549c3f189fb2282"' : 'data-target="#xs-components-links-module-AvatarAppearanceEditorModule-ae8cfcc32a5719038549c3f189fb2282"' }>
+                                            'data-target="#components-links-module-AvatarAppearanceEditorModule-5fa132637d0e61957001504660e7b437"' : 'data-target="#xs-components-links-module-AvatarAppearanceEditorModule-5fa132637d0e61957001504660e7b437"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarAppearanceEditorModule-ae8cfcc32a5719038549c3f189fb2282"' :
-                                            'id="xs-components-links-module-AvatarAppearanceEditorModule-ae8cfcc32a5719038549c3f189fb2282"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarAppearanceEditorModule-5fa132637d0e61957001504660e7b437"' :
+                                            'id="xs-components-links-module-AvatarAppearanceEditorModule-5fa132637d0e61957001504660e7b437"' }>
                                             <li class="link">
                                                 <a href="components/AvatarAppearanceEditorComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarAppearanceEditorComponent</a>
+                                            </li>
+                                            <li class="link">
+                                                <a href="components/AvatarAppearanceInfoFormComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarAppearanceInfoFormComponent</a>
+                                            </li>
+                                            <li class="link">
+                                                <a href="components/AvatarAppearanceModelFormComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarAppearanceModelFormComponent</a>
+                                            </li>
+                                            <li class="link">
+                                                <a href="components/AvatarAppearancePortraitFormComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarAppearancePortraitFormComponent</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -338,9 +347,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
-                            <li class="link">
-                                <a href="interfaces/Appearance.html" data-type="entity-link" >Appearance</a>
-                            </li>
                             <li class="link">
                                 <a href="interfaces/Avatar.html" data-type="entity-link" >Avatar</a>
                             </li>

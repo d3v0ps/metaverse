@@ -50,9 +50,6 @@
             <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
         </li>
         <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
-        </li>
-        <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
@@ -91,17 +88,6 @@
             </tr>
 
 
-            <tr>
-                <td class="col-md-3">styles</td>
-                <td class="col-md-9"><code>
-      .avatar-overview {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-      }
-    </code></td>
-            </tr>
 
             <tr>
                 <td class="col-md-3">template</td>
@@ -250,7 +236,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:96</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:86</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -294,7 +280,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:110</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:100</a></div>
                         </td>
                     </tr>
 
@@ -333,7 +319,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:119</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:109</a></div>
                         </td>
                     </tr>
 
@@ -363,7 +349,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:96</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:86</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -493,16 +479,6 @@ export interface AvatarOverviewInput {
       &lt;/div&gt;
     &lt;/form&gt;
   &#x60;,
-  styles: [
-    &#x60;
-      .avatar-overview {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-      }
-    &#x60;,
-  ],
 })
 export class AvatarOverviewComponent {
   @Input() set avatar(value: Avatar) {
@@ -548,17 +524,6 @@ export class AvatarOverviewComponent {
     </div>
 
 
-    <div class="tab-pane fade " id="c-styleData">
-            <pre class="line-numbers"><code class="language-scss">
-      .avatar-overview {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-      }
-    
-</code></pre>
-    </div>
 
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
@@ -586,7 +551,7 @@ export class AvatarOverviewComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><form [formGroup]="form" cfBlock="avatar-overview" *ngIf="form.value?.name">  <cf-avatar-appearance-portrait    [appearance]="form.value.appearance"  ></cf-avatar-appearance-portrait>  <div cfBlock="chatbox">    <div cfElem="message">      <div class="form-control" *ngIf="editing.welcomeMessage">        <!-- label for="welcomeMessage">Welcome message:</label -->        <textarea          id="welcomeMessage"          formControlName="welcomeMessage"        ></textarea>        <cf-svg-icon          src="assets/icons/mdi/check.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"          (click)="editing.welcomeMessage = !editing.welcomeMessage"        ></cf-svg-icon>      </div>      <p        *ngIf="!editing.welcomeMessage"        (click)="editing.welcomeMessage = !editing.welcomeMessage"      >        {{ form.value.welcomeMessage }}        <cf-svg-icon          src="assets/icons/mdi/pencil-outline.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>      </p>    </div>    <div cfElem="username">      <!-- label for="name">Name:</label -->      <div class="form-control" *ngIf="editing.name">        <input id="name" type="text" formControlName="name" />        <cf-svg-icon          src="assets/icons/mdi/check.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"          (click)="editing.name = !editing.name"        ></cf-svg-icon>      </div>      <span (click)="editing.name = !editing.name" *ngIf="!editing.name"        >{{ form.value.name }}        <cf-svg-icon          src="assets/icons/mdi/pencil-outline.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>      </span>    </div>  </div></form></div>'
-    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
+    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarOverviewComponent'};
 </script>
