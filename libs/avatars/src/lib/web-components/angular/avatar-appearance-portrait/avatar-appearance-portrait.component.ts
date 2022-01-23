@@ -15,5 +15,5 @@ import { Appearance } from '../../../models/appearance';
 })
 export class AvatarAppearancePortraitComponent {
   @Input() appearance?: Appearance;
-  @Input() showEmptyIcon = true;
+  @Input() showEmptyIcon = false;
 }

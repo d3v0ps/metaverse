@@ -34,7 +34,7 @@ import { Appearance } from '../../../models/appearance';
 export class AvatarAppearanceCardComponent {
   @Input() appearance?: Appearance;
   @Input() active?: boolean;
-  @Input() showEmptyIcon = true;
+  @Input() showEmptyIcon = false;
   @Input() emptyIcon = 'assets/icons/mdi/account-question.svg';
 
   @Input() width = '100%';

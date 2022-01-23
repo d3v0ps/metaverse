@@ -64,6 +64,8 @@ import { AvatarAppearancesCarouselDisplayMode } from '@central-factory/avatars/w
         }
 
         .appearance-editor {
+          height: 100%;
+          overflow: hidden;
         }
       }
     `,
@@ -71,7 +73,7 @@ import { AvatarAppearancesCarouselDisplayMode } from '@central-factory/avatars/w
 })
 export class ManageAvatarAppearancesScene {
   appearances: Appearance[] = userAvatars[0].appearances;
-  selectedAppearance?: Partial<Appearance>;
+  selectedAppearance?: Appearance;
 
   carouselDisplayModes = AvatarAppearancesCarouselDisplayMode;
 

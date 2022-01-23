@@ -1,4 +1,8 @@
 
 <script>
-  setTimeout(() => document.getElementById('root').classList.add('scene-content'), 0);
+  setTimeout(() => {
+    const rootElem = document.getElementById('root');
+    rootElem.classList.add('scene-content');
+    rootElem.style.maxHeight = 'fit-content';
+  }, 0);
 </script>

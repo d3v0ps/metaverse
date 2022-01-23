@@ -1,7 +1,8 @@
 
 <script>
   setTimeout(() => {
-    document.getElementById('root').classList.add('scene-content');
-    document.getElementById('root').style.minHeight = '200px';
+    const rootElem = document.getElementById('root');
+    rootElem.classList.add('scene-content');
+    rootElem.style.maxHeight = 'fit-content';
   }, 0);
 </script>

@@ -1,209 +1,84 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@ng-stack/forms';
-import { v4 as uuid } from 'uuid';
-import { Appearance, AppearanceFormat } from '../../../models/appearance';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { Appearance } from '../../../models/appearance';
+import { AppearanceInfo } from '../../../models/appearance-info';
+import { AvatarAppearanceInfoFormComponent } from './components/avatar-appearance-info-form/avatar-appearance-info-form.component';
+import { AvatarAppearanceModelFormComponent } from './components/avatar-appearance-model-form/avatar-appearance-model-form.component';
+import { AvatarAppearancePortraitFormComponent } from './components/avatar-appearance-portrait-form/avatar-appearance-portrait-form.component';
 
 @Component({
   selector: 'cf-avatar-appearance-editor',
   template: `
-    <form
-      cfBlock="form"
-      cfMod="horizontal"
-      [formGroup]="form"
-      (submit)="onFormSubmit()"
-    >
-      <div cfBlock="form-group">
-        <h2 cfElem="title">Appearance</h2>
-
-        <ng-container *ngIf="form.value.format && form.value.src">
-          <cf-avatar-appearance-card
-            [appearance]="{
-              id: form.value.id,
-              format: form.value.format,
-              src: form.value.src,
-              portrait: {
-                format: form.value.format,
-                src: form.value.src
-              }
-            }"
+    <div cfBlock="avatar-appearance-editor">
+      <div cfElem="body">
+        <cf-tabset>
+          <cf-tab
+            [title]="'Appearance'"
+            [active]="true"
+            icon="assets/icons/mdi/human.svg"
+            [customClass]="'appearance-tab'"
           >
-          </cf-avatar-appearance-card>
-        </ng-container>
-        <ng-container *ngIf="!form.value.format || !form.value.src">
-          <cf-avatar-appearance-card [showEmptyIcon]="false">
-          </cf-avatar-appearance-card>
-        </ng-container>
-
-        <div cfBlock="form-group">
-          <label cfBlock="form-label" for="appearanceFormar">
-            The Appearance file format. Only images and glb files are supported.
-          </label>
-          <select
-            formControlName="format"
-            id="appearanceFormar"
-            class="form-control"
+            <div cfBlock="appearance-tab-content">
+              <div cfElem="appearance-tab-content-model">
+                <cf-avatar-appearance-model-form [appearance]="appearance">
+                </cf-avatar-appearance-model-form>
+              </div>
+              <div cfElem="appearance-tab-content-portrait">
+                <cf-avatar-appearance-portrait-form
+                  [portrait]="appearance?.portrait"
+                >
+                </cf-avatar-appearance-portrait-form>
+              </div>
+            </div>
+          </cf-tab>
+          <cf-tab
+            [title]="'Info'"
+            [active]="false"
+            icon="assets/icons/mdi/information.svg"
+            [customClass]="'appearance-info-tab'"
           >
-            <option [value]="null">Select an appearance format</option>
-            <option
-              *ngFor="let format of appearanceFormats"
-              [value]="format.value"
-            >
-              {{ format.label }}
-            </option>
-          </select>
-        </div>
-
-        <div cfBlock="form-group">
-          <label cfBlock="form-label" for="appearanceSrc">
-            Url of the appearance file
-          </label>
-          <input
-            class="input"
-            cfBlock="form-control"
-            type="text"
-            id="appearanceSrc"
-            formControlName="src"
-            placeholder=""
-            [disabled]="!form.value.format"
-          />
-        </div>
-
-        <!-- input type="file" formControlName="file" class="form-control" / -->
+            <cf-avatar-appearance-info-form
+              [info]="appearance?.info"
+            ></cf-avatar-appearance-info-form>
+          </cf-tab>
+        </cf-tabset>
       </div>
 
-      <div cfBlock="form-group" formGroupName="portrait">
-        <h2 cfElem="title">Portrait</h2>
-
-        <div
-          style="margin-bottom: 1rem;"
-          *ngIf="form.value.portrait.format && form.value.portrait.src"
-        >
-          <cf-avatar-appearance-portrait
-            [appearance]="{
-              id: form.value.id,
-              format: form.value.portrait.format,
-              src: form.value.portrait.src,
-              portrait: {
-                format: form.value.portrait.format,
-                src: form.value.portrait.src
-              }
-            }"
+      <div cfElem="footer">
+        <div cfBlock="form-buttons">
+          <button
+            type="submit"
+            cfBlock="button"
+            [cfMod]="['primary']"
+            [disabled]="false"
           >
-          </cf-avatar-appearance-portrait>
+            Save
+          </button>
         </div>
-        <div
-          style="margin-bottom: 1rem;"
-          *ngIf="!form.value.portrait.format || !form.value.portrait.src"
-        >
-          <cf-avatar-appearance-portrait [showEmptyIcon]="false">
-          </cf-avatar-appearance-portrait>
-        </div>
-
-        <!-- div cfBlock="form-group">
-          <label cfBlock="form-label" for="portraitFormat">
-            The Portrait file format. Only images and glb files are supported.
-          </label>
-          <select
-            formControlName="format"
-            id="portraitFormat"
-            class="form-control"
-          >
-            <option [value]="null">Select an appearance format</option>
-            <option
-              *ngFor="let format of appearanceFormats"
-              [value]="format.value"
-            >
-              {{ format.label }}
-            </option>
-          </select>
-        </div -->
-
-        <div cfBlock="form-group">
-          <label cfBlock="form-label" for="portraitSrc">
-            Url of the portrait file. Only png and jpg images are supported.
-            144x144 images are recommended.
-          </label>
-          <input
-            class="input"
-            cfBlock="form-control"
-            type="text"
-            id="portraitSrc"
-            formControlName="src"
-            placeholder=""
-            [disabled]="!form.value.portrait.format"
-          />
-        </div>
-
-        <!-- input type="file" formControlName="file" class="form-control" / -->
       </div>
-
-      <div cfBlock="form-buttons">
-        <button
-          type="submit"
-          cfBlock="button"
-          [cfMod]="['primary']"
-          [disabled]="!form.valid"
-        >
-          Save
-        </button>
-      </div>
-    </form>
+    </div>
   `,
 })
 export class AvatarAppearanceEditorComponent {
-  @Input() set appearance(value: Partial<Appearance> | undefined) {
-    this.form.reset({
-      id: value?.id || uuid(),
-      format: value?.format || null,
-      src: value?.src || null,
-      file: null,
-      portrait: {
-        format: value?.portrait?.format || AppearanceFormat.Image,
-        src: value?.portrait?.src || null,
-        file: null,
-      },
-    });
-  }
+  @ViewChild(AvatarAppearancePortraitFormComponent)
+  portraitForm?: AvatarAppearancePortraitFormComponent;
+  @ViewChild(AvatarAppearanceModelFormComponent)
+  modelForm?: AvatarAppearanceModelFormComponent;
+  @ViewChild(AvatarAppearanceInfoFormComponent)
+  infoForm?: AvatarAppearanceInfoFormComponent;
+
+  @Input() appearance?: Appearance;
 
   @Output() appearanceSubmit = new EventEmitter<Appearance>();
 
-  appearanceFormats = Object.keys(AppearanceFormat).map((key) => ({
-    label: key,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    value: (AppearanceFormat as any)[key],
-  }));
-
-  form = new FormGroup({
-    id: new FormControl<string>(uuid(), [Validators.required]),
-    format: new FormControl<AppearanceFormat | null>(null, [
-      Validators.required,
-    ]),
-    src: new FormControl<string | null>(null, [Validators.required]),
-    file: new FormControl<any>(null),
-    portrait: new FormGroup(
-      {
-        format: new FormControl<AppearanceFormat | null>(
-          AppearanceFormat.Image,
-          [Validators.required]
-        ),
-        src: new FormControl<string | null>(null, [Validators.required]),
-        file: new FormControl<any>(null),
-      },
-      [Validators.required]
-    ),
-  });
+  appearanceInfo?: AppearanceInfo;
 
   onFormSubmit() {
-    if (!this.form.valid) {
-      return;
-    }
-
-    const appearance = {
-      id: this.form.value.id,
-      format: this.form.value.format,
-      src: this.form.value.src,
-    };
-
-    this.appearanceSubmit.emit(appearance as Appearance);
+    // this.appearanceSubmit.emit(appearance as Appearance);
   }
 }

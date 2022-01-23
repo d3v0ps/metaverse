@@ -81,16 +81,6 @@ export interface AvatarOverviewInput {
       </div>
     </form>
   `,
-  styles: [
-    `
-      .avatar-overview {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 10px;
-      }
-    `,
-  ],
 })
 export class AvatarOverviewComponent {
   @Input() set avatar(value: Avatar) {

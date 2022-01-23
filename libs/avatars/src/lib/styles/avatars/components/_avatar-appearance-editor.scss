@@ -1,0 +1,18 @@
+
+.avatar-appearance-editor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  &__body {
+    flex: 1;
+
+    .appearance-tab-content {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+  &__footer {
+    flex: 0;
+    padding: 0rem 1.1rem 1rem;
+  }
+}
