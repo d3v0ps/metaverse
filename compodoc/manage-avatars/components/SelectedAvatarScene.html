@@ -108,6 +108,9 @@
 
     &lt;cf-avatar-appearances
       [appearances]&#x3D;&quot;data.avatar.appearances&quot;
+      [selectedAppearanceId]&#x3D;&quot;data.avatar.selectedAppearance?.id&quot;
+      (appearanceClick)&#x3D;&quot;onAppearanceClick($event)&quot;
+      (appearanceAddClick)&#x3D;&quot;onAppearanceAddClick()&quot;
     &gt;&lt;/cf-avatar-appearances&gt;
 
     &lt;!-- cf-avatar-scopes
@@ -151,6 +154,23 @@
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#onAppearanceAddClick" >onAppearanceAddClick</a>
+                            </li>
+                            <li>
+                                <a href="#onAppearanceClick" >onAppearanceClick</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
 
 
@@ -166,12 +186,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(selectedAvatarState: SelectedAvatarState)</code>
+<code>constructor(selectedAvatarState: SelectedAvatarState, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:37</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:42</a></div>
                             </td>
                         </tr>
 
@@ -200,6 +220,18 @@
                                                     </td>
                                                     
                                                 </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -213,7 +245,118 @@
 
 
 
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onAppearanceAddClick"></a>
+                    <span class="name">
+                        <span ><b>onAppearanceAddClick</b></span>
+                        <a href="#onAppearanceAddClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onAppearanceAddClick()</code>
+                </td>
+            </tr>
 
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:53</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onAppearanceClick"></a>
+                    <span class="name">
+                        <span ><b>onAppearanceClick</b></span>
+                        <a href="#onAppearanceClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onAppearanceClick(appearance: Appearance)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:49</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>appearance</td>
+                                    <td>
+                                            <code>Appearance</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
     <section>
     
     <h3 id="inputs">
@@ -245,7 +388,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:36</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:41</a></div>
                         </td>
                     </tr>
 
@@ -259,6 +402,8 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { Appearance } from &#x27;@central-factory/avatars&#x27;;
 import type { Avatar } from &#x27;@central-factory/avatars/models/avatar&#x27;;
 import { SelectedAvatarState } from &#x27;@central-factory/avatars/states/selected-avatar.state&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
@@ -283,6 +428,9 @@ import { Observable } from &#x27;rxjs&#x27;;
 
         &lt;cf-avatar-appearances
           [appearances]&#x3D;&quot;data.avatar.appearances&quot;
+          [selectedAppearanceId]&#x3D;&quot;data.avatar.selectedAppearance?.id&quot;
+          (appearanceClick)&#x3D;&quot;onAppearanceClick($event)&quot;
+          (appearanceAddClick)&#x3D;&quot;onAppearanceAddClick()&quot;
         &gt;&lt;/cf-avatar-appearances&gt;
 
         &lt;!-- cf-avatar-scopes
@@ -296,7 +444,18 @@ export class SelectedAvatarScene {
   public readonly avatar$: Observable&lt;Avatar | undefined&gt; &#x3D;
     this.selectedAvatarState.avatar$;
 
-  constructor(private readonly selectedAvatarState: SelectedAvatarState) {}
+  constructor(
+    private readonly selectedAvatarState: SelectedAvatarState,
+    private readonly router: Router
+  ) {}
+
+  onAppearanceClick(appearance: Appearance) {
+    this.selectedAvatarState.selectAppearance(appearance).subscribe();
+  }
+
+  onAppearanceAddClick() {
+    this.router.navigate([&#x27;/create-avatar&#x27;]);
+  }
 }
 </code></pre>
     </div>
@@ -328,7 +487,7 @@ export class SelectedAvatarScene {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    avatar: avatar$ | async  } as data">  <div cfBlock="scene-content" *ngIf="data.avatar">    <cf-avatar-overview      style="display: block; min-height: 200px;"      [avatar]="data.avatar"    ></cf-avatar-overview>    <!-- cf-avatar-skills        [skills]="data.avatar.skills"      ></cf-avatar-skills -->    <cf-avatar-appearances      [appearances]="data.avatar.appearances"    ></cf-avatar-appearances>    <!-- cf-avatar-scopes        [scopes]="data.avatar.scopes"      ></cf-avatar-scopes-->  </div></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    avatar: avatar$ | async  } as data">  <div cfBlock="scene-content" *ngIf="data.avatar">    <cf-avatar-overview      style="display: block; min-height: 200px;"      [avatar]="data.avatar"    ></cf-avatar-overview>    <!-- cf-avatar-skills        [skills]="data.avatar.skills"      ></cf-avatar-skills -->    <cf-avatar-appearances      [appearances]="data.avatar.appearances"      [selectedAppearanceId]="data.avatar.selectedAppearance?.id"      (appearanceClick)="onAppearanceClick($event)"      (appearanceAddClick)="onAppearanceAddClick()"    ></cf-avatar-appearances>    <!-- cf-avatar-scopes        [scopes]="data.avatar.scopes"      ></cf-avatar-scopes-->  </div></ng-container></div>'
     var COMPONENTS = [{'name': 'CreateAvatarScene', 'selector': 'cf-create-avatar'},{'name': 'ManageAvatarAppearancesScene', 'selector': 'cf-manage-avatar-appearances-scene'},{'name': 'ManageAvatarsRoot', 'selector': 'cf-manage-avatars-root'},{'name': 'SelectAvatarScene', 'selector': 'cf-select-avatar'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SelectedAvatarScene'};

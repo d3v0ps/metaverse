@@ -102,7 +102,9 @@
   &lt;/ng-container&gt;
 
   &lt;cf-avatar-appearance-card
+    *ngIf&#x3D;&quot;showAdd&quot;
     emptyIcon&#x3D;&quot;assets/icons/mdi/plus.svg&quot;
+    [showEmptyIcon]&#x3D;&quot;true&quot;
     (appearanceClick)&#x3D;&quot;appearanceAddClick.emit()&quot;
   &gt;
   &lt;/cf-avatar-appearance-card&gt;
@@ -195,7 +197,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances-carousel/avatar-appearances-carousel.component.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances-carousel/avatar-appearances-carousel.component.ts:33</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -221,7 +223,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances-carousel/avatar-appearances-carousel.component.ts:33</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances-carousel/avatar-appearances-carousel.component.ts:35</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -242,7 +244,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances-carousel/avatar-appearances-carousel.component.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances-carousel/avatar-appearances-carousel.component.ts:34</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -268,7 +270,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances-carousel/avatar-appearances-carousel.component.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances-carousel/avatar-appearances-carousel.component.ts:37</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -292,7 +294,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances-carousel/avatar-appearances-carousel.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances-carousel/avatar-appearances-carousel.component.ts:40</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -313,7 +315,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances-carousel/avatar-appearances-carousel.component.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearances-carousel/avatar-appearances-carousel.component.ts:39</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -349,7 +351,9 @@ export enum AvatarAppearancesCarouselDisplayMode {
       &lt;/ng-container&gt;
 
       &lt;cf-avatar-appearance-card
+        *ngIf&#x3D;&quot;showAdd&quot;
         emptyIcon&#x3D;&quot;assets/icons/mdi/plus.svg&quot;
+        [showEmptyIcon]&#x3D;&quot;true&quot;
         (appearanceClick)&#x3D;&quot;appearanceAddClick.emit()&quot;
       &gt;
       &lt;/cf-avatar-appearance-card&gt;
@@ -396,7 +400,7 @@ export class AvatarAppearancesCarouselComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearances-carousel" [cfMod]="displayMode">  <ng-container *ngFor="let appearance of appearances">    <cf-avatar-appearance-card      [appearance]="appearance"      [active]="appearance.id === selectedAppearanceId"      (appearanceClick)="appearanceClick.emit(appearance)"    >    </cf-avatar-appearance-card>  </ng-container>  <cf-avatar-appearance-card    emptyIcon="assets/icons/mdi/plus.svg"    (appearanceClick)="appearanceAddClick.emit()"  >  </cf-avatar-appearance-card></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearances-carousel" [cfMod]="displayMode">  <ng-container *ngFor="let appearance of appearances">    <cf-avatar-appearance-card      [appearance]="appearance"      [active]="appearance.id === selectedAppearanceId"      (appearanceClick)="appearanceClick.emit(appearance)"    >    </cf-avatar-appearance-card>  </ng-container>  <cf-avatar-appearance-card    *ngIf="showAdd"    emptyIcon="assets/icons/mdi/plus.svg"    [showEmptyIcon]="true"    (appearanceClick)="appearanceAddClick.emit()"  >  </cf-avatar-appearance-card></div></div>'
     var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarAppearancesCarouselComponent'};
