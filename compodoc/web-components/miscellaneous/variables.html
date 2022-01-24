@@ -60,10 +60,22 @@
                 <td class="col-md-4">
                     <ul class="index-list">
                         <li>
+                            <a href="#findAncestor" title="libs/web-components/src/lib/shared/platform/browser/dom/find-ancestor.ts" ><b>findAncestor</b>&nbsp;&nbsp;&nbsp;(libs/.../find-ancestor.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getEvent" title="libs/web-components/src/lib/shared/platform/browser/events/get-event.ts" ><b>getEvent</b>&nbsp;&nbsp;&nbsp;(libs/.../get-event.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#getMaxZIndex" title="libs/web-components/src/lib/shared/platform/browser/dom/get-max-z-index.ts" ><b>getMaxZIndex</b>&nbsp;&nbsp;&nbsp;(libs/.../get-max-z-index.ts)</a>
+                        </li>
+                        <li>
                             <a href="#isElectron" title="libs/web-components/src/lib/shared/platform/desktop/is-electron.ts" ><b>isElectron</b>&nbsp;&nbsp;&nbsp;(libs/.../is-electron.ts)</a>
                         </li>
                         <li>
                             <a href="#isIOS" title="libs/web-components/src/lib/shared/platform/browser/is-ios.ts" ><b>isIOS</b>&nbsp;&nbsp;&nbsp;(libs/.../is-ios.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#isLeftButton" title="libs/web-components/src/lib/shared/platform/browser/events/is-left-button.ts" ><b>isLeftButton</b>&nbsp;&nbsp;&nbsp;(libs/.../is-left-button.ts)</a>
                         </li>
                         <li>
                             <a href="#isLTR" title="libs/web-components/src/lib/shared/platform/browser/is-ltr.ts" ><b>isLTR</b>&nbsp;&nbsp;&nbsp;(libs/.../is-ltr.ts)</a>
@@ -84,6 +96,103 @@
     </table>
 </section>
 
+    <h3>libs/web-components/src/lib/shared/platform/browser/dom/find-ancestor.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findAncestor"></a>
+                    <span class="name">
+                        <span ><b>findAncestor</b></span>
+                        <a href="#findAncestor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(el: any, selectors: any) &#x3D;&gt; {
+  if (typeof el.closest &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
+    return el.closest(selectors) || null;
+  }
+  while (el) {
+    if (el.matches(selectors)) {
+      return el;
+    }
+    el &#x3D; el.parentElement;
+  }
+  return null;
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/web-components/src/lib/shared/platform/browser/events/get-event.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getEvent"></a>
+                    <span class="name">
+                        <span ><b>getEvent</b></span>
+                        <a href="#getEvent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(
+  event: MouseEvent | TouchEvent
+): MouseEvent | Touch &#x3D;&gt; {
+  if (event.type &#x3D;&#x3D;&#x3D; &#x27;touchend&#x27; || event.type &#x3D;&#x3D;&#x3D; &#x27;touchcancel&#x27;) {
+    return (event as TouchEvent).changedTouches[0];
+  }
+  return event.type.startsWith(&#x27;touch&#x27;)
+    ? (event as TouchEvent).targetTouches[0]
+    : (event as MouseEvent);
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/web-components/src/lib/shared/platform/browser/dom/get-max-z-index.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getMaxZIndex"></a>
+                    <span class="name">
+                        <span ><b>getMaxZIndex</b></span>
+                        <a href="#getMaxZIndex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(selectors: string &#x3D; &#x27;body *&#x27;) &#x3D;&gt; {
+  return (
+    Array.from(document.querySelectorAll(selectors))
+      .map((a) &#x3D;&gt; parseFloat(window.getComputedStyle(a).zIndex))
+      .filter((a) &#x3D;&gt; !isNaN(a))
+      .sort((a, b) &#x3D;&gt; a - b)
+      .pop() || 0
+  );
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
     <h3>libs/web-components/src/lib/shared/platform/desktop/is-electron.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -191,6 +300,34 @@
 </div>
                 </td>
             </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/web-components/src/lib/shared/platform/browser/events/is-left-button.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLeftButton"></a>
+                    <span class="name">
+                        <span ><b>isLeftButton</b></span>
+                        <a href="#isLeftButton"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>(event: MouseEvent | TouchEvent): boolean &#x3D;&gt; {
+  if (event.type &#x3D;&#x3D;&#x3D; &#x27;touchstart&#x27;) {
+    return true;
+  }
+  return event.type &#x3D;&#x3D;&#x3D; &#x27;mousedown&#x27; &amp;&amp; (event as MouseEvent).button &#x3D;&#x3D;&#x3D; 0;
+}</code>
+                    </td>
+                </tr>
+
 
         </tbody>
     </table>

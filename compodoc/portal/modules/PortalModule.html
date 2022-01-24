@@ -228,8 +228,10 @@ import { APPLICATION_PERMISSIONS_COLLECTION_PROVIDER } from &#x27;@central-facto
 import { USER_PREFERENCES_COLLECTION_PROVIDER } from &#x27;@central-factory/preferences/collections/user-preferences.collection&#x27;;
 import { CUSTOMIZATION_INITIAL_DATA_PROVIDER } from &#x27;@central-factory/preferences/data/base/customization/customization.data&#x27;;
 import { CustomizationSettingsState } from &#x27;@central-factory/preferences/states/customization/customization-settings.state&#x27;;
+import { BemModule } from &#x27;@central-factory/web-components/angular/bem/bem.module&#x27;;
 import { SplashScreenModule } from &#x27;@central-factory/web-components/angular/splash-screen/splash-screen.module&#x27;;
 import { SvgIconModule } from &#x27;@central-factory/web-components/angular/svg-icon/svg-icon.module&#x27;;
+import { WindowModule } from &#x27;@central-factory/web-components/angular/window/window.module&#x27;;
 import { environment } from &#x27;../environments/environment&#x27;;
 import { PortalMocksModule } from &#x27;./portal-mocks.module&#x27;;
 import { PortalRoutingModule } from &#x27;./portal-routing.module&#x27;;
@@ -244,8 +246,10 @@ import { BackgroundRenderer } from &#x27;./services/background.renderer&#x27;;
     BrowserAnimationsModule,
     HttpClientModule,
     SvgIconModule.forRoot(),
+    BemModule,
     PortalLayoutSceneModule,
     SplashScreenModule,
+    WindowModule,
 
     PortalRoutingModule,
     PortalMocksModule.forRoot({

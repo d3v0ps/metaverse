@@ -2011,6 +2011,14 @@ li {
   margin: 2px;
 }
 
+.dragging {
+  cursor: move;
+  outline: 0;
+  box-shadow: 0 0.25rem 0.5rem rgba(102, 175, 233, 0.6), 0 0.375rem 1.25rem rgba(0, 0, 0, 0.2);
+  -webkit-user-select: none;
+          user-select: none;
+}
+
 :root {
   --component-form-control-text-color: var(--color-base-primary-medium);
   --component-form-control-border-color: var(--color-base-primary-medium);
@@ -2768,6 +2776,38 @@ textarea, .textarea {
   right: 0.9rem;
 }
 
+.resize-handle-e {
+  position: absolute;
+  cursor: e-resize;
+  height: 100%;
+  width: 0.4375rem;
+  right: -0.3125rem;
+  top: 0;
+}
+
+.resize-handle-se {
+  position: absolute;
+  cursor: se-resize;
+  height: 1rem;
+  width: 1rem;
+  right: 0;
+  bottom: 0;
+}
+
+.resize-handle-s {
+  position: absolute;
+  cursor: s-resize;
+  height: 0.4375rem;
+  width: 100%;
+  bottom: -0.3125rem;
+  left: 0;
+}
+
+.resizing {
+  -webkit-user-select: none;
+          user-select: none;
+}
+
 :root {
   --component-scene-content-shadow-outset: 8px 8px 16px 0 rgba(0, 0, 0, 0.25);
   --component-scene-content-shadow-inset-primary: -8px -8px 16px 0 rgba(0, 0, 0, 0.25);
@@ -3391,6 +3431,98 @@ cf-sidebar {
 
 .text.text--light .icon__svg {
   fill: var(--component-text-light-color, var(--color-base-light-medium));
+}
+
+:root {
+  --component-window-background-color: var(--component-scene-content-background-color);
+  --component-window-text-color: var(--component-scene-content-color);
+  --component-window-shadow-outset: var(--component-scene-content-shadow-outset);
+  --component-window-shadow-inset-primary: var(--component-scene-content-shadow-inset-primary);
+  --component-window-shadow-inset-secondary: var(--component-scene-content-shadow-inset-secondary);
+  --component-window-window-overlay-background-color: rgba(0, 0, 0, 0.6);
+  --component-window-header-background-color: var(--color-base-primary-medium);
+  --component-window-header-text-color: var(--color-base-light-medium);
+}
+
+.window-overlay, .window {
+  z-index: 10;
+}
+
+.window-overlay {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--component-window-window-overlay-background-color);
+}
+
+.window {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  outline: none;
+  background-color: var(--component-window-background-color);
+  color: var(--component-window-text-color);
+  padding: 0;
+  border-radius: 20px;
+  box-shadow: var(--component-scene-content-shadow-outset), inset var(--component-scene-content-shadow-inset-primary), inset var(--component-scene-content-shadow-inset-secondary);
+  min-width: 16.25rem;
+  min-height: 12.5rem;
+  width: 31.25rem;
+}
+
+.window-header {
+  position: relative;
+  padding: 0.5rem 1rem;
+  background-color: var(--component-window-header-background-color);
+  color: var(--component-window-header-text-color);
+  box-shadow: var(--component-scene-content-shadow-outset), inset var(--component-scene-content-shadow-inset-primary), inset var(--component-scene-content-shadow-inset-secondary);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  -webkit-user-select: none;
+          user-select: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.window-header__title {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  height: 100%;
+  overflow: hidden;
+  font-size: 1.125rem;
+}
+
+.window-header__controls {
+  display: flex;
+  align-items: center;
+}
+
+.window-header__controls .icon__svg {
+  cursor: pointer;
+  fill: var(--component-window-header-text-color);
+  margin-left: 0.3em;
+}
+
+.window-body {
+  position: relative;
+  padding: 0.625rem 1rem;
+  max-height: calc(100vh - 12.5rem);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.window-footer {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 :root {

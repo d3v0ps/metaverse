@@ -103,6 +103,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                             </li>
                             <li class="link">
+                                <a href="modules/DraggableModule.html" data-type="entity-link" >DraggableModule</a>
+                                <li class="chapter inner">
+                                    <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                        'data-target="#directives-links-module-DraggableModule-f87ce089a45f82416828a5fd9f72f501"' : 'data-target="#xs-directives-links-module-DraggableModule-f87ce089a45f82416828a5fd9f72f501"' }>
+                                        <span class="icon ion-md-code-working"></span>
+                                        <span>Directives</span>
+                                        <span class="icon ion-ios-arrow-down"></span>
+                                    </div>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-DraggableModule-f87ce089a45f82416828a5fd9f72f501"' :
+                                        'id="xs-directives-links-module-DraggableModule-f87ce089a45f82416828a5fd9f72f501"' }>
+                                        <li class="link">
+                                            <a href="directives/DraggableDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >DraggableDirective</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </li>
+                            <li class="link">
                                 <a href="modules/NavbarModule.html" data-type="entity-link" >NavbarModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
@@ -146,6 +163,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                         'id="xs-directives-links-module-PopoverModule-95d08308d78eb1474d6388d5fbafb894"' }>
                                         <li class="link">
                                             <a href="directives/PopoverDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >PopoverDirective</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/ResizableModule.html" data-type="entity-link" >ResizableModule</a>
+                                <li class="chapter inner">
+                                    <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                        'data-target="#directives-links-module-ResizableModule-a1ba694f06025536837ee36b7126711c"' : 'data-target="#xs-directives-links-module-ResizableModule-a1ba694f06025536837ee36b7126711c"' }>
+                                        <span class="icon ion-md-code-working"></span>
+                                        <span>Directives</span>
+                                        <span class="icon ion-ios-arrow-down"></span>
+                                    </div>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-ResizableModule-a1ba694f06025536837ee36b7126711c"' :
+                                        'id="xs-directives-links-module-ResizableModule-a1ba694f06025536837ee36b7126711c"' }>
+                                        <li class="link">
+                                            <a href="directives/ResizableDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ResizableDirective</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -255,6 +289,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                         </ul>
                                     </li>
                             </li>
+                            <li class="link">
+                                <a href="modules/WindowModule.html" data-type="entity-link" >WindowModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-WindowModule-16cd5aa919977ca808f7a8d9c246c9ee"' : 'data-target="#xs-components-links-module-WindowModule-16cd5aa919977ca808f7a8d9c246c9ee"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-WindowModule-16cd5aa919977ca808f7a8d9c246c9ee"' :
+                                            'id="xs-components-links-module-WindowModule-16cd5aa919977ca808f7a8d9c246c9ee"' }>
+                                            <li class="link">
+                                                <a href="components/WindowComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >WindowComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
                 </ul>
                 </li>
                     <li class="chapter">
@@ -321,6 +372,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="miscellaneous/functions.html" data-type="entity-link">Functions</a>
+                            </li>
+                            <li class="link">
+                                <a href="miscellaneous/typealiases.html" data-type="entity-link">Type aliases</a>
                             </li>
                             <li class="link">
                                 <a href="miscellaneous/variables.html" data-type="entity-link">Variables</a>
