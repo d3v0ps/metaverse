@@ -47,21 +47,6 @@ export const userAvatars: UserAvatarDocType[] = [
           scale: '1 1 1',
         },
       },
-      // {
-      //   format: 'readyplayer.me',
-      //   src: 'assets/avatar-large.png',
-      //   smallPreviewUrl: 'assets/avatar-144.png',
-      // },
-      // {
-      //   format: 'Meta',
-      //   src: 'assets/avatar-large.png',
-      //   smallPreviewUrl: 'assets/avatar-144.png',
-      // },
-      // {
-      //   format: 'NVDIA Omniverse',
-      //   src: 'assets/avatar-large.png',
-      //   smallPreviewUrl: 'assets/avatar-144.png',
-      // },
     ],
     scopes: [
       {
