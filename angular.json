@@ -1367,6 +1367,18 @@
                 "path": "apps/portal/webpack.prod.config.js"
               }
             },
+            "demo": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/portal/src/environments/environment.ts",
+                  "with": "apps/portal/src/environments/environment.demo.ts"
+                }
+              ],
+              "outputHashing": "all",
+              "customWebpackConfig": {
+                "path": "apps/portal/webpack.prod.config.js"
+              }
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -1388,6 +1400,9 @@
           ],
           "configurations": {
             "production": {
+              "browserTarget": "portal:build:production"
+            },
+            "demo": {
               "browserTarget": "portal:build:production"
             },
             "development": {
