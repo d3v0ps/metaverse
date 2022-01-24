@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { WindowComponent } from '@central-factory/web-components/angular/window/window.component';
 import { environment } from '../environments/environment';
 
 /** Metaverse's Portal root component */
@@ -10,6 +11,28 @@ import { environment } from '../environments/environment';
     <div class="application">
       <router-outlet></router-outlet>
     </div>
+
+    <cf-window #rootWindow [maximizable]="true">
+      <ng-container class="window-header__content"
+        >A message from the author</ng-container
+      >
+      <ng-container class="window-body__content">
+        <h3>Welcome to The Central Factory Metaverse</h3>
+        <p>
+          This is a demo release of The Central Factory Metaverse project. Not
+          all features are implemented yet, you might find many issues and
+          unexpected behaviours. You can give us your feedback on
+          <a href="https://github.com/central-factory/metaverse" target="_blank"
+            >the project page</a
+          >. Thank you for getting interested on this project.
+        </p>
+      </ng-container>
+      <ng-container class="window-footer__content">
+        <button cfBlock="button" cfMod="primary" (click)="rootWindow.hide()">
+          I'm ready!
+        </button>
+      </ng-container>
+    </cf-window>
   `,
   styles: [
     `
@@ -24,6 +47,14 @@ import { environment } from '../environments/environment';
     `,
   ],
 })
-export class PortalRoot {
+export class PortalRoot implements OnInit {
   environment = environment;
+
+  @ViewChild('rootWindow', { static: true }) rootWindow!: WindowComponent;
+
+  ngOnInit() {
+    if (this.environment.demo) {
+      this.rootWindow.show();
+    }
+  }
 }

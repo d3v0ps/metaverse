@@ -11,8 +11,10 @@ import { APPLICATION_PERMISSIONS_COLLECTION_PROVIDER } from '@central-factory/pe
 import { USER_PREFERENCES_COLLECTION_PROVIDER } from '@central-factory/preferences/collections/user-preferences.collection';
 import { CUSTOMIZATION_INITIAL_DATA_PROVIDER } from '@central-factory/preferences/data/base/customization/customization.data';
 import { CustomizationSettingsState } from '@central-factory/preferences/states/customization/customization-settings.state';
+import { BemModule } from '@central-factory/web-components/angular/bem/bem.module';
 import { SplashScreenModule } from '@central-factory/web-components/angular/splash-screen/splash-screen.module';
 import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
+import { WindowModule } from '@central-factory/web-components/angular/window/window.module';
 import { environment } from '../environments/environment';
 import { PortalMocksModule } from './portal-mocks.module';
 import { PortalRoutingModule } from './portal-routing.module';
@@ -27,8 +29,10 @@ import { BackgroundRenderer } from './services/background.renderer';
     BrowserAnimationsModule,
     HttpClientModule,
     SvgIconModule.forRoot(),
+    BemModule,
     PortalLayoutSceneModule,
     SplashScreenModule,
+    WindowModule,
 
     PortalRoutingModule,
     PortalMocksModule.forRoot({
