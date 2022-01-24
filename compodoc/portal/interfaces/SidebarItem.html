@@ -438,7 +438,9 @@ export enum SceneContentAnimationState {
                     &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;Account&lt;/span&gt;
                   &lt;/div&gt;
                   &lt;cf-avatar-appearance-portrait
-                    [appearance]&#x3D;&quot;data.selectedAvatar.selectedAppearance&quot;
+                    [appearancePortrait]&#x3D;&quot;
+                      data.selectedAvatar.selectedAppearance?.portrait
+                    &quot;
                   &gt;
                   &lt;/cf-avatar-appearance-portrait&gt;
                   &lt;!-- img

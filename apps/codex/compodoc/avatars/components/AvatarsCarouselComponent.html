@@ -95,7 +95,7 @@
   &lt;ng-container *ngFor&#x3D;&quot;let avatar of avatars&quot;&gt;
     &lt;div cfBlock&#x3D;&quot;avatars-carousel-item&quot; (click)&#x3D;&quot;avatarClick.emit(avatar)&quot;&gt;
       &lt;cf-avatar-appearance-portrait
-        [appearance]&#x3D;&quot;avatar.selectedAppearance&quot;
+        [appearancePortrait]&#x3D;&quot;avatar.selectedAppearance?.portrait&quot;
       &gt;
       &lt;/cf-avatar-appearance-portrait&gt;
       &lt;br /&gt;
@@ -232,7 +232,7 @@ import type { Avatar } from &#x27;../../../models/avatar&#x27;;
       &lt;ng-container *ngFor&#x3D;&quot;let avatar of avatars&quot;&gt;
         &lt;div cfBlock&#x3D;&quot;avatars-carousel-item&quot; (click)&#x3D;&quot;avatarClick.emit(avatar)&quot;&gt;
           &lt;cf-avatar-appearance-portrait
-            [appearance]&#x3D;&quot;avatar.selectedAppearance&quot;
+            [appearancePortrait]&#x3D;&quot;avatar.selectedAppearance?.portrait&quot;
           &gt;
           &lt;/cf-avatar-appearance-portrait&gt;
           &lt;br /&gt;
@@ -277,7 +277,7 @@ export class AvatarsCarouselComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatars-carousel">  <ng-container *ngFor="let avatar of avatars">    <div cfBlock="avatars-carousel-item" (click)="avatarClick.emit(avatar)">      <cf-avatar-appearance-portrait        [appearance]="avatar.selectedAppearance"      >      </cf-avatar-appearance-portrait>      <br />      <h4 cfElem="name">{{ avatar.name }}</h4>    </div>  </ng-container></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatars-carousel">  <ng-container *ngFor="let avatar of avatars">    <div cfBlock="avatars-carousel-item" (click)="avatarClick.emit(avatar)">      <cf-avatar-appearance-portrait        [appearancePortrait]="avatar.selectedAppearance?.portrait"      >      </cf-avatar-appearance-portrait>      <br />      <h4 cfElem="name">{{ avatar.name }}</h4>    </div>  </ng-container></div></div>'
     var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarsCarouselComponent'};

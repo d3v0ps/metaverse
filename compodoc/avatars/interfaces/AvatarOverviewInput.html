@@ -320,7 +320,7 @@ export interface AvatarOverviewInput {
   template: &#x60;
     &lt;form [formGroup]&#x3D;&quot;form&quot; cfBlock&#x3D;&quot;avatar-overview&quot; *ngIf&#x3D;&quot;form.value?.name&quot;&gt;
       &lt;cf-avatar-appearance-portrait
-        [appearance]&#x3D;&quot;form.value.appearance&quot;
+        [appearancePortrait]&#x3D;&quot;form.value.appearance?.portrait&quot;
       &gt;&lt;/cf-avatar-appearance-portrait&gt;
 
       &lt;div cfBlock&#x3D;&quot;chatbox&quot;&gt;

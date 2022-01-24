@@ -1189,10 +1189,6 @@ li {
   text-align: right;
 }
 
-:root {
-  --component-select-option-background-color: var(--color-base-dark-darker);
-}
-
 .ng-select .ng-select-container {
   color: var(--component-select-text-color);
   background-color: var(--component-input-background-color);
@@ -1913,8 +1909,8 @@ li {
 }
 
 :root {
-  --component-color-picker-select-active-border-color: var(--color-base-primary-medium);
-  --component-color-picker-select-button-background-color: var(--color-base-dark-darker);
+  --component-color-picker-select-active-border-color: var(--color-base-secondary-medium);
+  --component-color-picker-select-button-background-color: var(--component-input-background-color);
 }
 
 .color-picker-select__content {
@@ -2307,16 +2303,12 @@ li {
   margin-top: 1rem;
 }
 
-:root {
-  --component-input-select-background-image: url("data:image/svg+xml;utf8,<svg fill='%23fefefe' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
-}
-
 input, select {
   font-size: var(--component-input-font-size);
   font-family: inherit;
   line-height: 2;
   background-color: var(--component-input-background-color);
-  border: 2px solid transparent;
+  border: 2px solid var(--component-input-border-color);
   border-radius: var(--component-input-border-radius);
   color: var(--component-input-text-color);
   box-shadow: var(--component-input-shadow-outset), inset var(--component-input-shadow-inset-primary), inset var(--component-input-shadow-inset-secondary);
@@ -2360,7 +2352,7 @@ select {
 }
 
 select option {
-  background-color: var(--color-base-dark-darker);
+  background-color: var(--component-input-background-color);
   color: var(--component-input-text-color);
 }
 
@@ -2510,7 +2502,7 @@ textarea, .textarea {
 }
 
 :root {
-  --component-popover-background-color: #757575;
+  --component-popover-background-color: var(--component-button-background-color);
   --component-popover-inner-padding: 1.2rem;
   --component-popover-zindex: 1060;
   --component-popover-arrow-width: 2.2rem;
@@ -3184,17 +3176,6 @@ cf-sidebar {
   text-align: center;
 }
 
-:root {
-  --component-tab-background-color: var(--color-base-dark-dark);
-  --component-tab-text-color: var(--color-base-light-medium);
-  --component-tab-active-background-color: var(--color-base-dark-darkest);
-  --component-tab-active-text-color: var(--color-base-light-medium);
-  --component-tab-border-color: var(--color-base-dark-darker);
-  --component-tab-shadow-outset: 8px 8px 16px 0 rgba(0, 0, 0, 0.25);
-  --component-tab-shadow-inset-primary: -8px -8px 16px 0 rgba(0, 0, 0, 0.25);
-  --component-tab-shadow-inset-secondary: 8px 8px 16px 0 rgba(255, 255, 255, 0.2);
-}
-
 .tabset {
   list-style: none;
   padding: 0;
@@ -3242,6 +3223,78 @@ cf-sidebar {
 
 .tab-content--active {
   display: block;
+}
+
+.tab--active.tab--primary {
+  background: var(--component-button-primary-background-color);
+  color: var(--component-button-primary-color);
+}
+
+.tab--active.tab--primary .icon__svg {
+  fill: var(--component-button-primary-color);
+}
+
+.tab--active.tab--secondary {
+  background: var(--component-button-secondary-background-color);
+  color: var(--component-button-secondary-color);
+}
+
+.tab--active.tab--secondary .icon__svg {
+  fill: var(--component-button-secondary-color);
+}
+
+.tab--active.tab--success {
+  background: var(--component-button-success-background-color);
+  color: var(--component-button-success-color);
+}
+
+.tab--active.tab--success .icon__svg {
+  fill: var(--component-button-success-color);
+}
+
+.tab--active.tab--warning {
+  background: var(--component-button-warning-background-color);
+  color: var(--component-button-warning-color);
+}
+
+.tab--active.tab--warning .icon__svg {
+  fill: var(--component-button-warning-color);
+}
+
+.tab--active.tab--danger {
+  background: var(--component-button-danger-background-color);
+  color: var(--component-button-danger-color);
+}
+
+.tab--active.tab--danger .icon__svg {
+  fill: var(--component-button-danger-color);
+}
+
+.tab--active.tab--info {
+  background: var(--component-button-info-background-color);
+  color: var(--component-button-info-color);
+}
+
+.tab--active.tab--info .icon__svg {
+  fill: var(--component-button-info-color);
+}
+
+.tab--active.tab--dark {
+  background: var(--component-button-dark-background-color);
+  color: var(--component-button-dark-color);
+}
+
+.tab--active.tab--dark .icon__svg {
+  fill: var(--component-button-dark-color);
+}
+
+.tab--active.tab--light {
+  background: var(--component-button-light-background-color);
+  color: var(--component-button-light-color);
+}
+
+.tab--active.tab--light .icon__svg {
+  fill: var(--component-button-light-color);
 }
 
 .text {
@@ -3359,10 +3412,13 @@ cf-sidebar {
   --color-base-light-dark: #fafafa;
   --color-base-light-darker: #f5f5f5;
   --color-base-light-darkest: #f1f1f1;
-  --color-base-dark-medium: #212121;
+  --color-base-dark-lightest: #707070;
+  --color-base-dark-lighter: #606060;
+  --color-base-dark-light: #505050;
+  --color-base-dark-medium: #404040;
   --color-base-dark-dark: #303030;
-  --color-base-dark-darker: #404040;
-  --color-base-dark-darkest: #505050;
+  --color-base-dark-darker: #202020;
+  --color-base-dark-darkest: #101010;
   --color-base-success-lightest: #f9fbe7;
   --color-base-success-lighter: #f0f4c3;
   --color-base-success-light: #dcedc8;
@@ -3393,35 +3449,35 @@ cf-sidebar {
   --color-base-info-darkest: #0d47a1;
   --color-font-primary: #9fa8da;
   --color-font-secondary: #e6e8a1;
-  --component-badge-color: #505050;
+  --component-badge-color: #101010;
   --component-badge-background-color: #d1d36f;
   --component-button-font-size: 1rem;
   --component-button-color: #fefefe;
-  --component-button-background-color: #212121;
+  --component-button-background-color: #404040;
   --component-button-primary-background-color: #706fd3;
   --component-button-primary-color: #fefefe;
   --component-button-secondary-background-color: #d1d36f;
-  --component-button-secondary-color: #212121;
+  --component-button-secondary-color: #404040;
   --component-button-success-background-color: #4caf50;
   --component-button-success-color: #fefefe;
   --component-button-warning-background-color: #ff9800;
-  --component-button-warning-color: #212121;
+  --component-button-warning-color: #404040;
   --component-button-danger-background-color: #f44336;
   --component-button-danger-color: #fefefe;
   --component-button-info-background-color: #2196f3;
   --component-button-info-color: #fefefe;
-  --component-button-dark-background-color: #212121;
+  --component-button-dark-background-color: #404040;
   --component-button-dark-color: #fefefe;
   --component-button-light-background-color: #fefefe;
-  --component-button-light-color: #212121;
+  --component-button-light-color: #404040;
   --component-button-big-font-size: 1.5rem;
-  --component-card-color: #505050;
-  --component-card-background-color: #303030;
+  --component-card-color: #101010;
+  --component-card-background-color: #404040;
   --component-card-header-background-color: #8c8b2f;
   --component-card-footer-background-color: #8c8b2f;
   --component-card-title-color: #f1f1f1;
   --component-card-icon-color: #d1d36f;
-  --component-chatbox-message-background-color: #505050;
+  --component-chatbox-message-background-color: #101010;
   --component-chatbox-message-color: #fefefe;
   --component-chatbox-username-background-color: #706fd3;
   --component-chatbox-username-color: #fefefe;
@@ -3429,9 +3485,9 @@ cf-sidebar {
   --component-chatbox-input-color: #fefefe;
   --component-chatbox-input-active-border-color: #d1d36f;
   --component-input-font-size: 1rem;
-  --component-input-border-color: #fefefe;
+  --component-input-border-color: #606060;
   --component-input-border-radius: 14px;
-  --component-input-background-color: rgba(0, 0, 0, 0);
+  --component-input-background-color: #404040;
   --component-input-text-color: #fafafa;
   --component-input-shadow-outset: 8px 8px 16px 0 rgba(0, 0, 0, 0.25);
   --component-input-shadow-inset-primary: -8px -8px 16px 0 rgba(0, 0, 0, 0.25);
@@ -3440,38 +3496,40 @@ cf-sidebar {
   --component-input-focus-s: 100%;
   --component-input-focus-l: 42%;
   --component-input-readonly-color: #777777;
-  --component-input-disabled-border-color: #cccccc;
-  --component-input-disabled-background-color: #eeeeee;
+  --component-input-select-background-image: url("data:image/svg+xml;utf8,<svg fill='%23fefefe' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  --component-input-disabled-border-color: #101010;
+  --component-input-disabled-background-color: #202020;
   --component-input-primary-background-color: #706fd3;
   --component-input-primary-color: #fefefe;
   --component-input-secondary-background-color: #d1d36f;
-  --component-input-secondary-color: #212121;
+  --component-input-secondary-color: #404040;
   --component-input-success-background-color: #4caf50;
   --component-input-success-color: #fefefe;
   --component-input-warning-background-color: #ff9800;
-  --component-input-warning-color: #212121;
+  --component-input-warning-color: #404040;
   --component-input-danger-background-color: #f44336;
   --component-input-danger-color: #fefefe;
   --component-input-info-background-color: #2196f3;
   --component-input-info-color: #fefefe;
-  --component-input-dark-background-color: #212121;
+  --component-input-dark-background-color: #404040;
   --component-input-dark-color: #fefefe;
   --component-input-light-background-color: #fefefe;
-  --component-input-light-color: #212121;
+  --component-input-light-color: #404040;
   --component-input-big-font-size: 1.5rem;
-  --component-navbar-background-color: #212121;
-  --component-navbar-border-color: #404040;
+  --component-navbar-background-color: #404040;
+  --component-navbar-border-color: #202020;
   --component-navbar-color: #f1f1f1;
   --component-navbar-title-color: #f1f1f1;
   --component-navbar-title-hover-color: #9fa8da;
   --component-navbar-list-item-color: #f1f1f1;
   --component-navbar-list-item-hover-color: #fefefe;
-  --component-scene-background-color: #212121;
+  --component-scene-background-color: #101010;
   --component-scene-content-expand: 90%;
-  --component-scene-content-background-color: #404040;
+  --component-scene-content-background-color: #202020;
   --component-scene-content-color: #f1f1f1;
-  --component-select-background-color: #212121;
+  --component-select-background-color: #404040;
   --component-select-border-color: #cccccc;
+  --component-select-option-background-color: #404040;
   --component-select-opened-border-color: #706fd3;
   --component-select-selected-background-color: #706fd3;
   --component-select-selected-color: #fefefe;
@@ -3481,11 +3539,19 @@ cf-sidebar {
   --component-select-disabled-color: #f9f9f9;
   --component-select-text-color: #fefefe;
   --component-sidebar-button-background-color: #d1d36f;
-  --component-sidebar-button-color: #212121;
+  --component-sidebar-button-color: #404040;
   --component-sidebar-button-active-background-color: #706fd3;
   --component-sidebar-button-active-color: #fefefe;
   --component-splash-screen-background-color: #706fd3;
   --component-splash-screen-color: #fefefe;
+  --component-tab-background-color: #505050;
+  --component-tab-text-color: #fefefe;
+  --component-tab-border-color: #404040;
+  --component-tab-shadow-outset: 8px 8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-tab-shadow-inset-primary: -8px -8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-tab-shadow-inset-secondary: 8px 8px 16px 0 rgba(255, 255, 255, 0.2);
+  --component-tab-active-background-color: #202020;
+  --component-tab-active-text-color: #fefefe;
   --size-font-small: 0.75rem;
   /* the small size of the font */
   --size-font-medium: 1rem;
@@ -3703,7 +3769,7 @@ cf-sidebar {
 }
 
 :root {
-  --component-asset-detail-border-color: var(--color-base-dark-dark);
+  --component-asset-detail-border-color: var(--color-base-dark-medium);
   --component-asset-detail-text-color: var(--component-scene-content-color);
   --component-asset-detail-icon-color: var(--component-scene-content-color);
   --component-asset-detail-stats-value-negative-color: var(--color-base-danger-medium);
@@ -3968,7 +4034,8 @@ cf-sidebar {
 }
 
 :root {
-  --component-application-sheet-background-color: var(--color-base-dark-darkest);
+  --component-application-sheet-background-color: var(--component-scene-content-background-color);
+  --component-application-sheet-text-color: var(--component-scene-content-color);
 }
 
 .application-sheet {
@@ -3978,7 +4045,7 @@ cf-sidebar {
   grid-gap: 2rem;
   gap: 2rem;
   padding: 20px;
-  color: var(---component-application-sheet-font-color, #fff);
+  color: var(--component-application-sheet-text-color);
   background-color: var(--component-application-sheet-background-color);
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -4004,10 +4071,6 @@ cf-sidebar {
 
 .application-sheet .application-card .application-description {
   max-width: 100%;
-}
-
-.application-sheet .icon__svg {
-  fill: var(---component-application-sheet-font-color, #fff);
 }
 
 .application-sheet .application-actions {
@@ -4041,6 +4104,10 @@ cf-sidebar {
   max-width: 200px;
 }
 
+:root {
+  --component-application-shortcut-text-color: var(--color-base-light-medium);
+}
+
 .application-shortcut {
   display: flex;
   width: 100%;
@@ -4058,6 +4125,14 @@ cf-sidebar {
   grid-gap: 0.5rem;
   gap: 0.5rem;
   justify-content: center;
+}
+
+.application-shortcut .button--custom-background-color {
+  color: var(--component-application-shortcut-text-color, #fff);
+}
+
+.application-shortcut .button--custom-background-color .button__icon .icon__svg {
+  fill: var(---component-application-shortcut-text-color, #fff);
 }
 
 .application-shortcut .button__label {

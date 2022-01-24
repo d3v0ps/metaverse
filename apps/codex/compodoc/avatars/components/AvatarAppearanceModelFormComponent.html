@@ -65,6 +65,13 @@
 
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
 
 
 <section>
@@ -124,10 +131,10 @@
             id&#x3D;&quot;appearanceFormat&quot;
             class&#x3D;&quot;form-control&quot;
           &gt;
-            &lt;option [value]&#x3D;&quot;null&quot;&gt;Select an appearance format&lt;/option&gt;
+            &lt;option [ngValue]&#x3D;&quot;null&quot;&gt;Select an appearance format&lt;/option&gt;
             &lt;option
               *ngFor&#x3D;&quot;let format of appearanceFormats&quot;
-              [value]&#x3D;&quot;format.value&quot;
+              [ngValue]&#x3D;&quot;format.value&quot;
             &gt;
               {{ format.label }}
             &lt;/option&gt;
@@ -145,7 +152,6 @@
             id&#x3D;&quot;appearanceSrc&quot;
             formControlName&#x3D;&quot;src&quot;
             placeholder&#x3D;&quot;&quot;
-            [disabled]&#x3D;&quot;!form.value.format&quot;
           /&gt;
         &lt;/div&gt;
       &lt;/div&gt;
@@ -183,12 +189,34 @@
                                 <a href="#appearanceFormats" >appearanceFormats</a>
                             </li>
                             <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
                                 <a href="#form" >form</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -248,7 +276,86 @@
 
 
 
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
 
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:108</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="95"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:95</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
     <section>
     
     <h3 id="inputs">
@@ -287,6 +394,33 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="destroy$"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>destroy$</b></span>
+                        <a href="#destroy$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="form"></a>
                     <span class="name">
                         <span ><b>form</b></span>
@@ -299,7 +433,7 @@
                         <i>Default value : </i><code>new FormGroup({
     id: new FormControl&lt;string&gt;(uuid()),
     format: new FormControl&lt;AppearanceFormat | null&gt;(null),
-    src: new FormControl&lt;string | null&gt;(null),
+    src: new FormControl&lt;string | null&gt;({ value: null, disabled: true }),
   })</code>
                     </td>
                 </tr>
@@ -382,8 +516,9 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
 import { FormControl, FormGroup } from &#x27;@ng-stack/forms&#x27;;
+import { Subject, takeUntil, tap } from &#x27;rxjs&#x27;;
 import { v4 as uuid } from &#x27;uuid&#x27;;
 import { Appearance, AppearanceFormat } from &#x27;../../../../../models/appearance&#x27;;
 
@@ -423,10 +558,10 @@ import { Appearance, AppearanceFormat } from &#x27;../../../../../models/appeara
                 id&#x3D;&quot;appearanceFormat&quot;
                 class&#x3D;&quot;form-control&quot;
               &gt;
-                &lt;option [value]&#x3D;&quot;null&quot;&gt;Select an appearance format&lt;/option&gt;
+                &lt;option [ngValue]&#x3D;&quot;null&quot;&gt;Select an appearance format&lt;/option&gt;
                 &lt;option
                   *ngFor&#x3D;&quot;let format of appearanceFormats&quot;
-                  [value]&#x3D;&quot;format.value&quot;
+                  [ngValue]&#x3D;&quot;format.value&quot;
                 &gt;
                   {{ format.label }}
                 &lt;/option&gt;
@@ -444,7 +579,6 @@ import { Appearance, AppearanceFormat } from &#x27;../../../../../models/appeara
                 id&#x3D;&quot;appearanceSrc&quot;
                 formControlName&#x3D;&quot;src&quot;
                 placeholder&#x3D;&quot;&quot;
-                [disabled]&#x3D;&quot;!form.value.format&quot;
               /&gt;
             &lt;/div&gt;
           &lt;/div&gt;
@@ -453,7 +587,7 @@ import { Appearance, AppearanceFormat } from &#x27;../../../../../models/appeara
     &lt;/div&gt;
   &#x60;,
 })
-export class AvatarAppearanceModelFormComponent {
+export class AvatarAppearanceModelFormComponent implements OnInit, OnDestroy {
   @Input() set appearance(value: Appearance | undefined) {
     this.form.reset({
       id: value?.id || uuid(),
@@ -471,8 +605,28 @@ export class AvatarAppearanceModelFormComponent {
   form &#x3D; new FormGroup({
     id: new FormControl&lt;string&gt;(uuid()),
     format: new FormControl&lt;AppearanceFormat | null&gt;(null),
-    src: new FormControl&lt;string | null&gt;(null),
+    src: new FormControl&lt;string | null&gt;({ value: null, disabled: true }),
   });
+
+  private readonly destroy$ &#x3D; new Subject&lt;void&gt;();
+
+  ngOnInit() {
+    this.form.controls.format.valueChanges
+      .pipe(
+        tap((format) &#x3D;&gt;
+          format
+            ? this.form.controls.src.enable()
+            : this.form.controls.src.disable()
+        ),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }
 </code></pre>
     </div>
@@ -504,7 +658,7 @@ export class AvatarAppearanceModelFormComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-model-form">  <h2 cfElem="title">Appearance</h2>  <form cfBlock="form" [formGroup]="form">    <div cfBlock="form-content">      <div cfBlock="form-group" cfMod="appearance">        <ng-container *ngIf="form.value.format && form.value.src">          <cf-avatar-appearance-card            [appearance]="{              id: form.value.id,              format: form.value.format,              src: form.value.src,              portrait: {                format: form.value.format,                src: form.value.src              }            }"          >          </cf-avatar-appearance-card>        </ng-container>        <ng-container *ngIf="!form.value.format || !form.value.src">          <cf-avatar-appearance-card> </cf-avatar-appearance-card>        </ng-container>        <div cfBlock="form-group">          <label cfBlock="form-label" for="appearanceFormat">            The Appearance file format. Only images and glb files are            supported.          </label>          <select            formControlName="format"            id="appearanceFormat"            class="form-control"          >            <option [value]="null">Select an appearance format</option>            <option              *ngFor="let format of appearanceFormats"              [value]="format.value"            >              {{ format.label }}            </option>          </select>        </div>        <div cfBlock="form-group">          <label cfBlock="form-label" for="appearanceSrc">            Url of the appearance file          </label>          <input            class="input"            cfBlock="form-control"            type="text"            id="appearanceSrc"            formControlName="src"            placeholder=""            [disabled]="!form.value.format"          />        </div>      </div>    </div>  </form></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-model-form">  <h2 cfElem="title">Appearance</h2>  <form cfBlock="form" [formGroup]="form">    <div cfBlock="form-content">      <div cfBlock="form-group" cfMod="appearance">        <ng-container *ngIf="form.value.format && form.value.src">          <cf-avatar-appearance-card            [appearance]="{              id: form.value.id,              format: form.value.format,              src: form.value.src,              portrait: {                format: form.value.format,                src: form.value.src              }            }"          >          </cf-avatar-appearance-card>        </ng-container>        <ng-container *ngIf="!form.value.format || !form.value.src">          <cf-avatar-appearance-card> </cf-avatar-appearance-card>        </ng-container>        <div cfBlock="form-group">          <label cfBlock="form-label" for="appearanceFormat">            The Appearance file format. Only images and glb files are            supported.          </label>          <select            formControlName="format"            id="appearanceFormat"            class="form-control"          >            <option [ngValue]="null">Select an appearance format</option>            <option              *ngFor="let format of appearanceFormats"              [ngValue]="format.value"            >              {{ format.label }}            </option>          </select>        </div>        <div cfBlock="form-group">          <label cfBlock="form-label" for="appearanceSrc">            Url of the appearance file          </label>          <input            class="input"            cfBlock="form-control"            type="text"            id="appearanceSrc"            formControlName="src"            placeholder=""          />        </div>      </div>    </div>  </form></div></div>'
     var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarAppearanceModelFormComponent'};
