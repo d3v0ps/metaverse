@@ -154,7 +154,7 @@ jobs:
           command: npx nx build codex
 
       - name: Build Portal
-        run: npx nx build portal --base-href=/metaverse/apps/portal/
+        run: npx nx build portal --base-href=/metaverse/apps/portal/ --c demo
 
       - name: Build Metadrones
         run: npx nx build metadrones --base-href=/metaverse/apps/metadrones/

@@ -2,6 +2,8 @@
 export interface Environment {
   /** Is production environment */
   production: boolean;
+  /** Is demo environment */
+  demo: boolean;
   /** Use mocks */
   useMocks: boolean;
   /** Autologin */
