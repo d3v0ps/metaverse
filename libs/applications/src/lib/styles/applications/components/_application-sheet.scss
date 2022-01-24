@@ -1,5 +1,6 @@
 :root {
-  --component-application-sheet-background-color: var(--color-base-dark-darkest);
+  --component-application-sheet-background-color: var(--component-scene-content-background-color);
+  --component-application-sheet-text-color: var(--component-scene-content-color);
 };
 
 
@@ -11,7 +12,7 @@
   gap: 2rem;
   padding: 20px;
 
-  color: var(---component-application-sheet-font-color, #fff);
+  color: var(--component-application-sheet-text-color);
   background-color: var( --component-application-sheet-background-color);
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -41,9 +42,9 @@
   }
 
 
-  .icon__svg {
-    fill: var(---component-application-sheet-font-color, #fff);
-  }
+  // .icon__svg {
+  //   fill: var(---component-application-sheet-font-color, #fff);
+  // }
 
   .application-actions {
     display: flex;

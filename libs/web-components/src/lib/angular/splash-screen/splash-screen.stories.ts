@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { BemModule } from '../bem/bem.module';
@@ -15,6 +16,7 @@ export default {
       imports: [
         HttpClientModule,
         SvgIconModule.forRoot(),
+        BrowserAnimationsModule,
 
         CommonModule,
         BemModule,

@@ -4,12 +4,12 @@ component:
       value: "{size.font.medium}"
     border:
       color:
-        value: "{color.base.light.medium}"
+        value: "{color.base.dark.lighter}"
       radius:
         value: "14px"
     background:
       color:
-        value: "transparent"
+        value: "{color.base.dark.medium}"
     text:
       color:
         value: "{color.base.light.dark}"
@@ -32,11 +32,15 @@ component:
       color:
         value: "#777"
 
+    select:
+      background-image:
+        value: url("data:image/svg+xml;utf8,<svg fill='%23fefefe' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>")
+
     disabled:
       border-color:
-        value: "#ccc"
+        value: "{color.base.dark.darkest}"
       background-color:
-        value: "#eee"
+        value: "{color.base.dark.darker}"
 
     primary:
       background-color:

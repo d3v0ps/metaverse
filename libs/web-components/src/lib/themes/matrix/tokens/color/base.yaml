@@ -34,24 +34,36 @@ color:
         value: "#80ce87"
 
     light:
+      lightest:
+        value: "#f1f1f1"
+      lighter:
+        value: "#e6e6e6"
+      light:
+        value: "#d1d1d1"
       medium:
-        value: "#fefefe"
+        value: "#efefef"
       dark:
         value: "#fafafa"
       darker:
-        value: "#f5f5f5"
+        value: "#d5d5d5"
       darkest:
         value: "#f1f1f1"
 
     dark:
+      lightest:
+        value: "#707070"
+      lighter:
+        value: "#606060"
+      light:
+        value: "#505050"
       medium:
-        value: "#212121"
+        value: "#404040"
       dark:
         value: "#303030"
       darker:
-        value: "#404040"
+        value: "#202020"
       darkest:
-        value: "#505050"
+        value: "#101010"
 
     success:
       lightest:

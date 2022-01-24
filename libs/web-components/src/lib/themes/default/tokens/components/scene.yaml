@@ -1,7 +1,7 @@
 component:
   scene:
     background-color:
-      value: "{color.base.dark.medium}"
+      value: "{color.base.dark.darkest}"
 
     content:
       # width automatically gets converted into rem

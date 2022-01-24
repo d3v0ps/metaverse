@@ -3,7 +3,7 @@ component:
     color:
       value: "{color.base.dark.darkest}"
     background-color:
-      value: "{color.base.dark.dark}"
+      value: "{color.base.dark.medium}"
 
     header:
       background-color:

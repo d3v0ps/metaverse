@@ -1,14 +1,5 @@
 
-:root {
-  --component-tab-background-color: var(--color-base-dark-dark);
-  --component-tab-text-color: var(--color-base-light-medium);
-  --component-tab-active-background-color: var(--color-base-dark-darkest);
-  --component-tab-active-text-color: var(--color-base-light-medium);
-  --component-tab-border-color: var(--color-base-dark-darker);
-  --component-tab-shadow-outset: 8px 8px 16px 0 rgba(0, 0, 0, 0.25);
-  --component-tab-shadow-inset-primary:  -8px -8px 16px 0 rgba(0, 0, 0, 0.25);
-  --component-tab-shadow-inset-secondary:  8px 8px 16px 0 rgba(255, 255, 255, 0.2);
-}
+@use '../abstracts/variables/colors' as colors;
 
 .tabset {
   list-style: none;
@@ -55,5 +46,18 @@
   display: none;
   &--active {
     display: block;
+  }
+}
+
+
+@each $color in colors.$color-variations {
+  .tab--active {
+   &.tab--#{$color} {
+      background: var(--component-button-#{$color}-background-color);
+      color: var(--component-button-#{$color}-color);
+      .icon__svg {
+        fill: var(--component-button-#{$color}-color);
+      }
+    }
   }
 }

@@ -3,9 +3,9 @@ component:
     font-size:
       value: "{size.font.medium}"
     color:
-      value: "{color.base.light.medium}"
-    background-color:
       value: "{color.base.dark.medium}"
+    background-color:
+      value: "{color.base.light.medium}"
 
     primary:
       background-color:

@@ -1,5 +1,5 @@
 :root {
-  --component-popover-background-color: #757575;
+  --component-popover-background-color: var(--component-button-background-color);
   --component-popover-inner-padding: 1.2rem;
   --component-popover-zindex: 1060;
   --component-popover-arrow-width: 2.2rem;

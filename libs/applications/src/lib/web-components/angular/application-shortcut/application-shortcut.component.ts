@@ -22,7 +22,11 @@ export type ApplicationShortcutView = {
     <div cfBlock="application-shortcut" *ngIf="view">
       <button
         cfBlock="button"
-        [cfMod]="[theme, showShortcutIcon ? 'has-icon' : '']"
+        [cfMod]="[
+          theme,
+          showShortcutIcon ? 'has-icon' : undefined,
+          theme === 'application' ? 'custom-background-color' : undefined
+        ]"
         (click)="shortcutClick.emit(view)"
         [ngStyle]="{
           'background-color': theme === 'application' ? view.color : ''

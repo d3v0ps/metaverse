@@ -1,8 +1,4 @@
 
-:root {
-  --component-input-select-background-image: url("data:image/svg+xml;utf8,<svg fill='%23fefefe' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
-}
-
 input, select {
   font-size: var(--component-input-font-size);
   font-family: inherit;
@@ -10,7 +6,7 @@ input, select {
 
   background-color: var(--component-input-background-color);
   // border: 1px solid var(--component-input-border-color);
-  border: 2px solid transparent;
+  border: 2px solid var(--component-input-border-color);
   border-radius: var(--component-input-border-radius);
   color: var(--component-input-text-color);
   box-shadow: var(--component-input-shadow-outset), inset var(--component-input-shadow-inset-primary), inset var(--component-input-shadow-inset-secondary);
@@ -57,7 +53,7 @@ select {
   appearance: none;
 
   option {
-    background-color: var(--color-base-dark-darker);
+    background-color: var(--component-input-background-color);
     color: var(--component-input-text-color);
   }
 }

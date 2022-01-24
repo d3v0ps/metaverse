@@ -5,6 +5,10 @@ component:
     border-color:
       value: "#ccc"
 
+    option:
+      background-color:
+        value: "{color.base.light.medium}"
+
     opened:
       border-color:
         value: "{color.base.primary.medium}"

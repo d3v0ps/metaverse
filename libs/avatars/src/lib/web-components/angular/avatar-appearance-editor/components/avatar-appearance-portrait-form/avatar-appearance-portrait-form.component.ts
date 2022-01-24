@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@ng-stack/forms';
+import { Subject, takeUntil, tap } from 'rxjs';
 import {
   AppearanceFormat,
   AppearancePortrait,
@@ -42,18 +43,18 @@ import {
             id="portraitSrc"
             formControlName="src"
             placeholder=""
-            [disabled]="!portrait?.format"
           />
         </div>
       </form>
     </div>
   `,
 })
-export class AvatarAppearancePortraitFormComponent {
+export class AvatarAppearancePortraitFormComponent
+  implements OnInit, OnDestroy
+{
   @Input() set portrait(value: AppearancePortrait | undefined) {
-    console.log('portrait', value);
     this.form.reset({
-      format: (value?.format || null) as AppearanceFormat,
+      format: (value?.format || AppearanceFormat.Image) as AppearanceFormat,
       src: (value?.src || null) as string,
       // file: null,
     });
@@ -64,9 +65,30 @@ export class AvatarAppearancePortraitFormComponent {
       format: new FormControl<AppearanceFormat>(AppearanceFormat.Image, [
         Validators.required,
       ]),
-      src: new FormControl<string>(undefined, [Validators.required]),
+      src: new FormControl<string>({ value: null, disabled: false }, [
+        Validators.required,
+      ]),
       // file: new FormControl<any>(null),
     },
     [Validators.required]
   );
+  private readonly destroy$ = new Subject<void>();
+
+  ngOnInit() {
+    this.form.controls.format.valueChanges
+      .pipe(
+        tap((format) =>
+          format
+            ? this.form.controls.src.enable()
+            : this.form.controls.src.disable()
+        ),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }

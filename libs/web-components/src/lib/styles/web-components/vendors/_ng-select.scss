@@ -4,10 +4,6 @@
 );
 @use "../abstracts/variables/colors" as colors;
 
-:root {
-  --component-select-option-background-color: var(--color-base-dark-darker);
-}
-
 .ng-select {
   .ng-select-container {
     color: var(--component-select-text-color);

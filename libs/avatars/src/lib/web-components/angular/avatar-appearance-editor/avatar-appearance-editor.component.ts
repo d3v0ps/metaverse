@@ -16,7 +16,7 @@ import { AvatarAppearancePortraitFormComponent } from './components/avatar-appea
   template: `
     <div cfBlock="avatar-appearance-editor">
       <div cfElem="body">
-        <cf-tabset>
+        <cf-tabset theme="secondary">
           <cf-tab
             [title]="'Appearance'"
             [active]="true"

@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@ng-stack/forms';
+import { Subject, takeUntil, tap } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 import { Appearance, AppearanceFormat } from '../../../../../models/appearance';
 
@@ -39,10 +40,10 @@ import { Appearance, AppearanceFormat } from '../../../../../models/appearance';
                 id="appearanceFormat"
                 class="form-control"
               >
-                <option [value]="null">Select an appearance format</option>
+                <option [ngValue]="null">Select an appearance format</option>
                 <option
                   *ngFor="let format of appearanceFormats"
-                  [value]="format.value"
+                  [ngValue]="format.value"
                 >
                   {{ format.label }}
                 </option>
@@ -60,7 +61,6 @@ import { Appearance, AppearanceFormat } from '../../../../../models/appearance';
                 id="appearanceSrc"
                 formControlName="src"
                 placeholder=""
-                [disabled]="!form.value.format"
               />
             </div>
           </div>
@@ -69,7 +69,7 @@ import { Appearance, AppearanceFormat } from '../../../../../models/appearance';
     </div>
   `,
 })
-export class AvatarAppearanceModelFormComponent {
+export class AvatarAppearanceModelFormComponent implements OnInit, OnDestroy {
   @Input() set appearance(value: Appearance | undefined) {
     this.form.reset({
       id: value?.id || uuid(),
@@ -87,6 +87,26 @@ export class AvatarAppearanceModelFormComponent {
   form = new FormGroup({
     id: new FormControl<string>(uuid()),
     format: new FormControl<AppearanceFormat | null>(null),
-    src: new FormControl<string | null>(null),
+    src: new FormControl<string | null>({ value: null, disabled: true }),
   });
+
+  private readonly destroy$ = new Subject<void>();
+
+  ngOnInit() {
+    this.form.controls.format.valueChanges
+      .pipe(
+        tap((format) =>
+          format
+            ? this.form.controls.src.enable()
+            : this.form.controls.src.disable()
+        ),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }

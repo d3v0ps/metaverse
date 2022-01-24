@@ -21,10 +21,11 @@ import { TabComponent } from './tab.component';
         *ngFor="let tab of tabs"
         (click)="selectTab(tab)"
         cfBlock="tab"
-        [cfMod]="{
-          active: tab.active,
-          disabled: tab.disabled
-        }"
+        [cfMod]="[
+          tab.active ? 'active' : undefined,
+          tab.disabled ? 'disabled' : undefined,
+          theme
+        ]"
         class="button"
         [ngClass]="{
           'button--has-icon': tab.icon
@@ -53,6 +54,7 @@ export class TabsetComponent implements AfterContentInit {
   @Input() public disableStyle = false;
   @Input() public customTabsetClass = '';
   @Input() public customContentClass = '';
+  @Input() public theme?: string;
 
   @Output() public selectedTabChange = new EventEmitter();
 
