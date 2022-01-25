@@ -159,8 +159,11 @@ jobs:
       - name: Build Metadrones
         run: npx nx build metadrones --base-href=/metaverse/apps/metadrones/
 
+      - name: Turn off History Expansion
+        run: set +H
+
       - name: Add Index redirection to Portal
-        run: echo "<\!DOCTYPE html><html><script type=\"text/javascript\">window.location = 'https://aitorllamas.com/metaverse/apps/portal';</script></html>" > dist/index.html
+        run: echo "<!DOCTYPE html><html><script type=\"text/javascript\">window.location = 'https://aitorllamas.com/metaverse/apps/portal';</script></html>" > dist/index.html
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.6
