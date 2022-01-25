@@ -6,9 +6,9 @@ import {
 } from '@central-factory/permissions/models/permission';
 import {
   BlobBuffer,
-  DeepReadonly,
   MangoQuery,
   RxCollection,
+  RxDocument,
 } from 'rxdb/dist/types/types';
 import {
   forkJoin,
@@ -31,7 +31,7 @@ export type Attachment = {
 };
 
 export class Repository<
-  RxDocumentType = any,
+  RxDocumentType = any & { _attachments?: any },
   OrmMethods = any,
   StaticMethods = any
 > {
@@ -45,50 +45,42 @@ export class Repository<
     private readonly acl: ACL
   ) {}
 
-  insert(doc: RxDocumentType): Observable<DeepReadonly<RxDocumentType>> {
+  insert(doc: RxDocumentType): Observable<RxDocumentType> {
     return this.requestPermission(PermissionMode.Write).pipe(
       switchMap(() => this.collection.insert(doc)),
-      map((doc) => doc.toJSON())
+      map((doc) => this.docToJSON(doc))
     );
   }
 
-  upsert(doc: RxDocumentType): Observable<DeepReadonly<RxDocumentType>> {
+  upsert(doc: RxDocumentType): Observable<RxDocumentType> {
     return this.requestPermission(PermissionMode.Write).pipe(
       switchMap(() => this.collection.upsert(doc)),
-      map((doc) => doc.toJSON())
+      map((doc) => this.docToJSON(doc))
     );
   }
 
-  findOne(
-    query?: Query<RxDocumentType>
-  ): Observable<DeepReadonly<RxDocumentType> | null> {
+  findOne(query?: Query<RxDocumentType>): Observable<RxDocumentType | null> {
     return this.requestPermission(PermissionMode.Read).pipe(
       switchMap(() => this.collection.findOne(query).exec()),
-      map((doc) => (doc ? doc.toJSON() : null))
+      map((doc) => (doc ? this.docToJSON(doc) : null))
     );
   }
 
-  find(
-    query?: Query<RxDocumentType>
-  ): Observable<DeepReadonly<RxDocumentType>[]> {
+  find(query?: Query<RxDocumentType>): Observable<RxDocumentType[]> {
     return this.requestPermission(PermissionMode.Read).pipe(
       switchMap(() => this.collection.find(query).exec()),
-      map((docs) => docs.map((doc) => doc.toJSON()))
+      map((docs) => docs.map((doc) => this.docToJSON(doc)))
     );
   }
 
-  observe(
-    query?: Query<RxDocumentType>
-  ): Observable<DeepReadonly<RxDocumentType>[]> {
+  observe(query?: Query<RxDocumentType>): Observable<RxDocumentType[]> {
     return this.requestPermission(PermissionMode.Read).pipe(
       switchMap(() => this.collection.find(query).$),
-      map((docs) => docs.map((doc) => doc.toJSON()))
+      map((docs) => docs.map((doc) => this.docToJSON(doc)))
     );
   }
 
-  observeOne(
-    query?: Query<RxDocumentType>
-  ): Observable<DeepReadonly<RxDocumentType> | null> {
+  observeOne(query?: Query<RxDocumentType>): Observable<RxDocumentType | null> {
     return this.observe(query).pipe(
       map((docs) => (docs.length > 0 ? docs[0] : null))
     );
@@ -97,19 +89,17 @@ export class Repository<
   update(
     where?: Query<RxDocumentType>,
     update?: Update
-  ): Observable<DeepReadonly<RxDocumentType>[]> {
+  ): Observable<RxDocumentType[]> {
     return this.requestPermission(PermissionMode.Write).pipe(
       switchMap(() => this.collection.find(where).update(update)),
-      map((docs) => docs.map((doc) => doc.toJSON()))
+      map((docs) => docs.map((doc) => this.docToJSON(doc)))
     );
   }
 
-  remove(
-    query?: Query<RxDocumentType>
-  ): Observable<DeepReadonly<RxDocumentType>[]> {
+  remove(query?: Query<RxDocumentType>): Observable<RxDocumentType[]> {
     return this.requestPermission(PermissionMode.Write).pipe(
       switchMap(() => this.collection.find(query).remove()),
-      map((docs) => docs.map((doc) => doc.toJSON()))
+      map((docs) => docs.map((doc) => this.docToJSON(doc)))
     );
   }
 
@@ -200,6 +190,10 @@ export class Repository<
         return of(doc.allAttachments());
       }),
       switchMap((attachments) => {
+        if (attachments.length <= 0) {
+          return of([]);
+        }
+
         return forkJoin(
           attachments.map((attachment) =>
             from(attachment.getData()).pipe(
@@ -304,5 +298,14 @@ export class Repository<
           return of(hasPermission);
         })
       );
+  }
+
+  private docToJSON(
+    doc: RxDocument<RxDocumentType, OrmMethods>
+  ): RxDocumentType {
+    const result = JSON.parse(JSON.stringify(doc));
+    result._attachments = (doc as any)._attachments;
+
+    return result;
   }
 }

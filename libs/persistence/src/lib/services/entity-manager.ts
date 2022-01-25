@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 import * as PouchdbAdapterIdb from 'pouchdb-adapter-idb';
+import { RxDBAttachmentsPlugin } from 'rxdb/plugins/attachments';
 import {
   addRxPlugin,
   createRxDatabase,
@@ -36,6 +37,7 @@ addRxPlugin(RxDBValidatePlugin);
 addRxPlugin(RxDBEncryptionPlugin);
 addRxPlugin(RxDBQueryBuilderPlugin);
 addRxPlugin(RxDBUpdatePlugin);
+addRxPlugin(RxDBAttachmentsPlugin);
 
 export const ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN = new InjectionToken<
   {
