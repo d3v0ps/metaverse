@@ -5,8 +5,41 @@ on:
 env:
   BEFORE_SHA: ${{ github.event.before }}
   cache-name: npm
-jobs:
 
+jobs:
+  release:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [windows-latest]
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build/release Electron app
+        uses: samuelmeuli/action-electron-builder@v1
+        with:
+          # GitHub token, automatically provided to the action
+          # (No need to define this secret in the repo settings)
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+          args: "-c apps/portal/electron-builder.json"
+
+          # If the commit is tagged with a version (e.g. "v1.0.0"),
+          # release the app after building
+          release: ${{ startsWith(github.ref, 'refs/tags/v') }}
   # test:
 
   #   name: Run Lint & Tests
@@ -144,6 +177,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Decorate CLI
+        run: npm run postinstall:decorate
 
       - name: Build docs
         uses: nick-invision/retry@v2

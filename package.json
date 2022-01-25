@@ -8,7 +8,7 @@
   "description": "A metaverse for the Central Factory",
   "scripts": {
     "ng": "nx",
-    "postinstall": "npm run decorate:patch-package && npm run decorate:angular-cli",
+    "postinstall:decorate": "npm run decorate:patch-package && npm run decorate:angular-cli",
     "decorate:patch-package": "node_modules/.bin/patch-package",
     "decorate:angular-cli": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "start": "nx serve",

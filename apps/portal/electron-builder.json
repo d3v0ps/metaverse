@@ -1,8 +1,5 @@
 {
   "asar": false,
-  "directories": {
-    "output": "release/"
-  },
   "files": [
     "src/main.electron.js"
   ],
