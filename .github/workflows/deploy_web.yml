@@ -159,6 +159,9 @@ jobs:
       - name: Build Metadrones
         run: npx nx build metadrones --base-href=/metaverse/apps/metadrones/
 
+      - name: Add Index redirection to Portal
+        run: echo "<script type=\"text/javascript\">window.location = 'https://aitorllamas.com/metaverse/apps/portal';</script>" > dist/index.html
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.6
         with:
