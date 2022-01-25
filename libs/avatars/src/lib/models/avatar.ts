@@ -30,4 +30,6 @@ export interface Avatar {
   createdAt?: Date;
   /** The avatar's updated at */
   updatedAt?: Date;
+
+  _attachments?: any;
 }

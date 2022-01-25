@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BemModule } from '@central-factory/web-components/angular/bem/bem.module';
 import { ColorPickerSelectModule } from '@central-factory/web-components/angular/color-picker-select/color-picker-select.module';
+import { FileUploadModule } from '@central-factory/web-components/angular/file-upload/file-upload.module';
 import { PopoverModule } from '@central-factory/web-components/angular/popover/popover.module';
 import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
 import { TabsetModule } from '@central-factory/web-components/angular/tabset/tabset.module';
@@ -25,6 +26,7 @@ import { AvatarAppearancePortraitFormComponent } from './components/avatar-appea
     CommonModule,
     BemModule,
     SvgIconModule,
+    FileUploadModule,
     TabsetModule,
     PopoverModule,
     ColorPickerSelectModule,

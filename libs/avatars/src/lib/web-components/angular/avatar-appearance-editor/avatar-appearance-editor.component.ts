@@ -5,11 +5,23 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Appearance } from '../../../models/appearance';
+import { Appearance, AppearancePortrait } from '../../../models/appearance';
 import { AppearanceInfo } from '../../../models/appearance-info';
 import { AvatarAppearanceInfoFormComponent } from './components/avatar-appearance-info-form/avatar-appearance-info-form.component';
-import { AvatarAppearanceModelFormComponent } from './components/avatar-appearance-model-form/avatar-appearance-model-form.component';
-import { AvatarAppearancePortraitFormComponent } from './components/avatar-appearance-portrait-form/avatar-appearance-portrait-form.component';
+import {
+  AvatarAppearanceModelForm,
+  AvatarAppearanceModelFormComponent,
+} from './components/avatar-appearance-model-form/avatar-appearance-model-form.component';
+import {
+  AvatarAppearancePortraitFormComponent,
+  AvatarAppearancePortraitModelForm,
+} from './components/avatar-appearance-portrait-form/avatar-appearance-portrait-form.component';
+
+export type AvatarAppearanceEditorModel = {
+  model: AvatarAppearanceModelForm;
+  portrait: AvatarAppearancePortraitModelForm;
+  info: AppearanceInfo;
+};
 
 @Component({
   selector: 'cf-avatar-appearance-editor',
@@ -52,10 +64,9 @@ import { AvatarAppearancePortraitFormComponent } from './components/avatar-appea
       <div cfElem="footer">
         <div cfBlock="form-buttons">
           <button
-            type="submit"
             cfBlock="button"
             [cfMod]="['primary']"
-            [disabled]="false"
+            (click)="onSaveButtonClick()"
           >
             Save
           </button>
@@ -65,20 +76,43 @@ import { AvatarAppearancePortraitFormComponent } from './components/avatar-appea
   `,
 })
 export class AvatarAppearanceEditorComponent {
-  @ViewChild(AvatarAppearancePortraitFormComponent)
-  portraitForm?: AvatarAppearancePortraitFormComponent;
   @ViewChild(AvatarAppearanceModelFormComponent)
   modelForm?: AvatarAppearanceModelFormComponent;
+  @ViewChild(AvatarAppearancePortraitFormComponent)
+  portraitForm?: AvatarAppearancePortraitFormComponent;
   @ViewChild(AvatarAppearanceInfoFormComponent)
   infoForm?: AvatarAppearanceInfoFormComponent;
 
   @Input() appearance?: Appearance;
 
-  @Output() appearanceSubmit = new EventEmitter<Appearance>();
+  @Output() appearanceSubmit = new EventEmitter<AvatarAppearanceEditorModel>();
 
-  appearanceInfo?: AppearanceInfo;
+  get isValid(): boolean {
+    return this.modelForm?.form.valid ? true : false;
+    // return this.modelForm?.form.valid &&
+    //   this.portraitForm?.form.valid &&
+    //   this.infoForm?.form.valid
+    //   ? true
+    //   : false;
+  }
 
-  onFormSubmit() {
-    // this.appearanceSubmit.emit(appearance as Appearance);
+  onSaveButtonClick() {
+    if (!this.isValid) {
+      return;
+    }
+
+    const model = this.modelForm?.form.value;
+    const portrait = this.portraitForm?.form.value as AppearancePortrait;
+    const info = this.infoForm?.form.value as AppearanceInfo;
+
+    if (!model || !portrait || !info) {
+      throw new Error('Unable to get data from forms');
+    }
+
+    this.appearanceSubmit.next({
+      model,
+      portrait,
+      info,
+    });
   }
 }

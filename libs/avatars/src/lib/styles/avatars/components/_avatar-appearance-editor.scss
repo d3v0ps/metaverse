@@ -5,10 +5,12 @@
   height: 100%;
   &__body {
     flex: 1;
+    overflow: auto;
 
     .appearance-tab-content {
       display: flex;
       flex-direction: row;
+      gap: 2rem;
     }
   }
   &__footer {

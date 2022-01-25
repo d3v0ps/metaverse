@@ -1,10 +1,19 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@ng-stack/forms';
+import { FormControl, FormGroup } from '@ng-stack/forms';
 import { Subject, takeUntil, tap } from 'rxjs';
+import { v4 as uuid } from 'uuid';
 import {
   AppearanceFormat,
   AppearancePortrait,
 } from '../../../../../models/appearance';
+
+export type AvatarAppearancePortraitModelForm = {
+  id: string;
+  format: AppearanceFormat;
+  filename?: string;
+  file?: File;
+  src?: string;
+};
 
 @Component({
   selector: 'cf-avatar-appearance-portrait-form',
@@ -18,8 +27,10 @@ import {
         >
           <cf-avatar-appearance-portrait
             [appearancePortrait]="{
+              id: form.value.id,
+              filename: form.value.filename || '',
               format: form.value!.format,
-              src: form.value!.src
+              src: form.value.src || ''
             }"
           >
           </cf-avatar-appearance-portrait>
@@ -31,7 +42,7 @@ import {
           <cf-avatar-appearance-portrait> </cf-avatar-appearance-portrait>
         </div>
 
-        <div cfBlock="form-group">
+        <!-- div cfBlock="form-group">
           <label cfBlock="form-label" for="portraitSrc">
             Url of the portrait file. Only png and jpg images are supported.
             144x144 images are recommended.
@@ -44,6 +55,20 @@ import {
             formControlName="src"
             placeholder=""
           />
+        </div -->
+
+        <div cfBlock="form-group">
+          <label cfBlock="form-label" for="appearanceFile">
+            The portrait file
+          </label>
+          <cf-file-upload
+            [fileName]="form.value.filename"
+            formControlName="file"
+            id="appearanceFile"
+            accept=".glb, .gltf, .fbx, .obj, .png, .jpg, .jpeg"
+            (ngModelChange)="onFileChange($event)"
+          >
+          </cf-file-upload>
         </div>
       </form>
     </div>
@@ -54,24 +79,22 @@ export class AvatarAppearancePortraitFormComponent
 {
   @Input() set portrait(value: AppearancePortrait | undefined) {
     this.form.reset({
-      format: (value?.format || AppearanceFormat.Image) as AppearanceFormat,
-      src: (value?.src || null) as string,
-      // file: null,
+      id: value?.id || uuid(),
+      filename: value?.filename || '',
+      format: value?.format || AppearanceFormat.Image,
+      src: value?.src || undefined,
+      file: undefined,
     });
   }
 
-  form = new FormGroup<AppearancePortrait>(
-    {
-      format: new FormControl<AppearanceFormat>(AppearanceFormat.Image, [
-        Validators.required,
-      ]),
-      src: new FormControl<string>({ value: null, disabled: false }, [
-        Validators.required,
-      ]),
-      // file: new FormControl<any>(null),
-    },
-    [Validators.required]
-  );
+  form = new FormGroup<AvatarAppearancePortraitModelForm>({
+    id: new FormControl<string>(uuid()),
+    filename: new FormControl<string>(''),
+    format: new FormControl<AppearanceFormat>(AppearanceFormat.Image),
+    src: new FormControl<string>(),
+    file: new FormControl<File>(),
+  });
+
   private readonly destroy$ = new Subject<void>();
 
   ngOnInit() {
@@ -79,8 +102,8 @@ export class AvatarAppearancePortraitFormComponent
       .pipe(
         tap((format) =>
           format
-            ? this.form.controls.src.enable()
-            : this.form.controls.src.disable()
+            ? this.form.controls.src?.enable()
+            : this.form.controls.src?.disable()
         ),
         takeUntil(this.destroy$)
       )
@@ -90,5 +113,16 @@ export class AvatarAppearancePortraitFormComponent
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  onFileChange(value?: File) {
+    this.form.controls.filename?.setValue(value?.name || '', {
+      emitEvent: false,
+    });
+
+    if (value) {
+      const objectUrl = URL.createObjectURL(value);
+      this.form.controls.src?.setValue(objectUrl, { emitEvent: false });
+    }
   }
 }

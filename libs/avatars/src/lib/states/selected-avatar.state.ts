@@ -5,7 +5,9 @@ import type { UserPreferenceDocType } from '@central-factory/preferences/collect
 import {
   BehaviorSubject,
   forkJoin,
+  map,
   of,
+  Subscription,
   switchMap,
   tap,
   throwError,
@@ -22,6 +24,8 @@ export class SelectedAvatarState {
 
   private userPreferencesRepository?: Repository<UserPreferenceDocType>;
   private userAvatarsRepository?: Repository<UserAvatarDocType>;
+
+  private avatarQuerySubscription?: Subscription;
 
   constructor(private entityManager: EntityManager) {
     this.entityManager.initialize$
@@ -74,9 +78,7 @@ export class SelectedAvatarState {
     const avatarUpdate: Avatar = JSON.parse(JSON.stringify(avatar));
     avatarUpdate.selectedAppearance = appearance;
 
-    return this.userAvatarsRepository
-      .upsert(avatarUpdate)
-      .pipe(tap(() => this.avatar$.next(avatarUpdate)));
+    return this.userAvatarsRepository.upsert(avatarUpdate);
   }
 
   private subscribeToDataChanges() {
@@ -90,20 +92,71 @@ export class SelectedAvatarState {
           id: 'userAvatars.selectedAvatar',
         },
       })
-      .pipe(
-        switchMap((selectedAvatarId) => {
-          if (!selectedAvatarId || !this.userAvatarsRepository) {
-            return of(undefined);
-          }
+      .subscribe((selectedAvatarId) => {
+        if (this.avatarQuerySubscription) {
+          this.avatarQuerySubscription.unsubscribe();
+        }
 
-          return this.userAvatarsRepository.findOne({
+        if (!selectedAvatarId || !this.userAvatarsRepository) {
+          return;
+        }
+
+        this.avatarQuerySubscription = this.userAvatarsRepository
+          .observeOne({
             selector: {
               id: selectedAvatarId.value,
             },
-          });
-        }),
-        tap((selectedAvatar) => this.avatar$.next(selectedAvatar as Avatar))
-      )
-      .subscribe();
+          })
+          .pipe(
+            switchMap((avatar) => {
+              const hasAttachments =
+                avatar &&
+                avatar._attachments &&
+                Object.keys(avatar._attachments).length > 0;
+
+              if (!hasAttachments || !avatar) {
+                return of(avatar);
+              }
+
+              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+              return this.userAvatarsRepository!.getAllAttachments(
+                avatar.id
+              ).pipe(
+                map((attachments) => {
+                  avatar.appearances.forEach((appearance) => {
+                    const portraitAttachment = attachments.find(
+                      (attachment) => attachment.id === appearance.portrait.id
+                    );
+
+                    if (portraitAttachment) {
+                      appearance.portrait.src = URL.createObjectURL(
+                        portraitAttachment.data as Blob
+                      );
+                    }
+
+                    const modelAttachment = attachments.find(
+                      (attachment) => attachment.id === appearance.id
+                    );
+
+                    if (modelAttachment) {
+                      appearance.src = URL.createObjectURL(
+                        modelAttachment.data as Blob
+                      );
+                    }
+                  });
+
+                  avatar.selectedAppearance = avatar.appearances.find(
+                    (appearance) =>
+                      appearance.id === avatar.selectedAppearance.id
+                  ) as Appearance;
+
+                  return avatar;
+                })
+              );
+            }),
+            tap((selectedAvatar) => this.avatar$.next(selectedAvatar as Avatar))
+          )
+          .subscribe();
+      });
   }
 }

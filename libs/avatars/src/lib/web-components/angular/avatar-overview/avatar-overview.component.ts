@@ -7,14 +7,17 @@ export interface AvatarOverviewInput {
   welcomeMessage: string;
   name: string;
   title: string;
-  smallPreviewUrl: string;
+  smallPreviewUrl?: string;
   appearance: {
     id: string;
+    filename: string;
     format: AppearanceFormat;
-    src: string;
+    src?: string;
     portrait: {
+      id: string;
+      filename: string;
       format: AppearanceFormat;
-      src: string;
+      src?: string;
     };
   };
 }
@@ -113,9 +116,12 @@ export class AvatarOverviewComponent {
     smallPreviewUrl: new FormControl(''),
     appearance: new FormGroup({
       id: new FormControl(''),
+      filename: new FormControl(''),
       src: new FormControl(''),
       format: new FormControl<AppearanceFormat>(null),
       portrait: new FormGroup({
+        id: new FormControl(''),
+        filename: new FormControl(''),
         src: new FormControl(''),
         format: new FormControl<AppearanceFormat>(null),
       }),

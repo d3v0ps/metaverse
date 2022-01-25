@@ -10,6 +10,14 @@ export enum AvatarAppearancesCarouselDisplayMode {
   selector: 'cf-avatar-appearances-carousel',
   template: `
     <div cfBlock="avatar-appearances-carousel" [cfMod]="displayMode">
+      <cf-avatar-appearance-card
+        *ngIf="showAdd && reverse"
+        emptyIcon="assets/icons/mdi/plus.svg"
+        [showEmptyIcon]="true"
+        (appearanceClick)="appearanceAddClick.emit()"
+      >
+      </cf-avatar-appearance-card>
+
       <ng-container *ngFor="let appearance of appearances">
         <cf-avatar-appearance-card
           [appearance]="appearance"
@@ -20,7 +28,7 @@ export enum AvatarAppearancesCarouselDisplayMode {
       </ng-container>
 
       <cf-avatar-appearance-card
-        *ngIf="showAdd"
+        *ngIf="showAdd && !reverse"
         emptyIcon="assets/icons/mdi/plus.svg"
         [showEmptyIcon]="true"
         (appearanceClick)="appearanceAddClick.emit()"
@@ -35,6 +43,7 @@ export class AvatarAppearancesCarouselComponent {
   @Input() displayMode: AvatarAppearancesCarouselDisplayMode =
     AvatarAppearancesCarouselDisplayMode.horizontal;
   @Input() showAdd = false;
+  @Input() reverse = false;
 
   @Output() appearanceClick = new EventEmitter<Appearance>();
   @Output() appearanceAddClick = new EventEmitter();

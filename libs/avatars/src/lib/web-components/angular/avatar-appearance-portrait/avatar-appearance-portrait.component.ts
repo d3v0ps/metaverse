@@ -1,23 +1,28 @@
 import { Component, Input } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { AppearancePortrait } from '../../../models/appearance';
 
 @Component({
   selector: 'cf-avatar-appearance-portrait',
   template: `
     <div cfBlock="avatar-appearance-portrait">
-      <img
-        cfElem="image"
-        *ngIf="appearancePortrait"
-        [src]="appearancePortrait.src"
-      />
+      <img cfElem="image" *ngIf="src" [src]="src" />
       <cf-svg-icon
-        *ngIf="!appearancePortrait && showEmptyIcon"
+        *ngIf="!src && showEmptyIcon"
         src="assets/icons/mdi/head-question.svg"
       ></cf-svg-icon>
     </div>
   `,
 })
 export class AvatarAppearancePortraitComponent {
-  @Input() appearancePortrait?: AppearancePortrait;
+  @Input() set appearancePortrait(value: AppearancePortrait | undefined) {
+    this.src = value?.src
+      ? this.domSanitizer.bypassSecurityTrustUrl(value.src)
+      : undefined;
+  }
   @Input() showEmptyIcon = false;
+
+  public src?: SafeUrl;
+
+  constructor(private domSanitizer: DomSanitizer) {}
 }

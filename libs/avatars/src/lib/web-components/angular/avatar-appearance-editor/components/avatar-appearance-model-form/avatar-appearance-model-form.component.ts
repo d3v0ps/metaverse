@@ -4,6 +4,14 @@ import { Subject, takeUntil, tap } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 import { Appearance, AppearanceFormat } from '../../../../../models/appearance';
 
+export type AvatarAppearanceModelForm = {
+  id: string;
+  format: AppearanceFormat;
+  filename?: string;
+  file?: File;
+  src?: string;
+};
+
 @Component({
   selector: 'cf-avatar-appearance-model-form',
   template: `
@@ -16,9 +24,12 @@ import { Appearance, AppearanceFormat } from '../../../../../models/appearance';
               <cf-avatar-appearance-card
                 [appearance]="{
                   id: form.value.id,
+                  filename: form.value?.filename || '',
                   format: form.value.format,
                   src: form.value.src,
                   portrait: {
+                    id: form.value.id,
+                    filename: form.value?.filename || '',
                     format: form.value.format,
                     src: form.value.src
                   }
@@ -30,7 +41,7 @@ import { Appearance, AppearanceFormat } from '../../../../../models/appearance';
               <cf-avatar-appearance-card> </cf-avatar-appearance-card>
             </ng-container>
 
-            <div cfBlock="form-group">
+            <!-- div cfBlock="form-group">
               <label cfBlock="form-label" for="appearanceFormat">
                 The Appearance file format. Only images and glb files are
                 supported.
@@ -48,9 +59,9 @@ import { Appearance, AppearanceFormat } from '../../../../../models/appearance';
                   {{ format.label }}
                 </option>
               </select>
-            </div>
+            </div -->
 
-            <div cfBlock="form-group">
+            <!-- div cfBlock="form-group">
               <label cfBlock="form-label" for="appearanceSrc">
                 Url of the appearance file
               </label>
@@ -62,6 +73,20 @@ import { Appearance, AppearanceFormat } from '../../../../../models/appearance';
                 formControlName="src"
                 placeholder=""
               />
+            </div -->
+
+            <div cfBlock="form-group">
+              <label cfBlock="form-label" for="appearanceFile">
+                The appearance file
+              </label>
+              <cf-file-upload
+                [fileName]="form.value.filename"
+                formControlName="file"
+                id="appearanceFile"
+                accept=".glb, .gltf, .fbx, .obj, .png, .jpg, .jpeg"
+                (ngModelChange)="onFileChange($event)"
+              >
+              </cf-file-upload>
             </div>
           </div>
         </div>
@@ -70,11 +95,13 @@ import { Appearance, AppearanceFormat } from '../../../../../models/appearance';
   `,
 })
 export class AvatarAppearanceModelFormComponent implements OnInit, OnDestroy {
-  @Input() set appearance(value: Appearance | undefined) {
+  @Input() set appearance(value: Partial<Appearance> | undefined) {
     this.form.reset({
       id: value?.id || uuid(),
-      format: value?.format || null,
-      src: value?.src || null,
+      filename: value?.filename || '',
+      format: value?.format || AppearanceFormat.Model,
+      src: value?.src || undefined,
+      file: undefined,
     });
   }
 
@@ -84,10 +111,12 @@ export class AvatarAppearanceModelFormComponent implements OnInit, OnDestroy {
     value: (AppearanceFormat as any)[key],
   }));
 
-  form = new FormGroup({
+  form = new FormGroup<AvatarAppearanceModelForm>({
     id: new FormControl<string>(uuid()),
-    format: new FormControl<AppearanceFormat | null>(null),
-    src: new FormControl<string | null>({ value: null, disabled: true }),
+    filename: new FormControl<string>(''),
+    format: new FormControl<AppearanceFormat>(AppearanceFormat.Model),
+    src: new FormControl<string>(),
+    file: new FormControl<File>(),
   });
 
   private readonly destroy$ = new Subject<void>();
@@ -97,8 +126,8 @@ export class AvatarAppearanceModelFormComponent implements OnInit, OnDestroy {
       .pipe(
         tap((format) =>
           format
-            ? this.form.controls.src.enable()
-            : this.form.controls.src.disable()
+            ? this.form.controls.src?.enable()
+            : this.form.controls.src?.disable()
         ),
         takeUntil(this.destroy$)
       )
@@ -108,5 +137,16 @@ export class AvatarAppearanceModelFormComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  onFileChange(value?: File) {
+    this.form.controls.filename?.setValue(value?.name || '', {
+      emitEvent: false,
+    });
+
+    if (value) {
+      const objectUrl = URL.createObjectURL(value);
+      this.form.controls.src?.setValue(objectUrl, { emitEvent: false });
+    }
   }
 }

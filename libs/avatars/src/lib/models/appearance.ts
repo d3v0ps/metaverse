@@ -9,8 +9,14 @@ export enum AppearanceFormat {
 
 /** The appearance's portrait */
 export type AppearancePortrait = {
+  /** The portrait's ID */
+  id: string;
+  /** The portrait's Filename */
+  filename: string;
+  /** The portrait's Format */
   format: AppearanceFormat;
-  src: string;
+  /** The portrait's Src */
+  src?: string;
 };
 
 /** The appearance's preview camera configuration
@@ -29,10 +35,12 @@ export type AppearancePreviewCamera = {
 export type Appearance = {
   /** The appearance's ID */
   id: string;
+  /** The portrait's Filename */
+  filename: string;
   /** The appearance's format */
   format: AppearanceFormat;
   /** The appearance's src url */
-  src: string;
+  src?: string;
 
   /** The appearance's portrait */
   portrait: AppearancePortrait;

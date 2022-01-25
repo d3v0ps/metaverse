@@ -126,6 +126,9 @@ export const userAvatarsSchema: RxJsonSchema<UserAvatarDocType> = {
       description: 'Updated at',
     },
   },
+  attachments: {
+    encrypted: false,
+  },
 };
 
 export const USER_AVATARS_COLLECTION_PROVIDER: Provider = {
