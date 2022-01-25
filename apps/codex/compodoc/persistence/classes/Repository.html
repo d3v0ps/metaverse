@@ -84,6 +84,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#docToJSON" >docToJSON</a>
+                            </li>
+                            <li>
                                 <a href="#find" >find</a>
                             </li>
                             <li>
@@ -221,6 +225,77 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="docToJSON"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>docToJSON</b></span>
+                        <a href="#docToJSON"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>docToJSON(doc: RxDocument<RxDocumentType | OrmMethods>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="303"
+                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:303</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>doc</td>
+                                    <td>
+                                            <code>RxDocument&lt;RxDocumentType | OrmMethods&gt;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>RxDocumentType</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="find"></a>
                     <span class="name">
                         <span ><b>find</b></span>
@@ -237,8 +312,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="71"
-                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:71</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:69</a></div>
                 </td>
             </tr>
 
@@ -276,7 +351,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;DeepReadonly[]&gt;</code>
+                        <b>Returns : </b>    <code>Observable&lt;RxDocumentType[]&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -345,7 +420,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;DeepReadonly | null&gt;</code>
+                        <b>Returns : </b>    <code>Observable&lt;RxDocumentType | null&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -375,8 +450,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="182"
-                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:182</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="172"
+                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:172</a></div>
                 </td>
             </tr>
 
@@ -444,8 +519,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="144"
-                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:144</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="134"
+                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:134</a></div>
                 </td>
             </tr>
 
@@ -564,7 +639,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;DeepReadonly&lt;RxDocumentType&gt;&gt;</code>
+                        <b>Returns : </b>    <code>Observable&lt;RxDocumentType&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -594,8 +669,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="80"
-                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:80</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="76"
+                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:76</a></div>
                 </td>
             </tr>
 
@@ -633,7 +708,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;DeepReadonly[]&gt;</code>
+                        <b>Returns : </b>    <code>Observable&lt;RxDocumentType[]&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -663,8 +738,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="249"
-                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:249</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="243"
+                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:243</a></div>
                 </td>
             </tr>
 
@@ -732,8 +807,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="89"
-                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:89</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="83"
+                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:83</a></div>
                 </td>
             </tr>
 
@@ -771,7 +846,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;DeepReadonly | null&gt;</code>
+                        <b>Returns : </b>    <code>Observable&lt;RxDocumentType | null&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -801,8 +876,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="116"
-                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:116</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:106</a></div>
                 </td>
             </tr>
 
@@ -902,8 +977,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="107"
-                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:107</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="99"
+                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:99</a></div>
                 </td>
             </tr>
 
@@ -941,7 +1016,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;DeepReadonly[]&gt;</code>
+                        <b>Returns : </b>    <code>Observable&lt;RxDocumentType[]&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -971,8 +1046,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="218"
-                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:218</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="212"
+                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:212</a></div>
                 </td>
             </tr>
 
@@ -1054,8 +1129,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="285"
-                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:285</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="279"
+                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:279</a></div>
                 </td>
             </tr>
 
@@ -1123,8 +1198,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="97"
-                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:97</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">libs/persistence/src/lib/services/repository.ts:89</a></div>
                 </td>
             </tr>
 
@@ -1174,7 +1249,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;DeepReadonly[]&gt;</code>
+                        <b>Returns : </b>    <code>Observable&lt;RxDocumentType[]&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -1243,7 +1318,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;DeepReadonly&lt;RxDocumentType&gt;&gt;</code>
+                        <b>Returns : </b>    <code>Observable&lt;RxDocumentType&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -1269,9 +1344,9 @@
 } from &#x27;@central-factory/permissions/models/permission&#x27;;
 import {
   BlobBuffer,
-  DeepReadonly,
   MangoQuery,
   RxCollection,
+  RxDocument,
 } from &#x27;rxdb/dist/types/types&#x27;;
 import {
   forkJoin,
@@ -1294,7 +1369,7 @@ export type Attachment &#x3D; {
 };
 
 export class Repository&lt;
-  RxDocumentType &#x3D; any,
+  RxDocumentType &#x3D; any &amp; { _attachments?: any },
   OrmMethods &#x3D; any,
   StaticMethods &#x3D; any
 &gt; {
@@ -1308,50 +1383,42 @@ export class Repository&lt;
     private readonly acl: ACL
   ) {}
 
-  insert(doc: RxDocumentType): Observable&lt;DeepReadonly&lt;RxDocumentType&gt;&gt; {
+  insert(doc: RxDocumentType): Observable&lt;RxDocumentType&gt; {
     return this.requestPermission(PermissionMode.Write).pipe(
       switchMap(() &#x3D;&gt; this.collection.insert(doc)),
-      map((doc) &#x3D;&gt; doc.toJSON())
+      map((doc) &#x3D;&gt; this.docToJSON(doc))
     );
   }
 
-  upsert(doc: RxDocumentType): Observable&lt;DeepReadonly&lt;RxDocumentType&gt;&gt; {
+  upsert(doc: RxDocumentType): Observable&lt;RxDocumentType&gt; {
     return this.requestPermission(PermissionMode.Write).pipe(
       switchMap(() &#x3D;&gt; this.collection.upsert(doc)),
-      map((doc) &#x3D;&gt; doc.toJSON())
+      map((doc) &#x3D;&gt; this.docToJSON(doc))
     );
   }
 
-  findOne(
-    query?: Query&lt;RxDocumentType&gt;
-  ): Observable&lt;DeepReadonly&lt;RxDocumentType&gt; | null&gt; {
+  findOne(query?: Query&lt;RxDocumentType&gt;): Observable&lt;RxDocumentType | null&gt; {
     return this.requestPermission(PermissionMode.Read).pipe(
       switchMap(() &#x3D;&gt; this.collection.findOne(query).exec()),
-      map((doc) &#x3D;&gt; (doc ? doc.toJSON() : null))
+      map((doc) &#x3D;&gt; (doc ? this.docToJSON(doc) : null))
     );
   }
 
-  find(
-    query?: Query&lt;RxDocumentType&gt;
-  ): Observable&lt;DeepReadonly&lt;RxDocumentType&gt;[]&gt; {
+  find(query?: Query&lt;RxDocumentType&gt;): Observable&lt;RxDocumentType[]&gt; {
     return this.requestPermission(PermissionMode.Read).pipe(
       switchMap(() &#x3D;&gt; this.collection.find(query).exec()),
-      map((docs) &#x3D;&gt; docs.map((doc) &#x3D;&gt; doc.toJSON()))
+      map((docs) &#x3D;&gt; docs.map((doc) &#x3D;&gt; this.docToJSON(doc)))
     );
   }
 
-  observe(
-    query?: Query&lt;RxDocumentType&gt;
-  ): Observable&lt;DeepReadonly&lt;RxDocumentType&gt;[]&gt; {
+  observe(query?: Query&lt;RxDocumentType&gt;): Observable&lt;RxDocumentType[]&gt; {
     return this.requestPermission(PermissionMode.Read).pipe(
       switchMap(() &#x3D;&gt; this.collection.find(query).$),
-      map((docs) &#x3D;&gt; docs.map((doc) &#x3D;&gt; doc.toJSON()))
+      map((docs) &#x3D;&gt; docs.map((doc) &#x3D;&gt; this.docToJSON(doc)))
     );
   }
 
-  observeOne(
-    query?: Query&lt;RxDocumentType&gt;
-  ): Observable&lt;DeepReadonly&lt;RxDocumentType&gt; | null&gt; {
+  observeOne(query?: Query&lt;RxDocumentType&gt;): Observable&lt;RxDocumentType | null&gt; {
     return this.observe(query).pipe(
       map((docs) &#x3D;&gt; (docs.length &gt; 0 ? docs[0] : null))
     );
@@ -1360,19 +1427,17 @@ export class Repository&lt;
   update(
     where?: Query&lt;RxDocumentType&gt;,
     update?: Update
-  ): Observable&lt;DeepReadonly&lt;RxDocumentType&gt;[]&gt; {
+  ): Observable&lt;RxDocumentType[]&gt; {
     return this.requestPermission(PermissionMode.Write).pipe(
       switchMap(() &#x3D;&gt; this.collection.find(where).update(update)),
-      map((docs) &#x3D;&gt; docs.map((doc) &#x3D;&gt; doc.toJSON()))
+      map((docs) &#x3D;&gt; docs.map((doc) &#x3D;&gt; this.docToJSON(doc)))
     );
   }
 
-  remove(
-    query?: Query&lt;RxDocumentType&gt;
-  ): Observable&lt;DeepReadonly&lt;RxDocumentType&gt;[]&gt; {
+  remove(query?: Query&lt;RxDocumentType&gt;): Observable&lt;RxDocumentType[]&gt; {
     return this.requestPermission(PermissionMode.Write).pipe(
       switchMap(() &#x3D;&gt; this.collection.find(query).remove()),
-      map((docs) &#x3D;&gt; docs.map((doc) &#x3D;&gt; doc.toJSON()))
+      map((docs) &#x3D;&gt; docs.map((doc) &#x3D;&gt; this.docToJSON(doc)))
     );
   }
 
@@ -1463,6 +1528,10 @@ export class Repository&lt;
         return of(doc.allAttachments());
       }),
       switchMap((attachments) &#x3D;&gt; {
+        if (attachments.length &lt;&#x3D; 0) {
+          return of([]);
+        }
+
         return forkJoin(
           attachments.map((attachment) &#x3D;&gt;
             from(attachment.getData()).pipe(
@@ -1567,6 +1636,15 @@ export class Repository&lt;
           return of(hasPermission);
         })
       );
+  }
+
+  private docToJSON(
+    doc: RxDocument&lt;RxDocumentType, OrmMethods&gt;
+  ): RxDocumentType {
+    const result &#x3D; JSON.parse(JSON.stringify(doc));
+    result._attachments &#x3D; (doc as any)._attachments;
+
+    return result;
   }
 }
 </code></pre>

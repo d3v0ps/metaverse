@@ -120,6 +120,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                             </li>
                             <li class="link">
+                                <a href="modules/FileUploadModule.html" data-type="entity-link" >FileUploadModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-FileUploadModule-f7cfd2d2c377bd006952c9b969596a5b"' : 'data-target="#xs-components-links-module-FileUploadModule-f7cfd2d2c377bd006952c9b969596a5b"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-FileUploadModule-f7cfd2d2c377bd006952c9b969596a5b"' :
+                                            'id="xs-components-links-module-FileUploadModule-f7cfd2d2c377bd006952c9b969596a5b"' }>
+                                            <li class="link">
+                                                <a href="components/FileUploadComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >FileUploadComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
                                 <a href="modules/NavbarModule.html" data-type="entity-link" >NavbarModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?

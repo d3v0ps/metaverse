@@ -236,7 +236,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:86</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:89</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -280,7 +280,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:100</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:103</a></div>
                         </td>
                     </tr>
 
@@ -307,9 +307,12 @@
     smallPreviewUrl: new FormControl(&#x27;&#x27;),
     appearance: new FormGroup({
       id: new FormControl(&#x27;&#x27;),
+      filename: new FormControl(&#x27;&#x27;),
       src: new FormControl(&#x27;&#x27;),
       format: new FormControl&lt;AppearanceFormat&gt;(null),
       portrait: new FormGroup({
+        id: new FormControl(&#x27;&#x27;),
+        filename: new FormControl(&#x27;&#x27;),
         src: new FormControl(&#x27;&#x27;),
         format: new FormControl&lt;AppearanceFormat&gt;(null),
       }),
@@ -319,7 +322,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:109</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:112</a></div>
                         </td>
                     </tr>
 
@@ -349,7 +352,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:86</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-overview/avatar-overview.component.ts:89</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -405,14 +408,17 @@ export interface AvatarOverviewInput {
   welcomeMessage: string;
   name: string;
   title: string;
-  smallPreviewUrl: string;
+  smallPreviewUrl?: string;
   appearance: {
     id: string;
+    filename: string;
     format: AppearanceFormat;
-    src: string;
+    src?: string;
     portrait: {
+      id: string;
+      filename: string;
       format: AppearanceFormat;
-      src: string;
+      src?: string;
     };
   };
 }
@@ -511,9 +517,12 @@ export class AvatarOverviewComponent {
     smallPreviewUrl: new FormControl(&#x27;&#x27;),
     appearance: new FormGroup({
       id: new FormControl(&#x27;&#x27;),
+      filename: new FormControl(&#x27;&#x27;),
       src: new FormControl(&#x27;&#x27;),
       format: new FormControl&lt;AppearanceFormat&gt;(null),
       portrait: new FormGroup({
+        id: new FormControl(&#x27;&#x27;),
+        filename: new FormControl(&#x27;&#x27;),
         src: new FormControl(&#x27;&#x27;),
         format: new FormControl&lt;AppearanceFormat&gt;(null),
       }),

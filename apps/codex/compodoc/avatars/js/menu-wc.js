@@ -83,13 +83,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/AvatarAppearanceEditorModule.html" data-type="entity-link" >AvatarAppearanceEditorModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AvatarAppearanceEditorModule-5fa132637d0e61957001504660e7b437"' : 'data-target="#xs-components-links-module-AvatarAppearanceEditorModule-5fa132637d0e61957001504660e7b437"' }>
+                                            'data-target="#components-links-module-AvatarAppearanceEditorModule-8c4f3f7234657c4fc3e79e61dbf8b618"' : 'data-target="#xs-components-links-module-AvatarAppearanceEditorModule-8c4f3f7234657c4fc3e79e61dbf8b618"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarAppearanceEditorModule-5fa132637d0e61957001504660e7b437"' :
-                                            'id="xs-components-links-module-AvatarAppearanceEditorModule-5fa132637d0e61957001504660e7b437"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarAppearanceEditorModule-8c4f3f7234657c4fc3e79e61dbf8b618"' :
+                                            'id="xs-components-links-module-AvatarAppearanceEditorModule-8c4f3f7234657c4fc3e79e61dbf8b618"' }>
                                             <li class="link">
                                                 <a href="components/AvatarAppearanceEditorComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarAppearanceEditorComponent</a>
                                             </li>
@@ -320,6 +320,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
                                 <li class="link">
                                     <a href="injectables/AvailableAvatarsState.html" data-type="entity-link" >AvailableAvatarsState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/ManageAvatarAppearancesState.html" data-type="entity-link" >ManageAvatarAppearancesState</a>
                                 </li>
                                 <li class="link">
                                     <a href="injectables/SelectedAvatarState.html" data-type="entity-link" >SelectedAvatarState</a>

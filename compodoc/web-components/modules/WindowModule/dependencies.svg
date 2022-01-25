@@ -14,95 +14,95 @@
 <title>cluster_WindowModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-230.8 672,-230.8 672,-32.8 8,-32.8"/>
 </g>
+<g id="clust2" class="cluster">
+<title>cluster_WindowModule_declarations</title>
+<polygon fill="none" stroke="black" points="518,-40.8 518,-92.8 664,-92.8 664,-40.8 518,-40.8"/>
+</g>
 <g id="clust4" class="cluster">
 <title>cluster_WindowModule_imports</title>
-<polygon fill="none" stroke="black" points="170,-40.8 170,-92.8 664,-92.8 664,-40.8 170,-40.8"/>
+<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 510,-92.8 510,-40.8 16,-40.8"/>
 </g>
 <g id="clust5" class="cluster">
 <title>cluster_WindowModule_exports</title>
-<polygon fill="none" stroke="black" points="284,-170.8 284,-222.8 434,-222.8 434,-170.8 284,-170.8"/>
-</g>
-<g id="clust2" class="cluster">
-<title>cluster_WindowModule_declarations</title>
-<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 162,-92.8 162,-40.8 16,-40.8"/>
+<polygon fill="none" stroke="black" points="264,-170.8 264,-222.8 414,-222.8 414,-170.8 264,-170.8"/>
 </g>
 <!-- WindowComponent -->
 <g id="node1" class="node">
 <title>WindowComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="153.54,-84.8 24.46,-84.8 24.46,-48.8 153.54,-48.8 153.54,-84.8"/>
-<text text-anchor="middle" x="89" y="-62.6" font-family="Times,serif" font-size="14.00">WindowComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="655.54,-84.8 526.46,-84.8 526.46,-48.8 655.54,-48.8 655.54,-84.8"/>
+<text text-anchor="middle" x="591" y="-62.6" font-family="Times,serif" font-size="14.00">WindowComponent</text>
 </g>
 <!-- WindowModule -->
 <g id="node2" class="node">
 <title>WindowModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="412.76,-149.8 409.76,-153.8 388.76,-153.8 385.76,-149.8 305.24,-149.8 305.24,-113.8 412.76,-113.8 412.76,-149.8"/>
-<text text-anchor="middle" x="359" y="-127.6" font-family="Times,serif" font-size="14.00">WindowModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="392.76,-149.8 389.76,-153.8 368.76,-153.8 365.76,-149.8 285.24,-149.8 285.24,-113.8 392.76,-113.8 392.76,-149.8"/>
+<text text-anchor="middle" x="339" y="-127.6" font-family="Times,serif" font-size="14.00">WindowModule</text>
 </g>
 <!-- WindowComponent&#45;&gt;WindowModule -->
 <g id="edge1" class="edge">
 <title>WindowComponent&#45;&gt;WindowModule</title>
-<path fill="none" stroke="black" d="M89,-85.08C89,-106.12 89,-137.8 89,-137.8 89,-137.8 295.01,-137.8 295.01,-137.8"/>
-<polygon fill="black" stroke="black" points="295.01,-141.3 305.01,-137.8 295.01,-134.3 295.01,-141.3"/>
+<path fill="none" stroke="black" d="M591,-85.08C591,-106.12 591,-137.8 591,-137.8 591,-137.8 403.06,-137.8 403.06,-137.8"/>
+<polygon fill="black" stroke="black" points="403.06,-134.3 393.06,-137.8 403.06,-141.3 403.06,-134.3"/>
 </g>
 <!-- WindowComponent  -->
 <g id="node7" class="node">
 <title>WindowComponent </title>
-<polygon fill="#fb8072" stroke="black" points="425.54,-214.8 292.46,-214.8 292.46,-178.8 425.54,-178.8 425.54,-214.8"/>
-<text text-anchor="middle" x="359" y="-192.6" font-family="Times,serif" font-size="14.00">WindowComponent </text>
+<polygon fill="#fb8072" stroke="black" points="405.54,-214.8 272.46,-214.8 272.46,-178.8 405.54,-178.8 405.54,-214.8"/>
+<text text-anchor="middle" x="339" y="-192.6" font-family="Times,serif" font-size="14.00">WindowComponent </text>
 </g>
 <!-- WindowModule&#45;&gt;WindowComponent  -->
 <g id="edge6" class="edge">
 <title>WindowModule&#45;&gt;WindowComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M359,-149.91C359,-149.91 359,-168.79 359,-168.79"/>
-<polygon fill="black" stroke="black" points="355.5,-168.79 359,-178.79 362.5,-168.79 355.5,-168.79"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M339,-149.91C339,-149.91 339,-168.79 339,-168.79"/>
+<polygon fill="black" stroke="black" points="335.5,-168.79 339,-178.79 342.5,-168.79 335.5,-168.79"/>
 </g>
 <!-- BemModule -->
 <g id="node3" class="node">
 <title>BemModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="655.99,-84.8 652.99,-88.8 631.99,-88.8 628.99,-84.8 570.01,-84.8 570.01,-48.8 655.99,-48.8 655.99,-84.8"/>
-<text text-anchor="middle" x="613" y="-62.6" font-family="Times,serif" font-size="14.00">BemModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="501.99,-84.8 498.99,-88.8 477.99,-88.8 474.99,-84.8 416.01,-84.8 416.01,-48.8 501.99,-48.8 501.99,-84.8"/>
+<text text-anchor="middle" x="459" y="-62.6" font-family="Times,serif" font-size="14.00">BemModule</text>
 </g>
 <!-- BemModule&#45;&gt;WindowModule -->
 <g id="edge2" class="edge">
 <title>BemModule&#45;&gt;WindowModule</title>
-<path fill="none" stroke="black" d="M613,-85.08C613,-106.12 613,-137.8 613,-137.8 613,-137.8 422.87,-137.8 422.87,-137.8"/>
-<polygon fill="black" stroke="black" points="422.87,-134.3 412.87,-137.8 422.87,-141.3 422.87,-134.3"/>
+<path fill="none" stroke="black" d="M459,-84.82C459,-102.17 459,-125.8 459,-125.8 459,-125.8 403.03,-125.8 403.03,-125.8"/>
+<polygon fill="black" stroke="black" points="403.03,-122.3 393.03,-125.8 403.03,-129.3 403.03,-122.3"/>
 </g>
 <!-- DraggableModule -->
 <g id="node4" class="node">
 <title>DraggableModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="551.85,-84.8 548.85,-88.8 527.85,-88.8 524.85,-84.8 434.15,-84.8 434.15,-48.8 551.85,-48.8 551.85,-84.8"/>
-<text text-anchor="middle" x="493" y="-62.6" font-family="Times,serif" font-size="14.00">DraggableModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="397.85,-84.8 394.85,-88.8 373.85,-88.8 370.85,-84.8 280.15,-84.8 280.15,-48.8 397.85,-48.8 397.85,-84.8"/>
+<text text-anchor="middle" x="339" y="-62.6" font-family="Times,serif" font-size="14.00">DraggableModule</text>
 </g>
 <!-- DraggableModule&#45;&gt;WindowModule -->
 <g id="edge3" class="edge">
 <title>DraggableModule&#45;&gt;WindowModule</title>
-<path fill="none" stroke="black" d="M493,-84.82C493,-102.17 493,-125.8 493,-125.8 493,-125.8 423.12,-125.8 423.12,-125.8"/>
-<polygon fill="black" stroke="black" points="423.12,-122.3 413.12,-125.8 423.12,-129.3 423.12,-122.3"/>
+<path fill="none" stroke="black" d="M339,-84.91C339,-84.91 339,-103.79 339,-103.79"/>
+<polygon fill="black" stroke="black" points="335.5,-103.79 339,-113.79 342.5,-103.79 335.5,-103.79"/>
 </g>
 <!-- ResizableModule -->
 <g id="node5" class="node">
 <title>ResizableModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="415.97,-84.8 412.97,-88.8 391.97,-88.8 388.97,-84.8 302.03,-84.8 302.03,-48.8 415.97,-48.8 415.97,-84.8"/>
-<text text-anchor="middle" x="359" y="-62.6" font-family="Times,serif" font-size="14.00">ResizableModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="261.97,-84.8 258.97,-88.8 237.97,-88.8 234.97,-84.8 148.03,-84.8 148.03,-48.8 261.97,-48.8 261.97,-84.8"/>
+<text text-anchor="middle" x="205" y="-62.6" font-family="Times,serif" font-size="14.00">ResizableModule</text>
 </g>
 <!-- ResizableModule&#45;&gt;WindowModule -->
 <g id="edge4" class="edge">
 <title>ResizableModule&#45;&gt;WindowModule</title>
-<path fill="none" stroke="black" d="M359,-84.91C359,-84.91 359,-103.79 359,-103.79"/>
-<polygon fill="black" stroke="black" points="355.5,-103.79 359,-113.79 362.5,-103.79 355.5,-103.79"/>
+<path fill="none" stroke="black" d="M205,-84.82C205,-102.17 205,-125.8 205,-125.8 205,-125.8 274.88,-125.8 274.88,-125.8"/>
+<polygon fill="black" stroke="black" points="274.88,-129.3 284.88,-125.8 274.88,-122.3 274.88,-129.3"/>
 </g>
 <!-- SvgIconModule -->
 <g id="node6" class="node">
 <title>SvgIconModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="284.21,-84.8 281.21,-88.8 260.21,-88.8 257.21,-84.8 177.79,-84.8 177.79,-48.8 284.21,-48.8 284.21,-84.8"/>
-<text text-anchor="middle" x="231" y="-62.6" font-family="Times,serif" font-size="14.00">SvgIconModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="130.21,-84.8 127.21,-88.8 106.21,-88.8 103.21,-84.8 23.79,-84.8 23.79,-48.8 130.21,-48.8 130.21,-84.8"/>
+<text text-anchor="middle" x="77" y="-62.6" font-family="Times,serif" font-size="14.00">SvgIconModule</text>
 </g>
 <!-- SvgIconModule&#45;&gt;WindowModule -->
 <g id="edge5" class="edge">
 <title>SvgIconModule&#45;&gt;WindowModule</title>
-<path fill="none" stroke="black" d="M231,-84.82C231,-102.17 231,-125.8 231,-125.8 231,-125.8 295.09,-125.8 295.09,-125.8"/>
-<polygon fill="black" stroke="black" points="295.09,-129.3 305.09,-125.8 295.09,-122.3 295.09,-129.3"/>
+<path fill="none" stroke="black" d="M77,-85.08C77,-106.12 77,-137.8 77,-137.8 77,-137.8 275.03,-137.8 275.03,-137.8"/>
+<polygon fill="black" stroke="black" points="275.03,-141.3 285.03,-137.8 275.03,-134.3 275.03,-141.3"/>
 </g>
 </g>
 </svg>

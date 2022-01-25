@@ -129,10 +129,9 @@
   &lt;div cfElem&#x3D;&quot;footer&quot;&gt;
     &lt;div cfBlock&#x3D;&quot;form-buttons&quot;&gt;
       &lt;button
-        type&#x3D;&quot;submit&quot;
         cfBlock&#x3D;&quot;button&quot;
         [cfMod]&#x3D;&quot;[&#x27;primary&#x27;]&quot;
-        [disabled]&#x3D;&quot;false&quot;
+        (click)&#x3D;&quot;onSaveButtonClick()&quot;
       &gt;
         Save
       &lt;/button&gt;
@@ -168,10 +167,6 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Optional</span>
-                                <a href="#appearanceInfo" >appearanceInfo</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Optional</span>
                                 <a href="#infoForm" >infoForm</a>
                             </li>
                             <li>
@@ -195,7 +190,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#onFormSubmit" >onFormSubmit</a>
+                                <a href="#onSaveButtonClick" >onSaveButtonClick</a>
                             </li>
                         </ul>
                     </td>
@@ -233,6 +228,20 @@
 
 
 
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#isValid" >isValid</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
         </tbody>
     </table>
 </section>
@@ -256,7 +265,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:75</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:86</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -280,7 +289,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:77</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:88</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -297,24 +306,24 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="onFormSubmit"></a>
+                    <a name="onSaveButtonClick"></a>
                     <span class="name">
-                        <span ><b>onFormSubmit</b></span>
-                        <a href="#onFormSubmit"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>onSaveButtonClick</b></span>
+                        <a href="#onSaveButtonClick"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>onFormSubmit()</code>
+<code>onSaveButtonClick()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="81"
-                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:81</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="99"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:99</a></div>
                 </td>
             </tr>
 
@@ -336,33 +345,6 @@
     <h3 id="inputs">
         Properties
     </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="appearanceInfo"></a>
-                    <span class="name">
-                            <span class="modifier">Optional</span>
-                        <span ><b>appearanceInfo</b></span>
-                        <a href="#appearanceInfo"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#AppearanceInfo" target="_self" >AppearanceInfo</a></code>
-
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:79</a></div>
-                        </td>
-                    </tr>
-
-
-        </tbody>
-    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -392,7 +374,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:73</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:84</a></div>
                         </td>
                     </tr>
 
@@ -428,7 +410,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:71</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:80</a></div>
                         </td>
                     </tr>
 
@@ -464,7 +446,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:69</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:82</a></div>
                         </td>
                     </tr>
 
@@ -473,6 +455,33 @@
     </table>
 </section>
 
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isValid"></a>
+                        <span class="name"><b>isValid</b><a href="#isValid"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>isValid()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:90</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
 </div>
 
 
@@ -484,11 +493,23 @@
   Output,
   ViewChild,
 } from &#x27;@angular/core&#x27;;
-import { Appearance } from &#x27;../../../models/appearance&#x27;;
+import { Appearance, AppearancePortrait } from &#x27;../../../models/appearance&#x27;;
 import { AppearanceInfo } from &#x27;../../../models/appearance-info&#x27;;
 import { AvatarAppearanceInfoFormComponent } from &#x27;./components/avatar-appearance-info-form/avatar-appearance-info-form.component&#x27;;
-import { AvatarAppearanceModelFormComponent } from &#x27;./components/avatar-appearance-model-form/avatar-appearance-model-form.component&#x27;;
-import { AvatarAppearancePortraitFormComponent } from &#x27;./components/avatar-appearance-portrait-form/avatar-appearance-portrait-form.component&#x27;;
+import {
+  AvatarAppearanceModelForm,
+  AvatarAppearanceModelFormComponent,
+} from &#x27;./components/avatar-appearance-model-form/avatar-appearance-model-form.component&#x27;;
+import {
+  AvatarAppearancePortraitFormComponent,
+  AvatarAppearancePortraitModelForm,
+} from &#x27;./components/avatar-appearance-portrait-form/avatar-appearance-portrait-form.component&#x27;;
+
+export type AvatarAppearanceEditorModel &#x3D; {
+  model: AvatarAppearanceModelForm;
+  portrait: AvatarAppearancePortraitModelForm;
+  info: AppearanceInfo;
+};
 
 @Component({
   selector: &#x27;cf-avatar-appearance-editor&#x27;,
@@ -531,10 +552,9 @@ import { AvatarAppearancePortraitFormComponent } from &#x27;./components/avatar-
       &lt;div cfElem&#x3D;&quot;footer&quot;&gt;
         &lt;div cfBlock&#x3D;&quot;form-buttons&quot;&gt;
           &lt;button
-            type&#x3D;&quot;submit&quot;
             cfBlock&#x3D;&quot;button&quot;
             [cfMod]&#x3D;&quot;[&#x27;primary&#x27;]&quot;
-            [disabled]&#x3D;&quot;false&quot;
+            (click)&#x3D;&quot;onSaveButtonClick()&quot;
           &gt;
             Save
           &lt;/button&gt;
@@ -544,21 +564,44 @@ import { AvatarAppearancePortraitFormComponent } from &#x27;./components/avatar-
   &#x60;,
 })
 export class AvatarAppearanceEditorComponent {
-  @ViewChild(AvatarAppearancePortraitFormComponent)
-  portraitForm?: AvatarAppearancePortraitFormComponent;
   @ViewChild(AvatarAppearanceModelFormComponent)
   modelForm?: AvatarAppearanceModelFormComponent;
+  @ViewChild(AvatarAppearancePortraitFormComponent)
+  portraitForm?: AvatarAppearancePortraitFormComponent;
   @ViewChild(AvatarAppearanceInfoFormComponent)
   infoForm?: AvatarAppearanceInfoFormComponent;
 
   @Input() appearance?: Appearance;
 
-  @Output() appearanceSubmit &#x3D; new EventEmitter&lt;Appearance&gt;();
+  @Output() appearanceSubmit &#x3D; new EventEmitter&lt;AvatarAppearanceEditorModel&gt;();
 
-  appearanceInfo?: AppearanceInfo;
+  get isValid(): boolean {
+    return this.modelForm?.form.valid ? true : false;
+    // return this.modelForm?.form.valid &amp;&amp;
+    //   this.portraitForm?.form.valid &amp;&amp;
+    //   this.infoForm?.form.valid
+    //   ? true
+    //   : false;
+  }
 
-  onFormSubmit() {
-    // this.appearanceSubmit.emit(appearance as Appearance);
+  onSaveButtonClick() {
+    if (!this.isValid) {
+      return;
+    }
+
+    const model &#x3D; this.modelForm?.form.value;
+    const portrait &#x3D; this.portraitForm?.form.value as AppearancePortrait;
+    const info &#x3D; this.infoForm?.form.value as AppearanceInfo;
+
+    if (!model || !portrait || !info) {
+      throw new Error(&#x27;Unable to get data from forms&#x27;);
+    }
+
+    this.appearanceSubmit.next({
+      model,
+      portrait,
+      info,
+    });
   }
 }
 </code></pre>
@@ -591,7 +634,7 @@ export class AvatarAppearanceEditorComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-editor">  <div cfElem="body">    <cf-tabset theme="secondary">      <cf-tab        [title]="\'Appearance\'"        [active]="true"        icon="assets/icons/mdi/human.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content">          <div cfElem="appearance-tab-content-model">            <cf-avatar-appearance-model-form [appearance]="appearance">            </cf-avatar-appearance-model-form>          </div>          <div cfElem="appearance-tab-content-portrait">            <cf-avatar-appearance-portrait-form              [portrait]="appearance?.portrait"            >            </cf-avatar-appearance-portrait-form>          </div>        </div>      </cf-tab>      <cf-tab        [title]="\'Info\'"        [active]="false"        icon="assets/icons/mdi/information.svg"        [customClass]="\'appearance-info-tab\'"      >        <cf-avatar-appearance-info-form          [info]="appearance?.info"        ></cf-avatar-appearance-info-form>      </cf-tab>    </cf-tabset>  </div>  <div cfElem="footer">    <div cfBlock="form-buttons">      <button        type="submit"        cfBlock="button"        [cfMod]="[\'primary\']"        [disabled]="false"      >        Save      </button>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-editor">  <div cfElem="body">    <cf-tabset theme="secondary">      <cf-tab        [title]="\'Appearance\'"        [active]="true"        icon="assets/icons/mdi/human.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content">          <div cfElem="appearance-tab-content-model">            <cf-avatar-appearance-model-form [appearance]="appearance">            </cf-avatar-appearance-model-form>          </div>          <div cfElem="appearance-tab-content-portrait">            <cf-avatar-appearance-portrait-form              [portrait]="appearance?.portrait"            >            </cf-avatar-appearance-portrait-form>          </div>        </div>      </cf-tab>      <cf-tab        [title]="\'Info\'"        [active]="false"        icon="assets/icons/mdi/information.svg"        [customClass]="\'appearance-info-tab\'"      >        <cf-avatar-appearance-info-form          [info]="appearance?.info"        ></cf-avatar-appearance-info-form>      </cf-tab>    </cf-tabset>  </div>  <div cfElem="footer">    <div cfBlock="form-buttons">      <button        cfBlock="button"        [cfMod]="[\'primary\']"        (click)="onSaveButtonClick()"      >        Save      </button>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarAppearanceEditorComponent'};

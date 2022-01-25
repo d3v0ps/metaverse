@@ -124,7 +124,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">libs/avatars/src/lib/states/available-avatars.state.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">libs/avatars/src/lib/states/available-avatars.state.ts:15</a></div>
                             </td>
                         </tr>
 
@@ -189,8 +189,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="36"
-                            class="link-to-prism">libs/avatars/src/lib/states/available-avatars.state.ts:36</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">libs/avatars/src/lib/states/available-avatars.state.ts:37</a></div>
                 </td>
             </tr>
 
@@ -230,7 +230,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">libs/avatars/src/lib/states/available-avatars.state.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">libs/avatars/src/lib/states/available-avatars.state.ts:13</a></div>
                         </td>
                     </tr>
 
@@ -258,7 +258,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">libs/avatars/src/lib/states/available-avatars.state.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">libs/avatars/src/lib/states/available-avatars.state.ts:15</a></div>
                         </td>
                     </tr>
 
@@ -274,8 +274,9 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { EntityManager } from &#x27;@central-factory/persistence/services/entity-manager&#x27;;
 import { Repository } from &#x27;@central-factory/persistence/services/repository&#x27;;
-import { BehaviorSubject, forkJoin, switchMap, tap } from &#x27;rxjs&#x27;;
+import { BehaviorSubject, forkJoin, map, of, switchMap, tap } from &#x27;rxjs&#x27;;
 import type { UserAvatarDocType } from &#x27;../collections/user-avatars.collection&#x27;;
+import { Appearance } from &#x27;../models&#x27;;
 import type { Avatar } from &#x27;../models/avatar&#x27;;
 
 @Injectable({
@@ -313,7 +314,61 @@ export class AvailableAvatarsState {
 
     this.userAvatarsRepository
       .observe()
-      .pipe(tap((avatars) &#x3D;&gt; this.avatars$.next(avatars as Avatar[])))
+      .pipe(
+        switchMap((avatars) &#x3D;&gt; {
+          return avatars.length &gt; 0
+            ? forkJoin(
+                avatars.map((avatar) &#x3D;&gt; {
+                  const hasAttachments &#x3D;
+                    avatar._attachments &amp;&amp;
+                    Object.keys(avatar._attachments).length &gt; 0;
+
+                  if (!hasAttachments) {
+                    return of(avatar);
+                  }
+
+                  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                  return this.userAvatarsRepository!.getAllAttachments(
+                    avatar.id
+                  ).pipe(
+                    map((attachments) &#x3D;&gt; {
+                      avatar.appearances.forEach((appearance) &#x3D;&gt; {
+                        const portraitAttachment &#x3D; attachments.find(
+                          (attachment) &#x3D;&gt;
+                            attachment.id &#x3D;&#x3D;&#x3D; appearance.portrait.id
+                        );
+
+                        if (portraitAttachment) {
+                          appearance.portrait.src &#x3D; URL.createObjectURL(
+                            portraitAttachment.data as Blob
+                          );
+                        }
+
+                        const modelAttachment &#x3D; attachments.find(
+                          (attachment) &#x3D;&gt; attachment.id &#x3D;&#x3D;&#x3D; appearance.id
+                        );
+
+                        if (modelAttachment) {
+                          appearance.src &#x3D; URL.createObjectURL(
+                            modelAttachment.data as Blob
+                          );
+                        }
+                      });
+
+                      avatar.selectedAppearance &#x3D; avatar.appearances.find(
+                        (appearance) &#x3D;&gt;
+                          appearance.id &#x3D;&#x3D;&#x3D; avatar.selectedAppearance.id
+                      ) as Appearance;
+
+                      return avatar;
+                    })
+                  );
+                })
+              )
+            : of(avatars);
+        }),
+        tap((avatars) &#x3D;&gt; this.avatars$.next(avatars as Avatar[]))
+      )
       .subscribe();
   }
 }

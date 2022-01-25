@@ -96,6 +96,7 @@
                                         </a>
                                 </li>
                                 <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#smallPreviewUrl" 
 >
                                             smallPreviewUrl
@@ -217,6 +218,11 @@
                                         </td>
                                     </tr>
 
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
 
 
 
@@ -303,14 +309,17 @@ export interface AvatarOverviewInput {
   welcomeMessage: string;
   name: string;
   title: string;
-  smallPreviewUrl: string;
+  smallPreviewUrl?: string;
   appearance: {
     id: string;
+    filename: string;
     format: AppearanceFormat;
-    src: string;
+    src?: string;
     portrait: {
+      id: string;
+      filename: string;
       format: AppearanceFormat;
-      src: string;
+      src?: string;
     };
   };
 }
@@ -409,9 +418,12 @@ export class AvatarOverviewComponent {
     smallPreviewUrl: new FormControl(&#x27;&#x27;),
     appearance: new FormGroup({
       id: new FormControl(&#x27;&#x27;),
+      filename: new FormControl(&#x27;&#x27;),
       src: new FormControl(&#x27;&#x27;),
       format: new FormControl&lt;AppearanceFormat&gt;(null),
       portrait: new FormGroup({
+        id: new FormControl(&#x27;&#x27;),
+        filename: new FormControl(&#x27;&#x27;),
         src: new FormControl(&#x27;&#x27;),
         format: new FormControl&lt;AppearanceFormat&gt;(null),
       }),
