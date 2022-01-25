@@ -43,7 +43,9 @@ export const appearanceSchema = {
   },
 };
 
-export const userAvatarsSchema: RxJsonSchema<UserAvatarDocType> = {
+export const userAvatarsSchema: RxJsonSchema<
+  Omit<UserAvatarDocType, '_attachments'>
+> = {
   title: 'User Avatars',
   description: 'User Avatars',
   version: 0,
