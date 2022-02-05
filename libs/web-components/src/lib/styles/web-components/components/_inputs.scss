@@ -3,6 +3,7 @@ input, select {
   font-size: var(--component-input-font-size);
   font-family: inherit;
   line-height: 2;
+  max-height: 3.2rem;
 
   background-color: var(--component-input-background-color);
   // border: 1px solid var(--component-input-border-color);
@@ -55,6 +56,15 @@ select {
   option {
     background-color: var(--component-input-background-color);
     color: var(--component-input-text-color);
+  }
+}
+
+input[type="number"] {
+  appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    appearance: none;
   }
 }
 
