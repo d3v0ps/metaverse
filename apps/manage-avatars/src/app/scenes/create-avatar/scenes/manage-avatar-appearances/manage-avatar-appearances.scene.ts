@@ -30,18 +30,25 @@ import { v4 as uuid } from 'uuid';
           <div cfBlock="form-buttons">
             <button
               cfBlock="button"
-              cfMod="primary"
+              [cfMod]="['primary', 'has-icon']"
               (click)="onAppearanceAddClick()"
             >
-              Add a new Appearance
+              <cf-svg-icon elem="icon" src="assets/icons/mdi/account-plus.svg">
+              </cf-svg-icon>
+              <span elem="label">Add a new appearance</span>
             </button>
             <button
               cfBlock="button"
-              [cfMod]="['primary', 'full-width']"
+              [cfMod]="['primary', 'has-icon', 'full-width']"
               (click)="onConfirmAppearancesButtonClick()"
               [disabled]="appearances.length === 0"
             >
-              Confirm appearances
+              <cf-svg-icon
+                elem="icon"
+                src="assets/icons/mdi/account-multiple-check.svg"
+              >
+              </cf-svg-icon>
+              <span elem="label">Confirm appearances</span>
             </button>
           </div>
         </div>
@@ -61,10 +68,12 @@ import { v4 as uuid } from 'uuid';
           </h3>
           <button
             cfBlock="button"
-            cfMod="primary"
+            [cfMod]="['primary', 'has-icon']"
             (click)="onAppearanceAddClick()"
           >
-            Add a new Appearance
+            <cf-svg-icon elem="icon" src="assets/icons/mdi/account-plus.svg">
+            </cf-svg-icon>
+            <span elem="label">Add a new appearance</span>
           </button>
         </ng-container>
         <cf-avatar-appearance-editor

@@ -65,9 +65,12 @@ export type AvatarAppearanceEditorModel = {
         <div cfBlock="form-buttons">
           <button
             cfBlock="button"
-            [cfMod]="['primary']"
+            [cfMod]="['primary', 'has-icon']"
             (click)="onSaveButtonClick()"
+            [disabled]="!isValid"
           >
+            <cf-svg-icon elem="icon" src="assets/icons/mdi/account-check.svg">
+            </cf-svg-icon>
             Save
           </button>
         </div>
