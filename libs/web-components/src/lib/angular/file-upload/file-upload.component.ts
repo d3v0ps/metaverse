@@ -7,9 +7,11 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     <div cfBlock="file-upload">
       <button
         cfBlock="button"
-        [cfMod]="[theme, 'full-width']"
+        [cfMod]="[theme, 'full-width', 'has-icon']"
         (click)="fileInput.click()"
       >
+        <cf-svg-icon elem="icon" src="assets/icons/mdi/file-upload.svg">
+        </cf-svg-icon>
         {{ file ? file.name : fileName || placeholder }}
       </button>
       <input
