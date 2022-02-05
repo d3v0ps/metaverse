@@ -23,6 +23,9 @@ import { ResizableEvent } from '../resizable/resizable.directive';
 
     <div
       cfBlock="window"
+      [cfMod]="{
+        maximized: maximized
+      }"
       tabindex="-1"
       role="dialog"
       #modalRoot
@@ -43,24 +46,36 @@ import { ResizableEvent } from '../resizable/resizable.directive';
         (mousedown)="initDrag($event)"
         (touchstart)="initDrag($event)"
       >
+        <div cfElem="controls">
+          <button
+            cfBlock="button"
+            [cfMod]="['danger', 'small', 'has-icon', 'only-icon', 'rounded']"
+            (click)="hide()"
+            #closeIcon
+          >
+            <cf-svg-icon
+              src="assets/icons/mdi/close.svg"
+              cfElem="icon"
+            ></cf-svg-icon>
+          </button>
+          <button
+            *ngIf="maximizable"
+            cfBlock="button"
+            [cfMod]="['light', 'small', 'has-icon', 'only-icon', 'rounded']"
+            (click)="toggleMaximize($event)"
+          >
+            <cf-svg-icon
+              [src]="
+                maximized
+                  ? 'assets/icons/mdi/window-restore.svg'
+                  : 'assets/icons/mdi/window-maximize.svg'
+              "
+              cfElem="icon"
+            ></cf-svg-icon>
+          </button>
+        </div>
         <div cfElem="title">
           <ng-content select=".window-header__content"></ng-content>
-        </div>
-        <div cfElem="controls">
-          <cf-svg-icon
-            *ngIf="maximizable"
-            [src]="
-              maximized
-                ? 'assets/icons/mdi/window-restore.svg'
-                : 'assets/icons/mdi/window-maximize.svg'
-            "
-            (click)="toggleMaximize($event)"
-          ></cf-svg-icon>
-          <cf-svg-icon
-            #closeIcon
-            src="assets/icons/mdi/window-close.svg"
-            (click)="hide()"
-          ></cf-svg-icon>
         </div>
       </div>
 

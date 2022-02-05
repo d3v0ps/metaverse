@@ -38,6 +38,14 @@
   min-width: 16.25rem;
   min-height: 12.5rem;
   width: 31.25rem;
+
+  &--maximized {
+    border-radius: 0;
+    .window-header {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
 }
 
 .window-header {
@@ -53,6 +61,7 @@
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
+  gap: var(--component-application-toolbar-padding);
 
   &__title {
     display: flex;
@@ -66,11 +75,11 @@
   &__controls {
     display: flex;
     align-items: center;
+    gap: var(--component-application-toolbar-buttons-gap);
 
     .icon__svg {
       cursor: pointer;
       fill: var(--component-window-header-text-color);
-      margin-left: .3em;
     }
 
   }
