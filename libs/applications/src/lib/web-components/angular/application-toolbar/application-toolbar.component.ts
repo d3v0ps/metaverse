@@ -45,9 +45,12 @@ import { Application, ColorVariation } from '../../../models/application';
             ></cf-svg-icon>
             {{ application.name }}
           </h3>
-          <div cfBlock="application-toolbar-buttons">
+          <div
+            cfBlock="application-toolbar-buttons"
+            *ngIf="application.shortcuts && application.shortcuts.length > 0"
+          >
             <ng-select
-              [items]="application.shortcuts || []"
+              [items]="application.shortcuts"
               [classList]="'ng-select--primary'"
               bindLabel="name"
               style="width: 300px;"
