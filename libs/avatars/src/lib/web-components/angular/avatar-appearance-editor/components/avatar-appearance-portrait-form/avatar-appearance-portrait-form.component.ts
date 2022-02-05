@@ -65,7 +65,7 @@ export type AvatarAppearancePortraitModelForm = {
             [fileName]="form.value.filename"
             formControlName="file"
             id="appearanceFile"
-            accept=".glb, .gltf, .fbx, .obj, .png, .jpg, .jpeg"
+            [accept]="validFormats"
             (ngModelChange)="onFileChange($event)"
           >
           </cf-file-upload>
@@ -78,6 +78,7 @@ export class AvatarAppearancePortraitFormComponent
   implements OnInit, OnDestroy
 {
   @Input() set portrait(value: AppearancePortrait | undefined) {
+    console.log(value);
     this.form.reset({
       id: value?.id || uuid(),
       filename: value?.filename || '',
@@ -85,6 +86,7 @@ export class AvatarAppearancePortraitFormComponent
       src: value?.src || undefined,
       file: undefined,
     });
+    this.form.markAsTouched();
   }
 
   form = new FormGroup<AvatarAppearancePortraitModelForm>({
@@ -94,6 +96,10 @@ export class AvatarAppearancePortraitFormComponent
     src: new FormControl<string>(),
     file: new FormControl<File>(),
   });
+
+  imageFormats = ['.png', '.jpg', '.jpeg'];
+  modelFormats = ['.glb', '.gltf', '.fbx', '.obj'];
+  validFormats = [...this.imageFormats, ...this.modelFormats].join(',');
 
   private readonly destroy$ = new Subject<void>();
 

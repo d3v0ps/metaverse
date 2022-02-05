@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@ng-stack/forms';
+import { FormControl, FormGroup, Validators } from '@ng-stack/forms';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 import { Appearance, AppearanceFormat } from '../../../../../models/appearance';
@@ -77,16 +77,22 @@ export type AvatarAppearanceModelForm = {
 
             <div cfBlock="form-group">
               <label cfBlock="form-label" for="appearanceFile">
-                The appearance file
+                The appearance file *
               </label>
               <cf-file-upload
                 [fileName]="form.value.filename"
                 formControlName="file"
                 id="appearanceFile"
-                accept=".glb, .gltf, .fbx, .obj, .png, .jpg, .jpeg"
+                [accept]="validFormats"
                 (ngModelChange)="onFileChange($event)"
               >
               </cf-file-upload>
+              <span
+                class="form-error"
+                *ngIf="form.controls.filename?.errors?.required"
+              >
+                Must supply a valid file
+              </span>
             </div>
           </div>
         </div>
@@ -113,11 +119,15 @@ export class AvatarAppearanceModelFormComponent implements OnInit, OnDestroy {
 
   form = new FormGroup<AvatarAppearanceModelForm>({
     id: new FormControl<string>(uuid()),
-    filename: new FormControl<string>(''),
+    filename: new FormControl<string>('', [Validators.required]),
     format: new FormControl<AppearanceFormat>(AppearanceFormat.Model),
     src: new FormControl<string>(),
     file: new FormControl<File>(),
   });
+
+  imageFormats = ['.png', '.jpg', '.jpeg'];
+  modelFormats = ['.glb', '.gltf', '.fbx', '.obj'];
+  validFormats = [...this.imageFormats, ...this.modelFormats].join(',');
 
   private readonly destroy$ = new Subject<void>();
 
