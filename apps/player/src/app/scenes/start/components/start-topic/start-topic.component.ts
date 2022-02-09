@@ -8,102 +8,106 @@ import { Topic } from '@central-factory/applications/models/topic';
 @Component({
   selector: 'cf-start-topic',
   template: `
-    <div
-      cfBlock="topic-card"
-      *ngIf="topic && showTopic"
-      [ngStyle]="{
-        'background-size': 'cover',
-        'background-image': topic.background
-          ? 'url(' + topic.background + ')'
-          : ''
-      }"
-    >
-      <h2
-        cfBlock="heading"
-        [cfMod]="{
-          primary: !topic.background,
-          light: topic.background
+    <div cfBlock="topic-card">
+      <div
+        cfBlock="topic-background"
+        *ngIf="topic && showTopic"
+        [ngStyle]="{
+          'background-size': 'cover',
+          'background-blend-mode': 'saturation',
+          'background-image': topic.background
+            ? 'url(' + topic.background + ')'
+            : ''
         }"
-      >
-        <cf-svg-icon
-          *ngIf="topic.icon"
-          [src]="topic.icon"
-          cfElem="icon"
-        ></cf-svg-icon>
-        {{ topic.title }}
-      </h2>
-      <div cfBlock="topic-content">
-        <cf-applications-carousel
-          [showInfo]="false"
-          [outline]="true"
-          [shadow]="false"
-          [showPlayButton]="false"
-          [showUninstallButton]="false"
-          [showDescription]="false"
-          [applications]="topicApplications"
-          [installedApplications]="topicApplications"
-          [cardStyle]="{
-            width: '100%'
+      ></div>
+      <div cfBlock="topic-body" *ngIf="topic && showTopic">
+        <h2
+          cfBlock="heading"
+          [cfMod]="{
+            primary: !topic.background,
+            light: topic.background
           }"
-        ></cf-applications-carousel>
-        <div
-          cfBlock="topic-content"
-          style="
-            width: 80%; margin: 0 auto;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 1rem;
-          "
         >
-          <ng-container *ngFor="let shortcut of shortcuts">
-            <cf-application-shortcut
-              [shortcut]="shortcut.shortcut"
-              [application]="shortcut.application"
-            ></cf-application-shortcut>
-          </ng-container>
-        </div>
-        <div
-          cfBlock="topic-content"
-          style="
-              width: 80%; margin: 2rem auto;"
-        >
-          <button
-            cfBlock="button"
-            [cfMod]="['primary']"
-            (click)="showCategories = !showCategories"
-            [ngStyle]="{
-              margin: '0 auto'
+          <cf-svg-icon
+            *ngIf="topic.icon"
+            [src]="topic.icon"
+            cfElem="icon"
+          ></cf-svg-icon>
+          {{ topic.title }}
+        </h2>
+        <div cfBlock="topic-content">
+          <cf-applications-carousel
+            [showInfo]="false"
+            [outline]="true"
+            [shadow]="false"
+            [showPlayButton]="false"
+            [showUninstallButton]="false"
+            [showDescription]="false"
+            [applications]="topicApplications"
+            [installedApplications]="topicApplications"
+            [cardStyle]="{
+              width: '100%'
             }"
+          ></cf-applications-carousel>
+          <div
+            cfBlock="topic-content"
+            style="
+              width: 80%; margin: 0 auto;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              gap: 1rem;
+            "
           >
-            <cf-svg-icon
-              [src]="'assets/icons/mdi/web-box.svg'"
-              cfElem="icon"
-            ></cf-svg-icon>
-            <span cfBlock="label">
-              {{ showCategories ? 'Hide' : 'Show' }} more Applications
-            </span>
-          </button>
-          <div *ngIf="showCategories" style="margin-top: 2rem">
-            <div
-              *ngFor="let item of byCategory | keyvalue"
-              cfBlock="topic-category"
+            <ng-container *ngFor="let shortcut of shortcuts">
+              <cf-application-shortcut
+                [shortcut]="shortcut.shortcut"
+                [application]="shortcut.application"
+              ></cf-application-shortcut>
+            </ng-container>
+          </div>
+          <div
+            cfBlock="topic-content"
+            style="
+                width: 80%; margin: 2rem auto;"
+          >
+            <button
+              cfBlock="button"
+              [cfMod]="['primary']"
+              (click)="showCategories = !showCategories"
+              [ngStyle]="{
+                margin: '0 auto'
+              }"
             >
-              <h3 cfBlock="heading" cfMod="primary">
-                {{ item.key | titlecase }}
-              </h3>
-              <cf-applications-carousel
-                [outline]="true"
-                [shadow]="false"
-                [showDescription]="false"
-                [showPlayButton]="false"
-                [showUninstallButton]="false"
-                [applications]="item.value"
-                [installedApplications]="item.value"
-                [cardStyle]="{
-                  width: '100%'
-                }"
-              ></cf-applications-carousel>
+              <cf-svg-icon
+                [src]="'assets/icons/mdi/web-box.svg'"
+                cfElem="icon"
+              ></cf-svg-icon>
+              <span cfBlock="label">
+                {{ showCategories ? 'Hide' : 'Show' }} more Applications
+              </span>
+            </button>
+            <div *ngIf="showCategories" style="margin-top: 2rem">
+              <div
+                *ngFor="let item of byCategory | keyvalue"
+                cfBlock="topic-category"
+              >
+                <h3 cfBlock="heading" cfMod="primary">
+                  {{ item.key | titlecase }}
+                </h3>
+                <cf-applications-carousel
+                  [outline]="true"
+                  [shadow]="false"
+                  [showDescription]="false"
+                  [showPlayButton]="false"
+                  [showUninstallButton]="false"
+                  [applications]="item.value"
+                  [installedApplications]="item.value"
+                  [cardStyle]="{
+                    width: '100%'
+                  }"
+                ></cf-applications-carousel>
+              </div>
             </div>
           </div>
         </div>
@@ -115,9 +119,25 @@ import { Topic } from '@central-factory/applications/models/topic';
       @use 'web-components/abstracts/mixins/materials' as materials;
 
       .topic-card {
+        position: relative;
+      }
+
+      .topic-background {
         @include materials.clay;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .topic-body {
+        @include materials.clay;
+        backdrop-filter: blur(5px);
         margin-bottom: 2rem;
         padding: 1rem;
+
+        &:hover {
+          backdrop-filter: blur(0px);
+        }
       }
     `,
   ],
