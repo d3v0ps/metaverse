@@ -51,6 +51,17 @@
     background-color: #706fd3;
   }
 
+  &--portals {
+    .store__content {
+      .scene-content {
+        box-shadow: none;
+        overflow: hidden;
+        height: 100%;
+        min-height: 100%;
+      }
+    }
+  }
+
   &--start {
     .avatar-appearance-portrait {
       width: var(--component-avatar-overview-small-preview-width);

@@ -15,7 +15,7 @@ import { catchError, forkJoin, map, of, share, switchMap } from 'rxjs';
 @Component({
   selector: 'cf-applications-portals',
   template: `
-    <div cfBlock="scene-content">
+    <div cfBlock="scene-content" cfMod="portals">
       <div cfBlock="store">
         <div cfElem="nav">
           <ul cfBlock="nav">
