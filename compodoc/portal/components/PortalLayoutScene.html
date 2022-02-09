@@ -116,7 +116,7 @@
         &lt;!-- A sidebar --&gt;
         &lt;cf-sidebar
           [(opened)]&#x3D;&quot;sidebarIsOpen&quot;
-          [dock]&#x3D;&quot;true&quot;
+          [dock]&#x3D;&quot;dockedSidebar&quot;
           [dockedSize]&#x3D;&quot;&#x27;100px&#x27;&quot;
           [showBackdrop]&#x3D;&quot;true&quot;
           [closeOnClickBackdrop]&#x3D;&quot;true&quot;
@@ -229,6 +229,9 @@
         &lt;div cf-sidebar-content&gt;
           &lt;div
             class&#x3D;&quot;scene__content&quot;
+            [ngStyle]&#x3D;&quot;{
+              &#x27;padding-left&#x27;: dockedSidebar ? &#x27;0&#x27; : &#x27;1rem&#x27;
+            }&quot;
             [ngClass]&#x3D;&quot;{
               &#x27;scene__content--splash-screen&#x27;: showSplashScreen
             }&quot;
@@ -261,7 +264,12 @@
 
       &lt;ng-template #notSelectedAvatarLayout&gt;
         &lt;div class&#x3D;&quot;scene__container&quot;&gt;
-          &lt;div class&#x3D;&quot;scene__content&quot;&gt;
+          &lt;div
+            class&#x3D;&quot;scene__content&quot;
+            [ngStyle]&#x3D;&quot;{
+              &#x27;padding-left&#x27;: dockedSidebar ? &#x27;0&#x27; : &#x27;1rem&#x27;
+            }&quot;
+          &gt;
             &lt;router-outlet&gt;&lt;/router-outlet&gt;
           &lt;/div&gt;
         &lt;/div&gt;
@@ -307,6 +315,10 @@
                                     <span class="modifier">Private</span>
                                     <span class="modifier">Readonly</span>
                                 <a href="#destroy$" >destroy$</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dockedSidebar" >dockedSidebar</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -409,12 +421,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, entityManager: EntityManager, selectedAvatarState: SelectedAvatarState, selectedApplicationState: SelectedApplicationState, recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState, customizationSettingsState: CustomizationSettingsState)</code>
+<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, entityManager: EntityManager, selectedAvatarState: SelectedAvatarState, selectedApplicationState: SelectedApplicationState, recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState, customizationSettingsState: CustomizationSettingsState, breakpointObserver: BreakpointObserver)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="261" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:261</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="271" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:271</a></div>
                             </td>
                         </tr>
 
@@ -503,6 +515,18 @@
                                                     </td>
                                                     
                                                 </tr>
+                                                <tr>
+                                                        <td>breakpointObserver</td>
+                                                  
+                                                        <td>
+                                                                    <code>BreakpointObserver</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -543,8 +567,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="395"
-                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:395</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="416"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:416</a></div>
                 </td>
             </tr>
 
@@ -614,8 +638,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="341"
-                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:341</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="362"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:362</a></div>
                 </td>
             </tr>
 
@@ -653,8 +677,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="272"
-                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:272</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="283"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:283</a></div>
                 </td>
             </tr>
 
@@ -692,8 +716,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="346"
-                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:346</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="367"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:367</a></div>
                 </td>
             </tr>
 
@@ -763,8 +787,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="360"
-                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:360</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="381"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:381</a></div>
                 </td>
             </tr>
 
@@ -834,8 +858,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="445"
-                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:445</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="466"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:466</a></div>
                 </td>
             </tr>
 
@@ -905,8 +929,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="375"
-                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:375</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="396"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:396</a></div>
                 </td>
             </tr>
 
@@ -980,7 +1004,33 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="261" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:261</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="271" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:271</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dockedSidebar"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>dockedSidebar</b></span>
+                        <a href="#dockedSidebar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="257" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:257</a></div>
                         </td>
                     </tr>
 
@@ -1008,7 +1058,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="245" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:245</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="254" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:254</a></div>
                         </td>
                     </tr>
 
@@ -1038,7 +1088,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="255" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:255</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="265" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:265</a></div>
                         </td>
                     </tr>
 
@@ -1070,7 +1120,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="246" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:246</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="255" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:255</a></div>
                         </td>
                     </tr>
 
@@ -1096,7 +1146,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="250" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:250</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="260" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:260</a></div>
                         </td>
                     </tr>
 
@@ -1129,7 +1179,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="252" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:252</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="262" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:262</a></div>
                         </td>
                     </tr>
 
@@ -1155,7 +1205,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="249" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:249</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="259" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:259</a></div>
                         </td>
                     </tr>
 
@@ -1181,7 +1231,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="248" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:248</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="258" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:258</a></div>
                         </td>
                     </tr>
 
@@ -1207,7 +1257,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="242" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:242</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="251" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:251</a></div>
                         </td>
                     </tr>
 
@@ -1239,7 +1289,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="244" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:244</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="253" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:253</a></div>
                         </td>
                     </tr>
 
@@ -1271,7 +1321,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="241" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:241</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="250" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/portal-layout.scene.ts:250</a></div>
                         </td>
                     </tr>
 
@@ -1285,6 +1335,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { transition, trigger, useAnimation } from &#x27;@angular/animations&#x27;;
+import { BreakpointObserver, BreakpointState } from &#x27;@angular/cdk/layout&#x27;;
 import { Component, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
 import { NavigationEnd, Router } from &#x27;@angular/router&#x27;;
 import {
@@ -1347,7 +1398,7 @@ export enum SceneContentAnimationState {
             &lt;!-- A sidebar --&gt;
             &lt;cf-sidebar
               [(opened)]&#x3D;&quot;sidebarIsOpen&quot;
-              [dock]&#x3D;&quot;true&quot;
+              [dock]&#x3D;&quot;dockedSidebar&quot;
               [dockedSize]&#x3D;&quot;&#x27;100px&#x27;&quot;
               [showBackdrop]&#x3D;&quot;true&quot;
               [closeOnClickBackdrop]&#x3D;&quot;true&quot;
@@ -1460,6 +1511,9 @@ export enum SceneContentAnimationState {
             &lt;div cf-sidebar-content&gt;
               &lt;div
                 class&#x3D;&quot;scene__content&quot;
+                [ngStyle]&#x3D;&quot;{
+                  &#x27;padding-left&#x27;: dockedSidebar ? &#x27;0&#x27; : &#x27;1rem&#x27;
+                }&quot;
                 [ngClass]&#x3D;&quot;{
                   &#x27;scene__content--splash-screen&#x27;: showSplashScreen
                 }&quot;
@@ -1492,7 +1546,12 @@ export enum SceneContentAnimationState {
 
           &lt;ng-template #notSelectedAvatarLayout&gt;
             &lt;div class&#x3D;&quot;scene__container&quot;&gt;
-              &lt;div class&#x3D;&quot;scene__content&quot;&gt;
+              &lt;div
+                class&#x3D;&quot;scene__content&quot;
+                [ngStyle]&#x3D;&quot;{
+                  &#x27;padding-left&#x27;: dockedSidebar ? &#x27;0&#x27; : &#x27;1rem&#x27;
+                }&quot;
+              &gt;
                 &lt;router-outlet&gt;&lt;/router-outlet&gt;
               &lt;/div&gt;
             &lt;/div&gt;
@@ -1531,6 +1590,7 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
   public openedSidebarItem?: SidebarItem;
   public recentlyOpenedSidebarItems: SidebarItem[] &#x3D; [];
 
+  public dockedSidebar &#x3D; true;
   public showSplashScreen &#x3D; false;
   public showNavbar &#x3D; false;
   public sceneContentAnimationState &#x3D; SceneContentAnimationState.Idle;
@@ -1552,10 +1612,21 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
     private readonly selectedAvatarState: SelectedAvatarState,
     private readonly selectedApplicationState: SelectedApplicationState,
     private readonly recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState,
-    private readonly customizationSettingsState: CustomizationSettingsState
+    private readonly customizationSettingsState: CustomizationSettingsState,
+    private readonly breakpointObserver: BreakpointObserver
   ) {}
 
   public ngOnInit(): void {
+    this.breakpointObserver
+      .observe([&#x27;(min-width: 600px)&#x27;])
+      .subscribe((state: BreakpointState) &#x3D;&gt; {
+        if (state.matches) {
+          this.dockedSidebar &#x3D; true;
+        } else {
+          this.dockedSidebar &#x3D; false;
+        }
+      });
+
     this.customizationSettingsState.customizationSettings$
       .pipe(
         map((customizationSettings) &#x3D;&gt; customizationSettings?.theme),
@@ -1764,7 +1835,7 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    selectedAvatar: selectedAvatar$ | async  } as data">  <div cfBlock="scene" cfMod="layout">    <div      cfElem="body"      [cfMod]="{        \'no-navbar\': !showNavbar      }"    >      <cf-sidebar-container        *ngIf="data.selectedAvatar; else notSelectedAvatarLayout"      >        <!-- A sidebar -->        <cf-sidebar          [(opened)]="sidebarIsOpen"          [dock]="true"          [dockedSize]="\'100px\'"          [showBackdrop]="true"          [closeOnClickBackdrop]="true"          [closeOnClickOutside]="true"        >          <div style="margin-top: 20px">            <a              (click)="                onSidebarItemClick({                  name: \'Select Avatar\',                  routerLink: [\'/select-avatar\'],                  icon: \'assets/icons/mdi/account-switch.svg\',                  application: {                    id: \'com.central-factory.user-avatars\',                    name: \'User Avatars\',                    description: \'Select an avatar\',                    startUrl: \'/select-avatar\'                  },                  active: false                })              "              [routerLink]="[\'/select-avatar\']"              class="d-block"              cfBlock="sidebar-item"            >              <div cfElem="text">                <span cfElem="text-content">Account</span>              </div>              <cf-avatar-appearance-portrait                [appearancePortrait]="                  data.selectedAvatar.selectedAppearance?.portrait                "              >              </cf-avatar-appearance-portrait>              <!-- img                cfElem="image"                [src]="data.selectedAvatar.selectedAppearance.portrait.src"              /  -->            </a>            <ng-container *ngFor="let item of sidebarItems">              <a                (click)="onSidebarItemClick(item)"                class="d-block"                cfBlock="sidebar-item"              >                <div cfElem="text">                  <span cfElem="text-content">{{ item.name }}</span>                </div>                <button                  cfBlock="button"                  cfMod="fab"                  [ngClass]="{                    \'button--active\': item.active                  }"                  style="margin-top: 15px;"                >                  <cf-svg-icon                    [src]="item.icon"                    cfElem="icon"                    [svgClass]="\'icon__svg\'"                  ></cf-svg-icon>                </button>              </a>            </ng-container>            <div              cdkDropList              cdkDropListSortingDisabled              [cdkDropListData]="recentlyOpenedSidebarItems"              [cdkDropListConnectedTo]="[\'applications-carousel\']"            >              <div                *ngFor="let item of recentlyOpenedSidebarItems"                class="d-block"                cfBlock="sidebar-item"              >                <div class="d-block" cfBlock="sidebar-item">                  <div cfElem="text">                    <span cfElem="text-content">{{ item.name }}</span>                  </div>                  <button                    cdkDrag                    [cdkDragData]="item.application"                    cfBlock="button"                    cfMod="fab"                    [ngClass]="{                      \'button--active\': item.active                    }"                    [ngStyle]="{                      \'background-color\': item.color,                      \'margin-top\': \'15px\'                    }"                    (click)="onRecentlyOpenedItemClick(item)"                  >                    <cf-svg-icon                      [src]="item.icon"                      cfElem="icon"                      [svgClass]="\'icon__svg\'"                    ></cf-svg-icon>                  </button>                </div>              </div>            </div>            <router-outlet name="sidebar"></router-outlet>          </div>        </cf-sidebar>        <div cf-sidebar-content>          <div            class="scene__content"            [ngClass]="{              \'scene__content--splash-screen\': showSplashScreen            }"            [@sceneContentAnimationState]="sceneContentAnimationState"          >            <div              cfBlock="scene-content"              cfMod="splash-screen"              *ngIf="showSplashScreen"            >              <cf-splash-screen                [mods]="\'in-scene\'"                [displayLoadingTime]="2000"                [displayWelcomeTime]="1000"                [title]="openedSidebarItem?.name || \'\'"                [logo]="openedSidebarItem?.icon || \'\'"                [backgroundColor]="openedSidebarItem?.color || \'\'"                welcomeMessage="Welcome to {{ openedSidebarItem?.name }}"                [loadingTexts]="                  openedSidebarItem?.application?.description?.split(\'.\') ||                  []                "                (splashScreenHide)="showSplashScreen = false"              ></cf-splash-screen>            </div>            <router-outlet></router-outlet>          </div>        </div>      </cf-sidebar-container>      <ng-template #notSelectedAvatarLayout>        <div class="scene__container">          <div class="scene__content">            <router-outlet></router-outlet>          </div>        </div>      </ng-template>    </div>    <cf-navbar      *ngIf="showNavbar"      cfElem="navbar"      [title]="title"      (titleClick)="sidebarIsOpen = !sidebarIsOpen"    >    </cf-navbar>  </div></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    selectedAvatar: selectedAvatar$ | async  } as data">  <div cfBlock="scene" cfMod="layout">    <div      cfElem="body"      [cfMod]="{        \'no-navbar\': !showNavbar      }"    >      <cf-sidebar-container        *ngIf="data.selectedAvatar; else notSelectedAvatarLayout"      >        <!-- A sidebar -->        <cf-sidebar          [(opened)]="sidebarIsOpen"          [dock]="dockedSidebar"          [dockedSize]="\'100px\'"          [showBackdrop]="true"          [closeOnClickBackdrop]="true"          [closeOnClickOutside]="true"        >          <div style="margin-top: 20px">            <a              (click)="                onSidebarItemClick({                  name: \'Select Avatar\',                  routerLink: [\'/select-avatar\'],                  icon: \'assets/icons/mdi/account-switch.svg\',                  application: {                    id: \'com.central-factory.user-avatars\',                    name: \'User Avatars\',                    description: \'Select an avatar\',                    startUrl: \'/select-avatar\'                  },                  active: false                })              "              [routerLink]="[\'/select-avatar\']"              class="d-block"              cfBlock="sidebar-item"            >              <div cfElem="text">                <span cfElem="text-content">Account</span>              </div>              <cf-avatar-appearance-portrait                [appearancePortrait]="                  data.selectedAvatar.selectedAppearance?.portrait                "              >              </cf-avatar-appearance-portrait>              <!-- img                cfElem="image"                [src]="data.selectedAvatar.selectedAppearance.portrait.src"              /  -->            </a>            <ng-container *ngFor="let item of sidebarItems">              <a                (click)="onSidebarItemClick(item)"                class="d-block"                cfBlock="sidebar-item"              >                <div cfElem="text">                  <span cfElem="text-content">{{ item.name }}</span>                </div>                <button                  cfBlock="button"                  cfMod="fab"                  [ngClass]="{                    \'button--active\': item.active                  }"                  style="margin-top: 15px;"                >                  <cf-svg-icon                    [src]="item.icon"                    cfElem="icon"                    [svgClass]="\'icon__svg\'"                  ></cf-svg-icon>                </button>              </a>            </ng-container>            <div              cdkDropList              cdkDropListSortingDisabled              [cdkDropListData]="recentlyOpenedSidebarItems"              [cdkDropListConnectedTo]="[\'applications-carousel\']"            >              <div                *ngFor="let item of recentlyOpenedSidebarItems"                class="d-block"                cfBlock="sidebar-item"              >                <div class="d-block" cfBlock="sidebar-item">                  <div cfElem="text">                    <span cfElem="text-content">{{ item.name }}</span>                  </div>                  <button                    cdkDrag                    [cdkDragData]="item.application"                    cfBlock="button"                    cfMod="fab"                    [ngClass]="{                      \'button--active\': item.active                    }"                    [ngStyle]="{                      \'background-color\': item.color,                      \'margin-top\': \'15px\'                    }"                    (click)="onRecentlyOpenedItemClick(item)"                  >                    <cf-svg-icon                      [src]="item.icon"                      cfElem="icon"                      [svgClass]="\'icon__svg\'"                    ></cf-svg-icon>                  </button>                </div>              </div>            </div>            <router-outlet name="sidebar"></router-outlet>          </div>        </cf-sidebar>        <div cf-sidebar-content>          <div            class="scene__content"            [ngStyle]="{              \'padding-left\': dockedSidebar ? \'0\' : \'1rem\'            }"            [ngClass]="{              \'scene__content--splash-screen\': showSplashScreen            }"            [@sceneContentAnimationState]="sceneContentAnimationState"          >            <div              cfBlock="scene-content"              cfMod="splash-screen"              *ngIf="showSplashScreen"            >              <cf-splash-screen                [mods]="\'in-scene\'"                [displayLoadingTime]="2000"                [displayWelcomeTime]="1000"                [title]="openedSidebarItem?.name || \'\'"                [logo]="openedSidebarItem?.icon || \'\'"                [backgroundColor]="openedSidebarItem?.color || \'\'"                welcomeMessage="Welcome to {{ openedSidebarItem?.name }}"                [loadingTexts]="                  openedSidebarItem?.application?.description?.split(\'.\') ||                  []                "                (splashScreenHide)="showSplashScreen = false"              ></cf-splash-screen>            </div>            <router-outlet></router-outlet>          </div>        </div>      </cf-sidebar-container>      <ng-template #notSelectedAvatarLayout>        <div class="scene__container">          <div            class="scene__content"            [ngStyle]="{              \'padding-left\': dockedSidebar ? \'0\' : \'1rem\'            }"          >            <router-outlet></router-outlet>          </div>        </div>      </ng-template>    </div>    <cf-navbar      *ngIf="showNavbar"      cfElem="navbar"      [title]="title"      (titleClick)="sidebarIsOpen = !sidebarIsOpen"    >    </cf-navbar>  </div></ng-container></div>'
     var COMPONENTS = [{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PortalLayoutScene'};

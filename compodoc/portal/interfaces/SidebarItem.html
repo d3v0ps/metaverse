@@ -346,6 +346,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { transition, trigger, useAnimation } from &#x27;@angular/animations&#x27;;
+import { BreakpointObserver, BreakpointState } from &#x27;@angular/cdk/layout&#x27;;
 import { Component, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
 import { NavigationEnd, Router } from &#x27;@angular/router&#x27;;
 import {
@@ -408,7 +409,7 @@ export enum SceneContentAnimationState {
             &lt;!-- A sidebar --&gt;
             &lt;cf-sidebar
               [(opened)]&#x3D;&quot;sidebarIsOpen&quot;
-              [dock]&#x3D;&quot;true&quot;
+              [dock]&#x3D;&quot;dockedSidebar&quot;
               [dockedSize]&#x3D;&quot;&#x27;100px&#x27;&quot;
               [showBackdrop]&#x3D;&quot;true&quot;
               [closeOnClickBackdrop]&#x3D;&quot;true&quot;
@@ -521,6 +522,9 @@ export enum SceneContentAnimationState {
             &lt;div cf-sidebar-content&gt;
               &lt;div
                 class&#x3D;&quot;scene__content&quot;
+                [ngStyle]&#x3D;&quot;{
+                  &#x27;padding-left&#x27;: dockedSidebar ? &#x27;0&#x27; : &#x27;1rem&#x27;
+                }&quot;
                 [ngClass]&#x3D;&quot;{
                   &#x27;scene__content--splash-screen&#x27;: showSplashScreen
                 }&quot;
@@ -553,7 +557,12 @@ export enum SceneContentAnimationState {
 
           &lt;ng-template #notSelectedAvatarLayout&gt;
             &lt;div class&#x3D;&quot;scene__container&quot;&gt;
-              &lt;div class&#x3D;&quot;scene__content&quot;&gt;
+              &lt;div
+                class&#x3D;&quot;scene__content&quot;
+                [ngStyle]&#x3D;&quot;{
+                  &#x27;padding-left&#x27;: dockedSidebar ? &#x27;0&#x27; : &#x27;1rem&#x27;
+                }&quot;
+              &gt;
                 &lt;router-outlet&gt;&lt;/router-outlet&gt;
               &lt;/div&gt;
             &lt;/div&gt;
@@ -592,6 +601,7 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
   public openedSidebarItem?: SidebarItem;
   public recentlyOpenedSidebarItems: SidebarItem[] &#x3D; [];
 
+  public dockedSidebar &#x3D; true;
   public showSplashScreen &#x3D; false;
   public showNavbar &#x3D; false;
   public sceneContentAnimationState &#x3D; SceneContentAnimationState.Idle;
@@ -613,10 +623,21 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
     private readonly selectedAvatarState: SelectedAvatarState,
     private readonly selectedApplicationState: SelectedApplicationState,
     private readonly recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState,
-    private readonly customizationSettingsState: CustomizationSettingsState
+    private readonly customizationSettingsState: CustomizationSettingsState,
+    private readonly breakpointObserver: BreakpointObserver
   ) {}
 
   public ngOnInit(): void {
+    this.breakpointObserver
+      .observe([&#x27;(min-width: 600px)&#x27;])
+      .subscribe((state: BreakpointState) &#x3D;&gt; {
+        if (state.matches) {
+          this.dockedSidebar &#x3D; true;
+        } else {
+          this.dockedSidebar &#x3D; false;
+        }
+      });
+
     this.customizationSettingsState.customizationSettings$
       .pipe(
         map((customizationSettings) &#x3D;&gt; customizationSettings?.theme),
