@@ -1,20 +1,24 @@
-
 @use '../abstracts/variables/colors' as colors;
+@use '../abstracts/mixins/materials' as materials;
 
 :root {
   --component-button-shadow-outset: 8px 8px 16px 0 rgba(0, 0, 0, 0.25);
-  --component-button-shadow-inset-primary:  -8px -8px 16px 0 rgba(0, 0, 0, 0.25);
-  --component-button-shadow-inset-secondary:  8px 8px 16px 0 rgba(255, 255, 255, 0.2);
+  --component-button-shadow-inset-primary: -8px -8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-button-shadow-inset-secondary: 8px 8px 16px 0
+    rgba(255, 255, 255, 0.2);
+  --component-button-outline-color: var(--component-button-color);
 }
 
 .button {
+  @include materials.clay;
+
   display: flex;
   width: auto;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: .5rem;
+  gap: 0.5rem;
 
   font-weight: 400;
   text-align: center;
@@ -23,12 +27,15 @@
   color: var(--component-button-color);
   background-color: var(--component-button-background-color);
   font-size: var(--component-button-font-size);
-  padding: .6rem 1rem;
+  padding: 0.6rem 1rem;
   text-decoration: none;
   border: none;
-  box-shadow: var(--component-button-shadow-outset), inset var(--component-button-shadow-inset-primary), inset var(--component-button-shadow-inset-secondary);
   cursor: pointer;
   line-height: 2;
+
+  &--outline {
+    border: 1px solid var(--component-button-color);
+  }
 
   &__label {
     margin: 0;
@@ -37,7 +44,7 @@
 
   .icon__svg {
     vertical-align: bottom;
-    width: 2rem;;
+    width: 2rem;
     height: 100%;
     fill: var(--component-button-color);
   }
@@ -103,16 +110,23 @@
     cursor: not-allowed;
     opacity: 0.5;
   }
-
 }
 
 @each $color in colors.$color-variations {
   .button {
-   &.button--#{$color} {
+    &.button--#{$color} {
       background: var(--component-button-#{$color}-background-color);
       color: var(--component-button-#{$color}-color);
       .icon__svg {
         fill: var(--component-button-#{$color}-color);
+      }
+      &.button--outline {
+        border: 1px solid var(--component-button-#{$color}-background-color);
+        background-color: var(--component-button-background-color);
+        color: var(--component-button-#{$color}-background-color);
+        .icon__svg {
+          fill: var(--component-button-#{$color}-background-color);
+        }
       }
     }
   }

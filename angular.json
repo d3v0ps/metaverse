@@ -1466,6 +1466,38 @@
                 "command": "npx electron-builder --linux -c apps/portal/electron-builder.json --dir"
               }
             ]
+          },
+          "configurations": {
+            "linux": {
+              "commands": [
+                {
+                  "command": "tsc -p apps/portal/tsconfig.electron.json"
+                },
+                {
+                  "command": "npx electron-builder --linux -c apps/portal/electron-builder.json --dir"
+                }
+              ]
+            },
+            "windows": {
+              "commands": [
+                {
+                  "command": "tsc -p apps/portal/tsconfig.electron.json"
+                },
+                {
+                  "command": "npx electron-builder --win -c apps/portal/electron-builder.json --dir"
+                }
+              ]
+            },
+            "mac": {
+              "commands": [
+                {
+                  "command": "tsc -p apps/portal/tsconfig.electron.json"
+                },
+                {
+                  "command": "npx electron-builder --mac -c apps/portal/electron-builder.json --dir"
+                }
+              ]
+            }
           }
         },
         "electron-serve": {
@@ -1617,6 +1649,9 @@
               },
               {
                 "command": "npx style-dictionary build -c libs/web-components/src/lib/themes/bubbles/config.js"
+              },
+              {
+                "command": "npx style-dictionary build -c libs/web-components/src/lib/themes/metaverse/config.js"
               }
             ]
           }

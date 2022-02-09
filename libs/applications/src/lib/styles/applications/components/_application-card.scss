@@ -1,14 +1,94 @@
-
+@use 'web-components/abstracts/mixins/materials' as materials;
 
 :root {
   --component-application-card-shadow-outset: 8px 8px 16px 0 rgba(0, 0, 0, 0.25);
-  --component-application-card-shadow-inset-primary:  -8px -8px 16px 0 rgba(0, 0, 0, 0.25);
-  --component-application-card-shadow-inset-secondary:  8px 8px 16px 0 rgba(255, 255, 255, 0.2);
+  --component-application-card-shadow-inset-primary: -8px -8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-application-card-shadow-inset-secondary: 8px 8px 16px 0
+    rgba(255, 255, 255, 0.2);
+}
+
+.application-label {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  .application-icon .icon__svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+}
+
+.application-icon {
+  @include materials.clay;
+  &--background {
+    background-color: var(--color-base-light-medium);
+  }
+  padding: 0.2rem;
+  .icon__svg {
+    fill: var(---component-application-card-font-color, #fff);
+    filter: drop-shadow(3px 3px 2px rgb(0 0 0 / 0.4));
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+.application-content {
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.application-header {
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: row;
+
+  .application-content {
+    flex-direction: column;
+  }
+}
+
+.application-title {
+  margin-bottom: 0.5rem;
+
+  &__name {
+    margin-bottom: 0;
+    font-size: 100%;
+  }
+
+  &__author {
+    margin: 0;
+    font-weight: 300;
+  }
+}
+
+.application-select {
+  width: 100%;
+  .ng-dropdown-panel-items > div {
+    // display: grid;
+    // grid-template-columns: 1fr 1fr 1fr 1fr;
+    // gap: 2rem;
+    // padding: 2rem;
+    display: flex;
+    grid-gap: 2rem;
+    gap: 2rem;
+    padding: 0.5rem;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+
+    .ng-option {
+      @include materials.clay;
+    }
+
+    .application-option {
+      padding: 0;
+    }
+  }
 }
 
 .application-card {
   border-radius: 10px;
-  box-shadow: var(--component-application-card-shadow-outset), inset var(--component-application-card-shadow-inset-primary), inset var(--component-application-card-shadow-inset-secondary);
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -18,7 +98,7 @@
   padding: 1rem;
   cursor: pointer;
 
-  color: var(---component-application-card-font-color, #fff);
+  // color: var(--component-application-card-font-color, #fff);
 
   &:hover {
     filter: brightness(1.1);
@@ -29,6 +109,12 @@
     }
   }
 
+  &--shadow {
+    box-shadow: var(--component-application-card-shadow-outset),
+      inset var(--component-application-card-shadow-inset-primary),
+      inset var(--component-application-card-shadow-inset-secondary);
+  }
+
   &--is-not-supported {
     filter: brightness(90%);
   }
@@ -37,41 +123,18 @@
     filter: brightness(70%);
   }
 
-  .application-icon {
-    padding: 0 0.5rem;
-
-    .icon__svg {
-      fill: var(---component-application-card-font-color, #fff);
-      filter: drop-shadow(3px 3px 2px rgb(0 0 0 / 0.4));
-      width: 64px;
-      height: 64px;
+  &--outline {
+    .application-icon {
+      padding: 0.4rem 0.4rem;
+      background: var(--color-base-light-dark);
+      box-shadow: var(--component-application-card-shadow-outset),
+        inset var(--component-application-card-shadow-inset-primary),
+        inset var(--component-application-card-shadow-inset-secondary);
+      border-radius: 20%;
     }
   }
 
-  .application-header {
-    padding: 0 0.5rem;
-    display: flex;
-    flex-direction: row;
-  }
-
-  .application-content {
-    padding: 0 0.5rem;
-    display: flex;
-    flex-direction: row;
-  }
-
-  .application-title {
-    margin-bottom: 0.5rem;
-
-    &__name {
-      margin-bottom: 0;
-      font-size: 100%;
-    }
-
-    &__author {
-      margin: 0;
-      font-weight: 300;
-    }
+  .application-card-footer {
   }
 
   .play-icon {
@@ -82,16 +145,21 @@
     &:hover {
       filter: brightness(1.1);
       .icon__svg {
-        fill: var(---component-application-play-hover-icon-color, var(--color-base-primary-light));
+        fill: var(
+          ---component-application-play-hover-icon-color,
+          var(--color-base-primary-light)
+        );
       }
     }
     .icon__svg {
-      fill: var(---component-application-play-icon-color, var(--color-base-primary-darker));
+      fill: var(
+        ---component-application-play-icon-color,
+        var(--color-base-primary-darker)
+      );
       filter: drop-shadow(3px 3px 2px rgb(0 0 0 / 0.4));
       width: 5rem;
       height: 5rem;
     }
-
   }
 
   .application-description {

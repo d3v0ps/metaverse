@@ -1,0 +1,129 @@
+color:
+  base:
+    primary:
+      lightest:
+        value: '#c7a4ff'
+      lighter:
+        value: '#c7a4ff'
+      light:
+        value: '#c7a4ff'
+      medium:
+        value: '#9575cd'
+      dark:
+        value: '#65499c'
+      darker:
+        value: '#65499c'
+      darkest:
+        value: '#65499c'
+
+    secondary:
+      lightest:
+        value: '#7534ce'
+      lighter:
+        value: '#7534ce'
+      light:
+        value: '#7534ce'
+      medium:
+        value: '#7534ce'
+      dark:
+        value: '#7534ce'
+      darker:
+        value: '#7534ce'
+      darkest:
+        value: '#7534ce'
+
+    light:
+      lightest:
+        value: '#F4FAFF'
+      lighter:
+        value: '#e6e6e6'
+      light:
+        value: '#d1d1d1'
+      medium:
+        value: '#DEE7E7'
+      dark:
+        value: '#fafafa'
+      darker:
+        value: '#d5d5d5'
+      darkest:
+        value: '#f1f1f1'
+
+    dark:
+      lightest:
+        value: '#707070'
+      lighter:
+        value: '#606060'
+      light:
+        value: '#505050'
+      medium:
+        value: '#404040'
+      dark:
+        value: '#303030'
+      darker:
+        value: '#202020'
+      darkest:
+        value: '#101010'
+
+    success:
+      lightest:
+        value: '#f9fbe7'
+      lighter:
+        value: '#f0f4c3'
+      light:
+        value: '#dcedc8'
+      medium:
+        value: '#4caf50'
+      dark:
+        value: '#43a047'
+      darker:
+        value: '#388e3c'
+      darkest:
+        value: '#2e7d32'
+
+    warning:
+      lightest:
+        value: '#fff9c4'
+      lighter:
+        value: '#ffecb3'
+      light:
+        value: '#ffcc80'
+      medium:
+        value: '#ff9800'
+      dark:
+        value: '#fb8c00'
+      darker:
+        value: '#f57c00'
+      darkest:
+        value: '#ef6c00'
+
+    danger:
+      lightest:
+        value: '#fcebea'
+      lighter:
+        value: '#f8bbd0'
+      light:
+        value: '#ef9a9a'
+      medium:
+        value: '#f44336'
+      dark:
+        value: '#e53935'
+      darker:
+        value: '#d32f2f'
+      darkest:
+        value: '#c62828'
+
+    info:
+      lightest:
+        value: '#ede7f6'
+      lighter:
+        value: '#e3f2fd'
+      light:
+        value: '#bbdefb'
+      medium:
+        value: '#2196f3'
+      dark:
+        value: '#1976d2'
+      darker:
+        value: '#1565c0'
+      darkest:
+        value: '#0d47a1'

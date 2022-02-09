@@ -48,25 +48,107 @@ export const userApplications: UserApplicationDocType[] = [
     },
   },
   {
-    id: 'com.central-factory.player',
-    name: 'Application Player',
+    id: 'com.central-factory.start',
+    name: 'Start',
     description:
       'Access to many local and hosted web applications. Applications can be loaded through a webview or through a webpack module federation.',
-    startUrl: 'play',
+    startUrl: 'start',
     icons: [
       {
-        src: 'assets/icons/mdi/view-grid.svg',
+        src: 'assets/icons/mdi/flare.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
     ],
     shortcuts: [
       {
-        name: 'Application Player',
-        url: '/play',
+        name: 'Start',
+        url: '/start',
         icons: [
           {
-            src: 'assets/icons/mdi/view-grid.svg',
+            src: 'assets/icons/mdi/flare.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.central-factory',
+        name: 'Central Factory',
+      },
+      internal: true,
+      permissions: [
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Read,
+          target: 'userapplications',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Write,
+          target: 'userapplications',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Delete,
+          target: 'userapplications',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Read,
+          target: 'storeapplications',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Write,
+          target: 'storeapplications',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Delete,
+          target: 'storeapplications',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Read,
+          target: 'usertopics',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Write,
+          target: 'usertopics',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Delete,
+          target: 'usertopics',
+        },
+      ],
+      sidebarShortcuts: ['Start'],
+    },
+  },
+  {
+    id: 'com.central-factory.portals',
+    name: 'Portals',
+    description:
+      'Access to many local and hosted web applications. Applications can be loaded through a webview or through a webpack module federation.',
+    startUrl: 'portals',
+    icons: [
+      {
+        src: 'assets/icons/mdi/web-box.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Portals',
+        url: '/portals',
+        icons: [
+          {
+            src: 'assets/icons/mdi/web-box.svg',
             sizes: '512x512',
             type: 'image/svg+xml',
           },
@@ -111,7 +193,6 @@ export const userApplications: UserApplicationDocType[] = [
           target: 'storeapplications',
         },
       ],
-      sidebarShortcuts: ['Application Player'],
     },
   },
   {

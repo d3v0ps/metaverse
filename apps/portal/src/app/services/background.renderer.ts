@@ -27,6 +27,7 @@ export class BackgroundRenderer {
   private renderProcessRunning = false;
   private renderTimeout?: number;
   private currentTheme?: string;
+  private textColor = '#22b455';
 
   private themeChangeSubscription?: Subscription;
 
@@ -86,6 +87,12 @@ export class BackgroundRenderer {
 
     switch (name) {
       case 'Matrix':
+        this.textColor = '#22b455';
+        application.classList.add('application--no-background-color');
+        resizeObserver.observe(document.documentElement);
+        break;
+      case 'Metaverse':
+        this.textColor = '#9575cd';
         application.classList.add('application--no-background-color');
         resizeObserver.observe(document.documentElement);
         break;
@@ -156,7 +163,7 @@ export class BackgroundRenderer {
     // pick a font slightly smaller than the tile size
     ctx.font = tileSize - 2 + 'px monospace';
     // ctx.fillStyle = 'rgb( 0 , 255 , 0 )';
-    ctx.fillStyle = '#22b455';
+    ctx.fillStyle = this.textColor;
 
     for (let i = 0; i < columns.length; ++i) {
       // pick a random ascii character (change the 94 to a higher number to include more characters)

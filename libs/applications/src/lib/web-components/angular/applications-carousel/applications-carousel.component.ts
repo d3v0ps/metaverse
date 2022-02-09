@@ -21,23 +21,74 @@ import { Application } from '@central-factory/applications/models/application';
       >
         <div cfBlock="drag-placeholder" *cdkDragPlaceholder></div>
         <cf-application-card
+          [cardStyle]="cardStyle"
+          [shadow]="shadow"
+          [showDescription]="showDescription"
+          [showInstallButton]="
+            showInstallButton &&
+            !isInstalled(application) &&
+            isInstallable(application)
+          "
+          [showUninstallButton]="
+            showUninstallButton && isInstalled(application)
+          "
+          [showPlayButton]="showPlayButton && isInstalled(application)"
+          [outline]="outline"
           [application]="application"
           (applicationClick)="applicationCardClick.emit(application)"
           (playClick)="applicationPlayClick.emit(application)"
           (starClick)="applicationStarClick.emit(application)"
+          (installClick)="applicationInstallClick.emit(application)"
         ></cf-application-card>
       </div>
     </div>
   `,
 })
 export class ApplicationsCarouselComponent {
+  @Input() outline = false;
+  @Input() shadow = true;
+  @Input() showDescription = true;
+  @Input() showInstallButton = true;
+  @Input() showPlayButton = true;
+  @Input() showUninstallButton = true;
+  @Input() cardStyle = {
+    width: '300px',
+  };
+
   @Input() applications: Application[] = [];
+  @Input() installableApplications?: Application[] = [];
+  @Input() installedApplications?: Application[] = [];
   @Input() dropListConnectedTo?: CdkDropList<any>[];
 
   @Output() applicationCardClick = new EventEmitter<Application>();
   @Output() applicationPlayClick = new EventEmitter<Application>();
   @Output() applicationStarClick = new EventEmitter<Application>();
+  @Output() applicationInstallClick = new EventEmitter<Application>();
   @Output() applicationCardDrop = new EventEmitter<
     CdkDragDrop<Application[]>
   >();
+
+  isInstallable(application: Application) {
+    if (
+      !this.installableApplications ||
+      this.installableApplications.length === 0
+    ) {
+      return false;
+    }
+
+    return this.installableApplications.some(
+      (app) => app.id === application.id
+    );
+  }
+
+  isInstalled(application: Application) {
+    if (
+      !this.installedApplications ||
+      this.installedApplications.length === 0
+    ) {
+      return false;
+    }
+
+    return this.installedApplications.some((app) => app.id === application.id);
+  }
 }

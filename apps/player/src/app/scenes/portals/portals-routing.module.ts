@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PlayScene } from './play.scene';
+import { PortalsScene } from './portals.scene';
 
 export const routes: Routes = [
   {
     path: '',
-    component: PlayScene,
+    component: PortalsScene,
   },
 ];
 
@@ -13,4 +13,4 @@ export const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class PlayRoutingModule {}
+export class PortalsRoutingModule {}

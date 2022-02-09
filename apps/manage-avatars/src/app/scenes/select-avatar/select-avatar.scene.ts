@@ -55,7 +55,7 @@ export class SelectAvatarScene {
   public onAvatarClick(avatar: Avatar) {
     this.selectedAvatarState
       .selectAvatar(avatar)
-      .pipe(tap(() => this.router.navigate(['/play'])))
+      .pipe(tap(() => this.router.navigate(['/start'])))
       .subscribe();
   }
 

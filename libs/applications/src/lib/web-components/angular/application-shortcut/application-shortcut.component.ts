@@ -32,7 +32,10 @@ export type ApplicationShortcutView = {
           'background-color': theme === 'application' ? view.color : ''
         }"
       >
-        <ng-container [ngTemplateOutlet]="keyboardShortcut"></ng-container>
+        <ng-container
+          *ngIf="showKeyboardShortcut"
+          [ngTemplateOutlet]="keyboardShortcut"
+        ></ng-container>
         <cf-svg-icon
           *ngIf="view.icon && showShortcutIcon"
           [src]="view.icon"
@@ -60,6 +63,7 @@ export class ApplicationShortcutComponent {
   @Input() theme = '';
   @Input() showShortcutIcon = true;
   @Input() showShortcutLabel = true;
+  @Input() showKeyboardShortcut = false;
   @Input() shortcutIndex = 0;
 
   @Output() shortcutClick = new EventEmitter<ApplicationShortcutView>();

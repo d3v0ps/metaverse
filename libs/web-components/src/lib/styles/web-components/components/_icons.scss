@@ -1,0 +1,20 @@
+@use '../abstracts/variables/colors' as colors;
+
+.icon {
+  &__svg {
+    fill: var(--component-scene-content-color);
+  }
+}
+
+@each $color in colors.$color-variations {
+  .icon {
+    &--#{$color} {
+      .icon__svg {
+        fill: var(
+          --component-text-#{$color}-color,
+          var(--color-base-#{$color}-medium)
+        );
+      }
+    }
+  }
+}

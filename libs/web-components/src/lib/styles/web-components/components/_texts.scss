@@ -1,13 +1,50 @@
-
 @use '../abstracts/variables/colors' as colors;
 
+.heading {
+  display: flex;
+  width: 100%;
+  margin-top: 0.5rem;
+  &__icon {
+    .icon__svg {
+      fill: var(--component-text-color, var(--color-base-light-medium));
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}
+
+h2.heading {
+  .heading__icon {
+    .icon__svg {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+  }
+}
+
+.text {
+  margin: 0;
+  &__icon {
+    .icon__svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}
+
 @each $color in colors.$color-variations {
-  .text {
-    margin: 0;
-    &.text--#{$color} {
-      color: var(--component-text-#{$color}-color, var(--color-base-#{$color}-medium));
+  .text,
+  .heading {
+    &--#{$color} {
+      color: var(
+        --component-text-#{$color}-color,
+        var(--color-base-#{$color}-medium)
+      );
       .icon__svg {
-        fill: var(--component-text-#{$color}-color, var(--color-base-#{$color}-medium));
+        fill: var(
+          --component-text-#{$color}-color,
+          var(--color-base-#{$color}-medium)
+        );
       }
     }
   }

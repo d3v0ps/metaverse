@@ -48,7 +48,7 @@ export enum SceneContentAnimationState {
         selectedAvatar: selectedAvatar$ | async
       } as data"
     >
-      <div cfBlock="scene">
+      <div cfBlock="scene" cfMod="layout">
         <div
           cfElem="body"
           [cfMod]="{

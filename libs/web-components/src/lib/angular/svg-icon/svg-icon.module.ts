@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
+import { BemModule } from '../bem/bem.module';
 import { SVG_ICON_REGISTRY_PROVIDER } from './svg-icon-registry.service';
 import { SvgIconComponent } from './svg-icon.component';
 import { SvgHttpLoader, SvgLoader } from './svg-loader';
@@ -9,7 +10,7 @@ export interface SvgIconConfig {
 }
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, BemModule],
   declarations: [SvgIconComponent],
   exports: [SvgIconComponent],
 })

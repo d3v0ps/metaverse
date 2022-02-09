@@ -1,9 +1,10 @@
+@use '../abstracts/mixins/materials' as materials;
 
 .card {
+  @include materials.clay;
   background: var(--component-card-background-color);
   border-radius: 10px;
   padding: 3px;
-
 
   display: inline-block;
   overflow: hidden;
@@ -11,7 +12,6 @@
   width: 100%;
 
   img {
-
     pointer-events: none;
     position: absolute;
     width: 100%;
@@ -26,7 +26,8 @@
     background-size: cover;
   }
 
-  &__header, &__footer {
+  &__header,
+  &__footer {
     padding: 0.25rem;
     font-weight: bold;
     text-align: center;
@@ -50,11 +51,8 @@
     margin: 0;
   }
 
-
-
   &__icon .icon__svg {
     fill: var(--component-card-icon-color);
     // fill: var(--color-secondary-darkest);
   }
-
 }

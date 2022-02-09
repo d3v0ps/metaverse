@@ -46,10 +46,18 @@ export const routes: Routes = [
         canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
       },
       {
-        path: 'play',
+        path: 'start',
         loadChildren: () =>
-          import('apps/player/src/app/scenes/play/play.module').then(
-            (m) => m.PlayModule
+          import('apps/player/src/app/scenes/start/start.module').then(
+            (m) => m.StartModule
+          ),
+        canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
+      },
+      {
+        path: 'portals',
+        loadChildren: () =>
+          import('apps/player/src/app/scenes/portals/portals.module').then(
+            (m) => m.PortalsModule
           ),
         canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
       },
@@ -85,7 +93,7 @@ export const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'play',
+        redirectTo: 'start',
         pathMatch: 'full',
       },
     ],

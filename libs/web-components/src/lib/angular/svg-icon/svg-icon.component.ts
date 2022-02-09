@@ -29,7 +29,7 @@ class SvgIconHelper {
 
 @Component({
   selector: 'cf-svg-icon',
-  template: '<ng-content></ng-content>',
+  template: ` <ng-content></ng-content> `,
 })
 export class SvgIconComponent implements OnInit, OnDestroy, OnChanges, DoCheck {
   @Input() src!: string;

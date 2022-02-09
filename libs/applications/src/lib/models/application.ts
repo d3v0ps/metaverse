@@ -23,6 +23,12 @@ export type ApplicationScreenshot = {
   label: string;
 };
 
+export type ApplicationAuthor = {
+  id: string;
+  name: string;
+  icon?: string;
+};
+
 export enum ColorVariation {
   Primary = 'primary',
   Secondary = 'secondary',
@@ -37,10 +43,7 @@ export enum ColorVariation {
 /** Non Web Manifest standard included properties */
 export type ApplicationAdditionalProperties = {
   originalManifest?: string;
-  author: {
-    id: string;
-    name: string;
-  };
+  author: ApplicationAuthor;
   renderingType?: ApplicationRenderingType;
   starred?: boolean;
   internal?: boolean;

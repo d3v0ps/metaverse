@@ -43,11 +43,11 @@ export class StarredApplicationsState {
           forkJoin([
             this.entityManager.getRepository<UserApplicationDocType>(
               'userapplications',
-              'com.central-factory.player'
+              'com.central-factory.start'
             ),
             this.entityManager.getRepository<StoreApplicationDocType>(
               'storeapplications',
-              'com.central-factory.player'
+              'com.central-factory.start'
             ),
           ])
         ),

@@ -13,4 +13,8 @@ export const themes: Theme[] = [
     name: 'Bubbles',
     path: 'assets/themes/bubbles/variables.css',
   },
+  {
+    name: 'Metaverse',
+    path: 'assets/themes/metaverse/variables.css',
+  },
 ];

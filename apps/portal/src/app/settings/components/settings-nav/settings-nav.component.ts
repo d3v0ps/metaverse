@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     <ul>
       <li>
         <a
-          class="button button"
+          class="button"
           routerLink="/settings/customization"
           routerLinkActive="button--primary"
         >

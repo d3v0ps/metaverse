@@ -20,7 +20,7 @@ export class UserApplicationsState {
           forkJoin([
             this.entityManager.getRepository<UserApplicationDocType>(
               'userapplications',
-              'com.central-factory.player'
+              'com.central-factory.start'
             ),
           ])
         ),

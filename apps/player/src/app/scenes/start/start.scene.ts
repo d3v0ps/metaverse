@@ -22,6 +22,9 @@ import {
 import { RecentlyOpenedApplicationsState } from '@central-factory/applications/states/recently-opened-applications.state';
 import { SelectedApplicationState } from '@central-factory/applications/states/selected-application.state';
 import { StarredApplicationsState } from '@central-factory/applications/states/starred-applications.state';
+import { StoreApplicationsState } from '@central-factory/applications/states/store-applications.state';
+import { UserApplicationsState } from '@central-factory/applications/states/user-applications.state';
+import { UserTopicsState } from '@central-factory/applications/states/user-topics.state';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
 import { SidebarComponent } from '@central-factory/web-components/angular/sidebar/sidebar.component';
 import { isElectron } from '@central-factory/web-components/shared/platform/desktop/is-electron';
@@ -38,13 +41,13 @@ export interface ApplicationBanners {
 
 /** Play main scene */
 @Component({
-  selector: 'cf-play',
+  selector: 'cf-start',
   template: `
     <div
       cfBlock="scene-content"
       [cfMod]="{
         'no-padding': true,
-        play: true,
+        start: true,
         'application-opened': openedApplication ? true : false
       }"
     >
@@ -64,6 +67,7 @@ export interface ApplicationBanners {
             width: 90%;
             margin: 0 auto;
           "
+            *ngIf="false"
           >
             <cf-application-sheet
               #applicationSheet
@@ -109,22 +113,81 @@ export interface ApplicationBanners {
             ></cf-application-view>
           </ng-container>
 
-          <div class="top-section">
-            <cf-svg-icon
-              src="assets/icons/mdi/cog.svg"
-              [svgClass]="'top-section__icon'"
-              (click)="onManageApplicationsClick()"
-            ></cf-svg-icon>
-          </div>
-
           <ng-container *ngIf="!openedApplication">
             <div style="padding: 2rem">
+              <div class="form-buttons" style="margin: -15px;">
+                <button
+                  *ngIf="topMenuIsOpen"
+                  cfBlock="button"
+                  cfMod="has-icon"
+                  (click)="onAddPortalsClick()"
+                >
+                  <cf-svg-icon
+                    cfElem="icon"
+                    src="assets/icons/mdi/web-plus.svg"
+                  ></cf-svg-icon>
+                  Add more Portals
+                </button>
+                <button
+                  *ngIf="topMenuIsOpen"
+                  cfBlock="button"
+                  cfMod="has-icon"
+                  (click)="onManageApplicationsClick()"
+                >
+                  <cf-svg-icon
+                    src="assets/icons/mdi/cog.svg"
+                    [svgClass]="'top-section__icon'"
+                  ></cf-svg-icon>
+                  Remove Apps
+                </button>
+                <button
+                  *ngIf="topMenuIsOpen"
+                  cfBlock="button"
+                  cfMod="has-icon"
+                  (click)="editMode = !editMode"
+                >
+                  <cf-svg-icon
+                    [src]="
+                      editMode
+                        ? 'assets/icons/mdi/check.svg'
+                        : 'assets/icons/mdi/application-edit.svg'
+                    "
+                    [svgClass]="'top-section__icon'"
+                  ></cf-svg-icon>
+                  {{ editMode ? 'Save' : 'Edit' }} Topics
+                </button>
+                <button
+                  *ngIf="topMenuIsOpen"
+                  cfBlock="button"
+                  cfMod="has-icon"
+                  (click)="onAddTopicClick()"
+                >
+                  <cf-svg-icon
+                    src="assets/icons/mdi/plus.svg"
+                    [svgClass]="'top-section__icon'"
+                  ></cf-svg-icon>
+                  Add Topic
+                </button>
+                <button
+                  cfBlock="button"
+                  cfMod="fab"
+                  (click)="topMenuIsOpen = !topMenuIsOpen"
+                >
+                  <cf-svg-icon
+                    cfElem="icon"
+                    src="assets/icons/mdi/dots-vertical.svg"
+                  ></cf-svg-icon>
+                </button>
+              </div>
+
               <h2 cfElem="section-title">
                 Welcome back,
-                <strong class="text text--secondary">{{
+                <strong cfBlock="text" cfMod="primary">{{
                   (selectedAvatar$ | async)?.name
                 }}</strong
                 ><br />
+                It's {{ today | date: 'medium' }}
+                <br />
                 What would you like to do?
               </h2>
 
@@ -141,89 +204,19 @@ export interface ApplicationBanners {
                 </div>
               </form>
 
-              <ng-container
-                *ngIf="recentlyOpenedApplications$ | async as applications"
-              >
-                <h2 cfElem="section-title" *ngIf="applications.length > 0">
-                  Recently Opened
-                </h2>
-                <cf-applications-carousel
-                  [applications]="applications"
-                  [dropListConnectedTo]="[
-                    applicationSheet.applicationCardDropList
-                  ]"
-                  (applicationCardClick)="onApplicationCardClick($event)"
-                  (applicationPlayClick)="onApplicationCardPlayClick($event)"
-                  (applicationStarClick)="onApplicationStarClick($event)"
-                  (applicationCardDrop)="
-                    onApplicationCarouselCardDropped($event)
-                  "
-                >
-                </cf-applications-carousel>
-              </ng-container>
-
-              <ng-container
-                *ngIf="starredApplications$ | async as applications"
-              >
-                <h2 cfElem="section-title" *ngIf="applications.length > 0">
-                  Starred Applications
-                </h2>
-                <cf-applications-carousel
-                  [applications]="applications"
-                  [dropListConnectedTo]="[
-                    applicationSheet.applicationCardDropList
-                  ]"
-                  (applicationCardClick)="onApplicationCardClick($event)"
-                  (applicationPlayClick)="onApplicationCardPlayClick($event)"
-                  (applicationStarClick)="onApplicationStarClick($event)"
-                  (applicationCardDrop)="
-                    onApplicationCarouselCardDropped($event)
-                  "
-                >
-                </cf-applications-carousel>
-              </ng-container>
-
-              <ng-container
-                *ngFor="let banner of applicationBanners$ | async | keyvalue"
-              >
-                <h2
-                  cfElem="section-title"
-                  *ngIf="banner.value.applications.length > 0"
-                >
-                  {{ banner.value.bannerTitle }}
-                </h2>
-                <cf-applications-carousel
-                  [applications]="banner.value.applications"
-                  [dropListConnectedTo]="[
-                    applicationSheet.applicationCardDropList
-                  ]"
-                  (applicationCardClick)="onApplicationCardClick($event)"
-                  (applicationPlayClick)="onApplicationCardPlayClick($event)"
-                  (applicationStarClick)="onApplicationStarClick($event)"
-                  (applicationCardDrop)="
-                    onApplicationCarouselCardDropped($event)
-                  "
-                >
-                </cf-applications-carousel>
-              </ng-container>
-
-              <ng-container *ngIf="allApplications$ | async as applications">
-                <h2 cfElem="section-title" *ngIf="applications.length > 0">
-                  All Applications
-                </h2>
-                <cf-applications-carousel
-                  [applications]="applications"
-                  [dropListConnectedTo]="[
-                    applicationSheet.applicationCardDropList
-                  ]"
-                  (applicationCardClick)="onApplicationCardClick($event)"
-                  (applicationPlayClick)="onApplicationCardPlayClick($event)"
-                  (applicationStarClick)="onApplicationStarClick($event)"
-                  (applicationCardDrop)="
-                    onApplicationCarouselCardDropped($event)
-                  "
-                >
-                </cf-applications-carousel>
+              <ng-container *ngFor="let topic of userTopics$ | async">
+                <div *ngIf="!editMode">
+                  <cf-start-topic
+                    [topic]="topic"
+                    [applications]="storeAppplications$ | async"
+                  ></cf-start-topic>
+                </div>
+                <div *ngIf="editMode">
+                  <cf-topic-form
+                    [topic]="topic"
+                    [applications]="storeAppplications$ | async"
+                  ></cf-topic-form>
+                </div>
               </ng-container>
             </div>
           </ng-container>
@@ -255,20 +248,27 @@ export interface ApplicationBanners {
     `,
   ],
 })
-export class PlayScene implements OnInit, OnDestroy {
+export class StartScene implements OnInit, OnDestroy {
   @ViewChild('sidebar', { static: true }) sidebar!: SidebarComponent;
   @ViewChild('queryStringSearchInput', { static: false })
   queryStringSearchInput!: ElementRef<HTMLInputElement>;
+
+  editMode = false;
+  topMenuIsOpen = false;
+  today = new Date();
 
   searchBarForm = new FormGroup({
     queryString: new FormControl<string>(undefined),
   });
 
-  externalUserApplications$ = this.externalUserApplicationsState.applications$;
+  storeAppplications$ = this.storeApplicationsState.applications$;
+
+  externalUserApplications$ = this.userApplicationsState.applications$;
   internalUserApplications$ = this.internalUserApplicationsState.applications$;
   starredApplications$ = this.starredApplicationsState.applications$;
   recentlyOpenedApplications$ =
     this.recentlyOpenedApplicationsState.applications$;
+  userTopics$ = this.userTopicsState.topics$;
 
   applications$ = new BehaviorSubject<Application[]>([]);
   allApplications$ = new BehaviorSubject<Application[]>([]);
@@ -322,6 +322,8 @@ export class PlayScene implements OnInit, OnDestroy {
 
   constructor(
     private availableApplicationsState: AvailableApplicationsState,
+    private userApplicationsState: UserApplicationsState,
+    private storeApplicationsState: StoreApplicationsState,
     private externalUserApplicationsState: ExternalUserApplicationsState,
     private internalUserApplicationsState: InternalUserApplicationsState,
     private recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState,
@@ -329,7 +331,8 @@ export class PlayScene implements OnInit, OnDestroy {
     private router: Router,
     private selectedAvatarState: SelectedAvatarState,
     private selectedApplicationState: SelectedApplicationState,
-    private installApplicationsState: InstallApplicationsState
+    private installApplicationsState: InstallApplicationsState,
+    private userTopicsState: UserTopicsState
   ) {}
 
   ngOnInit() {
@@ -369,6 +372,14 @@ export class PlayScene implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  onAddTopicClick() {
+    console.log('add topic');
+  }
+
+  onAddPortalsClick() {
+    this.router.navigate(['/portals']);
   }
 
   onApplicationCloseClick() {

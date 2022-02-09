@@ -12,38 +12,40 @@ import { TabComponent } from './tab.component';
 @Component({
   selector: 'cf-tabset',
   template: `
-    <ul
-      cfBlock="tabset"
-      [class.disable-style]="disableStyle"
-      [ngClass]="customTabsetClass"
-    >
-      <li
-        *ngFor="let tab of tabs"
-        (click)="selectTab(tab)"
-        cfBlock="tab"
-        [cfMod]="[
-          tab.active ? 'active' : undefined,
-          tab.disabled ? 'disabled' : undefined,
-          theme
-        ]"
-        class="button"
-        [ngClass]="{
-          'button--has-icon': tab.icon
-        }"
+    <div cfBlock="tabset-container" [cfMod]="alignment">
+      <ul
+        cfBlock="tabset"
+        [class.disable-style]="disableStyle"
+        [ngClass]="customTabsetClass"
       >
-        <cf-svg-icon
-          *ngIf="tab.icon"
-          [src]="tab.icon"
-          class="button__icon"
-        ></cf-svg-icon>
+        <li
+          *ngFor="let tab of tabs"
+          (click)="selectTab(tab)"
+          cfBlock="tab"
+          [cfMod]="[
+            tab.active ? 'active' : undefined,
+            tab.disabled ? 'disabled' : undefined,
+            theme
+          ]"
+          class="button"
+          [ngClass]="{
+            'button--has-icon': tab.icon
+          }"
+        >
+          <cf-svg-icon
+            *ngIf="tab.icon"
+            [src]="tab.icon"
+            class="button__icon"
+          ></cf-svg-icon>
 
-        <p class="button__label">
-          {{ tab.title }}
-        </p>
-      </li>
-    </ul>
-    <div class="tabset-content" [ngClass]="customContentClass">
-      <ng-content></ng-content>
+          <p class="button__label">
+            {{ tab.title }}
+          </p>
+        </li>
+      </ul>
+      <div class="tabset-content" [ngClass]="customContentClass">
+        <ng-content></ng-content>
+      </div>
     </div>
   `,
 })
@@ -55,6 +57,7 @@ export class TabsetComponent implements AfterContentInit {
   @Input() public customTabsetClass = '';
   @Input() public customContentClass = '';
   @Input() public theme?: string;
+  @Input() public alignment: 'horizontal' | 'vertical' = 'horizontal';
 
   @Output() public selectedTabChange = new EventEmitter();
 
