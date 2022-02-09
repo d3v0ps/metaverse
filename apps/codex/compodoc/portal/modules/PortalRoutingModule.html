@@ -121,10 +121,18 @@ export const routes: Routes &#x3D; [
         canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
       },
       {
-        path: &#x27;play&#x27;,
+        path: &#x27;start&#x27;,
         loadChildren: () &#x3D;&gt;
-          &quot;import(&#x27;apps/player/src/app/scenes/play/play.module&#x27;).then(\
-            (m) &#x3D;&gt; m.PlayModule\
+          &quot;import(&#x27;apps/player/src/app/scenes/start/start.module&#x27;).then(\
+            (m) &#x3D;&gt; m.StartModule\
+          )&quot;,
+        canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
+      },
+      {
+        path: &#x27;portals&#x27;,
+        loadChildren: () &#x3D;&gt;
+          &quot;import(&#x27;apps/player/src/app/scenes/portals/portals.module&#x27;).then(\
+            (m) &#x3D;&gt; m.PortalsModule\
           )&quot;,
         canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
       },
@@ -160,7 +168,7 @@ export const routes: Routes &#x3D; [
       },
       {
         path: &#x27;&#x27;,
-        redirectTo: &#x27;play&#x27;,
+        redirectTo: &#x27;start&#x27;,
         pathMatch: &#x27;full&#x27;,
       },
     ],

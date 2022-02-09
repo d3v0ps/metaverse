@@ -146,6 +146,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
 import { ModuleWithProviders, NgModule, Provider } from &#x27;@angular/core&#x27;;
+import { BemModule } from &#x27;../bem/bem.module&#x27;;
 import { SVG_ICON_REGISTRY_PROVIDER } from &#x27;./svg-icon-registry.service&#x27;;
 import { SvgIconComponent } from &#x27;./svg-icon.component&#x27;;
 import { SvgHttpLoader, SvgLoader } from &#x27;./svg-loader&#x27;;
@@ -155,7 +156,7 @@ export interface SvgIconConfig {
 }
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, BemModule],
   declarations: [SvgIconComponent],
   exports: [SvgIconComponent],
 })

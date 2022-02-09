@@ -123,13 +123,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/FileUploadModule.html" data-type="entity-link" >FileUploadModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-FileUploadModule-f7cfd2d2c377bd006952c9b969596a5b"' : 'data-target="#xs-components-links-module-FileUploadModule-f7cfd2d2c377bd006952c9b969596a5b"' }>
+                                            'data-target="#components-links-module-FileUploadModule-bca94d2e21f58c06ef465c258e0f7bbe"' : 'data-target="#xs-components-links-module-FileUploadModule-bca94d2e21f58c06ef465c258e0f7bbe"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-FileUploadModule-f7cfd2d2c377bd006952c9b969596a5b"' :
-                                            'id="xs-components-links-module-FileUploadModule-f7cfd2d2c377bd006952c9b969596a5b"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-FileUploadModule-bca94d2e21f58c06ef465c258e0f7bbe"' :
+                                            'id="xs-components-links-module-FileUploadModule-bca94d2e21f58c06ef465c258e0f7bbe"' }>
                                             <li class="link">
                                                 <a href="components/FileUploadComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >FileUploadComponent</a>
                                             </li>
@@ -273,13 +273,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SvgIconModule.html" data-type="entity-link" >SvgIconModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-SvgIconModule-1f980bd228530133d116c22e8b180837"' : 'data-target="#xs-components-links-module-SvgIconModule-1f980bd228530133d116c22e8b180837"' }>
+                                            'data-target="#components-links-module-SvgIconModule-703479458291685e8140bc3591ef9ee6"' : 'data-target="#xs-components-links-module-SvgIconModule-703479458291685e8140bc3591ef9ee6"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SvgIconModule-1f980bd228530133d116c22e8b180837"' :
-                                            'id="xs-components-links-module-SvgIconModule-1f980bd228530133d116c22e8b180837"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SvgIconModule-703479458291685e8140bc3591ef9ee6"' :
+                                            'id="xs-components-links-module-SvgIconModule-703479458291685e8140bc3591ef9ee6"' }>
                                             <li class="link">
                                                 <a href="components/SvgIconComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SvgIconComponent</a>
                                             </li>

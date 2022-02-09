@@ -83,15 +83,100 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/ApplicationCardModule.html" data-type="entity-link" >ApplicationCardModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-ApplicationCardModule-e12dad03063880f677250d4afe53b8a4"' : 'data-target="#xs-components-links-module-ApplicationCardModule-e12dad03063880f677250d4afe53b8a4"' }>
+                                            'data-target="#components-links-module-ApplicationCardModule-53b098b9a3fc868fd3212cbaee769bb7"' : 'data-target="#xs-components-links-module-ApplicationCardModule-53b098b9a3fc868fd3212cbaee769bb7"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ApplicationCardModule-e12dad03063880f677250d4afe53b8a4"' :
-                                            'id="xs-components-links-module-ApplicationCardModule-e12dad03063880f677250d4afe53b8a4"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ApplicationCardModule-53b098b9a3fc868fd3212cbaee769bb7"' :
+                                            'id="xs-components-links-module-ApplicationCardModule-53b098b9a3fc868fd3212cbaee769bb7"' }>
                                             <li class="link">
                                                 <a href="components/ApplicationCardComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ApplicationCardComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/ApplicationDescriptionModule.html" data-type="entity-link" >ApplicationDescriptionModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-ApplicationDescriptionModule-a079ec5d39b27d7894b209a4d63785bd"' : 'data-target="#xs-components-links-module-ApplicationDescriptionModule-a079ec5d39b27d7894b209a4d63785bd"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ApplicationDescriptionModule-a079ec5d39b27d7894b209a4d63785bd"' :
+                                            'id="xs-components-links-module-ApplicationDescriptionModule-a079ec5d39b27d7894b209a4d63785bd"' }>
+                                            <li class="link">
+                                                <a href="components/ApplicationDescriptionComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ApplicationDescriptionComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/ApplicationFooterModule.html" data-type="entity-link" >ApplicationFooterModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-ApplicationFooterModule-71546d412d58607327b93c2aa7dbe0f7"' : 'data-target="#xs-components-links-module-ApplicationFooterModule-71546d412d58607327b93c2aa7dbe0f7"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ApplicationFooterModule-71546d412d58607327b93c2aa7dbe0f7"' :
+                                            'id="xs-components-links-module-ApplicationFooterModule-71546d412d58607327b93c2aa7dbe0f7"' }>
+                                            <li class="link">
+                                                <a href="components/ApplicationFooterComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ApplicationFooterComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/ApplicationHeaderModule.html" data-type="entity-link" >ApplicationHeaderModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-ApplicationHeaderModule-2f9d167515e7ca45237cfd597a1ad68b"' : 'data-target="#xs-components-links-module-ApplicationHeaderModule-2f9d167515e7ca45237cfd597a1ad68b"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ApplicationHeaderModule-2f9d167515e7ca45237cfd597a1ad68b"' :
+                                            'id="xs-components-links-module-ApplicationHeaderModule-2f9d167515e7ca45237cfd597a1ad68b"' }>
+                                            <li class="link">
+                                                <a href="components/ApplicationHeaderComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ApplicationHeaderComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/ApplicationIconModule.html" data-type="entity-link" >ApplicationIconModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-ApplicationIconModule-0b72f400afe0b9d6cd8a07fef36144de"' : 'data-target="#xs-components-links-module-ApplicationIconModule-0b72f400afe0b9d6cd8a07fef36144de"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ApplicationIconModule-0b72f400afe0b9d6cd8a07fef36144de"' :
+                                            'id="xs-components-links-module-ApplicationIconModule-0b72f400afe0b9d6cd8a07fef36144de"' }>
+                                            <li class="link">
+                                                <a href="components/ApplicationIconComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ApplicationIconComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/ApplicationInfoModule.html" data-type="entity-link" >ApplicationInfoModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-ApplicationInfoModule-8e3517793cf59d45429e47a3ea3ccc76"' : 'data-target="#xs-components-links-module-ApplicationInfoModule-8e3517793cf59d45429e47a3ea3ccc76"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ApplicationInfoModule-8e3517793cf59d45429e47a3ea3ccc76"' :
+                                            'id="xs-components-links-module-ApplicationInfoModule-8e3517793cf59d45429e47a3ea3ccc76"' }>
+                                            <li class="link">
+                                                <a href="components/ApplicationInfoComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ApplicationInfoComponent</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -143,6 +228,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                             'id="xs-components-links-module-ApplicationShortcutModule-1a6d346e0acf3c353ff0c23345dcfff4"' }>
                                             <li class="link">
                                                 <a href="components/ApplicationShortcutComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ApplicationShortcutComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/ApplicationsStoreModule.html" data-type="entity-link" >ApplicationsStoreModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-ApplicationsStoreModule-4cebcf4229ce135b968762e89614927f"' : 'data-target="#xs-components-links-module-ApplicationsStoreModule-4cebcf4229ce135b968762e89614927f"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ApplicationsStoreModule-4cebcf4229ce135b968762e89614927f"' :
+                                            'id="xs-components-links-module-ApplicationsStoreModule-4cebcf4229ce135b968762e89614927f"' }>
+                                            <li class="link">
+                                                <a href="components/ApplicationsStoreComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ApplicationsStoreComponent</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -234,6 +336,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                 <li class="link">
                                     <a href="injectables/UserApplicationsState.html" data-type="entity-link" >UserApplicationsState</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/UserTopicsState.html" data-type="entity-link" >UserTopicsState</a>
                                 </li>
                             </ul>
                         </li>

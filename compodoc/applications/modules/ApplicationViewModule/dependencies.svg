@@ -18,13 +18,13 @@
 <title>cluster_ApplicationViewModule_declarations</title>
 <polygon fill="none" stroke="black" points="220,-40.8 220,-92.8 414,-92.8 414,-40.8 220,-40.8"/>
 </g>
-<g id="clust4" class="cluster">
-<title>cluster_ApplicationViewModule_imports</title>
-<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 212,-92.8 212,-40.8 16,-40.8"/>
-</g>
 <g id="clust5" class="cluster">
 <title>cluster_ApplicationViewModule_exports</title>
 <polygon fill="none" stroke="black" points="116,-170.8 116,-222.8 314,-222.8 314,-170.8 116,-170.8"/>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_ApplicationViewModule_imports</title>
+<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 212,-92.8 212,-40.8 16,-40.8"/>
 </g>
 <!-- ApplicationViewComponent -->
 <g id="node1" class="node">

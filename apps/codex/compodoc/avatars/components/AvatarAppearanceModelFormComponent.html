@@ -160,16 +160,22 @@
 
         &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
           &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;appearanceFile&quot;&gt;
-            The appearance file
+            The appearance file *
           &lt;/label&gt;
           &lt;cf-file-upload
             [fileName]&#x3D;&quot;form.value.filename&quot;
             formControlName&#x3D;&quot;file&quot;
             id&#x3D;&quot;appearanceFile&quot;
-            accept&#x3D;&quot;.glb, .gltf, .fbx, .obj, .png, .jpg, .jpeg&quot;
+            [accept]&#x3D;&quot;validFormats&quot;
             (ngModelChange)&#x3D;&quot;onFileChange($event)&quot;
           &gt;
           &lt;/cf-file-upload&gt;
+          &lt;span
+            class&#x3D;&quot;form-error&quot;
+            *ngIf&#x3D;&quot;form.controls.filename?.errors?.required&quot;
+          &gt;
+            Must supply a valid file
+          &lt;/span&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -212,6 +218,15 @@
                             </li>
                             <li>
                                 <a href="#form" >form</a>
+                            </li>
+                            <li>
+                                <a href="#imageFormats" >imageFormats</a>
+                            </li>
+                            <li>
+                                <a href="#modelFormats" >modelFormats</a>
+                            </li>
+                            <li>
+                                <a href="#validFormats" >validFormats</a>
                             </li>
                         </ul>
                     </td>
@@ -287,7 +302,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:98</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:104</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -321,8 +336,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="137"
-                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:137</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="147"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:147</a></div>
                 </td>
             </tr>
 
@@ -358,8 +373,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="124"
-                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:124</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="134"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:134</a></div>
                 </td>
             </tr>
 
@@ -395,8 +410,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="142"
-                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:142</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="152"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:152</a></div>
                 </td>
             </tr>
 
@@ -472,7 +487,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:108</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:114</a></div>
                         </td>
                     </tr>
 
@@ -499,7 +514,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:122</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:132</a></div>
                         </td>
                     </tr>
 
@@ -521,7 +536,7 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>new FormGroup&lt;AvatarAppearanceModelForm&gt;({
     id: new FormControl&lt;string&gt;(uuid()),
-    filename: new FormControl&lt;string&gt;(&#x27;&#x27;),
+    filename: new FormControl&lt;string&gt;(&#x27;&#x27;, [Validators.required]),
     format: new FormControl&lt;AppearanceFormat&gt;(AppearanceFormat.Model),
     src: new FormControl&lt;string&gt;(),
     file: new FormControl&lt;File&gt;(),
@@ -530,7 +545,94 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:114</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:120</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="imageFormats"></a>
+                    <span class="name">
+                        <span ><b>imageFormats</b></span>
+                        <a href="#imageFormats"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&#x27;.png&#x27;, &#x27;.jpg&#x27;, &#x27;.jpeg&#x27;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:128</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modelFormats"></a>
+                    <span class="name">
+                        <span ><b>modelFormats</b></span>
+                        <a href="#modelFormats"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&#x27;.glb&#x27;, &#x27;.gltf&#x27;, &#x27;.fbx&#x27;, &#x27;.obj&#x27;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:129</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validFormats"></a>
+                    <span class="name">
+                        <span ><b>validFormats</b></span>
+                        <a href="#validFormats"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[...this.imageFormats, ...this.modelFormats].join(&#x27;,&#x27;)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:130</a></div>
                         </td>
                     </tr>
 
@@ -560,7 +662,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:98</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-model-form/avatar-appearance-model-form.component.ts:104</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -608,7 +710,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
-import { FormControl, FormGroup } from &#x27;@ng-stack/forms&#x27;;
+import { FormControl, FormGroup, Validators } from &#x27;@ng-stack/forms&#x27;;
 import { Subject, takeUntil, tap } from &#x27;rxjs&#x27;;
 import { v4 as uuid } from &#x27;uuid&#x27;;
 import { Appearance, AppearanceFormat } from &#x27;../../../../../models/appearance&#x27;;
@@ -686,16 +788,22 @@ export type AvatarAppearanceModelForm &#x3D; {
 
             &lt;div cfBlock&#x3D;&quot;form-group&quot;&gt;
               &lt;label cfBlock&#x3D;&quot;form-label&quot; for&#x3D;&quot;appearanceFile&quot;&gt;
-                The appearance file
+                The appearance file *
               &lt;/label&gt;
               &lt;cf-file-upload
                 [fileName]&#x3D;&quot;form.value.filename&quot;
                 formControlName&#x3D;&quot;file&quot;
                 id&#x3D;&quot;appearanceFile&quot;
-                accept&#x3D;&quot;.glb, .gltf, .fbx, .obj, .png, .jpg, .jpeg&quot;
+                [accept]&#x3D;&quot;validFormats&quot;
                 (ngModelChange)&#x3D;&quot;onFileChange($event)&quot;
               &gt;
               &lt;/cf-file-upload&gt;
+              &lt;span
+                class&#x3D;&quot;form-error&quot;
+                *ngIf&#x3D;&quot;form.controls.filename?.errors?.required&quot;
+              &gt;
+                Must supply a valid file
+              &lt;/span&gt;
             &lt;/div&gt;
           &lt;/div&gt;
         &lt;/div&gt;
@@ -722,11 +830,15 @@ export class AvatarAppearanceModelFormComponent implements OnInit, OnDestroy {
 
   form &#x3D; new FormGroup&lt;AvatarAppearanceModelForm&gt;({
     id: new FormControl&lt;string&gt;(uuid()),
-    filename: new FormControl&lt;string&gt;(&#x27;&#x27;),
+    filename: new FormControl&lt;string&gt;(&#x27;&#x27;, [Validators.required]),
     format: new FormControl&lt;AppearanceFormat&gt;(AppearanceFormat.Model),
     src: new FormControl&lt;string&gt;(),
     file: new FormControl&lt;File&gt;(),
   });
+
+  imageFormats &#x3D; [&#x27;.png&#x27;, &#x27;.jpg&#x27;, &#x27;.jpeg&#x27;];
+  modelFormats &#x3D; [&#x27;.glb&#x27;, &#x27;.gltf&#x27;, &#x27;.fbx&#x27;, &#x27;.obj&#x27;];
+  validFormats &#x3D; [...this.imageFormats, ...this.modelFormats].join(&#x27;,&#x27;);
 
   private readonly destroy$ &#x3D; new Subject&lt;void&gt;();
 
@@ -789,7 +901,7 @@ export class AvatarAppearanceModelFormComponent implements OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-model-form">  <h2 cfElem="title">Appearance</h2>  <form cfBlock="form" [formGroup]="form">    <div cfBlock="form-content">      <div cfBlock="form-group" cfMod="appearance">        <ng-container *ngIf="form.value.format && form.value.src">          <cf-avatar-appearance-card            [appearance]="{              id: form.value.id,              filename: form.value?.filename || \'\',              format: form.value.format,              src: form.value.src,              portrait: {                id: form.value.id,                filename: form.value?.filename || \'\',                format: form.value.format,                src: form.value.src              }            }"          >          </cf-avatar-appearance-card>        </ng-container>        <ng-container *ngIf="!form.value.format || !form.value.src">          <cf-avatar-appearance-card> </cf-avatar-appearance-card>        </ng-container>        <!-- div cfBlock="form-group">          <label cfBlock="form-label" for="appearanceFormat">            The Appearance file format. Only images and glb files are            supported.          </label>          <select            formControlName="format"            id="appearanceFormat"            class="form-control"          >            <option [ngValue]="null">Select an appearance format</option>            <option              *ngFor="let format of appearanceFormats"              [ngValue]="format.value"            >              {{ format.label }}            </option>          </select>        </div -->        <!-- div cfBlock="form-group">          <label cfBlock="form-label" for="appearanceSrc">            Url of the appearance file          </label>          <input            class="input"            cfBlock="form-control"            type="text"            id="appearanceSrc"            formControlName="src"            placeholder=""          />        </div -->        <div cfBlock="form-group">          <label cfBlock="form-label" for="appearanceFile">            The appearance file          </label>          <cf-file-upload            [fileName]="form.value.filename"            formControlName="file"            id="appearanceFile"            accept=".glb, .gltf, .fbx, .obj, .png, .jpg, .jpeg"            (ngModelChange)="onFileChange($event)"          >          </cf-file-upload>        </div>      </div>    </div>  </form></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-model-form">  <h2 cfElem="title">Appearance</h2>  <form cfBlock="form" [formGroup]="form">    <div cfBlock="form-content">      <div cfBlock="form-group" cfMod="appearance">        <ng-container *ngIf="form.value.format && form.value.src">          <cf-avatar-appearance-card            [appearance]="{              id: form.value.id,              filename: form.value?.filename || \'\',              format: form.value.format,              src: form.value.src,              portrait: {                id: form.value.id,                filename: form.value?.filename || \'\',                format: form.value.format,                src: form.value.src              }            }"          >          </cf-avatar-appearance-card>        </ng-container>        <ng-container *ngIf="!form.value.format || !form.value.src">          <cf-avatar-appearance-card> </cf-avatar-appearance-card>        </ng-container>        <!-- div cfBlock="form-group">          <label cfBlock="form-label" for="appearanceFormat">            The Appearance file format. Only images and glb files are            supported.          </label>          <select            formControlName="format"            id="appearanceFormat"            class="form-control"          >            <option [ngValue]="null">Select an appearance format</option>            <option              *ngFor="let format of appearanceFormats"              [ngValue]="format.value"            >              {{ format.label }}            </option>          </select>        </div -->        <!-- div cfBlock="form-group">          <label cfBlock="form-label" for="appearanceSrc">            Url of the appearance file          </label>          <input            class="input"            cfBlock="form-control"            type="text"            id="appearanceSrc"            formControlName="src"            placeholder=""          />        </div -->        <div cfBlock="form-group">          <label cfBlock="form-label" for="appearanceFile">            The appearance file *          </label>          <cf-file-upload            [fileName]="form.value.filename"            formControlName="file"            id="appearanceFile"            [accept]="validFormats"            (ngModelChange)="onFileChange($event)"          >          </cf-file-upload>          <span            class="form-error"            *ngIf="form.controls.filename?.errors?.required"          >            Must supply a valid file          </span>        </div>      </div>    </div>  </form></div></div>'
     var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarAppearanceModelFormComponent'};

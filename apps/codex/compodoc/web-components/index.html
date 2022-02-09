@@ -44,9 +44,20 @@ nx serve portal
 nx serve codex</code></pre></div><h3 id="building-themes">Building themes</h3>
 <div><pre class="line-numbers"><code class="language-sh">nx run web-components:build-themes</code></pre></div><h2 id="running-storybook">Running storybook</h2>
 <div><pre class="line-numbers"><code class="language-sh">nx run &lt;module&gt;:storybook
-## Example:
+# Example:
 nx run assets:storybook</code></pre></div><h2 id="running-linters--tests">Running linters &amp; tests</h2>
-<div><pre class="line-numbers"><code class="language-sh">nx run-many --target=lint --all</code></pre></div>
+<div><pre class="line-numbers"><code class="language-sh">nx run-many --target=lint --all</code></pre></div><h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="you-need-to-make-sure-that-mntdworkspacemetaversenode_moduleselectrondistchrome-sandbox-is-owned-by-root-and-has-mode-4755">You need to make sure that /mnt/d/Workspace/metaverse/node_modules/electron/dist/chrome-sandbox is owned by root and has mode 4755.</h3>
+<p>This is probably because you&#39;re running the app from a Windows Subsystem for Linux (WSL) container. The easiest way to fix this is to install the Electron npm package for Windows:</p>
+<div><pre class="line-numbers"><code class="language-sh"># Uninstall the Electron package for Linux
+npm uninstall electron
+# Change npm config platform
+export npm_config_platform=win32
+# Install the Electron package for Windows
+npm install electron
+# Unset the environment variable
+unset npm_config_platform
+# Remove the changes in the package and package-lock files</code></pre></div>
 
 
 

@@ -108,9 +108,11 @@
                 <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div cfBlock&#x3D;&quot;file-upload&quot;&gt;
   &lt;button
     cfBlock&#x3D;&quot;button&quot;
-    [cfMod]&#x3D;&quot;[theme, &#x27;full-width&#x27;]&quot;
+    [cfMod]&#x3D;&quot;[theme, &#x27;full-width&#x27;, &#x27;has-icon&#x27;]&quot;
     (click)&#x3D;&quot;fileInput.click()&quot;
   &gt;
+    &lt;cf-svg-icon elem&#x3D;&quot;icon&quot; src&#x3D;&quot;assets/icons/mdi/file-upload.svg&quot;&gt;
+    &lt;/cf-svg-icon&gt;
     {{ file ? file.name : fileName || placeholder }}
   &lt;/button&gt;
   &lt;input
@@ -249,7 +251,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:58</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:60</a></div>
                             </td>
                         </tr>
 
@@ -305,7 +307,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:33</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:35</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -326,7 +328,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:34</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:36</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -352,7 +354,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:37</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -373,7 +375,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:38</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -407,8 +409,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="46"
-                            class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:46</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:48</a></div>
                 </td>
             </tr>
 
@@ -448,8 +450,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="46"
-                            class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:46</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:48</a></div>
                 </td>
             </tr>
 
@@ -517,8 +519,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="68"
-                            class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:68</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="70"
+                            class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:70</a></div>
                 </td>
             </tr>
 
@@ -586,8 +588,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="72"
-                            class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:72</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:74</a></div>
                 </td>
             </tr>
 
@@ -655,8 +657,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="76"
-                            class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:76</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:78</a></div>
                 </td>
             </tr>
 
@@ -724,8 +726,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="62"
-                            class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:62</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:64</a></div>
                 </td>
             </tr>
 
@@ -800,7 +802,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:38</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:40</a></div>
                         </td>
                     </tr>
 
@@ -825,7 +827,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:40</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:42</a></div>
                         </td>
                     </tr>
 
@@ -850,7 +852,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:42</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:44</a></div>
                         </td>
                     </tr>
 
@@ -875,7 +877,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:44</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">libs/web-components/src/lib/angular/file-upload/file-upload.component.ts:46</a></div>
                         </td>
                     </tr>
 
@@ -897,9 +899,11 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x2
     &lt;div cfBlock&#x3D;&quot;file-upload&quot;&gt;
       &lt;button
         cfBlock&#x3D;&quot;button&quot;
-        [cfMod]&#x3D;&quot;[theme, &#x27;full-width&#x27;]&quot;
+        [cfMod]&#x3D;&quot;[theme, &#x27;full-width&#x27;, &#x27;has-icon&#x27;]&quot;
         (click)&#x3D;&quot;fileInput.click()&quot;
       &gt;
+        &lt;cf-svg-icon elem&#x3D;&quot;icon&quot; src&#x3D;&quot;assets/icons/mdi/file-upload.svg&quot;&gt;
+        &lt;/cf-svg-icon&gt;
         {{ file ? file.name : fileName || placeholder }}
       &lt;/button&gt;
       &lt;input
@@ -997,7 +1001,7 @@ export class FileUploadComponent implements ControlValueAccessor {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="file-upload">  <button    cfBlock="button"    [cfMod]="[theme, \'full-width\']"    (click)="fileInput.click()"  >    {{ file ? file.name : fileName || placeholder }}  </button>  <input    #fileInput    cfElem="input"    type="file"    [accept]="accept"    [disabled]="isDisabled"  /></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="file-upload">  <button    cfBlock="button"    [cfMod]="[theme, \'full-width\', \'has-icon\']"    (click)="fileInput.click()"  >    <cf-svg-icon elem="icon" src="assets/icons/mdi/file-upload.svg">    </cf-svg-icon>    {{ file ? file.name : fileName || placeholder }}  </button>  <input    #fileInput    cfElem="input"    type="file"    [accept]="accept"    [disabled]="isDisabled"  /></div></div>'
     var COMPONENTS = [{'name': 'ColorPickerSelectComponent', 'selector': 'cf-color-picker-select'},{'name': 'FileUploadComponent', 'selector': 'cf-file-upload'},{'name': 'NavbarComponent', 'selector': 'cf-navbar'},{'name': 'PopoverContentComponent', 'selector': 'cf-popover-content'},{'name': 'SidebarComponent', 'selector': 'cf-sidebar'},{'name': 'SidebarContainerComponent', 'selector': 'cf-sidebar-container'},{'name': 'SpinnerComponent', 'selector': 'cf-spinner'},{'name': 'SplashScreenComponent', 'selector': 'cf-splash-screen'},{'name': 'SvgIconComponent', 'selector': 'cf-svg-icon'},{'name': 'TabComponent', 'selector': 'cf-tab'},{'name': 'TabsetComponent', 'selector': 'cf-tabset'},{'name': 'WindowComponent', 'selector': 'cf-window'}];
     var DIRECTIVES = [{'name': 'BlockDirective', 'selector': '[cfBlock]'},{'name': 'CloseSidebarDirective', 'selector': '[cfCloseSidebar]'},{'name': 'DraggableDirective', 'selector': '[cfDraggable]'},{'name': 'ElemDirective', 'selector': '[cfElem]'},{'name': 'ModDirective', 'selector': '[cfMod]'},{'name': 'PopoverDirective', 'selector': '[cfPopover]'},{'name': 'ResizableDirective', 'selector': '[cfResizable]'}];
     var ACTUAL_COMPONENT = {'name': 'FileUploadComponent'};

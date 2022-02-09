@@ -66,6 +66,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <li class="link">
                                     <a href="injectables/CustomizationSettingsState.html" data-type="entity-link" >CustomizationSettingsState</a>
                                 </li>
+                                <li class="link">
+                                    <a href="injectables/UserPreferencesState.html" data-type="entity-link" >UserPreferencesState</a>
+                                </li>
                             </ul>
                         </li>
                     <li class="chapter">

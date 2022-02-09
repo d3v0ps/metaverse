@@ -126,13 +126,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/PortalModule.html" data-type="entity-link" >PortalModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-PortalModule-becd9ff5bda58413667acb411380d01e"' : 'data-target="#xs-components-links-module-PortalModule-becd9ff5bda58413667acb411380d01e"' }>
+                                            'data-target="#components-links-module-PortalModule-1d1ced19c9f37889d6978175f482c185"' : 'data-target="#xs-components-links-module-PortalModule-1d1ced19c9f37889d6978175f482c185"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PortalModule-becd9ff5bda58413667acb411380d01e"' :
-                                            'id="xs-components-links-module-PortalModule-becd9ff5bda58413667acb411380d01e"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PortalModule-1d1ced19c9f37889d6978175f482c185"' :
+                                            'id="xs-components-links-module-PortalModule-1d1ced19c9f37889d6978175f482c185"' }>
                                             <li class="link">
                                                 <a href="components/PortalRoot.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >PortalRoot</a>
                                             </li>

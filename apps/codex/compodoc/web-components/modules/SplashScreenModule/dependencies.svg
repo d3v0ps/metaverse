@@ -18,13 +18,13 @@
 <title>cluster_SplashScreenModule_imports</title>
 <polygon fill="none" stroke="black" points="196,-40.8 196,-92.8 544,-92.8 544,-40.8 196,-40.8"/>
 </g>
-<g id="clust2" class="cluster">
-<title>cluster_SplashScreenModule_declarations</title>
-<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 188,-92.8 188,-40.8 16,-40.8"/>
-</g>
 <g id="clust5" class="cluster">
 <title>cluster_SplashScreenModule_exports</title>
 <polygon fill="none" stroke="black" points="230,-170.8 230,-222.8 406,-222.8 406,-170.8 230,-170.8"/>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_SplashScreenModule_declarations</title>
+<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 188,-92.8 188,-40.8 16,-40.8"/>
 </g>
 <!-- SplashScreenComponent -->
 <g id="node1" class="node">

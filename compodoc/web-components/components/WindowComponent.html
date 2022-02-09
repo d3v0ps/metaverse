@@ -108,6 +108,9 @@
 
 &lt;div
   cfBlock&#x3D;&quot;window&quot;
+  [cfMod]&#x3D;&quot;{
+    maximized: maximized
+  }&quot;
   tabindex&#x3D;&quot;-1&quot;
   role&#x3D;&quot;dialog&quot;
   #modalRoot
@@ -128,24 +131,36 @@
     (mousedown)&#x3D;&quot;initDrag($event)&quot;
     (touchstart)&#x3D;&quot;initDrag($event)&quot;
   &gt;
+    &lt;div cfElem&#x3D;&quot;controls&quot;&gt;
+      &lt;button
+        cfBlock&#x3D;&quot;button&quot;
+        [cfMod]&#x3D;&quot;[&#x27;danger&#x27;, &#x27;small&#x27;, &#x27;has-icon&#x27;, &#x27;only-icon&#x27;, &#x27;rounded&#x27;]&quot;
+        (click)&#x3D;&quot;hide()&quot;
+        #closeIcon
+      &gt;
+        &lt;cf-svg-icon
+          src&#x3D;&quot;assets/icons/mdi/close.svg&quot;
+          cfElem&#x3D;&quot;icon&quot;
+        &gt;&lt;/cf-svg-icon&gt;
+      &lt;/button&gt;
+      &lt;button
+        *ngIf&#x3D;&quot;maximizable&quot;
+        cfBlock&#x3D;&quot;button&quot;
+        [cfMod]&#x3D;&quot;[&#x27;light&#x27;, &#x27;small&#x27;, &#x27;has-icon&#x27;, &#x27;only-icon&#x27;, &#x27;rounded&#x27;]&quot;
+        (click)&#x3D;&quot;toggleMaximize($event)&quot;
+      &gt;
+        &lt;cf-svg-icon
+          [src]&#x3D;&quot;
+            maximized
+              ? &#x27;assets/icons/mdi/window-restore.svg&#x27;
+              : &#x27;assets/icons/mdi/window-maximize.svg&#x27;
+          &quot;
+          cfElem&#x3D;&quot;icon&quot;
+        &gt;&lt;/cf-svg-icon&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
     &lt;div cfElem&#x3D;&quot;title&quot;&gt;
       &lt;ng-content select&#x3D;&quot;.window-header__content&quot;&gt;&lt;/ng-content&gt;
-    &lt;/div&gt;
-    &lt;div cfElem&#x3D;&quot;controls&quot;&gt;
-      &lt;cf-svg-icon
-        *ngIf&#x3D;&quot;maximizable&quot;
-        [src]&#x3D;&quot;
-          maximized
-            ? &#x27;assets/icons/mdi/window-restore.svg&#x27;
-            : &#x27;assets/icons/mdi/window-maximize.svg&#x27;
-        &quot;
-        (click)&#x3D;&quot;toggleMaximize($event)&quot;
-      &gt;&lt;/cf-svg-icon&gt;
-      &lt;cf-svg-icon
-        #closeIcon
-        src&#x3D;&quot;assets/icons/mdi/window-close.svg&quot;
-        (click)&#x3D;&quot;hide()&quot;
-      &gt;&lt;/cf-svg-icon&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 
@@ -373,7 +388,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:101</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:116</a></div>
                             </td>
                         </tr>
 
@@ -434,7 +449,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:80</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:95</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -460,7 +475,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:79</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:94</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -486,7 +501,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:78</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:93</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -510,7 +525,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:83</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:98</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -531,7 +546,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:85</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:100</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -552,7 +567,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:82</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:97</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -573,7 +588,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:84</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:99</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -606,8 +621,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="113"
-                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:113</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="128"
+                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:128</a></div>
                 </td>
             </tr>
 
@@ -634,8 +649,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="120"
-                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:120</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:135</a></div>
                 </td>
             </tr>
 
@@ -668,8 +683,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="180"
-                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:180</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="195"
+                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:195</a></div>
                 </td>
             </tr>
 
@@ -705,8 +720,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="143"
-                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:143</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="158"
+                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:158</a></div>
                 </td>
             </tr>
 
@@ -742,8 +757,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="194"
-                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:194</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="209"
+                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:209</a></div>
                 </td>
             </tr>
 
@@ -779,8 +794,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="190"
-                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:190</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="205"
+                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:205</a></div>
                 </td>
             </tr>
 
@@ -816,8 +831,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="137"
-                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:137</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="152"
+                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:152</a></div>
                 </td>
             </tr>
 
@@ -853,8 +868,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="163"
-                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:163</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="178"
+                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:178</a></div>
                 </td>
             </tr>
 
@@ -922,8 +937,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="216"
-                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:216</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="231"
+                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:231</a></div>
                 </td>
             </tr>
 
@@ -959,8 +974,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="249"
-                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:249</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="264"
+                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:264</a></div>
                 </td>
             </tr>
 
@@ -996,8 +1011,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="105"
-                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:105</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="120"
+                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:120</a></div>
                 </td>
             </tr>
 
@@ -1040,8 +1055,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="113"
-                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:113</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="128"
+                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:128</a></div>
                 </td>
             </tr>
 
@@ -1109,8 +1124,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="172"
-                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:172</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="187"
+                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:187</a></div>
                 </td>
             </tr>
 
@@ -1185,8 +1200,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="120"
-                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:120</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:135</a></div>
                 </td>
             </tr>
 
@@ -1222,8 +1237,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="237"
-                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:237</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="252"
+                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:252</a></div>
                 </td>
             </tr>
 
@@ -1259,8 +1274,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="125"
-                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:125</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="140"
+                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:140</a></div>
                 </td>
             </tr>
 
@@ -1296,8 +1311,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="204"
-                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:204</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="219"
+                            class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:219</a></div>
                 </td>
             </tr>
 
@@ -1379,7 +1394,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:91</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:106</a></div>
                         </td>
                     </tr>
 
@@ -1405,7 +1420,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:101</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:116</a></div>
                         </td>
                     </tr>
 
@@ -1432,7 +1447,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:94</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:109</a></div>
                         </td>
                     </tr>
 
@@ -1459,7 +1474,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:95</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:110</a></div>
                         </td>
                     </tr>
 
@@ -1494,7 +1509,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:88</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:103</a></div>
                         </td>
                     </tr>
 
@@ -1529,7 +1544,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:90</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:105</a></div>
                         </td>
                     </tr>
 
@@ -1564,7 +1579,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:89</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:104</a></div>
                         </td>
                     </tr>
 
@@ -1599,7 +1614,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:87</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:102</a></div>
                         </td>
                     </tr>
 
@@ -1626,7 +1641,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:98</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:113</a></div>
                         </td>
                     </tr>
 
@@ -1653,7 +1668,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:99</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:114</a></div>
                         </td>
                     </tr>
 
@@ -1680,7 +1695,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:100</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:115</a></div>
                         </td>
                     </tr>
 
@@ -1707,7 +1722,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:97</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:112</a></div>
                         </td>
                     </tr>
 
@@ -1734,7 +1749,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:96</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:111</a></div>
                         </td>
                     </tr>
 
@@ -1761,7 +1776,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:93</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">libs/web-components/src/lib/angular/window/window.component.ts:108</a></div>
                         </td>
                     </tr>
 
@@ -1799,6 +1814,9 @@ import { ResizableEvent } from &#x27;../resizable/resizable.directive&#x27;;
 
     &lt;div
       cfBlock&#x3D;&quot;window&quot;
+      [cfMod]&#x3D;&quot;{
+        maximized: maximized
+      }&quot;
       tabindex&#x3D;&quot;-1&quot;
       role&#x3D;&quot;dialog&quot;
       #modalRoot
@@ -1819,24 +1837,36 @@ import { ResizableEvent } from &#x27;../resizable/resizable.directive&#x27;;
         (mousedown)&#x3D;&quot;initDrag($event)&quot;
         (touchstart)&#x3D;&quot;initDrag($event)&quot;
       &gt;
+        &lt;div cfElem&#x3D;&quot;controls&quot;&gt;
+          &lt;button
+            cfBlock&#x3D;&quot;button&quot;
+            [cfMod]&#x3D;&quot;[&#x27;danger&#x27;, &#x27;small&#x27;, &#x27;has-icon&#x27;, &#x27;only-icon&#x27;, &#x27;rounded&#x27;]&quot;
+            (click)&#x3D;&quot;hide()&quot;
+            #closeIcon
+          &gt;
+            &lt;cf-svg-icon
+              src&#x3D;&quot;assets/icons/mdi/close.svg&quot;
+              cfElem&#x3D;&quot;icon&quot;
+            &gt;&lt;/cf-svg-icon&gt;
+          &lt;/button&gt;
+          &lt;button
+            *ngIf&#x3D;&quot;maximizable&quot;
+            cfBlock&#x3D;&quot;button&quot;
+            [cfMod]&#x3D;&quot;[&#x27;light&#x27;, &#x27;small&#x27;, &#x27;has-icon&#x27;, &#x27;only-icon&#x27;, &#x27;rounded&#x27;]&quot;
+            (click)&#x3D;&quot;toggleMaximize($event)&quot;
+          &gt;
+            &lt;cf-svg-icon
+              [src]&#x3D;&quot;
+                maximized
+                  ? &#x27;assets/icons/mdi/window-restore.svg&#x27;
+                  : &#x27;assets/icons/mdi/window-maximize.svg&#x27;
+              &quot;
+              cfElem&#x3D;&quot;icon&quot;
+            &gt;&lt;/cf-svg-icon&gt;
+          &lt;/button&gt;
+        &lt;/div&gt;
         &lt;div cfElem&#x3D;&quot;title&quot;&gt;
           &lt;ng-content select&#x3D;&quot;.window-header__content&quot;&gt;&lt;/ng-content&gt;
-        &lt;/div&gt;
-        &lt;div cfElem&#x3D;&quot;controls&quot;&gt;
-          &lt;cf-svg-icon
-            *ngIf&#x3D;&quot;maximizable&quot;
-            [src]&#x3D;&quot;
-              maximized
-                ? &#x27;assets/icons/mdi/window-restore.svg&#x27;
-                : &#x27;assets/icons/mdi/window-maximize.svg&#x27;
-            &quot;
-            (click)&#x3D;&quot;toggleMaximize($event)&quot;
-          &gt;&lt;/cf-svg-icon&gt;
-          &lt;cf-svg-icon
-            #closeIcon
-            src&#x3D;&quot;assets/icons/mdi/window-close.svg&quot;
-            (click)&#x3D;&quot;hide()&quot;
-          &gt;&lt;/cf-svg-icon&gt;
         &lt;/div&gt;
       &lt;/div&gt;
 
@@ -2066,7 +2096,7 @@ export class WindowComponent implements AfterViewChecked {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div  cfBlock="window-overlay"  [style.display]="visible && backdrop ? \'block\' : \'none\'"></div><div  cfBlock="window"  tabindex="-1"  role="dialog"  #modalRoot  cfResizable  [south]="true"  [east]="true"  [southEast]="true"  (resizing)="onResize($event)"  cfDraggable  [dragEventTarget]="dragEventTarget"  [style.display]="visible ? \'block\' : \'none\'"  (mousedown)="moveOnTop()"  (touchstart)="moveOnTop()">  <div    cfBlock="window-header"    #modalHeader    (mousedown)="initDrag($event)"    (touchstart)="initDrag($event)"  >    <div cfElem="title">      <ng-content select=".window-header__content"></ng-content>    </div>    <div cfElem="controls">      <cf-svg-icon        *ngIf="maximizable"        [src]="          maximized            ? \'assets/icons/mdi/window-restore.svg\'            : \'assets/icons/mdi/window-maximize.svg\'        "        (click)="toggleMaximize($event)"      ></cf-svg-icon>      <cf-svg-icon        #closeIcon        src="assets/icons/mdi/window-close.svg"        (click)="hide()"      ></cf-svg-icon>    </div>  </div>  <div cfBlock="window-body" #modalBody>    <ng-content select=".window-body__content"></ng-content>  </div>  <div cfBlock="window-footer" #modalFooter>    <ng-content select=".window-footer__content"></ng-content>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div  cfBlock="window-overlay"  [style.display]="visible && backdrop ? \'block\' : \'none\'"></div><div  cfBlock="window"  [cfMod]="{    maximized: maximized  }"  tabindex="-1"  role="dialog"  #modalRoot  cfResizable  [south]="true"  [east]="true"  [southEast]="true"  (resizing)="onResize($event)"  cfDraggable  [dragEventTarget]="dragEventTarget"  [style.display]="visible ? \'block\' : \'none\'"  (mousedown)="moveOnTop()"  (touchstart)="moveOnTop()">  <div    cfBlock="window-header"    #modalHeader    (mousedown)="initDrag($event)"    (touchstart)="initDrag($event)"  >    <div cfElem="controls">      <button        cfBlock="button"        [cfMod]="[\'danger\', \'small\', \'has-icon\', \'only-icon\', \'rounded\']"        (click)="hide()"        #closeIcon      >        <cf-svg-icon          src="assets/icons/mdi/close.svg"          cfElem="icon"        ></cf-svg-icon>      </button>      <button        *ngIf="maximizable"        cfBlock="button"        [cfMod]="[\'light\', \'small\', \'has-icon\', \'only-icon\', \'rounded\']"        (click)="toggleMaximize($event)"      >        <cf-svg-icon          [src]="            maximized              ? \'assets/icons/mdi/window-restore.svg\'              : \'assets/icons/mdi/window-maximize.svg\'          "          cfElem="icon"        ></cf-svg-icon>      </button>    </div>    <div cfElem="title">      <ng-content select=".window-header__content"></ng-content>    </div>  </div>  <div cfBlock="window-body" #modalBody>    <ng-content select=".window-body__content"></ng-content>  </div>  <div cfBlock="window-footer" #modalFooter>    <ng-content select=".window-footer__content"></ng-content>  </div></div></div>'
     var COMPONENTS = [{'name': 'ColorPickerSelectComponent', 'selector': 'cf-color-picker-select'},{'name': 'FileUploadComponent', 'selector': 'cf-file-upload'},{'name': 'NavbarComponent', 'selector': 'cf-navbar'},{'name': 'PopoverContentComponent', 'selector': 'cf-popover-content'},{'name': 'SidebarComponent', 'selector': 'cf-sidebar'},{'name': 'SidebarContainerComponent', 'selector': 'cf-sidebar-container'},{'name': 'SpinnerComponent', 'selector': 'cf-spinner'},{'name': 'SplashScreenComponent', 'selector': 'cf-splash-screen'},{'name': 'SvgIconComponent', 'selector': 'cf-svg-icon'},{'name': 'TabComponent', 'selector': 'cf-tab'},{'name': 'TabsetComponent', 'selector': 'cf-tabset'},{'name': 'WindowComponent', 'selector': 'cf-window'}];
     var DIRECTIVES = [{'name': 'BlockDirective', 'selector': '[cfBlock]'},{'name': 'CloseSidebarDirective', 'selector': '[cfCloseSidebar]'},{'name': 'DraggableDirective', 'selector': '[cfDraggable]'},{'name': 'ElemDirective', 'selector': '[cfElem]'},{'name': 'ModDirective', 'selector': '[cfMod]'},{'name': 'PopoverDirective', 'selector': '[cfPopover]'},{'name': 'ResizableDirective', 'selector': '[cfResizable]'}];
     var ACTUAL_COMPONENT = {'name': 'WindowComponent'};
