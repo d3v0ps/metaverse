@@ -7,9 +7,8 @@ import { Application } from '@central-factory/applications/models/application';
     <div cfBlock="application-header">
       <cf-application-icon [iconStyle]="iconStyle" [application]="application">
       </cf-application-icon>
-      <div cfBlock="application-content">
+      <div cfBlock="application-content" *ngIf="showInfo">
         <cf-application-info
-          *ngIf="showInfo"
           [application]="application"
           [showAuthor]="showAuthor"
         ></cf-application-info>

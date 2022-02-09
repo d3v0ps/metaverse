@@ -1,5 +1,15 @@
 .topic-card {
-  .application-card {
-    padding: 0;
+  .applications-carousel {
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .applications-carousel-item {
+    margin: 0;
+    .application-card {
+      padding: 0;
+      .application-icon {
+        background: var(--color-base-light-medium);
+      }
+    }
   }
 }

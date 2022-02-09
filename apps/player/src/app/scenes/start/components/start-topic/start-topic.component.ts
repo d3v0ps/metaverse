@@ -8,7 +8,7 @@ import { Topic } from '@central-factory/applications/models/topic';
 @Component({
   selector: 'cf-start-topic',
   template: `
-    <div cfBlock="start-topic" *ngIf="topic && showTopic">
+    <div cfBlock="topic-card" *ngIf="topic && showTopic">
       <h2 cfBlock="heading" cfMod="primary">
         <cf-svg-icon
           *ngIf="topic.icon"
@@ -19,8 +19,10 @@ import { Topic } from '@central-factory/applications/models/topic';
       </h2>
       <div cfBlock="topic-content">
         <cf-applications-carousel
+          [showInfo]="false"
           [outline]="true"
           [shadow]="false"
+          [showPlayButton]="false"
           [showUninstallButton]="false"
           [showDescription]="false"
           [applications]="topicApplications"
@@ -36,7 +38,7 @@ import { Topic } from '@central-factory/applications/models/topic';
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            gap: 3rem;
+            gap: 1rem;
           "
         >
           <ng-container *ngFor="let shortcut of shortcuts">
@@ -75,8 +77,8 @@ import { Topic } from '@central-factory/applications/models/topic';
               <cf-applications-carousel
                 [outline]="true"
                 [shadow]="false"
-                [showPlayButton]="true"
                 [showDescription]="false"
+                [showPlayButton]="false"
                 [showUninstallButton]="false"
                 [applications]="item.value"
                 [installedApplications]="item.value"
@@ -94,7 +96,7 @@ import { Topic } from '@central-factory/applications/models/topic';
     `
       @use 'web-components/abstracts/mixins/materials' as materials;
 
-      .start-topic {
+      .topic-card {
         @include materials.clay;
         margin-bottom: 2rem;
         padding: 1rem;
