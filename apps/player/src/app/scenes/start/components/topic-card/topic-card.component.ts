@@ -137,33 +137,6 @@ export type ApplicationWithShortcut = {
       </div>
     </div>
   `,
-  styles: [
-    `
-      @use 'web-components/abstracts/mixins/materials' as materials;
-
-      .topic-card {
-        position: relative;
-      }
-
-      .topic-background {
-        @include materials.clay;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-      }
-
-      .topic-body {
-        @include materials.clay;
-        backdrop-filter: blur(5px);
-        margin-bottom: 2rem;
-        padding: 1rem;
-
-        &:hover {
-          backdrop-filter: blur(0px);
-        }
-      }
-    `,
-  ],
 })
 export class TopicCardComponent {
   @Input() set currentDate(date: Date) {
