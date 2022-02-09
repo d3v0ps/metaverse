@@ -4,6 +4,7 @@ import {
   ApplicationShortcut,
 } from '@central-factory/applications/models/application';
 import { Topic } from '@central-factory/applications/models/topic';
+import { ApplicationShortcutView } from '@central-factory/applications/web-components/angular/application-shortcut/application-shortcut.component';
 
 @Component({
   selector: 'cf-start-topic',
@@ -48,6 +49,7 @@ import { Topic } from '@central-factory/applications/models/topic';
             [cardStyle]="{
               width: '100%'
             }"
+            (applicationCardClick)="onApplicationCardClick($event)"
           ></cf-applications-carousel>
           <div
             cfBlock="topic-content"
@@ -63,6 +65,7 @@ import { Topic } from '@central-factory/applications/models/topic';
               <cf-application-shortcut
                 [shortcut]="shortcut.shortcut"
                 [application]="shortcut.application"
+                (shortcutClick)="onShortcutClick($event)"
               ></cf-application-shortcut>
             </ng-container>
           </div>
@@ -106,6 +109,7 @@ import { Topic } from '@central-factory/applications/models/topic';
                   [cardStyle]="{
                     width: '100%'
                   }"
+                  (applicationCardClick)="onApplicationCardClick($event)"
                 ></cf-applications-carousel>
               </div>
             </div>
@@ -142,7 +146,7 @@ import { Topic } from '@central-factory/applications/models/topic';
     `,
   ],
 })
-export class StartTopicComponent {
+export class TopicCardComponent {
   @Input() set topic(value: Topic | undefined) {
     this._topic = value;
 
@@ -235,4 +239,12 @@ export class StartTopicComponent {
 
   private _applications: Application[] = [];
   private _topic: Topic | undefined;
+
+  onApplicationCardClick(application: Application) {
+    window.open(application.startUrl, '__blank');
+  }
+
+  onShortcutClick(shortcut: ApplicationShortcutView) {
+    window.open(shortcut.url, '__blank');
+  }
 }

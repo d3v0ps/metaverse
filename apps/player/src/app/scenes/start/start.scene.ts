@@ -180,16 +180,12 @@ export interface ApplicationBanners {
                 </button>
               </div>
 
-              <h2 cfElem="section-title">
-                Welcome back,
-                <strong cfBlock="text" cfMod="primary">{{
-                  (selectedAvatar$ | async)?.name
-                }}</strong
-                ><br />
-                It's {{ today | date: 'medium' }}
-                <br />
-                What would you like to do?
-              </h2>
+              <div>
+                <cf-assistant-avatar
+                  *ngIf="selectedAvatar$ | async as selectedAvatar"
+                  [selectedAvatar]="selectedAvatar"
+                ></cf-assistant-avatar>
+              </div>
 
               <form cfBlock="form" [formGroup]="searchBarForm">
                 <div class="form-control">

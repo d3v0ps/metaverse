@@ -51,6 +51,31 @@
     background-color: #706fd3;
   }
 
+  &--start {
+    .avatar-appearance-portrait {
+      width: var(--component-avatar-overview-small-preview-width);
+      height: var(--component-avatar-overview-small-preview-height);
+      background-color: var(
+        --component-avatar-overview-small-preview-background-color
+      );
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cf-svg-icon {
+        display: contents;
+      }
+      .icon__svg {
+        width: calc(
+          var(--component-avatar-overview-small-preview-width) - 25px
+        );
+        height: calc(
+          var(--component-avatar-overview-small-preview-height) - 25px
+        );
+        fill: var(--component-scene-content-color);
+      }
+    }
+  }
+
   &--application-opened {
     background: transparent !important;
     animation: none !important;

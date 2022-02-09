@@ -40,6 +40,16 @@ import { Topic } from '@central-factory/applications/models/topic';
           formControlName="title"
         />
       </div>
+      <div cfBlock="form-control">
+        <label cfElem="label" for="background"> Background </label>
+        <input
+          cfBlock="input"
+          type="text"
+          id="background"
+          name="background"
+          formControlName="background"
+        />
+      </div>
       <div
         cfBlock="form-control"
         style="display: flex; gap: .2rem;"
@@ -183,6 +193,7 @@ export class TopicFormComponent {
     this._topic = value;
     this.form.controls.title.setValue(value?.title);
     this.form.controls.icon.setValue(value?.icon);
+    this.form.controls.background.setValue(value?.background);
   }
   get topic(): Topic | undefined {
     return this._topic;
@@ -234,6 +245,7 @@ export class TopicFormComponent {
   form = this.fb.group({
     title: this.topic?.title || '',
     icon: this.topic?.icon || '',
+    background: this.topic?.background || '',
     applications: [],
     shortcuts: [],
     categories: [],

@@ -10,11 +10,13 @@ import { ApplicationShortcutModule } from '@central-factory/applications/web-com
 import { ApplicationToolbarModule } from '@central-factory/applications/web-components/angular/application-toolbar/application-toolbar.module';
 import { ApplicationViewModule } from '@central-factory/applications/web-components/angular/application-view/application-view.module';
 import { ApplicationsCarouselModule } from '@central-factory/applications/web-components/angular/applications-carousel/applications-carousel.module';
+import { AvatarAppearancePortraitModule } from '@central-factory/avatars/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.module';
 import { BemModule } from '@central-factory/web-components/angular/bem/bem.module';
 import { SidebarModule } from '@central-factory/web-components/angular/sidebar/sidebar.module';
 import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { StartTopicComponent } from './components/start-topic/start-topic.component';
+import { AssistantAvatarModule } from './components/assistant-avatar/assistant-avatar.module';
+import { TopicCardComponent } from './components/topic-card/topic-card.component';
 import { TopicFormComponent } from './components/topic-form/topic-form.component';
 import { StartRoutingModule } from './start-routing.module';
 import { StartScene } from './start.scene';
@@ -38,8 +40,10 @@ import { StartScene } from './start.scene';
     ApplicationIconModule,
     ApplicationHeaderModule,
     ApplicationShortcutModule,
+    AvatarAppearancePortraitModule,
+    AssistantAvatarModule,
   ],
-  declarations: [StartScene, StartTopicComponent, TopicFormComponent],
+  declarations: [StartScene, TopicCardComponent, TopicFormComponent],
   exports: [StartScene],
 })
 export class StartModule {}

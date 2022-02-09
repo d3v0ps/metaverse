@@ -9,7 +9,7 @@ import { AppearancePortrait } from '../../../models/appearance';
       <img cfElem="image" *ngIf="src" [src]="src" />
       <cf-svg-icon
         *ngIf="!src && showEmptyIcon"
-        src="assets/icons/mdi/head-question.svg"
+        [src]="emptyIcon"
       ></cf-svg-icon>
     </div>
   `,
@@ -20,6 +20,7 @@ export class AvatarAppearancePortraitComponent {
       ? this.domSanitizer.bypassSecurityTrustUrl(value.src)
       : undefined;
   }
+  @Input() emptyIcon = 'assets/icons/mdi/head-question.svg';
   @Input() showEmptyIcon = false;
 
   public src?: SafeUrl;
