@@ -3,6 +3,12 @@ export type TopicTrigger = {
   rules?: any;
 };
 
+export type Media = {
+  type: 'image' | 'video' | 'audio' | 'text';
+  url: string;
+  content?: string;
+};
+
 export type Topic = {
   id: string;
   title: string;
@@ -14,6 +20,7 @@ export type Topic = {
   categories?: string[];
   shortcuts?: string[];
   triggers?: TopicTrigger[];
+  media?: Media[];
   createdAt?: string;
   updatedAt?: string;
 };

@@ -23,6 +23,9 @@ import { Application } from '@central-factory/applications/models/application';
         <cf-application-card
           [cardStyle]="cardStyle"
           [shadow]="shadow"
+          [showHeader]="showHeader"
+          [showInfo]="showInfo"
+          [showAuthor]="showAuthor"
           [showDescription]="showDescription"
           [showInstallButton]="
             showInstallButton &&
@@ -47,7 +50,10 @@ import { Application } from '@central-factory/applications/models/application';
 export class ApplicationsCarouselComponent {
   @Input() outline = false;
   @Input() shadow = true;
+  @Input() showHeader = true;
+  @Input() showInfo = true;
   @Input() showDescription = true;
+  @Input() showAuthor = true;
   @Input() showInstallButton = true;
   @Input() showPlayButton = true;
   @Input() showUninstallButton = true;

@@ -9,7 +9,7 @@ import { Application } from '@central-factory/applications/models/application';
         <h2 cfElem="name">
           {{ application?.name }}
         </h2>
-        <h4 cfElem="author">
+        <h4 cfElem="author" *ngIf="showAuthor">
           {{ application?.additionalProperties?.author?.name }}
         </h4>
       </div>
@@ -18,4 +18,5 @@ import { Application } from '@central-factory/applications/models/application';
 })
 export class ApplicationInfoComponent {
   @Input() application?: Application;
+  @Input() showAuthor = true;
 }

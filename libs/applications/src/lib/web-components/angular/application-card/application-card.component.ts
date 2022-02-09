@@ -43,9 +43,12 @@ import { Application } from '../../../models/application';
       </div>
 
       <cf-application-header
+        *ngIf="showHeader"
         [application]="application"
         [iconStyle]="iconStyle"
         [outline]="outline"
+        [showInfo]="showInfo"
+        [showAuthor]="showAuthor"
       ></cf-application-header>
 
       <div cfBlock="application-content" *ngIf="showDescription">
@@ -105,6 +108,9 @@ import { Application } from '../../../models/application';
   ],
 })
 export class ApplicationCardComponent {
+  @Input() showInfo = true;
+  @Input() showHeader = true;
+  @Input() showAuthor = true;
   @Input() showDescription = true;
   @Input() outline = false;
   @Input() shadow = true;

@@ -79,10 +79,15 @@ export const userTopics: Topic[] = [
     icon: 'assets/icons/mdi/account-network.svg',
     title: 'Coding Night',
     applications: [
-      'com.microsoft.github',
+      'com.google.search',
+      'com.ivoox.player',
       'com.spotify.player',
       'com.google.youtube',
       'com.stackexchange.overflow',
+      'com.templarian.materialdesignicons',
+      'com.brandcolors.brandcolors',
+      'com.simpleicons.simpleicons',
+      'com.discord.discord',
     ],
     shortcuts: [
       'com.microsoft.github#PullRequests',

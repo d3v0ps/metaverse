@@ -8,8 +8,8 @@ export const customization: Preference<Customization>[] = [
     key: 'settings.customization',
     value: {
       theme: {
-        name: 'Default',
-        path: 'assets/themes/default/variables.css',
+        name: 'Metaverse',
+        path: 'assets/themes/metaverse/variables.css',
       },
     },
   },

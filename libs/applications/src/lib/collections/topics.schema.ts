@@ -48,6 +48,14 @@ export const topicsSchema = {
         description: 'Shortcut',
       },
     },
+    media: {
+      type: 'array',
+      description: 'Media',
+      items: {
+        type: 'object',
+        description: 'MediaContent',
+      },
+    },
     triggers: {
       type: 'array',
       description: 'Shortcuts',

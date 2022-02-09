@@ -8,13 +8,19 @@ import { Application } from '@central-factory/applications/models/application';
       <cf-application-icon [iconStyle]="iconStyle" [application]="application">
       </cf-application-icon>
       <div cfBlock="application-content">
-        <cf-application-info [application]="application"></cf-application-info>
+        <cf-application-info
+          *ngIf="showInfo"
+          [application]="application"
+          [showAuthor]="showAuthor"
+        ></cf-application-info>
       </div>
     </div>
   `,
 })
 export class ApplicationHeaderComponent {
   @Input() application?: Application;
+  @Input() showInfo = true;
+  @Input() showAuthor = true;
   @Input() outline = false;
   @Input() iconStyle = {};
 }
