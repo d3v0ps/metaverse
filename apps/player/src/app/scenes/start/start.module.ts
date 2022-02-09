@@ -16,6 +16,7 @@ import { SidebarModule } from '@central-factory/web-components/angular/sidebar/s
 import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AssistantAvatarModule } from './components/assistant-avatar/assistant-avatar.module';
+import { MediaModule } from './components/media/media.module';
 import { TopicCardComponent } from './components/topic-card/topic-card.component';
 import { TopicFormComponent } from './components/topic-form/topic-form.component';
 import { StartRoutingModule } from './start-routing.module';
@@ -42,6 +43,7 @@ import { StartScene } from './start.scene';
     ApplicationShortcutModule,
     AvatarAppearancePortraitModule,
     AssistantAvatarModule,
+    MediaModule,
   ],
   declarations: [StartScene, TopicCardComponent, TopicFormComponent],
   exports: [StartScene],

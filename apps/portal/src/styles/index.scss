@@ -66,10 +66,10 @@
       }
       .icon__svg {
         width: calc(
-          var(--component-avatar-overview-small-preview-width) - 25px
+          var(--component-avatar-overview-small-preview-width) - 40px
         );
         height: calc(
-          var(--component-avatar-overview-small-preview-height) - 25px
+          var(--component-avatar-overview-small-preview-height) - 40px
         );
         fill: var(--component-scene-content-color);
       }

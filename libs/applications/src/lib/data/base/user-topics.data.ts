@@ -6,20 +6,86 @@ export const userTopics: Topic[] = [
     id: 'morning.routine',
     icon: 'assets/icons/mdi/weather-sunny.svg',
     title: 'Morning Routine',
+    background:
+      'https://images.unsplash.com/photo-1415750465391-51ed29b1e610?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+    themeColor: 'light',
     applications: [
       'com.ibm.weather',
       'com.feedly.feedly',
       'com.spotify.player',
       'com.google.calendar',
       'com.google.mail',
-      'com.microsoft.todo.live',
+      'com.doist.todoist',
+      'com.microsoft.github',
     ],
+    shortcuts: [
+      'com.ibm.weather#TodaysForecast',
+      'com.feedly.feedly#NewsFeed',
+      'com.spotify.player#PlayMusic',
+      'com.google.calendar#Agenda',
+      'com.doist.todoist#Today',
+    ],
+    categories: ['lifestyle', 'productivity', 'food', 'fitness', 'health'],
     triggers: [
       {
         name: 'Every morning',
         rules: {
           startTime: '06:00',
-          endTime: '09:00',
+          endTime: '09:30',
+        },
+      },
+    ],
+  },
+  {
+    id: 'meal.time',
+    icon: 'assets/icons/mdi/silverware.svg',
+    title: 'Meal Time',
+    background:
+      'https://images.unsplash.com/photo-1565895405138-6c3a1555da6a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+    themeColor: 'light',
+    applications: [
+      'com.fitbit.fitbit',
+      'com.uber.eats',
+      'com.glovo.glovo',
+      'com.justeat.justeat',
+      'com.burgerking.burgerking',
+    ],
+    shortcuts: [],
+    categories: ['food', 'health'],
+    triggers: [
+      {
+        name: 'Breakfast',
+        rules: {
+          startTime: '06:00',
+          endTime: '8:00',
+        },
+      },
+      {
+        name: 'Coffee',
+        rules: {
+          startTime: '11:00',
+          endTime: '12:00',
+        },
+      },
+      {
+        name: 'Lunch',
+        rules: {
+          startTime: '13:00',
+          endTime: '14:00',
+        },
+      },
+      {
+        name: 'Tea',
+        rules: {
+          startTime: '17:00',
+          endTime: '18:00',
+        },
+      },
+      {
+        name: 'Dinner',
+        rules: {
+          startTime: '21:00',
+          endTime: '22:00',
         },
       },
     ],
@@ -28,17 +94,29 @@ export const userTopics: Topic[] = [
     id: 'plan.day',
     icon: 'assets/icons/mdi/account-check.svg',
     title: 'Plan your day',
+    background:
+      'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80',
     applications: [
       'com.google.calendar',
       'com.google.mail',
-      'com.microsoft.todo.live',
+      'com.google.keep',
+      'com.doist.todoist',
     ],
+    shortcuts: [
+      'com.google.calendar#Agenda',
+      'com.google.calendar#CreateEvent',
+      'com.google.keep#CreateNote',
+      'com.google.mail#Inbox',
+      'com.google.mail#CreateEmail',
+      'com.doist.todoist#CreateTask',
+    ],
+    categories: ['productivity', 'business'],
     triggers: [
       {
         name: 'Every morning',
         rules: {
           startTime: '09:00',
-          endTime: '10:00',
+          endTime: '10:30',
         },
       },
     ],
@@ -47,16 +125,30 @@ export const userTopics: Topic[] = [
     id: 'work.matrix',
     icon: 'assets/icons/mdi/account-network.svg',
     title: 'Work at The Matrix',
+    background:
+      'https://images.unsplash.com/photo-1564069114553-7215e1ff1890?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80',
     applications: [
       'com.microsoft.teams',
+      'com.slack.slack',
       'com.microsoft.outlook.office',
+      'com.atlassian.jira',
       'com.microsoft.azure',
       'com.microsoft.onedrive',
       'com.microsoft.onenote',
-      'com.slack.slack',
-      'com.atlassian.jira',
       'com.atlassian.confluence',
     ],
+    shortcuts: [
+      'com.microsoft.outlook.office#Inbox',
+      'com.microsoft.outlook.office#CreateEmail',
+      'com.microsoft.outlook.office#Agenda',
+      'com.microsoft.onedrive#UploadFile',
+      'com.microsoft.onenote#CreateNote',
+      'com.atlassian.jira#CreateIssue',
+      'com.atlassian.jira#Board',
+      'com.atlassian.confluence#CreateNote',
+      'com.microsoft.vscode.insiders#Code',
+    ],
+    categories: ['productivity', 'business'],
     triggers: [
       {
         name: 'Every morning',
@@ -78,7 +170,9 @@ export const userTopics: Topic[] = [
     id: 'coding.night',
     icon: 'assets/icons/mdi/account-network.svg',
     title: 'Coding Nights',
-    background: 'https://images4.alphacoders.com/110/thumb-1920-1108171.png',
+    background:
+      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80',
+    themeColor: 'light',
     applications: [
       'com.google.search',
       'com.microsoft.github',
@@ -118,7 +212,9 @@ export const userTopics: Topic[] = [
   {
     id: 'gaming.night',
     icon: 'assets/icons/mdi/google-controller.svg',
-    background: 'https://wallpaper.dog/large/5502359.jpg',
+    themeColor: 'light',
+    background:
+      'https://images.unsplash.com/photo-1610041321327-b794c052db27?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
     title: 'Gaming Night',
     applications: [
       'com.microsoft.xbox',
@@ -134,6 +230,20 @@ export const userTopics: Topic[] = [
       'com.google.youtube#Subscriptions',
     ],
     categories: ['games'],
+    media: [
+      {
+        type: 'image',
+        title: 'Halo Infinite',
+        src: 'https://store-images.s-microsoft.com/image/apps.56579.13727851868390641.c9cc5f66-aff8-406c-af6b-440838730be0.0dee39b3-efb2-4425-8f1f-087c111ff9b2?w=300&h=300',
+        url: 'https://www.xbox.com/es-ES/play/games/halo-infinite-campa%C3%B1a/9NP1P1WFS0LB',
+      },
+      {
+        type: 'image',
+        title: 'Nobody Saves the World',
+        src: 'https://store-images.s-microsoft.com/image/apps.53413.13585830814774327.d6e142bb-27e2-4109-8139-edac768eca10.bd597240-e065-42b4-a809-b42e4a7a9815?w=300&h=300',
+        url: 'https://www.xbox.com/en-US/play/games/nobody-saves-the-world/9NFZ65KKJ10X',
+      },
+    ],
     triggers: [
       {
         name: 'Every night',

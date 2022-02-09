@@ -4,9 +4,12 @@ export type TopicTrigger = {
 };
 
 export type Media = {
-  type: 'image' | 'video' | 'audio' | 'text';
+  type: 'image' | 'video' | 'audio' | 'text' | 'game';
   url: string;
+  src?: string;
+  title?: string;
   content?: string;
+  cover?: string;
 };
 
 export type Topic = {

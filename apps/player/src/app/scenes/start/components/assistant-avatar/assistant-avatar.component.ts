@@ -31,13 +31,15 @@ import { Avatar } from '@central-factory/avatars/models';
 })
 export class AssistantAvatarComponent {
   @Input() assistantIcon = 'assets/icons/mdi/robot-happy.svg';
+  @Input() currentDate = new Date();
 
   @Input() set selectedAvatar(avatar: Avatar) {
+    console.log('assistant avatar', this.currentDate);
     this.assistantMessage = `
     Welcome back <strong class="text text--primary">${
       avatar.name
     }</strong>,<br />
-      It's ${new DatePipe('en').transform(new Date(), 'medium')}
+      It's ${new DatePipe('en').transform(this.currentDate, 'medium')}
       <br />
       What would you like to do?
   `;

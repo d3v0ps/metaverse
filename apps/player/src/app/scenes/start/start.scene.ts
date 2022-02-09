@@ -183,6 +183,7 @@ export interface ApplicationBanners {
               <div>
                 <cf-assistant-avatar
                   *ngIf="selectedAvatar$ | async as selectedAvatar"
+                  [currentDate]="currentDate"
                   [selectedAvatar]="selectedAvatar"
                 ></cf-assistant-avatar>
               </div>
@@ -204,6 +205,7 @@ export interface ApplicationBanners {
                 <div *ngIf="!editMode">
                   <cf-start-topic
                     [topic]="topic"
+                    [currentDate]="currentDate"
                     [applications]="storeAppplications$ | async"
                   ></cf-start-topic>
                 </div>
@@ -248,6 +250,14 @@ export class StartScene implements OnInit, OnDestroy {
   @ViewChild('sidebar', { static: true }) sidebar!: SidebarComponent;
   @ViewChild('queryStringSearchInput', { static: false })
   queryStringSearchInput!: ElementRef<HTMLInputElement>;
+
+  morningRoutineDate = new Date('2022-02-09T07:50:41.641Z');
+  planningDate = new Date('2022-02-09T08:50:41.641Z');
+  workingDate = new Date('2022-02-09T11:50:41.641Z');
+  mealDate = new Date('2022-02-09T12:50:41.641Z');
+  lateNightDate = new Date('2022-02-09T01:50:41.641Z');
+  now = new Date();
+  currentDate = this.mealDate;
 
   editMode = false;
   topMenuIsOpen = false;
