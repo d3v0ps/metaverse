@@ -1,4 +1,5 @@
 import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
+import { environment } from '../../../../../../../apps/portal/src/environments/environment';
 import { Customization } from '../../../models/customization';
 import { Preference } from '../../../models/preference';
 
@@ -52,8 +53,8 @@ export const store: Preference<any>[] = [
     value: [
       {
         label: 'The Central Factory',
-        // url: 'https://raw.githubusercontent.com/central-factory/web-application-manifests/main/applications.json',
-        url: 'http://localhost:8080/applications.json',
+        // url: '/applications.json',
+        url: `${environment.repositoryUrl}/applications.json`,
       },
     ],
   },

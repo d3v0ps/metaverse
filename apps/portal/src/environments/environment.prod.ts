@@ -8,6 +8,8 @@ export const environment: Environment = {
   autologin: false,
   showSplashScreen: true,
 
+  repositoryUrl:
+    'https://raw.githubusercontent.com/central-factory/web-application-manifests/main',
   webUrl: 'https://aitorllamas.com/metaverse/apps/codex',
   documentationUrl: 'https://aitorllamas.com/metaverse/apps/codex/docs',
   blogUrl: 'https://aitorllamas.com/metaverse/apps/codex/blog',

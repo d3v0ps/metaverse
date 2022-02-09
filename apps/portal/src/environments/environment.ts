@@ -8,6 +8,7 @@ export const environment: Environment = {
   autologin: true,
   showSplashScreen: false,
 
+  repositoryUrl: 'http://localhost:8080',
   webUrl: 'http://localhost:3000',
   documentationUrl: 'http://localhost:3000/docs',
   blogUrl: 'http://localhost:3000/blog',

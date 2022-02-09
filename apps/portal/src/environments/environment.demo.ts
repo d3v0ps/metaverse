@@ -8,6 +8,8 @@ export const environment: Environment = {
   autologin: true,
   showSplashScreen: false,
 
+  repositoryUrl:
+    'https://raw.githubusercontent.com/central-factory/web-application-manifests/main',
   webUrl: 'http://localhost:3000',
   documentationUrl: 'http://localhost:3000/docs',
   blogUrl: 'http://localhost:3000/blog',
