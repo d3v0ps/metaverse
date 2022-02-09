@@ -4638,6 +4638,24 @@ h2.heading .heading__icon .icon__svg {
   width: 100%;
 }
 
+.topic-card .applications-carousel {
+  grid-gap: 1rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.topic-card .applications-carousel-item {
+  margin: 0;
+}
+
+.topic-card .applications-carousel-item .application-card {
+  padding: 0;
+}
+
+.topic-card .applications-carousel-item .application-card .application-icon {
+  background: var(--color-base-light-medium);
+}
+
 /* You can add global styles to this file, and also import other style files */
 
 .scene-content--animated {
