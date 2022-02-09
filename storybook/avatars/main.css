@@ -4638,6 +4638,11 @@ h2.heading .heading__icon .icon__svg {
   width: 100%;
 }
 
+cf-start-topic {
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+
 .topic-card .applications-carousel {
   grid-gap: 1rem;
   gap: 1rem;
