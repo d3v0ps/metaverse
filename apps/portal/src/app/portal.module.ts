@@ -1,3 +1,4 @@
+import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -35,6 +36,7 @@ import { BackgroundRenderer } from './services/background.renderer';
     PortalLayoutSceneModule,
     SplashScreenModule,
     WindowModule,
+    LayoutModule,
 
     PortalRoutingModule,
     PortalMocksModule.forRoot({

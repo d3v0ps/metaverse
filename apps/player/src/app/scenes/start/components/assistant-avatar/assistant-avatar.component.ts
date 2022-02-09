@@ -25,6 +25,11 @@ import { Avatar } from '@central-factory/avatars/models';
         display: flex;
         gap: 2rem;
         margin-bottom: 1rem;
+
+        @media (max-width: 600px) {
+          flex-direction: column;
+          gap: 0;
+        }
       }
     `,
   ],

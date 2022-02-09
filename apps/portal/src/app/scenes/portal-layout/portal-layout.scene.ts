@@ -1,4 +1,5 @@
 import { transition, trigger, useAnimation } from '@angular/animations';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import {
@@ -61,7 +62,7 @@ export enum SceneContentAnimationState {
             <!-- A sidebar -->
             <cf-sidebar
               [(opened)]="sidebarIsOpen"
-              [dock]="true"
+              [dock]="dockedSidebar"
               [dockedSize]="'100px'"
               [showBackdrop]="true"
               [closeOnClickBackdrop]="true"
@@ -174,6 +175,9 @@ export enum SceneContentAnimationState {
             <div cf-sidebar-content>
               <div
                 class="scene__content"
+                [ngStyle]="{
+                  'padding-left': dockedSidebar ? '0' : '1rem'
+                }"
                 [ngClass]="{
                   'scene__content--splash-screen': showSplashScreen
                 }"
@@ -206,7 +210,12 @@ export enum SceneContentAnimationState {
 
           <ng-template #notSelectedAvatarLayout>
             <div class="scene__container">
-              <div class="scene__content">
+              <div
+                class="scene__content"
+                [ngStyle]="{
+                  'padding-left': dockedSidebar ? '0' : '1rem'
+                }"
+              >
                 <router-outlet></router-outlet>
               </div>
             </div>
@@ -245,6 +254,7 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
   public openedSidebarItem?: SidebarItem;
   public recentlyOpenedSidebarItems: SidebarItem[] = [];
 
+  public dockedSidebar = true;
   public showSplashScreen = false;
   public showNavbar = false;
   public sceneContentAnimationState = SceneContentAnimationState.Idle;
@@ -266,10 +276,21 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
     private readonly selectedAvatarState: SelectedAvatarState,
     private readonly selectedApplicationState: SelectedApplicationState,
     private readonly recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState,
-    private readonly customizationSettingsState: CustomizationSettingsState
+    private readonly customizationSettingsState: CustomizationSettingsState,
+    private readonly breakpointObserver: BreakpointObserver
   ) {}
 
   public ngOnInit(): void {
+    this.breakpointObserver
+      .observe(['(min-width: 600px)'])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          this.dockedSidebar = true;
+        } else {
+          this.dockedSidebar = false;
+        }
+      });
+
     this.customizationSettingsState.customizationSettings$
       .pipe(
         map((customizationSettings) => customizationSettings?.theme),
