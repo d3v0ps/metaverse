@@ -8,8 +8,23 @@ import { Topic } from '@central-factory/applications/models/topic';
 @Component({
   selector: 'cf-start-topic',
   template: `
-    <div cfBlock="topic-card" *ngIf="topic && showTopic">
-      <h2 cfBlock="heading" cfMod="primary">
+    <div
+      cfBlock="topic-card"
+      *ngIf="topic && showTopic"
+      [ngStyle]="{
+        'background-size': 'cover',
+        'background-image': topic.background
+          ? 'url(' + topic.background + ')'
+          : ''
+      }"
+    >
+      <h2
+        cfBlock="heading"
+        [cfMod]="{
+          primary: !topic.background,
+          light: topic.background
+        }"
+      >
         <cf-svg-icon
           *ngIf="topic.icon"
           [src]="topic.icon"
@@ -55,8 +70,11 @@ import { Topic } from '@central-factory/applications/models/topic';
         >
           <button
             cfBlock="button"
-            [cfMod]="['primary', 'full-width']"
+            [cfMod]="['primary']"
             (click)="showCategories = !showCategories"
+            [ngStyle]="{
+              margin: '0 auto'
+            }"
           >
             <cf-svg-icon
               [src]="'assets/icons/mdi/web-box.svg'"

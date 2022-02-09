@@ -77,9 +77,12 @@ export const userTopics: Topic[] = [
   {
     id: 'coding.night',
     icon: 'assets/icons/mdi/account-network.svg',
-    title: 'Coding Night',
+    title: 'Coding Nights',
+    background: 'https://images4.alphacoders.com/110/thumb-1920-1108171.png',
     applications: [
       'com.google.search',
+      'com.microsoft.github',
+      'com.central-factory.codex',
       'com.ivoox.player',
       'com.spotify.player',
       'com.google.youtube',
@@ -113,10 +116,24 @@ export const userTopics: Topic[] = [
     ],
   },
   {
-    id: 'play.games',
+    id: 'gaming.night',
     icon: 'assets/icons/mdi/google-controller.svg',
-    title: 'Play Games',
-    applications: ['com.microsoft.xbox', 'com.valve.steam', 'com.nintendo.my'],
+    background: 'https://wallpaper.dog/large/5502359.jpg',
+    title: 'Gaming Night',
+    applications: [
+      'com.microsoft.xbox',
+      'com.valve.steam',
+      'com.nintendo.my',
+      'com.discord.discord',
+      'com.amazon.twitchtv',
+      'com.google.youtube',
+      'com.spotify.spotify',
+    ],
+    shortcuts: [
+      'com.amazon.twitchtv#Following',
+      'com.google.youtube#Subscriptions',
+    ],
+    categories: ['games'],
     triggers: [
       {
         name: 'Every night',

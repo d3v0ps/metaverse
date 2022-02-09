@@ -115,7 +115,7 @@ export interface ApplicationBanners {
 
           <ng-container *ngIf="!openedApplication">
             <div style="padding: 2rem">
-              <div class="form-buttons" style="margin: -15px;">
+              <div class="form-buttons" style="margin: -15px; float: right;">
                 <button
                   *ngIf="topMenuIsOpen"
                   cfBlock="button"
