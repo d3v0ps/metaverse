@@ -4685,6 +4685,25 @@ cf-start-topic {
   background-color: #706fd3;
 }
 
+.scene-content--start .avatar-appearance-portrait {
+  width: var(--component-avatar-overview-small-preview-width);
+  height: var(--component-avatar-overview-small-preview-height);
+  background-color: var(--component-avatar-overview-small-preview-background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scene-content--start .avatar-appearance-portrait cf-svg-icon {
+  display: contents;
+}
+
+.scene-content--start .avatar-appearance-portrait .icon__svg {
+  width: calc(var(--component-avatar-overview-small-preview-width) - 25px);
+  height: calc(var(--component-avatar-overview-small-preview-height) - 25px);
+  fill: var(--component-scene-content-color);
+}
+
 .scene-content--application-opened {
   background: transparent !important;
   animation: none !important;
