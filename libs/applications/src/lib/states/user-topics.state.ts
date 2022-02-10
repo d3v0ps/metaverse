@@ -20,7 +20,7 @@ export class UserTopicsState {
           forkJoin([
             this.entityManager.getRepository<UserTopicDocType>(
               'usertopics',
-              'com.central-factory.start'
+              'com.central-factory.portals'
             ),
           ])
         ),

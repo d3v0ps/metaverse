@@ -4,6 +4,12 @@
   &__svg {
     fill: var(--component-scene-content-color);
   }
+  &--xs {
+    .icon__svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+  }
 }
 
 @each $color in colors.$color-variations {

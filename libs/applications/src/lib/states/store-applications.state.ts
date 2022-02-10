@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserPreferencesState } from '@central-factory/preferences/states/user-preferences.state';
 import { BehaviorSubject, forkJoin, Observable, of, tap } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { map, share, switchMap } from 'rxjs/operators';
 import {
   Application,
   ApplicationAdditionalProperties,
@@ -18,6 +18,9 @@ export type ApplicationsByAuthor = Record<string, Application[]>;
 })
 export class StoreApplicationsState {
   public readonly applications$ = new BehaviorSubject<Application[]>([]);
+  public readonly featured$ = this.applications$.pipe(share());
+
+  public readonly hot$ = this.applications$.pipe(share());
 
   public readonly byCategory$: Observable<ApplicationsByCategory> =
     this.applications$.pipe(

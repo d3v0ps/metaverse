@@ -2776,7 +2776,6 @@ export class OpenSeaAssetsCatalog {
     //     'https://api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=20'
     //   )
     //   .pipe(
-    //     tap((data) => console.log(data)),
     //     map((data) => data.assets)
     //   );
     return of(this.mockData.assets).pipe(

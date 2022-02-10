@@ -4,6 +4,11 @@ export const topicsSchema = {
       type: 'string',
       description: 'Id',
     },
+    priority: {
+      type: 'string',
+      description: 'Id',
+      enum: ['low', 'medium', 'high'],
+    },
     title: {
       type: 'string',
       description: 'Title',

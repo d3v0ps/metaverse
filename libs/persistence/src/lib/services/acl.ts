@@ -19,7 +19,6 @@ export class ACL {
 
   initialize(collection: ApplicationPermissionsCollection) {
     if (this.isInitialized) {
-      console.warn('PermissionsService already initialized');
       return;
     }
 

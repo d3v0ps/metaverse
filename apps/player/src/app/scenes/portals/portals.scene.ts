@@ -44,6 +44,25 @@ import { catchError, forkJoin, map, of, share, switchMap } from 'rxjs';
                 [cfMod]="{
                   'has-icon': true,
                   'full-width': true,
+                  primary: activeSection === 'featured'
+                }"
+                (click)="onFeaturedClick()"
+              >
+                <cf-svg-icon
+                  elem="icon"
+                  [src]="'assets/icons/mdi/star.svg'"
+                ></cf-svg-icon>
+                Featured
+              </button>
+            </li>
+          </ul>
+          <ul cfBlock="nav">
+            <li>
+              <button
+                cfBlock="button"
+                [cfMod]="{
+                  'has-icon': true,
+                  'full-width': true,
                   primary: activeSection === 'picks'
                 }"
                 (click)="onHomeClick()"
@@ -53,6 +72,25 @@ import { catchError, forkJoin, map, of, share, switchMap } from 'rxjs';
                   [src]="'assets/icons/mdi/check-decagram.svg'"
                 ></cf-svg-icon>
                 Editor's Picks
+              </button>
+            </li>
+          </ul>
+          <ul cfBlock="nav">
+            <li>
+              <button
+                cfBlock="button"
+                [cfMod]="{
+                  'has-icon': true,
+                  'full-width': true,
+                  primary: activeSection === 'settings'
+                }"
+                (click)="onInstalledClick()"
+              >
+                <cf-svg-icon
+                  elem="icon"
+                  [src]="'assets/icons/mdi/apps.svg'"
+                ></cf-svg-icon>
+                Installed
               </button>
             </li>
           </ul>
@@ -145,8 +183,41 @@ import { catchError, forkJoin, map, of, share, switchMap } from 'rxjs';
             <ng-container *ngSwitchCase="'home'">
               <cf-start></cf-start>
             </ng-container>
+            <ng-container *ngSwitchCase="'featured'">
+              <div cfBlock="portals-featured">
+                <h2 cfBlock="heading">Featured</h2>
+                <cf-applications-carousel
+                  *ngIf="
+                    installedApplications$ | async as installedApplications
+                  "
+                  [outline]="true"
+                  [installableApplications]="installedApplications"
+                  [installedApplications]="installedApplications || []"
+                  [applications]="installedApplications"
+                  (applicationInstallClick)="onInstallApplicationClick($event)"
+                >
+                </cf-applications-carousel>
+              </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'hot'"> </ng-container>
             <ng-container *ngSwitchCase="'settings'">
               <cf-portals-preferences></cf-portals-preferences>
+            </ng-container>
+            <ng-container *ngSwitchCase="'installed'">
+              <div cfBlock="portals-installed">
+                <h2 cfBlock="heading">Installed</h2>
+                <cf-applications-carousel
+                  *ngIf="
+                    installedApplications$ | async as installedApplications
+                  "
+                  [outline]="true"
+                  [installableApplications]="installedApplications"
+                  [installedApplications]="installedApplications || []"
+                  [applications]="installedApplications"
+                  (applicationInstallClick)="onInstallApplicationClick($event)"
+                >
+                </cf-applications-carousel>
+              </div>
             </ng-container>
             <ng-container *ngSwitchCase="'author'">
               <h2 cfBlock="text" cfMod="light" *ngIf="selectedAuthor">
@@ -275,7 +346,15 @@ import { catchError, forkJoin, map, of, share, switchMap } from 'rxjs';
   ],
 })
 export class PortalsScene {
-  activeSection: 'home' | 'picks' | 'category' | 'author' | 'settings' = 'home';
+  activeSection:
+    | 'home'
+    | 'featured'
+    | 'hot'
+    | 'picks'
+    | 'category'
+    | 'author'
+    | 'installed'
+    | 'settings' = 'home';
 
   categories = [
     {
@@ -326,47 +405,59 @@ export class PortalsScene {
     name: '',
   };
 
+  featuredApplications$ = this.storeApplicationsState.featured$;
   applicationsByCategory$ = this.storeApplicationsState.byCategory$;
 
   applicationsByAuthor$ = this.storeApplicationsState.byAuthor$;
   applicationsTopAuthors$ = this.storeApplicationsState.topAuthors$.pipe(
+    // use legacy names
     switchMap((authors: ApplicationAuthor[]) =>
       forkJoin(
-        authors.map((author) =>
-          this.httpClient
-            .get(`assets/icons/simple-icons/${author.name.toLowerCase()}.svg`, {
-              responseType: 'text',
-            })
-            .pipe(catchError(() => of(undefined)))
-            .pipe(
-              map((found: unknown) => {
-                return {
-                  ...author,
-                  icon: found
-                    ? `assets/icons/simple-icons/${author.name.toLowerCase()}.svg`
-                    : undefined,
-                };
-              }),
-              // use legacy names
-              map((author) => {
-                switch (author.id) {
-                  case 'com.alphabet':
-                    author.icon = 'assets/icons/simple-icons/google.svg';
-                    return author;
-                  case 'com.meta':
-                    author.icon = 'assets/icons/simple-icons/facebook.svg';
-                    return author;
-                  default:
-                    return author;
+        authors
+          .map((author) => {
+            switch (author.id) {
+              case 'com.alphabet':
+                author.icon = 'assets/icons/simple-icons/google.svg';
+                return author;
+              case 'com.meta':
+                author.icon = 'assets/icons/simple-icons/facebook.svg';
+                return author;
+              default:
+                return author;
+            }
+          })
+          .map((author) =>
+            this.httpClient
+              .get(
+                this.publishersIcons[author.id] ||
+                  `assets/icons/simple-icons/${author.name.toLowerCase()}.svg`,
+                {
+                  responseType: 'text',
                 }
-              })
-            )
-        )
+              )
+              .pipe(catchError(() => of(undefined)))
+              .pipe(
+                map((found: unknown) => {
+                  return {
+                    ...author,
+                    icon: found
+                      ? this.publishersIcons[author.id] ||
+                        `assets/icons/simple-icons/${author.name.toLowerCase()}.svg`
+                      : 'assets/icons/mdi/application.svg',
+                  };
+                })
+              )
+          )
       )
     ),
     share()
   );
   installedApplications$ = this.userApplicationsState.applications$;
+
+  private publishersIcons: Record<string, string> = {
+    'com.alphabet': 'assets/icons/simple-icons/google.svg',
+    'com.meta': 'assets/icons/simple-icons/facebook.svg',
+  };
 
   constructor(
     private storeApplicationsState: StoreApplicationsState,
@@ -397,6 +488,45 @@ export class PortalsScene {
     };
 
     this.activeSection = 'home';
+  }
+
+  onHotClick() {
+    this.selectedCategory = {
+      label: '',
+      icon: '',
+    };
+    this.selectedAuthor = {
+      id: '',
+      name: '',
+    };
+
+    this.activeSection = 'hot';
+  }
+
+  onFeaturedClick() {
+    this.selectedCategory = {
+      label: '',
+      icon: '',
+    };
+    this.selectedAuthor = {
+      id: '',
+      name: '',
+    };
+
+    this.activeSection = 'featured';
+  }
+
+  onInstalledClick() {
+    this.selectedCategory = {
+      label: '',
+      icon: '',
+    };
+    this.selectedAuthor = {
+      id: '',
+      name: '',
+    };
+
+    this.activeSection = 'installed';
   }
 
   onSettingsClick() {

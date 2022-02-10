@@ -34,11 +34,11 @@ export class SelectedAvatarState {
           forkJoin([
             this.entityManager.getRepository<UserPreferenceDocType>(
               'userpreferences',
-              'com.central-factory.user-avatars'
+              'com.central-factory.avatars'
             ),
             this.entityManager.getRepository<UserAvatarDocType>(
               'useravatars',
-              'com.central-factory.user-avatars'
+              'com.central-factory.avatars'
             ),
           ])
         ),

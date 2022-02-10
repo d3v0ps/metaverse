@@ -36,23 +36,24 @@ import { Avatar } from '@central-factory/avatars/models';
 })
 export class AssistantAvatarComponent {
   @Input() assistantIcon = 'assets/icons/mdi/robot-happy.svg';
-  @Input() currentDate = new Date();
-
-  @Input() set selectedAvatar(avatar: Avatar) {
-    console.log('assistant avatar', this.currentDate);
+  @Input() set currentDate(date: Date) {
+    if (!this.selectedAvatar) {
+      return;
+    }
     this.assistantMessage = `
     Welcome back <strong class="text text--primary">${
-      avatar.name
+      this.selectedAvatar.name
     }</strong>,<br />
-      It's ${new DatePipe('en').transform(this.currentDate, 'medium')}
+      It's ${new DatePipe('en').transform(date, 'medium')}
       <br />
       What would you like to do?
   `;
   }
+
+  @Input() selectedAvatar?: Avatar;
+
   @Input() assistantMessage = `
     Welcome back,<br />
-      It's {{ today | date: 'medium' }}
-      <br />
       What would you like to do?
   `;
 }

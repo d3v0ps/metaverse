@@ -12,6 +12,7 @@ import { ApplicationViewModule } from '@central-factory/applications/web-compone
 import { ApplicationsCarouselModule } from '@central-factory/applications/web-components/angular/applications-carousel/applications-carousel.module';
 import { AvatarAppearancePortraitModule } from '@central-factory/avatars/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.module';
 import { BemModule } from '@central-factory/web-components/angular/bem/bem.module';
+import { CommandBarModule } from '@central-factory/web-components/angular/command-bar/command-bar.module';
 import { SidebarModule } from '@central-factory/web-components/angular/sidebar/sidebar.module';
 import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -44,6 +45,7 @@ import { StartScene } from './start.scene';
     AvatarAppearancePortraitModule,
     AssistantAvatarModule,
     MediaModule,
+    CommandBarModule,
   ],
   declarations: [StartScene, TopicCardComponent, TopicFormComponent],
   exports: [StartScene],

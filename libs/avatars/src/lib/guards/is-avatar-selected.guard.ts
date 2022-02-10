@@ -28,7 +28,7 @@ export class IsAvatarSelectedGuard implements CanActivate {
     return this.entityManager
       .getRepository<UserPreferenceDocType>(
         'userpreferences',
-        'com.central-factory.user-avatars'
+        'com.central-factory.avatars'
       )
       .pipe(
         switchMap((repository) =>

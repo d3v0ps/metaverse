@@ -8,6 +8,7 @@ import { NavbarModule } from '@central-factory/web-components/angular/navbar/nav
 import { SidebarModule } from '@central-factory/web-components/angular/sidebar/sidebar.module';
 import { SplashScreenModule } from '@central-factory/web-components/angular/splash-screen/splash-screen.module';
 import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
+import { SystemToolbarModule } from '@central-factory/web-components/angular/system-toolbar/system-toolbar.module';
 import { PortalLayoutScene } from './portal-layout.scene';
 
 @NgModule({
@@ -21,6 +22,7 @@ import { PortalLayoutScene } from './portal-layout.scene';
     SidebarModule,
     SplashScreenModule,
     AvatarAppearancePortraitModule,
+    SystemToolbarModule,
   ],
   declarations: [PortalLayoutScene],
   exports: [PortalLayoutScene],

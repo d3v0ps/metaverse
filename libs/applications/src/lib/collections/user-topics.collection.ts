@@ -21,7 +21,7 @@ export const userTopicsSchema: RxJsonSchema<UserTopicDocType> = {
   primaryKey: 'id',
   type: 'object',
   properties: topicsSchema.properties,
-  required: ['id', 'title', 'createdAt', 'updatedAt'],
+  required: ['id', 'priority', 'title', 'createdAt', 'updatedAt'],
 };
 
 export const USER_TOPICS_COLLECTION_PROVIDER: Provider = {

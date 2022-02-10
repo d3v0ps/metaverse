@@ -132,7 +132,7 @@ export class ManageApplicationsScene {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onApplicationSheetOpenApplicationClick(application: Application) {
-    console.log('open application');
+    window.open(application.startUrl, '_blank');
   }
 
   onGoBackIconClick() {

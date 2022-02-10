@@ -4,6 +4,7 @@ import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/
 export const userTopics: Topic[] = [
   {
     id: 'morning.routine',
+    priority: 'low',
     icon: 'assets/icons/mdi/weather-sunny.svg',
     title: 'Morning Routine',
     background:
@@ -38,6 +39,7 @@ export const userTopics: Topic[] = [
   },
   {
     id: 'meal.time',
+    priority: 'medium',
     icon: 'assets/icons/mdi/silverware.svg',
     title: 'Meal Time',
     background:
@@ -92,6 +94,7 @@ export const userTopics: Topic[] = [
   },
   {
     id: 'plan.day',
+    priority: 'low',
     icon: 'assets/icons/mdi/account-check.svg',
     title: 'Plan your day',
     background:
@@ -122,7 +125,38 @@ export const userTopics: Topic[] = [
     ],
   },
   {
+    id: 'daily.meeting',
+    priority: 'high',
+    icon: 'assets/icons/mdi/video.svg',
+    title: 'Daily Meeting',
+    background:
+      'https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+    applications: [
+      'com.microsoft.outlook.office',
+      'com.atlassian.jira',
+      'com.microsoft.onenote',
+      'com.microsoft.teams',
+    ],
+    shortcuts: [
+      'com.microsoft.outlook.office#Agenda',
+      'com.atlassian.jira#Board',
+      'com.microsoft.onenote#CreateNote',
+      'com.microsoft.vscode.insiders#Code',
+    ],
+    categories: ['productivity', 'business'],
+    triggers: [
+      {
+        name: 'Every morning',
+        rules: {
+          startTime: '09:50',
+          endTime: '10:30',
+        },
+      },
+    ],
+  },
+  {
     id: 'work.matrix',
+    priority: 'medium',
     icon: 'assets/icons/mdi/account-network.svg',
     title: 'Work at The Matrix',
     background:
@@ -168,6 +202,7 @@ export const userTopics: Topic[] = [
   },
   {
     id: 'coding.night',
+    priority: 'low',
     icon: 'assets/icons/mdi/account-network.svg',
     title: 'Coding Nights',
     background:
@@ -187,6 +222,7 @@ export const userTopics: Topic[] = [
       'com.discord.discord',
     ],
     shortcuts: [
+      'com.microsoft.vscode.insiders#Code',
       'com.microsoft.github#PullRequests',
       'com.google.youtube#Subscriptions',
       'com.spotify.player#Library',
@@ -211,6 +247,7 @@ export const userTopics: Topic[] = [
   },
   {
     id: 'gaming.night',
+    priority: 'low',
     icon: 'assets/icons/mdi/google-controller.svg',
     themeColor: 'light',
     background:

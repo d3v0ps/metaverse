@@ -49,6 +49,7 @@ export enum SceneContentAnimationState {
         selectedAvatar: selectedAvatar$ | async
       } as data"
     >
+      <cf-system-toolbar *ngIf="data.selectedAvatar"></cf-system-toolbar>
       <div cfBlock="scene" cfMod="layout">
         <div
           cfElem="body"
@@ -68,7 +69,7 @@ export enum SceneContentAnimationState {
               [closeOnClickBackdrop]="true"
               [closeOnClickOutside]="true"
             >
-              <div style="margin-top: 20px">
+              <div style="margin-top: 3rem">
                 <a
                   (click)="
                     onSidebarItemClick({
@@ -76,7 +77,7 @@ export enum SceneContentAnimationState {
                       routerLink: ['/select-avatar'],
                       icon: 'assets/icons/mdi/account-switch.svg',
                       application: {
-                        id: 'com.central-factory.user-avatars',
+                        id: 'com.central-factory.avatars',
                         name: 'User Avatars',
                         description: 'Select an avatar',
                         startUrl: '/select-avatar'
@@ -417,6 +418,9 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
     applications: DeepReadonlyObject<Application>[]
   ) {
     const sidebarItems = applications
+      .filter(
+        (application) => application.additionalProperties?.disabled !== true
+      )
       .sort((a, b) => {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         return a.createdAt!.localeCompare(b.createdAt!);

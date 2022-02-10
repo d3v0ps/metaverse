@@ -48,14 +48,14 @@ export const userApplications: UserApplicationDocType[] = [
     },
   },
   {
-    id: 'com.central-factory.start',
-    name: 'Start',
+    id: 'com.central-factory.portals',
+    name: 'Portals',
     description:
       'Access to many local and hosted web applications. Applications can be loaded through a webview or through a webpack module federation.',
-    startUrl: 'start',
+    startUrl: 'portals',
     icons: [
       {
-        src: 'assets/icons/mdi/flare.svg',
+        src: 'assets/icons/mdi/web-box.svg',
         sizes: '512x512',
         type: 'image/svg+xml',
       },
@@ -72,77 +72,6 @@ export const userApplications: UserApplicationDocType[] = [
           },
         ],
       },
-    ],
-    additionalProperties: {
-      author: {
-        id: 'com.central-factory',
-        name: 'Central Factory',
-      },
-      internal: true,
-      permissions: [
-        {
-          kind: PermissionKind.Collection,
-          mode: PermissionMode.Read,
-          target: 'userapplications',
-        },
-        {
-          kind: PermissionKind.Collection,
-          mode: PermissionMode.Write,
-          target: 'userapplications',
-        },
-        {
-          kind: PermissionKind.Collection,
-          mode: PermissionMode.Delete,
-          target: 'userapplications',
-        },
-        {
-          kind: PermissionKind.Collection,
-          mode: PermissionMode.Read,
-          target: 'storeapplications',
-        },
-        {
-          kind: PermissionKind.Collection,
-          mode: PermissionMode.Write,
-          target: 'storeapplications',
-        },
-        {
-          kind: PermissionKind.Collection,
-          mode: PermissionMode.Delete,
-          target: 'storeapplications',
-        },
-        {
-          kind: PermissionKind.Collection,
-          mode: PermissionMode.Read,
-          target: 'usertopics',
-        },
-        {
-          kind: PermissionKind.Collection,
-          mode: PermissionMode.Write,
-          target: 'usertopics',
-        },
-        {
-          kind: PermissionKind.Collection,
-          mode: PermissionMode.Delete,
-          target: 'usertopics',
-        },
-      ],
-      sidebarShortcuts: ['Start'],
-    },
-  },
-  {
-    id: 'com.central-factory.portals',
-    name: 'Portals',
-    description:
-      'Access to many local and hosted web applications. Applications can be loaded through a webview or through a webpack module federation.',
-    startUrl: 'portals',
-    icons: [
-      {
-        src: 'assets/icons/mdi/web-box.svg',
-        sizes: '512x512',
-        type: 'image/svg+xml',
-      },
-    ],
-    shortcuts: [
       {
         name: 'Portals',
         url: '/portals',
@@ -161,6 +90,7 @@ export const userApplications: UserApplicationDocType[] = [
         name: 'Central Factory',
       },
       internal: true,
+      sidebarShortcuts: ['Start'],
       permissions: [
         {
           kind: PermissionKind.Collection,
@@ -192,13 +122,28 @@ export const userApplications: UserApplicationDocType[] = [
           mode: PermissionMode.Delete,
           target: 'storeapplications',
         },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Read,
+          target: 'usertopics',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Write,
+          target: 'usertopics',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Delete,
+          target: 'usertopics',
+        },
       ],
     },
   },
   {
-    id: 'com.central-factory.user-avatars',
-    name: 'User Avatars',
-    description: 'Avatars management module. Customize your user avatars.',
+    id: 'com.central-factory.avatars',
+    name: 'Avatars',
+    description: 'Avatars management module. Customize your avatars.',
     startUrl: 'user-avatars',
     icons: [
       {
@@ -297,6 +242,7 @@ export const userApplications: UserApplicationDocType[] = [
         id: 'com.central-factory',
         name: 'Central Factory',
       },
+      disabled: true,
       internal: true,
       permissions: [
         {
@@ -349,6 +295,7 @@ export const userApplications: UserApplicationDocType[] = [
         name: 'Central Factory',
       },
       internal: true,
+      disabled: true,
       permissions: [
         {
           kind: PermissionKind.Collection,

@@ -161,20 +161,15 @@ export class ManageAvatarAppearancesScene {
 
     this.loading = true;
 
-    console.log('Submit appearance', appearance);
     this.manageAvatarAppearancesState
       .putAppearance(avatarId, appearance)
       .subscribe({
         complete: () => (this.loading = false),
-        error: () => console.error('Error'),
         next: () => {
-          console.log('appearance persisted');
           this.selectedAppearance = undefined;
         },
       });
   }
 
-  onConfirmAppearancesButtonClick() {
-    console.log('Confirm appearances');
-  }
+  onConfirmAppearancesButtonClick() {}
 }

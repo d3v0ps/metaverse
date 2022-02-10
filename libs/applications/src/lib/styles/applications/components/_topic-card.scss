@@ -3,6 +3,13 @@
 .topic-card {
   position: relative;
 
+  .heading {
+    justify-content: space-between;
+    .icon__svg {
+      vertical-align: sub;
+    }
+  }
+
   .topic-background {
     @include materials.clay;
     position: absolute;

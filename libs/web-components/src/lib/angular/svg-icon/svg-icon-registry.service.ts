@@ -68,10 +68,7 @@ export class SvgIconRegistryService {
         return div.querySelector('svg') as SVGElement;
       }),
       tap((svg) => this.iconsByUrl.set(name, svg)),
-      catchError((err) => {
-        console.error(err);
-        return observableThrowError(err);
-      }),
+      catchError((err) => observableThrowError(err)),
       finalize(() => this.iconsLoadingByUrl.delete(name)),
       share()
     ) as Observable<SVGElement>;

@@ -1,36 +1,26 @@
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import {
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   Application,
   ApplicationRenderingType,
   ApplicationShortcut,
 } from '@central-factory/applications/models/application';
-import { ExternalUserApplicationsState } from '@central-factory/applications/states/external-user-applications.state';
 import { InstallApplicationsState } from '@central-factory/applications/states/install-application.state';
-import { InternalUserApplicationsState } from '@central-factory/applications/states/internal-user-applications.state';
 import {
   ApplicationOrigin,
   AvailableApplicationsState,
 } from '@central-factory/applications/states/manage-applications.state';
 import { RecentlyOpenedApplicationsState } from '@central-factory/applications/states/recently-opened-applications.state';
 import { SelectedApplicationState } from '@central-factory/applications/states/selected-application.state';
-import { StarredApplicationsState } from '@central-factory/applications/states/starred-applications.state';
 import { StoreApplicationsState } from '@central-factory/applications/states/store-applications.state';
-import { UserApplicationsState } from '@central-factory/applications/states/user-applications.state';
 import { UserTopicsState } from '@central-factory/applications/states/user-topics.state';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
+import { ClockService } from '@central-factory/physics/services/clock.service';
 import { SidebarComponent } from '@central-factory/web-components/angular/sidebar/sidebar.component';
 import { isElectron } from '@central-factory/web-components/shared/platform/desktop/is-electron';
-import { FormControl, FormGroup } from '@ng-stack/forms';
-import { BehaviorSubject, of, Subject } from 'rxjs';
-import { delay, map, switchMap, take, takeUntil, tap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { delay, map, switchMap, take, tap } from 'rxjs/operators';
+import { v4 as uuid } from 'uuid';
 
 export interface ApplicationBanners {
   [key: string]: {
@@ -82,7 +72,6 @@ export interface ApplicationBanners {
               (applicationCardPlayClick)="
                 onApplicationSheetCardPlayClick($event)
               "
-              (applicationCardStarClick)="onApplicationStarClick($event)"
               (openApplicationClick)="
                 onApplicationSheetOpenApplicationClick($event)
               "
@@ -180,7 +169,7 @@ export interface ApplicationBanners {
                 </button>
               </div>
 
-              <div>
+              <div *ngIf="currentDate$ | async as currentDate">
                 <cf-assistant-avatar
                   *ngIf="selectedAvatar$ | async as selectedAvatar"
                   [currentDate]="currentDate"
@@ -188,33 +177,24 @@ export interface ApplicationBanners {
                 ></cf-assistant-avatar>
               </div>
 
-              <form cfBlock="form" [formGroup]="searchBarForm">
-                <div class="form-control">
-                  <input
-                    #queryStringSearchInput
-                    cfBlock="form-control"
-                    cfMod="primary"
-                    type="text"
-                    formControlName="queryString"
-                    placeholder="..."
-                  />
-                </div>
-              </form>
+              <cf-command-bar [fullLength]="true"></cf-command-bar>
 
-              <ng-container *ngFor="let topic of userTopics$ | async">
-                <div *ngIf="!editMode">
-                  <cf-start-topic
-                    [topic]="topic"
-                    [currentDate]="currentDate"
-                    [applications]="storeAppplications$ | async"
-                  ></cf-start-topic>
-                </div>
-                <div *ngIf="editMode">
-                  <cf-topic-form
-                    [topic]="topic"
-                    [applications]="storeAppplications$ | async"
-                  ></cf-topic-form>
-                </div>
+              <ng-container *ngIf="currentDate$ | async as currentDate">
+                <ng-container *ngFor="let topic of userTopics$ | async">
+                  <div *ngIf="!editMode">
+                    <cf-start-topic
+                      [topic]="topic"
+                      [currentDate]="currentDate"
+                      [applications]="storeAppplications$ | async"
+                    ></cf-start-topic>
+                  </div>
+                  <div *ngIf="editMode">
+                    <cf-topic-form
+                      [topic]="topic"
+                      [applications]="storeAppplications$ | async"
+                    ></cf-topic-form>
+                  </div>
+                </ng-container>
               </ng-container>
             </div>
           </ng-container>
@@ -246,10 +226,8 @@ export interface ApplicationBanners {
     `,
   ],
 })
-export class StartScene implements OnInit, OnDestroy {
+export class StartScene implements OnDestroy {
   @ViewChild('sidebar', { static: true }) sidebar!: SidebarComponent;
-  @ViewChild('queryStringSearchInput', { static: false })
-  queryStringSearchInput!: ElementRef<HTMLInputElement>;
 
   morningRoutineDate = new Date('2022-02-09T07:50:41.641Z');
   planningDate = new Date('2022-02-09T08:50:41.641Z');
@@ -257,28 +235,13 @@ export class StartScene implements OnInit, OnDestroy {
   mealDate = new Date('2022-02-09T12:50:41.641Z');
   lateNightDate = new Date('2022-02-09T01:50:41.641Z');
   now = new Date();
-  currentDate = this.mealDate;
+  currentDate$ = this.clockService.clock$;
 
   editMode = false;
   topMenuIsOpen = false;
-  today = new Date();
-
-  searchBarForm = new FormGroup({
-    queryString: new FormControl<string>(undefined),
-  });
 
   storeAppplications$ = this.storeApplicationsState.applications$;
-
-  externalUserApplications$ = this.userApplicationsState.applications$;
-  internalUserApplications$ = this.internalUserApplicationsState.applications$;
-  starredApplications$ = this.starredApplicationsState.applications$;
-  recentlyOpenedApplications$ =
-    this.recentlyOpenedApplicationsState.applications$;
   userTopics$ = this.userTopicsState.topics$;
-
-  applications$ = new BehaviorSubject<Application[]>([]);
-  allApplications$ = new BehaviorSubject<Application[]>([]);
-  applicationBanners$ = new BehaviorSubject<ApplicationBanners>({});
 
   selectedAvatar$ = this.selectedAvatarState.avatar$;
 
@@ -314,66 +277,19 @@ export class StartScene implements OnInit, OnDestroy {
   openedApplicationShortcut?: ApplicationShortcut;
   mustBeInstalled = false;
 
-  private readonly banners: {
-    [key: string]: string;
-  } = {
-    travel: 'Travel',
-    productivity: 'Productivity',
-    shopping: 'Shopping',
-    entertainment: 'Entertainment',
-    games: 'Video Games',
-  };
-
   private readonly destroy$ = new Subject<void>();
 
   constructor(
     private availableApplicationsState: AvailableApplicationsState,
-    private userApplicationsState: UserApplicationsState,
     private storeApplicationsState: StoreApplicationsState,
-    private externalUserApplicationsState: ExternalUserApplicationsState,
-    private internalUserApplicationsState: InternalUserApplicationsState,
     private recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState,
-    private starredApplicationsState: StarredApplicationsState,
     private router: Router,
     private selectedAvatarState: SelectedAvatarState,
     private selectedApplicationState: SelectedApplicationState,
     private installApplicationsState: InstallApplicationsState,
-    private userTopicsState: UserTopicsState
+    private userTopicsState: UserTopicsState,
+    private clockService: ClockService
   ) {}
-
-  ngOnInit() {
-    this.externalUserApplications$
-      .pipe(
-        tap((applications) => {
-          const filtered = applications.filter((application) =>
-            this.applicationMatchesSearch(application)
-          );
-          this.applications$.next(applications);
-          this.allApplications$.next(filtered);
-          this.generateBanners(filtered);
-        }),
-        takeUntil(this.destroy$)
-      )
-      .subscribe();
-
-    this.searchBarForm.controls.queryString.valueChanges
-      .pipe(
-        tap((search) => {
-          const applications = this.applications$.getValue();
-
-          const filtered = applications.filter((application) =>
-            this.applicationMatchesSearch(application)
-          );
-          this.applications$.next(applications);
-          this.allApplications$.next(filtered);
-          this.generateBanners(filtered);
-        }),
-        takeUntil(this.destroy$)
-      )
-      .subscribe();
-
-    this.searchBarForm.controls.queryString.setValue('');
-  }
 
   ngOnDestroy(): void {
     this.destroy$.next();
@@ -381,7 +297,23 @@ export class StartScene implements OnInit, OnDestroy {
   }
 
   onAddTopicClick() {
-    console.log('add topic');
+    this.editMode = true;
+    this.userTopicsState
+      .addTopic({
+        id: uuid(),
+        priority: 'low',
+        title: '',
+        icon: '',
+        description: '',
+        themeColor: '',
+        background: '',
+        applications: [],
+        shortcuts: [],
+        categories: [],
+        media: [],
+        triggers: [],
+      })
+      .subscribe();
   }
 
   onAddPortalsClick() {
@@ -397,25 +329,6 @@ export class StartScene implements OnInit, OnDestroy {
     this.selectedApplicationState.selectApplication(application);
     this.selectedApplicationState.closeSidebar();
     setTimeout(() => this.selectedApplicationState.openSidebar(), 0);
-  }
-
-  onApplicationStarClick(application: Application) {
-    this.availableApplicationsState.applications$
-      .pipe(
-        take(1),
-        map((applications) =>
-          applications.find((app) => app.application.id === application.id)
-        ),
-        switchMap((availableApplication) =>
-          availableApplication
-            ? this.starredApplicationsState.toggleApplication(
-                application,
-                availableApplication.origin
-              )
-            : of(undefined)
-        )
-      )
-      .subscribe();
   }
 
   onApplicationCardPlayClick(application: Application) {
@@ -443,14 +356,6 @@ export class StartScene implements OnInit, OnDestroy {
 
   onApplicationCardDropped(application: Application) {
     this.selectedApplicationState.selectApplication(application);
-  }
-
-  onApplicationCarouselCardDropped(
-    event: CdkDragDrop<Application[], any, any>
-  ) {
-    const application = event.item.data;
-    this.selectedApplicationState.selectApplication(application);
-    this.recentlyOpenedApplicationsState.addApplication(application);
   }
 
   onApplicationSheetOpenApplicationClick(application: Application) {
@@ -495,98 +400,5 @@ export class StartScene implements OnInit, OnDestroy {
 
     this.openedApplication = application;
     this.openedApplicationShortcut = applicationShortcut;
-  }
-
-  private generateBanners(applications: Application[]) {
-    const applicationsBanners = this.reduceApplicationsToBanners(applications);
-
-    this.applicationBanners$.next(
-      this.reduceApplicationsToBanners(applications)
-    );
-
-    const bannersApplications: Application[] = Object.values(
-      applicationsBanners
-    ).reduce<Application[]>(
-      (acc, banner) => acc.concat(banner.applications),
-      []
-    );
-
-    const singleApplication: Application | undefined =
-      bannersApplications.length === 1 ? bannersApplications[0] : undefined;
-
-    if (singleApplication) {
-      this.selectedApplicationState.selectApplication(singleApplication);
-      this.selectedApplicationState.openSidebar();
-      setTimeout(() => this.queryStringSearchInput.nativeElement.focus(), 1000);
-    }
-  }
-
-  private reduceApplicationsToBanners(
-    applications: Application[]
-  ): ApplicationBanners {
-    const banners = applications.reduce<ApplicationBanners>(
-      (acc, application) => {
-        application.categories?.forEach((category) => {
-          if (!this.banners[category]) {
-            return;
-          }
-
-          const matchesSearch = this.applicationMatchesSearch(application);
-
-          if (!matchesSearch) {
-            return;
-          }
-
-          acc[category] = acc[category] || {
-            applications: [],
-            bannerTitle: this.banners[category],
-          };
-
-          acc[category]?.applications.push(application);
-        });
-
-        return acc;
-      },
-      {}
-    );
-
-    return banners;
-  }
-
-  private applicationMatchesSearch(application: Application): boolean {
-    if (
-      !this.searchBarForm.value.queryString ||
-      this.searchBarForm.value.queryString.length <= 0
-    ) {
-      return true;
-    }
-
-    const nameMatches = application.name
-      .toLowerCase()
-      .includes(this.searchBarForm.value.queryString.toLowerCase());
-
-    const authorMatches = application.additionalProperties?.author?.name
-      .toLowerCase()
-      .includes(this.searchBarForm.value.queryString.toLowerCase());
-
-    const categoryMatches = application.categories?.reduce<boolean>(
-      (acc, category) =>
-        acc ||
-        category
-          .toLowerCase()
-          .startsWith(this.searchBarForm.value.queryString.toLowerCase()),
-      false
-    );
-    const shortcutMatches =
-      application.shortcuts &&
-      application.shortcuts.some((shortcut) =>
-        shortcut.name
-          .toLowerCase()
-          .includes(this.searchBarForm.value.queryString.toLowerCase())
-      )
-        ? true
-        : false;
-
-    return nameMatches || authorMatches || categoryMatches || shortcutMatches;
   }
 }

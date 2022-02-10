@@ -20,7 +20,7 @@ export class ManageAvatarAppearancesState {
           forkJoin([
             this.entityManager.getRepository<UserAvatarDocType>(
               'useravatars',
-              'com.central-factory.user-avatars'
+              'com.central-factory.avatars'
             ),
           ])
         ),

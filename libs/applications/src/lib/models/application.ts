@@ -47,6 +47,7 @@ export type ApplicationAdditionalProperties = {
   renderingType?: ApplicationRenderingType;
   starred?: boolean;
   internal?: boolean;
+  disabled?: boolean;
   supportsBrowser?: boolean;
   permissions?: {
     kind: PermissionKind;

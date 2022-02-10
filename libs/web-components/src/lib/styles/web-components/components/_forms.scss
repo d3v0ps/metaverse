@@ -53,6 +53,8 @@
   display: flex;
   flex-wrap: nowrap;
   margin-bottom: 1rem;
+  align-items: center;
+  gap: 0.25rem;
 
   .form-control {
     flex: 1 1 auto;

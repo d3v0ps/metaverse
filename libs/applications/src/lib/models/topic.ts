@@ -12,8 +12,11 @@ export type Media = {
   cover?: string;
 };
 
+export type TopicPriority = 'low' | 'medium' | 'high';
+
 export type Topic = {
   id: string;
+  priority: TopicPriority;
   title: string;
   description?: string;
   icon?: string;

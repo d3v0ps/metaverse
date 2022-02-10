@@ -135,7 +135,6 @@ export class BackgroundRenderer {
 
   private renderTick(renderFn: () => void, interval = 50) {
     if (this.renderProcessRunning) {
-      console.warn('render process already running');
       return;
     }
 

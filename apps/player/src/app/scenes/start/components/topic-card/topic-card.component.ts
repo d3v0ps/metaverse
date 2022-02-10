@@ -27,16 +27,33 @@ export type ApplicationWithShortcut = {
         }"
       ></div>
       <div cfBlock="topic-body" *ngIf="topic && showTopic">
-        <h2
-          cfBlock="heading"
-          [cfMod]="[topic.background ? topic.themeColor || 'light' : 'dark']"
-        >
-          <cf-svg-icon
-            *ngIf="topic.icon"
-            [src]="topic.icon"
-            cfElem="icon"
-          ></cf-svg-icon>
-          {{ topic.title }}
+        <h2 cfBlock="heading">
+          <div cfElem="heading-content">
+            <cf-svg-icon
+              *ngIf="topic.icon"
+              [src]="topic.icon"
+              cfElem="icon"
+              [cfMod]="[
+                topic.background ? topic.themeColor || 'light' : 'dark'
+              ]"
+            ></cf-svg-icon>
+            <span
+              cfBlock="text"
+              [cfMod]="[
+                topic.background ? topic.themeColor || 'light' : 'dark'
+              ]"
+              >{{ topic.title }}</span
+            >
+          </div>
+
+          <div cfElem="heading-content">
+            <cf-svg-icon
+              *ngIf="topic.priority === 'high'"
+              cfBlock="icon"
+              cfMod="danger"
+              src="assets/icons/mdi/clock-alert.svg"
+            ></cf-svg-icon>
+          </div>
         </h2>
         <div cfBlock="topic-content">
           <cf-applications-carousel
