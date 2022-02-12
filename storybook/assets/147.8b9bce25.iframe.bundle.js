@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_central_factory_metaverse=self.webpackChunk_central_factory_metaverse||[]).push([[147],{"./package.json":module=>{module.exports={i8:"0.0.0"}}}]);
