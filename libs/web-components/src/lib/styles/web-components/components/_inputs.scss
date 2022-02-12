@@ -7,6 +7,10 @@ select,
   line-height: 2;
   max-height: 3.2rem;
 
+  &.ng-select {
+    max-height: none;
+  }
+
   background-color: var(--component-input-background-color);
   // border: 1px solid var(--component-input-border-color);
   border: 2px solid var(--component-input-border-color);
@@ -21,6 +25,9 @@ select,
     border-radius: 0.25rem;
     line-height: 1;
     max-height: 1.8rem;
+    &.ng-select {
+      max-height: 1.8rem;
+    }
     .ng-select-container {
       background: transparent !important;
       box-shadow: none !important;

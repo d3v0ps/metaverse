@@ -1,5 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { Media } from '@central-factory/applications/models/topic';
+
+export type Media = {
+  type: 'image' | 'video' | 'audio' | 'text' | 'game';
+  url: string;
+  src?: string;
+  title?: string;
+  content?: string;
+  cover?: string;
+};
 
 @Component({
   selector: 'cf-media',

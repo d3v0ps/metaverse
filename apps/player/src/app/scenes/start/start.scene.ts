@@ -13,13 +13,14 @@ import {
 import { RecentlyOpenedApplicationsState } from '@central-factory/applications/states/recently-opened-applications.state';
 import { SelectedApplicationState } from '@central-factory/applications/states/selected-application.state';
 import { StoreApplicationsState } from '@central-factory/applications/states/store-applications.state';
-import { UserTopicsState } from '@central-factory/applications/states/user-topics.state';
+import { UserApplicationsState } from '@central-factory/applications/states/user-applications.state';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
 import { ClockService } from '@central-factory/physics/services/clock.service';
+import { UserTopicsState } from '@central-factory/topics/states/user-topics.state';
 import { SidebarComponent } from '@central-factory/web-components/angular/sidebar/sidebar.component';
 import { isElectron } from '@central-factory/web-components/shared/platform/desktop/is-electron';
 import { Subject } from 'rxjs';
-import { delay, map, switchMap, take, tap } from 'rxjs/operators';
+import { delay, filter, map, switchMap, take, tap } from 'rxjs/operators';
 import { v4 as uuid } from 'uuid';
 
 export interface ApplicationBanners {
@@ -179,13 +180,25 @@ export interface ApplicationBanners {
 
               <cf-command-bar [fullLength]="true"></cf-command-bar>
 
-              <ng-container *ngIf="currentDate$ | async as currentDate">
+              <ng-container
+                *ngIf="{
+                  currentDate: currentDate$ | async,
+                  installedApplications: installedApplications$ | async
+                } as data"
+              >
                 <ng-container *ngFor="let topic of userTopics$ | async">
-                  <div *ngIf="!editMode">
+                  <div
+                    *ngIf="
+                      !editMode &&
+                      data.currentDate &&
+                      data.installedApplications
+                    "
+                  >
                     <cf-start-topic
                       [topic]="topic"
-                      [currentDate]="currentDate"
+                      [currentDate]="data.currentDate"
                       [applications]="storeAppplications$ | async"
+                      [installedApplications]="data.installedApplications"
                     ></cf-start-topic>
                   </div>
                   <div *ngIf="editMode">
@@ -241,6 +254,9 @@ export class StartScene implements OnDestroy {
   topMenuIsOpen = false;
 
   storeAppplications$ = this.storeApplicationsState.applications$;
+  installedApplications$ = this.userApplicationsState.applications$.pipe(
+    filter((value) => (value ? true : false))
+  );
   userTopics$ = this.userTopicsState.topics$;
 
   selectedAvatar$ = this.selectedAvatarState.avatar$;
@@ -282,6 +298,7 @@ export class StartScene implements OnDestroy {
   constructor(
     private availableApplicationsState: AvailableApplicationsState,
     private storeApplicationsState: StoreApplicationsState,
+    private userApplicationsState: UserApplicationsState,
     private recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState,
     private router: Router,
     private selectedAvatarState: SelectedAvatarState,

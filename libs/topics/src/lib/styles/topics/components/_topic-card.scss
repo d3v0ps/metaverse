@@ -28,18 +28,24 @@
     &:hover {
       backdrop-filter: blur(0px);
     }
+
+    .topic-content {
+      width: 80%;
+      margin: 2rem auto;
+    }
   }
 
-  .applications-carousel {
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-  .applications-carousel-item {
-    margin: 0;
-    .application-card {
-      padding: 0;
-      .application-icon {
-        background: var(--color-base-light-medium);
+  .topic-applications {
+    .applications-carousel {
+      gap: 1rem;
+    }
+    .applications-carousel-item {
+      margin: 0;
+      .application-card {
+        padding: 0;
+        .application-icon {
+          background: var(--color-base-light-medium);
+        }
       }
     }
   }

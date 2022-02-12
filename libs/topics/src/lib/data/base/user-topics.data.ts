@@ -1,5 +1,5 @@
-import { Topic } from '@central-factory/applications/models/topic';
 import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
+import { Topic } from '../../models/topic';
 
 export const userTopics: Topic[] = [
   {
@@ -104,6 +104,7 @@ export const userTopics: Topic[] = [
       'com.google.mail',
       'com.google.keep',
       'com.doist.todoist',
+      'com.mieconomista.contaauto',
     ],
     shortcuts: [
       'com.google.calendar#Agenda',
@@ -112,6 +113,7 @@ export const userTopics: Topic[] = [
       'com.google.mail#Inbox',
       'com.google.mail#CreateEmail',
       'com.doist.todoist#CreateTask',
+      'com.mieconomista.contaauto#CreateInvoice',
     ],
     categories: ['productivity', 'business'],
     triggers: [
