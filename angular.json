@@ -377,34 +377,6 @@
       },
       "tags": []
     },
-    "gatekeeper-e2e": {
-      "root": "apps/gatekeeper-e2e",
-      "sourceRoot": "apps/gatekeeper-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/gatekeeper-e2e/cypress.json",
-            "devServerTarget": "gatekeeper:serve:development"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "gatekeeper:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["apps/gatekeeper-e2e/**/*.{js,ts}"]
-          }
-        }
-      },
-      "tags": [],
-      "implicitDependencies": ["gatekeeper"]
-    },
     "inventory": {
       "projectType": "application",
       "root": "apps/inventory",
@@ -508,34 +480,6 @@
         }
       },
       "tags": []
-    },
-    "inventory-e2e": {
-      "root": "apps/inventory-e2e",
-      "sourceRoot": "apps/inventory-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/inventory-e2e/cypress.json",
-            "devServerTarget": "inventory:serve:development"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "inventory:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["apps/inventory-e2e/**/*.{js,ts}"]
-          }
-        }
-      },
-      "tags": [],
-      "implicitDependencies": ["inventory"]
     },
     "manage-avatars": {
       "projectType": "application",
@@ -649,34 +593,6 @@
       },
       "tags": []
     },
-    "manage-avatars-e2e": {
-      "root": "apps/manage-avatars-e2e",
-      "sourceRoot": "apps/manage-avatars-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/manage-avatars-e2e/cypress.json",
-            "devServerTarget": "manage-avatars:serve:development"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "manage-avatars:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["apps/manage-avatars-e2e/**/*.{js,ts}"]
-          }
-        }
-      },
-      "tags": [],
-      "implicitDependencies": ["manage-avatars"]
-    },
     "marketplace": {
       "projectType": "application",
       "root": "apps/marketplace",
@@ -780,34 +696,6 @@
         }
       },
       "tags": []
-    },
-    "marketplace-e2e": {
-      "root": "apps/marketplace-e2e",
-      "sourceRoot": "apps/marketplace-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/marketplace-e2e/cypress.json",
-            "devServerTarget": "marketplace:serve:development"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "marketplace:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["apps/marketplace-e2e/**/*.{js,ts}"]
-          }
-        }
-      },
-      "tags": [],
-      "implicitDependencies": ["marketplace"]
     },
     "metadrones": {
       "projectType": "application",
@@ -914,34 +802,6 @@
         }
       },
       "tags": []
-    },
-    "metadrones-e2e": {
-      "root": "apps/metadrones-e2e",
-      "sourceRoot": "apps/metadrones-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/metadrones-e2e/cypress.json",
-            "devServerTarget": "metadrones:serve:development"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "metadrones:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["apps/metadrones-e2e/**/*.{js,ts}"]
-          }
-        }
-      },
-      "tags": [],
-      "implicitDependencies": ["metadrones"]
     },
     "permissions": {
       "projectType": "library",
@@ -1148,34 +1008,6 @@
         }
       },
       "tags": []
-    },
-    "player-e2e": {
-      "root": "apps/player-e2e",
-      "sourceRoot": "apps/player-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/player-e2e/cypress.json",
-            "devServerTarget": "player:serve:development"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "player:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["apps/player-e2e/**/*.{js,ts}"]
-          }
-        }
-      },
-      "tags": [],
-      "implicitDependencies": ["player"]
     },
     "portal": {
       "projectType": "application",
@@ -1432,35 +1264,6 @@
         }
       },
       "tags": []
-    },
-    "portal-e2e": {
-      "root": "apps/portal-e2e",
-      "sourceRoot": "apps/portal-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/portal-e2e/cypress.json",
-            "devServerTarget": "portal:serve:development",
-            "tsConfig": "apps/portal-e2e/tsconfig.json"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "portal:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["apps/portal-e2e/**/*.{js,ts}"]
-          }
-        }
-      },
-      "tags": [],
-      "implicitDependencies": ["portal"]
     },
     "preferences": {
       "projectType": "library",
