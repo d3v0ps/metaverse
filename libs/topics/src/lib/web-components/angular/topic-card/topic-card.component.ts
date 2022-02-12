@@ -67,8 +67,11 @@ export class TopicCardComponent {
   @Input() set currentDate(date: Date) {
     this._currentDate = date;
 
-    if (this.topic && this.applications) {
-      this.generateData(this.topic, this.applications);
+    if (this.topic) {
+      this.showTopic = this.resolveTopicVisibility(
+        this.topic,
+        this.currentDate
+      );
     }
   }
   get currentDate(): Date {

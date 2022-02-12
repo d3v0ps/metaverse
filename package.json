@@ -36,12 +36,11 @@
     "@google/model-viewer": "^1.10.1",
     "@mdi/svg": "^6.5.95",
     "@mdx-js/react": "^1.6.21",
-    "@nestjs/common": "^8.2.4",
-    "@nestjs/core": "^8.2.4",
-    "@nestjs/platform-express": "^8.2.4",
+    "@nestjs/common": "^8.2.6",
+    "@nestjs/core": "^8.2.6",
+    "@nestjs/platform-express": "^8.2.6",
     "@ng-select/ng-select": "^8.1.1",
     "@ng-stack/forms": "^2.4.0",
-    "@nrwl/angular": "13.4.3",
     "clsx": "^1.1.1",
     "electron-store": "^8.0.1",
     "hotkeys-js": "^3.8.7",
@@ -53,7 +52,7 @@
     "reflect-metadata": "^0.1.13",
     "rxdb": "^11.3.0",
     "rxjs": "~7.5.1",
-    "simple-icons": "^6.7.0",
+    "simple-icons": "^6.9.0",
     "tslib": "^2.0.0",
     "uuid": "^8.3.2",
     "zone.js": "~0.11.4"
@@ -68,8 +67,9 @@
     "@angular/language-service": "~13.1.0",
     "@compodoc/compodoc": "^1.1.15",
     "@geometricpanda/storybook-addon-badges": "^0.2.1",
-    "@nestjs/schematics": "^8.0.5",
-    "@nestjs/testing": "^8.2.4",
+    "@nestjs/schematics": "^8.0.6",
+    "@nestjs/testing": "^8.2.6",
+    "@nrwl/angular": "13.4.3",
     "@nrwl/cli": "13.4.3",
     "@nrwl/eslint-plugin-nx": "13.4.3",
     "@nrwl/jest": "13.4.3",
@@ -87,8 +87,6 @@
     "@storybook/builder-webpack5": "~6.4.5",
     "@storybook/manager-webpack5": "~6.4.5",
     "@storybook/theming": "^6.4.14",
-    "@twittwer/compodoc": "^1.6.4",
-    "@types/faker": "^5.5.9",
     "@types/jest": "26.0.24",
     "@types/leaflet": "^1.7.8",
     "@types/node": "14.14.33",
@@ -108,6 +106,6 @@
     "style-dictionary": "^3.1.1",
     "ts-jest": "27.0.3",
     "typescript": "~4.4.3",
-    "yaml": "^1.10.2"
+    "yaml": "^2.0.0-10"
   }
 }
