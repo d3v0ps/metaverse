@@ -13,7 +13,8 @@ import { SelectedAvatarState } from '@central-factory/avatars/states/selected-av
 import { EntityManager } from '@central-factory/persistence/services/entity-manager';
 import { Repository } from '@central-factory/persistence/services/repository';
 import { CustomizationSettingsState } from '@central-factory/preferences/states/customization/customization-settings.state';
-import { bounceIn, fadeInUp } from 'ng-animate';
+import { bounceIn } from '@central-factory/web-components/angular/animations/bounce-in.animation';
+import { fadeInUp } from '@central-factory/web-components/angular/animations/fade-in-up.animation';
 import { DeepReadonlyObject } from 'rxdb/dist/types/types';
 import { forkJoin, Observable, Subject } from 'rxjs';
 import {

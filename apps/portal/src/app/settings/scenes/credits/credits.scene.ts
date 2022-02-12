@@ -70,11 +70,6 @@ export class CreditsScene {
       version: '8.1.1',
     },
     {
-      label: 'ng-animate',
-      link: 'https://jiayihu.github.io/ng-animate/',
-      version: '1.0.0',
-    },
-    {
       label: 'model-viewer',
       link: 'https://modelviewer.dev/',
       version: '1.9.2',
