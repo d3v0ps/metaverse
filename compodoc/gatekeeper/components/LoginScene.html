@@ -221,7 +221,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">apps/gatekeeper/src/app/scenes/login/login.scene.ts:96</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">apps/gatekeeper/src/app/scenes/login/login.scene.ts:83</a></div>
                             </td>
                         </tr>
 
@@ -300,8 +300,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="100"
-                            class="link-to-prism">apps/gatekeeper/src/app/scenes/login/login.scene.ts:100</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">apps/gatekeeper/src/app/scenes/login/login.scene.ts:87</a></div>
                 </td>
             </tr>
 
@@ -337,8 +337,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="124"
-                            class="link-to-prism">apps/gatekeeper/src/app/scenes/login/login.scene.ts:124</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="111"
+                            class="link-to-prism">apps/gatekeeper/src/app/scenes/login/login.scene.ts:111</a></div>
                 </td>
             </tr>
 
@@ -373,11 +373,9 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>new FormGroup&lt;LoginForm, LoginFormValidatorsModel&gt;({
-    name: new FormControl&lt;string, LoginFormValidatorsModel&gt;(&#x27;&#x27;, [
-      Validators.required,
-    ]),
-    password: new FormControl&lt;string, LoginFormValidatorsModel&gt;(&#x27;&#x27;, [
+                        <i>Default value : </i><code>new FormGroup({
+    name: new FormControl(&#x27;&#x27;, [Validators.required]),
+    password: new FormControl(&#x27;&#x27;, [
       Validators.required,
       Validators.minLength(8),
     ]),
@@ -386,7 +384,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">apps/gatekeeper/src/app/scenes/login/login.scene.ts:88</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">apps/gatekeeper/src/app/scenes/login/login.scene.ts:77</a></div>
                         </td>
                     </tr>
 
@@ -400,26 +398,15 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { FormControl, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
 import { EntityManager } from &#x27;@central-factory/persistence/services/entity-manager&#x27;;
-import {
-  FormControl,
-  FormGroup,
-  Validators,
-  ValidatorsModel,
-} from &#x27;@ng-stack/forms&#x27;;
 import { catchError, tap, throwError } from &#x27;rxjs&#x27;;
 
 export type LoginForm &#x3D; {
   name: string;
   password: string;
 };
-
-export type LoginPasswordValidatorsModel &#x3D; ValidatorsModel &amp; {
-  invalidPassword: boolean;
-};
-
-export type LoginFormValidatorsModel &#x3D; LoginPasswordValidatorsModel;
 
 @Component({
   selector: &#x27;cf-login&#x27;,
@@ -486,11 +473,9 @@ export type LoginFormValidatorsModel &#x3D; LoginPasswordValidatorsModel;
   &#x60;,
 })
 export class LoginScene {
-  form &#x3D; new FormGroup&lt;LoginForm, LoginFormValidatorsModel&gt;({
-    name: new FormControl&lt;string, LoginFormValidatorsModel&gt;(&#x27;&#x27;, [
-      Validators.required,
-    ]),
-    password: new FormControl&lt;string, LoginFormValidatorsModel&gt;(&#x27;&#x27;, [
+  form &#x3D; new FormGroup({
+    name: new FormControl(&#x27;&#x27;, [Validators.required]),
+    password: new FormControl(&#x27;&#x27;, [
       Validators.required,
       Validators.minLength(8),
     ]),

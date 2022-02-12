@@ -300,7 +300,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>new FormGroup&lt;AvatarOverviewInput&gt;({
+                        <i>Default value : </i><code>new FormGroup({
     welcomeMessage: new FormControl(&#x60;&#x60;),
     name: new FormControl(&#x27;&#x27;),
     title: new FormControl(&#x27;&#x27;),
@@ -309,12 +309,12 @@
       id: new FormControl(&#x27;&#x27;),
       filename: new FormControl(&#x27;&#x27;),
       src: new FormControl(&#x27;&#x27;),
-      format: new FormControl&lt;AppearanceFormat&gt;(null),
+      format: new FormControl(AppearanceFormat.Model),
       portrait: new FormGroup({
         id: new FormControl(&#x27;&#x27;),
         filename: new FormControl(&#x27;&#x27;),
         src: new FormControl(&#x27;&#x27;),
-        format: new FormControl&lt;AppearanceFormat&gt;(null),
+        format: new FormControl(AppearanceFormat.Image),
       }),
     }),
   })</code>
@@ -400,8 +400,8 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
+import { FormControl, FormGroup } from &#x27;@angular/forms&#x27;;
 import { AppearanceFormat } from &#x27;@central-factory/avatars&#x27;;
-import { FormControl, FormGroup } from &#x27;@ng-stack/forms&#x27;;
 import type { Avatar } from &#x27;../../../models/avatar&#x27;;
 
 export interface AvatarOverviewInput {
@@ -510,7 +510,7 @@ export class AvatarOverviewComponent {
     smallPreviewUrl: false,
   };
 
-  form &#x3D; new FormGroup&lt;AvatarOverviewInput&gt;({
+  form &#x3D; new FormGroup({
     welcomeMessage: new FormControl(&#x60;&#x60;),
     name: new FormControl(&#x27;&#x27;),
     title: new FormControl(&#x27;&#x27;),
@@ -519,12 +519,12 @@ export class AvatarOverviewComponent {
       id: new FormControl(&#x27;&#x27;),
       filename: new FormControl(&#x27;&#x27;),
       src: new FormControl(&#x27;&#x27;),
-      format: new FormControl&lt;AppearanceFormat&gt;(null),
+      format: new FormControl(AppearanceFormat.Model),
       portrait: new FormGroup({
         id: new FormControl(&#x27;&#x27;),
         filename: new FormControl(&#x27;&#x27;),
         src: new FormControl(&#x27;&#x27;),
-        format: new FormControl&lt;AppearanceFormat&gt;(null),
+        format: new FormControl(AppearanceFormat.Image),
       }),
     }),
   });

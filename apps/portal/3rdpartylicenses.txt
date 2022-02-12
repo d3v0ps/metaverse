@@ -290,9 +290,6 @@ Apache-2.0
 @ng-select/ng-select
 MIT
 
-@ng-stack/forms
-MIT
-
 argsarray
 WTFPL
 # DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE 

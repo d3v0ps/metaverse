@@ -595,7 +595,7 @@ export class AvatarAppearanceEditorComponent {
       return;
     }
 
-    const model &#x3D; this.modelForm?.form.value;
+    const model &#x3D; this.modelForm?.form.value as AvatarAppearanceModelForm;
     const portrait &#x3D; this.portraitForm?.form.value as AppearancePortrait;
     const info &#x3D; this.infoForm?.form.value as AppearanceInfo;
 

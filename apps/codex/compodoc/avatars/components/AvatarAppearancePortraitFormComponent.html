@@ -473,12 +473,12 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>new FormGroup&lt;AvatarAppearancePortraitModelForm&gt;({
-    id: new FormControl&lt;string&gt;(uuid()),
-    filename: new FormControl&lt;string&gt;(&#x27;&#x27;),
-    format: new FormControl&lt;AppearanceFormat&gt;(AppearanceFormat.Image),
-    src: new FormControl&lt;string&gt;(),
-    file: new FormControl&lt;File&gt;(),
+                        <i>Default value : </i><code>new FormGroup({
+    id: new FormControl(uuid()),
+    filename: new FormControl(&#x27;&#x27;),
+    format: new FormControl(AppearanceFormat.Image),
+    src: new FormControl(),
+    file: new FormControl(),
   })</code>
                     </td>
                 </tr>
@@ -649,7 +649,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
-import { FormControl, FormGroup } from &#x27;@ng-stack/forms&#x27;;
+import { FormControl, FormGroup } from &#x27;@angular/forms&#x27;;
 import { Subject, takeUntil, tap } from &#x27;rxjs&#x27;;
 import { v4 as uuid } from &#x27;uuid&#x27;;
 import {
@@ -738,12 +738,12 @@ export class AvatarAppearancePortraitFormComponent
     this.form.markAsTouched();
   }
 
-  form &#x3D; new FormGroup&lt;AvatarAppearancePortraitModelForm&gt;({
-    id: new FormControl&lt;string&gt;(uuid()),
-    filename: new FormControl&lt;string&gt;(&#x27;&#x27;),
-    format: new FormControl&lt;AppearanceFormat&gt;(AppearanceFormat.Image),
-    src: new FormControl&lt;string&gt;(),
-    file: new FormControl&lt;File&gt;(),
+  form &#x3D; new FormGroup({
+    id: new FormControl(uuid()),
+    filename: new FormControl(&#x27;&#x27;),
+    format: new FormControl(AppearanceFormat.Image),
+    src: new FormControl(),
+    file: new FormControl(),
   });
 
   imageFormats &#x3D; [&#x27;.png&#x27;, &#x27;.jpg&#x27;, &#x27;.jpeg&#x27;];

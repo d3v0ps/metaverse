@@ -468,18 +468,18 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>new FormGroup({
-    bodyType: new FormControl&lt;AppearanceInfoBodyType | null&gt;(null),
-    eyeColor: new FormControl&lt;string | null&gt;(null),
-    fatPercentage: new FormControl&lt;number | null&gt;(null, [
+    bodyType: new FormControl(null),
+    eyeColor: new FormControl(null),
+    fatPercentage: new FormControl(null, [
       Validators.min(0),
       Validators.max(100),
     ]),
-    hairColor: new FormControl&lt;string | null&gt;(null),
-    hairLength: new FormControl&lt;number | null&gt;(null),
-    hairStyle: new FormControl&lt;string | null&gt;(null),
-    height: new FormControl&lt;number | null&gt;(null),
-    skinColor: new FormControl&lt;string | null&gt;(null),
-    weight: new FormControl&lt;number | null&gt;(null),
+    hairColor: new FormControl(null),
+    hairLength: new FormControl(null),
+    hairStyle: new FormControl(null),
+    height: new FormControl(null),
+    skinColor: new FormControl(null),
+    weight: new FormControl(null),
   })</code>
                     </td>
                 </tr>
@@ -563,7 +563,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
-import { FormControl, FormGroup, Validators } from &#x27;@ng-stack/forms&#x27;;
+import { FormControl, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
 import {
   AppearanceInfo,
   AppearanceInfoBodyType,
@@ -731,18 +731,18 @@ export class AvatarAppearanceInfoFormComponent {
   }
 
   form &#x3D; new FormGroup({
-    bodyType: new FormControl&lt;AppearanceInfoBodyType | null&gt;(null),
-    eyeColor: new FormControl&lt;string | null&gt;(null),
-    fatPercentage: new FormControl&lt;number | null&gt;(null, [
+    bodyType: new FormControl(null),
+    eyeColor: new FormControl(null),
+    fatPercentage: new FormControl(null, [
       Validators.min(0),
       Validators.max(100),
     ]),
-    hairColor: new FormControl&lt;string | null&gt;(null),
-    hairLength: new FormControl&lt;number | null&gt;(null),
-    hairStyle: new FormControl&lt;string | null&gt;(null),
-    height: new FormControl&lt;number | null&gt;(null),
-    skinColor: new FormControl&lt;string | null&gt;(null),
-    weight: new FormControl&lt;number | null&gt;(null),
+    hairColor: new FormControl(null),
+    hairLength: new FormControl(null),
+    hairStyle: new FormControl(null),
+    height: new FormControl(null),
+    skinColor: new FormControl(null),
+    weight: new FormControl(null),
   });
 }
 </code></pre>
