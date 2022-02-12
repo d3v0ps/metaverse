@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@ng-stack/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 import { Appearance, AppearanceFormat } from '../../../../../models/appearance';
@@ -117,12 +117,12 @@ export class AvatarAppearanceModelFormComponent implements OnInit, OnDestroy {
     value: (AppearanceFormat as any)[key],
   }));
 
-  form = new FormGroup<AvatarAppearanceModelForm>({
-    id: new FormControl<string>(uuid()),
-    filename: new FormControl<string>('', [Validators.required]),
-    format: new FormControl<AppearanceFormat>(AppearanceFormat.Model),
-    src: new FormControl<string>(),
-    file: new FormControl<File>(),
+  form = new FormGroup({
+    id: new FormControl(uuid()),
+    filename: new FormControl('', [Validators.required]),
+    format: new FormControl(AppearanceFormat.Model),
+    src: new FormControl(),
+    file: new FormControl(),
   });
 
   imageFormats = ['.png', '.jpg', '.jpeg'];
@@ -158,5 +158,9 @@ export class AvatarAppearanceModelFormComponent implements OnInit, OnDestroy {
       const objectUrl = URL.createObjectURL(value);
       this.form.controls.src?.setValue(objectUrl, { emitEvent: false });
     }
+  }
+
+  getValue(): AvatarAppearanceModelForm {
+    return this.form.value as AvatarAppearanceModelForm;
   }
 }

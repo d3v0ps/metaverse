@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
 import {
   Customization,
@@ -6,13 +7,12 @@ import {
 } from '@central-factory/preferences/models/customization';
 import { AvailableThemesState } from '@central-factory/preferences/states/customization/available-themes.state';
 import { CustomizationSettingsState } from '@central-factory/preferences/states/customization/customization-settings.state';
-import { Control, FormControl, FormGroup } from '@ng-stack/forms';
 import { Subject } from 'rxjs';
 import { filter, takeUntil, tap } from 'rxjs/operators';
 
-export interface CustomizationForm {
-  theme: Control<Theme>;
-}
+export type CustomizationForm = {
+  theme: Theme;
+};
 
 @Component({
   selector: 'cf-customization',
@@ -79,8 +79,8 @@ export interface CustomizationForm {
   ],
 })
 export class CustomizationScene implements OnInit, OnDestroy {
-  public readonly form = new FormGroup<CustomizationForm>({
-    theme: new FormControl<Theme>(null),
+  public readonly form = new FormGroup({
+    theme: new FormControl(null),
   });
 
   public readonly themes$ = this.availableThemesState.themes$;

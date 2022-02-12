@@ -1,24 +1,13 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EntityManager } from '@central-factory/persistence/services/entity-manager';
-import {
-  FormControl,
-  FormGroup,
-  Validators,
-  ValidatorsModel,
-} from '@ng-stack/forms';
 import { catchError, tap, throwError } from 'rxjs';
 
 export type LoginForm = {
   name: string;
   password: string;
 };
-
-export type LoginPasswordValidatorsModel = ValidatorsModel & {
-  invalidPassword: boolean;
-};
-
-export type LoginFormValidatorsModel = LoginPasswordValidatorsModel;
 
 @Component({
   selector: 'cf-login',
@@ -85,11 +74,9 @@ export type LoginFormValidatorsModel = LoginPasswordValidatorsModel;
   `,
 })
 export class LoginScene {
-  form = new FormGroup<LoginForm, LoginFormValidatorsModel>({
-    name: new FormControl<string, LoginFormValidatorsModel>('', [
-      Validators.required,
-    ]),
-    password: new FormControl<string, LoginFormValidatorsModel>('', [
+  form = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    password: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
     ]),

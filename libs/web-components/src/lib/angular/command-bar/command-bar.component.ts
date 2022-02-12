@@ -1,8 +1,12 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { NgSelectComponent } from '@ng-select/ng-select';
-import { FormControl, FormGroup } from '@ng-stack/forms';
 import { BehaviorSubject, filter, Subject, takeUntil } from 'rxjs';
 import { CommandService } from './command.service';
+
+export type CommandBarForm = {
+  search: string;
+};
 
 @Component({
   selector: 'cf-command-bar',
@@ -82,7 +86,7 @@ export class CommandBarComponent implements OnInit, OnDestroy {
   searchResults$ = new BehaviorSubject([]);
 
   form = new FormGroup({
-    search: new FormControl<string>(''),
+    search: new FormControl(''),
   });
   slashCommands: Record<string, string> = {
     search: 'search ',

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@ng-stack/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   AppearanceInfo,
   AppearanceInfoBodyType,
@@ -167,17 +167,17 @@ export class AvatarAppearanceInfoFormComponent {
   }
 
   form = new FormGroup({
-    bodyType: new FormControl<AppearanceInfoBodyType | null>(null),
-    eyeColor: new FormControl<string | null>(null),
-    fatPercentage: new FormControl<number | null>(null, [
+    bodyType: new FormControl(null),
+    eyeColor: new FormControl(null),
+    fatPercentage: new FormControl(null, [
       Validators.min(0),
       Validators.max(100),
     ]),
-    hairColor: new FormControl<string | null>(null),
-    hairLength: new FormControl<number | null>(null),
-    hairStyle: new FormControl<string | null>(null),
-    height: new FormControl<number | null>(null),
-    skinColor: new FormControl<string | null>(null),
-    weight: new FormControl<number | null>(null),
+    hairColor: new FormControl(null),
+    hairLength: new FormControl(null),
+    hairStyle: new FormControl(null),
+    height: new FormControl(null),
+    skinColor: new FormControl(null),
+    weight: new FormControl(null),
   });
 }

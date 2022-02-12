@@ -40,7 +40,6 @@
     "@nestjs/core": "^8.2.6",
     "@nestjs/platform-express": "^8.2.6",
     "@ng-select/ng-select": "^8.1.1",
-    "@ng-stack/forms": "^2.4.0",
     "clsx": "^1.1.1",
     "electron-store": "^8.0.1",
     "hotkeys-js": "^3.8.7",

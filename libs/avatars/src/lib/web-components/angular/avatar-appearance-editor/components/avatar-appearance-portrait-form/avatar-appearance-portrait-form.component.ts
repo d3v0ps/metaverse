@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@ng-stack/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 import {
@@ -88,12 +88,12 @@ export class AvatarAppearancePortraitFormComponent
     this.form.markAsTouched();
   }
 
-  form = new FormGroup<AvatarAppearancePortraitModelForm>({
-    id: new FormControl<string>(uuid()),
-    filename: new FormControl<string>(''),
-    format: new FormControl<AppearanceFormat>(AppearanceFormat.Image),
-    src: new FormControl<string>(),
-    file: new FormControl<File>(),
+  form = new FormGroup({
+    id: new FormControl(uuid()),
+    filename: new FormControl(''),
+    format: new FormControl(AppearanceFormat.Image),
+    src: new FormControl(),
+    file: new FormControl(),
   });
 
   imageFormats = ['.png', '.jpg', '.jpeg'];

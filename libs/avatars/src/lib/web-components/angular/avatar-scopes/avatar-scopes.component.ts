@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@ng-stack/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import type { Scope } from '../../../models/scope';
 
 export class AvatarScopesInput {
@@ -68,12 +68,12 @@ export class AvatarScopesComponent {
     }
   }
 
-  form = new FormGroup<AvatarScopesInput>({
-    scopes: new FormArray<Scope>([]),
+  form = new FormGroup({
+    scopes: new FormArray([]),
   });
 
-  get scopesForm() {
-    return this.form.controls.scopes as FormArray<Scope>;
+  get scopesForm(): FormArray {
+    return this.form.controls.scopes as FormArray;
   }
 
   addScope(scope: Scope) {

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { AppearanceFormat } from '@central-factory/avatars';
-import { FormControl, FormGroup } from '@ng-stack/forms';
 import type { Avatar } from '../../../models/avatar';
 
 export interface AvatarOverviewInput {
@@ -109,7 +109,7 @@ export class AvatarOverviewComponent {
     smallPreviewUrl: false,
   };
 
-  form = new FormGroup<AvatarOverviewInput>({
+  form = new FormGroup({
     welcomeMessage: new FormControl(``),
     name: new FormControl(''),
     title: new FormControl(''),
@@ -118,12 +118,12 @@ export class AvatarOverviewComponent {
       id: new FormControl(''),
       filename: new FormControl(''),
       src: new FormControl(''),
-      format: new FormControl<AppearanceFormat>(null),
+      format: new FormControl(AppearanceFormat.Model),
       portrait: new FormGroup({
         id: new FormControl(''),
         filename: new FormControl(''),
         src: new FormControl(''),
-        format: new FormControl<AppearanceFormat>(null),
+        format: new FormControl(AppearanceFormat.Image),
       }),
     }),
   });

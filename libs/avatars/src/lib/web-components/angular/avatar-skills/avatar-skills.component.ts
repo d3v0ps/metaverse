@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@ng-stack/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import type { Skill } from '../../../models/skill';
 
 export class AvatarSkillsInput {
@@ -104,12 +104,12 @@ export class AvatarSkillsComponent {
     'trade-assets': 'store',
   };
 
-  form = new FormGroup<AvatarSkillsInput>({
-    skills: new FormArray<Skill>([]),
+  form = new FormGroup({
+    skills: new FormArray([]),
   });
 
-  get skillsForm() {
-    return this.form.controls.skills as FormArray<Skill>;
+  get skillsForm(): FormArray {
+    return this.form.controls.skills as FormArray;
   }
 
   addScope(skill: Skill) {
