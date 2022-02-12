@@ -544,8 +544,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="177"
-                            class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:177</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="174"
+                            class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:174</a></div>
                 </td>
             </tr>
 
@@ -840,22 +840,17 @@ export class ManageAvatarAppearancesScene {
 
     this.loading &#x3D; true;
 
-    console.log(&#x27;Submit appearance&#x27;, appearance);
     this.manageAvatarAppearancesState
       .putAppearance(avatarId, appearance)
       .subscribe({
         complete: () &#x3D;&gt; (this.loading &#x3D; false),
-        error: () &#x3D;&gt; console.error(&#x27;Error&#x27;),
         next: () &#x3D;&gt; {
-          console.log(&#x27;appearance persisted&#x27;);
           this.selectedAppearance &#x3D; undefined;
         },
       });
   }
 
-  onConfirmAppearancesButtonClick() {
-    console.log(&#x27;Confirm appearances&#x27;);
-  }
+  onConfirmAppearancesButtonClick() {}
 }
 </code></pre>
     </div>

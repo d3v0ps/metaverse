@@ -103,6 +103,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                             </li>
                             <li class="link">
+                                <a href="modules/CommandBarModule.html" data-type="entity-link" >CommandBarModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-CommandBarModule-9f338e161c1aeece296fbdb435dd87d8"' : 'data-target="#xs-components-links-module-CommandBarModule-9f338e161c1aeece296fbdb435dd87d8"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-CommandBarModule-9f338e161c1aeece296fbdb435dd87d8"' :
+                                            'id="xs-components-links-module-CommandBarModule-9f338e161c1aeece296fbdb435dd87d8"' }>
+                                            <li class="link">
+                                                <a href="components/CommandBarComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CommandBarComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
                                 <a href="modules/DraggableModule.html" data-type="entity-link" >DraggableModule</a>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
@@ -132,6 +149,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                             'id="xs-components-links-module-FileUploadModule-bca94d2e21f58c06ef465c258e0f7bbe"' }>
                                             <li class="link">
                                                 <a href="components/FileUploadComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >FileUploadComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/MediaModule.html" data-type="entity-link" >MediaModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-MediaModule-2d5373ece80ff724d736f4a71569c5c7"' : 'data-target="#xs-components-links-module-MediaModule-2d5373ece80ff724d736f4a71569c5c7"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-MediaModule-2d5373ece80ff724d736f4a71569c5c7"' :
+                                            'id="xs-components-links-module-MediaModule-2d5373ece80ff724d736f4a71569c5c7"' }>
+                                            <li class="link">
+                                                <a href="components/MediaComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >MediaComponent</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -287,6 +321,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                             </li>
                             <li class="link">
+                                <a href="modules/SystemToolbarModule.html" data-type="entity-link" >SystemToolbarModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-SystemToolbarModule-c3d5df64d95057900c0656bd0948f255"' : 'data-target="#xs-components-links-module-SystemToolbarModule-c3d5df64d95057900c0656bd0948f255"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-SystemToolbarModule-c3d5df64d95057900c0656bd0948f255"' :
+                                            'id="xs-components-links-module-SystemToolbarModule-c3d5df64d95057900c0656bd0948f255"' }>
+                                            <li class="link">
+                                                <a href="components/SystemToolbarComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >SystemToolbarComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
                                 <a href="modules/TabsetModule.html" data-type="entity-link" >TabsetModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
@@ -356,6 +407,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/BemService.html" data-type="entity-link" >BemService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="injectables/CommandService.html" data-type="entity-link" >CommandService</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/SvgHttpLoader.html" data-type="entity-link" >SvgHttpLoader</a>
                                 </li>
                                 <li class="link">
@@ -371,6 +425,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
+                            <li class="link">
+                                <a href="interfaces/CommandExecutionParams.html" data-type="entity-link" >CommandExecutionParams</a>
+                            </li>
                             <li class="link">
                                 <a href="interfaces/SvgIconConfig.html" data-type="entity-link" >SvgIconConfig</a>
                             </li>

@@ -396,6 +396,7 @@ export enum SceneContentAnimationState {
         selectedAvatar: selectedAvatar$ | async
       } as data&quot;
     &gt;
+      &lt;cf-system-toolbar *ngIf&#x3D;&quot;data.selectedAvatar&quot;&gt;&lt;/cf-system-toolbar&gt;
       &lt;div cfBlock&#x3D;&quot;scene&quot; cfMod&#x3D;&quot;layout&quot;&gt;
         &lt;div
           cfElem&#x3D;&quot;body&quot;
@@ -415,7 +416,7 @@ export enum SceneContentAnimationState {
               [closeOnClickBackdrop]&#x3D;&quot;true&quot;
               [closeOnClickOutside]&#x3D;&quot;true&quot;
             &gt;
-              &lt;div style&#x3D;&quot;margin-top: 20px&quot;&gt;
+              &lt;div style&#x3D;&quot;margin-top: 3rem&quot;&gt;
                 &lt;a
                   (click)&#x3D;&quot;
                     onSidebarItemClick({
@@ -423,7 +424,7 @@ export enum SceneContentAnimationState {
                       routerLink: [&#x27;/select-avatar&#x27;],
                       icon: &#x27;assets/icons/mdi/account-switch.svg&#x27;,
                       application: {
-                        id: &#x27;com.central-factory.user-avatars&#x27;,
+                        id: &#x27;com.central-factory.avatars&#x27;,
                         name: &#x27;User Avatars&#x27;,
                         description: &#x27;Select an avatar&#x27;,
                         startUrl: &#x27;/select-avatar&#x27;
@@ -764,6 +765,9 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
     applications: DeepReadonlyObject&lt;Application&gt;[]
   ) {
     const sidebarItems &#x3D; applications
+      .filter(
+        (application) &#x3D;&gt; application.additionalProperties?.disabled !&#x3D;&#x3D; true
+      )
       .sort((a, b) &#x3D;&gt; {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         return a.createdAt!.localeCompare(b.createdAt!);

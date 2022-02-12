@@ -318,8 +318,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="84"
-                            class="link-to-prism">libs/web-components/src/lib/angular/svg-icon/svg-icon-registry.service.ts:84</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">libs/web-components/src/lib/angular/svg-icon/svg-icon-registry.service.ts:81</a></div>
                 </td>
             </tr>
 
@@ -478,8 +478,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="94"
-                            class="link-to-prism">libs/web-components/src/lib/angular/svg-icon/svg-icon-registry.service.ts:94</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="91"
+                            class="link-to-prism">libs/web-components/src/lib/angular/svg-icon/svg-icon-registry.service.ts:91</a></div>
                 </td>
             </tr>
 
@@ -689,10 +689,7 @@ export class SvgIconRegistryService {
         return div.querySelector(&#x27;svg&#x27;) as SVGElement;
       }),
       tap((svg) &#x3D;&gt; this.iconsByUrl.set(name, svg)),
-      catchError((err) &#x3D;&gt; {
-        console.error(err);
-        return observableThrowError(err);
-      }),
+      catchError((err) &#x3D;&gt; observableThrowError(err)),
       finalize(() &#x3D;&gt; this.iconsLoadingByUrl.delete(name)),
       share()
     ) as Observable&lt;SVGElement&gt;;
