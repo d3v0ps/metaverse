@@ -178,7 +178,7 @@ export const avataaarsDesignStyle: DesignStyle = {
       ],
     },
     {
-      id: 'clothe',
+      id: 'clotheType',
       label: 'Clothes',
       options: [
         { label: 'BlazerShirt', id: 'BlazerShirt' },
@@ -214,7 +214,7 @@ export const avataaarsDesignStyle: DesignStyle = {
       ],
     },
     {
-      id: 'accesory',
+      id: 'accessoriesType',
       label: 'Accesory',
       options: [
         { label: 'Blank', id: 'Blank' },
