@@ -49,6 +49,13 @@
     fill: var(--component-button-color);
   }
 
+  .spinner {
+    vertical-align: bottom;
+    width: 2rem;
+    height: 2rem;
+    fill: var(--component-button-color);
+  }
+
   &--has-icon {
     line-height: 1;
   }

@@ -11,7 +11,7 @@ import { Application } from '@central-factory/applications/models/application';
             showInstallButton && !application?.additionalProperties?.internal
           "
           cfBlock="button"
-          [cfMod]="['has-icon']"
+          [cfMod]="['secondary', 'outline', 'has-icon']"
           (click)="installClick.emit(application)"
         >
           <cf-svg-icon src="assets/icons/mdi/plus.svg"></cf-svg-icon>

@@ -30,8 +30,20 @@ export type AvatarAppearanceEditorModel = {
       <div cfElem="body">
         <cf-tabset theme="secondary">
           <cf-tab
-            [title]="'Appearance'"
+            [title]="'Portrait'"
             [active]="true"
+            icon="assets/icons/mdi/account.svg"
+            [customClass]="'appearance-tab'"
+          >
+            <div cfBlock="appearance-tab-content-portrait">
+              <cf-avatar-appearance-portrait-form
+                [portrait]="appearance?.portrait"
+              >
+              </cf-avatar-appearance-portrait-form>
+            </div>
+          </cf-tab>
+          <cf-tab
+            [title]="'Appearance'"
             icon="assets/icons/mdi/human.svg"
             [customClass]="'appearance-tab'"
           >

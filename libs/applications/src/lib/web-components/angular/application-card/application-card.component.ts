@@ -38,6 +38,7 @@ import { Application } from '../../../models/application';
             [svgStyle]="{
               fill: 'var(--color-base-danger-medium)'
             }"
+            (click)="uninstallClick.emit(application)"
           ></cf-svg-icon>
         </h5>
       </div>
@@ -59,9 +60,12 @@ import { Application } from '../../../models/application';
 
       <div cfBlock="application-card-footer">
         <cf-application-footer
+          *ngIf="showFooter"
           [application]="application"
           [showInstallButton]="showInstallButton"
           [showPlayButton]="showPlayButton"
+          (installClick)="installClick.emit($event)"
+          (playClick)="playClick.emit($event)"
         ></cf-application-footer>
       </div>
     </div>
@@ -109,6 +113,7 @@ import { Application } from '../../../models/application';
 })
 export class ApplicationCardComponent {
   @Input() showInfo = true;
+  @Input() showFooter = true;
   @Input() showHeader = true;
   @Input() showAuthor = true;
   @Input() showDescription = true;
@@ -164,6 +169,7 @@ export class ApplicationCardComponent {
   @Output() public playClick = new EventEmitter<Application>();
   @Output() public starClick = new EventEmitter<Application>();
   @Output() public installClick = new EventEmitter<Application>();
+  @Output() public uninstallClick = new EventEmitter<Application>();
 
   set hover(value: boolean) {
     this._hover = value;
@@ -174,13 +180,9 @@ export class ApplicationCardComponent {
       delete this.cardStyle.transform;
     }
 
-    this.iconStyle = value
-      ? {
-          fill: this.outline ? this.applicationPrimaryColor : '',
-        }
-      : {
-          fill: this.outline ? this.applicationPrimaryColor : '',
-        };
+    this.iconStyle = {
+      fill: this.applicationPrimaryColor,
+    };
   }
 
   applicationIsSupported?: boolean;

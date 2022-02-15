@@ -6,6 +6,7 @@ import {
   AppearanceFormat,
   AppearancePortrait,
 } from '../../../../../models/appearance';
+import { AvatarAppearanceProvider } from '../avatar-appearance-providers/avatar-appearance-providers.component';
 
 export type AvatarAppearancePortraitModelForm = {
   id: string;
@@ -13,6 +14,10 @@ export type AvatarAppearancePortraitModelForm = {
   filename?: string;
   file?: File;
   src?: string;
+  style: {
+    id: string;
+    properties: Record<string, any>;
+  };
 };
 
 @Component({
@@ -20,6 +25,17 @@ export type AvatarAppearancePortraitModelForm = {
   template: `
     <div cfBlock="avatar-appearance-portrait-form">
       <h2 cfElem="title">Portrait</h2>
+
+      <cf-avatar-appearance-portrait-designer
+        [appeareancePortrait]="{
+          id: form.value.id,
+          filename: form.value.filename || '',
+          format: form.value!.format,
+          src: form.value.src || '',
+          style: form.value.style
+        }"
+      ></cf-avatar-appearance-portrait-designer>
+
       <form [formGroup]="form">
         <div
           style="margin-bottom: 1rem;"
@@ -30,7 +46,8 @@ export type AvatarAppearancePortraitModelForm = {
               id: form.value.id,
               filename: form.value.filename || '',
               format: form.value!.format,
-              src: form.value.src || ''
+              src: form.value.src || '',
+              style: form.value.style
             }"
           >
           </cf-avatar-appearance-portrait>
@@ -41,21 +58,6 @@ export type AvatarAppearancePortraitModelForm = {
         >
           <cf-avatar-appearance-portrait> </cf-avatar-appearance-portrait>
         </div>
-
-        <!-- div cfBlock="form-group">
-          <label cfBlock="form-label" for="portraitSrc">
-            Url of the portrait file. Only png and jpg images are supported.
-            144x144 images are recommended.
-          </label>
-          <input
-            class="input"
-            cfBlock="form-control"
-            type="text"
-            id="portraitSrc"
-            formControlName="src"
-            placeholder=""
-          />
-        </div -->
 
         <div cfBlock="form-group">
           <label cfBlock="form-label" for="appearanceFile">
@@ -71,6 +73,10 @@ export type AvatarAppearancePortraitModelForm = {
           </cf-file-upload>
         </div>
       </form>
+
+      <cf-avatar-appearance-providers
+        [providers]="providers"
+      ></cf-avatar-appearance-providers>
     </div>
   `,
 })
@@ -84,6 +90,10 @@ export class AvatarAppearancePortraitFormComponent
       format: value?.format || AppearanceFormat.Image,
       src: value?.src || undefined,
       file: undefined,
+      style: value?.style || {
+        id: 'avataaars',
+        properties: {},
+      },
     });
     this.form.markAsTouched();
   }
@@ -94,7 +104,21 @@ export class AvatarAppearancePortraitFormComponent
     format: new FormControl(AppearanceFormat.Image),
     src: new FormControl(),
     file: new FormControl(),
+    style: new FormControl(),
   });
+
+  providers: AvatarAppearanceProvider[] = [
+    {
+      name: 'Avataaars',
+      url: 'https://getavataaars.com/',
+      color: '#6a39d7',
+    },
+    {
+      name: 'DiceBear Avatars',
+      url: 'https://avatars.dicebear.com/',
+      color: '#23a7f0',
+    },
+  ];
 
   imageFormats = ['.png', '.jpg', '.jpeg'];
   modelFormats = ['.glb', '.gltf', '.fbx', '.obj'];
@@ -129,5 +153,9 @@ export class AvatarAppearancePortraitFormComponent
       const objectUrl = URL.createObjectURL(value);
       this.form.controls.src?.setValue(objectUrl, { emitEvent: false });
     }
+  }
+
+  onProviderClick(provider: AvatarAppearanceProvider) {
+    window.open(provider.url, '_blank');
   }
 }

@@ -99,6 +99,7 @@ export class ManageAvatarAppearancesState {
             src: portrait.file
               ? undefined
               : portrait.src || alreadyExistingAppearance?.portrait.src,
+            style: portrait.style,
           },
         };
 

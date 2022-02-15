@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 import { Appearance, AppearanceFormat } from '../../../../../models/appearance';
+import { AvatarAppearanceProvider } from '../avatar-appearance-providers/avatar-appearance-providers.component';
 
 export type AvatarAppearanceModelForm = {
   id: string;
@@ -31,7 +32,8 @@ export type AvatarAppearanceModelForm = {
                     id: form.value.id,
                     filename: form.value?.filename || '',
                     format: form.value.format,
-                    src: form.value.src
+                    src: form.value.src,
+                    style: form.value.style
                   }
                 }"
               >
@@ -40,40 +42,6 @@ export type AvatarAppearanceModelForm = {
             <ng-container *ngIf="!form.value.format || !form.value.src">
               <cf-avatar-appearance-card> </cf-avatar-appearance-card>
             </ng-container>
-
-            <!-- div cfBlock="form-group">
-              <label cfBlock="form-label" for="appearanceFormat">
-                The Appearance file format. Only images and glb files are
-                supported.
-              </label>
-              <select
-                formControlName="format"
-                id="appearanceFormat"
-                class="form-control"
-              >
-                <option [ngValue]="null">Select an appearance format</option>
-                <option
-                  *ngFor="let format of appearanceFormats"
-                  [ngValue]="format.value"
-                >
-                  {{ format.label }}
-                </option>
-              </select>
-            </div -->
-
-            <!-- div cfBlock="form-group">
-              <label cfBlock="form-label" for="appearanceSrc">
-                Url of the appearance file
-              </label>
-              <input
-                class="input"
-                cfBlock="form-control"
-                type="text"
-                id="appearanceSrc"
-                formControlName="src"
-                placeholder=""
-              />
-            </div -->
 
             <div cfBlock="form-group">
               <label cfBlock="form-label" for="appearanceFile">
@@ -97,6 +65,10 @@ export type AvatarAppearanceModelForm = {
           </div>
         </div>
       </form>
+
+      <cf-avatar-appearance-providers
+        [providers]="providers"
+      ></cf-avatar-appearance-providers>
     </div>
   `,
 })
@@ -124,6 +96,14 @@ export class AvatarAppearanceModelFormComponent implements OnInit, OnDestroy {
     src: new FormControl(),
     file: new FormControl(),
   });
+
+  providers: AvatarAppearanceProvider[] = [
+    {
+      name: 'Ready Player Me',
+      url: 'https://readyplayer.me/',
+      color: '#313944',
+    },
+  ];
 
   imageFormats = ['.png', '.jpg', '.jpeg'];
   modelFormats = ['.glb', '.gltf', '.fbx', '.obj'];

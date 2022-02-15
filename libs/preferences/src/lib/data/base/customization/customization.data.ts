@@ -39,7 +39,7 @@ export const customization: Preference<Customization>[] = [
     key: 'settings.customization.3',
     value: {
       theme: {
-        name: 'Default',
+        name: 'Central Factory',
         path: 'assets/themes/default/variables.css',
       },
     },
@@ -54,7 +54,7 @@ export const store: Preference<any>[] = [
       {
         label: 'The Central Factory',
         // url: '/applications.json',
-        url: `${environment.repositoryUrl}/applications.json`,
+        url: `${environment.repositoryUrl}`,
       },
     ],
   },

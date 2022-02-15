@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import {
   Application,
   ApplicationAuthor,
@@ -10,6 +10,7 @@ import {
   StoreApplicationsState,
 } from '@central-factory/applications/states/store-applications.state';
 import { UserApplicationsState } from '@central-factory/applications/states/user-applications.state';
+import { WindowComponent } from '@central-factory/web-components/angular/window/window.component';
 import { catchError, forkJoin, map, of, share, switchMap } from 'rxjs';
 
 @Component({
@@ -82,7 +83,7 @@ import { catchError, forkJoin, map, of, share, switchMap } from 'rxjs';
                 [cfMod]="{
                   'has-icon': true,
                   'full-width': true,
-                  primary: activeSection === 'settings'
+                  primary: activeSection === 'installed'
                 }"
                 (click)="onInstalledClick()"
               >
@@ -140,7 +141,7 @@ import { catchError, forkJoin, map, of, share, switchMap } from 'rxjs';
           </ul>
           <h2>Categories</h2>
           <ul cfBlock="nav" cfMod="grid">
-            <ng-container *ngFor="let category of categories">
+            <ng-container *ngFor="let category of categories$ | async">
               <ng-container
                 *ngIf="applicationsByCategory$ | async as byCategory"
               >
@@ -195,6 +196,9 @@ import { catchError, forkJoin, map, of, share, switchMap } from 'rxjs';
                   [installedApplications]="installedApplications || []"
                   [applications]="installedApplications"
                   (applicationInstallClick)="onInstallApplicationClick($event)"
+                  (applicationUninstallClick)="
+                    onUninstallApplicationClick($event)
+                  "
                 >
                 </cf-applications-carousel>
               </div>
@@ -215,6 +219,9 @@ import { catchError, forkJoin, map, of, share, switchMap } from 'rxjs';
                   [installedApplications]="installedApplications || []"
                   [applications]="installedApplications"
                   (applicationInstallClick)="onInstallApplicationClick($event)"
+                  (applicationUninstallClick)="
+                    onUninstallApplicationClick($event)
+                  "
                 >
                 </cf-applications-carousel>
               </div>
@@ -258,6 +265,9 @@ import { catchError, forkJoin, map, of, share, switchMap } from 'rxjs';
                   [installedApplications]="installedApplications || []"
                   [applications]="data.byAuthor[selectedAuthor.id]"
                   (applicationInstallClick)="onInstallApplicationClick($event)"
+                  (applicationUninstallClick)="
+                    onUninstallApplicationClick($event)
+                  "
                 >
                 </cf-applications-carousel>
               </ng-container>
@@ -301,6 +311,9 @@ import { catchError, forkJoin, map, of, share, switchMap } from 'rxjs';
                   [installedApplications]="installedApplications || []"
                   [applications]="data.byCategory[selectedCategory.label]"
                   (applicationInstallClick)="onInstallApplicationClick($event)"
+                  (applicationUninstallClick)="
+                    onUninstallApplicationClick($event)
+                  "
                 >
                 </cf-applications-carousel>
               </ng-container>
@@ -309,6 +322,140 @@ import { catchError, forkJoin, map, of, share, switchMap } from 'rxjs';
         </div>
       </div>
     </div>
+
+    <cf-window #installApplicationWindow [maximizable]="false">
+      <ng-container class="window-header__content"
+        >Install {{ selectedApplication?.name || 'Application' }}</ng-container
+      >
+      <ng-container class="window-body__content">
+        <div cfBlock="window-content">
+          <cf-application-card
+            [application]="selectedApplication"
+            [showFooter]="false"
+            [outline]="true"
+          ></cf-application-card>
+          <cf-application-permissions
+            [permissions]="
+              selectedApplication?.additionalProperties?.permissions || []
+            "
+          ></cf-application-permissions>
+        </div>
+      </ng-container>
+      <ng-container
+        class="window-footer__content"
+        *ngIf="installedApplications$ | async as installedApplications"
+      >
+        <button
+          cfBlock="button"
+          [cfMod]="['primary', 'has-icon']"
+          (click)="onConfirmInstallApplicationClick(selectedApplication)"
+          *ngIf="
+            selectedApplication &&
+            !installingApplications[selectedApplication.id] &&
+            !findById(selectedApplication, installedApplications)
+          "
+        >
+          <cf-svg-icon
+            cfElem="icon"
+            src="assets/icons/mdi/check.svg"
+          ></cf-svg-icon>
+          I'm ready!
+        </button>
+        <button
+          cfBlock="button"
+          [cfMod]="['success', 'has-icon']"
+          (click)="installApplicationWindow?.hide()"
+          *ngIf="
+            selectedApplication &&
+            !installingApplications[selectedApplication.id] &&
+            findById(selectedApplication, installedApplications)
+          "
+        >
+          <cf-svg-icon
+            cfElem="icon"
+            src="assets/icons/mdi/check.svg"
+          ></cf-svg-icon>
+          Done
+        </button>
+        <button
+          cfBlock="button"
+          [cfMod]="['primary', 'has-icon']"
+          disabled
+          *ngIf="
+            selectedApplication &&
+            installingApplications[selectedApplication.id]
+          "
+        >
+          <cf-spinner size="1x"></cf-spinner>
+          Installing...
+        </button>
+      </ng-container>
+    </cf-window>
+
+    <cf-window #uninstallApplicationWindow [maximizable]="false">
+      <ng-container class="window-header__content"
+        >Uninstall
+        {{ selectedApplication?.name || 'Application' }}</ng-container
+      >
+      <ng-container class="window-body__content">
+        <div cfBlock="window-content">
+          <cf-application-card
+            [application]="selectedApplication"
+            [showFooter]="false"
+            [outline]="true"
+          ></cf-application-card>
+        </div>
+      </ng-container>
+      <ng-container
+        class="window-footer__content"
+        *ngIf="installedApplications$ | async as installedApplications"
+      >
+        <button
+          cfBlock="button"
+          [cfMod]="['danger', 'has-icon']"
+          (click)="onConfirmUninstallApplicationClick(selectedApplication)"
+          *ngIf="
+            selectedApplication &&
+            !uninstallingApplications[selectedApplication.id] &&
+            findById(selectedApplication, installedApplications)
+          "
+        >
+          <cf-svg-icon
+            cfElem="icon"
+            src="assets/icons/mdi/check.svg"
+          ></cf-svg-icon>
+          Bye!
+        </button>
+        <button
+          cfBlock="button"
+          [cfMod]="['success', 'has-icon']"
+          (click)="uninstallApplicationWindow?.hide()"
+          *ngIf="
+            selectedApplication &&
+            !uninstallingApplications[selectedApplication.id] &&
+            !findById(selectedApplication, installedApplications)
+          "
+        >
+          <cf-svg-icon
+            cfElem="icon"
+            src="assets/icons/mdi/check.svg"
+          ></cf-svg-icon>
+          Done
+        </button>
+        <button
+          cfBlock="button"
+          cfMod="danger"
+          disabled
+          *ngIf="
+            selectedApplication &&
+            uninstallingApplications[selectedApplication.id]
+          "
+        >
+          <cf-spinner size="1x"></cf-spinner>
+          Uninstalling...
+        </button>
+      </ng-container>
+    </cf-window>
   `,
   styles: [
     `
@@ -342,10 +489,25 @@ import { catchError, forkJoin, map, of, share, switchMap } from 'rxjs';
           grid-template-columns: auto auto;
         }
       }
+
+      .window-content {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
     `,
   ],
 })
 export class PortalsScene {
+  @ViewChild('installApplicationWindow', { static: true })
+  installApplicationWindow?: WindowComponent;
+  @ViewChild('uninstallApplicationWindow', { static: true })
+  uninstallApplicationWindow?: WindowComponent;
+
+  installingApplications: Record<string, boolean> = {};
+  uninstallingApplications: Record<string, boolean> = {};
+
   activeSection:
     | 'home'
     | 'featured'
@@ -355,45 +517,6 @@ export class PortalsScene {
     | 'author'
     | 'installed'
     | 'settings' = 'home';
-
-  categories = [
-    {
-      label: 'lifestyle',
-      icon: 'assets/icons/mdi/account-supervisor-circle.svg',
-    },
-    {
-      label: 'productivity',
-      icon: 'assets/icons/mdi/order-bool-ascending-variant.svg',
-    },
-    { label: 'books', icon: 'assets/icons/mdi/book.svg' },
-    { label: 'business', icon: 'assets/icons/mdi/briefcase.svg' },
-    { label: 'education', icon: 'assets/icons/mdi/school.svg' },
-    { label: 'entertainment', icon: 'assets/icons/mdi/play-box.svg' },
-    { label: 'tv', icon: 'assets/icons/mdi/television.svg' },
-    { label: 'finance', icon: 'assets/icons/mdi/finance.svg' },
-    { label: 'fitness', icon: 'assets/icons/mdi/dumbbell.svg' },
-    { label: 'food', icon: 'assets/icons/mdi/food-fork-drink.svg' },
-    { label: 'games', icon: 'assets/icons/mdi/google-controller.svg' },
-    { label: 'government', icon: 'assets/icons/mdi/home-city.svg' },
-    { label: 'health', icon: 'assets/icons/mdi/hospital-box.svg' },
-    { label: 'kids', icon: 'assets/icons/mdi/account-child.svg' },
-    { label: 'magazines', icon: 'assets/icons/mdi/newspaper-variant.svg' },
-    { label: 'medical', icon: 'assets/icons/mdi/medical-bag.svg' },
-    { label: 'music', icon: 'assets/icons/mdi/music-circle.svg' },
-    { label: 'navigation', icon: 'assets/icons/mdi/navigation.svg' },
-    { label: 'news', icon: 'assets/icons/mdi/newspaper-variant.svg' },
-    { label: 'personalization', icon: 'assets/icons/mdi/palette.svg' },
-    { label: 'photo', icon: 'assets/icons/mdi/image.svg' },
-    { label: 'politics', icon: 'assets/icons/mdi/account-tie-voice.svg' },
-    { label: 'security', icon: 'assets/icons/mdi/shield-account.svg' },
-    { label: 'shopping', icon: 'assets/icons/mdi/basket.svg' },
-    { label: 'social', icon: 'assets/icons/mdi/account-group.svg' },
-    { label: 'sports', icon: 'assets/icons/mdi/basketball.svg' },
-    { label: 'travel', icon: 'assets/icons/mdi/train-car.svg' },
-    { label: 'utilities', icon: 'assets/icons/mdi/hammer-screwdriver.svg' },
-    { label: 'weather', icon: 'assets/icons/mdi/sun-wireless.svg' },
-    { label: 'devtools', icon: 'assets/icons/mdi/code-tags.svg' },
-  ];
 
   selectedCategory = {
     label: '',
@@ -405,6 +528,10 @@ export class PortalsScene {
     name: '',
   };
 
+  selectedApplication?: Application;
+
+  categories$ = this.storeApplicationsState.categories$;
+
   featuredApplications$ = this.storeApplicationsState.featured$;
   applicationsByCategory$ = this.storeApplicationsState.byCategory$;
 
@@ -415,34 +542,23 @@ export class PortalsScene {
       forkJoin(
         authors
           .map((author) => {
-            switch (author.id) {
-              case 'com.alphabet':
-                author.icon = 'assets/icons/simple-icons/google.svg';
-                return author;
-              case 'com.meta':
-                author.icon = 'assets/icons/simple-icons/facebook.svg';
-                return author;
-              default:
-                return author;
-            }
+            author.icon =
+              this.publishersIcons[author.id] ||
+              `assets/icons/simple-icons/${author.name.toLowerCase()}.svg`;
+            return author;
           })
           .map((author) =>
             this.httpClient
-              .get(
-                this.publishersIcons[author.id] ||
-                  `assets/icons/simple-icons/${author.name.toLowerCase()}.svg`,
-                {
-                  responseType: 'text',
-                }
-              )
+              .get(author.icon as string, {
+                responseType: 'text',
+              })
               .pipe(catchError(() => of(undefined)))
               .pipe(
                 map((found: unknown) => {
                   return {
                     ...author,
                     icon: found
-                      ? this.publishersIcons[author.id] ||
-                        `assets/icons/simple-icons/${author.name.toLowerCase()}.svg`
+                      ? author.icon
                       : 'assets/icons/mdi/application.svg',
                   };
                 })
@@ -474,7 +590,39 @@ export class PortalsScene {
   }
 
   onInstallApplicationClick(application: Application) {
-    this.installApplicationsState.install(application);
+    this.selectedApplication = application;
+    this.installApplicationWindow?.show();
+  }
+
+  onConfirmInstallApplicationClick(application?: Application) {
+    if (!application || this.installingApplications[application.id]) {
+      return;
+    }
+
+    this.installingApplications[application.id] = true;
+    setTimeout(() => {
+      this.installApplicationsState.install(application);
+      delete this.installingApplications[application.id];
+    }, 1000);
+  }
+
+  onUninstallApplicationClick(application: Application) {
+    this.installApplicationWindow?.hide();
+
+    this.selectedApplication = application;
+    this.uninstallApplicationWindow?.show();
+  }
+
+  onConfirmUninstallApplicationClick(application?: Application) {
+    if (!application || this.uninstallingApplications[application.id]) {
+      return;
+    }
+
+    this.uninstallingApplications[application.id] = true;
+    setTimeout(() => {
+      this.installApplicationsState.uninstall(application);
+      delete this.uninstallingApplications[application.id];
+    }, 1000);
   }
 
   onHomeClick() {
@@ -560,5 +708,9 @@ export class PortalsScene {
 
     this.selectedCategory = category;
     this.activeSection = 'category';
+  }
+
+  findById(item: { id: string }, arr: { id: string }[]) {
+    return arr.find((i) => i.id === item.id);
   }
 }

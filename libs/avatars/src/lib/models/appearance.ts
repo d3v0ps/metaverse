@@ -7,6 +7,11 @@ export enum AppearanceFormat {
   Image = 'Image',
 }
 
+export type AppearanceStyle = {
+  id: string;
+  properties: Record<string, any>;
+};
+
 /** The appearance's portrait */
 export type AppearancePortrait = {
   /** The portrait's ID */
@@ -17,6 +22,7 @@ export type AppearancePortrait = {
   format: AppearanceFormat;
   /** The portrait's Src */
   src?: string;
+  style: AppearanceStyle;
 };
 
 /** The appearance's preview camera configuration

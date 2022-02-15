@@ -41,6 +41,18 @@ export class UserApplicationsState {
     return this.userApplicationsRepository.upsert(application);
   }
 
+  removeApplication(application: Application) {
+    if (!this.userApplicationsRepository) {
+      throw new Error('Repositories not initialized');
+    }
+
+    return this.userApplicationsRepository.remove({
+      selector: {
+        id: application.id,
+      },
+    });
+  }
+
   private subscribeToDataChanges() {
     if (!this.userApplicationsRepository) {
       throw new Error('Repositories not initialized');

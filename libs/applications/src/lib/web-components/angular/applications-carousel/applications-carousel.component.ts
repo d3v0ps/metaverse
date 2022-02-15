@@ -42,6 +42,7 @@ import { Application } from '@central-factory/applications/models/application';
           (playClick)="applicationPlayClick.emit(application)"
           (starClick)="applicationStarClick.emit(application)"
           (installClick)="applicationInstallClick.emit(application)"
+          (uninstallClick)="applicationUninstallClick.emit(application)"
         ></cf-application-card>
       </div>
     </div>
@@ -70,6 +71,7 @@ export class ApplicationsCarouselComponent {
   @Output() applicationPlayClick = new EventEmitter<Application>();
   @Output() applicationStarClick = new EventEmitter<Application>();
   @Output() applicationInstallClick = new EventEmitter<Application>();
+  @Output() applicationUninstallClick = new EventEmitter<Application>();
   @Output() applicationCardDrop = new EventEmitter<
     CdkDragDrop<Application[]>
   >();

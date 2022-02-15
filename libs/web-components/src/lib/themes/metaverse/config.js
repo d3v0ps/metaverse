@@ -14,6 +14,17 @@ module.exports = {
           destination: 'variables.css'
         }
       ]
+    },
+    scss: {
+      transformGroup: 'css',
+      buildPath: 'libs/web-components/src/lib/styles/web-components/',
+      files: [
+        {
+          format: 'css/variables',
+          destination: '_theme.scss',
+          options: { showFileHeader: false },
+        }
+      ]
     }
   }
 }

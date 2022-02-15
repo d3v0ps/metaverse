@@ -13,10 +13,13 @@ import {
 export type ApplicationsByCategory = Record<string, Application[]>;
 export type ApplicationsByAuthor = Record<string, Application[]>;
 
+export type Category = { label: string; icon: string };
+
 @Injectable({
   providedIn: 'root',
 })
 export class StoreApplicationsState {
+  public readonly categories$ = new BehaviorSubject<Category[]>([]);
   public readonly applications$ = new BehaviorSubject<Application[]>([]);
   public readonly featured$ = this.applications$.pipe(share());
 
@@ -83,9 +86,6 @@ export class StoreApplicationsState {
     })
   );
 
-  private readonly storeDataUrl =
-    'https://raw.githubusercontent.com/central-factory/web-application-manifests/main/applications.json';
-
   constructor(
     private httpClient: HttpClient,
     private userPreferencesState: UserPreferencesState<
@@ -101,9 +101,26 @@ export class StoreApplicationsState {
             return of([]);
           }
 
-          return forkJoin(
+          const categories$ = forkJoin(
             repositories.map((repository) =>
-              this.httpClient.get<Application[]>(repository.url)
+              this.httpClient.get<Category[]>(
+                `${repository.url}/categories.json`
+              )
+            )
+          ).pipe(
+            map((categories) =>
+              categories.reduce(
+                (acc, current) => acc.concat(current),
+                [] as Category[]
+              )
+            )
+          );
+
+          const applications$ = forkJoin(
+            repositories.map((repository) =>
+              this.httpClient.get<Application[]>(
+                `${repository.url}/applications.json`
+              )
             )
           ).pipe(
             map((applications) =>
@@ -113,8 +130,12 @@ export class StoreApplicationsState {
               )
             )
           );
+
+          return forkJoin([categories$, applications$]);
         }),
-        tap((applications) => {
+        tap(([categories, applications]) => {
+          this.categories$.next(categories);
+
           this.applications$.next(
             applications.map((application) => {
               const primaryColor: string | undefined =

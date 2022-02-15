@@ -19,6 +19,18 @@ export const userAvatars: UserAvatarDocType[] = [
         filename: 'portrait.png',
         format: AppearanceFormat.Image,
         src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
+        style: {
+          id: 'avataaars',
+          properties: {
+            skinColor: 'Pale',
+            topType: 'LongHairBob',
+            hairColor: 'Black',
+            facialHairType: 'BeardLight',
+            facialHairColor: 'Black',
+            eyeType: 'Default',
+            eyebrowType: 'Default',
+          },
+        },
       },
     },
     appearances: [
@@ -32,6 +44,18 @@ export const userAvatars: UserAvatarDocType[] = [
           filename: 'portrait.png',
           format: AppearanceFormat.Image,
           src: 'assets/avatars/samples/thomas-anderson/neo/portrait.png',
+          style: {
+            id: 'avataaars',
+            properties: {
+              skinColor: 'Pale',
+              topType: 'LongHairBob',
+              hairColor: 'Black',
+              facialHairType: 'BeardLight',
+              facialHairColor: 'Black',
+              eyeType: 'Default',
+              eyebrowType: 'Default',
+            },
+          },
         },
         previewCamera: {
           position: '0 1.5 0.7',
@@ -49,6 +73,18 @@ export const userAvatars: UserAvatarDocType[] = [
           filename: 'portrait.png',
           format: AppearanceFormat.Image,
           src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
+          style: {
+            id: 'avataaars',
+            properties: {
+              skinColor: 'Pale',
+              topType: 'LongHairBob',
+              hairColor: 'Black',
+              facialHairType: 'BeardLight',
+              facialHairColor: 'Black',
+              eyeType: 'Default',
+              eyebrowType: 'Default',
+            },
+          },
         },
         previewCamera: {
           position: '0 1.5 0.7',
@@ -107,6 +143,10 @@ export const userAvatars: UserAvatarDocType[] = [
         filename: 'portrait.png',
         format: AppearanceFormat.Image,
         src: 'assets/avatars/samples/elliot-alderson/default/portrait.png',
+        style: {
+          id: 'avataaars',
+          properties: {},
+        },
       },
     },
     appearances: [
@@ -120,6 +160,10 @@ export const userAvatars: UserAvatarDocType[] = [
           filename: 'portrait.png',
           format: AppearanceFormat.Image,
           src: 'assets/avatars/samples/elliot-alderson/default/portrait.png',
+          style: {
+            id: 'avataaars',
+            properties: {},
+          },
         },
       },
     ],
@@ -141,6 +185,10 @@ export const userAvatars: UserAvatarDocType[] = [
         filename: 'portrait.png',
         format: AppearanceFormat.Image,
         src: 'assets/avatars/samples/alan-turing/default/portrait.png',
+        style: {
+          id: 'avataaars',
+          properties: {},
+        },
       },
     },
     appearances: [
@@ -154,6 +202,10 @@ export const userAvatars: UserAvatarDocType[] = [
           filename: 'portrait.png',
           format: AppearanceFormat.Image,
           src: 'assets/avatars/samples/alan-turing/default/portrait.png',
+          style: {
+            id: 'avataaars',
+            properties: {},
+          },
         },
       },
     ],

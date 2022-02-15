@@ -1,6 +1,7 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "jsx": "react",
     "emitDecoratorMetadata": true,
     "allowSyntheticDefaultImports": true
   },

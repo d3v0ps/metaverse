@@ -18,3 +18,16 @@
     padding: 0rem 1.1rem 1rem;
   }
 }
+
+.avatar-appearance-portrait-designer {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  &__preview {
+    margin: 0 auto;
+  }
+
+  .avatar-appearance-portrait {
+    width: 360px;
+    height: 360px;
+  }
+}

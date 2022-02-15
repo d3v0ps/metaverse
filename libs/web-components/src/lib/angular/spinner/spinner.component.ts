@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'cf-spinner',
   template: `
-    <div cfBlock="spinner" cfMod="3x">
+    <div cfBlock="spinner" [cfMod]="size">
       <div></div>
     </div>
   `,
@@ -15,4 +15,6 @@ import { Component } from '@angular/core';
     `,
   ],
 })
-export class SpinnerComponent {}
+export class SpinnerComponent {
+  @Input() size = '3x';
+}

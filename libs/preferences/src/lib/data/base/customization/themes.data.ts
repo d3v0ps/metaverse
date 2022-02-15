@@ -2,8 +2,8 @@ import { Theme } from '../../../models/customization';
 
 export const themes: Theme[] = [
   {
-    name: 'Default',
-    path: 'assets/themes/default/variables.css',
+    name: 'Metaverse',
+    path: 'assets/themes/metaverse/variables.css',
   },
   {
     name: 'Matrix',
@@ -14,7 +14,7 @@ export const themes: Theme[] = [
     path: 'assets/themes/bubbles/variables.css',
   },
   {
-    name: 'Metaverse',
-    path: 'assets/themes/metaverse/variables.css',
+    name: 'Central Factory',
+    path: 'assets/themes/default/variables.css',
   },
 ];

@@ -125,6 +125,16 @@
             ]
           }
         },
+        "build-react": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx -p typescript tsc --jsx react --target es5 --module esnext --esModuleInterOp --outDir apps/portal/src/assets/scripts/ libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/components/avatar-appearance-portrait-avataaars/avatar-appearance-portrait-avataaars.react-component.tsx"
+              }
+            ]
+          }
+        },
         "build-api-docs": {
           "builder": "@nrwl/workspace:run-commands",
           "options": {
@@ -1379,7 +1389,7 @@
           "options": {
             "commands": [
               {
-                "command": "npx style-dictionary build -c libs/web-components/src/lib/themes/default/config.js"
+                "command": "npx style-dictionary build -c libs/web-components/src/lib/themes/central-factory/config.js"
               },
               {
                 "command": "npx style-dictionary build -c libs/web-components/src/lib/themes/matrix/config.js"

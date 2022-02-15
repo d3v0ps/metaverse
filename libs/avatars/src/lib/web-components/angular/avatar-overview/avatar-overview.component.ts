@@ -124,6 +124,7 @@ export class AvatarOverviewComponent {
         filename: new FormControl(''),
         src: new FormControl(''),
         format: new FormControl(AppearanceFormat.Image),
+        style: new FormControl({}),
       }),
     }),
   });

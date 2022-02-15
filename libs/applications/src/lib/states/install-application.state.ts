@@ -11,4 +11,8 @@ export class InstallApplicationsState {
   install(application: Application) {
     this.userApplicationsState.addApplication(application).subscribe();
   }
+
+  uninstall(application: Application) {
+    this.userApplicationsState.removeApplication(application).subscribe();
+  }
 }

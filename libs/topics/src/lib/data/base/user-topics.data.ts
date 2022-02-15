@@ -213,6 +213,7 @@ export const userTopics: Topic[] = [
     applications: [
       'com.google.search',
       'com.microsoft.github',
+      'com.microsoft.npm',
       'com.central-factory.codex',
       'com.ivoox.player',
       'com.spotify.player',
@@ -267,6 +268,7 @@ export const userTopics: Topic[] = [
     shortcuts: [
       'com.amazon.twitchtv#Following',
       'com.google.youtube#Subscriptions',
+      'com.ign.ign#GamesMaps',
     ],
     categories: ['games'],
     media: [
@@ -295,7 +297,7 @@ export const userTopics: Topic[] = [
         name: 'Every morning',
         rules: {
           startTime: '00:00',
-          endTime: '03:00',
+          endTime: '04:00',
         },
       },
     ],

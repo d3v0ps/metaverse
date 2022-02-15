@@ -13,7 +13,9 @@ import { AvatarAppearancePreviewModule } from '../avatar-appearance-preview/avat
 import { AvatarAppearanceEditorComponent } from './avatar-appearance-editor.component';
 import { AvatarAppearanceInfoFormComponent } from './components/avatar-appearance-info-form/avatar-appearance-info-form.component';
 import { AvatarAppearanceModelFormComponent } from './components/avatar-appearance-model-form/avatar-appearance-model-form.component';
+import { AvatarAppearancePortraitDesignerModule } from './components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.module';
 import { AvatarAppearancePortraitFormComponent } from './components/avatar-appearance-portrait-form/avatar-appearance-portrait-form.component';
+import { AvatarAppearanceProvidersModule } from './components/avatar-appearance-providers/avatar-appearance-providers.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { AvatarAppearancePortraitFormComponent } from './components/avatar-appea
     ReactiveFormsModule,
     AvatarAppearanceCardModule,
     AvatarAppearancePortraitModule,
+    AvatarAppearanceProvidersModule,
+    AvatarAppearancePortraitDesignerModule,
   ],
   exports: [AvatarAppearanceEditorComponent],
 })
