@@ -3222,9 +3222,7 @@ cf-sidebar {
 }
 
 .sidebar-item .avatar-appearance-portrait:hover {
-  border: 3px solid var(--component-sidebar-button-active-background-color);
   background-color: var(--component-sidebar-button-active-background-color);
-  margin-bottom: 4px;
 }
 
 .sidebar-item__image {
@@ -4155,7 +4153,6 @@ h2.heading .heading__icon .icon__svg {
 }
 
 .avatars-carousel-item:hover .avatar-appearance-portrait {
-  border: 0.5rem solid var(--component-avatars-carousel-item-hover-border-color);
   background-color: var(--component-avatars-carousel-item-hover-text-color);
 }
 
