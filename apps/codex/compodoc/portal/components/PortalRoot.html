@@ -381,8 +381,9 @@ export class PortalRoot implements OnInit {
   @ViewChild(&#x27;rootWindow&#x27;, { static: true }) rootWindow!: WindowComponent;
 
   ngOnInit() {
-    if (this.environment.demo) {
+    if (this.environment.demo &amp;&amp; !localStorage.getItem(&#x27;visited&#x27;)) {
       this.rootWindow.show();
+      localStorage.setItem(&#x27;visited&#x27;, true.toString());
     }
   }
 }

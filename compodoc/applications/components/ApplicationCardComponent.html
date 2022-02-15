@@ -165,6 +165,7 @@
         [svgStyle]&#x3D;&quot;{
           fill: &#x27;var(--color-base-danger-medium)&#x27;
         }&quot;
+        (click)&#x3D;&quot;uninstallClick.emit(application)&quot;
       &gt;&lt;/cf-svg-icon&gt;
     &lt;/h5&gt;
   &lt;/div&gt;
@@ -186,9 +187,12 @@
 
   &lt;div cfBlock&#x3D;&quot;application-card-footer&quot;&gt;
     &lt;cf-application-footer
+      *ngIf&#x3D;&quot;showFooter&quot;
       [application]&#x3D;&quot;application&quot;
       [showInstallButton]&#x3D;&quot;showInstallButton&quot;
       [showPlayButton]&#x3D;&quot;showPlayButton&quot;
+      (installClick)&#x3D;&quot;installClick.emit($event)&quot;
+      (playClick)&#x3D;&quot;playClick.emit($event)&quot;
     &gt;&lt;/cf-application-footer&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -290,6 +294,9 @@
                                 <a href="#showDescription" >showDescription</a>
                             </li>
                             <li>
+                                <a href="#showFooter" >showFooter</a>
+                            </li>
+                            <li>
                                 <a href="#showHeader" >showHeader</a>
                             </li>
                             <li>
@@ -327,6 +334,9 @@
                             </li>
                             <li>
                                 <a href="#starClick" >starClick</a>
+                            </li>
+                            <li>
+                                <a href="#uninstallClick" >uninstallClick</a>
                             </li>
                         </ul>
                     </td>
@@ -368,7 +378,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:119</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:124</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -394,7 +404,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:117</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:122</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -420,7 +430,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:115</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:120</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -446,7 +456,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:116</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:121</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -472,7 +482,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:113</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:118</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -498,7 +508,33 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:114</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:119</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showFooter"></a>
+                        <b>showFooter</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:116</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -524,7 +560,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:112</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:117</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -550,7 +586,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:111</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:115</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -576,7 +612,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:160</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:165</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -602,7 +638,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:159</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:164</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -628,7 +664,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:161</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:166</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -652,7 +688,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="163" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:163</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:168</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -673,7 +709,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:166</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:171</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -694,7 +730,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:164</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:169</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -715,7 +751,28 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:165</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:170</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="uninstallClick"></a>
+                        <b>uninstallClick</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/EventEmitter" target="_blank" >EventEmitter</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="172" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:172</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -750,8 +807,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="195"
-                            class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:195</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="197"
+                            class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:197</a></div>
                 </td>
             </tr>
 
@@ -826,7 +883,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="192" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:192</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="194" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:194</a></div>
                         </td>
                     </tr>
 
@@ -852,7 +909,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="193" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:193</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="195" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:195</a></div>
                         </td>
                     </tr>
 
@@ -879,7 +936,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="187" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:187</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="189" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:189</a></div>
                         </td>
                     </tr>
 
@@ -906,7 +963,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="186" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:186</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="188" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:188</a></div>
                         </td>
                     </tr>
 
@@ -933,7 +990,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="188" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:188</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="190" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:190</a></div>
                         </td>
                     </tr>
 
@@ -964,7 +1021,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="190" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:190</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="192" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:192</a></div>
                         </td>
                     </tr>
 
@@ -993,7 +1050,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:155</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:160</a></div>
                                 </td>
                             </tr>
 
@@ -1004,7 +1061,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:119</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:124</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -1063,7 +1120,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:168</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">libs/applications/src/lib/web-components/angular/application-card/application-card.component.ts:174</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -1150,6 +1207,7 @@ import { Application } from &#x27;../../../models/application&#x27;;
             [svgStyle]&#x3D;&quot;{
               fill: &#x27;var(--color-base-danger-medium)&#x27;
             }&quot;
+            (click)&#x3D;&quot;uninstallClick.emit(application)&quot;
           &gt;&lt;/cf-svg-icon&gt;
         &lt;/h5&gt;
       &lt;/div&gt;
@@ -1171,9 +1229,12 @@ import { Application } from &#x27;../../../models/application&#x27;;
 
       &lt;div cfBlock&#x3D;&quot;application-card-footer&quot;&gt;
         &lt;cf-application-footer
+          *ngIf&#x3D;&quot;showFooter&quot;
           [application]&#x3D;&quot;application&quot;
           [showInstallButton]&#x3D;&quot;showInstallButton&quot;
           [showPlayButton]&#x3D;&quot;showPlayButton&quot;
+          (installClick)&#x3D;&quot;installClick.emit($event)&quot;
+          (playClick)&#x3D;&quot;playClick.emit($event)&quot;
         &gt;&lt;/cf-application-footer&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -1221,6 +1282,7 @@ import { Application } from &#x27;../../../models/application&#x27;;
 })
 export class ApplicationCardComponent {
   @Input() showInfo &#x3D; true;
+  @Input() showFooter &#x3D; true;
   @Input() showHeader &#x3D; true;
   @Input() showAuthor &#x3D; true;
   @Input() showDescription &#x3D; true;
@@ -1276,6 +1338,7 @@ export class ApplicationCardComponent {
   @Output() public playClick &#x3D; new EventEmitter&lt;Application&gt;();
   @Output() public starClick &#x3D; new EventEmitter&lt;Application&gt;();
   @Output() public installClick &#x3D; new EventEmitter&lt;Application&gt;();
+  @Output() public uninstallClick &#x3D; new EventEmitter&lt;Application&gt;();
 
   set hover(value: boolean) {
     this._hover &#x3D; value;
@@ -1286,13 +1349,9 @@ export class ApplicationCardComponent {
       delete this.cardStyle.transform;
     }
 
-    this.iconStyle &#x3D; value
-      ? {
-          fill: this.outline ? this.applicationPrimaryColor : &#x27;&#x27;,
-        }
-      : {
-          fill: this.outline ? this.applicationPrimaryColor : &#x27;&#x27;,
-        };
+    this.iconStyle &#x3D; {
+      fill: this.applicationPrimaryColor,
+    };
   }
 
   applicationIsSupported?: boolean;
@@ -1402,7 +1461,7 @@ export class ApplicationCardComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div  cfBlock="application-card"  *ngIf="application"  [ngStyle]="cardStyle"  [cfMod]="{    \'is-internal\': application.additionalProperties?.internal,    \'is-not-supported\': !applicationIsSupported,    outline: outline,    shadow: shadow  }"  (click)="applicationClick.emit(application)"  (mouseover)="hover = true"  (mouseleave)="hover = false">  <div class="top-section">    <h5      cfBlock="text"      *ngIf="        showUninstallButton && !application.additionalProperties?.internal      "    >      <cf-svg-icon        src="assets/icons/mdi/delete.svg"        [svgClass]="\'top-section__icon\'"        [svgStyle]="{          fill: \'var(--color-base-danger-medium)\'        }"      ></cf-svg-icon>    </h5>  </div>  <cf-application-header    *ngIf="showHeader"    [application]="application"    [iconStyle]="iconStyle"    [outline]="outline"    [showInfo]="showInfo"    [showAuthor]="showAuthor"  ></cf-application-header>  <div cfBlock="application-content" *ngIf="showDescription">    <cf-application-description      [application]="application"    ></cf-application-description>  </div>  <div cfBlock="application-card-footer">    <cf-application-footer      [application]="application"      [showInstallButton]="showInstallButton"      [showPlayButton]="showPlayButton"    ></cf-application-footer>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div  cfBlock="application-card"  *ngIf="application"  [ngStyle]="cardStyle"  [cfMod]="{    \'is-internal\': application.additionalProperties?.internal,    \'is-not-supported\': !applicationIsSupported,    outline: outline,    shadow: shadow  }"  (click)="applicationClick.emit(application)"  (mouseover)="hover = true"  (mouseleave)="hover = false">  <div class="top-section">    <h5      cfBlock="text"      *ngIf="        showUninstallButton && !application.additionalProperties?.internal      "    >      <cf-svg-icon        src="assets/icons/mdi/delete.svg"        [svgClass]="\'top-section__icon\'"        [svgStyle]="{          fill: \'var(--color-base-danger-medium)\'        }"        (click)="uninstallClick.emit(application)"      ></cf-svg-icon>    </h5>  </div>  <cf-application-header    *ngIf="showHeader"    [application]="application"    [iconStyle]="iconStyle"    [outline]="outline"    [showInfo]="showInfo"    [showAuthor]="showAuthor"  ></cf-application-header>  <div cfBlock="application-content" *ngIf="showDescription">    <cf-application-description      [application]="application"    ></cf-application-description>  </div>  <div cfBlock="application-card-footer">    <cf-application-footer      *ngIf="showFooter"      [application]="application"      [showInstallButton]="showInstallButton"      [showPlayButton]="showPlayButton"      (installClick)="installClick.emit($event)"      (playClick)="playClick.emit($event)"    ></cf-application-footer>  </div></div></div>'
     var COMPONENTS = [{'name': 'ApplicationActionsComponent', 'selector': 'cf-application-actions'},{'name': 'ApplicationCardComponent', 'selector': 'cf-application-card'},{'name': 'ApplicationDescriptionComponent', 'selector': 'cf-application-description'},{'name': 'ApplicationFooterComponent', 'selector': 'cf-application-footer'},{'name': 'ApplicationHeaderComponent', 'selector': 'cf-application-header'},{'name': 'ApplicationIconComponent', 'selector': 'cf-application-icon'},{'name': 'ApplicationInfoComponent', 'selector': 'cf-application-info'},{'name': 'ApplicationsCarouselComponent', 'selector': 'cf-applications-carousel'},{'name': 'ApplicationSheetComponent', 'selector': 'cf-application-sheet'},{'name': 'ApplicationShortcutComponent', 'selector': 'cf-application-shortcut'},{'name': 'ApplicationsStoreComponent', 'selector': 'cf-applications-store'},{'name': 'ApplicationToolbarComponent', 'selector': 'cf-application-toolbar'},{'name': 'ApplicationViewComponent', 'selector': 'cf-application-view'},{'name': 'ApplicationWebviewComponent', 'selector': 'cf-application-webview'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ApplicationCardComponent'};

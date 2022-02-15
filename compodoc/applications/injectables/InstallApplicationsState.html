@@ -81,6 +81,9 @@
                             <li>
                                 <a href="#install" >install</a>
                             </li>
+                            <li>
+                                <a href="#uninstall" >uninstall</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -216,6 +219,75 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="uninstall"></a>
+                    <span class="name">
+                        <span ><b>uninstall</b></span>
+                        <a href="#uninstall"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>uninstall(application: <a href="../undefineds/Application.html" target="_self">Application</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="15"
+                            class="link-to-prism">libs/applications/src/lib/states/install-application.state.ts:15</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>application</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#Application" target="_self" >Application</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
 
     </div>
@@ -234,6 +306,10 @@ export class InstallApplicationsState {
 
   install(application: Application) {
     this.userApplicationsState.addApplication(application).subscribe();
+  }
+
+  uninstall(application: Application) {
+    this.userApplicationsState.removeApplication(application).subscribe();
   }
 }
 </code></pre>

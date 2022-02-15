@@ -98,7 +98,7 @@
         showInstallButton &amp;&amp; !application?.additionalProperties?.internal
       &quot;
       cfBlock&#x3D;&quot;button&quot;
-      [cfMod]&#x3D;&quot;[&#x27;has-icon&#x27;]&quot;
+      [cfMod]&#x3D;&quot;[&#x27;secondary&#x27;, &#x27;outline&#x27;, &#x27;has-icon&#x27;]&quot;
       (click)&#x3D;&quot;installClick.emit(application)&quot;
     &gt;
       &lt;cf-svg-icon src&#x3D;&quot;assets/icons/mdi/plus.svg&quot;&gt;&lt;/cf-svg-icon&gt;
@@ -324,7 +324,7 @@ import { Application } from &#x27;@central-factory/applications/models/applicati
             showInstallButton &amp;&amp; !application?.additionalProperties?.internal
           &quot;
           cfBlock&#x3D;&quot;button&quot;
-          [cfMod]&#x3D;&quot;[&#x27;has-icon&#x27;]&quot;
+          [cfMod]&#x3D;&quot;[&#x27;secondary&#x27;, &#x27;outline&#x27;, &#x27;has-icon&#x27;]&quot;
           (click)&#x3D;&quot;installClick.emit(application)&quot;
         &gt;
           &lt;cf-svg-icon src&#x3D;&quot;assets/icons/mdi/plus.svg&quot;&gt;&lt;/cf-svg-icon&gt;
@@ -382,7 +382,7 @@ export class ApplicationFooterComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="application-footer">  <div cfBlock="form-buttons">    <button      *ngIf="        showInstallButton && !application?.additionalProperties?.internal      "      cfBlock="button"      [cfMod]="[\'has-icon\']"      (click)="installClick.emit(application)"    >      <cf-svg-icon src="assets/icons/mdi/plus.svg"></cf-svg-icon>      Add    </button>    <button      *ngIf="showPlayButton && !application?.additionalProperties?.internal"      cfBlock="button"      [cfMod]="[\'primary\', \'has-icon\']"      (click)="playClick.emit(application)"    >      <cf-svg-icon src="assets/icons/mdi/play.svg"></cf-svg-icon>      Play    </button>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="application-footer">  <div cfBlock="form-buttons">    <button      *ngIf="        showInstallButton && !application?.additionalProperties?.internal      "      cfBlock="button"      [cfMod]="[\'secondary\', \'outline\', \'has-icon\']"      (click)="installClick.emit(application)"    >      <cf-svg-icon src="assets/icons/mdi/plus.svg"></cf-svg-icon>      Add    </button>    <button      *ngIf="showPlayButton && !application?.additionalProperties?.internal"      cfBlock="button"      [cfMod]="[\'primary\', \'has-icon\']"      (click)="playClick.emit(application)"    >      <cf-svg-icon src="assets/icons/mdi/play.svg"></cf-svg-icon>      Play    </button>  </div></div></div>'
     var COMPONENTS = [{'name': 'ApplicationActionsComponent', 'selector': 'cf-application-actions'},{'name': 'ApplicationCardComponent', 'selector': 'cf-application-card'},{'name': 'ApplicationDescriptionComponent', 'selector': 'cf-application-description'},{'name': 'ApplicationFooterComponent', 'selector': 'cf-application-footer'},{'name': 'ApplicationHeaderComponent', 'selector': 'cf-application-header'},{'name': 'ApplicationIconComponent', 'selector': 'cf-application-icon'},{'name': 'ApplicationInfoComponent', 'selector': 'cf-application-info'},{'name': 'ApplicationsCarouselComponent', 'selector': 'cf-applications-carousel'},{'name': 'ApplicationSheetComponent', 'selector': 'cf-application-sheet'},{'name': 'ApplicationShortcutComponent', 'selector': 'cf-application-shortcut'},{'name': 'ApplicationsStoreComponent', 'selector': 'cf-applications-store'},{'name': 'ApplicationToolbarComponent', 'selector': 'cf-application-toolbar'},{'name': 'ApplicationViewComponent', 'selector': 'cf-application-view'},{'name': 'ApplicationWebviewComponent', 'selector': 'cf-application-webview'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ApplicationFooterComponent'};
