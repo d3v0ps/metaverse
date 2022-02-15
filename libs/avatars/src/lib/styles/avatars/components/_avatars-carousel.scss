@@ -26,7 +26,8 @@
   &:hover {
     transform: scale(1.05);
     .avatar-appearance-portrait {
-      border: 0.5rem solid var(--component-avatars-carousel-item-hover-border-color);
+      // transform: scale(0.5rem);
+      // border: 0.5rem solid var(--component-avatars-carousel-item-hover-border-color);
       background-color: var(--component-avatars-carousel-item-hover-text-color);
     }
     & > .avatars-carousel-item__name {

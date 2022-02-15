@@ -104,10 +104,7 @@ cf-sidebar {
     margin-top: 15px;
     background-color: var(--component-sidebar-button-background-color);
     &:hover {
-      border: 3px solid var(--component-sidebar-button-active-background-color);
       background-color: var(--component-sidebar-button-active-background-color);
-      // Align margin with the border size so the sidebar items don't jump
-      margin-bottom: 4px;
     }
   }
 
