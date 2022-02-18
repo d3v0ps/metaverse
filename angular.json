@@ -1132,6 +1132,35 @@
               }
             },
             "development": {
+              "assets": [
+                "apps/portal/src/favicon.ico",
+                "apps/portal/src/assets",
+                {
+                  "glob": "**/*",
+                  "input": "./node_modules/@mdi/svg/svg",
+                  "output": "./assets/icons/mdi"
+                },
+                {
+                  "glob": "**/*.svg",
+                  "input": "./node_modules/simple-icons/icons",
+                  "output": "./assets/icons/simple-icons"
+                },
+                {
+                  "glob": "**/*",
+                  "input": "./libs/web-components/src/assets/fonts/Inter/static",
+                  "output": "./assets/fonts"
+                },
+                {
+                  "glob": "**/*",
+                  "input": "./dist/libs/themes",
+                  "output": "./assets/themes"
+                },
+                {
+                  "glob": "**/*.json",
+                  "input": "../web-application-manifests",
+                  "output": "./assets/repositories/central-factory"
+                }
+              ],
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,

@@ -17,6 +17,7 @@ import { Topic } from '../../../models/topic';
         display: flex;
         flex-direction: row;
         gap: 1rem;
+        overflow-x: auto;
       }
     `,
   ],
