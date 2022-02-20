@@ -143,13 +143,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/AvatarAppearancePortraitModule.html" data-type="entity-link" >AvatarAppearancePortraitModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AvatarAppearancePortraitModule-9090917e71eaa0780de6f3c609d08781"' : 'data-target="#xs-components-links-module-AvatarAppearancePortraitModule-9090917e71eaa0780de6f3c609d08781"' }>
+                                            'data-target="#components-links-module-AvatarAppearancePortraitModule-601e92d51b618c2e1b6561320582a137"' : 'data-target="#xs-components-links-module-AvatarAppearancePortraitModule-601e92d51b618c2e1b6561320582a137"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarAppearancePortraitModule-9090917e71eaa0780de6f3c609d08781"' :
-                                            'id="xs-components-links-module-AvatarAppearancePortraitModule-9090917e71eaa0780de6f3c609d08781"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarAppearancePortraitModule-601e92d51b618c2e1b6561320582a137"' :
+                                            'id="xs-components-links-module-AvatarAppearancePortraitModule-601e92d51b618c2e1b6561320582a137"' }>
                                             <li class="link">
                                                 <a href="components/AvatarAppearancePortraitComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarAppearancePortraitComponent</a>
                                             </li>

@@ -14,71 +14,71 @@
 <title>cluster_CommandBarModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-230.8 434,-230.8 434,-32.8 8,-32.8"/>
 </g>
-<g id="clust4" class="cluster">
-<title>cluster_CommandBarModule_imports</title>
-<polygon fill="none" stroke="black" points="200,-40.8 200,-92.8 426,-92.8 426,-40.8 200,-40.8"/>
-</g>
 <g id="clust5" class="cluster">
 <title>cluster_CommandBarModule_exports</title>
-<polygon fill="none" stroke="black" points="171,-170.8 171,-222.8 351,-222.8 351,-170.8 171,-170.8"/>
+<polygon fill="none" stroke="black" points="101,-170.8 101,-222.8 281,-222.8 281,-170.8 101,-170.8"/>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_CommandBarModule_declarations</title>
-<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 192,-92.8 192,-40.8 16,-40.8"/>
+<polygon fill="none" stroke="black" points="250,-40.8 250,-92.8 426,-92.8 426,-40.8 250,-40.8"/>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_CommandBarModule_imports</title>
+<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 242,-92.8 242,-40.8 16,-40.8"/>
 </g>
 <!-- CommandBarComponent -->
 <g id="node1" class="node">
 <title>CommandBarComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="183.88,-84.8 24.12,-84.8 24.12,-48.8 183.88,-48.8 183.88,-84.8"/>
-<text text-anchor="middle" x="104" y="-62.6" font-family="Times,serif" font-size="14.00">CommandBarComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="417.88,-84.8 258.12,-84.8 258.12,-48.8 417.88,-48.8 417.88,-84.8"/>
+<text text-anchor="middle" x="338" y="-62.6" font-family="Times,serif" font-size="14.00">CommandBarComponent</text>
 </g>
 <!-- CommandBarModule -->
 <g id="node2" class="node">
 <title>CommandBarModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="330.09,-149.8 327.09,-153.8 306.09,-153.8 303.09,-149.8 191.91,-149.8 191.91,-113.8 330.09,-113.8 330.09,-149.8"/>
-<text text-anchor="middle" x="261" y="-127.6" font-family="Times,serif" font-size="14.00">CommandBarModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="260.09,-149.8 257.09,-153.8 236.09,-153.8 233.09,-149.8 121.91,-149.8 121.91,-113.8 260.09,-113.8 260.09,-149.8"/>
+<text text-anchor="middle" x="191" y="-127.6" font-family="Times,serif" font-size="14.00">CommandBarModule</text>
 </g>
 <!-- CommandBarComponent&#45;&gt;CommandBarModule -->
 <g id="edge1" class="edge">
 <title>CommandBarComponent&#45;&gt;CommandBarModule</title>
-<path fill="none" stroke="black" d="M184.08,-66.8C193.55,-66.8 199.92,-66.8 199.92,-66.8 199.92,-66.8 199.92,-103.69 199.92,-103.69"/>
-<polygon fill="black" stroke="black" points="196.42,-103.69 199.92,-113.69 203.42,-103.69 196.42,-103.69"/>
+<path fill="none" stroke="black" d="M266.37,-84.91C266.37,-104.14 266.37,-131.8 266.37,-131.8 266.37,-131.8 265.75,-131.8 265.75,-131.8"/>
+<polygon fill="black" stroke="black" points="270.2,-128.3 260.2,-131.8 270.2,-135.3 270.2,-128.3"/>
 </g>
 <!-- CommandBarComponent  -->
 <g id="node5" class="node">
 <title>CommandBarComponent </title>
-<polygon fill="#fb8072" stroke="black" points="342.88,-214.8 179.12,-214.8 179.12,-178.8 342.88,-178.8 342.88,-214.8"/>
-<text text-anchor="middle" x="261" y="-192.6" font-family="Times,serif" font-size="14.00">CommandBarComponent </text>
+<polygon fill="#fb8072" stroke="black" points="272.88,-214.8 109.12,-214.8 109.12,-178.8 272.88,-178.8 272.88,-214.8"/>
+<text text-anchor="middle" x="191" y="-192.6" font-family="Times,serif" font-size="14.00">CommandBarComponent </text>
 </g>
 <!-- CommandBarModule&#45;&gt;CommandBarComponent  -->
 <g id="edge4" class="edge">
 <title>CommandBarModule&#45;&gt;CommandBarComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M261,-149.91C261,-149.91 261,-168.79 261,-168.79"/>
-<polygon fill="black" stroke="black" points="257.5,-168.79 261,-178.79 264.5,-168.79 257.5,-168.79"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M191,-149.91C191,-149.91 191,-168.79 191,-168.79"/>
+<polygon fill="black" stroke="black" points="187.5,-168.79 191,-178.79 194.5,-168.79 187.5,-168.79"/>
 </g>
 <!-- BemModule -->
 <g id="node3" class="node">
 <title>BemModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="417.99,-84.8 414.99,-88.8 393.99,-88.8 390.99,-84.8 332.01,-84.8 332.01,-48.8 417.99,-48.8 417.99,-84.8"/>
-<text text-anchor="middle" x="375" y="-62.6" font-family="Times,serif" font-size="14.00">BemModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="233.99,-84.8 230.99,-88.8 209.99,-88.8 206.99,-84.8 148.01,-84.8 148.01,-48.8 233.99,-48.8 233.99,-84.8"/>
+<text text-anchor="middle" x="191" y="-62.6" font-family="Times,serif" font-size="14.00">BemModule</text>
 </g>
 <!-- BemModule&#45;&gt;CommandBarModule -->
 <g id="edge2" class="edge">
 <title>BemModule&#45;&gt;CommandBarModule</title>
-<path fill="none" stroke="black" d="M337.35,-84.91C337.35,-104.14 337.35,-131.8 337.35,-131.8 337.35,-131.8 336.64,-131.8 336.64,-131.8"/>
-<polygon fill="black" stroke="black" points="340.3,-128.3 330.3,-131.8 340.3,-135.3 340.3,-128.3"/>
+<path fill="none" stroke="black" d="M191,-84.91C191,-84.91 191,-103.79 191,-103.79"/>
+<polygon fill="black" stroke="black" points="187.5,-103.79 191,-113.79 194.5,-103.79 187.5,-103.79"/>
 </g>
 <!-- SvgIconModule -->
 <g id="node4" class="node">
 <title>SvgIconModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="314.21,-84.8 311.21,-88.8 290.21,-88.8 287.21,-84.8 207.79,-84.8 207.79,-48.8 314.21,-48.8 314.21,-84.8"/>
-<text text-anchor="middle" x="261" y="-62.6" font-family="Times,serif" font-size="14.00">SvgIconModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="130.21,-84.8 127.21,-88.8 106.21,-88.8 103.21,-84.8 23.79,-84.8 23.79,-48.8 130.21,-48.8 130.21,-84.8"/>
+<text text-anchor="middle" x="77" y="-62.6" font-family="Times,serif" font-size="14.00">SvgIconModule</text>
 </g>
 <!-- SvgIconModule&#45;&gt;CommandBarModule -->
 <g id="edge3" class="edge">
 <title>SvgIconModule&#45;&gt;CommandBarModule</title>
-<path fill="none" stroke="black" d="M261,-84.91C261,-84.91 261,-103.79 261,-103.79"/>
-<polygon fill="black" stroke="black" points="257.5,-103.79 261,-113.79 264.5,-103.79 257.5,-103.79"/>
+<path fill="none" stroke="black" d="M126.03,-84.91C126.03,-84.91 126.03,-103.79 126.03,-103.79"/>
+<polygon fill="black" stroke="black" points="122.53,-103.79 126.03,-113.79 129.53,-103.79 122.53,-103.79"/>
 </g>
 </g>
 </svg>

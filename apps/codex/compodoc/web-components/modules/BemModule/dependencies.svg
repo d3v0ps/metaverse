@@ -14,13 +14,13 @@
 <title>cluster_BemModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-230.8 381,-230.8 381,-32.8 8,-32.8"/>
 </g>
-<g id="clust2" class="cluster">
-<title>cluster_BemModule_declarations</title>
-<polygon fill="none" stroke="black" points="22,-40.8 22,-92.8 368,-92.8 368,-40.8 22,-40.8"/>
-</g>
 <g id="clust7" class="cluster">
 <title>cluster_BemModule_exports</title>
 <polygon fill="none" stroke="black" points="16,-170.8 16,-222.8 373,-222.8 373,-170.8 16,-170.8"/>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_BemModule_declarations</title>
+<polygon fill="none" stroke="black" points="22,-40.8 22,-92.8 368,-92.8 368,-40.8 22,-40.8"/>
 </g>
 <!-- BlockDirective -->
 <g id="node1" class="node">
