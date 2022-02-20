@@ -700,12 +700,12 @@ export class AvatarAppearancePortraitComponent {
 
   getLpcUrl(appearancePortrait: AppearancePortrait | undefined) {
     if (!appearancePortrait) {
-      return &#x60;assets/avatars/lpc/bases/Human/Child/Walk.png&#x60;;
+      return &#x60;assets/avatars/lpc/bases/Human/Child/Universal.png&#x60;;
     }
 
     const urlParams &#x3D; Object.values(appearancePortrait.style.properties).join(&#x27;/&#x27;);
 
-    return &#x60;assets/avatars/lpc/bases/${urlParams}/Walk.png&#x60;;
+    return &#x60;assets/avatars/lpc/bases/${urlParams}/Universal.png&#x60;;
   }
 }
 </code></pre>

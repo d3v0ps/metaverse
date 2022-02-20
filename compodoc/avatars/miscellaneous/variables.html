@@ -135,7 +135,13 @@
                             <a href="#USER_AVATARS_COLLECTION_PROVIDER" title="libs/avatars/src/lib/collections/user-avatars.collection.ts" ><b>USER_AVATARS_COLLECTION_PROVIDER</b>&nbsp;&nbsp;&nbsp;(libs/.../user-avatars.collection.ts)</a>
                         </li>
                         <li>
+                            <a href="#USER_AVATARS_DEMO_DATA_PROVIDER" title="libs/avatars/src/lib/data/demo/user-avatars.data.ts" ><b>USER_AVATARS_DEMO_DATA_PROVIDER</b>&nbsp;&nbsp;&nbsp;(libs/.../user-avatars.data.ts)</a>
+                        </li>
+                        <li>
                             <a href="#USER_AVATARS_MOCKS_DATA_PROVIDER" title="libs/avatars/src/lib/data/mocks/user-avatars.data.ts" ><b>USER_AVATARS_MOCKS_DATA_PROVIDER</b>&nbsp;&nbsp;&nbsp;(libs/.../user-avatars.data.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#userAvatars" title="libs/avatars/src/lib/data/demo/user-avatars.data.ts" ><b>userAvatars</b>&nbsp;&nbsp;&nbsp;(libs/.../user-avatars.data.ts)</a>
                         </li>
                         <li>
                             <a href="#userAvatars" title="libs/avatars/src/lib/data/mocks/user-avatars.data.ts" ><b>userAvatars</b>&nbsp;&nbsp;&nbsp;(libs/.../user-avatars.data.ts)</a>
@@ -465,6 +471,7 @@
   name: &#x27;Avataaars&#x27;,
   url: &#x27;https://www.npmjs.com/package/avataaars&#x27;,
   description: &#x27;The core React component for Avataaars Generator developed by Fang-Pen Lin, based on the Sketch library Avataaars designed by Pablo Stanley.&#x27;,
+  hasViewer: true,
   license: {
     type: &#x27;MIT&#x27;,
   },
@@ -1161,6 +1168,7 @@
   license: { type: &#x27;MIT&#x27; },
   name: &#x27;3D Model&#x27;,
   description: &#x27;The URL to the 3D model. Only glTF/GLB models are supported&#x27;,
+  hasViewer: true,
   properties: [
     {
       id: &#x27;value&#x27;,
@@ -1209,15 +1217,76 @@
   name: &#x27;Role-playing Stats&#x27;,
   url: &#x27;https://www.npmjs.com/package/avataaars&#x27;,
   description: &#x27;A basic set of role-playing stats&#x27;,
+  hasViewer: false,
   license: {
     type: &#x27;MIT&#x27;,
   },
   properties: [
     {
+      id: &#x27;class&#x27;,
+      label: &#x27;Class&#x27;,
+      type: &#x27;text&#x27;,
+    },
+    {
       id: &#x27;level&#x27;,
       label: &#x27;Level&#x27;,
       type: &#x27;number&#x27;,
       defaultValue: 1,
+    },
+    {
+      id: &#x27;race&#x27;,
+      label: &#x27;Race&#x27;,
+      type: &#x27;text&#x27;,
+    },
+    {
+      id: &#x27;background&#x27;,
+      label: &#x27;Background&#x27;,
+      type: &#x27;text&#x27;,
+    },
+    {
+      id: &#x27;playerName&#x27;,
+      label: &#x27;Player Name&#x27;,
+      type: &#x27;text&#x27;,
+    },
+    {
+      id: &#x27;alignment&#x27;,
+      label: &#x27;Alignment&#x27;,
+      type: &#x27;text&#x27;,
+    },
+    {
+      id: &#x27;experiencePoints&#x27;,
+      label: &#x27;Experience Points&#x27;,
+      type: &#x27;text&#x27;,
+    },
+    {
+      id: &#x27;strength&#x27;,
+      label: &#x27;Strength&#x27;,
+      type: &#x27;number&#x27;,
+    },
+    {
+      id: &#x27;dexterity&#x27;,
+      label: &#x27;Dexterity&#x27;,
+      type: &#x27;number&#x27;,
+    },
+    {
+      id: &#x27;constitution&#x27;,
+      label: &#x27;Constitution&#x27;,
+      type: &#x27;number&#x27;,
+    },
+    {
+      id: &#x27;intelligence&#x27;,
+      label: &#x27;Intelligence&#x27;,
+      type: &#x27;number&#x27;,
+    },
+    {
+      id: &#x27;wisdom&#x27;,
+      label: &#x27;Wisdom&#x27;,
+      type: &#x27;number&#x27;,
+    },
+    {
+      id: &#x27;charisma&#x27;,
+      label: &#x27;Charisma&#x27;,
+      type: &#x27;number&#x27;,
     },
   ],
 }</code>
@@ -1254,6 +1323,7 @@
   license: { type: &#x27;MIT&#x27; },
   name: &#x27;Image&#x27;,
   description: &#x60;Accepted types: .png, .jpg, .jpeg, .gif, .svg&#x60;,
+  hasViewer: true,
   properties: [
     {
       id: &#x27;value&#x27;,
@@ -1303,6 +1373,7 @@
   name: &#x27;Liberated Pixel Cup&#x27;,
   description: &#x60;Liberated Pixel Cup is a two-part competition: make a bunch of awesome free culture licensed artwork, and then program a bunch of free software games that use it.&#x60;,
   url: &#x27;https://opengameart.org/content/lpc-collection&#x27;,
+  hasViewer: true,
   properties: [
     {
       id: &#x27;species&#x27;,
@@ -1455,6 +1526,232 @@
   { label: &#x27;ShortHairSides&#x27;, id: &#x27;ShortHairSides&#x27; },
   { label: &#x27;ShortHairTheCaesar&#x27;, id: &#x27;ShortHairTheCaesar&#x27; },
   { label: &#x27;ShortHairTheCaesarSidePart&#x27;, id: &#x27;ShortHairTheCaesarSidePart&#x27; },
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/avatars/src/lib/data/demo/user-avatars.data.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="USER_AVATARS_DEMO_DATA_PROVIDER"></a>
+                    <span class="name">
+                        <span ><b>USER_AVATARS_DEMO_DATA_PROVIDER</b></span>
+                        <a href="#USER_AVATARS_DEMO_DATA_PROVIDER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://angular.io/api/core/Provider" target="_blank" >Provider</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  provide: ENTITY_MANAGER_INITIAL_DATA_TOKEN,
+  useValue: {
+    name: &#x27;useravatars&#x27;,
+    upsert: true,
+    data: userAvatars,
+  },
+  multi: true,
+}</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userAvatars"></a>
+                    <span class="name">
+                        <span ><b>userAvatars</b></span>
+                        <a href="#userAvatars"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Avatar.html" target="_self" >UserAvatarDocType[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  {
+    id: &#x27;x0&#x27;,
+    welcomeMessage: &#x27;Hello!&#x27;,
+    name: &#x27;The Old Man&#x27;,
+    title: &#x27;Unknown&#x27;,
+    selectedAppearance: {
+      id: &#x27;1&#x27;,
+      filename: &#x27;appearance.glb&#x27;,
+      format: AppearanceFormat.Model,
+      src: &#x27;assets/avatars/samples/thomas-anderson/default/appearance.glb&#x27;,
+      variations: {
+        portrait: {
+          id: &#x27;5a6ecf92-141f-46ca-aa9f-b67c009a5df1&#x27;,
+          filename: &#x27;portrait.png&#x27;,
+          format: AppearanceFormat.Image,
+          src: &#x27;assets/avatars/samples/thomas-anderson/default/portrait.png&#x27;,
+          style: {
+            id: &#x27;avataaars&#x27;,
+            properties: {
+              skinColor: &#x27;Pale&#x27;,
+              topType: &#x27;LongHairBun&#x27;,
+              hairColor: &#x27;SilverGray&#x27;,
+              facialHairType: &#x27;BeardLight&#x27;,
+              facialHairColor: &#x27;Platinum&#x27;,
+              eyeType: &#x27;Close&#x27;,
+              eyebrowType: &#x27;Default&#x27;,
+              mouthType: &#x27;Twinkle&#x27;,
+              clotheType: &#x27;ShirtVNeck&#x27;,
+            },
+          },
+        },
+        dim2: {
+          id: &#x27;5a6ecf92-141f-46ca-aa9f-b67c009a5df1&#x27;,
+          filename: &#x27;portrait.png&#x27;,
+          format: AppearanceFormat.Image,
+          src: &#x27;assets/avatars/samples/thomas-anderson/default/portrait.png&#x27;,
+          style: {
+            id: &#x27;lpc&#x27;,
+            properties: {
+              species: &#x27;Human&#x27;,
+              bodyType: &#x27;Male&#x27;
+            },
+          },
+        },
+        dim3: {
+          id: &#x27;5a6ecf92-141f-46ca-aa9f-b67c009a5df1&#x27;,
+          filename: &#x27;portrait.png&#x27;,
+          format: AppearanceFormat.Image,
+          src: &#x27;assets/avatars/samples/thomas-anderson/default/portrait.png&#x27;,
+          style: {
+            id: &#x27;dim3-file&#x27;,
+            properties: {
+            },
+          },
+        },
+      },
+      portrait: {
+        id: &#x27;5a6ecf92-141f-46ca-aa9f-b67c009a5df1&#x27;,
+        filename: &#x27;portrait.png&#x27;,
+        format: AppearanceFormat.Image,
+        src: &#x27;assets/avatars/samples/thomas-anderson/default/portrait.png&#x27;,
+        style: {
+          id: &#x27;avataaars&#x27;,
+          properties: {
+            skinColor: &#x27;Pale&#x27;,
+            topType: &#x27;LongHairBun&#x27;,
+            hairColor: &#x27;SilverGray&#x27;,
+            facialHairType: &#x27;BeardLight&#x27;,
+            facialHairColor: &#x27;Platinum&#x27;,
+            eyeType: &#x27;Close&#x27;,
+            eyebrowType: &#x27;Default&#x27;,
+            mouthType: &#x27;Twinkle&#x27;,
+            clotheType: &#x27;ShirtVNeck&#x27;,
+          },
+        },
+      },
+    },
+    appearances: [
+      {
+        id: &#x27;1&#x27;,
+        filename: &#x27;appearance.glb&#x27;,
+        format: AppearanceFormat.Model,
+        src: &#x27;assets/avatars/samples/thomas-anderson/neo/appearance.glb&#x27;,
+        variations: {
+          portrait: {
+            id: &#x27;5a6ecf92-141f-46ca-aa9f-b67c009a5df1&#x27;,
+            filename: &#x27;portrait.png&#x27;,
+            format: AppearanceFormat.Image,
+            src: &#x27;assets/avatars/samples/thomas-anderson/default/portrait.png&#x27;,
+            style: {
+              id: &#x27;avataaars&#x27;,
+              properties: {
+                skinColor: &#x27;Pale&#x27;,
+                topType: &#x27;LongHairBun&#x27;,
+                hairColor: &#x27;SilverGray&#x27;,
+                facialHairType: &#x27;BeardLight&#x27;,
+                facialHairColor: &#x27;Platinum&#x27;,
+                eyeType: &#x27;Close&#x27;,
+                eyebrowType: &#x27;Default&#x27;,
+                mouthType: &#x27;Twinkle&#x27;,
+                clotheType: &#x27;ShirtVNeck&#x27;,
+              },
+            },
+          },
+          dim2: {
+            id: &#x27;5a6ecf92-141f-46ca-aa9f-b67c009a5df1&#x27;,
+            filename: &#x27;portrait.png&#x27;,
+            format: AppearanceFormat.Image,
+            src: &#x27;assets/avatars/samples/thomas-anderson/default/portrait.png&#x27;,
+            style: {
+              id: &#x27;lpc&#x27;,
+              properties: {
+                species: &#x27;Human&#x27;,
+                bodyType: &#x27;Male&#x27;
+              },
+            },
+          },
+          dim3: {
+            id: &#x27;5a6ecf92-141f-46ca-aa9f-b67c009a5df1&#x27;,
+            filename: &#x27;portrait.png&#x27;,
+            format: AppearanceFormat.Image,
+            src: &#x27;assets/avatars/samples/thomas-anderson/default/portrait.png&#x27;,
+            style: {
+              id: &#x27;dim3-file&#x27;,
+              properties: {
+              },
+            },
+          },
+        },
+        portrait: {
+          id: &#x27;690798c7-9bf0-45ce-b76a-7982ee119322&#x27;,
+          filename: &#x27;portrait.png&#x27;,
+          format: AppearanceFormat.Image,
+          src: &#x27;assets/avatars/samples/thomas-anderson/neo/portrait.png&#x27;,
+          style: {
+            id: &#x27;avataaars&#x27;,
+            properties: {
+              skinColor: &#x27;Pale&#x27;,
+              topType: &#x27;LongHairBun&#x27;,
+              hairColor: &#x27;SilverGray&#x27;,
+              facialHairType: &#x27;BeardLight&#x27;,
+              facialHairColor: &#x27;Platinum&#x27;,
+              eyeType: &#x27;Close&#x27;,
+              eyebrowType: &#x27;Default&#x27;,
+              mouthType: &#x27;Twinkle&#x27;,
+              clotheType: &#x27;ShirtVNeck&#x27;,
+              clotheColor: &#x27;Black&#x27;
+            },
+          },
+        },
+        previewCamera: {
+          position: &#x27;0 1.5 0.7&#x27;,
+          rotation: &#x27;-5 0 0&#x27;,
+          scale: &#x27;0.4 0.4 0.4&#x27;,
+        },
+      },
+    ],
+    scopes: [
+    ],
+    skills: [
+    ],
+  },
 ]</code>
                     </td>
                 </tr>
@@ -1755,38 +2052,8 @@
       },
     ],
     scopes: [
-      {
-        integration: &#x27;CF&#x27;,
-        domain: &#x27;Calendars&#x27;,
-        scope: &#x27;manage&#x27;,
-      },
-      {
-        integration: &#x27;Google&#x27;,
-        domain: &#x27;Calendars&#x27;,
-        scope: &#x27;manage&#x27;,
-      },
-      {
-        integration: &#x27;NFT&#x27;,
-        domain: &#x27;Tokens&#x27;,
-        scope: &#x27;manage&#x27;,
-      },
     ],
     skills: [
-      {
-        domain: &#x27;calendar&#x27;,
-        scope: &#x27;manage&#x27;,
-        skill: &#x27;create&#x27;,
-      },
-      {
-        domain: &#x27;event&#x27;,
-        scope: &#x27;manage&#x27;,
-        skill: &#x27;create&#x27;,
-      },
-      {
-        domain: &#x27;assets&#x27;,
-        scope: &#x27;manage&#x27;,
-        skill: &#x27;trade&#x27;,
-      },
     ],
   },
   {

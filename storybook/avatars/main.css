@@ -3476,6 +3476,7 @@ cf-sidebar {
   align-items: center;
   grid-gap: 0.5rem;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .tabset .tab {
@@ -4107,14 +4108,15 @@ h5.heading {
 
 .avatar-appearance-portrait-designer {
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 1fr 1fr;
 }
 
 .avatar-appearance-portrait-designer__preview {
-  margin: 0 auto;
+  min-width: 200px;
 }
 
 .avatar-appearance-portrait-designer .avatar-appearance-portrait {
+  margin: 0 auto;
   width: 360px;
   height: 360px;
   display: flex;
@@ -4128,9 +4130,6 @@ h5.heading {
 }
 
 @media (max-width: 920px) {
-  .avatar-appearance-portrait-designer {
-    grid-template-columns: 50% 50%;
-  }
   .avatar-appearance-portrait-designer .avatar-appearance-portrait {
     width: 140px;
     height: 140px;

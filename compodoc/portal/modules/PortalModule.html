@@ -225,6 +225,7 @@ import { USER_APPLICATIONS_COLLECTION_PROVIDER } from &#x27;@central-factory/app
 import { USER_APPLICATIONS_INITIAL_DATA_PROVIDER } from &#x27;@central-factory/applications/data/base/user-applications.data&#x27;;
 import { USER_ASSETS_COLLECTION_PROVIDER } from &#x27;@central-factory/assets/collections/user-assets.collection&#x27;;
 import { USER_AVATARS_COLLECTION_PROVIDER } from &#x27;@central-factory/avatars/collections/user-avatars.collection&#x27;;
+import { USER_AVATARS_DEMO_DATA_PROVIDER } from &#x27;@central-factory/avatars/data/demo/user-avatars.data&#x27;;
 import { APPLICATION_PERMISSIONS_COLLECTION_PROVIDER } from &#x27;@central-factory/permissions/collections/application-permissions.collection&#x27;;
 import { USER_PREFERENCES_COLLECTION_PROVIDER } from &#x27;@central-factory/preferences/collections/user-preferences.collection&#x27;;
 import { CUSTOMIZATION_INITIAL_DATA_PROVIDER } from &#x27;@central-factory/preferences/data/base/customization/customization.data&#x27;;
@@ -276,13 +277,14 @@ import { BackgroundRenderer } from &#x27;./services/background.renderer&#x27;;
     USER_AVATARS_COLLECTION_PROVIDER,
     USER_ASSETS_COLLECTION_PROVIDER,
 
+    USER_AVATARS_DEMO_DATA_PROVIDER,
     USER_APPLICATIONS_INITIAL_DATA_PROVIDER,
     USER_TOPICS_INITIAL_DATA_PROVIDER,
     CUSTOMIZATION_INITIAL_DATA_PROVIDER,
   ],
   bootstrap: [PortalRoot],
 })
-export class PortalModule {}
+export class PortalModule { }
 </code></pre>
     </div>
 </div>
