@@ -14,13 +14,13 @@
 <title>cluster_AvatarAppearancePreviewAframeModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-230.8 318,-230.8 318,-32.8 8,-32.8"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_AvatarAppearancePreviewAframeModule_exports</title>
-<polygon fill="none" stroke="black" points="16,-170.8 16,-222.8 310,-222.8 310,-170.8 16,-170.8"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_AvatarAppearancePreviewAframeModule_declarations</title>
 <polygon fill="none" stroke="black" points="18,-40.8 18,-92.8 308,-92.8 308,-40.8 18,-40.8"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_AvatarAppearancePreviewAframeModule_exports</title>
+<polygon fill="none" stroke="black" points="16,-170.8 16,-222.8 310,-222.8 310,-170.8 16,-170.8"/>
 </g>
 <!-- AvatarAppearancePreviewAframeComponent -->
 <g id="node1" class="node">

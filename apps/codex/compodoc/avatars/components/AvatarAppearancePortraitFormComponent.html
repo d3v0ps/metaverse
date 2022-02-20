@@ -277,7 +277,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-form/avatar-appearance-portrait-form.component.ts:86</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-form/avatar-appearance-portrait-form.component.ts:85</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -720,7 +720,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-form/avatar-appearance-portrait-form.component.ts:86</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-form/avatar-appearance-portrait-form.component.ts:85</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -773,7 +773,7 @@ import { Subject, takeUntil, tap } from &#x27;rxjs&#x27;;
 import { v4 as uuid } from &#x27;uuid&#x27;;
 import {
   AppearanceFormat,
-  AppearancePortrait,
+  AppearancePortrait
 } from &#x27;../../../../../models/appearance&#x27;;
 import { AvatarAppearanceProvider } from &#x27;../avatar-appearance-providers/avatar-appearance-providers.component&#x27;;
 
@@ -850,9 +850,9 @@ export type AvatarAppearancePortraitModelForm &#x3D; {
   &#x60;,
 })
 export class AvatarAppearancePortraitFormComponent
-  implements OnInit, OnDestroy
-{
+  implements OnInit, OnDestroy {
   @Input() set portrait(value: AppearancePortrait | undefined) {
+    console.log(value);
     this.form.reset({
       id: value?.id || uuid(),
       filename: value?.filename || &#x27;&#x27;,
@@ -959,7 +959,7 @@ export class AvatarAppearancePortraitFormComponent
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-portrait-form">  <h2 cfElem="title">Portrait</h2>  <cf-avatar-appearance-portrait-designer    [appeareancePortrait]="{      id: form.value.id,      filename: form.value.filename || \'\',      format: form.value!.format,      src: form.value.src || \'\',      style: form.value.style    }"  ></cf-avatar-appearance-portrait-designer>  <form [formGroup]="form">    <div      style="margin-bottom: 1rem;"      *ngIf="form.value?.format && form.value?.src"    >      <cf-avatar-appearance-portrait        [appearancePortrait]="{          id: form.value.id,          filename: form.value.filename || \'\',          format: form.value!.format,          src: form.value.src || \'\',          style: form.value.style        }"      >      </cf-avatar-appearance-portrait>    </div>    <div      style="margin-bottom: 1rem;"      *ngIf="!form.value?.format || !form.value?.src"    >      <cf-avatar-appearance-portrait> </cf-avatar-appearance-portrait>    </div>    <div cfBlock="form-group">      <label cfBlock="form-label" for="appearanceFile">        The portrait file      </label>      <cf-file-upload        [fileName]="form.value.filename"        formControlName="file"        id="appearanceFile"        [accept]="validFormats"        (ngModelChange)="onFileChange($event)"      >      </cf-file-upload>    </div>  </form>  <cf-avatar-appearance-providers    [providers]="providers"  ></cf-avatar-appearance-providers></div></div>'
-    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
+    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarAppearanceSpritesheetComponent', 'selector': 'cf-avatar-appearance-spritesheet'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarAppearancePortraitFormComponent'};
 </script>

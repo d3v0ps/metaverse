@@ -14,6 +14,10 @@
 <title>cluster_AvatarsCarouselModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-230.8 444,-230.8 444,-32.8 8,-32.8"/>
 </g>
+<g id="clust5" class="cluster">
+<title>cluster_AvatarsCarouselModule_exports</title>
+<polygon fill="none" stroke="black" points="136,-170.8 136,-222.8 330,-222.8 330,-170.8 136,-170.8"/>
+</g>
 <g id="clust2" class="cluster">
 <title>cluster_AvatarsCarouselModule_declarations</title>
 <polygon fill="none" stroke="black" points="246,-40.8 246,-92.8 436,-92.8 436,-40.8 246,-40.8"/>
@@ -21,10 +25,6 @@
 <g id="clust4" class="cluster">
 <title>cluster_AvatarsCarouselModule_imports</title>
 <polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 238,-92.8 238,-40.8 16,-40.8"/>
-</g>
-<g id="clust5" class="cluster">
-<title>cluster_AvatarsCarouselModule_exports</title>
-<polygon fill="none" stroke="black" points="136,-170.8 136,-222.8 330,-222.8 330,-170.8 136,-170.8"/>
 </g>
 <!-- AvatarsCarouselComponent -->
 <g id="node1" class="node">

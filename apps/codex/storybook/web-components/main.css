@@ -3593,6 +3593,8 @@ cf-sidebar {
   display: flex;
   width: 100%;
   margin-top: 0.5rem;
+  grid-gap: 0.2rem;
+  gap: 0.2rem;
 }
 
 .heading__icon .icon__svg {
@@ -3604,6 +3606,14 @@ cf-sidebar {
 h2.heading .heading__icon .icon__svg {
   width: 1.8rem;
   height: 1.8rem;
+}
+
+h4.heading {
+  margin-block-end: 0.5rem;
+}
+
+h5.heading {
+  margin-block-end: 0.5rem;
 }
 
 .text {
@@ -3625,6 +3635,11 @@ h2.heading .heading__icon .icon__svg {
   fill: var(--component-text-primary-color, var(--color-base-primary-medium));
 }
 
+.text--primary a,
+.heading--primary a {
+  color: var(--component-text-primary-color, var(--color-base-primary-medium));
+}
+
 .text--secondary,
 .heading--secondary {
   color: var(--component-text-secondary-color, var(--color-base-secondary-medium));
@@ -3633,6 +3648,11 @@ h2.heading .heading__icon .icon__svg {
 .text--secondary .icon__svg,
 .heading--secondary .icon__svg {
   fill: var(--component-text-secondary-color, var(--color-base-secondary-medium));
+}
+
+.text--secondary a,
+.heading--secondary a {
+  color: var(--component-text-secondary-color, var(--color-base-secondary-medium));
 }
 
 .text--success,
@@ -3645,6 +3665,11 @@ h2.heading .heading__icon .icon__svg {
   fill: var(--component-text-success-color, var(--color-base-success-medium));
 }
 
+.text--success a,
+.heading--success a {
+  color: var(--component-text-success-color, var(--color-base-success-medium));
+}
+
 .text--warning,
 .heading--warning {
   color: var(--component-text-warning-color, var(--color-base-warning-medium));
@@ -3653,6 +3678,11 @@ h2.heading .heading__icon .icon__svg {
 .text--warning .icon__svg,
 .heading--warning .icon__svg {
   fill: var(--component-text-warning-color, var(--color-base-warning-medium));
+}
+
+.text--warning a,
+.heading--warning a {
+  color: var(--component-text-warning-color, var(--color-base-warning-medium));
 }
 
 .text--danger,
@@ -3665,6 +3695,11 @@ h2.heading .heading__icon .icon__svg {
   fill: var(--component-text-danger-color, var(--color-base-danger-medium));
 }
 
+.text--danger a,
+.heading--danger a {
+  color: var(--component-text-danger-color, var(--color-base-danger-medium));
+}
+
 .text--info,
 .heading--info {
   color: var(--component-text-info-color, var(--color-base-info-medium));
@@ -3673,6 +3708,11 @@ h2.heading .heading__icon .icon__svg {
 .text--info .icon__svg,
 .heading--info .icon__svg {
   fill: var(--component-text-info-color, var(--color-base-info-medium));
+}
+
+.text--info a,
+.heading--info a {
+  color: var(--component-text-info-color, var(--color-base-info-medium));
 }
 
 .text--dark,
@@ -3685,6 +3725,11 @@ h2.heading .heading__icon .icon__svg {
   fill: var(--component-text-dark-color, var(--color-base-dark-medium));
 }
 
+.text--dark a,
+.heading--dark a {
+  color: var(--component-text-dark-color, var(--color-base-dark-medium));
+}
+
 .text--light,
 .heading--light {
   color: var(--component-text-light-color, var(--color-base-light-medium));
@@ -3693,6 +3738,11 @@ h2.heading .heading__icon .icon__svg {
 .text--light .icon__svg,
 .heading--light .icon__svg {
   fill: var(--component-text-light-color, var(--color-base-light-medium));
+}
+
+.text--light a,
+.heading--light a {
+  color: var(--component-text-light-color, var(--color-base-light-medium));
 }
 
 :root {
@@ -4057,7 +4107,7 @@ h2.heading .heading__icon .icon__svg {
 
 .avatar-appearance-portrait-designer {
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 40% 60%;
 }
 
 .avatar-appearance-portrait-designer__preview {
@@ -4067,6 +4117,28 @@ h2.heading .heading__icon .icon__svg {
 .avatar-appearance-portrait-designer .avatar-appearance-portrait {
   width: 360px;
   height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: flex-start;
+}
+
+.avatar-appearance-portrait-designer .avatar-appearance-portrait .avatar-appearance-spritesheet {
+  margin-top: -1rem;
+}
+
+@media (max-width: 920px) {
+  .avatar-appearance-portrait-designer {
+    grid-template-columns: 50% 50%;
+  }
+  .avatar-appearance-portrait-designer .avatar-appearance-portrait {
+    width: 140px;
+    height: 140px;
+  }
+  .avatar-appearance-portrait-designer .avatar-appearances-carousel .avatar-appearance-portrait {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 :root {

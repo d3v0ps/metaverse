@@ -1,0 +1,30 @@
+"LPC Character Bases" by Benjamin K. Smith (BenCreating), castelonia, dalonedrau, Durrani, ElizaWY, Johannes Sjölund (wulax), kheftel, madmarcel, Matthew Krohn (makrohn), MuffinElZangano, Nila122, Pierre Vigier (pvigier), Stephen Challener (Redshrike), William.Thompsonj, and Zi Ye
+https://opengameart.org/content/lpc-character-bases
+
+License:CC-BY-SA 3.0 / GPL 3.0Please see the attribution files for each base for a more detailed list of contributors and licenses.
+
+Animations/bases unique to this submission:
+- Child slash
+- Child hurt
+- Pregnant cast
+- Pregnant thrust
+- Pregnant slash
+- Pregnant shoot
+- Pregnant hurt
+- Muscular cast
+- Muscular thrust
+- Pregnant orc base
+- Re-designed lizardman base
+
+Corrections and fixes to original bases:
+- Applied Pierre Vigier's corrections to all female and teen bases
+- Fixed incorrect thrust and shoot leg positions in all female and teen bases
+- Fixed female and teen bases suddenly crouching in frame 4 of the shoot animation
+- Adjusted vertical/horizontal positioning for many frames in female and teen bases to remove sliding and to better match the male base
+- Various minor adjustments to shading on female and teen bases
+- Fixed many stray pixels on male orc
+- Fixed positioning issues on male orc
+- Fixed many male orc head connection issues
+- Fixed foot position shift in male skeleton thrust animation
+- Various minor fixes to male skeleton
+- Reduced jittering lines in the muscular base

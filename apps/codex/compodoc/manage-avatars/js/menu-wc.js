@@ -86,13 +86,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/ManageAvatarAppearancesModule.html" data-type="entity-link" >ManageAvatarAppearancesModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-ManageAvatarAppearancesModule-f52cfc03293017fb73a05a51056a1749"' : 'data-target="#xs-components-links-module-ManageAvatarAppearancesModule-f52cfc03293017fb73a05a51056a1749"' }>
+                                            'data-target="#components-links-module-ManageAvatarAppearancesModule-6349ccbf04ec7df7fa1ce65456535061"' : 'data-target="#xs-components-links-module-ManageAvatarAppearancesModule-6349ccbf04ec7df7fa1ce65456535061"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ManageAvatarAppearancesModule-f52cfc03293017fb73a05a51056a1749"' :
-                                            'id="xs-components-links-module-ManageAvatarAppearancesModule-f52cfc03293017fb73a05a51056a1749"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ManageAvatarAppearancesModule-6349ccbf04ec7df7fa1ce65456535061"' :
+                                            'id="xs-components-links-module-ManageAvatarAppearancesModule-6349ccbf04ec7df7fa1ce65456535061"' }>
                                             <li class="link">
                                                 <a href="components/ManageAvatarAppearancesScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ManageAvatarAppearancesScene</a>
                                             </li>

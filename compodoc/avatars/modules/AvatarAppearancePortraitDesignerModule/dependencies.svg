@@ -16,69 +16,69 @@
 </g>
 <g id="clust5" class="cluster">
 <title>cluster_AvatarAppearancePortraitDesignerModule_exports</title>
-<polygon fill="none" stroke="black" points="230,-170.8 230,-222.8 528,-222.8 528,-170.8 230,-170.8"/>
-</g>
-<g id="clust2" class="cluster">
-<title>cluster_AvatarAppearancePortraitDesignerModule_declarations</title>
-<polygon fill="none" stroke="black" points="526,-40.8 526,-92.8 820,-92.8 820,-40.8 526,-40.8"/>
+<polygon fill="none" stroke="black" points="280,-170.8 280,-222.8 578,-222.8 578,-170.8 280,-170.8"/>
 </g>
 <g id="clust4" class="cluster">
 <title>cluster_AvatarAppearancePortraitDesignerModule_imports</title>
-<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 518,-92.8 518,-40.8 16,-40.8"/>
+<polygon fill="none" stroke="black" points="318,-40.8 318,-92.8 820,-92.8 820,-40.8 318,-40.8"/>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_AvatarAppearancePortraitDesignerModule_declarations</title>
+<polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 310,-92.8 310,-40.8 16,-40.8"/>
 </g>
 <!-- AvatarAppearancePortraitDesignerComponent -->
 <g id="node1" class="node">
 <title>AvatarAppearancePortraitDesignerComponent</title>
-<polygon fill="#ffffb3" stroke="black" points="812.28,-84.8 533.72,-84.8 533.72,-48.8 812.28,-48.8 812.28,-84.8"/>
-<text text-anchor="middle" x="673" y="-62.6" font-family="Times,serif" font-size="14.00">AvatarAppearancePortraitDesignerComponent</text>
+<polygon fill="#ffffb3" stroke="black" points="302.28,-84.8 23.72,-84.8 23.72,-48.8 302.28,-48.8 302.28,-84.8"/>
+<text text-anchor="middle" x="163" y="-62.6" font-family="Times,serif" font-size="14.00">AvatarAppearancePortraitDesignerComponent</text>
 </g>
 <!-- AvatarAppearancePortraitDesignerModule -->
 <g id="node2" class="node">
 <title>AvatarAppearancePortraitDesignerModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="507.5,-149.8 504.5,-153.8 483.5,-153.8 480.5,-149.8 250.5,-149.8 250.5,-113.8 507.5,-113.8 507.5,-149.8"/>
-<text text-anchor="middle" x="379" y="-127.6" font-family="Times,serif" font-size="14.00">AvatarAppearancePortraitDesignerModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="557.5,-149.8 554.5,-153.8 533.5,-153.8 530.5,-149.8 300.5,-149.8 300.5,-113.8 557.5,-113.8 557.5,-149.8"/>
+<text text-anchor="middle" x="429" y="-127.6" font-family="Times,serif" font-size="14.00">AvatarAppearancePortraitDesignerModule</text>
 </g>
 <!-- AvatarAppearancePortraitDesignerComponent&#45;&gt;AvatarAppearancePortraitDesignerModule -->
 <g id="edge1" class="edge">
 <title>AvatarAppearancePortraitDesignerComponent&#45;&gt;AvatarAppearancePortraitDesignerModule</title>
-<path fill="none" stroke="black" d="M673,-84.91C673,-104.14 673,-131.8 673,-131.8 673,-131.8 517.52,-131.8 517.52,-131.8"/>
-<polygon fill="black" stroke="black" points="517.53,-128.3 507.52,-131.8 517.52,-135.3 517.53,-128.3"/>
+<path fill="none" stroke="black" d="M294.18,-84.91C294.18,-104.14 294.18,-131.8 294.18,-131.8 294.18,-131.8 294.79,-131.8 294.79,-131.8"/>
+<polygon fill="black" stroke="black" points="290.32,-135.3 300.32,-131.8 290.32,-128.3 290.32,-135.3"/>
 </g>
 <!-- AvatarAppearancePortraitDesignerComponent  -->
 <g id="node5" class="node">
 <title>AvatarAppearancePortraitDesignerComponent </title>
-<polygon fill="#fb8072" stroke="black" points="520.28,-214.8 237.72,-214.8 237.72,-178.8 520.28,-178.8 520.28,-214.8"/>
-<text text-anchor="middle" x="379" y="-192.6" font-family="Times,serif" font-size="14.00">AvatarAppearancePortraitDesignerComponent </text>
+<polygon fill="#fb8072" stroke="black" points="570.28,-214.8 287.72,-214.8 287.72,-178.8 570.28,-178.8 570.28,-214.8"/>
+<text text-anchor="middle" x="429" y="-192.6" font-family="Times,serif" font-size="14.00">AvatarAppearancePortraitDesignerComponent </text>
 </g>
 <!-- AvatarAppearancePortraitDesignerModule&#45;&gt;AvatarAppearancePortraitDesignerComponent  -->
 <g id="edge4" class="edge">
 <title>AvatarAppearancePortraitDesignerModule&#45;&gt;AvatarAppearancePortraitDesignerComponent </title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M379,-149.91C379,-149.91 379,-168.79 379,-168.79"/>
-<polygon fill="black" stroke="black" points="375.5,-168.79 379,-178.79 382.5,-168.79 375.5,-168.79"/>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M429,-149.91C429,-149.91 429,-168.79 429,-168.79"/>
+<polygon fill="black" stroke="black" points="425.5,-168.79 429,-178.79 432.5,-168.79 425.5,-168.79"/>
 </g>
 <!-- AvatarAppearancePortraitAvataaarsModule -->
 <g id="node3" class="node">
 <title>AvatarAppearancePortraitAvataaarsModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="510.43,-84.8 507.43,-88.8 486.43,-88.8 483.43,-84.8 247.57,-84.8 247.57,-48.8 510.43,-48.8 510.43,-84.8"/>
-<text text-anchor="middle" x="379" y="-62.6" font-family="Times,serif" font-size="14.00">AvatarAppearancePortraitAvataaarsModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="812.43,-84.8 809.43,-88.8 788.43,-88.8 785.43,-84.8 549.57,-84.8 549.57,-48.8 812.43,-48.8 812.43,-84.8"/>
+<text text-anchor="middle" x="681" y="-62.6" font-family="Times,serif" font-size="14.00">AvatarAppearancePortraitAvataaarsModule</text>
 </g>
 <!-- AvatarAppearancePortraitAvataaarsModule&#45;&gt;AvatarAppearancePortraitDesignerModule -->
 <g id="edge2" class="edge">
 <title>AvatarAppearancePortraitAvataaarsModule&#45;&gt;AvatarAppearancePortraitDesignerModule</title>
-<path fill="none" stroke="black" d="M379,-84.91C379,-84.91 379,-103.79 379,-103.79"/>
-<polygon fill="black" stroke="black" points="375.5,-103.79 379,-113.79 382.5,-103.79 375.5,-103.79"/>
+<path fill="none" stroke="black" d="M553.64,-84.91C553.64,-84.91 553.64,-103.79 553.64,-103.79"/>
+<polygon fill="black" stroke="black" points="550.14,-103.79 553.64,-113.79 557.14,-103.79 550.14,-103.79"/>
 </g>
 <!-- AvatarAppearancePortraitModule -->
 <g id="node4" class="node">
 <title>AvatarAppearancePortraitModule</title>
-<polygon fill="#8dd3c7" stroke="black" points="230.47,-84.8 227.47,-88.8 206.47,-88.8 203.47,-84.8 23.53,-84.8 23.53,-48.8 230.47,-48.8 230.47,-84.8"/>
-<text text-anchor="middle" x="127" y="-62.6" font-family="Times,serif" font-size="14.00">AvatarAppearancePortraitModule</text>
+<polygon fill="#8dd3c7" stroke="black" points="532.47,-84.8 529.47,-88.8 508.47,-88.8 505.47,-84.8 325.53,-84.8 325.53,-48.8 532.47,-48.8 532.47,-84.8"/>
+<text text-anchor="middle" x="429" y="-62.6" font-family="Times,serif" font-size="14.00">AvatarAppearancePortraitModule</text>
 </g>
 <!-- AvatarAppearancePortraitModule&#45;&gt;AvatarAppearancePortraitDesignerModule -->
 <g id="edge3" class="edge">
 <title>AvatarAppearancePortraitModule&#45;&gt;AvatarAppearancePortraitDesignerModule</title>
-<path fill="none" stroke="black" d="M127,-84.91C127,-104.14 127,-131.8 127,-131.8 127,-131.8 240.42,-131.8 240.42,-131.8"/>
-<polygon fill="black" stroke="black" points="240.42,-135.3 250.42,-131.8 240.42,-128.3 240.42,-135.3"/>
+<path fill="none" stroke="black" d="M429,-84.91C429,-84.91 429,-103.79 429,-103.79"/>
+<polygon fill="black" stroke="black" points="425.5,-103.79 429,-113.79 432.5,-103.79 425.5,-103.79"/>
 </g>
 </g>
 </svg>

@@ -95,40 +95,55 @@
   &lt;div cfElem&#x3D;&quot;body&quot;&gt;
     &lt;cf-tabset theme&#x3D;&quot;secondary&quot;&gt;
       &lt;cf-tab
-        [title]&#x3D;&quot;&#x27;Portrait&#x27;&quot;
+        [title]&#x3D;&quot;&#x27;Portrait *&#x27;&quot;
         [active]&#x3D;&quot;true&quot;
         icon&#x3D;&quot;assets/icons/mdi/account.svg&quot;
         [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
       &gt;
         &lt;div cfBlock&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
-          &lt;cf-avatar-appearance-portrait-form
-            [portrait]&#x3D;&quot;appearance?.portrait&quot;
-          &gt;
-          &lt;/cf-avatar-appearance-portrait-form&gt;
+          &lt;cf-avatar-appearance-portrait-designer [appeareancePortrait]&#x3D;&quot;appearance?.variations?.portrait&quot;
+            [availableStyles]&#x3D;&quot;[&#x27;avataaars&#x27;, &#x27;image&#x27;]&quot;&gt;
+          &lt;/cf-avatar-appearance-portrait-designer&gt;
         &lt;/div&gt;
       &lt;/cf-tab&gt;
       &lt;cf-tab
-        [title]&#x3D;&quot;&#x27;Appearance&#x27;&quot;
+        [title]&#x3D;&quot;&#x27;2D Appearance *&#x27;&quot;
         icon&#x3D;&quot;assets/icons/mdi/human.svg&quot;
         [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
       &gt;
-        &lt;div cfBlock&#x3D;&quot;appearance-tab-content&quot;&gt;
-          &lt;div cfElem&#x3D;&quot;appearance-tab-content-model&quot;&gt;
-            &lt;cf-avatar-appearance-model-form [appearance]&#x3D;&quot;appearance&quot;&gt;
-            &lt;/cf-avatar-appearance-model-form&gt;
-          &lt;/div&gt;
-          &lt;div cfElem&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
-            &lt;cf-avatar-appearance-portrait-form
-              [portrait]&#x3D;&quot;appearance?.portrait&quot;
-            &gt;
-            &lt;/cf-avatar-appearance-portrait-form&gt;
-          &lt;/div&gt;
+        &lt;div cfBlock&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
+          &lt;cf-avatar-appearance-portrait-designer [appeareancePortrait]&#x3D;&quot;appearance?.variations?.dim2&quot;
+            [availableStyles]&#x3D;&quot;[&#x27;avataaars&#x27;, &#x27;image&#x27;]&quot;
+            [availableStyles]&#x3D;&quot;[&#x27;lpc&#x27;, &#x27;image&#x27;]&quot;&gt;
+          &lt;/cf-avatar-appearance-portrait-designer&gt;
         &lt;/div&gt;
       &lt;/cf-tab&gt;
       &lt;cf-tab
-        [title]&#x3D;&quot;&#x27;Info&#x27;&quot;
+        [title]&#x3D;&quot;&#x27;3D Appearance&#x27;&quot;
+        icon&#x3D;&quot;assets/icons/mdi/human.svg&quot;
+        [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
+      &gt;
+        &lt;div cfBlock&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
+          &lt;cf-avatar-appearance-portrait-designer [appeareancePortrait]&#x3D;&quot;appearance?.variations?.dim3&quot;
+            [availableStyles]&#x3D;&quot;[&#x27;dim3-file&#x27;]&quot;&gt;
+          &lt;/cf-avatar-appearance-portrait-designer&gt;
+        &lt;/div&gt;
+      &lt;/cf-tab&gt;
+      &lt;cf-tab
+        [title]&#x3D;&quot;&#x27;Others&#x27;&quot;
+        icon&#x3D;&quot;assets/icons/mdi/plus.svg&quot;
+        [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
+      &gt;
+        &lt;div cfBlock&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
+          &lt;cf-avatar-appearance-portrait-designer [appeareancePortrait]&#x3D;&quot;appearance?.variations?.others&quot;
+            [availableStyles]&#x3D;&quot;[&#x27;dungeons&#x27;]&quot;&gt;
+          &lt;/cf-avatar-appearance-portrait-designer&gt;
+        &lt;/div&gt;
+      &lt;/cf-tab&gt;
+      &lt;cf-tab
+        [title]&#x3D;&quot;&#x27;More&#x27;&quot;
         [active]&#x3D;&quot;false&quot;
-        icon&#x3D;&quot;assets/icons/mdi/information.svg&quot;
+        icon&#x3D;&quot;assets/icons/mdi/apps.svg&quot;
         [customClass]&#x3D;&quot;&#x27;appearance-info-tab&#x27;&quot;
       &gt;
         &lt;cf-avatar-appearance-info-form
@@ -280,7 +295,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:101</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:116</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -304,7 +319,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:103</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:118</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -337,8 +352,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="114"
-                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:114</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="129"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:129</a></div>
                 </td>
             </tr>
 
@@ -389,7 +404,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:99</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:114</a></div>
                         </td>
                     </tr>
 
@@ -425,7 +440,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:95</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:110</a></div>
                         </td>
                     </tr>
 
@@ -461,7 +476,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:97</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:112</a></div>
                         </td>
                     </tr>
 
@@ -490,7 +505,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:105</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:120</a></div>
                                 </td>
                             </tr>
 
@@ -506,18 +521,18 @@
   EventEmitter,
   Input,
   Output,
-  ViewChild,
+  ViewChild
 } from &#x27;@angular/core&#x27;;
 import { Appearance, AppearancePortrait } from &#x27;../../../models/appearance&#x27;;
 import { AppearanceInfo } from &#x27;../../../models/appearance-info&#x27;;
 import { AvatarAppearanceInfoFormComponent } from &#x27;./components/avatar-appearance-info-form/avatar-appearance-info-form.component&#x27;;
 import {
   AvatarAppearanceModelForm,
-  AvatarAppearanceModelFormComponent,
+  AvatarAppearanceModelFormComponent
 } from &#x27;./components/avatar-appearance-model-form/avatar-appearance-model-form.component&#x27;;
 import {
   AvatarAppearancePortraitFormComponent,
-  AvatarAppearancePortraitModelForm,
+  AvatarAppearancePortraitModelForm
 } from &#x27;./components/avatar-appearance-portrait-form/avatar-appearance-portrait-form.component&#x27;;
 
 export type AvatarAppearanceEditorModel &#x3D; {
@@ -533,40 +548,55 @@ export type AvatarAppearanceEditorModel &#x3D; {
       &lt;div cfElem&#x3D;&quot;body&quot;&gt;
         &lt;cf-tabset theme&#x3D;&quot;secondary&quot;&gt;
           &lt;cf-tab
-            [title]&#x3D;&quot;&#x27;Portrait&#x27;&quot;
+            [title]&#x3D;&quot;&#x27;Portrait *&#x27;&quot;
             [active]&#x3D;&quot;true&quot;
             icon&#x3D;&quot;assets/icons/mdi/account.svg&quot;
             [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
           &gt;
             &lt;div cfBlock&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
-              &lt;cf-avatar-appearance-portrait-form
-                [portrait]&#x3D;&quot;appearance?.portrait&quot;
-              &gt;
-              &lt;/cf-avatar-appearance-portrait-form&gt;
+              &lt;cf-avatar-appearance-portrait-designer [appeareancePortrait]&#x3D;&quot;appearance?.variations?.portrait&quot;
+                [availableStyles]&#x3D;&quot;[&#x27;avataaars&#x27;, &#x27;image&#x27;]&quot;&gt;
+              &lt;/cf-avatar-appearance-portrait-designer&gt;
             &lt;/div&gt;
           &lt;/cf-tab&gt;
           &lt;cf-tab
-            [title]&#x3D;&quot;&#x27;Appearance&#x27;&quot;
+            [title]&#x3D;&quot;&#x27;2D Appearance *&#x27;&quot;
             icon&#x3D;&quot;assets/icons/mdi/human.svg&quot;
             [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
           &gt;
-            &lt;div cfBlock&#x3D;&quot;appearance-tab-content&quot;&gt;
-              &lt;div cfElem&#x3D;&quot;appearance-tab-content-model&quot;&gt;
-                &lt;cf-avatar-appearance-model-form [appearance]&#x3D;&quot;appearance&quot;&gt;
-                &lt;/cf-avatar-appearance-model-form&gt;
-              &lt;/div&gt;
-              &lt;div cfElem&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
-                &lt;cf-avatar-appearance-portrait-form
-                  [portrait]&#x3D;&quot;appearance?.portrait&quot;
-                &gt;
-                &lt;/cf-avatar-appearance-portrait-form&gt;
-              &lt;/div&gt;
+            &lt;div cfBlock&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
+              &lt;cf-avatar-appearance-portrait-designer [appeareancePortrait]&#x3D;&quot;appearance?.variations?.dim2&quot;
+                [availableStyles]&#x3D;&quot;[&#x27;avataaars&#x27;, &#x27;image&#x27;]&quot;
+                [availableStyles]&#x3D;&quot;[&#x27;lpc&#x27;, &#x27;image&#x27;]&quot;&gt;
+              &lt;/cf-avatar-appearance-portrait-designer&gt;
             &lt;/div&gt;
           &lt;/cf-tab&gt;
           &lt;cf-tab
-            [title]&#x3D;&quot;&#x27;Info&#x27;&quot;
+            [title]&#x3D;&quot;&#x27;3D Appearance&#x27;&quot;
+            icon&#x3D;&quot;assets/icons/mdi/human.svg&quot;
+            [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
+          &gt;
+            &lt;div cfBlock&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
+              &lt;cf-avatar-appearance-portrait-designer [appeareancePortrait]&#x3D;&quot;appearance?.variations?.dim3&quot;
+                [availableStyles]&#x3D;&quot;[&#x27;dim3-file&#x27;]&quot;&gt;
+              &lt;/cf-avatar-appearance-portrait-designer&gt;
+            &lt;/div&gt;
+          &lt;/cf-tab&gt;
+          &lt;cf-tab
+            [title]&#x3D;&quot;&#x27;Others&#x27;&quot;
+            icon&#x3D;&quot;assets/icons/mdi/plus.svg&quot;
+            [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
+          &gt;
+            &lt;div cfBlock&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
+              &lt;cf-avatar-appearance-portrait-designer [appeareancePortrait]&#x3D;&quot;appearance?.variations?.others&quot;
+                [availableStyles]&#x3D;&quot;[&#x27;dungeons&#x27;]&quot;&gt;
+              &lt;/cf-avatar-appearance-portrait-designer&gt;
+            &lt;/div&gt;
+          &lt;/cf-tab&gt;
+          &lt;cf-tab
+            [title]&#x3D;&quot;&#x27;More&#x27;&quot;
             [active]&#x3D;&quot;false&quot;
-            icon&#x3D;&quot;assets/icons/mdi/information.svg&quot;
+            icon&#x3D;&quot;assets/icons/mdi/apps.svg&quot;
             [customClass]&#x3D;&quot;&#x27;appearance-info-tab&#x27;&quot;
           &gt;
             &lt;cf-avatar-appearance-info-form
@@ -664,8 +694,8 @@ export class AvatarAppearanceEditorComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-editor">  <div cfElem="body">    <cf-tabset theme="secondary">      <cf-tab        [title]="\'Portrait\'"        [active]="true"        icon="assets/icons/mdi/account.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-form            [portrait]="appearance?.portrait"          >          </cf-avatar-appearance-portrait-form>        </div>      </cf-tab>      <cf-tab        [title]="\'Appearance\'"        icon="assets/icons/mdi/human.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content">          <div cfElem="appearance-tab-content-model">            <cf-avatar-appearance-model-form [appearance]="appearance">            </cf-avatar-appearance-model-form>          </div>          <div cfElem="appearance-tab-content-portrait">            <cf-avatar-appearance-portrait-form              [portrait]="appearance?.portrait"            >            </cf-avatar-appearance-portrait-form>          </div>        </div>      </cf-tab>      <cf-tab        [title]="\'Info\'"        [active]="false"        icon="assets/icons/mdi/information.svg"        [customClass]="\'appearance-info-tab\'"      >        <cf-avatar-appearance-info-form          [info]="appearance?.info"        ></cf-avatar-appearance-info-form>      </cf-tab>    </cf-tabset>  </div>  <div cfElem="footer">    <div cfBlock="form-buttons">      <button        cfBlock="button"        [cfMod]="[\'primary\', \'has-icon\']"        (click)="onSaveButtonClick()"        [disabled]="!isValid"      >        <cf-svg-icon elem="icon" src="assets/icons/mdi/account-check.svg">        </cf-svg-icon>        Save      </button>    </div>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-editor">  <div cfElem="body">    <cf-tabset theme="secondary">      <cf-tab        [title]="\'Portrait *\'"        [active]="true"        icon="assets/icons/mdi/account.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-designer [appeareancePortrait]="appearance?.variations?.portrait"            [availableStyles]="[\'avataaars\', \'image\']">          </cf-avatar-appearance-portrait-designer>        </div>      </cf-tab>      <cf-tab        [title]="\'2D Appearance *\'"        icon="assets/icons/mdi/human.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-designer [appeareancePortrait]="appearance?.variations?.dim2"            [availableStyles]="[\'avataaars\', \'image\']"            [availableStyles]="[\'lpc\', \'image\']">          </cf-avatar-appearance-portrait-designer>        </div>      </cf-tab>      <cf-tab        [title]="\'3D Appearance\'"        icon="assets/icons/mdi/human.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-designer [appeareancePortrait]="appearance?.variations?.dim3"            [availableStyles]="[\'dim3-file\']">          </cf-avatar-appearance-portrait-designer>        </div>      </cf-tab>      <cf-tab        [title]="\'Others\'"        icon="assets/icons/mdi/plus.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-designer [appeareancePortrait]="appearance?.variations?.others"            [availableStyles]="[\'dungeons\']">          </cf-avatar-appearance-portrait-designer>        </div>      </cf-tab>      <cf-tab        [title]="\'More\'"        [active]="false"        icon="assets/icons/mdi/apps.svg"        [customClass]="\'appearance-info-tab\'"      >        <cf-avatar-appearance-info-form          [info]="appearance?.info"        ></cf-avatar-appearance-info-form>      </cf-tab>    </cf-tabset>  </div>  <div cfElem="footer">    <div cfBlock="form-buttons">      <button        cfBlock="button"        [cfMod]="[\'primary\', \'has-icon\']"        (click)="onSaveButtonClick()"        [disabled]="!isValid"      >        <cf-svg-icon elem="icon" src="assets/icons/mdi/account-check.svg">        </cf-svg-icon>        Save      </button>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarAppearanceSpritesheetComponent', 'selector': 'cf-avatar-appearance-spritesheet'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarAppearanceEditorComponent'};
 </script>

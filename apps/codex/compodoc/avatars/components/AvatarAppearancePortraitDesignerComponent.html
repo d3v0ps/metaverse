@@ -50,6 +50,9 @@
             <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
         </li>
         <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
         </li>
 </ul>
@@ -95,6 +98,17 @@
             </tr>
 
 
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>
+    .avatar-appearance-portrait-designer  {
+      &amp;__editor {
+        overflow-y: auto;
+        max-height: 70vh;
+      }
+    }
+    </code></td>
+            </tr>
 
             <tr>
                 <td class="col-md-3">template</td>
@@ -111,10 +125,18 @@
           [formControl]&#x3D;&quot;styleForm&quot;
         &gt;
           &lt;option value&#x3D;&quot;&quot;&gt;Choose Style&lt;/option&gt;
-          &lt;option *ngFor&#x3D;&quot;let style of styleOptions&quot; [ngValue]&#x3D;&quot;style.id&quot;&gt;
-            {{ style.name }}
+          &lt;option *ngFor&#x3D;&quot;let style of availableOptions&quot; [ngValue]&#x3D;&quot;style.id&quot;&gt;
+          {{ style.name }}
           &lt;/option&gt;
         &lt;/select&gt;
+        &lt;h4 cfBlock&#x3D;&quot;heading&quot; [cfMod]&#x3D;&quot;[&#x27;light&#x27;]&quot; *ngIf&#x3D;&quot;designStyle?.id !&#x3D;&#x3D; &#x27;image&#x27;&quot;&gt;
+          &lt;cf-svg-icon cfElem&#x3D;&quot;icon&quot; src&#x3D;&quot;assets/icons/mdi/web-box.svg&quot;&gt;
+          &lt;/cf-svg-icon&gt;
+          &lt;a [href]&#x3D;&quot;designStyle?.url&quot; target&#x3D;&quot;__blank&quot;&gt;{{ designStyle?.name }}&lt;/a&gt;
+        &lt;/h4&gt;
+        &lt;span cfBlock&#x3D;&quot;text&quot;&gt;
+          {{ designStyle?.description }}
+        &lt;/span&gt;
       &lt;/div&gt;
     &lt;/form&gt;
 
@@ -130,19 +152,41 @@
               for&#x3D;&quot;appearance-portrait-designer-{{ property.id }}&quot;
               &gt;{{ property.label }}&lt;/label
             &gt;
-            &lt;select
-              cfBlock&#x3D;&quot;select&quot;
-              id&#x3D;&quot;appearance-portrait-designer-{{ property.id }}&quot;
-              [formControlName]&#x3D;&quot;property.id&quot;
-            &gt;
-              &lt;option value&#x3D;&quot;&quot;&gt;Choose {{ property.label }}&lt;/option&gt;
-              &lt;option
-                *ngFor&#x3D;&quot;let option of property.options&quot;
-                [ngValue]&#x3D;&quot;option.id&quot;
-              &gt;
-                {{ option.label }}
-              &lt;/option&gt;
-            &lt;/select&gt;
+            &lt;ng-container [ngSwitch]&#x3D;&quot;property.type&quot;&gt;
+              &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;file&#x27;&quot;&gt;
+                &lt;cf-file-upload
+                  id&#x3D;&quot;appearance-portrait-designer-{{ property.id }}&quot;
+                  [formControlName]&#x3D;&quot;property.id&quot;&gt;
+                &lt;/cf-file-upload&gt;
+              &lt;/ng-container&gt;
+              &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;number&#x27;&quot;&gt;
+                &lt;input cfBlock&#x3D;&quot;input&quot;
+                  id&#x3D;&quot;appearance-portrait-designer-{{ property.id }}&quot;
+                  [formControlName]&#x3D;&quot;property.id&quot;
+                  type&#x3D;&quot;number&quot; /&gt;
+              &lt;/ng-container&gt;
+              &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;select&#x27;&quot;&gt;
+                &lt;select
+                  cfBlock&#x3D;&quot;select&quot;
+                  id&#x3D;&quot;appearance-portrait-designer-{{ property.id }}&quot;
+                  [formControlName]&#x3D;&quot;property.id&quot;
+                &gt;
+                  &lt;option value&#x3D;&quot;&quot;&gt;Choose {{ property.label }}&lt;/option&gt;
+                  &lt;option
+                    *ngFor&#x3D;&quot;let option of property.options&quot;
+                    [ngValue]&#x3D;&quot;option.id&quot;
+                  &gt;
+                    {{ option.label }}
+                  &lt;/option&gt;
+                &lt;/select&gt;
+              &lt;/ng-container&gt;
+
+              &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;color&#x27;&quot;&gt;
+                &lt;cf-color-picker-select [options]&#x3D;&quot;property.options || []&quot; *ngIf&#x3D;&quot;designStyle&quot;
+                  [value]&#x3D;&quot;getColorValueFromDesignStyle(propertiesForm.get(property.id)?.value, property.id)&quot;
+                  (selectColor)&#x3D;&quot;onColorPickerSelectColor($event, property.id)&quot;&gt;&lt;/cf-color-picker-select&gt;
+              &lt;/ng-container&gt;
+            &lt;/ng-container&gt;
           &lt;/div&gt;
         &lt;/ng-container&gt;
       &lt;/ng-container&gt;
@@ -191,6 +235,14 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#_portrait" >_portrait</a>
+                            </li>
+                            <li>
+                                <a href="#availableOptions" >availableOptions</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Optional</span>
                                 <a href="#designStyle" >designStyle</a>
                             </li>
@@ -227,10 +279,16 @@
                                 <a href="#generatePropertiesForm" >generatePropertiesForm</a>
                             </li>
                             <li>
+                                <a href="#getColorValueFromDesignStyle" >getColorValueFromDesignStyle</a>
+                            </li>
+                            <li>
                                 <a href="#ngOnDestroy" >ngOnDestroy</a>
                             </li>
                             <li>
                                 <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onColorPickerSelectColor" >onColorPickerSelectColor</a>
                             </li>
                         </ul>
                     </td>
@@ -246,6 +304,9 @@
                         <ul class="index-list">
                             <li>
                                 <a href="#appeareancePortrait" >appeareancePortrait</a>
+                            </li>
+                            <li>
+                                <a href="#availableStyles" >availableStyles</a>
                             </li>
                         </ul>
                     </td>
@@ -265,6 +326,9 @@
                                 <li>
                                     <a href="#appeareancePortrait" >appeareancePortrait</a>
                                 </li>
+                                <li>
+                                    <a href="#availableStyles" >availableStyles</a>
+                                </li>
                             </ul>
                         </td>
                     </tr>
@@ -283,7 +347,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:106</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:168</a></div>
                             </td>
                         </tr>
 
@@ -333,7 +397,28 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:91</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:134</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="availableStyles"></a>
+                        <b>availableStyles</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:147</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -369,8 +454,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="130"
-                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:130</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="192"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:192</a></div>
                 </td>
             </tr>
 
@@ -422,6 +507,87 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="getColorValueFromDesignStyle"></a>
+                    <span class="name">
+                        <span ><b>getColorValueFromDesignStyle</b></span>
+                        <a href="#getColorValueFromDesignStyle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getColorValueFromDesignStyle(color: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, propertyId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="215"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:215</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>color</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>propertyId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="ngOnDestroy"></a>
                     <span class="name">
                         <span ><b>ngOnDestroy</b></span>
@@ -438,8 +604,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="125"
-                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:125</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="187"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:187</a></div>
                 </td>
             </tr>
 
@@ -475,8 +641,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="110"
-                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:110</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="172"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:172</a></div>
                 </td>
             </tr>
 
@@ -492,12 +658,152 @@
             </tr>
         </tbody>
     </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onColorPickerSelectColor"></a>
+                    <span class="name">
+                        <span ><b>onColorPickerSelectColor</b></span>
+                        <a href="#onColorPickerSelectColor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onColorPickerSelectColor(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, propertyId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="210"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:210</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>propertyId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
     <section>
     
     <h3 id="inputs">
         Properties
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_portrait"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>_portrait</b></span>
+                        <a href="#_portrait"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#AppearancePortrait" target="_self" >AppearancePortrait</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:168</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="availableOptions"></a>
+                    <span class="name">
+                        <span ><b>availableOptions</b></span>
+                        <a href="#availableOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>DesignStyle[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[...this.styleOptions]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:160</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -523,7 +829,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:101</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:161</a></div>
                         </td>
                     </tr>
 
@@ -549,7 +855,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:106</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:166</a></div>
                         </td>
                     </tr>
 
@@ -574,7 +880,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:99</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:158</a></div>
                         </td>
                     </tr>
 
@@ -599,7 +905,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:104</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:164</a></div>
                         </td>
                     </tr>
 
@@ -624,7 +930,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:103</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="163" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:163</a></div>
                         </td>
                     </tr>
 
@@ -644,18 +950,18 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#DesignStyle" target="_self" >DesignStyle[]</a></code>
+                        <i>Type : </i>    <code>DesignStyle[]</code>
 
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>[avataaarsDesignStyle]</code>
+                        <i>Default value : </i><code>[avataaarsDesignStyle, imageDesignStyle, lpcDesignStyle, dim3FileDesignSystem, dungeonsDesignStyle]</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:100</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:159</a></div>
                         </td>
                     </tr>
 
@@ -677,6 +983,16 @@
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>appeareancePortrait()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:143</a></div>
+                                </td>
+                            </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -685,7 +1001,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:91</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:134</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -727,6 +1043,65 @@
                     </tr>
             </tbody>
         </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="availableStyles"></a>
+                        <span class="name"><b>availableStyles</b><a href="#availableStyles"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>availableStyles(styleIds: string[])</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/avatar-appearance-portrait-designer.component.ts:147</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>styleIds</td>
+                                                    
+                                                            <td>
+                                                                        <code>string[]</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
 </section>
 </div>
 
@@ -736,13 +1111,17 @@
 import { FormBuilder } from &#x27;@angular/forms&#x27;;
 import {
   AppearanceFormat,
-  AppearancePortrait,
+  AppearancePortrait
 } from &#x27;@central-factory/avatars/models/appearance&#x27;;
 import { map, Subject, takeUntil, tap } from &#x27;rxjs&#x27;;
 import {
-  avataaarsDesignStyle,
-  DesignStyle,
+  avataaarsDesignStyle
 } from &#x27;./design-styles/avataaars/avataaars.design-style&#x27;;
+import { dim3FileDesignSystem } from &#x27;./design-styles/dim3-file/dim3-file.design-style&#x27;;
+import { dungeonsDesignStyle } from &#x27;./design-styles/dungeons/dungeons.design-style&#x27;;
+import { imageDesignStyle } from &#x27;./design-styles/image/image.design-style&#x27;;
+import { lpcDesignStyle } from &#x27;./design-styles/lpc/lpc.design-style&#x27;;
+import { DesignStyle } from &#x27;./design-styles/models/design-style&#x27;;
 
 export type SelectOption &#x3D; {
   label: string;
@@ -765,10 +1144,18 @@ export type SelectOption &#x3D; {
               [formControl]&#x3D;&quot;styleForm&quot;
             &gt;
               &lt;option value&#x3D;&quot;&quot;&gt;Choose Style&lt;/option&gt;
-              &lt;option *ngFor&#x3D;&quot;let style of styleOptions&quot; [ngValue]&#x3D;&quot;style.id&quot;&gt;
-                {{ style.name }}
+              &lt;option *ngFor&#x3D;&quot;let style of availableOptions&quot; [ngValue]&#x3D;&quot;style.id&quot;&gt;
+              {{ style.name }}
               &lt;/option&gt;
             &lt;/select&gt;
+            &lt;h4 cfBlock&#x3D;&quot;heading&quot; [cfMod]&#x3D;&quot;[&#x27;light&#x27;]&quot; *ngIf&#x3D;&quot;designStyle?.id !&#x3D;&#x3D; &#x27;image&#x27;&quot;&gt;
+              &lt;cf-svg-icon cfElem&#x3D;&quot;icon&quot; src&#x3D;&quot;assets/icons/mdi/web-box.svg&quot;&gt;
+              &lt;/cf-svg-icon&gt;
+              &lt;a [href]&#x3D;&quot;designStyle?.url&quot; target&#x3D;&quot;__blank&quot;&gt;{{ designStyle?.name }}&lt;/a&gt;
+            &lt;/h4&gt;
+            &lt;span cfBlock&#x3D;&quot;text&quot;&gt;
+              {{ designStyle?.description }}
+            &lt;/span&gt;
           &lt;/div&gt;
         &lt;/form&gt;
 
@@ -784,19 +1171,41 @@ export type SelectOption &#x3D; {
                   for&#x3D;&quot;appearance-portrait-designer-{{ property.id }}&quot;
                   &gt;{{ property.label }}&lt;/label
                 &gt;
-                &lt;select
-                  cfBlock&#x3D;&quot;select&quot;
-                  id&#x3D;&quot;appearance-portrait-designer-{{ property.id }}&quot;
-                  [formControlName]&#x3D;&quot;property.id&quot;
-                &gt;
-                  &lt;option value&#x3D;&quot;&quot;&gt;Choose {{ property.label }}&lt;/option&gt;
-                  &lt;option
-                    *ngFor&#x3D;&quot;let option of property.options&quot;
-                    [ngValue]&#x3D;&quot;option.id&quot;
-                  &gt;
-                    {{ option.label }}
-                  &lt;/option&gt;
-                &lt;/select&gt;
+                &lt;ng-container [ngSwitch]&#x3D;&quot;property.type&quot;&gt;
+                  &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;file&#x27;&quot;&gt;
+                    &lt;cf-file-upload
+                      id&#x3D;&quot;appearance-portrait-designer-{{ property.id }}&quot;
+                      [formControlName]&#x3D;&quot;property.id&quot;&gt;
+                    &lt;/cf-file-upload&gt;
+                  &lt;/ng-container&gt;
+                  &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;number&#x27;&quot;&gt;
+                    &lt;input cfBlock&#x3D;&quot;input&quot;
+                      id&#x3D;&quot;appearance-portrait-designer-{{ property.id }}&quot;
+                      [formControlName]&#x3D;&quot;property.id&quot;
+                      type&#x3D;&quot;number&quot; /&gt;
+                  &lt;/ng-container&gt;
+                  &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;select&#x27;&quot;&gt;
+                    &lt;select
+                      cfBlock&#x3D;&quot;select&quot;
+                      id&#x3D;&quot;appearance-portrait-designer-{{ property.id }}&quot;
+                      [formControlName]&#x3D;&quot;property.id&quot;
+                    &gt;
+                      &lt;option value&#x3D;&quot;&quot;&gt;Choose {{ property.label }}&lt;/option&gt;
+                      &lt;option
+                        *ngFor&#x3D;&quot;let option of property.options&quot;
+                        [ngValue]&#x3D;&quot;option.id&quot;
+                      &gt;
+                        {{ option.label }}
+                      &lt;/option&gt;
+                    &lt;/select&gt;
+                  &lt;/ng-container&gt;
+
+                  &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;color&#x27;&quot;&gt;
+                    &lt;cf-color-picker-select [options]&#x3D;&quot;property.options || []&quot; *ngIf&#x3D;&quot;designStyle&quot;
+                      [value]&#x3D;&quot;getColorValueFromDesignStyle(propertiesForm.get(property.id)?.value, property.id)&quot;
+                      (selectColor)&#x3D;&quot;onColorPickerSelectColor($event, property.id)&quot;&gt;&lt;/cf-color-picker-select&gt;
+                  &lt;/ng-container&gt;
+                &lt;/ng-container&gt;
               &lt;/div&gt;
             &lt;/ng-container&gt;
           &lt;/ng-container&gt;
@@ -818,20 +1227,46 @@ export type SelectOption &#x3D; {
       &lt;/div&gt;
     &lt;/div&gt;
   &#x60;,
+  styles: [
+    &#x60;
+    .avatar-appearance-portrait-designer  {
+      &amp;__editor {
+        overflow-y: auto;
+        max-height: 70vh;
+      }
+    }
+    &#x60;
+  ]
 })
 export class AvatarAppearancePortraitDesignerComponent
-  implements OnInit, OnDestroy
-{
+  implements OnInit, OnDestroy {
   @Input() set appeareancePortrait(value: AppearancePortrait | undefined) {
+    this._portrait &#x3D; value;
     this.styleForm.setValue(value?.style.id || &#x27;avataaars&#x27;, {
       emitEvent: false,
     });
-    this.propertiesForm &#x3D; this.generatePropertiesForm(this.styleForm.value);
-    this.propertiesForm.setValue(value?.style.properties || {});
+    this.designStyle &#x3D; this.availableOptions.find(option &#x3D;&gt; option.id &#x3D;&#x3D;&#x3D; this.styleForm.value) || this.availableOptions[0];
+    this.propertiesForm &#x3D; this.generatePropertiesForm(this.designStyle);
+    this.propertiesForm.patchValue(value?.style.properties || {});
+  }
+  get appeareancePortrait(): AppearancePortrait | undefined {
+    return this._portrait;
+  }
+
+  @Input() set availableStyles(styleIds: string[]) {
+    this.availableOptions &#x3D; this.styleOptions.filter(opt &#x3D;&gt; styleIds.includes(opt.id));
+    const portraitStyle &#x3D; this.availableOptions.find(option &#x3D;&gt; option.id &#x3D;&#x3D;&#x3D; this.appeareancePortrait?.style.id);
+    const styleIsValid &#x3D; portraitStyle &amp;&amp; this.appeareancePortrait?.style.properties ? true : false;
+    this.designStyle &#x3D; portraitStyle || this.availableOptions[0];
+    this.styleForm.setValue(this.designStyle?.id);
+    this.propertiesForm &#x3D; this.generatePropertiesForm(this.designStyle);
+    const properties &#x3D; (styleIsValid ? this.appeareancePortrait?.style.properties : this.designStyle?.properties) || {};
+    this.propertiesForm.patchValue(properties);
   }
 
   formats &#x3D; AppearanceFormat;
-  styleOptions: DesignStyle[] &#x3D; [avataaarsDesignStyle];
+  styleOptions: DesignStyle[] &#x3D; [avataaarsDesignStyle, imageDesignStyle, lpcDesignStyle, dim3FileDesignSystem, dungeonsDesignStyle];
+  availableOptions: DesignStyle[] &#x3D; [...this.styleOptions];
   designStyle?: DesignStyle &#x3D; this.styleOptions[0];
 
   styleForm &#x3D; this.formBuilder.control(this.designStyle?.id || &#x27;&#x27;);
@@ -839,7 +1274,9 @@ export class AvatarAppearancePortraitDesignerComponent
 
   private destroy$ &#x3D; new Subject&lt;void&gt;();
 
-  constructor(private formBuilder: FormBuilder) {}
+  private _portrait?: AppearancePortrait;
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.styleForm.valueChanges
@@ -872,17 +1309,37 @@ export class AvatarAppearancePortraitDesignerComponent
           Object.assign(acc, {
             [property.id]:
               property.defaultValue ||
-              (property.options.length &gt; 0 ? property.options[0].id : &#x27;&#x27;),
+              (property.options &amp;&amp; property.options.length &gt; 0 ? property.options[0].id : &#x27;&#x27;),
           }),
         {}
       )
     );
+  }
+
+  onColorPickerSelectColor(event: any, propertyId: string) {
+    console.log(propertyId, event);
+    this.propertiesForm.controls[propertyId].setValue(event.id)
+  }
+
+  getColorValueFromDesignStyle(color: string, propertyId: string) {
+    return this.designStyle?.properties.find(prop &#x3D;&gt; prop.id &#x3D;&#x3D;&#x3D; propertyId)?.options?.find(opt &#x3D;&gt; opt.id &#x3D;&#x3D;&#x3D; color)?.value;
   }
 }
 </code></pre>
     </div>
 
 
+    <div class="tab-pane fade " id="c-styleData">
+            <pre class="line-numbers"><code class="language-scss">
+    .avatar-appearance-portrait-designer  {
+      &amp;__editor {
+        overflow-y: auto;
+        max-height: 70vh;
+      }
+    }
+    
+</code></pre>
+    </div>
 
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
@@ -909,8 +1366,8 @@ export class AvatarAppearancePortraitDesignerComponent
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-portrait-designer">  <div cfElem="editor">    <form cfBlock="form">      <div cfBlock="form-control">        <label cfBlock="form-label" for="appearance-portrait-designer-style"          >Style</label        >        <select          cfBlock="select"          id="appearance-portrait-designer-style"          [formControl]="styleForm"        >          <option value="">Choose Style</option>          <option *ngFor="let style of styleOptions" [ngValue]="style.id">            {{ style.name }}          </option>        </select>      </div>    </form>    <form cfBlock="form" [formGroup]="propertiesForm">      <ng-container *ngIf="designStyle && designStyle.properties">        <ng-container *ngFor="let property of designStyle.properties">          <div            cfBlock="form-control"            *ngIf="propertiesForm.controls[property.id]"          >            <label              cfBlock="form-label"              for="appearance-portrait-designer-{{ property.id }}"              >{{ property.label }}</label            >            <select              cfBlock="select"              id="appearance-portrait-designer-{{ property.id }}"              [formControlName]="property.id"            >              <option value="">Choose {{ property.label }}</option>              <option                *ngFor="let option of property.options"                [ngValue]="option.id"              >                {{ option.label }}              </option>            </select>          </div>        </ng-container>      </ng-container>    </form>  </div>  <div cfElem="preview">    <cf-avatar-appearance-portrait      *ngIf="styleForm.value"      [appearancePortrait]="{        id: \'1\',        filename: \'\',        format: formats.Image,        style: {          id: styleForm.value,          properties: propertiesForm.value        }      }"    ></cf-avatar-appearance-portrait>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-portrait-designer">  <div cfElem="editor">    <form cfBlock="form">      <div cfBlock="form-control">        <label cfBlock="form-label" for="appearance-portrait-designer-style"          >Style</label        >        <select          cfBlock="select"          id="appearance-portrait-designer-style"          [formControl]="styleForm"        >          <option value="">Choose Style</option>          <option *ngFor="let style of availableOptions" [ngValue]="style.id">          {{ style.name }}          </option>        </select>        <h4 cfBlock="heading" [cfMod]="[\'light\']" *ngIf="designStyle?.id !== \'image\'">          <cf-svg-icon cfElem="icon" src="assets/icons/mdi/web-box.svg">          </cf-svg-icon>          <a [href]="designStyle?.url" target="__blank">{{ designStyle?.name }}</a>        </h4>        <span cfBlock="text">          {{ designStyle?.description }}        </span>      </div>    </form>    <form cfBlock="form" [formGroup]="propertiesForm">      <ng-container *ngIf="designStyle && designStyle.properties">        <ng-container *ngFor="let property of designStyle.properties">          <div            cfBlock="form-control"            *ngIf="propertiesForm.controls[property.id]"          >            <label              cfBlock="form-label"              for="appearance-portrait-designer-{{ property.id }}"              >{{ property.label }}</label            >            <ng-container [ngSwitch]="property.type">              <ng-container *ngSwitchCase="\'file\'">                <cf-file-upload                  id="appearance-portrait-designer-{{ property.id }}"                  [formControlName]="property.id">                </cf-file-upload>              </ng-container>              <ng-container *ngSwitchCase="\'number\'">                <input cfBlock="input"                  id="appearance-portrait-designer-{{ property.id }}"                  [formControlName]="property.id"                  type="number" />              </ng-container>              <ng-container *ngSwitchCase="\'select\'">                <select                  cfBlock="select"                  id="appearance-portrait-designer-{{ property.id }}"                  [formControlName]="property.id"                >                  <option value="">Choose {{ property.label }}</option>                  <option                    *ngFor="let option of property.options"                    [ngValue]="option.id"                  >                    {{ option.label }}                  </option>                </select>              </ng-container>              <ng-container *ngSwitchCase="\'color\'">                <cf-color-picker-select [options]="property.options || []" *ngIf="designStyle"                  [value]="getColorValueFromDesignStyle(propertiesForm.get(property.id)?.value, property.id)"                  (selectColor)="onColorPickerSelectColor($event, property.id)"></cf-color-picker-select>              </ng-container>            </ng-container>          </div>        </ng-container>      </ng-container>    </form>  </div>  <div cfElem="preview">    <cf-avatar-appearance-portrait      *ngIf="styleForm.value"      [appearancePortrait]="{        id: \'1\',        filename: \'\',        format: formats.Image,        style: {          id: styleForm.value,          properties: propertiesForm.value        }      }"    ></cf-avatar-appearance-portrait>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarAppearanceSpritesheetComponent', 'selector': 'cf-avatar-appearance-spritesheet'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarAppearancePortraitDesignerComponent'};
 </script>
