@@ -1376,57 +1376,241 @@
   hasViewer: true,
   properties: [
     {
-      id: &#x27;species&#x27;,
-      type: &#x27;select&#x27;,
-      label: &#x27;Species&#x27;,
-      options: [{
-        id: &#x27;Human&#x27;,
-        label: &#x27;Human&#x27;,
-      }, {
-        id: &#x27;HumanoidAnimals/Lizardman&#x27;,
-        label: &#x27;Lizardman&#x27;,
-      }, {
-        id: &#x27;HumanoidAnimals/Wolfman&#x27;,
-        label: &#x27;Wolfman&#x27;,
-      }, {
-        id: &#x27;Orc&#x27;,
-        label: &#x27;Orcs&#x27;,
-      }, {
-        id: &#x27;Undead/Skeleton&#x27;,
-        label: &#x27;Skeleton&#x27;,
-      }, {
-        id: &#x27;Undead/Zombie&#x27;,
-        label: &#x27;Zombie&#x27;,
-      }]
-    },
-    {
       id: &#x27;bodyType&#x27;,
       type: &#x27;select&#x27;,
       label: &#x27;Body Type&#x27;,
       options: [
         {
-          id: &#x27;Child&#x27;,
-          label: &#x27;Child&#x27;,
+          id: &#x27;tanned&#x27;,
+          label: &#x27;Tanned&#x27;,
         },
         {
-          id: &#x27;Female&#x27;,
-          label: &#x27;Female&#x27;,
+          id: &#x27;tanned2&#x27;,
+          label: &#x27;Tanned 2&#x27;,
         },
         {
-          id: &#x27;FemalePregnant&#x27;,
-          label: &#x27;Female Pregnant&#x27;,
+          id: &#x27;light&#x27;,
+          label: &#x27;Light&#x27;,
         },
         {
-          id: &#x27;Male&#x27;,
+          id: &#x27;dark&#x27;,
+          label: &#x27;Dark&#x27;,
+        },
+        {
+          id: &#x27;dark2&#x27;,
+          label: &#x27;Dark 2&#x27;,
+        },
+        {
+          id: &#x27;darkelf&#x27;,
+          label: &#x27;Dark Elf&#x27;,
+        },
+        {
+          id: &#x27;darkelf2&#x27;,
+          label: &#x27;Dark Elf 2&#x27;,
+        },
+        {
+          id: &#x27;orc&#x27;,
+          label: &#x27;Orc&#x27;,
+        },
+        {
+          id: &#x27;red_orc&#x27;,
+          label: &#x27;Red Orc&#x27;,
+        },
+        {
+          id: &#x27;skeleton&#x27;,
+          label: &#x27;Skeleton&#x27;,
+        },
+      ]
+    },
+    {
+      id: &#x27;bodyVariation&#x27;,
+      type: &#x27;select&#x27;,
+      label: &#x27;Body Variation&#x27;,
+      options: [
+        {
+          id: &#x27;male&#x27;,
           label: &#x27;Male&#x27;,
         },
         {
-          id: &#x27;MaleMuscular&#x27;,
-          label: &#x27;Male Muscular&#x27;,
+          id: &#x27;female&#x27;,
+          label: &#x27;Female&#x27;,
+        },
+      ]
+    },
+    {
+      id: &#x27;torso&#x27;,
+      type: &#x27;select&#x27;,
+      label: &#x27;Torso&#x27;,
+      options: [
+        {
+          id: &#x27;leather/chest&#x27;,
+          label: &#x27;Leather Chest&#x27;,
         },
         {
-          id: &#x27;Teen&#x27;,
-          label: &#x27;Teen&#x27;,
+          id: &#x27;chain/mail&#x27;,
+          label: &#x27;Chain Mail&#x27;,
+        },
+        {
+          id: &#x27;chain/tabard&#x27;,
+          label: &#x27;Tabard&#x27;,
+        },
+        {
+          id: &#x27;shirts/longsleeve/brown_longsleeve&#x27;,
+          label: &#x27;Brown Longsleeve&#x27;,
+        },
+        {
+          id: &#x27;shirts/longsleeve/white_longsleeve&#x27;,
+          label: &#x27;White Longsleeve&#x27;,
+        },
+      ]
+    },
+    {
+      id: &#x27;hair&#x27;,
+      type: &#x27;select&#x27;,
+      label: &#x27;Hair&#x27;,
+      options: [
+        {
+          id: &#x27;bangs&#x27;,
+          label: &#x27;Bangs&#x27;,
+        },
+        {
+          id: &#x27;bangslong&#x27;,
+          label: &#x27;Bangs Long&#x27;,
+        },
+        {
+          id: &#x27;bangslong2&#x27;,
+          label: &#x27;Bangs Long 2&#x27;,
+        },
+        {
+          id: &#x27;bangsshort&#x27;,
+          label: &#x27;Bangs Short&#x27;,
+        },
+        {
+          id: &#x27;bedhead&#x27;,
+          label: &#x27;Bed Head&#x27;,
+        },
+        {
+          id: &#x27;bunches&#x27;,
+          label: &#x27;Bunches&#x27;,
+        },
+        {
+          id: &#x27;jewfro&#x27;,
+          label: &#x27;Jewfro&#x27;,
+        },
+        {
+          id: &#x27;long&#x27;,
+          label: &#x27;Long&#x27;,
+        },
+        {
+          id: &#x27;longhawk&#x27;,
+          label: &#x27;Long Hawk&#x27;,
+        },
+        {
+          id: &#x27;longknot&#x27;,
+          label: &#x27;Long Knot&#x27;,
+        },
+        {
+          id: &#x27;loose&#x27;,
+          label: &#x27;Loose&#x27;,
+        },
+        {
+          id: &#x27;messy1&#x27;,
+          label: &#x27;Messy&#x27;,
+        },
+        {
+          id: &#x27;messy2&#x27;,
+          label: &#x27;Messy 2&#x27;,
+        },
+        {
+          id: &#x27;mohawk&#x27;,
+          label: &#x27;Mohawk&#x27;,
+        },
+      ]
+    },
+    {
+      id: &#x27;hairColor&#x27;,
+      type: &#x27;select&#x27;,
+      label: &#x27;Hair Color&#x27;,
+      options: [
+        {
+          id: &#x27;black&#x27;,
+          label: &#x27;Black&#x27;,
+        },
+        {
+          id: &#x27;blonde&#x27;,
+          label: &#x27;Blonde&#x27;,
+        },
+        {
+          id: &#x27;blonde2&#x27;,
+          label: &#x27;Blonde 2&#x27;,
+        },
+        {
+          id: &#x27;blue&#x27;,
+          label: &#x27;Blue&#x27;,
+        },
+        {
+          id: &#x27;blue2&#x27;,
+          label: &#x27;Blue 2&#x27;,
+        },
+        {
+          id: &#x27;brown&#x27;,
+          label: &#x27;Brown&#x27;,
+        },
+        {
+          id: &#x27;brown2&#x27;,
+          label: &#x27;Brown 2&#x27;,
+        },
+        {
+          id: &#x27;brunette&#x27;,
+          label: &#x27;Brunette&#x27;,
+        },
+        {
+          id: &#x27;brunette2&#x27;,
+          label: &#x27;Brunette 2&#x27;,
+        },
+        // TODO: Complete this list
+        {
+          id: &#x27;white-blonde&#x27;,
+          label: &#x27;White Blonde&#x27;,
+        },
+        {
+          id: &#x27;white-blonde2&#x27;,
+          label: &#x27;White Blonde 2&#x27;,
+        },
+        {
+          id: &#x27;white-cyan&#x27;,
+          label: &#x27;White Cyan&#x27;,
+        },
+        {
+          id: &#x27;white&#x27;,
+          label: &#x27;White&#x27;,
+        },
+      ]
+    },
+    {
+      id: &#x27;facialHair&#x27;,
+      type: &#x27;select&#x27;,
+      label: &#x27;Facial Hair&#x27;,
+      options: [
+        {
+          id: &#x27;beard&#x27;,
+          label: &#x27;Beard&#x27;,
+        },
+        {
+          id: &#x27;bigstache&#x27;,
+          label: &#x27;Bigstache&#x27;,
+        },
+        {
+          id: &#x27;fiveoclock&#x27;,
+          label: &#x27;Fiveoclock&#x27;,
+        },
+        {
+          id: &#x27;frenchstache&#x27;,
+          label: &#x27;Frenchstache&#x27;,
+        },
+        {
+          id: &#x27;mustache&#x27;,
+          label: &#x27;Mustache&#x27;,
         },
       ]
     }
@@ -1629,8 +1813,12 @@
           style: {
             id: &#x27;lpc&#x27;,
             properties: {
-              species: &#x27;Human&#x27;,
-              bodyType: &#x27;Male&#x27;
+              bodyType: &#x27;tanned2&#x27;,
+              bodyVariation: &#x27;male&#x27;,
+              torso: &#x27;chain/mail&#x27;,
+              hair: &#x27;longknot&#x27;,
+              hairColor: &#x27;white&#x27;,
+              facialHair: &#x27;mustache&#x27;,
             },
           },
         },
@@ -1702,8 +1890,12 @@
             style: {
               id: &#x27;lpc&#x27;,
               properties: {
-                species: &#x27;Human&#x27;,
-                bodyType: &#x27;Male&#x27;
+                bodyType: &#x27;tanned2&#x27;,
+                bodyVariation: &#x27;male&#x27;,
+                torso: &#x27;chain/mail&#x27;,
+                hair: &#x27;longknot&#x27;,
+                hairColor: &#x27;white&#x27;,
+                facialHair: &#x27;mustache&#x27;,
               },
             },
           },
