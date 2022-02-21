@@ -123,9 +123,8 @@
             <tr>
                 <td class="col-md-3">template</td>
                 <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div cfBlock&#x3D;&quot;avatar-appearance-portrait&quot; (click)&#x3D;&quot;appearanceClick.emit(appearancePortrait)&quot;
-  *ngIf&#x3D;&quot;appearancePortrait &amp;&amp; appearancePortrait.style&quot;
   [cfMod]&#x3D;&quot;[active ? &#x27;active&#x27; : undefined]&quot;&gt;
-  &lt;ng-container [ngSwitch]&#x3D;&quot;appearancePortrait.style?.id&quot;&gt;
+  &lt;ng-container *ngIf&#x3D;&quot;appearancePortrait &amp;&amp; appearancePortrait.style&quot; [ngSwitch]&#x3D;&quot;appearancePortrait.style?.id&quot;&gt;
     &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;avataaars&#x27;&quot;&gt;
       &lt;div cfElem&#x3D;&quot;image&quot;&gt;
         &lt;cf-avatar-appearance-portrait-avataaars
@@ -135,6 +134,7 @@
     &lt;/ng-container&gt;
     &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;lpc&#x27;&quot;&gt;
       &lt;cf-layered-spritesheet
+        [scale]&#x3D;&quot;scale&quot;
         [layers]&#x3D;&quot;getLpcLayers(appearancePortrait)&quot;&gt;&lt;/cf-layered-spritesheet&gt;
     &lt;/ng-container&gt;
     &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;image&#x27;&quot;&gt;
@@ -223,6 +223,9 @@
                                 <a href="#emptyIcon" >emptyIcon</a>
                             </li>
                             <li>
+                                <a href="#scale" >scale</a>
+                            </li>
+                            <li>
                                 <a href="#showEmptyIcon" >showEmptyIcon</a>
                             </li>
                         </ul>
@@ -275,7 +278,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:80</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:82</a></div>
                             </td>
                         </tr>
 
@@ -386,6 +389,32 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="scale"></a>
+                        <b>scale</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>3</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:76</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="showEmptyIcon"></a>
                         <b>showEmptyIcon</b>
                     </td>
@@ -427,7 +456,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:76</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:78</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -460,8 +489,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="94"
-                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:94</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="96"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:96</a></div>
                 </td>
             </tr>
 
@@ -529,8 +558,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="84"
-                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:84</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="86"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:86</a></div>
                 </td>
             </tr>
 
@@ -604,7 +633,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:80</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:82</a></div>
                         </td>
                     </tr>
 
@@ -632,7 +661,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:78</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:80</a></div>
                         </td>
                     </tr>
 
@@ -667,7 +696,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>appearancePortrait(value: AppearancePortrait | undefined)</code></span>
+                        <span class="accessor"><b>set</b><code>appearancePortrait(value: AppearanceVariation | undefined)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -693,7 +722,7 @@
                                                             <td>value</td>
                                                     
                                                             <td>
-                                                                        <code>AppearancePortrait | undefined</code>
+                                                                        <code>AppearanceVariation | undefined</code>
                                                             </td>
                                                     
                                                         <td>
@@ -721,15 +750,14 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
 import { DomSanitizer, SafeUrl } from &#x27;@angular/platform-browser&#x27;;
-import { AppearancePortrait } from &#x27;../../../models/appearance&#x27;;
+import { AppearancePortrait, AppearanceVariation } from &#x27;../../../models/appearance&#x27;;
 
 @Component({
   selector: &#x27;cf-avatar-appearance-portrait&#x27;,
   template: &#x60;
     &lt;div cfBlock&#x3D;&quot;avatar-appearance-portrait&quot; (click)&#x3D;&quot;appearanceClick.emit(appearancePortrait)&quot;
-      *ngIf&#x3D;&quot;appearancePortrait &amp;&amp; appearancePortrait.style&quot;
       [cfMod]&#x3D;&quot;[active ? &#x27;active&#x27; : undefined]&quot;&gt;
-      &lt;ng-container [ngSwitch]&#x3D;&quot;appearancePortrait.style?.id&quot;&gt;
+      &lt;ng-container *ngIf&#x3D;&quot;appearancePortrait &amp;&amp; appearancePortrait.style&quot; [ngSwitch]&#x3D;&quot;appearancePortrait.style?.id&quot;&gt;
         &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;avataaars&#x27;&quot;&gt;
           &lt;div cfElem&#x3D;&quot;image&quot;&gt;
             &lt;cf-avatar-appearance-portrait-avataaars
@@ -739,6 +767,7 @@ import { AppearancePortrait } from &#x27;../../../models/appearance&#x27;;
         &lt;/ng-container&gt;
         &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;lpc&#x27;&quot;&gt;
           &lt;cf-layered-spritesheet
+            [scale]&#x3D;&quot;scale&quot;
             [layers]&#x3D;&quot;getLpcLayers(appearancePortrait)&quot;&gt;&lt;/cf-layered-spritesheet&gt;
         &lt;/ng-container&gt;
         &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;image&#x27;&quot;&gt;
@@ -781,18 +810,20 @@ import { AppearancePortrait } from &#x27;../../../models/appearance&#x27;;
   ]
 })
 export class AvatarAppearancePortraitComponent {
-  @Input() set appearancePortrait(value: AppearancePortrait | undefined) {
+  @Input() set appearancePortrait(value: AppearanceVariation | undefined) {
     this.src &#x3D; value?.src
       ? this.domSanitizer.bypassSecurityTrustUrl(value.src)
       : undefined;
     this._appearancePortrait &#x3D; value;
   }
-  get appearancePortrait(): AppearancePortrait | undefined {
+  get appearancePortrait(): AppearanceVariation | undefined {
     return this._appearancePortrait;
   }
   @Input() emptyIcon &#x3D; &#x27;assets/icons/mdi/head-question.svg&#x27;;
   @Input() showEmptyIcon &#x3D; false;
   @Input() active &#x3D; false;
+
+  @Input() scale &#x3D; 3;
 
   @Output() appearanceClick &#x3D; new EventEmitter&lt;AppearancePortrait&gt;();
 
@@ -867,6 +898,55 @@ export class AvatarAppearancePortraitComponent {
       ].join(&#x27;/&#x27;));
     }
 
+    if (appearancePortrait.style.properties.arms) {
+      layerUrls.push([
+        baseUrl,
+        &#x27;torso&#x27;,
+        appearancePortrait.style.properties.bodyVariation,
+        &#x60;${appearancePortrait.style.properties.arms}.png&#x60;
+      ].join(&#x27;/&#x27;));
+    }
+
+    if (appearancePortrait.style.properties.back) {
+      layerUrls.push([
+        baseUrl,
+        &#x27;torso&#x27;,
+        appearancePortrait.style.properties.bodyVariation,
+        &#x27;back&#x27;,
+        &#x60;${appearancePortrait.style.properties.back}.png&#x60;
+      ].join(&#x27;/&#x27;));
+    }
+
+    if (appearancePortrait.style.properties.ears) {
+      layerUrls.push([
+        baseUrl,
+        &#x27;body&#x27;,
+        appearancePortrait.style.properties.bodyVariation,
+        &#x27;ears&#x27;,
+        &#x60;${appearancePortrait.style.properties.ears}_${appearancePortrait.style.properties.bodyType}.png&#x60;
+      ].join(&#x27;/&#x27;));
+    }
+
+    if (appearancePortrait.style.properties.nose) {
+      layerUrls.push([
+        baseUrl,
+        &#x27;body&#x27;,
+        appearancePortrait.style.properties.bodyVariation,
+        &#x27;nose&#x27;,
+        &#x60;${appearancePortrait.style.properties.nose}_${appearancePortrait.style.properties.bodyType}.png&#x60;
+      ].join(&#x27;/&#x27;));
+    }
+
+    if (appearancePortrait.style.properties.ears) {
+      layerUrls.push([
+        baseUrl,
+        &#x27;body&#x27;,
+        appearancePortrait.style.properties.bodyVariation,
+        &#x27;eyes&#x27;,
+        &#x60;${appearancePortrait.style.properties.eyes}.png&#x60;
+      ].join(&#x27;/&#x27;));
+    }
+
     if (appearancePortrait.style.properties.hair) {
       layerUrls.push([
         baseUrl,
@@ -884,6 +964,15 @@ export class AvatarAppearancePortraitComponent {
         appearancePortrait.style.properties.bodyVariation,
         appearancePortrait.style.properties.facialHair,
         &#x60;${appearancePortrait.style.properties.facialHairColor || appearancePortrait.style.properties.hairColor}.png&#x60;
+      ].join(&#x27;/&#x27;));
+    }
+
+    if (appearancePortrait.style.properties.facialHair) {
+      layerUrls.push([
+        baseUrl,
+        &#x27;head&#x27;,
+        appearancePortrait.style.properties.bodyVariation,
+        &#x60;${appearancePortrait.style.properties.head}.png&#x60;
       ].join(&#x27;/&#x27;));
     }
 
@@ -922,12 +1011,13 @@ export class AvatarAppearancePortraitComponent {
 
     const row &#x3D; animation + direction;
 
-    return layerUrls.map(url &#x3D;&gt; ({
+    const layers &#x3D; layerUrls.map(url &#x3D;&gt; ({
       url,
       row,
       col: 1,
-      scale: 3
     }));
+
+    return layers;
   }
 }
 </code></pre>
@@ -988,7 +1078,7 @@ export class AvatarAppearancePortraitComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-portrait" (click)="appearanceClick.emit(appearancePortrait)"  *ngIf="appearancePortrait && appearancePortrait.style"  [cfMod]="[active ? \'active\' : undefined]">  <ng-container [ngSwitch]="appearancePortrait.style?.id">    <ng-container *ngSwitchCase="\'avataaars\'">      <div cfElem="image">        <cf-avatar-appearance-portrait-avataaars          [properties]="appearancePortrait.style.properties"        ></cf-avatar-appearance-portrait-avataaars>    </div>    </ng-container>    <ng-container *ngSwitchCase="\'lpc\'">      <cf-layered-spritesheet        [layers]="getLpcLayers(appearancePortrait)"></cf-layered-spritesheet>    </ng-container>    <ng-container *ngSwitchCase="\'image\'">      <img cfElem="image" *ngIf="src" [src]="src" />    </ng-container>  </ng-container>  <cf-svg-icon    *ngIf="!src && showEmptyIcon"    [src]="emptyIcon"  ></cf-svg-icon></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-portrait" (click)="appearanceClick.emit(appearancePortrait)"  [cfMod]="[active ? \'active\' : undefined]">  <ng-container *ngIf="appearancePortrait && appearancePortrait.style" [ngSwitch]="appearancePortrait.style?.id">    <ng-container *ngSwitchCase="\'avataaars\'">      <div cfElem="image">        <cf-avatar-appearance-portrait-avataaars          [properties]="appearancePortrait.style.properties"        ></cf-avatar-appearance-portrait-avataaars>    </div>    </ng-container>    <ng-container *ngSwitchCase="\'lpc\'">      <cf-layered-spritesheet        [scale]="scale"        [layers]="getLpcLayers(appearancePortrait)"></cf-layered-spritesheet>    </ng-container>    <ng-container *ngSwitchCase="\'image\'">      <img cfElem="image" *ngIf="src" [src]="src" />    </ng-container>  </ng-container>  <cf-svg-icon    *ngIf="!src && showEmptyIcon"    [src]="emptyIcon"  ></cf-svg-icon></div></div>'
     var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarAppearanceSpritesheetComponent', 'selector': 'cf-avatar-appearance-spritesheet'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarAppearancePortraitComponent'};

@@ -302,7 +302,8 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
 import { FormControl, FormGroup } from &#x27;@angular/forms&#x27;;
-import { AppearanceFormat } from &#x27;@central-factory/avatars&#x27;;
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import { AppearanceFormat } from &#x27;@central-factory/avatars/models/appearance&#x27;;
 import type { Avatar } from &#x27;../../../models/avatar&#x27;;
 
 export interface AvatarOverviewInput {
@@ -329,7 +330,7 @@ export interface AvatarOverviewInput {
   template: &#x60;
     &lt;form [formGroup]&#x3D;&quot;form&quot; cfBlock&#x3D;&quot;avatar-overview&quot; *ngIf&#x3D;&quot;form.value?.name&quot;&gt;
       &lt;cf-avatar-appearance-portrait
-        [appearancePortrait]&#x3D;&quot;form.value.appearance?.portrait&quot;
+        [appearancePortrait]&#x3D;&quot;form.value.appearance?.variations?.portrait&quot;
       &gt;&lt;/cf-avatar-appearance-portrait&gt;
 
       &lt;div cfBlock&#x3D;&quot;chatbox&quot;&gt;
@@ -397,24 +398,26 @@ export class AvatarOverviewComponent {
       name: value.name,
       title: value.title,
       welcomeMessage: value.welcomeMessage,
-      smallPreviewUrl: value.selectedAppearance.portrait.src,
+      smallPreviewUrl: value.selectedAppearance.variations?.portrait.src,
       appearance: value.selectedAppearance,
+      bio: value.bio,
     });
   }
 
   editing: {
     [key: string]: boolean;
   } &#x3D; {
-    name: false,
-    title: false,
-    welcomeMessage: false,
-    smallPreviewUrl: false,
-  };
+      name: false,
+      title: false,
+      welcomeMessage: false,
+      smallPreviewUrl: false,
+    };
 
   form &#x3D; new FormGroup({
     welcomeMessage: new FormControl(&#x60;&#x60;),
     name: new FormControl(&#x27;&#x27;),
     title: new FormControl(&#x27;&#x27;),
+    bio: new FormControl(&#x27;&#x27;),
     smallPreviewUrl: new FormControl(&#x27;&#x27;),
     appearance: new FormGroup({
       id: new FormControl(&#x27;&#x27;),
@@ -427,6 +430,9 @@ export class AvatarOverviewComponent {
         src: new FormControl(&#x27;&#x27;),
         format: new FormControl(AppearanceFormat.Image),
         style: new FormControl({}),
+      }),
+      variations: new FormGroup({
+        portrait: new FormControl({}),
       }),
     }),
   });

@@ -98,9 +98,12 @@
 &gt;
   &lt;div cfBlock&#x3D;&quot;scene-content&quot; *ngIf&#x3D;&quot;data.avatar&quot;&gt;
     &lt;cf-avatar-overview
-      style&#x3D;&quot;display: block; min-height: 200px;&quot;
       [avatar]&#x3D;&quot;data.avatar&quot;
     &gt;&lt;/cf-avatar-overview&gt;
+
+    &lt;p *ngIf&#x3D;&quot;data.avatar.bio&quot;&gt;
+      {{ data.avatar.bio }}
+    &lt;/p&gt;
 
     &lt;!-- cf-avatar-skills
         [skills]&#x3D;&quot;data.avatar.skills&quot;
@@ -191,7 +194,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:42</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:45</a></div>
                             </td>
                         </tr>
 
@@ -270,8 +273,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="53"
-                            class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:53</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:56</a></div>
                 </td>
             </tr>
 
@@ -307,8 +310,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="49"
-                            class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:49</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="52"
+                            class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:52</a></div>
                 </td>
             </tr>
 
@@ -388,7 +391,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:41</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:44</a></div>
                         </td>
                     </tr>
 
@@ -403,7 +406,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
-import { Appearance } from &#x27;@central-factory/avatars&#x27;;
+import { Appearance } from &#x27;@central-factory/avatars/models/appearance&#x27;;
 import type { Avatar } from &#x27;@central-factory/avatars/models/avatar&#x27;;
 import { SelectedAvatarState } from &#x27;@central-factory/avatars/states/selected-avatar.state&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
@@ -418,9 +421,12 @@ import { Observable } from &#x27;rxjs&#x27;;
     &gt;
       &lt;div cfBlock&#x3D;&quot;scene-content&quot; *ngIf&#x3D;&quot;data.avatar&quot;&gt;
         &lt;cf-avatar-overview
-          style&#x3D;&quot;display: block; min-height: 200px;&quot;
           [avatar]&#x3D;&quot;data.avatar&quot;
         &gt;&lt;/cf-avatar-overview&gt;
+
+        &lt;p *ngIf&#x3D;&quot;data.avatar.bio&quot;&gt;
+          {{ data.avatar.bio }}
+        &lt;/p&gt;
 
         &lt;!-- cf-avatar-skills
             [skills]&#x3D;&quot;data.avatar.skills&quot;
@@ -447,7 +453,7 @@ export class SelectedAvatarScene {
   constructor(
     private readonly selectedAvatarState: SelectedAvatarState,
     private readonly router: Router
-  ) {}
+  ) { }
 
   onAppearanceClick(appearance: Appearance) {
     this.selectedAvatarState.selectAppearance(appearance).subscribe();
@@ -487,7 +493,7 @@ export class SelectedAvatarScene {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    avatar: avatar$ | async  } as data">  <div cfBlock="scene-content" *ngIf="data.avatar">    <cf-avatar-overview      style="display: block; min-height: 200px;"      [avatar]="data.avatar"    ></cf-avatar-overview>    <!-- cf-avatar-skills        [skills]="data.avatar.skills"      ></cf-avatar-skills -->    <cf-avatar-appearances      [appearances]="data.avatar.appearances"      [selectedAppearanceId]="data.avatar.selectedAppearance?.id"      (appearanceClick)="onAppearanceClick($event)"      (appearanceAddClick)="onAppearanceAddClick()"    ></cf-avatar-appearances>    <!-- cf-avatar-scopes        [scopes]="data.avatar.scopes"      ></cf-avatar-scopes-->  </div></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    avatar: avatar$ | async  } as data">  <div cfBlock="scene-content" *ngIf="data.avatar">    <cf-avatar-overview      [avatar]="data.avatar"    ></cf-avatar-overview>    <p *ngIf="data.avatar.bio">      {{ data.avatar.bio }}    </p>    <!-- cf-avatar-skills        [skills]="data.avatar.skills"      ></cf-avatar-skills -->    <cf-avatar-appearances      [appearances]="data.avatar.appearances"      [selectedAppearanceId]="data.avatar.selectedAppearance?.id"      (appearanceClick)="onAppearanceClick($event)"      (appearanceAddClick)="onAppearanceAddClick()"    ></cf-avatar-appearances>    <!-- cf-avatar-scopes        [scopes]="data.avatar.scopes"      ></cf-avatar-scopes-->  </div></ng-container></div>'
     var COMPONENTS = [{'name': 'CreateAvatarScene', 'selector': 'cf-create-avatar'},{'name': 'ManageAvatarAppearancesScene', 'selector': 'cf-manage-avatar-appearances-scene'},{'name': 'ManageAvatarsRoot', 'selector': 'cf-manage-avatars-root'},{'name': 'SelectAvatarScene', 'selector': 'cf-select-avatar'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SelectedAvatarScene'};

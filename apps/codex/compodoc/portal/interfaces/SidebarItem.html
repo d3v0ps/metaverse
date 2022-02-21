@@ -351,7 +351,7 @@ import { Component, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
 import { NavigationEnd, Router } from &#x27;@angular/router&#x27;;
 import {
   Application,
-  ApplicationShortcut,
+  ApplicationShortcut
 } from &#x27;@central-factory/applications/models/application&#x27;;
 import { RecentlyOpenedApplicationsState } from &#x27;@central-factory/applications/states/recently-opened-applications.state&#x27;;
 import { SelectedApplicationState } from &#x27;@central-factory/applications/states/selected-application.state&#x27;;
@@ -371,7 +371,7 @@ import {
   skip,
   switchMap,
   takeUntil,
-  tap,
+  tap
 } from &#x27;rxjs/operators&#x27;;
 
 export interface SidebarItem {
@@ -442,7 +442,7 @@ export enum SceneContentAnimationState {
                   &lt;/div&gt;
                   &lt;cf-avatar-appearance-portrait
                     [appearancePortrait]&#x3D;&quot;
-                      data.selectedAvatar.selectedAppearance?.portrait
+                      data.selectedAvatar.selectedAppearance?.variations?.portrait
                     &quot;
                   &gt;
                   &lt;/cf-avatar-appearance-portrait&gt;
@@ -627,7 +627,7 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
     private readonly recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState,
     private readonly customizationSettingsState: CustomizationSettingsState,
     private readonly breakpointObserver: BreakpointObserver
-  ) {}
+  ) { }
 
   public ngOnInit(): void {
     this.breakpointObserver
@@ -650,8 +650,8 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
           this.sceneContentAnimationState &#x3D; SceneContentAnimationState.Idle;
           setTimeout(
             () &#x3D;&gt;
-              (this.sceneContentAnimationState &#x3D;
-                SceneContentAnimationState.Animated),
+            (this.sceneContentAnimationState &#x3D;
+              SceneContentAnimationState.Animated),
             100
           );
         }),

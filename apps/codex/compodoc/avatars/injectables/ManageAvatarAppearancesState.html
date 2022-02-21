@@ -336,18 +336,18 @@ export class ManageAvatarAppearancesState {
 
     const modelUpload$ &#x3D; model.file
       ? this.userAvatarsRepository.putAttachment(avatarId, {
-          data: model.file,
-          id: model.id,
-          type: &#x27;model/vnd.gltf.binary&#x27;,
-        })
+        data: model.file,
+        id: model.id,
+        type: &#x27;model/vnd.gltf.binary&#x27;,
+      })
       : of(model.id);
 
     const portraitUpload$ &#x3D; portrait.file
       ? this.userAvatarsRepository.putAttachment(avatarId, {
-          data: portrait.file,
-          id: portrait.id,
-          type: &#x27;image/png&#x27;,
-        })
+        data: portrait.file,
+        id: portrait.id,
+        type: &#x27;image/png&#x27;,
+      })
       : of(portrait.id);
 
     return forkJoin([modelUpload$, portraitUpload$]).pipe(
@@ -380,11 +380,11 @@ export class ManageAvatarAppearancesState {
             format: portrait.format,
             filename:
               portrait.filename ||
-              alreadyExistingAppearance?.portrait.filename ||
+              alreadyExistingAppearance?.variations?.portrait.filename ||
               &#x27;&#x27;,
             src: portrait.file
               ? undefined
-              : portrait.src || alreadyExistingAppearance?.portrait.src,
+              : portrait.src || alreadyExistingAppearance?.variations?.portrait.src,
             style: portrait.style,
           },
         };

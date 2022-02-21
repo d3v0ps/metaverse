@@ -215,7 +215,8 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { LayoutModule } from &#x27;@angular/cdk/layout&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">/* eslint-disable @nrwl/nx/enforce-module-boundaries */
+import { LayoutModule } from &#x27;@angular/cdk/layout&#x27;;
 import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
 import { APP_INITIALIZER, NgModule } from &#x27;@angular/core&#x27;;
 import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
@@ -226,6 +227,7 @@ import { USER_APPLICATIONS_INITIAL_DATA_PROVIDER } from &#x27;@central-factory/a
 import { USER_ASSETS_COLLECTION_PROVIDER } from &#x27;@central-factory/assets/collections/user-assets.collection&#x27;;
 import { USER_AVATARS_COLLECTION_PROVIDER } from &#x27;@central-factory/avatars/collections/user-avatars.collection&#x27;;
 import { USER_AVATARS_DEMO_DATA_PROVIDER } from &#x27;@central-factory/avatars/data/demo/user-avatars.data&#x27;;
+import { NetworkService } from &#x27;@central-factory/network/services/network.service&#x27;;
 import { APPLICATION_PERMISSIONS_COLLECTION_PROVIDER } from &#x27;@central-factory/permissions/collections/application-permissions.collection&#x27;;
 import { USER_PREFERENCES_COLLECTION_PROVIDER } from &#x27;@central-factory/preferences/collections/user-preferences.collection&#x27;;
 import { CUSTOMIZATION_INITIAL_DATA_PROVIDER } from &#x27;@central-factory/preferences/data/base/customization/customization.data&#x27;;
@@ -266,7 +268,7 @@ import { BackgroundRenderer } from &#x27;./services/background.renderer&#x27;;
     {
       provide: APP_INITIALIZER,
       useFactory: () &#x3D;&gt; () &#x3D;&gt; null,
-      deps: [CustomizationSettingsState, BackgroundRenderer],
+      deps: [CustomizationSettingsState, BackgroundRenderer, NetworkService],
       multi: true,
     },
     STORE_APPLICATIONS_COLLECTION_PROVIDER,
