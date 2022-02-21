@@ -857,6 +857,13 @@ export class AvatarAppearancePortraitComponent {
 
     layerUrls.push([
       baseUrl,
+      &#x27;shadows&#x27;,
+      appearancePortrait.style.properties.bodyVariation,
+      &#x60;shadow.png&#x60;
+    ].join(&#x27;/&#x27;));
+
+    layerUrls.push([
+      baseUrl,
       &#x27;body&#x27;,
       appearancePortrait.style.properties.bodyVariation,
       &#x60;${appearancePortrait.style.properties.bodyType}.png&#x60;
