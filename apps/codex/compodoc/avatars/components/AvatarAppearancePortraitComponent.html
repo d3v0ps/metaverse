@@ -937,7 +937,7 @@ export class AvatarAppearancePortraitComponent {
       ].join(&#x27;/&#x27;));
     }
 
-    if (appearancePortrait.style.properties.ears) {
+    if (appearancePortrait.style.properties.eyes) {
       layerUrls.push([
         baseUrl,
         &#x27;body&#x27;,
@@ -967,12 +967,30 @@ export class AvatarAppearancePortraitComponent {
       ].join(&#x27;/&#x27;));
     }
 
-    if (appearancePortrait.style.properties.facialHair) {
+    if (appearancePortrait.style.properties.head) {
       layerUrls.push([
         baseUrl,
         &#x27;head&#x27;,
         appearancePortrait.style.properties.bodyVariation,
         &#x60;${appearancePortrait.style.properties.head}.png&#x60;
+      ].join(&#x27;/&#x27;));
+    }
+
+    if (appearancePortrait.style.properties.visor) {
+      layerUrls.push([
+        baseUrl,
+        &#x27;head&#x27;,
+        appearancePortrait.style.properties.bodyVariation,
+        &#x60;${appearancePortrait.style.properties.visor}.png&#x60;
+      ].join(&#x27;/&#x27;));
+    }
+
+    if (appearancePortrait.style.properties.headAccesory) {
+      layerUrls.push([
+        baseUrl,
+        &#x27;head&#x27;,
+        appearancePortrait.style.properties.bodyVariation,
+        &#x60;${appearancePortrait.style.properties.headAccesory}.png&#x60;
       ].join(&#x27;/&#x27;));
     }
 
