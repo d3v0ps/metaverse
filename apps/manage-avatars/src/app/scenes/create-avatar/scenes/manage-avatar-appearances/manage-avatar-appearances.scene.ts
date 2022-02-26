@@ -4,7 +4,7 @@ import { ManageAvatarAppearancesState } from '@central-factory/avatars/states/ma
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
 import { AvatarAppearanceEditorModel } from '@central-factory/avatars/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component';
 import { AvatarAppearancesCarouselDisplayMode } from '@central-factory/avatars/web-components/angular/avatar-appearances-carousel/avatar-appearances-carousel.component';
-import { map } from 'rxjs';
+import { map, tap } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 
 @Component({
@@ -21,6 +21,7 @@ import { v4 as uuid } from 'uuid';
             [appearances]="appearances"
             [selectedAppearanceId]="selectedAppearance?.id"
             [displayMode]="carouselDisplayModes.vertical"
+            [showAdd]="true"
             (appearanceClick)="onAppearanceClick($event)"
             (appearanceAddClick)="onAppearanceAddClick()"
           >
@@ -28,7 +29,7 @@ import { v4 as uuid } from 'uuid';
         </div>
         <div cfElem="footer">
           <div cfBlock="form-buttons">
-            <button
+            <!-- button
               cfBlock="button"
               [cfMod]="['primary', 'has-icon']"
               (click)="onAppearanceAddClick()"
@@ -36,7 +37,7 @@ import { v4 as uuid } from 'uuid';
               <cf-svg-icon elem="icon" src="assets/icons/mdi/account-plus.svg">
               </cf-svg-icon>
               <span elem="label">Add a new appearance</span>
-            </button>
+            </button -->
             <button
               cfBlock="button"
               [cfMod]="['primary', 'has-icon', 'full-width']"
@@ -88,7 +89,7 @@ import { v4 as uuid } from 'uuid';
     `
       .scene-content--manage-avatar-appearances {
         display: grid;
-        grid-template-columns: 0.5fr 1fr;
+        grid-template-columns: 20% 80%;
         grid-template-rows: 1fr;
         gap: 1rem;
 
@@ -122,7 +123,8 @@ import { v4 as uuid } from 'uuid';
 })
 export class ManageAvatarAppearancesScene {
   appearances$ = this.selectedAvatarState.avatar$.pipe(
-    map((avatar) => (avatar ? avatar.appearances : []))
+    map((avatar) => (avatar ? avatar.appearances : [])),
+    tap(appearances => this.selectedAppearance = this.selectedAppearance || appearances[0])
   );
   selectedAppearance?: Appearance;
 
@@ -133,7 +135,7 @@ export class ManageAvatarAppearancesScene {
   constructor(
     private manageAvatarAppearancesState: ManageAvatarAppearancesState,
     private selectedAvatarState: SelectedAvatarState
-  ) {}
+  ) { }
 
   onAppearanceClick(appearance: Appearance) {
     this.selectedAppearance = appearance;
@@ -171,5 +173,6 @@ export class ManageAvatarAppearancesScene {
       });
   }
 
-  onConfirmAppearancesButtonClick() {}
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onConfirmAppearancesButtonClick() { }
 }

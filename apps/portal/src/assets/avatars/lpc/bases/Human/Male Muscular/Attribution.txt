@@ -1,0 +1,12 @@
+Human Male Muscular  CC-BY-SA-3.0Created by:  - Stephen Challener (Redshrike)  - Liberated Pixel Cup (LPC) Base Assets (sprites & map tiles)    - CC-BY-SA 3.0 / GPL 3.0    - https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles    - (base idle, cast, walk, slash, and hurt animations)- dalonedrau  - LPC Barbarian Sprite Base    - CC-BY-SA 3.0    - https://opengameart.org/content/lpc-barbarian-sprite-base    - (idle and walk animations)- ElizaWY  - [LPC] Muscular Swing Animation    - CC-BY-SA 3.0 / GPL 3.0    - https://opengameart.org/content/lpc-muscular-swing-animation    - (slash animation)  - [LPC] Muscular Hurt Animation    - CC-BY-SA 3.0 / GPL 3.0    - https://opengameart.org/content/lpc-muscular-hurt-animation    - (hurt animation)
+  - [LPC] Jump! (Expanded)
+    - CC-BY-SA 3.0 / GPL 3.0
+    - https://opengameart.org/content/lpc-jump-expanded
+    - (jump animation)- Benjamin K. Smith (BenCreating)  - LPC Character Bases    - CC-BY-SA 3.0 / GPL 3.0    - https://opengameart.org/content/lpc-character-bases    - (cast and thrust animations)
+  - [LPC] Jump! (Expanded)
+    - CC-BY-SA 3.0 / GPL 3.0
+    - https://opengameart.org/content/lpc-jump-expanded
+    - (jump animation)
+- castelonia  - LPC Character Bases    - CC-BY-SA 3.0 / GPL 3.0    - https://opengameart.org/content/lpc-character-bases    - (thrust animations)
+- Durrani  - [LPC] Male Jumping Animation    - CC-BY-SA 3.0 / GPL 3.0    - https://opengameart.org/content/lpc-male-jumping-animation-by-durrani    - (original base jump animation)
+- MuffinElZangano  - [LPC] Male Jumping Animation    - CC-BY-SA 3.0 / GPL 3.0    - https://opengameart.org/content/lpc-male-jumping-animation-by-durrani    - (original base jump animation)

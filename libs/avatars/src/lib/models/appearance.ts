@@ -37,6 +37,17 @@ export type AppearancePreviewCamera = {
   scale?: string;
 };
 
+export type AppearanceVariation = {
+  id: string;
+  filename: string;
+  format: AppearanceFormat;
+  src?: string;
+  style: {
+    id: string;
+    properties: Record<string, any>
+  }
+};
+
 /** An Avatar's appearance */
 export type Appearance = {
   /** The appearance's ID */
@@ -57,4 +68,5 @@ export type Appearance = {
   previewCamera?: AppearancePreviewCamera;
 
   info?: AppearanceInfo;
+  variations?: Record<string, AppearanceVariation>;
 };

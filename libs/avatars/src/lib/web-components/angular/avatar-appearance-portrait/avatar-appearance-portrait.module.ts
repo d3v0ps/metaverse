@@ -4,6 +4,7 @@ import { BemModule } from '@central-factory/web-components/angular/bem/bem.modul
 import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
 import { AvatarAppearancePortraitComponent } from './avatar-appearance-portrait.component';
 import { AvatarAppearancePortraitAvataaarsModule } from './components/avatar-appearance-portrait-avataaars/avatar-appearance-portrait-avataaars.module';
+import { AvatarAppearanceSpritesheetModule } from './components/avatar-appearance-spritesheet/avatar-appearance-spritesheet.module';
 
 @NgModule({
   declarations: [AvatarAppearancePortraitComponent],
@@ -12,7 +13,8 @@ import { AvatarAppearancePortraitAvataaarsModule } from './components/avatar-app
     BemModule,
     SvgIconModule,
     AvatarAppearancePortraitAvataaarsModule,
+    AvatarAppearanceSpritesheetModule
   ],
   exports: [AvatarAppearancePortraitComponent],
 })
-export class AvatarAppearancePortraitModule {}
+export class AvatarAppearancePortraitModule { }

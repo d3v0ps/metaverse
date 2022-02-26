@@ -14,6 +14,7 @@ import { Application } from '@central-factory/applications/models/application';
         [showDescription]="false"
         [applications]="applications"
         [installedApplications]="installedApplications"
+        [applicationsPerPage]="maxApplications ? maxApplications : applications.length"
         [cardStyle]="{
           width: '100%'
         }"
@@ -25,6 +26,7 @@ import { Application } from '@central-factory/applications/models/application';
 export class TopicApplicationsComponent {
   @Input() applications: Application[] = [];
   @Input() installedApplications: Application[] = [];
+  @Input() maxApplications = 0;
 
   @Output() applicationClick = new EventEmitter<Application>();
 }

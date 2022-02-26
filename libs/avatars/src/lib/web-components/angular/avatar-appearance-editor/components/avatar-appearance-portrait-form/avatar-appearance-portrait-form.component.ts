@@ -4,7 +4,7 @@ import { Subject, takeUntil, tap } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 import {
   AppearanceFormat,
-  AppearancePortrait,
+  AppearancePortrait
 } from '../../../../../models/appearance';
 import { AvatarAppearanceProvider } from '../avatar-appearance-providers/avatar-appearance-providers.component';
 
@@ -81,9 +81,9 @@ export type AvatarAppearancePortraitModelForm = {
   `,
 })
 export class AvatarAppearancePortraitFormComponent
-  implements OnInit, OnDestroy
-{
+  implements OnInit, OnDestroy {
   @Input() set portrait(value: AppearancePortrait | undefined) {
+    console.log(value);
     this.form.reset({
       id: value?.id || uuid(),
       filename: value?.filename || '',

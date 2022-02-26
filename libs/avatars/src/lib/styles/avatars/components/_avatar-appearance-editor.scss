@@ -1,4 +1,3 @@
-
 .avatar-appearance-editor {
   display: flex;
   flex-direction: column;
@@ -21,7 +20,7 @@
 
 .avatar-appearance-portrait-designer {
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 40% 60%;
   &__preview {
     margin: 0 auto;
   }
@@ -29,5 +28,26 @@
   .avatar-appearance-portrait {
     width: 360px;
     height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: flex-start;
+    .avatar-appearance-spritesheet {
+      margin-top: -1rem;
+    }
+  }
+
+  @media (max-width: 920px) {
+    grid-template-columns: 50% 50%;
+    .avatar-appearance-portrait {
+      width: 140px;
+      height: 140px;
+    }
+    .avatar-appearances-carousel {
+      .avatar-appearance-portrait {
+        width: 80px;
+        height: 80px;
+      }
+    }
   }
 }

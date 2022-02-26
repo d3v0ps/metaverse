@@ -12,6 +12,7 @@
     "decorate:patch-package": "node_modules/.bin/patch-package",
     "decorate:angular-cli": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "start": "nx serve",
+    "dev": "nx serve portal --host 0.0.0.0 --disable-host-check",
     "build": "nx build",
     "test": "nx test",
     "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js",

@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, nativeTheme, screen } from 'electron';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as url from 'url';
@@ -9,6 +9,8 @@ const widevinePaths = {
   macos:
     '/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/Current/Libraries/WidevineCdm/_platform_specific/mac_x64/libwidevinecdm.dylib',
 };
+
+nativeTheme.themeSource = 'dark';
 
 const platform = (process.env.APPLICATION_PLATFORM = 'macos');
 

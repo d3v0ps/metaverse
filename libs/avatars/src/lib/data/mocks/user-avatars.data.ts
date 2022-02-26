@@ -14,6 +14,52 @@ export const userAvatars: UserAvatarDocType[] = [
       filename: 'appearance.glb',
       format: AppearanceFormat.Model,
       src: 'assets/avatars/samples/thomas-anderson/default/appearance.glb',
+      variations: {
+        portrait: {
+          id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
+          filename: 'portrait.png',
+          format: AppearanceFormat.Image,
+          src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
+          style: {
+            id: 'avataaars',
+            properties: {
+              skinColor: 'Pale',
+              topType: 'LongHairBob',
+              hairColor: 'Black',
+              facialHairType: 'BeardLight',
+              facialHairColor: 'Black',
+              eyeType: 'Default',
+              eyebrowType: 'Default',
+              mouthType: 'Default',
+              clotheType: 'BlazerShirt',
+            },
+          },
+        },
+        dim2: {
+          id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
+          filename: 'portrait.png',
+          format: AppearanceFormat.Image,
+          src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
+          style: {
+            id: 'lpc',
+            properties: {
+              species: 'Human',
+              bodyType: 'Male'
+            },
+          },
+        },
+        dim3: {
+          id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
+          filename: 'portrait.png',
+          format: AppearanceFormat.Image,
+          src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
+          style: {
+            id: 'dim3-file',
+            properties: {
+            },
+          },
+        },
+      },
       portrait: {
         id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
         filename: 'portrait.png',
@@ -29,6 +75,7 @@ export const userAvatars: UserAvatarDocType[] = [
             facialHairColor: 'Black',
             eyeType: 'Default',
             eyebrowType: 'Default',
+            mouthType: 'Default',
             clotheType: 'BlazerShirt',
           },
         },
@@ -40,6 +87,53 @@ export const userAvatars: UserAvatarDocType[] = [
         filename: 'appearance.glb',
         format: AppearanceFormat.Model,
         src: 'assets/avatars/samples/thomas-anderson/neo/appearance.glb',
+        variations: {
+          portrait: {
+            id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
+            filename: 'portrait.png',
+            format: AppearanceFormat.Image,
+            src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
+            style: {
+              id: 'avataaars',
+              properties: {
+                skinColor: 'Pale',
+                topType: 'LongHairBob',
+                hairColor: 'Black',
+                facialHairType: 'BeardLight',
+                facialHairColor: 'Black',
+                eyeType: 'Default',
+                eyebrowType: 'Default',
+                mouthType: 'Default',
+                clotheType: 'ShirtCrewNeck',
+                clotheColor: 'Black',
+              },
+            },
+          },
+          dim2: {
+            id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
+            filename: 'portrait.png',
+            format: AppearanceFormat.Image,
+            src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
+            style: {
+              id: 'lpc',
+              properties: {
+                species: 'Human',
+                bodyType: 'Male'
+              },
+            },
+          },
+          dim3: {
+            id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
+            filename: 'portrait.png',
+            format: AppearanceFormat.Image,
+            src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
+            style: {
+              id: 'dim3-file',
+              properties: {
+              },
+            },
+          },
+        },
         portrait: {
           id: '690798c7-9bf0-45ce-b76a-7982ee119322',
           filename: 'portrait.png',
@@ -55,6 +149,7 @@ export const userAvatars: UserAvatarDocType[] = [
               facialHairColor: 'Black',
               eyeType: 'Default',
               eyebrowType: 'Default',
+              mouthType: 'Default',
               clotheType: 'ShirtCrewNeck',
               clotheColor: 'Black',
             },
@@ -71,6 +166,52 @@ export const userAvatars: UserAvatarDocType[] = [
         filename: '50f2bc3a-fe0c-4036-8546-15a2bc63c1cf',
         format: AppearanceFormat.Model,
         src: 'assets/avatars/samples/thomas-anderson/default/appearance.glb',
+        variations: {
+          portrait: {
+            id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
+            filename: 'portrait.png',
+            format: AppearanceFormat.Image,
+            src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
+            style: {
+              id: 'avataaars',
+              properties: {
+                skinColor: 'Pale',
+                topType: 'LongHairBob',
+                hairColor: 'Black',
+                facialHairType: 'BeardLight',
+                facialHairColor: 'Black',
+                eyeType: 'Default',
+                eyebrowType: 'Default',
+                mouthType: 'Default',
+                clotheType: 'BlazerShirt',
+              },
+            },
+          },
+          dim2: {
+            id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
+            filename: 'portrait.png',
+            format: AppearanceFormat.Image,
+            src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
+            style: {
+              id: 'lpc',
+              properties: {
+                species: 'Human',
+                bodyType: 'Male'
+              },
+            },
+          },
+          dim3: {
+            id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
+            filename: 'portrait.png',
+            format: AppearanceFormat.Image,
+            src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
+            style: {
+              id: 'dim3-file',
+              properties: {
+              },
+            },
+          },
+        },
         portrait: {
           id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
           filename: 'portrait.png',
@@ -86,6 +227,7 @@ export const userAvatars: UserAvatarDocType[] = [
               facialHairColor: 'Black',
               eyeType: 'Default',
               eyebrowType: 'Default',
+              mouthType: 'Default',
               clotheType: 'BlazerShirt',
             },
           },
@@ -206,6 +348,53 @@ export const userAvatars: UserAvatarDocType[] = [
       format: AppearanceFormat.Model,
       src: 'assets/avatars/samples/alan-turing/default/appearance.glb',
       filename: 'appearance.glb',
+      variations: {
+        portrait: {
+          id: '8eccca39-ba05-4cf5-a106-3dffd9f563b0',
+          filename: 'portrait.png',
+          format: AppearanceFormat.Image,
+          src: 'assets/avatars/samples/alan-turing/default/portrait.png',
+          style: {
+            id: 'avataaars',
+            properties: {
+              skinColor: 'Pale',
+              topType: 'ShortHairShortWaved',
+              hairColor: 'Black',
+              facialHairType: null,
+              facialHairColor: null,
+              eyeType: 'Default',
+              eyebrowType: 'Default',
+              mouthType: 'Twinkle',
+              clotheType: 'BlazerSweater',
+              clotheColor: 'Black',
+            },
+          },
+        },
+        dim2: {
+          id: '8eccca39-ba05-4cf5-a106-3dffd9f563b0',
+          filename: 'portrait.png',
+          format: AppearanceFormat.Image,
+          src: 'assets/avatars/samples/alan-turing/default/portrait.png',
+          style: {
+            id: 'lpc',
+            properties: {
+              species: 'Human',
+              bodyType: 'Male'
+            },
+          },
+        },
+        dim3: {
+          id: '8eccca39-ba05-4cf5-a106-3dffd9f563b0',
+          filename: 'portrait.png',
+          format: AppearanceFormat.Image,
+          src: 'assets/avatars/samples/alan-turing/default/portrait.png',
+          style: {
+            id: 'dim3-file',
+            properties: {
+            },
+          },
+        },
+      },
       portrait: {
         id: '8eccca39-ba05-4cf5-a106-3dffd9f563b0',
         filename: 'portrait.png',

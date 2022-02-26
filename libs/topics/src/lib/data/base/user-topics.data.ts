@@ -243,7 +243,7 @@ export const userTopics: Topic[] = [
         name: 'Every morning',
         rules: {
           startTime: '00:00',
-          endTime: '03:00',
+          endTime: '09:00',
         },
       },
     ],

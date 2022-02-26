@@ -7,8 +7,8 @@ export const environment: Environment = {
   useMocks: true,
   autologin: true,
   showSplashScreen: false,
-
-  repositoryUrl: 'assets/repositories/central-factory',
+  repositoryUrl:
+    'https://raw.githubusercontent.com/central-factory/web-application-manifests/main',
   webUrl: 'http://localhost:3000',
   documentationUrl: 'http://localhost:3000/docs',
   blogUrl: 'http://localhost:3000/blog',

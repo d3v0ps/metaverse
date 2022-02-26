@@ -3,18 +3,18 @@ import {
   EventEmitter,
   Input,
   Output,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { Appearance, AppearancePortrait } from '../../../models/appearance';
 import { AppearanceInfo } from '../../../models/appearance-info';
 import { AvatarAppearanceInfoFormComponent } from './components/avatar-appearance-info-form/avatar-appearance-info-form.component';
 import {
   AvatarAppearanceModelForm,
-  AvatarAppearanceModelFormComponent,
+  AvatarAppearanceModelFormComponent
 } from './components/avatar-appearance-model-form/avatar-appearance-model-form.component';
 import {
   AvatarAppearancePortraitFormComponent,
-  AvatarAppearancePortraitModelForm,
+  AvatarAppearancePortraitModelForm
 } from './components/avatar-appearance-portrait-form/avatar-appearance-portrait-form.component';
 
 export type AvatarAppearanceEditorModel = {
@@ -30,40 +30,55 @@ export type AvatarAppearanceEditorModel = {
       <div cfElem="body">
         <cf-tabset theme="secondary">
           <cf-tab
-            [title]="'Portrait'"
+            [title]="'Portrait *'"
             [active]="true"
             icon="assets/icons/mdi/account.svg"
             [customClass]="'appearance-tab'"
           >
             <div cfBlock="appearance-tab-content-portrait">
-              <cf-avatar-appearance-portrait-form
-                [portrait]="appearance?.portrait"
-              >
-              </cf-avatar-appearance-portrait-form>
+              <cf-avatar-appearance-portrait-designer [appeareancePortrait]="appearance?.variations?.portrait"
+                [availableStyles]="['avataaars', 'image']">
+              </cf-avatar-appearance-portrait-designer>
             </div>
           </cf-tab>
           <cf-tab
-            [title]="'Appearance'"
+            [title]="'2D Appearance *'"
             icon="assets/icons/mdi/human.svg"
             [customClass]="'appearance-tab'"
           >
-            <div cfBlock="appearance-tab-content">
-              <div cfElem="appearance-tab-content-model">
-                <cf-avatar-appearance-model-form [appearance]="appearance">
-                </cf-avatar-appearance-model-form>
-              </div>
-              <div cfElem="appearance-tab-content-portrait">
-                <cf-avatar-appearance-portrait-form
-                  [portrait]="appearance?.portrait"
-                >
-                </cf-avatar-appearance-portrait-form>
-              </div>
+            <div cfBlock="appearance-tab-content-portrait">
+              <cf-avatar-appearance-portrait-designer [appeareancePortrait]="appearance?.variations?.dim2"
+                [availableStyles]="['avataaars', 'image']"
+                [availableStyles]="['lpc', 'image']">
+              </cf-avatar-appearance-portrait-designer>
             </div>
           </cf-tab>
           <cf-tab
-            [title]="'Info'"
+            [title]="'3D Appearance'"
+            icon="assets/icons/mdi/human.svg"
+            [customClass]="'appearance-tab'"
+          >
+            <div cfBlock="appearance-tab-content-portrait">
+              <cf-avatar-appearance-portrait-designer [appeareancePortrait]="appearance?.variations?.dim3"
+                [availableStyles]="['dim3-file']">
+              </cf-avatar-appearance-portrait-designer>
+            </div>
+          </cf-tab>
+          <cf-tab
+            [title]="'Others'"
+            icon="assets/icons/mdi/plus.svg"
+            [customClass]="'appearance-tab'"
+          >
+            <div cfBlock="appearance-tab-content-portrait">
+              <cf-avatar-appearance-portrait-designer [appeareancePortrait]="appearance?.variations?.others"
+                [availableStyles]="['dungeons']">
+              </cf-avatar-appearance-portrait-designer>
+            </div>
+          </cf-tab>
+          <cf-tab
+            [title]="'More'"
             [active]="false"
-            icon="assets/icons/mdi/information.svg"
+            icon="assets/icons/mdi/apps.svg"
             [customClass]="'appearance-info-tab'"
           >
             <cf-avatar-appearance-info-form

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import {
   Application,
-  ApplicationShortcut,
+  ApplicationShortcut
 } from '@central-factory/applications/models/application';
 import { ApplicationShortcutView } from '@central-factory/applications/web-components/angular/application-shortcut/application-shortcut.component';
 import { Topic } from '../../../models/topic';
@@ -27,13 +27,14 @@ export type ApplicationWithShortcut = {
           <cf-topic-applications
             [applications]="topicApplications"
             [installedApplications]="installedApplications"
+            [maxApplications]="maxApplications"
           >
           </cf-topic-applications>
         </div>
 
         <div
           cfBlock="topic-content"
-          *ngIf="topic.shortcuts && topic.shortcuts.length > 0"
+          *ngIf="showShortcuts && topic.shortcuts && topic.shortcuts.length > 0"
         >
           <cf-topic-shortcuts
             [shortcuts]="shortcuts"
@@ -43,14 +44,14 @@ export type ApplicationWithShortcut = {
 
         <div
           cfBlock="topic-content"
-          *ngIf="topic.media && topic.media.length > 0"
+          *ngIf="showMedia && topic.media && topic.media.length > 0"
         >
           <cf-topic-media [topic]="topic"></cf-topic-media>
         </div>
 
         <div
           cfBlock="topic-content"
-          *ngIf="topic.categories && topic.categories.length > 0"
+          *ngIf="showCategories && topic.categories && topic.categories.length > 0"
         >
           <cf-topic-categories
             [applicationsByCategory]="byCategory"
@@ -64,6 +65,14 @@ export type ApplicationWithShortcut = {
   `,
 })
 export class TopicCardComponent {
+
+  @Input() maxApplications = 0;
+
+  @Input() showShortcuts = true;
+  @Input() showMedia = true;
+  @Input() showCategories = true;
+  @Input() selectable = false;
+
   @Input() set currentDate(date: Date) {
     this._currentDate = date;
 
@@ -108,7 +117,6 @@ export class TopicCardComponent {
   public shortcuts: ApplicationWithShortcut[] = [];
   public byCategory: Record<string, Application[]> = {};
   public showTopic = true;
-  public showCategories = false;
 
   private _applications: Application[] = [];
   private _topic: Topic | undefined;

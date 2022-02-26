@@ -9,14 +9,14 @@ import { Application } from '@central-factory/applications/models/application';
       cfBlock="applications-carousel"
       cdkDropList
       cdkDropListSortingDisabled
-      [cdkDropListData]="applications"
+      [cdkDropListData]="carouselApplications"
       [cdkDropListConnectedTo]="dropListConnectedTo ? dropListConnectedTo : []"
       (cdkDropListDropped)="applicationCardDrop.emit($event)"
     >
       <div
         cdkDrag
         [cdkDragData]="application"
-        *ngFor="let application of applications"
+        *ngFor="let application of carouselApplications"
         cfBlock="applications-carousel-item"
       >
         <div cfBlock="drag-placeholder" *cdkDragPlaceholder></div>
@@ -61,10 +61,21 @@ export class ApplicationsCarouselComponent {
   @Input() cardStyle = {
     width: '300px',
   };
+  @Input() set applicationsPerPage(value: number | undefined) {
+    this._applicationsPerPage = value || 0;
+    this.carouselApplications = this._applications.slice(0, this.applicationsPerPage) || [];
+  };
 
-  @Input() applications: Application[] = [];
+  @Input() set applications(value: Application[] | undefined) {
+    this._applications = value || [];
+    this.carouselApplications = this._applications.slice(0, this.applicationsPerPage);
+  };
+  get applications(): Application[] | undefined {
+    return this._applications;
+  }
   @Input() installableApplications?: Application[] = [];
   @Input() installedApplications?: Application[] = [];
+  @Input() carouselApplications: Application[] = [];
   @Input() dropListConnectedTo?: CdkDropList<any>[];
 
   @Output() applicationCardClick = new EventEmitter<Application>();
@@ -75,6 +86,9 @@ export class ApplicationsCarouselComponent {
   @Output() applicationCardDrop = new EventEmitter<
     CdkDragDrop<Application[]>
   >();
+
+  private _applications: Application[] = [];
+  private _applicationsPerPage = 0;
 
   isInstallable(application: Application) {
     if (

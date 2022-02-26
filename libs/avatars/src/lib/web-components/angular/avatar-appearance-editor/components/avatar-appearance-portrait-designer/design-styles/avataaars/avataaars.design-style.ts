@@ -1,44 +1,33 @@
-export type DesignStylePropertyOption = {
-  id: string;
-  label: string;
-};
 
-export type DesignStyleProperty = {
-  id: string;
-  label: string;
-  defaultValue?: string;
-  options: DesignStylePropertyOption[];
-};
-
-export type DesignStyle = {
-  id: string;
-  name: string;
-  description?: string;
-  author?: string;
-  properties: DesignStyleProperty[];
-};
+import { DesignStyle } from '../models/design-style';
 
 export const avataaarsDesignStyle: DesignStyle = {
   id: 'avataaars',
   name: 'Avataaars',
-  description: 'Avataaars',
+  url: 'https://www.npmjs.com/package/avataaars',
+  description: 'The core React component for Avataaars Generator developed by Fang-Pen Lin, based on the Sketch library Avataaars designed by Pablo Stanley.',
+  license: {
+    type: 'MIT',
+  },
   properties: [
     {
       id: 'skinColor',
       label: 'Skin Color',
+      type: 'color',
       options: [
-        { label: 'Tanned', id: 'Tanned' },
-        { label: 'Yellow', id: 'Yellow' },
-        { label: 'Pale', id: 'Pale' },
-        { label: 'Light', id: 'Light' },
-        { label: 'Brown', id: 'Brown' },
-        { label: 'Dark Brown', id: 'DarkBrown' },
-        { label: 'Black', id: 'Black' },
+        { label: 'Tanned', id: 'Tanned', value: '#fd9840' },
+        { label: 'Yellow', id: 'Yellow', value: '#f9d15d' },
+        { label: 'Pale', id: 'Pale', value: '#fedbb3' },
+        { label: 'Light', id: 'Light', value: '#edb98a' },
+        { label: 'Brown', id: 'Brown', value: '#cf8b5a' },
+        { label: 'Dark Brown', id: 'DarkBrown', value: '#ae5d28' },
+        { label: 'Black', id: 'Black', value: '#604335' },
       ],
     },
     {
       id: 'topType',
       label: 'Hair',
+      type: 'select',
       options: [
         { label: 'NoHair', id: 'NoHair' },
         { label: 'Eyepatch', id: 'Eyepatch' },
@@ -83,23 +72,25 @@ export const avataaarsDesignStyle: DesignStyle = {
     {
       id: 'hairColor',
       label: 'Hair Color',
+      type: 'color',
       options: [
-        { label: 'Auburn', id: 'Auburn' },
-        { label: 'Black', id: 'Black' },
-        { label: 'Blonde', id: 'Blonde' },
-        { label: 'BlondeGolden', id: 'BlondeGolden' },
-        { label: 'Brown', id: 'Brown' },
-        { label: 'BrownDark', id: 'BrownDark' },
-        { label: 'PastelPink', id: 'PastelPink' },
-        { label: 'Blue', id: 'Blue' },
-        { label: 'Platinum', id: 'Platinum' },
-        { label: 'Red', id: 'Red' },
-        { label: 'SilverGray', id: 'SilverGray' },
+        { label: 'Auburn', id: 'Auburn', value: '#ad683e' },
+        { label: 'Black', id: 'Black', value: '#423330' },
+        { label: 'Blonde', id: 'Blonde', value: '#bd8e56' },
+        { label: 'BlondeGolden', id: 'BlondeGolden', value: '#d9bb7f' },
+        { label: 'Brown', id: 'Brown', value: '#805449' },
+        { label: 'BrownDark', id: 'BrownDark', value: '#5b4641' },
+        { label: 'PastelPink', id: 'PastelPink', value: '#f6a2a2' },
+        { label: 'Blue', id: 'Blue', value: '#475a68' },
+        { label: 'Platinum', id: 'Platinum', value: '#eee0c6' },
+        { label: 'Red', id: 'Red', value: '#cf481e' },
+        { label: 'SilverGray', id: 'SilverGray', value: '#eae4e4' },
       ],
     },
     {
       id: 'facialHairType',
       label: 'Facial Hair',
+      type: 'select',
       options: [
         { label: 'Blank', id: 'Blank' },
         { label: 'BeardMedium', id: 'BeardMedium' },
@@ -112,20 +103,22 @@ export const avataaarsDesignStyle: DesignStyle = {
     {
       id: 'facialHairColor',
       label: 'Facial Hair Color',
+      type: 'color',
       options: [
-        { label: 'Auburn', id: 'Auburn' },
-        { label: 'Black', id: 'Black' },
-        { label: 'Blonde', id: 'Blonde' },
-        { label: 'BlondeGolden', id: 'BlondeGolden' },
-        { label: 'Brown', id: 'Brown' },
-        { label: 'BrownDark', id: 'BrownDark' },
-        { label: 'Platinum', id: 'Platinum' },
-        { label: 'Red', id: 'Red' },
+        { label: 'Auburn', id: 'Auburn', value: '#ad683e' },
+        { label: 'Black', id: 'Black', value: '#423330' },
+        { label: 'Blonde', id: 'Blonde', value: '#bd8e56' },
+        { label: 'BlondeGolden', id: 'BlondeGolden', value: '#d9bb7f' },
+        { label: 'Brown', id: 'Brown', value: '#805449' },
+        { label: 'BrownDark', id: 'BrownDark', value: '#5b4641' },
+        { label: 'Platinum', id: 'Platinum', value: '#eee0c6' },
+        { label: 'Red', id: 'Red', value: '#cf481e' },
       ],
     },
     {
       id: 'eyeType',
       label: 'Eyes',
+      type: 'select',
       options: [
         { label: 'Close', id: 'Close' },
         { label: 'Cry', id: 'Cry' },
@@ -144,6 +137,7 @@ export const avataaarsDesignStyle: DesignStyle = {
     {
       id: 'eyebrowType',
       label: 'Eyebrow',
+      type: 'select',
       options: [
         { label: 'Angry', id: 'Angry' },
         { label: 'AngryNatural', id: 'AngryNatural' },
@@ -162,6 +156,7 @@ export const avataaarsDesignStyle: DesignStyle = {
     {
       id: 'mouthType',
       label: 'Mouth',
+      type: 'select',
       options: [
         { label: 'Concerned', id: 'Concerned' },
         { label: 'Default', id: 'Default' },
@@ -180,6 +175,7 @@ export const avataaarsDesignStyle: DesignStyle = {
     {
       id: 'clotheType',
       label: 'Clothes',
+      type: 'select',
       options: [
         { label: 'BlazerShirt', id: 'BlazerShirt' },
         { label: 'BlazerSweater', id: 'BlazerSweater' },
@@ -195,27 +191,29 @@ export const avataaarsDesignStyle: DesignStyle = {
     {
       id: 'clotheColor',
       label: 'Clothes Color',
+      type: 'color',
       options: [
-        { label: 'Black', id: 'Black' },
-        { label: 'Blue01', id: 'Blue01' },
-        { label: 'Blue02', id: 'Blue02' },
-        { label: 'Blue03', id: 'Blue03' },
-        { label: 'Gray01', id: 'Gray01' },
-        { label: 'Gray02', id: 'Gray02' },
-        { label: 'Heather', id: 'Heather' },
-        { label: 'PastelBlue', id: 'PastelBlue' },
-        { label: 'PastelGreen', id: 'PastelGreen' },
-        { label: 'PastelOrange', id: 'PastelOrange' },
-        { label: 'PastelRed', id: 'PastelRed' },
-        { label: 'PastelYellow', id: 'PastelYellow' },
-        { label: 'Pink', id: 'Pink' },
-        { label: 'Red', id: 'Red' },
-        { label: 'White', id: 'White' },
+        { label: 'Black', id: 'Black', value: '#262d33' },
+        { label: 'Blue01', id: 'Blue01', value: '#65c8ff' },
+        { label: 'Blue02', id: 'Blue02', value: '#5199e5' },
+        { label: 'Blue03', id: 'Blue03', value: '#25557d' },
+        { label: 'Gray01', id: 'Gray01', value: '#e6e6e6' },
+        { label: 'Gray02', id: 'Gray02', value: '#919598' },
+        { label: 'Heather', id: 'Heather', value: '#3c4f5d' },
+        { label: 'PastelBlue', id: 'PastelBlue', value: '#b1e2ff' },
+        { label: 'PastelGreen', id: 'PastelGreen', value: '#a7ffc3' },
+        { label: 'PastelOrange', id: 'PastelOrange', value: '#ffdeb5' },
+        { label: 'PastelRed', id: 'PastelRed', value: '#f59797' },
+        { label: 'PastelYellow', id: 'PastelYellow', value: '#feffb1' },
+        { label: 'Pink', id: 'Pink', value: '#ff488e' },
+        { label: 'Red', id: 'Red', value: '#ff5d5b' },
+        { label: 'White', id: 'White', value: '#ffffff' },
       ],
     },
     {
       id: 'accessoriesType',
       label: 'Accesory',
+      type: 'select',
       options: [
         { label: 'Blank', id: 'Blank' },
         { label: 'Kurt', id: 'Kurt' },

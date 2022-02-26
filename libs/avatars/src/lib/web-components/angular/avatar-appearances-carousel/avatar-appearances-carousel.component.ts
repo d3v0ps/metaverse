@@ -19,27 +19,28 @@ export enum AvatarAppearancesCarouselDisplayMode {
       </cf-avatar-appearance-card>
 
       <ng-container *ngFor="let appearance of appearances">
-        <cf-avatar-appearance-card
-          [appearance]="appearance"
+        <cf-avatar-appearance-portrait
+          [appearancePortrait]="appearance?.portrait"
           [active]="appearance.id === selectedAppearanceId"
           (appearanceClick)="appearanceClick.emit(appearance)"
         >
-        </cf-avatar-appearance-card>
+        </cf-avatar-appearance-portrait>
       </ng-container>
 
-      <cf-avatar-appearance-card
+      <cf-avatar-appearance-portrait
         *ngIf="showAdd && !reverse"
-        emptyIcon="assets/icons/mdi/plus.svg"
+        [emptyIcon]="emptyIcon"
         [showEmptyIcon]="true"
         (appearanceClick)="appearanceAddClick.emit()"
       >
-      </cf-avatar-appearance-card>
+      </cf-avatar-appearance-portrait>
     </div>
   `,
 })
 export class AvatarAppearancesCarouselComponent {
   @Input() appearances?: Appearance[];
   @Input() selectedAppearanceId?: string;
+  @Input() emptyIcon = 'assets/icons/mdi/plus.svg';
   @Input() displayMode: AvatarAppearancesCarouselDisplayMode =
     AvatarAppearancesCarouselDisplayMode.horizontal;
   @Input() showAdd = false;
