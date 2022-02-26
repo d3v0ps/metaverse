@@ -38,7 +38,7 @@ const oldManAppearance: Appearance = {
       style: {
         id: 'lpc',
         properties: {
-          animation: '4',
+          animation: '8',
           direction: '2',
           bodyType: 'tanned2',
           bodyVariation: 'male',
@@ -59,9 +59,9 @@ const oldManAppearance: Appearance = {
           facialHairColor: 'white',
           legs: 'armor/metal_pants',
           feet: 'boots/metal_boots',
-          rightHand: null,
+          rightHand: 'staff',
           leftHand: null,
-          bothHands: 'spear',
+          bothHands: null,
         },
       },
     },
@@ -116,7 +116,7 @@ const blacksmithAppearance: Appearance = {
         properties: {
           animation: '8',
           direction: '2',
-          bodyType: 'tanned2',
+          bodyType: 'dark2',
           bodyVariation: 'male',
           torso: 'plate/legion/legionplate_gold',
           torso2: null,

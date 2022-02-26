@@ -107,6 +107,13 @@ export class AvatarAppearancePortraitComponent {
 
     layerUrls.push([
       baseUrl,
+      'shadows',
+      appearancePortrait.style.properties.bodyVariation,
+      `shadow.png`
+    ].join('/'));
+
+    layerUrls.push([
+      baseUrl,
       'body',
       appearancePortrait.style.properties.bodyVariation,
       `${appearancePortrait.style.properties.bodyType}.png`
