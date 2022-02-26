@@ -1,4 +1,4 @@
-import { Physics } from '@central-factory/physics';
+import { Physics } from '@central-factory/physics/models/physics';
 
 /** The Space kind */
 export type SpaceKind = 'land' | 'building' | 'unknown';

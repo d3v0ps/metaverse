@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Appearance } from '@central-factory/avatars';
+import { Appearance } from '@central-factory/avatars/models/appearance';
 import type { Avatar } from '@central-factory/avatars/models/avatar';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
 import { Observable } from 'rxjs';

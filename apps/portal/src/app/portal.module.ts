@@ -1,3 +1,4 @@
+/* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
@@ -9,6 +10,7 @@ import { USER_APPLICATIONS_INITIAL_DATA_PROVIDER } from '@central-factory/applic
 import { USER_ASSETS_COLLECTION_PROVIDER } from '@central-factory/assets/collections/user-assets.collection';
 import { USER_AVATARS_COLLECTION_PROVIDER } from '@central-factory/avatars/collections/user-avatars.collection';
 import { USER_AVATARS_DEMO_DATA_PROVIDER } from '@central-factory/avatars/data/demo/user-avatars.data';
+import { NetworkService } from '@central-factory/network/services/network.service';
 import { APPLICATION_PERMISSIONS_COLLECTION_PROVIDER } from '@central-factory/permissions/collections/application-permissions.collection';
 import { USER_PREFERENCES_COLLECTION_PROVIDER } from '@central-factory/preferences/collections/user-preferences.collection';
 import { CUSTOMIZATION_INITIAL_DATA_PROVIDER } from '@central-factory/preferences/data/base/customization/customization.data';
@@ -49,7 +51,7 @@ import { BackgroundRenderer } from './services/background.renderer';
     {
       provide: APP_INITIALIZER,
       useFactory: () => () => null,
-      deps: [CustomizationSettingsState, BackgroundRenderer],
+      deps: [CustomizationSettingsState, BackgroundRenderer, NetworkService],
       multi: true,
     },
     STORE_APPLICATIONS_COLLECTION_PROVIDER,

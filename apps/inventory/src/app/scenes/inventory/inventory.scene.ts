@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Asset } from '@central-factory/assets';
+import { Asset } from '@central-factory/assets/models/asset';
 import { UserAssetsState } from '@central-factory/assets/states/user-assets.state';
 
 /** Inventory main scene */
@@ -53,7 +53,7 @@ export class InventoryScene {
 
   selectedAsset?: Asset;
 
-  constructor(private readonly userAssetsRepository: UserAssetsState) {}
+  constructor(private readonly userAssetsRepository: UserAssetsState) { }
 
   onGridAssetClick(asset: Asset) {
     this.selectedAsset = asset;

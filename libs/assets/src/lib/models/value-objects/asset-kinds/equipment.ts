@@ -1,4 +1,4 @@
-import { Physics } from '@central-factory/physics';
+import { Physics } from '@central-factory/physics/models/physics';
 
 /** The slots an equipment can be equiped to */
 export enum EquipmentSlot {

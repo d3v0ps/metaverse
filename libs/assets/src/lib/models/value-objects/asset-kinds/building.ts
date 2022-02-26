@@ -1,4 +1,4 @@
-import { Physics } from '@central-factory/physics';
+import { Physics } from '@central-factory/physics/models/physics';
 import { Space } from './space';
 
 /** A Building, such as houses, offices, factories, castles... */

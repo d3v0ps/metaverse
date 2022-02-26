@@ -1,4 +1,4 @@
-import { Physics } from '@central-factory/physics';
+import { Physics } from '@central-factory/physics/models/physics';
 
 /** The kind of terrain */
 export type TerrainKind = 'grass' | 'sand' | 'water';

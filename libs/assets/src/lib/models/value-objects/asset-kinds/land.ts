@@ -1,4 +1,4 @@
-import { Physics } from '@central-factory/physics';
+import { Physics } from '@central-factory/physics/models/physics';
 import { Space } from './space';
 
 /** A portion of space such as regions, countries... */

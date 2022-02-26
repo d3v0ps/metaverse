@@ -1,4 +1,4 @@
-import { Physics } from '@central-factory/physics';
+import { Physics } from '@central-factory/physics/models/physics';
 import { Space } from './space';
 
 /** A Machine such as a washing machine, computers, and any kind of digital machine */
