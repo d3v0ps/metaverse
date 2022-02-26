@@ -187,7 +187,7 @@ export class AvatarAppearancePortraitComponent {
       ].join('/'));
     }
 
-    if (appearancePortrait.style.properties.ears) {
+    if (appearancePortrait.style.properties.eyes) {
       layerUrls.push([
         baseUrl,
         'body',
@@ -217,12 +217,30 @@ export class AvatarAppearancePortraitComponent {
       ].join('/'));
     }
 
-    if (appearancePortrait.style.properties.facialHair) {
+    if (appearancePortrait.style.properties.head) {
       layerUrls.push([
         baseUrl,
         'head',
         appearancePortrait.style.properties.bodyVariation,
         `${appearancePortrait.style.properties.head}.png`
+      ].join('/'));
+    }
+
+    if (appearancePortrait.style.properties.visor) {
+      layerUrls.push([
+        baseUrl,
+        'head',
+        appearancePortrait.style.properties.bodyVariation,
+        `${appearancePortrait.style.properties.visor}.png`
+      ].join('/'));
+    }
+
+    if (appearancePortrait.style.properties.headAccesory) {
+      layerUrls.push([
+        baseUrl,
+        'head',
+        appearancePortrait.style.properties.bodyVariation,
+        `${appearancePortrait.style.properties.headAccesory}.png`
       ].join('/'));
     }
 

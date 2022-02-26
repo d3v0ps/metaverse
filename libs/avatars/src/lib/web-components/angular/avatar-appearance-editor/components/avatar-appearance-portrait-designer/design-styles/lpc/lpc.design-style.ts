@@ -92,6 +92,22 @@ const torsos = [
     label: 'Tabard',
   },
   {
+    id: 'plate/legion/legionplate_bronze',
+    label: 'Bronze Legion Plate',
+  },
+  {
+    id: 'plate/legion/legionplate_bronze2',
+    label: 'Bronze 2 Legion Plate',
+  },
+  {
+    id: 'plate/legion/legionplate_steel',
+    label: 'Steel Legion Plate',
+  },
+  {
+    id: 'plate/legion/legionplate_gold',
+    label: 'Gold Legion Plate',
+  },
+  {
     id: 'shirts/longsleeve/brown_longsleeve',
     label: 'Brown Longsleeve',
   },
@@ -113,6 +129,18 @@ const arms = [
   {
     id: 'gold/arms',
     label: 'Gold Arms',
+  },
+  {
+    id: 'plate/legion/legionbauldron_bronze',
+    label: 'Bronze Legion Bauldron',
+  },
+  {
+    id: 'plate/legion/legionbauldron_steel',
+    label: 'Steel Legion Bauldron',
+  },
+  {
+    id: 'plate/legion/legionbauldron_gold',
+    label: 'Gold Legion Bauldron',
   },
 ]
 
@@ -492,6 +520,434 @@ export const lpcDesignStyle: DesignStyle = {
       label: 'Head',
       options: [
         {
+          id: 'helms/barbarian/brass',
+          label: 'Brass Barbarian Helmet'
+        },
+        {
+          id: 'helms/barbarian/bronze',
+          label: 'Bronze Barbarian Helmet'
+        },
+        {
+          id: 'helms/barbarian/ceramic',
+          label: 'Ceramic Barbarian Helmet'
+        },
+        {
+          id: 'helms/barbarian/copper',
+          label: 'Copper Barbarian Helmet'
+        },
+        {
+          id: 'helms/barbarian/gold',
+          label: 'Gold Barbarian Helmet'
+        },
+        {
+          id: 'helms/barbarian/iron',
+          label: 'Iron Barbarian Helmet'
+        },
+        {
+          id: 'helms/barbarian/silver',
+          label: 'Silver Barbarian Helmet'
+        },
+        {
+          id: 'helms/barbarian/steel',
+          label: 'Steel Barbarian Helmet'
+        },
+        {
+          id: 'helms/barbarian_nasal/brass',
+          label: 'Brass Barbarian Nasal Helmet'
+        },
+        {
+          id: 'helms/barbarian_nasal/bronze',
+          label: 'Bronze Barbarian Nasal Helmet'
+        },
+        {
+          id: 'helms/barbarian_nasal/ceramic',
+          label: 'Ceramic Barbarian Nasal Helmet'
+        },
+        {
+          id: 'helms/barbarian_nasal/copper',
+          label: 'Copper Barbarian Nasal Helmet'
+        },
+        {
+          id: 'helms/barbarian_nasal/gold',
+          label: 'Gold Barbarian Nasal Helmet'
+        },
+        {
+          id: 'helms/barbarian_nasal/iron',
+          label: 'Iron Barbarian Nasal Helmet'
+        },
+        {
+          id: 'helms/barbarian_nasal/silver',
+          label: 'Silver Barbarian Nasal Helmet'
+        },
+        {
+          id: 'helms/barbarian_nasal/steel',
+          label: 'Steel Barbarian Nasal Helmet'
+        },
+        {
+          id: 'helms/barbarian_viking/brass',
+          label: 'Brass Barbarian Viking Helmet'
+        },
+        {
+          id: 'helms/barbarian_viking/bronze',
+          label: 'Bronze Barbarian Viking Helmet'
+        },
+        {
+          id: 'helms/barbarian_viking/ceramic',
+          label: 'Ceramic Barbarian Viking Helmet'
+        },
+        {
+          id: 'helms/barbarian_viking/copper',
+          label: 'Copper Barbarian Viking Helmet'
+        },
+        {
+          id: 'helms/barbarian_viking/gold',
+          label: 'Gold Barbarian Viking Helmet'
+        },
+        {
+          id: 'helms/barbarian_viking/iron',
+          label: 'Iron Barbarian Viking Helmet'
+        },
+        {
+          id: 'helms/barbarian_viking/silver',
+          label: 'Silver Barbarian Viking Helmet'
+        },
+        {
+          id: 'helms/barbarian_viking/steel',
+          label: 'Steel Barbarian Viking Helmet'
+        },
+        {
+          id: 'helms/barbuta/brass',
+          label: 'Brass Barbuta'
+        },
+        {
+          id: 'helms/barbuta/bronze',
+          label: 'Bronze Barbuta'
+        },
+        {
+          id: 'helms/barbuta/ceramic',
+          label: 'Ceramic Barbuta'
+        },
+        {
+          id: 'helms/barbuta/copper',
+          label: 'Copper Barbuta'
+        },
+        {
+          id: 'helms/barbuta/gold',
+          label: 'Gold Barbuta'
+        },
+        {
+          id: 'helms/barbuta/iron',
+          label: 'Iron Barbuta'
+        },
+        {
+          id: 'helms/barbuta/silver',
+          label: 'Silver Barbuta'
+        },
+        {
+          id: 'helms/barbuta/steel',
+          label: 'Steel Barbuta'
+        },
+        {
+          id: 'helms/barbuta_simple/brass',
+          label: 'Brass Barbuta Simple'
+        },
+        {
+          id: 'helms/barbuta_simple/brass',
+          label: 'Brass Barbuta Simple'
+        },
+        {
+          id: 'helms/barbuta_simple/bronze',
+          label: 'Bronze Barbuta Simple'
+        },
+        {
+          id: 'helms/barbuta_simple/ceramic',
+          label: 'Ceramic Barbuta Simple'
+        },
+        {
+          id: 'helms/barbuta_simple/copper',
+          label: 'Copper Barbuta Simple'
+        },
+        {
+          id: 'helms/barbuta_simple/gold',
+          label: 'Gold Barbuta Simple'
+        },
+        {
+          id: 'helms/barbuta_simple/iron',
+          label: 'Iron Barbuta Simple'
+        },
+        {
+          id: 'helms/barbuta_simple/silver',
+          label: 'Silver Barbuta Simple'
+        },
+        {
+          id: 'helms/barbuta_simple/steel',
+          label: 'Steel Barbuta Simple'
+        },
+        {
+          id: 'helms/close/brass',
+          label: 'Brass Close Helmet'
+        },
+        {
+          id: 'helms/close/bronze',
+          label: 'Bronze Close Helmet'
+        },
+        {
+          id: 'helms/close/ceramic',
+          label: 'Ceramic Close Helmet'
+        },
+        {
+          id: 'helms/close/copper',
+          label: 'Copper Close Helmet'
+        },
+        {
+          id: 'helms/close/gold',
+          label: 'Gold Close Helmet'
+        },
+        {
+          id: 'helms/close/iron',
+          label: 'Iron Close Helmet'
+        },
+        {
+          id: 'helms/close/silver',
+          label: 'Silver Close Helmet'
+        },
+        {
+          id: 'helms/close/steel',
+          label: 'Steel Close Helmet'
+        },
+        {
+          id: 'helms/flattop/brass',
+          label: 'Brass Flattop Helmet'
+        },
+        {
+          id: 'helms/greathelm/brass',
+          label: 'Brass Great Helmet'
+        },
+        {
+          id: 'helms/greathelm/bronze',
+          label: 'Bronze Great Helmet'
+        },
+        {
+          id: 'helms/greathelm/ceramic',
+          label: 'Ceramic Great Helmet'
+        },
+        {
+          id: 'helms/greathelm/copper',
+          label: 'Copper Great Helmet'
+        },
+        {
+          id: 'helms/greathelm/gold',
+          label: 'Gold Great Helmet'
+        },
+        {
+          id: 'helms/greathelm/iron',
+          label: 'Iron Great Helmet'
+        },
+        {
+          id: 'helms/greathelm/silver',
+          label: 'Silver Great Helmet'
+        },
+        {
+          id: 'helms/greathelm/steel',
+          label: 'Steel Great Helmet'
+        },
+        {
+          id: 'helms/nasal/brass',
+          label: 'Brass Nasal Helmet'
+        },
+        {
+          id: 'helms/nasal/bronze',
+          label: 'Bronze Nasal Helmet'
+        },
+        {
+          id: 'helms/nasal/ceramic',
+          label: 'Ceramic Nasal Helmet'
+        },
+        {
+          id: 'helms/nasal/copper',
+          label: 'Copper Nasal Helmet'
+        },
+        {
+          id: 'helms/nasal/gold',
+          label: 'Gold Nasal Helmet'
+        },
+        {
+          id: 'helms/nasal/iron',
+          label: 'Iron Nasal Helmet'
+        },
+        {
+          id: 'helms/nasal/silver',
+          label: 'Silver Nasal Helmet'
+        },
+        {
+          id: 'helms/nasal/steel',
+          label: 'Steel Nasal Helmet'
+        },
+        {
+          id: 'helms/spangenhelm/brass',
+          label: 'Brass Spangenhelm'
+        },
+        {
+          id: 'helms/spangenhelm/bronze',
+          label: 'Bronze Spangenhelm'
+        },
+        {
+          id: 'helms/spangenhelm/ceramic',
+          label: 'Ceramic Spangenhelm'
+        },
+        {
+          id: 'helms/spangenhelm/copper',
+          label: 'Copper Spangenhelm'
+        },
+        {
+          id: 'helms/spangenhelm/gold',
+          label: 'Gold Spangenhelm'
+        },
+        {
+          id: 'helms/spangenhelm/iron',
+          label: 'Iron Spangenhelm'
+        },
+        {
+          id: 'helms/spangenhelm/silver',
+          label: 'Silver Spangenhelm'
+        },
+        {
+          id: 'helms/spangenhelm/steel',
+          label: 'Steel Spangenhelm'
+        },
+        {
+          id: 'helms/spangenhelm_viking/brass',
+          label: 'Brass Spangenhelm Viking'
+        },
+        {
+          id: 'helms/spangenhelm_viking/bronze',
+          label: 'Bronze Spangenhelm Viking'
+        },
+        {
+          id: 'helms/spangenhelm_viking/ceramic',
+          label: 'Ceramic Spangenhelm Viking'
+        },
+        {
+          id: 'helms/spangenhelm_viking/copper',
+          label: 'Copper Spangenhelm Viking'
+        },
+        {
+          id: 'helms/spangenhelm_viking/gold',
+          label: 'Gold Spangenhelm Viking'
+        },
+        {
+          id: 'helms/spangenhelm_viking/iron',
+          label: 'Iron Spangenhelm Viking'
+        },
+        {
+          id: 'helms/spangenhelm_viking/silver',
+          label: 'Silver Spangenhelm Viking'
+        },
+        {
+          id: 'helms/spangenhelm_viking/steel',
+          label: 'Steel Spangenhelm Viking'
+        },
+        {
+          id: 'helms/sugarloaf/brass',
+          label: 'Brass Sugarloaf'
+        },
+        {
+          id: 'helms/sugarloaf/bronze',
+          label: 'Bronze Sugarloaf'
+        },
+        {
+          id: 'helms/sugarloaf/ceramic',
+          label: 'Ceramic Sugarloaf'
+        },
+        {
+          id: 'helms/sugarloaf/copper',
+          label: 'Copper Sugarloaf'
+        },
+        {
+          id: 'helms/sugarloaf/gold',
+          label: 'Gold Sugarloaf'
+        },
+        {
+          id: 'helms/sugarloaf/iron',
+          label: 'Iron Sugarloaf'
+        },
+        {
+          id: 'helms/sugarloaf/silver',
+          label: 'Silver Sugarloaf'
+        },
+        {
+          id: 'helms/sugarloaf/steel',
+          label: 'Steel Sugarloaf'
+        },
+        {
+          id: 'helms/sugarloaf_simple/brass',
+          label: 'Brass Sugarloaf Simple'
+        },
+        {
+          id: 'helms/sugarloaf_simple/bronze',
+          label: 'Bronze Sugarloaf Simple'
+        },
+        {
+          id: 'helms/sugarloaf_simple/ceramic',
+          label: 'Ceramic Sugarloaf Simple'
+        },
+        {
+          id: 'helms/sugarloaf_simple/copper',
+          label: 'Copper Sugarloaf Simple'
+        },
+        {
+          id: 'helms/sugarloaf_simple/gold',
+          label: 'Gold Sugarloaf Simple'
+        },
+        {
+          id: 'helms/sugarloaf_simple/iron',
+          label: 'Iron Sugarloaf Simple'
+        },
+        {
+          id: 'helms/sugarloaf_simple/silver',
+          label: 'Silver Sugarloaf Simple'
+        },
+        {
+          id: 'helms/sugarloaf_simple/steel',
+          label: 'Steel Sugarloaf Simple'
+        },
+        {
+          id: 'helms/legion/legionhelmet_bronze',
+          label: 'Bronze Legion Helmet'
+        },
+        {
+          id: 'helms/legion/legionhelmet_steel',
+          label: 'Steel Legion Helmet'
+        },
+        {
+          id: 'helms/legion/legionhelmet_gold',
+          label: 'Gold Legion Helmet'
+        },
+        {
+          id: 'helms/legion/legion2helmet_bronze',
+          label: 'Bronze Legion Helmet 2'
+        },
+        {
+          id: 'helms/legion/legion2helmet_steel',
+          label: 'Steel Legion Helmet 2'
+        },
+        {
+          id: 'helms/legion/legion2helmet_gold',
+          label: 'Gold Legion Helmet 2'
+        },
+        {
+          id: 'helms/legion/legion3helmet_bronze',
+          label: 'Bronze Legion Helmet 3'
+        },
+        {
+          id: 'helms/legion/legion3helmet_steel',
+          label: 'Steel Legion Helmet 3'
+        },
+        {
+          id: 'helms/legion/legion3helmet_gold',
+          label: 'Gold Legion Helmet 3'
+        },
+        {
           id: 'bandanas/red',
           label: 'Red Bandana'
         },
@@ -519,6 +975,161 @@ export const lpcDesignStyle: DesignStyle = {
           id: 'hoods/cloth_hood',
           label: 'Cloth Hood'
         }
+      ]
+    },
+    {
+      id: 'visor',
+      type: 'select',
+      label: 'Head Visor',
+      options: [
+        {
+          id: 'visors/grated/brass',
+          label: 'Brass Grated Visor'
+        },
+        {
+          id: 'visors/grated/bronze',
+          label: 'Bronze Grated Visor'
+        },
+        {
+          id: 'visors/grated/ceramic',
+          label: 'Ceramic Grated Visor'
+        },
+        {
+          id: 'visors/grated/copper',
+          label: 'Copper Grated Visor'
+        },
+        {
+          id: 'visors/grated/gold',
+          label: 'Gold Grated Visor'
+        },
+        {
+          id: 'visors/grated/iron',
+          label: 'Iron Grated Visor'
+        },
+        {
+          id: 'visors/grated/silver',
+          label: 'Silver Grated Visor'
+        },
+        {
+          id: 'visors/grated/steel',
+          label: 'Steel Grated Visor'
+        },
+        {
+          id: 'visors/grated_narrow/brass',
+          label: 'Brass Grated Narrow Visor'
+        },
+        {
+          id: 'visors/grated_narrow/bronze',
+          label: 'Bronze Grated Narrow Visor'
+        },
+        {
+          id: 'visors/grated_narrow/ceramic',
+          label: 'Ceramic Grated Narrow Visor'
+        },
+        {
+          id: 'visors/grated_narrow/copper',
+          label: 'Copper Grated Narrow Visor'
+        },
+        {
+          id: 'visors/grated_narrow/gold',
+          label: 'Gold Grated Narrow Visor'
+        },
+        {
+          id: 'visors/grated_narrow/iron',
+          label: 'Iron Grated Narrow Visor'
+        },
+        {
+          id: 'visors/grated_narrow/silver',
+          label: 'Silver Grated Narrow Visor'
+        },
+        {
+          id: 'visors/grated_narrow/steel',
+          label: 'Steel Grated Narrow Visor'
+        }
+      ]
+    },
+    {
+      id: 'headAccesory',
+      type: 'select',
+      label: 'Head Accesory',
+      options: [
+        {
+          id: 'accesories/crest/brass',
+          label: 'Brass Crest'
+        },
+        {
+          id: 'accesories/crest/bronze',
+          label: 'Bronze Crest'
+        },
+        {
+          id: 'accesories/crest/ceramic',
+          label: 'Ceramic Crest'
+        },
+        {
+          id: 'accesories/crest/copper',
+          label: 'Copper Crest'
+        },
+        {
+          id: 'accesories/crest/gold',
+          label: 'Gold Crest'
+        },
+        {
+          id: 'accesories/crest/iron',
+          label: 'Iron Crest'
+        },
+        {
+          id: 'accesories/crest/silver',
+          label: 'Silver Crest'
+        },
+        {
+          id: 'accesories/crest/steel',
+          label: 'Steel Crest'
+        },
+        {
+          id: 'accesories/crest_centurion/brass',
+          label: 'Brass Centurion Crest'
+        },
+        {
+          id: 'accesories/crest_centurion/bronze',
+          label: 'Bronze Centurion Crest'
+        },
+        {
+          id: 'accesories/crest_centurion/ceramic',
+          label: 'Ceramic Centurion Crest'
+        },
+        {
+          id: 'accesories/crest_centurion/copper',
+          label: 'Copper Centurion Crest'
+        },
+        {
+          id: 'accesories/crest_centurion/gold',
+          label: 'Gold Centurion Crest'
+        },
+        {
+          id: 'accesories/crest_centurion/iron',
+          label: 'Iron Centurion Crest'
+        },
+        {
+          id: 'accesories/crest_centurion/silver',
+          label: 'Silver Centurion Crest'
+        },
+        {
+          id: 'accesories/crest_centurion/steel',
+          label: 'Steel Centurion Crest'
+        },
+        {
+          id: 'accesories/horns/bg/horns_1',
+          label: 'Horns'
+        },
+        {
+          id: 'accesories/horns/bg/horns_2',
+          label: 'Horns 2'
+        },
+        {
+          id: 'accesories/horns/bg/horns_3',
+          label: 'Horns 3'
+        },
+
       ]
     },
     {
@@ -574,6 +1185,10 @@ export const lpcDesignStyle: DesignStyle = {
           id: 'pants/white_pants',
           label: 'White Pants',
         },
+        {
+          id: 'skirt/legion_skirt',
+          label: 'Legion Skirt',
+        },
       ]
     },
     {
@@ -600,6 +1215,10 @@ export const lpcDesignStyle: DesignStyle = {
         {
           id: 'shoes/maroon_shoes',
           label: 'Maroon Shoes',
+        },
+        {
+          id: 'sandals/legion',
+          label: 'Sandals',
         },
       ]
     },
