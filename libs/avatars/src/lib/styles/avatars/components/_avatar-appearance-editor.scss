@@ -19,13 +19,15 @@
 }
 
 .avatar-appearance-portrait-designer {
-  display: grid;
-  grid-template-columns: 40% 60%;
+  display: flex;
+  flex-basis: max-content;
+  // grid-template-columns: 1fr 1fr;
   &__preview {
-    margin: 0 auto;
+    min-width: 200px;
   }
 
   .avatar-appearance-portrait {
+    margin: 0 auto;
     width: 360px;
     height: 360px;
     display: flex;
@@ -38,7 +40,7 @@
   }
 
   @media (max-width: 920px) {
-    grid-template-columns: 50% 50%;
+    // grid-template-columns: 1fr 1fr;
     .avatar-appearance-portrait {
       width: 140px;
       height: 140px;

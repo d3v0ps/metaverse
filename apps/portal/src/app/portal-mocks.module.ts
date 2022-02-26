@@ -2,7 +2,7 @@ import {
   APP_INITIALIZER,
   ModuleWithProviders,
   NgModule,
-  Provider,
+  Provider
 } from '@angular/core';
 import { USER_ASSETS_MOCKS_DATA_PROVIDER } from '@central-factory/assets/data/mocks/user-assets.data';
 import { USER_AVATARS_MOCKS_DATA_PROVIDER } from '@central-factory/avatars/data/mocks/user-avatars.data';

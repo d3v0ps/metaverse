@@ -65,8 +65,8 @@ export type AvatarAppearanceEditorModel = {
             </div>
           </cf-tab>
           <cf-tab
-            [title]="'Others'"
-            icon="assets/icons/mdi/plus.svg"
+            [title]="'Role-play'"
+            icon="assets/icons/simple-icons/dungeonsanddragons.svg"
             [customClass]="'appearance-tab'"
           >
             <div cfBlock="appearance-tab-content-portrait">
@@ -74,16 +74,6 @@ export type AvatarAppearanceEditorModel = {
                 [availableStyles]="['dungeons']">
               </cf-avatar-appearance-portrait-designer>
             </div>
-          </cf-tab>
-          <cf-tab
-            [title]="'More'"
-            [active]="false"
-            icon="assets/icons/mdi/apps.svg"
-            [customClass]="'appearance-info-tab'"
-          >
-            <cf-avatar-appearance-info-form
-              [info]="appearance?.info"
-            ></cf-avatar-appearance-info-form>
           </cf-tab>
         </cf-tabset>
       </div>

@@ -69,6 +69,12 @@ export type SelectOption = {
                       [formControlName]="property.id">
                     </cf-file-upload>
                   </ng-container>
+                  <ng-container *ngSwitchCase="'text'">
+                    <input cfBlock="input"
+                      id="appearance-portrait-designer-{{ property.id }}"
+                      [formControlName]="property.id"
+                      type="text" />
+                  </ng-container>
                   <ng-container *ngSwitchCase="'number'">
                     <input cfBlock="input"
                       id="appearance-portrait-designer-{{ property.id }}"
@@ -102,7 +108,7 @@ export type SelectOption = {
           </ng-container>
         </form>
       </div>
-      <div cfElem="preview">
+      <div cfElem="preview" *ngIf="designStyle?.hasViewer">
         <cf-avatar-appearance-portrait
           *ngIf="styleForm.value"
           [appearancePortrait]="{
@@ -124,6 +130,7 @@ export type SelectOption = {
       &__editor {
         overflow-y: auto;
         max-height: 70vh;
+        min-width: 60%;
       }
     }
     `

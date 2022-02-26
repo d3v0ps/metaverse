@@ -240,38 +240,8 @@ export const userAvatars: UserAvatarDocType[] = [
       },
     ],
     scopes: [
-      {
-        integration: 'CF',
-        domain: 'Calendars',
-        scope: 'manage',
-      },
-      {
-        integration: 'Google',
-        domain: 'Calendars',
-        scope: 'manage',
-      },
-      {
-        integration: 'NFT',
-        domain: 'Tokens',
-        scope: 'manage',
-      },
     ],
     skills: [
-      {
-        domain: 'calendar',
-        scope: 'manage',
-        skill: 'create',
-      },
-      {
-        domain: 'event',
-        scope: 'manage',
-        skill: 'create',
-      },
-      {
-        domain: 'assets',
-        scope: 'manage',
-        skill: 'trade',
-      },
     ],
   },
   {

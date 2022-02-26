@@ -1,4 +1,3 @@
-
 @use '../abstracts/variables/colors' as colors;
 
 .tabset-container {
@@ -15,7 +14,8 @@
   padding-bottom: 1rem;
   display: flex;
   align-items: center;
-  gap: .5rem;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 
   .tab {
     background-color: var(--component-tab-background-color);
@@ -23,7 +23,7 @@
     min-width: 6rem;
 
     .button__icon {
-      margin-right: .5rem;
+      margin-right: 0.5rem;
     }
 
     &--active {
@@ -36,7 +36,7 @@
     }
 
     &--disabled {
-      opacity: .5;
+      opacity: 0.5;
     }
 
     &:not(.active):not(.disabled) {
@@ -47,7 +47,6 @@
       fill: var(--component-tab-text-color);
     }
   }
-
 }
 
 .tab-content {
@@ -57,10 +56,9 @@
   }
 }
 
-
 @each $color in colors.$color-variations {
   .tab--active {
-   &.tab--#{$color} {
+    &.tab--#{$color} {
       background: var(--component-button-#{$color}-background-color);
       color: var(--component-button-#{$color}-color);
       .icon__svg {

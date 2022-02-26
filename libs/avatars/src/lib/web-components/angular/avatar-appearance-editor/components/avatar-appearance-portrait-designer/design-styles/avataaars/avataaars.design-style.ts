@@ -6,6 +6,7 @@ export const avataaarsDesignStyle: DesignStyle = {
   name: 'Avataaars',
   url: 'https://www.npmjs.com/package/avataaars',
   description: 'The core React component for Avataaars Generator developed by Fang-Pen Lin, based on the Sketch library Avataaars designed by Pablo Stanley.',
+  hasViewer: true,
   license: {
     type: 'MIT',
   },

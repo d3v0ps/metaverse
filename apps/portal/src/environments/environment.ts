@@ -4,7 +4,7 @@ import { Environment } from './environment.interface';
 export const environment: Environment = {
   production: false,
   demo: false,
-  useMocks: true,
+  useMocks: false,
   autologin: true,
   showSplashScreen: false,
   repositoryUrl:

@@ -6,6 +6,7 @@ export const imageDesignStyle: DesignStyle = {
   license: { type: 'MIT' },
   name: 'Image',
   description: `Accepted types: .png, .jpg, .jpeg, .gif, .svg`,
+  hasViewer: true,
   properties: [
     {
       id: 'value',

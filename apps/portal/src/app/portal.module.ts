@@ -8,6 +8,7 @@ import { USER_APPLICATIONS_COLLECTION_PROVIDER } from '@central-factory/applicat
 import { USER_APPLICATIONS_INITIAL_DATA_PROVIDER } from '@central-factory/applications/data/base/user-applications.data';
 import { USER_ASSETS_COLLECTION_PROVIDER } from '@central-factory/assets/collections/user-assets.collection';
 import { USER_AVATARS_COLLECTION_PROVIDER } from '@central-factory/avatars/collections/user-avatars.collection';
+import { USER_AVATARS_DEMO_DATA_PROVIDER } from '@central-factory/avatars/data/demo/user-avatars.data';
 import { APPLICATION_PERMISSIONS_COLLECTION_PROVIDER } from '@central-factory/permissions/collections/application-permissions.collection';
 import { USER_PREFERENCES_COLLECTION_PROVIDER } from '@central-factory/preferences/collections/user-preferences.collection';
 import { CUSTOMIZATION_INITIAL_DATA_PROVIDER } from '@central-factory/preferences/data/base/customization/customization.data';
@@ -59,10 +60,11 @@ import { BackgroundRenderer } from './services/background.renderer';
     USER_AVATARS_COLLECTION_PROVIDER,
     USER_ASSETS_COLLECTION_PROVIDER,
 
+    USER_AVATARS_DEMO_DATA_PROVIDER,
     USER_APPLICATIONS_INITIAL_DATA_PROVIDER,
     USER_TOPICS_INITIAL_DATA_PROVIDER,
     CUSTOMIZATION_INITIAL_DATA_PROVIDER,
   ],
   bootstrap: [PortalRoot],
 })
-export class PortalModule {}
+export class PortalModule { }

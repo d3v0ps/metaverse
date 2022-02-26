@@ -7,6 +7,7 @@ export const lpcDesignStyle: DesignStyle = {
   name: 'Liberated Pixel Cup',
   description: `Liberated Pixel Cup is a two-part competition: make a bunch of awesome free culture licensed artwork, and then program a bunch of free software games that use it.`,
   url: 'https://opengameart.org/content/lpc-collection',
+  hasViewer: true,
   properties: [
     {
       id: 'species',

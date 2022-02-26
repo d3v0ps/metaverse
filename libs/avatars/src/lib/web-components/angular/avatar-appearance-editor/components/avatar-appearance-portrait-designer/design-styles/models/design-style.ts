@@ -8,7 +8,7 @@ export type DesignStyleProperty = {
   id: string;
   label: string;
   defaultValue?: any;
-  type: 'select' | 'color' | 'file' | 'number';
+  type: 'select' | 'color' | 'file' | 'number' | 'text';
   options?: DesignStylePropertyOption[];
 };
 
@@ -18,6 +18,7 @@ export type DesignStyle = {
   url?: string;
   description?: string;
   properties: DesignStyleProperty[];
+  hasViewer?: boolean;
   license: {
     type: string;
     url?: string;

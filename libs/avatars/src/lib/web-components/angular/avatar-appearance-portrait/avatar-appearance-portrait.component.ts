@@ -67,11 +67,11 @@ export class AvatarAppearancePortraitComponent {
 
   getLpcUrl(appearancePortrait: AppearancePortrait | undefined) {
     if (!appearancePortrait) {
-      return `assets/avatars/lpc/bases/Human/Child/Walk.png`;
+      return `assets/avatars/lpc/bases/Human/Child/Universal.png`;
     }
 
     const urlParams = Object.values(appearancePortrait.style.properties).join('/');
 
-    return `assets/avatars/lpc/bases/${urlParams}/Walk.png`;
+    return `assets/avatars/lpc/bases/${urlParams}/Universal.png`;
   }
 }
