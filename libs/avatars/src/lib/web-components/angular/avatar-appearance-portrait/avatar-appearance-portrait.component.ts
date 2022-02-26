@@ -167,6 +167,36 @@ export class AvatarAppearancePortraitComponent {
       ].join('/'));
     }
 
+    if (appearancePortrait.style.properties.ears) {
+      layerUrls.push([
+        baseUrl,
+        'body',
+        appearancePortrait.style.properties.bodyVariation,
+        'ears',
+        `${appearancePortrait.style.properties.ears}_${appearancePortrait.style.properties.bodyType}.png`
+      ].join('/'));
+    }
+
+    if (appearancePortrait.style.properties.nose) {
+      layerUrls.push([
+        baseUrl,
+        'body',
+        appearancePortrait.style.properties.bodyVariation,
+        'nose',
+        `${appearancePortrait.style.properties.nose}_${appearancePortrait.style.properties.bodyType}.png`
+      ].join('/'));
+    }
+
+    if (appearancePortrait.style.properties.ears) {
+      layerUrls.push([
+        baseUrl,
+        'body',
+        appearancePortrait.style.properties.bodyVariation,
+        'eyes',
+        `${appearancePortrait.style.properties.eyes}.png`
+      ].join('/'));
+    }
+
     if (appearancePortrait.style.properties.hair) {
       layerUrls.push([
         baseUrl,

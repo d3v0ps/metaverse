@@ -5,55 +5,68 @@ const hairColors = [
   {
     id: 'black',
     label: 'Black',
+    value: '#101010',
   },
   {
     id: 'blonde',
     label: 'Blonde',
+    value: '#bd8a00',
   },
   {
     id: 'blonde2',
     label: 'Blonde 2',
+    value: '#f2d986'
   },
   {
     id: 'blue',
     label: 'Blue',
+    value: '#0000cd',
   },
   {
     id: 'blue2',
     label: 'Blue 2',
+    value: '#513feb',
   },
   {
     id: 'brown',
     label: 'Brown',
+    value: '#350c01',
   },
   {
     id: 'brown2',
     label: 'Brown 2',
+    value: '#683609',
   },
   {
     id: 'brunette',
     label: 'Brunette',
+    value: '#a74d00'
   },
   {
     id: 'brunette2',
     label: 'Brunette 2',
+    value: '#8f191e',
   },
   // TODO: Complete this list
   {
     id: 'white-blonde',
     label: 'White Blonde',
+    value: '#e2c3a8'
   },
   {
     id: 'white-blonde2',
     label: 'White Blonde 2',
+    value: '#d9c98d'
   },
   {
     id: 'white-cyan',
     label: 'White Cyan',
+    value: '#eefdfc',
   },
   {
     id: 'white',
     label: 'White',
+    value: '#ebebeb'
   },
 ];
 
@@ -214,48 +227,58 @@ export const lpcDesignStyle: DesignStyle = {
     },
     {
       id: 'bodyType',
-      type: 'select',
+      type: 'color',
       label: 'Body Type',
       options: [
         {
           id: 'tanned',
           label: 'Tanned',
+          value: '#fed082',
         },
         {
           id: 'tanned2',
           label: 'Tanned 2',
+          value: '#eac279',
         },
         {
           id: 'light',
           label: 'Light',
+          value: '#fdd6b8',
         },
         {
           id: 'dark',
           label: 'Dark',
+          value: '#ba8454',
         },
         {
           id: 'dark2',
           label: 'Dark 2',
+          value: '#9c663f',
         },
         {
           id: 'darkelf',
           label: 'Dark Elf',
+          value: '#aeb3c9',
         },
         {
           id: 'darkelf2',
           label: 'Dark Elf 2',
+          value: '#c9d0ed',
         },
         {
           id: 'orc',
           label: 'Orc',
+          value: '#4cba68',
         },
         {
           id: 'red_orc',
           label: 'Red Orc',
+          value: '#78a553',
         },
         {
           id: 'skeleton',
           label: 'Skeleton',
+          value: '#fffffe',
         },
       ]
     },
@@ -265,16 +288,99 @@ export const lpcDesignStyle: DesignStyle = {
       label: 'Body Variation',
       options: [
         {
-          id: 'child',
-          label: 'Child',
-        },
-        {
           id: 'female',
           label: 'Female',
         },
         {
           id: 'male',
           label: 'Male',
+        },
+      ]
+    },
+    {
+      id: 'ears',
+      type: 'select',
+      label: 'Ears',
+      options: [
+        {
+          id: 'bigears',
+          label: 'Big',
+        },
+        {
+          id: 'elvenears',
+          label: 'Elven',
+        },
+      ]
+    },
+    {
+      id: 'eyes',
+      type: 'color',
+      label: 'Eyes',
+      options: [
+        {
+          id: 'blue',
+          label: 'Blue',
+          value: '#65829b'
+        },
+        {
+          id: 'brown',
+          label: 'Brown',
+          value: '#3c3437'
+        },
+        {
+          id: 'gray',
+          label: 'Gray',
+          value: '#5c6269'
+        },
+        {
+          id: 'green',
+          label: 'Green',
+          value: '#5c814d'
+        },
+        {
+          id: 'orange',
+          label: 'Orange',
+          value: '#6e3f2f'
+        },
+        {
+          id: 'purple',
+          label: 'Purple',
+          value: '#702158'
+        },
+        {
+          id: 'red',
+          label: 'Red',
+          value: '#7d3c39'
+        },
+        {
+          id: 'yellow',
+          label: 'Yellow',
+          value: '#a78e4f'
+        },
+        {
+          id: 'skeleton',
+          label: 'Skeleton',
+          value: '#000'
+        },
+
+      ]
+    },
+    {
+      id: 'nose',
+      type: 'select',
+      label: 'Nose',
+      options: [
+        {
+          id: 'bignose',
+          label: 'Big',
+        },
+        {
+          id: 'buttonnose',
+          label: 'Button',
+        },
+        {
+          id: 'straighnose',
+          label: 'Straigh',
         },
       ]
     },
@@ -343,7 +449,7 @@ export const lpcDesignStyle: DesignStyle = {
     },
     {
       id: 'hairColor',
-      type: 'select',
+      type: 'color',
       label: 'Hair Color',
       options: hairColors
     },
@@ -376,7 +482,7 @@ export const lpcDesignStyle: DesignStyle = {
     },
     {
       id: 'facialHairColor',
-      type: 'select',
+      type: 'color',
       label: 'Facial Hair Color',
       options: hairColors
     },

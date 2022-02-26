@@ -14,7 +14,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
             }"
             [style.backgroundColor]="option.value"
             (click)="value = option.value; colorPopover.hide(); selectColor.emit(option)"
-          ></div>
+          >{{ option.label }}</div>
         </div>
       </cf-popover-content>
 
@@ -44,6 +44,7 @@ export class ColorPickerSelectComponent {
 
   @Input() icon = 'assets/icons/mdi/palette.svg';
   @Input() placeholder?: string;
+  @Input() showLabel = true;
 
   @Input() value?: string;
 

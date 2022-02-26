@@ -88,7 +88,7 @@ export type SelectOption = {
                       id="appearance-portrait-designer-{{ property.id }}"
                       [formControlName]="property.id"
                     >
-                      <option value="">Choose {{ property.label }}</option>
+                      <option [ngValue]="null">Choose {{ property.label }}</option>
                       <option
                         *ngFor="let option of property.options"
                         [ngValue]="option.id"
@@ -109,7 +109,7 @@ export type SelectOption = {
           </ng-container>
         </form>
       </div>
-      <div cfElem="preview" *ngIf="designStyle?.hasViewer">
+      <div cfElem="preview" *ngIf="designStyle?.hasViewer && showPreview">
         <cf-avatar-appearance-portrait
           *ngIf="styleForm.value"
           [appearancePortrait]="{
@@ -122,6 +122,9 @@ export type SelectOption = {
             }
           }"
         ></cf-avatar-appearance-portrait>
+        <cf-svg-icon *ngIf="false"
+          (click)="onReloadPreviewClick()"
+          src="assets/icons/mdi/reload.svg"></cf-svg-icon>
       </div>
     </div>
   `,
@@ -163,6 +166,7 @@ export class AvatarAppearancePortraitDesignerComponent
     this.propertiesForm.patchValue(properties);
   }
 
+  showPreview = true;
   formats = AppearanceFormat;
   styleOptions: DesignStyle[] = [avataaarsDesignStyle, imageDesignStyle, lpcDesignStyle, dim3FileDesignSystem, dungeonsDesignStyle];
   availableOptions: DesignStyle[] = [...this.styleOptions];
@@ -221,5 +225,12 @@ export class AvatarAppearancePortraitDesignerComponent
 
   getColorValueFromDesignStyle(color: string, propertyId: string) {
     return this.designStyle?.properties.find(prop => prop.id === propertyId)?.options?.find(opt => opt.id === color)?.value;
+  }
+
+  onReloadPreviewClick() {
+    this.showPreview = !this.showPreview;
+    setTimeout(() => {
+      this.showPreview = !this.showPreview;
+    }, 100);
   }
 }
