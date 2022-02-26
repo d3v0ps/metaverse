@@ -217,6 +217,15 @@ export class AvatarAppearancePortraitComponent {
       ].join('/'));
     }
 
+    if (appearancePortrait.style.properties.facialHair) {
+      layerUrls.push([
+        baseUrl,
+        'head',
+        appearancePortrait.style.properties.bodyVariation,
+        `${appearancePortrait.style.properties.head}.png`
+      ].join('/'));
+    }
+
     if (appearancePortrait.style.properties.leftHand) {
       layerUrls.push([
         baseUrl,

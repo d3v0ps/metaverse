@@ -110,7 +110,7 @@ const blacksmithAppearance: Appearance = {
       style: {
         id: 'lpc',
         properties: {
-          animation: '4',
+          animation: '8',
           direction: '2',
           bodyType: 'tanned2',
           bodyVariation: 'male',
@@ -127,9 +127,9 @@ const blacksmithAppearance: Appearance = {
           facialHairColor: 'brunette2',
           legs: 'armor/golden_greaves',
           feet: 'boots/golden_boots',
-          rightHand: null,
+          rightHand: 'warhammer',
           leftHand: null,
-          bothHands: 'spear',
+          bothHands: null,
         },
       },
     },

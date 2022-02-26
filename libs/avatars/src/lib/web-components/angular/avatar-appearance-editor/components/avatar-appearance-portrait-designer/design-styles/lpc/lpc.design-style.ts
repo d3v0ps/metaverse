@@ -487,6 +487,41 @@ export const lpcDesignStyle: DesignStyle = {
       options: hairColors
     },
     {
+      id: 'head',
+      type: 'select',
+      label: 'Head',
+      options: [
+        {
+          id: 'bandanas/red',
+          label: 'Red Bandana'
+        },
+        {
+          id: 'caps/leather_cap',
+          label: 'Leather Cap'
+        },
+        {
+          id: 'helms/chainhat',
+          label: 'Chain Hat'
+        },
+        {
+          id: 'helms/golden_helm',
+          label: 'Golden Helm'
+        },
+        {
+          id: 'helms/metal_helm',
+          label: 'Metal Helm'
+        },
+        {
+          id: 'hoods/chain_hood',
+          label: 'Chain Hood'
+        },
+        {
+          id: 'hoods/cloth_hood',
+          label: 'Cloth Hood'
+        }
+      ]
+    },
+    {
       id: 'torso',
       type: 'select',
       label: 'Torso',
@@ -592,6 +627,22 @@ export const lpcDesignStyle: DesignStyle = {
       type: 'select',
       label: 'Right Hand',
       options: [
+        {
+          id: 'axe',
+          label: 'Axe',
+        },
+        {
+          id: 'warhammer',
+          label: 'Warhammer',
+        },
+        {
+          id: 'pickaxe',
+          label: 'Pickaxe',
+        },
+        {
+          id: 'labrys',
+          label: 'Labrys',
+        },
         {
           id: 'bow_skeleton',
           label: 'Skeleton Bow',
