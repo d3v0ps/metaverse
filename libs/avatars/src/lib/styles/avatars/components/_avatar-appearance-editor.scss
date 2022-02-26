@@ -19,9 +19,8 @@
 }
 
 .avatar-appearance-portrait-designer {
-  display: flex;
-  flex-basis: max-content;
-  // grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   &__preview {
     min-width: 200px;
   }
