@@ -75,6 +75,78 @@ const oldManAppearance: Appearance = {
   },
 }
 
+const blacksmithAppearance: Appearance = {
+  id: '2',
+  filename: 'appearance.glb',
+  format: AppearanceFormat.Model,
+  src: 'assets/avatars/samples/thomas-anderson/default/appearance.glb',
+  variations: {
+    portrait: {
+      id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
+      filename: 'portrait.png',
+      format: AppearanceFormat.Image,
+      src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
+      style: {
+        id: 'avataaars',
+        properties: {
+          skinColor: 'Black',
+          topType: 'LongHairDreads',
+          hairColor: 'Red',
+          facialHairType: 'BeardMajestic',
+          facialHairColor: 'Red',
+          eyeType: 'Default',
+          eyebrowType: 'Default',
+          mouthType: 'Twinkle',
+          clotheType: 'CollarSweater',
+          clotheColor: 'PastelOrange',
+        },
+      },
+    },
+    dim2: {
+      id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
+      filename: 'portrait.png',
+      format: AppearanceFormat.Image,
+      src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
+      style: {
+        id: 'lpc',
+        properties: {
+          animation: '4',
+          direction: '2',
+          bodyType: 'tanned2',
+          bodyVariation: 'male',
+          torso: 'gold/chest',
+          torso2: null,
+          arms: 'gold/arms',
+          back: 'cape/normal/cape_gray',
+          hair: 'messy2',
+          hairColor: 'brunette2',
+          ears: null,
+          nose: null,
+          eyes: 'purple',
+          facialHair: 'beard',
+          facialHairColor: 'brunette2',
+          legs: 'armor/golden_greaves',
+          feet: 'boots/golden_boots',
+          rightHand: null,
+          leftHand: null,
+          bothHands: 'spear',
+        },
+      },
+    },
+    dim3: {
+      id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
+      filename: 'portrait.png',
+      format: AppearanceFormat.Image,
+      src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
+      style: {
+        id: 'dim3-file',
+        properties: {
+        },
+      },
+    },
+  },
+}
+
 export const userAvatars: UserAvatarDocType[] = [
   {
     id: 'x0',
@@ -84,6 +156,20 @@ export const userAvatars: UserAvatarDocType[] = [
     bio: 'Welcome to The Central Factory Metaverse! Take a look around the Start section',
     selectedAppearance: oldManAppearance,
     appearances: [oldManAppearance],
+    scopes: [
+    ],
+    skills: [
+    ],
+  },
+
+  {
+    id: 'x1',
+    welcomeMessage: 'Hello!',
+    name: 'The Blacksmith',
+    title: 'Unknown',
+    bio: 'Welcome to The Central Factory Metaverse! Take a look around the Start section',
+    selectedAppearance: blacksmithAppearance,
+    appearances: [blacksmithAppearance],
     scopes: [
     ],
     skills: [
