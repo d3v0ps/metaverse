@@ -14,14 +14,14 @@ export class NetworkService {
   }
 
   async start() {
-    console.log('starting network service');
+    // console.log('starting network service');
   }
 
   private generatePrivateServer(name: string) {
-    console.log(name);
+    // console.log(name);
   }
 
   private generatePublicServer(name: string) {
-    console.log(name);
+    // console.log(name);
   }
 }

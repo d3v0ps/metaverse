@@ -1,19 +1,19 @@
 
 export const directions = [
   {
-    id: '2',
+    id: 'south',
     label: 'South',
   },
   {
-    id: '1',
+    id: 'left',
     label: 'Left',
   },
   {
-    id: '3',
+    id: 'right',
     label: 'Right',
   },
   {
-    id: '0',
+    id: 'north',
     label: 'North',
   },
 ]

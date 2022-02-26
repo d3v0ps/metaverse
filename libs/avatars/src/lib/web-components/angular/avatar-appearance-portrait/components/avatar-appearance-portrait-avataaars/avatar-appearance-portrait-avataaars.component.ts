@@ -5,11 +5,19 @@ import * as ReactDOM from 'react-dom';
 
 @Component({
   selector: 'cf-avatar-appearance-portrait-avataaars',
-  template: ` <div style="display: contents;" #container></div> `,
+  template: `<cf-react-renderer [component]="component" [props]="properties"></cf-react-renderer>`,
 })
 export class AvatarAppearancePortraitAvataaarsComponent {
-  @Input() set properties(value: Record<string, string>) {
-    this._properties = value;
+
+  component = Avatars;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Input() set properties(value: Record<string, any>) {
+    this._properties = {
+      avatarStyle: 'Circle',
+      ...value,
+      style: { width: '90%', height: '90%', margin: '0 5%' }
+    };
     this.render();
   }
   get properties(): Record<string, string> {
@@ -27,7 +35,8 @@ export class AvatarAppearancePortraitAvataaarsComponent {
   }
 
   private _container?: ElementRef<HTMLDivElement>;
-  private _properties: Record<string, string> = {};
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _properties: Record<string, any> = {};
 
   private render() {
     if (!this.container) {

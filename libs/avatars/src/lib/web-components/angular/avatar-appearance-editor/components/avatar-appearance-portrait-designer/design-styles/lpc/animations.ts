@@ -1,26 +1,26 @@
 export const animations = [
   {
-    id: '12',
-    label: 'Right Weapon',
-  },
-  {
-    id: '4',
-    label: 'Dual Weapon',
-  },
-  {
-    id: '8',
+    id: 'walk',
     label: 'Walk',
   },
   {
-    id: '16',
-    label: 'Bow',
-  },
-  {
-    id: '0',
+    id: 'cast',
     label: 'Cast',
   },
   {
-    id: '20',
+    id: 'right-arm',
+    label: 'Right Weapon',
+  },
+  {
+    id: 'dual-wield',
+    label: 'Dual Weapon',
+  },
+  {
+    id: 'bow',
+    label: 'Bow',
+  },
+  {
+    id: 'fall',
     label: 'Fall',
   },
 ]

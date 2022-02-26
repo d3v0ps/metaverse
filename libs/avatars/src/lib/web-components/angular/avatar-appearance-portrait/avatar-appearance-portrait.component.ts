@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Scene } from 'phaser';
 import { AppearancePortrait, AppearanceVariation } from '../../../models/appearance';
+import { LPCAvatarScene } from '../../phaser/lpc-avatar.scene';
 
 @Component({
   selector: 'cf-avatar-appearance-portrait',
@@ -16,9 +18,7 @@ import { AppearancePortrait, AppearanceVariation } from '../../../models/appeara
         </div>
         </ng-container>
         <ng-container *ngSwitchCase="'lpc'">
-          <cf-layered-spritesheet
-            [scale]="scale"
-            [layers]="getLpcLayers(appearancePortrait)"></cf-layered-spritesheet>
+          <cf-phaser-renderer *ngIf="scenes" [scenes]="scenes"></cf-phaser-renderer>
         </ng-container>
         <ng-container *ngSwitchCase="'image'">
           <img cfElem="image" *ngIf="src" [src]="src" />
@@ -65,6 +65,22 @@ export class AvatarAppearancePortraitComponent {
       ? this.domSanitizer.bypassSecurityTrustUrl(value.src)
       : undefined;
     this._appearancePortrait = value;
+
+    if (!value) {
+      return;
+    }
+
+    const layers = this.getLpcLayers(value);
+    const animation = value.style.properties?.animation ? `${value.style.properties.animation}/${value.style.properties.direction}` : 'walk/south';
+
+    if (layers.length <= 0) {
+      this.scenes = undefined;
+      return;
+    }
+
+    this.scenes = {
+      room: new LPCAvatarScene({}, this.getLpcLayers(value), animation)
+    }
   }
   get appearancePortrait(): AppearanceVariation | undefined {
     return this._appearancePortrait;
@@ -76,6 +92,8 @@ export class AvatarAppearancePortraitComponent {
   @Input() scale = 3;
 
   @Output() appearanceClick = new EventEmitter<AppearancePortrait>();
+
+  scenes?: Record<string, Scene>;
 
   public src?: SafeUrl;
 
@@ -93,205 +111,214 @@ export class AvatarAppearancePortraitComponent {
     return `assets/avatars/lpc/bases/${urlParams}/Universal.png`;
   }
 
-  getLpcLayers(appearancePortrait: AppearancePortrait | undefined) {
+  getLpcLayers(appearancePortrait: AppearancePortrait | undefined): {
+    id: string;
+    url: string;
+  }[] {
     // https://raw.githubusercontent.com/central-factory/Universal-LPC-spritesheet/master/body/male/dark.png
     const baseUrl = `https://raw.githubusercontent.com/central-factory/Universal-LPC-spritesheet/master`;
 
-    const canRender = appearancePortrait && appearancePortrait.style.properties.bodyType && appearancePortrait.style.properties.bodyType;
+    const canRender = appearancePortrait && appearancePortrait.style.properties.bodyType && appearancePortrait.style.properties.bodyVariation;
 
     if (!canRender) {
       return [];
     }
 
-    const layerUrls: string[] = [];
+    return [
+      appearancePortrait.style.properties.shadows ? {
+        id: 'shadows',
+        url: [
+          baseUrl,
+          'shadows',
+          appearancePortrait.style.properties.bodyVariation,
+          `shadow.png`
+        ].join('/')
+      } : null,
 
-    layerUrls.push([
-      baseUrl,
-      'shadows',
-      appearancePortrait.style.properties.bodyVariation,
-      `shadow.png`
-    ].join('/'));
+      appearancePortrait.style.properties.bodyType ? {
+        id: 'body',
+        url: [
+          baseUrl,
+          'body',
+          appearancePortrait.style.properties.bodyVariation,
+          `${appearancePortrait.style.properties.bodyType}.png`
+        ].join('/')
+      } : null,
 
-    layerUrls.push([
-      baseUrl,
-      'body',
-      appearancePortrait.style.properties.bodyVariation,
-      `${appearancePortrait.style.properties.bodyType}.png`
-    ].join('/'));
+      appearancePortrait.style.properties.legs ? {
+        id: 'legs',
+        url: [
+          baseUrl,
+          'legs',
+          appearancePortrait.style.properties.bodyVariation,
+          `${appearancePortrait.style.properties.legs}.png`
+        ].join('/')
+      } : null,
 
-    if (appearancePortrait.style.properties.legs) {
-      layerUrls.push([
-        baseUrl,
-        'legs',
-        appearancePortrait.style.properties.bodyVariation,
-        `${appearancePortrait.style.properties.legs}.png`
-      ].join('/'));
-    }
+      appearancePortrait.style.properties.feet ? {
+        id: 'feet',
+        url: [
+          baseUrl,
+          'feet',
+          appearancePortrait.style.properties.bodyVariation,
+          `${appearancePortrait.style.properties.feet}.png`
+        ].join('/')
+      } : null,
 
-    if (appearancePortrait.style.properties.feet) {
-      layerUrls.push([
-        baseUrl,
-        'feet',
-        appearancePortrait.style.properties.bodyVariation,
-        `${appearancePortrait.style.properties.feet}.png`
-      ].join('/'));
-    }
+      appearancePortrait.style.properties.torso ? {
+        id: 'torso',
+        url: [
+          baseUrl,
+          'torso',
+          appearancePortrait.style.properties.bodyVariation,
+          `${appearancePortrait.style.properties.torso}.png`
+        ].join('/')
+      } : null,
 
-    if (appearancePortrait.style.properties.torso) {
-      layerUrls.push([
-        baseUrl,
-        'torso',
-        appearancePortrait.style.properties.bodyVariation,
-        `${appearancePortrait.style.properties.torso}.png`
-      ].join('/'));
-    }
+      appearancePortrait.style.properties.torso2 ? {
+        id: 'torso2',
+        url: [
+          baseUrl,
+          'torso',
+          appearancePortrait.style.properties.bodyVariation,
+          `${appearancePortrait.style.properties.torso2}.png`
+        ].join('/')
+      } : null,
 
-    if (appearancePortrait.style.properties.torso2) {
-      layerUrls.push([
-        baseUrl,
-        'torso',
-        appearancePortrait.style.properties.bodyVariation,
-        `${appearancePortrait.style.properties.torso2}.png`
-      ].join('/'));
-    }
+      appearancePortrait.style.properties.arms ? {
+        id: 'arms',
+        url: [
+          baseUrl,
+          'torso',
+          appearancePortrait.style.properties.bodyVariation,
+          `${appearancePortrait.style.properties.arms}.png`
+        ].join('/')
+      } : null,
 
-    if (appearancePortrait.style.properties.arms) {
-      layerUrls.push([
-        baseUrl,
-        'torso',
-        appearancePortrait.style.properties.bodyVariation,
-        `${appearancePortrait.style.properties.arms}.png`
-      ].join('/'));
-    }
-
-    if (appearancePortrait.style.properties.back) {
-      layerUrls.push([
-        baseUrl,
-        'torso',
-        appearancePortrait.style.properties.bodyVariation,
-        'back',
-        `${appearancePortrait.style.properties.back}.png`
-      ].join('/'));
-    }
-
-    if (appearancePortrait.style.properties.ears) {
-      layerUrls.push([
-        baseUrl,
-        'body',
-        appearancePortrait.style.properties.bodyVariation,
-        'ears',
-        `${appearancePortrait.style.properties.ears}_${appearancePortrait.style.properties.bodyType}.png`
-      ].join('/'));
-    }
-
-    if (appearancePortrait.style.properties.nose) {
-      layerUrls.push([
-        baseUrl,
-        'body',
-        appearancePortrait.style.properties.bodyVariation,
-        'nose',
-        `${appearancePortrait.style.properties.nose}_${appearancePortrait.style.properties.bodyType}.png`
-      ].join('/'));
-    }
-
-    if (appearancePortrait.style.properties.eyes) {
-      layerUrls.push([
-        baseUrl,
-        'body',
-        appearancePortrait.style.properties.bodyVariation,
-        'eyes',
-        `${appearancePortrait.style.properties.eyes}.png`
-      ].join('/'));
-    }
-
-    if (appearancePortrait.style.properties.hair) {
-      layerUrls.push([
-        baseUrl,
-        'hair',
-        appearancePortrait.style.properties.bodyVariation,
-        appearancePortrait.style.properties.hair,
-        `${appearancePortrait.style.properties.hairColor}.png`
-      ].join('/'));
-    }
-
-    if (appearancePortrait.style.properties.facialHair) {
-      layerUrls.push([
-        baseUrl,
-        'facial',
-        appearancePortrait.style.properties.bodyVariation,
-        appearancePortrait.style.properties.facialHair,
-        `${appearancePortrait.style.properties.facialHairColor || appearancePortrait.style.properties.hairColor}.png`
-      ].join('/'));
-    }
-
-    if (appearancePortrait.style.properties.head) {
-      layerUrls.push([
-        baseUrl,
-        'head',
-        appearancePortrait.style.properties.bodyVariation,
-        `${appearancePortrait.style.properties.head}.png`
-      ].join('/'));
-    }
-
-    if (appearancePortrait.style.properties.visor) {
-      layerUrls.push([
-        baseUrl,
-        'head',
-        appearancePortrait.style.properties.bodyVariation,
-        `${appearancePortrait.style.properties.visor}.png`
-      ].join('/'));
-    }
-
-    if (appearancePortrait.style.properties.headAccesory) {
-      layerUrls.push([
-        baseUrl,
-        'head',
-        appearancePortrait.style.properties.bodyVariation,
-        `${appearancePortrait.style.properties.headAccesory}.png`
-      ].join('/'));
-    }
-
-    if (appearancePortrait.style.properties.leftHand) {
-      layerUrls.push([
-        baseUrl,
-        'weapons',
-        appearancePortrait.style.properties.bodyVariation,
-        'left-hand',
-        `${appearancePortrait.style.properties.leftHand}.png`
-      ].join('/'));
-    }
-
-    if (appearancePortrait.style.properties.rightHand) {
-      layerUrls.push([
-        baseUrl,
-        'weapons',
-        appearancePortrait.style.properties.bodyVariation,
-        'right-hand',
-        `${appearancePortrait.style.properties.rightHand}.png`
-      ].join('/'));
-    }
-
-    if (appearancePortrait.style.properties.bothHands) {
-      layerUrls.push([
-        baseUrl,
-        'weapons',
-        appearancePortrait.style.properties.bodyVariation,
-        'both-hand',
-        `${appearancePortrait.style.properties.bothHands}.png`
-      ].join('/'));
-    }
-
-    const animation = parseInt(appearancePortrait.style.properties.animation || '0', 10);
-    const direction = animation === 20 ? 0 : parseInt(appearancePortrait.style.properties.direction || '1', 10);
-
-    const row = animation + direction;
-
-    const layers = layerUrls.map(url => ({
-      url,
-      row,
-      col: 1,
-    }));
-
-    return layers;
+      appearancePortrait.style.properties.back ? {
+        id: 'back',
+        url: [
+          baseUrl,
+          'torso',
+          appearancePortrait.style.properties.bodyVariation,
+          'back',
+          `${appearancePortrait.style.properties.back}.png`
+        ].join('/')
+      } : null,
+      appearancePortrait.style.properties.ears ?
+        {
+          id: 'ears',
+          url: [
+            baseUrl,
+            'body',
+            appearancePortrait.style.properties.bodyVariation,
+            'ears',
+            `${appearancePortrait.style.properties.ears}_${appearancePortrait.style.properties.bodyType}.png`
+          ].join('/')
+        } : null,
+      appearancePortrait.style.properties.nose ?
+        {
+          id: 'nose',
+          url: [
+            baseUrl,
+            'body',
+            appearancePortrait.style.properties.bodyVariation,
+            'nose',
+            `${appearancePortrait.style.properties.nose}_${appearancePortrait.style.properties.bodyType}.png`
+          ].join('/')
+        } : null,
+      appearancePortrait.style.properties.eyes ?
+        {
+          id: 'eyes',
+          url: [
+            baseUrl,
+            'body',
+            appearancePortrait.style.properties.bodyVariation,
+            'eyes',
+            `${appearancePortrait.style.properties.eyes}.png`
+          ].join('/')
+        } : null,
+      appearancePortrait.style.properties.hair ?
+        {
+          id: 'hair',
+          url: [
+            baseUrl,
+            'hair',
+            appearancePortrait.style.properties.bodyVariation,
+            appearancePortrait.style.properties.hair,
+            `${appearancePortrait.style.properties.hairColor}.png`
+          ].join('/')
+        } : null,
+      appearancePortrait.style.properties.facialHair ?
+        {
+          id: 'facialHair',
+          url: [
+            baseUrl,
+            'facial',
+            appearancePortrait.style.properties.bodyVariation,
+            appearancePortrait.style.properties.facialHair,
+            `${appearancePortrait.style.properties.facialHairColor || appearancePortrait.style.properties.hairColor}.png`
+          ].join('/')
+        } : null,
+      appearancePortrait.style.properties.head ?
+        {
+          id: 'head',
+          url: [
+            baseUrl,
+            'head',
+            appearancePortrait.style.properties.bodyVariation,
+            `${appearancePortrait.style.properties.head}.png`
+          ].join('/')
+        } : null,
+      appearancePortrait.style.properties.visor ?
+        {
+          id: 'visor',
+          url: [
+            baseUrl,
+            'head',
+            appearancePortrait.style.properties.bodyVariation,
+            `${appearancePortrait.style.properties.visor}.png`
+          ].join('/')
+        } : null,
+      appearancePortrait.style.properties.headAccesory ? {
+        id: 'headAccesory',
+        url: [
+          baseUrl,
+          'head',
+          appearancePortrait.style.properties.bodyVariation,
+          `${appearancePortrait.style.properties.headAccesory}.png`
+        ].join('/')
+      } : null,
+      appearancePortrait.style.properties.leftHand ? {
+        id: 'leftHand',
+        url: [
+          baseUrl,
+          'weapons',
+          appearancePortrait.style.properties.bodyVariation,
+          'left-hand',
+          `${appearancePortrait.style.properties.leftHand}.png`
+        ].join('/')
+      } : null,
+      appearancePortrait.style.properties.rightHand ? {
+        id: 'rightHand',
+        url: [
+          baseUrl,
+          'weapons',
+          appearancePortrait.style.properties.bodyVariation,
+          'right-hand',
+          `${appearancePortrait.style.properties.rightHand}.png`
+        ].join('/')
+      } : null,
+      appearancePortrait.style.properties.bothHands ? {
+        id: 'bothHands',
+        url: [
+          baseUrl,
+          'weapons',
+          appearancePortrait.style.properties.bodyVariation,
+          'both-hand',
+          `${appearancePortrait.style.properties.bothHands}.png`
+        ].join('/')
+      } : null,
+    ].filter(layer => layer ? true : false) as { id: string; url: string; }[];
   }
 }

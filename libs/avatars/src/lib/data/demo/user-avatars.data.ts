@@ -38,8 +38,8 @@ const oldManAppearance: Appearance = {
       style: {
         id: 'lpc',
         properties: {
-          animation: '8',
-          direction: '2',
+          animation: 'walk',
+          direction: 'south',
           bodyType: 'tanned2',
           bodyVariation: 'male',
           torso: 'chain/mail',
@@ -114,8 +114,8 @@ const blacksmithAppearance: Appearance = {
       style: {
         id: 'lpc',
         properties: {
-          animation: '8',
-          direction: '2',
+          animation: 'walk',
+          direction: 'south',
           bodyType: 'black',
           bodyVariation: 'male',
           torso: 'plate/legion/legionplate_gold',
