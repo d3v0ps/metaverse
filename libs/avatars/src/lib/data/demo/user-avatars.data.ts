@@ -38,12 +38,14 @@ const oldManAppearance: Appearance = {
       style: {
         id: 'lpc',
         properties: {
-          animation: '4',
+          animation: '8',
           direction: '2',
           bodyType: 'tanned2',
           bodyVariation: 'male',
           torso: 'chain/mail',
           torso2: 'chain/tabard',
+          arms: 'plate/arms',
+          back: 'cape/normal/cape_gray',
           hair: 'longknot',
           hairColor: 'white',
           facialHair: 'mustache',
@@ -65,27 +67,6 @@ const oldManAppearance: Appearance = {
         id: 'dim3-file',
         properties: {
         },
-      },
-    },
-  },
-  portrait: {
-    id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
-    filename: 'portrait.png',
-    format: AppearanceFormat.Image,
-    src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
-    style: {
-      id: 'avataaars',
-      properties: {
-        skinColor: 'Pale',
-        topType: 'LongHairBun',
-        hairColor: 'SilverGray',
-        facialHairType: 'BeardLight',
-        facialHairColor: 'Platinum',
-        eyeType: 'Close',
-        eyebrowType: 'Default',
-        mouthType: 'Twinkle',
-        clotheType: 'ShirtVNeck',
-        clotheColor: 'Black',
       },
     },
   },

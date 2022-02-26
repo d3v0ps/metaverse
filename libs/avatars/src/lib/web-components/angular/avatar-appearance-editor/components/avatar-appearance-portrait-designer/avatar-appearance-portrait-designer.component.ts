@@ -1,8 +1,9 @@
+/* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import {
   AppearanceFormat,
-  AppearancePortrait
+  AppearanceVariation
 } from '@central-factory/avatars/models/appearance';
 import { map, Subject, takeUntil, tap } from 'rxjs';
 import {
@@ -138,7 +139,7 @@ export type SelectOption = {
 })
 export class AvatarAppearancePortraitDesignerComponent
   implements OnInit, OnDestroy {
-  @Input() set appeareancePortrait(value: AppearancePortrait | undefined) {
+  @Input() set appeareancePortrait(value: AppearanceVariation | undefined) {
     this._portrait = value;
     this.styleForm.setValue(value?.style.id || 'avataaars', {
       emitEvent: false,
@@ -147,7 +148,7 @@ export class AvatarAppearancePortraitDesignerComponent
     this.propertiesForm = this.generatePropertiesForm(this.designStyle);
     this.propertiesForm.patchValue(value?.style.properties || {});
   }
-  get appeareancePortrait(): AppearancePortrait | undefined {
+  get appeareancePortrait(): AppearanceVariation | undefined {
     return this._portrait;
   }
 
@@ -172,7 +173,7 @@ export class AvatarAppearancePortraitDesignerComponent
 
   private destroy$ = new Subject<void>();
 
-  private _portrait?: AppearancePortrait;
+  private _portrait?: AppearanceVariation;
 
   constructor(private formBuilder: FormBuilder) { }
 

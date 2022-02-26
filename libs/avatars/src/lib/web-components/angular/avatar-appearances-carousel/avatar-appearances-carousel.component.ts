@@ -19,8 +19,8 @@ export enum AvatarAppearancesCarouselDisplayMode {
       </cf-avatar-appearance-card>
 
       <ng-container *ngFor="let appearance of appearances">
-        <cf-avatar-appearance-portrait
-          [appearancePortrait]="appearance?.portrait"
+        <cf-avatar-appearance-portrait *ngIf="appearance.variations"
+          [appearancePortrait]="appearance.variations[variation]"
           [active]="appearance.id === selectedAppearanceId"
           (appearanceClick)="appearanceClick.emit(appearance)"
         >
@@ -39,6 +39,7 @@ export enum AvatarAppearancesCarouselDisplayMode {
 })
 export class AvatarAppearancesCarouselComponent {
   @Input() appearances?: Appearance[];
+  @Input() variation = 'portrait';
   @Input() selectedAppearanceId?: string;
   @Input() emptyIcon = 'assets/icons/mdi/plus.svg';
   @Input() displayMode: AvatarAppearancesCarouselDisplayMode =

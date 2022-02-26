@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { AppearancePortrait } from '../../../models/appearance';
+import { AppearancePortrait, AppearanceVariation } from '../../../models/appearance';
 
 @Component({
   selector: 'cf-avatar-appearance-portrait',
@@ -18,6 +18,7 @@ import { AppearancePortrait } from '../../../models/appearance';
         </ng-container>
         <ng-container *ngSwitchCase="'lpc'">
           <cf-layered-spritesheet
+            [scale]="scale"
             [layers]="getLpcLayers(appearancePortrait)"></cf-layered-spritesheet>
         </ng-container>
         <ng-container *ngSwitchCase="'image'">
@@ -60,18 +61,20 @@ import { AppearancePortrait } from '../../../models/appearance';
   ]
 })
 export class AvatarAppearancePortraitComponent {
-  @Input() set appearancePortrait(value: AppearancePortrait | undefined) {
+  @Input() set appearancePortrait(value: AppearanceVariation | undefined) {
     this.src = value?.src
       ? this.domSanitizer.bypassSecurityTrustUrl(value.src)
       : undefined;
     this._appearancePortrait = value;
   }
-  get appearancePortrait(): AppearancePortrait | undefined {
+  get appearancePortrait(): AppearanceVariation | undefined {
     return this._appearancePortrait;
   }
   @Input() emptyIcon = 'assets/icons/mdi/head-question.svg';
   @Input() showEmptyIcon = false;
   @Input() active = false;
+
+  @Input() scale = 3;
 
   @Output() appearanceClick = new EventEmitter<AppearancePortrait>();
 
@@ -146,6 +149,25 @@ export class AvatarAppearancePortraitComponent {
       ].join('/'));
     }
 
+    if (appearancePortrait.style.properties.arms) {
+      layerUrls.push([
+        baseUrl,
+        'torso',
+        appearancePortrait.style.properties.bodyVariation,
+        `${appearancePortrait.style.properties.arms}.png`
+      ].join('/'));
+    }
+
+    if (appearancePortrait.style.properties.back) {
+      layerUrls.push([
+        baseUrl,
+        'torso',
+        appearancePortrait.style.properties.bodyVariation,
+        'back',
+        `${appearancePortrait.style.properties.back}.png`
+      ].join('/'));
+    }
+
     if (appearancePortrait.style.properties.hair) {
       layerUrls.push([
         baseUrl,
@@ -201,11 +223,12 @@ export class AvatarAppearancePortraitComponent {
 
     const row = animation + direction;
 
-    return layerUrls.map(url => ({
+    const layers = layerUrls.map(url => ({
       url,
       row,
       col: 1,
-      scale: 3
     }));
+
+    return layers;
   }
 }

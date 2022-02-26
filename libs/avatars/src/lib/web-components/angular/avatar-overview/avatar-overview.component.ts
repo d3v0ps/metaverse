@@ -95,7 +95,7 @@ export class AvatarOverviewComponent {
       name: value.name,
       title: value.title,
       welcomeMessage: value.welcomeMessage,
-      smallPreviewUrl: value.selectedAppearance.portrait.src,
+      smallPreviewUrl: value.selectedAppearance.variations?.portrait.src,
       appearance: value.selectedAppearance,
     });
   }
@@ -103,11 +103,11 @@ export class AvatarOverviewComponent {
   editing: {
     [key: string]: boolean;
   } = {
-    name: false,
-    title: false,
-    welcomeMessage: false,
-    smallPreviewUrl: false,
-  };
+      name: false,
+      title: false,
+      welcomeMessage: false,
+      smallPreviewUrl: false,
+    };
 
   form = new FormGroup({
     welcomeMessage: new FormControl(``),

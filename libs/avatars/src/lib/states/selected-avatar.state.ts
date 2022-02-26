@@ -10,7 +10,7 @@ import {
   Subscription,
   switchMap,
   tap,
-  throwError,
+  throwError
 } from 'rxjs';
 import type { UserAvatarDocType } from '../collections/user-avatars.collection';
 import { Appearance } from '../models';
@@ -125,11 +125,11 @@ export class SelectedAvatarState {
                 map((attachments) => {
                   avatar.appearances.forEach((appearance) => {
                     const portraitAttachment = attachments.find(
-                      (attachment) => attachment.id === appearance.portrait.id
+                      (attachment) => attachment.id === appearance.variations?.portrait.id
                     );
 
-                    if (portraitAttachment) {
-                      appearance.portrait.src = URL.createObjectURL(
+                    if (portraitAttachment && appearance.variations?.portrait) {
+                      appearance.variations.portrait.src = URL.createObjectURL(
                         portraitAttachment.data as Blob
                       );
                     }

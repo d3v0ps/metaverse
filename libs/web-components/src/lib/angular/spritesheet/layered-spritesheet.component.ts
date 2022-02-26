@@ -1,58 +1,136 @@
-import { Component, Input } from "@angular/core";
+import { Component, ElementRef, Input, ViewChild } from "@angular/core";
+import { forkJoin, Observable, tap } from "rxjs";
 
 export type SpritesheetLayer = {
   url: string;
   row: number;
   col: number;
-  scale: number;
 };
 
 @Component({
   selector: 'cf-layered-spritesheet',
   template: `
     <div cfBlock="layered-spritesheet">
-      <ng-container *ngFor="let layer of layers">
-        <cf-spritesheet [src]="layer.url"
-          *ngIf="!animated"
-          [row]="layer.row"
-          [col]="layer.col"
-          [scale]="layer.scale">
-        </cf-spritesheet>
-        <cf-animated-spritesheet
-          *ngIf="animated"
-          [src]="layer.url"
-          [scale]="layer.scale"
-          [rowStart]="layer.row"
-          [colStart]="layer.col"
-          [steps]="2">
-        </cf-animated-spritesheet>
-      </ng-container>
+      <canvas #canvas [attr.width]="width + 'px'" [attr.height]="height + 'px'"
+        [ngStyle]="{
+          transform: 'scale(' + scale + ')'
+        }"></canvas>
     </div>
   `,
   styles: [
     `
       .layered-spritesheet {
-        position: relative;
-        /* left: 0; */
-        /* top: 0; */
-        /* width: 100%; */
-        /* height: 100%; */
-        margin: 0 auto;
-        width: 64px;
-        height: 64px;
-
-        cf-spritesheet, cf-animated-spritesheet {
-          position: absolute;
-          margin: 0 auto;
-          left: 0;
-          top: 0;
-        }
       }
     `
   ]
 })
 export class LayeredSpritesheetComponent {
 
-  @Input() layers: SpritesheetLayer[] = [];
+  @ViewChild('canvas', { static: true, read: ElementRef }) set canvas(
+    canvas: ElementRef<HTMLCanvasElement> | undefined
+  ) {
+    this._canvas = canvas;
+    this.render();
+  }
+  get canvas(): ElementRef<HTMLCanvasElement> | undefined {
+    return this._canvas;
+  }
+
+
+  @Input() set layers(value: SpritesheetLayer[]) {
+    this._layers = value;
+    this.render();
+  }
+  get layers(): SpritesheetLayer[] {
+    return this._layers;
+  }
   @Input() animated = false;
+
+  @Input() width = 64;
+  @Input() height = 64;
+  @Input() scale = 1;
+
+  private _canvas?: ElementRef<HTMLCanvasElement>;
+  private _layers: SpritesheetLayer[] = [];
+
+  private render() {
+    if (!this.canvas) {
+      return;
+    }
+
+    const context = this.canvas.nativeElement.getContext("2d") as CanvasRenderingContext2D;
+    context.clearRect(0, 0, this.width, this.height);
+
+    this.preloadImages(this.layers)
+      .pipe(
+        tap(layers => {
+          layers.forEach(
+            ({ layer, image }) => {
+
+              const spriteX = layer.col * this.width;
+              const spriteY = layer.row * this.height;
+
+              context.drawImage(image,
+                spriteX,
+                spriteY,
+                this.width,
+                this.height,
+                0,
+                0,
+                this.width,
+                this.height,
+              );
+
+            }
+          )
+
+        })
+      );
+
+    this.layers.forEach(
+      layer => {
+        const image = new Image();
+        image.src = layer.url;
+
+        const spriteX = layer.col * this.width;
+        const spriteY = layer.row * this.height;
+
+        context.drawImage(image,
+          spriteX,
+          spriteY,
+          this.width,
+          this.height,
+          0,
+          0,
+          this.width,
+          this.height,
+        );
+
+      }
+    );
+  }
+
+  private preloadImages(layers: SpritesheetLayer[]): Observable<{
+    layer: SpritesheetLayer,
+    image: HTMLImageElement
+  }[]> {
+    return forkJoin(layers.map(layer => {
+
+      return new Observable<{
+        layer: SpritesheetLayer,
+        image: HTMLImageElement
+      }>((subscriber) => {
+        const image = new Image();
+        image.src = layer.url;
+
+        image.onload = () => {
+          subscriber.next({
+            layer,
+            image
+          });
+          subscriber.complete();
+        };
+      })
+    }));
+  }
 }

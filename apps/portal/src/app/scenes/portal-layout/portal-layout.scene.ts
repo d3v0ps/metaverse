@@ -1,10 +1,11 @@
+/* eslint-disable @nrwl/nx/enforce-module-boundaries */
 import { transition, trigger, useAnimation } from '@angular/animations';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import {
   Application,
-  ApplicationShortcut,
+  ApplicationShortcut
 } from '@central-factory/applications/models/application';
 import { RecentlyOpenedApplicationsState } from '@central-factory/applications/states/recently-opened-applications.state';
 import { SelectedApplicationState } from '@central-factory/applications/states/selected-application.state';
@@ -24,7 +25,7 @@ import {
   skip,
   switchMap,
   takeUntil,
-  tap,
+  tap
 } from 'rxjs/operators';
 
 export interface SidebarItem {
@@ -95,7 +96,7 @@ export enum SceneContentAnimationState {
                   </div>
                   <cf-avatar-appearance-portrait
                     [appearancePortrait]="
-                      data.selectedAvatar.selectedAppearance?.portrait
+                      data.selectedAvatar.selectedAppearance?.variations?.portrait
                     "
                   >
                   </cf-avatar-appearance-portrait>
@@ -280,7 +281,7 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
     private readonly recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState,
     private readonly customizationSettingsState: CustomizationSettingsState,
     private readonly breakpointObserver: BreakpointObserver
-  ) {}
+  ) { }
 
   public ngOnInit(): void {
     this.breakpointObserver
@@ -303,8 +304,8 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
           this.sceneContentAnimationState = SceneContentAnimationState.Idle;
           setTimeout(
             () =>
-              (this.sceneContentAnimationState =
-                SceneContentAnimationState.Animated),
+            (this.sceneContentAnimationState =
+              SceneContentAnimationState.Animated),
             100
           );
         }),

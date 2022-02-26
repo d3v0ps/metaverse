@@ -57,6 +57,99 @@ const hairColors = [
   },
 ];
 
+const torsos = [
+  {
+    id: 'leather/chest',
+    label: 'Leather Chest',
+  },
+  {
+    id: 'plate/chest',
+    label: 'Plate Chest',
+  },
+  {
+    id: 'gold/chest',
+    label: 'Gold Chest',
+  },
+  {
+    id: 'chain/mail',
+    label: 'Chain Mail',
+  },
+  {
+    id: 'chain/tabard',
+    label: 'Tabard',
+  },
+  {
+    id: 'shirts/longsleeve/brown_longsleeve',
+    label: 'Brown Longsleeve',
+  },
+  {
+    id: 'shirts/longsleeve/white_longsleeve',
+    label: 'White Longsleeve',
+  },
+];
+
+const arms = [
+  {
+    id: 'leather/shoulders',
+    label: 'Leather Shoulders',
+  },
+  {
+    id: 'plate/arms',
+    label: 'Plate Arms',
+  },
+  {
+    id: 'gold/arms',
+    label: 'Gold Arms',
+  },
+]
+
+const backs = [
+  {
+    id: 'cape/normal/cape_black',
+    label: 'Black Cape',
+  },
+  {
+    id: 'cape/normal/cape_blue',
+    label: 'Blue Cape',
+  },
+  {
+    id: 'cape/normal/cape_brown',
+    label: 'Brown Cape',
+  },
+  {
+    id: 'cape/normal/cape_gray',
+    label: 'Gray Cape',
+  },
+  {
+    id: 'cape/tattered/tattercape_black',
+    label: 'Tattered Black Cape',
+  },
+  {
+    id: 'cape/tattered/tattercape_black',
+    label: 'Tattered Black Cape',
+  },
+  {
+    id: 'cape/tattered/tattercape_blue',
+    label: 'Tattered Blue Cape',
+  },
+  {
+    id: 'cape/tattered/tattercape_brown',
+    label: 'Tattered Brown Cape',
+  },
+  {
+    id: 'cape/tattered/tattercape_gray',
+    label: 'Tattered Gray Cape',
+  },
+  {
+    id: 'cape/trimmed/trimcape_whiteblue',
+    label: 'Trimmed White Blue Cape',
+  },
+  {
+    id: 'wings/wings_no_th-sh',
+    label: 'Wings',
+  },
+]
+
 export const lpcDesignStyle: DesignStyle = {
   id: 'lpc',
   license: { type: 'GPL 3.0' },
@@ -291,55 +384,25 @@ export const lpcDesignStyle: DesignStyle = {
       id: 'torso',
       type: 'select',
       label: 'Torso',
-      options: [
-        {
-          id: 'leather/chest',
-          label: 'Leather Chest',
-        },
-        {
-          id: 'chain/mail',
-          label: 'Chain Mail',
-        },
-        {
-          id: 'chain/tabard',
-          label: 'Tabard',
-        },
-        {
-          id: 'shirts/longsleeve/brown_longsleeve',
-          label: 'Brown Longsleeve',
-        },
-        {
-          id: 'shirts/longsleeve/white_longsleeve',
-          label: 'White Longsleeve',
-        },
-      ]
+      options: torsos
     },
     {
       id: 'torso2',
       type: 'select',
       label: 'Torso 2',
-      options: [
-        {
-          id: 'leather/chest',
-          label: 'Leather Chest',
-        },
-        {
-          id: 'chain/mail',
-          label: 'Chain Mail',
-        },
-        {
-          id: 'chain/tabard',
-          label: 'Tabard',
-        },
-        {
-          id: 'shirts/longsleeve/brown_longsleeve',
-          label: 'Brown Longsleeve',
-        },
-        {
-          id: 'shirts/longsleeve/white_longsleeve',
-          label: 'White Longsleeve',
-        },
-      ]
+      options: torsos
+    },
+    {
+      id: 'arms',
+      type: 'select',
+      label: 'Arms',
+      options: arms
+    },
+    {
+      id: 'back',
+      type: 'select',
+      label: 'Back',
+      options: backs
     },
     {
       id: 'legs',

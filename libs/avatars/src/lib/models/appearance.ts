@@ -12,7 +12,9 @@ export type AppearanceStyle = {
   properties: Record<string, any>;
 };
 
-/** The appearance's portrait */
+/** The appearance's portrait
+ * @deprecated Use variations.portrait instead
+ */
 export type AppearancePortrait = {
   /** The portrait's ID */
   id: string;
@@ -59,8 +61,10 @@ export type Appearance = {
   /** The appearance's src url */
   src?: string;
 
-  /** The appearance's portrait */
-  portrait: AppearancePortrait;
+  /** The appearance's portrait
+   * @deprecated Use variations.portrait instead
+   */
+  portrait?: AppearancePortrait;
 
   /** The appearance's preview camera configuration
    * @deprecated This was used for the old 3D (aframe) model viewer.
