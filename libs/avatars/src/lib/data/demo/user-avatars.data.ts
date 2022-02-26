@@ -78,6 +78,7 @@ export const userAvatars: UserAvatarDocType[] = [
     welcomeMessage: 'Hello!',
     name: 'The Old Man',
     title: 'Unknown',
+    bio: 'Welcome to The Central Factory Metaverse!',
     selectedAppearance: oldManAppearance,
     appearances: [oldManAppearance],
     scopes: [

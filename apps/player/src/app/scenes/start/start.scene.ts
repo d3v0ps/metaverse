@@ -3,12 +3,12 @@ import { Router } from '@angular/router';
 import {
   Application,
   ApplicationRenderingType,
-  ApplicationShortcut,
+  ApplicationShortcut
 } from '@central-factory/applications/models/application';
 import { InstallApplicationsState } from '@central-factory/applications/states/install-application.state';
 import {
   ApplicationOrigin,
-  AvailableApplicationsState,
+  AvailableApplicationsState
 } from '@central-factory/applications/states/manage-applications.state';
 import { RecentlyOpenedApplicationsState } from '@central-factory/applications/states/recently-opened-applications.state';
 import { SelectedApplicationState } from '@central-factory/applications/states/selected-application.state';
@@ -272,7 +272,7 @@ export class StartScene implements OnDestroy {
           this.mustBeInstalled =
             application?.origin !== ApplicationOrigin.User &&
             application?.application.additionalProperties?.renderingType !==
-              ApplicationRenderingType.Webview;
+            ApplicationRenderingType.Webview;
         }),
         map((application) => application?.application)
       )
@@ -306,7 +306,7 @@ export class StartScene implements OnDestroy {
     private installApplicationsState: InstallApplicationsState,
     private userTopicsState: UserTopicsState,
     private clockService: ClockService
-  ) {}
+  ) { }
 
   ngOnDestroy(): void {
     this.destroy$.next();

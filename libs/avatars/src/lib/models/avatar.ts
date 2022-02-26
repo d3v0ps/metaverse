@@ -14,6 +14,8 @@ export interface Avatar {
   name: string;
   /** The avatar's title */
   title: string;
+  /** The avatar's bio */
+  bio?: string;
   /** The avatar's appearances */
   appearances: Appearance[];
   /** The avatar's physics */

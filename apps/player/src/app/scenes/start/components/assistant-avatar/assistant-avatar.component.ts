@@ -41,9 +41,8 @@ export class AssistantAvatarComponent {
       return;
     }
     this.assistantMessage = `
-    Welcome back <strong class="text text--primary">${
-      this.selectedAvatar.name
-    }</strong>,<br />
+    Welcome back <a href="select-avatar" class="text text--primary">${this.selectedAvatar.name
+      }</a>,<br />
       It's ${new DatePipe('en').transform(date, 'medium')}
       <br />
       What would you like to do?

@@ -6,9 +6,8 @@ import { AppearancePortrait, AppearanceVariation } from '../../../models/appeara
   selector: 'cf-avatar-appearance-portrait',
   template: `
     <div cfBlock="avatar-appearance-portrait" (click)="appearanceClick.emit(appearancePortrait)"
-      *ngIf="appearancePortrait && appearancePortrait.style"
       [cfMod]="[active ? 'active' : undefined]">
-      <ng-container [ngSwitch]="appearancePortrait.style?.id">
+      <ng-container *ngIf="appearancePortrait && appearancePortrait.style" [ngSwitch]="appearancePortrait.style?.id">
         <ng-container *ngSwitchCase="'avataaars'">
           <div cfElem="image">
             <cf-avatar-appearance-portrait-avataaars

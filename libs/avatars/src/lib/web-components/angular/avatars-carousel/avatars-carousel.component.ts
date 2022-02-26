@@ -7,8 +7,8 @@ import type { Avatar } from '../../../models/avatar';
     <div cfBlock="avatars-carousel">
       <ng-container *ngFor="let avatar of avatars">
         <div cfBlock="avatars-carousel-item" (click)="avatarClick.emit(avatar)">
-          <cf-avatar-appearance-portrait
-            [appearancePortrait]="avatar.selectedAppearance?.portrait"
+          <cf-avatar-appearance-portrait *ngIf="avatar.selectedAppearance?.variations"
+            [appearancePortrait]="avatar.selectedAppearance?.variations?.portrait"
           >
           </cf-avatar-appearance-portrait>
           <br />
@@ -20,6 +20,7 @@ import type { Avatar } from '../../../models/avatar';
 })
 export class AvatarsCarouselComponent {
   @Input() avatars: Avatar[] = [];
+  @Input() variation = 'portrait';
 
   @Output() avatarClick = new EventEmitter<Avatar>();
 }

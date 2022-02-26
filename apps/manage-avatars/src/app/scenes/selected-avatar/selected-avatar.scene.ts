@@ -15,9 +15,12 @@ import { Observable } from 'rxjs';
     >
       <div cfBlock="scene-content" *ngIf="data.avatar">
         <cf-avatar-overview
-          style="display: block; min-height: 200px;"
           [avatar]="data.avatar"
         ></cf-avatar-overview>
+
+        <p *ngIf="data.avatar.bio">
+          {{ data.avatar.bio }}
+        </p>
 
         <!-- cf-avatar-skills
             [skills]="data.avatar.skills"
@@ -44,7 +47,7 @@ export class SelectedAvatarScene {
   constructor(
     private readonly selectedAvatarState: SelectedAvatarState,
     private readonly router: Router
-  ) {}
+  ) { }
 
   onAppearanceClick(appearance: Appearance) {
     this.selectedAvatarState.selectAppearance(appearance).subscribe();

@@ -27,7 +27,7 @@ export interface AvatarOverviewInput {
   template: `
     <form [formGroup]="form" cfBlock="avatar-overview" *ngIf="form.value?.name">
       <cf-avatar-appearance-portrait
-        [appearancePortrait]="form.value.appearance?.portrait"
+        [appearancePortrait]="form.value.appearance?.variations?.portrait"
       ></cf-avatar-appearance-portrait>
 
       <div cfBlock="chatbox">
@@ -97,6 +97,7 @@ export class AvatarOverviewComponent {
       welcomeMessage: value.welcomeMessage,
       smallPreviewUrl: value.selectedAppearance.variations?.portrait.src,
       appearance: value.selectedAppearance,
+      bio: value.bio,
     });
   }
 
@@ -113,6 +114,7 @@ export class AvatarOverviewComponent {
     welcomeMessage: new FormControl(``),
     name: new FormControl(''),
     title: new FormControl(''),
+    bio: new FormControl(''),
     smallPreviewUrl: new FormControl(''),
     appearance: new FormGroup({
       id: new FormControl(''),
@@ -125,6 +127,9 @@ export class AvatarOverviewComponent {
         src: new FormControl(''),
         format: new FormControl(AppearanceFormat.Image),
         style: new FormControl({}),
+      }),
+      variations: new FormGroup({
+        portrait: new FormControl({}),
       }),
     }),
   });

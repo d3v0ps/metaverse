@@ -3,7 +3,7 @@ import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persiste
 import type {
   RxCollection,
   RxDocument,
-  RxJsonSchema,
+  RxJsonSchema
 } from 'rxdb/dist/types/types';
 import type { Avatar } from '../models/avatar';
 
@@ -64,6 +64,10 @@ export const userAvatarsSchema: RxJsonSchema<
     name: {
       type: 'string',
       description: 'Name',
+    },
+    bio: {
+      type: 'string',
+      description: 'Bio',
     },
     title: {
       type: 'string',
