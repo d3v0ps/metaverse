@@ -133,9 +133,7 @@
     &lt;/div&gt;
     &lt;/ng-container&gt;
     &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;lpc&#x27;&quot;&gt;
-      &lt;cf-layered-spritesheet
-        [scale]&#x3D;&quot;scale&quot;
-        [layers]&#x3D;&quot;getLpcLayers(appearancePortrait)&quot;&gt;&lt;/cf-layered-spritesheet&gt;
+      &lt;cf-phaser-renderer *ngIf&#x3D;&quot;scenes&quot; [scenes]&#x3D;&quot;scenes&quot;&gt;&lt;/cf-phaser-renderer&gt;
     &lt;/ng-container&gt;
     &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;image&#x27;&quot;&gt;
       &lt;img cfElem&#x3D;&quot;image&quot; *ngIf&#x3D;&quot;src&quot; [src]&#x3D;&quot;src&quot; /&gt;
@@ -177,6 +175,10 @@
                             <li>
                                     <span class="modifier">Private</span>
                                 <a href="#_appearancePortrait" >_appearancePortrait</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#scenes" >scenes</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -278,7 +280,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:82</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:100</a></div>
                             </td>
                         </tr>
 
@@ -339,7 +341,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:74</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:90</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -380,7 +382,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:72</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:88</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -406,7 +408,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:76</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:92</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -432,7 +434,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:73</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:89</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -456,7 +458,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:78</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:94</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -489,8 +491,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="96"
-                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:96</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:114</a></div>
                 </td>
             </tr>
 
@@ -528,7 +530,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <b>Returns : </b>    <code>literal type[]</code>
 
                     </div>
                     <div class="io-description">
@@ -558,8 +560,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="86"
-                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:86</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="104"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:104</a></div>
                 </td>
             </tr>
 
@@ -633,7 +635,34 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:82</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:100</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="scenes"></a>
+                    <span class="name">
+                            <span class="modifier">Optional</span>
+                        <span ><b>scenes</b></span>
+                        <a href="#scenes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Record&lt;string | Scene&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:96</a></div>
                         </td>
                     </tr>
 
@@ -661,7 +690,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:80</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:98</a></div>
                         </td>
                     </tr>
 
@@ -690,7 +719,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:69</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.component.ts:85</a></div>
                                 </td>
                             </tr>
 
@@ -750,7 +779,9 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
 import { DomSanitizer, SafeUrl } from &#x27;@angular/platform-browser&#x27;;
+import { Scene } from &#x27;phaser&#x27;;
 import { AppearancePortrait, AppearanceVariation } from &#x27;../../../models/appearance&#x27;;
+import { LPCAvatarScene } from &#x27;../../phaser/lpc-avatar.scene&#x27;;
 
 @Component({
   selector: &#x27;cf-avatar-appearance-portrait&#x27;,
@@ -766,9 +797,7 @@ import { AppearancePortrait, AppearanceVariation } from &#x27;../../../models/ap
         &lt;/div&gt;
         &lt;/ng-container&gt;
         &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;lpc&#x27;&quot;&gt;
-          &lt;cf-layered-spritesheet
-            [scale]&#x3D;&quot;scale&quot;
-            [layers]&#x3D;&quot;getLpcLayers(appearancePortrait)&quot;&gt;&lt;/cf-layered-spritesheet&gt;
+          &lt;cf-phaser-renderer *ngIf&#x3D;&quot;scenes&quot; [scenes]&#x3D;&quot;scenes&quot;&gt;&lt;/cf-phaser-renderer&gt;
         &lt;/ng-container&gt;
         &lt;ng-container *ngSwitchCase&#x3D;&quot;&#x27;image&#x27;&quot;&gt;
           &lt;img cfElem&#x3D;&quot;image&quot; *ngIf&#x3D;&quot;src&quot; [src]&#x3D;&quot;src&quot; /&gt;
@@ -815,6 +844,22 @@ export class AvatarAppearancePortraitComponent {
       ? this.domSanitizer.bypassSecurityTrustUrl(value.src)
       : undefined;
     this._appearancePortrait &#x3D; value;
+
+    if (!value) {
+      return;
+    }
+
+    const layers &#x3D; this.getLpcLayers(value);
+    const animation &#x3D; value.style.properties?.animation ? &#x60;${value.style.properties.animation}/${value.style.properties.direction}&#x60; : &#x27;walk/south&#x27;;
+
+    if (layers.length &lt;&#x3D; 0) {
+      this.scenes &#x3D; undefined;
+      return;
+    }
+
+    this.scenes &#x3D; {
+      room: new LPCAvatarScene({}, this.getLpcLayers(value), animation)
+    }
   }
   get appearancePortrait(): AppearanceVariation | undefined {
     return this._appearancePortrait;
@@ -826,6 +871,8 @@ export class AvatarAppearancePortraitComponent {
   @Input() scale &#x3D; 3;
 
   @Output() appearanceClick &#x3D; new EventEmitter&lt;AppearancePortrait&gt;();
+
+  scenes?: Record&lt;string, Scene&gt;;
 
   public src?: SafeUrl;
 
@@ -843,206 +890,215 @@ export class AvatarAppearancePortraitComponent {
     return &#x60;assets/avatars/lpc/bases/${urlParams}/Universal.png&#x60;;
   }
 
-  getLpcLayers(appearancePortrait: AppearancePortrait | undefined) {
+  getLpcLayers(appearancePortrait: AppearancePortrait | undefined): {
+    id: string;
+    url: string;
+  }[] {
     // https://raw.githubusercontent.com/central-factory/Universal-LPC-spritesheet/master/body/male/dark.png
     const baseUrl &#x3D; &#x60;https://raw.githubusercontent.com/central-factory/Universal-LPC-spritesheet/master&#x60;;
 
-    const canRender &#x3D; appearancePortrait &amp;&amp; appearancePortrait.style.properties.bodyType &amp;&amp; appearancePortrait.style.properties.bodyType;
+    const canRender &#x3D; appearancePortrait &amp;&amp; appearancePortrait.style.properties.bodyType &amp;&amp; appearancePortrait.style.properties.bodyVariation;
 
     if (!canRender) {
       return [];
     }
 
-    const layerUrls: string[] &#x3D; [];
+    return [
+      appearancePortrait.style.properties.shadows ? {
+        id: &#x27;shadows&#x27;,
+        url: [
+          baseUrl,
+          &#x27;shadows&#x27;,
+          appearancePortrait.style.properties.bodyVariation,
+          &#x60;shadow.png&#x60;
+        ].join(&#x27;/&#x27;)
+      } : null,
 
-    layerUrls.push([
-      baseUrl,
-      &#x27;shadows&#x27;,
-      appearancePortrait.style.properties.bodyVariation,
-      &#x60;shadow.png&#x60;
-    ].join(&#x27;/&#x27;));
+      appearancePortrait.style.properties.bodyType ? {
+        id: &#x27;body&#x27;,
+        url: [
+          baseUrl,
+          &#x27;body&#x27;,
+          appearancePortrait.style.properties.bodyVariation,
+          &#x60;${appearancePortrait.style.properties.bodyType}.png&#x60;
+        ].join(&#x27;/&#x27;)
+      } : null,
 
-    layerUrls.push([
-      baseUrl,
-      &#x27;body&#x27;,
-      appearancePortrait.style.properties.bodyVariation,
-      &#x60;${appearancePortrait.style.properties.bodyType}.png&#x60;
-    ].join(&#x27;/&#x27;));
+      appearancePortrait.style.properties.legs ? {
+        id: &#x27;legs&#x27;,
+        url: [
+          baseUrl,
+          &#x27;legs&#x27;,
+          appearancePortrait.style.properties.bodyVariation,
+          &#x60;${appearancePortrait.style.properties.legs}.png&#x60;
+        ].join(&#x27;/&#x27;)
+      } : null,
 
-    if (appearancePortrait.style.properties.legs) {
-      layerUrls.push([
-        baseUrl,
-        &#x27;legs&#x27;,
-        appearancePortrait.style.properties.bodyVariation,
-        &#x60;${appearancePortrait.style.properties.legs}.png&#x60;
-      ].join(&#x27;/&#x27;));
-    }
+      appearancePortrait.style.properties.feet ? {
+        id: &#x27;feet&#x27;,
+        url: [
+          baseUrl,
+          &#x27;feet&#x27;,
+          appearancePortrait.style.properties.bodyVariation,
+          &#x60;${appearancePortrait.style.properties.feet}.png&#x60;
+        ].join(&#x27;/&#x27;)
+      } : null,
 
-    if (appearancePortrait.style.properties.feet) {
-      layerUrls.push([
-        baseUrl,
-        &#x27;feet&#x27;,
-        appearancePortrait.style.properties.bodyVariation,
-        &#x60;${appearancePortrait.style.properties.feet}.png&#x60;
-      ].join(&#x27;/&#x27;));
-    }
+      appearancePortrait.style.properties.torso ? {
+        id: &#x27;torso&#x27;,
+        url: [
+          baseUrl,
+          &#x27;torso&#x27;,
+          appearancePortrait.style.properties.bodyVariation,
+          &#x60;${appearancePortrait.style.properties.torso}.png&#x60;
+        ].join(&#x27;/&#x27;)
+      } : null,
 
-    if (appearancePortrait.style.properties.torso) {
-      layerUrls.push([
-        baseUrl,
-        &#x27;torso&#x27;,
-        appearancePortrait.style.properties.bodyVariation,
-        &#x60;${appearancePortrait.style.properties.torso}.png&#x60;
-      ].join(&#x27;/&#x27;));
-    }
+      appearancePortrait.style.properties.torso2 ? {
+        id: &#x27;torso2&#x27;,
+        url: [
+          baseUrl,
+          &#x27;torso&#x27;,
+          appearancePortrait.style.properties.bodyVariation,
+          &#x60;${appearancePortrait.style.properties.torso2}.png&#x60;
+        ].join(&#x27;/&#x27;)
+      } : null,
 
-    if (appearancePortrait.style.properties.torso2) {
-      layerUrls.push([
-        baseUrl,
-        &#x27;torso&#x27;,
-        appearancePortrait.style.properties.bodyVariation,
-        &#x60;${appearancePortrait.style.properties.torso2}.png&#x60;
-      ].join(&#x27;/&#x27;));
-    }
+      appearancePortrait.style.properties.arms ? {
+        id: &#x27;arms&#x27;,
+        url: [
+          baseUrl,
+          &#x27;torso&#x27;,
+          appearancePortrait.style.properties.bodyVariation,
+          &#x60;${appearancePortrait.style.properties.arms}.png&#x60;
+        ].join(&#x27;/&#x27;)
+      } : null,
 
-    if (appearancePortrait.style.properties.arms) {
-      layerUrls.push([
-        baseUrl,
-        &#x27;torso&#x27;,
-        appearancePortrait.style.properties.bodyVariation,
-        &#x60;${appearancePortrait.style.properties.arms}.png&#x60;
-      ].join(&#x27;/&#x27;));
-    }
-
-    if (appearancePortrait.style.properties.back) {
-      layerUrls.push([
-        baseUrl,
-        &#x27;torso&#x27;,
-        appearancePortrait.style.properties.bodyVariation,
-        &#x27;back&#x27;,
-        &#x60;${appearancePortrait.style.properties.back}.png&#x60;
-      ].join(&#x27;/&#x27;));
-    }
-
-    if (appearancePortrait.style.properties.ears) {
-      layerUrls.push([
-        baseUrl,
-        &#x27;body&#x27;,
-        appearancePortrait.style.properties.bodyVariation,
-        &#x27;ears&#x27;,
-        &#x60;${appearancePortrait.style.properties.ears}_${appearancePortrait.style.properties.bodyType}.png&#x60;
-      ].join(&#x27;/&#x27;));
-    }
-
-    if (appearancePortrait.style.properties.nose) {
-      layerUrls.push([
-        baseUrl,
-        &#x27;body&#x27;,
-        appearancePortrait.style.properties.bodyVariation,
-        &#x27;nose&#x27;,
-        &#x60;${appearancePortrait.style.properties.nose}_${appearancePortrait.style.properties.bodyType}.png&#x60;
-      ].join(&#x27;/&#x27;));
-    }
-
-    if (appearancePortrait.style.properties.eyes) {
-      layerUrls.push([
-        baseUrl,
-        &#x27;body&#x27;,
-        appearancePortrait.style.properties.bodyVariation,
-        &#x27;eyes&#x27;,
-        &#x60;${appearancePortrait.style.properties.eyes}.png&#x60;
-      ].join(&#x27;/&#x27;));
-    }
-
-    if (appearancePortrait.style.properties.hair) {
-      layerUrls.push([
-        baseUrl,
-        &#x27;hair&#x27;,
-        appearancePortrait.style.properties.bodyVariation,
-        appearancePortrait.style.properties.hair,
-        &#x60;${appearancePortrait.style.properties.hairColor}.png&#x60;
-      ].join(&#x27;/&#x27;));
-    }
-
-    if (appearancePortrait.style.properties.facialHair) {
-      layerUrls.push([
-        baseUrl,
-        &#x27;facial&#x27;,
-        appearancePortrait.style.properties.bodyVariation,
-        appearancePortrait.style.properties.facialHair,
-        &#x60;${appearancePortrait.style.properties.facialHairColor || appearancePortrait.style.properties.hairColor}.png&#x60;
-      ].join(&#x27;/&#x27;));
-    }
-
-    if (appearancePortrait.style.properties.head) {
-      layerUrls.push([
-        baseUrl,
-        &#x27;head&#x27;,
-        appearancePortrait.style.properties.bodyVariation,
-        &#x60;${appearancePortrait.style.properties.head}.png&#x60;
-      ].join(&#x27;/&#x27;));
-    }
-
-    if (appearancePortrait.style.properties.visor) {
-      layerUrls.push([
-        baseUrl,
-        &#x27;head&#x27;,
-        appearancePortrait.style.properties.bodyVariation,
-        &#x60;${appearancePortrait.style.properties.visor}.png&#x60;
-      ].join(&#x27;/&#x27;));
-    }
-
-    if (appearancePortrait.style.properties.headAccesory) {
-      layerUrls.push([
-        baseUrl,
-        &#x27;head&#x27;,
-        appearancePortrait.style.properties.bodyVariation,
-        &#x60;${appearancePortrait.style.properties.headAccesory}.png&#x60;
-      ].join(&#x27;/&#x27;));
-    }
-
-    if (appearancePortrait.style.properties.leftHand) {
-      layerUrls.push([
-        baseUrl,
-        &#x27;weapons&#x27;,
-        appearancePortrait.style.properties.bodyVariation,
-        &#x27;left-hand&#x27;,
-        &#x60;${appearancePortrait.style.properties.leftHand}.png&#x60;
-      ].join(&#x27;/&#x27;));
-    }
-
-    if (appearancePortrait.style.properties.rightHand) {
-      layerUrls.push([
-        baseUrl,
-        &#x27;weapons&#x27;,
-        appearancePortrait.style.properties.bodyVariation,
-        &#x27;right-hand&#x27;,
-        &#x60;${appearancePortrait.style.properties.rightHand}.png&#x60;
-      ].join(&#x27;/&#x27;));
-    }
-
-    if (appearancePortrait.style.properties.bothHands) {
-      layerUrls.push([
-        baseUrl,
-        &#x27;weapons&#x27;,
-        appearancePortrait.style.properties.bodyVariation,
-        &#x27;both-hand&#x27;,
-        &#x60;${appearancePortrait.style.properties.bothHands}.png&#x60;
-      ].join(&#x27;/&#x27;));
-    }
-
-    const animation &#x3D; parseInt(appearancePortrait.style.properties.animation || &#x27;0&#x27;, 10);
-    const direction &#x3D; animation &#x3D;&#x3D;&#x3D; 20 ? 0 : parseInt(appearancePortrait.style.properties.direction || &#x27;1&#x27;, 10);
-
-    const row &#x3D; animation + direction;
-
-    const layers &#x3D; layerUrls.map(url &#x3D;&gt; ({
-      url,
-      row,
-      col: 1,
-    }));
-
-    return layers;
+      appearancePortrait.style.properties.back ? {
+        id: &#x27;back&#x27;,
+        url: [
+          baseUrl,
+          &#x27;torso&#x27;,
+          appearancePortrait.style.properties.bodyVariation,
+          &#x27;back&#x27;,
+          &#x60;${appearancePortrait.style.properties.back}.png&#x60;
+        ].join(&#x27;/&#x27;)
+      } : null,
+      appearancePortrait.style.properties.ears ?
+        {
+          id: &#x27;ears&#x27;,
+          url: [
+            baseUrl,
+            &#x27;body&#x27;,
+            appearancePortrait.style.properties.bodyVariation,
+            &#x27;ears&#x27;,
+            &#x60;${appearancePortrait.style.properties.ears}_${appearancePortrait.style.properties.bodyType}.png&#x60;
+          ].join(&#x27;/&#x27;)
+        } : null,
+      appearancePortrait.style.properties.nose ?
+        {
+          id: &#x27;nose&#x27;,
+          url: [
+            baseUrl,
+            &#x27;body&#x27;,
+            appearancePortrait.style.properties.bodyVariation,
+            &#x27;nose&#x27;,
+            &#x60;${appearancePortrait.style.properties.nose}_${appearancePortrait.style.properties.bodyType}.png&#x60;
+          ].join(&#x27;/&#x27;)
+        } : null,
+      appearancePortrait.style.properties.eyes ?
+        {
+          id: &#x27;eyes&#x27;,
+          url: [
+            baseUrl,
+            &#x27;body&#x27;,
+            appearancePortrait.style.properties.bodyVariation,
+            &#x27;eyes&#x27;,
+            &#x60;${appearancePortrait.style.properties.eyes}.png&#x60;
+          ].join(&#x27;/&#x27;)
+        } : null,
+      appearancePortrait.style.properties.hair ?
+        {
+          id: &#x27;hair&#x27;,
+          url: [
+            baseUrl,
+            &#x27;hair&#x27;,
+            appearancePortrait.style.properties.bodyVariation,
+            appearancePortrait.style.properties.hair,
+            &#x60;${appearancePortrait.style.properties.hairColor}.png&#x60;
+          ].join(&#x27;/&#x27;)
+        } : null,
+      appearancePortrait.style.properties.facialHair ?
+        {
+          id: &#x27;facialHair&#x27;,
+          url: [
+            baseUrl,
+            &#x27;facial&#x27;,
+            appearancePortrait.style.properties.bodyVariation,
+            appearancePortrait.style.properties.facialHair,
+            &#x60;${appearancePortrait.style.properties.facialHairColor || appearancePortrait.style.properties.hairColor}.png&#x60;
+          ].join(&#x27;/&#x27;)
+        } : null,
+      appearancePortrait.style.properties.head ?
+        {
+          id: &#x27;head&#x27;,
+          url: [
+            baseUrl,
+            &#x27;head&#x27;,
+            appearancePortrait.style.properties.bodyVariation,
+            &#x60;${appearancePortrait.style.properties.head}.png&#x60;
+          ].join(&#x27;/&#x27;)
+        } : null,
+      appearancePortrait.style.properties.visor ?
+        {
+          id: &#x27;visor&#x27;,
+          url: [
+            baseUrl,
+            &#x27;head&#x27;,
+            appearancePortrait.style.properties.bodyVariation,
+            &#x60;${appearancePortrait.style.properties.visor}.png&#x60;
+          ].join(&#x27;/&#x27;)
+        } : null,
+      appearancePortrait.style.properties.headAccesory ? {
+        id: &#x27;headAccesory&#x27;,
+        url: [
+          baseUrl,
+          &#x27;head&#x27;,
+          appearancePortrait.style.properties.bodyVariation,
+          &#x60;${appearancePortrait.style.properties.headAccesory}.png&#x60;
+        ].join(&#x27;/&#x27;)
+      } : null,
+      appearancePortrait.style.properties.leftHand ? {
+        id: &#x27;leftHand&#x27;,
+        url: [
+          baseUrl,
+          &#x27;weapons&#x27;,
+          appearancePortrait.style.properties.bodyVariation,
+          &#x27;left-hand&#x27;,
+          &#x60;${appearancePortrait.style.properties.leftHand}.png&#x60;
+        ].join(&#x27;/&#x27;)
+      } : null,
+      appearancePortrait.style.properties.rightHand ? {
+        id: &#x27;rightHand&#x27;,
+        url: [
+          baseUrl,
+          &#x27;weapons&#x27;,
+          appearancePortrait.style.properties.bodyVariation,
+          &#x27;right-hand&#x27;,
+          &#x60;${appearancePortrait.style.properties.rightHand}.png&#x60;
+        ].join(&#x27;/&#x27;)
+      } : null,
+      appearancePortrait.style.properties.bothHands ? {
+        id: &#x27;bothHands&#x27;,
+        url: [
+          baseUrl,
+          &#x27;weapons&#x27;,
+          appearancePortrait.style.properties.bodyVariation,
+          &#x27;both-hand&#x27;,
+          &#x60;${appearancePortrait.style.properties.bothHands}.png&#x60;
+        ].join(&#x27;/&#x27;)
+      } : null,
+    ].filter(layer &#x3D;&gt; layer ? true : false) as { id: string; url: string; }[];
   }
 }
 </code></pre>
@@ -1103,7 +1159,7 @@ export class AvatarAppearancePortraitComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-portrait" (click)="appearanceClick.emit(appearancePortrait)"  [cfMod]="[active ? \'active\' : undefined]">  <ng-container *ngIf="appearancePortrait && appearancePortrait.style" [ngSwitch]="appearancePortrait.style?.id">    <ng-container *ngSwitchCase="\'avataaars\'">      <div cfElem="image">        <cf-avatar-appearance-portrait-avataaars          [properties]="appearancePortrait.style.properties"        ></cf-avatar-appearance-portrait-avataaars>    </div>    </ng-container>    <ng-container *ngSwitchCase="\'lpc\'">      <cf-layered-spritesheet        [scale]="scale"        [layers]="getLpcLayers(appearancePortrait)"></cf-layered-spritesheet>    </ng-container>    <ng-container *ngSwitchCase="\'image\'">      <img cfElem="image" *ngIf="src" [src]="src" />    </ng-container>  </ng-container>  <cf-svg-icon    *ngIf="!src && showEmptyIcon"    [src]="emptyIcon"  ></cf-svg-icon></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-portrait" (click)="appearanceClick.emit(appearancePortrait)"  [cfMod]="[active ? \'active\' : undefined]">  <ng-container *ngIf="appearancePortrait && appearancePortrait.style" [ngSwitch]="appearancePortrait.style?.id">    <ng-container *ngSwitchCase="\'avataaars\'">      <div cfElem="image">        <cf-avatar-appearance-portrait-avataaars          [properties]="appearancePortrait.style.properties"        ></cf-avatar-appearance-portrait-avataaars>    </div>    </ng-container>    <ng-container *ngSwitchCase="\'lpc\'">      <cf-phaser-renderer *ngIf="scenes" [scenes]="scenes"></cf-phaser-renderer>    </ng-container>    <ng-container *ngSwitchCase="\'image\'">      <img cfElem="image" *ngIf="src" [src]="src" />    </ng-container>  </ng-container>  <cf-svg-icon    *ngIf="!src && showEmptyIcon"    [src]="emptyIcon"  ></cf-svg-icon></div></div>'
     var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarAppearanceSpritesheetComponent', 'selector': 'cf-avatar-appearance-spritesheet'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarAppearancePortraitComponent'};

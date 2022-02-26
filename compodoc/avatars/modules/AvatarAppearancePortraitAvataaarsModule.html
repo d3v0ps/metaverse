@@ -163,14 +163,15 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
 import { NgModule } from &#x27;@angular/core&#x27;;
 import { BemModule } from &#x27;@central-factory/web-components/angular/bem/bem.module&#x27;;
+import { ReactRendererModule } from &#x27;@central-factory/web-components/angular/react/react-renderer.module&#x27;;
 import { AvatarAppearancePortraitAvataaarsComponent } from &#x27;./avatar-appearance-portrait-avataaars.component&#x27;;
 
 @NgModule({
   declarations: [AvatarAppearancePortraitAvataaarsComponent],
-  imports: [CommonModule, BemModule],
+  imports: [CommonModule, BemModule, ReactRendererModule],
   exports: [AvatarAppearancePortraitAvataaarsComponent],
 })
-export class AvatarAppearancePortraitAvataaarsModule {}
+export class AvatarAppearancePortraitAvataaarsModule { }
 </code></pre>
     </div>
 </div>

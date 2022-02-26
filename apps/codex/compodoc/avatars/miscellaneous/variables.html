@@ -186,6 +186,9 @@
                             <a href="#rightHands" title="libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/design-styles/lpc/right-hands.ts" ><b>rightHands</b>&nbsp;&nbsp;&nbsp;(libs/.../right-hands.ts)</a>
                         </li>
                         <li>
+                            <a href="#ROOM_SCENE_PROVIDER" title="libs/avatars/src/lib/web-components/phaser/lpc-avatar.scene.ts" ><b>ROOM_SCENE_PROVIDER</b>&nbsp;&nbsp;&nbsp;(libs/.../lpc-avatar.scene.ts)</a>
+                        </li>
+                        <li>
                             <a href="#scopesMocks" title="libs/avatars/src/lib/data/storybook/scopes.ts" ><b>scopesMocks</b>&nbsp;&nbsp;&nbsp;(libs/.../scopes.ts)</a>
                         </li>
                         <li>
@@ -248,27 +251,27 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>[
   {
-    id: &#x27;12&#x27;,
-    label: &#x27;Right Weapon&#x27;,
-  },
-  {
-    id: &#x27;4&#x27;,
-    label: &#x27;Dual Weapon&#x27;,
-  },
-  {
-    id: &#x27;8&#x27;,
+    id: &#x27;walk&#x27;,
     label: &#x27;Walk&#x27;,
   },
   {
-    id: &#x27;16&#x27;,
-    label: &#x27;Bow&#x27;,
-  },
-  {
-    id: &#x27;0&#x27;,
+    id: &#x27;cast&#x27;,
     label: &#x27;Cast&#x27;,
   },
   {
-    id: &#x27;20&#x27;,
+    id: &#x27;right-arm&#x27;,
+    label: &#x27;Right Weapon&#x27;,
+  },
+  {
+    id: &#x27;dual-wield&#x27;,
+    label: &#x27;Dual Weapon&#x27;,
+  },
+  {
+    id: &#x27;bow&#x27;,
+    label: &#x27;Bow&#x27;,
+  },
+  {
+    id: &#x27;fall&#x27;,
     label: &#x27;Fall&#x27;,
   },
 ]</code>
@@ -1207,8 +1210,8 @@
       style: {
         id: &#x27;lpc&#x27;,
         properties: {
-          animation: &#x27;8&#x27;,
-          direction: &#x27;2&#x27;,
+          animation: &#x27;walk&#x27;,
+          direction: &#x27;south&#x27;,
           bodyType: &#x27;black&#x27;,
           bodyVariation: &#x27;male&#x27;,
           torso: &#x27;plate/legion/legionplate_gold&#x27;,
@@ -1306,8 +1309,8 @@
       style: {
         id: &#x27;lpc&#x27;,
         properties: {
-          animation: &#x27;8&#x27;,
-          direction: &#x27;2&#x27;,
+          animation: &#x27;walk&#x27;,
+          direction: &#x27;south&#x27;,
           bodyType: &#x27;tanned2&#x27;,
           bodyVariation: &#x27;male&#x27;,
           torso: &#x27;chain/mail&#x27;,
@@ -1986,19 +1989,19 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>[
   {
-    id: &#x27;2&#x27;,
+    id: &#x27;south&#x27;,
     label: &#x27;South&#x27;,
   },
   {
-    id: &#x27;1&#x27;,
+    id: &#x27;left&#x27;,
     label: &#x27;Left&#x27;,
   },
   {
-    id: &#x27;3&#x27;,
+    id: &#x27;right&#x27;,
     label: &#x27;Right&#x27;,
   },
   {
-    id: &#x27;0&#x27;,
+    id: &#x27;north&#x27;,
     label: &#x27;North&#x27;,
   },
 ]</code>
@@ -3738,6 +3741,38 @@
     label: &#x27;Wood Wand&#x27;,
   }
 ]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/avatars/src/lib/web-components/phaser/lpc-avatar.scene.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ROOM_SCENE_PROVIDER"></a>
+                    <span class="name">
+                        <span ><b>ROOM_SCENE_PROVIDER</b></span>
+                        <a href="#ROOM_SCENE_PROVIDER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+  provide: Scene,
+  useClass: LPCAvatarScene
+}</code>
                     </td>
                 </tr>
 

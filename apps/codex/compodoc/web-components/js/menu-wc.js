@@ -188,6 +188,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                             </li>
                             <li class="link">
+                                <a href="modules/PhaserRendererModule.html" data-type="entity-link" >PhaserRendererModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-PhaserRendererModule-545eaa34b54bbeeba190a9a4825120b2"' : 'data-target="#xs-components-links-module-PhaserRendererModule-545eaa34b54bbeeba190a9a4825120b2"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PhaserRendererModule-545eaa34b54bbeeba190a9a4825120b2"' :
+                                            'id="xs-components-links-module-PhaserRendererModule-545eaa34b54bbeeba190a9a4825120b2"' }>
+                                            <li class="link">
+                                                <a href="components/PhaserRendererComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >PhaserRendererComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
                                 <a href="modules/PopoverModule.html" data-type="entity-link" >PopoverModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
@@ -217,6 +234,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                         </li>
                                     </ul>
                                 </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/ReactRendererModule.html" data-type="entity-link" >ReactRendererModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-ReactRendererModule-27a8bbc5f37556220390977c4853706c"' : 'data-target="#xs-components-links-module-ReactRendererModule-27a8bbc5f37556220390977c4853706c"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ReactRendererModule-27a8bbc5f37556220390977c4853706c"' :
+                                            'id="xs-components-links-module-ReactRendererModule-27a8bbc5f37556220390977c4853706c"' }>
+                                            <li class="link">
+                                                <a href="components/ReactRendererComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ReactRendererComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                             </li>
                             <li class="link">
                                 <a href="modules/ResizableModule.html" data-type="entity-link" >ResizableModule</a>
