@@ -31,7 +31,6 @@ export type AvatarAppearanceEditorModel = {
         <cf-tabset theme="secondary">
           <cf-tab
             [title]="'Portrait *'"
-            [active]="true"
             icon="assets/icons/mdi/account.svg"
             [customClass]="'appearance-tab'"
           >
@@ -43,6 +42,7 @@ export type AvatarAppearanceEditorModel = {
           </cf-tab>
           <cf-tab
             [title]="'2D Appearance *'"
+            [active]="true"
             icon="assets/icons/mdi/human.svg"
             [customClass]="'appearance-tab'"
           >

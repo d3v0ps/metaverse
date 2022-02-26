@@ -43,8 +43,12 @@ export const userAvatars: UserAvatarDocType[] = [
           style: {
             id: 'lpc',
             properties: {
-              species: 'Human',
-              bodyType: 'Male'
+              bodyType: 'tanned2',
+              bodyVariation: 'male',
+              torso: 'chain/mail',
+              hair: 'longknot',
+              hairColor: 'white',
+              facialHair: 'mustache',
             },
           },
         },
@@ -116,8 +120,12 @@ export const userAvatars: UserAvatarDocType[] = [
             style: {
               id: 'lpc',
               properties: {
-                species: 'Human',
-                bodyType: 'Male'
+                bodyType: 'tanned2',
+                bodyVariation: 'male',
+                torso: 'chain/mail',
+                hair: 'longknot',
+                hairColor: 'white',
+                facialHair: 'mustache',
               },
             },
           },

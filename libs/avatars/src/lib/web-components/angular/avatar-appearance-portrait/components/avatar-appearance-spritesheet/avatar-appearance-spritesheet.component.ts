@@ -27,7 +27,7 @@ export class AvatarAppearanceSpritesheetComponent {
   @Input() height = 64;
   @Input() scale = 1;
 
-  @Input() src = `assets/avatars/lpc/bases/Human/Child/Walk.png`;
+  @Input() src = `assets/avatars/lpc/bases/Human/Child/Universal.png`;
   backgroundPosition = `${this.col * this.width}px ${this.row * this.height}px`;
   transform = `scale(${this.scale})`;
 
