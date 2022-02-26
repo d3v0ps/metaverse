@@ -215,7 +215,6 @@ export class AvatarAppearancePortraitDesignerComponent
   }
 
   onColorPickerSelectColor(event: any, propertyId: string) {
-    console.log(propertyId, event);
     this.propertiesForm.controls[propertyId].setValue(event.id)
   }
 

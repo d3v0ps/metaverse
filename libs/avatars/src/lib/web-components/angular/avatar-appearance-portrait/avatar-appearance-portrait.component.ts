@@ -17,15 +17,8 @@ import { AppearancePortrait } from '../../../models/appearance';
         </div>
         </ng-container>
         <ng-container *ngSwitchCase="'lpc'">
-          <div cfBlock="spritesheet-layers">
-            <ng-container *ngFor="let layer of getLpcLayers(appearancePortrait)">
-              <cf-avatar-appearance-spritesheet [src]="layer.url"
-                [row]="layer.row"
-                [col]="layer.col"
-                [scale]="layer.scale">
-              </cf-avatar-appearance-spritesheet>
-            </ng-container>
-          </div>
+          <cf-layered-spritesheet
+            [layers]="getLpcLayers(appearancePortrait)"></cf-layered-spritesheet>
         </ng-container>
         <ng-container *ngSwitchCase="'image'">
           <img cfElem="image" *ngIf="src" [src]="src" />
@@ -101,69 +94,118 @@ export class AvatarAppearancePortraitComponent {
   getLpcLayers(appearancePortrait: AppearancePortrait | undefined) {
     // https://raw.githubusercontent.com/central-factory/Universal-LPC-spritesheet/master/body/male/dark.png
     const baseUrl = `https://raw.githubusercontent.com/central-factory/Universal-LPC-spritesheet/master`;
-    if (!appearancePortrait) {
+
+    const canRender = appearancePortrait && appearancePortrait.style.properties.bodyType && appearancePortrait.style.properties.bodyType;
+
+    if (!canRender) {
       return [];
     }
 
-    const body = [
+    const layerUrls: string[] = [];
+
+    layerUrls.push([
       baseUrl,
       'body',
       appearancePortrait.style.properties.bodyVariation,
       `${appearancePortrait.style.properties.bodyType}.png`
-    ].join('/');
+    ].join('/'));
 
-    const torso = [
-      baseUrl,
-      'torso',
-      appearancePortrait.style.properties.bodyVariation,
-      `${appearancePortrait.style.properties.torso}.png`
-    ].join('/');
+    if (appearancePortrait.style.properties.legs) {
+      layerUrls.push([
+        baseUrl,
+        'legs',
+        appearancePortrait.style.properties.bodyVariation,
+        `${appearancePortrait.style.properties.legs}.png`
+      ].join('/'));
+    }
 
-    const hair = [
-      baseUrl,
-      'hair',
-      appearancePortrait.style.properties.bodyVariation,
-      appearancePortrait.style.properties.hair,
-      `${appearancePortrait.style.properties.hairColor}.png`
-    ].join('/');
+    if (appearancePortrait.style.properties.feet) {
+      layerUrls.push([
+        baseUrl,
+        'feet',
+        appearancePortrait.style.properties.bodyVariation,
+        `${appearancePortrait.style.properties.feet}.png`
+      ].join('/'));
+    }
 
-    const facialHair = [
-      baseUrl,
-      'facial',
-      appearancePortrait.style.properties.bodyVariation,
-      appearancePortrait.style.properties.facialHair,
-      `${appearancePortrait.style.properties.hairColor}.png`
-    ].join('/');
+    if (appearancePortrait.style.properties.torso) {
+      layerUrls.push([
+        baseUrl,
+        'torso',
+        appearancePortrait.style.properties.bodyVariation,
+        `${appearancePortrait.style.properties.torso}.png`
+      ].join('/'));
+    }
 
-    const layers = [
-      {
-        url: body,
-        row: 2,
-        col: 0,
-        scale: 2,
-      },
-      {
-        url: torso,
-        row: 2,
-        col: 0,
-        scale: 2,
-      },
-      {
-        url: hair,
-        row: 2,
-        col: 0,
-        scale: 2,
-      },
-      {
-        url: facialHair,
-        row: 2,
-        col: 0,
-        scale: 2,
-      }
-    ];
+    if (appearancePortrait.style.properties.torso2) {
+      layerUrls.push([
+        baseUrl,
+        'torso',
+        appearancePortrait.style.properties.bodyVariation,
+        `${appearancePortrait.style.properties.torso2}.png`
+      ].join('/'));
+    }
 
-    console.log(layers);
+    if (appearancePortrait.style.properties.hair) {
+      layerUrls.push([
+        baseUrl,
+        'hair',
+        appearancePortrait.style.properties.bodyVariation,
+        appearancePortrait.style.properties.hair,
+        `${appearancePortrait.style.properties.hairColor}.png`
+      ].join('/'));
+    }
 
-    return layers;
+    if (appearancePortrait.style.properties.facialHair) {
+      layerUrls.push([
+        baseUrl,
+        'facial',
+        appearancePortrait.style.properties.bodyVariation,
+        appearancePortrait.style.properties.facialHair,
+        `${appearancePortrait.style.properties.facialHairColor || appearancePortrait.style.properties.hairColor}.png`
+      ].join('/'));
+    }
+
+    if (appearancePortrait.style.properties.leftHand) {
+      layerUrls.push([
+        baseUrl,
+        'weapons',
+        appearancePortrait.style.properties.bodyVariation,
+        'left-hand',
+        `${appearancePortrait.style.properties.leftHand}.png`
+      ].join('/'));
+    }
+
+    if (appearancePortrait.style.properties.rightHand) {
+      layerUrls.push([
+        baseUrl,
+        'weapons',
+        appearancePortrait.style.properties.bodyVariation,
+        'right-hand',
+        `${appearancePortrait.style.properties.rightHand}.png`
+      ].join('/'));
+    }
+
+    if (appearancePortrait.style.properties.bothHands) {
+      layerUrls.push([
+        baseUrl,
+        'weapons',
+        appearancePortrait.style.properties.bodyVariation,
+        'both-hand',
+        `${appearancePortrait.style.properties.bothHands}.png`
+      ].join('/'));
+    }
+
+    const animation = parseInt(appearancePortrait.style.properties.animation || '0', 10);
+    const direction = animation === 20 ? 0 : parseInt(appearancePortrait.style.properties.direction || '1', 10);
+
+    const row = animation + direction;
+
+    return layerUrls.map(url => ({
+      url,
+      row,
+      col: 1,
+      scale: 3
+    }));
   }
 }

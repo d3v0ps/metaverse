@@ -83,7 +83,6 @@ export type AvatarAppearancePortraitModelForm = {
 export class AvatarAppearancePortraitFormComponent
   implements OnInit, OnDestroy {
   @Input() set portrait(value: AppearancePortrait | undefined) {
-    console.log(value);
     this.form.reset({
       id: value?.id || uuid(),
       filename: value?.filename || '',
