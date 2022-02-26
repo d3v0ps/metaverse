@@ -116,7 +116,7 @@ const blacksmithAppearance: Appearance = {
         properties: {
           animation: '8',
           direction: '2',
-          bodyType: 'dark2',
+          bodyType: 'black',
           bodyVariation: 'male',
           torso: 'plate/legion/legionplate_gold',
           torso2: null,
@@ -135,7 +135,7 @@ const blacksmithAppearance: Appearance = {
           legs: 'skirt/legion_skirt',
           feet: 'sandals/legion',
           rightHand: 'warhammer',
-          leftHand: null,
+          leftHand: 'crusader_shield',
           bothHands: null,
         },
       },
