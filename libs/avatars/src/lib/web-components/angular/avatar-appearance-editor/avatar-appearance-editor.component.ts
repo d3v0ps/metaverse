@@ -66,7 +66,7 @@ export type AvatarAppearanceEditorModel = {
           </cf-tab>
           <cf-tab
             [title]="'Role-play'"
-            icon="assets/icons/simple-icons/dungeonsanddragons.svg"
+            icon="assets/icons/mdi/sword-cross.svg"
             [customClass]="'appearance-tab'"
           >
             <div cfBlock="appearance-tab-content-portrait">
