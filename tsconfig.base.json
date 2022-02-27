@@ -21,6 +21,7 @@
       "@central-factory/core/*": ["libs/core/src/lib/*"],
       "@central-factory/gatekeeper/*": ["apps/gatekeeper/src/app/*"],
       "@central-factory/inventory/*": ["apps/inventory/src/app/*"],
+      "@central-factory/logger/*": ["libs/logger/src/lib/*"],
       "@central-factory/manage-avatars/*": ["apps/manage-avatars/src/app/*"],
       "@central-factory/marketplace/*": ["apps/marketplace/src/app/*"],
       "@central-factory/network/*": ["libs/network/src/lib/*"],
