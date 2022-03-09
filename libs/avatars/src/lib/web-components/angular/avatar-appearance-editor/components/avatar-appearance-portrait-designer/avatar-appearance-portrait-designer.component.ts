@@ -114,9 +114,11 @@ export type SelectOption = {
       </div>
       <div cfElem="preview" *ngIf="
         designStyle?.hasViewer && showPreview">
-        <cf-svg-icon src="assets/icons/mdi/dice-multiple.svg"
-          (click)="generateRandomSkin(); generateRandomOutfit();">
-        </cf-svg-icon>
+        <button cfBlock="button" cfMod="has-icon only-icon">
+          <cf-svg-icon src="assets/icons/mdi/dice-multiple.svg"
+            (click)="generateRandomSkin(); generateRandomOutfit();">
+          </cf-svg-icon>
+        </button>
         <ng-container *ngIf="propertiesForm.value">
           <cf-avatar-appearance-portrait
             *ngIf="styleForm.value"

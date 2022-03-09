@@ -28,9 +28,52 @@ export type AvatarAppearanceEditorModel = {
   template: `
     <div cfBlock="avatar-appearance-editor">
       <div cfElem="body">
-        <cf-tabset theme="secondary">
+        <cf-tabset>
           <cf-tab
-            [title]="'Portrait *'"
+            [title]="'Stats'"
+            icon="assets/icons/mdi/account.svg"
+            [customClass]="'appearance-tab'"
+          >
+            <div cfBlock="appearance-tab-content-portrait">
+              <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.others"
+                [availableStyles]="['dungeons']"
+                [rarity]="rarity">
+              </cf-avatar-appearance-portrait-designer>
+            </div>
+          </cf-tab>
+          <cf-tab
+            [title]="'Equipment'"
+            icon="assets/icons/mdi/sword-cross.svg"
+            [customClass]="'appearance-tab'"
+            [active]="true"
+          >
+            <div cfBlock="appearance-tab-content-portrait">
+              <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.dim2"
+                [randomizeOutfit]="randomizeOutfit"
+                [randomizeInterval]="outfitRandomizeInterval"
+                [availableStyles]="['lpc', 'image']"
+                [rarity]="rarity"
+                (formSubmit)="onFormSubmit($event)">
+              </cf-avatar-appearance-portrait-designer>
+            </div>
+          </cf-tab>
+          <cf-tab
+            [title]="'Notes'"
+            icon="assets/icons/mdi/book.svg"
+            [customClass]="'appearance-tab'"
+          >
+            <div cfBlock="appearance-tab-content-portrait">
+              <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.dim2"
+                [randomizeOutfit]="randomizeOutfit"
+                [randomizeInterval]="outfitRandomizeInterval"
+                [availableStyles]="['lpc', 'image']"
+                [rarity]="rarity"
+                (formSubmit)="onFormSubmit($event)">
+              </cf-avatar-appearance-portrait-designer>
+            </div>
+          </cf-tab>
+          <cf-tab
+            [title]="'Portrait'"
             icon="assets/icons/mdi/account.svg"
             [customClass]="'appearance-tab'"
           >
@@ -45,8 +88,7 @@ export type AvatarAppearanceEditorModel = {
             </div>
           </cf-tab>
           <cf-tab
-            [title]="'2D Appearance *'"
-            [active]="true"
+            [title]="'2D Appearance'"
             icon="assets/icons/mdi/human.svg"
             [customClass]="'appearance-tab'"
           >
@@ -60,7 +102,7 @@ export type AvatarAppearanceEditorModel = {
               </cf-avatar-appearance-portrait-designer>
             </div>
           </cf-tab>
-          <cf-tab
+          <!-- cf-tab
             [title]="'3D Appearance'"
             icon="assets/icons/mdi/human.svg"
             [customClass]="'appearance-tab'"
@@ -71,8 +113,8 @@ export type AvatarAppearanceEditorModel = {
                 [rarity]="rarity">
               </cf-avatar-appearance-portrait-designer>
             </div>
-          </cf-tab>
-          <cf-tab
+          </cf-tab -->
+          <!-- cf-tab
             [title]="'Role-play'"
             icon="assets/icons/mdi/sword-cross.svg"
             [customClass]="'appearance-tab'"
@@ -83,7 +125,7 @@ export type AvatarAppearanceEditorModel = {
                 [rarity]="rarity">
               </cf-avatar-appearance-portrait-designer>
             </div>
-          </cf-tab>
+          </cf-tab -->
         </cf-tabset>
       </div>
 
