@@ -117,6 +117,9 @@
                                     <span class="modifier">Private</span>
                                 <a href="#subscribeToDataChanges" >subscribeToDataChanges</a>
                             </li>
+                            <li>
+                                <a href="#updateAppearance" >updateAppearance</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -343,8 +346,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="84"
-                            class="link-to-prism">libs/avatars/src/lib/states/selected-avatar.state.ts:84</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="109"
+                            class="link-to-prism">libs/avatars/src/lib/states/selected-avatar.state.ts:109</a></div>
                 </td>
             </tr>
 
@@ -355,6 +358,75 @@
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateAppearance"></a>
+                    <span class="name">
+                        <span ><b>updateAppearance</b></span>
+                        <a href="#updateAppearance"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateAppearance(appearance: <a href="../undefineds/Appearance.html" target="_self">Appearance</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">libs/avatars/src/lib/states/selected-avatar.state.ts:84</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>appearance</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#Appearance" target="_self" >Appearance</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -560,6 +632,31 @@ export class SelectedAvatarState {
 
     const avatarUpdate: Avatar &#x3D; JSON.parse(JSON.stringify(avatar));
     avatarUpdate.selectedAppearance &#x3D; appearance;
+
+    return this.userAvatarsRepository.upsert(avatarUpdate);
+  }
+
+  updateAppearance(appearance: Appearance) {
+
+    if (!this.userAvatarsRepository) {
+      return throwError(() &#x3D;&gt; new Error(&#x27;Repositories not initialized&#x27;));
+    }
+
+    const avatar &#x3D; this.avatar$.getValue();
+
+    if (!avatar) {
+      return throwError(() &#x3D;&gt; new Error(&#x27;Avatar not selected&#x27;));
+    }
+
+    const avatarUpdate: Avatar &#x3D; JSON.parse(JSON.stringify(avatar));
+
+    const appearanceIndex &#x3D; avatarUpdate.appearances.findIndex(avatarAppearance &#x3D;&gt; avatarAppearance.id &#x3D;&#x3D;&#x3D; appearance.id);
+
+    if (!appearanceIndex) {
+      throw new Error(&#x27;Appearance not found&#x27;);
+    }
+
+    Object.assign(avatarUpdate.appearances[appearanceIndex], appearance);
 
     return this.userAvatarsRepository.upsert(avatarUpdate);
   }

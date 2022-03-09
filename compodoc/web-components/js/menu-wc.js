@@ -442,7 +442,16 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"' }>
                             <li class="link">
+                                <a href="classes/AwaitFile.html" data-type="entity-link" >AwaitFile</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/AwaitLoaderPlugin.html" data-type="entity-link" >AwaitLoaderPlugin</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/BemConfig.html" data-type="entity-link" >BemConfig</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/PhaserScene.html" data-type="entity-link" >PhaserScene</a>
                             </li>
                             <li class="link">
                                 <a href="classes/SvgIconHelper.html" data-type="entity-link" >SvgIconHelper</a>

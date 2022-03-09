@@ -3850,6 +3850,21 @@ h5.heading {
   align-items: flex-end;
 }
 
+.window-body .tabset-container {
+  height: 100%;
+  overflow: hidden;
+}
+
+.window-body .tabset-container .tabset-content,
+.window-body .tabset-container .tabset-content .tab-content {
+  height: calc(100% - 48px);
+}
+
+.window-body .tabset-container .tabset-content .cf-sidebar__content,
+.window-body .tabset-container .tabset-content .tab-content .cf-sidebar__content {
+  height: 70%;
+}
+
 :root {
   --color-base-primary-lightest: #c7a4ff;
   --color-base-primary-lighter: #c7a4ff;
@@ -3907,6 +3922,48 @@ h5.heading {
   --color-base-info-dark: #1976d2;
   --color-base-info-darker: #1565c0;
   --color-base-info-darkest: #0d47a1;
+  --color-base-common-lightest: #d2d2d2;
+  --color-base-common-lighter: #c1c1c1;
+  --color-base-common-light: #b2b2b2;
+  --color-base-common-medium: #a2a2a2;
+  --color-base-common-dark: #929292;
+  --color-base-common-darker: #818181;
+  --color-base-common-darkest: #717171;
+  --color-base-uncommon-lightest: #b3c7b4;
+  --color-base-uncommon-lighter: #99b39a;
+  --color-base-uncommon-light: #8eab8f;
+  --color-base-uncommon-medium: #83a384;
+  --color-base-uncommon-dark: #789b79;
+  --color-base-uncommon-darker: #678e68;
+  --color-base-uncommon-darkest: #437445;
+  --color-base-rare-lightest: #8ab8cf;
+  --color-base-rare-lighter: #70a9c4;
+  --color-base-rare-light: #609fbd;
+  --color-base-rare-medium: #5095b6;
+  --color-base-rare-dark: #408baf;
+  --color-base-rare-darker: #3081a8;
+  --color-base-rare-darkest: #19739e;
+  --color-base-epic-lightest: #c5a8d1;
+  --color-base-epic-lighter: #b48fc3;
+  --color-base-epic-light: #a173b4;
+  --color-base-epic-medium: #7c3b97;
+  --color-base-epic-dark: #722c8f;
+  --color-base-epic-darker: #641884;
+  --color-base-epic-darkest: #550178;
+  --color-base-legendary-lightest: #f6d483;
+  --color-base-legendary-lighter: #f4c85f;
+  --color-base-legendary-light: #f1bc3c;
+  --color-base-legendary-medium: #eead10;
+  --color-base-legendary-dark: #d39b13;
+  --color-base-legendary-darker: #be8d15;
+  --color-base-legendary-darkest: #af8316;
+  --color-base-unique-lightest: #7fe6f0;
+  --color-base-unique-lighter: #66e1ed;
+  --color-base-unique-light: #34d7e7;
+  --color-base-unique-medium: #15c3d4;
+  --color-base-unique-dark: #1c9ca8;
+  --color-base-unique-darker: #217e87;
+  --color-base-unique-darkest: #25676d;
   --color-font-primary: #c7a4ff;
   --color-font-secondary: #c4a5ed;
   --component-badge-color: #f1f1f1;
@@ -4091,7 +4148,7 @@ h5.heading {
 
 .avatar-appearance-editor__body {
   flex: 1;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .avatar-appearance-editor__body .appearance-tab-content {
@@ -4123,6 +4180,10 @@ h5.heading {
   align-items: center;
   justify-content: center;
   align-content: flex-start;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  border-top-left-radius: 25%;
+  border-top-right-radius: 25%;
 }
 
 .avatar-appearance-portrait-designer .avatar-appearance-portrait .avatar-appearance-spritesheet {
@@ -4155,6 +4216,30 @@ h5.heading {
   background-color: var(--component-avatar-appearance-portrait-background-color);
   border: none;
   box-shadow: var(--component-avatar-appearance-portrait-shadow-outset), inset var(--component-avatar-appearance-portrait-shadow-inset-primary), inset var(--component-avatar-appearance-portrait-shadow-inset-secondary);
+}
+
+.avatar-appearance-portrait--common {
+  border: 1rem solid var(--color-base-common-lighter);
+}
+
+.avatar-appearance-portrait--uncommon {
+  border: 1rem solid var(--color-base-uncommon-lighter);
+}
+
+.avatar-appearance-portrait--rare {
+  border: 1rem solid var(--color-base-rare-lighter);
+}
+
+.avatar-appearance-portrait--epic {
+  border: 1rem solid var(--color-base-epic-lighter);
+}
+
+.avatar-appearance-portrait--legendary {
+  border: 1rem solid var(--color-base-legendary-lighter);
+}
+
+.avatar-appearance-portrait--unique {
+  border: 1rem solid var(--color-base-unique-lighter);
 }
 
 .avatar-appearance-portrait__image {
@@ -4785,24 +4870,32 @@ h5.heading {
   height: 90vh;
 }
 
+.application-local-module,
 .application-remote-module {
   border: 0;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   width: 100%;
-  height: calc(100vh - 120px);
+  height: 100%;
 }
 
+.application-local-module--no-toolbar,
 .application-remote-module--no-toolbar {
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   height: 90vh;
 }
 
+.application-local-module .scene-content,
 .application-remote-module .scene-content {
   padding: 0;
   margin: 0 auto;
   width: 100%;
+  box-shadow: none;
+}
+
+.application-remote-module {
+  height: calc(100vh - 120px);
 }
 
 .topic-card {

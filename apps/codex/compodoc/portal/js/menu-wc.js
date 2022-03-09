@@ -106,13 +106,16 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/PortalLayoutSceneModule.html" data-type="entity-link" >PortalLayoutSceneModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-PortalLayoutSceneModule-9f80953f1d21b9b638b70d40c7d4e59d"' : 'data-target="#xs-components-links-module-PortalLayoutSceneModule-9f80953f1d21b9b638b70d40c7d4e59d"' }>
+                                            'data-target="#components-links-module-PortalLayoutSceneModule-08b209c5367126ddb73e6bcfa4c6e50a"' : 'data-target="#xs-components-links-module-PortalLayoutSceneModule-08b209c5367126ddb73e6bcfa4c6e50a"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PortalLayoutSceneModule-9f80953f1d21b9b638b70d40c7d4e59d"' :
-                                            'id="xs-components-links-module-PortalLayoutSceneModule-9f80953f1d21b9b638b70d40c7d4e59d"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PortalLayoutSceneModule-08b209c5367126ddb73e6bcfa4c6e50a"' :
+                                            'id="xs-components-links-module-PortalLayoutSceneModule-08b209c5367126ddb73e6bcfa4c6e50a"' }>
+                                            <li class="link">
+                                                <a href="components/ApplicationManagerComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ApplicationManagerComponent</a>
+                                            </li>
                                             <li class="link">
                                                 <a href="components/PortalLayoutScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >PortalLayoutScene</a>
                                             </li>
@@ -126,13 +129,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/PortalModule.html" data-type="entity-link" >PortalModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-PortalModule-dc19083797910c170663c370c50e831f"' : 'data-target="#xs-components-links-module-PortalModule-dc19083797910c170663c370c50e831f"' }>
+                                            'data-target="#components-links-module-PortalModule-5ef93f6630f6a51fa2768360f5a0a48b"' : 'data-target="#xs-components-links-module-PortalModule-5ef93f6630f6a51fa2768360f5a0a48b"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PortalModule-dc19083797910c170663c370c50e831f"' :
-                                            'id="xs-components-links-module-PortalModule-dc19083797910c170663c370c50e831f"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PortalModule-5ef93f6630f6a51fa2768360f5a0a48b"' :
+                                            'id="xs-components-links-module-PortalModule-5ef93f6630f6a51fa2768360f5a0a48b"' }>
                                             <li class="link">
                                                 <a href="components/PortalRoot.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >PortalRoot</a>
                                             </li>
@@ -177,6 +180,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
                                 <li class="link">
                                     <a href="injectables/BackgroundRenderer.html" data-type="entity-link" >BackgroundRenderer</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/PortalLocalApplicationsResolver.html" data-type="entity-link" >PortalLocalApplicationsResolver</a>
                                 </li>
                             </ul>
                         </li>

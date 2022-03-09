@@ -518,6 +518,33 @@ export enum SceneContentAnimationState {
                 &lt;/div&gt;
 
                 &lt;router-outlet name&#x3D;&quot;sidebar&quot;&gt;&lt;/router-outlet&gt;
+
+                &lt;div cfBlock&#x3D;&quot;sidebar-footer&quot;&gt;
+
+                  &lt;a
+                      (click)&#x3D;&quot;onCatchClick()&quot;
+                      class&#x3D;&quot;d-block&quot;
+                      cfBlock&#x3D;&quot;sidebar-item&quot;
+                    &gt;
+                      &lt;div cfElem&#x3D;&quot;text&quot;&gt;
+                        &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;Catch&lt;/span&gt;
+                      &lt;/div&gt;
+                      &lt;button
+                        cfBlock&#x3D;&quot;button&quot;
+                        cfMod&#x3D;&quot;fab&quot;
+                        [ngClass]&#x3D;&quot;{
+                          &#x27;button--active&#x27;: true
+                        }&quot;
+                        style&#x3D;&quot;margin-top: 15px;&quot;
+                      &gt;
+                        &lt;cf-svg-icon
+                          [src]&#x3D;&quot;&#x27;assets/icons/mdi/map-marker-plus.svg&#x27;&quot;
+                          cfElem&#x3D;&quot;icon&quot;
+                          [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+                        &gt;&lt;/cf-svg-icon&gt;
+                      &lt;/button&gt;
+                    &lt;/a&gt;
+                &lt;/div&gt;
               &lt;/div&gt;
             &lt;/cf-sidebar&gt;
 
@@ -552,7 +579,8 @@ export enum SceneContentAnimationState {
                     (splashScreenHide)&#x3D;&quot;showSplashScreen &#x3D; false&quot;
                   &gt;&lt;/cf-splash-screen&gt;
                 &lt;/div&gt;
-                &lt;router-outlet&gt;&lt;/router-outlet&gt;
+                &lt;cf-application-manager&gt;&lt;/cf-application-manager&gt;
+                &lt;!-- router-outlet&gt;&lt;/router-outlet --&gt;
               &lt;/div&gt;
             &lt;/div&gt;
           &lt;/cf-sidebar-container&gt;
@@ -740,6 +768,10 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
 
       // setTimeout(() &#x3D;&gt; (this.showSplashScreen &#x3D; false), 3000);
     }, 100);
+  }
+
+  public onCatchClick() {
+    console.log(&#x27;catch&#x27;);
   }
 
   private subscribeToDataChanges(

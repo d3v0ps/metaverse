@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sat, 26 Feb 2022 13:50:39 GMT
+ * Generated on Wed, 09 Mar 2022 15:30:14 GMT
  */
 
 :root {
@@ -60,6 +60,48 @@
   --color-base-info-dark: #1976d2;
   --color-base-info-darker: #1565c0;
   --color-base-info-darkest: #0d47a1;
+  --color-base-common-lightest: #d2d2d2;
+  --color-base-common-lighter: #c1c1c1;
+  --color-base-common-light: #b2b2b2;
+  --color-base-common-medium: #a2a2a2;
+  --color-base-common-dark: #929292;
+  --color-base-common-darker: #818181;
+  --color-base-common-darkest: #717171;
+  --color-base-uncommon-lightest: #b3c7b4;
+  --color-base-uncommon-lighter: #99b39a;
+  --color-base-uncommon-light: #8eab8f;
+  --color-base-uncommon-medium: #83a384;
+  --color-base-uncommon-dark: #789b79;
+  --color-base-uncommon-darker: #678e68;
+  --color-base-uncommon-darkest: #437445;
+  --color-base-rare-lightest: #8ab8cf;
+  --color-base-rare-lighter: #70a9c4;
+  --color-base-rare-light: #609fbd;
+  --color-base-rare-medium: #5095b6;
+  --color-base-rare-dark: #408baf;
+  --color-base-rare-darker: #3081a8;
+  --color-base-rare-darkest: #19739e;
+  --color-base-epic-lightest: #c5a8d1;
+  --color-base-epic-lighter: #b48fc3;
+  --color-base-epic-light: #a173b4;
+  --color-base-epic-medium: #7c3b97;
+  --color-base-epic-dark: #722c8f;
+  --color-base-epic-darker: #641884;
+  --color-base-epic-darkest: #550178;
+  --color-base-legendary-lightest: #f6d483;
+  --color-base-legendary-lighter: #f4c85f;
+  --color-base-legendary-light: #f1bc3c;
+  --color-base-legendary-medium: #eead10;
+  --color-base-legendary-dark: #d39b13;
+  --color-base-legendary-darker: #be8d15;
+  --color-base-legendary-darkest: #af8316;
+  --color-base-unique-lightest: #7fe6f0;
+  --color-base-unique-lighter: #66e1ed;
+  --color-base-unique-light: #34d7e7;
+  --color-base-unique-medium: #15c3d4;
+  --color-base-unique-dark: #1c9ca8;
+  --color-base-unique-darker: #217e87;
+  --color-base-unique-darkest: #25676d;
   --color-font-primary: #c7a4ff;
   --color-font-secondary: #c4a5ed;
   --component-badge-color: #f1f1f1;

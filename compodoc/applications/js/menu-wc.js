@@ -270,13 +270,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/ApplicationViewModule.html" data-type="entity-link" >ApplicationViewModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-ApplicationViewModule-91689559f0f557c690ad8577eedbae0a"' : 'data-target="#xs-components-links-module-ApplicationViewModule-91689559f0f557c690ad8577eedbae0a"' }>
+                                            'data-target="#components-links-module-ApplicationViewModule-67b888098d7b3aa83347c977d9174a16"' : 'data-target="#xs-components-links-module-ApplicationViewModule-67b888098d7b3aa83347c977d9174a16"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ApplicationViewModule-91689559f0f557c690ad8577eedbae0a"' :
-                                            'id="xs-components-links-module-ApplicationViewModule-91689559f0f557c690ad8577eedbae0a"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ApplicationViewModule-67b888098d7b3aa83347c977d9174a16"' :
+                                            'id="xs-components-links-module-ApplicationViewModule-67b888098d7b3aa83347c977d9174a16"' }>
                                             <li class="link">
                                                 <a href="components/ApplicationViewComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ApplicationViewComponent</a>
                                             </li>
@@ -302,6 +302,52 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                 </ul>
                 </li>
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#classes-links"' :
+                            'data-target="#xs-classes-links"' }>
+                            <span class="icon ion-ios-paper"></span>
+                            <span>Classes</span>
+                            <span class="icon ion-ios-arrow-down"></span>
+                        </div>
+                        <ul class="links collapse " ${ isNormalMode ? 'id="classes-links"' : 'id="xs-classes-links"' }>
+                            <li class="link">
+                                <a href="classes/ApplicationCatchCommand.html" data-type="entity-link" >ApplicationCatchCommand</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/ApplicationCaughtEvent.html" data-type="entity-link" >ApplicationCaughtEvent</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/ApplicationCloseCommand.html" data-type="entity-link" >ApplicationCloseCommand</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/ApplicationClosedEvent.html" data-type="entity-link" >ApplicationClosedEvent</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/ApplicationGroupCommand.html" data-type="entity-link" >ApplicationGroupCommand</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/ApplicationGroupedEvent.html" data-type="entity-link" >ApplicationGroupedEvent</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/ApplicationHiddenEvent.html" data-type="entity-link" >ApplicationHiddenEvent</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/ApplicationHideCommand.html" data-type="entity-link" >ApplicationHideCommand</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/ApplicationOpenCommand.html" data-type="entity-link" >ApplicationOpenCommand</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/ApplicationOpenedEvent.html" data-type="entity-link" >ApplicationOpenedEvent</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/ApplicationShowCommand.html" data-type="entity-link" >ApplicationShowCommand</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/ApplicationShownEvent.html" data-type="entity-link" >ApplicationShownEvent</a>
+                            </li>
+                        </ul>
+                    </li>
                         <li class="chapter">
                             <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#injectables-links"' :
                                 'data-target="#xs-injectables-links"' }>
@@ -310,6 +356,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <span class="icon ion-ios-arrow-down"></span>
                             </div>
                             <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
+                                <li class="link">
+                                    <a href="injectables/ApplicationDisplayState.html" data-type="entity-link" >ApplicationDisplayState</a>
+                                </li>
                                 <li class="link">
                                     <a href="injectables/AvailableApplicationsState.html" data-type="entity-link" >AvailableApplicationsState</a>
                                 </li>

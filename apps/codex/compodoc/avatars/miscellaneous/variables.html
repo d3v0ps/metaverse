@@ -566,7 +566,7 @@
                         <i>Default value : </i><code>{
   ...userAvatars[0].selectedAppearance,
   id: &#x27;image-appearance-id&#x27;,
-  portrait: userAvatars[0].selectedAppearance.variations?.portrait,
+  portrait: userAvatars[0].selectedAppearance.variations?.portrait as AppearancePortrait
 }</code>
                     </td>
                 </tr>
@@ -1216,12 +1216,14 @@
           bodyVariation: &#x27;male&#x27;,
           torso: &#x27;plate/legion/legionplate_gold&#x27;,
           torso2: null,
-          head: &#x27;helms/legion/legionhelmet_gold&#x27;,
-          headAccesory: &#x27;accesories/crest/gold&#x27;,
+          head: null,
+          headAccesory: null,
+          // head: &#x27;helms/legion/legionhelmet_gold&#x27;,
+          // headAccesory: &#x27;accesories/crest/gold&#x27;,
           visor: null,
           arms: &#x27;plate/legion/legionbauldron_gold&#x27;,
           back: &#x27;cape/normal/cape_gray&#x27;,
-          hair: null,
+          hair: &#x27;jewfro&#x27;,
           hairColor: &#x27;brunette2&#x27;,
           ears: null,
           nose: null,
@@ -1231,7 +1233,7 @@
           legs: &#x27;skirt/legion_skirt&#x27;,
           feet: &#x27;sandals/legion&#x27;,
           rightHand: &#x27;warhammer&#x27;,
-          leftHand: &#x27;crusader_shield&#x27;,
+          // leftHand: &#x27;crusader_shield&#x27;,
           bothHands: null,
         },
       },
@@ -1309,27 +1311,29 @@
       style: {
         id: &#x27;lpc&#x27;,
         properties: {
+          // animation
           animation: &#x27;walk&#x27;,
           direction: &#x27;south&#x27;,
+          // body
           bodyType: &#x27;tanned2&#x27;,
           bodyVariation: &#x27;male&#x27;,
-          torso: &#x27;chain/mail&#x27;,
-          torso2: &#x27;chain/tabard&#x27;,
-          arms: &#x27;plate/arms&#x27;,
-          back: &#x27;cape/normal/cape_gray&#x27;,
           hair: &#x27;longknot&#x27;,
           hairColor: &#x27;white&#x27;,
-          // head: &#x27;helms/barbarian_viking/steel&#x27;,
-          head: null,
-          headAccesory: null,
-          visor: null,
           ears: null,
           nose: null,
           eyes: &#x27;purple&#x27;,
           facialHair: &#x27;mustache&#x27;,
           facialHairColor: &#x27;white&#x27;,
-          legs: &#x27;armor/metal_pants&#x27;,
-          feet: &#x27;boots/metal_boots&#x27;,
+          // clothes
+          head: null,
+          headAccesory: null,
+          visor: null,
+          torso: &#x27;shirts/formal_shirt&#x27;,
+          torso2: &#x27;jackets/formal_jacket_black&#x27;,
+          arms: &#x27;plate/arms&#x27;,
+          back: &#x27;cape/normal/cape_gray&#x27;,
+          legs: &#x27;pants/teal_pants&#x27;,
+          feet: &#x27;shoes/brown_shoes&#x27;,
           rightHand: &#x27;staff&#x27;,
           leftHand: null,
           bothHands: null,
@@ -1621,6 +1625,10 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>[
+  // {
+  //   id: &#x27;teen&#x27;,
+  //   label: &#x27;Teen&#x27;,
+  // },
   {
     id: &#x27;female&#x27;,
     label: &#x27;Female&#x27;,
@@ -2492,6 +2500,10 @@
     label: &#x27;Long&#x27;,
   },
   {
+    id: &#x27;long2&#x27;,
+    label: &#x27;Long 2&#x27;,
+  },
+  {
     id: &#x27;longhawk&#x27;,
     label: &#x27;Long Hawk&#x27;,
   },
@@ -2514,6 +2526,74 @@
   {
     id: &#x27;mohawk&#x27;,
     label: &#x27;Mohawk&#x27;,
+  },
+  {
+    id: &#x27;page&#x27;,
+    label: &#x27;Page&#x27;,
+  },
+  {
+    id: &#x27;page2&#x27;,
+    label: &#x27;Page2&#x27;,
+  },
+  {
+    id: &#x27;parted&#x27;,
+    label: &#x27;Parted&#x27;,
+  },
+  {
+    id: &#x27;pixie&#x27;,
+    label: &#x27;Pixie&#x27;,
+  },
+  {
+    id: &#x27;plain&#x27;,
+    label: &#x27;Plain&#x27;,
+  },
+  {
+    id: &#x27;ponytail&#x27;,
+    label: &#x27;Ponytail&#x27;,
+  },
+  {
+    id: &#x27;ponytail2&#x27;,
+    label: &#x27;Ponytail 2&#x27;,
+  },
+  {
+    id: &#x27;princess&#x27;,
+    label: &#x27;Princess&#x27;,
+  },
+  {
+    id: &#x27;short&#x27;,
+    label: &#x27;Short&#x27;,
+  },
+  {
+    id: &#x27;shorthawk&#x27;,
+    label: &#x27;Short Hawk&#x27;,
+  },
+  {
+    id: &#x27;shortknot&#x27;,
+    label: &#x27;Short Knot&#x27;,
+  },
+  {
+    id: &#x27;shoulderl&#x27;,
+    label: &#x27;Shoulder Left&#x27;,
+  },
+  {
+    id: &#x27;shoulderr&#x27;,
+    label: &#x27;Shoulder Right&#x27;,
+  },
+  {
+    id: &#x27;swoop&#x27;,
+    label: &#x27;Swoop&#x27;,
+  },
+  {
+    id: &#x27;unkempt&#x27;,
+    label: &#x27;Unkempt&#x27;,
+  },
+  {
+    id: &#x27;xlong&#x27;,
+    label: &#x27;Longest&#x27;,
+  },
+  {
+    id: &#x27;xlongknot&#x27;,
+    label: &#x27;Longest Knot&#x27;,
   },
 ]</code>
                     </td>
@@ -3450,6 +3530,11 @@
   properties: [
     {
       id: &#x27;animation&#x27;,
+      type: &#x27;group&#x27;,
+      label: &#x27;Animation&#x27;,
+    },
+    {
+      id: &#x27;animation&#x27;,
       type: &#x27;select&#x27;,
       label: &#x27;Animation&#x27;,
       options: animations
@@ -3459,6 +3544,11 @@
       type: &#x27;select&#x27;,
       label: &#x27;Direction&#x27;,
       options: directions
+    },
+    {
+      id: &#x27;body&#x27;,
+      type: &#x27;group&#x27;,
+      label: &#x27;Body&#x27;,
     },
     {
       id: &#x27;bodyType&#x27;,
@@ -3515,6 +3605,11 @@
       options: hairColors
     },
     {
+      id: &#x27;equipment&#x27;,
+      type: &#x27;group&#x27;,
+      label: &#x27;Equipment&#x27;,
+    },
+    {
       id: &#x27;head&#x27;,
       type: &#x27;select&#x27;,
       label: &#x27;Head&#x27;,
@@ -3525,6 +3620,29 @@
       type: &#x27;select&#x27;,
       label: &#x27;Head Visor&#x27;,
       options: headVisors
+    },
+    {
+      id: &#x27;accessory&#x27;,
+      type: &#x27;select&#x27;,
+      label: &#x27;Accesory&#x27;,
+      options: [
+        {
+          id: &#x27;glasses/formal_glasses&#x27;,
+          label: &#x27;Formal Glasses&#x27;,
+        },
+        {
+          id: &#x27;glasses/formal_monocle&#x27;,
+          label: &#x27;Monocle&#x27;,
+        },
+        {
+          id: &#x27;bowtie/formal_bowtie&#x27;,
+          label: &#x27;Formal Bowtie&#x27;,
+        },
+        {
+          id: &#x27;bowtie/formal_necktie&#x27;,
+          label: &#x27;Formal Necktie&#x27;,
+        }
+      ]
     },
     {
       id: &#x27;headAccesory&#x27;,
@@ -3870,106 +3988,131 @@
   {
     id: &#x27;coats/formal_trenchcoat&#x27;,
     label: &#x27;Formal Trenchcoat&#x27;,
+    bodyVariations: [&#x27;male&#x27;]
   },
   {
     id: &#x27;coats/formal_trenchcoat_grey&#x27;,
     label: &#x27;Formal Trenchcoat Gray&#x27;,
+    bodyVariations: [&#x27;male&#x27;]
   },
   {
     id: &#x27;iverness/formal_iverness&#x27;,
     label: &#x27;Formal Iverness&#x27;,
+    bodyVariations: [&#x27;male&#x27;]
   },
   {
     id: &#x27;jackets/formal_jacket_black&#x27;,
     label: &#x27;Formal Jacket Black&#x27;,
+    bodyVariations: [&#x27;male&#x27;]
   },
   {
     id: &#x27;jackets/formal_jacket_brown&#x27;,
     label: &#x27;Formal Jacket Brown&#x27;,
+    bodyVariations: [&#x27;male&#x27;]
   },
   {
     id: &#x27;jackets/formal_jacket_brown_stripes&#x27;,
     label: &#x27;Formal Jacket Brown Stripped&#x27;,
+    bodyVariations: [&#x27;male&#x27;]
   },
   {
     id: &#x27;jackets/formal_jacket_tan&#x27;,
     label: &#x27;Formal Jacket Tan&#x27;,
+    bodyVariations: [&#x27;male&#x27;]
   },
   {
     id: &#x27;vests/formal_vest&#x27;,
     label: &#x27;Formal Vest&#x27;,
+    bodyVariations: [&#x27;male&#x27;]
   },
   {
     id: &#x27;vests/formal_vest_stripes&#x27;,
     label: &#x27;Formal Vest Stripped&#x27;,
+    bodyVariations: [&#x27;male&#x27;]
   },
   {
     id: &#x27;robes/black&#x27;,
     label: &#x27;Black Robe&#x27;,
+    bodyVariations: [&#x27;female&#x27;]
   },
   {
     id: &#x27;robes/blue&#x27;,
     label: &#x27;Blue Robe&#x27;,
+    bodyVariations: [&#x27;female&#x27;]
   },
   {
     id: &#x27;robes/brown&#x27;,
     label: &#x27;Brown Robe&#x27;,
+    bodyVariations: [&#x27;female&#x27;]
   },
   {
     id: &#x27;robes/dark_brown&#x27;,
     label: &#x27;Dark Brown Robe&#x27;,
+    bodyVariations: [&#x27;female&#x27;]
   },
   {
     id: &#x27;robes/dark_gray&#x27;,
     label: &#x27;Dark Gray Robe&#x27;,
+    bodyVariations: [&#x27;female&#x27;]
   },
   {
     id: &#x27;robes/forest_green&#x27;,
     label: &#x27;Forest Green Robe&#x27;,
+    bodyVariations: [&#x27;female&#x27;]
   },
   {
     id: &#x27;robes/light_gray&#x27;,
     label: &#x27;Light Gray Robe&#x27;,
+    bodyVariations: [&#x27;female&#x27;]
   },
   {
     id: &#x27;robes/purple&#x27;,
     label: &#x27;Purple Robe&#x27;,
+    bodyVariations: [&#x27;female&#x27;]
   },
   {
     id: &#x27;robes/red&#x27;,
     label: &#x27;Red Robe&#x27;,
+    bodyVariations: [&#x27;female&#x27;]
   },
   {
     id: &#x27;robes/white&#x27;,
     label: &#x27;White Robe&#x27;,
+    bodyVariations: [&#x27;female&#x27;]
   },
   {
     id: &#x27;tunics/brown_tunic&#x27;,
     label: &#x27;Brown Tunic&#x27;,
+    bodyVariations: [&#x27;female&#x27;]
   },
   {
     id: &#x27;tunics/maroon_tunic&#x27;,
     label: &#x27;Maroon Tunic&#x27;,
+    bodyVariations: [&#x27;female&#x27;]
   },
   {
     id: &#x27;tunics/teal_tunic&#x27;,
     label: &#x27;Teal Tunic&#x27;,
+    bodyVariations: [&#x27;female&#x27;]
   },
   {
     id: &#x27;tunics/white_tunic&#x27;,
     label: &#x27;White Tunic&#x27;,
+    bodyVariations: [&#x27;female&#x27;]
   },
   {
     id: &#x27;shirts/formal_shirt&#x27;,
     label: &#x27;Formal Shirt&#x27;,
+    bodyVariations: [&#x27;male&#x27;]
   },
   {
     id: &#x27;shirts/formal_stripes_shirt&#x27;,
     label: &#x27;Formal Shirt Stripped&#x27;,
+    bodyVariations: [&#x27;male&#x27;]
   },
   {
     id: &#x27;shirts/longsleeve/brown_longsleeve&#x27;,
-    label: &#x27;Brown Longsleeve&#x27;,
+    label: &#x27;Brown Longsleeve&#x27;
   },
   {
     id: &#x27;shirts/longsleeve/white_longsleeve&#x27;,
@@ -3978,14 +4121,17 @@
   {
     id: &#x27;dress/blue_vest&#x27;,
     label: &#x27;Blue Vest&#x27;,
+    bodyVariations: [&#x27;female&#x27;]
   },
   {
     id: &#x27;dress/dress_w_sash&#x27;,
     label: &#x27;Dresss&#x27;,
+    bodyVariations: [&#x27;female&#x27;]
   },
   {
     id: &#x27;dress/underdress&#x27;,
     label: &#x27;Underdress&#x27;,
+    bodyVariations: [&#x27;female&#x27;]
   },
   {
     id: &#x27;leather/chest&#x27;,

@@ -108,6 +108,7 @@
 
           &amp;__content {
             overflow: auto;
+            height: 100%;
           }
 
           &amp;__footer {
@@ -147,9 +148,9 @@
       &gt;
       &lt;/cf-avatar-appearances-carousel&gt;
     &lt;/div&gt;
-    &lt;div cfElem&#x3D;&quot;footer&quot;&gt;
+    &lt;!-- div cfElem&#x3D;&quot;footer&quot;&gt;
       &lt;div cfBlock&#x3D;&quot;form-buttons&quot;&gt;
-        &lt;!-- button
+        &lt;button
           cfBlock&#x3D;&quot;button&quot;
           [cfMod]&#x3D;&quot;[&#x27;primary&#x27;, &#x27;has-icon&#x27;]&quot;
           (click)&#x3D;&quot;onAppearanceAddClick()&quot;
@@ -157,7 +158,7 @@
           &lt;cf-svg-icon elem&#x3D;&quot;icon&quot; src&#x3D;&quot;assets/icons/mdi/account-plus.svg&quot;&gt;
           &lt;/cf-svg-icon&gt;
           &lt;span elem&#x3D;&quot;label&quot;&gt;Add a new appearance&lt;/span&gt;
-        &lt;/button --&gt;
+        &lt;/button&gt;
         &lt;button
           cfBlock&#x3D;&quot;button&quot;
           [cfMod]&#x3D;&quot;[&#x27;primary&#x27;, &#x27;has-icon&#x27;, &#x27;full-width&#x27;]&quot;
@@ -172,7 +173,7 @@
           &lt;span elem&#x3D;&quot;label&quot;&gt;Confirm appearances&lt;/span&gt;
         &lt;/button&gt;
       &lt;/div&gt;
-    &lt;/div&gt;
+    &lt;/div --&gt;
   &lt;/div&gt;
   &lt;div cfBlock&#x3D;&quot;appearance-editor&quot;&gt;
     &lt;ng-container *ngIf&#x3D;&quot;loading&quot;&gt; Loading... &lt;/ng-container&gt;
@@ -201,6 +202,7 @@
       *ngIf&#x3D;&quot;selectedAppearance&quot;
       [appearance]&#x3D;&quot;selectedAppearance&quot;
       (appearanceSubmit)&#x3D;&quot;onAppearanceSubmit($event)&quot;
+      (portraitChange)&#x3D;&quot;onPortraitChange($event)&quot;
     &gt;&lt;/cf-avatar-appearance-editor&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -268,6 +270,9 @@
                             <li>
                                 <a href="#onConfirmAppearancesButtonClick" >onConfirmAppearancesButtonClick</a>
                             </li>
+                            <li>
+                                <a href="#onPortraitChange" >onPortraitChange</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -291,7 +296,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:133</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="198" class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:198</a></div>
                             </td>
                         </tr>
 
@@ -370,8 +375,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="144"
-                            class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:144</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="209"
+                            class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:209</a></div>
                 </td>
             </tr>
 
@@ -407,8 +412,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="140"
-                            class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:140</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="205"
+                            class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:205</a></div>
                 </td>
             </tr>
 
@@ -476,8 +481,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="153"
-                            class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:153</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="240"
+                            class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:240</a></div>
                 </td>
             </tr>
 
@@ -545,8 +550,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="177"
-                            class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:177</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="264"
+                            class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:264</a></div>
                 </td>
             </tr>
 
@@ -557,6 +562,75 @@
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onPortraitChange"></a>
+                    <span class="name">
+                        <span ><b>onPortraitChange</b></span>
+                        <a href="#onPortraitChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onPortraitChange(style: literal type)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="218"
+                            class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:218</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>style</td>
+                                    <td>
+                                            <code>literal type</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -589,7 +663,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:125</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="189" class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:189</a></div>
                         </td>
                     </tr>
 
@@ -614,7 +688,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:131</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="196" class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:196</a></div>
                         </td>
                     </tr>
 
@@ -639,7 +713,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:133</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="198" class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:198</a></div>
                         </td>
                     </tr>
 
@@ -666,7 +740,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:129</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="194" class="link-to-prism">apps/manage-avatars/src/app/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene.ts:194</a></div>
                         </td>
                     </tr>
 
@@ -685,7 +759,7 @@ import { ManageAvatarAppearancesState } from &#x27;@central-factory/avatars/stat
 import { SelectedAvatarState } from &#x27;@central-factory/avatars/states/selected-avatar.state&#x27;;
 import { AvatarAppearanceEditorModel } from &#x27;@central-factory/avatars/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component&#x27;;
 import { AvatarAppearancesCarouselDisplayMode } from &#x27;@central-factory/avatars/web-components/angular/avatar-appearances-carousel/avatar-appearances-carousel.component&#x27;;
-import { map, tap } from &#x27;rxjs&#x27;;
+import { map, switchMap, take, tap } from &#x27;rxjs&#x27;;
 import { v4 as uuid } from &#x27;uuid&#x27;;
 
 @Component({
@@ -708,9 +782,9 @@ import { v4 as uuid } from &#x27;uuid&#x27;;
           &gt;
           &lt;/cf-avatar-appearances-carousel&gt;
         &lt;/div&gt;
-        &lt;div cfElem&#x3D;&quot;footer&quot;&gt;
+        &lt;!-- div cfElem&#x3D;&quot;footer&quot;&gt;
           &lt;div cfBlock&#x3D;&quot;form-buttons&quot;&gt;
-            &lt;!-- button
+            &lt;button
               cfBlock&#x3D;&quot;button&quot;
               [cfMod]&#x3D;&quot;[&#x27;primary&#x27;, &#x27;has-icon&#x27;]&quot;
               (click)&#x3D;&quot;onAppearanceAddClick()&quot;
@@ -718,7 +792,7 @@ import { v4 as uuid } from &#x27;uuid&#x27;;
               &lt;cf-svg-icon elem&#x3D;&quot;icon&quot; src&#x3D;&quot;assets/icons/mdi/account-plus.svg&quot;&gt;
               &lt;/cf-svg-icon&gt;
               &lt;span elem&#x3D;&quot;label&quot;&gt;Add a new appearance&lt;/span&gt;
-            &lt;/button --&gt;
+            &lt;/button&gt;
             &lt;button
               cfBlock&#x3D;&quot;button&quot;
               [cfMod]&#x3D;&quot;[&#x27;primary&#x27;, &#x27;has-icon&#x27;, &#x27;full-width&#x27;]&quot;
@@ -733,7 +807,7 @@ import { v4 as uuid } from &#x27;uuid&#x27;;
               &lt;span elem&#x3D;&quot;label&quot;&gt;Confirm appearances&lt;/span&gt;
             &lt;/button&gt;
           &lt;/div&gt;
-        &lt;/div&gt;
+        &lt;/div --&gt;
       &lt;/div&gt;
       &lt;div cfBlock&#x3D;&quot;appearance-editor&quot;&gt;
         &lt;ng-container *ngIf&#x3D;&quot;loading&quot;&gt; Loading... &lt;/ng-container&gt;
@@ -762,6 +836,7 @@ import { v4 as uuid } from &#x27;uuid&#x27;;
           *ngIf&#x3D;&quot;selectedAppearance&quot;
           [appearance]&#x3D;&quot;selectedAppearance&quot;
           (appearanceSubmit)&#x3D;&quot;onAppearanceSubmit($event)&quot;
+          (portraitChange)&#x3D;&quot;onPortraitChange($event)&quot;
         &gt;&lt;/cf-avatar-appearance-editor&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -782,6 +857,7 @@ import { v4 as uuid } from &#x27;uuid&#x27;;
 
           &amp;__content {
             overflow: auto;
+            height: 100%;
           }
 
           &amp;__footer {
@@ -803,10 +879,73 @@ import { v4 as uuid } from &#x27;uuid&#x27;;
   ],
 })
 export class ManageAvatarAppearancesScene {
+
+  // appearances$ &#x3D; new BehaviorSubject&lt;Appearance[]&gt;([
+  //   {
+  //     id: uuid(),
+  //     filename: &#x27;&#x27;,
+  //     format: AppearanceFormat.Image,
+  //     variations: {
+  //       portrait: {
+  //         id: uuid(),
+  //         filename: &#x27;&#x27;,
+  //         style: {
+  //           id: &#x27;avataaars&#x27;,
+  //           properties: {
+  //             skinColor: &#x27;Pale&#x27;,
+  //             topType: &#x27;NoHair&#x27;,
+  //             facialHairType: &#x27;Blank&#x27;,
+  //             eyeType: &#x27;Default&#x27;,
+  //             eyebrowType: &#x27;Default&#x27;,
+  //             mouthType: &#x27;Default&#x27;,
+  //             clotheType: &#x27;ShirtCrewNeck&#x27;,
+  //             clotheColor: &#x27;Black&#x27;,
+  //           }
+  //         }
+  //       },
+  //       dim2: {
+  //         id: uuid(),
+  //         filename: &#x27;&#x27;,
+  //         style: {
+  //           id: &#x27;lpc&#x27;,
+  //           properties: {
+  //             // animation
+  //             animation: &#x27;walk&#x27;,
+  //             direction: &#x27;south&#x27;,
+
+  //             // body
+  //             hair: null,
+  //             ears: null,
+  //             nose: null,
+  //             facialHair: null,
+  //             // clothes
+  //             head: null,
+  //             headAccesory: null,
+  //             visor: null,
+  //             torso: null,
+  //             torso2: null,
+  //             // arms: &#x27;plate/arms&#x27;,
+  //             arms: null,
+  //             back: null,
+  //             legs: null,
+  //             feet: null,
+  //             // items
+  //             rightHand: null,
+  //             leftHand: null,
+  //             bothHands: null,
+
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // ])
+
   appearances$ &#x3D; this.selectedAvatarState.avatar$.pipe(
     map((avatar) &#x3D;&gt; (avatar ? avatar.appearances : [])),
     tap(appearances &#x3D;&gt; this.selectedAppearance &#x3D; this.selectedAppearance || appearances[0])
   );
+
   selectedAppearance?: Appearance;
 
   carouselDisplayModes &#x3D; AvatarAppearancesCarouselDisplayMode;
@@ -829,6 +968,28 @@ export class ManageAvatarAppearancesScene {
         id: uuid(),
       },
     } as unknown as Appearance;
+  }
+
+  onPortraitChange(style: {
+    id: string;
+    properties: Record&lt;string, string&gt;;
+  }) {
+    this.appearances$.pipe(
+      take(1),
+      switchMap((appearances) &#x3D;&gt; {
+        const appearance &#x3D; appearances.find(appearance &#x3D;&gt; this.selectedAppearance?.id &#x3D;&#x3D;&#x3D; appearance.id);
+
+        if (!appearance) {
+          throw new Error(&#x27;Appearance not found&#x27;);
+        }
+
+        appearance.variations &#x3D; appearance.variations || {};
+
+        appearance.variations.portrait.style &#x3D; style;
+
+        return this.selectedAvatarState.updateAppearance(appearance);
+      })
+    ).subscribe;
   }
 
   onAppearanceSubmit(appearance: AvatarAppearanceEditorModel) {
@@ -877,6 +1038,7 @@ export class ManageAvatarAppearancesScene {
 
           &amp;__content {
             overflow: auto;
+            height: 100%;
           }
 
           &amp;__footer {
@@ -923,7 +1085,7 @@ export class ManageAvatarAppearancesScene {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div  cfBlock="scene-content"  cfMod="manage-avatar-appearances"  *ngIf="appearances$ | async as appearances">  <div cfBlock="appearances-list" *ngIf="appearances.length > 0">    <div cfElem="content">      <cf-avatar-appearances-carousel        [appearances]="appearances"        [selectedAppearanceId]="selectedAppearance?.id"        [displayMode]="carouselDisplayModes.vertical"        [showAdd]="true"        (appearanceClick)="onAppearanceClick($event)"        (appearanceAddClick)="onAppearanceAddClick()"      >      </cf-avatar-appearances-carousel>    </div>    <div cfElem="footer">      <div cfBlock="form-buttons">        <!-- button          cfBlock="button"          [cfMod]="[\'primary\', \'has-icon\']"          (click)="onAppearanceAddClick()"        >          <cf-svg-icon elem="icon" src="assets/icons/mdi/account-plus.svg">          </cf-svg-icon>          <span elem="label">Add a new appearance</span>        </button -->        <button          cfBlock="button"          [cfMod]="[\'primary\', \'has-icon\', \'full-width\']"          (click)="onConfirmAppearancesButtonClick()"          [disabled]="appearances.length === 0"        >          <cf-svg-icon            elem="icon"            src="assets/icons/mdi/account-multiple-check.svg"          >          </cf-svg-icon>          <span elem="label">Confirm appearances</span>        </button>      </div>    </div>  </div>  <div cfBlock="appearance-editor">    <ng-container *ngIf="loading"> Loading... </ng-container>    <ng-container *ngIf="!selectedAppearance">      <h3>        <ng-container *ngIf="appearances.length > 0">          You currently have {{ appearances.length }} appearances for this          avatar, but you cand add more if you want.        </ng-container>        <ng-container *ngIf="appearances.length <= 0">          You don\'t have any appearance for this avatar, start adding at          least one.        </ng-container>      </h3>      <button        cfBlock="button"        [cfMod]="[\'primary\', \'has-icon\']"        (click)="onAppearanceAddClick()"      >        <cf-svg-icon elem="icon" src="assets/icons/mdi/account-plus.svg">        </cf-svg-icon>        <span elem="label">Add a new appearance</span>      </button>    </ng-container>    <cf-avatar-appearance-editor      *ngIf="selectedAppearance"      [appearance]="selectedAppearance"      (appearanceSubmit)="onAppearanceSubmit($event)"    ></cf-avatar-appearance-editor>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div  cfBlock="scene-content"  cfMod="manage-avatar-appearances"  *ngIf="appearances$ | async as appearances">  <div cfBlock="appearances-list" *ngIf="appearances.length > 0">    <div cfElem="content">      <cf-avatar-appearances-carousel        [appearances]="appearances"        [selectedAppearanceId]="selectedAppearance?.id"        [displayMode]="carouselDisplayModes.vertical"        [showAdd]="true"        (appearanceClick)="onAppearanceClick($event)"        (appearanceAddClick)="onAppearanceAddClick()"      >      </cf-avatar-appearances-carousel>    </div>    <!-- div cfElem="footer">      <div cfBlock="form-buttons">        <button          cfBlock="button"          [cfMod]="[\'primary\', \'has-icon\']"          (click)="onAppearanceAddClick()"        >          <cf-svg-icon elem="icon" src="assets/icons/mdi/account-plus.svg">          </cf-svg-icon>          <span elem="label">Add a new appearance</span>        </button>        <button          cfBlock="button"          [cfMod]="[\'primary\', \'has-icon\', \'full-width\']"          (click)="onConfirmAppearancesButtonClick()"          [disabled]="appearances.length === 0"        >          <cf-svg-icon            elem="icon"            src="assets/icons/mdi/account-multiple-check.svg"          >          </cf-svg-icon>          <span elem="label">Confirm appearances</span>        </button>      </div>    </div -->  </div>  <div cfBlock="appearance-editor">    <ng-container *ngIf="loading"> Loading... </ng-container>    <ng-container *ngIf="!selectedAppearance">      <h3>        <ng-container *ngIf="appearances.length > 0">          You currently have {{ appearances.length }} appearances for this          avatar, but you cand add more if you want.        </ng-container>        <ng-container *ngIf="appearances.length <= 0">          You don\'t have any appearance for this avatar, start adding at          least one.        </ng-container>      </h3>      <button        cfBlock="button"        [cfMod]="[\'primary\', \'has-icon\']"        (click)="onAppearanceAddClick()"      >        <cf-svg-icon elem="icon" src="assets/icons/mdi/account-plus.svg">        </cf-svg-icon>        <span elem="label">Add a new appearance</span>      </button>    </ng-container>    <cf-avatar-appearance-editor      *ngIf="selectedAppearance"      [appearance]="selectedAppearance"      (appearanceSubmit)="onAppearanceSubmit($event)"      (portraitChange)="onPortraitChange($event)"    ></cf-avatar-appearance-editor>  </div></div></div>'
     var COMPONENTS = [{'name': 'CreateAvatarScene', 'selector': 'cf-create-avatar'},{'name': 'ManageAvatarAppearancesScene', 'selector': 'cf-manage-avatar-appearances-scene'},{'name': 'ManageAvatarsRoot', 'selector': 'cf-manage-avatars-root'},{'name': 'SelectAvatarScene', 'selector': 'cf-select-avatar'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ManageAvatarAppearancesScene'};
