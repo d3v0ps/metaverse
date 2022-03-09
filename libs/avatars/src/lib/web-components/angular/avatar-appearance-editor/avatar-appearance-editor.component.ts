@@ -37,7 +37,7 @@ export type AvatarAppearanceEditorModel = {
             <div cfBlock="appearance-tab-content-portrait">
               <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.portrait"
                 [availableStyles]="['avataaars', 'image']"
-                [randomizeSkin]="true"
+                [randomizeSkin]="randomizeSkin"
                 [randomizeInterval]="skinRandomizeInterval"
                 (formSubmit)="onFormSubmit($event)"
                 [rarity]="rarity">
@@ -52,10 +52,11 @@ export type AvatarAppearanceEditorModel = {
           >
             <div cfBlock="appearance-tab-content-portrait">
               <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.dim2"
-                [randomizeOutfit]="true"
+                [randomizeOutfit]="randomizeOutfit"
                 [randomizeInterval]="outfitRandomizeInterval"
                 [availableStyles]="['lpc', 'image']"
-                [rarity]="rarity">
+                [rarity]="rarity"
+                (formSubmit)="onFormSubmit($event)">
               </cf-avatar-appearance-portrait-designer>
             </div>
           </cf-tab>
@@ -86,7 +87,7 @@ export type AvatarAppearanceEditorModel = {
         </cf-tabset>
       </div>
 
-      <div cfElem="footer">
+      <!-- div cfElem="footer">
         <div cfBlock="form-buttons">
           <button
             cfBlock="button"
@@ -99,7 +100,7 @@ export type AvatarAppearanceEditorModel = {
             Save
           </button>
         </div>
-      </div>
+      </div-->
     </div>
   `,
 })
@@ -120,6 +121,8 @@ export class AvatarAppearanceEditorComponent {
   }>();
   @Output() appearanceSubmit = new EventEmitter<AvatarAppearanceEditorModel>();
 
+  randomizeOutfit = false;
+  randomizeSkin = false;
   skinRandomizeInterval = 0;// 30000;
   outfitRandomizeInterval = 0; // 3000;
 
@@ -157,6 +160,8 @@ export class AvatarAppearanceEditorComponent {
     properties
   }: { designStyle: string; properties: Record<string, any> }) {
 
+    this.rarity = ['common', 'uncommon', 'rare', 'epic', 'legendary'][Math.floor(Math.random() * 5)];
+
     if (designStyle === 'avataaars') {
       this.portraitChange.emit({
         id: designStyle,
@@ -165,7 +170,6 @@ export class AvatarAppearanceEditorComponent {
     }
 
     if (designStyle === 'avataaars' && this.appearance?.variations?.dim2?.style && this.appearance?.variations?.dim2.style?.id === 'lpc') {
-      this.rarity = ['common', 'uncommon', 'rare', 'epic', 'legendary'][Math.floor(Math.random() * 5)];
       this.appearance = Object.assign(this.appearance, {
         variations: {
           ...this.appearance.variations,
@@ -298,8 +302,6 @@ export class AvatarAppearanceEditorComponent {
       torso,
       legs
     });
-
-    console.debug('result', result);
 
     // if (bodyVariation === 'female') {
     //   result.facialHair = null;

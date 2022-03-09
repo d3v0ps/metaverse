@@ -115,19 +115,21 @@ export type SelectOption = {
       <div cfElem="preview" *ngIf="
         designStyle?.hasViewer && showPreview">
         <cf-svg-icon src="assets/icons/mdi/dice-multiple.svg"
-          (click)="generateRandomAppearance()">
+          (click)="generateRandomSkin(); generateRandomOutfit();">
         </cf-svg-icon>
-        <cf-avatar-appearance-portrait
-          *ngIf="styleForm.value && propertiesForm.valueChanges | async"
-          [appearancePortrait]="{
-            id: '1',
-            filename: '',
-            format: formats.Image,
-            style: {
-              id: styleForm.value,
-              properties: propertiesForm.value
-            }
-          }" [rarity]="rarity"></cf-avatar-appearance-portrait>
+        <ng-container *ngIf="propertiesForm.value">
+          <cf-avatar-appearance-portrait
+            *ngIf="styleForm.value"
+            [appearancePortrait]="{
+              id: '1',
+              filename: '',
+              format: formats.Image,
+              style: {
+                id: styleForm.value,
+                properties: propertiesForm.value
+              }
+            }" [rarity]="rarity"></cf-avatar-appearance-portrait>
+        </ng-container>
         <cf-svg-icon *ngIf="false"
           (click)="onReloadPreviewClick()"
           src="assets/icons/mdi/reload.svg"></cf-svg-icon>
@@ -192,6 +194,11 @@ export class AvatarAppearancePortraitDesignerComponent
     this.styleForm.setValue(value?.style.id || 'avataaars', {
       emitEvent: false,
     });
+
+    if (value?.style.id === 'lpc') {
+
+      console.debug('value', value);
+    }
 
     this.designStyle = this.availableOptions.find(option => option.id === this.styleForm.value) || this.availableOptions[0];
     this.generatePropertiesForm(this.designStyle);

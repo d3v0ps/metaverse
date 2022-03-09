@@ -81,6 +81,31 @@ export class SelectedAvatarState {
     return this.userAvatarsRepository.upsert(avatarUpdate);
   }
 
+  updateAppearance(appearance: Appearance) {
+
+    if (!this.userAvatarsRepository) {
+      return throwError(() => new Error('Repositories not initialized'));
+    }
+
+    const avatar = this.avatar$.getValue();
+
+    if (!avatar) {
+      return throwError(() => new Error('Avatar not selected'));
+    }
+
+    const avatarUpdate: Avatar = JSON.parse(JSON.stringify(avatar));
+
+    const appearanceIndex = avatarUpdate.appearances.findIndex(avatarAppearance => avatarAppearance.id === appearance.id);
+
+    if (!appearanceIndex) {
+      throw new Error('Appearance not found');
+    }
+
+    Object.assign(avatarUpdate.appearances[appearanceIndex], appearance);
+
+    return this.userAvatarsRepository.upsert(avatarUpdate);
+  }
+
   private subscribeToDataChanges() {
     if (!this.userAvatarsRepository || !this.userPreferencesRepository) {
       throw new Error('Repositories not initialized');

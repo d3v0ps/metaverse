@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Appearance, AppearanceFormat } from '@central-factory/avatars/models/appearance';
+import { Appearance } from '@central-factory/avatars/models/appearance';
 import { ManageAvatarAppearancesState } from '@central-factory/avatars/states/manage-avatar-appearances.state';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
 import { AvatarAppearanceEditorModel } from '@central-factory/avatars/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component';
 import { AvatarAppearancesCarouselDisplayMode } from '@central-factory/avatars/web-components/angular/avatar-appearances-carousel/avatar-appearances-carousel.component';
-import { BehaviorSubject } from 'rxjs';
+import { map, switchMap, take, tap } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 
 @Component({
@@ -124,72 +124,74 @@ import { v4 as uuid } from 'uuid';
   ],
 })
 export class ManageAvatarAppearancesScene {
-  appearances$ = new BehaviorSubject<Appearance[]>([
-    {
-      id: uuid(),
-      filename: '',
-      format: AppearanceFormat.Image,
-      variations: {
-        portrait: {
-          id: uuid(),
-          filename: '',
-          style: {
-            id: 'avataaars',
-            properties: {
-              skinColor: 'Pale',
-              topType: 'NoHair',
-              facialHairType: 'Blank',
-              eyeType: 'Default',
-              eyebrowType: 'Default',
-              mouthType: 'Default',
-              clotheType: 'ShirtCrewNeck',
-              clotheColor: 'Black',
-            }
-          }
-        },
-        dim2: {
-          id: uuid(),
-          filename: '',
-          style: {
-            id: 'lpc',
-            properties: {
-              // animation
-              animation: 'walk',
-              direction: 'south',
 
-              // body
-              hair: null,
-              ears: null,
-              nose: null,
-              facialHair: null,
-              // clothes
-              head: null,
-              headAccesory: null,
-              visor: null,
-              torso: null,
-              torso2: null,
-              // arms: 'plate/arms',
-              arms: null,
-              back: null,
-              legs: null,
-              feet: null,
-              // items
-              rightHand: null,
-              leftHand: null,
-              bothHands: null,
+  // appearances$ = new BehaviorSubject<Appearance[]>([
+  //   {
+  //     id: uuid(),
+  //     filename: '',
+  //     format: AppearanceFormat.Image,
+  //     variations: {
+  //       portrait: {
+  //         id: uuid(),
+  //         filename: '',
+  //         style: {
+  //           id: 'avataaars',
+  //           properties: {
+  //             skinColor: 'Pale',
+  //             topType: 'NoHair',
+  //             facialHairType: 'Blank',
+  //             eyeType: 'Default',
+  //             eyebrowType: 'Default',
+  //             mouthType: 'Default',
+  //             clotheType: 'ShirtCrewNeck',
+  //             clotheColor: 'Black',
+  //           }
+  //         }
+  //       },
+  //       dim2: {
+  //         id: uuid(),
+  //         filename: '',
+  //         style: {
+  //           id: 'lpc',
+  //           properties: {
+  //             // animation
+  //             animation: 'walk',
+  //             direction: 'south',
 
-            }
-          }
-        }
-      }
-    }
-  ])
+  //             // body
+  //             hair: null,
+  //             ears: null,
+  //             nose: null,
+  //             facialHair: null,
+  //             // clothes
+  //             head: null,
+  //             headAccesory: null,
+  //             visor: null,
+  //             torso: null,
+  //             torso2: null,
+  //             // arms: 'plate/arms',
+  //             arms: null,
+  //             back: null,
+  //             legs: null,
+  //             feet: null,
+  //             // items
+  //             rightHand: null,
+  //             leftHand: null,
+  //             bothHands: null,
 
-  /** this.selectedAvatarState.avatar$.pipe(
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // ])
+
+  appearances$ = this.selectedAvatarState.avatar$.pipe(
     map((avatar) => (avatar ? avatar.appearances : [])),
     tap(appearances => this.selectedAppearance = this.selectedAppearance || appearances[0])
-  ); **/
-  selectedAppearance?= this.appearances$.value[0];
+  );
+
+  selectedAppearance?: Appearance;
 
   carouselDisplayModes = AvatarAppearancesCarouselDisplayMode;
 
@@ -217,18 +219,22 @@ export class ManageAvatarAppearancesScene {
     id: string;
     properties: Record<string, string>;
   }) {
-    const appearances = this.appearances$.value;
-    const appearance = appearances.find(appearance => this.selectedAppearance?.id === appearance.id);
+    this.appearances$.pipe(
+      take(1),
+      switchMap((appearances) => {
+        const appearance = appearances.find(appearance => this.selectedAppearance?.id === appearance.id);
 
-    if (!appearance) {
-      return;
-    }
+        if (!appearance) {
+          throw new Error('Appearance not found');
+        }
 
-    appearance.variations = appearance.variations || {};
+        appearance.variations = appearance.variations || {};
 
-    appearance.variations.portrait.style = style;
+        appearance.variations.portrait.style = style;
 
-    this.appearances$.next(appearances);
+        return this.selectedAvatarState.updateAppearance(appearance);
+      })
+    ).subscribe;
   }
 
   onAppearanceSubmit(appearance: AvatarAppearanceEditorModel) {
