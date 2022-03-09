@@ -1,14 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { GameLayer, GameLayerType } from '@central-factory/web-components/phaser/models/game-object';
+import { PhaserScene } from '@central-factory/web-components/phaser/scenes/phaser.scene';
 import { Scene } from 'phaser';
-import { AppearancePortrait, AppearanceVariation } from '../../../models/appearance';
-import { LPCAvatarScene } from '../../phaser/lpc-avatar.scene';
+import { v4 as uuid } from 'uuid';
+import { AppearanceVariation } from '../../../models/appearance';
 
 @Component({
   selector: 'cf-avatar-appearance-portrait',
   template: `
     <div cfBlock="avatar-appearance-portrait" (click)="appearanceClick.emit(appearancePortrait)"
-      [cfMod]="[active ? 'active' : undefined]">
+      [cfMod]="[active ? 'active' : 'inactive', rarity ? rarity : undefined]">
       <ng-container *ngIf="appearancePortrait && appearancePortrait.style" [ngSwitch]="appearancePortrait.style?.id">
         <ng-container *ngSwitchCase="'avataaars'">
           <div cfElem="image">
@@ -70,16 +73,19 @@ export class AvatarAppearancePortraitComponent {
       return;
     }
 
+    console.debug('appearancePortrait', value);
+
     const layers = this.getLpcLayers(value);
     const animation = value.style.properties?.animation ? `${value.style.properties.animation}/${value.style.properties.direction}` : 'walk/south';
 
+    console.debug('layers', layers);
     if (layers.length <= 0) {
       this.scenes = undefined;
       return;
     }
 
     this.scenes = {
-      room: new LPCAvatarScene({}, this.getLpcLayers(value), animation)
+      room: new PhaserScene({}, this.http, this.getLpcLayers(value), animation)
     }
   }
   get appearancePortrait(): AppearanceVariation | undefined {
@@ -88,20 +94,21 @@ export class AvatarAppearancePortraitComponent {
   @Input() emptyIcon = 'assets/icons/mdi/head-question.svg';
   @Input() showEmptyIcon = false;
   @Input() active = false;
+  @Input() rarity?: string;
 
   @Input() scale = 3;
 
-  @Output() appearanceClick = new EventEmitter<AppearancePortrait>();
+  @Output() appearanceClick = new EventEmitter<AppearanceVariation>();
 
   scenes?: Record<string, Scene>;
 
   public src?: SafeUrl;
 
-  private _appearancePortrait: AppearancePortrait | undefined;
+  private _appearancePortrait: AppearanceVariation | undefined;
 
-  constructor(private domSanitizer: DomSanitizer) { }
+  constructor(private domSanitizer: DomSanitizer, private http: HttpClient) { }
 
-  getLpcUrl(appearancePortrait: AppearancePortrait | undefined) {
+  getLpcUrl(appearancePortrait: AppearanceVariation | undefined) {
     if (!appearancePortrait) {
       return `assets/avatars/lpc/bases/Human/Child/Universal.png`;
     }
@@ -111,10 +118,7 @@ export class AvatarAppearancePortraitComponent {
     return `assets/avatars/lpc/bases/${urlParams}/Universal.png`;
   }
 
-  getLpcLayers(appearancePortrait: AppearancePortrait | undefined): {
-    id: string;
-    url: string;
-  }[] {
+  getLpcLayers(appearancePortrait: AppearanceVariation | undefined): GameLayer[] {
     // https://raw.githubusercontent.com/central-factory/Universal-LPC-spritesheet/master/body/male/dark.png
     const baseUrl = `https://raw.githubusercontent.com/central-factory/Universal-LPC-spritesheet/master`;
 
@@ -124,50 +128,51 @@ export class AvatarAppearancePortraitComponent {
       return [];
     }
 
-    return [
-      appearancePortrait.style.properties.shadows ? {
-        id: 'shadows',
-        url: [
+    const lpcLayers = [
+      {
+        name: 'Shadows',
+        description: 'Shadow layer',
+        src: [
           baseUrl,
           'shadows',
           appearancePortrait.style.properties.bodyVariation,
           `shadow.png`
         ].join('/')
-      } : null,
-
-      appearancePortrait.style.properties.bodyType ? {
-        id: 'body',
-        url: [
+      },
+      {
+        name: 'Body',
+        description: 'Body layer',
+        src: [
           baseUrl,
           'body',
           appearancePortrait.style.properties.bodyVariation,
           `${appearancePortrait.style.properties.bodyType}.png`
         ].join('/')
-      } : null,
-
+      },
       appearancePortrait.style.properties.legs ? {
-        id: 'legs',
-        url: [
+        name: 'Legs',
+        description: 'Legs layer',
+        src: [
           baseUrl,
           'legs',
           appearancePortrait.style.properties.bodyVariation,
           `${appearancePortrait.style.properties.legs}.png`
         ].join('/')
       } : null,
-
       appearancePortrait.style.properties.feet ? {
-        id: 'feet',
-        url: [
+        name: 'Feet',
+        description: 'Feet layer',
+        src: [
           baseUrl,
           'feet',
           appearancePortrait.style.properties.bodyVariation,
           `${appearancePortrait.style.properties.feet}.png`
         ].join('/')
       } : null,
-
       appearancePortrait.style.properties.torso ? {
-        id: 'torso',
-        url: [
+        name: 'Torso',
+        description: 'Torso Layer',
+        src: [
           baseUrl,
           'torso',
           appearancePortrait.style.properties.bodyVariation,
@@ -176,8 +181,9 @@ export class AvatarAppearancePortraitComponent {
       } : null,
 
       appearancePortrait.style.properties.torso2 ? {
-        id: 'torso2',
-        url: [
+        name: 'Torso 2',
+        description: 'Torso 2 Layer',
+        src: [
           baseUrl,
           'torso',
           appearancePortrait.style.properties.bodyVariation,
@@ -186,8 +192,9 @@ export class AvatarAppearancePortraitComponent {
       } : null,
 
       appearancePortrait.style.properties.arms ? {
-        id: 'arms',
-        url: [
+        name: 'Arms',
+        description: 'Arms Layer',
+        src: [
           baseUrl,
           'torso',
           appearancePortrait.style.properties.bodyVariation,
@@ -196,8 +203,9 @@ export class AvatarAppearancePortraitComponent {
       } : null,
 
       appearancePortrait.style.properties.back ? {
-        id: 'back',
-        url: [
+        name: 'Back',
+        description: 'Back Layer',
+        src: [
           baseUrl,
           'torso',
           appearancePortrait.style.properties.bodyVariation,
@@ -207,8 +215,9 @@ export class AvatarAppearancePortraitComponent {
       } : null,
       appearancePortrait.style.properties.ears ?
         {
-          id: 'ears',
-          url: [
+          name: 'Ears',
+          description: 'Ears Layer',
+          src: [
             baseUrl,
             'body',
             appearancePortrait.style.properties.bodyVariation,
@@ -218,8 +227,9 @@ export class AvatarAppearancePortraitComponent {
         } : null,
       appearancePortrait.style.properties.nose ?
         {
-          id: 'nose',
-          url: [
+          name: 'Nose',
+          description: 'Nose Layer',
+          src: [
             baseUrl,
             'body',
             appearancePortrait.style.properties.bodyVariation,
@@ -229,8 +239,9 @@ export class AvatarAppearancePortraitComponent {
         } : null,
       appearancePortrait.style.properties.eyes ?
         {
-          id: 'eyes',
-          url: [
+          name: 'Eyes',
+          description: 'Eyes Layer',
+          src: [
             baseUrl,
             'body',
             appearancePortrait.style.properties.bodyVariation,
@@ -240,8 +251,9 @@ export class AvatarAppearancePortraitComponent {
         } : null,
       appearancePortrait.style.properties.hair ?
         {
-          id: 'hair',
-          url: [
+          name: 'Hair',
+          description: 'Hair Layer',
+          src: [
             baseUrl,
             'hair',
             appearancePortrait.style.properties.bodyVariation,
@@ -251,8 +263,9 @@ export class AvatarAppearancePortraitComponent {
         } : null,
       appearancePortrait.style.properties.facialHair ?
         {
-          id: 'facialHair',
-          url: [
+          name: 'Facial Hair',
+          description: 'Facial Hair Layer',
+          src: [
             baseUrl,
             'facial',
             appearancePortrait.style.properties.bodyVariation,
@@ -262,8 +275,9 @@ export class AvatarAppearancePortraitComponent {
         } : null,
       appearancePortrait.style.properties.head ?
         {
-          id: 'head',
-          url: [
+          name: 'Head',
+          description: 'Head Layer',
+          src: [
             baseUrl,
             'head',
             appearancePortrait.style.properties.bodyVariation,
@@ -272,17 +286,29 @@ export class AvatarAppearancePortraitComponent {
         } : null,
       appearancePortrait.style.properties.visor ?
         {
-          id: 'visor',
-          url: [
+          name: 'Visor',
+          description: 'Visor Layer',
+          src: [
             baseUrl,
             'head',
             appearancePortrait.style.properties.bodyVariation,
             `${appearancePortrait.style.properties.visor}.png`
           ].join('/')
         } : null,
+      appearancePortrait.style.properties.accessory ? {
+        name: 'Accessory',
+        description: 'Accessory Layer',
+        src: [
+          baseUrl,
+          'accessories',
+          appearancePortrait.style.properties.bodyVariation,
+          `${appearancePortrait.style.properties.accessory}.png`
+        ].join('/')
+      } : null,
       appearancePortrait.style.properties.headAccesory ? {
-        id: 'headAccesory',
-        url: [
+        name: 'Head Accesory',
+        description: 'Head Accesory Layer',
+        src: [
           baseUrl,
           'head',
           appearancePortrait.style.properties.bodyVariation,
@@ -290,8 +316,9 @@ export class AvatarAppearancePortraitComponent {
         ].join('/')
       } : null,
       appearancePortrait.style.properties.leftHand ? {
-        id: 'leftHand',
-        url: [
+        name: 'Left Hand',
+        description: 'Left Hand Layer',
+        src: [
           baseUrl,
           'weapons',
           appearancePortrait.style.properties.bodyVariation,
@@ -300,8 +327,9 @@ export class AvatarAppearancePortraitComponent {
         ].join('/')
       } : null,
       appearancePortrait.style.properties.rightHand ? {
-        id: 'rightHand',
-        url: [
+        name: 'Right Hand',
+        description: 'Right Hand Layer',
+        src: [
           baseUrl,
           'weapons',
           appearancePortrait.style.properties.bodyVariation,
@@ -310,8 +338,9 @@ export class AvatarAppearancePortraitComponent {
         ].join('/')
       } : null,
       appearancePortrait.style.properties.bothHands ? {
-        id: 'bothHands',
-        url: [
+        name: 'Both Hands',
+        description: 'Both Hands Layer',
+        src: [
           baseUrl,
           'weapons',
           appearancePortrait.style.properties.bodyVariation,
@@ -319,6 +348,184 @@ export class AvatarAppearancePortraitComponent {
           `${appearancePortrait.style.properties.bothHands}.png`
         ].join('/')
       } : null,
-    ].filter(layer => layer ? true : false) as { id: string; url: string; }[];
+    ].filter(val => val ? true : false) as { name: string; src: string; description?: string }[];
+
+    return this.phaserLayersFromLPCLayers(lpcLayers);
+  }
+
+  private phaserLayersFromLPCLayers(lpcLayers: {
+    name: string;
+    src: string;
+    description?: string;
+  }[]) {
+    return lpcLayers.reduce(
+      (phaserLayers, layer) => phaserLayers.concat(
+        {
+          id: uuid(),
+          type: GameLayerType.Sprite,
+          name: layer.name,
+          description: layer.description || `${layer.name} layer`,
+          dimensions: {
+            scale: 3,
+          },
+          properties: {
+            name: layer.name.toLowerCase(),
+            src: layer.src,
+          }
+        },
+        {
+          id: uuid(),
+          type: GameLayerType.AnimationGroup,
+          name: `${layer.name} Cast`,
+          description: `${layer.name} animation layer`,
+          properties: {
+            animations: [
+              {
+                name: 'north',
+              },
+              {
+                name: 'left'
+              },
+              {
+                name: 'south'
+              },
+              {
+                name: 'right'
+              }
+            ],
+            name: 'cast',
+            textureKey: layer.name,
+            steps: 7,
+            row: 0,
+            cols: 13,
+          },
+        },
+        {
+          id: uuid(),
+          type: GameLayerType.AnimationGroup,
+          name: `${layer.name} Dual-Wield`,
+          description: `${layer.name} animation layer`,
+          properties: {
+            animations: [
+              {
+                name: 'north',
+              },
+              {
+                name: 'left'
+              },
+              {
+                name: 'south'
+              },
+              {
+                name: 'right'
+              }
+            ],
+            name: 'dual-wield',
+            textureKey: layer.name,
+            steps: 8,
+            row: 4,
+            cols: 13,
+          },
+        },
+        {
+          id: uuid(),
+          type: GameLayerType.AnimationGroup,
+          name: `${layer.name} Walk`,
+          description: `${layer.name} animation layer`,
+          properties: {
+            animations: [
+              {
+                name: 'north',
+              },
+              {
+                name: 'left'
+              },
+              {
+                name: 'south'
+              },
+              {
+                name: 'right'
+              }
+            ],
+            name: 'walk',
+            textureKey: layer.name,
+            steps: 9,
+            row: 8,
+            cols: 13,
+          },
+        },
+        {
+          id: uuid(),
+          type: GameLayerType.AnimationGroup,
+          name: `${layer.name} Right Hand`,
+          description: `${layer.name} animation layer`,
+          properties: {
+            animations: [
+              {
+                name: 'north',
+              },
+              {
+                name: 'left'
+              },
+              {
+                name: 'south'
+              },
+              {
+                name: 'right'
+              }
+            ],
+            name: 'right-arm',
+            textureKey: layer.name,
+            steps: 6,
+            row: 12,
+            cols: 13,
+          },
+        },
+        {
+          id: uuid(),
+          type: GameLayerType.AnimationGroup,
+          name: `${layer.name} Bow`,
+          description: `${layer.name} animation layer`,
+          properties: {
+            animations: [
+              {
+                name: 'north',
+              },
+              {
+                name: 'left'
+              },
+              {
+                name: 'south'
+              },
+              {
+                name: 'right'
+              }
+            ],
+            name: 'bow',
+            textureKey: layer.name,
+            steps: 13,
+            row: 16,
+            cols: 13,
+          },
+        },
+        {
+          id: uuid(),
+          type: GameLayerType.AnimationGroup,
+          name: `${layer.name} Fall`,
+          description: `${layer.name} animation layer`,
+          properties: {
+            animations: [
+              {
+                name: 'south'
+              },
+            ],
+            name: 'fall',
+            textureKey: layer.name,
+            steps: 6,
+            row: 20,
+            cols: 13,
+          },
+        }
+      ), [] as GameLayer[]);
   }
 }

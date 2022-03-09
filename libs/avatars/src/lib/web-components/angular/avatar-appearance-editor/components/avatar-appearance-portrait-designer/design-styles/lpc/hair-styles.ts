@@ -32,6 +32,10 @@ export const hairStyles = [
     label: 'Long',
   },
   {
+    id: 'long2',
+    label: 'Long 2',
+  },
+  {
     id: 'longhawk',
     label: 'Long Hawk',
   },
@@ -54,5 +58,73 @@ export const hairStyles = [
   {
     id: 'mohawk',
     label: 'Mohawk',
+  },
+  {
+    id: 'page',
+    label: 'Page',
+  },
+  {
+    id: 'page2',
+    label: 'Page2',
+  },
+  {
+    id: 'parted',
+    label: 'Parted',
+  },
+  {
+    id: 'pixie',
+    label: 'Pixie',
+  },
+  {
+    id: 'plain',
+    label: 'Plain',
+  },
+  {
+    id: 'ponytail',
+    label: 'Ponytail',
+  },
+  {
+    id: 'ponytail2',
+    label: 'Ponytail 2',
+  },
+  {
+    id: 'princess',
+    label: 'Princess',
+  },
+  {
+    id: 'short',
+    label: 'Short',
+  },
+  {
+    id: 'shorthawk',
+    label: 'Short Hawk',
+  },
+  {
+    id: 'shortknot',
+    label: 'Short Knot',
+  },
+  {
+    id: 'shoulderl',
+    label: 'Shoulder Left',
+  },
+  {
+    id: 'shoulderr',
+    label: 'Shoulder Right',
+  },
+  {
+    id: 'swoop',
+    label: 'Swoop',
+  },
+  {
+    id: 'unkempt',
+    label: 'Unkempt',
+  },
+  {
+    id: 'xlong',
+    label: 'Longest',
+  },
+  {
+    id: 'xlongknot',
+    label: 'Longest Knot',
   },
 ]

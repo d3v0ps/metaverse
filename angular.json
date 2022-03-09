@@ -495,6 +495,100 @@
       },
       "tags": []
     },
+    "knowledge-base": {
+      "projectType": "application",
+      "root": "apps/knowledge-base",
+      "sourceRoot": "apps/knowledge-base/src",
+      "prefix": "central-factory",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/knowledge-base",
+            "index": "apps/knowledge-base/src/index.html",
+            "main": "apps/knowledge-base/src/main.ts",
+            "polyfills": "apps/knowledge-base/src/polyfills.ts",
+            "tsConfig": "apps/knowledge-base/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/knowledge-base/src/favicon.ico",
+              "apps/knowledge-base/src/assets"
+            ],
+            "styles": ["apps/knowledge-base/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/knowledge-base/src/environments/environment.ts",
+                  "with": "apps/knowledge-base/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "knowledge-base:build:production"
+            },
+            "development": {
+              "browserTarget": "knowledge-base:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "knowledge-base:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/knowledge-base/src/**/*.ts",
+              "apps/knowledge-base/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/knowledge-base"],
+          "options": {
+            "jestConfig": "apps/knowledge-base/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "logger": {
       "projectType": "library",
       "root": "libs/logger",

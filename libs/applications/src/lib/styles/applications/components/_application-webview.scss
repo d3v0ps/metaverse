@@ -23,12 +23,13 @@
   }
 }
 
+.application-local-module,
 .application-remote-module {
   border: 0;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   width: 100%;
-  height: calc(100vh - 120px);
+  height: 100%;
   // height: calc(100vh - 2rem - var(--component-application-toolbar-height, 2rem))
 
   &--no-toolbar {
@@ -41,6 +42,11 @@
     padding: 0;
     margin: 0 auto;
     width: 100%;
+    box-shadow: none;
   }
 
+}
+
+.application-remote-module {
+  height: calc(100vh - 120px);
 }

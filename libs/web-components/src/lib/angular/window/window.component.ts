@@ -3,11 +3,10 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  HostListener,
-  Input,
+  HostListener, Input,
   Output,
   ViewChild,
-  ViewEncapsulation,
+  ViewEncapsulation
 } from '@angular/core';
 import { findAncestor } from '../../shared/platform/browser/dom/find-ancestor';
 import { getMaxZIndex } from '../../shared/platform/browser/dom/get-max-z-index';
@@ -30,9 +29,13 @@ import { ResizableEvent } from '../resizable/resizable.directive';
       role="dialog"
       #modalRoot
       cfResizable
+      [north]="true"
+      [northEast]="true"
+      [northWest]="true"
       [south]="true"
       [east]="true"
       [southEast]="true"
+      [southWest]="true"
       (resizing)="onResize($event)"
       cfDraggable
       [dragEventTarget]="dragEventTarget"
@@ -61,7 +64,7 @@ import { ResizableEvent } from '../resizable/resizable.directive';
           <button
             *ngIf="maximizable"
             cfBlock="button"
-            [cfMod]="['light', 'small', 'has-icon', 'only-icon', 'rounded']"
+            [cfMod]="['primary', 'small', 'has-icon', 'only-icon', 'rounded']"
             (click)="toggleMaximize($event)"
           >
             <cf-svg-icon
@@ -78,8 +81,10 @@ import { ResizableEvent } from '../resizable/resizable.directive';
           <ng-content select=".window-header__content"></ng-content>
         </div>
       </div>
-
-      <div cfBlock="window-body" #modalBody>
+      <div cfBlock="window-body" #modalBody [ngStyle]="{
+        height: 'calc(100% - 48px)',
+        width: '100%'
+      }">
         <ng-content select=".window-body__content"></ng-content>
       </div>
       <div cfBlock="window-footer" #modalFooter>
@@ -93,7 +98,13 @@ export class WindowComponent implements AfterViewChecked {
   @Input() scrollTopEnable = true;
   @Input() maximizable = false;
   @Input() backdrop = true;
+  @Input() width?: string;
+  @Input() height?: string;
+  @Input() x?: number;
+  @Input() y?: number;
+  @Input() zIndex?: number;
 
+  @Output() moveOnTopEnd = new EventEmitter();
   @Output() openModal = new EventEmitter();
   @Output() closeModal = new EventEmitter<boolean>();
   @Output() resizeModal = new EventEmitter<ResizableEvent>();
@@ -105,8 +116,8 @@ export class WindowComponent implements AfterViewChecked {
   @ViewChild('modalFooter', { static: false }) modalFooter!: ElementRef;
   @ViewChild('closeIcon', { static: false }) closeIcon!: ElementRef;
 
-  visible?: boolean;
-  executePostDisplayActions?: boolean;
+  @Input() visible?: boolean;
+  @Input() executePostDisplayActions?: boolean;
   maximized?: boolean;
   preMaximizeRootWidth?: number;
   preMaximizeRootHeight?: number;
@@ -115,11 +126,13 @@ export class WindowComponent implements AfterViewChecked {
   preMaximizePageY?: number;
   dragEventTarget!: MouseEvent | TouchEvent;
 
-  constructor(private element: ElementRef) {}
+  constructor(private element: ElementRef) { }
 
   ngAfterViewChecked() {
     if (this.executePostDisplayActions) {
-      this.center();
+
+      this.render();
+
       this.executePostDisplayActions = false;
     }
   }
@@ -171,6 +184,11 @@ export class WindowComponent implements AfterViewChecked {
     const x = Math.max((window.innerWidth - elementWidth) / 2, 0);
     const y = Math.max((window.innerHeight - elementHeight) / 2, 0);
 
+    this.width = elementWidth;
+    this.height = elementHeight;
+    this.x = x;
+    this.y = y;
+
     this.modalRoot.nativeElement.style.left = x + 'px';
     this.modalRoot.nativeElement.style.top = y + 'px';
   }
@@ -203,7 +221,7 @@ export class WindowComponent implements AfterViewChecked {
   }
 
   getMaxModalIndex() {
-    return getMaxZIndex('.ui-modal');
+    return getMaxZIndex('.window');
   }
 
   focusLastModal() {
@@ -272,6 +290,34 @@ export class WindowComponent implements AfterViewChecked {
         zIndex = maxModalIndex + 1;
         this.modalRoot.nativeElement.style.zIndex = zIndex.toString();
       }
+      this.moveOnTopEnd.emit(zIndex);
+    }
+  }
+
+  render() {
+    this.moveTo(this.x, this.y);
+    this.resize(this.width, this.height);
+
+    if (!this.x && !this.y) {
+      this.center();
+    }
+  }
+
+  moveTo(x?: number, y?: number) {
+    if (x) {
+      this.modalRoot.nativeElement.style.left = x + 'px';
+    }
+    if (y) {
+      this.modalRoot.nativeElement.style.top = y + 'px';
+    }
+  }
+
+  resize(width?: string, height?: string) {
+    if (width) {
+      this.modalRoot.nativeElement.style.width = width;
+    }
+    if (height) {
+      this.modalRoot.nativeElement.style.height = height;
     }
   }
 }

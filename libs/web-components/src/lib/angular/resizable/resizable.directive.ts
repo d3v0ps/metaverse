@@ -6,7 +6,7 @@ import {
   HostListener,
   Input,
   OnDestroy,
-  Output,
+  Output
 } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -24,9 +24,14 @@ export type ResizableEvent = {
   selector: '[cfResizable]',
 })
 export class ResizableDirective implements OnDestroy, AfterViewInit {
+  @Input() north?: boolean;
   @Input() south?: boolean;
   @Input() east?: boolean;
+  @Input() northEast?: boolean;
   @Input() southEast?: boolean;
+  @Input() west?: boolean;
+  @Input() northWest?: boolean;
+  @Input() southWest?: boolean;
   @Input() ghost?: boolean;
 
   @Output() resizeBegin: EventEmitter<any> = new EventEmitter();
@@ -59,6 +64,21 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
     }
     if (this.southEast) {
       this.createHandle('resize-handle-se');
+    }
+    if (this.north) {
+      this.createHandle('resize-handle-n');
+    }
+    if (this.northEast) {
+      this.createHandle('resize-handle-ne');
+    }
+    if (this.west) {
+      this.createHandle('resize-handle-w');
+    }
+    if (this.southWest) {
+      this.createHandle('resize-handle-sw');
+    }
+    if (this.northWest) {
+      this.createHandle('resize-handle-nw');
     }
     const computedStyle = window.getComputedStyle(this.element);
     this.minWidth = parseFloat(computedStyle.minWidth);

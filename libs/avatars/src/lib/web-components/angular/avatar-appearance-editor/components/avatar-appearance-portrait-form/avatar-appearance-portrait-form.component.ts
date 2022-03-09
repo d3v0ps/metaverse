@@ -27,7 +27,7 @@ export type AvatarAppearancePortraitModelForm = {
       <h2 cfElem="title">Portrait</h2>
 
       <cf-avatar-appearance-portrait-designer
-        [appeareancePortrait]="{
+        [appearancePortrait]="{
           id: form.value.id,
           filename: form.value.filename || '',
           format: form.value!.format,

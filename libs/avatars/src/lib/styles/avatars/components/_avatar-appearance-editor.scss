@@ -4,7 +4,8 @@
   height: 100%;
   &__body {
     flex: 1;
-    overflow: auto;
+    overflow: hidden;
+    // overflow: auto;
 
     .appearance-tab-content {
       display: flex;
@@ -33,6 +34,12 @@
     align-items: center;
     justify-content: center;
     align-content: flex-start;
+
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    border-top-left-radius: 25%;
+    border-top-right-radius: 25%;
+
     .avatar-appearance-spritesheet {
       margin-top: -1rem;
     }

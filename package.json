@@ -21,6 +21,7 @@
   "private": true,
   "dependencies": {
     "@angular-architects/module-federation": "^14.0.2",
+    "@angular-extensions/elements": "^13.0.0",
     "@angular/animations": "~13.1.0",
     "@angular/cdk": "~13.1.0",
     "@angular/common": "~13.1.0",
@@ -41,6 +42,7 @@
     "@nestjs/core": "^8.2.6",
     "@nestjs/platform-express": "^8.2.6",
     "@ng-select/ng-select": "^8.1.1",
+    "@ngxd/core": "^13.0.0",
     "avataaars": "^1.2.1",
     "clsx": "^1.1.1",
     "electron-store": "^8.0.1",

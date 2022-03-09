@@ -32,6 +32,11 @@ export const lpcDesignStyle: DesignStyle = {
   properties: [
     {
       id: 'animation',
+      type: 'group',
+      label: 'Animation',
+    },
+    {
+      id: 'animation',
       type: 'select',
       label: 'Animation',
       options: animations
@@ -41,6 +46,11 @@ export const lpcDesignStyle: DesignStyle = {
       type: 'select',
       label: 'Direction',
       options: directions
+    },
+    {
+      id: 'body',
+      type: 'group',
+      label: 'Body',
     },
     {
       id: 'bodyType',
@@ -97,6 +107,11 @@ export const lpcDesignStyle: DesignStyle = {
       options: hairColors
     },
     {
+      id: 'equipment',
+      type: 'group',
+      label: 'Equipment',
+    },
+    {
       id: 'head',
       type: 'select',
       label: 'Head',
@@ -107,6 +122,29 @@ export const lpcDesignStyle: DesignStyle = {
       type: 'select',
       label: 'Head Visor',
       options: headVisors
+    },
+    {
+      id: 'accessory',
+      type: 'select',
+      label: 'Accesory',
+      options: [
+        {
+          id: 'glasses/formal_glasses',
+          label: 'Formal Glasses',
+        },
+        {
+          id: 'glasses/formal_monocle',
+          label: 'Monocle',
+        },
+        {
+          id: 'bowtie/formal_bowtie',
+          label: 'Formal Bowtie',
+        },
+        {
+          id: 'bowtie/formal_necktie',
+          label: 'Formal Necktie',
+        }
+      ]
     },
     {
       id: 'headAccesory',

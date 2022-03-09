@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Appearance } from '@central-factory/avatars/models/appearance';
+import { Appearance, AppearanceFormat } from '@central-factory/avatars/models/appearance';
 import { ManageAvatarAppearancesState } from '@central-factory/avatars/states/manage-avatar-appearances.state';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
 import { AvatarAppearanceEditorModel } from '@central-factory/avatars/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component';
 import { AvatarAppearancesCarouselDisplayMode } from '@central-factory/avatars/web-components/angular/avatar-appearances-carousel/avatar-appearances-carousel.component';
-import { map, tap } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 
 @Component({
@@ -27,9 +27,9 @@ import { v4 as uuid } from 'uuid';
           >
           </cf-avatar-appearances-carousel>
         </div>
-        <div cfElem="footer">
+        <!-- div cfElem="footer">
           <div cfBlock="form-buttons">
-            <!-- button
+            <button
               cfBlock="button"
               [cfMod]="['primary', 'has-icon']"
               (click)="onAppearanceAddClick()"
@@ -37,7 +37,7 @@ import { v4 as uuid } from 'uuid';
               <cf-svg-icon elem="icon" src="assets/icons/mdi/account-plus.svg">
               </cf-svg-icon>
               <span elem="label">Add a new appearance</span>
-            </button -->
+            </button>
             <button
               cfBlock="button"
               [cfMod]="['primary', 'has-icon', 'full-width']"
@@ -52,7 +52,7 @@ import { v4 as uuid } from 'uuid';
               <span elem="label">Confirm appearances</span>
             </button>
           </div>
-        </div>
+        </div -->
       </div>
       <div cfBlock="appearance-editor">
         <ng-container *ngIf="loading"> Loading... </ng-container>
@@ -81,6 +81,7 @@ import { v4 as uuid } from 'uuid';
           *ngIf="selectedAppearance"
           [appearance]="selectedAppearance"
           (appearanceSubmit)="onAppearanceSubmit($event)"
+          (portraitChange)="onPortraitChange($event)"
         ></cf-avatar-appearance-editor>
       </div>
     </div>
@@ -101,6 +102,7 @@ import { v4 as uuid } from 'uuid';
 
           &__content {
             overflow: auto;
+            height: 100%;
           }
 
           &__footer {
@@ -122,11 +124,72 @@ import { v4 as uuid } from 'uuid';
   ],
 })
 export class ManageAvatarAppearancesScene {
-  appearances$ = this.selectedAvatarState.avatar$.pipe(
+  appearances$ = new BehaviorSubject<Appearance[]>([
+    {
+      id: uuid(),
+      filename: '',
+      format: AppearanceFormat.Image,
+      variations: {
+        portrait: {
+          id: uuid(),
+          filename: '',
+          style: {
+            id: 'avataaars',
+            properties: {
+              skinColor: 'Pale',
+              topType: 'NoHair',
+              facialHairType: 'Blank',
+              eyeType: 'Default',
+              eyebrowType: 'Default',
+              mouthType: 'Default',
+              clotheType: 'ShirtCrewNeck',
+              clotheColor: 'Black',
+            }
+          }
+        },
+        dim2: {
+          id: uuid(),
+          filename: '',
+          style: {
+            id: 'lpc',
+            properties: {
+              // animation
+              animation: 'walk',
+              direction: 'south',
+
+              // body
+              hair: null,
+              ears: null,
+              nose: null,
+              facialHair: null,
+              // clothes
+              head: null,
+              headAccesory: null,
+              visor: null,
+              torso: null,
+              torso2: null,
+              // arms: 'plate/arms',
+              arms: null,
+              back: null,
+              legs: null,
+              feet: null,
+              // items
+              rightHand: null,
+              leftHand: null,
+              bothHands: null,
+
+            }
+          }
+        }
+      }
+    }
+  ])
+
+  /** this.selectedAvatarState.avatar$.pipe(
     map((avatar) => (avatar ? avatar.appearances : [])),
     tap(appearances => this.selectedAppearance = this.selectedAppearance || appearances[0])
-  );
-  selectedAppearance?: Appearance;
+  ); **/
+  selectedAppearance?= this.appearances$.value[0];
 
   carouselDisplayModes = AvatarAppearancesCarouselDisplayMode;
 
@@ -148,6 +211,24 @@ export class ManageAvatarAppearancesScene {
         id: uuid(),
       },
     } as unknown as Appearance;
+  }
+
+  onPortraitChange(style: {
+    id: string;
+    properties: Record<string, string>;
+  }) {
+    const appearances = this.appearances$.value;
+    const appearance = appearances.find(appearance => this.selectedAppearance?.id === appearance.id);
+
+    if (!appearance) {
+      return;
+    }
+
+    appearance.variations = appearance.variations || {};
+
+    appearance.variations.portrait.style = style;
+
+    this.appearances$.next(appearances);
   }
 
   onAppearanceSubmit(appearance: AvatarAppearanceEditorModel) {

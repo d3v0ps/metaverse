@@ -1,10 +1,12 @@
 import {
   PermissionKind,
-  PermissionMode,
+  PermissionMode
 } from '@central-factory/permissions/models/permission';
 
 export enum ApplicationRenderingType {
   Webview = 'webview',
+  Local = 'local',
+  AngularElement = 'angular-element',
   WebpackModuleFederation = 'webpack-module-federation',
   Unknown = 'unknown',
 }

@@ -42,7 +42,8 @@ export type AppearancePreviewCamera = {
 export type AppearanceVariation = {
   id: string;
   filename: string;
-  format: AppearanceFormat;
+  /** @deprecated use style designer instead */
+  format?: AppearanceFormat;
   src?: string;
   style: {
     id: string;

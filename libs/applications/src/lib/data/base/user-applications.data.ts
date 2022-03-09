@@ -1,12 +1,12 @@
 import {
   PermissionKind,
-  PermissionMode,
+  PermissionMode
 } from '@central-factory/permissions/models/permission';
 import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
 import type { UserApplicationDocType } from '../../collections/user-applications.collection';
 import {
   ApplicationRenderingType,
-  ColorVariation,
+  ColorVariation
 } from '../../models/application';
 
 export const userApplications: UserApplicationDocType[] = [
@@ -52,7 +52,7 @@ export const userApplications: UserApplicationDocType[] = [
     name: 'Portals',
     description:
       'Access to many local and hosted web applications. Applications can be loaded through a webview or through a webpack module federation.',
-    startUrl: 'portals',
+    startUrl: 'StartScene',
     icons: [
       {
         src: 'assets/icons/mdi/web-box.svg',
@@ -89,6 +89,7 @@ export const userApplications: UserApplicationDocType[] = [
         id: 'com.central-factory',
         name: 'Central Factory',
       },
+      renderingType: ApplicationRenderingType.Local,
       internal: true,
       sidebarShortcuts: ['Start'],
       permissions: [
@@ -141,10 +142,83 @@ export const userApplications: UserApplicationDocType[] = [
     },
   },
   {
+    id: 'com.central-factory.mirror',
+    name: 'Mirror',
+    description: 'Loading your Metaverse Mirror. Customize your avatars.',
+    startUrl: 'CreateAvatarScene',
+    icons: [
+      {
+        src: 'assets/icons/mdi/mirror-variant.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Mirror',
+        url: '/mirror',
+        icons: [
+          {
+            src: 'assets/icons/mdi/mirror-variant.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+      {
+        name: 'Select Avatar',
+        url: '/select-avatar',
+        icons: [
+          {
+            src: 'assets/icons/mdi/mirror-variant.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.central-factory',
+        name: 'Central Factory',
+      },
+      internal: true,
+      renderingType: ApplicationRenderingType.Local,
+      permissions: [
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Read,
+          target: 'useravatars',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Write,
+          target: 'useravatars',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Delete,
+          target: 'useravatars',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Read,
+          target: 'userpreferences',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Write,
+          target: 'userpreferences',
+        },
+      ],
+      sidebarShortcuts: ['Mirror'],
+    },
+  },
+  {
     id: 'com.central-factory.avatars',
     name: 'Avatars',
     description: 'Avatars management module. Customize your avatars.',
-    startUrl: 'user-avatars',
+    startUrl: 'ManageAvatarsScene',
     icons: [
       {
         src: 'assets/icons/mdi/account.svg',
@@ -182,6 +256,7 @@ export const userApplications: UserApplicationDocType[] = [
         name: 'Central Factory',
       },
       internal: true,
+      renderingType: ApplicationRenderingType.Local,
       permissions: [
         {
           kind: PermissionKind.Collection,
@@ -216,7 +291,7 @@ export const userApplications: UserApplicationDocType[] = [
     id: 'com.central-factory.inventory',
     name: 'Inventory',
     description: 'Assets management module. Manage and preview your assets.',
-    startUrl: 'inventory',
+    startUrl: 'InventoryScene',
     icons: [
       {
         src: 'assets/icons/mdi/bag-personal.svg',
@@ -238,6 +313,7 @@ export const userApplications: UserApplicationDocType[] = [
       },
     ],
     additionalProperties: {
+      renderingType: ApplicationRenderingType.Local,
       author: {
         id: 'com.central-factory',
         name: 'Central Factory',
@@ -268,7 +344,7 @@ export const userApplications: UserApplicationDocType[] = [
     id: 'com.central-factory.marketplace',
     name: 'Marketplace',
     description: 'Portal Marketplace. Sell your assets and acquire new ones.',
-    startUrl: 'marketplace',
+    startUrl: 'MarketplaceScene',
     icons: [
       {
         src: 'assets/icons/mdi/store.svg',
@@ -290,6 +366,7 @@ export const userApplications: UserApplicationDocType[] = [
       },
     ],
     additionalProperties: {
+      renderingType: ApplicationRenderingType.Local,
       author: {
         id: 'com.central-factory',
         name: 'Central Factory',
@@ -320,7 +397,7 @@ export const userApplications: UserApplicationDocType[] = [
     id: 'com.central-factory.settings',
     name: 'Settings',
     description: 'Customize your portal experience. Manage your preferences.',
-    startUrl: 'settings',
+    startUrl: 'SettingsScene',
     icons: [
       {
         src: 'assets/icons/mdi/cog.svg',
@@ -342,6 +419,7 @@ export const userApplications: UserApplicationDocType[] = [
       },
     ],
     additionalProperties: {
+      renderingType: ApplicationRenderingType.Local,
       internal: true,
       author: {
         id: 'com.central-factory',

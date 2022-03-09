@@ -19,4 +19,7 @@ import { ManageAvatarAppearancesScene } from './manage-avatar-appearances.scene'
   declarations: [ManageAvatarAppearancesScene],
   exports: [ManageAvatarAppearancesScene],
 })
-export class ManageAvatarAppearancesModule { }
+export class ManageAvatarAppearancesModule {
+
+  static Component = ManageAvatarAppearancesScene;
+}

@@ -15,6 +15,31 @@
   border: none;
   box-shadow: var(--component-avatar-appearance-portrait-shadow-outset), inset var(--component-avatar-appearance-portrait-shadow-inset-primary), inset var(--component-avatar-appearance-portrait-shadow-inset-secondary);
 
+  &--common {
+    border: 1rem solid var(--color-base-common-medium);
+
+  }
+
+  &--uncommon {
+    border: 1rem solid var(--color-base-uncommon-medium);
+  }
+
+  &--rare {
+    border: 1rem solid var(--color-base-rare-medium);
+  }
+
+  &--epic {
+    border: 1rem solid var(--color-base-epic-medium);
+  }
+
+  &--legendary {
+    border: 1rem solid var(--color-base-legendary-medium);
+  }
+
+  &--unique {
+    border: 1rem solid var(--color-base-unique-medium);
+  }
+
   &__image {
     border-radius: 50%;
     width: 100%;

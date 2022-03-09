@@ -127,3 +127,100 @@ color:
         value: '#1565c0'
       darkest:
         value: '#0d47a1'
+
+    common:
+      lightest:
+        value: '#d2d2d2'
+      lighter:
+        value: '#c1c1c1'
+      light:
+        value: '#b2b2b2'
+      medium:
+        value: '#a2a2a2'
+      dark:
+        value: '#929292'
+      darker:
+        value: '#818181'
+      darkest:
+        value: '#717171'
+
+    uncommon:
+      lightest:
+        value: '#b3c7b4'
+      lighter:
+        value: '#99b39a'
+      light:
+        value: '#8eab8f'
+      medium:
+        value: '#83a384'
+      dark:
+        value: '#789b79'
+      darker:
+        value: '#678e68'
+      darkest:
+        value: '#437445'
+
+    rare:
+      lightest:
+        value: '#8ab8cf'
+      lighter:
+        value: '#70a9c4'
+      light:
+        value: '#609fbd'
+      medium:
+        value: '#5095b6'
+      dark:
+        value: '#408baf'
+      darker:
+        value: '#3081a8'
+      darkest:
+        value: '#19739e'
+
+    epic:
+      lightest:
+        value: '#c5a8d1'
+      lighter:
+        value: '#b48fc3'
+      light:
+        value: '#a173b4'
+      medium:
+        value: '#7c3b97'
+      dark:
+        value: '#722c8f'
+      darker:
+        value: '#641884'
+      darkest:
+        value: '#550178'
+
+    legendary:
+      lightest:
+        value: '#f6d483'
+      lighter:
+        value: '#f4c85f'
+      light:
+        value: '#f1bc3c'
+      medium:
+        value: '#eead10'
+      dark:
+        value: '#d39b13'
+      darker:
+        value: '#be8d15'
+      darkest:
+        value: '#af8316'
+
+    unique:
+      lightest:
+        value: '#7fe6f0'
+      lighter:
+        value: '#66e1ed'
+      light:
+        value: '#34d7e7'
+      medium:
+        value: '#15c3d4'
+      dark:
+        value: '#1c9ca8'
+      darker:
+        value: '#217e87'
+      darkest:
+        value: '#25676d'
+

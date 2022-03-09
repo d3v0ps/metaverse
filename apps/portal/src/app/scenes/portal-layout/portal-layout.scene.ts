@@ -172,6 +172,33 @@ export enum SceneContentAnimationState {
                 </div>
 
                 <router-outlet name="sidebar"></router-outlet>
+
+                <div cfBlock="sidebar-footer">
+
+                  <a
+                      (click)="onCatchClick()"
+                      class="d-block"
+                      cfBlock="sidebar-item"
+                    >
+                      <div cfElem="text">
+                        <span cfElem="text-content">Catch</span>
+                      </div>
+                      <button
+                        cfBlock="button"
+                        cfMod="fab"
+                        [ngClass]="{
+                          'button--active': true
+                        }"
+                        style="margin-top: 15px;"
+                      >
+                        <cf-svg-icon
+                          [src]="'assets/icons/mdi/map-marker-plus.svg'"
+                          cfElem="icon"
+                          [svgClass]="'icon__svg'"
+                        ></cf-svg-icon>
+                      </button>
+                    </a>
+                </div>
               </div>
             </cf-sidebar>
 
@@ -206,7 +233,8 @@ export enum SceneContentAnimationState {
                     (splashScreenHide)="showSplashScreen = false"
                   ></cf-splash-screen>
                 </div>
-                <router-outlet></router-outlet>
+                <cf-application-manager></cf-application-manager>
+                <!-- router-outlet></router-outlet -->
               </div>
             </div>
           </cf-sidebar-container>
@@ -394,6 +422,10 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
 
       // setTimeout(() => (this.showSplashScreen = false), 3000);
     }, 100);
+  }
+
+  public onCatchClick() {
+    console.log('catch');
   }
 
   private subscribeToDataChanges(

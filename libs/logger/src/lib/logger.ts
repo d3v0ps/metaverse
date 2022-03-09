@@ -34,8 +34,8 @@ export class Logger {
   ];
 
 
-  _log(...args: any[]) {
-    this._console.log(...args);
+  _log(title: string, style: string, payload: any) {
+    this._console.log(title, style, ...payload);
   }
 
 

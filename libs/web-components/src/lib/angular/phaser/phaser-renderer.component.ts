@@ -1,5 +1,8 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
 import { Game, Scene } from 'phaser';
+import { AwaitLoaderPlugin } from './plugins/await-loader.plugin';
+
+
 
 export type SceneConfig = string | Phaser.Types.Scenes.SettingsConfig;
 
@@ -10,7 +13,7 @@ export type SceneConfig = string | Phaser.Types.Scenes.SettingsConfig;
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export class PhaserRendererComponent {
+export class PhaserRendererComponent implements OnDestroy {
 
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -55,12 +58,18 @@ export class PhaserRendererComponent {
 
   private _game?: Game;
 
+  ngOnDestroy() {
+    this._game?.destroy(true);
+  }
+
   private render() {
-    if (!this.container || !this.scenes) {
+    if (!this.container || !this.scenes || Object.keys(this.scenes).length <= 0) {
       return;
     }
+    console.debug('render', this.scenes);
 
     if (this._game) {
+      (this.scenes['room'] as any).onDestroy();
       this._game.destroy(true);
     }
 
@@ -79,7 +88,16 @@ export class PhaserRendererComponent {
       // },
       pixelArt: true,
       scene: this.scenes['room'],
-      ...this.config
+      ...this.config,
+      plugins: {
+        global: [
+          {
+            key: 'AwaitLoader',
+            plugin: AwaitLoaderPlugin,
+            start: true
+          },
+        ]
+      },
 
     });
   }
