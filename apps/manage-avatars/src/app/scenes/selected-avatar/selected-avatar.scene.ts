@@ -14,28 +14,17 @@ import { Observable } from 'rxjs';
       } as data"
     >
       <div cfBlock="scene-content" *ngIf="data.avatar">
-        <cf-avatar-overview
-          [avatar]="data.avatar"
-        ></cf-avatar-overview>
+        <cf-avatar-overview [avatar]="data.avatar"></cf-avatar-overview>
 
-        <p *ngIf="data.avatar.bio">
-          {{ data.avatar.bio }}
+        <p *ngIf="data.avatar.identity?.bio">
+          {{ data.avatar.identity?.bio }}
         </p>
-
-        <!-- cf-avatar-skills
-            [skills]="data.avatar.skills"
-          ></cf-avatar-skills -->
 
         <cf-avatar-appearances
           [appearances]="data.avatar.appearances"
-          [selectedAppearanceId]="data.avatar.selectedAppearance?.id"
           (appearanceClick)="onAppearanceClick($event)"
           (appearanceAddClick)="onAppearanceAddClick()"
         ></cf-avatar-appearances>
-
-        <!-- cf-avatar-scopes
-            [scopes]="data.avatar.scopes"
-          ></cf-avatar-scopes-->
       </div>
     </ng-container>
   `,
@@ -47,10 +36,10 @@ export class SelectedAvatarScene {
   constructor(
     private readonly selectedAvatarState: SelectedAvatarState,
     private readonly router: Router
-  ) { }
+  ) {}
 
   onAppearanceClick(appearance: Appearance) {
-    this.selectedAvatarState.selectAppearance(appearance).subscribe();
+    this.selectedAvatarState.selectOutfit(appearance).subscribe();
   }
 
   onAppearanceAddClick() {

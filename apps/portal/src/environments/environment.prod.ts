@@ -10,6 +10,7 @@ export const environment: Environment = {
 
   repositoryUrl:
     'https://raw.githubusercontent.com/central-factory/web-application-manifests/main',
+  worldUrl: 'assets/worlds/001.map',
   webUrl: 'https://aitorllamas.com/metaverse/apps/codex',
   documentationUrl: 'https://aitorllamas.com/metaverse/apps/codex/docs',
   blogUrl: 'https://aitorllamas.com/metaverse/apps/codex/blog',

@@ -60,7 +60,19 @@ export const store: Preference<any>[] = [
   },
 ];
 
-export const userPreferences = [...customization, ...store];
+export const world: Preference<any>[] = [
+  {
+    id: 'worlds.settings.repositories',
+    key: 'worlds.settings.repositories',
+    value: [
+      {
+        src: `${environment.worldUrl}`,
+      },
+    ],
+  },
+];
+
+export const userPreferences = [...customization, ...store, ...world];
 
 export const CUSTOMIZATION_INITIAL_DATA_PROVIDER = {
   provide: ENTITY_MANAGER_INITIAL_DATA_TOKEN,

@@ -6,6 +6,7 @@
   margin-top: 0.5rem;
   gap: 0.2rem;
   &__icon {
+    display: contents;
     .icon__svg {
       fill: var(--component-text-color, var(--color-base-light-medium));
       width: 1.5rem;
@@ -24,6 +25,12 @@ h2.heading {
 }
 
 h4.heading {
+  .heading__icon {
+    .icon__svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+  }
   margin-block-end: 0.5rem;
 }
 
@@ -37,6 +44,16 @@ h5.heading {
     .icon__svg {
       width: 1.5rem;
       height: 1.5rem;
+    }
+  }
+}
+
+p {
+  .icon {
+    &__svg, &__image {
+      height: 24px !important;
+      width: 24px !important;
+      vertical-align: bottom;
     }
   }
 }

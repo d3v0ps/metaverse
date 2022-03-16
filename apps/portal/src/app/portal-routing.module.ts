@@ -92,6 +92,14 @@ export const routes: Routes = [
         canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
       },
       {
+        path: 'world',
+        loadChildren: () =>
+          import('./scenes/world/world-scene.module').then(
+            (m) => m.WorldSceneModule
+          ),
+        canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
+      },
+      {
         path: '',
         redirectTo: 'start',
         pathMatch: 'full',

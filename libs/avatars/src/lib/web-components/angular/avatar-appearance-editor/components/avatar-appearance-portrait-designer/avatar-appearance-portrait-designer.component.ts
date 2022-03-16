@@ -1,14 +1,20 @@
 /* eslint-disable @nrwl/nx/enforce-module-boundaries */
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import {
   AppearanceFormat,
-  AppearanceVariation
+  AppearanceVariation,
 } from '@central-factory/avatars/models/appearance';
 import { map, Subject, takeUntil, tap } from 'rxjs';
-import {
-  avataaarsDesignStyle
-} from './design-styles/avataaars/avataaars.design-style';
+import { avataaarsDesignStyle } from './design-styles/avataaars/avataaars.design-style';
 import { dim3FileDesignSystem } from './design-styles/dim3-file/dim3-file.design-style';
 import { dungeonsDesignStyle } from './design-styles/dungeons/dungeons.design-style';
 import { imageDesignStyle } from './design-styles/image/image.design-style';
@@ -36,14 +42,23 @@ export type SelectOption = {
               [formControl]="styleForm"
             >
               <option value="">Choose Style</option>
-              <option *ngFor="let style of availableOptions" [ngValue]="style.id">
-              {{ style.name }}
+              <option
+                *ngFor="let style of availableOptions"
+                [ngValue]="style.id"
+              >
+                {{ style.name }}
               </option>
             </select>
-            <h4 cfBlock="heading" [cfMod]="['light']" *ngIf="designStyle?.id !== 'image'">
+            <h4
+              cfBlock="heading"
+              [cfMod]="['light']"
+              *ngIf="designStyle?.id !== 'image'"
+            >
               <cf-svg-icon cfElem="icon" src="assets/icons/mdi/web-box.svg">
               </cf-svg-icon>
-              <a [href]="designStyle?.url" target="__blank">{{ designStyle?.name }}</a>
+              <a [href]="designStyle?.url" target="__blank">{{
+                designStyle?.name
+              }}</a>
             </h4>
             <span cfBlock="text">
               {{ designStyle?.description }}
@@ -70,20 +85,25 @@ export type SelectOption = {
                   <ng-container *ngSwitchCase="'file'">
                     <cf-file-upload
                       id="appearance-portrait-designer-{{ property.id }}"
-                      [formControlName]="property.id">
+                      [formControlName]="property.id"
+                    >
                     </cf-file-upload>
                   </ng-container>
                   <ng-container *ngSwitchCase="'text'">
-                    <input cfBlock="input"
+                    <input
+                      cfBlock="input"
                       id="appearance-portrait-designer-{{ property.id }}"
                       [formControlName]="property.id"
-                      type="text" />
+                      type="text"
+                    />
                   </ng-container>
                   <ng-container *ngSwitchCase="'number'">
-                    <input cfBlock="input"
+                    <input
+                      cfBlock="input"
                       id="appearance-portrait-designer-{{ property.id }}"
                       [formControlName]="property.id"
-                      type="number" />
+                      type="number"
+                    />
                   </ng-container>
                   <ng-container *ngSwitchCase="'select'">
                     <select
@@ -91,20 +111,36 @@ export type SelectOption = {
                       id="appearance-portrait-designer-{{ property.id }}"
                       [formControlName]="property.id"
                     >
-                      <option [ngValue]="null">Choose {{ property.label }}</option>
+                      <option [ngValue]="null">
+                        Choose {{ property.label }}
+                      </option>
                       <option
                         *ngFor="let option of property.options"
                         [ngValue]="option.id"
                       >
-                        {{ option.label }}
+                        {{
+                          property.useDescriptionAsLabel
+                            ? option.description
+                            : option.label
+                        }}
                       </option>
                     </select>
                   </ng-container>
 
                   <ng-container *ngSwitchCase="'color'">
-                    <cf-color-picker-select [options]="property.options || []" *ngIf="designStyle"
-                      [value]="getColorValueFromDesignStyle(propertiesForm.get(property.id)?.value, property.id)"
-                      (selectColor)="onColorPickerSelectColor($event, property.id)"></cf-color-picker-select>
+                    <cf-color-picker-select
+                      [options]="property.options || []"
+                      *ngIf="designStyle"
+                      [value]="
+                        getColorValueFromDesignStyle(
+                          propertiesForm.get(property.id)?.value,
+                          property.id
+                        )
+                      "
+                      (selectColor)="
+                        onColorPickerSelectColor($event, property.id)
+                      "
+                    ></cf-color-picker-select>
                   </ng-container>
                 </ng-container>
               </div>
@@ -112,11 +148,12 @@ export type SelectOption = {
           </ng-container>
         </form>
       </div>
-      <div cfElem="preview" *ngIf="
-        designStyle?.hasViewer && showPreview">
+      <div cfElem="preview" *ngIf="designStyle?.hasViewer && showPreview">
         <button cfBlock="button" cfMod="has-icon only-icon">
-          <cf-svg-icon src="assets/icons/mdi/dice-multiple.svg"
-            (click)="generateRandomSkin(); generateRandomOutfit();">
+          <cf-svg-icon
+            src="assets/icons/mdi/dice-multiple.svg"
+            (click)="generateRandomSkin(); generateRandomOutfit()"
+          >
           </cf-svg-icon>
         </button>
         <ng-container *ngIf="propertiesForm.value">
@@ -130,44 +167,48 @@ export type SelectOption = {
                 id: styleForm.value,
                 properties: propertiesForm.value
               }
-            }" [rarity]="rarity"></cf-avatar-appearance-portrait>
+            }"
+            [rarity]="rarity"
+          ></cf-avatar-appearance-portrait>
         </ng-container>
-        <cf-svg-icon *ngIf="false"
+        <cf-svg-icon
+          *ngIf="false"
           (click)="onReloadPreviewClick()"
-          src="assets/icons/mdi/reload.svg"></cf-svg-icon>
+          src="assets/icons/mdi/reload.svg"
+        ></cf-svg-icon>
       </div>
     </div>
   `,
   styles: [
     `
-    .avatar-appearance-portrait-designer  {
-      /* display: flex;
+      .avatar-appearance-portrait-designer {
+        /* display: flex;
       flex-wrap: wrap;
       --multiplier: calc(40rem - 100%); */
-      display: flex;
-      flex-wrap: wrap;
-      --margin: 1rem;
-      --multiplier: calc(60rem - 100%);
-      margin: calc(var(--margin) * -1);
+        display: flex;
+        flex-wrap: wrap;
+        --margin: 1rem;
+        --multiplier: calc(60rem - 100%);
+        margin: calc(var(--margin) * -1);
 
-      & > * {
-        max-width: 100%;
-        flex-grow: 1;
-        flex-basis: calc(var(--multiplier) * 999);
-        margin: var(--margin);
-      }
+        & > * {
+          max-width: 100%;
+          flex-grow: 1;
+          flex-basis: calc(var(--multiplier) * 999);
+          margin: var(--margin);
+        }
 
-      & > :nth-child(2n - 1) {
-        min-width: calc(20% - (var(--margin) * 2));
-        max-height: 40rem;
-        overflow: auto;
-      }
+        & > :nth-child(2n - 1) {
+          min-width: calc(20% - (var(--margin) * 2));
+          max-height: 40rem;
+          overflow: auto;
+        }
 
-      & > :nth-child(2n) {
-        min-width: calc(30% - (var(--margin) * 2));
-      }
+        & > :nth-child(2n) {
+          min-width: calc(30% - (var(--margin) * 2));
+        }
 
-      /* &__editor, &__preview {
+        /* &__editor, &__preview {
         min-width: 33%;
         max-width: 100%;
         flex-grow: 1;
@@ -175,17 +216,17 @@ export type SelectOption = {
         order: 1;
       } */
 
-      /* overflow-y: auto;
+        /* overflow-y: auto;
         max-height: 70vh;
         min-width: 60%; */
-    }
-    `
+      }
+    `,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarAppearancePortraitDesignerComponent
-  implements OnInit, OnDestroy {
-
+  implements OnInit, OnDestroy
+{
   @Input() randomizeSkin = false;
   @Input() randomizeOutfit = false;
   @Input() randomizeInterval = 0;
@@ -197,12 +238,10 @@ export class AvatarAppearancePortraitDesignerComponent
       emitEvent: false,
     });
 
-    if (value?.style.id === 'lpc') {
-
-      console.debug('value', value);
-    }
-
-    this.designStyle = this.availableOptions.find(option => option.id === this.styleForm.value) || this.availableOptions[0];
+    this.designStyle =
+      this.availableOptions.find(
+        (option) => option.id === this.styleForm.value
+      ) || this.availableOptions[0];
     this.generatePropertiesForm(this.designStyle);
     this.propertiesForm.patchValue(value?.style.properties || {});
     setTimeout(() => this.generateRandomAppearance(), 100);
@@ -212,13 +251,21 @@ export class AvatarAppearancePortraitDesignerComponent
   }
 
   @Input() set availableStyles(styleIds: string[]) {
-    this.availableOptions = this.styleOptions.filter(opt => styleIds.includes(opt.id));
-    const portraitStyle = this.availableOptions.find(option => option.id === this.appearancePortrait?.style.id);
-    const styleIsValid = portraitStyle && this.appearancePortrait?.style.properties ? true : false;
+    this.availableOptions = this.styleOptions.filter((opt) =>
+      styleIds.includes(opt.id)
+    );
+    const portraitStyle = this.availableOptions.find(
+      (option) => option.id === this.appearancePortrait?.style.id
+    );
+    const styleIsValid =
+      portraitStyle && this.appearancePortrait?.style.properties ? true : false;
     this.designStyle = portraitStyle || this.availableOptions[0];
     this.styleForm.setValue(this.designStyle?.id);
     this.generatePropertiesForm(this.designStyle);
-    const properties = (styleIsValid ? this.appearancePortrait?.style.properties : this.designStyle?.properties) || {};
+    const properties =
+      (styleIsValid
+        ? this.appearancePortrait?.style.properties
+        : this.designStyle?.properties) || {};
     this.propertiesForm.patchValue(properties);
   }
 
@@ -232,13 +279,18 @@ export class AvatarAppearancePortraitDesignerComponent
 
   showPreview = true;
   formats = AppearanceFormat;
-  styleOptions: DesignStyle[] = [avataaarsDesignStyle, imageDesignStyle, lpcDesignStyle, dim3FileDesignSystem, dungeonsDesignStyle];
+  styleOptions: DesignStyle[] = [
+    avataaarsDesignStyle,
+    imageDesignStyle,
+    lpcDesignStyle,
+    dim3FileDesignSystem,
+    dungeonsDesignStyle,
+  ];
   availableOptions: DesignStyle[] = [...this.styleOptions];
   designStyle?: DesignStyle = this.styleOptions[0];
 
   styleForm = this.formBuilder.control(this.designStyle?.id || '');
   propertiesForm = this.formBuilder.group({});
-
 
   private destroy$ = new Subject<void>();
 
@@ -246,7 +298,7 @@ export class AvatarAppearancePortraitDesignerComponent
 
   private randomizeTimeout: any = null;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.styleForm.valueChanges
@@ -262,13 +314,14 @@ export class AvatarAppearancePortraitDesignerComponent
       )
       .subscribe();
 
-    this.propertiesForm.valueChanges.pipe(
-      tap(values => this.propertiesChange.emit(values)),
-      takeUntil(this.destroy$)
-    ).subscribe();
+    this.propertiesForm.valueChanges
+      .pipe(
+        tap((values) => this.propertiesChange.emit(values)),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
 
-    setTimeout(() =>
-      this.generateRandomAppearance(), 1000);
+    setTimeout(() => this.generateRandomAppearance(), 1000);
   }
 
   ngOnDestroy(): void {
@@ -292,11 +345,9 @@ export class AvatarAppearancePortraitDesignerComponent
     this.formSubmit.emit({
       designStyle: this.designStyle?.id,
       properties: this.propertiesForm.value,
-    })
+    });
 
     if (this.randomizeInterval !== 0 && !this.randomizeTimeout) {
-
-      console.debug('randomizeInterval', this.randomizeInterval);
       this.randomizeTimeout = setTimeout(() => {
         this.randomizeTimeout = null;
         this.generateRandomAppearance();
@@ -305,17 +356,16 @@ export class AvatarAppearancePortraitDesignerComponent
   }
 
   generateRandomSkin() {
-    const randomAppearance = this.designStyle?.properties.filter(property => property.type !== 'group').reduce(
-      (result, { options, id }) => {
+    const randomAppearance = this.designStyle?.properties
+      .filter((property) => property.type !== 'group')
+      .reduce((result, { options, id }) => {
         if (!options) {
           return Object.assign(result, { [id]: '' });
         }
 
         const value = Math.floor(Math.random() * options.length);
         return Object.assign(result, { [id]: options[value].id });
-      },
-      {}
-    );
+      }, {});
 
     if (!randomAppearance) {
       return;
@@ -332,7 +382,6 @@ export class AvatarAppearancePortraitDesignerComponent
         this.propertiesForm.get('eyebrowType')?.setValue('Default');
         this.propertiesForm.get('mouthType')?.setValue('Default');
         // this.propertiesForm.get('clotheType')?.setValue('ShirtCrewNeck');
-
       }
 
       const hasGlasses = Math.random() <= 0.2;
@@ -343,11 +392,16 @@ export class AvatarAppearancePortraitDesignerComponent
 
     if (this.designStyle?.id === 'lpc') {
       const hasFacialHair = Math.random() <= 0.2;
-      if (!hasFacialHair || this.propertiesForm.get('bodyVariation')?.value !== 'male') {
+      if (
+        !hasFacialHair ||
+        this.propertiesForm.get('bodyVariation')?.value !== 'male'
+      ) {
         this.propertiesForm.get('facialHair')?.setValue(null);
       }
 
-      this.propertiesForm.get('facialHair')?.setValue(hasFacialHair ? 'beard' : null);
+      this.propertiesForm
+        .get('facialHair')
+        ?.setValue(hasFacialHair ? 'beard' : null);
       this.propertiesForm.get('torso2')?.setValue(null);
       this.propertiesForm.get('back')?.setValue(null);
       this.propertiesForm.get('head')?.setValue(null);
@@ -364,32 +418,48 @@ export class AvatarAppearancePortraitDesignerComponent
       designStyle: this.styleForm.value,
       properties: this.propertiesForm.value,
     });
-
   }
 
   generateRandomOutfit() {
-    console.debug('generateRandomOutfit')
-
     if (this.designStyle?.id === 'lpc') {
-      const bodyVariation = this.propertiesForm.get('bodyVariation')?.value || 'male';
+      const bodyVariation =
+        this.propertiesForm.get('bodyVariation')?.value || 'male';
 
-      const torsoOptions = this.designStyle.properties.find(property => property.id === 'torso')?.options?.filter(option => !option.bodyVariations || option.bodyVariations.includes(bodyVariation));
-      const headOptions = this.designStyle.properties.find(property => property.id === 'head')?.options?.filter(option => !option.bodyVariations || option.bodyVariations.includes(bodyVariation));
+      const torsoOptions = this.designStyle.properties
+        .find((property) => property.id === 'torso')
+        ?.options?.filter(
+          (option) =>
+            !option.bodyVariations ||
+            option.bodyVariations.includes(bodyVariation)
+        );
+      const headOptions = this.designStyle.properties
+        .find((property) => property.id === 'head')
+        ?.options?.filter(
+          (option) =>
+            !option.bodyVariations ||
+            option.bodyVariations.includes(bodyVariation)
+        );
 
       if (torsoOptions) {
-        const torso = torsoOptions[Math.floor(Math.random() * torsoOptions.length)];
-        console.debug('torso', torso.id);
+        const torso =
+          torsoOptions[Math.floor(Math.random() * torsoOptions.length)];
         this.propertiesForm.get('torso')?.setValue(torso.id);
 
         const hasTorso2 = Math.random() <= 0.5;
-        const torso2 = hasTorso2 ? torsoOptions[Math.floor(Math.random() * torsoOptions.length)] : null;
+        const torso2 = hasTorso2
+          ? torsoOptions[Math.floor(Math.random() * torsoOptions.length)]
+          : null;
         this.propertiesForm.get('torso2')?.setValue(torso2 ? torso2.id : null);
       }
 
       if (headOptions) {
         const hasHeadgear = Math.random() <= 0.2;
-        const headgear = hasHeadgear ? headOptions[Math.floor(Math.random() * headOptions.length)] : null;
-        this.propertiesForm.get('head')?.setValue(headgear ? headgear.id : null);
+        const headgear = hasHeadgear
+          ? headOptions[Math.floor(Math.random() * headOptions.length)]
+          : null;
+        this.propertiesForm
+          .get('head')
+          ?.setValue(headgear ? headgear.id : null);
       }
 
       // const hasGlasses = Math.random() <= 0.2;
@@ -409,24 +479,30 @@ export class AvatarAppearancePortraitDesignerComponent
     }
 
     this.propertiesForm = this.formBuilder.group(
-      designStyle.properties.filter(property => property.type !== 'group').reduce(
-        (acc, property) =>
-          Object.assign(acc, {
-            [property.id]:
-              property.defaultValue ||
-              (property.options && property.options.length > 0 ? property.options[0].id : ''),
-          }),
-        {}
-      )
+      designStyle.properties
+        .filter((property) => property.type !== 'group')
+        .reduce(
+          (acc, property) =>
+            Object.assign(acc, {
+              [property.id]:
+                property.defaultValue ||
+                (property.options && property.options.length > 0
+                  ? property.options[0].id
+                  : ''),
+            }),
+          {}
+        )
     );
   }
 
   onColorPickerSelectColor(event: any, propertyId: string) {
-    this.propertiesForm.controls[propertyId].setValue(event.id)
+    this.propertiesForm.controls[propertyId].setValue(event.id);
   }
 
   getColorValueFromDesignStyle(color: string, propertyId: string) {
-    return this.designStyle?.properties.find(prop => prop.id === propertyId)?.options?.find(opt => opt.id === color)?.value;
+    return this.designStyle?.properties
+      .find((prop) => prop.id === propertyId)
+      ?.options?.find((opt) => opt.id === color)?.value;
   }
 
   onReloadPreviewClick() {

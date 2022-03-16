@@ -12,6 +12,7 @@ export interface Environment {
   showSplashScreen: boolean;
 
   repositoryUrl: string;
+  worldUrl: string;
   /** Url with the Metaverse's web site */
   webUrl: string;
   /** Url with the Metaverse's documentation site */

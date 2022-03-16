@@ -2,10 +2,20 @@
 
 .icon {
   &__svg {
-    fill: var(--component-scene-content-color);
+    // --fill: var(--component-scene-content-color);
+    fill: currentColor;
+    g {
+      path {
+        fill: currentColor;
+      }
+    }
   }
   &--xs {
     .icon__svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+    .icon__image {
       width: 1.2rem;
       height: 1.2rem;
     }

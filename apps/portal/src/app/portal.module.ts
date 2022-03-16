@@ -26,12 +26,17 @@ import { BemModule } from '@central-factory/web-components/angular/bem/bem.modul
 import { SplashScreenModule } from '@central-factory/web-components/angular/splash-screen/splash-screen.module';
 import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
 import { WindowModule } from '@central-factory/web-components/angular/window/window.module';
+import { BurgMapComponent } from '@central-factory/worlds/web-components/angular/burgs/burg-map/burg-map.component';
 import { environment } from '../environments/environment';
-import { PortalLocalApplicationType, PORTAL_LOCAL_APPLICATIONS_PROVIDER } from './portal-local-applications.resolver';
+import {
+  PortalLocalApplicationType,
+  PORTAL_LOCAL_APPLICATIONS_PROVIDER,
+} from './portal-local-applications.resolver';
 import { PortalMocksModule } from './portal-mocks.module';
 import { PortalRoutingModule } from './portal-routing.module';
 import { PortalRoot } from './portal.root';
 import { PortalLayoutSceneModule } from './scenes/portal-layout/portal-layout.module';
+import { WorldScene } from './scenes/world/world.scene';
 import { BackgroundRenderer } from './services/background.renderer';
 import { SettingsScene } from './settings/settings.scene';
 
@@ -65,40 +70,68 @@ import { SettingsScene } from './settings/settings.scene';
     // Applications
     {
       provide: PORTAL_LOCAL_APPLICATIONS_PROVIDER,
-      useValue: { type: PortalLocalApplicationType.InventoryScene, component: InventoryScene },
+      useValue: {
+        type: PortalLocalApplicationType.InventoryScene,
+        component: InventoryScene,
+      },
       multi: true,
     },
     {
       provide: PORTAL_LOCAL_APPLICATIONS_PROVIDER,
-      useValue: { type: PortalLocalApplicationType.ManageAvatarsScene, component: SelectAvatarScene },
+      useValue: {
+        type: PortalLocalApplicationType.ManageAvatarsScene,
+        component: SelectAvatarScene,
+      },
       multi: true,
     },
     {
       provide: PORTAL_LOCAL_APPLICATIONS_PROVIDER,
-      useValue: { type: PortalLocalApplicationType.CreateAvatarScene, component: CreateAvatarScene },
+      useValue: {
+        type: PortalLocalApplicationType.CreateAvatarScene,
+        component: CreateAvatarScene,
+      },
       multi: true,
     },
     {
       provide: PORTAL_LOCAL_APPLICATIONS_PROVIDER,
-      useValue: { type: PortalLocalApplicationType.MapScene, component: CreateAvatarScene },
+      useValue: {
+        type: PortalLocalApplicationType.WorldScene,
+        component: WorldScene,
+      },
       multi: true,
     },
     {
       provide: PORTAL_LOCAL_APPLICATIONS_PROVIDER,
-      useValue: { type: PortalLocalApplicationType.MarketplaceScene, component: MarketplaceScene },
+      useValue: {
+        type: PortalLocalApplicationType.BurgMapScene,
+        component: BurgMapComponent,
+      },
       multi: true,
     },
     {
       provide: PORTAL_LOCAL_APPLICATIONS_PROVIDER,
-      useValue: { type: PortalLocalApplicationType.SettingsScene, component: SettingsScene },
+      useValue: {
+        type: PortalLocalApplicationType.MarketplaceScene,
+        component: MarketplaceScene,
+      },
       multi: true,
     },
     {
       provide: PORTAL_LOCAL_APPLICATIONS_PROVIDER,
-      useValue: { type: PortalLocalApplicationType.StartScene, component: StartScene },
+      useValue: {
+        type: PortalLocalApplicationType.SettingsScene,
+        component: SettingsScene,
+      },
       multi: true,
     },
-
+    {
+      provide: PORTAL_LOCAL_APPLICATIONS_PROVIDER,
+      useValue: {
+        type: PortalLocalApplicationType.StartScene,
+        component: StartScene,
+      },
+      multi: true,
+    },
 
     STORE_APPLICATIONS_COLLECTION_PROVIDER,
     USER_APPLICATIONS_COLLECTION_PROVIDER,
@@ -115,4 +148,4 @@ import { SettingsScene } from './settings/settings.scene';
   ],
   bootstrap: [PortalRoot],
 })
-export class PortalModule { }
+export class PortalModule {}

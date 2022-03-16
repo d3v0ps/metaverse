@@ -1,37 +1,175 @@
 import type { Appearance } from './appearance';
-import type { Scope } from './scope';
-import type { Skill } from './skill';
+
+export enum SexualOrientation {
+  Heterosexual = 'Heterosexual',
+  Homosexual = 'Homosexual',
+  Bisexual = 'Bisexual',
+  Pansexual = 'Pansexual',
+  Asexual = 'Asexual',
+}
+
+export enum BodyType {
+  Male = 'Male',
+  Female = 'Female',
+}
+
+export interface AvatarMeta {
+  /** Indicate wether this resource has parents or not */
+  root?: boolean;
+  /** Indicates the generator template used to generate this avatar */
+  generatorTemplate?: string;
+}
+
+export enum AvatarRelationshipKind {
+  Parent,
+  Child,
+  Sibling,
+  Spouse,
+  Friend,
+  Partner,
+}
+
+export type AvatarRelationship = {
+  kind: AvatarRelationshipKind;
+  avatar: string;
+};
+
+export type AvatarIdentity = {
+  givenName?: string;
+  familyName?: string;
+  gender?: BodyType;
+  welcomeMessage?: string;
+  title?: string;
+  bio?: string;
+  birthDate?: string;
+  birthPlace?: number;
+  archetype?: string;
+  icon?: string;
+  culture?: number;
+  religion?: number;
+  mainProfession?: string;
+  secondaryProfession?: string;
+  sexualOrientation?: SexualOrientation;
+};
+
+export type AvatarAppearance = {
+  body?: {
+    skin?: string;
+    type?: BodyType;
+    shape?: string;
+  };
+  hair?: {
+    style?: string;
+    color?: string;
+  };
+  facialHair?: {
+    style?: string;
+    color?: string;
+  };
+  eyes?: {
+    color?: string;
+  };
+  ears?: {
+    shape?: string;
+  };
+  nose?: {
+    shape?: string;
+  };
+};
+
+export type AvatarAttributes = {
+  base?: {
+    [key: string]: number;
+  };
+};
+
+export type AvatarKnowledge = {
+  skills?: Record<string, AvatarSkill>;
+};
+
+export type AvatarSkill = {
+  id: string;
+  level: number;
+  experience: number;
+};
+
+export type AvatarOutfit = {
+  name: string;
+  head?: {
+    /** Item Id */
+    headgear?: string;
+    /** Item Id */
+    visor?: string;
+  };
+  torso?: {
+    /** Item Id */
+    layer1?: string;
+    /** Item Id */
+    layer2?: string;
+    /** Item Id */
+    layer3?: string;
+  };
+  /** Item Id */
+  shoulders?: string;
+  /** Item Id */
+  legs?: string;
+  /** Item Id */
+  feet?: string;
+  /** Item Id */
+  back?: string;
+  hands?: {
+    slot1?: {
+      /** Item Id */
+      rightHand?: string;
+      /** Item Id */
+      leftHand?: string;
+      /** Item Id */
+      bothHands?: string;
+    };
+    slot2?: {
+      /** Item Id */
+      rightHand?: string;
+      /** Item Id */
+      leftHand?: string;
+      /** Item Id */
+      bothHands?: string;
+    };
+  };
+};
 
 /** An Avatar */
-export interface Avatar {
+export type Avatar = {
   /** The avatar's id */
   id: string;
-  /** The avatar's selected appearance */
-  selectedAppearance: Appearance;
-  /** The avatar's welcome message */
-  welcomeMessage: string;
-  /** The avatar's name */
-  name: string;
-  /** The avatar's title */
-  title: string;
-  /** The avatar's bio */
-  bio?: string;
+
+  /** The avatar's identity */
+  identity?: AvatarIdentity;
+  /** The avatar's appearance */
+  appearance?: AvatarAppearance;
+  /** The avatar's attributes */
+  attributes?: AvatarAttributes;
+  /** The avatar's knowledge */
+  knowledge?: AvatarKnowledge;
+  /** The avatar's outfits */
+  outfits?: AvatarOutfit[];
+  selectedOutfit?: string;
+  location?: {
+    world?: string;
+    burg?: number;
+    coordinates?: {
+      x: number;
+      y: number;
+      z?: number;
+    };
+  };
+  relationships?: AvatarRelationship[];
+  children?: Avatar[];
+
   /** The avatar's appearances */
   appearances: Appearance[];
-  /** The avatar's physics */
-  // physics: any[];
-  /** The avatar's roles */
-  // roles: any[];
-  /** The avatar's routines */
-  // routines: any[];
-  /** The avatar's scopes */
-  scopes: Scope[];
-  /** The avatar's skills */
-  skills: Skill[];
   /** The avatar's created at */
   createdAt?: Date;
   /** The avatar's updated at */
   updatedAt?: Date;
-
   _attachments?: any;
-}
+};

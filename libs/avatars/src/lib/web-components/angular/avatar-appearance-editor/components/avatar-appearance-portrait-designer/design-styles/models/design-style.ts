@@ -11,6 +11,7 @@ export type DesignStyleProperty = {
   defaultValue?: any;
   type: 'select' | 'color' | 'file' | 'number' | 'text' | 'group';
   options?: DesignStylePropertyOption[];
+  [key: string]: any;
 };
 
 export type DesignStyle = {

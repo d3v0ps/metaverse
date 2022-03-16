@@ -963,6 +963,32 @@
       },
       "tags": []
     },
+    "notes": {
+      "projectType": "library",
+      "root": "libs/notes",
+      "sourceRoot": "libs/notes/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/notes"],
+          "options": {
+            "jestConfig": "libs/notes/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/notes/src/**/*.ts",
+              "libs/notes/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "permissions": {
       "projectType": "library",
       "root": "libs/permissions",
@@ -1233,7 +1259,8 @@
               "crypto-js/aes",
               "crypto-js/enc-utf8",
               "is-my-json-valid",
-              "modifyjs"
+              "modifyjs",
+              "avataaars"
             ],
             "customWebpackConfig": {
               "path": "apps/portal/webpack.config.js"
@@ -1658,6 +1685,32 @@
             "config": {
               "configFolder": "libs/web-components/.storybook"
             }
+          }
+        }
+      },
+      "tags": []
+    },
+    "worlds": {
+      "projectType": "library",
+      "root": "libs/worlds",
+      "sourceRoot": "libs/worlds/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/worlds"],
+          "options": {
+            "jestConfig": "libs/worlds/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/worlds/src/**/*.ts",
+              "libs/worlds/src/**/*.html"
+            ]
           }
         }
       },

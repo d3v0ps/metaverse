@@ -10,7 +10,7 @@ import {
   Subscription,
   switchMap,
   tap,
-  throwError
+  throwError,
 } from 'rxjs';
 import type { UserAvatarDocType } from '../collections/user-avatars.collection';
 import { Appearance } from '../models';
@@ -64,7 +64,7 @@ export class SelectedAvatarState {
     });
   }
 
-  selectAppearance(appearance: Appearance) {
+  selectOutfit(appearance: Appearance) {
     if (!this.userAvatarsRepository) {
       return throwError(() => new Error('Repositories not initialized'));
     }
@@ -76,13 +76,12 @@ export class SelectedAvatarState {
     }
 
     const avatarUpdate: Avatar = JSON.parse(JSON.stringify(avatar));
-    avatarUpdate.selectedAppearance = appearance;
+    avatarUpdate.selectedOutfit = appearance.id;
 
     return this.userAvatarsRepository.upsert(avatarUpdate);
   }
 
   updateAppearance(appearance: Appearance) {
-
     if (!this.userAvatarsRepository) {
       return throwError(() => new Error('Repositories not initialized'));
     }
@@ -95,7 +94,9 @@ export class SelectedAvatarState {
 
     const avatarUpdate: Avatar = JSON.parse(JSON.stringify(avatar));
 
-    const appearanceIndex = avatarUpdate.appearances.findIndex(avatarAppearance => avatarAppearance.id === appearance.id);
+    const appearanceIndex = avatarUpdate.appearances.findIndex(
+      (avatarAppearance) => avatarAppearance.id === appearance.id
+    );
 
     if (!appearanceIndex) {
       throw new Error('Appearance not found');
@@ -150,7 +151,8 @@ export class SelectedAvatarState {
                 map((attachments) => {
                   avatar.appearances.forEach((appearance) => {
                     const portraitAttachment = attachments.find(
-                      (attachment) => attachment.id === appearance.variations?.portrait.id
+                      (attachment) =>
+                        attachment.id === appearance.variations?.portrait.id
                     );
 
                     if (portraitAttachment && appearance.variations?.portrait) {
@@ -170,10 +172,7 @@ export class SelectedAvatarState {
                     }
                   });
 
-                  avatar.selectedAppearance = avatar.appearances.find(
-                    (appearance) =>
-                      appearance.id === avatar.selectedAppearance.id
-                  ) as Appearance;
+                  avatar.selectedOutfit = '0';
 
                   return avatar;
                 })

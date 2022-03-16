@@ -1,4 +1,5 @@
 import { Provider } from '@angular/core';
+import { BodyType } from '@central-factory/avatars/models';
 import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
 import type { UserAvatarDocType } from '../../collections/user-avatars.collection';
 import { Appearance, AppearanceFormat } from '../../models/appearance';
@@ -74,12 +75,11 @@ const oldManAppearance: Appearance = {
       src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
       style: {
         id: 'dim3-file',
-        properties: {
-        },
+        properties: {},
       },
     },
   },
-}
+};
 
 const blacksmithAppearance: Appearance = {
   id: '2',
@@ -151,39 +151,96 @@ const blacksmithAppearance: Appearance = {
       src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
       style: {
         id: 'dim3-file',
-        properties: {
-        },
+        properties: {},
       },
     },
   },
-}
+};
 
 export const userAvatars: UserAvatarDocType[] = [
   {
     id: 'x0',
-    welcomeMessage: 'Hello!',
-    name: 'The Old Man',
-    title: 'Unknown',
-    bio: 'Welcome to The Central Factory Metaverse! Take a look around the Start section',
-    selectedAppearance: oldManAppearance,
+    identity: {
+      welcomeMessage: 'Hello!',
+      givenName: 'The Old Man',
+      title: 'Unknown',
+      bio: 'Welcome to The Central Factory Metaverse! Take a look around the Start section',
+    },
     appearances: [oldManAppearance],
-    scopes: [
-    ],
-    skills: [
+    appearance: {
+      body: {
+        type: BodyType.Male,
+        skin: 'light',
+      },
+      eyes: {
+        color: 'purple',
+      },
+      hair: {
+        style: 'bangs',
+        color: 'black',
+      },
+      facialHair: {
+        style: 'mustache',
+        color: 'black',
+      },
+    },
+    outfits: [
+      {
+        name: 'default',
+        back: undefined,
+        feet: 'shoes/black_shoes',
+        hands: undefined,
+        head: undefined,
+        legs: 'pants/formal_pants_stripes',
+        shoulders: undefined,
+        torso: {
+          layer1: 'shirts/formal_shirt',
+          layer2: 'jackets/formal_jacket_black',
+        },
+      },
     ],
   },
 
   {
     id: 'x1',
-    welcomeMessage: 'Hello!',
-    name: 'The Blacksmith',
-    title: 'Unknown',
-    bio: 'Welcome to The Central Factory Metaverse! Take a look around the Start section',
-    selectedAppearance: blacksmithAppearance,
+    identity: {
+      welcomeMessage: 'Hello!',
+      givenName: 'The Blacksmith',
+      title: 'Unknown',
+      bio: 'Welcome to The Central Factory Metaverse! Take a look around the Start section',
+    },
     appearances: [blacksmithAppearance],
-    scopes: [
-    ],
-    skills: [
+    appearance: {
+      body: {
+        type: BodyType.Male,
+        skin: 'light',
+      },
+      eyes: {
+        color: 'purple',
+      },
+      hair: {
+        style: 'bangs',
+        color: 'black',
+      },
+      facialHair: {
+        style: 'mustache',
+        color: 'black',
+      },
+    },
+    outfits: [
+      {
+        name: 'default',
+        back: undefined,
+        feet: 'shoes/black_shoes',
+        hands: undefined,
+        head: undefined,
+        legs: 'pants/formal_pants_stripes',
+        shoulders: undefined,
+        torso: {
+          layer1: 'shirts/formal_shirt',
+          layer2: 'jackets/formal_jacket_black',
+        },
+      },
     ],
   },
 ];

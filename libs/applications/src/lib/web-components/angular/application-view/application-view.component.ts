@@ -1,12 +1,13 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { Component, Input, ViewChild, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { FantasyMapGeneratorMap } from '@central-factory/worlds/models/fmg-map';
 import {
   Application,
   ApplicationIcon,
   ApplicationRenderingType,
   ApplicationShortcut,
-  ColorVariation
+  ColorVariation,
 } from '../../../models/application';
 
 @Component({
@@ -47,7 +48,10 @@ import {
         <ng-container *ngSwitchCase="'local'">
           <div cfBlock="application-local-module" *ngIf="localResolver">
             <ng-template
-              *ngxComponentOutlet="localResolver | resolve: application.startUrl">
+              *ngxComponentOutlet="
+                localResolver | resolve: application.startUrl
+              "
+            >
             </ng-template>
           </div>
         </ng-container>
@@ -77,6 +81,7 @@ export class ApplicationViewComponent {
   lazyloadedApplication!: ViewContainerRef;
 
   @Input() localResolver?: any;
+  @Input() world?: FantasyMapGeneratorMap;
 
   @Input() set application(value: Application | undefined) {
     this._application = value;
@@ -87,17 +92,17 @@ export class ApplicationViewComponent {
 
     this.applicationIcon =
       this.applicationShortcut?.icons &&
-        this.applicationShortcut.icons.length > 0
+      this.applicationShortcut.icons.length > 0
         ? this.applicationShortcut.icons[0]
         : this.application?.icons && this.application.icons.length > 0
-          ? this.application.icons[0]
-          : undefined;
+        ? this.application.icons[0]
+        : undefined;
     this.applicationColor =
       this.application?.additionalProperties?.colors &&
-        this.application?.additionalProperties?.colors.length > 0
+      this.application?.additionalProperties?.colors.length > 0
         ? this.application?.additionalProperties?.colors.find(
-          (c) => c.variation === ColorVariation.Primary
-        )?.color
+            (c) => c.variation === ColorVariation.Primary
+          )?.color
         : this.application?.themeColor;
 
     this.showSplashScreen = true;
@@ -131,8 +136,8 @@ export class ApplicationViewComponent {
       value?.icons && value.icons.length > 0
         ? value.icons[0]
         : this.application?.icons && this.application.icons.length > 0
-          ? this.application.icons[0]
-          : undefined;
+        ? this.application.icons[0]
+        : undefined;
 
     this.showSplashScreen = true;
     // if (
@@ -152,7 +157,7 @@ export class ApplicationViewComponent {
   private _application: Application | undefined;
   private _applicationShortcut: ApplicationShortcut | undefined;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   async loadDynamicLocal() {
     const federatedUrl = this.application?.startUrl;
@@ -184,6 +189,4 @@ export class ApplicationViewComponent {
     this.lazyloadedApplication.clear();
     this.lazyloadedApplication.createComponent(module.Component);
   }
-
-
 }

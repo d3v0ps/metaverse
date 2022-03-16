@@ -93,23 +93,23 @@ export class AvatarOverviewComponent {
     }
 
     this.form.reset({
-      name: value.name,
-      title: value.title,
-      welcomeMessage: value.welcomeMessage,
-      smallPreviewUrl: value.selectedAppearance.variations?.portrait.src,
-      appearance: value.selectedAppearance,
-      bio: value.bio,
+      name: value.identity?.givenName,
+      title: value.identity?.title,
+      welcomeMessage: value.identity?.welcomeMessage,
+      smallPreviewUrl: '',
+      appearance: {},
+      bio: value.identity?.bio,
     });
   }
 
   editing: {
     [key: string]: boolean;
   } = {
-      name: false,
-      title: false,
-      welcomeMessage: false,
-      smallPreviewUrl: false,
-    };
+    name: false,
+    title: false,
+    welcomeMessage: false,
+    smallPreviewUrl: false,
+  };
 
   form = new FormGroup({
     welcomeMessage: new FormControl(``),

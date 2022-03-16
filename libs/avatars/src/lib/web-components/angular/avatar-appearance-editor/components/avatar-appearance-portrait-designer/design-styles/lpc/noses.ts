@@ -8,7 +8,7 @@ export const noses = [
     label: 'Button',
   },
   {
-    id: 'straighnose',
-    label: 'Straigh',
+    id: 'straightnose',
+    label: 'Straight',
   },
-]
+];

@@ -25,13 +25,15 @@
       "@central-factory/manage-avatars/*": ["apps/manage-avatars/src/app/*"],
       "@central-factory/marketplace/*": ["apps/marketplace/src/app/*"],
       "@central-factory/network/*": ["libs/network/src/lib/*"],
+      "@central-factory/notes/*": ["libs/notes/src/lib/*"],
       "@central-factory/permissions/*": ["libs/permissions/src/lib/*"],
       "@central-factory/persistence/*": ["libs/persistence/src/lib/*"],
       "@central-factory/physics/*": ["libs/physics/src/lib/*"],
       "@central-factory/player/*": ["apps/player/src/app/*"],
       "@central-factory/preferences/*": ["libs/preferences/src/lib/*"],
       "@central-factory/topics/*": ["libs/topics/src/lib/*"],
-      "@central-factory/web-components/*": ["libs/web-components/src/lib/*"]
+      "@central-factory/web-components/*": ["libs/web-components/src/lib/*"],
+      "@central-factory/worlds/*": ["libs/worlds/src/lib/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -19,7 +19,6 @@ import { v4 as uuid } from 'uuid';
         <div cfElem="content">
           <cf-avatar-appearances-carousel
             [appearances]="appearances"
-            [selectedAppearanceId]="selectedAppearance?.id"
             [displayMode]="carouselDisplayModes.vertical"
             [showAdd]="true"
             (appearanceClick)="onAppearanceClick($event)"
@@ -124,7 +123,6 @@ import { v4 as uuid } from 'uuid';
   ],
 })
 export class ManageAvatarAppearancesScene {
-
   // appearances$ = new BehaviorSubject<Appearance[]>([
   //   {
   //     id: uuid(),
@@ -188,7 +186,10 @@ export class ManageAvatarAppearancesScene {
 
   appearances$ = this.selectedAvatarState.avatar$.pipe(
     map((avatar) => (avatar ? avatar.appearances : [])),
-    tap(appearances => this.selectedAppearance = this.selectedAppearance || appearances[0])
+    tap(
+      (appearances) =>
+        (this.selectedAppearance = this.selectedAppearance || appearances[0])
+    )
   );
 
   selectedAppearance?: Appearance;
@@ -200,7 +201,7 @@ export class ManageAvatarAppearancesScene {
   constructor(
     private manageAvatarAppearancesState: ManageAvatarAppearancesState,
     private selectedAvatarState: SelectedAvatarState
-  ) { }
+  ) {}
 
   onAppearanceClick(appearance: Appearance) {
     this.selectedAppearance = appearance;
@@ -215,14 +216,13 @@ export class ManageAvatarAppearancesScene {
     } as unknown as Appearance;
   }
 
-  onPortraitChange(style: {
-    id: string;
-    properties: Record<string, string>;
-  }) {
+  onPortraitChange(style: { id: string; properties: Record<string, string> }) {
     this.appearances$.pipe(
       take(1),
       switchMap((appearances) => {
-        const appearance = appearances.find(appearance => this.selectedAppearance?.id === appearance.id);
+        const appearance = appearances.find(
+          (appearance) => this.selectedAppearance?.id === appearance.id
+        );
 
         if (!appearance) {
           throw new Error('Appearance not found');
@@ -261,5 +261,5 @@ export class ManageAvatarAppearancesScene {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onConfirmAppearancesButtonClick() { }
+  onConfirmAppearancesButtonClick() {}
 }

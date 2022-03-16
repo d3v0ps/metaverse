@@ -9,6 +9,7 @@ export const environment: Environment = {
   showSplashScreen: false,
   repositoryUrl:
     'https://raw.githubusercontent.com/central-factory/web-application-manifests/main',
+  worldUrl: 'assets/worlds/001.json',
   webUrl: 'http://localhost:3000',
   documentationUrl: 'http://localhost:3000/docs',
   blogUrl: 'http://localhost:3000/blog',

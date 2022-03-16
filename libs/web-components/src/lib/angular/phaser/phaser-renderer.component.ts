@@ -1,26 +1,30 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Input,
+  OnDestroy,
+  ViewChild,
+} from '@angular/core';
 import { Game, Scene } from 'phaser';
 import { AwaitLoaderPlugin } from './plugins/await-loader.plugin';
-
-
 
 export type SceneConfig = string | Phaser.Types.Scenes.SettingsConfig;
 
 @Component({
   selector: 'cf-phaser-renderer',
-  template: `
-  <div style="display: contents;" #container></div> `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  template: ` <div style="display: contents;" #container></div> `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export class PhaserRendererComponent implements OnDestroy {
-
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Input() set scenes(value: Record<string, (new (config: string | SceneConfig) => Scene) | Scene>) {
+  @Input() set scenes(
+    value: Record<string, (new (config: string | SceneConfig) => Scene) | Scene>
+  ) {
     this._scenes = value;
     this.render();
-  };
+  }
   get scenes(): Record<string, (new (config: SceneConfig) => Scene) | Scene> {
     return this._scenes;
   }
@@ -37,8 +41,8 @@ export class PhaserRendererComponent implements OnDestroy {
     return this._config;
   }
 
-  @Input() width = 64 * 3;
-  @Input() height = 64 * 3;
+  @Input() width = 144;
+  @Input() height = 144;
   @Input() transparent = true;
 
   @ViewChild('container', { static: true, read: ElementRef }) set container(
@@ -53,7 +57,10 @@ export class PhaserRendererComponent implements OnDestroy {
 
   private _container?: ElementRef<HTMLDivElement>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _scenes: Record<string, (new (config: SceneConfig) => Scene) | Scene> = {};
+  private _scenes: Record<
+    string,
+    (new (config: SceneConfig) => Scene) | Scene
+  > = {};
   private _config: any = {};
 
   private _game?: Game;
@@ -63,10 +70,13 @@ export class PhaserRendererComponent implements OnDestroy {
   }
 
   private render() {
-    if (!this.container || !this.scenes || Object.keys(this.scenes).length <= 0) {
+    if (
+      !this.container ||
+      !this.scenes ||
+      Object.keys(this.scenes).length <= 0
+    ) {
       return;
     }
-    console.debug('render', this.scenes);
 
     if (this._game) {
       (this.scenes['room'] as any).onDestroy();
@@ -94,11 +104,10 @@ export class PhaserRendererComponent implements OnDestroy {
           {
             key: 'AwaitLoader',
             plugin: AwaitLoaderPlugin,
-            start: true
+            start: true,
           },
-        ]
+        ],
       },
-
     });
   }
 }

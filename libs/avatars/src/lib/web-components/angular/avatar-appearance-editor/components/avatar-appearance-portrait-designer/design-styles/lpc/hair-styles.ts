@@ -31,10 +31,10 @@ export const hairStyles = [
     id: 'long',
     label: 'Long',
   },
-  {
-    id: 'long2',
-    label: 'Long 2',
-  },
+  // {
+  //   id: 'long2',
+  //   label: 'Long 2',
+  // },
   {
     id: 'longhawk',
     label: 'Long Hawk',
@@ -127,4 +127,4 @@ export const hairStyles = [
     id: 'xlongknot',
     label: 'Longest Knot',
   },
-]
+];

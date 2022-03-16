@@ -5,7 +5,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import {
   Application,
-  ApplicationShortcut
+  ApplicationShortcut,
 } from '@central-factory/applications/models/application';
 import { RecentlyOpenedApplicationsState } from '@central-factory/applications/states/recently-opened-applications.state';
 import { SelectedApplicationState } from '@central-factory/applications/states/selected-application.state';
@@ -16,6 +16,7 @@ import { Repository } from '@central-factory/persistence/services/repository';
 import { CustomizationSettingsState } from '@central-factory/preferences/states/customization/customization-settings.state';
 import { bounceIn } from '@central-factory/web-components/angular/animations/bounce-in.animation';
 import { fadeInUp } from '@central-factory/web-components/angular/animations/fade-in-up.animation';
+import { WorldsState } from '@central-factory/worlds/states/worlds.state';
 import { DeepReadonlyObject } from 'rxdb/dist/types/types';
 import { forkJoin, Observable, Subject } from 'rxjs';
 import {
@@ -25,7 +26,7 @@ import {
   skip,
   switchMap,
   takeUntil,
-  tap
+  tap,
 } from 'rxjs/operators';
 
 export interface SidebarItem {
@@ -95,15 +96,10 @@ export enum SceneContentAnimationState {
                     <span cfElem="text-content">Account</span>
                   </div>
                   <cf-avatar-appearance-portrait
-                    [appearancePortrait]="
-                      data.selectedAvatar.selectedAppearance?.variations?.portrait
-                    "
+                    [avatar]="data.selectedAvatar"
+                    displayComponent="avataaars"
                   >
                   </cf-avatar-appearance-portrait>
-                  <!-- img
-                    cfElem="image"
-                    [src]="data.selectedAvatar.selectedAppearance.portrait.src"
-                  /  -->
                 </a>
 
                 <ng-container *ngFor="let item of sidebarItems">
@@ -174,30 +170,29 @@ export enum SceneContentAnimationState {
                 <router-outlet name="sidebar"></router-outlet>
 
                 <div cfBlock="sidebar-footer">
-
                   <a
-                      (click)="onCatchClick()"
-                      class="d-block"
-                      cfBlock="sidebar-item"
+                    (click)="onCatchClick()"
+                    class="d-block"
+                    cfBlock="sidebar-item"
+                  >
+                    <div cfElem="text">
+                      <span cfElem="text-content">Catch</span>
+                    </div>
+                    <button
+                      cfBlock="button"
+                      cfMod="fab"
+                      [ngClass]="{
+                        'button--active': true
+                      }"
+                      style="margin-top: 15px;"
                     >
-                      <div cfElem="text">
-                        <span cfElem="text-content">Catch</span>
-                      </div>
-                      <button
-                        cfBlock="button"
-                        cfMod="fab"
-                        [ngClass]="{
-                          'button--active': true
-                        }"
-                        style="margin-top: 15px;"
-                      >
-                        <cf-svg-icon
-                          [src]="'assets/icons/mdi/map-marker-plus.svg'"
-                          cfElem="icon"
-                          [svgClass]="'icon__svg'"
-                        ></cf-svg-icon>
-                      </button>
-                    </a>
+                      <cf-svg-icon
+                        [src]="'assets/icons/mdi/map-marker-plus.svg'"
+                        cfElem="icon"
+                        [svgClass]="'icon__svg'"
+                      ></cf-svg-icon>
+                    </button>
+                  </a>
                 </div>
               </div>
             </cf-sidebar>
@@ -308,8 +303,9 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
     private readonly selectedApplicationState: SelectedApplicationState,
     private readonly recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState,
     private readonly customizationSettingsState: CustomizationSettingsState,
-    private readonly breakpointObserver: BreakpointObserver
-  ) { }
+    private readonly breakpointObserver: BreakpointObserver,
+    private readonly worldsState: WorldsState
+  ) {}
 
   public ngOnInit(): void {
     this.breakpointObserver
@@ -332,8 +328,8 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
           this.sceneContentAnimationState = SceneContentAnimationState.Idle;
           setTimeout(
             () =>
-            (this.sceneContentAnimationState =
-              SceneContentAnimationState.Animated),
+              (this.sceneContentAnimationState =
+                SceneContentAnimationState.Animated),
             100
           );
         }),

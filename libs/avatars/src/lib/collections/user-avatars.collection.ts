@@ -3,7 +3,7 @@ import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persiste
 import type {
   RxCollection,
   RxDocument,
-  RxJsonSchema
+  RxJsonSchema,
 } from 'rxdb/dist/types/types';
 import type { Avatar } from '../models/avatar';
 
@@ -57,69 +57,33 @@ export const userAvatarsSchema: RxJsonSchema<
       type: 'string',
       description: 'Id',
     },
-    welcomeMessage: {
-      type: 'string',
-      description: 'Welcome message',
+    identity: {
+      type: 'object',
+      description: 'identity',
     },
-    name: {
-      type: 'string',
-      description: 'Name',
+    appearance: {
+      type: 'object',
+      description: 'appearance',
     },
-    bio: {
-      type: 'string',
-      description: 'Bio',
+    knowledge: {
+      type: 'object',
+      description: 'knowledge',
     },
-    title: {
-      type: 'string',
-      description: 'Title',
+    outfits: {
+      type: 'array',
+      description: 'outfits',
     },
-    selectedAppearance: appearanceSchema,
+    selectedOutfit: {
+      type: 'string',
+    },
+    location: {
+      type: 'object',
+      description: 'location',
+    },
     appearances: {
       type: 'array',
       description: 'Appearances',
       items: appearanceSchema,
-    },
-    scopes: {
-      type: 'array',
-      description: 'Scopes',
-      items: {
-        type: 'object',
-        properties: {
-          integration: {
-            type: 'string',
-            description: 'Integration',
-          },
-          domain: {
-            type: 'string',
-            description: 'Domain',
-          },
-          scope: {
-            type: 'string',
-            description: 'Scope',
-          },
-        },
-      },
-    },
-    skills: {
-      type: 'array',
-      description: 'Skills',
-      items: {
-        type: 'object',
-        properties: {
-          domain: {
-            type: 'string',
-            description: 'Domain',
-          },
-          scope: {
-            type: 'string',
-            description: 'Scope',
-          },
-          skill: {
-            type: 'string',
-            description: 'Skill',
-          },
-        },
-      },
     },
     createdAt: {
       format: 'date-time',
@@ -130,6 +94,17 @@ export const userAvatarsSchema: RxJsonSchema<
       format: 'date-time',
       type: 'string',
       description: 'Updated at',
+    },
+    attributes: {
+      type: 'object',
+      description: 'attributes',
+    },
+    relationships: {
+      type: 'array',
+      description: 'relationships',
+    },
+    children: {
+      type: 'array',
     },
   },
   attachments: {

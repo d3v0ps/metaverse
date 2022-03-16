@@ -1,12 +1,13 @@
 import {
   PermissionKind,
-  PermissionMode
+  PermissionMode,
 } from '@central-factory/permissions/models/permission';
 import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
 import type { UserApplicationDocType } from '../../collections/user-applications.collection';
 import {
+  Application,
   ApplicationRenderingType,
-  ColorVariation
+  ColorVariation,
 } from '../../models/application';
 
 export const userApplications: UserApplicationDocType[] = [
@@ -341,6 +342,76 @@ export const userApplications: UserApplicationDocType[] = [
     },
   },
   {
+    id: 'com.central-factory.world',
+    name: 'World',
+    description: 'World Map',
+    startUrl: 'WorldScene',
+    icons: [
+      {
+        src: 'assets/icons/mdi/map-marker-circle.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'World',
+        url: '/world',
+        icons: [
+          {
+            src: 'assets/icons/mdi/map-marker-circle.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.central-factory',
+        name: 'Central Factory',
+      },
+      renderingType: ApplicationRenderingType.Local,
+      internal: true,
+      sidebarShortcuts: ['Map'],
+    },
+  },
+  {
+    id: 'com.central-factory.burg',
+    name: 'Burg',
+    description: 'Burg Map',
+    startUrl: 'BurgMapScene',
+    icons: [
+      {
+        src: 'assets/icons/mdi/city-variant.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'Map',
+        url: '/burg',
+        icons: [
+          {
+            src: 'assets/icons/mdi/city-variant.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.central-factory',
+        name: 'Central Factory',
+      },
+      renderingType: ApplicationRenderingType.Local,
+      internal: true,
+      sidebarShortcuts: ['Map'],
+    },
+  },
+  {
     id: 'com.central-factory.marketplace',
     name: 'Marketplace',
     description: 'Portal Marketplace. Sell your assets and acquire new ones.',
@@ -486,6 +557,12 @@ export const userApplications: UserApplicationDocType[] = [
     },
   },
 ];
+
+export const userApplicationsById: Record<string, Application> =
+  userApplications.reduce(
+    (acc, app) => Object.assign(acc, { [app.id]: app }),
+    {}
+  );
 
 export const USER_APPLICATIONS_INITIAL_DATA_PROVIDER = {
   provide: ENTITY_MANAGER_INITIAL_DATA_TOKEN,
