@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Avatar } from '@central-factory/avatars/models/avatar';
+import {
+  Avatar,
+  AvatarRelationshipKind,
+} from '@central-factory/avatars/models/avatar';
 import { Burg } from '@central-factory/worlds/models/fmg-map';
 import { World } from '@central-factory/worlds/models/world';
 
@@ -21,6 +24,11 @@ import { World } from '@central-factory/worlds/models/world';
             {{ house.name }} ({{ house.avatars.length }})
           </option>
         </select>
+        <input
+          type="number"
+          [(ngModel)]="generationNumber"
+          name="generationNumber"
+        />
       </form>
       <cf-avatars-carousel
         [direction]="'column'"
@@ -49,6 +57,7 @@ export class AvatarsListComponent {
   @Output() selectAvatar: EventEmitter<Avatar> = new EventEmitter();
 
   selectedHouse?: string;
+  generationNumber?: number;
 
   onSelectAvatarClick(avatar: Avatar) {
     this.selectAvatar.emit(avatar);
@@ -99,8 +108,27 @@ export class AvatarsListComponent {
       return this.avatars;
     }
 
-    return this.avatars.filter(
-      (avatar) => avatar.identity?.familyName === this.selectedHouse
+    return this.avatars.filter((avatar) => {
+      if (
+        (this.generationNumber || this.generationNumber === 0) &&
+        this.getGenerationNumber(avatar) !== this.generationNumber
+      ) {
+        return false;
+      }
+
+      return avatar.identity?.familyName === this.selectedHouse;
+    });
+  }
+
+  private getGenerationNumber(avatar: Avatar, level = 0): number {
+    const parents =
+      avatar.relationships?.filter(
+        (relationship) => relationship.kind === AvatarRelationshipKind.Parent
+      ) || [];
+    const parent = this.avatars.find(
+      (avatar) => avatar.id === parents[0]?.avatar
     );
+
+    return parent ? this.getGenerationNumber(parent, level + 1) : level;
   }
 }

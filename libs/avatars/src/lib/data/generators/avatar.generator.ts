@@ -311,7 +311,7 @@ export class AvatarGenerator {
     console.debug('🌲 root', rootLevel);
     const rootLevelCouples = this.generateCouples(rootLevel);
 
-    console.debug('💑 root', rootLevelCouples);
+    console.debug('👪 root', rootLevelCouples);
 
     // Age: 55 - 75
     const firstGeneration = rootLevelCouples.reduce<Avatar[]>(

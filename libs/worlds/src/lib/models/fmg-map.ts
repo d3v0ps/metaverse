@@ -145,7 +145,7 @@ export type Burg = {
   port?: number;
   population?: number;
   type?: string;
-  coa: any;
+  coa: CoatOfArms;
   citadel?: number;
   plaza?: number;
   walls?: number;

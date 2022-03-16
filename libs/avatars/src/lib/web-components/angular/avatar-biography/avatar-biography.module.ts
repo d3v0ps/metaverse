@@ -5,8 +5,7 @@ import { AvatarsCarouselModule } from '@central-factory/avatars/web-components/a
 import { BemModule } from '@central-factory/web-components/angular/bem/bem.module';
 import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
 import { AgeModule } from '@central-factory/worlds/web-components/angular/age/age.module';
-import { AvatarBiographyModule } from '../avatar-biography/avatar-biography.module';
-import { AvatarInfoComponent } from './avatar-info.component';
+import { AvatarBiographyComponent } from './avatar-biography.component';
 
 @NgModule({
   imports: [
@@ -16,9 +15,8 @@ import { AvatarInfoComponent } from './avatar-info.component';
     AvatarsCarouselModule,
     SvgIconModule,
     AgeModule,
-    AvatarBiographyModule,
   ],
-  declarations: [AvatarInfoComponent],
-  exports: [AvatarInfoComponent],
+  declarations: [AvatarBiographyComponent],
+  exports: [AvatarBiographyComponent],
 })
-export class AvatarInfoModule {}
+export class AvatarBiographyModule {}

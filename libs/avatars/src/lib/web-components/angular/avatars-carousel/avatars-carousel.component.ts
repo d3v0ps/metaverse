@@ -11,6 +11,7 @@ import type { Avatar } from '../../../models/avatar';
     >
       <ng-container *ngFor="let avatar of avatars">
         <div
+          *ngIf="avatar"
           cfBlock="avatars-carousel-item"
           (click)="avatarClick.emit(avatar)"
           [cfMod]="size"

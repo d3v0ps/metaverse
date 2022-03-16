@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { WorldsState } from '@central-factory/worlds/states/worlds.state';
 import { map, Observable } from 'rxjs';
 
-@Pipe({ name: 'age' })
+@Pipe({ name: 'cfAge' })
 export class AgePipe implements PipeTransform {
   constructor(private worldsState: WorldsState) {}
 

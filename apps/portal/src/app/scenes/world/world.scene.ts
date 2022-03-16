@@ -16,7 +16,6 @@ import { WorldsState } from '@central-factory/worlds/states/worlds.state';
       <!-- cf-world-map *ngIf="!selectedAvatar"></cf-world-map -->
       <cf-avatar-info
         [avatar]="selectedAvatar"
-        [avatars]="avatars"
         [world]="world"
       ></cf-avatar-info>
     </div>
