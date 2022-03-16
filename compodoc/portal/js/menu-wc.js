@@ -129,13 +129,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/PortalModule.html" data-type="entity-link" >PortalModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-PortalModule-5ef93f6630f6a51fa2768360f5a0a48b"' : 'data-target="#xs-components-links-module-PortalModule-5ef93f6630f6a51fa2768360f5a0a48b"' }>
+                                            'data-target="#components-links-module-PortalModule-3b50b503d7016a8e872418e97b175b94"' : 'data-target="#xs-components-links-module-PortalModule-3b50b503d7016a8e872418e97b175b94"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PortalModule-5ef93f6630f6a51fa2768360f5a0a48b"' :
-                                            'id="xs-components-links-module-PortalModule-5ef93f6630f6a51fa2768360f5a0a48b"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PortalModule-3b50b503d7016a8e872418e97b175b94"' :
+                                            'id="xs-components-links-module-PortalModule-3b50b503d7016a8e872418e97b175b94"' }>
                                             <li class="link">
                                                 <a href="components/PortalRoot.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >PortalRoot</a>
                                             </li>
@@ -167,6 +167,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="modules/SettingsRoutingModule.html" data-type="entity-link" >SettingsRoutingModule</a>
+                            </li>
+                            <li class="link">
+                                <a href="modules/WorldSceneModule.html" data-type="entity-link" >WorldSceneModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-WorldSceneModule-477fb8274c748aa50b17f702ba30d08c"' : 'data-target="#xs-components-links-module-WorldSceneModule-477fb8274c748aa50b17f702ba30d08c"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-WorldSceneModule-477fb8274c748aa50b17f702ba30d08c"' :
+                                            'id="xs-components-links-module-WorldSceneModule-477fb8274c748aa50b17f702ba30d08c"' }>
+                                            <li class="link">
+                                                <a href="components/WorldScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >WorldScene</a>
+                                            </li>
+                                        </ul>
+                                    </li>
                             </li>
                 </ul>
                 </li>

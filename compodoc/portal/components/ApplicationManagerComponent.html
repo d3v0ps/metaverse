@@ -114,21 +114,33 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;ng-container *ngFor&#x3D;&quot;let group of applicationGroups$ | async, let i &#x3D; index&quot;&gt;
-  &lt;cf-window [width]&#x3D;&quot;group.width&quot; [height]&#x3D;&quot;group.height&quot;
-    [x]&#x3D;&quot;group.x&quot; [y]&#x3D;&quot;group.y&quot; [zIndex]&#x3D;&quot;group.zIndex&quot;
-    [visible]&#x3D;&quot;true&quot; [executePostDisplayActions]&#x3D;&quot;true&quot;
-    [backdrop]&#x3D;&quot;false&quot; [maximizable]&#x3D;&quot;true&quot;
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;ng-container
+  *ngFor&#x3D;&quot;let group of applicationGroups$ | async; let i &#x3D; index&quot;
+&gt;
+  &lt;cf-window
+    [width]&#x3D;&quot;group.width&quot;
+    [height]&#x3D;&quot;group.height&quot;
+    [x]&#x3D;&quot;group.x&quot;
+    [y]&#x3D;&quot;group.y&quot;
+    [zIndex]&#x3D;&quot;group.zIndex&quot;
+    [visible]&#x3D;&quot;true&quot;
+    [executePostDisplayActions]&#x3D;&quot;true&quot;
+    [backdrop]&#x3D;&quot;false&quot;
+    [maximizable]&#x3D;&quot;true&quot;
     [ngStyle]&#x3D;&quot;{
       &#x27;z-index&#x27;: group.zIndex
     }&quot;
-    (moveOnTopEnd)&#x3D;&quot;group.zIndex &#x3D; $event&quot;&gt;
-
+    (moveOnTopEnd)&#x3D;&quot;group.zIndex &#x3D; $event&quot;
+  &gt;
     &lt;ng-container class&#x3D;&quot;window-header__content&quot;&gt;
-      &lt;ng-container *ngIf&#x3D;&quot;group.applications[0].application?.icons as icons&quot;&gt;
+      &lt;ng-container
+        *ngIf&#x3D;&quot;group.applications[0].application?.icons as icons&quot;
+      &gt;
         &lt;cf-svg-icon *ngIf&#x3D;&quot;icons[0]&quot; [src]&#x3D;&quot;icons[0].src&quot;&gt;&lt;/cf-svg-icon&gt;
       &lt;/ng-container&gt;
-      &lt;ng-container *ngIf&#x3D;&quot;group.applications.length &#x3D;&#x3D;&#x3D; 1 &amp;&amp; group.applications[0]&quot;&gt;
+      &lt;ng-container
+        *ngIf&#x3D;&quot;group.applications.length &#x3D;&#x3D;&#x3D; 1 &amp;&amp; group.applications[0]&quot;
+      &gt;
         {{ group.applications[0].application.name }}
       &lt;/ng-container&gt;
       &lt;ng-container *ngIf&#x3D;&quot;group.applications.length &gt; 1&quot;&gt;
@@ -139,20 +151,30 @@
 
     &lt;ng-container class&#x3D;&quot;window-body__content&quot;&gt;
       &lt;ng-container *ngIf&#x3D;&quot;group.applications.length &#x3D;&#x3D;&#x3D; 1&quot;&gt;
-        &lt;cf-application-view [application]&#x3D;&quot;group.applications[0].application&quot;
-           [localResolver]&#x3D;&quot;localResolver&quot;&gt;&lt;/cf-application-view&gt;
+        &lt;cf-application-view
+          [application]&#x3D;&quot;group.applications[0].application&quot;
+          [localResolver]&#x3D;&quot;localResolver&quot;
+        &gt;&lt;/cf-application-view&gt;
       &lt;/ng-container&gt;
       &lt;ng-container *ngIf&#x3D;&quot;group.applications.length &gt; 1&quot;&gt;
         &lt;cf-tabset&gt;
-          &lt;cf-tab *ngFor&#x3D;&quot;let event of group.applications&quot; [title]&#x3D;&quot;event.application.name&quot;
-            [icon]&#x3D;&quot;event.application.icons &amp;&amp; event.application.icons[0]?.src || &#x27;&#x27;&quot;&gt;
-             &lt;cf-application-view [application]&#x3D;&quot;event.application&quot;
-                [localResolver]&#x3D;&quot;localResolver&quot;&gt;&lt;/cf-application-view&gt;
+          &lt;cf-tab
+            *ngFor&#x3D;&quot;let event of group.applications&quot;
+            [title]&#x3D;&quot;event.application.name&quot;
+            [icon]&#x3D;&quot;
+              (event.application.icons &amp;&amp;
+                event.application.icons[0]?.src) ||
+              &#x27;&#x27;
+            &quot;
+          &gt;
+            &lt;cf-application-view
+              [application]&#x3D;&quot;event.application&quot;
+              [localResolver]&#x3D;&quot;localResolver&quot;
+            &gt;&lt;/cf-application-view&gt;
           &lt;/cf-tab&gt;
         &lt;/cf-tabset&gt;
       &lt;/ng-container&gt;
     &lt;/ng-container&gt;
-
   &lt;/cf-window&gt;
 &lt;/ng-container&gt;
 </code></pre></td>
@@ -231,7 +253,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/application-manager.component.ts:87</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/application-manager.component.ts:108</a></div>
                             </td>
                         </tr>
 
@@ -322,8 +344,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="96"
-                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/application-manager.component.ts:96</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="116"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/application-manager.component.ts:116</a></div>
                 </td>
             </tr>
 
@@ -361,8 +383,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="153"
-                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/application-manager.component.ts:153</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="201"
+                            class="link-to-prism">apps/portal/src/app/scenes/portal-layout/application-manager.component.ts:201</a></div>
                 </td>
             </tr>
 
@@ -430,28 +452,30 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>this.applicationDisplayState.groupedApplications$.pipe(
-    map(groupedApplications &#x3D;&gt; {
-      return Object.entries(groupedApplications).map(([groupId, applications], index) &#x3D;&gt; ({
-        title: groupId ? &#x60;Group #${index}&#x60; : applications[0].application.name,
-        groupId,
-        width: applications[0].settings.width || &#x27;1000px&#x27;,
-        height: applications[0].settings.height || &#x27;1200px&#x27;,
-        x: applications[0].settings.x || 0,
-        y: applications[0].settings.y || 0,
-        zIndex: applications[0].settings.zIndex || 90 + index,
-        applications: applications.map(event &#x3D;&gt; ({
-          application: event.application,
-          settings: event.settings,
-          component: this.resolveComponent(event.application)
-        }))
-      }));
+    map((groupedApplications) &#x3D;&gt; {
+      return Object.entries(groupedApplications).map(
+        ([groupId, applications], index) &#x3D;&gt; ({
+          title: groupId ? &#x60;Group #${index}&#x60; : applications[0].application.name,
+          groupId,
+          width: applications[0].settings.width || &#x27;1000px&#x27;,
+          height: applications[0].settings.height || &#x27;1200px&#x27;,
+          x: applications[0].settings.x || 0,
+          y: applications[0].settings.y || 0,
+          zIndex: applications[0].settings.zIndex || 90 + index,
+          applications: applications.map((event) &#x3D;&gt; ({
+            application: event.application,
+            settings: event.settings,
+            component: this.resolveComponent(event.application),
+          })),
+        })
+      );
     })
   )</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/application-manager.component.ts:70</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/application-manager.component.ts:89</a></div>
                         </td>
                     </tr>
 
@@ -478,7 +502,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/application-manager.component.ts:91</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">apps/portal/src/app/scenes/portal-layout/application-manager.component.ts:111</a></div>
                         </td>
                     </tr>
 
@@ -491,34 +515,46 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { DOCUMENT } from &quot;@angular/common&quot;;
-import { Component, Inject, OnInit } from &quot;@angular/core&quot;;
-import { userApplications } from &quot;@central-factory/applications/data/base/user-applications.data&quot;;
-import { Application } from &quot;@central-factory/applications/models/application&quot;;
-import { ApplicationOpenCommand } from &quot;@central-factory/applications/models/application-commands&quot;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { DOCUMENT } from &#x27;@angular/common&#x27;;
+import { Component, Inject, OnInit } from &#x27;@angular/core&#x27;;
+import { userApplicationsById } from &#x27;@central-factory/applications/data/base/user-applications.data&#x27;;
+import { Application } from &#x27;@central-factory/applications/models/application&#x27;;
+import { ApplicationOpenCommand } from &#x27;@central-factory/applications/models/application-commands&#x27;;
 import { ApplicationDisplayState } from &#x27;@central-factory/applications/states/application-display.state&#x27;;
-import { ManageAvatarAppearancesScene } from &quot;@central-factory/manage-avatars/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene&quot;;
-import { map } from &quot;rxjs&quot;;
-import { PortalLocalApplicationsResolver } from &quot;../../portal-local-applications.resolver&quot;;
+import { ManageAvatarAppearancesScene } from &#x27;@central-factory/manage-avatars/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene&#x27;;
+import { map } from &#x27;rxjs&#x27;;
+import { PortalLocalApplicationsResolver } from &#x27;../../portal-local-applications.resolver&#x27;;
 
 @Component({
   selector: &#x27;cf-application-manager&#x27;,
   template: &#x60;
-    &lt;ng-container *ngFor&#x3D;&quot;let group of applicationGroups$ | async, let i &#x3D; index&quot;&gt;
-      &lt;cf-window [width]&#x3D;&quot;group.width&quot; [height]&#x3D;&quot;group.height&quot;
-        [x]&#x3D;&quot;group.x&quot; [y]&#x3D;&quot;group.y&quot; [zIndex]&#x3D;&quot;group.zIndex&quot;
-        [visible]&#x3D;&quot;true&quot; [executePostDisplayActions]&#x3D;&quot;true&quot;
-        [backdrop]&#x3D;&quot;false&quot; [maximizable]&#x3D;&quot;true&quot;
+    &lt;ng-container
+      *ngFor&#x3D;&quot;let group of applicationGroups$ | async; let i &#x3D; index&quot;
+    &gt;
+      &lt;cf-window
+        [width]&#x3D;&quot;group.width&quot;
+        [height]&#x3D;&quot;group.height&quot;
+        [x]&#x3D;&quot;group.x&quot;
+        [y]&#x3D;&quot;group.y&quot;
+        [zIndex]&#x3D;&quot;group.zIndex&quot;
+        [visible]&#x3D;&quot;true&quot;
+        [executePostDisplayActions]&#x3D;&quot;true&quot;
+        [backdrop]&#x3D;&quot;false&quot;
+        [maximizable]&#x3D;&quot;true&quot;
         [ngStyle]&#x3D;&quot;{
           &#x27;z-index&#x27;: group.zIndex
         }&quot;
-        (moveOnTopEnd)&#x3D;&quot;group.zIndex &#x3D; $event&quot;&gt;
-
+        (moveOnTopEnd)&#x3D;&quot;group.zIndex &#x3D; $event&quot;
+      &gt;
         &lt;ng-container class&#x3D;&quot;window-header__content&quot;&gt;
-          &lt;ng-container *ngIf&#x3D;&quot;group.applications[0].application?.icons as icons&quot;&gt;
+          &lt;ng-container
+            *ngIf&#x3D;&quot;group.applications[0].application?.icons as icons&quot;
+          &gt;
             &lt;cf-svg-icon *ngIf&#x3D;&quot;icons[0]&quot; [src]&#x3D;&quot;icons[0].src&quot;&gt;&lt;/cf-svg-icon&gt;
           &lt;/ng-container&gt;
-          &lt;ng-container *ngIf&#x3D;&quot;group.applications.length &#x3D;&#x3D;&#x3D; 1 &amp;&amp; group.applications[0]&quot;&gt;
+          &lt;ng-container
+            *ngIf&#x3D;&quot;group.applications.length &#x3D;&#x3D;&#x3D; 1 &amp;&amp; group.applications[0]&quot;
+          &gt;
             {{ group.applications[0].application.name }}
           &lt;/ng-container&gt;
           &lt;ng-container *ngIf&#x3D;&quot;group.applications.length &gt; 1&quot;&gt;
@@ -529,64 +565,75 @@ import { PortalLocalApplicationsResolver } from &quot;../../portal-local-applica
 
         &lt;ng-container class&#x3D;&quot;window-body__content&quot;&gt;
           &lt;ng-container *ngIf&#x3D;&quot;group.applications.length &#x3D;&#x3D;&#x3D; 1&quot;&gt;
-            &lt;cf-application-view [application]&#x3D;&quot;group.applications[0].application&quot;
-               [localResolver]&#x3D;&quot;localResolver&quot;&gt;&lt;/cf-application-view&gt;
+            &lt;cf-application-view
+              [application]&#x3D;&quot;group.applications[0].application&quot;
+              [localResolver]&#x3D;&quot;localResolver&quot;
+            &gt;&lt;/cf-application-view&gt;
           &lt;/ng-container&gt;
           &lt;ng-container *ngIf&#x3D;&quot;group.applications.length &gt; 1&quot;&gt;
             &lt;cf-tabset&gt;
-              &lt;cf-tab *ngFor&#x3D;&quot;let event of group.applications&quot; [title]&#x3D;&quot;event.application.name&quot;
-                [icon]&#x3D;&quot;event.application.icons &amp;&amp; event.application.icons[0]?.src || &#x27;&#x27;&quot;&gt;
-                 &lt;cf-application-view [application]&#x3D;&quot;event.application&quot;
-                    [localResolver]&#x3D;&quot;localResolver&quot;&gt;&lt;/cf-application-view&gt;
+              &lt;cf-tab
+                *ngFor&#x3D;&quot;let event of group.applications&quot;
+                [title]&#x3D;&quot;event.application.name&quot;
+                [icon]&#x3D;&quot;
+                  (event.application.icons &amp;&amp;
+                    event.application.icons[0]?.src) ||
+                  &#x27;&#x27;
+                &quot;
+              &gt;
+                &lt;cf-application-view
+                  [application]&#x3D;&quot;event.application&quot;
+                  [localResolver]&#x3D;&quot;localResolver&quot;
+                &gt;&lt;/cf-application-view&gt;
               &lt;/cf-tab&gt;
             &lt;/cf-tabset&gt;
           &lt;/ng-container&gt;
         &lt;/ng-container&gt;
-
       &lt;/cf-window&gt;
     &lt;/ng-container&gt;
   &#x60;,
-  providers: [
-    PortalLocalApplicationsResolver
-  ],
+  providers: [PortalLocalApplicationsResolver],
   styles: [
     &#x60;
       .window-body__content {
         width: 60%;
       }
-    &#x60;
-  ]
+    &#x60;,
+  ],
 })
 export class ApplicationManagerComponent implements OnInit {
-
   applicationGroups$ &#x3D; this.applicationDisplayState.groupedApplications$.pipe(
-    map(groupedApplications &#x3D;&gt; {
-      return Object.entries(groupedApplications).map(([groupId, applications], index) &#x3D;&gt; ({
-        title: groupId ? &#x60;Group #${index}&#x60; : applications[0].application.name,
-        groupId,
-        width: applications[0].settings.width || &#x27;1000px&#x27;,
-        height: applications[0].settings.height || &#x27;1200px&#x27;,
-        x: applications[0].settings.x || 0,
-        y: applications[0].settings.y || 0,
-        zIndex: applications[0].settings.zIndex || 90 + index,
-        applications: applications.map(event &#x3D;&gt; ({
-          application: event.application,
-          settings: event.settings,
-          component: this.resolveComponent(event.application)
-        }))
-      }));
+    map((groupedApplications) &#x3D;&gt; {
+      return Object.entries(groupedApplications).map(
+        ([groupId, applications], index) &#x3D;&gt; ({
+          title: groupId ? &#x60;Group #${index}&#x60; : applications[0].application.name,
+          groupId,
+          width: applications[0].settings.width || &#x27;1000px&#x27;,
+          height: applications[0].settings.height || &#x27;1200px&#x27;,
+          x: applications[0].settings.x || 0,
+          y: applications[0].settings.y || 0,
+          zIndex: applications[0].settings.zIndex || 90 + index,
+          applications: applications.map((event) &#x3D;&gt; ({
+            application: event.application,
+            settings: event.settings,
+            component: this.resolveComponent(event.application),
+          })),
+        })
+      );
     })
   );
-
 
   constructor(
     public localResolver: PortalLocalApplicationsResolver,
     private applicationDisplayState: ApplicationDisplayState,
     @Inject(DOCUMENT) private _document: Document
-  ) { }
+  ) {}
 
   ngOnInit() {
-    if (!this._document.defaultView?.innerHeight || !this._document.defaultView?.innerWidth) {
+    if (
+      !this._document.defaultView?.innerHeight ||
+      !this._document.defaultView?.innerWidth
+    ) {
       setTimeout(() &#x3D;&gt; {
         this.ngOnInit();
       }, 100);
@@ -597,7 +644,7 @@ export class ApplicationManagerComponent implements OnInit {
       leftPanel: {
         x: this._document.defaultView?.innerWidth * 0.05,
         y: this._document.defaultView?.innerHeight * 0.1,
-        width: &#x60;calc(100vw - 40%)&#x60;,
+        width: &#x60;calc(100vw - 10%)&#x60;,
         height: &#x60;calc(100vh - 20%)&#x60;,
       },
       rightPanel: {
@@ -605,41 +652,66 @@ export class ApplicationManagerComponent implements OnInit {
         y: this._document.defaultView?.innerHeight * 0.1,
         width: &#x60;calc(100vw - 70%)&#x60;,
         height: &#x60;calc(100vh - 20%)&#x60;,
-      }
-    }
+      },
+    };
 
     this.applicationDisplayState.open({
       name: ApplicationOpenCommand.name,
-      application: userApplications[2],
+      application: userApplicationsById[&#x27;com.central-factory.world&#x27;],
       settings: {
+        groupId: &#x27;map&#x27;,
         show: true,
         // width: &#x27;1000px&#x27;,
         // height: &#x27;1200px&#x27;,
         // x: 140,
         // y: 146
-        ...layout.leftPanel
-      }
-    })
+        ...layout.leftPanel,
+      },
+    });
 
     this.applicationDisplayState.open({
       name: ApplicationOpenCommand.name,
-      application: userApplications[1],
+      application: userApplicationsById[&#x27;com.central-factory.burg&#x27;],
       settings: {
-        groupId: &#x27;1&#x27;,
+        groupId: &#x27;map&#x27;,
         show: true,
-        ...layout.rightPanel
-      }
-    })
+        // width: &#x27;1000px&#x27;,
+        // height: &#x27;1200px&#x27;,
+        // x: 140,
+        // y: 146
+        ...layout.leftPanel,
+      },
+    });
 
     this.applicationDisplayState.open({
       name: ApplicationOpenCommand.name,
-      application: userApplications[4],
+      application: userApplicationsById[&#x27;com.central-factory.mirror&#x27;],
       settings: {
-        groupId: &#x27;1&#x27;,
+        groupId: &#x27;map&#x27;,
         show: true,
-        ...layout.rightPanel
-      }
-    })
+        ...layout.leftPanel,
+      },
+    });
+
+    // this.applicationDisplayState.open({
+    //   name: ApplicationOpenCommand.name,
+    //   application: userApplicationsById[&#x27;com.central-factory.inventory&#x27;],
+    //   settings: {
+    //     groupId: &#x27;1&#x27;,
+    //     show: true,
+    //     ...layout.rightPanel,
+    //   },
+    // });
+
+    // this.applicationDisplayState.open({
+    //   name: ApplicationOpenCommand.name,
+    //   application: userApplicationsById[&#x27;com.central-factory.portals&#x27;],
+    //   settings: {
+    //     groupId: &#x27;1&#x27;,
+    //     show: true,
+    //     ...layout.rightPanel,
+    //   },
+    // });
   }
 
   private resolveComponent(application: Application) {
@@ -684,8 +756,8 @@ export class ApplicationManagerComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container *ngFor="let group of applicationGroups$ | async, let i = index">  <cf-window [width]="group.width" [height]="group.height"    [x]="group.x" [y]="group.y" [zIndex]="group.zIndex"    [visible]="true" [executePostDisplayActions]="true"    [backdrop]="false" [maximizable]="true"    [ngStyle]="{      \'z-index\': group.zIndex    }"    (moveOnTopEnd)="group.zIndex = $event">    <ng-container class="window-header__content">      <ng-container *ngIf="group.applications[0].application?.icons as icons">        <cf-svg-icon *ngIf="icons[0]" [src]="icons[0].src"></cf-svg-icon>      </ng-container>      <ng-container *ngIf="group.applications.length === 1 && group.applications[0]">        {{ group.applications[0].application.name }}      </ng-container>      <ng-container *ngIf="group.applications.length > 1">        <!-- Group #{{ group.groupId }} -->        {{ group.applications[0].application.name }}      </ng-container>    </ng-container>    <ng-container class="window-body__content">      <ng-container *ngIf="group.applications.length === 1">        <cf-application-view [application]="group.applications[0].application"           [localResolver]="localResolver"></cf-application-view>      </ng-container>      <ng-container *ngIf="group.applications.length > 1">        <cf-tabset>          <cf-tab *ngFor="let event of group.applications" [title]="event.application.name"            [icon]="event.application.icons && event.application.icons[0]?.src || \'\'">             <cf-application-view [application]="event.application"                [localResolver]="localResolver"></cf-application-view>          </cf-tab>        </cf-tabset>      </ng-container>    </ng-container>  </cf-window></ng-container></div>'
-    var COMPONENTS = [{'name': 'ApplicationManagerComponent', 'selector': 'cf-application-manager'},{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'}];
+        var COMPONENT_TEMPLATE = '<div><ng-container  *ngFor="let group of applicationGroups$ | async; let i = index">  <cf-window    [width]="group.width"    [height]="group.height"    [x]="group.x"    [y]="group.y"    [zIndex]="group.zIndex"    [visible]="true"    [executePostDisplayActions]="true"    [backdrop]="false"    [maximizable]="true"    [ngStyle]="{      \'z-index\': group.zIndex    }"    (moveOnTopEnd)="group.zIndex = $event"  >    <ng-container class="window-header__content">      <ng-container        *ngIf="group.applications[0].application?.icons as icons"      >        <cf-svg-icon *ngIf="icons[0]" [src]="icons[0].src"></cf-svg-icon>      </ng-container>      <ng-container        *ngIf="group.applications.length === 1 && group.applications[0]"      >        {{ group.applications[0].application.name }}      </ng-container>      <ng-container *ngIf="group.applications.length > 1">        <!-- Group #{{ group.groupId }} -->        {{ group.applications[0].application.name }}      </ng-container>    </ng-container>    <ng-container class="window-body__content">      <ng-container *ngIf="group.applications.length === 1">        <cf-application-view          [application]="group.applications[0].application"          [localResolver]="localResolver"        ></cf-application-view>      </ng-container>      <ng-container *ngIf="group.applications.length > 1">        <cf-tabset>          <cf-tab            *ngFor="let event of group.applications"            [title]="event.application.name"            [icon]="              (event.application.icons &&                event.application.icons[0]?.src) ||              \'\'            "          >            <cf-application-view              [application]="event.application"              [localResolver]="localResolver"            ></cf-application-view>          </cf-tab>        </cf-tabset>      </ng-container>    </ng-container>  </cf-window></ng-container></div>'
+    var COMPONENTS = [{'name': 'ApplicationManagerComponent', 'selector': 'cf-application-manager'},{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'},{'name': 'WorldScene', 'selector': 'cf-world-scene'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ApplicationManagerComponent'};
 </script>

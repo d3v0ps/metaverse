@@ -201,7 +201,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/Avatar.html" target="_self" >AvatarAppearanceProvider[]</a></code>
+                        <i>Type : </i>    <code>AvatarAppearanceProvider[]</code>
 
                     </td>
                 </tr>
@@ -239,7 +239,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>onProviderClick(provider: <a href="../interfaces/Avatar.html" target="_self">AvatarAppearanceProvider</a>)</code>
+<code>onProviderClick(provider: <a href="../undefineds/AvatarAppearanceProvider.html" target="_self">AvatarAppearanceProvider</a>)</code>
                 </td>
             </tr>
 
@@ -270,7 +270,7 @@
                                 <tr>
                                     <td>provider</td>
                                     <td>
-                                                <code><a href="../interfaces/Avatar.html" target="_self" >AvatarAppearanceProvider</a></code>
+                                                <code><a href="../miscellaneous/typealiases.html#AvatarAppearanceProvider" target="_self" >AvatarAppearanceProvider</a></code>
                                     </td>
 
                                     <td>
@@ -400,7 +400,7 @@ export class AvatarAppearanceProvidersComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-providers">  <h3 cfElem="subtitle">Providers</h3>  <p>    We plan to provide an avatar editor in a future but in the meantime, you    can use the following providers. Just customize your avatar, download it    and then upload it here.  </p>  <div cfElem="content">    <ng-container *ngFor="let provider of providers">      <button        cfBlock="button"        (click)="onProviderClick(provider)"        [cfMod]="\'has-icon\'"        [ngStyle]="{          \'background-color\': provider.color || \'transparent\'        }"      >        <cf-svg-icon          [src]="provider.icon || \'assets/icons/mdi/image-edit.svg\'"        >        </cf-svg-icon>        {{ provider.name }}      </button>    </ng-container>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarAppearanceSpritesheetComponent', 'selector': 'cf-avatar-appearance-spritesheet'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
+    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarAppearanceSpritesheetComponent', 'selector': 'cf-avatar-appearance-spritesheet'},{'name': 'AvatarDialogComponent', 'selector': 'cf-avatar-dialog'},{'name': 'AvatarDialogScene', 'selector': 'cf-avatar-dialog-scene'},{'name': 'AvatarInfoComponent', 'selector': 'cf-avatar-info'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'AvatarsListComponent', 'selector': 'cf-avatars-list'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarAppearanceProvidersComponent'};
 </script>

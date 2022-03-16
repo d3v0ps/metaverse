@@ -14,10 +14,6 @@
 <title>cluster_AvatarAppearanceEditorModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-230.8 2247,-230.8 2247,-32.8 8,-32.8"/>
 </g>
-<g id="clust8" class="cluster">
-<title>cluster_AvatarAppearanceEditorModule_exports</title>
-<polygon fill="none" stroke="black" points="963,-170.8 963,-222.8 1203,-222.8 1203,-170.8 963,-170.8"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_AvatarAppearanceEditorModule_declarations</title>
 <polygon fill="none" stroke="black" points="1195,-40.8 1195,-92.8 2239,-92.8 2239,-40.8 1195,-40.8"/>
@@ -25,6 +21,10 @@
 <g id="clust7" class="cluster">
 <title>cluster_AvatarAppearanceEditorModule_imports</title>
 <polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 1187,-92.8 1187,-40.8 16,-40.8"/>
+</g>
+<g id="clust8" class="cluster">
+<title>cluster_AvatarAppearanceEditorModule_exports</title>
+<polygon fill="none" stroke="black" points="963,-170.8 963,-222.8 1203,-222.8 1203,-170.8 963,-170.8"/>
 </g>
 <!-- AvatarAppearanceEditorComponent -->
 <g id="node1" class="node">

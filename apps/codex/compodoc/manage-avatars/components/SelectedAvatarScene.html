@@ -97,28 +97,17 @@
   } as data&quot;
 &gt;
   &lt;div cfBlock&#x3D;&quot;scene-content&quot; *ngIf&#x3D;&quot;data.avatar&quot;&gt;
-    &lt;cf-avatar-overview
-      [avatar]&#x3D;&quot;data.avatar&quot;
-    &gt;&lt;/cf-avatar-overview&gt;
+    &lt;cf-avatar-overview [avatar]&#x3D;&quot;data.avatar&quot;&gt;&lt;/cf-avatar-overview&gt;
 
-    &lt;p *ngIf&#x3D;&quot;data.avatar.bio&quot;&gt;
-      {{ data.avatar.bio }}
+    &lt;p *ngIf&#x3D;&quot;data.avatar.identity?.bio&quot;&gt;
+      {{ data.avatar.identity?.bio }}
     &lt;/p&gt;
-
-    &lt;!-- cf-avatar-skills
-        [skills]&#x3D;&quot;data.avatar.skills&quot;
-      &gt;&lt;/cf-avatar-skills --&gt;
 
     &lt;cf-avatar-appearances
       [appearances]&#x3D;&quot;data.avatar.appearances&quot;
-      [selectedAppearanceId]&#x3D;&quot;data.avatar.selectedAppearance?.id&quot;
       (appearanceClick)&#x3D;&quot;onAppearanceClick($event)&quot;
       (appearanceAddClick)&#x3D;&quot;onAppearanceAddClick()&quot;
     &gt;&lt;/cf-avatar-appearances&gt;
-
-    &lt;!-- cf-avatar-scopes
-        [scopes]&#x3D;&quot;data.avatar.scopes&quot;
-      &gt;&lt;/cf-avatar-scopes--&gt;
   &lt;/div&gt;
 &lt;/ng-container&gt;
 </code></pre></td>
@@ -194,7 +183,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:45</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:34</a></div>
                             </td>
                         </tr>
 
@@ -273,8 +262,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="56"
-                            class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:56</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:45</a></div>
                 </td>
             </tr>
 
@@ -310,8 +299,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="52"
-                            class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:52</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:41</a></div>
                 </td>
             </tr>
 
@@ -391,7 +380,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:44</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">apps/manage-avatars/src/app/scenes/selected-avatar/selected-avatar.scene.ts:33</a></div>
                         </td>
                     </tr>
 
@@ -420,28 +409,17 @@ import { Observable } from &#x27;rxjs&#x27;;
       } as data&quot;
     &gt;
       &lt;div cfBlock&#x3D;&quot;scene-content&quot; *ngIf&#x3D;&quot;data.avatar&quot;&gt;
-        &lt;cf-avatar-overview
-          [avatar]&#x3D;&quot;data.avatar&quot;
-        &gt;&lt;/cf-avatar-overview&gt;
+        &lt;cf-avatar-overview [avatar]&#x3D;&quot;data.avatar&quot;&gt;&lt;/cf-avatar-overview&gt;
 
-        &lt;p *ngIf&#x3D;&quot;data.avatar.bio&quot;&gt;
-          {{ data.avatar.bio }}
+        &lt;p *ngIf&#x3D;&quot;data.avatar.identity?.bio&quot;&gt;
+          {{ data.avatar.identity?.bio }}
         &lt;/p&gt;
-
-        &lt;!-- cf-avatar-skills
-            [skills]&#x3D;&quot;data.avatar.skills&quot;
-          &gt;&lt;/cf-avatar-skills --&gt;
 
         &lt;cf-avatar-appearances
           [appearances]&#x3D;&quot;data.avatar.appearances&quot;
-          [selectedAppearanceId]&#x3D;&quot;data.avatar.selectedAppearance?.id&quot;
           (appearanceClick)&#x3D;&quot;onAppearanceClick($event)&quot;
           (appearanceAddClick)&#x3D;&quot;onAppearanceAddClick()&quot;
         &gt;&lt;/cf-avatar-appearances&gt;
-
-        &lt;!-- cf-avatar-scopes
-            [scopes]&#x3D;&quot;data.avatar.scopes&quot;
-          &gt;&lt;/cf-avatar-scopes--&gt;
       &lt;/div&gt;
     &lt;/ng-container&gt;
   &#x60;,
@@ -453,10 +431,10 @@ export class SelectedAvatarScene {
   constructor(
     private readonly selectedAvatarState: SelectedAvatarState,
     private readonly router: Router
-  ) { }
+  ) {}
 
   onAppearanceClick(appearance: Appearance) {
-    this.selectedAvatarState.selectAppearance(appearance).subscribe();
+    this.selectedAvatarState.selectOutfit(appearance).subscribe();
   }
 
   onAppearanceAddClick() {
@@ -493,7 +471,7 @@ export class SelectedAvatarScene {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    avatar: avatar$ | async  } as data">  <div cfBlock="scene-content" *ngIf="data.avatar">    <cf-avatar-overview      [avatar]="data.avatar"    ></cf-avatar-overview>    <p *ngIf="data.avatar.bio">      {{ data.avatar.bio }}    </p>    <!-- cf-avatar-skills        [skills]="data.avatar.skills"      ></cf-avatar-skills -->    <cf-avatar-appearances      [appearances]="data.avatar.appearances"      [selectedAppearanceId]="data.avatar.selectedAppearance?.id"      (appearanceClick)="onAppearanceClick($event)"      (appearanceAddClick)="onAppearanceAddClick()"    ></cf-avatar-appearances>    <!-- cf-avatar-scopes        [scopes]="data.avatar.scopes"      ></cf-avatar-scopes-->  </div></ng-container></div>'
+        var COMPONENT_TEMPLATE = '<div><ng-container  *ngIf="{    avatar: avatar$ | async  } as data">  <div cfBlock="scene-content" *ngIf="data.avatar">    <cf-avatar-overview [avatar]="data.avatar"></cf-avatar-overview>    <p *ngIf="data.avatar.identity?.bio">      {{ data.avatar.identity?.bio }}    </p>    <cf-avatar-appearances      [appearances]="data.avatar.appearances"      (appearanceClick)="onAppearanceClick($event)"      (appearanceAddClick)="onAppearanceAddClick()"    ></cf-avatar-appearances>  </div></ng-container></div>'
     var COMPONENTS = [{'name': 'CreateAvatarScene', 'selector': 'cf-create-avatar'},{'name': 'ManageAvatarAppearancesScene', 'selector': 'cf-manage-avatar-appearances-scene'},{'name': 'ManageAvatarsRoot', 'selector': 'cf-manage-avatars-root'},{'name': 'SelectAvatarScene', 'selector': 'cf-select-avatar'},{'name': 'SelectedAvatarScene', 'selector': 'cf-selected-avatar'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SelectedAvatarScene'};

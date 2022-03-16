@@ -91,15 +91,71 @@
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div cfBlock&#x3D;&quot;avatars-carousel&quot;&gt;
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div
+  cfBlock&#x3D;&quot;avatars-carousel&quot;
+  cfMod&#x3D;&quot;direction-{{ direction }} {{ size }}&quot;
+&gt;
   &lt;ng-container *ngFor&#x3D;&quot;let avatar of avatars&quot;&gt;
-    &lt;div cfBlock&#x3D;&quot;avatars-carousel-item&quot; (click)&#x3D;&quot;avatarClick.emit(avatar)&quot;&gt;
-      &lt;cf-avatar-appearance-portrait *ngIf&#x3D;&quot;avatar.selectedAppearance?.variations&quot;
-        [appearancePortrait]&#x3D;&quot;avatar.selectedAppearance?.variations?.portrait&quot;
+    &lt;div
+      cfBlock&#x3D;&quot;avatars-carousel-item&quot;
+      (click)&#x3D;&quot;avatarClick.emit(avatar)&quot;
+      [cfMod]&#x3D;&quot;size&quot;
+    &gt;
+      &lt;cf-avatar-appearance-portrait
+        [displayComponent]&#x3D;&quot;&#x27;avataaars&#x27;&quot;
+        [avatar]&#x3D;&quot;avatar&quot;
       &gt;
       &lt;/cf-avatar-appearance-portrait&gt;
       &lt;br /&gt;
-      &lt;h4 cfElem&#x3D;&quot;name&quot;&gt;{{ avatar.name }}&lt;/h4&gt;
+      &lt;h4 cfBlock&#x3D;&quot;heading&quot;&gt;
+        {{ avatar.identity?.givenName }} {{ avatar.identity?.familyName }}
+      &lt;/h4&gt;
+      &lt;p cfBlock&#x3D;&quot;text&quot;&gt;
+        &lt;cf-svg-icon
+          cfElem&#x3D;&quot;icon&quot;
+          [src]&#x3D;&quot;
+            &#x27;assets/icons/mdi/gender-&#x27; +
+            avatar.appearance?.body?.type?.toLowerCase() +
+            &#x27;.svg&#x27;
+          &quot;
+        &gt;&lt;/cf-svg-icon&gt;
+        &lt;strong
+          *ngIf&#x3D;&quot;avatar.identity?.mainProfession as mainProfession&quot;
+          [ngStyle]&#x3D;&quot;{
+            color: professions[mainProfession]
+              ? professions[mainProfession].color
+              : &#x27;#fff&#x27;
+          }&quot;
+        &gt;
+          &lt;cf-svg-icon
+            cfElem&#x3D;&quot;icon&quot;
+            *ngIf&#x3D;&quot;
+              professions[mainProfession] &amp;&amp;
+              professions[mainProfession].icon as icon
+            &quot;
+            [src]&#x3D;&quot;icon&quot;
+          &gt;&lt;/cf-svg-icon&gt;
+        &lt;/strong&gt;
+        &lt;strong
+          *ngIf&#x3D;&quot;
+            avatar.identity?.secondaryProfession as secondaryProfession
+          &quot;
+          [ngStyle]&#x3D;&quot;{
+            color: professions[secondaryProfession]
+              ? professions[secondaryProfession].color
+              : &#x27;#fff&#x27;
+          }&quot;
+        &gt;
+          &lt;cf-svg-icon
+            cfElem&#x3D;&quot;icon&quot;
+            *ngIf&#x3D;&quot;
+              professions[secondaryProfession] &amp;&amp;
+              professions[secondaryProfession].icon as icon
+            &quot;
+            [src]&#x3D;&quot;icon&quot;
+          &gt;&lt;/cf-svg-icon&gt;
+        &lt;/strong&gt;
+      &lt;/p&gt;
     &lt;/div&gt;
   &lt;/ng-container&gt;
 &lt;/div&gt;
@@ -136,7 +192,19 @@
                                 <a href="#avatars" >avatars</a>
                             </li>
                             <li>
+                                <a href="#direction" >direction</a>
+                            </li>
+                            <li>
+                                <a href="#displayComponent" >displayComponent</a>
+                            </li>
+                            <li>
+                                <a href="#size" >size</a>
+                            </li>
+                            <li>
                                 <a href="#variation" >variation</a>
+                            </li>
+                            <li>
+                                <a href="#world" >world</a>
                             </li>
                         </ul>
                     </td>
@@ -159,6 +227,20 @@
 
 
 
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#professions" >professions</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
         </tbody>
     </table>
 </section>
@@ -176,7 +258,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/Avatar.html" target="_self" >Avatar[]</a></code>
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#Avatar" target="_self" >Avatar[]</a></code>
 
                     </td>
                 </tr>
@@ -187,7 +269,85 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:79</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="direction"></a>
+                        <b>direction</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;column&quot; | &quot;row&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;row&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:82</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="displayComponent"></a>
+                        <b>displayComponent</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>&quot;avataaars&quot; | &quot;lpc&quot;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;avataaars&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:84</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="size"></a>
+                        <b>size</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:85</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -200,20 +360,30 @@
                         <b>variation</b>
                     </td>
                 </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:81</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
+                        <a name="world"></a>
+                        <b>world</b>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;portrait&#x27;</code>
+                        <i>Type : </i>    <code>World</code>
+
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:80</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -237,7 +407,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:25</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:87</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -247,25 +417,109 @@
 
 
 
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="professions"></a>
+                        <span class="name"><b>professions</b><a href="#professions"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>professions()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:89</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
 </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
+import { AvatarProfession, World } from &#x27;@central-factory/worlds/models/world&#x27;;
 import type { Avatar } from &#x27;../../../models/avatar&#x27;;
 
 @Component({
   selector: &#x27;cf-avatars-carousel&#x27;,
   template: &#x60;
-    &lt;div cfBlock&#x3D;&quot;avatars-carousel&quot;&gt;
+    &lt;div
+      cfBlock&#x3D;&quot;avatars-carousel&quot;
+      cfMod&#x3D;&quot;direction-{{ direction }} {{ size }}&quot;
+    &gt;
       &lt;ng-container *ngFor&#x3D;&quot;let avatar of avatars&quot;&gt;
-        &lt;div cfBlock&#x3D;&quot;avatars-carousel-item&quot; (click)&#x3D;&quot;avatarClick.emit(avatar)&quot;&gt;
-          &lt;cf-avatar-appearance-portrait *ngIf&#x3D;&quot;avatar.selectedAppearance?.variations&quot;
-            [appearancePortrait]&#x3D;&quot;avatar.selectedAppearance?.variations?.portrait&quot;
+        &lt;div
+          cfBlock&#x3D;&quot;avatars-carousel-item&quot;
+          (click)&#x3D;&quot;avatarClick.emit(avatar)&quot;
+          [cfMod]&#x3D;&quot;size&quot;
+        &gt;
+          &lt;cf-avatar-appearance-portrait
+            [displayComponent]&#x3D;&quot;&#x27;avataaars&#x27;&quot;
+            [avatar]&#x3D;&quot;avatar&quot;
           &gt;
           &lt;/cf-avatar-appearance-portrait&gt;
           &lt;br /&gt;
-          &lt;h4 cfElem&#x3D;&quot;name&quot;&gt;{{ avatar.name }}&lt;/h4&gt;
+          &lt;h4 cfBlock&#x3D;&quot;heading&quot;&gt;
+            {{ avatar.identity?.givenName }} {{ avatar.identity?.familyName }}
+          &lt;/h4&gt;
+          &lt;p cfBlock&#x3D;&quot;text&quot;&gt;
+            &lt;cf-svg-icon
+              cfElem&#x3D;&quot;icon&quot;
+              [src]&#x3D;&quot;
+                &#x27;assets/icons/mdi/gender-&#x27; +
+                avatar.appearance?.body?.type?.toLowerCase() +
+                &#x27;.svg&#x27;
+              &quot;
+            &gt;&lt;/cf-svg-icon&gt;
+            &lt;strong
+              *ngIf&#x3D;&quot;avatar.identity?.mainProfession as mainProfession&quot;
+              [ngStyle]&#x3D;&quot;{
+                color: professions[mainProfession]
+                  ? professions[mainProfession].color
+                  : &#x27;#fff&#x27;
+              }&quot;
+            &gt;
+              &lt;cf-svg-icon
+                cfElem&#x3D;&quot;icon&quot;
+                *ngIf&#x3D;&quot;
+                  professions[mainProfession] &amp;&amp;
+                  professions[mainProfession].icon as icon
+                &quot;
+                [src]&#x3D;&quot;icon&quot;
+              &gt;&lt;/cf-svg-icon&gt;
+            &lt;/strong&gt;
+            &lt;strong
+              *ngIf&#x3D;&quot;
+                avatar.identity?.secondaryProfession as secondaryProfession
+              &quot;
+              [ngStyle]&#x3D;&quot;{
+                color: professions[secondaryProfession]
+                  ? professions[secondaryProfession].color
+                  : &#x27;#fff&#x27;
+              }&quot;
+            &gt;
+              &lt;cf-svg-icon
+                cfElem&#x3D;&quot;icon&quot;
+                *ngIf&#x3D;&quot;
+                  professions[secondaryProfession] &amp;&amp;
+                  professions[secondaryProfession].icon as icon
+                &quot;
+                [src]&#x3D;&quot;icon&quot;
+              &gt;&lt;/cf-svg-icon&gt;
+            &lt;/strong&gt;
+          &lt;/p&gt;
         &lt;/div&gt;
       &lt;/ng-container&gt;
     &lt;/div&gt;
@@ -273,9 +527,26 @@ import type { Avatar } from &#x27;../../../models/avatar&#x27;;
 })
 export class AvatarsCarouselComponent {
   @Input() avatars: Avatar[] &#x3D; [];
-  @Input() variation &#x3D; &#x27;portrait&#x27;;
+  @Input() world?: World;
+  @Input() variation?: &#x27;portrait&#x27;;
+  @Input() direction: &#x27;column&#x27; | &#x27;row&#x27; &#x3D; &#x27;row&#x27;;
+
+  @Input() displayComponent: &#x27;avataaars&#x27; | &#x27;lpc&#x27; &#x3D; &#x27;avataaars&#x27;;
+  @Input() size &#x3D; &#x27;&#x27;;
 
   @Output() avatarClick &#x3D; new EventEmitter&lt;Avatar&gt;();
+
+  get professions(): Record&lt;string, AvatarProfession&gt; {
+    return (
+      this.world?.professions?.reduce(
+        (acc, profession) &#x3D;&gt; ({
+          ...acc,
+          [profession.id]: profession,
+        }),
+        {}
+      ) || {}
+    );
+  }
 }
 </code></pre>
     </div>
@@ -307,8 +578,8 @@ export class AvatarsCarouselComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatars-carousel">  <ng-container *ngFor="let avatar of avatars">    <div cfBlock="avatars-carousel-item" (click)="avatarClick.emit(avatar)">      <cf-avatar-appearance-portrait *ngIf="avatar.selectedAppearance?.variations"        [appearancePortrait]="avatar.selectedAppearance?.variations?.portrait"      >      </cf-avatar-appearance-portrait>      <br />      <h4 cfElem="name">{{ avatar.name }}</h4>    </div>  </ng-container></div></div>'
-    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarAppearanceSpritesheetComponent', 'selector': 'cf-avatar-appearance-spritesheet'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
+        var COMPONENT_TEMPLATE = '<div><div  cfBlock="avatars-carousel"  cfMod="direction-{{ direction }} {{ size }}">  <ng-container *ngFor="let avatar of avatars">    <div      cfBlock="avatars-carousel-item"      (click)="avatarClick.emit(avatar)"      [cfMod]="size"    >      <cf-avatar-appearance-portrait        [displayComponent]="\'avataaars\'"        [avatar]="avatar"      >      </cf-avatar-appearance-portrait>      <br />      <h4 cfBlock="heading">        {{ avatar.identity?.givenName }} {{ avatar.identity?.familyName }}      </h4>      <p cfBlock="text">        <cf-svg-icon          cfElem="icon"          [src]="            \'assets/icons/mdi/gender-\' +            avatar.appearance?.body?.type?.toLowerCase() +            \'.svg\'          "        ></cf-svg-icon>        <strong          *ngIf="avatar.identity?.mainProfession as mainProfession"          [ngStyle]="{            color: professions[mainProfession]              ? professions[mainProfession].color              : \'#fff\'          }"        >          <cf-svg-icon            cfElem="icon"            *ngIf="              professions[mainProfession] &&              professions[mainProfession].icon as icon            "            [src]="icon"          ></cf-svg-icon>        </strong>        <strong          *ngIf="            avatar.identity?.secondaryProfession as secondaryProfession          "          [ngStyle]="{            color: professions[secondaryProfession]              ? professions[secondaryProfession].color              : \'#fff\'          }"        >          <cf-svg-icon            cfElem="icon"            *ngIf="              professions[secondaryProfession] &&              professions[secondaryProfession].icon as icon            "            [src]="icon"          ></cf-svg-icon>        </strong>      </p>    </div>  </ng-container></div></div>'
+    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarAppearanceSpritesheetComponent', 'selector': 'cf-avatar-appearance-spritesheet'},{'name': 'AvatarDialogComponent', 'selector': 'cf-avatar-dialog'},{'name': 'AvatarDialogScene', 'selector': 'cf-avatar-dialog-scene'},{'name': 'AvatarInfoComponent', 'selector': 'cf-avatar-info'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'AvatarsListComponent', 'selector': 'cf-avatars-list'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarsCarouselComponent'};
 </script>

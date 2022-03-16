@@ -14,10 +14,6 @@
 <title>cluster_AvatarAppearanceCardModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-230.8 488,-230.8 488,-32.8 8,-32.8"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_AvatarAppearanceCardModule_exports</title>
-<polygon fill="none" stroke="black" points="132,-170.8 132,-222.8 364,-222.8 364,-170.8 132,-170.8"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_AvatarAppearanceCardModule_declarations</title>
 <polygon fill="none" stroke="black" points="250,-40.8 250,-92.8 480,-92.8 480,-40.8 250,-40.8"/>
@@ -25,6 +21,10 @@
 <g id="clust4" class="cluster">
 <title>cluster_AvatarAppearanceCardModule_imports</title>
 <polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 242,-92.8 242,-40.8 16,-40.8"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_AvatarAppearanceCardModule_exports</title>
+<polygon fill="none" stroke="black" points="132,-170.8 132,-222.8 364,-222.8 364,-170.8 132,-170.8"/>
 </g>
 <!-- AvatarAppearanceCardComponent -->
 <g id="node1" class="node">

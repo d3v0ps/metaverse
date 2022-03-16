@@ -1,0 +1,1201 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@central-factory/metaverse documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/postmark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">@central-factory/metaverse documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  AvatarInfoComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>libs/avatars/src/lib/web-components/angular/avatar-info/avatar-info.component.ts</code>
+</p>
+
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>cf-avatar-info</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>
+      .avatar-info {
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%;
+        overflow: auto;
+
+        &gt; * {
+          height: 100%;
+        }
+
+        &gt; *:nth-child(1) {
+          flex: 1 1 60%;
+          min-width: 30ch;
+        }
+
+        &gt; *:nth-child(2) {
+          flex: 1 1 40%;
+          min-width: 25ch;
+          gap: 1rem;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          .avatar-info__parents {
+            .avatars-carousel {
+              gap: 1rem;
+            }
+          }
+        }
+
+        &amp;__basic-info {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    </code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div cfBlock&#x3D;&quot;avatar-info&quot; class&#x3D;&quot;clay&quot; *ngIf&#x3D;&quot;avatar&quot;&gt;
+  &lt;div cfElem&#x3D;&quot;main-content&quot;&gt;
+    &lt;div cfElem&#x3D;&quot;appearances&quot;&gt;
+      &lt;cf-avatar-appearance-portrait
+        [avatar]&#x3D;&quot;avatar&quot;
+        displayComponent&#x3D;&quot;avataaars&quot;
+      &gt;&lt;/cf-avatar-appearance-portrait&gt;
+    &lt;/div&gt;
+
+    &lt;h4 cfBlock&#x3D;&quot;heading&quot;&gt;
+      {{ avatar.identity?.givenName }} {{ avatar.identity?.familyName }}
+    &lt;/h4&gt;
+
+    &lt;div cfElem&#x3D;&quot;basic-info&quot;&gt;
+      &lt;div&gt;
+        &lt;p *ngIf&#x3D;&quot;avatar.identity?.archetype as archetype&quot;&gt;
+          &lt;cf-svg-icon src&#x3D;&quot;assets/icons/mdi/account.svg&quot;&gt;&lt;/cf-svg-icon&gt;
+          Archetype:
+          &lt;cf-svg-icon
+            cfElem&#x3D;&quot;icon&quot;
+            *ngIf&#x3D;&quot;archetypes[archetype].identity?.icon as icon&quot;
+            [src]&#x3D;&quot;icon&quot;
+          &gt;&lt;/cf-svg-icon&gt;
+          {{ archetypes[archetype].identity?.givenName }}
+        &lt;/p&gt;
+        &lt;p&gt;
+          &lt;cf-svg-icon
+            src&#x3D;&quot;assets/icons/mdi/gender-male-female.svg&quot;
+          &gt;&lt;/cf-svg-icon&gt;
+          Gender:
+          &lt;strong&gt;
+            &lt;cf-svg-icon
+              cfElem&#x3D;&quot;icon&quot;
+              [src]&#x3D;&quot;
+                &#x27;assets/icons/mdi/gender-&#x27; +
+                avatar.appearance?.body?.type?.toLowerCase() +
+                &#x27;.svg&#x27;
+              &quot;
+            &gt;&lt;/cf-svg-icon&gt;
+          &lt;/strong&gt;
+          {{ avatar.appearance?.body?.type }}
+        &lt;/p&gt;
+        &lt;p&gt;
+          &lt;cf-svg-icon
+            src&#x3D;&quot;assets/icons/mdi/account-group.svg&quot;
+          &gt;&lt;/cf-svg-icon&gt;
+          Culture:
+          &lt;span [ngStyle]&#x3D;&quot;{ color: culture?.color }&quot;&gt;{{
+            culture?.name
+          }}&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p&gt;
+          &lt;cf-svg-icon src&#x3D;&quot;assets/icons/mdi/cross.svg&quot;&gt;&lt;/cf-svg-icon&gt;
+          Religion:
+          &lt;span [ngStyle]&#x3D;&quot;{ color: religion?.color }&quot;&gt;{{
+            religion?.name
+          }}&lt;/span&gt;
+        &lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;p *ngIf&#x3D;&quot;avatar.identity?.birthDate as birthDate&quot;&gt;
+          &lt;cf-svg-icon src&#x3D;&quot;assets/icons/mdi/cake.svg&quot;&gt;&lt;/cf-svg-icon&gt;
+          Age:
+          {{ birthDate | age | async }}
+          &lt;i cfBlock&#x3D;&quot;icon&quot;&gt;
+            &lt;img
+              cfElem&#x3D;&quot;image&quot;
+              *ngIf&#x3D;&quot;birthPlaceShield&quot;
+              [src]&#x3D;&quot;birthPlaceShield&quot;
+            /&gt;
+          &lt;/i&gt;
+          {{ birthPlace?.name }}
+        &lt;/p&gt;
+        &lt;p&gt;
+          &lt;cf-svg-icon src&#x3D;&quot;assets/icons/mdi/city.svg&quot;&gt;&lt;/cf-svg-icon&gt;
+          Location:
+          &lt;i cfBlock&#x3D;&quot;icon&quot;&gt;
+            &lt;img
+              cfElem&#x3D;&quot;image&quot;
+              *ngIf&#x3D;&quot;locationShield&quot;
+              [src]&#x3D;&quot;locationShield&quot;
+            /&gt;
+          &lt;/i&gt;
+          {{ burgLocation?.name }}
+        &lt;/p&gt;
+        &lt;p *ngIf&#x3D;&quot;avatar.identity?.mainProfession as mainProfession&quot;&gt;
+          &lt;cf-svg-icon
+            src&#x3D;&quot;assets/icons/mdi/account-hard-hat.svg&quot;
+          &gt;&lt;/cf-svg-icon&gt;
+          Main Profession:
+          &lt;strong [ngStyle]&#x3D;&quot;{ color: professions[mainProfession].color }&quot;&gt;
+            &lt;cf-svg-icon
+              cfElem&#x3D;&quot;icon&quot;
+              *ngIf&#x3D;&quot;professions[mainProfession].icon as icon&quot;
+              [src]&#x3D;&quot;icon&quot;
+            &gt;&lt;/cf-svg-icon&gt;
+            {{ professions[mainProfession].label }}
+          &lt;/strong&gt;
+        &lt;/p&gt;
+        &lt;p
+          *ngIf&#x3D;&quot;
+            avatar.identity?.secondaryProfession as secondaryProfession
+          &quot;
+        &gt;
+          &lt;cf-svg-icon
+            src&#x3D;&quot;assets/icons/mdi/account-hard-hat.svg&quot;
+          &gt;&lt;/cf-svg-icon&gt;
+          Secondary Profession:
+          &lt;strong
+            [ngStyle]&#x3D;&quot;{ color: professions[secondaryProfession].color }&quot;
+          &gt;
+            &lt;cf-svg-icon
+              cfElem&#x3D;&quot;icon&quot;
+              *ngIf&#x3D;&quot;professions[secondaryProfession].icon as icon&quot;
+              [src]&#x3D;&quot;icon&quot;
+            &gt;&lt;/cf-svg-icon&gt;
+            {{ professions[secondaryProfession].label }}
+          &lt;/strong&gt;
+        &lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div cfElem&#x3D;&quot;related-content&quot;&gt;
+    &lt;div cfElem&#x3D;&quot;appearances&quot;&gt;
+      &lt;cf-avatar-appearance-portrait
+        [avatar]&#x3D;&quot;avatar&quot;
+      &gt;&lt;/cf-avatar-appearance-portrait&gt;
+    &lt;/div&gt;
+
+    &lt;div cfElem&#x3D;&quot;parents&quot; *ngIf&#x3D;&quot;parents &amp;&amp; parents.length &gt; 0&quot;&gt;
+      &lt;h5&gt;Parents&lt;/h5&gt;
+      &lt;cf-avatars-carousel
+        *ngIf&#x3D;&quot;parents&quot;
+        [avatars]&#x3D;&quot;parents&quot;
+        [world]&#x3D;&quot;world&quot;
+        (avatarClick)&#x3D;&quot;avatar &#x3D; $event&quot;
+        size&#x3D;&quot;small&quot;
+      &gt;&lt;/cf-avatars-carousel&gt;
+    &lt;/div&gt;
+
+    &lt;div cfElem&#x3D;&quot;partners&quot; *ngIf&#x3D;&quot;partners &amp;&amp; partners.length &gt; 0&quot;&gt;
+      &lt;h5&gt;Partners&lt;/h5&gt;
+      &lt;cf-avatars-carousel
+        *ngIf&#x3D;&quot;partners&quot;
+        [avatars]&#x3D;&quot;partners&quot;
+        [world]&#x3D;&quot;world&quot;
+        (avatarClick)&#x3D;&quot;avatar &#x3D; $event&quot;
+        size&#x3D;&quot;small&quot;
+      &gt;&lt;/cf-avatars-carousel&gt;
+    &lt;/div&gt;
+
+    &lt;div cfElem&#x3D;&quot;children&quot; *ngIf&#x3D;&quot;children &amp;&amp; children.length &gt; 0&quot;&gt;
+      &lt;h5&gt;Children&lt;/h5&gt;
+      &lt;cf-avatars-carousel
+        *ngIf&#x3D;&quot;children&quot;
+        [avatars]&#x3D;&quot;children&quot;
+        [world]&#x3D;&quot;world&quot;
+        (avatarClick)&#x3D;&quot;avatar &#x3D; $event&quot;
+        size&#x3D;&quot;small&quot;
+      &gt;&lt;/cf-avatars-carousel&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#avatar" >avatar</a>
+                            </li>
+                            <li>
+                                <a href="#avatars" >avatars</a>
+                            </li>
+                            <li>
+                                <a href="#world" >world</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#culture" >culture</a>
+                                </li>
+                                <li>
+                                    <a href="#religion" >religion</a>
+                                </li>
+                                <li>
+                                    <a href="#birthPlace" >birthPlace</a>
+                                </li>
+                                <li>
+                                    <a href="#birthPlaceShield" >birthPlaceShield</a>
+                                </li>
+                                <li>
+                                    <a href="#burgLocation" >burgLocation</a>
+                                </li>
+                                <li>
+                                    <a href="#locationShield" >locationShield</a>
+                                </li>
+                                <li>
+                                    <a href="#partners" >partners</a>
+                                </li>
+                                <li>
+                                    <a href="#parents" >parents</a>
+                                </li>
+                                <li>
+                                    <a href="#children" >children</a>
+                                </li>
+                                <li>
+                                    <a href="#professions" >professions</a>
+                                </li>
+                                <li>
+                                    <a href="#archetypes" >archetypes</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="avatar"></a>
+                        <b>avatar</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#Avatar" target="_self" >Avatar</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="217" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-info/avatar-info.component.ts:217</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="avatars"></a>
+                        <b>avatars</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#Avatar" target="_self" >Avatar[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="218" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-info/avatar-info.component.ts:218</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="world"></a>
+                        <b>world</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>World</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="219" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-info/avatar-info.component.ts:219</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="culture"></a>
+                        <span class="name"><b>culture</b><a href="#culture"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>culture()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="221" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-info/avatar-info.component.ts:221</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="religion"></a>
+                        <span class="name"><b>religion</b><a href="#religion"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>religion()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="228" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-info/avatar-info.component.ts:228</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="birthPlace"></a>
+                        <span class="name"><b>birthPlace</b><a href="#birthPlace"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>birthPlace()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="235" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-info/avatar-info.component.ts:235</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="birthPlaceShield"></a>
+                        <span class="name"><b>birthPlaceShield</b><a href="#birthPlaceShield"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>birthPlaceShield()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="240" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-info/avatar-info.component.ts:240</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="burgLocation"></a>
+                        <span class="name"><b>burgLocation</b><a href="#burgLocation"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>burgLocation()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="253" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-info/avatar-info.component.ts:253</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="locationShield"></a>
+                        <span class="name"><b>locationShield</b><a href="#locationShield"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>locationShield()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="258" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-info/avatar-info.component.ts:258</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="partners"></a>
+                        <span class="name"><b>partners</b><a href="#partners"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>partners()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="271" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-info/avatar-info.component.ts:271</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="parents"></a>
+                        <span class="name"><b>parents</b><a href="#parents"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>parents()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="290" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-info/avatar-info.component.ts:290</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="children"></a>
+                        <span class="name"><b>children</b><a href="#children"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>children()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="308" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-info/avatar-info.component.ts:308</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="professions"></a>
+                        <span class="name"><b>professions</b><a href="#professions"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>professions()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="318" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-info/avatar-info.component.ts:318</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="archetypes"></a>
+                        <span class="name"><b>archetypes</b><a href="#archetypes"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>archetypes()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="330" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-info/avatar-info.component.ts:330</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
+import {
+  Avatar,
+  AvatarRelationship,
+  AvatarRelationshipKind,
+} from &#x27;@central-factory/avatars/models&#x27;;
+import { AvatarProfession, World } from &#x27;@central-factory/worlds/models/world&#x27;;
+
+@Component({
+  selector: &#x27;cf-avatar-info&#x27;,
+  template: &#x60;
+    &lt;div cfBlock&#x3D;&quot;avatar-info&quot; class&#x3D;&quot;clay&quot; *ngIf&#x3D;&quot;avatar&quot;&gt;
+      &lt;div cfElem&#x3D;&quot;main-content&quot;&gt;
+        &lt;div cfElem&#x3D;&quot;appearances&quot;&gt;
+          &lt;cf-avatar-appearance-portrait
+            [avatar]&#x3D;&quot;avatar&quot;
+            displayComponent&#x3D;&quot;avataaars&quot;
+          &gt;&lt;/cf-avatar-appearance-portrait&gt;
+        &lt;/div&gt;
+
+        &lt;h4 cfBlock&#x3D;&quot;heading&quot;&gt;
+          {{ avatar.identity?.givenName }} {{ avatar.identity?.familyName }}
+        &lt;/h4&gt;
+
+        &lt;div cfElem&#x3D;&quot;basic-info&quot;&gt;
+          &lt;div&gt;
+            &lt;p *ngIf&#x3D;&quot;avatar.identity?.archetype as archetype&quot;&gt;
+              &lt;cf-svg-icon src&#x3D;&quot;assets/icons/mdi/account.svg&quot;&gt;&lt;/cf-svg-icon&gt;
+              Archetype:
+              &lt;cf-svg-icon
+                cfElem&#x3D;&quot;icon&quot;
+                *ngIf&#x3D;&quot;archetypes[archetype].identity?.icon as icon&quot;
+                [src]&#x3D;&quot;icon&quot;
+              &gt;&lt;/cf-svg-icon&gt;
+              {{ archetypes[archetype].identity?.givenName }}
+            &lt;/p&gt;
+            &lt;p&gt;
+              &lt;cf-svg-icon
+                src&#x3D;&quot;assets/icons/mdi/gender-male-female.svg&quot;
+              &gt;&lt;/cf-svg-icon&gt;
+              Gender:
+              &lt;strong&gt;
+                &lt;cf-svg-icon
+                  cfElem&#x3D;&quot;icon&quot;
+                  [src]&#x3D;&quot;
+                    &#x27;assets/icons/mdi/gender-&#x27; +
+                    avatar.appearance?.body?.type?.toLowerCase() +
+                    &#x27;.svg&#x27;
+                  &quot;
+                &gt;&lt;/cf-svg-icon&gt;
+              &lt;/strong&gt;
+              {{ avatar.appearance?.body?.type }}
+            &lt;/p&gt;
+            &lt;p&gt;
+              &lt;cf-svg-icon
+                src&#x3D;&quot;assets/icons/mdi/account-group.svg&quot;
+              &gt;&lt;/cf-svg-icon&gt;
+              Culture:
+              &lt;span [ngStyle]&#x3D;&quot;{ color: culture?.color }&quot;&gt;{{
+                culture?.name
+              }}&lt;/span&gt;
+            &lt;/p&gt;
+            &lt;p&gt;
+              &lt;cf-svg-icon src&#x3D;&quot;assets/icons/mdi/cross.svg&quot;&gt;&lt;/cf-svg-icon&gt;
+              Religion:
+              &lt;span [ngStyle]&#x3D;&quot;{ color: religion?.color }&quot;&gt;{{
+                religion?.name
+              }}&lt;/span&gt;
+            &lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;p *ngIf&#x3D;&quot;avatar.identity?.birthDate as birthDate&quot;&gt;
+              &lt;cf-svg-icon src&#x3D;&quot;assets/icons/mdi/cake.svg&quot;&gt;&lt;/cf-svg-icon&gt;
+              Age:
+              {{ birthDate | age | async }}
+              &lt;i cfBlock&#x3D;&quot;icon&quot;&gt;
+                &lt;img
+                  cfElem&#x3D;&quot;image&quot;
+                  *ngIf&#x3D;&quot;birthPlaceShield&quot;
+                  [src]&#x3D;&quot;birthPlaceShield&quot;
+                /&gt;
+              &lt;/i&gt;
+              {{ birthPlace?.name }}
+            &lt;/p&gt;
+            &lt;p&gt;
+              &lt;cf-svg-icon src&#x3D;&quot;assets/icons/mdi/city.svg&quot;&gt;&lt;/cf-svg-icon&gt;
+              Location:
+              &lt;i cfBlock&#x3D;&quot;icon&quot;&gt;
+                &lt;img
+                  cfElem&#x3D;&quot;image&quot;
+                  *ngIf&#x3D;&quot;locationShield&quot;
+                  [src]&#x3D;&quot;locationShield&quot;
+                /&gt;
+              &lt;/i&gt;
+              {{ burgLocation?.name }}
+            &lt;/p&gt;
+            &lt;p *ngIf&#x3D;&quot;avatar.identity?.mainProfession as mainProfession&quot;&gt;
+              &lt;cf-svg-icon
+                src&#x3D;&quot;assets/icons/mdi/account-hard-hat.svg&quot;
+              &gt;&lt;/cf-svg-icon&gt;
+              Main Profession:
+              &lt;strong [ngStyle]&#x3D;&quot;{ color: professions[mainProfession].color }&quot;&gt;
+                &lt;cf-svg-icon
+                  cfElem&#x3D;&quot;icon&quot;
+                  *ngIf&#x3D;&quot;professions[mainProfession].icon as icon&quot;
+                  [src]&#x3D;&quot;icon&quot;
+                &gt;&lt;/cf-svg-icon&gt;
+                {{ professions[mainProfession].label }}
+              &lt;/strong&gt;
+            &lt;/p&gt;
+            &lt;p
+              *ngIf&#x3D;&quot;
+                avatar.identity?.secondaryProfession as secondaryProfession
+              &quot;
+            &gt;
+              &lt;cf-svg-icon
+                src&#x3D;&quot;assets/icons/mdi/account-hard-hat.svg&quot;
+              &gt;&lt;/cf-svg-icon&gt;
+              Secondary Profession:
+              &lt;strong
+                [ngStyle]&#x3D;&quot;{ color: professions[secondaryProfession].color }&quot;
+              &gt;
+                &lt;cf-svg-icon
+                  cfElem&#x3D;&quot;icon&quot;
+                  *ngIf&#x3D;&quot;professions[secondaryProfession].icon as icon&quot;
+                  [src]&#x3D;&quot;icon&quot;
+                &gt;&lt;/cf-svg-icon&gt;
+                {{ professions[secondaryProfession].label }}
+              &lt;/strong&gt;
+            &lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+
+      &lt;div cfElem&#x3D;&quot;related-content&quot;&gt;
+        &lt;div cfElem&#x3D;&quot;appearances&quot;&gt;
+          &lt;cf-avatar-appearance-portrait
+            [avatar]&#x3D;&quot;avatar&quot;
+          &gt;&lt;/cf-avatar-appearance-portrait&gt;
+        &lt;/div&gt;
+
+        &lt;div cfElem&#x3D;&quot;parents&quot; *ngIf&#x3D;&quot;parents &amp;&amp; parents.length &gt; 0&quot;&gt;
+          &lt;h5&gt;Parents&lt;/h5&gt;
+          &lt;cf-avatars-carousel
+            *ngIf&#x3D;&quot;parents&quot;
+            [avatars]&#x3D;&quot;parents&quot;
+            [world]&#x3D;&quot;world&quot;
+            (avatarClick)&#x3D;&quot;avatar &#x3D; $event&quot;
+            size&#x3D;&quot;small&quot;
+          &gt;&lt;/cf-avatars-carousel&gt;
+        &lt;/div&gt;
+
+        &lt;div cfElem&#x3D;&quot;partners&quot; *ngIf&#x3D;&quot;partners &amp;&amp; partners.length &gt; 0&quot;&gt;
+          &lt;h5&gt;Partners&lt;/h5&gt;
+          &lt;cf-avatars-carousel
+            *ngIf&#x3D;&quot;partners&quot;
+            [avatars]&#x3D;&quot;partners&quot;
+            [world]&#x3D;&quot;world&quot;
+            (avatarClick)&#x3D;&quot;avatar &#x3D; $event&quot;
+            size&#x3D;&quot;small&quot;
+          &gt;&lt;/cf-avatars-carousel&gt;
+        &lt;/div&gt;
+
+        &lt;div cfElem&#x3D;&quot;children&quot; *ngIf&#x3D;&quot;children &amp;&amp; children.length &gt; 0&quot;&gt;
+          &lt;h5&gt;Children&lt;/h5&gt;
+          &lt;cf-avatars-carousel
+            *ngIf&#x3D;&quot;children&quot;
+            [avatars]&#x3D;&quot;children&quot;
+            [world]&#x3D;&quot;world&quot;
+            (avatarClick)&#x3D;&quot;avatar &#x3D; $event&quot;
+            size&#x3D;&quot;small&quot;
+          &gt;&lt;/cf-avatars-carousel&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &#x60;,
+  styles: [
+    &#x60;
+      .avatar-info {
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%;
+        overflow: auto;
+
+        &gt; * {
+          height: 100%;
+        }
+
+        &gt; *:nth-child(1) {
+          flex: 1 1 60%;
+          min-width: 30ch;
+        }
+
+        &gt; *:nth-child(2) {
+          flex: 1 1 40%;
+          min-width: 25ch;
+          gap: 1rem;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          .avatar-info__parents {
+            .avatars-carousel {
+              gap: 1rem;
+            }
+          }
+        }
+
+        &amp;__basic-info {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    &#x60;,
+  ],
+})
+export class AvatarInfoComponent {
+  @Input() avatar?: Avatar;
+  @Input() avatars: Avatar[] &#x3D; [];
+  @Input() world?: World;
+
+  get culture() {
+    const cultures &#x3D; this.world?.map?.cells?.cultures || [];
+    return cultures.find(
+      (culture) &#x3D;&gt; culture.i &#x3D;&#x3D;&#x3D; this.avatar?.identity?.culture
+    );
+  }
+
+  get religion() {
+    const religions &#x3D; this.world?.map?.cells?.religions || [];
+    return religions.find(
+      (religion) &#x3D;&gt; religion.i &#x3D;&#x3D;&#x3D; this.avatar?.identity?.religion
+    );
+  }
+
+  get birthPlace() {
+    const burgs &#x3D; this.world?.map?.cells?.burgs || [];
+    return burgs.find((burg) &#x3D;&gt; burg.i &#x3D;&#x3D;&#x3D; this.avatar?.identity?.birthPlace);
+  }
+
+  get birthPlaceShield() {
+    if (!this.birthPlace?.coa) {
+      return undefined;
+    }
+
+    const url &#x3D; new URL(&#x27;https://armoria.herokuapp.com&#x27;);
+    url.searchParams.set(&#x27;size&#x27;, &#x27;28&#x27;);
+    url.searchParams.set(&#x27;format&#x27;, &#x27;svg&#x27;);
+    url.searchParams.set(&#x27;coa&#x27;, JSON.stringify(this.birthPlace?.coa));
+
+    return url.href;
+  }
+
+  get burgLocation() {
+    const burgs &#x3D; this.world?.map?.cells?.burgs || [];
+    return burgs.find((burg) &#x3D;&gt; burg.i &#x3D;&#x3D;&#x3D; this.avatar?.location?.burg);
+  }
+
+  get locationShield() {
+    if (!this.burgLocation?.coa) {
+      return undefined;
+    }
+
+    const url &#x3D; new URL(&#x27;https://armoria.herokuapp.com&#x27;);
+    url.searchParams.set(&#x27;size&#x27;, &#x27;28&#x27;);
+    url.searchParams.set(&#x27;format&#x27;, &#x27;svg&#x27;);
+    url.searchParams.set(&#x27;coa&#x27;, JSON.stringify(this.burgLocation?.coa));
+
+    return url.href;
+  }
+
+  get partners(): Avatar[] {
+    const partners: AvatarRelationship[] &#x3D;
+      this.avatar?.relationships?.filter(
+        (relationship) &#x3D;&gt; relationship.kind &#x3D;&#x3D;&#x3D; AvatarRelationshipKind.Spouse
+      ) || [];
+
+    return partners
+      .filter(
+        (partner, index) &#x3D;&gt;
+          partner?.avatar !&#x3D;&#x3D; &#x27;0&#x27; &amp;&amp;
+          partners.findIndex((other) &#x3D;&gt; partner.avatar &#x3D;&#x3D;&#x3D; other.avatar) &#x3D;&#x3D;&#x3D;
+            index
+      )
+      .map(
+        (partner) &#x3D;&gt;
+          this.avatars.find((avatar) &#x3D;&gt; avatar.id &#x3D;&#x3D;&#x3D; partner.avatar) as Avatar
+      );
+  }
+
+  get parents(): Avatar[] {
+    const parents: AvatarRelationship[] &#x3D;
+      this.avatar?.relationships?.filter(
+        (relationship) &#x3D;&gt; relationship.kind &#x3D;&#x3D;&#x3D; AvatarRelationshipKind.Parent
+      ) || [];
+
+    return parents
+      .filter(
+        (parent, index) &#x3D;&gt;
+          parent.avatar !&#x3D;&#x3D; &#x27;0&#x27; &amp;&amp;
+          parents.findIndex((other) &#x3D;&gt; parent.avatar &#x3D;&#x3D;&#x3D; other.avatar) &#x3D;&#x3D;&#x3D; index
+      )
+      .map(
+        (parent) &#x3D;&gt;
+          this.avatars.find((avatar) &#x3D;&gt; avatar.id &#x3D;&#x3D;&#x3D; parent.avatar) as Avatar
+      );
+  }
+
+  get children(): Avatar[] {
+    return this.avatars.filter((avatar) &#x3D;&gt;
+      avatar.relationships?.some(
+        (relationship) &#x3D;&gt;
+          relationship.kind &#x3D;&#x3D;&#x3D; AvatarRelationshipKind.Parent &amp;&amp;
+          relationship.avatar &#x3D;&#x3D;&#x3D; this.avatar?.id
+      )
+    );
+  }
+
+  get professions(): Record&lt;string, AvatarProfession&gt; {
+    return (
+      this.world?.professions?.reduce(
+        (acc, profession) &#x3D;&gt; ({
+          ...acc,
+          [profession.id]: profession,
+        }),
+        {}
+      ) || {}
+    );
+  }
+
+  get archetypes(): Record&lt;string, Avatar&gt; {
+    return (
+      this.world?.archetypes?.reduce(
+        (acc, archetype) &#x3D;&gt; ({
+          ...acc,
+          [archetype.id]: archetype,
+        }),
+        {}
+      ) || {}
+    );
+  }
+}
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="c-styleData">
+            <pre class="line-numbers"><code class="language-scss">
+      .avatar-info {
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%;
+        overflow: auto;
+
+        &gt; * {
+          height: 100%;
+        }
+
+        &gt; *:nth-child(1) {
+          flex: 1 1 60%;
+          min-width: 30ch;
+        }
+
+        &gt; *:nth-child(2) {
+          flex: 1 1 40%;
+          min-width: 25ch;
+          gap: 1rem;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          .avatar-info__parents {
+            .avatars-carousel {
+              gap: 1rem;
+            }
+          }
+        }
+
+        &amp;__basic-info {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-info" class="clay" *ngIf="avatar">  <div cfElem="main-content">    <div cfElem="appearances">      <cf-avatar-appearance-portrait        [avatar]="avatar"        displayComponent="avataaars"      ></cf-avatar-appearance-portrait>    </div>    <h4 cfBlock="heading">      {{ avatar.identity?.givenName }} {{ avatar.identity?.familyName }}    </h4>    <div cfElem="basic-info">      <div>        <p *ngIf="avatar.identity?.archetype as archetype">          <cf-svg-icon src="assets/icons/mdi/account.svg"></cf-svg-icon>          Archetype:          <cf-svg-icon            cfElem="icon"            *ngIf="archetypes[archetype].identity?.icon as icon"            [src]="icon"          ></cf-svg-icon>          {{ archetypes[archetype].identity?.givenName }}        </p>        <p>          <cf-svg-icon            src="assets/icons/mdi/gender-male-female.svg"          ></cf-svg-icon>          Gender:          <strong>            <cf-svg-icon              cfElem="icon"              [src]="                \'assets/icons/mdi/gender-\' +                avatar.appearance?.body?.type?.toLowerCase() +                \'.svg\'              "            ></cf-svg-icon>          </strong>          {{ avatar.appearance?.body?.type }}        </p>        <p>          <cf-svg-icon            src="assets/icons/mdi/account-group.svg"          ></cf-svg-icon>          Culture:          <span [ngStyle]="{ color: culture?.color }">{{            culture?.name          }}</span>        </p>        <p>          <cf-svg-icon src="assets/icons/mdi/cross.svg"></cf-svg-icon>          Religion:          <span [ngStyle]="{ color: religion?.color }">{{            religion?.name          }}</span>        </p>      </div>      <div>        <p *ngIf="avatar.identity?.birthDate as birthDate">          <cf-svg-icon src="assets/icons/mdi/cake.svg"></cf-svg-icon>          Age:          {{ birthDate | age | async }}          <i cfBlock="icon">            <img              cfElem="image"              *ngIf="birthPlaceShield"              [src]="birthPlaceShield"            />          </i>          {{ birthPlace?.name }}        </p>        <p>          <cf-svg-icon src="assets/icons/mdi/city.svg"></cf-svg-icon>          Location:          <i cfBlock="icon">            <img              cfElem="image"              *ngIf="locationShield"              [src]="locationShield"            />          </i>          {{ burgLocation?.name }}        </p>        <p *ngIf="avatar.identity?.mainProfession as mainProfession">          <cf-svg-icon            src="assets/icons/mdi/account-hard-hat.svg"          ></cf-svg-icon>          Main Profession:          <strong [ngStyle]="{ color: professions[mainProfession].color }">            <cf-svg-icon              cfElem="icon"              *ngIf="professions[mainProfession].icon as icon"              [src]="icon"            ></cf-svg-icon>            {{ professions[mainProfession].label }}          </strong>        </p>        <p          *ngIf="            avatar.identity?.secondaryProfession as secondaryProfession          "        >          <cf-svg-icon            src="assets/icons/mdi/account-hard-hat.svg"          ></cf-svg-icon>          Secondary Profession:          <strong            [ngStyle]="{ color: professions[secondaryProfession].color }"          >            <cf-svg-icon              cfElem="icon"              *ngIf="professions[secondaryProfession].icon as icon"              [src]="icon"            ></cf-svg-icon>            {{ professions[secondaryProfession].label }}          </strong>        </p>      </div>    </div>  </div>  <div cfElem="related-content">    <div cfElem="appearances">      <cf-avatar-appearance-portrait        [avatar]="avatar"      ></cf-avatar-appearance-portrait>    </div>    <div cfElem="parents" *ngIf="parents && parents.length > 0">      <h5>Parents</h5>      <cf-avatars-carousel        *ngIf="parents"        [avatars]="parents"        [world]="world"        (avatarClick)="avatar = $event"        size="small"      ></cf-avatars-carousel>    </div>    <div cfElem="partners" *ngIf="partners && partners.length > 0">      <h5>Partners</h5>      <cf-avatars-carousel        *ngIf="partners"        [avatars]="partners"        [world]="world"        (avatarClick)="avatar = $event"        size="small"      ></cf-avatars-carousel>    </div>    <div cfElem="children" *ngIf="children && children.length > 0">      <h5>Children</h5>      <cf-avatars-carousel        *ngIf="children"        [avatars]="children"        [world]="world"        (avatarClick)="avatar = $event"        size="small"      ></cf-avatars-carousel>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarAppearanceSpritesheetComponent', 'selector': 'cf-avatar-appearance-spritesheet'},{'name': 'AvatarDialogComponent', 'selector': 'cf-avatar-dialog'},{'name': 'AvatarDialogScene', 'selector': 'cf-avatar-dialog-scene'},{'name': 'AvatarInfoComponent', 'selector': 'cf-avatar-info'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'AvatarsListComponent', 'selector': 'cf-avatars-list'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AvatarInfoComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AvatarInfoComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

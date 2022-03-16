@@ -1,0 +1,1593 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@central-factory/metaverse documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/postmark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">@central-factory/metaverse documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li >AvatarGenerator</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/avatars/src/lib/data/generators/avatar.generator.ts</code>
+        </p>
+
+
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#avatarsPercentagePerBurgTopic" >avatarsPercentagePerBurgTopic</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#avatarIsInterestedInAvatar" >avatarIsInterestedInAvatar</a>
+                            </li>
+                            <li>
+                                <a href="#generate" >generate</a>
+                            </li>
+                            <li>
+                                <a href="#generateBurg" >generateBurg</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#generateChildren" >generateChildren</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#generateCouples" >generateCouples</a>
+                            </li>
+                            <li>
+                                <a href="#generateDemigods" >generateDemigods</a>
+                            </li>
+                            <li>
+                                <a href="#generateRelationships" >generateRelationships</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getBurgTopic" >getBurgTopic</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(identityGenerator: <a href="../injectables/AvatarIdentityGenerator.html" target="_self">AvatarIdentityGenerator</a>, attributesGenerator: <a href="../injectables/AvatarAttributesGenerator.html" target="_self">AvatarAttributesGenerator</a>, knowledgeGenerator: <a href="../injectables/AvatarKnowledgeGenerator.html" target="_self">AvatarKnowledgeGenerator</a>, appearanceGenerator: <a href="../injectables/AvatarAppearanceGenerator.html" target="_self">AvatarAppearanceGenerator</a>, outfitsGenerator: <a href="../injectables/AvatarOutfitsGenerator.html" target="_self">AvatarOutfitsGenerator</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">libs/avatars/src/lib/data/generators/avatar.generator.ts:118</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>identityGenerator</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AvatarIdentityGenerator.html" target="_self" >AvatarIdentityGenerator</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>attributesGenerator</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AvatarAttributesGenerator.html" target="_self" >AvatarAttributesGenerator</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>knowledgeGenerator</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AvatarKnowledgeGenerator.html" target="_self" >AvatarKnowledgeGenerator</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>appearanceGenerator</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AvatarAppearanceGenerator.html" target="_self" >AvatarAppearanceGenerator</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>outfitsGenerator</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AvatarOutfitsGenerator.html" target="_self" >AvatarOutfitsGenerator</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="avatarIsInterestedInAvatar"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>avatarIsInterestedInAvatar</b></span>
+                        <a href="#avatarIsInterestedInAvatar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>avatarIsInterestedInAvatar(avatar1: <a href="../undefineds/Avatar.html" target="_self">Avatar</a>, avatar2: <a href="../undefineds/Avatar.html" target="_self">Avatar</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="457"
+                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar.generator.ts:457</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>avatar1</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#Avatar" target="_self" >Avatar</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>avatar2</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#Avatar" target="_self" >Avatar</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generate"></a>
+                    <span class="name">
+                        <span ><b>generate</b></span>
+                        <a href="#generate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>generate(world: World, preset: <a href="../undefineds/Avatar.html" target="_self">Partial&lt;Avatar&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="128"
+                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar.generator.ts:128</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>world</td>
+                                    <td>
+                                            <code>World</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>preset</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#Avatar" target="_self" >Partial&lt;Avatar&gt;</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>{}</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#Avatar" target="_self" >Avatar</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generateBurg"></a>
+                    <span class="name">
+                        <span ><b>generateBurg</b></span>
+                        <a href="#generateBurg"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>generateBurg(world: World, burg: Burg, levels: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="227"
+                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar.generator.ts:227</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>world</td>
+                                    <td>
+                                            <code>World</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>burg</td>
+                                    <td>
+                                            <code>Burg</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>levels</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>3</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generateChildren"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>generateChildren</b></span>
+                        <a href="#generateChildren"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>generateChildren(world: World, parent1: <a href="../undefineds/Avatar.html" target="_self">Avatar</a>, parent2: <a href="../undefineds/Avatar.html" target="_self">Avatar</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="415"
+                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar.generator.ts:415</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>world</td>
+                                    <td>
+                                            <code>World</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>parent1</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#Avatar" target="_self" >Avatar</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>parent2</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#Avatar" target="_self" >Avatar</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generateCouples"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>generateCouples</b></span>
+                        <a href="#generateCouples"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>generateCouples(generation: <a href="../undefineds/Avatar.html" target="_self">Avatar[]</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="355"
+                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar.generator.ts:355</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>generation</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#Avatar" target="_self" >Avatar[]</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generateDemigods"></a>
+                    <span class="name">
+                        <span ><b>generateDemigods</b></span>
+                        <a href="#generateDemigods"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>generateDemigods(world: World)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="170"
+                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar.generator.ts:170</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>world</td>
+                                    <td>
+                                            <code>World</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/typealiases.html#Avatar" target="_self" >Avatar[]</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="generateRelationships"></a>
+                    <span class="name">
+                        <span ><b>generateRelationships</b></span>
+                        <a href="#generateRelationships"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>generateRelationships(result: <a href="../undefineds/Avatar.html" target="_self">Avatar</a>, world: World)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="481"
+                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar.generator.ts:481</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>result</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#Avatar" target="_self" >Avatar</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>world</td>
+                                    <td>
+                                            <code>World</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getBurgTopic"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>getBurgTopic</b></span>
+                        <a href="#getBurgTopic"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getBurgTopic(burg: Burg)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="498"
+                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar.generator.ts:498</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>burg</td>
+                                    <td>
+                                            <code>Burg</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="avatarsPercentagePerBurgTopic"></a>
+                    <span class="name">
+                        <span ><b>avatarsPercentagePerBurgTopic</b></span>
+                        <a href="#avatarsPercentagePerBurgTopic"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/enumerations.html#BurgTopic" target="_self" >Record&lt;BurgTopic | literal type&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    [BurgTopic.Capital]: {
+      court: 0.3,
+      militians: 0.2,
+      religious: 0.1,
+      workers: 0.1,
+      foreigners: 0.1,
+      residents: 0.2,
+    },
+    [BurgTopic.Farm]: {
+      court: 0,
+      militians: 0,
+      religious: 0.05,
+      workers: 0.4,
+      foreigners: 0.05,
+      residents: 0.5,
+    },
+    [BurgTopic.Military]: {
+      court: 0.3,
+      militians: 0.2,
+      religious: 0.1,
+      workers: 0.1,
+      foreigners: 0.1,
+      residents: 0.2,
+    },
+    [BurgTopic.Mineral]: {
+      court: 0,
+      militians: 0,
+      religious: 0.05,
+      workers: 0.6,
+      foreigners: 0.05,
+      residents: 0.3,
+    },
+    [BurgTopic.Religion]: {
+      court: 0.3,
+      militians: 0.2,
+      religious: 0.1,
+      workers: 0.1,
+      foreigners: 0.1,
+      residents: 0.2,
+    },
+    [BurgTopic.Residence]: {
+      court: 0,
+      militians: 0,
+      religious: 0.05,
+      workers: 0.2,
+      foreigners: 0.05,
+      residents: 0.7,
+    },
+    [BurgTopic.Tradepoint]: {
+      court: 0,
+      militians: 0.1,
+      religious: 0.05,
+      workers: 0.6,
+      foreigners: 0.2,
+      residents: 0.05,
+    },
+    [BurgTopic.Wood]: {
+      court: 0,
+      militians: 0,
+      religious: 0.05,
+      workers: 0.6,
+      foreigners: 0.05,
+      residents: 0.3,
+    },
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">libs/avatars/src/lib/data/generators/avatar.generator.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Avatar } from &#x27;@central-factory/avatars/models/avatar&#x27;;
+import { Burg } from &#x27;@central-factory/worlds/models/fmg-map&#x27;;
+import { World } from &#x27;@central-factory/worlds/models/world&#x27;;
+import faker from &#x27;@faker-js/faker/locale/en_US&#x27;;
+import { v4 as uuid } from &#x27;uuid&#x27;;
+import {
+  AvatarRelationship,
+  AvatarRelationshipKind,
+  BodyType,
+  SexualOrientation,
+} from &#x27;../../models/avatar&#x27;;
+import { AvatarAppearanceGenerator } from &#x27;./avatar-appearance.generator&#x27;;
+import { AvatarAttributesGenerator } from &#x27;./avatar-attributes.generator&#x27;;
+import { AvatarIdentityGenerator } from &#x27;./avatar-identity.generator&#x27;;
+import { AvatarKnowledgeGenerator } from &#x27;./avatar-knowledge.generator&#x27;;
+import { AvatarOutfitsGenerator } from &#x27;./avatar-outfits.generator&#x27;;
+
+const PANSEXUAL_INTELLECT_THRESHOLD &#x3D; 5;
+
+export enum BurgTopic {
+  Residence &#x3D; &#x27;Residence&#x27;,
+  Tradepoint &#x3D; &#x27;Tradepoint&#x27;,
+  Capital &#x3D; &#x27;Capital&#x27;,
+  Military &#x3D; &#x27;Military&#x27;,
+  Religion &#x3D; &#x27;Religion&#x27;,
+  Wood &#x3D; &#x27;Wood&#x27;,
+  Mineral &#x3D; &#x27;Mineral&#x27;,
+  Farm &#x3D; &#x27;Farm&#x27;,
+}
+
+export enum BurgSize {
+  Small &#x3D; 0,
+  Medium &#x3D; 1,
+  Large &#x3D; 2,
+}
+
+@Injectable({
+  providedIn: &#x27;root&#x27;,
+})
+export class AvatarGenerator {
+  avatarsPercentagePerBurgTopic: Record&lt;
+    BurgTopic,
+    {
+      court: number;
+      militians: number;
+      religious: number;
+      workers: number;
+      foreigners: number;
+      residents: number;
+    }
+  &gt; &#x3D; {
+    [BurgTopic.Capital]: {
+      court: 0.3,
+      militians: 0.2,
+      religious: 0.1,
+      workers: 0.1,
+      foreigners: 0.1,
+      residents: 0.2,
+    },
+    [BurgTopic.Farm]: {
+      court: 0,
+      militians: 0,
+      religious: 0.05,
+      workers: 0.4,
+      foreigners: 0.05,
+      residents: 0.5,
+    },
+    [BurgTopic.Military]: {
+      court: 0.3,
+      militians: 0.2,
+      religious: 0.1,
+      workers: 0.1,
+      foreigners: 0.1,
+      residents: 0.2,
+    },
+    [BurgTopic.Mineral]: {
+      court: 0,
+      militians: 0,
+      religious: 0.05,
+      workers: 0.6,
+      foreigners: 0.05,
+      residents: 0.3,
+    },
+    [BurgTopic.Religion]: {
+      court: 0.3,
+      militians: 0.2,
+      religious: 0.1,
+      workers: 0.1,
+      foreigners: 0.1,
+      residents: 0.2,
+    },
+    [BurgTopic.Residence]: {
+      court: 0,
+      militians: 0,
+      religious: 0.05,
+      workers: 0.2,
+      foreigners: 0.05,
+      residents: 0.7,
+    },
+    [BurgTopic.Tradepoint]: {
+      court: 0,
+      militians: 0.1,
+      religious: 0.05,
+      workers: 0.6,
+      foreigners: 0.2,
+      residents: 0.05,
+    },
+    [BurgTopic.Wood]: {
+      court: 0,
+      militians: 0,
+      religious: 0.05,
+      workers: 0.6,
+      foreigners: 0.05,
+      residents: 0.3,
+    },
+  };
+
+  constructor(
+    private identityGenerator: AvatarIdentityGenerator,
+    private attributesGenerator: AvatarAttributesGenerator,
+    private knowledgeGenerator: AvatarKnowledgeGenerator,
+    private appearanceGenerator: AvatarAppearanceGenerator,
+    private outfitsGenerator: AvatarOutfitsGenerator
+  ) {}
+
+  generate(world: World, preset: Partial&lt;Avatar&gt; &#x3D; {}): Avatar {
+    const result &#x3D; Object.assign(
+      {
+        id: preset.id || uuid(),
+      },
+      preset
+    ) as Avatar;
+
+    const identity &#x3D; this.identityGenerator.generate(result, world);
+
+    Object.assign(result, { identity });
+
+    const attributes &#x3D; this.attributesGenerator.generate(result, world);
+
+    Object.assign(result, { attributes });
+
+    const knowledge &#x3D; this.knowledgeGenerator.generate(result, world);
+
+    Object.assign(result, { knowledge });
+
+    const appearance &#x3D; this.appearanceGenerator.generate(result, world);
+
+    Object.assign(result, { appearance });
+
+    const outfits &#x3D; this.outfitsGenerator.generate(result, world);
+
+    Object.assign(result, { outfits });
+
+    const relationships &#x3D; this.generateRelationships(result, world);
+
+    Object.assign(result, { relationships });
+
+    const location &#x3D; {
+      world: world.map.info.seed,
+      burg: result.identity?.birthPlace,
+    };
+
+    Object.assign(result, { location });
+
+    return result;
+  }
+
+  generateDemigods(world: World): Avatar[] {
+    const eras &#x3D; world.eras || [];
+
+    const startYear &#x3D; eras.length &gt; 0 ? eras[0].startYear : 0;
+    const startDate &#x3D; new Date();
+    startDate.setFullYear(startYear);
+
+    return [
+      this.generate(world, {
+        id: &#x27;alfred&#x27;,
+        identity: {
+          givenName: &#x27;Alfred&#x27;,
+          archetype: &#x27;assistant&#x27;,
+          bio: &#x27;&#x27;,
+          birthDate: startDate.toISOString(),
+          birthPlace: 0,
+          culture: 0,
+          familyName: &#x27;&#x27;,
+          gender: BodyType.Male,
+        },
+        appearances: [],
+        appearance: {
+          body: {
+            type: BodyType.Male,
+            skin: &#x27;light&#x27;,
+          },
+          eyes: {
+            color: &#x27;purple&#x27;,
+          },
+          hair: {
+            style: &#x27;bangs&#x27;,
+            color: &#x27;black&#x27;,
+          },
+          facialHair: {
+            style: &#x27;mustache&#x27;,
+            color: &#x27;black&#x27;,
+          },
+        },
+        outfits: [
+          {
+            name: &#x27;default&#x27;,
+            back: undefined,
+            feet: &#x27;shoes/black_shoes&#x27;,
+            hands: undefined,
+            head: undefined,
+            legs: &#x27;pants/formal_pants_stripes&#x27;,
+            shoulders: undefined,
+            torso: {
+              layer1: &#x27;shirts/formal_shirt&#x27;,
+              layer2: &#x27;jackets/formal_jacket_black&#x27;,
+            },
+          },
+        ],
+      }),
+    ];
+  }
+
+  generateBurg(world: World, burg: Burg, levels &#x3D; 3) {
+    // 23 (16f + 7m)
+    const topic &#x3D; this.getBurgTopic(burg);
+    const rootAmountPerCategory &#x3D; this.avatarsPercentagePerBurgTopic[topic];
+
+    world.avatars &#x3D; world.avatars || [];
+
+    // const totalMales &#x3D; 7;
+    // const totalFemales &#x3D; 16;
+
+    // Age: 75 - 95 (death)
+    const rootLevel: Avatar[] &#x3D; Object.entries(rootAmountPerCategory).reduce&lt;
+      Avatar[]
+    &gt;(
+      (acc, [citizenType, percentage]) &#x3D;&gt;
+        acc.concat(
+          Array(Math.round(25 * percentage))
+            .fill(citizenType)
+            .map(() &#x3D;&gt; {
+              let archetype &#x3D; &#x27;citizen&#x27;;
+
+              switch (citizenType) {
+                case &#x27;court&#x27;:
+                  archetype &#x3D; &#x27;noble&#x27;;
+                  break;
+                case &#x27;militians&#x27;:
+                  archetype &#x3D; &#x27;soldier&#x27;;
+                  break;
+                case &#x27;religious&#x27;:
+                  archetype &#x3D; &#x27;priest&#x27;;
+                  break;
+                case &#x27;workers&#x27;:
+                  switch (topic) {
+                    case BurgTopic.Farm:
+                      archetype &#x3D; &#x27;farmer&#x27;;
+                      break;
+                    case BurgTopic.Wood:
+                      archetype &#x3D; &#x27;woodcutter&#x27;;
+                      break;
+                    case BurgTopic.Mineral:
+                      archetype &#x3D; &#x27;miner&#x27;;
+                      break;
+                    case BurgTopic.Religion:
+                      archetype &#x3D; &#x27;priest&#x27;;
+                      break;
+                    case BurgTopic.Residence:
+                      archetype &#x3D; &#x27;citizen&#x27;;
+                      break;
+                    case BurgTopic.Tradepoint:
+                      archetype &#x3D; &#x27;merchant&#x27;;
+                      break;
+                  }
+                  break;
+                case &#x27;foreigners&#x27;:
+                  archetype &#x3D; &#x27;nomad&#x27;;
+                  break;
+                case &#x27;residents&#x27;:
+                  archetype &#x3D; &#x27;citizen&#x27;;
+                  break;
+              }
+
+              const currentYear &#x3D;
+                world.map.settings.options.year || new Date().getFullYear();
+              const minBirthDate &#x3D; new Date();
+              minBirthDate.setFullYear(currentYear - 75);
+              const maxBirthDate &#x3D; new Date();
+              maxBirthDate.setFullYear(currentYear - 60);
+
+              const birthDate &#x3D; faker.date
+                .between(minBirthDate.toISOString(), maxBirthDate.toISOString())
+                .toISOString();
+
+              return this.generate(world, {
+                identity: {
+                  archetype,
+                  birthPlace: burg.i,
+                  birthDate,
+                },
+              });
+            })
+        ),
+      []
+    );
+    world.avatars &#x3D; world.avatars.concat(rootLevel);
+    console.debug(&#x27;🌲 root&#x27;, rootLevel);
+    const rootLevelCouples &#x3D; this.generateCouples(rootLevel);
+
+    console.debug(&#x27;💑 root&#x27;, rootLevelCouples);
+
+    // Age: 55 - 75
+    const firstGeneration &#x3D; rootLevelCouples.reduce&lt;Avatar[]&gt;(
+      (acc, { member1, member2 }) &#x3D;&gt;
+        acc.concat(this.generateChildren(world, member1, member2)),
+      []
+    );
+    world.avatars &#x3D; world.avatars.concat(firstGeneration);
+
+    console.debug(&#x27;🌲 first&#x27;, firstGeneration);
+
+    const firstGenerationCouples &#x3D; this.generateCouples(firstGeneration);
+
+    // Age: 35 - 55
+    const secondGeneration &#x3D; firstGenerationCouples.reduce&lt;Avatar[]&gt;(
+      (acc, { member1, member2 }) &#x3D;&gt;
+        acc.concat(this.generateChildren(world, member1, member2)),
+      []
+    );
+    world.avatars &#x3D; world.avatars.concat(secondGeneration);
+
+    console.debug(&#x27;🌲 second&#x27;, secondGeneration);
+
+    const secondGenerationCouples &#x3D; this.generateCouples(secondGeneration);
+
+    // Age: 15 - 35
+    const thirdGeneration &#x3D; secondGenerationCouples.reduce&lt;Avatar[]&gt;(
+      (acc, { member1, member2 }) &#x3D;&gt;
+        acc.concat(this.generateChildren(world, member1, member2)),
+      []
+    );
+    world.avatars &#x3D; world.avatars.concat(thirdGeneration);
+
+    console.debug(&#x27;🌲 third&#x27;, thirdGeneration);
+
+    const thirdGenerationCouples &#x3D; this.generateCouples(thirdGeneration);
+
+    return rootLevel.concat(firstGeneration, secondGeneration, thirdGeneration);
+  }
+
+  private generateCouples(generation: Avatar[]) {
+    const couples &#x3D; generation.reduce&lt;{ member1: Avatar; member2: Avatar }[]&gt;(
+      (couples, current, index) &#x3D;&gt; {
+        const isInRelationship &#x3D; couples.some(
+          (couple) &#x3D;&gt;
+            couple.member1.id &#x3D;&#x3D;&#x3D; current.id || couple.member2.id &#x3D;&#x3D;&#x3D; current.id
+        );
+
+        if (isInRelationship) {
+          return couples;
+        }
+
+        const match &#x3D; generation.find(
+          (member) &#x3D;&gt;
+            member.id !&#x3D;&#x3D; current.id &amp;&amp;
+            !couples.some(
+              (couple) &#x3D;&gt;
+                couple.member1.id &#x3D;&#x3D;&#x3D; member.id ||
+                couple.member2.id &#x3D;&#x3D;&#x3D; member.id
+            ) &amp;&amp;
+            this.avatarIsInterestedInAvatar(member, current) &amp;&amp;
+            this.avatarIsInterestedInAvatar(current, member)
+        );
+
+        if (!match) {
+          return couples;
+        }
+
+        current.relationships &#x3D; current.relationships || [];
+        match.relationships &#x3D; match.relationships || [];
+
+        current.relationships.push({
+          kind: AvatarRelationshipKind.Spouse,
+          avatar: match.id,
+        });
+        match.relationships.push({
+          kind: AvatarRelationshipKind.Spouse,
+          avatar: current.id,
+        });
+
+        return couples.concat({
+          member1: current,
+          member2: match,
+        });
+      },
+      []
+    );
+
+    const nonMatched &#x3D; generation.filter(
+      (avatar) &#x3D;&gt;
+        !avatar.relationships?.some(
+          ({ kind }) &#x3D;&gt; kind &#x3D;&#x3D;&#x3D; AvatarRelationshipKind.Spouse
+        )
+    );
+
+    return couples.concat(
+      nonMatched.map((avatar) &#x3D;&gt; ({ member1: avatar, member2: avatar }))
+    );
+  }
+
+  private generateChildren(world: World, parent1: Avatar, parent2: Avatar) {
+    const amounts &#x3D; [0, 0, 1, 1, 2, 2, 2, 2, 3, 4];
+
+    const parentBirthDate &#x3D; new Date(parent1.identity?.birthDate || &#x27;&#x27;);
+    const currentYear &#x3D;
+      world.map.settings.options.year || new Date().getFullYear();
+
+    if (currentYear &lt;&#x3D; parentBirthDate.getFullYear() + 15) {
+      return [];
+    }
+
+    const childrenAmount &#x3D; Math.floor(Math.random() * amounts.length);
+    const archetype &#x3D;
+      Math.random() &gt; 0.5
+        ? parent1.identity?.archetype
+        : parent2.identity?.archetype;
+
+    const children &#x3D; Array(amounts[childrenAmount])
+      .fill(null)
+      .map(() &#x3D;&gt;
+        this.generate(world, {
+          identity: {
+            archetype,
+            familyName: parent1.identity?.familyName,
+            birthPlace: parent1.identity?.birthPlace,
+          },
+          relationships: [
+            {
+              kind: AvatarRelationshipKind.Parent,
+              avatar: parent1.id,
+            },
+            {
+              kind: AvatarRelationshipKind.Parent,
+              avatar: parent2.id,
+            },
+          ],
+        })
+      );
+
+    return children;
+  }
+
+  private avatarIsInterestedInAvatar(avatar1: Avatar, avatar2: Avatar) {
+    switch (avatar1.identity?.sexualOrientation) {
+      case SexualOrientation.Asexual:
+        return false;
+      case SexualOrientation.Pansexual:
+        return (
+          avatar2.attributes?.base?.intelligence &amp;&amp;
+          avatar2.attributes.base.intelligence &gt;&#x3D; PANSEXUAL_INTELLECT_THRESHOLD
+        );
+      case SexualOrientation.Heterosexual:
+        return avatar1.appearance?.body?.type &#x3D;&#x3D;&#x3D; BodyType.Male
+          ? avatar2.appearance?.body?.type &#x3D;&#x3D;&#x3D; BodyType.Female
+          : avatar2.appearance?.body?.type &#x3D;&#x3D;&#x3D; BodyType.Male;
+      case SexualOrientation.Homosexual:
+        return avatar1.appearance?.body?.type &#x3D;&#x3D;&#x3D; BodyType.Male
+          ? avatar2.appearance?.body?.type &#x3D;&#x3D;&#x3D; BodyType.Male
+          : avatar2.appearance?.body?.type &#x3D;&#x3D;&#x3D; BodyType.Female;
+      case SexualOrientation.Bisexual:
+        return true;
+      default:
+        return true;
+    }
+  }
+
+  generateRelationships(result: Avatar, world: World) {
+    const relationships: AvatarRelationship[] &#x3D; result.relationships || [];
+
+    if (
+      !relationships.some(
+        (relationship) &#x3D;&gt; relationship.kind &#x3D;&#x3D;&#x3D; AvatarRelationshipKind.Parent
+      )
+    ) {
+      relationships.push({
+        kind: AvatarRelationshipKind.Parent,
+        avatar: &#x27;0&#x27;,
+      });
+    }
+
+    return relationships;
+  }
+
+  private getBurgTopic(burg: Burg) {
+    if (burg.capital) {
+      return BurgTopic.Capital;
+    }
+
+    if (burg.citadel) {
+      return BurgTopic.Military;
+    }
+
+    if (burg.temple) {
+      return BurgTopic.Religion;
+    }
+
+    if (burg.port) {
+      return BurgTopic.Tradepoint;
+    }
+
+    if (burg.shanty) {
+      return BurgTopic.Residence;
+    }
+
+    return [
+      BurgTopic.Farm,
+      BurgTopic.Mineral,
+      BurgTopic.Wood,
+      BurgTopic.Residence,
+    ][Math.floor(Math.random() * 3)];
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'AvatarGenerator.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

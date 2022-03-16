@@ -1,0 +1,714 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>@central-factory/metaverse documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css" media="(prefers-color-scheme: dark)">
+        <link rel="stylesheet" href="../styles/postmark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">@central-factory/metaverse documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  AvatarsListComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>libs/avatars/src/lib/web-components/angular/avatars-list/avatars-list.component.ts</code>
+</p>
+
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>cf-avatars-list</code></td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>
+      .avatars-list {
+        height: 100%;
+        overflow: auto;
+      }
+    </code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div cfBlock&#x3D;&quot;avatars-list&quot;&gt;
+  &lt;form&gt;
+    &lt;!-- div *ngFor&#x3D;&quot;let house of houses&quot;&gt;
+      &lt;img
+        *ngIf&#x3D;&quot;house.burg?.coa&quot;
+        src&#x3D;&quot;https://armoria.herokuapp.com/?size&#x3D;500&amp;format&#x3D;png&amp;coa&#x3D;{{
+          house.burg?.coa | json
+        }}&quot;
+      /&gt;
+    &lt;/div --&gt;
+    &lt;select [(ngModel)]&#x3D;&quot;selectedHouse&quot; name&#x3D;&quot;selectedHouse&quot;&gt;
+      &lt;option *ngFor&#x3D;&quot;let house of houses&quot; [ngValue]&#x3D;&quot;house.name&quot;&gt;
+        {{ house.name }} ({{ house.avatars.length }})
+      &lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/form&gt;
+  &lt;cf-avatars-carousel
+    [direction]&#x3D;&quot;&#x27;column&#x27;&quot;
+    [avatars]&#x3D;&quot;houseAvatars&quot;
+    [world]&#x3D;&quot;world&quot;
+    (avatarClick)&#x3D;&quot;onSelectAvatarClick($event)&quot;
+    displayComponent&#x3D;&quot;avataaars&quot;
+  &gt;&lt;/cf-avatars-carousel&gt;
+&lt;/div&gt;
+</code></pre></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Optional</span>
+                                <a href="#selectedHouse" >selectedHouse</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#onSelectAvatarClick" >onSelectAvatarClick</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#avatars" >avatars</a>
+                            </li>
+                            <li>
+                                <a href="#selectedAvatar" >selectedAvatar</a>
+                            </li>
+                            <li>
+                                <a href="#world" >world</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#selectAvatar" >selectAvatar</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#houses" >houses</a>
+                                </li>
+                                <li>
+                                    <a href="#houseAvatars" >houseAvatars</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="avatars"></a>
+                        <b>avatars</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#Avatar" target="_self" >Avatar[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-list/avatars-list.component.ts:44</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectedAvatar"></a>
+                        <b>selectedAvatar</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#Avatar" target="_self" >Avatar</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-list/avatars-list.component.ts:47</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="world"></a>
+                        <b>world</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>World</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-list/avatars-list.component.ts:45</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectAvatar"></a>
+                        <b>selectAvatar</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/typealiases.html#Avatar" target="_self" >EventEmitter&lt;Avatar&gt;</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-list/avatars-list.component.ts:49</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSelectAvatarClick"></a>
+                    <span class="name">
+                        <span ><b>onSelectAvatarClick</b></span>
+                        <a href="#onSelectAvatarClick"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSelectAvatarClick(avatar: <a href="../undefineds/Avatar.html" target="_self">Avatar</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-list/avatars-list.component.ts:53</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>avatar</td>
+                                    <td>
+                                                <code><a href="../miscellaneous/typealiases.html#Avatar" target="_self" >Avatar</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedHouse"></a>
+                    <span class="name">
+                            <span class="modifier">Optional</span>
+                        <span ><b>selectedHouse</b></span>
+                        <a href="#selectedHouse"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-list/avatars-list.component.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="houses"></a>
+                        <span class="name"><b>houses</b><a href="#houses"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>houses()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-list/avatars-list.component.ts:57</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="houseAvatars"></a>
+                        <span class="name"><b>houseAvatars</b><a href="#houseAvatars"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>houseAvatars()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-list/avatars-list.component.ts:97</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
+import { Avatar } from &#x27;@central-factory/avatars/models/avatar&#x27;;
+import { Burg } from &#x27;@central-factory/worlds/models/fmg-map&#x27;;
+import { World } from &#x27;@central-factory/worlds/models/world&#x27;;
+
+@Component({
+  selector: &#x27;cf-avatars-list&#x27;,
+  template: &#x60;
+    &lt;div cfBlock&#x3D;&quot;avatars-list&quot;&gt;
+      &lt;form&gt;
+        &lt;!-- div *ngFor&#x3D;&quot;let house of houses&quot;&gt;
+          &lt;img
+            *ngIf&#x3D;&quot;house.burg?.coa&quot;
+            src&#x3D;&quot;https://armoria.herokuapp.com/?size&#x3D;500&amp;format&#x3D;png&amp;coa&#x3D;{{
+              house.burg?.coa | json
+            }}&quot;
+          /&gt;
+        &lt;/div --&gt;
+        &lt;select [(ngModel)]&#x3D;&quot;selectedHouse&quot; name&#x3D;&quot;selectedHouse&quot;&gt;
+          &lt;option *ngFor&#x3D;&quot;let house of houses&quot; [ngValue]&#x3D;&quot;house.name&quot;&gt;
+            {{ house.name }} ({{ house.avatars.length }})
+          &lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/form&gt;
+      &lt;cf-avatars-carousel
+        [direction]&#x3D;&quot;&#x27;column&#x27;&quot;
+        [avatars]&#x3D;&quot;houseAvatars&quot;
+        [world]&#x3D;&quot;world&quot;
+        (avatarClick)&#x3D;&quot;onSelectAvatarClick($event)&quot;
+        displayComponent&#x3D;&quot;avataaars&quot;
+      &gt;&lt;/cf-avatars-carousel&gt;
+    &lt;/div&gt;
+  &#x60;,
+  styles: [
+    &#x60;
+      .avatars-list {
+        height: 100%;
+        overflow: auto;
+      }
+    &#x60;,
+  ],
+})
+export class AvatarsListComponent {
+  @Input() avatars: Avatar[] &#x3D; [];
+  @Input() world?: World;
+
+  @Input() selectedAvatar?: Avatar;
+
+  @Output() selectAvatar: EventEmitter&lt;Avatar&gt; &#x3D; new EventEmitter();
+
+  selectedHouse?: string;
+
+  onSelectAvatarClick(avatar: Avatar) {
+    this.selectAvatar.emit(avatar);
+  }
+
+  get houses() {
+    return this.avatars.reduce&lt;
+      {
+        name: string;
+        mainProfession: string;
+        burg?: Burg;
+        avatars: Avatar[];
+      }[]
+    &gt;((acc, avatar) &#x3D;&gt; {
+      const house &#x3D; avatar.identity?.familyName;
+
+      if (!house) {
+        return acc;
+      }
+
+      if (!this.selectedHouse) {
+        this.selectedHouse &#x3D; house;
+      }
+
+      let houseObj &#x3D; acc.find((item) &#x3D;&gt; item.name &#x3D;&#x3D;&#x3D; house);
+
+      if (!houseObj) {
+        houseObj &#x3D; {
+          name: house,
+          mainProfession: avatar.identity?.mainProfession || &#x27;noble&#x27;,
+          burg:
+            this.world?.map.cells.burgs.find(
+              (burg) &#x3D;&gt; avatar.identity?.birthPlace &#x3D;&#x3D;&#x3D; burg.i
+            ) || undefined,
+          avatars: [avatar],
+        };
+        acc.push(houseObj);
+      } else {
+        houseObj.avatars.push(avatar);
+      }
+
+      return acc;
+    }, []);
+  }
+
+  get houseAvatars() {
+    if (!this.selectedHouse) {
+      return this.avatars;
+    }
+
+    return this.avatars.filter(
+      (avatar) &#x3D;&gt; avatar.identity?.familyName &#x3D;&#x3D;&#x3D; this.selectedHouse
+    );
+  }
+}
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="c-styleData">
+            <pre class="line-numbers"><code class="language-scss">
+      .avatars-list {
+        height: 100%;
+        overflow: auto;
+      }
+    
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatars-list">  <form>    <!-- div *ngFor="let house of houses">      <img        *ngIf="house.burg?.coa"        src="https://armoria.herokuapp.com/?size=500&format=png&coa={{          house.burg?.coa | json        }}"      />    </div -->    <select [(ngModel)]="selectedHouse" name="selectedHouse">      <option *ngFor="let house of houses" [ngValue]="house.name">        {{ house.name }} ({{ house.avatars.length }})      </option>    </select>  </form>  <cf-avatars-carousel    [direction]="\'column\'"    [avatars]="houseAvatars"    [world]="world"    (avatarClick)="onSelectAvatarClick($event)"    displayComponent="avataaars"  ></cf-avatars-carousel></div></div>'
+    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarAppearanceSpritesheetComponent', 'selector': 'cf-avatar-appearance-spritesheet'},{'name': 'AvatarDialogComponent', 'selector': 'cf-avatar-dialog'},{'name': 'AvatarDialogScene', 'selector': 'cf-avatar-dialog-scene'},{'name': 'AvatarInfoComponent', 'selector': 'cf-avatar-info'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'AvatarsListComponent', 'selector': 'cf-avatars-list'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AvatarsListComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AvatarsListComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

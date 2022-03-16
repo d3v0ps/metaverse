@@ -293,6 +293,43 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                             </li>
                             <li class="link">
+                                <a href="modules/AvatarDialogModule.html" data-type="entity-link" >AvatarDialogModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-AvatarDialogModule-e9a06a6c0bafc5d221d4534de37d1dfc"' : 'data-target="#xs-components-links-module-AvatarDialogModule-e9a06a6c0bafc5d221d4534de37d1dfc"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarDialogModule-e9a06a6c0bafc5d221d4534de37d1dfc"' :
+                                            'id="xs-components-links-module-AvatarDialogModule-e9a06a6c0bafc5d221d4534de37d1dfc"' }>
+                                            <li class="link">
+                                                <a href="components/AvatarDialogComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarDialogComponent</a>
+                                            </li>
+                                            <li class="link">
+                                                <a href="components/AvatarDialogScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarDialogScene</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/AvatarInfoModule.html" data-type="entity-link" >AvatarInfoModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-AvatarInfoModule-99df862207cea90b0354be0141dc2635"' : 'data-target="#xs-components-links-module-AvatarInfoModule-99df862207cea90b0354be0141dc2635"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarInfoModule-99df862207cea90b0354be0141dc2635"' :
+                                            'id="xs-components-links-module-AvatarInfoModule-99df862207cea90b0354be0141dc2635"' }>
+                                            <li class="link">
+                                                <a href="components/AvatarInfoComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarInfoComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
                                 <a href="modules/AvatarOverviewModule.html" data-type="entity-link" >AvatarOverviewModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
@@ -313,13 +350,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/AvatarsCarouselModule.html" data-type="entity-link" >AvatarsCarouselModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AvatarsCarouselModule-78d2f735386839c8c9b6ad71ab1079f0"' : 'data-target="#xs-components-links-module-AvatarsCarouselModule-78d2f735386839c8c9b6ad71ab1079f0"' }>
+                                            'data-target="#components-links-module-AvatarsCarouselModule-6df3c112411743ed3ff0d2f9abbdefea"' : 'data-target="#xs-components-links-module-AvatarsCarouselModule-6df3c112411743ed3ff0d2f9abbdefea"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarsCarouselModule-78d2f735386839c8c9b6ad71ab1079f0"' :
-                                            'id="xs-components-links-module-AvatarsCarouselModule-78d2f735386839c8c9b6ad71ab1079f0"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarsCarouselModule-6df3c112411743ed3ff0d2f9abbdefea"' :
+                                            'id="xs-components-links-module-AvatarsCarouselModule-6df3c112411743ed3ff0d2f9abbdefea"' }>
                                             <li class="link">
                                                 <a href="components/AvatarsCarouselComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarsCarouselComponent</a>
                                             </li>
@@ -360,6 +397,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                         </ul>
                                     </li>
                             </li>
+                            <li class="link">
+                                <a href="modules/AvatarsListModule.html" data-type="entity-link" >AvatarsListModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-AvatarsListModule-01b40251de431ac03de66a1b531d90aa"' : 'data-target="#xs-components-links-module-AvatarsListModule-01b40251de431ac03de66a1b531d90aa"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AvatarsListModule-01b40251de431ac03de66a1b531d90aa"' :
+                                            'id="xs-components-links-module-AvatarsListModule-01b40251de431ac03de66a1b531d90aa"' }>
+                                            <li class="link">
+                                                <a href="components/AvatarsListComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AvatarsListComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
                 </ul>
                 </li>
                     <li class="chapter">
@@ -393,6 +447,24 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/AvailableAvatarsState.html" data-type="entity-link" >AvailableAvatarsState</a>
                                 </li>
                                 <li class="link">
+                                    <a href="injectables/AvatarAppearanceGenerator.html" data-type="entity-link" >AvatarAppearanceGenerator</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/AvatarAttributesGenerator.html" data-type="entity-link" >AvatarAttributesGenerator</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/AvatarGenerator.html" data-type="entity-link" >AvatarGenerator</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/AvatarIdentityGenerator.html" data-type="entity-link" >AvatarIdentityGenerator</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/AvatarKnowledgeGenerator.html" data-type="entity-link" >AvatarKnowledgeGenerator</a>
+                                </li>
+                                <li class="link">
+                                    <a href="injectables/AvatarOutfitsGenerator.html" data-type="entity-link" >AvatarOutfitsGenerator</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/ManageAvatarAppearancesState.html" data-type="entity-link" >ManageAvatarAppearancesState</a>
                                 </li>
                                 <li class="link">
@@ -422,7 +494,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
                             <li class="link">
-                                <a href="interfaces/Avatar.html" data-type="entity-link" >Avatar</a>
+                                <a href="interfaces/AvatarMeta.html" data-type="entity-link" >AvatarMeta</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/AvatarOverviewInput.html" data-type="entity-link" >AvatarOverviewInput</a>

@@ -271,11 +271,11 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>{
-      name: false,
-      title: false,
-      welcomeMessage: false,
-      smallPreviewUrl: false,
-    }</code>
+    name: false,
+    title: false,
+    welcomeMessage: false,
+    smallPreviewUrl: false,
+  }</code>
                     </td>
                 </tr>
                     <tr>
@@ -352,7 +352,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>avatar(value: <a href="../interfaces/Avatar.html" target="_self">Avatar</a>)</code></span>
+                        <span class="accessor"><b>set</b><code>avatar(value: <a href="../undefineds/Avatar.html" target="_self">Avatar</a>)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -378,7 +378,7 @@
                                                             <td>value</td>
                                                     
                                                             <td>
-                                                                            <code><a href="../interfaces/Avatar.html" target="_self" >Avatar</a></code>
+                                                                            <code><a href="../miscellaneous/typealiases.html#Avatar" target="_self" >Avatar</a></code>
                                                             </td>
                                                     
                                                         <td>
@@ -499,23 +499,23 @@ export class AvatarOverviewComponent {
     }
 
     this.form.reset({
-      name: value.name,
-      title: value.title,
-      welcomeMessage: value.welcomeMessage,
-      smallPreviewUrl: value.selectedAppearance.variations?.portrait.src,
-      appearance: value.selectedAppearance,
-      bio: value.bio,
+      name: value.identity?.givenName,
+      title: value.identity?.title,
+      welcomeMessage: value.identity?.welcomeMessage,
+      smallPreviewUrl: &#x27;&#x27;,
+      appearance: {},
+      bio: value.identity?.bio,
     });
   }
 
   editing: {
     [key: string]: boolean;
   } &#x3D; {
-      name: false,
-      title: false,
-      welcomeMessage: false,
-      smallPreviewUrl: false,
-    };
+    name: false,
+    title: false,
+    welcomeMessage: false,
+    smallPreviewUrl: false,
+  };
 
   form &#x3D; new FormGroup({
     welcomeMessage: new FormControl(&#x60;&#x60;),
@@ -572,7 +572,7 @@ export class AvatarOverviewComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><form [formGroup]="form" cfBlock="avatar-overview" *ngIf="form.value?.name">  <cf-avatar-appearance-portrait    [appearancePortrait]="form.value.appearance?.variations?.portrait"  ></cf-avatar-appearance-portrait>  <div cfBlock="chatbox">    <div cfElem="message">      <div class="form-control" *ngIf="editing.welcomeMessage">        <!-- label for="welcomeMessage">Welcome message:</label -->        <textarea          id="welcomeMessage"          formControlName="welcomeMessage"        ></textarea>        <cf-svg-icon          src="assets/icons/mdi/check.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"          (click)="editing.welcomeMessage = !editing.welcomeMessage"        ></cf-svg-icon>      </div>      <p        *ngIf="!editing.welcomeMessage"        (click)="editing.welcomeMessage = !editing.welcomeMessage"      >        {{ form.value.welcomeMessage }}        <cf-svg-icon          src="assets/icons/mdi/pencil-outline.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>      </p>    </div>    <div cfElem="username">      <!-- label for="name">Name:</label -->      <div class="form-control" *ngIf="editing.name">        <input id="name" type="text" formControlName="name" />        <cf-svg-icon          src="assets/icons/mdi/check.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"          (click)="editing.name = !editing.name"        ></cf-svg-icon>      </div>      <span (click)="editing.name = !editing.name" *ngIf="!editing.name"        >{{ form.value.name }}        <cf-svg-icon          src="assets/icons/mdi/pencil-outline.svg"          cfElem="icon"          [svgClass]="\'icon__svg\'"        ></cf-svg-icon>      </span>    </div>  </div></form></div>'
-    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarAppearanceSpritesheetComponent', 'selector': 'cf-avatar-appearance-spritesheet'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
+    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarAppearanceSpritesheetComponent', 'selector': 'cf-avatar-appearance-spritesheet'},{'name': 'AvatarDialogComponent', 'selector': 'cf-avatar-dialog'},{'name': 'AvatarDialogScene', 'selector': 'cf-avatar-dialog-scene'},{'name': 'AvatarInfoComponent', 'selector': 'cf-avatar-info'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'AvatarsListComponent', 'selector': 'cf-avatars-list'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarOverviewComponent'};
 </script>

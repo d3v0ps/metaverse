@@ -351,7 +351,7 @@ import { Component, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
 import { NavigationEnd, Router } from &#x27;@angular/router&#x27;;
 import {
   Application,
-  ApplicationShortcut
+  ApplicationShortcut,
 } from &#x27;@central-factory/applications/models/application&#x27;;
 import { RecentlyOpenedApplicationsState } from &#x27;@central-factory/applications/states/recently-opened-applications.state&#x27;;
 import { SelectedApplicationState } from &#x27;@central-factory/applications/states/selected-application.state&#x27;;
@@ -362,6 +362,7 @@ import { Repository } from &#x27;@central-factory/persistence/services/repositor
 import { CustomizationSettingsState } from &#x27;@central-factory/preferences/states/customization/customization-settings.state&#x27;;
 import { bounceIn } from &#x27;@central-factory/web-components/angular/animations/bounce-in.animation&#x27;;
 import { fadeInUp } from &#x27;@central-factory/web-components/angular/animations/fade-in-up.animation&#x27;;
+import { WorldsState } from &#x27;@central-factory/worlds/states/worlds.state&#x27;;
 import { DeepReadonlyObject } from &#x27;rxdb/dist/types/types&#x27;;
 import { forkJoin, Observable, Subject } from &#x27;rxjs&#x27;;
 import {
@@ -371,7 +372,7 @@ import {
   skip,
   switchMap,
   takeUntil,
-  tap
+  tap,
 } from &#x27;rxjs/operators&#x27;;
 
 export interface SidebarItem {
@@ -441,15 +442,10 @@ export enum SceneContentAnimationState {
                     &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;Account&lt;/span&gt;
                   &lt;/div&gt;
                   &lt;cf-avatar-appearance-portrait
-                    [appearancePortrait]&#x3D;&quot;
-                      data.selectedAvatar.selectedAppearance?.variations?.portrait
-                    &quot;
+                    [avatar]&#x3D;&quot;data.selectedAvatar&quot;
+                    displayComponent&#x3D;&quot;avataaars&quot;
                   &gt;
                   &lt;/cf-avatar-appearance-portrait&gt;
-                  &lt;!-- img
-                    cfElem&#x3D;&quot;image&quot;
-                    [src]&#x3D;&quot;data.selectedAvatar.selectedAppearance.portrait.src&quot;
-                  /  --&gt;
                 &lt;/a&gt;
 
                 &lt;ng-container *ngFor&#x3D;&quot;let item of sidebarItems&quot;&gt;
@@ -520,30 +516,29 @@ export enum SceneContentAnimationState {
                 &lt;router-outlet name&#x3D;&quot;sidebar&quot;&gt;&lt;/router-outlet&gt;
 
                 &lt;div cfBlock&#x3D;&quot;sidebar-footer&quot;&gt;
-
                   &lt;a
-                      (click)&#x3D;&quot;onCatchClick()&quot;
-                      class&#x3D;&quot;d-block&quot;
-                      cfBlock&#x3D;&quot;sidebar-item&quot;
+                    (click)&#x3D;&quot;onCatchClick()&quot;
+                    class&#x3D;&quot;d-block&quot;
+                    cfBlock&#x3D;&quot;sidebar-item&quot;
+                  &gt;
+                    &lt;div cfElem&#x3D;&quot;text&quot;&gt;
+                      &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;Catch&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;button
+                      cfBlock&#x3D;&quot;button&quot;
+                      cfMod&#x3D;&quot;fab&quot;
+                      [ngClass]&#x3D;&quot;{
+                        &#x27;button--active&#x27;: true
+                      }&quot;
+                      style&#x3D;&quot;margin-top: 15px;&quot;
                     &gt;
-                      &lt;div cfElem&#x3D;&quot;text&quot;&gt;
-                        &lt;span cfElem&#x3D;&quot;text-content&quot;&gt;Catch&lt;/span&gt;
-                      &lt;/div&gt;
-                      &lt;button
-                        cfBlock&#x3D;&quot;button&quot;
-                        cfMod&#x3D;&quot;fab&quot;
-                        [ngClass]&#x3D;&quot;{
-                          &#x27;button--active&#x27;: true
-                        }&quot;
-                        style&#x3D;&quot;margin-top: 15px;&quot;
-                      &gt;
-                        &lt;cf-svg-icon
-                          [src]&#x3D;&quot;&#x27;assets/icons/mdi/map-marker-plus.svg&#x27;&quot;
-                          cfElem&#x3D;&quot;icon&quot;
-                          [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
-                        &gt;&lt;/cf-svg-icon&gt;
-                      &lt;/button&gt;
-                    &lt;/a&gt;
+                      &lt;cf-svg-icon
+                        [src]&#x3D;&quot;&#x27;assets/icons/mdi/map-marker-plus.svg&#x27;&quot;
+                        cfElem&#x3D;&quot;icon&quot;
+                        [svgClass]&#x3D;&quot;&#x27;icon__svg&#x27;&quot;
+                      &gt;&lt;/cf-svg-icon&gt;
+                    &lt;/button&gt;
+                  &lt;/a&gt;
                 &lt;/div&gt;
               &lt;/div&gt;
             &lt;/cf-sidebar&gt;
@@ -654,8 +649,9 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
     private readonly selectedApplicationState: SelectedApplicationState,
     private readonly recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState,
     private readonly customizationSettingsState: CustomizationSettingsState,
-    private readonly breakpointObserver: BreakpointObserver
-  ) { }
+    private readonly breakpointObserver: BreakpointObserver,
+    private readonly worldsState: WorldsState
+  ) {}
 
   public ngOnInit(): void {
     this.breakpointObserver
@@ -678,8 +674,8 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
           this.sceneContentAnimationState &#x3D; SceneContentAnimationState.Idle;
           setTimeout(
             () &#x3D;&gt;
-            (this.sceneContentAnimationState &#x3D;
-              SceneContentAnimationState.Animated),
+              (this.sceneContentAnimationState &#x3D;
+                SceneContentAnimationState.Animated),
             100
           );
         }),

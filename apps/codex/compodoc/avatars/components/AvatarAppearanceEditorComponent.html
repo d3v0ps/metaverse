@@ -95,34 +95,69 @@
   &lt;div cfElem&#x3D;&quot;body&quot;&gt;
     &lt;cf-tabset&gt;
       &lt;cf-tab
-        [title]&#x3D;&quot;&#x27;Stats&#x27;&quot;
+        [title]&#x3D;&quot;&#x27;Identity&#x27;&quot;
         icon&#x3D;&quot;assets/icons/mdi/account.svg&quot;
         [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
       &gt;
         &lt;div cfBlock&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
-          &lt;cf-avatar-appearance-portrait-designer [appearancePortrait]&#x3D;&quot;appearance?.variations?.others&quot;
+          &lt;cf-avatar-appearance-portrait-designer
+            [appearancePortrait]&#x3D;&quot;appearance?.variations?.others&quot;
             [availableStyles]&#x3D;&quot;[&#x27;dungeons&#x27;]&quot;
-            [rarity]&#x3D;&quot;rarity&quot;&gt;
+            [rarity]&#x3D;&quot;rarity&quot;
+          &gt;
           &lt;/cf-avatar-appearance-portrait-designer&gt;
         &lt;/div&gt;
       &lt;/cf-tab&gt;
       &lt;cf-tab
-        [title]&#x3D;&quot;&#x27;Equipment&#x27;&quot;
+        [title]&#x3D;&quot;&#x27;Appearance&#x27;&quot;
+        icon&#x3D;&quot;assets/icons/mdi/account.svg&quot;
+        [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
+      &gt;
+        &lt;div cfBlock&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
+          &lt;cf-avatar-appearance-portrait-designer
+            [appearancePortrait]&#x3D;&quot;appearance?.variations?.portrait&quot;
+            [availableStyles]&#x3D;&quot;[&#x27;avataaars&#x27;, &#x27;image&#x27;]&quot;
+            [randomizeSkin]&#x3D;&quot;randomizeSkin&quot;
+            [randomizeInterval]&#x3D;&quot;skinRandomizeInterval&quot;
+            (formSubmit)&#x3D;&quot;onFormSubmit($event)&quot;
+            [rarity]&#x3D;&quot;rarity&quot;
+          &gt;
+          &lt;/cf-avatar-appearance-portrait-designer&gt;
+        &lt;/div&gt;
+      &lt;/cf-tab&gt;
+      &lt;cf-tab
+        [title]&#x3D;&quot;&#x27;Outfits&#x27;&quot;
         icon&#x3D;&quot;assets/icons/mdi/sword-cross.svg&quot;
         [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
         [active]&#x3D;&quot;true&quot;
       &gt;
         &lt;div cfBlock&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
-          &lt;cf-avatar-appearance-portrait-designer [appearancePortrait]&#x3D;&quot;appearance?.variations?.dim2&quot;
+          &lt;cf-avatar-appearance-portrait-designer
+            [appearancePortrait]&#x3D;&quot;appearance?.variations?.dim2&quot;
             [randomizeOutfit]&#x3D;&quot;randomizeOutfit&quot;
             [randomizeInterval]&#x3D;&quot;outfitRandomizeInterval&quot;
             [availableStyles]&#x3D;&quot;[&#x27;lpc&#x27;, &#x27;image&#x27;]&quot;
             [rarity]&#x3D;&quot;rarity&quot;
-            (formSubmit)&#x3D;&quot;onFormSubmit($event)&quot;&gt;
+            (formSubmit)&#x3D;&quot;onFormSubmit($event)&quot;
+          &gt;
           &lt;/cf-avatar-appearance-portrait-designer&gt;
         &lt;/div&gt;
       &lt;/cf-tab&gt;
       &lt;cf-tab
+        [title]&#x3D;&quot;&#x27;Knowledge&#x27;&quot;
+        icon&#x3D;&quot;assets/icons/mdi/account.svg&quot;
+        [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
+      &gt;
+        &lt;div cfBlock&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
+          &lt;cf-avatar-appearance-portrait-designer
+            [appearancePortrait]&#x3D;&quot;appearance?.variations?.others&quot;
+            [availableStyles]&#x3D;&quot;[&#x27;dungeons&#x27;]&quot;
+            [rarity]&#x3D;&quot;rarity&quot;
+          &gt;
+          &lt;/cf-avatar-appearance-portrait-designer&gt;
+        &lt;/div&gt;
+      &lt;/cf-tab&gt;
+      &lt;!-- cf-tab
         [title]&#x3D;&quot;&#x27;Notes&#x27;&quot;
         icon&#x3D;&quot;assets/icons/mdi/book.svg&quot;
         [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
@@ -134,21 +169,6 @@
             [availableStyles]&#x3D;&quot;[&#x27;lpc&#x27;, &#x27;image&#x27;]&quot;
             [rarity]&#x3D;&quot;rarity&quot;
             (formSubmit)&#x3D;&quot;onFormSubmit($event)&quot;&gt;
-          &lt;/cf-avatar-appearance-portrait-designer&gt;
-        &lt;/div&gt;
-      &lt;/cf-tab&gt;
-      &lt;cf-tab
-        [title]&#x3D;&quot;&#x27;Portrait&#x27;&quot;
-        icon&#x3D;&quot;assets/icons/mdi/account.svg&quot;
-        [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
-      &gt;
-        &lt;div cfBlock&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
-          &lt;cf-avatar-appearance-portrait-designer [appearancePortrait]&#x3D;&quot;appearance?.variations?.portrait&quot;
-            [availableStyles]&#x3D;&quot;[&#x27;avataaars&#x27;, &#x27;image&#x27;]&quot;
-            [randomizeSkin]&#x3D;&quot;randomizeSkin&quot;
-            [randomizeInterval]&#x3D;&quot;skinRandomizeInterval&quot;
-            (formSubmit)&#x3D;&quot;onFormSubmit($event)&quot;
-            [rarity]&#x3D;&quot;rarity&quot;&gt;
           &lt;/cf-avatar-appearance-portrait-designer&gt;
         &lt;/div&gt;
       &lt;/cf-tab&gt;
@@ -166,7 +186,7 @@
             (formSubmit)&#x3D;&quot;onFormSubmit($event)&quot;&gt;
           &lt;/cf-avatar-appearance-portrait-designer&gt;
         &lt;/div&gt;
-      &lt;/cf-tab&gt;
+      &lt;/cf-tab --&gt;
       &lt;!-- cf-tab
         [title]&#x3D;&quot;&#x27;3D Appearance&#x27;&quot;
         icon&#x3D;&quot;assets/icons/mdi/human.svg&quot;
@@ -361,7 +381,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:157</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="177" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:177</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -387,7 +407,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:158</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:178</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -411,7 +431,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:164</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:184</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -432,7 +452,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:160</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:180</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -467,8 +487,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="235"
-                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:235</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="262"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:262</a></div>
                 </td>
             </tr>
 
@@ -538,8 +558,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="200"
-                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:200</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="220"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:220</a></div>
                 </td>
             </tr>
 
@@ -606,8 +626,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="180"
-                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:180</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="200"
+                            class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:200</a></div>
                 </td>
             </tr>
 
@@ -643,7 +663,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/Avatar.html" target="_self" >AvatarAppearanceInfoFormComponent</a></code>
+                        <i>Type : </i>        <code><a href="../components/AvatarAppearanceInfoFormComponent.html" target="_self" >AvatarAppearanceInfoFormComponent</a></code>
 
                     </td>
                 </tr>
@@ -658,7 +678,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:155</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="175" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:175</a></div>
                         </td>
                     </tr>
 
@@ -679,7 +699,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/Avatar.html" target="_self" >AvatarAppearanceModelFormComponent</a></code>
+                        <i>Type : </i>        <code><a href="../components/AvatarAppearanceModelFormComponent.html" target="_self" >AvatarAppearanceModelFormComponent</a></code>
 
                     </td>
                 </tr>
@@ -694,7 +714,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="151" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:151</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:171</a></div>
                         </td>
                     </tr>
 
@@ -725,7 +745,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:169</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="189" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:189</a></div>
                         </td>
                     </tr>
 
@@ -746,7 +766,7 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/Avatar.html" target="_self" >AvatarAppearancePortraitFormComponent</a></code>
+                        <i>Type : </i>        <code><a href="../components/AvatarAppearancePortraitFormComponent.html" target="_self" >AvatarAppearancePortraitFormComponent</a></code>
 
                     </td>
                 </tr>
@@ -761,7 +781,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:153</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="173" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:173</a></div>
                         </td>
                     </tr>
 
@@ -786,7 +806,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:166</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="186" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:186</a></div>
                         </td>
                     </tr>
 
@@ -811,7 +831,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:167</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="187" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:187</a></div>
                         </td>
                     </tr>
 
@@ -842,7 +862,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:168</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="188" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:188</a></div>
                         </td>
                     </tr>
 
@@ -871,7 +891,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:171</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="191" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component.ts:191</a></div>
                                 </td>
                             </tr>
 
@@ -887,18 +907,18 @@
   EventEmitter,
   Input,
   Output,
-  ViewChild
+  ViewChild,
 } from &#x27;@angular/core&#x27;;
 import { Appearance, AppearancePortrait } from &#x27;../../../models/appearance&#x27;;
 import { AppearanceInfo } from &#x27;../../../models/appearance-info&#x27;;
 import { AvatarAppearanceInfoFormComponent } from &#x27;./components/avatar-appearance-info-form/avatar-appearance-info-form.component&#x27;;
 import {
   AvatarAppearanceModelForm,
-  AvatarAppearanceModelFormComponent
+  AvatarAppearanceModelFormComponent,
 } from &#x27;./components/avatar-appearance-model-form/avatar-appearance-model-form.component&#x27;;
 import {
   AvatarAppearancePortraitFormComponent,
-  AvatarAppearancePortraitModelForm
+  AvatarAppearancePortraitModelForm,
 } from &#x27;./components/avatar-appearance-portrait-form/avatar-appearance-portrait-form.component&#x27;;
 
 export type AvatarAppearanceEditorModel &#x3D; {
@@ -914,34 +934,69 @@ export type AvatarAppearanceEditorModel &#x3D; {
       &lt;div cfElem&#x3D;&quot;body&quot;&gt;
         &lt;cf-tabset&gt;
           &lt;cf-tab
-            [title]&#x3D;&quot;&#x27;Stats&#x27;&quot;
+            [title]&#x3D;&quot;&#x27;Identity&#x27;&quot;
             icon&#x3D;&quot;assets/icons/mdi/account.svg&quot;
             [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
           &gt;
             &lt;div cfBlock&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
-              &lt;cf-avatar-appearance-portrait-designer [appearancePortrait]&#x3D;&quot;appearance?.variations?.others&quot;
+              &lt;cf-avatar-appearance-portrait-designer
+                [appearancePortrait]&#x3D;&quot;appearance?.variations?.others&quot;
                 [availableStyles]&#x3D;&quot;[&#x27;dungeons&#x27;]&quot;
-                [rarity]&#x3D;&quot;rarity&quot;&gt;
+                [rarity]&#x3D;&quot;rarity&quot;
+              &gt;
               &lt;/cf-avatar-appearance-portrait-designer&gt;
             &lt;/div&gt;
           &lt;/cf-tab&gt;
           &lt;cf-tab
-            [title]&#x3D;&quot;&#x27;Equipment&#x27;&quot;
+            [title]&#x3D;&quot;&#x27;Appearance&#x27;&quot;
+            icon&#x3D;&quot;assets/icons/mdi/account.svg&quot;
+            [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
+          &gt;
+            &lt;div cfBlock&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
+              &lt;cf-avatar-appearance-portrait-designer
+                [appearancePortrait]&#x3D;&quot;appearance?.variations?.portrait&quot;
+                [availableStyles]&#x3D;&quot;[&#x27;avataaars&#x27;, &#x27;image&#x27;]&quot;
+                [randomizeSkin]&#x3D;&quot;randomizeSkin&quot;
+                [randomizeInterval]&#x3D;&quot;skinRandomizeInterval&quot;
+                (formSubmit)&#x3D;&quot;onFormSubmit($event)&quot;
+                [rarity]&#x3D;&quot;rarity&quot;
+              &gt;
+              &lt;/cf-avatar-appearance-portrait-designer&gt;
+            &lt;/div&gt;
+          &lt;/cf-tab&gt;
+          &lt;cf-tab
+            [title]&#x3D;&quot;&#x27;Outfits&#x27;&quot;
             icon&#x3D;&quot;assets/icons/mdi/sword-cross.svg&quot;
             [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
             [active]&#x3D;&quot;true&quot;
           &gt;
             &lt;div cfBlock&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
-              &lt;cf-avatar-appearance-portrait-designer [appearancePortrait]&#x3D;&quot;appearance?.variations?.dim2&quot;
+              &lt;cf-avatar-appearance-portrait-designer
+                [appearancePortrait]&#x3D;&quot;appearance?.variations?.dim2&quot;
                 [randomizeOutfit]&#x3D;&quot;randomizeOutfit&quot;
                 [randomizeInterval]&#x3D;&quot;outfitRandomizeInterval&quot;
                 [availableStyles]&#x3D;&quot;[&#x27;lpc&#x27;, &#x27;image&#x27;]&quot;
                 [rarity]&#x3D;&quot;rarity&quot;
-                (formSubmit)&#x3D;&quot;onFormSubmit($event)&quot;&gt;
+                (formSubmit)&#x3D;&quot;onFormSubmit($event)&quot;
+              &gt;
               &lt;/cf-avatar-appearance-portrait-designer&gt;
             &lt;/div&gt;
           &lt;/cf-tab&gt;
           &lt;cf-tab
+            [title]&#x3D;&quot;&#x27;Knowledge&#x27;&quot;
+            icon&#x3D;&quot;assets/icons/mdi/account.svg&quot;
+            [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
+          &gt;
+            &lt;div cfBlock&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
+              &lt;cf-avatar-appearance-portrait-designer
+                [appearancePortrait]&#x3D;&quot;appearance?.variations?.others&quot;
+                [availableStyles]&#x3D;&quot;[&#x27;dungeons&#x27;]&quot;
+                [rarity]&#x3D;&quot;rarity&quot;
+              &gt;
+              &lt;/cf-avatar-appearance-portrait-designer&gt;
+            &lt;/div&gt;
+          &lt;/cf-tab&gt;
+          &lt;!-- cf-tab
             [title]&#x3D;&quot;&#x27;Notes&#x27;&quot;
             icon&#x3D;&quot;assets/icons/mdi/book.svg&quot;
             [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
@@ -953,21 +1008,6 @@ export type AvatarAppearanceEditorModel &#x3D; {
                 [availableStyles]&#x3D;&quot;[&#x27;lpc&#x27;, &#x27;image&#x27;]&quot;
                 [rarity]&#x3D;&quot;rarity&quot;
                 (formSubmit)&#x3D;&quot;onFormSubmit($event)&quot;&gt;
-              &lt;/cf-avatar-appearance-portrait-designer&gt;
-            &lt;/div&gt;
-          &lt;/cf-tab&gt;
-          &lt;cf-tab
-            [title]&#x3D;&quot;&#x27;Portrait&#x27;&quot;
-            icon&#x3D;&quot;assets/icons/mdi/account.svg&quot;
-            [customClass]&#x3D;&quot;&#x27;appearance-tab&#x27;&quot;
-          &gt;
-            &lt;div cfBlock&#x3D;&quot;appearance-tab-content-portrait&quot;&gt;
-              &lt;cf-avatar-appearance-portrait-designer [appearancePortrait]&#x3D;&quot;appearance?.variations?.portrait&quot;
-                [availableStyles]&#x3D;&quot;[&#x27;avataaars&#x27;, &#x27;image&#x27;]&quot;
-                [randomizeSkin]&#x3D;&quot;randomizeSkin&quot;
-                [randomizeInterval]&#x3D;&quot;skinRandomizeInterval&quot;
-                (formSubmit)&#x3D;&quot;onFormSubmit($event)&quot;
-                [rarity]&#x3D;&quot;rarity&quot;&gt;
               &lt;/cf-avatar-appearance-portrait-designer&gt;
             &lt;/div&gt;
           &lt;/cf-tab&gt;
@@ -985,7 +1025,7 @@ export type AvatarAppearanceEditorModel &#x3D; {
                 (formSubmit)&#x3D;&quot;onFormSubmit($event)&quot;&gt;
               &lt;/cf-avatar-appearance-portrait-designer&gt;
             &lt;/div&gt;
-          &lt;/cf-tab&gt;
+          &lt;/cf-tab --&gt;
           &lt;!-- cf-tab
             [title]&#x3D;&quot;&#x27;3D Appearance&#x27;&quot;
             icon&#x3D;&quot;assets/icons/mdi/human.svg&quot;
@@ -1043,13 +1083,13 @@ export class AvatarAppearanceEditorComponent {
 
   @Output() portraitChange &#x3D; new EventEmitter&lt;{
     id: string;
-    properties: Record&lt;string, any&gt;
+    properties: Record&lt;string, any&gt;;
   }&gt;();
   @Output() appearanceSubmit &#x3D; new EventEmitter&lt;AvatarAppearanceEditorModel&gt;();
 
   randomizeOutfit &#x3D; false;
   randomizeSkin &#x3D; false;
-  skinRandomizeInterval &#x3D; 0;// 30000;
+  skinRandomizeInterval &#x3D; 0; // 30000;
   outfitRandomizeInterval &#x3D; 0; // 3000;
 
   get isValid(): boolean {
@@ -1083,19 +1123,27 @@ export class AvatarAppearanceEditorComponent {
 
   onFormSubmit({
     designStyle,
-    properties
-  }: { designStyle: string; properties: Record&lt;string, any&gt; }) {
-
-    this.rarity &#x3D; [&#x27;common&#x27;, &#x27;uncommon&#x27;, &#x27;rare&#x27;, &#x27;epic&#x27;, &#x27;legendary&#x27;][Math.floor(Math.random() * 5)];
+    properties,
+  }: {
+    designStyle: string;
+    properties: Record&lt;string, any&gt;;
+  }) {
+    this.rarity &#x3D; [&#x27;common&#x27;, &#x27;uncommon&#x27;, &#x27;rare&#x27;, &#x27;epic&#x27;, &#x27;legendary&#x27;][
+      Math.floor(Math.random() * 5)
+    ];
 
     if (designStyle &#x3D;&#x3D;&#x3D; &#x27;avataaars&#x27;) {
       this.portraitChange.emit({
         id: designStyle,
-        properties
+        properties,
       });
     }
 
-    if (designStyle &#x3D;&#x3D;&#x3D; &#x27;avataaars&#x27; &amp;&amp; this.appearance?.variations?.dim2?.style &amp;&amp; this.appearance?.variations?.dim2.style?.id &#x3D;&#x3D;&#x3D; &#x27;lpc&#x27;) {
+    if (
+      designStyle &#x3D;&#x3D;&#x3D; &#x27;avataaars&#x27; &amp;&amp;
+      this.appearance?.variations?.dim2?.style &amp;&amp;
+      this.appearance?.variations?.dim2.style?.id &#x3D;&#x3D;&#x3D; &#x27;lpc&#x27;
+    ) {
       this.appearance &#x3D; Object.assign(this.appearance, {
         variations: {
           ...this.appearance.variations,
@@ -1105,129 +1153,140 @@ export class AvatarAppearanceEditorComponent {
               ...this.appearance.variations.dim2.style,
               properties: {
                 ...this.appearance.variations.dim2.style.properties,
-                ...this.mapAvataaarsPropsToLPC(properties)
-
-              }
-            }
-          }
-        }
+                ...this.mapAvataaarsPropsToLPC(properties),
+              },
+            },
+          },
+        },
       });
     }
   }
 
   /** TODO: REFACTOR THIS */
-  private mapAvataaarsPropsToLPC(properties: Record&lt;string, any&gt;): Record&lt;string, any&gt; {
-
+  private mapAvataaarsPropsToLPC(
+    properties: Record&lt;string, any&gt;
+  ): Record&lt;string, any&gt; {
     const keyMappings: Record&lt;string, string&gt; &#x3D; {
-      &#x27;skinColor&#x27;: &#x27;bodyType&#x27;,
-      &#x27;topType&#x27;: &#x27;hair&#x27;,
-      &#x27;hairColor&#x27;: &#x27;hairColor&#x27;,
-      &#x27;facialHairType&#x27;: &#x27;facialHair&#x27;,
-      &#x27;facialHairColor&#x27;: &#x27;facialHairColor&#x27;,
+      skinColor: &#x27;bodyType&#x27;,
+      topType: &#x27;hair&#x27;,
+      hairColor: &#x27;hairColor&#x27;,
+      facialHairType: &#x27;facialHair&#x27;,
+      facialHairColor: &#x27;facialHairColor&#x27;,
       // &#x27;clotheType&#x27;: &#x27;torso&#x27;,
       // &#x27;clotheColor&#x27;: &#x27;&#x27;,
-      &#x27;accessoriesType&#x27;: &#x27;accessory&#x27;,
-    }
+      accessoriesType: &#x27;accessory&#x27;,
+    };
 
-    const valueMappings: Record&lt;string, Record&lt;string, string | undefined | null&gt;&gt; &#x3D; {
-      &#x27;skinColor&#x27;: {
-        &#x27;Tanned&#x27;: &#x27;tanned&#x27;,
-        &#x27;Yellow&#x27;: &#x27;tanned2&#x27;,
-        &#x27;Pale&#x27;: &#x27;white&#x27;,
-        &#x27;Light&#x27;: &#x27;light&#x27;,
-        &#x27;Brown&#x27;: &#x27;olive&#x27;,
-        &#x27;DarkBrown&#x27;: &#x27;brown&#x27;,
-        &#x27;Black&#x27;: &#x27;black&#x27;,
+    const valueMappings: Record&lt;
+      string,
+      Record&lt;string, string | undefined | null&gt;
+    &gt; &#x3D; {
+      skinColor: {
+        Tanned: &#x27;tanned&#x27;,
+        Yellow: &#x27;tanned2&#x27;,
+        Pale: &#x27;white&#x27;,
+        Light: &#x27;light&#x27;,
+        Brown: &#x27;olive&#x27;,
+        DarkBrown: &#x27;brown&#x27;,
+        Black: &#x27;black&#x27;,
       },
-      &#x27;topType&#x27;: {
-        &#x27;LongHairBigHair&#x27;: &#x27;princess&#x27;,
-        &#x27;LongHairBob&#x27;: &#x27;page2&#x27;,
-        &#x27;LongHairBun&#x27;: &#x27;longknot&#x27;,
-        &#x27;LongHairCurly&#x27;: &#x27;jewfro&#x27;,
-        &#x27;LongHairCurvy&#x27;: &#x27;princess&#x27;,
-        &#x27;LongHairDreads&#x27;: &#x27;long&#x27;,
+      topType: {
+        LongHairBigHair: &#x27;princess&#x27;,
+        LongHairBob: &#x27;page2&#x27;,
+        LongHairBun: &#x27;longknot&#x27;,
+        LongHairCurly: &#x27;jewfro&#x27;,
+        LongHairCurvy: &#x27;princess&#x27;,
+        LongHairDreads: &#x27;long&#x27;,
         // &#x27;LongHairFrida&#x27;: &#x27;LongHairFrida&#x27;,
-        &#x27;LongHairFro&#x27;: &#x27;jewfro&#x27;,
-        &#x27;LongHairFroBand&#x27;: &#x27;jewfro&#x27;,
-        &#x27;LongHairNotTooLong&#x27;: &#x27;page2&#x27;,
-        &#x27;LongHairShavedSides&#x27;: &#x27;long&#x27;,
-        &#x27;LongHairMiaWallace&#x27;: &#x27;page2&#x27;,
-        &#x27;LongHairStraight&#x27;: &#x27;long&#x27;,
-        &#x27;LongHairStraight2&#x27;: &#x27;long&#x27;,
-        &#x27;LongHairStraightStrand&#x27;: &#x27;long&#x27;,
-        &#x27;ShortHairDreads01&#x27;: &#x27;jewfro&#x27;,
-        &#x27;ShortHairDreads02&#x27;: &#x27;jewfro&#x27;,
-        &#x27;ShortHairFrizzle&#x27;: &#x27;mohawk&#x27;,
-        &#x27;ShortHairShaggyMullet&#x27;: &#x27;bangs&#x27;,
-        &#x27;ShortHairShortCurly&#x27;: &#x27;bangsshort&#x27;,
-        &#x27;ShortHairShortFlat&#x27;: &#x27;plain&#x27;,
-        &#x27;ShortHairShortRound&#x27;: &#x27;plain&#x27;,
-        &#x27;ShortHairShortWaved&#x27;: &#x27;bangs&#x27;,
+        LongHairFro: &#x27;jewfro&#x27;,
+        LongHairFroBand: &#x27;jewfro&#x27;,
+        LongHairNotTooLong: &#x27;page2&#x27;,
+        LongHairShavedSides: &#x27;long&#x27;,
+        LongHairMiaWallace: &#x27;page2&#x27;,
+        LongHairStraight: &#x27;long&#x27;,
+        LongHairStraight2: &#x27;long&#x27;,
+        LongHairStraightStrand: &#x27;long&#x27;,
+        ShortHairDreads01: &#x27;jewfro&#x27;,
+        ShortHairDreads02: &#x27;jewfro&#x27;,
+        ShortHairFrizzle: &#x27;mohawk&#x27;,
+        ShortHairShaggyMullet: &#x27;bangs&#x27;,
+        ShortHairShortCurly: &#x27;bangsshort&#x27;,
+        ShortHairShortFlat: &#x27;plain&#x27;,
+        ShortHairShortRound: &#x27;plain&#x27;,
+        ShortHairShortWaved: &#x27;bangs&#x27;,
         // &#x27;ShortHairSides&#x27;: &#x27;ShortHairSides&#x27;,
-        &#x27;ShortHairTheCaesar&#x27;: &#x27;shorthawk&#x27;,
-        &#x27;ShortHairTheCaesarSidePart&#x27;: &#x27;shorthawk&#x27;,
+        ShortHairTheCaesar: &#x27;shorthawk&#x27;,
+        ShortHairTheCaesarSidePart: &#x27;shorthawk&#x27;,
       },
       hairColor: {
-        &#x27;Auburn&#x27;: &#x27;auburn&#x27;,
-        &#x27;Black&#x27;: &#x27;black&#x27;,
-        &#x27;Blonde&#x27;: &#x27;blonde&#x27;,
-        &#x27;BlondeGolden&#x27;: &#x27;blonde2&#x27;,
-        &#x27;Brown&#x27;: &#x27;brown2&#x27;,
-        &#x27;BrownDark&#x27;: &#x27;brown&#x27;,
-        &#x27;PastelPink&#x27;: &#x27;white-blonde&#x27;,
-        &#x27;Blue&#x27;: &#x27;blue&#x27;,
-        &#x27;Platinum&#x27;: &#x27;white&#x27;,
-        &#x27;Red&#x27;: &#x27;brunette&#x27;,
-        &#x27;SilverGray&#x27;: &#x27;white-cyan&#x27;,
+        Auburn: &#x27;auburn&#x27;,
+        Black: &#x27;black&#x27;,
+        Blonde: &#x27;blonde&#x27;,
+        BlondeGolden: &#x27;blonde2&#x27;,
+        Brown: &#x27;brown2&#x27;,
+        BrownDark: &#x27;brown&#x27;,
+        PastelPink: &#x27;white-blonde&#x27;,
+        Blue: &#x27;blue&#x27;,
+        Platinum: &#x27;white&#x27;,
+        Red: &#x27;brunette&#x27;,
+        SilverGray: &#x27;white-cyan&#x27;,
       },
       facialHairType: {
-        &#x27;Blank&#x27;: undefined,
-        &#x27;BeardMedium&#x27;: &#x27;beard&#x27;,
-        &#x27;BeardLight&#x27;: &#x27;beard&#x27;,
-        &#x27;BeardMajestic&#x27;: &#x27;beard&#x27;,
-        &#x27;MoustacheFancy&#x27;: &#x27;bigstache&#x27;,
-        &#x27;MoustacheMagnum&#x27;: &#x27;mustache&#x27;,
+        Blank: undefined,
+        BeardMedium: &#x27;beard&#x27;,
+        BeardLight: &#x27;beard&#x27;,
+        BeardMajestic: &#x27;beard&#x27;,
+        MoustacheFancy: &#x27;bigstache&#x27;,
+        MoustacheMagnum: &#x27;mustache&#x27;,
       },
       facialHairColor: {
-        &#x27;Auburn&#x27;: &#x27;auburn&#x27;,
-        &#x27;Black&#x27;: &#x27;black&#x27;,
-        &#x27;Blonde&#x27;: &#x27;blonde&#x27;,
-        &#x27;BlondeGolden&#x27;: &#x27;blonde2&#x27;,
-        &#x27;Brown&#x27;: &#x27;brown2&#x27;,
-        &#x27;BrownDark&#x27;: &#x27;brown&#x27;,
-        &#x27;Platinum&#x27;: &#x27;white&#x27;,
-        &#x27;Red&#x27;: &#x27;brunette&#x27;,
+        Auburn: &#x27;auburn&#x27;,
+        Black: &#x27;black&#x27;,
+        Blonde: &#x27;blonde&#x27;,
+        BlondeGolden: &#x27;blonde2&#x27;,
+        Brown: &#x27;brown2&#x27;,
+        BrownDark: &#x27;brown&#x27;,
+        Platinum: &#x27;white&#x27;,
+        Red: &#x27;brunette&#x27;,
       },
       accessoriesType: {
-        &#x27;Blank&#x27;: undefined,
-        &#x27;Kurt&#x27;: &#x27;glasses/formal_glasses&#x27;,
-        &#x27;Sunglasses&#x27;: &#x27;glasses/formal_glasses&#x27;,
-        &#x27;Wayfarers&#x27;: &#x27;glasses/formal_glasses&#x27;,
-        &#x27;Round&#x27;: &#x27;glasses/formal_glasses&#x27;,
-        &#x27;Prescription01&#x27;: &#x27;glasses/formal_glasses&#x27;,
-        &#x27;Prescription02&#x27;: &#x27;glasses/formal_glasses&#x27;,
-      }
+        Blank: undefined,
+        Kurt: &#x27;glasses/formal_glasses&#x27;,
+        Sunglasses: &#x27;glasses/formal_glasses&#x27;,
+        Wayfarers: &#x27;glasses/formal_glasses&#x27;,
+        Round: &#x27;glasses/formal_glasses&#x27;,
+        Prescription01: &#x27;glasses/formal_glasses&#x27;,
+        Prescription02: &#x27;glasses/formal_glasses&#x27;,
+      },
+    };
 
-    }
-
-    const bodyVariation &#x3D; Math.random() &gt; 0.5 || properties.facialHairType ? &#x27;male&#x27; : &#x27;female&#x27;;
-    const torso &#x3D; bodyVariation &#x3D;&#x3D;&#x3D; &#x27;male&#x27; ? &#x27;shirts/longsleeve/white_longsleeve&#x27; : &#x27;tunics/white_tunic&#x27;;
+    const bodyVariation &#x3D;
+      Math.random() &gt; 0.5 || properties.facialHairType ? &#x27;male&#x27; : &#x27;female&#x27;;
+    const torso &#x3D;
+      bodyVariation &#x3D;&#x3D;&#x3D; &#x27;male&#x27;
+        ? &#x27;shirts/longsleeve/white_longsleeve&#x27;
+        : &#x27;tunics/white_tunic&#x27;;
     const legs &#x3D; &#x27;pants/teal_pants&#x27;;
 
-    const result: Record&lt;string, undefined | null | string&gt; &#x3D; Object.entries(properties).reduce((acc, [key, value]) &#x3D;&gt; {
-      const lpcKey &#x3D; keyMappings[key];
-      if (!lpcKey) {
-        return acc;
-      }
+    const result: Record&lt;string, undefined | null | string&gt; &#x3D; Object.entries(
+      properties
+    ).reduce(
+      (acc, [key, value]) &#x3D;&gt; {
+        const lpcKey &#x3D; keyMappings[key];
+        if (!lpcKey) {
+          return acc;
+        }
 
-      return Object.assign(acc, {
-        [lpcKey]: valueMappings[key][value]
-      });
-    }, {
-      bodyVariation,
-      torso,
-      legs
-    });
+        return Object.assign(acc, {
+          [lpcKey]: valueMappings[key][value],
+        });
+      },
+      {
+        bodyVariation,
+        torso,
+        legs,
+      }
+    );
 
     // if (bodyVariation &#x3D;&#x3D;&#x3D; &#x27;female&#x27;) {
     //   result.facialHair &#x3D; null;
@@ -1266,8 +1325,8 @@ export class AvatarAppearanceEditorComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-editor">  <div cfElem="body">    <cf-tabset>      <cf-tab        [title]="\'Stats\'"        icon="assets/icons/mdi/account.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.others"            [availableStyles]="[\'dungeons\']"            [rarity]="rarity">          </cf-avatar-appearance-portrait-designer>        </div>      </cf-tab>      <cf-tab        [title]="\'Equipment\'"        icon="assets/icons/mdi/sword-cross.svg"        [customClass]="\'appearance-tab\'"        [active]="true"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.dim2"            [randomizeOutfit]="randomizeOutfit"            [randomizeInterval]="outfitRandomizeInterval"            [availableStyles]="[\'lpc\', \'image\']"            [rarity]="rarity"            (formSubmit)="onFormSubmit($event)">          </cf-avatar-appearance-portrait-designer>        </div>      </cf-tab>      <cf-tab        [title]="\'Notes\'"        icon="assets/icons/mdi/book.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.dim2"            [randomizeOutfit]="randomizeOutfit"            [randomizeInterval]="outfitRandomizeInterval"            [availableStyles]="[\'lpc\', \'image\']"            [rarity]="rarity"            (formSubmit)="onFormSubmit($event)">          </cf-avatar-appearance-portrait-designer>        </div>      </cf-tab>      <cf-tab        [title]="\'Portrait\'"        icon="assets/icons/mdi/account.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.portrait"            [availableStyles]="[\'avataaars\', \'image\']"            [randomizeSkin]="randomizeSkin"            [randomizeInterval]="skinRandomizeInterval"            (formSubmit)="onFormSubmit($event)"            [rarity]="rarity">          </cf-avatar-appearance-portrait-designer>        </div>      </cf-tab>      <cf-tab        [title]="\'2D Appearance\'"        icon="assets/icons/mdi/human.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.dim2"            [randomizeOutfit]="randomizeOutfit"            [randomizeInterval]="outfitRandomizeInterval"            [availableStyles]="[\'lpc\', \'image\']"            [rarity]="rarity"            (formSubmit)="onFormSubmit($event)">          </cf-avatar-appearance-portrait-designer>        </div>      </cf-tab>      <!-- cf-tab        [title]="\'3D Appearance\'"        icon="assets/icons/mdi/human.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.dim3"            [availableStyles]="[\'dim3-file\']"            [rarity]="rarity">          </cf-avatar-appearance-portrait-designer>        </div>      </cf-tab -->      <!-- cf-tab        [title]="\'Role-play\'"        icon="assets/icons/mdi/sword-cross.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.others"            [availableStyles]="[\'dungeons\']"            [rarity]="rarity">          </cf-avatar-appearance-portrait-designer>        </div>      </cf-tab -->    </cf-tabset>  </div>  <!-- div cfElem="footer">    <div cfBlock="form-buttons">      <button        cfBlock="button"        [cfMod]="[\'primary\', \'has-icon\']"        (click)="onSaveButtonClick()"        [disabled]="!isValid"      >        <cf-svg-icon elem="icon" src="assets/icons/mdi/account-check.svg">        </cf-svg-icon>        Save      </button>    </div>  </div--></div></div>'
-    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarAppearanceSpritesheetComponent', 'selector': 'cf-avatar-appearance-spritesheet'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'}];
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="avatar-appearance-editor">  <div cfElem="body">    <cf-tabset>      <cf-tab        [title]="\'Identity\'"        icon="assets/icons/mdi/account.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-designer            [appearancePortrait]="appearance?.variations?.others"            [availableStyles]="[\'dungeons\']"            [rarity]="rarity"          >          </cf-avatar-appearance-portrait-designer>        </div>      </cf-tab>      <cf-tab        [title]="\'Appearance\'"        icon="assets/icons/mdi/account.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-designer            [appearancePortrait]="appearance?.variations?.portrait"            [availableStyles]="[\'avataaars\', \'image\']"            [randomizeSkin]="randomizeSkin"            [randomizeInterval]="skinRandomizeInterval"            (formSubmit)="onFormSubmit($event)"            [rarity]="rarity"          >          </cf-avatar-appearance-portrait-designer>        </div>      </cf-tab>      <cf-tab        [title]="\'Outfits\'"        icon="assets/icons/mdi/sword-cross.svg"        [customClass]="\'appearance-tab\'"        [active]="true"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-designer            [appearancePortrait]="appearance?.variations?.dim2"            [randomizeOutfit]="randomizeOutfit"            [randomizeInterval]="outfitRandomizeInterval"            [availableStyles]="[\'lpc\', \'image\']"            [rarity]="rarity"            (formSubmit)="onFormSubmit($event)"          >          </cf-avatar-appearance-portrait-designer>        </div>      </cf-tab>      <cf-tab        [title]="\'Knowledge\'"        icon="assets/icons/mdi/account.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-designer            [appearancePortrait]="appearance?.variations?.others"            [availableStyles]="[\'dungeons\']"            [rarity]="rarity"          >          </cf-avatar-appearance-portrait-designer>        </div>      </cf-tab>      <!-- cf-tab        [title]="\'Notes\'"        icon="assets/icons/mdi/book.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.dim2"            [randomizeOutfit]="randomizeOutfit"            [randomizeInterval]="outfitRandomizeInterval"            [availableStyles]="[\'lpc\', \'image\']"            [rarity]="rarity"            (formSubmit)="onFormSubmit($event)">          </cf-avatar-appearance-portrait-designer>        </div>      </cf-tab>      <cf-tab        [title]="\'2D Appearance\'"        icon="assets/icons/mdi/human.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.dim2"            [randomizeOutfit]="randomizeOutfit"            [randomizeInterval]="outfitRandomizeInterval"            [availableStyles]="[\'lpc\', \'image\']"            [rarity]="rarity"            (formSubmit)="onFormSubmit($event)">          </cf-avatar-appearance-portrait-designer>        </div>      </cf-tab -->      <!-- cf-tab        [title]="\'3D Appearance\'"        icon="assets/icons/mdi/human.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.dim3"            [availableStyles]="[\'dim3-file\']"            [rarity]="rarity">          </cf-avatar-appearance-portrait-designer>        </div>      </cf-tab -->      <!-- cf-tab        [title]="\'Role-play\'"        icon="assets/icons/mdi/sword-cross.svg"        [customClass]="\'appearance-tab\'"      >        <div cfBlock="appearance-tab-content-portrait">          <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.others"            [availableStyles]="[\'dungeons\']"            [rarity]="rarity">          </cf-avatar-appearance-portrait-designer>        </div>      </cf-tab -->    </cf-tabset>  </div>  <!-- div cfElem="footer">    <div cfBlock="form-buttons">      <button        cfBlock="button"        [cfMod]="[\'primary\', \'has-icon\']"        (click)="onSaveButtonClick()"        [disabled]="!isValid"      >        <cf-svg-icon elem="icon" src="assets/icons/mdi/account-check.svg">        </cf-svg-icon>        Save      </button>    </div>  </div--></div></div>'
+    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarAppearanceSpritesheetComponent', 'selector': 'cf-avatar-appearance-spritesheet'},{'name': 'AvatarDialogComponent', 'selector': 'cf-avatar-dialog'},{'name': 'AvatarDialogScene', 'selector': 'cf-avatar-dialog-scene'},{'name': 'AvatarInfoComponent', 'selector': 'cf-avatar-info'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'AvatarsListComponent', 'selector': 'cf-avatars-list'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarAppearanceEditorComponent'};
 </script>
