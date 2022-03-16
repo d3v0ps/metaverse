@@ -137,7 +137,6 @@
   &lt;!-- cf-world-map *ngIf&#x3D;&quot;!selectedAvatar&quot;&gt;&lt;/cf-world-map --&gt;
   &lt;cf-avatar-info
     [avatar]&#x3D;&quot;selectedAvatar&quot;
-    [avatars]&#x3D;&quot;avatars&quot;
     [world]&#x3D;&quot;world&quot;
   &gt;&lt;/cf-avatar-info&gt;
 &lt;/div&gt;
@@ -223,7 +222,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:65</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:64</a></div>
                             </td>
                         </tr>
 
@@ -302,8 +301,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="72"
-                            class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:72</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:71</a></div>
                 </td>
             </tr>
 
@@ -349,7 +348,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:59</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:58</a></div>
                         </td>
                     </tr>
 
@@ -380,7 +379,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:60</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:59</a></div>
                         </td>
                     </tr>
 
@@ -407,7 +406,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:61</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:60</a></div>
                         </td>
                     </tr>
 
@@ -434,7 +433,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:65</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:64</a></div>
                         </td>
                     </tr>
 
@@ -459,7 +458,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:63</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:62</a></div>
                         </td>
                     </tr>
 
@@ -490,7 +489,6 @@ import { WorldsState } from &#x27;@central-factory/worlds/states/worlds.state&#x
       &lt;!-- cf-world-map *ngIf&#x3D;&quot;!selectedAvatar&quot;&gt;&lt;/cf-world-map --&gt;
       &lt;cf-avatar-info
         [avatar]&#x3D;&quot;selectedAvatar&quot;
-        [avatars]&#x3D;&quot;avatars&quot;
         [world]&#x3D;&quot;world&quot;
       &gt;&lt;/cf-avatar-info&gt;
     &lt;/div&gt;
@@ -650,7 +648,7 @@ export class WorldScene {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="scene" cfMod="world" *ngIf="world$ | async as world">  <cf-avatars-list    [avatars]="avatars"    [world]="world"    (selectAvatar)="selectedAvatar = $event"  ></cf-avatars-list>  <!-- cf-world-map *ngIf="!selectedAvatar"></cf-world-map -->  <cf-avatar-info    [avatar]="selectedAvatar"    [avatars]="avatars"    [world]="world"  ></cf-avatar-info></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="scene" cfMod="world" *ngIf="world$ | async as world">  <cf-avatars-list    [avatars]="avatars"    [world]="world"    (selectAvatar)="selectedAvatar = $event"  ></cf-avatars-list>  <!-- cf-world-map *ngIf="!selectedAvatar"></cf-world-map -->  <cf-avatar-info    [avatar]="selectedAvatar"    [world]="world"  ></cf-avatar-info></div></div>'
     var COMPONENTS = [{'name': 'ApplicationManagerComponent', 'selector': 'cf-application-manager'},{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'},{'name': 'WorldScene', 'selector': 'cf-world-scene'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WorldScene'};

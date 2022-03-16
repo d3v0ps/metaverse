@@ -97,6 +97,7 @@
 &gt;
   &lt;ng-container *ngFor&#x3D;&quot;let avatar of avatars&quot;&gt;
     &lt;div
+      *ngIf&#x3D;&quot;avatar&quot;
       cfBlock&#x3D;&quot;avatars-carousel-item&quot;
       (click)&#x3D;&quot;avatarClick.emit(avatar)&quot;
       [cfMod]&#x3D;&quot;size&quot;
@@ -269,7 +270,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:79</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:80</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -295,7 +296,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:82</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:83</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -321,7 +322,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:84</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:85</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -347,7 +348,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:85</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:86</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -362,7 +363,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:81</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:82</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -383,7 +384,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:80</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:81</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -407,7 +408,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:87</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:88</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -437,7 +438,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:89</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">libs/avatars/src/lib/web-components/angular/avatars-carousel/avatars-carousel.component.ts:90</a></div>
                                 </td>
                             </tr>
 
@@ -461,6 +462,7 @@ import type { Avatar } from &#x27;../../../models/avatar&#x27;;
     &gt;
       &lt;ng-container *ngFor&#x3D;&quot;let avatar of avatars&quot;&gt;
         &lt;div
+          *ngIf&#x3D;&quot;avatar&quot;
           cfBlock&#x3D;&quot;avatars-carousel-item&quot;
           (click)&#x3D;&quot;avatarClick.emit(avatar)&quot;
           [cfMod]&#x3D;&quot;size&quot;
@@ -578,8 +580,8 @@ export class AvatarsCarouselComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div  cfBlock="avatars-carousel"  cfMod="direction-{{ direction }} {{ size }}">  <ng-container *ngFor="let avatar of avatars">    <div      cfBlock="avatars-carousel-item"      (click)="avatarClick.emit(avatar)"      [cfMod]="size"    >      <cf-avatar-appearance-portrait        [displayComponent]="\'avataaars\'"        [avatar]="avatar"      >      </cf-avatar-appearance-portrait>      <br />      <h4 cfBlock="heading">        {{ avatar.identity?.givenName }} {{ avatar.identity?.familyName }}      </h4>      <p cfBlock="text">        <cf-svg-icon          cfElem="icon"          [src]="            \'assets/icons/mdi/gender-\' +            avatar.appearance?.body?.type?.toLowerCase() +            \'.svg\'          "        ></cf-svg-icon>        <strong          *ngIf="avatar.identity?.mainProfession as mainProfession"          [ngStyle]="{            color: professions[mainProfession]              ? professions[mainProfession].color              : \'#fff\'          }"        >          <cf-svg-icon            cfElem="icon"            *ngIf="              professions[mainProfession] &&              professions[mainProfession].icon as icon            "            [src]="icon"          ></cf-svg-icon>        </strong>        <strong          *ngIf="            avatar.identity?.secondaryProfession as secondaryProfession          "          [ngStyle]="{            color: professions[secondaryProfession]              ? professions[secondaryProfession].color              : \'#fff\'          }"        >          <cf-svg-icon            cfElem="icon"            *ngIf="              professions[secondaryProfession] &&              professions[secondaryProfession].icon as icon            "            [src]="icon"          ></cf-svg-icon>        </strong>      </p>    </div>  </ng-container></div></div>'
-    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarAppearanceSpritesheetComponent', 'selector': 'cf-avatar-appearance-spritesheet'},{'name': 'AvatarDialogComponent', 'selector': 'cf-avatar-dialog'},{'name': 'AvatarDialogScene', 'selector': 'cf-avatar-dialog-scene'},{'name': 'AvatarInfoComponent', 'selector': 'cf-avatar-info'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'AvatarsListComponent', 'selector': 'cf-avatars-list'}];
+        var COMPONENT_TEMPLATE = '<div><div  cfBlock="avatars-carousel"  cfMod="direction-{{ direction }} {{ size }}">  <ng-container *ngFor="let avatar of avatars">    <div      *ngIf="avatar"      cfBlock="avatars-carousel-item"      (click)="avatarClick.emit(avatar)"      [cfMod]="size"    >      <cf-avatar-appearance-portrait        [displayComponent]="\'avataaars\'"        [avatar]="avatar"      >      </cf-avatar-appearance-portrait>      <br />      <h4 cfBlock="heading">        {{ avatar.identity?.givenName }} {{ avatar.identity?.familyName }}      </h4>      <p cfBlock="text">        <cf-svg-icon          cfElem="icon"          [src]="            \'assets/icons/mdi/gender-\' +            avatar.appearance?.body?.type?.toLowerCase() +            \'.svg\'          "        ></cf-svg-icon>        <strong          *ngIf="avatar.identity?.mainProfession as mainProfession"          [ngStyle]="{            color: professions[mainProfession]              ? professions[mainProfession].color              : \'#fff\'          }"        >          <cf-svg-icon            cfElem="icon"            *ngIf="              professions[mainProfession] &&              professions[mainProfession].icon as icon            "            [src]="icon"          ></cf-svg-icon>        </strong>        <strong          *ngIf="            avatar.identity?.secondaryProfession as secondaryProfession          "          [ngStyle]="{            color: professions[secondaryProfession]              ? professions[secondaryProfession].color              : \'#fff\'          }"        >          <cf-svg-icon            cfElem="icon"            *ngIf="              professions[secondaryProfession] &&              professions[secondaryProfession].icon as icon            "            [src]="icon"          ></cf-svg-icon>        </strong>      </p>    </div>  </ng-container></div></div>'
+    var COMPONENTS = [{'name': 'AvatarAppearanceCardComponent', 'selector': 'cf-avatar-appearance-card'},{'name': 'AvatarAppearanceEditorComponent', 'selector': 'cf-avatar-appearance-editor'},{'name': 'AvatarAppearanceInfoFormComponent', 'selector': 'cf-avatar-appearance-info-form'},{'name': 'AvatarAppearanceModelFormComponent', 'selector': 'cf-avatar-appearance-model-form'},{'name': 'AvatarAppearancePortraitAvataaarsComponent', 'selector': 'cf-avatar-appearance-portrait-avataaars'},{'name': 'AvatarAppearancePortraitComponent', 'selector': 'cf-avatar-appearance-portrait'},{'name': 'AvatarAppearancePortraitDesignerComponent', 'selector': 'cf-avatar-appearance-portrait-designer'},{'name': 'AvatarAppearancePortraitFormComponent', 'selector': 'cf-avatar-appearance-portrait-form'},{'name': 'AvatarAppearancePreviewAframeComponent', 'selector': 'cf-avatar-appearance-preview-aframe'},{'name': 'AvatarAppearancePreviewComponent', 'selector': 'cf-avatar-appearance-preview'},{'name': 'AvatarAppearancePreviewImageComponent', 'selector': 'cf-avatar-appearance-preview-image'},{'name': 'AvatarAppearancePreviewModelViewerComponent', 'selector': 'cf-avatar-appearance-preview-model-viewer'},{'name': 'AvatarAppearanceProvidersComponent', 'selector': 'cf-avatar-appearance-providers'},{'name': 'AvatarAppearancesCarouselComponent', 'selector': 'cf-avatar-appearances-carousel'},{'name': 'AvatarAppearancesComponent', 'selector': 'cf-avatar-appearances'},{'name': 'AvatarAppearanceSpritesheetComponent', 'selector': 'cf-avatar-appearance-spritesheet'},{'name': 'AvatarBiographyComponent', 'selector': 'cf-avatar-biography'},{'name': 'AvatarDialogComponent', 'selector': 'cf-avatar-dialog'},{'name': 'AvatarDialogScene', 'selector': 'cf-avatar-dialog-scene'},{'name': 'AvatarInfoComponent', 'selector': 'cf-avatar-info'},{'name': 'AvatarOverviewComponent', 'selector': 'cf-avatar-overview'},{'name': 'AvatarsCarouselComponent', 'selector': 'cf-avatars-carousel'},{'name': 'AvatarScopesComponent', 'selector': 'cf-avatar-scopes'},{'name': 'AvatarSkillsComponent', 'selector': 'cf-avatar-skills'},{'name': 'AvatarsListComponent', 'selector': 'cf-avatars-list'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'AvatarsCarouselComponent'};
 </script>

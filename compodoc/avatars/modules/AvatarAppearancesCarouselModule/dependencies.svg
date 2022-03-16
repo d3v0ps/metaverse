@@ -18,13 +18,13 @@
 <title>cluster_AvatarAppearancesCarouselModule_imports</title>
 <polygon fill="none" stroke="black" points="282,-40.8 282,-92.8 714,-92.8 714,-40.8 282,-40.8"/>
 </g>
-<g id="clust5" class="cluster">
-<title>cluster_AvatarAppearancesCarouselModule_exports</title>
-<polygon fill="none" stroke="black" points="263,-170.8 263,-222.8 523,-222.8 523,-170.8 263,-170.8"/>
-</g>
 <g id="clust2" class="cluster">
 <title>cluster_AvatarAppearancesCarouselModule_declarations</title>
 <polygon fill="none" stroke="black" points="16,-40.8 16,-92.8 274,-92.8 274,-40.8 16,-40.8"/>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_AvatarAppearancesCarouselModule_exports</title>
+<polygon fill="none" stroke="black" points="263,-170.8 263,-222.8 523,-222.8 523,-170.8 263,-170.8"/>
 </g>
 <!-- AvatarAppearancesCarouselComponent -->
 <g id="node1" class="node">
