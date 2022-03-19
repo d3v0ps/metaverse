@@ -217,12 +217,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(generator: AvatarGenerator, worldsState: WorldsState)</code>
+<code>constructor(generator: AvatarGenerator, worldsState: WorldsState, actionPlanner: ActionPlanner<AvatarLivingState>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:64</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:70</a></div>
                             </td>
                         </tr>
 
@@ -256,6 +256,18 @@
                                                   
                                                         <td>
                                                                     <code>WorldsState</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>actionPlanner</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActionPlanner&lt;AvatarLivingState&gt;</code>
                                                         </td>
                                                   
                                                     <td>
@@ -301,8 +313,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="71"
-                            class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:71</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:78</a></div>
                 </td>
             </tr>
 
@@ -348,7 +360,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:58</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:64</a></div>
                         </td>
                     </tr>
 
@@ -379,7 +391,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:59</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:65</a></div>
                         </td>
                     </tr>
 
@@ -406,7 +418,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:60</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:66</a></div>
                         </td>
                     </tr>
 
@@ -433,7 +445,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:64</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:70</a></div>
                         </td>
                     </tr>
 
@@ -458,7 +470,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:62</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:68</a></div>
                         </td>
                     </tr>
 
@@ -472,10 +484,16 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { PlannerGoal } from &#x27;@central-factory/actors/models/planner-goal&#x27;;
+import { ActionPlanner } from &#x27;@central-factory/actors/services/action-planner&#x27;;
+import { actions as avatarActions } from &#x27;@central-factory/avatars/actions/avatar.actions&#x27;;
 import { AvatarGenerator } from &#x27;@central-factory/avatars/data/generators/avatar.generator&#x27;;
+import { goals as avatarGoals } from &#x27;@central-factory/avatars/goals/avatar.goals&#x27;;
 import { AvatarRelationshipKind } from &#x27;@central-factory/avatars/models&#x27;;
 import { Avatar } from &#x27;@central-factory/avatars/models/avatar&#x27;;
+import { AvatarLivingState } from &#x27;@central-factory/avatars/states/living-avatar.state&#x27;;
 import { WorldsState } from &#x27;@central-factory/worlds/states/worlds.state&#x27;;
+import faker from &#x27;@faker-js/faker/locale/en_US&#x27;;
 
 @Component({
   selector: &#x27;cf-world-scene&#x27;,
@@ -538,7 +556,8 @@ export class WorldScene {
 
   constructor(
     private generator: AvatarGenerator,
-    private worldsState: WorldsState
+    private worldsState: WorldsState,
+    private actionPlanner: ActionPlanner&lt;AvatarLivingState&gt;
   ) {}
 
   ngOnInit() {
@@ -581,6 +600,36 @@ export class WorldScene {
       this.avatars &#x3D; avatars;
       this.paginated &#x3D; avatars.slice(0, 10);
       this.selectedAvatar &#x3D; this.avatars[0];
+
+      this.avatars.forEach((avatar) &#x3D;&gt; {
+        const energy &#x3D; faker.datatype.number({ min: 4, max: 40 });
+        const { bestPlan, plans } &#x3D; this.actionPlanner.execute(
+          {
+            energy,
+            mind: faker.datatype.number({ min: 25, max: 100 }),
+            location: {},
+            goals: {
+              food: {},
+            },
+          },
+          [
+            {
+              actions: avatarActions,
+              goal: avatarGoals.Food as PlannerGoal&lt;AvatarLivingState&gt;,
+            },
+          ]
+        );
+
+        console.debug(&#x27;plans&#x27;, { energy, plans });
+
+        console.debug(
+          &#x60;-- Best plan(${bestPlan?.cost}) for ${bestPlan?.goal.label} --&#x60;
+        );
+        bestPlan?.actions.map((a: any, i: number) &#x3D;&gt;
+          console.debug(&#x60;${i + 1}) ${a}&#x60;)
+        );
+        console.debug(&#x27;Other plans&#x27;, plans);
+      });
     });
   }
 }

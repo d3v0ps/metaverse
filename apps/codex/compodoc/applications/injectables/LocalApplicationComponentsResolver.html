@@ -40,7 +40,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li >PortalLocalApplicationsResolver</li>
+  <li >LocalApplicationComponentsResolver</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -58,7 +58,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>apps/portal/src/app/portal-local-applications.resolver.ts</code>
+            <code>libs/applications/src/lib/resolvers/components/local-applications/local-application-components.resolver.ts</code>
         </p>
 
 
@@ -78,12 +78,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(providers: <a href="../undefineds/PortalLocalApplicationsProvider.html" target="_self">PortalLocalApplicationsProvider[]</a>)</code>
+<code>constructor(providers: LocalApplicationComponentsProvider[])</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">apps/portal/src/app/portal-local-applications.resolver.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">libs/applications/src/lib/resolvers/components/local-applications/local-application-components.resolver.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -104,7 +104,7 @@
                                                         <td>providers</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../miscellaneous/typealiases.html#PortalLocalApplicationsProvider" target="_self" >PortalLocalApplicationsProvider[]</a></code>
+                                                                    <code>LocalApplicationComponentsProvider[]</code>
                                                         </td>
                                                   
                                                     <td>
@@ -127,39 +127,23 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Inject, Injectable, InjectionToken, Type } from &#x27;@angular/core&#x27;;
-import { NgxdProvider, NgxdResolver } from &#x27;@ngxd/core&#x27;;
-
-export enum PortalLocalApplicationType {
-  CreateAvatarScene &#x3D; &#x27;CreateAvatarScene&#x27;,
-  ManageAvatarsScene &#x3D; &#x27;ManageAvatarsScene&#x27;,
-  InventoryScene &#x3D; &#x27;InventoryScene&#x27;,
-  WorldScene &#x3D; &#x27;WorldScene&#x27;,
-  BurgMapScene &#x3D; &#x27;BurgMapScene&#x27;,
-  SettingsScene &#x3D; &#x27;SettingsScene&#x27;,
-  MarketplaceScene &#x3D; &#x27;MarketplaceScene&#x27;,
-  StartScene &#x3D; &#x27;StartScene&#x27;,
-}
-
-export type PortalLocalApplicationsProvider &#x3D; NgxdProvider&lt;
-  Type&lt;any&gt;,
-  Type&lt;any&gt;
-&gt;;
-
-export const PORTAL_LOCAL_APPLICATIONS_PROVIDER &#x3D; new InjectionToken&lt;
-  PortalLocalApplicationsProvider[]
-&gt;(&#x27;PortalModule.ApplicationsProvider&#x27;);
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Inject, Injectable, Type } from &#x27;@angular/core&#x27;;
+import { NgxdResolver } from &#x27;@ngxd/core&#x27;;
+import {
+  LocalApplicationComponentsProvider,
+  LOCAL_APPLICATION_COMPONENTS_PROVIDER,
+} from &#x27;./local-application-components.provider&#x27;;
 
 @Injectable({
   providedIn: &#x27;root&#x27;,
 })
-export class PortalLocalApplicationsResolver extends NgxdResolver&lt;
+export class LocalApplicationComponentsResolver extends NgxdResolver&lt;
   Type&lt;any&gt;,
   Type&lt;any&gt;
 &gt; {
   constructor(
-    @Inject(PORTAL_LOCAL_APPLICATIONS_PROVIDER)
-    providers: PortalLocalApplicationsProvider[]
+    @Inject(LOCAL_APPLICATION_COMPONENTS_PROVIDER)
+    providers: LocalApplicationComponentsProvider[]
   ) {
     super(providers);
   }
@@ -197,7 +181,7 @@ export class PortalLocalApplicationsResolver extends NgxdResolver&lt;
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'PortalLocalApplicationsResolver.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'LocalApplicationComponentsResolver.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

@@ -66,6 +66,9 @@
                             <a href="#GROUPLESS_ID" title="libs/applications/src/lib/states/application-display.state.ts" ><b>GROUPLESS_ID</b>&nbsp;&nbsp;&nbsp;(libs/.../application-display.state.ts)</a>
                         </li>
                         <li>
+                            <a href="#LOCAL_APPLICATION_COMPONENTS_PROVIDER" title="libs/applications/src/lib/resolvers/components/local-applications/local-application-components.provider.ts" ><b>LOCAL_APPLICATION_COMPONENTS_PROVIDER</b>&nbsp;&nbsp;&nbsp;(libs/.../local-application-components.provider.ts)</a>
+                        </li>
+                        <li>
                             <a href="#STORE_APPLICATIONS_COLLECTION_PROVIDER" title="libs/applications/src/lib/collections/store-applications.collection.ts" ><b>STORE_APPLICATIONS_COLLECTION_PROVIDER</b>&nbsp;&nbsp;&nbsp;(libs/.../store-applications.collection.ts)</a>
                         </li>
                         <li>
@@ -352,6 +355,31 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>&#x27;0&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>libs/applications/src/lib/resolvers/components/local-applications/local-application-components.provider.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="LOCAL_APPLICATION_COMPONENTS_PROVIDER"></a>
+                    <span class="name">
+                        <span ><b>LOCAL_APPLICATION_COMPONENTS_PROVIDER</b></span>
+                        <a href="#LOCAL_APPLICATION_COMPONENTS_PROVIDER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new InjectionToken&lt;
+  LocalApplicationComponentsProvider[]
+&gt;(&#x27;ApplicationsModule.LocalApplicationComponentsProvider&#x27;)</code>
                     </td>
                 </tr>
 
@@ -3449,6 +3477,68 @@
           target: &#x27;usertopics&#x27;,
         },
       ],
+    },
+  },
+  {
+    id: &#x27;com.central-factory.devtools&#x27;,
+    name: &#x27;DevTools&#x27;,
+    description: &#x27;Inspect and play with your data.&#x27;,
+    startUrl: &#x27;DevToolsScene&#x27;,
+    icons: [
+      {
+        src: &#x27;assets/icons/mdi/code-not-equal-variant.svg&#x27;,
+        sizes: &#x27;512x512&#x27;,
+        type: &#x27;image/svg+xml&#x27;,
+      },
+    ],
+    shortcuts: [
+      {
+        name: &#x27;DevTools&#x27;,
+        url: &#x27;/mirror&#x27;,
+        icons: [
+          {
+            src: &#x27;assets/icons/mdi/code-not-equal-variant.svg&#x27;,
+            sizes: &#x27;512x512&#x27;,
+            type: &#x27;image/svg+xml&#x27;,
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: &#x27;com.central-factory&#x27;,
+        name: &#x27;Central Factory&#x27;,
+      },
+      internal: true,
+      renderingType: ApplicationRenderingType.Local,
+      permissions: [
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Read,
+          target: &#x27;useravatars&#x27;,
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Write,
+          target: &#x27;useravatars&#x27;,
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Delete,
+          target: &#x27;useravatars&#x27;,
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Read,
+          target: &#x27;userpreferences&#x27;,
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Write,
+          target: &#x27;userpreferences&#x27;,
+        },
+      ],
+      sidebarShortcuts: [&#x27;DevTools&#x27;],
     },
   },
   {

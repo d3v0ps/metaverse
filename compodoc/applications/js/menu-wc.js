@@ -372,6 +372,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <a href="injectables/InternalUserApplicationsState.html" data-type="entity-link" >InternalUserApplicationsState</a>
                                 </li>
                                 <li class="link">
+                                    <a href="injectables/LocalApplicationComponentsResolver.html" data-type="entity-link" >LocalApplicationComponentsResolver</a>
+                                </li>
+                                <li class="link">
                                     <a href="injectables/RecentlyOpenedApplicationsState.html" data-type="entity-link" >RecentlyOpenedApplicationsState</a>
                                 </li>
                                 <li class="link">

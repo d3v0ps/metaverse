@@ -60,7 +60,25 @@
                 <td class="col-md-4">
                     <ul class="index-list">
                         <li>
+                            <a href="#appInitializersProviders" title="apps/portal/src/app/providers/application/app-initializers.providers.ts" ><b>appInitializersProviders</b>&nbsp;&nbsp;&nbsp;(apps/.../app-initializers.providers.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#applicationProviders" title="apps/portal/src/app/providers/application/application.providers.ts" ><b>applicationProviders</b>&nbsp;&nbsp;&nbsp;(apps/.../application.providers.ts)</a>
+                        </li>
+                        <li>
                             <a href="#args" title="apps/portal/src/main.electron.ts" ><b>args</b>&nbsp;&nbsp;&nbsp;(apps/.../main.electron.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#collectionsProviders" title="apps/portal/src/app/providers/data/collections.providers.ts" ><b>collectionsProviders</b>&nbsp;&nbsp;&nbsp;(apps/.../collections.providers.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#componentsProviders" title="apps/portal/src/app/providers/components/components.providers.ts" ><b>componentsProviders</b>&nbsp;&nbsp;&nbsp;(apps/.../components.providers.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#dataProviders" title="apps/portal/src/app/providers/data/data.providers.ts" ><b>dataProviders</b>&nbsp;&nbsp;&nbsp;(apps/.../data.providers.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#demoDataProviders" title="apps/portal/src/app/providers/data/demo-data.providers.ts" ><b>demoDataProviders</b>&nbsp;&nbsp;&nbsp;(apps/.../demo-data.providers.ts)</a>
                         </li>
                         <li>
                             <a href="#environment" title="apps/portal/src/environments/environment.demo.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.demo.ts)</a>
@@ -72,13 +90,19 @@
                             <a href="#environment" title="apps/portal/src/environments/environment.ts" ><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.ts)</a>
                         </li>
                         <li>
-                            <a href="#METADRONES_URL" title="apps/portal/src/app/portal-routing.module.ts" ><b>METADRONES_URL</b>&nbsp;&nbsp;&nbsp;(apps/.../portal-routing.module.ts)</a>
+                            <a href="#initialDataProviders" title="apps/portal/src/app/providers/data/initial-data.providers.ts" ><b>initialDataProviders</b>&nbsp;&nbsp;&nbsp;(apps/.../initial-data.providers.ts)</a>
                         </li>
                         <li>
                             <a href="#platform" title="apps/portal/src/main.electron.ts" ><b>platform</b>&nbsp;&nbsp;&nbsp;(apps/.../main.electron.ts)</a>
                         </li>
                         <li>
-                            <a href="#PORTAL_LOCAL_APPLICATIONS_PROVIDER" title="apps/portal/src/app/portal-local-applications.resolver.ts" ><b>PORTAL_LOCAL_APPLICATIONS_PROVIDER</b>&nbsp;&nbsp;&nbsp;(apps/.../portal-local-applications.resolver.ts)</a>
+                            <a href="#portalLocalApplicationComponentsProviders" title="apps/portal/src/app/providers/components/local-applications-components.providers.ts" ><b>portalLocalApplicationComponentsProviders</b>&nbsp;&nbsp;&nbsp;(apps/.../local-applications-components.providers.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#providers" title="apps/portal/src/app/providers/providers.module.ts" ><b>providers</b>&nbsp;&nbsp;&nbsp;(apps/.../providers.module.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#REMOTE_ENTRY_URL" title="apps/portal/src/app/portal-routing.module.ts" ><b>REMOTE_ENTRY_URL</b>&nbsp;&nbsp;&nbsp;(apps/.../portal-routing.module.ts)</a>
                         </li>
                         <li>
                             <a href="#widevinePaths" title="apps/portal/src/main.electron.ts" ><b>widevinePaths</b>&nbsp;&nbsp;&nbsp;(apps/.../main.electron.ts)</a>
@@ -93,6 +117,71 @@
     </table>
 </section>
 
+    <h3>apps/portal/src/app/providers/application/app-initializers.providers.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="appInitializersProviders"></a>
+                    <span class="name">
+                        <span ><b>appInitializersProviders</b></span>
+                        <a href="#appInitializersProviders"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  {
+    provide: APP_INITIALIZER,
+    useFactory: () &#x3D;&gt; () &#x3D;&gt; null,
+    deps: [CustomizationSettingsState, BackgroundRenderer, NetworkService],
+    multi: true,
+  },
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>apps/portal/src/app/providers/application/application.providers.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="applicationProviders"></a>
+                    <span class="name">
+                        <span ><b>applicationProviders</b></span>
+                        <a href="#applicationProviders"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[...appInitializersProviders]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
     <h3>apps/portal/src/main.electron.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -193,6 +282,136 @@
         </tbody>
     </table>
 </section>
+    <h3>apps/portal/src/app/providers/data/collections.providers.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="collectionsProviders"></a>
+                    <span class="name">
+                        <span ><b>collectionsProviders</b></span>
+                        <a href="#collectionsProviders"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  STORE_APPLICATIONS_COLLECTION_PROVIDER,
+  USER_APPLICATIONS_COLLECTION_PROVIDER,
+  USER_TOPICS_COLLECTION_PROVIDER,
+  APPLICATION_PERMISSIONS_COLLECTION_PROVIDER,
+  USER_PREFERENCES_COLLECTION_PROVIDER,
+  USER_AVATARS_COLLECTION_PROVIDER,
+  USER_ASSETS_COLLECTION_PROVIDER,
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>apps/portal/src/app/providers/components/components.providers.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="componentsProviders"></a>
+                    <span class="name">
+                        <span ><b>componentsProviders</b></span>
+                        <a href="#componentsProviders"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  ...portalLocalApplicationComponentsProviders,
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>apps/portal/src/app/providers/data/data.providers.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dataProviders"></a>
+                    <span class="name">
+                        <span ><b>dataProviders</b></span>
+                        <a href="#dataProviders"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  ...collectionsProviders,
+  ...initialDataProviders,
+  ...demoDataProviders,
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>apps/portal/src/app/providers/data/demo-data.providers.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="demoDataProviders"></a>
+                    <span class="name">
+                        <span ><b>demoDataProviders</b></span>
+                        <a href="#demoDataProviders"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[USER_AVATARS_DEMO_DATA_PROVIDER]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
     <h3>apps/portal/src/environments/environment.demo.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
@@ -272,7 +491,7 @@
 
   repositoryUrl:
     &#x27;https://raw.githubusercontent.com/central-factory/web-application-manifests/main&#x27;,
-  worldUrl: &#x27;assets/worlds/001.map&#x27;,
+  worldUrl: &#x27;assets/worlds/001.json&#x27;,
   webUrl: &#x27;https://aitorllamas.com/metaverse/apps/codex&#x27;,
   documentationUrl: &#x27;https://aitorllamas.com/metaverse/apps/codex/docs&#x27;,
   blogUrl: &#x27;https://aitorllamas.com/metaverse/apps/codex/blog&#x27;,
@@ -339,16 +558,185 @@
         </tbody>
     </table>
 </section>
+    <h3>apps/portal/src/app/providers/data/initial-data.providers.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initialDataProviders"></a>
+                    <span class="name">
+                        <span ><b>initialDataProviders</b></span>
+                        <a href="#initialDataProviders"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  USER_APPLICATIONS_INITIAL_DATA_PROVIDER,
+  USER_TOPICS_INITIAL_DATA_PROVIDER,
+  CUSTOMIZATION_INITIAL_DATA_PROVIDER,
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>apps/portal/src/app/providers/components/local-applications-components.providers.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="portalLocalApplicationComponentsProviders"></a>
+                    <span class="name">
+                        <span ><b>portalLocalApplicationComponentsProviders</b></span>
+                        <a href="#portalLocalApplicationComponentsProviders"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Provider[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  // Applications
+  {
+    provide: LOCAL_APPLICATION_COMPONENTS_PROVIDER,
+    useValue: {
+      type: PortalLocalApplicationType.InventoryScene,
+      component: InventoryScene,
+    },
+    multi: true,
+  },
+  {
+    provide: LOCAL_APPLICATION_COMPONENTS_PROVIDER,
+    useValue: {
+      type: PortalLocalApplicationType.ManageAvatarsScene,
+      component: SelectAvatarScene,
+    },
+    multi: true,
+  },
+  {
+    provide: LOCAL_APPLICATION_COMPONENTS_PROVIDER,
+    useValue: {
+      type: PortalLocalApplicationType.CreateAvatarScene,
+      component: CreateAvatarScene,
+    },
+    multi: true,
+  },
+  {
+    provide: LOCAL_APPLICATION_COMPONENTS_PROVIDER,
+    useValue: {
+      type: PortalLocalApplicationType.WorldScene,
+      component: WorldScene,
+    },
+    multi: true,
+  },
+  {
+    provide: LOCAL_APPLICATION_COMPONENTS_PROVIDER,
+    useValue: {
+      type: PortalLocalApplicationType.BurgMapScene,
+      component: BurgMapComponent,
+    },
+    multi: true,
+  },
+  {
+    provide: LOCAL_APPLICATION_COMPONENTS_PROVIDER,
+    useValue: {
+      type: PortalLocalApplicationType.MarketplaceScene,
+      component: MarketplaceScene,
+    },
+    multi: true,
+  },
+  {
+    provide: LOCAL_APPLICATION_COMPONENTS_PROVIDER,
+    useValue: {
+      type: PortalLocalApplicationType.SettingsScene,
+      component: SettingsScene,
+    },
+    multi: true,
+  },
+  {
+    provide: LOCAL_APPLICATION_COMPONENTS_PROVIDER,
+    useValue: {
+      type: PortalLocalApplicationType.StartScene,
+      component: StartScene,
+    },
+    multi: true,
+  },
+  {
+    provide: LOCAL_APPLICATION_COMPONENTS_PROVIDER,
+    useValue: {
+      type: PortalLocalApplicationType.DevToolsScene,
+      component: DevtoolsComponent,
+    },
+    multi: true,
+  },
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>apps/portal/src/app/providers/providers.module.ts</h3>
+    <section>
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="providers"></a>
+                    <span class="name">
+                        <span ><b>providers</b></span>
+                        <a href="#providers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+  ...applicationProviders,
+  ...componentsProviders,
+  ...dataProviders,
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
     <h3>apps/portal/src/app/portal-routing.module.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="METADRONES_URL"></a>
+                    <a name="REMOTE_ENTRY_URL"></a>
                     <span class="name">
-                        <span ><b>METADRONES_URL</b></span>
-                        <a href="#METADRONES_URL"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>REMOTE_ENTRY_URL</b></span>
+                        <a href="#REMOTE_ENTRY_URL"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
@@ -361,31 +749,6 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>&#x27;http://localhost:3000/remoteEntry.js&#x27;</code>
-                    </td>
-                </tr>
-
-
-        </tbody>
-    </table>
-</section>
-    <h3>apps/portal/src/app/portal-local-applications.resolver.ts</h3>
-    <section>
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="PORTAL_LOCAL_APPLICATIONS_PROVIDER"></a>
-                    <span class="name">
-                        <span ><b>PORTAL_LOCAL_APPLICATIONS_PROVIDER</b></span>
-                        <a href="#PORTAL_LOCAL_APPLICATIONS_PROVIDER"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>new InjectionToken&lt;
-  PortalLocalApplicationsProvider[]
-&gt;(&#x27;PortalModule.ApplicationsProvider&#x27;)</code>
                     </td>
                 </tr>
 
