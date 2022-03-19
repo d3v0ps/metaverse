@@ -1,6 +1,32 @@
 {
   "version": 1,
   "projects": {
+    "ai": {
+      "projectType": "library",
+      "root": "libs/actors",
+      "sourceRoot": "libs/actors/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/actors"],
+          "options": {
+            "jestConfig": "libs/actors/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/actors/src/**/*.ts",
+              "libs/actors/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "applications": {
       "projectType": "library",
       "root": "libs/applications",
@@ -278,6 +304,58 @@
               {
                 "command": "npx compodoc -p libs/core/tsconfig.json -d dist/compodoc/core --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
               }
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "devtools": {
+      "projectType": "library",
+      "root": "libs/devtools",
+      "sourceRoot": "libs/devtools/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/devtools"],
+          "options": {
+            "jestConfig": "libs/devtools/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/devtools/src/**/*.ts",
+              "libs/devtools/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "dialogs": {
+      "projectType": "library",
+      "root": "libs/dialogs",
+      "sourceRoot": "libs/dialogs/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/dialogs"],
+          "options": {
+            "jestConfig": "libs/dialogs/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/dialogs/src/**/*.ts",
+              "libs/dialogs/src/**/*.html"
             ]
           }
         }

@@ -6,7 +6,7 @@ import { IsDatabaseCreatedGuard } from '@central-factory/persistence/guards/is-d
 import { IsNotDatabaseCreatedGuard } from '@central-factory/persistence/guards/is-not-database-created.guard';
 import { PortalLayoutScene } from './scenes/portal-layout/portal-layout.scene';
 
-const METADRONES_URL = 'http://localhost:3000/remoteEntry.js';
+const REMOTE_ENTRY_URL = 'http://localhost:3000/remoteEntry.js';
 
 export const routes: Routes = [
   {
@@ -97,6 +97,14 @@ export const routes: Routes = [
           import('./scenes/world/world-scene.module').then(
             (m) => m.WorldSceneModule
           ),
+        canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
+      },
+      {
+        path: 'devtools',
+        loadChildren: () =>
+          import(
+            '@central-factory/devtools/web-components/angular/devtools/devtools.module'
+          ).then((m) => m.DevToolsModule),
         canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
       },
       {

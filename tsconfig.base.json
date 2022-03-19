@@ -15,10 +15,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@central-factory/actors/*": ["libs/actors/src/lib/*"],
       "@central-factory/applications/*": ["libs/applications/src/lib/*"],
       "@central-factory/assets/*": ["libs/assets/src/lib/*"],
       "@central-factory/avatars/*": ["libs/avatars/src/lib/*"],
       "@central-factory/core/*": ["libs/core/src/lib/*"],
+      "@central-factory/devtools/*": ["libs/devtools/src/lib/*"],
+      "@central-factory/dialogs": ["libs/dialogs/src/index.ts"],
       "@central-factory/gatekeeper/*": ["apps/gatekeeper/src/app/*"],
       "@central-factory/inventory/*": ["apps/inventory/src/app/*"],
       "@central-factory/logger/*": ["libs/logger/src/lib/*"],

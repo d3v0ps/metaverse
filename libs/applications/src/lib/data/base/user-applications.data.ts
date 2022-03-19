@@ -143,6 +143,68 @@ export const userApplications: UserApplicationDocType[] = [
     },
   },
   {
+    id: 'com.central-factory.devtools',
+    name: 'DevTools',
+    description: 'Inspect and play with your data.',
+    startUrl: 'DevToolsScene',
+    icons: [
+      {
+        src: 'assets/icons/mdi/code-not-equal-variant.svg',
+        sizes: '512x512',
+        type: 'image/svg+xml',
+      },
+    ],
+    shortcuts: [
+      {
+        name: 'DevTools',
+        url: '/mirror',
+        icons: [
+          {
+            src: 'assets/icons/mdi/code-not-equal-variant.svg',
+            sizes: '512x512',
+            type: 'image/svg+xml',
+          },
+        ],
+      },
+    ],
+    additionalProperties: {
+      author: {
+        id: 'com.central-factory',
+        name: 'Central Factory',
+      },
+      internal: true,
+      renderingType: ApplicationRenderingType.Local,
+      permissions: [
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Read,
+          target: 'useravatars',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Write,
+          target: 'useravatars',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Delete,
+          target: 'useravatars',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Read,
+          target: 'userpreferences',
+        },
+        {
+          kind: PermissionKind.Collection,
+          mode: PermissionMode.Write,
+          target: 'userpreferences',
+        },
+      ],
+      sidebarShortcuts: ['DevTools'],
+    },
+  },
+  {
     id: 'com.central-factory.mirror',
     name: 'Mirror',
     description: 'Loading your Metaverse Mirror. Customize your avatars.',

@@ -1,8 +1,14 @@
 import { Component } from '@angular/core';
+import { PlannerGoal } from '@central-factory/actors/models/planner-goal';
+import { ActionPlanner } from '@central-factory/actors/services/action-planner';
+import { actions as avatarActions } from '@central-factory/avatars/actions/avatar.actions';
 import { AvatarGenerator } from '@central-factory/avatars/data/generators/avatar.generator';
+import { goals as avatarGoals } from '@central-factory/avatars/goals/avatar.goals';
 import { AvatarRelationshipKind } from '@central-factory/avatars/models';
 import { Avatar } from '@central-factory/avatars/models/avatar';
+import { AvatarLivingState } from '@central-factory/avatars/states/living-avatar.state';
 import { WorldsState } from '@central-factory/worlds/states/worlds.state';
+import faker from '@faker-js/faker/locale/en_US';
 
 @Component({
   selector: 'cf-world-scene',
@@ -65,7 +71,8 @@ export class WorldScene {
 
   constructor(
     private generator: AvatarGenerator,
-    private worldsState: WorldsState
+    private worldsState: WorldsState,
+    private actionPlanner: ActionPlanner<AvatarLivingState>
   ) {}
 
   ngOnInit() {
@@ -108,6 +115,36 @@ export class WorldScene {
       this.avatars = avatars;
       this.paginated = avatars.slice(0, 10);
       this.selectedAvatar = this.avatars[0];
+
+      this.avatars.forEach((avatar) => {
+        const energy = faker.datatype.number({ min: 4, max: 40 });
+        const { bestPlan, plans } = this.actionPlanner.execute(
+          {
+            energy,
+            mind: faker.datatype.number({ min: 25, max: 100 }),
+            location: {},
+            goals: {
+              food: {},
+            },
+          },
+          [
+            {
+              actions: avatarActions,
+              goal: avatarGoals.Food as PlannerGoal<AvatarLivingState>,
+            },
+          ]
+        );
+
+        console.debug('plans', { energy, plans });
+
+        console.debug(
+          `-- Best plan(${bestPlan?.cost}) for ${bestPlan?.goal.label} --`
+        );
+        bestPlan?.actions.map((a: any, i: number) =>
+          console.debug(`${i + 1}) ${a}`)
+        );
+        console.debug('Other plans', plans);
+      });
     });
   }
 }

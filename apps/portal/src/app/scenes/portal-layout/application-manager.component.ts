@@ -4,10 +4,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { userApplicationsById } from '@central-factory/applications/data/base/user-applications.data';
 import { Application } from '@central-factory/applications/models/application';
 import { ApplicationOpenCommand } from '@central-factory/applications/models/application-commands';
+import { LocalApplicationComponentsResolver } from '@central-factory/applications/resolvers/components/local-applications/local-application-components.resolver';
 import { ApplicationDisplayState } from '@central-factory/applications/states/application-display.state';
 import { ManageAvatarAppearancesScene } from '@central-factory/manage-avatars/scenes/create-avatar/scenes/manage-avatar-appearances/manage-avatar-appearances.scene';
 import { map } from 'rxjs';
-import { PortalLocalApplicationsResolver } from '../../portal-local-applications.resolver';
 
 @Component({
   selector: 'cf-application-manager',
@@ -76,7 +76,7 @@ import { PortalLocalApplicationsResolver } from '../../portal-local-applications
       </cf-window>
     </ng-container>
   `,
-  providers: [PortalLocalApplicationsResolver],
+  providers: [LocalApplicationComponentsResolver],
   styles: [
     `
       .window-body__content {
@@ -108,7 +108,7 @@ export class ApplicationManagerComponent implements OnInit {
   );
 
   constructor(
-    public localResolver: PortalLocalApplicationsResolver,
+    public localResolver: LocalApplicationComponentsResolver,
     private applicationDisplayState: ApplicationDisplayState,
     @Inject(DOCUMENT) private _document: Document
   ) {}
@@ -138,6 +138,20 @@ export class ApplicationManagerComponent implements OnInit {
         height: `calc(100vh - 20%)`,
       },
     };
+
+    this.applicationDisplayState.open({
+      name: ApplicationOpenCommand.name,
+      application: userApplicationsById['com.central-factory.devtools'],
+      settings: {
+        groupId: 'map',
+        show: true,
+        // width: '1000px',
+        // height: '1200px',
+        // x: 140,
+        // y: 146
+        ...layout.leftPanel,
+      },
+    });
 
     this.applicationDisplayState.open({
       name: ApplicationOpenCommand.name,
