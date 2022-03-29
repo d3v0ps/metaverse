@@ -469,6 +469,58 @@
       },
       "tags": []
     },
+    "host": {
+      "root": "apps/host",
+      "sourceRoot": "apps/host/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/host",
+            "main": "apps/host/src/main.ts",
+            "tsConfig": "apps/host/tsconfig.app.json",
+            "assets": ["apps/host/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/host/src/environments/environment.ts",
+                  "with": "apps/host/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "host:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/host/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/host"],
+          "options": {
+            "jestConfig": "apps/host/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "inventory": {
       "projectType": "application",
       "root": "apps/inventory",
@@ -568,6 +620,32 @@
           "options": {
             "jestConfig": "apps/inventory/jest.config.js",
             "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "knowledge": {
+      "projectType": "library",
+      "root": "libs/knowledge",
+      "sourceRoot": "libs/knowledge/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/knowledge"],
+          "options": {
+            "jestConfig": "libs/knowledge/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/knowledge/src/**/*.ts",
+              "libs/knowledge/src/**/*.html"
+            ]
           }
         }
       },
@@ -1327,6 +1405,7 @@
                 "libs/avatars/src/lib/styles",
                 "libs/assets/src/lib/styles",
                 "libs/topics/src/lib/styles",
+                "libs/worlds/src/lib/styles",
                 "apps/manage-avatars/src/styles",
                 "apps/player/src/styles"
               ]

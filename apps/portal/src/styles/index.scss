@@ -4,6 +4,17 @@
 @use 'manage-avatars';
 @use 'assets';
 @use 'player';
+@use 'worlds';
+
+
+#bgiframe {
+  display: block;
+  margin: 0 auto;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: -1;
+}
 
 .scene-content {
   &--animated {

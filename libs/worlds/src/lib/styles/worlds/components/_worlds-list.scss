@@ -1,0 +1,55 @@
+
+.worlds-list {
+  height: 100%;
+  overflow: auto;
+  padding: 0 1rem;
+  overflow-x: hidden;
+
+  .worlds-list-item {
+    max-height: 500px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.worlds-list-item {
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--component-scene-content-shadow-outset),
+    inset var(--component-scene-content-shadow-inset-primary),
+    inset var(--component-scene-content-shadow-inset-secondary);
+  border-radius: 20px;
+  background-color: var(--color-base-dark-medium);
+
+  &__header, &__body, &__footer {
+    padding: .5rem .5rem 0 .5rem;
+  }
+
+  &__body {
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+
+    > *:nth-child(1) {
+      flex: 1 1 70%;
+      min-width: 5ch;
+    }
+
+    > *:nth-child(2) {
+      flex: 1 1 25%;
+      min-width: 5ch;
+    }
+  }
+
+  &__footer {
+    padding-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  &__source {
+    height: 100px;
+  }
+}

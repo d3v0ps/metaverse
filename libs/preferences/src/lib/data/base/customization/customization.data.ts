@@ -12,6 +12,10 @@ export const customization: Preference<Customization>[] = [
         name: 'Metaverse',
         path: 'assets/themes/metaverse/variables.css',
       },
+      background: {
+        name: 'Apartment 2',
+        url: 'http://www.youtube.com/embed/CMkI2EItvRw',
+      },
     },
   },
   {

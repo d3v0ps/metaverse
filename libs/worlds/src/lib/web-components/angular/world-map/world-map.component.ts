@@ -14,7 +14,7 @@ export class WorldMapComponent {
   @Input() world?: FantasyMapGeneratorMap;
 
   worldUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(
-    'http://azgaar.github.io/Fantasy-Map-Generator/?seed=440516398&width=1920&height=961'
+    'http://aitorllamas.com/Fantasy-Map-Generator/?seed=440516398&hideEditor=true&hideWelcomeMessage=true&presetStyle=cyberpunk&preset=political'
   );
 
   constructor(private domSanitizer: DomSanitizer) {}

@@ -3,10 +3,11 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  HostListener, Input,
+  HostListener,
+  Input,
   Output,
   ViewChild,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
 import { findAncestor } from '../../shared/platform/browser/dom/find-ancestor';
 import { getMaxZIndex } from '../../shared/platform/browser/dom/get-max-z-index';
@@ -34,6 +35,7 @@ import { ResizableEvent } from '../resizable/resizable.directive';
       [northWest]="true"
       [south]="true"
       [east]="true"
+      [west]="true"
       [southEast]="true"
       [southWest]="true"
       (resizing)="onResize($event)"
@@ -48,6 +50,9 @@ import { ResizableEvent } from '../resizable/resizable.directive';
         #modalHeader
         (mousedown)="initDrag($event)"
         (touchstart)="initDrag($event)"
+        [ngStyle]="{
+          'background-color': headerBackgroundColor
+        }"
       >
         <div cfElem="controls">
           <button
@@ -81,10 +86,14 @@ import { ResizableEvent } from '../resizable/resizable.directive';
           <ng-content select=".window-header__content"></ng-content>
         </div>
       </div>
-      <div cfBlock="window-body" #modalBody [ngStyle]="{
-        height: 'calc(100% - 48px)',
-        width: '100%'
-      }">
+      <div
+        cfBlock="window-body"
+        #modalBody
+        [ngStyle]="{
+          height: 'calc(100% - 48px)',
+          width: '100%'
+        }"
+      >
         <ng-content select=".window-body__content"></ng-content>
       </div>
       <div cfBlock="window-footer" #modalFooter>
@@ -103,11 +112,13 @@ export class WindowComponent implements AfterViewChecked {
   @Input() x?: number;
   @Input() y?: number;
   @Input() zIndex?: number;
+  @Input() headerBackgroundColor =
+    'var(--component-window-header-background-color)';
 
   @Output() moveOnTopEnd = new EventEmitter();
   @Output() openModal = new EventEmitter();
   @Output() closeModal = new EventEmitter<boolean>();
-  @Output() resizeModal = new EventEmitter<ResizableEvent>();
+  @Output() resizeWindow = new EventEmitter<ResizableEvent>();
   @Output() maximizeModal = new EventEmitter<boolean>();
 
   @ViewChild('modalRoot', { static: false }) modalRoot!: ElementRef;
@@ -126,11 +137,10 @@ export class WindowComponent implements AfterViewChecked {
   preMaximizePageY?: number;
   dragEventTarget!: MouseEvent | TouchEvent;
 
-  constructor(private element: ElementRef) { }
+  constructor(private element: ElementRef) {}
 
   ngAfterViewChecked() {
     if (this.executePostDisplayActions) {
-
       this.render();
 
       this.executePostDisplayActions = false;
@@ -207,7 +217,7 @@ export class WindowComponent implements AfterViewChecked {
       this.calcBodyHeight();
     }
 
-    this.resizeModal.emit(event);
+    this.resizeWindow.emit(event);
   }
 
   calcBodyHeight() {

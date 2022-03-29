@@ -108,6 +108,14 @@ export const routes: Routes = [
         canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
       },
       {
+        path: 'knowledge',
+        loadChildren: () =>
+          import(
+            '@central-factory/knowledge/web-components/angular/knowledge-index/knowledge-index.module'
+          ).then((m) => m.KnowledgeIndexModule),
+        canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
+      },
+      {
         path: '',
         redirectTo: 'start',
         pathMatch: 'full',

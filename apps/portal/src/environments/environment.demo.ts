@@ -10,7 +10,8 @@ export const environment: Environment = {
 
   repositoryUrl:
     'https://raw.githubusercontent.com/central-factory/web-application-manifests/main',
-  worldUrl: 'assets/worlds/001.json',
+  worldUrl: 'assets/worlds/repository.json',
+  hostUrl: 'http://localhost:3333/api/001?id=root/systems/programming',
   webUrl: 'http://localhost:3000',
   documentationUrl: 'http://localhost:3000/docs',
   blogUrl: 'http://localhost:3000/blog',

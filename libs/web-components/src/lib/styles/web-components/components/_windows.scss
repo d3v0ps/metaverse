@@ -30,7 +30,7 @@
   left: 0;
   top: 0;
   outline: none;
-  background-color: var(--component-window-background-color);
+  // background-color: var(--component-window-background-color);
   color: var(--component-window-text-color);
   padding: 0;
   border-radius: 20px;
@@ -38,6 +38,10 @@
   min-width: 16.25rem;
   min-height: 12.5rem;
   width: 31.25rem;
+  // background-color: rgb(0 0 0 / 70%);
+  background-color: #9575cd2b;
+  backdrop-filter: blur(5px);
+
 
   &--maximized {
     border-radius: 0;
@@ -62,6 +66,7 @@
   flex-wrap: nowrap;
   align-items: center;
   gap: var(--component-application-toolbar-padding);
+  cursor: all-scroll;
 
   &__title {
     display: flex;
@@ -70,6 +75,12 @@
     height: 100%;
     overflow: hidden;
     font-size: 1.125rem;
+    gap: .5rem;
+
+    .icon__svg {
+      width: 1.5rem !important;
+      height: 1.5rem !important;
+    }
   }
 
   &__controls {

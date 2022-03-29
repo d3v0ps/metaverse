@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
       <li>
         <a
           class="button"
-          routerLink="/settings/customization"
+          [routerLink]="['', { outlets: { settings: ['customization'] } }]"
           routerLinkActive="button--primary"
         >
           Customization
@@ -16,7 +16,7 @@ import { Component } from '@angular/core';
       <li>
         <a
           class="button"
-          routerLink="/settings/credits"
+          [routerLink]="['', { outlets: { settings: ['credits'] } }]"
           routerLinkActive="button--primary"
         >
           Credits

@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
           <cf-settings-nav></cf-settings-nav>
         </div>
         <div cfElem="content">
-          <router-outlet></router-outlet>
+          <router-outlet name="settings"></router-outlet>
         </div>
       </div>
     </div>

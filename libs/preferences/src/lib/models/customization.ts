@@ -5,4 +5,8 @@ export type Theme = {
 
 export type Customization = {
   theme: Theme;
+  background?: {
+    name: string;
+    url: string;
+  };
 };

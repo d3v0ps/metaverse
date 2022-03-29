@@ -21,8 +21,11 @@ export type WorldEvent = {
 export type Era = {
   name: string;
   shortName: string;
+  description?: string;
   startYear: number;
-  endYear: number;
+  endYear?: number;
+  icon?: string;
+  color?: string;
   military: MilitarySettings[];
   events: WorldEvent[];
 };

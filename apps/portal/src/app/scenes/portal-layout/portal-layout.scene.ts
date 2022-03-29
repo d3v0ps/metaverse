@@ -7,6 +7,7 @@ import {
   Application,
   ApplicationShortcut,
 } from '@central-factory/applications/models/application';
+import { ApplicationDisplayState } from '@central-factory/applications/states/application-display.state';
 import { RecentlyOpenedApplicationsState } from '@central-factory/applications/states/recently-opened-applications.state';
 import { SelectedApplicationState } from '@central-factory/applications/states/selected-application.state';
 import type { Avatar } from '@central-factory/avatars/models/avatar';
@@ -118,6 +119,9 @@ export enum SceneContentAnimationState {
                         'button--active': item.active
                       }"
                       style="margin-top: 15px;"
+                      [ngStyle]="{
+                        'background-color': item.color
+                      }"
                     >
                       <cf-svg-icon
                         [src]="item.icon"
@@ -128,7 +132,7 @@ export enum SceneContentAnimationState {
                   </a>
                 </ng-container>
 
-                <div
+                <!-- div
                   cdkDropList
                   cdkDropListSortingDisabled
                   [cdkDropListData]="recentlyOpenedSidebarItems"
@@ -165,12 +169,12 @@ export enum SceneContentAnimationState {
                       </button>
                     </div>
                   </div>
-                </div>
+                </div -->
 
                 <router-outlet name="sidebar"></router-outlet>
 
                 <div cfBlock="sidebar-footer">
-                  <a
+                  <!-- a
                     (click)="onCatchClick()"
                     class="d-block"
                     cfBlock="sidebar-item"
@@ -192,7 +196,7 @@ export enum SceneContentAnimationState {
                         [svgClass]="'icon__svg'"
                       ></cf-svg-icon>
                     </button>
-                  </a>
+                  </a -->
                 </div>
               </div>
             </cf-sidebar>
@@ -228,7 +232,7 @@ export enum SceneContentAnimationState {
                     (splashScreenHide)="showSplashScreen = false"
                   ></cf-splash-screen>
                 </div>
-                <cf-application-manager></cf-application-manager>
+                <cf-applications-windows-manager></cf-applications-windows-manager>
                 <!-- router-outlet></router-outlet -->
               </div>
             </div>
@@ -304,7 +308,8 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
     private readonly recentlyOpenedApplicationsState: RecentlyOpenedApplicationsState,
     private readonly customizationSettingsState: CustomizationSettingsState,
     private readonly breakpointObserver: BreakpointObserver,
-    private readonly worldsState: WorldsState
+    private readonly worldsState: WorldsState,
+    private readonly applicationDisplayState: ApplicationDisplayState
   ) {}
 
   public ngOnInit(): void {
@@ -406,18 +411,29 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
   }
 
   public onSidebarItemClick(sidebarItem: SidebarItem) {
-    this.sceneContentAnimationState = SceneContentAnimationState.Idle;
-    setTimeout(() => {
-      this.sceneContentAnimationState = SceneContentAnimationState.Opened;
-      this.showSplashScreen = true;
-      this.openedSidebarItem = sidebarItem;
+    if (!sidebarItem.application) {
+      console.debug('unhandled sidebarItem', sidebarItem);
+      return;
+    }
 
-      if (sidebarItem.routerLink) {
-        this.router.navigate(sidebarItem.routerLink);
-      }
+    console.debug('application', sidebarItem.application);
 
-      // setTimeout(() => (this.showSplashScreen = false), 3000);
-    }, 100);
+    this.applicationDisplayState.open({
+      name: '[Application] Open',
+      application: sidebarItem.application as Application,
+    });
+    // this.sceneContentAnimationState = SceneContentAnimationState.Idle;
+    // setTimeout(() => {
+    //   this.sceneContentAnimationState = SceneContentAnimationState.Opened;
+    //   this.showSplashScreen = true;
+    //   this.openedSidebarItem = sidebarItem;
+
+    //   if (sidebarItem.routerLink) {
+    //     this.router.navigate(sidebarItem.routerLink);
+    //   }
+
+    //   // setTimeout(() => (this.showSplashScreen = false), 3000);
+    // }, 100);
   }
 
   public onCatchClick() {

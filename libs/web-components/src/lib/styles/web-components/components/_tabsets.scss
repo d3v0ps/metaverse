@@ -22,10 +22,6 @@
     color: var(--component-tab-text-color);
     min-width: 6rem;
 
-    .button__icon {
-      margin-right: 0.5rem;
-    }
-
     &--active {
       background-color: var(--component-tab-active-background-color);
       color: var(--component-tab-active-text-color);
@@ -45,6 +41,8 @@
 
     .icon__svg {
       fill: var(--component-tab-text-color);
+      width: 1.5rem !important;
+      height: 1.5rem !important;
     }
   }
 }

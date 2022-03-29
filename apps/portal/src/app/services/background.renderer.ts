@@ -1,6 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@angular/core';
+import { Customization } from '@central-factory/preferences/models/customization';
 import { CustomizationSettingsState } from '@central-factory/preferences/states/customization/customization-settings.state';
-import { distinctUntilChanged, map, Subscription, tap } from 'rxjs';
+import { distinctUntilChanged, Subscription, tap } from 'rxjs';
+
+declare let YT: { PlayerState: { PAUSED: any } };
 
 export type MatrixColumn = {
   x: number;
@@ -31,6 +35,9 @@ export class BackgroundRenderer {
 
   private themeChangeSubscription?: Subscription;
 
+  private _videoPlayer: any;
+  private youtubeIframeApiIsLoaded = false;
+
   constructor(private customizationSettingsState: CustomizationSettingsState) {
     this.initialize();
   }
@@ -43,18 +50,99 @@ export class BackgroundRenderer {
     this.themeChangeSubscription =
       this.customizationSettingsState.customizationSettings$
         .pipe(
-          map((settings) => settings?.theme.name),
-          distinctUntilChanged((prev, curr) => prev === curr),
-          tap((name) => this.onThemeChange(name))
+          distinctUntilChanged(
+            (prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)
+          ),
+          tap((name) => this.onCustomizationChange(name))
         )
         .subscribe();
   }
 
-  private onThemeChange(name?: string) {
+  private onCustomizationChange(customization?: Customization) {
+    if (customization?.background) {
+      this.renderIframeBg(customization);
+      return;
+    }
+
+    if (customization) {
+      this.renderMatrixBg(customization);
+    }
+  }
+
+  private renderIframeBg(customization: Customization) {
+    const application = document.getElementsByClassName('application')[0];
+    const iframe = document.getElementById('bgiframe') as HTMLIFrameElement;
+    const canvas = document.getElementById('bgcanvas') as HTMLCanvasElement;
+    const url = customization.background?.url;
+
+    if (!application || !iframe || !url) {
+      setTimeout(() => this.renderIframeBg(customization), 1000);
+      return;
+    }
+
+    if (canvas) {
+      canvas.style.display = 'none';
+    }
+
+    if (this._videoPlayer) {
+      this._videoPlayer.clearVideo();
+      delete this._videoPlayer;
+    }
+
+    application.classList.add('application--no-background-color');
+    // iframe.src = `${url}?rel=0&modestbranding=1&mute=1&showinfo=0&controls=0&autoplay=1&loop=1`;
+    iframe.style.display = 'block';
+
+    const createVideoPlayer = () => {
+      const onReady = () => {
+        // console.debug('ready', this._videoPlayer);
+        this._videoPlayer.mute();
+        this._videoPlayer.playVideo();
+        setTimeout(() => {
+          this._videoPlayer.unMute();
+          this._videoPlayer.setVolume(40);
+        }, 1000);
+      };
+
+      const onStateChange = ({ data }: { data: number }) => {
+        if (data === 2) {
+          onReady();
+        }
+        // console.debug('onStateChange', data);
+      };
+
+      this._videoPlayer = new (YT as any).Player('bgiframe', {
+        height: '100%',
+        width: '100%',
+        videoId: url.split('/').pop(),
+        playerVars: {
+          controls: 0,
+          modestBranding: 1,
+          showInfo: 0,
+          mute: 1,
+          loop: 1,
+        },
+        events: {
+          onReady,
+          onStateChange,
+        },
+      });
+    };
+
+    if (this.youtubeIframeApiIsLoaded) {
+      createVideoPlayer();
+    } else {
+      (window as any).onYouTubeIframeAPIReady = () => createVideoPlayer();
+      this.loadYoutubeIframeApi();
+    }
+  }
+
+  private renderMatrixBg(customization: Customization) {
+    const name = customization?.theme?.name;
     const application = document.getElementsByClassName('application')[0];
 
     if (!application || !name) {
-      setTimeout(() => this.initialize(), 1000);
+      setTimeout(() => this.renderMatrixBg(customization), 1000);
       return;
     }
 
@@ -182,5 +270,23 @@ export class BackgroundRenderer {
         columns[i].stackCounter = 0;
       }
     }
+  }
+
+  private loadYoutubeIframeApi() {
+    if (this.youtubeIframeApiIsLoaded) {
+      return;
+    }
+
+    // 2. This code loads the IFrame Player API code asynchronously.
+    const tag = document.createElement('script');
+
+    tag.src = 'https://www.youtube.com/iframe_api';
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    (firstScriptTag.parentNode as HTMLElement).insertBefore(
+      tag,
+      firstScriptTag
+    );
+
+    this.youtubeIframeApiIsLoaded = true;
   }
 }

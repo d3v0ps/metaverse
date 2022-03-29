@@ -14,11 +14,8 @@ import { professions } from '../demo/professions.data';
   providedIn: 'root',
 })
 export class AvatarIdentityGenerator {
-  generate(
-    preset: Partial<Avatar> = {},
-    { map, archetypes, avatars }: World
-  ): AvatarIdentity {
-    const { burgs, cells } = map.cells;
+  generate(preset: Partial<Avatar> = {}, world: World): AvatarIdentity {
+    const { burgs, cells } = world.map.cells;
 
     const gender =
       preset.identity?.gender ||
@@ -30,7 +27,7 @@ export class AvatarIdentityGenerator {
     const burg = burgs.find((b) => b.i === birthPlace) || burgs[0];
     const burgCell = cells.find((cell) => cell.i === burg.cell);
 
-    const archetype = archetypes?.find(
+    const archetype = world.archetypes?.find(
       (archetype) => archetype.id === preset.identity?.archetype
     );
 
@@ -41,7 +38,7 @@ export class AvatarIdentityGenerator {
         (relationship) => relationship.kind === AvatarRelationshipKind.Parent
       )
       .map((relationship) =>
-        avatars?.find((avatar) => avatar.id === relationship.avatar)
+        world.avatars?.find((avatar) => avatar.id === relationship.avatar)
       ) as Avatar[];
 
     Object.assign(preset, {
@@ -60,14 +57,8 @@ export class AvatarIdentityGenerator {
       gender,
       birthDate: this.generateBirthDate(preset, archetype, parents),
       birthPlace: birthPlace,
-      culture: this.generateCulture(preset, burg, {
-        map,
-        archetypes,
-      }),
-      religion: this.generateReligion(preset, burgCell, {
-        map,
-        archetypes,
-      }),
+      culture: this.generateCulture(preset, burg, world),
+      religion: this.generateReligion(preset, burgCell, world),
       mainProfession: this.generateMainProfession(preset, archetype, parents),
       secondaryProfession: this.generateSecondaryProfession(
         preset,

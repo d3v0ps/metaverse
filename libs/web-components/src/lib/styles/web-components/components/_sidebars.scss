@@ -136,6 +136,8 @@ cf-sidebar {
 
     .icon__svg {
       fill: var(--component-sidebar-button-color);
+      width: 30px !important;
+      height: 30px !important;
     }
 
     &:hover {

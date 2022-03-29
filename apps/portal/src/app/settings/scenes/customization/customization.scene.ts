@@ -7,7 +7,7 @@ import {
 } from '@central-factory/preferences/models/customization';
 import { AvailableThemesState } from '@central-factory/preferences/states/customization/available-themes.state';
 import { CustomizationSettingsState } from '@central-factory/preferences/states/customization/customization-settings.state';
-import { Subject } from 'rxjs';
+import { of, Subject } from 'rxjs';
 import { filter, takeUntil, tap } from 'rxjs/operators';
 
 export type CustomizationForm = {
@@ -31,6 +31,22 @@ export type CustomizationForm = {
               <ng-select
                 formControlName="theme"
                 [items]="themes$ | async"
+                bindLabel="name"
+              >
+                <ng-template ng-option-tmp let-item="item">
+                  {{ item.name }}
+                </ng-template>
+              </ng-select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label> Background </label>
+            </td>
+            <td>
+              <ng-select
+                formControlName="background"
+                [items]="backgrounds$ | async"
                 bindLabel="name"
               >
                 <ng-template ng-option-tmp let-item="item">
@@ -81,9 +97,72 @@ export type CustomizationForm = {
 export class CustomizationScene implements OnInit, OnDestroy {
   public readonly form = new FormGroup({
     theme: new FormControl(null),
+    background: new FormControl(null),
   });
 
   public readonly themes$ = this.availableThemesState.themes$;
+  public readonly backgrounds$ = of([
+    {
+      name: 'Apartment',
+      url: 'http://www.youtube.com/embed/B6eL_N0N5KI',
+    },
+    {
+      name: 'Apartment 2',
+      url: 'http://www.youtube.com/embed/CMkI2EItvRw',
+    },
+    {
+      name: 'Bag End',
+      url: 'http://www.youtube.com/embed/3DTvk8boR8U',
+    },
+    {
+      name: 'Inn',
+      url: 'http://www.youtube.com/embed/Wr067srQKUg',
+    },
+    {
+      name: 'Inn II',
+      url: 'http://www.youtube.com/embed/vyg5jJrZ42s',
+    },
+    {
+      name: 'Morning Rain and Thunder at Castle',
+      url: 'http://www.youtube.com/embed/eVCR3X6OfSc',
+    },
+    {
+      name: 'Magic Castle',
+      url: 'http://www.youtube.com/embed/jATVgJ_grys',
+    },
+    {
+      name: 'Elven Havens',
+      url: 'http://www.youtube.com/embed/5RlXStnMirE',
+    },
+    {
+      name: 'Japan',
+      url: 'http://www.youtube.com/embed/hR3sK0_nNGA',
+    },
+    {
+      name: 'Dunes',
+      url: 'http://www.youtube.com/embed/hShxsAlJmfw',
+    },
+    {
+      name: 'Gothic City',
+      url: 'http://www.youtube.com/embed/xrOXhZjyxfY',
+    },
+    {
+      name: 'Cyberpunk City',
+      url: 'http://www.youtube.com/embed/zkzdY572ZHk',
+    },
+    {
+      name: 'Cyberpunk City II',
+      url: 'http://www.youtube.com/embed/ouzhVyQv5ws',
+    },
+    {
+      name: 'Space City',
+      url: 'http://www.youtube.com/embed/z6DV5l0NWZ4',
+    },
+    {
+      name: 'Factory Sounds',
+      url: 'https://www.youtube.com/embed/bDZVYI_hIEs',
+    },
+  ]);
 
   private destroy$ = new Subject<void>();
 

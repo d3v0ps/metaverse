@@ -2,13 +2,15 @@ import { Provider } from '@angular/core';
 import { LOCAL_APPLICATION_COMPONENTS_PROVIDER } from '@central-factory/applications/resolvers/components/local-applications/local-application-components.provider';
 import { DevtoolsComponent } from '@central-factory/devtools/web-components/angular/devtools/devtools.component';
 import { InventoryScene } from '@central-factory/inventory/scenes/inventory/inventory.scene';
+import { KnowledgeIndexComponent } from '@central-factory/knowledge/web-components/angular/knowledge-index/knowledge-index.component';
 import { CreateAvatarScene } from '@central-factory/manage-avatars/scenes/create-avatar/create-avatar.scene';
 import { SelectAvatarScene } from '@central-factory/manage-avatars/scenes/select-avatar/select-avatar.scene';
 import { MarketplaceScene } from '@central-factory/marketplace/scenes/marketplace/marketplace.scene';
 import { StartScene } from '@central-factory/player/scenes/start/start.scene';
 import { BurgMapComponent } from '@central-factory/worlds/web-components/angular/burgs/burg-map/burg-map.component';
+import { WorldsManagerComponent } from '@central-factory/worlds/web-components/angular/worlds-manager/worlds-manager.component';
 import { WorldScene } from '../../scenes/world/world.scene';
-import { SettingsScene } from '../../settings/settings.scene';
+import { CustomizationScene } from '../../settings/scenes/customization/customization.scene';
 
 export enum PortalLocalApplicationType {
   CreateAvatarScene = 'CreateAvatarScene',
@@ -20,6 +22,8 @@ export enum PortalLocalApplicationType {
   MarketplaceScene = 'MarketplaceScene',
   StartScene = 'StartScene',
   DevToolsScene = 'DevToolsScene',
+  WorldsManagerScene = 'WorldsManagerScene',
+  KnowledgeIndexScene = 'KnowledgeIndexScene',
 }
 
 export const portalLocalApplicationComponentsProviders: Provider[] = [
@@ -76,7 +80,7 @@ export const portalLocalApplicationComponentsProviders: Provider[] = [
     provide: LOCAL_APPLICATION_COMPONENTS_PROVIDER,
     useValue: {
       type: PortalLocalApplicationType.SettingsScene,
-      component: SettingsScene,
+      component: CustomizationScene,
     },
     multi: true,
   },
@@ -93,6 +97,22 @@ export const portalLocalApplicationComponentsProviders: Provider[] = [
     useValue: {
       type: PortalLocalApplicationType.DevToolsScene,
       component: DevtoolsComponent,
+    },
+    multi: true,
+  },
+  {
+    provide: LOCAL_APPLICATION_COMPONENTS_PROVIDER,
+    useValue: {
+      type: PortalLocalApplicationType.WorldsManagerScene,
+      component: WorldsManagerComponent,
+    },
+    multi: true,
+  },
+  {
+    provide: LOCAL_APPLICATION_COMPONENTS_PROVIDER,
+    useValue: {
+      type: PortalLocalApplicationType.KnowledgeIndexScene,
+      component: KnowledgeIndexComponent,
     },
     multi: true,
   },

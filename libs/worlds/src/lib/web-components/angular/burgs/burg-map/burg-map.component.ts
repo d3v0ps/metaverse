@@ -12,6 +12,18 @@ import {
       <iframe width="100%" height="100%" [src]="burgUrl"></iframe>
     </div>
   `,
+  styles: [
+    `
+      .burg-map {
+        iframe {
+          box-shadow: var(--component-scene-content-shadow-outset),
+            inset var(--component-scene-content-shadow-inset-primary),
+            inset var(--component-scene-content-shadow-inset-secondary);
+          border-radius: 20px;
+        }
+      }
+    `,
+  ],
 })
 export class BurgMapComponent {
   @Input() world?: FantasyMapGeneratorMap;

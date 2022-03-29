@@ -2,7 +2,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ApplicationViewModule } from '@central-factory/applications/web-components/angular/application-view/application-view.module';
+import { ApplicationsWindowsManagerModule } from '@central-factory/applications/web-components/angular/applications-windows-manager/applicattions-windows-manager.module';
 import { AvatarAppearancePortraitModule } from '@central-factory/avatars/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.module';
 import { BemModule } from '@central-factory/web-components/angular/bem/bem.module';
 import { NavbarModule } from '@central-factory/web-components/angular/navbar/navbar.module';
@@ -12,7 +12,6 @@ import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/
 import { SystemToolbarModule } from '@central-factory/web-components/angular/system-toolbar/system-toolbar.module';
 import { TabsetModule } from '@central-factory/web-components/angular/tabset/tabset.module';
 import { WindowModule } from '@central-factory/web-components/angular/window/window.module';
-import { ApplicationManagerComponent } from './application-manager.component';
 import { PortalLayoutScene } from './portal-layout.scene';
 
 @NgModule({
@@ -29,10 +28,9 @@ import { PortalLayoutScene } from './portal-layout.scene';
     SystemToolbarModule,
     WindowModule,
     TabsetModule,
-    ApplicationViewModule,
+    ApplicationsWindowsManagerModule,
   ],
-  declarations: [PortalLayoutScene,
-    ApplicationManagerComponent],
+  declarations: [PortalLayoutScene],
   exports: [PortalLayoutScene],
 })
-export class PortalLayoutSceneModule { }
+export class PortalLayoutSceneModule {}

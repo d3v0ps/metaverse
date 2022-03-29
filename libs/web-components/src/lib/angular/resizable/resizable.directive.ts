@@ -6,7 +6,7 @@ import {
   HostListener,
   Input,
   OnDestroy,
-  Output
+  Output,
 } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -42,9 +42,14 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
   private subscription?: Subscription;
   private newWidth!: number;
   private newHeight!: number;
-  private resizingS?: boolean; // south
-  private resizingE?: boolean; // east
-  private resizingSE?: boolean; // south-east
+  private resizingS?: boolean;
+  private resizingE?: boolean;
+  private resizingN?: boolean;
+  private resizingW?: boolean;
+  private resizingSE?: boolean;
+  private resizingSW?: boolean;
+  private resizingNE?: boolean;
+  private resizingNW?: boolean;
 
   private minWidth!: number;
   private maxWidth!: number;
@@ -101,6 +106,11 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
     const isSouth = classList.contains('resize-handle-s');
     const isEast = classList.contains('resize-handle-e');
     const isSouthEast = classList.contains('resize-handle-se');
+    const isNorth = classList.contains('resize-handle-n');
+    const isWest = classList.contains('resize-handle-w');
+    const isNorthEast = classList.contains('resize-handle-ne');
+    const isNorthWest = classList.contains('resize-handle-nw');
+    const isSouthWest = classList.contains('resize-handle-sw');
 
     const evt = getEvent(event);
     const width = this.element.clientWidth;
@@ -112,8 +122,27 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
     const moveEvent = isTouchEvent ? 'touchmove' : 'mousemove';
     const upEvent = isTouchEvent ? 'touchend' : 'mouseup';
 
-    if (isSouth || isEast || isSouthEast) {
-      this.initResize(event, isSouth, isEast, isSouthEast);
+    if (
+      isSouth ||
+      isEast ||
+      isNorth ||
+      isWest ||
+      isSouthEast ||
+      isSouthWest ||
+      isNorthEast ||
+      isNorthWest
+    ) {
+      this.initResize(
+        event,
+        isSouth,
+        isEast,
+        isSouthEast,
+        isNorth,
+        isWest,
+        isNorthEast,
+        isNorthWest,
+        isSouthWest
+      );
 
       const mouseup = fromEvent(document, upEvent);
       this.subscription = mouseup.subscribe((ev) =>
@@ -174,7 +203,12 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
     event: MouseEvent | TouchEvent,
     isSouth: boolean,
     isEast: boolean,
-    isSouthEast: boolean
+    isSouthEast: boolean,
+    isNorth: boolean,
+    isWest: boolean,
+    isNorthEast: boolean,
+    isNorthWest: boolean,
+    isSouthWest: boolean
   ) {
     if (isSouth) {
       this.resizingS = true;
@@ -184,6 +218,21 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
     }
     if (isSouthEast) {
       this.resizingSE = true;
+    }
+    if (isNorth) {
+      this.resizingN = true;
+    }
+    if (isWest) {
+      this.resizingW = true;
+    }
+    if (isNorthEast) {
+      this.resizingNE = true;
+    }
+    if (isNorthWest) {
+      this.resizingNW = true;
+    }
+    if (isSouthWest) {
+      this.resizingSW = true;
     }
     this.element.classList.add('resizing');
     this.newWidth = this.element.clientWidth;
@@ -196,7 +245,12 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
   endResize(event: MouseEvent | TouchEvent) {
     this.resizingS = false;
     this.resizingE = false;
+    this.resizingW = false;
+    this.resizingN = false;
     this.resizingSE = false;
+    this.resizingSW = false;
+    this.resizingNE = false;
+    this.resizingNW = false;
     this.element.classList.remove('resizing');
     this.resizeEnd.emit({
       event: getEvent(event),
@@ -206,10 +260,34 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
   }
 
   resizeWidth(event: MouseEvent | Touch) {
+    if (this.resizeWidthSkipping) {
+      return;
+    }
+
+    this.resizeWidthSkipping = true;
+
+    setTimeout(() => {
+      this.resizeWidthSkipping = false;
+    }, 100);
+
     const overMinWidth = !this.minWidth || this.newWidth >= this.minWidth;
     const underMaxWidth = !this.maxWidth || this.newWidth <= this.maxWidth;
 
-    if (this.resizingSE || this.resizingE) {
+    if (this.resizingSE || this.resizingNE || this.resizingE) {
+      if (overMinWidth && underMaxWidth) {
+        if (!this.ghost) {
+          this.element.style.width = `${this.newWidth}px`;
+        }
+        this.resizing.emit({
+          event,
+          width: this.newWidth,
+          height: this.newHeight,
+          direction: 'horizontal',
+        });
+      }
+    }
+
+    if (this.resizingSW || this.resizingNW || this.resizingW) {
       if (overMinWidth && underMaxWidth) {
         if (!this.ghost) {
           this.element.style.width = `${this.newWidth}px`;
@@ -225,10 +303,20 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
   }
 
   resizeHeight(event: MouseEvent | Touch) {
+    if (this.resizeHeightSkipping) {
+      return;
+    }
+
+    this.resizeHeightSkipping = true;
+
+    setTimeout(() => {
+      this.resizeHeightSkipping = false;
+    }, 100);
+
     const overMinHeight = !this.minHeight || this.newHeight >= this.minHeight;
     const underMaxHeight = !this.maxHeight || this.newHeight <= this.maxHeight;
 
-    if (this.resizingSE || this.resizingS) {
+    if (this.resizingSE || this.resizingSW || this.resizingS) {
       if (overMinHeight && underMaxHeight) {
         if (!this.ghost) {
           this.element.style.height = `${this.newHeight}px`;
@@ -241,5 +329,48 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
         });
       }
     }
+
+    if (this.resizingNE || this.resizingNW || this.resizingN) {
+      const currentHeight = parseInt(
+        getComputedStyle(this.element).height.split('px')[0],
+        10
+      );
+      const currentTop = parseInt(
+        getComputedStyle(this.element).top.split('px')[0],
+        10
+      );
+
+      const diff = this.newHeight - currentHeight;
+      const newHeight = (this.newHeight = currentHeight - diff);
+      const newTop = currentTop + diff;
+
+      console.debug('current', {
+        currentHeight,
+        currentTop,
+      });
+
+      console.debug('new', {
+        newHeight,
+        newTop: currentTop + diff,
+        diff,
+      });
+
+      if (overMinHeight && underMaxHeight) {
+        if (!this.ghost) {
+          this.element.style.height = `${newHeight}px`;
+          this.element.style.top = `${newTop}px`;
+        }
+        this.resizing.emit({
+          event,
+          width: this.newWidth,
+          height: newHeight,
+          direction: 'vertical',
+        });
+      }
+    }
   }
+
+  private resizeHeightSkipping = false;
+
+  private resizeWidthSkipping = false;
 }

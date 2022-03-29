@@ -172,7 +172,7 @@ export class AvatarGenerator {
 
     const startYear = eras.length > 0 ? eras[0].startYear : 0;
     const startDate = new Date();
-    startDate.setFullYear(startYear);
+    const startISOString = `${startYear}-01-01T00:00:42.546Z`;
 
     return [
       this.generate(world, {
@@ -181,7 +181,7 @@ export class AvatarGenerator {
           givenName: 'Alfred',
           archetype: 'assistant',
           bio: '',
-          birthDate: startDate.toISOString(),
+          birthDate: startISOString,
           birthPlace: 0,
           culture: 0,
           familyName: '',
@@ -308,10 +308,10 @@ export class AvatarGenerator {
       []
     );
     world.avatars = world.avatars.concat(rootLevel);
-    console.debug('🌲 root', rootLevel);
+    // console.debug('🌲 root', rootLevel);
     const rootLevelCouples = this.generateCouples(rootLevel);
 
-    console.debug('👪 root', rootLevelCouples);
+    // console.debug('👪 root', rootLevelCouples);
 
     // Age: 55 - 75
     const firstGeneration = rootLevelCouples.reduce<Avatar[]>(
@@ -321,7 +321,7 @@ export class AvatarGenerator {
     );
     world.avatars = world.avatars.concat(firstGeneration);
 
-    console.debug('🌲 first', firstGeneration);
+    // console.debug('🌲 first', firstGeneration);
 
     const firstGenerationCouples = this.generateCouples(firstGeneration);
 
@@ -333,7 +333,7 @@ export class AvatarGenerator {
     );
     world.avatars = world.avatars.concat(secondGeneration);
 
-    console.debug('🌲 second', secondGeneration);
+    // console.debug('🌲 second', secondGeneration);
 
     const secondGenerationCouples = this.generateCouples(secondGeneration);
 
@@ -345,7 +345,7 @@ export class AvatarGenerator {
     );
     world.avatars = world.avatars.concat(thirdGeneration);
 
-    console.debug('🌲 third', thirdGeneration);
+    // console.debug('🌲 third', thirdGeneration);
 
     const thirdGenerationCouples = this.generateCouples(thirdGeneration);
 

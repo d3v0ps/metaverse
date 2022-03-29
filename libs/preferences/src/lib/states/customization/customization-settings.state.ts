@@ -55,12 +55,14 @@ export class CustomizationSettingsState {
       return throwError(() => new Error('Repositories not initialized'));
     }
 
-    return this.userPreferencesRepository.upsert({
-      id: `settings.customization${avatar ? `.${avatar}` : ''}`,
-      key: 'settings.customization',
-      value: settings,
-      avatar,
-    });
+    return this.userPreferencesRepository
+      .upsert({
+        id: `settings.customization${avatar ? `.${avatar}` : ''}`,
+        key: 'settings.customization',
+        value: settings,
+        avatar,
+      })
+      .pipe(tap(() => window.location.reload()));
   }
 
   private subscribeToDataChanges() {

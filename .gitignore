@@ -7,6 +7,9 @@
 /tmp
 /out-tsc
 
+# filesystem
+/mnt
+
 # dependencies
 /node_modules
 

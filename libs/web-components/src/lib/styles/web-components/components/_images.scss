@@ -1,0 +1,10 @@
+
+.preview-image {
+  height: 100%;
+  min-height: 100px;
+  background-size: cover;
+  box-shadow: var(--component-scene-content-shadow-outset),
+    inset var(--component-scene-content-shadow-inset-primary),
+    inset var(--component-scene-content-shadow-inset-secondary);
+  border-radius: 20px;
+}

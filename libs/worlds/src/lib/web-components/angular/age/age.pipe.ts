@@ -10,9 +10,10 @@ export class AgePipe implements PipeTransform {
     birthDate: number | string | Date,
     worldDate?: number | string | Date
   ): Observable<number> {
-    return this.worldsState.selectedWorldContent$.pipe(
+    return this.worldsState.selectedWorld$.pipe(
       map((world) => {
-        let worldYear = world?.map?.settings?.options?.year || 0;
+        let worldYear =
+          world?.map?.settings?.options?.year || new Date().getFullYear();
 
         if (worldDate) {
           worldYear = new Date(worldDate).getFullYear();

@@ -7,6 +7,7 @@ import { environment } from '../environments/environment';
   selector: 'cf-portal-root',
   template: `
     <canvas id="bgcanvas"></canvas>
+    <div id="bgiframe"></div>
     <cf-splash-screen *ngIf="environment.showSplashScreen"></cf-splash-screen>
     <div class="application">
       <router-outlet></router-outlet>
@@ -37,6 +38,14 @@ import { environment } from '../environments/environment';
   styles: [
     `
       #bgcanvas {
+        display: block;
+        margin: 0 auto;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        z-index: -1;
+      }
+      #bgiframe {
         display: block;
         margin: 0 auto;
         width: 100vw;
