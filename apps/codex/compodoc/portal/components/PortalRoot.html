@@ -115,12 +115,21 @@
         position: fixed;
         z-index: -1;
       }
+      #bgiframe {
+        display: block;
+        margin: 0 auto;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        z-index: -1;
+      }
     </code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">template</td>
                 <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;canvas id&#x3D;&quot;bgcanvas&quot;&gt;&lt;/canvas&gt;
+&lt;div id&#x3D;&quot;bgiframe&quot;&gt;&lt;/div&gt;
 &lt;cf-splash-screen *ngIf&#x3D;&quot;environment.showSplashScreen&quot;&gt;&lt;/cf-splash-screen&gt;
 &lt;div class&#x3D;&quot;application&quot;&gt;
   &lt;router-outlet&gt;&lt;/router-outlet&gt;
@@ -237,8 +246,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="55"
-                            class="link-to-prism">apps/portal/src/app/portal.root.ts:55</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">apps/portal/src/app/portal.root.ts:64</a></div>
                 </td>
             </tr>
 
@@ -278,7 +287,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">apps/portal/src/app/portal.root.ts:51</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">apps/portal/src/app/portal.root.ts:60</a></div>
                         </td>
                     </tr>
 
@@ -313,7 +322,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">apps/portal/src/app/portal.root.ts:53</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">apps/portal/src/app/portal.root.ts:62</a></div>
                         </td>
                     </tr>
 
@@ -335,6 +344,7 @@ import { environment } from &#x27;../environments/environment&#x27;;
   selector: &#x27;cf-portal-root&#x27;,
   template: &#x60;
     &lt;canvas id&#x3D;&quot;bgcanvas&quot;&gt;&lt;/canvas&gt;
+    &lt;div id&#x3D;&quot;bgiframe&quot;&gt;&lt;/div&gt;
     &lt;cf-splash-screen *ngIf&#x3D;&quot;environment.showSplashScreen&quot;&gt;&lt;/cf-splash-screen&gt;
     &lt;div class&#x3D;&quot;application&quot;&gt;
       &lt;router-outlet&gt;&lt;/router-outlet&gt;
@@ -372,6 +382,14 @@ import { environment } from &#x27;../environments/environment&#x27;;
         position: fixed;
         z-index: -1;
       }
+      #bgiframe {
+        display: block;
+        margin: 0 auto;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        z-index: -1;
+      }
     &#x60;,
   ],
 })
@@ -394,6 +412,14 @@ export class PortalRoot implements OnInit {
     <div class="tab-pane fade " id="c-styleData">
             <pre class="line-numbers"><code class="language-scss">
       #bgcanvas {
+        display: block;
+        margin: 0 auto;
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        z-index: -1;
+      }
+      #bgiframe {
         display: block;
         margin: 0 auto;
         width: 100vw;
@@ -430,8 +456,8 @@ export class PortalRoot implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><canvas id="bgcanvas"></canvas><cf-splash-screen *ngIf="environment.showSplashScreen"></cf-splash-screen><div class="application">  <router-outlet></router-outlet></div><cf-window #rootWindow [maximizable]="true">  <ng-container class="window-header__content"    >A message from the author</ng-container  >  <ng-container class="window-body__content">    <h3>Welcome to The Central Factory Metaverse</h3>    <p>      This is a demo release of The Central Factory Metaverse project. Not      all features are implemented yet, you might find many issues and      unexpected behaviours. You can give us your feedback on      <a href="https://github.com/central-factory/metaverse" target="_blank"        >the project page</a      >. Thank you for getting interested on this project.    </p>  </ng-container>  <ng-container class="window-footer__content">    <button cfBlock="button" cfMod="primary" (click)="rootWindow.hide()">      I\'m ready!    </button>  </ng-container></cf-window></div>'
-    var COMPONENTS = [{'name': 'ApplicationManagerComponent', 'selector': 'cf-application-manager'},{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'},{'name': 'WorldScene', 'selector': 'cf-world-scene'}];
+        var COMPONENT_TEMPLATE = '<div><canvas id="bgcanvas"></canvas><div id="bgiframe"></div><cf-splash-screen *ngIf="environment.showSplashScreen"></cf-splash-screen><div class="application">  <router-outlet></router-outlet></div><cf-window #rootWindow [maximizable]="true">  <ng-container class="window-header__content"    >A message from the author</ng-container  >  <ng-container class="window-body__content">    <h3>Welcome to The Central Factory Metaverse</h3>    <p>      This is a demo release of The Central Factory Metaverse project. Not      all features are implemented yet, you might find many issues and      unexpected behaviours. You can give us your feedback on      <a href="https://github.com/central-factory/metaverse" target="_blank"        >the project page</a      >. Thank you for getting interested on this project.    </p>  </ng-container>  <ng-container class="window-footer__content">    <button cfBlock="button" cfMod="primary" (click)="rootWindow.hide()">      I\'m ready!    </button>  </ng-container></cf-window></div>'
+    var COMPONENTS = [{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'},{'name': 'WorldScene', 'selector': 'cf-world-scene'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'PortalRoot'};
 </script>

@@ -216,8 +216,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="114"
-                            class="link-to-prism">libs/preferences/src/lib/states/customization/customization-settings.state.ts:114</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="116"
+                            class="link-to-prism">libs/preferences/src/lib/states/customization/customization-settings.state.ts:116</a></div>
                 </td>
             </tr>
 
@@ -370,8 +370,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="66"
-                            class="link-to-prism">libs/preferences/src/lib/states/customization/customization-settings.state.ts:66</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">libs/preferences/src/lib/states/customization/customization-settings.state.ts:68</a></div>
                 </td>
             </tr>
 
@@ -541,12 +541,14 @@ export class CustomizationSettingsState {
       return throwError(() &#x3D;&gt; new Error(&#x27;Repositories not initialized&#x27;));
     }
 
-    return this.userPreferencesRepository.upsert({
-      id: &#x60;settings.customization${avatar ? &#x60;.${avatar}&#x60; : &#x27;&#x27;}&#x60;,
-      key: &#x27;settings.customization&#x27;,
-      value: settings,
-      avatar,
-    });
+    return this.userPreferencesRepository
+      .upsert({
+        id: &#x60;settings.customization${avatar ? &#x60;.${avatar}&#x60; : &#x27;&#x27;}&#x60;,
+        key: &#x27;settings.customization&#x27;,
+        value: settings,
+        avatar,
+      })
+      .pipe(tap(() &#x3D;&gt; window.location.reload()));
   }
 
   private subscribeToDataChanges() {

@@ -1173,7 +1173,7 @@ export class AvatarGenerator {
 
     const startYear &#x3D; eras.length &gt; 0 ? eras[0].startYear : 0;
     const startDate &#x3D; new Date();
-    startDate.setFullYear(startYear);
+    const startISOString &#x3D; &#x60;${startYear}-01-01T00:00:42.546Z&#x60;;
 
     return [
       this.generate(world, {
@@ -1182,7 +1182,7 @@ export class AvatarGenerator {
           givenName: &#x27;Alfred&#x27;,
           archetype: &#x27;assistant&#x27;,
           bio: &#x27;&#x27;,
-          birthDate: startDate.toISOString(),
+          birthDate: startISOString,
           birthPlace: 0,
           culture: 0,
           familyName: &#x27;&#x27;,
@@ -1309,10 +1309,10 @@ export class AvatarGenerator {
       []
     );
     world.avatars &#x3D; world.avatars.concat(rootLevel);
-    console.debug(&#x27;🌲 root&#x27;, rootLevel);
+    // console.debug(&#x27;🌲 root&#x27;, rootLevel);
     const rootLevelCouples &#x3D; this.generateCouples(rootLevel);
 
-    console.debug(&#x27;👪 root&#x27;, rootLevelCouples);
+    // console.debug(&#x27;👪 root&#x27;, rootLevelCouples);
 
     // Age: 55 - 75
     const firstGeneration &#x3D; rootLevelCouples.reduce&lt;Avatar[]&gt;(
@@ -1322,7 +1322,7 @@ export class AvatarGenerator {
     );
     world.avatars &#x3D; world.avatars.concat(firstGeneration);
 
-    console.debug(&#x27;🌲 first&#x27;, firstGeneration);
+    // console.debug(&#x27;🌲 first&#x27;, firstGeneration);
 
     const firstGenerationCouples &#x3D; this.generateCouples(firstGeneration);
 
@@ -1334,7 +1334,7 @@ export class AvatarGenerator {
     );
     world.avatars &#x3D; world.avatars.concat(secondGeneration);
 
-    console.debug(&#x27;🌲 second&#x27;, secondGeneration);
+    // console.debug(&#x27;🌲 second&#x27;, secondGeneration);
 
     const secondGenerationCouples &#x3D; this.generateCouples(secondGeneration);
 
@@ -1346,7 +1346,7 @@ export class AvatarGenerator {
     );
     world.avatars &#x3D; world.avatars.concat(thirdGeneration);
 
-    console.debug(&#x27;🌲 third&#x27;, thirdGeneration);
+    // console.debug(&#x27;🌲 third&#x27;, thirdGeneration);
 
     const thirdGenerationCouples &#x3D; this.generateCouples(thirdGeneration);
 

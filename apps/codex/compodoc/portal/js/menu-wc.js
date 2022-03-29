@@ -106,16 +106,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/PortalLayoutSceneModule.html" data-type="entity-link" >PortalLayoutSceneModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-PortalLayoutSceneModule-08b209c5367126ddb73e6bcfa4c6e50a"' : 'data-target="#xs-components-links-module-PortalLayoutSceneModule-08b209c5367126ddb73e6bcfa4c6e50a"' }>
+                                            'data-target="#components-links-module-PortalLayoutSceneModule-6fc7676691ad837dfbaa2309cf7a47f2"' : 'data-target="#xs-components-links-module-PortalLayoutSceneModule-6fc7676691ad837dfbaa2309cf7a47f2"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PortalLayoutSceneModule-08b209c5367126ddb73e6bcfa4c6e50a"' :
-                                            'id="xs-components-links-module-PortalLayoutSceneModule-08b209c5367126ddb73e6bcfa4c6e50a"' }>
-                                            <li class="link">
-                                                <a href="components/ApplicationManagerComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ApplicationManagerComponent</a>
-                                            </li>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-PortalLayoutSceneModule-6fc7676691ad837dfbaa2309cf7a47f2"' :
+                                            'id="xs-components-links-module-PortalLayoutSceneModule-6fc7676691ad837dfbaa2309cf7a47f2"' }>
                                             <li class="link">
                                                 <a href="components/PortalLayoutScene.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >PortalLayoutScene</a>
                                             </li>

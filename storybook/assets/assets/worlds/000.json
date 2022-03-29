@@ -1,0 +1,181 @@
+{
+  "id": 0,
+  "meta": {
+    "previewUrl": "assets/worlds/000.png"
+  },
+  "kind": "analog",
+  "stats": {
+    "cultures": 3800,
+    "states": 193,
+    "burgs": 10000,
+    "avatars": 7993612869
+  },
+  "eras": [
+    {
+      "name": "Rock Age",
+      "shortName": "RA",
+      "startYear": -2500000,
+      "endYear": -6000,
+      "icon": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%20style%3D%22height%3A%20512px%3B%20width%3A%20512px%3B%22%3E%3Cpath%20d%3D%22M0%200h512v512H0z%22%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220%22%3E%3C%2Fpath%3E%3Cg%20class%3D%22%22%20transform%3D%22translate(0%2C0)%22%20style%3D%22%22%3E%3Cpath%20d%3D%22M228.813%2023L68.75%2072.28%2039.5%20182.095l47.53-21.22%2010.44-4.655%202.5%2011.155%208.75%2039.125%206.405%2028.53-21.75-19.53-15.72-14.125-28.218%2032.344%20140.657%20136%209.656-40.69%207.53-31.874%2010.407%2031.063%2054.72%20163.592L432.343%20465.5l45.75-202.938-84.563-148.718L228.814%2023zm-57.688%2049.875l-27.813%2039.906-3.25%2073.44-27.187-88.94%2058.25-24.405zm17.844%2093.406l113.124%20155.25L407%20355.407l-107.375-.844-110.656-128v-60.28zM79.312%20330.25l140.125%20153.125-5.563-65.875-134.563-87.25z%22%20fill%3D%22%23ffffff%22%20fill-opacity%3D%221%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+      "military": [],
+      "events": []
+    },
+    {
+      "name": "Metals Age",
+      "shortName": "MA",
+      "startYear": -6000,
+      "endYear": -3300,
+      "icon": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%20style%3D%22height%3A%20512px%3B%20width%3A%20512px%3B%22%3E%3Cpath%20d%3D%22M0%200h512v512H0z%22%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220%22%3E%3C%2Fpath%3E%3Cg%20class%3D%22%22%20transform%3D%22translate(0%2C0)%22%20style%3D%22%22%3E%3Cpath%20d%3D%22M322.248%2085.684L61.432%20224.717l-41.145%20109.94%207.233%203.85%20153.673%2081.8%20308.495-164.215-37.752-99.903-129.688-70.506zm119.035%2095.187l25.11%2066.45-102.56%2054.594L430.39%20186.64l10.893-5.77zm-89.576%2047.417L284.957%20343.9l-41.67%2022.182%2072.195-118.62%2036.225-19.175zM72.38%20248.78l28.21%2014.933-54.012%2054.012L72.38%20248.78zm210.827%2015.767L211.19%20382.87l.26.16-17.208%209.16%205.795-83.618%2083.17-44.025zm-165.334%208.312l16.963%208.98-60.445%2060.445-16.93-9.012%2060.413-60.414zM181.42%20306.9l-6.174%2089.07-54.1-28.798%2060.274-60.272z%22%20fill%3D%22%23ffffff%22%20fill-opacity%3D%221%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+      "military": [],
+      "events": []
+    },
+    {
+      "name": "Ancient Age",
+      "shortName": "AN",
+      "startYear": -3300,
+      "endYear": 476,
+      "icon": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%20style%3D%22height%3A%20512px%3B%20width%3A%20512px%3B%22%3E%3Cpath%20d%3D%22M0%200h512v512H0z%22%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220%22%3E%3C%2Fpath%3E%3Cg%20class%3D%22%22%20transform%3D%22translate(0%2C0)%22%20style%3D%22%22%3E%3Cpath%20d%3D%22M256%2026.2L52%20135h408L256%2026.2zM73%20153v14h366v-14H73zm16%2032v206h30V185H89zm101.334%200v206h30V185h-30zm101.332%200v206h30V185h-30zM393%20185v206h30V185h-30zM73%20409v30h366v-30H73zm-32%2048v30h430v-30H41z%22%20fill%3D%22%23ffffff%22%20fill-opacity%3D%221%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+      "military": [],
+      "events": []
+    },
+    {
+      "name": "Middle Age",
+      "shortName": "MI",
+      "startYear": 476,
+      "endYear": 1492,
+      "icon": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%20style%3D%22height%3A%20512px%3B%20width%3A%20512px%3B%22%3E%3Cpath%20d%3D%22M0%200h512v512H0z%22%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220%22%3E%3C%2Fpath%3E%3Cg%20class%3D%22%22%20transform%3D%22translate(0%2C0)%22%20style%3D%22%22%3E%3Cpath%20d%3D%22M255.95%2027.11L180.6%20107.614l150.7%201.168-75.35-81.674h-.003zM25%20109.895v68.01l19.412%2025.99h71.06l19.528-26v-68h-14v15.995h-18v-15.994H89v15.995H71v-15.994H57v15.995H39v-15.994H25zm352%200v68l19.527%2026h71.06L487%20177.906v-68.01h-14v15.995h-18v-15.994h-14v15.995h-18v-15.994h-14v15.995h-18v-15.994h-14zm-176%2015.877V260.89h110V126.63l-110-.857zm55%2020.118c8%200%2016%204%2016%2012v32h-32v-32c0-8%208-12%2016-12zM41%20221.897V484.89h78V221.897H41zm352%200V484.89h78V221.897h-78zM56%20241.89c4%200%208%204%208%2012v32H48v-32c0-8%204-12%208-12zm400%200c4%200%208%204%208%2012v32h-16v-32c0-8%204-12%208-12zm-303%2037v23h-16v183h87v-55c0-24%2016-36%2032-36s32%2012%2032%2036v55h87v-183h-16v-23h-14v23h-18v-23h-14v23h-18v-23h-14v23h-18v-23h-14v23h-18v-23h-14v23h-18v-23h-14v23h-18v-23h-14zm-49%2043c4%200%208%204%208%2012v32H96v-32c0-8%204-12%208-12zm72%200c8%200%2016%204%2016%2012v32h-32v-32c0-8%208-12%2016-12zm80%200c8%200%2016%204%2016%2012v32h-32v-32c0-8%208-12%2016-12zm80%200c8%200%2016%204%2016%2012v32h-32v-32c0-8%208-12%2016-12zm72%200c4%200%208%204%208%2012v32h-16v-32c0-8%204-12%208-12zm-352%2064c4%200%208%204%208%2012v32H48v-32c0-8%204-12%208-12zm400%200c4%200%208%204%208%2012v32h-16v-32c0-8%204-12%208-12z%22%20fill%3D%22%23ffffff%22%20fill-opacity%3D%221%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+      "military": [],
+      "events": []
+    },
+    {
+      "name": "Modern Age",
+      "shortName": "MO",
+      "startYear": 1492,
+      "endYear": 1789,
+      "icon": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%20style%3D%22height%3A%20512px%3B%20width%3A%20512px%3B%22%3E%3Cpath%20d%3D%22M0%200h512v512H0z%22%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220%22%3E%3C%2Fpath%3E%3Cg%20class%3D%22%22%20transform%3D%22translate(0%2C0)%22%20style%3D%22%22%3E%3Cpath%20d%3D%22M273.3%2027.85v34.21l-24.8%204.97%203.6%2017.64%2021.2-4.24v56.47l-41.2%2010.2%204.4%2017.4%2036.8-9.1V355c6-.2%2012-.3%2018-.5V150.9l57.2-14.2-4.4-17.4-52.8%2013.1V76.83l40.8-8.17-3.6-17.65-37.2%207.45V27.85zm-96%20144.05v34.2l-24.8%205%203.6%2017.6%2021.2-4.2v56.4l-41.2%2010.3%204.4%2017.4%2036.8-9.2v57.2c6%200%2012-.1%2018-.2v-61.5l57.2-14.2-4.4-17.4-52.8%2013.2v-55.6l40.8-8.2-3.6-17.6-37.2%207.4v-30.6zm192%200v34.2l-24.8%205%203.6%2017.6%2021.2-4.2v56.4l-41.2%2010.3%204.4%2017.4%2036.8-9.2v52.1c6.1-.3%2012.1-.6%2018-1v-55.6l57.2-14.3-4.4-17.4-52.8%2013.2v-55.5l40.8-8.2-3.6-17.6-37.2%207.4v-30.6zM22.18%20326.5l7.26%2029c29.1.8%2063.18%201.2%2099.86%201.3v-17zm470.62%2033.6C381.6%20374%20150%20377.2%2021.86%20373.2l11.43%2045.7h27.06l-41.12%2051.4%2014.06%2011.2%2050.06-62.6h25.05l-41.2%2051.4%2014.06%2011.2%2050.14-62.6h25l-41.1%2051.4%2014%2011.2%2050.1-62.7h25l-41.1%2051.4%2014%2011.2%2050.1-62.6h27.2l-43.3%2054.1%2014%2011.2%2052.2-65.3h25l-43.3%2054.1%2014%2011.2%2052.2-65.3h25.1l-43.3%2054.1%2014%2011.2%2052.3-65.3h25.1l-43.3%2054.1%2014%2011.2%2052.2-65.3h24.2z%22%20fill%3D%22%23ffffff%22%20fill-opacity%3D%221%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+      "military": [],
+      "events": []
+    },
+    {
+      "name": "Contemporary Age",
+      "shortName": "CT",
+      "startYear": 1789,
+      "icon": "data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%20style%3D%22height%3A%20512px%3B%20width%3A%20512px%3B%22%3E%3Cpath%20d%3D%22M0%200h512v512H0z%22%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220%22%3E%3C%2Fpath%3E%3Cg%20class%3D%22%22%20transform%3D%22translate(0%2C0)%22%20style%3D%22%22%3E%3Cpath%20d%3D%22M217%2025v30h30V25h-30zm48%200v30h30V25h-30zm48%200v30h30V25h-30zm-96%2048v46h30V73h-30zm48%200v46h30V73h-30zm48%200v46h30V73h-30zm-96%2064v46h30v-46h-30zm48%200v46h30v-46h-30zm48%200v46h30v-46h-30zm174%206.508l-94%2053.715V215h94v-71.492zM217%20201v46h30v-46h-30zm48%200v46h30v-46h-30zm48%200v46h30v-46h-30zm80%2032v110h94V233h-94zM39%20256v23h18v-23H39zm178%209v46h30v-46h-30zm48%200v46h30v-46h-30zm48%200v46h30v-46h-30zM37.562%20297l-7%2014h146.875l-7-14H37.563zM25%20329v158h23v-23h32v23h48v-23h32v23h23V329H25zm192%200v46h30v-46h-30zm48%200v46h30v-46h-30zm48%200v46h30v-46h-30zM48%20352h32v16H48v-16zm80%200h32v16h-32v-16zm265%209v126h31v-23h32v23h31V361h-94zM48%20384h32v16H48v-16zm80%200h32v16h-32v-16zm89%209v46h30v-46h-30zm48%200v46h30v-46h-30zm48%200v46h30v-46h-30zM48%20416h32v16H48v-16zm80%200h32v16h-32v-16zm89%2041v30h30v-30h-30zm48%200v30h30v-30h-30zm48%200v30h30v-30h-30z%22%20fill%3D%22%23ffffff%22%20fill-opacity%3D%221%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+      "military": [],
+      "events": []
+    }
+  ],
+  "map": {
+    "info": {
+      "version": "1.732",
+      "description": "Earth",
+      "exportedAt": "2022-03-11T02:34:19.378Z",
+      "mapName": "Earth",
+      "seed": "0",
+      "mapId": 0
+    },
+    "settings": {
+      "distanceUnit": "km",
+      "distanceScale": "2",
+      "areaUnit": "square",
+      "heightUnit": "m",
+      "heightExponent": "2",
+      "temperatureScale": "°C",
+      "barSize": "2",
+      "barLabel": "",
+      "barBackOpacity": "0.2",
+      "barBackColor": "#ffffff",
+      "barPosX": "99",
+      "barPosY": "99",
+      "populationRate": 1000,
+      "urbanization": 1,
+      "mapSize": "40",
+      "latitudeO": "74",
+      "temperatureEquator": "22",
+      "temperaturePole": "0",
+      "prec": "177",
+      "options": {
+          "pinNotes": false,
+          "showMFCGMap": true,
+          "winds": [
+              225,
+              45,
+              225,
+              315,
+              135,
+              315
+          ],
+          "stateLabelsMode": "auto",
+          "year": 942,
+          "era": "Contemporary Age",
+          "eraShort": "CT",
+          "military": [
+              {
+                  "icon": "⚔️",
+                  "name": "infantry",
+                  "rural": 0.25,
+                  "urban": 0.2,
+                  "crew": 1,
+                  "power": 1,
+                  "type": "melee",
+                  "separate": 0
+              },
+              {
+                  "icon": "🏹",
+                  "name": "archers",
+                  "rural": 0.12,
+                  "urban": 0.2,
+                  "crew": 1,
+                  "power": 1,
+                  "type": "ranged",
+                  "separate": 0
+              },
+              {
+                  "icon": "🐴",
+                  "name": "cavalry",
+                  "rural": 0.12,
+                  "urban": 0.03,
+                  "crew": 2,
+                  "power": 2,
+                  "type": "mounted",
+                  "separate": 0
+              },
+              {
+                  "icon": "💣",
+                  "name": "artillery",
+                  "rural": 0,
+                  "urban": 0.03,
+                  "crew": 8,
+                  "power": 12,
+                  "type": "machinery",
+                  "separate": 0
+              },
+              {
+                  "icon": "🌊",
+                  "name": "fleet",
+                  "rural": 0,
+                  "urban": 0.015,
+                  "crew": 100,
+                  "power": 50,
+                  "type": "naval",
+                  "separate": 1
+              }
+          ]
+      },
+      "mapName": "Chueland",
+      "hideLabels": true,
+      "stylePreset": "default",
+      "rescaleLabels": true,
+      "urbanDensity": 10
+    },
+    "coords": {
+      "latT": 72,
+      "latN": 10.1,
+      "latS": -61.9,
+      "lonT": 144,
+      "lonW": -72,
+      "lonE": 72
+    },
+    "cells": {}
+  }
+}

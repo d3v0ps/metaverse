@@ -117,7 +117,7 @@
       &lt;cf-settings-nav&gt;&lt;/cf-settings-nav&gt;
     &lt;/div&gt;
     &lt;div cfElem&#x3D;&quot;content&quot;&gt;
-      &lt;router-outlet&gt;&lt;/router-outlet&gt;
+      &lt;router-outlet name&#x3D;&quot;settings&quot;&gt;&lt;/router-outlet&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
@@ -161,7 +161,7 @@
           &lt;cf-settings-nav&gt;&lt;/cf-settings-nav&gt;
         &lt;/div&gt;
         &lt;div cfElem&#x3D;&quot;content&quot;&gt;
-          &lt;router-outlet&gt;&lt;/router-outlet&gt;
+          &lt;router-outlet name&#x3D;&quot;settings&quot;&gt;&lt;/router-outlet&gt;
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;
@@ -227,8 +227,8 @@ export class SettingsScene {}
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="scene-content">  <h2>Settings</h2>  <div cfBlock="settings">    <div cfElem="nav">      <cf-settings-nav></cf-settings-nav>    </div>    <div cfElem="content">      <router-outlet></router-outlet>    </div>  </div></div></div>'
-    var COMPONENTS = [{'name': 'ApplicationManagerComponent', 'selector': 'cf-application-manager'},{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'},{'name': 'WorldScene', 'selector': 'cf-world-scene'}];
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="scene-content">  <h2>Settings</h2>  <div cfBlock="settings">    <div cfElem="nav">      <cf-settings-nav></cf-settings-nav>    </div>    <div cfElem="content">      <router-outlet name="settings"></router-outlet>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'},{'name': 'WorldScene', 'selector': 'cf-world-scene'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SettingsScene'};
 </script>

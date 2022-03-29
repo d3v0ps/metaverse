@@ -110,7 +110,7 @@
   &lt;li&gt;
     &lt;a
       class&#x3D;&quot;button&quot;
-      routerLink&#x3D;&quot;/settings/customization&quot;
+      [routerLink]&#x3D;&quot;[&#x27;&#x27;, { outlets: { settings: [&#x27;customization&#x27;] } }]&quot;
       routerLinkActive&#x3D;&quot;button--primary&quot;
     &gt;
       Customization
@@ -119,7 +119,7 @@
   &lt;li&gt;
     &lt;a
       class&#x3D;&quot;button&quot;
-      routerLink&#x3D;&quot;/settings/credits&quot;
+      [routerLink]&#x3D;&quot;[&#x27;&#x27;, { outlets: { settings: [&#x27;credits&#x27;] } }]&quot;
       routerLinkActive&#x3D;&quot;button--primary&quot;
     &gt;
       Credits
@@ -165,7 +165,7 @@
       &lt;li&gt;
         &lt;a
           class&#x3D;&quot;button&quot;
-          routerLink&#x3D;&quot;/settings/customization&quot;
+          [routerLink]&#x3D;&quot;[&#x27;&#x27;, { outlets: { settings: [&#x27;customization&#x27;] } }]&quot;
           routerLinkActive&#x3D;&quot;button--primary&quot;
         &gt;
           Customization
@@ -174,7 +174,7 @@
       &lt;li&gt;
         &lt;a
           class&#x3D;&quot;button&quot;
-          routerLink&#x3D;&quot;/settings/credits&quot;
+          [routerLink]&#x3D;&quot;[&#x27;&#x27;, { outlets: { settings: [&#x27;credits&#x27;] } }]&quot;
           routerLinkActive&#x3D;&quot;button--primary&quot;
         &gt;
           Credits
@@ -240,8 +240,8 @@ export class SettingsNavComponent {}
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ul>  <li>    <a      class="button"      routerLink="/settings/customization"      routerLinkActive="button--primary"    >      Customization    </a>  </li>  <li>    <a      class="button"      routerLink="/settings/credits"      routerLinkActive="button--primary"    >      Credits    </a>  </li>  <!-- li>    <a class="button" routerLink="/settings/account">Account</a>  </li --></ul></div>'
-    var COMPONENTS = [{'name': 'ApplicationManagerComponent', 'selector': 'cf-application-manager'},{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'},{'name': 'WorldScene', 'selector': 'cf-world-scene'}];
+        var COMPONENT_TEMPLATE = '<div><ul>  <li>    <a      class="button"      [routerLink]="[\'\', { outlets: { settings: [\'customization\'] } }]"      routerLinkActive="button--primary"    >      Customization    </a>  </li>  <li>    <a      class="button"      [routerLink]="[\'\', { outlets: { settings: [\'credits\'] } }]"      routerLinkActive="button--primary"    >      Credits    </a>  </li>  <!-- li>    <a class="button" routerLink="/settings/account">Account</a>  </li --></ul></div>'
+    var COMPONENTS = [{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'},{'name': 'WorldScene', 'selector': 'cf-world-scene'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SettingsNavComponent'};
 </script>

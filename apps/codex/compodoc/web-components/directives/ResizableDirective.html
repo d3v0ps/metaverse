@@ -126,8 +126,31 @@
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
+                                <a href="#resizeHeightSkipping" >resizeHeightSkipping</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#resizeWidthSkipping" >resizeWidthSkipping</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
                                     <span class="modifier">Optional</span>
                                 <a href="#resizingE" >resizingE</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#resizingN" >resizingN</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#resizingNE" >resizingNE</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#resizingNW" >resizingNW</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
@@ -138,6 +161,16 @@
                                     <span class="modifier">Private</span>
                                     <span class="modifier">Optional</span>
                                 <a href="#resizingSE" >resizingSE</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#resizingSW" >resizingSW</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                    <span class="modifier">Optional</span>
+                                <a href="#resizingW" >resizingW</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
@@ -289,7 +322,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:52</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:57</a></div>
                             </td>
                         </tr>
 
@@ -609,8 +642,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="96"
-                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:96</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:101</a></div>
                 </td>
             </tr>
 
@@ -639,8 +672,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="96"
-                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:96</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:101</a></div>
                 </td>
             </tr>
 
@@ -675,8 +708,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="167"
-                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:167</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="196"
+                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:196</a></div>
                 </td>
             </tr>
 
@@ -746,8 +779,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="160"
-                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:160</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="189"
+                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:189</a></div>
                 </td>
             </tr>
 
@@ -783,8 +816,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="196"
-                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:196</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="245"
+                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:245</a></div>
                 </td>
             </tr>
 
@@ -845,15 +878,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>initResize(event: MouseEvent | TouchEvent, isSouth: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, isEast: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, isSouthEast: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+<code>initResize(event: MouseEvent | TouchEvent, isSouth: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, isEast: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, isSouthEast: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, isNorth: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, isWest: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, isNorthEast: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, isNorthWest: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, isSouthWest: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="173"
-                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:173</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="202"
+                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:202</a></div>
                 </td>
             </tr>
 
@@ -921,6 +954,66 @@
 
 
                                 </tr>
+                                <tr>
+                                    <td>isNorth</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>isWest</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>isNorthEast</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>isNorthWest</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>isSouthWest</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -957,8 +1050,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="139"
-                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:139</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="168"
+                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:168</a></div>
                 </td>
             </tr>
 
@@ -1074,8 +1167,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="58"
-                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:58</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:63</a></div>
                 </td>
             </tr>
 
@@ -1111,8 +1204,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="90"
-                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:90</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="95"
+                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:95</a></div>
                 </td>
             </tr>
 
@@ -1155,8 +1248,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="96"
-                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:96</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="101"
+                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:101</a></div>
                 </td>
             </tr>
 
@@ -1224,8 +1317,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="155"
-                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:155</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="184"
+                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:184</a></div>
                 </td>
             </tr>
 
@@ -1293,8 +1386,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="227"
-                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:227</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="305"
+                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:305</a></div>
                 </td>
             </tr>
 
@@ -1362,8 +1455,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="208"
-                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:208</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="262"
+                            class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:262</a></div>
                 </td>
             </tr>
 
@@ -1463,7 +1556,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:52</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:57</a></div>
                         </td>
                     </tr>
 
@@ -1490,7 +1583,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:50</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:55</a></div>
                         </td>
                     </tr>
 
@@ -1517,7 +1610,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:51</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:56</a></div>
                         </td>
                     </tr>
 
@@ -1544,7 +1637,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:49</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:54</a></div>
                         </td>
                     </tr>
 
@@ -1609,6 +1702,58 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="resizeHeightSkipping"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>resizeHeightSkipping</b></span>
+                        <a href="#resizeHeightSkipping"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="373" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:373</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resizeWidthSkipping"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>resizeWidthSkipping</b></span>
+                        <a href="#resizeWidthSkipping"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="375" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:375</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="resizingE"></a>
                     <span class="name">
                             <span class="modifier">Private</span>
@@ -1627,6 +1772,90 @@
                     <tr>
                         <td class="col-md-4">
                                 <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resizingN"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>resizingN</b></span>
+                        <a href="#resizingN"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:47</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resizingNE"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>resizingNE</b></span>
+                        <a href="#resizingNE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:51</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resizingNW"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>resizingNW</b></span>
+                        <a href="#resizingNW"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:52</a></div>
                         </td>
                     </tr>
 
@@ -1682,7 +1911,63 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:47</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:49</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resizingSW"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>resizingSW</b></span>
+                        <a href="#resizingSW"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="resizingW"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                            <span class="modifier">Optional</span>
+                        <span ><b>resizingW</b></span>
+                        <a href="#resizingW"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">libs/web-components/src/lib/angular/resizable/resizable.directive.ts:48</a></div>
                         </td>
                     </tr>
 
@@ -1732,7 +2017,7 @@
   HostListener,
   Input,
   OnDestroy,
-  Output
+  Output,
 } from &#x27;@angular/core&#x27;;
 import { fromEvent, Subscription } from &#x27;rxjs&#x27;;
 import { takeUntil } from &#x27;rxjs/operators&#x27;;
@@ -1768,9 +2053,14 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
   private subscription?: Subscription;
   private newWidth!: number;
   private newHeight!: number;
-  private resizingS?: boolean; // south
-  private resizingE?: boolean; // east
-  private resizingSE?: boolean; // south-east
+  private resizingS?: boolean;
+  private resizingE?: boolean;
+  private resizingN?: boolean;
+  private resizingW?: boolean;
+  private resizingSE?: boolean;
+  private resizingSW?: boolean;
+  private resizingNE?: boolean;
+  private resizingNW?: boolean;
 
   private minWidth!: number;
   private maxWidth!: number;
@@ -1827,6 +2117,11 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
     const isSouth &#x3D; classList.contains(&#x27;resize-handle-s&#x27;);
     const isEast &#x3D; classList.contains(&#x27;resize-handle-e&#x27;);
     const isSouthEast &#x3D; classList.contains(&#x27;resize-handle-se&#x27;);
+    const isNorth &#x3D; classList.contains(&#x27;resize-handle-n&#x27;);
+    const isWest &#x3D; classList.contains(&#x27;resize-handle-w&#x27;);
+    const isNorthEast &#x3D; classList.contains(&#x27;resize-handle-ne&#x27;);
+    const isNorthWest &#x3D; classList.contains(&#x27;resize-handle-nw&#x27;);
+    const isSouthWest &#x3D; classList.contains(&#x27;resize-handle-sw&#x27;);
 
     const evt &#x3D; getEvent(event);
     const width &#x3D; this.element.clientWidth;
@@ -1838,8 +2133,27 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
     const moveEvent &#x3D; isTouchEvent ? &#x27;touchmove&#x27; : &#x27;mousemove&#x27;;
     const upEvent &#x3D; isTouchEvent ? &#x27;touchend&#x27; : &#x27;mouseup&#x27;;
 
-    if (isSouth || isEast || isSouthEast) {
-      this.initResize(event, isSouth, isEast, isSouthEast);
+    if (
+      isSouth ||
+      isEast ||
+      isNorth ||
+      isWest ||
+      isSouthEast ||
+      isSouthWest ||
+      isNorthEast ||
+      isNorthWest
+    ) {
+      this.initResize(
+        event,
+        isSouth,
+        isEast,
+        isSouthEast,
+        isNorth,
+        isWest,
+        isNorthEast,
+        isNorthWest,
+        isSouthWest
+      );
 
       const mouseup &#x3D; fromEvent(document, upEvent);
       this.subscription &#x3D; mouseup.subscribe((ev) &#x3D;&gt;
@@ -1900,7 +2214,12 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
     event: MouseEvent | TouchEvent,
     isSouth: boolean,
     isEast: boolean,
-    isSouthEast: boolean
+    isSouthEast: boolean,
+    isNorth: boolean,
+    isWest: boolean,
+    isNorthEast: boolean,
+    isNorthWest: boolean,
+    isSouthWest: boolean
   ) {
     if (isSouth) {
       this.resizingS &#x3D; true;
@@ -1910,6 +2229,21 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
     }
     if (isSouthEast) {
       this.resizingSE &#x3D; true;
+    }
+    if (isNorth) {
+      this.resizingN &#x3D; true;
+    }
+    if (isWest) {
+      this.resizingW &#x3D; true;
+    }
+    if (isNorthEast) {
+      this.resizingNE &#x3D; true;
+    }
+    if (isNorthWest) {
+      this.resizingNW &#x3D; true;
+    }
+    if (isSouthWest) {
+      this.resizingSW &#x3D; true;
     }
     this.element.classList.add(&#x27;resizing&#x27;);
     this.newWidth &#x3D; this.element.clientWidth;
@@ -1922,7 +2256,12 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
   endResize(event: MouseEvent | TouchEvent) {
     this.resizingS &#x3D; false;
     this.resizingE &#x3D; false;
+    this.resizingW &#x3D; false;
+    this.resizingN &#x3D; false;
     this.resizingSE &#x3D; false;
+    this.resizingSW &#x3D; false;
+    this.resizingNE &#x3D; false;
+    this.resizingNW &#x3D; false;
     this.element.classList.remove(&#x27;resizing&#x27;);
     this.resizeEnd.emit({
       event: getEvent(event),
@@ -1932,10 +2271,34 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
   }
 
   resizeWidth(event: MouseEvent | Touch) {
+    if (this.resizeWidthSkipping) {
+      return;
+    }
+
+    this.resizeWidthSkipping &#x3D; true;
+
+    setTimeout(() &#x3D;&gt; {
+      this.resizeWidthSkipping &#x3D; false;
+    }, 100);
+
     const overMinWidth &#x3D; !this.minWidth || this.newWidth &gt;&#x3D; this.minWidth;
     const underMaxWidth &#x3D; !this.maxWidth || this.newWidth &lt;&#x3D; this.maxWidth;
 
-    if (this.resizingSE || this.resizingE) {
+    if (this.resizingSE || this.resizingNE || this.resizingE) {
+      if (overMinWidth &amp;&amp; underMaxWidth) {
+        if (!this.ghost) {
+          this.element.style.width &#x3D; &#x60;${this.newWidth}px&#x60;;
+        }
+        this.resizing.emit({
+          event,
+          width: this.newWidth,
+          height: this.newHeight,
+          direction: &#x27;horizontal&#x27;,
+        });
+      }
+    }
+
+    if (this.resizingSW || this.resizingNW || this.resizingW) {
       if (overMinWidth &amp;&amp; underMaxWidth) {
         if (!this.ghost) {
           this.element.style.width &#x3D; &#x60;${this.newWidth}px&#x60;;
@@ -1951,10 +2314,20 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
   }
 
   resizeHeight(event: MouseEvent | Touch) {
+    if (this.resizeHeightSkipping) {
+      return;
+    }
+
+    this.resizeHeightSkipping &#x3D; true;
+
+    setTimeout(() &#x3D;&gt; {
+      this.resizeHeightSkipping &#x3D; false;
+    }, 100);
+
     const overMinHeight &#x3D; !this.minHeight || this.newHeight &gt;&#x3D; this.minHeight;
     const underMaxHeight &#x3D; !this.maxHeight || this.newHeight &lt;&#x3D; this.maxHeight;
 
-    if (this.resizingSE || this.resizingS) {
+    if (this.resizingSE || this.resizingSW || this.resizingS) {
       if (overMinHeight &amp;&amp; underMaxHeight) {
         if (!this.ghost) {
           this.element.style.height &#x3D; &#x60;${this.newHeight}px&#x60;;
@@ -1967,7 +2340,50 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
         });
       }
     }
+
+    if (this.resizingNE || this.resizingNW || this.resizingN) {
+      const currentHeight &#x3D; parseInt(
+        getComputedStyle(this.element).height.split(&#x27;px&#x27;)[0],
+        10
+      );
+      const currentTop &#x3D; parseInt(
+        getComputedStyle(this.element).top.split(&#x27;px&#x27;)[0],
+        10
+      );
+
+      const diff &#x3D; this.newHeight - currentHeight;
+      const newHeight &#x3D; (this.newHeight &#x3D; currentHeight - diff);
+      const newTop &#x3D; currentTop + diff;
+
+      console.debug(&#x27;current&#x27;, {
+        currentHeight,
+        currentTop,
+      });
+
+      console.debug(&#x27;new&#x27;, {
+        newHeight,
+        newTop: currentTop + diff,
+        diff,
+      });
+
+      if (overMinHeight &amp;&amp; underMaxHeight) {
+        if (!this.ghost) {
+          this.element.style.height &#x3D; &#x60;${newHeight}px&#x60;;
+          this.element.style.top &#x3D; &#x60;${newTop}px&#x60;;
+        }
+        this.resizing.emit({
+          event,
+          width: this.newWidth,
+          height: newHeight,
+          direction: &#x27;vertical&#x27;,
+        });
+      }
+    }
   }
+
+  private resizeHeightSkipping &#x3D; false;
+
+  private resizeWidthSkipping &#x3D; false;
 }
 </code></pre>
     </div>

@@ -86,6 +86,10 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Private</span>
+                                <a href="#_videoPlayer" >_videoPlayer</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
                                     <span class="modifier">Optional</span>
                                 <a href="#currentTheme" >currentTheme</a>
                             </li>
@@ -106,6 +110,10 @@
                                     <span class="modifier">Private</span>
                                     <span class="modifier">Optional</span>
                                 <a href="#themeChangeSubscription" >themeChangeSubscription</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#youtubeIframeApiIsLoaded" >youtubeIframeApiIsLoaded</a>
                             </li>
                         </ul>
                     </td>
@@ -128,11 +136,23 @@
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#onThemeChange" >onThemeChange</a>
+                                <a href="#loadYoutubeIframeApi" >loadYoutubeIframeApi</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#onCustomizationChange" >onCustomizationChange</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#renderIframeBg" >renderIframeBg</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
                                 <a href="#renderMatrix" >renderMatrix</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#renderMatrixBg" >renderMatrixBg</a>
                             </li>
                             <li>
                                     <span class="modifier">Private</span>
@@ -161,7 +181,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:39</a></div>
                             </td>
                         </tr>
 
@@ -224,8 +244,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="38"
-                            class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:38</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:45</a></div>
                 </td>
             </tr>
 
@@ -263,8 +283,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="109"
-                            class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:109</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="197"
+                            class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:197</a></div>
                 </td>
             </tr>
 
@@ -284,26 +304,65 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="onThemeChange"></a>
+                    <a name="loadYoutubeIframeApi"></a>
                     <span class="name">
                         <span class="modifier">Private</span>
-                        <span ><b>onThemeChange</b></span>
-                        <a href="#onThemeChange"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>loadYoutubeIframeApi</b></span>
+                        <a href="#loadYoutubeIframeApi"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>onThemeChange(name?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    <code>loadYoutubeIframeApi()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="53"
-                            class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:53</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="275"
+                            class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:275</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onCustomizationChange"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>onCustomizationChange</b></span>
+                        <a href="#onCustomizationChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>onCustomizationChange(customization?: Customization)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:61</a></div>
                 </td>
             </tr>
 
@@ -324,13 +383,84 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>name</td>
+                                    <td>customization</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            <code>Customization</code>
                                     </td>
 
                                     <td>
                                         Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="renderIframeBg"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>renderIframeBg</b></span>
+                        <a href="#renderIframeBg"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>renderIframeBg(customization: Customization)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="72"
+                            class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:72</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>customization</td>
+                                    <td>
+                                            <code>Customization</code>
+                                    </td>
+
+                                    <td>
+                                        No
                                     </td>
 
 
@@ -373,8 +503,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="150"
-                            class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:150</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="238"
+                            class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:238</a></div>
                 </td>
             </tr>
 
@@ -425,6 +555,77 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="renderMatrixBg"></a>
+                    <span class="name">
+                        <span class="modifier">Private</span>
+                        <span ><b>renderMatrixBg</b></span>
+                        <a href="#renderMatrixBg"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>renderMatrixBg(customization: Customization)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="140"
+                            class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:140</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>customization</td>
+                                    <td>
+                                            <code>Customization</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="renderTick"></a>
                     <span class="name">
                         <span class="modifier">Private</span>
@@ -443,8 +644,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="136"
-                            class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:136</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="224"
+                            class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:224</a></div>
                 </td>
             </tr>
 
@@ -520,6 +721,33 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="_videoPlayer"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_videoPlayer</b></span>
+                        <a href="#_videoPlayer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="currentTheme"></a>
                     <span class="name">
                             <span class="modifier">Private</span>
@@ -537,7 +765,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:33</a></div>
                         </td>
                     </tr>
 
@@ -563,7 +791,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:31</a></div>
                         </td>
                     </tr>
 
@@ -591,7 +819,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:32</a></div>
                         </td>
                     </tr>
 
@@ -623,7 +851,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:34</a></div>
                         </td>
                     </tr>
 
@@ -651,7 +879,33 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="youtubeIframeApiIsLoaded"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>youtubeIframeApiIsLoaded</b></span>
+                        <a href="#youtubeIframeApiIsLoaded"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">apps/portal/src/app/services/background.renderer.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -665,8 +919,11 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Customization } from &#x27;@central-factory/preferences/models/customization&#x27;;
 import { CustomizationSettingsState } from &#x27;@central-factory/preferences/states/customization/customization-settings.state&#x27;;
-import { distinctUntilChanged, map, Subscription, tap } from &#x27;rxjs&#x27;;
+import { distinctUntilChanged, Subscription, tap } from &#x27;rxjs&#x27;;
+
+declare let YT: { PlayerState: { PAUSED: any } };
 
 export type MatrixColumn &#x3D; {
   x: number;
@@ -697,6 +954,9 @@ export class BackgroundRenderer {
 
   private themeChangeSubscription?: Subscription;
 
+  private _videoPlayer: any;
+  private youtubeIframeApiIsLoaded &#x3D; false;
+
   constructor(private customizationSettingsState: CustomizationSettingsState) {
     this.initialize();
   }
@@ -709,18 +969,99 @@ export class BackgroundRenderer {
     this.themeChangeSubscription &#x3D;
       this.customizationSettingsState.customizationSettings$
         .pipe(
-          map((settings) &#x3D;&gt; settings?.theme.name),
-          distinctUntilChanged((prev, curr) &#x3D;&gt; prev &#x3D;&#x3D;&#x3D; curr),
-          tap((name) &#x3D;&gt; this.onThemeChange(name))
+          distinctUntilChanged(
+            (prev, curr) &#x3D;&gt; JSON.stringify(prev) &#x3D;&#x3D;&#x3D; JSON.stringify(curr)
+          ),
+          tap((name) &#x3D;&gt; this.onCustomizationChange(name))
         )
         .subscribe();
   }
 
-  private onThemeChange(name?: string) {
+  private onCustomizationChange(customization?: Customization) {
+    if (customization?.background) {
+      this.renderIframeBg(customization);
+      return;
+    }
+
+    if (customization) {
+      this.renderMatrixBg(customization);
+    }
+  }
+
+  private renderIframeBg(customization: Customization) {
+    const application &#x3D; document.getElementsByClassName(&#x27;application&#x27;)[0];
+    const iframe &#x3D; document.getElementById(&#x27;bgiframe&#x27;) as HTMLIFrameElement;
+    const canvas &#x3D; document.getElementById(&#x27;bgcanvas&#x27;) as HTMLCanvasElement;
+    const url &#x3D; customization.background?.url;
+
+    if (!application || !iframe || !url) {
+      setTimeout(() &#x3D;&gt; this.renderIframeBg(customization), 1000);
+      return;
+    }
+
+    if (canvas) {
+      canvas.style.display &#x3D; &#x27;none&#x27;;
+    }
+
+    if (this._videoPlayer) {
+      this._videoPlayer.clearVideo();
+      delete this._videoPlayer;
+    }
+
+    application.classList.add(&#x27;application--no-background-color&#x27;);
+    // iframe.src &#x3D; &#x60;${url}?rel&#x3D;0&amp;modestbranding&#x3D;1&amp;mute&#x3D;1&amp;showinfo&#x3D;0&amp;controls&#x3D;0&amp;autoplay&#x3D;1&amp;loop&#x3D;1&#x60;;
+    iframe.style.display &#x3D; &#x27;block&#x27;;
+
+    const createVideoPlayer &#x3D; () &#x3D;&gt; {
+      const onReady &#x3D; () &#x3D;&gt; {
+        // console.debug(&#x27;ready&#x27;, this._videoPlayer);
+        this._videoPlayer.mute();
+        this._videoPlayer.playVideo();
+        setTimeout(() &#x3D;&gt; {
+          this._videoPlayer.unMute();
+          this._videoPlayer.setVolume(40);
+        }, 1000);
+      };
+
+      const onStateChange &#x3D; ({ data }: { data: number }) &#x3D;&gt; {
+        if (data &#x3D;&#x3D;&#x3D; 2) {
+          onReady();
+        }
+        // console.debug(&#x27;onStateChange&#x27;, data);
+      };
+
+      this._videoPlayer &#x3D; new (YT as any).Player(&#x27;bgiframe&#x27;, {
+        height: &#x27;100%&#x27;,
+        width: &#x27;100%&#x27;,
+        videoId: url.split(&#x27;/&#x27;).pop(),
+        playerVars: {
+          controls: 0,
+          modestBranding: 1,
+          showInfo: 0,
+          mute: 1,
+          loop: 1,
+        },
+        events: {
+          onReady,
+          onStateChange,
+        },
+      });
+    };
+
+    if (this.youtubeIframeApiIsLoaded) {
+      createVideoPlayer();
+    } else {
+      (window as any).onYouTubeIframeAPIReady &#x3D; () &#x3D;&gt; createVideoPlayer();
+      this.loadYoutubeIframeApi();
+    }
+  }
+
+  private renderMatrixBg(customization: Customization) {
+    const name &#x3D; customization?.theme?.name;
     const application &#x3D; document.getElementsByClassName(&#x27;application&#x27;)[0];
 
     if (!application || !name) {
-      setTimeout(() &#x3D;&gt; this.initialize(), 1000);
+      setTimeout(() &#x3D;&gt; this.renderMatrixBg(customization), 1000);
       return;
     }
 
@@ -848,6 +1189,24 @@ export class BackgroundRenderer {
         columns[i].stackCounter &#x3D; 0;
       }
     }
+  }
+
+  private loadYoutubeIframeApi() {
+    if (this.youtubeIframeApiIsLoaded) {
+      return;
+    }
+
+    // 2. This code loads the IFrame Player API code asynchronously.
+    const tag &#x3D; document.createElement(&#x27;script&#x27;);
+
+    tag.src &#x3D; &#x27;https://www.youtube.com/iframe_api&#x27;;
+    const firstScriptTag &#x3D; document.getElementsByTagName(&#x27;script&#x27;)[0];
+    (firstScriptTag.parentNode as HTMLElement).insertBefore(
+      tag,
+      firstScriptTag
+    );
+
+    this.youtubeIframeApiIsLoaded &#x3D; true;
   }
 }
 </code></pre>

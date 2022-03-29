@@ -100,6 +100,10 @@
         height: 100%;
         overflow: auto;
         gap: 1rem;
+        box-shadow: var(--component-scene-content-shadow-outset),
+          inset var(--component-scene-content-shadow-inset-primary),
+          inset var(--component-scene-content-shadow-inset-secondary);
+        border-radius: 20px;
         /* flex-direction: row;
         height: 100%;
         justify-content: space-around; */
@@ -129,16 +133,16 @@
             <tr>
                 <td class="col-md-3">template</td>
                 <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;div cfBlock&#x3D;&quot;scene&quot; cfMod&#x3D;&quot;world&quot; *ngIf&#x3D;&quot;world$ | async as world&quot;&gt;
-  &lt;cf-avatars-list
+  &lt;!-- cf-avatars-list
     [avatars]&#x3D;&quot;avatars&quot;
     [world]&#x3D;&quot;world&quot;
     (selectAvatar)&#x3D;&quot;selectedAvatar &#x3D; $event&quot;
-  &gt;&lt;/cf-avatars-list&gt;
-  &lt;!-- cf-world-map *ngIf&#x3D;&quot;!selectedAvatar&quot;&gt;&lt;/cf-world-map --&gt;
-  &lt;cf-avatar-info
+  &gt;&lt;/cf-avatars-list --&gt;
+  &lt;cf-world-map&gt;&lt;/cf-world-map&gt;
+  &lt;!-- cf-avatar-info
     [avatar]&#x3D;&quot;selectedAvatar&quot;
     [world]&#x3D;&quot;world&quot;
-  &gt;&lt;/cf-avatar-info&gt;
+  &gt;&lt;/cf-avatar-info --&gt;
 &lt;/div&gt;
 </code></pre></td>
             </tr>
@@ -222,7 +226,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:70</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:69</a></div>
                             </td>
                         </tr>
 
@@ -313,8 +317,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="78"
-                            class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:78</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="77"
+                            class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:77</a></div>
                 </td>
             </tr>
 
@@ -360,7 +364,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:64</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:63</a></div>
                         </td>
                     </tr>
 
@@ -391,7 +395,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:65</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:64</a></div>
                         </td>
                     </tr>
 
@@ -418,7 +422,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:66</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:65</a></div>
                         </td>
                     </tr>
 
@@ -445,7 +449,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:70</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:69</a></div>
                         </td>
                     </tr>
 
@@ -465,12 +469,12 @@
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>this.worldsState.selectedWorldContent$</code>
+                        <i>Default value : </i><code>this.worldsState.selectedWorld$</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:68</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">apps/portal/src/app/scenes/world/world.scene.ts:67</a></div>
                         </td>
                     </tr>
 
@@ -484,31 +488,26 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
-import { PlannerGoal } from &#x27;@central-factory/actors/models/planner-goal&#x27;;
 import { ActionPlanner } from &#x27;@central-factory/actors/services/action-planner&#x27;;
-import { actions as avatarActions } from &#x27;@central-factory/avatars/actions/avatar.actions&#x27;;
 import { AvatarGenerator } from &#x27;@central-factory/avatars/data/generators/avatar.generator&#x27;;
-import { goals as avatarGoals } from &#x27;@central-factory/avatars/goals/avatar.goals&#x27;;
-import { AvatarRelationshipKind } from &#x27;@central-factory/avatars/models&#x27;;
 import { Avatar } from &#x27;@central-factory/avatars/models/avatar&#x27;;
 import { AvatarLivingState } from &#x27;@central-factory/avatars/states/living-avatar.state&#x27;;
 import { WorldsState } from &#x27;@central-factory/worlds/states/worlds.state&#x27;;
-import faker from &#x27;@faker-js/faker/locale/en_US&#x27;;
 
 @Component({
   selector: &#x27;cf-world-scene&#x27;,
   template: &#x60;
     &lt;div cfBlock&#x3D;&quot;scene&quot; cfMod&#x3D;&quot;world&quot; *ngIf&#x3D;&quot;world$ | async as world&quot;&gt;
-      &lt;cf-avatars-list
+      &lt;!-- cf-avatars-list
         [avatars]&#x3D;&quot;avatars&quot;
         [world]&#x3D;&quot;world&quot;
         (selectAvatar)&#x3D;&quot;selectedAvatar &#x3D; $event&quot;
-      &gt;&lt;/cf-avatars-list&gt;
-      &lt;!-- cf-world-map *ngIf&#x3D;&quot;!selectedAvatar&quot;&gt;&lt;/cf-world-map --&gt;
-      &lt;cf-avatar-info
+      &gt;&lt;/cf-avatars-list --&gt;
+      &lt;cf-world-map&gt;&lt;/cf-world-map&gt;
+      &lt;!-- cf-avatar-info
         [avatar]&#x3D;&quot;selectedAvatar&quot;
         [world]&#x3D;&quot;world&quot;
-      &gt;&lt;/cf-avatar-info&gt;
+      &gt;&lt;/cf-avatar-info --&gt;
     &lt;/div&gt;
   &#x60;,
   styles: [
@@ -519,6 +518,10 @@ import faker from &#x27;@faker-js/faker/locale/en_US&#x27;;
         height: 100%;
         overflow: auto;
         gap: 1rem;
+        box-shadow: var(--component-scene-content-shadow-outset),
+          inset var(--component-scene-content-shadow-inset-primary),
+          inset var(--component-scene-content-shadow-inset-secondary);
+        border-radius: 20px;
         /* flex-direction: row;
         height: 100%;
         justify-content: space-around; */
@@ -550,7 +553,7 @@ export class WorldScene {
   paginated: Avatar[] &#x3D; [];
   selectedAvatar?: Avatar;
 
-  world$ &#x3D; this.worldsState.selectedWorldContent$;
+  world$ &#x3D; this.worldsState.selectedWorld$;
 
   selectedHouse?: string;
 
@@ -561,76 +564,67 @@ export class WorldScene {
   ) {}
 
   ngOnInit() {
-    this.worldsState.selectedWorldContent$.subscribe((world) &#x3D;&gt; {
-      if (
-        !world ||
-        !world.map?.cells ||
-        !world.map?.cells.burgs ||
-        !world.map?.cells.burgs[0]
-      ) {
-        return;
-      }
-
-      const burg &#x3D; world.map?.cells.burgs[1];
-
-      const burgAvatars &#x3D; this.generator.generateBurg(world, burg);
-
-      const avatars &#x3D; this.generator
-        .generateDemigods(world)
-        .concat(burgAvatars);
-
-      // console.debug(&#x27;demigods&#x27;, avatars[0]);
-
-      const arrayToTree &#x3D; (arr: Avatar[], parent &#x3D; &#x27;0&#x27;): Avatar[] &#x3D;&gt;
-        arr
-          .filter((item) &#x3D;&gt;
-            item.relationships?.some(
-              (relationship) &#x3D;&gt;
-                relationship.kind &#x3D;&#x3D;&#x3D; AvatarRelationshipKind.Parent &amp;&amp;
-                relationship.avatar &#x3D;&#x3D;&#x3D; parent
-            )
-          )
-          .map((child) &#x3D;&gt; ({
-            ...child,
-            children: arrayToTree(arr, child.id),
-          }));
-
-      const root &#x3D; arrayToTree(avatars);
-
-      this.avatars &#x3D; avatars;
-      this.paginated &#x3D; avatars.slice(0, 10);
-      this.selectedAvatar &#x3D; this.avatars[0];
-
-      this.avatars.forEach((avatar) &#x3D;&gt; {
-        const energy &#x3D; faker.datatype.number({ min: 4, max: 40 });
-        const { bestPlan, plans } &#x3D; this.actionPlanner.execute(
-          {
-            energy,
-            mind: faker.datatype.number({ min: 25, max: 100 }),
-            location: {},
-            goals: {
-              food: {},
-            },
-          },
-          [
-            {
-              actions: avatarActions,
-              goal: avatarGoals.Food as PlannerGoal&lt;AvatarLivingState&gt;,
-            },
-          ]
-        );
-
-        console.debug(&#x27;plans&#x27;, { energy, plans });
-
-        console.debug(
-          &#x60;-- Best plan(${bestPlan?.cost}) for ${bestPlan?.goal.label} --&#x60;
-        );
-        bestPlan?.actions.map((a: any, i: number) &#x3D;&gt;
-          console.debug(&#x60;${i + 1}) ${a}&#x60;)
-        );
-        console.debug(&#x27;Other plans&#x27;, plans);
-      });
-    });
+    // this.worldsState.selectedWorld$.subscribe((world) &#x3D;&gt; {
+    //   console.debug(&#x27;world scene&#x27;);
+    // if (
+    //   !world ||
+    //   !world.map?.cells ||
+    //   !world.map?.cells.burgs ||
+    //   !world.map?.cells.burgs[0]
+    // ) {
+    //   return;
+    // }
+    // const burg &#x3D; world.map?.cells.burgs[1];
+    // const burgAvatars &#x3D; this.generator.generateBurg(world, burg);
+    // const avatars &#x3D; this.generator
+    //   .generateDemigods(world)
+    //   .concat(burgAvatars);
+    // // console.debug(&#x27;demigods&#x27;, avatars[0]);
+    // const arrayToTree &#x3D; (arr: Avatar[], parent &#x3D; &#x27;0&#x27;): Avatar[] &#x3D;&gt;
+    //   arr
+    //     .filter((item) &#x3D;&gt;
+    //       item.relationships?.some(
+    //         (relationship) &#x3D;&gt;
+    //           relationship.kind &#x3D;&#x3D;&#x3D; AvatarRelationshipKind.Parent &amp;&amp;
+    //           relationship.avatar &#x3D;&#x3D;&#x3D; parent
+    //       )
+    //     )
+    //     .map((child) &#x3D;&gt; ({
+    //       ...child,
+    //       children: arrayToTree(arr, child.id),
+    //     }));
+    // const root &#x3D; arrayToTree(avatars);
+    // this.avatars &#x3D; avatars;
+    // this.paginated &#x3D; avatars.slice(0, 10);
+    // this.selectedAvatar &#x3D; this.avatars[0];
+    // this.avatars.forEach((avatar) &#x3D;&gt; {
+    //   const energy &#x3D; faker.datatype.number({ min: 4, max: 40 });
+    //   const { bestPlan, plans } &#x3D; this.actionPlanner.execute(
+    //     {
+    //       energy,
+    //       mind: faker.datatype.number({ min: 25, max: 100 }),
+    //       location: {},
+    //       goals: {
+    //         food: {},
+    //       },
+    //     },
+    //     [
+    //       {
+    //         actions: avatarActions,
+    //         goal: avatarGoals.Food as PlannerGoal&lt;AvatarLivingState&gt;,
+    //       },
+    //     ]
+    //   );
+    //   console.debug(&#x27;plans&#x27;, { energy, plans });
+    //   console.debug(
+    //     &#x60;-- Best plan(${bestPlan?.cost}) for ${bestPlan?.goal.label} --&#x60;
+    //   );
+    //   bestPlan?.actions.map((a: any, i: number) &#x3D;&gt;
+    //     console.debug(&#x60;${i + 1}) ${a}&#x60;)
+    //   );
+    //   console.debug(&#x27;Other plans&#x27;, plans);
+    // });
+    // });
   }
 }
 </code></pre>
@@ -645,6 +639,10 @@ export class WorldScene {
         height: 100%;
         overflow: auto;
         gap: 1rem;
+        box-shadow: var(--component-scene-content-shadow-outset),
+          inset var(--component-scene-content-shadow-inset-primary),
+          inset var(--component-scene-content-shadow-inset-secondary);
+        border-radius: 20px;
         /* flex-direction: row;
         height: 100%;
         justify-content: space-around; */
@@ -697,8 +695,8 @@ export class WorldScene {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div cfBlock="scene" cfMod="world" *ngIf="world$ | async as world">  <cf-avatars-list    [avatars]="avatars"    [world]="world"    (selectAvatar)="selectedAvatar = $event"  ></cf-avatars-list>  <!-- cf-world-map *ngIf="!selectedAvatar"></cf-world-map -->  <cf-avatar-info    [avatar]="selectedAvatar"    [world]="world"  ></cf-avatar-info></div></div>'
-    var COMPONENTS = [{'name': 'ApplicationManagerComponent', 'selector': 'cf-application-manager'},{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'},{'name': 'WorldScene', 'selector': 'cf-world-scene'}];
+        var COMPONENT_TEMPLATE = '<div><div cfBlock="scene" cfMod="world" *ngIf="world$ | async as world">  <!-- cf-avatars-list    [avatars]="avatars"    [world]="world"    (selectAvatar)="selectedAvatar = $event"  ></cf-avatars-list -->  <cf-world-map></cf-world-map>  <!-- cf-avatar-info    [avatar]="selectedAvatar"    [world]="world"  ></cf-avatar-info --></div></div>'
+    var COMPONENTS = [{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'},{'name': 'WorldScene', 'selector': 'cf-world-scene'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'WorldScene'};
 </script>

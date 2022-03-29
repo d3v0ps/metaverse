@@ -250,6 +250,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                             </li>
                             <li class="link">
+                                <a href="modules/ApplicationsWindowsManagerModule.html" data-type="entity-link" >ApplicationsWindowsManagerModule</a>
+                                    <li class="chapter inner">
+                                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                            'data-target="#components-links-module-ApplicationsWindowsManagerModule-714b5aba16af6aeca9c97fe413c311fa"' : 'data-target="#xs-components-links-module-ApplicationsWindowsManagerModule-714b5aba16af6aeca9c97fe413c311fa"' }>
+                                            <span class="icon ion-md-cog"></span>
+                                            <span>Components</span>
+                                            <span class="icon ion-ios-arrow-down"></span>
+                                        </div>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-ApplicationsWindowsManagerModule-714b5aba16af6aeca9c97fe413c311fa"' :
+                                            'id="xs-components-links-module-ApplicationsWindowsManagerModule-714b5aba16af6aeca9c97fe413c311fa"' }>
+                                            <li class="link">
+                                                <a href="components/ApplicationsWindowsManagerComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ApplicationsWindowsManagerComponent</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                            </li>
+                            <li class="link">
                                 <a href="modules/ApplicationToolbarModule.html" data-type="entity-link" >ApplicationToolbarModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
@@ -339,6 +356,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="classes/ApplicationOpenedEvent.html" data-type="entity-link" >ApplicationOpenedEvent</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/ApplicationResizeCommand.html" data-type="entity-link" >ApplicationResizeCommand</a>
                             </li>
                             <li class="link">
                                 <a href="classes/ApplicationShowCommand.html" data-type="entity-link" >ApplicationShowCommand</a>

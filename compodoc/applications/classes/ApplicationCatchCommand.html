@@ -121,7 +121,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">libs/applications/src/lib/models/application-commands.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">libs/applications/src/lib/models/application-commands.ts:25</a></div>
                             </td>
                         </tr>
 
@@ -197,7 +197,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">libs/applications/src/lib/models/application-commands.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">libs/applications/src/lib/models/application-commands.ts:28</a></div>
                         </td>
                     </tr>
 
@@ -229,7 +229,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">libs/applications/src/lib/models/application-commands.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">libs/applications/src/lib/models/application-commands.ts:25</a></div>
                         </td>
                     </tr>
 
@@ -258,7 +258,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">libs/applications/src/lib/models/application-commands.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">libs/applications/src/lib/models/application-commands.ts:29</a></div>
                         </td>
                     </tr>
 
@@ -277,7 +277,8 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Application } from &quot;./application&quot;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Dimensions } from &#x27;@central-factory/physics/models/value-objects/dimensions&#x27;;
+import { Application } from &#x27;./application&#x27;;
 
 export type ApplicationOpenSettings&lt;TParams &#x3D; any&gt; &#x3D; {
   groupId?: string;
@@ -287,41 +288,63 @@ export type ApplicationOpenSettings&lt;TParams &#x3D; any&gt; &#x3D; {
   height?: string;
   x?: number;
   y?: number;
-}
+};
 
 export class ApplicationOpenCommand&lt;TParams &#x3D; any&gt; {
-  readonly name: string &#x3D; &#x27;[Application] Open&#x27;
-  constructor(public readonly application: Application, public readonly settings?: ApplicationOpenSettings&lt;TParams&gt;) { }
+  readonly name: string &#x3D; &#x27;[Application] Open&#x27;;
+  constructor(
+    public readonly application: Application,
+    public readonly settings?: ApplicationOpenSettings&lt;TParams&gt;
+  ) {}
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export class ApplicationCatchCommand&lt;TParams &#x3D; any&gt; {
-  readonly name &#x3D; &#x27;[Application] Catch&#x27;
+  readonly name &#x3D; &#x27;[Application] Catch&#x27;;
 
-  constructor(public readonly application: Application, public readonly settings?: ApplicationOpenSettings&lt;TParams&gt;) { }
+  constructor(
+    public readonly application: Application,
+    public readonly settings?: ApplicationOpenSettings&lt;TParams&gt;
+  ) {}
 }
 
 export class ApplicationShowCommand&lt;TParams &#x3D; any&gt; {
-  readonly name &#x3D; &#x27;[Application] Show&#x27;
+  readonly name &#x3D; &#x27;[Application] Show&#x27;;
 
-  constructor(public readonly application: Application, public readonly settings?: ApplicationOpenSettings&lt;TParams&gt;) { }
+  constructor(
+    public readonly application: Application,
+    public readonly settings?: ApplicationOpenSettings&lt;TParams&gt;
+  ) {}
+}
+
+export class ApplicationResizeCommand {
+  readonly name &#x3D; &#x27;[Application] Resize&#x27;;
+
+  constructor(
+    public readonly application: Application,
+    public readonly dimensions: Pick&lt;Dimensions, &#x27;width&#x27; | &#x27;height&#x27;&gt;
+  ) {}
 }
 
 export class ApplicationHideCommand {
-  readonly name &#x3D; &#x27;[Application] Hide&#x27;
+  readonly name &#x3D; &#x27;[Application] Hide&#x27;;
 
-  constructor(public readonly application: Application) { }
+  constructor(public readonly application: Application) {}
 }
 
 export class ApplicationGroupCommand&lt;TParams &#x3D; any&gt; {
-  readonly name &#x3D; &#x27;[Application] Group&#x27;
+  readonly name &#x3D; &#x27;[Application] Group&#x27;;
 
-  constructor(public readonly application: Application, public readonly groupId: string, public readonly settings?: ApplicationOpenSettings) { }
+  constructor(
+    public readonly application: Application,
+    public readonly groupId: string,
+    public readonly settings?: ApplicationOpenSettings
+  ) {}
 }
 
 export class ApplicationCloseCommand {
-  readonly name &#x3D; &#x27;[Application] Close&#x27;
-  constructor(public readonly application: Application) { }
+  readonly name &#x3D; &#x27;[Application] Close&#x27;;
+  constructor(public readonly application: Application) {}
 }
 </code></pre>
     </div>

@@ -146,6 +146,22 @@
           &lt;/ng-select&gt;
         &lt;/td&gt;
       &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;
+          &lt;label&gt; Background &lt;/label&gt;
+        &lt;/td&gt;
+        &lt;td&gt;
+          &lt;ng-select
+            formControlName&#x3D;&quot;background&quot;
+            [items]&#x3D;&quot;backgrounds$ | async&quot;
+            bindLabel&#x3D;&quot;name&quot;
+          &gt;
+            &lt;ng-template ng-option-tmp let-item&#x3D;&quot;item&quot;&gt;
+              {{ item.name }}
+            &lt;/ng-template&gt;
+          &lt;/ng-select&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
     &lt;/table&gt;
 
     &lt;!-- h4&gt;Sounds&lt;/h4&gt;
@@ -188,6 +204,11 @@
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                    <span class="modifier">Readonly</span>
+                                <a href="#backgrounds$" >backgrounds$</a>
+                            </li>
                             <li>
                                     <span class="modifier">Private</span>
                                 <a href="#destroy$" >destroy$</a>
@@ -243,7 +264,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:88</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:167</a></div>
                             </td>
                         </tr>
 
@@ -334,8 +355,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="122"
-                            class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:122</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="201"
+                            class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:201</a></div>
                 </td>
             </tr>
 
@@ -371,8 +392,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="96"
-                            class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:96</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="175"
+                            class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:175</a></div>
                 </td>
             </tr>
 
@@ -398,6 +419,94 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="backgrounds$"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                            <span class="modifier">Readonly</span>
+                        <span ><b>backgrounds$</b></span>
+                        <a href="#backgrounds$"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>of([
+    {
+      name: &#x27;Apartment&#x27;,
+      url: &#x27;http://www.youtube.com/embed/B6eL_N0N5KI&#x27;,
+    },
+    {
+      name: &#x27;Apartment 2&#x27;,
+      url: &#x27;http://www.youtube.com/embed/CMkI2EItvRw&#x27;,
+    },
+    {
+      name: &#x27;Bag End&#x27;,
+      url: &#x27;http://www.youtube.com/embed/3DTvk8boR8U&#x27;,
+    },
+    {
+      name: &#x27;Inn&#x27;,
+      url: &#x27;http://www.youtube.com/embed/Wr067srQKUg&#x27;,
+    },
+    {
+      name: &#x27;Inn II&#x27;,
+      url: &#x27;http://www.youtube.com/embed/vyg5jJrZ42s&#x27;,
+    },
+    {
+      name: &#x27;Morning Rain and Thunder at Castle&#x27;,
+      url: &#x27;http://www.youtube.com/embed/eVCR3X6OfSc&#x27;,
+    },
+    {
+      name: &#x27;Magic Castle&#x27;,
+      url: &#x27;http://www.youtube.com/embed/jATVgJ_grys&#x27;,
+    },
+    {
+      name: &#x27;Elven Havens&#x27;,
+      url: &#x27;http://www.youtube.com/embed/5RlXStnMirE&#x27;,
+    },
+    {
+      name: &#x27;Japan&#x27;,
+      url: &#x27;http://www.youtube.com/embed/hR3sK0_nNGA&#x27;,
+    },
+    {
+      name: &#x27;Dunes&#x27;,
+      url: &#x27;http://www.youtube.com/embed/hShxsAlJmfw&#x27;,
+    },
+    {
+      name: &#x27;Gothic City&#x27;,
+      url: &#x27;http://www.youtube.com/embed/xrOXhZjyxfY&#x27;,
+    },
+    {
+      name: &#x27;Cyberpunk City&#x27;,
+      url: &#x27;http://www.youtube.com/embed/zkzdY572ZHk&#x27;,
+    },
+    {
+      name: &#x27;Cyberpunk City II&#x27;,
+      url: &#x27;http://www.youtube.com/embed/ouzhVyQv5ws&#x27;,
+    },
+    {
+      name: &#x27;Space City&#x27;,
+      url: &#x27;http://www.youtube.com/embed/z6DV5l0NWZ4&#x27;,
+    },
+    {
+      name: &#x27;Factory Sounds&#x27;,
+      url: &#x27;https://www.youtube.com/embed/bDZVYI_hIEs&#x27;,
+    },
+  ])</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:104</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="destroy$"></a>
                     <span class="name">
                             <span class="modifier">Private</span>
@@ -413,7 +522,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:88</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:167</a></div>
                         </td>
                     </tr>
 
@@ -437,12 +546,13 @@
                     <td class="col-md-4">
                         <i>Default value : </i><code>new FormGroup({
     theme: new FormControl(null),
+    background: new FormControl(null),
   })</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:82</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:98</a></div>
                         </td>
                     </tr>
 
@@ -469,7 +579,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:86</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">apps/portal/src/app/settings/scenes/customization/customization.scene.ts:103</a></div>
                         </td>
                     </tr>
 
@@ -491,7 +601,7 @@ import {
 } from &#x27;@central-factory/preferences/models/customization&#x27;;
 import { AvailableThemesState } from &#x27;@central-factory/preferences/states/customization/available-themes.state&#x27;;
 import { CustomizationSettingsState } from &#x27;@central-factory/preferences/states/customization/customization-settings.state&#x27;;
-import { Subject } from &#x27;rxjs&#x27;;
+import { of, Subject } from &#x27;rxjs&#x27;;
 import { filter, takeUntil, tap } from &#x27;rxjs/operators&#x27;;
 
 export type CustomizationForm &#x3D; {
@@ -515,6 +625,22 @@ export type CustomizationForm &#x3D; {
               &lt;ng-select
                 formControlName&#x3D;&quot;theme&quot;
                 [items]&#x3D;&quot;themes$ | async&quot;
+                bindLabel&#x3D;&quot;name&quot;
+              &gt;
+                &lt;ng-template ng-option-tmp let-item&#x3D;&quot;item&quot;&gt;
+                  {{ item.name }}
+                &lt;/ng-template&gt;
+              &lt;/ng-select&gt;
+            &lt;/td&gt;
+          &lt;/tr&gt;
+          &lt;tr&gt;
+            &lt;td&gt;
+              &lt;label&gt; Background &lt;/label&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+              &lt;ng-select
+                formControlName&#x3D;&quot;background&quot;
+                [items]&#x3D;&quot;backgrounds$ | async&quot;
                 bindLabel&#x3D;&quot;name&quot;
               &gt;
                 &lt;ng-template ng-option-tmp let-item&#x3D;&quot;item&quot;&gt;
@@ -565,9 +691,72 @@ export type CustomizationForm &#x3D; {
 export class CustomizationScene implements OnInit, OnDestroy {
   public readonly form &#x3D; new FormGroup({
     theme: new FormControl(null),
+    background: new FormControl(null),
   });
 
   public readonly themes$ &#x3D; this.availableThemesState.themes$;
+  public readonly backgrounds$ &#x3D; of([
+    {
+      name: &#x27;Apartment&#x27;,
+      url: &#x27;http://www.youtube.com/embed/B6eL_N0N5KI&#x27;,
+    },
+    {
+      name: &#x27;Apartment 2&#x27;,
+      url: &#x27;http://www.youtube.com/embed/CMkI2EItvRw&#x27;,
+    },
+    {
+      name: &#x27;Bag End&#x27;,
+      url: &#x27;http://www.youtube.com/embed/3DTvk8boR8U&#x27;,
+    },
+    {
+      name: &#x27;Inn&#x27;,
+      url: &#x27;http://www.youtube.com/embed/Wr067srQKUg&#x27;,
+    },
+    {
+      name: &#x27;Inn II&#x27;,
+      url: &#x27;http://www.youtube.com/embed/vyg5jJrZ42s&#x27;,
+    },
+    {
+      name: &#x27;Morning Rain and Thunder at Castle&#x27;,
+      url: &#x27;http://www.youtube.com/embed/eVCR3X6OfSc&#x27;,
+    },
+    {
+      name: &#x27;Magic Castle&#x27;,
+      url: &#x27;http://www.youtube.com/embed/jATVgJ_grys&#x27;,
+    },
+    {
+      name: &#x27;Elven Havens&#x27;,
+      url: &#x27;http://www.youtube.com/embed/5RlXStnMirE&#x27;,
+    },
+    {
+      name: &#x27;Japan&#x27;,
+      url: &#x27;http://www.youtube.com/embed/hR3sK0_nNGA&#x27;,
+    },
+    {
+      name: &#x27;Dunes&#x27;,
+      url: &#x27;http://www.youtube.com/embed/hShxsAlJmfw&#x27;,
+    },
+    {
+      name: &#x27;Gothic City&#x27;,
+      url: &#x27;http://www.youtube.com/embed/xrOXhZjyxfY&#x27;,
+    },
+    {
+      name: &#x27;Cyberpunk City&#x27;,
+      url: &#x27;http://www.youtube.com/embed/zkzdY572ZHk&#x27;,
+    },
+    {
+      name: &#x27;Cyberpunk City II&#x27;,
+      url: &#x27;http://www.youtube.com/embed/ouzhVyQv5ws&#x27;,
+    },
+    {
+      name: &#x27;Space City&#x27;,
+      url: &#x27;http://www.youtube.com/embed/z6DV5l0NWZ4&#x27;,
+    },
+    {
+      name: &#x27;Factory Sounds&#x27;,
+      url: &#x27;https://www.youtube.com/embed/bDZVYI_hIEs&#x27;,
+    },
+  ]);
 
   private destroy$ &#x3D; new Subject&lt;void&gt;();
 
@@ -661,8 +850,8 @@ export class CustomizationScene implements OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div>  <h3>Customization</h3>  <form [formGroup]="form">    <h4>Appearance</h4>    <table>      <tr>        <td>          <label> Theme </label>        </td>        <td>          <ng-select            formControlName="theme"            [items]="themes$ | async"            bindLabel="name"          >            <ng-template ng-option-tmp let-item="item">              {{ item.name }}            </ng-template>          </ng-select>        </td>      </tr>    </table>    <!-- h4>Sounds</h4>    <table>      <tr>        <td>          <label> Play Sounds </label>        </td>        <td>          <input type="checkbox" formControlName="playSounds" />        </td>      </tr>    </table -->  </form></div></div>'
-    var COMPONENTS = [{'name': 'ApplicationManagerComponent', 'selector': 'cf-application-manager'},{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'},{'name': 'WorldScene', 'selector': 'cf-world-scene'}];
+        var COMPONENT_TEMPLATE = '<div><div>  <h3>Customization</h3>  <form [formGroup]="form">    <h4>Appearance</h4>    <table>      <tr>        <td>          <label> Theme </label>        </td>        <td>          <ng-select            formControlName="theme"            [items]="themes$ | async"            bindLabel="name"          >            <ng-template ng-option-tmp let-item="item">              {{ item.name }}            </ng-template>          </ng-select>        </td>      </tr>      <tr>        <td>          <label> Background </label>        </td>        <td>          <ng-select            formControlName="background"            [items]="backgrounds$ | async"            bindLabel="name"          >            <ng-template ng-option-tmp let-item="item">              {{ item.name }}            </ng-template>          </ng-select>        </td>      </tr>    </table>    <!-- h4>Sounds</h4>    <table>      <tr>        <td>          <label> Play Sounds </label>        </td>        <td>          <input type="checkbox" formControlName="playSounds" />        </td>      </tr>    </table -->  </form></div></div>'
+    var COMPONENTS = [{'name': 'CreditsScene', 'selector': 'cf-credits'},{'name': 'CustomizationScene', 'selector': 'cf-customization'},{'name': 'PortalLayoutScene', 'selector': 'cf-portal-layout'},{'name': 'PortalRoot', 'selector': 'cf-portal-root'},{'name': 'SettingsNavComponent', 'selector': 'cf-settings-nav'},{'name': 'SettingsScene', 'selector': 'cf-settings'},{'name': 'WorldScene', 'selector': 'cf-world-scene'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'CustomizationScene'};
 </script>

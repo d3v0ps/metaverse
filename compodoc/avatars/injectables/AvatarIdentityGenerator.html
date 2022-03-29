@@ -144,7 +144,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>generate(preset: <a href="../undefineds/Avatar.html" target="_self">Partial&lt;Avatar&gt;</a>, undefined: World)</code>
+<code>generate(preset: <a href="../undefineds/Avatar.html" target="_self">Partial&lt;Avatar&gt;</a>, world: World)</code>
                 </td>
             </tr>
 
@@ -189,6 +189,7 @@
 
                                 </tr>
                                 <tr>
+                                    <td>world</td>
                                     <td>
                                             <code>World</code>
                                     </td>
@@ -239,8 +240,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="98"
-                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar-identity.generator.ts:98</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="89"
+                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar-identity.generator.ts:89</a></div>
                 </td>
             </tr>
 
@@ -334,8 +335,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="123"
-                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar-identity.generator.ts:123</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar-identity.generator.ts:114</a></div>
                 </td>
             </tr>
 
@@ -417,8 +418,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="137"
-                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar-identity.generator.ts:137</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="128"
+                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar-identity.generator.ts:128</a></div>
                 </td>
             </tr>
 
@@ -512,8 +513,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="89"
-                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar-identity.generator.ts:89</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar-identity.generator.ts:80</a></div>
                 </td>
             </tr>
 
@@ -583,8 +584,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="80"
-                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar-identity.generator.ts:80</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar-identity.generator.ts:71</a></div>
                 </td>
             </tr>
 
@@ -654,8 +655,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="161"
-                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar-identity.generator.ts:161</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="152"
+                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar-identity.generator.ts:152</a></div>
                 </td>
             </tr>
 
@@ -757,8 +758,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="149"
-                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar-identity.generator.ts:149</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="140"
+                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar-identity.generator.ts:140</a></div>
                 </td>
             </tr>
 
@@ -852,8 +853,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="174"
-                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar-identity.generator.ts:174</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="165"
+                            class="link-to-prism">libs/avatars/src/lib/data/generators/avatar-identity.generator.ts:165</a></div>
                 </td>
             </tr>
 
@@ -955,11 +956,8 @@ import { professions } from &#x27;../demo/professions.data&#x27;;
   providedIn: &#x27;root&#x27;,
 })
 export class AvatarIdentityGenerator {
-  generate(
-    preset: Partial&lt;Avatar&gt; &#x3D; {},
-    { map, archetypes, avatars }: World
-  ): AvatarIdentity {
-    const { burgs, cells } &#x3D; map.cells;
+  generate(preset: Partial&lt;Avatar&gt; &#x3D; {}, world: World): AvatarIdentity {
+    const { burgs, cells } &#x3D; world.map.cells;
 
     const gender &#x3D;
       preset.identity?.gender ||
@@ -971,7 +969,7 @@ export class AvatarIdentityGenerator {
     const burg &#x3D; burgs.find((b) &#x3D;&gt; b.i &#x3D;&#x3D;&#x3D; birthPlace) || burgs[0];
     const burgCell &#x3D; cells.find((cell) &#x3D;&gt; cell.i &#x3D;&#x3D;&#x3D; burg.cell);
 
-    const archetype &#x3D; archetypes?.find(
+    const archetype &#x3D; world.archetypes?.find(
       (archetype) &#x3D;&gt; archetype.id &#x3D;&#x3D;&#x3D; preset.identity?.archetype
     );
 
@@ -982,7 +980,7 @@ export class AvatarIdentityGenerator {
         (relationship) &#x3D;&gt; relationship.kind &#x3D;&#x3D;&#x3D; AvatarRelationshipKind.Parent
       )
       .map((relationship) &#x3D;&gt;
-        avatars?.find((avatar) &#x3D;&gt; avatar.id &#x3D;&#x3D;&#x3D; relationship.avatar)
+        world.avatars?.find((avatar) &#x3D;&gt; avatar.id &#x3D;&#x3D;&#x3D; relationship.avatar)
       ) as Avatar[];
 
     Object.assign(preset, {
@@ -1001,14 +999,8 @@ export class AvatarIdentityGenerator {
       gender,
       birthDate: this.generateBirthDate(preset, archetype, parents),
       birthPlace: birthPlace,
-      culture: this.generateCulture(preset, burg, {
-        map,
-        archetypes,
-      }),
-      religion: this.generateReligion(preset, burgCell, {
-        map,
-        archetypes,
-      }),
+      culture: this.generateCulture(preset, burg, world),
+      religion: this.generateReligion(preset, burgCell, world),
       mainProfession: this.generateMainProfession(preset, archetype, parents),
       secondaryProfession: this.generateSecondaryProfession(
         preset,
