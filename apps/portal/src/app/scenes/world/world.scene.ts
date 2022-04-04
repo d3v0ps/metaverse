@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ActionPlanner } from '@central-factory/actors/services/action-planner';
+import { OnApplicationLoad } from '@central-factory/applications/models/application-interfaces';
 import { AvatarGenerator } from '@central-factory/avatars/data/generators/avatar.generator';
 import { Avatar } from '@central-factory/avatars/models/avatar';
 import { AvatarLivingState } from '@central-factory/avatars/states/living-avatar.state';
@@ -14,7 +15,10 @@ import { WorldsState } from '@central-factory/worlds/states/worlds.state';
         [world]="world"
         (selectAvatar)="selectedAvatar = $event"
       ></cf-avatars-list -->
-      <cf-world-map></cf-world-map>
+      <cf-world-map
+        [world]="world"
+        (mapLoad)="applicationLoad.emit()"
+      ></cf-world-map>
       <!-- cf-avatar-info
         [avatar]="selectedAvatar"
         [world]="world"
@@ -59,7 +63,7 @@ import { WorldsState } from '@central-factory/worlds/states/worlds.state';
     `,
   ],
 })
-export class WorldScene {
+export class WorldScene implements OnApplicationLoad {
   avatars: Avatar[] = [];
   paginated: Avatar[] = [];
   selectedAvatar?: Avatar;
@@ -67,6 +71,8 @@ export class WorldScene {
   world$ = this.worldsState.selectedWorld$;
 
   selectedHouse?: string;
+
+  @Output() applicationLoad = new EventEmitter<void>();
 
   constructor(
     private generator: AvatarGenerator,

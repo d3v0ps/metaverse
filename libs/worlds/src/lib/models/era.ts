@@ -9,6 +9,18 @@ export enum WorldEventType {
   'CIVIL_WAR',
 }
 
+export enum EraMapStyle {
+  Default = 'default',
+  Ancient = 'ancient',
+  Gloom = 'gloom',
+  Light = 'light',
+  WaterColor = 'watercolor',
+  Clean = 'clean',
+  Atlas = 'atlas',
+  Cyberpunk = 'cyberpunk',
+  Monochrome = 'monochrome',
+}
+
 export type WorldEvent = {
   start: number;
   end: number;
@@ -28,4 +40,5 @@ export type Era = {
   color?: string;
   military: MilitarySettings[];
   events: WorldEvent[];
+  mapStyle?: EraMapStyle;
 };

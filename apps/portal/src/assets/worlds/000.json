@@ -1,6 +1,7 @@
 {
-  "id": 0,
+  "id": "000",
   "meta": {
+    "name": "Earth",
     "previewUrl": "assets/worlds/000.png"
   },
   "kind": "analog",

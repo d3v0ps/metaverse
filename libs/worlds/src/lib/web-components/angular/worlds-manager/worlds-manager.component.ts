@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { OnApplicationLoad } from '@central-factory/applications/models/application-interfaces';
 import { World } from '@central-factory/worlds/models/world';
 import { WorldsState } from '@central-factory/worlds/states/worlds.state';
 
@@ -52,14 +53,19 @@ import { WorldsState } from '@central-factory/worlds/states/worlds.state';
     `,
   ],
 })
-export class WorldsManagerComponent {
+export class WorldsManagerComponent implements OnInit, OnApplicationLoad {
   worlds$ = this.worldsState.worlds$;
   selectedWorld$ = this.worldsState.selectedWorld$;
 
+  @Output() applicationLoad = new EventEmitter<void>();
+
   constructor(private worldsState: WorldsState) {}
 
+  ngOnInit(): void {
+    this.applicationLoad.emit();
+  }
+
   onRegenerateClick(world: World) {
-    console.debug('onRegenerate');
     this.worldsState.generateAvatars(world);
   }
 

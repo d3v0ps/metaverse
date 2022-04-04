@@ -15,14 +15,17 @@ export enum AvatarAppearancesCarouselDisplayMode {
         emptyIcon="assets/icons/mdi/plus.svg"
         [showEmptyIcon]="true"
         (appearanceClick)="appearanceAddClick.emit()"
+        size="xs"
       >
       </cf-avatar-appearance-card>
 
       <ng-container *ngFor="let appearance of appearances">
-        <cf-avatar-appearance-portrait *ngIf="appearance.variations"
+        <cf-avatar-appearance-portrait
+          *ngIf="appearance.variations"
           [appearancePortrait]="appearance.variations[variation]"
           [active]="appearance.id === selectedAppearanceId"
           (appearanceClick)="appearanceClick.emit(appearance)"
+          size="xs"
         >
         </cf-avatar-appearance-portrait>
       </ng-container>
@@ -32,6 +35,7 @@ export enum AvatarAppearancesCarouselDisplayMode {
         [emptyIcon]="emptyIcon"
         [showEmptyIcon]="true"
         (appearanceClick)="appearanceAddClick.emit()"
+        size="xs"
       >
       </cf-avatar-appearance-portrait>
     </div>

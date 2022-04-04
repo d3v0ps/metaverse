@@ -42,6 +42,17 @@
   background-color: #9575cd2b;
   backdrop-filter: blur(5px);
 
+  &--hide-header {
+    .window-header {
+      display: none;
+    }
+    &:hover {
+      .window-header {
+        display: auto;
+      }
+    }
+  }
+
 
   &--maximized {
     border-radius: 0;

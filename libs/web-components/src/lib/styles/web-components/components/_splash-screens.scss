@@ -18,9 +18,9 @@
 
   &--in-scene,
   &--in-application {
-    position: relative;
+    position: absolute;
     width: 100%;
-    height: calc(100vh - 140px);
+    height: 100%;
     border-radius: 20px;
     box-shadow: var(--component-button-shadow-outset), inset var(--component-button-shadow-inset-primary), inset var(--component-button-shadow-inset-secondary);
 
@@ -29,10 +29,10 @@
     }
   }
 
-  &--in-application {
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
-  }
+  // &--in-application {
+  //   border-top-right-radius: 0;
+  //   border-top-left-radius: 0;
+  // }
 
   &__content {
     position: absolute;
@@ -56,6 +56,7 @@
     height: 200px;
     display: flex;
     align-items: center;
+    justify-content: center;
 
     .spinner {
       display: block;

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { OnApplicationLoad } from '@central-factory/applications/models/application-interfaces';
 import { Asset } from '@central-factory/assets/models/asset';
 import { UserAssetsState } from '@central-factory/assets/states/user-assets.state';
 
@@ -11,7 +12,7 @@ import { UserAssetsState } from '@central-factory/assets/states/user-assets.stat
         assets: assets$ | async
       } as data"
     >
-      <div cfBlock="scene-content" cfMod="inventory" *ngIf="data.assets">
+      <div cfBlock="inventory" *ngIf="data.assets">
         <div cfElem="assets-grid">
           <cf-assets-grid
             [assets]="data.assets"
@@ -30,30 +31,34 @@ import { UserAssetsState } from '@central-factory/assets/states/user-assets.stat
   `,
   styles: [
     `
-      .scene-content {
-        &--inventory {
-          display: grid;
-          grid-template-columns: 1.5fr 1fr;
-          grid-template-rows: 1fr;
-          gap: 2rem;
+      .inventory {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        grid-template-rows: 1fr;
+        gap: 2rem;
 
-          .scene-content__assets-grid {
-            overflow: auto;
-          }
+        &__assets-grid {
+          overflow: auto;
+        }
 
-          .scene-content__asset-detail {
-          }
+        &__asset-detail {
         }
       }
     `,
   ],
 })
-export class InventoryScene {
+export class InventoryScene implements OnInit, OnApplicationLoad {
   public readonly assets$ = this.userAssetsRepository.assets$;
 
   selectedAsset?: Asset;
 
-  constructor(private readonly userAssetsRepository: UserAssetsState) { }
+  @Output() applicationLoad = new EventEmitter<void>();
+
+  constructor(private readonly userAssetsRepository: UserAssetsState) {}
+
+  ngOnInit(): void {
+    this.applicationLoad.emit();
+  }
 
   onGridAssetClick(asset: Asset) {
     this.selectedAsset = asset;

@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Customization } from '@central-factory/preferences/models/customization';
 import { CustomizationSettingsState } from '@central-factory/preferences/states/customization/customization-settings.state';
+import { RoomsState } from '@central-factory/worlds/states/rooms.state';
 import { distinctUntilChanged, Subscription, tap } from 'rxjs';
 
 declare let YT: { PlayerState: { PAUSED: any } };
@@ -29,22 +30,29 @@ export type MatrixBackground = {
 })
 export class BackgroundRenderer {
   private renderProcessRunning = false;
-  private renderTimeout?: number;
+  private matrixRenderTimeout?: number;
   private currentTheme?: string;
   private textColor = '#22b455';
 
   private themeChangeSubscription?: Subscription;
+  private roomSubscription?: Subscription;
 
   private _videoPlayer: any;
   private youtubeIframeApiIsLoaded = false;
 
-  constructor(private customizationSettingsState: CustomizationSettingsState) {
+  constructor(
+    private customizationSettingsState: CustomizationSettingsState,
+    private roomsState: RoomsState
+  ) {
     this.initialize();
   }
 
   initialize() {
     if (this.themeChangeSubscription) {
       this.themeChangeSubscription.unsubscribe();
+    }
+    if (this.roomSubscription) {
+      this.roomSubscription.unsubscribe();
     }
 
     this.themeChangeSubscription =
@@ -56,10 +64,24 @@ export class BackgroundRenderer {
           tap((name) => this.onCustomizationChange(name))
         )
         .subscribe();
+
+    this.roomsState.selectedRoom$.subscribe((selectedRoom) => {
+      if (selectedRoom) {
+        clearTimeout(this.matrixRenderTimeout);
+
+        if (this.youtubeIframeApiIsLoaded) {
+          this._videoPlayer?.stop();
+          const iframe = document.getElementById(
+            'bgiframe'
+          ) as HTMLIFrameElement;
+          iframe.remove();
+        }
+      }
+    });
   }
 
   private onCustomizationChange(customization?: Customization) {
-    if (customization?.background) {
+    if (customization?.background && customization?.background?.url) {
       this.renderIframeBg(customization);
       return;
     }
@@ -186,8 +208,8 @@ export class BackgroundRenderer {
         break;
       default:
         resizeObserver.unobserve(document.documentElement);
-        clearTimeout(this.renderTimeout);
-        delete this.renderTimeout;
+        clearTimeout(this.matrixRenderTimeout);
+        delete this.matrixRenderTimeout;
         this.renderProcessRunning = false;
         application.classList.remove('application--no-background-color');
         break;
@@ -229,7 +251,7 @@ export class BackgroundRenderer {
     this.renderProcessRunning = true;
 
     renderFn();
-    this.renderTimeout = window.setTimeout(() => {
+    this.matrixRenderTimeout = window.setTimeout(() => {
       this.renderProcessRunning = false;
       this.renderTick(renderFn, interval);
     }, interval);

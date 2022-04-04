@@ -4,9 +4,11 @@ import { Application } from '@central-factory/applications/models/application';
 import { professions } from '@central-factory/avatars/data/demo/professions.data';
 import { AvatarGenerator } from '@central-factory/avatars/data/generators/avatar.generator';
 import { Avatar } from '@central-factory/avatars/models';
+import { EntityManager } from '@central-factory/persistence/services/entity-manager';
 import { UserPreferencesState } from '@central-factory/preferences/states/user-preferences.state';
 import { BehaviorSubject, forkJoin, of, tap } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { map, share, switchMap } from 'rxjs/operators';
+import { Burg } from '../models/fmg-map';
 import { GENESIS_STATES, World, WORLD_STATES } from '../models/world';
 
 export type ApplicationsByCategory = Record<string, Application[]>;
@@ -23,18 +25,27 @@ export type Source = {
 })
 export class WorldsState {
   selectedWorld$ = new BehaviorSubject<World | undefined>(undefined);
+  selectedBurg$ = new BehaviorSubject<Burg | undefined>(undefined);
   worlds$ = new BehaviorSubject<World[]>([]);
+
+  burgs$ = this.selectedWorld$.pipe(
+    map((world) => world?.map?.cells?.burgs || []),
+    share()
+  );
 
   constructor(
     private httpClient: HttpClient,
     private userPreferencesState: UserPreferencesState<Source[]>,
 
     private avatarGenerator: AvatarGenerator,
-    private zone: NgZone
+    private zone: NgZone,
+    private entityManager: EntityManager
   ) {
-    this.userPreferencesState
-      .byKey('worlds.settings.repositories')
+    this.entityManager.initialize$
       .pipe(
+        switchMap(() =>
+          this.userPreferencesState.byKey('worlds.settings.repositories')
+        ),
         map((preference) => preference?.value || []),
         switchMap((repositories) => {
           if (!repositories) {
@@ -64,7 +75,8 @@ export class WorldsState {
           );
 
           if (worlds.length > 0) {
-            this.selectWorld(this.worlds$.value[0]);
+            this.selectWorld(this.worlds$.value[1]);
+            this.selectBurg(this.worlds$.value[1].map.cells.burgs[1]);
           }
         })
       )
@@ -126,6 +138,10 @@ export class WorldsState {
 
     //   return acc.concat(avatars);
     // }, []);
+  }
+
+  public selectBurg(burg: Burg) {
+    this.selectedBurg$.next(burg);
   }
 
   public selectWorld(world: World) {

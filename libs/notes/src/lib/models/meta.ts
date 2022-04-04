@@ -177,6 +177,7 @@ export type Meta = {
   authors?: MetaAuthor[];
   title?: string;
   description?: string;
+  queryString?: string;
 };
 
 export type Content = any;

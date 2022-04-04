@@ -7,7 +7,7 @@ import { CreateAvatarScene } from '@central-factory/manage-avatars/scenes/create
 import { SelectAvatarScene } from '@central-factory/manage-avatars/scenes/select-avatar/select-avatar.scene';
 import { MarketplaceScene } from '@central-factory/marketplace/scenes/marketplace/marketplace.scene';
 import { StartScene } from '@central-factory/player/scenes/start/start.scene';
-import { BurgMapComponent } from '@central-factory/worlds/web-components/angular/burgs/burg-map/burg-map.component';
+import { BurgScene } from '@central-factory/worlds/web-components/angular/burgs/burg.scene';
 import { WorldsManagerComponent } from '@central-factory/worlds/web-components/angular/worlds-manager/worlds-manager.component';
 import { WorldScene } from '../../scenes/world/world.scene';
 import { CustomizationScene } from '../../settings/scenes/customization/customization.scene';
@@ -64,7 +64,7 @@ export const portalLocalApplicationComponentsProviders: Provider[] = [
     provide: LOCAL_APPLICATION_COMPONENTS_PROVIDER,
     useValue: {
       type: PortalLocalApplicationType.BurgMapScene,
-      component: BurgMapComponent,
+      component: BurgScene,
     },
     multi: true,
   },

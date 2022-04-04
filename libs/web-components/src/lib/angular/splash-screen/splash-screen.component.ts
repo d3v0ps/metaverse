@@ -95,7 +95,7 @@ export enum LogoState {
   ],
 })
 export class SplashScreenComponent implements OnInit {
-  @Input() title = 'Portal';
+  @Input() title = 'Metaverse Portal';
   @Input() logo = 'assets/logo.svg';
   @Input() backgroundColor?: string;
   @Input() loadingTexts = [
@@ -125,11 +125,11 @@ export class SplashScreenComponent implements OnInit {
 
     await this.wait(this.displayLoadingTime);
 
-    this.logoState = LogoState.Visible;
-    this.selectedLoadingTextIndex = undefined;
-    this.loadingText = this.welcomeMessage;
+    // this.logoState = LogoState.Visible;
+    // this.selectedLoadingTextIndex = undefined;
+    // this.loadingText = this.welcomeMessage;
 
-    await this.wait(this.displayWelcomeTime);
+    // await this.wait(this.displayWelcomeTime);
 
     this.state = SplashScreenState.Hidden;
     this.splashScreenHide.emit();

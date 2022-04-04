@@ -43,7 +43,7 @@ export type ApplicationDisplayGroup = {
           'z-index': group.zIndex
         }"
         [headerBackgroundColor]="
-          group.color || 'var(--component-window-header-background-color)'
+          'var(--component-window-header-background-color)'
         "
         (moveOnTopEnd)="group.zIndex = $event"
         (closeModal)="onWindowClose(group)"
@@ -61,7 +61,18 @@ export type ApplicationDisplayGroup = {
             {{ group.applications[0].application.name }}
           </ng-container>
           <ng-container *ngIf="group.applications.length > 1">
-            <!-- {{ group.applications[0].application.name }} -->
+            <ng-container
+              *ngIf="
+                group.applications[selectedApplications[group.groupId] || 0]
+                  .application?.icons as icons
+              "
+            >
+              <cf-svg-icon *ngIf="icons[0]" [src]="icons[0].src"></cf-svg-icon>
+            </ng-container>
+            {{
+              group.applications[selectedApplications[group.groupId] || 0]
+                .application.name
+            }}
           </ng-container>
         </ng-container>
 
@@ -73,7 +84,7 @@ export type ApplicationDisplayGroup = {
             ></cf-application-view>
           </ng-container>
           <ng-container *ngIf="group.applications.length > 1">
-            <cf-tabset>
+            <cf-tabset (selectedTabChange)="onSelectTab(group.groupId, $event)">
               <cf-tab
                 *ngFor="let event of group.applications"
                 [title]="event.application.name"
@@ -84,10 +95,12 @@ export type ApplicationDisplayGroup = {
                 "
                 [renderWhenHidden]="false"
               >
-                <cf-application-view
-                  [application]="event.application"
-                  [localResolver]="localResolver"
-                ></cf-application-view>
+                <div cfBlock="application-tab">
+                  <cf-application-view
+                    [application]="event.application"
+                    [localResolver]="localResolver"
+                  ></cf-application-view>
+                </div>
               </cf-tab>
             </cf-tabset>
           </ng-container>
@@ -134,6 +147,8 @@ export class ApplicationsWindowsManagerComponent {
     })
   );
 
+  selectedApplications: Record<string, number> = {};
+
   constructor(
     public localResolver: LocalApplicationComponentsResolver,
     private applicationDisplayState: ApplicationDisplayState
@@ -158,5 +173,9 @@ export class ApplicationsWindowsManagerComponent {
         dimensions: { width: event.width, height: event.height },
       })
     );
+  }
+
+  onSelectTab(groupId: string, index: number) {
+    this.selectedApplications[groupId] = index;
   }
 }

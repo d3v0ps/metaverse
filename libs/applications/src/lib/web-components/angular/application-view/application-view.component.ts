@@ -1,6 +1,14 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
-import { Component, Input, ViewChild, ViewContainerRef } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
 import { Router } from '@angular/router';
+import { OnApplicationLoad } from '@central-factory/applications/models/application-interfaces';
 import { FantasyMapGeneratorMap } from '@central-factory/worlds/models/fmg-map';
 import {
   Application,
@@ -24,7 +32,7 @@ import {
         *ngIf="showSplashScreen"
         [mods]="'in-application'"
         [displayLoadingTime]="2000"
-        [displayWelcomeTime]="1000"
+        [displayWelcomeTime]="999000"
         [title]="application.name || ''"
         [logo]="applicationIcon?.src || ''"
         [backgroundColor]="applicationColor"
@@ -76,7 +84,7 @@ import {
     </div>
   `,
 })
-export class ApplicationViewComponent {
+export class ApplicationViewComponent implements OnApplicationLoad {
   @ViewChild('lazyloadedApplication', { read: ViewContainerRef })
   lazyloadedApplication!: ViewContainerRef;
 
@@ -151,13 +159,17 @@ export class ApplicationViewComponent {
     return this._applicationShortcut;
   }
 
+  @Output() applicationLoad = new EventEmitter<void>();
+
   public showSplashScreen = false;
   public applicationColor: string | undefined;
   public applicationIcon: ApplicationIcon | undefined;
   private _application: Application | undefined;
   private _applicationShortcut: ApplicationShortcut | undefined;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.applicationLoad.subscribe(() => (this.showSplashScreen = false));
+  }
 
   async loadDynamicLocal() {
     const federatedUrl = this.application?.startUrl;

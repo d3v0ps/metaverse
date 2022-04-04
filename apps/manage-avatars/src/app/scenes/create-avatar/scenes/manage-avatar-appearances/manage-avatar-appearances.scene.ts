@@ -11,8 +11,7 @@ import { v4 as uuid } from 'uuid';
   selector: 'cf-manage-avatar-appearances-scene',
   template: `
     <div
-      cfBlock="scene-content"
-      cfMod="manage-avatar-appearances"
+      cfBlock="manage-avatar-appearances"
       *ngIf="appearances$ | async as appearances"
     >
       <div cfBlock="appearances-list" *ngIf="appearances.length > 0">
@@ -87,7 +86,7 @@ import { v4 as uuid } from 'uuid';
   `,
   styles: [
     `
-      .scene-content--manage-avatar-appearances {
+      .manage-avatar-appearances {
         display: grid;
         grid-template-columns: 20% 80%;
         grid-template-rows: 1fr;

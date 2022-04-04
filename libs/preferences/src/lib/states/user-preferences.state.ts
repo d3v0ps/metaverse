@@ -8,6 +8,7 @@ import {
   map,
   Observable,
   switchMap,
+  take,
   tap,
   throwError,
 } from 'rxjs';
@@ -68,7 +69,10 @@ export class UserPreferencesState<TValue = string> {
     key: string
   ): Observable<UserPreferenceDocType<TValue> | undefined> {
     if (!this.userPreferencesRepository) {
-      throw new Error('Repositories not initialized');
+      return this.entityManager.initialize$.pipe(
+        take(1),
+        switchMap(() => this.byKey(key))
+      );
     }
 
     return this.userPreferencesRepository

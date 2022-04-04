@@ -190,6 +190,7 @@ export type SelectOption = {
         --margin: 1rem;
         --multiplier: calc(60rem - 100%);
         margin: calc(var(--margin) * -1);
+        max-width: 100%;
 
         & > * {
           max-width: 100%;
@@ -206,6 +207,15 @@ export type SelectOption = {
 
         & > :nth-child(2n) {
           min-width: calc(30% - (var(--margin) * 2));
+        }
+
+        &__editor {
+          box-shadow: var(--component-scene-content-shadow-outset),
+            inset var(--component-scene-content-shadow-inset-primary),
+            inset var(--component-scene-content-shadow-inset-secondary);
+          border-radius: 20px;
+          padding: 1rem;
+          background-color: var(--color-base-dark-medium);
         }
 
         /* &__editor, &__preview {

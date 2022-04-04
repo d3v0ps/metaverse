@@ -10,6 +10,8 @@ import { of } from 'rxjs';
         <div cfElem="assistant">
           <cf-svg-icon src="assets/icons/mdi/robot-happy.svg"></cf-svg-icon>
           <cf-command-bar size="xs"></cf-command-bar>
+          <cf-world-selector></cf-world-selector>
+          <cf-burg-selector></cf-burg-selector>
         </div>
       </div>
       <div cfBlock="system-toolbar-content" cfMod="center"></div>

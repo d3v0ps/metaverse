@@ -19,7 +19,11 @@ import { AppearanceVariation } from '../../../models/appearance';
     <div
       cfBlock="avatar-appearance-portrait"
       (click)="appearanceClick.emit(appearancePortrait)"
-      [cfMod]="[active ? 'active' : 'inactive', rarity ? rarity : undefined]"
+      [cfMod]="[
+        active ? 'active' : 'inactive',
+        rarity ? rarity : undefined,
+        size ? size : undefined
+      ]"
     >
       <ng-container
         *ngIf="appearancePortrait && appearancePortrait.style"
@@ -92,37 +96,34 @@ export class AvatarAppearancePortraitComponent {
       return;
     }
 
+    this._appearancePortrait = value;
+
     this.src = value?.src
       ? this.domSanitizer.bypassSecurityTrustUrl(value.src)
       : undefined;
-    this._appearancePortrait = value;
 
-    if (!value || !value.style.properties || value.style.id !== 'lpc') {
-      return;
+    switch (this.displayComponent) {
+      case 'lpc':
+        if (!this._avatar) {
+          return;
+        }
+
+        this.scenes = {
+          room: new PhaserScene(
+            {},
+            this.http,
+            this.phaserLayersFromLPCLayers(
+              Array.isArray(value.style.properties)
+                ? value.style.properties
+                : toLPCLayers(this._avatar)
+            ),
+            value.style.properties?.animation
+              ? `${value.style.properties.animation}/${value.style.properties.direction}`
+              : 'walk/south'
+          ),
+        };
+        break;
     }
-
-    const animation = value.style.properties?.animation
-      ? `${value.style.properties.animation}/${value.style.properties.direction}`
-      : 'walk/south';
-
-    if (!this._avatar) {
-      return;
-    }
-
-    const sceneLayers = toLPCLayers(this._avatar);
-
-    this.scenes = {
-      room: new PhaserScene(
-        {},
-        this.http,
-        this.phaserLayersFromLPCLayers(
-          Array.isArray(value.style.properties)
-            ? value.style.properties
-            : sceneLayers
-        ),
-        animation
-      ),
-    };
   }
   get appearancePortrait(): AppearanceVariation | undefined {
     return this._appearancePortrait;
@@ -132,6 +133,7 @@ export class AvatarAppearancePortraitComponent {
   @Input() showEmptyIcon = false;
   @Input() active = false;
   @Input() rarity?: string;
+  @Input() size?: string;
 
   @Input() scale = 3;
 

@@ -1,14 +1,22 @@
-import { Component, OnDestroy, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import {
   Application,
   ApplicationRenderingType,
-  ApplicationShortcut
+  ApplicationShortcut,
 } from '@central-factory/applications/models/application';
+import { OnApplicationLoad } from '@central-factory/applications/models/application-interfaces';
 import { InstallApplicationsState } from '@central-factory/applications/states/install-application.state';
 import {
   ApplicationOrigin,
-  AvailableApplicationsState
+  AvailableApplicationsState,
 } from '@central-factory/applications/states/manage-applications.state';
 import { RecentlyOpenedApplicationsState } from '@central-factory/applications/states/recently-opened-applications.state';
 import { SelectedApplicationState } from '@central-factory/applications/states/selected-application.state';
@@ -35,10 +43,9 @@ export interface ApplicationBanners {
   selector: 'cf-start',
   template: `
     <div
-      cfBlock="scene-content"
+      cfBlock="start"
       [cfMod]="{
         'no-padding': true,
-        start: true,
         'application-opened': openedApplication ? true : false
       }"
     >
@@ -217,7 +224,8 @@ export interface ApplicationBanners {
   `,
   styles: [
     `
-      .scene-content {
+      .start {
+        height: 100%;
         &__section-title {
           margin-bottom: 1rem;
         }
@@ -239,8 +247,10 @@ export interface ApplicationBanners {
     `,
   ],
 })
-export class StartScene implements OnDestroy {
+export class StartScene implements OnInit, OnDestroy, OnApplicationLoad {
   @ViewChild('sidebar', { static: true }) sidebar!: SidebarComponent;
+
+  @Output() applicationLoad = new EventEmitter<void>();
 
   morningRoutineDate = new Date('2022-02-09T07:50:41.641Z');
   planningDate = new Date('2022-02-09T08:50:41.641Z');
@@ -272,7 +282,7 @@ export class StartScene implements OnDestroy {
           this.mustBeInstalled =
             application?.origin !== ApplicationOrigin.User &&
             application?.application.additionalProperties?.renderingType !==
-            ApplicationRenderingType.Webview;
+              ApplicationRenderingType.Webview;
         }),
         map((application) => application?.application)
       )
@@ -306,7 +316,11 @@ export class StartScene implements OnDestroy {
     private installApplicationsState: InstallApplicationsState,
     private userTopicsState: UserTopicsState,
     private clockService: ClockService
-  ) { }
+  ) {}
+
+  ngOnInit(): void {
+    this.applicationLoad.emit();
+  }
 
   ngOnDestroy(): void {
     this.destroy$.next();

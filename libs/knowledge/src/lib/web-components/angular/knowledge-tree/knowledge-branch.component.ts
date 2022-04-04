@@ -6,7 +6,7 @@ export type KnowledgeTaxonomy = {
   title: string;
   icon: string;
   children: KnowledgeTaxonomy[];
-  symbols: KnowledgeSymbol[];
+  files: KnowledgeSymbol[];
 };
 
 @Component({
@@ -41,7 +41,7 @@ export type KnowledgeTaxonomy = {
 
         <div
           style="padding-left: 1.2rem;"
-          *ngFor="let symbol of taxonomy.symbols"
+          *ngFor="let symbol of taxonomy.files"
         >
           <cf-knowledge-leaf
             [symbol]="symbol"
@@ -57,6 +57,10 @@ export type KnowledgeTaxonomy = {
         &__title {
           cursor: pointer;
           padding-bottom: 0.5rem;
+          .text {
+            word-break: break-all;
+            white-space: nowrap;
+          }
         }
       }
     `,

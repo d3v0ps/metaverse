@@ -124,6 +124,9 @@
     inset var(--component-input-shadow-inset-primary),
     inset var(--component-input-shadow-inset-secondary);
 
+  width: fit-content !important;
+  min-width: 100%;
+
   &.ng-select-top {
     border-bottom-color: var(--component-select-border-color);
   }

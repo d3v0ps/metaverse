@@ -13,12 +13,14 @@
   ::-webkit-scrollbar {
     // background-color: var(--color-base-primary-darkest);
     background: transparent;
-    width: .5rem;
+    width: .2rem;
+    height: .2rem;
   }
   ::-webkit-scrollbar-thumb {
     background: var(--color-base-secondary-medium);
     border-radius: 20px;
-    width: .5rem;
+    width: .2rem;
+    height: .2rem;
   }
 }
 

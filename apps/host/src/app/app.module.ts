@@ -1,16 +1,20 @@
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
+import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { MarkdownKnowledgeFragmentsDatabase } from './knowledge-fragments/markdown-knowledge-fragments.database';
-import { MarkdownKnowledgeFragmentsRepository } from './knowledge-fragments/markdown-knowledge-fragments.repository';
+import { DocumentsModule } from './documents/documents.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [
-    AppService,
-    MarkdownKnowledgeFragmentsDatabase,
-    MarkdownKnowledgeFragmentsRepository,
+  imports: [
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: join(process.cwd(), 'apps/host/static/schema.gql'),
+    }),
+    DocumentsModule,
   ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

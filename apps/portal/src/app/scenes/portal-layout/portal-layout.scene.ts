@@ -97,8 +97,9 @@ export enum SceneContentAnimationState {
                     <span cfElem="text-content">Account</span>
                   </div>
                   <cf-avatar-appearance-portrait
-                    [avatar]="data.selectedAvatar"
                     displayComponent="avataaars"
+                    *ngIf="data.selectedAvatar"
+                    [avatar]="data.selectedAvatar"
                   >
                   </cf-avatar-appearance-portrait>
                 </a>

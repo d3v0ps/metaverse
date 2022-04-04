@@ -3,6 +3,20 @@ import { capital } from 'case';
 import { lstat, mkdirp, pathExists, readdir, readFile } from 'fs-extra';
 import slugify from 'slugify';
 
+export type DatabaseQuery = {
+  id?: string;
+  root?: string;
+};
+
+export type TaxonomySymbol = {
+  id: string;
+  fileName?: string;
+  title?: string;
+  slug?: string;
+  path?: string;
+  icon?: string;
+};
+
 export type TaxonomyLeaf = {
   id: string;
   title: string;
@@ -10,12 +24,13 @@ export type TaxonomyLeaf = {
   icon: string;
   children: TaxonomyLeaf[];
   parent?: TaxonomyLeaf;
-  symbols: any[];
+  symbols: TaxonomySymbol[];
 };
 
-export type DatabaseQuery = {
-  id?: string;
-  root?: string;
+export type TaxonomyLeafJSON = Omit<TaxonomyLeaf, 'parent' | 'children'> & {
+  children: TaxonomyLeafJSON[];
+  parent: Omit<TaxonomyLeafJSON, 'parent' | 'children'>;
+  depth?: number;
 };
 
 @Injectable()
@@ -23,8 +38,8 @@ export class MarkdownKnowledgeFragmentsDatabase {
   static mountFolder = `${process.cwd()}/mnt/{knowledgeBase}/knowledge-base`;
   private rootFolders = ['00-09 Root'];
 
-  private indexes = new Map<string, Map<string, any>>();
-  private slugIndexes = new Map<string, Map<string, any>>();
+  private indexes = new Map<string, Map<string, TaxonomySymbol>>();
+  private slugIndexes = new Map<string, Map<string, TaxonomySymbol>>();
   private taxonomyIndexes = new Map<string, Map<string, TaxonomyLeaf>>();
   private taxonomyTreeIndexes = new Map<string, Map<string, TaxonomyLeaf>>();
 
@@ -57,23 +72,23 @@ export class MarkdownKnowledgeFragmentsDatabase {
   async read(query: DatabaseQuery) {
     const rootIndexes = this.indexes.get(query.root);
     if (query.id) {
-      return rootIndexes.get(query.id);
+      return [rootIndexes.get(query.id)];
     }
 
     return Array.from(rootIndexes.values());
   }
 
-  async readContent({ root, id }: DatabaseQuery) {
-    const meta = await this.read({ root, id });
+  async readContent({ root, id }: DatabaseQuery): Promise<string> {
+    const [meta] = await this.read({ root, id });
     const content = await (await readFile(meta.path)).toString();
 
     return content;
   }
 
-  async readTaxonomies(query: DatabaseQuery) {
+  async readTaxonomies(query: DatabaseQuery): Promise<TaxonomyLeafJSON[]> {
     const rootIndexes = this.taxonomyIndexes.get(query.root);
     if (query.id) {
-      return this.taxonomyLeafToJSON(rootIndexes.get(query.id));
+      return [await this.taxonomyLeafToJSON(rootIndexes.get(query.id))];
     }
 
     return Array.from(rootIndexes.values()).map((taxonomy) =>
@@ -81,14 +96,17 @@ export class MarkdownKnowledgeFragmentsDatabase {
     );
   }
 
-  async readTaxonomiesTree(query: DatabaseQuery, depth = 0) {
+  async readTaxonomiesTree(
+    query: DatabaseQuery,
+    depth = 0
+  ): Promise<TaxonomyLeafJSON[]> {
     const rootIndexes =
       query.id && query.id.length > 0
         ? this.taxonomyIndexes.get(query.root)
         : this.taxonomyTreeIndexes.get(query.root);
 
     if (query.id) {
-      return this.taxonomyTreeToJSON(rootIndexes.get(query.id), depth);
+      return [await this.taxonomyTreeToJSON(rootIndexes.get(query.id), depth)];
     }
 
     return Array.from(rootIndexes.values()).map((taxonomy) =>
@@ -140,7 +158,7 @@ export class MarkdownKnowledgeFragmentsDatabase {
           .split('/')
           .filter((str) => str.length > 1)
           .map((str) => str.split(' '))
-          .map(([id, ...symbols]) => {
+          .map<TaxonomySymbol>(([id, ...symbols]) => {
             const fileName = symbols.join(' ');
             const title = fileName.replace(/\.[^/.]+$/, '');
             const slug = slugify(title, { lower: true });
@@ -154,17 +172,18 @@ export class MarkdownKnowledgeFragmentsDatabase {
                 'assets/icons/mdi/newspaper-variant.svg',
             };
           })
-          .reduce((acc, { id, fileName, title, slug, icon }) =>
-            Object.assign(acc, {
-              id,
-              fileName,
-              title,
-              slug: `${acc.slug}/${slug}`,
-              path: childPath,
-              icon,
-            })
+          .reduce<TaxonomySymbol>(
+            (acc, { id, fileName, title, slug, icon }) =>
+              Object.assign(acc, {
+                id,
+                fileName,
+                title,
+                slug: `${acc.slug}/${slug}`,
+                path: childPath,
+                icon,
+              }),
+            {} as TaxonomySymbol
           );
-        const fileName = child.split('.')[0];
 
         const indexes = this.indexes.get(rootFolder);
         const slugIndexes = this.slugIndexes.get(rootFolder);
@@ -238,7 +257,7 @@ export class MarkdownKnowledgeFragmentsDatabase {
     });
   }
 
-  private taxonomyLeafToJSON(taxonomy: TaxonomyLeaf) {
+  private taxonomyLeafToJSON(taxonomy: TaxonomyLeaf): TaxonomyLeafJSON {
     return {
       id: taxonomy.id,
       title: taxonomy.title,
@@ -258,7 +277,10 @@ export class MarkdownKnowledgeFragmentsDatabase {
     };
   }
 
-  private taxonomyTreeToJSON(taxonomy: TaxonomyLeaf, depth = 0) {
+  private taxonomyTreeToJSON(
+    taxonomy: TaxonomyLeaf,
+    depth = 0
+  ): TaxonomyLeafJSON {
     return {
       id: taxonomy.id,
       title: taxonomy.title,

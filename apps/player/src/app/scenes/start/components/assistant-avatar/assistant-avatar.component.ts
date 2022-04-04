@@ -10,6 +10,7 @@ import { Avatar } from '@central-factory/avatars/models';
         <cf-avatar-appearance-portrait
           [emptyIcon]="assistantIcon"
           [showEmptyIcon]="true"
+          size="xs"
         ></cf-avatar-appearance-portrait>
       </div>
       <h2
@@ -44,7 +45,7 @@ export class AssistantAvatarComponent {
     Welcome back <a href="select-avatar" class="text text--primary">${
       this.selectedAvatar.identity?.givenName
     }</a>,<br />
-      It's ${new DatePipe('en').transform(date, 'medium')}
+      It's ${new DatePipe('en').transform(date, 'LLL d, yyyy, HH:mm')}
       <br />
       What would you like to do?
   `;

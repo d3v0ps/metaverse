@@ -21,6 +21,10 @@ import { KnowledgeSymbol } from '@central-factory/knowledge/models/knowledge-sym
       .knowledge-leaf {
         cursor: pointer;
         padding-bottom: 0.5rem;
+        .text {
+          word-break: break-all;
+          white-space: nowrap;
+        }
       }
     `,
   ],

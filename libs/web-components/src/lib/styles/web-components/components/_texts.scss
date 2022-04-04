@@ -15,7 +15,22 @@
   }
 }
 
-h2.heading {
+.typography--p {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--component-text-color, var(--color-base-light-medium));
+}
+
+a {
+  .typography--p {
+    color: var(--color-base-primary-medium, var(--color-base-light-medium));
+    font-weight: 700;
+  }
+}
+
+h2.heading,
+.typography--h2 {
+  font-size: 1.5rem;
   .heading__icon {
     .icon__svg {
       width: 1.8rem;
@@ -24,7 +39,9 @@ h2.heading {
   }
 }
 
-h4.heading {
+h4.heading,
+.typography--h4 {
+  font-size: 1.2rem;
   .heading__icon {
     .icon__svg {
       width: 1.2rem;
@@ -34,7 +51,9 @@ h4.heading {
   margin-block-end: 0.5rem;
 }
 
-h5.heading {
+h5.heading,
+.typography--h5 {
+  font-size: 1rem;
   margin-block-end: 0.5rem;
 }
 

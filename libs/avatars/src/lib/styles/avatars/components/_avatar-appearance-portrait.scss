@@ -15,6 +15,25 @@
   border: none;
   box-shadow: var(--component-avatar-appearance-portrait-shadow-outset), inset var(--component-avatar-appearance-portrait-shadow-inset-primary), inset var(--component-avatar-appearance-portrait-shadow-inset-secondary);
 
+  .icon__svg {
+    width: 144px;
+    height: 144px;
+    fill: var(--component-avatar-appearance-portrait-icon-color);
+  }
+
+  &--xs {
+    width: 64px;
+    height: 64px;
+
+    .icon__svg {
+      width: 50px;
+      height: 50px;
+      margin: 0 auto;
+      display: block;
+      fill: var(--component-avatar-appearance-portrait-icon-color);
+    }
+  }
+
   &--common {
     border: 1rem solid var(--color-base-common-lighter);
 
@@ -53,12 +72,6 @@
         }
       }
     }
-  }
-
-  .icon__svg {
-    width: 144px;
-    height: 144px;
-    fill: var(--component-avatar-appearance-portrait-icon-color);
   }
 
   &:hover {

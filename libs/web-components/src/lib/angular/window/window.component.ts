@@ -24,7 +24,8 @@ import { ResizableEvent } from '../resizable/resizable.directive';
     <div
       cfBlock="window"
       [cfMod]="{
-        maximized: maximized
+        maximized: maximized,
+        'hide-header': hideHeader
       }"
       tabindex="-1"
       role="dialog"
@@ -90,13 +91,13 @@ import { ResizableEvent } from '../resizable/resizable.directive';
         cfBlock="window-body"
         #modalBody
         [ngStyle]="{
-          height: 'calc(100% - 48px)',
+          height: '100%',
           width: '100%'
         }"
       >
         <ng-content select=".window-body__content"></ng-content>
       </div>
-      <div cfBlock="window-footer" #modalFooter>
+      <div cfBlock="window-footer" #modalFooter *ngIf="false">
         <ng-content select=".window-footer__content"></ng-content>
       </div>
     </div>
@@ -107,6 +108,7 @@ export class WindowComponent implements AfterViewChecked {
   @Input() scrollTopEnable = true;
   @Input() maximizable = false;
   @Input() backdrop = true;
+  @Input() hideHeader = true;
   @Input() width?: string;
   @Input() height?: string;
   @Input() x?: number;
@@ -123,8 +125,8 @@ export class WindowComponent implements AfterViewChecked {
 
   @ViewChild('modalRoot', { static: false }) modalRoot!: ElementRef;
   @ViewChild('modalBody', { static: false }) modalBody!: ElementRef;
-  @ViewChild('modalHeader', { static: false }) modalHeader!: ElementRef;
-  @ViewChild('modalFooter', { static: false }) modalFooter!: ElementRef;
+  @ViewChild('modalHeader', { static: false }) modalHeader?: ElementRef;
+  @ViewChild('modalFooter', { static: false }) modalFooter?: ElementRef;
   @ViewChild('closeIcon', { static: false }) closeIcon!: ElementRef;
 
   @Input() visible?: boolean;
@@ -217,13 +219,17 @@ export class WindowComponent implements AfterViewChecked {
       this.calcBodyHeight();
     }
 
+    if (this.maximized) {
+      this.maximize();
+    }
+
     this.resizeWindow.emit(event);
   }
 
   calcBodyHeight() {
     const diffHeight =
-      this.modalHeader.nativeElement.offsetHeight +
-      this.modalFooter.nativeElement.offsetHeight;
+      (this.modalHeader?.nativeElement.offsetHeight || 0) +
+      (this.modalFooter?.nativeElement.offsetHeight || 0);
     const contentHeight =
       this.modalRoot.nativeElement.offsetHeight - diffHeight;
     this.modalBody.nativeElement.style.height = contentHeight + 'px';
@@ -263,13 +269,13 @@ export class WindowComponent implements AfterViewChecked {
     this.preMaximizeRootHeight = this.modalRoot.nativeElement.offsetHeight;
     this.preMaximizeBodyHeight = this.modalBody.nativeElement.offsetHeight;
 
-    this.modalRoot.nativeElement.style.top = '0px';
-    this.modalRoot.nativeElement.style.left = '0px';
-    this.modalRoot.nativeElement.style.width = '100vw';
-    this.modalRoot.nativeElement.style.height = '100vh';
+    this.modalRoot.nativeElement.style.top = '50px';
+    this.modalRoot.nativeElement.style.left = '100px';
+    this.modalRoot.nativeElement.style.width = 'calc(100vw - 100px)';
+    this.modalRoot.nativeElement.style.height = 'calc(100vh - 50px)';
     const diffHeight =
-      this.modalHeader.nativeElement.offsetHeight +
-      this.modalFooter.nativeElement.offsetHeight;
+      (this.modalHeader?.nativeElement.offsetHeight || 0) +
+      (this.modalFooter?.nativeElement.offsetHeight || 0);
     this.modalBody.nativeElement.style.height =
       'calc(100vh - ' + diffHeight + 'px)';
     this.modalBody.nativeElement.style.maxHeight = 'none';

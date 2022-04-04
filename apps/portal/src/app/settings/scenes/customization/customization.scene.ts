@@ -1,5 +1,12 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { OnApplicationLoad } from '@central-factory/applications/models/application-interfaces';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
 import {
   Customization,
@@ -94,7 +101,11 @@ export type CustomizationForm = {
     `,
   ],
 })
-export class CustomizationScene implements OnInit, OnDestroy {
+export class CustomizationScene
+  implements OnInit, OnDestroy, OnApplicationLoad
+{
+  @Output() applicationLoad = new EventEmitter<void>();
+
   public readonly form = new FormGroup({
     theme: new FormControl(null),
     background: new FormControl(null),
@@ -102,6 +113,10 @@ export class CustomizationScene implements OnInit, OnDestroy {
 
   public readonly themes$ = this.availableThemesState.themes$;
   public readonly backgrounds$ = of([
+    {
+      name: 'Code',
+      url: '',
+    },
     {
       name: 'Apartment',
       url: 'http://www.youtube.com/embed/B6eL_N0N5KI',
@@ -196,6 +211,7 @@ export class CustomizationScene implements OnInit, OnDestroy {
         )
       )
       .subscribe();
+    this.applicationLoad.emit();
   }
 
   ngOnDestroy(): void {

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { EntityManager } from '@central-factory/persistence/services/entity-manager';
 import { UserPreferencesState } from '@central-factory/preferences/states/user-preferences.state';
 import { BehaviorSubject, forkJoin, Observable, of, tap } from 'rxjs';
 import { map, share, switchMap } from 'rxjs/operators';
@@ -90,11 +91,14 @@ export class StoreApplicationsState {
     private httpClient: HttpClient,
     private userPreferencesState: UserPreferencesState<
       { label: string; url: string }[]
-    >
+    >,
+    private entityManager: EntityManager
   ) {
-    this.userPreferencesState
-      .byKey('store.settings.repositories')
+    this.entityManager.initialize$
       .pipe(
+        switchMap(() =>
+          this.userPreferencesState.byKey('store.settings.repositories')
+        ),
         map((preference) => preference?.value || []),
         switchMap((repositories) => {
           if (!repositories) {

@@ -49,10 +49,12 @@
 }
 
 .scene-content {
+  width: 70%;
+  margin: 0 auto;
   padding: 20px;
-  background-color: var(--component-scene-content-background-color);
+  // background-color: var(--component-scene-content-background-color);
+  background-color: #9575cd2b;
   color: var(--component-scene-content-color);
-  width: 100%;
   border-radius: 20px;
   max-height: calc(100vh - 80px);
   box-shadow: var(--component-scene-content-shadow-outset),

@@ -1,10 +1,14 @@
 [
   {
+    "label": "Earth",
+    "src": "assets/worlds/000.json"
+  },
+  {
     "label": "Chueland",
     "src": "assets/worlds/001.json"
   },
   {
-    "label": "Earth",
-    "src": "assets/worlds/000.json"
+    "label": "Wolf's Den",
+    "src": "assets/worlds/002.json"
   }
 ]

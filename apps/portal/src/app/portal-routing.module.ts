@@ -92,6 +92,14 @@ export const routes: Routes = [
         canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
       },
       {
+        path: 'burg',
+        loadChildren: () =>
+          import(
+            '@central-factory/worlds/web-components/angular/burgs/burgs.module'
+          ).then((m) => m.BurgsModule),
+        canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
+      },
+      {
         path: 'world',
         loadChildren: () =>
           import('./scenes/world/world-scene.module').then(

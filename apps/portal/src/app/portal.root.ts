@@ -8,7 +8,7 @@ import { environment } from '../environments/environment';
   template: `
     <canvas id="bgcanvas"></canvas>
     <div id="bgiframe"></div>
-    <cf-splash-screen *ngIf="environment.showSplashScreen"></cf-splash-screen>
+    <cf-splash-screen *ngIf="showSplashScreen"></cf-splash-screen>
     <div class="application">
       <router-outlet></router-outlet>
     </div>
@@ -59,12 +59,20 @@ import { environment } from '../environments/environment';
 export class PortalRoot implements OnInit {
   environment = environment;
 
+  showSplashScreen = true || environment.showSplashScreen;
+
   @ViewChild('rootWindow', { static: true }) rootWindow!: WindowComponent;
 
   ngOnInit() {
     if (this.environment.demo && !localStorage.getItem('visited')) {
       this.rootWindow.show();
       localStorage.setItem('visited', true.toString());
+    }
+
+    const preload = document.getElementById('preloadSplash');
+
+    if (preload) {
+      preload.remove();
     }
   }
 }

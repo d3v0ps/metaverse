@@ -6,7 +6,7 @@ export type KnowledgeTaxonomy = {
   title: string;
   icon: string;
   children: KnowledgeTaxonomy[];
-  symbols: KnowledgeSymbol[];
+  files: KnowledgeSymbol[];
 };
 
 @Component({
@@ -16,7 +16,9 @@ export type KnowledgeTaxonomy = {
       <ng-container *ngFor="let taxonomy of root">
         <cf-knowledge-branch
           [taxonomy]="taxonomy"
-          (symbolClick)="symbolClick.emit($event)"
+          (symbolClick)="
+            symbolClick.emit({ symbol: $event, taxonomy: taxonomy })
+          "
           (taxonomyClick)="taxonomyClick.emit($event)"
         ></cf-knowledge-branch>
       </ng-container>
@@ -26,6 +28,9 @@ export type KnowledgeTaxonomy = {
 export class KnowledgeTreeComponent {
   @Input() root: KnowledgeTaxonomy[] = [];
 
-  @Output() symbolClick = new EventEmitter<KnowledgeSymbol>();
+  @Output() symbolClick = new EventEmitter<{
+    symbol: KnowledgeSymbol;
+    taxonomy: KnowledgeTaxonomy;
+  }>();
   @Output() taxonomyClick = new EventEmitter<KnowledgeTaxonomy>();
 }

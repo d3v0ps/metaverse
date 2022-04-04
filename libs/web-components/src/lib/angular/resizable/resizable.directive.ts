@@ -56,6 +56,10 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
   private minHeight!: number;
   private maxHeight!: number;
 
+  private resizeHeightSkipping = false;
+
+  private resizeWidthSkipping = false;
+
   constructor(element: ElementRef) {
     this.element = element.nativeElement;
   }
@@ -184,19 +188,6 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
   onMouseup(event: MouseEvent | TouchEvent): void {
     this.endResize(event);
     this.destroySubscription();
-  }
-
-  private destroySubscription() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-      this.subscription = undefined;
-    }
-  }
-
-  private createHandle(edgeClass: string) {
-    const node = document.createElement('span');
-    node.className = edgeClass;
-    this.element.appendChild(node);
   }
 
   initResize(
@@ -344,17 +335,6 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
       const newHeight = (this.newHeight = currentHeight - diff);
       const newTop = currentTop + diff;
 
-      console.debug('current', {
-        currentHeight,
-        currentTop,
-      });
-
-      console.debug('new', {
-        newHeight,
-        newTop: currentTop + diff,
-        diff,
-      });
-
       if (overMinHeight && underMaxHeight) {
         if (!this.ghost) {
           this.element.style.height = `${newHeight}px`;
@@ -370,7 +350,16 @@ export class ResizableDirective implements OnDestroy, AfterViewInit {
     }
   }
 
-  private resizeHeightSkipping = false;
+  private destroySubscription() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+      this.subscription = undefined;
+    }
+  }
 
-  private resizeWidthSkipping = false;
+  private createHandle(edgeClass: string) {
+    const node = document.createElement('span');
+    node.className = edgeClass;
+    this.element.appendChild(node);
+  }
 }

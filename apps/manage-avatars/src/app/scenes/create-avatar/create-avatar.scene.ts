@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { OnApplicationLoad } from '@central-factory/applications/models/application-interfaces';
 
 /** Create Avatar view */
 @Component({
@@ -26,4 +27,10 @@ import { Component } from '@angular/core';
     </div -->
   `,
 })
-export class CreateAvatarScene {}
+export class CreateAvatarScene implements OnInit, OnApplicationLoad {
+  @Output() applicationLoad = new EventEmitter<void>();
+
+  ngOnInit(): void {
+    this.applicationLoad.emit();
+  }
+}
