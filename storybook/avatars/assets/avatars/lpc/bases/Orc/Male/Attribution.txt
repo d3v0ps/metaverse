@@ -1,5 +1,0 @@
-Orc Male  CC-BY-SA 3.0 / GPL 3.0Created by:  - Stephen Challener (Redshrike)  - Liberated Pixel Cup (LPC) Base Assets (sprites & map tiles)    - CC-BY-SA 3.0 / GPL 3.0    - https://opengameart.org/content/liberated-pixel-cup-lpc-base-assets-sprites-map-tiles    - (idle, cast, walk, slash, and hurt animations)
-  - Four characters: My LPC entries    - CC-BY 3.0 / CC-BY-SA 3.0 / OGA-BY 3.0    - https://opengameart.org/content/four-characters-my-lpc-entries    - (LPC orc "Sinbad")- Johannes Sjölund (wulax)  - [LPC] Medieval fantasy character sprites
-    - CC-BY-SA 3.0 / GPL 3.0    - https://opengameart.org/content/lpc-medieval-fantasy-character-sprites    - (thrust and shoot animations)
-- Zi Ye  - Sinbad the Ogre    - CC-BY-SA 3.0    - https://opengameart.org/content/sinbad-the-ogre    - ("Sinbad" design)
-- Matthew Krohn (makrohn)  - LPC Male Sheets    - CC-BY-SA 3.0 / GPL 3.0    - https://opengameart.org/content/lpc-male-sheets    - (orc cast, thrust, walk, slash, shoot, and hurt animations)
