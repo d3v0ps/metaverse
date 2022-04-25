@@ -1,0 +1,23 @@
+component:
+  navbar:
+    background-color:
+      value: "{color.base.dark.medium}"
+    border-color:
+      value: "{color.base.dark.darker}"
+    color:
+      value: "{color.base.light.darkest}"
+
+    title:
+      color:
+        value: "{color.base.light.darkest}"
+      hover:
+        color:
+          value: "{color.base.primary.light}"
+
+    list:
+      item:
+        color:
+          value: "{color.base.light.darkest}"
+        hover:
+          color:
+            value: "{color.base.light.medium}"

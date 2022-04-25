@@ -1,0 +1,49 @@
+
+:root {
+  --component-appearance-card-width: 200px;
+  --component-appearance-card-height: 300px;
+  --component-appearance-card-active-border-color: var(--color-base-secondary-medium);
+  --component-appearance-card-empty-icon-color: var(--color-base-secondary-medium);
+  --component-appearance-card-shadow-outset: 8px 8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-appearance-card-shadow-inset-primary:  -8px -8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-appearance-card-shadow-inset-secondary:  8px 8px 16px 0 rgba(255, 255, 255, 0.2);
+}
+
+$card-width: var(--component-appearance-card-width);
+$card-height: var(--component-appearance-card-height);
+
+.appearance-card {
+  width: var(--component-appearance-card-width);
+  max-width: var(--component-appearance-card-width);
+  min-height: var(--component-appearance-card-height);
+  margin-bottom: 10px;
+  border-radius: 14px;
+  box-shadow: var(--component-appearance-card-shadow-outset), inset var(--component-appearance-card-shadow-inset-primary), inset var(--component-appearance-card-shadow-inset-secondary);
+
+  &--active {
+    border: 2px solid var(--component-appearance-card-active-border-color);
+  }
+
+  .appearance-preview-image {
+    background-size: cover;
+    max-width:  var(--component-appearance-card-width);
+    min-height: var(--component-appearance-card-height);
+  }
+
+  .appearance-preview-image__footer {
+    font-size: 12px;
+  }
+
+  &--empty {
+    cursor: pointer;
+    .icon__svg {
+      width:  var(--component-appearance-card-width);
+      height: var(--component-appearance-card-height);
+      fill: var(--component-appearance-card-empty-icon-color);
+    }
+  }
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+}

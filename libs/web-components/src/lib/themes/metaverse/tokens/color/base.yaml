@@ -1,0 +1,226 @@
+color:
+  base:
+    primary:
+      lightest:
+        value: '#c7a4ff'
+      lighter:
+        value: '#c7a4ff'
+      light:
+        value: '#c7a4ff'
+      medium:
+        value: '#9575cd'
+      dark:
+        value: '#65499c'
+      darker:
+        value: '#65499c'
+      darkest:
+        value: '#65499c'
+
+    secondary:
+      lightest:
+        value: "#c4a5ed"
+      lighter:
+        value: "#c4a5ed"
+      light:
+        value: "#c4a5ed"
+      medium:
+        value: "#c4a5ed"
+      dark:
+        value: "#c4a5ed"
+      darker:
+        value: "#c4a5ed"
+      darkest:
+        value: "#c4a5ed"
+
+    light:
+      lightest:
+        value: '#F4FAFF'
+      lighter:
+        value: '#e6e6e6'
+      light:
+        value: '#d1d1d1'
+      medium:
+        value: '#DEE7E7'
+      dark:
+        value: '#fafafa'
+      darker:
+        value: '#d5d5d5'
+      darkest:
+        value: '#f1f1f1'
+
+    dark:
+      lightest:
+        value: '#707070'
+      lighter:
+        value: '#606060'
+      light:
+        value: '#505050'
+      medium:
+        value: '#404040'
+      dark:
+        value: '#303030'
+      darker:
+        value: '#202020'
+      darkest:
+        value: '#101010'
+
+    success:
+      lightest:
+        value: '#f9fbe7'
+      lighter:
+        value: '#f0f4c3'
+      light:
+        value: '#dcedc8'
+      medium:
+        value: '#4caf50'
+      dark:
+        value: '#43a047'
+      darker:
+        value: '#388e3c'
+      darkest:
+        value: '#2e7d32'
+
+    warning:
+      lightest:
+        value: '#fff9c4'
+      lighter:
+        value: '#ffecb3'
+      light:
+        value: '#ffcc80'
+      medium:
+        value: '#ff9800'
+      dark:
+        value: '#fb8c00'
+      darker:
+        value: '#f57c00'
+      darkest:
+        value: '#ef6c00'
+
+    danger:
+      lightest:
+        value: '#fcebea'
+      lighter:
+        value: '#f8bbd0'
+      light:
+        value: '#ef9a9a'
+      medium:
+        value: '#f44336'
+      dark:
+        value: '#e53935'
+      darker:
+        value: '#d32f2f'
+      darkest:
+        value: '#c62828'
+
+    info:
+      lightest:
+        value: '#ede7f6'
+      lighter:
+        value: '#e3f2fd'
+      light:
+        value: '#bbdefb'
+      medium:
+        value: '#2196f3'
+      dark:
+        value: '#1976d2'
+      darker:
+        value: '#1565c0'
+      darkest:
+        value: '#0d47a1'
+
+    common:
+      lightest:
+        value: '#d2d2d2'
+      lighter:
+        value: '#c1c1c1'
+      light:
+        value: '#b2b2b2'
+      medium:
+        value: '#a2a2a2'
+      dark:
+        value: '#929292'
+      darker:
+        value: '#818181'
+      darkest:
+        value: '#717171'
+
+    uncommon:
+      lightest:
+        value: '#b3c7b4'
+      lighter:
+        value: '#99b39a'
+      light:
+        value: '#8eab8f'
+      medium:
+        value: '#83a384'
+      dark:
+        value: '#789b79'
+      darker:
+        value: '#678e68'
+      darkest:
+        value: '#437445'
+
+    rare:
+      lightest:
+        value: '#8ab8cf'
+      lighter:
+        value: '#70a9c4'
+      light:
+        value: '#609fbd'
+      medium:
+        value: '#5095b6'
+      dark:
+        value: '#408baf'
+      darker:
+        value: '#3081a8'
+      darkest:
+        value: '#19739e'
+
+    epic:
+      lightest:
+        value: '#c5a8d1'
+      lighter:
+        value: '#b48fc3'
+      light:
+        value: '#a173b4'
+      medium:
+        value: '#7c3b97'
+      dark:
+        value: '#722c8f'
+      darker:
+        value: '#641884'
+      darkest:
+        value: '#550178'
+
+    legendary:
+      lightest:
+        value: '#f6d483'
+      lighter:
+        value: '#f4c85f'
+      light:
+        value: '#f1bc3c'
+      medium:
+        value: '#eead10'
+      dark:
+        value: '#d39b13'
+      darker:
+        value: '#be8d15'
+      darkest:
+        value: '#af8316'
+
+    unique:
+      lightest:
+        value: '#7fe6f0'
+      lighter:
+        value: '#66e1ed'
+      light:
+        value: '#34d7e7'
+      medium:
+        value: '#15c3d4'
+      dark:
+        value: '#1c9ca8'
+      darker:
+        value: '#217e87'
+      darkest:
+        value: '#25676d'
+

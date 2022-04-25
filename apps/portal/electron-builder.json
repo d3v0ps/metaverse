@@ -1,0 +1,30 @@
+{
+  "asar": false,
+  "files": [
+    "src/main.electron.js"
+  ],
+  "extraResources": [
+    {
+      "from": "dist/apps/portal",
+      "to": "app",
+      "filter": [
+        "**/*"
+      ]
+    }
+  ],
+  "win": {
+    "target": [
+      "portable"
+    ]
+  },
+  "mac": {
+    "target": [
+      "dmg"
+    ]
+  },
+  "linux": {
+    "target": [
+      "AppImage"
+    ]
+  }
+}

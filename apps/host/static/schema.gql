@@ -1,0 +1,40 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Meta {
+  contentType: String!
+  title: String!
+}
+
+type Section {
+  id: String!
+  title: String!
+}
+
+type Document {
+  id: String!
+  meta: Meta!
+  sections: [Section!]!
+  content: String
+}
+
+type DocumentNodeFile {
+  id: String!
+  title: String!
+}
+
+type DocumentNode {
+  id: String!
+  title: String!
+  slug: String!
+  icon: String!
+  files: [DocumentNodeFile!]!
+  children: [DocumentNode!]!
+  parent: DocumentNode!
+}
+
+type Query {
+  getDocument(root: String!, id: String!): Document!
+  getNodes(root: String!, id: String): [DocumentNode!]!
+}

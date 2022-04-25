@@ -1,0 +1,80 @@
+@use 'sass:map';
+
+@use '../abstracts/mixins' as mixins;
+@use '../abstracts/variables/fonts' as fonts;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  ::-webkit-scrollbar {
+    // background-color: var(--color-base-primary-darkest);
+    background: transparent;
+    width: .2rem;
+    height: .2rem;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-base-secondary-medium);
+    border-radius: 20px;
+    width: .2rem;
+    height: .2rem;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: fonts.$default-font-family, 'Helvetica Neue', sans-serif;
+}
+
+h1,
+a,
+button,
+th,
+img,
+.not-selectable,
+.mat-checkbox,
+.mat-icon {
+  @include mixins.not-selectable;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-base-primary-medium);
+}
+
+.align-center {
+  text-align: center !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.ellipsis-content {
+  @include mixins.ellipsis-content;
+}
+
+iframe {
+  border: none;
+}
+
+ul {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 0.25rem;
+}

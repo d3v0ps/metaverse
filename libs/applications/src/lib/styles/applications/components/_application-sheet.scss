@@ -1,0 +1,78 @@
+:root {
+  --component-application-sheet-background-color: var(--component-scene-content-background-color);
+  --component-application-sheet-text-color: var(--component-scene-content-color);
+};
+
+
+.application-sheet {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 20px;
+
+  color: var(--component-application-sheet-text-color);
+  background-color: var( --component-application-sheet-background-color);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .application-sheet__card {
+    max-width: 400px;
+    max-height: 220px;
+    width: 100%
+  }
+
+  .application-card {
+    max-width: 400px;
+    height: 120px;
+    overflow-x: auto;
+    .application-description {
+      max-width: 100%;
+    }
+  }
+
+  .application-description {
+  }
+
+
+  // .icon__svg {
+  //   fill: var(---component-application-sheet-font-color, #fff);
+  // }
+
+  .application-actions {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+
+    &__item {
+      max-width: 200px;
+      display: contents;
+
+      .input-group {
+        min-width: max-content;
+      }
+    }
+  }
+
+  .application-shortcuts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+
+    > * {
+      max-width: 200px;
+    }
+
+  }
+}

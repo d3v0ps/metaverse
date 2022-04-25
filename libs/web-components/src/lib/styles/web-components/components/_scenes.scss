@@ -1,0 +1,71 @@
+:root {
+  --component-scene-content-shadow-outset: 8px 8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-scene-content-shadow-inset-primary: -8px -8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-scene-content-shadow-inset-secondary: 8px 8px 16px 0
+    rgba(255, 255, 255, 0.2);
+}
+
+.application {
+  background-color: var(--component-scene-background-color);
+
+  &--no-background-color {
+    background-color: transparent;
+  }
+}
+
+.scene {
+  background: transparent;
+  // TODO: this pattern was removed
+  // background: url("https://www.toptal.com/designers/subtlepatterns/patterns/moroccan-flower-pattern.png");
+
+  &__body {
+    height: calc(100vh - 44px);
+
+    &--no-navbar {
+      height: 100vh;
+    }
+  }
+
+  &__container {
+    height: 100%;
+    width: 100%;
+    /* margin: 0; */
+    padding: 0;
+    overflow: auto;
+  }
+
+  &__content {
+    padding: 0 1rem 0 0;
+    margin-top: 3rem;
+    &--splash-screen {
+      .scene-content {
+        display: none !important;
+        &--splash-screen {
+          display: block !important;
+        }
+      }
+    }
+  }
+}
+
+.scene-content {
+  width: 70%;
+  margin: 0 auto;
+  padding: 20px;
+  // background-color: var(--component-scene-content-background-color);
+  background-color: #9575cd2b;
+  color: var(--component-scene-content-color);
+  border-radius: 20px;
+  max-height: calc(100vh - 80px);
+  box-shadow: var(--component-scene-content-shadow-outset),
+    inset var(--component-scene-content-shadow-inset-primary),
+    inset var(--component-scene-content-shadow-inset-secondary);
+
+  &--no-padding {
+    padding: 0;
+  }
+
+  &--remote-scene {
+    height: 100%;
+  }
+}

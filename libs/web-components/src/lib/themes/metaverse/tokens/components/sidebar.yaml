@@ -1,0 +1,13 @@
+component:
+  sidebar:
+    button:
+      background-color:
+        value: "{component.button.primary.background-color}"
+      color:
+        value: "{component.button.primary.color}"
+
+      active:
+        background-color:
+          value: "{component.button.secondary.background-color}"
+        color:
+          value: "{component.button.secondary.color}"

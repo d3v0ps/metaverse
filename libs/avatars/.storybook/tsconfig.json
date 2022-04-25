@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true
+  },
+
+  "exclude": ["../**/*.spec.ts"],
+  "include": ["../src/**/*", "*.js", "../../../apps/portal/src/polyfills.ts"]
+}

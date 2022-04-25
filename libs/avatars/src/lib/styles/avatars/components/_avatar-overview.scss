@@ -1,0 +1,20 @@
+
+:root {
+  --component-avatar-overview-small-preview-width: 120px;
+  --component-avatar-overview-small-preview-height: 120px;
+  --component-avatar-overview-small-preview-background-color: var(--color-base-primary-medium);
+}
+
+.avatar-overview {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+  .avatar-appearance-portrait {
+    width: var(--component-avatar-overview-small-preview-width);
+    height: var(--component-avatar-overview-small-preview-height);
+    background-color: var(--component-avatar-overview-small-preview-background-color);
+
+  }
+}

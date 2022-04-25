@@ -1,0 +1,23 @@
+
+.currency {
+  .typography {
+    display: flex;
+    gap: .2rem;
+
+    .icon__svg {
+      margin-top: -0.2rem;
+    }
+  }
+
+  &--positive {
+    .typography {
+      color: var(--color-base-success-medium);
+    }
+  }
+
+  &--negative {
+    .typography {
+      color: var(--color-base-danger-medium);
+    }
+  }
+}

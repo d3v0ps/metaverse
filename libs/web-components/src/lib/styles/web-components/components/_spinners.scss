@@ -1,0 +1,99 @@
+
+:root {
+  --component-spinner-color: var(--color-base-light-medium);
+}
+
+.spinner,
+.spinner > div {
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.spinner {
+  display: block;
+  font-size: 0;
+  color: var(--component-spinner-color);
+}
+
+.spinner > div {
+  display: inline-block;
+  float: none;
+  background-color: currentColor;
+  border: 0 solid currentColor;
+}
+
+.spinner {
+  width: 31px;
+  height: 31px;
+}
+
+.spinner > div {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border-style: dashed;
+  border-width: 2px;
+  border-radius: 100%;
+  animation: spinner-rotate 4s linear infinite;
+}
+
+.spinner > div:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  border: 2px solid currentColor;
+  border-radius: 100%;
+}
+
+.spinner.spinner--sm {
+  width: 15px;
+  height: 15px;
+}
+
+.spinner.spinner--sm > div {
+  border-width: 1px;
+}
+
+.spinner.spinner--sm > div:after {
+  border-width: 1px;
+}
+
+.spinner.spinner--2x {
+  width: 61px;
+  height: 61px;
+}
+
+.spinner.spinner--2x > div {
+  border-width: 4px;
+}
+
+.spinner.spinner--2x > div:after {
+  border-width: 4px;
+}
+
+.spinner.spinner--3x {
+  width: 91px;
+  height: 91px;
+}
+
+.spinner.spinner--3x > div {
+  border-width: 6px;
+}
+
+.spinner.spinner--3x > div:after {
+  border-width: 6px;
+}
+
+@keyframes spinner-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,52 @@
+
+:root {
+  --component-application-toolbar-height: 48px;
+  --component-application-toolbar-padding: 1rem;
+  --component-application-toolbar-buttons-gap: 0.5rem;
+  --component-application-toolbar-color: var(--color-base-light-medium);
+  --component-application-toolbar-background-color: var(--color-base-dark-medium);
+  --component-application-toolbar-box-shadow-color: var(--color-base-dark-medium);
+}
+
+.application-toolbar {
+  height: var(--component-application-toolbar-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--component-application-toolbar-padding);
+  background-color: var(--component-application-toolbar-background-color);
+  color: var(--component-application-toolbar-color);
+  box-shadow: 0 0 0 1px var(--component-application-toolbar-box-shadow-color);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
+  &__content {
+    display: flex;
+    gap: var(--component-application-toolbar-padding);
+  }
+}
+
+.application-toolbar-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--component-application-toolbar-buttons-gap);
+}
+
+.application-toolbar-title {
+  .icon__svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--component-application-toolbar-color);
+  }
+}
+
+.application-toolbar-shortcut {
+  display: flex;
+  color: var(--component-application-toolbar-color);
+  .icon__svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--component-application-toolbar-color);
+  }
+}

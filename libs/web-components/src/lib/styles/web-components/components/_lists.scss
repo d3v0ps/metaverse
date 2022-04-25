@@ -1,0 +1,24 @@
+
+.list {
+
+  &--horizontal {
+    list-style: none;
+    margin: 10;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+  }
+
+  &__item {
+    padding: 5px;
+    .icon__svg {
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+    }
+  }
+}

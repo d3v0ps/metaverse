@@ -1,0 +1,29 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Field, ObjectType, registerEnumType } from '@nestjs/graphql';
+
+{{#each definitions}}
+{{#ifEnum .}}
+export enum {{name}} {
+  {{#each enum}}
+  {{.}} = '{{.}}',
+  {{/each}}
+}
+
+registerEnumType({{name}}, {
+  name: '{{name}}',
+  description: '',
+});
+
+{{/ifEnum}}
+{{#ifObject .}}
+@ObjectType()
+export class {{name}} {
+  {{#gqlProperty templateProperties}}
+  @Field({{#if decoratorType}}(type) => {{decoratorType}}{{/if}})
+  {{name}}{{#if required}}!{{else}}?{{/if}}: {{tsType}};
+  {{/gqlProperty}}
+}
+{{/ifObject}}
+
+{{/each}}

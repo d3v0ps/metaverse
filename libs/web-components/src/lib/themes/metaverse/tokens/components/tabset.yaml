@@ -1,0 +1,21 @@
+component:
+  tab:
+    background-color:
+      value: "{color.base.dark.light}"
+    text-color:
+      value: "{color.base.light.medium}"
+    border-color:
+      value: "{color.base.dark.medium}"
+    shadow:
+      outset:
+        value: "8px 8px 16px 0 rgba(0, 0, 0, 0.25)"
+      inset-primary:
+        value: "-8px -8px 16px 0 rgba(0, 0, 0, 0.25)"
+      inset-secondary:
+        value: "8px 8px 16px 0 rgba(255, 255, 255, 0.2)"
+
+    active:
+      background-color:
+        value: "{color.base.dark.darker}"
+      text-color:
+        value: "{color.base.light.medium}"

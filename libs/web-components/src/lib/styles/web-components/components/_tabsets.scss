@@ -1,0 +1,76 @@
+@use '../abstracts/variables/colors' as colors;
+
+.tabset-container {
+  &--vertical {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+.tabset {
+  list-style: none;
+  padding: 0;
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  > * {
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    overflow: auto !important;
+  }
+
+  .tab {
+    background-color: var(--component-tab-background-color);
+    color: var(--component-tab-text-color);
+    min-width: 6rem;
+
+    &--active {
+      background-color: var(--component-tab-active-background-color);
+      color: var(--component-tab-active-text-color);
+
+      .icon__svg {
+        fill: var(--component-tab-active-text-color);
+      }
+    }
+
+    &--disabled {
+      opacity: 0.5;
+    }
+
+    &:not(.active):not(.disabled) {
+      cursor: pointer;
+    }
+
+    .icon__svg {
+      fill: var(--component-tab-text-color);
+      width: 1.5rem !important;
+      height: 1.5rem !important;
+    }
+  }
+}
+
+.tab-content {
+  display: none;
+  &--active {
+    display: block;
+  }
+}
+
+@each $color in colors.$color-variations {
+  .tab--active {
+    &.tab--#{$color} {
+      background: var(--component-button-#{$color}-background-color);
+      color: var(--component-button-#{$color}-color);
+      .icon__svg {
+        fill: var(--component-button-#{$color}-color);
+      }
+    }
+  }
+}

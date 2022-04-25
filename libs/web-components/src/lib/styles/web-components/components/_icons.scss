@@ -1,0 +1,37 @@
+@use '../abstracts/variables/colors' as colors;
+
+.icon {
+  &__svg {
+    // --fill: var(--component-scene-content-color);
+    fill: currentColor;
+    g {
+      path {
+        fill: currentColor;
+      }
+    }
+  }
+  &--s,
+  &--xs {
+    .icon__svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+    .icon__image {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+  }
+}
+
+@each $color in colors.$color-variations {
+  .icon {
+    &--#{$color} {
+      .icon__svg {
+        fill: var(
+          --component-text-#{$color}-color,
+          var(--color-base-#{$color}-medium)
+        );
+      }
+    }
+  }
+}

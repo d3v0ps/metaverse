@@ -1,0 +1,140 @@
+@use '../abstracts/variables/colors' as colors;
+@use '../abstracts/mixins/materials' as materials;
+
+:root {
+  --component-button-shadow-outset: 8px 8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-button-shadow-inset-primary: -8px -8px 16px 0 rgba(0, 0, 0, 0.25);
+  --component-button-shadow-inset-secondary: 8px 8px 16px 0
+    rgba(255, 255, 255, 0.2);
+  --component-button-outline-color: var(--component-button-color);
+}
+
+.button {
+  @include materials.clay;
+
+  display: flex;
+  width: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  font-weight: 400;
+  text-align: center;
+
+  border-radius: 14px;
+  color: var(--component-button-color);
+  background-color: var(--component-button-background-color);
+  font-size: var(--component-button-font-size);
+  padding: 0.5rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  line-height: 2;
+
+  &--outline {
+    border: 1px solid var(--component-button-color);
+  }
+
+  &__label {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .icon__svg {
+    vertical-align: bottom;
+    width: 2rem;
+    height: 100%;
+    fill: var(--component-button-color);
+  }
+
+  .spinner {
+    vertical-align: bottom;
+    width: 2rem;
+    height: 2rem;
+    fill: var(--component-button-color);
+  }
+
+  &--has-icon {
+    line-height: 1;
+  }
+
+  &--only-icon {
+    padding: 0.5rem 0.5rem;
+  }
+
+  &--rounded {
+    border-radius: 50%;
+  }
+
+  &--uppercase {
+    text-transform: uppercase;
+  }
+
+  &--small {
+    font-size: var(--size-font-small);
+    .icon__svg {
+      width: 1rem;
+      height: 100%;
+    }
+  }
+
+  &--big {
+    font-size: var(--component-button-big-font-size);
+    padding: 1rem 1rem;
+    .icon__svg {
+      margin-right: 2px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+
+  &--fab {
+    width: 55px;
+    height: 55px;
+    padding: 0;
+    border-radius: 50%;
+    .icon__svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+@each $color in colors.$color-variations {
+  .button {
+    &.button--#{$color} {
+      background: var(--component-button-#{$color}-background-color);
+      color: var(--component-button-#{$color}-color);
+      .icon__svg {
+        fill: var(--component-button-#{$color}-color);
+      }
+      &.button--outline {
+        border: 1px solid var(--component-button-#{$color}-background-color);
+        background-color: var(--component-button-background-color);
+        color: var(--component-button-#{$color}-background-color);
+        .icon__svg {
+          fill: var(--component-button-#{$color}-background-color);
+        }
+      }
+    }
+  }
+}

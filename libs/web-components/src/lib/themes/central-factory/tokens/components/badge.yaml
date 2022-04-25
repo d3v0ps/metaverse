@@ -1,0 +1,6 @@
+component:
+  badge:
+    color:
+      value: "{color.base.dark.darkest}"
+    background-color:
+      value: "{color.base.secondary.medium}"

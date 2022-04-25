@@ -1,0 +1,133 @@
+@use '../abstracts/variables/colors' as colors;
+
+.heading {
+  display: flex;
+  width: 100%;
+  margin-top: 0.5rem;
+  gap: 0.2rem;
+  &__icon {
+    display: contents;
+    .icon__svg {
+      fill: var(--component-text-color, var(--color-base-light-medium));
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}
+
+.typography {
+  &--bold {
+    font-weight: bold;
+  }
+}
+
+.typography--p {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--component-text-color, var(--color-base-light-medium));
+  .icon__svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+a {
+  .typography--p {
+    color: var(--color-base-primary-medium, var(--color-base-light-medium));
+    font-weight: 700;
+  }
+}
+
+.typography {
+  .icon__svg {
+    vertical-align: middle;
+  }
+}
+
+h1.heading,
+.typography--h1 {
+  font-size: 1.5rem;
+  .heading__icon {
+    .icon__svg {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
+  }
+}
+
+h2.heading,
+.typography--h2 {
+  font-size: 1.4rem;
+  .heading__icon {
+    .icon__svg {
+      width: 1.7rem;
+      height: 1.7rem;
+    }
+  }
+}
+
+h4.heading,
+.typography--h4 {
+  font-size: 1.2rem;
+  .heading__icon {
+    .icon__svg {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+  }
+  margin-block-end: 0.5rem;
+}
+
+h5.heading,
+.typography--h5 {
+  font-size: 1rem;
+  margin-block-end: 0.5rem;
+}
+
+.text {
+  margin: 0;
+  &__icon {
+    .icon__svg,
+    .icon__image {
+      width: 1.5rem !important;
+      height: 1.5rem !important;
+    }
+  }
+}
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  .icon {
+    &__svg, &__image {
+      height: 24px !important;
+      width: 24px !important;
+      vertical-align: bottom;
+    }
+  }
+}
+
+@each $color in colors.$color-variations {
+  .text,
+  .typography,
+  .heading {
+    &--#{$color} {
+      color: var(
+        --component-text-#{$color}-color,
+        var(--color-base-#{$color}-medium)
+      );
+      .icon__svg {
+        fill: var(
+          --component-text-#{$color}-color,
+          var(--color-base-#{$color}-medium)
+        );
+      }
+      a {
+        color: var(
+          --component-text-#{$color}-color,
+          var(--color-base-#{$color}-medium)
+        );
+      }
+    }
+  }
+}

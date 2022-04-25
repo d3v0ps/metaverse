@@ -1,0 +1,10 @@
+[
+  {
+    "label": "Earth",
+    "src": "assets/worlds/000.json"
+  },
+  {
+    "label": "Chueland",
+    "src": "assets/worlds/001.json"
+  }
+]

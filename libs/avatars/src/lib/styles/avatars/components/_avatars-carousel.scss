@@ -1,0 +1,68 @@
+
+:root {
+  --component-avatars-carousel-item-text-color: var(--component-scene-content-color);
+  --component-avatars-carousel-item-hover-text-color: var(--color-base-primary-medium);
+  --component-avatars-carousel-item-hover-border-color: var(--color-base-primary-medium);
+}
+
+.avatars-carousel {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 4rem;
+
+  &--small {
+    gap: 1rem;
+  }
+
+  &--direction-column {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
+
+.avatars-carousel-item {
+  margin: 0.5rem;
+  width: 144px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  .avatar-appearance-portrait {
+    width: 144px;
+    height: 144px;
+    background-color: var(--component-avatars-carousel-item-text-color);
+  }
+
+  &--small {
+    width: 64px;
+    .avatar-appearance-portrait {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  &:hover {
+    transform: scale(1.05);
+    .avatar-appearance-portrait {
+      // transform: scale(0.5rem);
+      // border: 0.5rem solid var(--component-avatars-carousel-item-hover-border-color);
+      background-color: var(--component-avatars-carousel-item-hover-text-color);
+    }
+    & > .avatars-carousel-item__name {
+      color: var(--component-avatars-carousel-item-hover-text-color);
+    }
+  }
+
+  &__name {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+    color: var(--component-avatars-carousel-item-text-color);
+  }
+}

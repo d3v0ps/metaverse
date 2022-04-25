@@ -1,0 +1,167 @@
+import { AccountType, Wallet } from '../../models/__generated__/types';
+
+export const demoWallets: Wallet[] = [
+  {
+    id: '0',
+    name: 'Cash',
+    worldId: '001',
+    balance: {
+      crypto: '0',
+      fiat: '0',
+      stocks: '0',
+      total: '0',
+    },
+    accounts: [
+      {
+        id: '0',
+        name: 'Cash',
+        balance: '458.5',
+        currency: 'eur',
+        type: AccountType.Cash,
+      },
+    ],
+  },
+  {
+    id: '1',
+    name: 'Bank',
+    worldId: '001',
+    balance: {
+      crypto: '0',
+      fiat: '0',
+      stocks: '0',
+      total: '0',
+    },
+    accounts: [
+      {
+        id: '1',
+        referenceId: 'ES7834426354085926152474',
+        name: 'Current Account',
+        balance: '2342.50',
+        currency: 'eur',
+        type: AccountType.Bank,
+      },
+      {
+        id: '2',
+        referenceId: 'ES3818779930235176907485',
+        name: 'Savings Account',
+        balance: '80950.25',
+        currency: 'eur',
+        type: AccountType.Bank,
+      },
+      {
+        id: '3',
+        referenceId: '4556-7478-4880-4197',
+        name: 'Online Card',
+        balance: '22.96',
+        currency: 'eur',
+        type: AccountType.RechargeCard,
+      },
+      {
+        id: '4',
+        referenceId: '2720-9241-4388-0041',
+        name: 'Recharge Card',
+        balance: '27.47',
+        currency: 'eur',
+        type: AccountType.RechargeCard,
+      },
+      {
+        id: '5',
+        name: 'Loan',
+        balance: '-586.13',
+        currency: 'eur',
+        type: AccountType.Loan,
+      },
+    ],
+  },
+  {
+    id: '2',
+    name: 'Travel',
+    worldId: '001',
+    balance: {
+      crypto: '0',
+      fiat: '0',
+      stocks: '0',
+      total: '0',
+    },
+    accounts: [
+      {
+        id: '6',
+        referenceId: '2221-3881-2513-0011',
+        name: 'Travel Card',
+        balance: '4.75',
+        currency: 'eur',
+        type: AccountType.RechargeCard,
+      },
+    ],
+  },
+  {
+    id: '3',
+    name: 'Cryptos',
+    worldId: '001',
+    balance: {
+      crypto: '0',
+      fiat: '0',
+      stocks: '0',
+      total: '0',
+    },
+    accounts: [
+      {
+        id: '7',
+        referenceId: '0x863DF00D59Dc359e9BD59921e561CDDF3155d22a',
+        name: 'ETH',
+        balance: '2.12988266',
+        currency: 'eth',
+        type: AccountType.Crypto,
+      },
+      {
+        id: '8',
+        referenceId: '1GVuq32eDG4NG9JfmrXMjnRJd56WtedNqV',
+        name: 'BTC',
+        balance: '5.00232641',
+        currency: 'btc',
+        type: AccountType.Crypto,
+      },
+      {
+        id: '9',
+        name: 'ADA',
+        balance: '55.285435',
+        currency: 'ada',
+        type: AccountType.Crypto,
+      },
+      {
+        id: '10',
+        name: 'USDT',
+        balance: '31.200423',
+        currency: 'usdt',
+        type: AccountType.Crypto,
+      },
+      {
+        id: '11',
+        name: 'EUR',
+        balance: '24.04',
+        currency: 'eur',
+        type: AccountType.Cash,
+      },
+    ],
+  },
+  {
+    id: '4',
+    name: 'Stocks',
+    worldId: '001',
+    balance: {
+      crypto: '0',
+      fiat: '0',
+      stocks: '0',
+      total: '0',
+    },
+    accounts: [
+      {
+        id: '12',
+        name: 'MSFT',
+        balance: '210.19',
+        currency: 'usd',
+        type: AccountType.Stock,
+      },
+    ],
+  },
+];

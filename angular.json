@@ -1,0 +1,2008 @@
+{
+  "version": 1,
+  "projects": {
+    "ai": {
+      "projectType": "library",
+      "root": "libs/actors",
+      "sourceRoot": "libs/actors/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/actors"],
+          "options": {
+            "jestConfig": "libs/actors/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/actors/src/**/*.ts",
+              "libs/actors/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "applications": {
+      "projectType": "library",
+      "root": "libs/applications",
+      "sourceRoot": "libs/applications/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/applications"],
+          "options": {
+            "jestConfig": "libs/applications/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/applications/src/**/*.ts",
+              "libs/applications/src/**/*.html"
+            ]
+          }
+        },
+        "build-api-docs": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p libs/applications/tsconfig.json -d dist/compodoc/applications --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "assets": {
+      "projectType": "library",
+      "root": "libs/assets",
+      "sourceRoot": "libs/assets/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/assets"],
+          "options": {
+            "jestConfig": "libs/assets/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/assets/src/**/*.ts",
+              "libs/assets/src/**/*.html"
+            ]
+          }
+        },
+        "build-api-docs": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p libs/assets/tsconfig.json -d dist/compodoc/assets --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
+          }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "projectBuildConfig": "portal:build",
+            "config": {
+              "configFolder": "libs/assets/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "quiet": true,
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/assets",
+            "projectBuildConfig": "portal:build",
+            "config": {
+              "configFolder": "libs/assets/.storybook"
+            }
+          }
+        }
+      },
+      "tags": []
+    },
+    "avatars": {
+      "projectType": "library",
+      "root": "libs/avatars",
+      "sourceRoot": "libs/avatars/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/avatars"],
+          "options": {
+            "jestConfig": "libs/avatars/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/avatars/src/**/*.ts",
+              "libs/avatars/src/**/*.html"
+            ]
+          }
+        },
+        "build-react": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx -p typescript tsc --jsx react --target es5 --module esnext --esModuleInterOp --outDir apps/portal/src/assets/scripts/ libs/avatars/src/lib/web-components/angular/avatar-appearance-portrait/components/avatar-appearance-portrait-avataaars/avatar-appearance-portrait-avataaars.react-component.tsx"
+              }
+            ]
+          }
+        },
+        "build-api-docs": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p libs/avatars/tsconfig.json -d dist/compodoc/avatars --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
+          }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "projectBuildConfig": "portal:build",
+            "config": {
+              "configFolder": "libs/avatars/.storybook"
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "quiet": true,
+            "uiFramework": "@storybook/angular",
+            "outputPath": "dist/storybook/avatars",
+            "projectBuildConfig": "portal:build",
+            "config": {
+              "configFolder": "libs/avatars/.storybook"
+            }
+          }
+        }
+      },
+      "tags": []
+    },
+    "cli": {
+      "root": "apps/cli",
+      "sourceRoot": "apps/cli/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/cli",
+            "main": "apps/cli/src/main.ts",
+            "tsConfig": "apps/cli/tsconfig.app.json",
+            "assets": ["apps/cli/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/cli/src/environments/environment.ts",
+                  "with": "apps/cli/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "cli:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/cli/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/cli"],
+          "options": {
+            "jestConfig": "apps/cli/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "codex": {
+      "projectType": "application",
+      "root": "apps/codex",
+      "sourceRoot": "apps/codex/src",
+      "architect": {
+        "build": {
+          "builder": "@nx-plus/docusaurus:browser",
+          "dependsOn": [
+            {
+              "target": "copy-assets",
+              "projects": "self"
+            }
+          ],
+          "options": {
+            "outputPath": "dist/apps/codex"
+          }
+        },
+        "serve": {
+          "builder": "@nx-plus/docusaurus:dev-server",
+          "dependsOn": [
+            {
+              "target": "copy-assets",
+              "projects": "self"
+            }
+          ],
+          "options": {
+            "port": 5100
+          }
+        },
+        "copy-assets": {
+          "builder": "@nrwl/workspace:run-commands",
+          "dependsOn": [
+            {
+              "target": "build-storybook",
+              "projects": "dependencies"
+            },
+            {
+              "target": "build-api-docs",
+              "projects": "dependencies"
+            }
+          ],
+          "options": {
+            "commands": [
+              {
+                "command": "cp -r dist/compodoc apps/codex/static/compodoc"
+              },
+              {
+                "command": "cp -r dist/storybook apps/codex/static/storybook"
+              }
+            ]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": [
+        "core",
+        "web-components",
+        "persistence",
+        "permissions",
+        "preferences",
+        "applications",
+        "avatars",
+        "assets",
+        "gatekeeper",
+        "manage-avatars",
+        "inventory",
+        "marketplace",
+        "portal",
+        "topics"
+      ]
+    },
+    "core": {
+      "projectType": "library",
+      "root": "libs/core",
+      "sourceRoot": "libs/core/src",
+      "prefix": "cf",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/core"],
+          "options": {
+            "jestConfig": "libs/core/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/core/src/**/*.ts",
+              "libs/core/src/**/*.html"
+            ]
+          }
+        },
+        "build-api-docs": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p libs/core/tsconfig.json -d dist/compodoc/core --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "devtools": {
+      "projectType": "library",
+      "root": "libs/devtools",
+      "sourceRoot": "libs/devtools/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/devtools"],
+          "options": {
+            "jestConfig": "libs/devtools/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/devtools/src/**/*.ts",
+              "libs/devtools/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "dialogs": {
+      "projectType": "library",
+      "root": "libs/dialogs",
+      "sourceRoot": "libs/dialogs/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/dialogs"],
+          "options": {
+            "jestConfig": "libs/dialogs/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/dialogs/src/**/*.ts",
+              "libs/dialogs/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "finances": {
+      "projectType": "library",
+      "root": "libs/finances",
+      "sourceRoot": "libs/finances/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/finances"],
+          "options": {
+            "jestConfig": "libs/finances/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/finances/src/**/*.ts",
+              "libs/finances/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "gatekeeper": {
+      "projectType": "application",
+      "root": "apps/gatekeeper",
+      "sourceRoot": "apps/gatekeeper/src",
+      "prefix": "central-factory",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/gatekeeper",
+            "index": "apps/gatekeeper/src/index.html",
+            "main": "apps/gatekeeper/src/main.ts",
+            "polyfills": "apps/gatekeeper/src/polyfills.ts",
+            "tsConfig": "apps/gatekeeper/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/gatekeeper/src/favicon.ico",
+              "apps/gatekeeper/src/assets"
+            ],
+            "styles": ["apps/gatekeeper/src/styles/gatekeeper/index.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": ["libs/web-components/src/lib/styles"]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/gatekeeper/src/environments/environment.ts",
+                  "with": "apps/gatekeeper/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "gatekeeper:build:production"
+            },
+            "development": {
+              "browserTarget": "gatekeeper:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "gatekeeper:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/gatekeeper/src/**/*.ts",
+              "apps/gatekeeper/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/gatekeeper"],
+          "options": {
+            "jestConfig": "apps/gatekeeper/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build-api-docs": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p apps/gatekeeper/tsconfig.json -d dist/compodoc/gatekeeper --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "host": {
+      "root": "apps/host",
+      "sourceRoot": "apps/host/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/host",
+            "main": "apps/host/src/main.ts",
+            "tsConfig": "apps/host/tsconfig.app.json",
+            "assets": ["apps/host/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/host/src/environments/environment.ts",
+                  "with": "apps/host/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "host:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/host/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/host"],
+          "options": {
+            "jestConfig": "apps/host/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "inventory": {
+      "projectType": "application",
+      "root": "apps/inventory",
+      "sourceRoot": "apps/inventory/src",
+      "prefix": "central-factory",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/inventory",
+            "index": "apps/inventory/src/index.html",
+            "main": "apps/inventory/src/main.ts",
+            "polyfills": "apps/inventory/src/polyfills.ts",
+            "tsConfig": "apps/inventory/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/inventory/src/favicon.ico",
+              "apps/inventory/src/assets"
+            ],
+            "styles": ["apps/inventory/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/inventory/src/environments/environment.ts",
+                  "with": "apps/inventory/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "inventory:build:production"
+            },
+            "development": {
+              "browserTarget": "inventory:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "inventory:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/inventory/src/**/*.ts",
+              "apps/inventory/src/**/*.html"
+            ]
+          }
+        },
+        "build-api-docs": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p apps/inventory/tsconfig.json -d dist/compodoc/inventory --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/inventory"],
+          "options": {
+            "jestConfig": "apps/inventory/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "knowledge": {
+      "projectType": "library",
+      "root": "libs/knowledge",
+      "sourceRoot": "libs/knowledge/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/knowledge"],
+          "options": {
+            "jestConfig": "libs/knowledge/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/knowledge/src/**/*.ts",
+              "libs/knowledge/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "knowledge-base": {
+      "projectType": "application",
+      "root": "apps/knowledge-base",
+      "sourceRoot": "apps/knowledge-base/src",
+      "prefix": "central-factory",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/knowledge-base",
+            "index": "apps/knowledge-base/src/index.html",
+            "main": "apps/knowledge-base/src/main.ts",
+            "polyfills": "apps/knowledge-base/src/polyfills.ts",
+            "tsConfig": "apps/knowledge-base/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/knowledge-base/src/favicon.ico",
+              "apps/knowledge-base/src/assets"
+            ],
+            "styles": ["apps/knowledge-base/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/knowledge-base/src/environments/environment.ts",
+                  "with": "apps/knowledge-base/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "knowledge-base:build:production"
+            },
+            "development": {
+              "browserTarget": "knowledge-base:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "knowledge-base:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/knowledge-base/src/**/*.ts",
+              "apps/knowledge-base/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/knowledge-base"],
+          "options": {
+            "jestConfig": "apps/knowledge-base/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "logger": {
+      "projectType": "library",
+      "root": "libs/logger",
+      "sourceRoot": "libs/logger/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/logger"],
+          "options": {
+            "jestConfig": "libs/logger/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/logger/src/**/*.ts",
+              "libs/logger/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "manage-avatars": {
+      "projectType": "application",
+      "root": "apps/manage-avatars",
+      "sourceRoot": "apps/manage-avatars/src",
+      "prefix": "central-factory",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/manage-avatars",
+            "index": "apps/manage-avatars/src/index.html",
+            "main": "apps/manage-avatars/src/main.ts",
+            "polyfills": "apps/manage-avatars/src/polyfills.ts",
+            "tsConfig": "apps/manage-avatars/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/manage-avatars/src/favicon.ico",
+              "apps/manage-avatars/src/assets"
+            ],
+            "styles": [
+              "apps/manage-avatars/src/styles/manage-avatars/index.scss"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/web-components/src/lib/styles",
+                "libs/avatars/src/lib/styles"
+              ]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/manage-avatars/src/environments/environment.ts",
+                  "with": "apps/manage-avatars/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "manage-avatars:build:production"
+            },
+            "development": {
+              "browserTarget": "manage-avatars:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "manage-avatars:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/manage-avatars/src/**/*.ts",
+              "apps/manage-avatars/src/**/*.html"
+            ]
+          }
+        },
+        "build-api-docs": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p apps/manage-avatars/tsconfig.json -d dist/compodoc/manage-avatars --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/manage-avatars"],
+          "options": {
+            "jestConfig": "apps/manage-avatars/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "marketplace": {
+      "projectType": "application",
+      "root": "apps/marketplace",
+      "sourceRoot": "apps/marketplace/src",
+      "prefix": "central-factory",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/marketplace",
+            "index": "apps/marketplace/src/index.html",
+            "main": "apps/marketplace/src/main.ts",
+            "polyfills": "apps/marketplace/src/polyfills.ts",
+            "tsConfig": "apps/marketplace/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/marketplace/src/favicon.ico",
+              "apps/marketplace/src/assets"
+            ],
+            "styles": ["apps/marketplace/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/marketplace/src/environments/environment.ts",
+                  "with": "apps/marketplace/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "marketplace:build:production"
+            },
+            "development": {
+              "browserTarget": "marketplace:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "marketplace:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/marketplace/src/**/*.ts",
+              "apps/marketplace/src/**/*.html"
+            ]
+          }
+        },
+        "build-api-docs": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p apps/marketplace/tsconfig.json -d dist/compodoc/marketplace --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/marketplace"],
+          "options": {
+            "jestConfig": "apps/marketplace/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "metadrones": {
+      "projectType": "application",
+      "root": "apps/metadrones",
+      "sourceRoot": "apps/metadrones/src",
+      "prefix": "central-factory",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:webpack-browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/metadrones",
+            "index": "apps/metadrones/src/index.html",
+            "main": "apps/metadrones/src/main.ts",
+            "polyfills": "apps/metadrones/src/polyfills.ts",
+            "tsConfig": "apps/metadrones/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/metadrones/src/favicon.ico",
+              "apps/metadrones/src/assets"
+            ],
+            "styles": ["apps/metadrones/src/styles.scss"],
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "apps/metadrones/webpack.config.js"
+            },
+            "commonChunk": false
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "10kb",
+                  "maximumError": "20kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/metadrones/src/environments/environment.ts",
+                  "with": "apps/metadrones/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all",
+              "customWebpackConfig": {
+                "path": "apps/metadrones/webpack.prod.config.js"
+              }
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@nrwl/angular:webpack-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "metadrones:build:production"
+            },
+            "development": {
+              "browserTarget": "metadrones:build:development"
+            }
+          },
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 3000,
+            "publicHost": "http://localhost:3000"
+          }
+        },
+        "extract-i18n": {
+          "builder": "ngx-build-plus:extract-i18n",
+          "options": {
+            "browserTarget": "metadrones:build",
+            "extraWebpackConfig": "apps/metadrones/webpack.config.js"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/metadrones/src/**/*.ts",
+              "apps/metadrones/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/metadrones"],
+          "options": {
+            "jestConfig": "apps/metadrones/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "network": {
+      "projectType": "library",
+      "root": "libs/network",
+      "sourceRoot": "libs/network/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/network"],
+          "options": {
+            "jestConfig": "libs/network/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/network/src/**/*.ts",
+              "libs/network/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "notes": {
+      "projectType": "library",
+      "root": "libs/notes",
+      "sourceRoot": "libs/notes/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/notes"],
+          "options": {
+            "jestConfig": "libs/notes/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/notes/src/**/*.ts",
+              "libs/notes/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "permissions": {
+      "projectType": "library",
+      "root": "libs/permissions",
+      "sourceRoot": "libs/permissions/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/permissions"],
+          "options": {
+            "jestConfig": "libs/permissions/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/permissions/src/**/*.ts",
+              "libs/permissions/src/**/*.html"
+            ]
+          }
+        },
+        "build-api-docs": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p libs/permissions/tsconfig.json -d dist/compodoc/permissions --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "persistence": {
+      "projectType": "library",
+      "root": "libs/persistence",
+      "sourceRoot": "libs/persistence/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/persistence"],
+          "options": {
+            "jestConfig": "libs/persistence/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/persistence/src/**/*.ts",
+              "libs/persistence/src/**/*.html"
+            ]
+          }
+        },
+        "build-api-docs": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p libs/persistence/tsconfig.json -d dist/compodoc/persistence --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "physics": {
+      "projectType": "library",
+      "root": "libs/physics",
+      "sourceRoot": "libs/physics/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/physics"],
+          "options": {
+            "jestConfig": "libs/physics/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/physics/src/**/*.ts",
+              "libs/physics/src/**/*.html"
+            ]
+          }
+        },
+        "build-api-docs": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p libs/physics/tsconfig.json -d dist/compodoc/physics --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "platforms": {
+      "projectType": "library",
+      "root": "libs/platforms",
+      "sourceRoot": "libs/platforms/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/platforms"],
+          "options": {
+            "jestConfig": "libs/platforms/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/platforms/src/**/*.ts",
+              "libs/platforms/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "player": {
+      "projectType": "application",
+      "root": "apps/player",
+      "sourceRoot": "apps/player/src",
+      "prefix": "central-factory",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/player",
+            "index": "apps/player/src/index.html",
+            "main": "apps/player/src/main.ts",
+            "polyfills": "apps/player/src/polyfills.ts",
+            "tsConfig": "apps/player/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": ["apps/player/src/favicon.ico", "apps/player/src/assets"],
+            "styles": ["apps/player/src/styles/index.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/web-components/src/lib/styles",
+                "libs/applications/src/lib/styles",
+                "libs/topics/src/lib/styles"
+              ]
+            },
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/player/src/environments/environment.ts",
+                  "with": "apps/player/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "player:build:production"
+            },
+            "development": {
+              "browserTarget": "player:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "player:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/player/src/**/*.ts",
+              "apps/player/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/player"],
+          "options": {
+            "jestConfig": "apps/player/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "portal": {
+      "projectType": "application",
+      "root": "apps/portal",
+      "sourceRoot": "apps/portal/src",
+      "prefix": "cf",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:webpack-browser",
+          "outputs": ["{options.outputPath}"],
+          "dependsOn": [
+            {
+              "target": "build-themes",
+              "projects": "dependencies"
+            }
+          ],
+          "options": {
+            "outputPath": "dist/apps/portal",
+            "index": "apps/portal/src/index.html",
+            "main": "apps/portal/src/main.ts",
+            "polyfills": "apps/portal/src/polyfills.ts",
+            "tsConfig": "apps/portal/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/portal/src/favicon.ico",
+              "apps/portal/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@mdi/svg/svg",
+                "output": "./assets/icons/mdi"
+              },
+              {
+                "glob": "**/*.svg",
+                "input": "./node_modules/simple-icons/icons",
+                "output": "./assets/icons/simple-icons"
+              },
+              {
+                "glob": "**/*",
+                "input": "./libs/web-components/src/assets/fonts/Inter/static",
+                "output": "./assets/fonts"
+              },
+              {
+                "glob": "**/*",
+                "input": "./dist/libs/themes",
+                "output": "./assets/themes"
+              }
+            ],
+            "styles": ["apps/portal/src/styles/index.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/web-components/src/lib/styles",
+                "libs/applications/src/lib/styles",
+                "libs/avatars/src/lib/styles",
+                "libs/assets/src/lib/styles",
+                "libs/topics/src/lib/styles",
+                "libs/worlds/src/lib/styles",
+                "libs/finances/src/lib/styles",
+                "apps/manage-avatars/src/styles",
+                "apps/player/src/styles"
+              ]
+            },
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "immediate",
+              "crypto-js/aes",
+              "crypto-js/enc-utf8",
+              "is-my-json-valid",
+              "modifyjs",
+              "avataaars"
+            ],
+            "customWebpackConfig": {
+              "path": "apps/portal/webpack.config.js"
+            },
+            "commonChunk": false
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1500kb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/portal/src/environments/environment.ts",
+                  "with": "apps/portal/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all",
+              "customWebpackConfig": {
+                "path": "apps/portal/webpack.prod.config.js"
+              }
+            },
+            "demo": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/portal/src/environments/environment.ts",
+                  "with": "apps/portal/src/environments/environment.demo.ts"
+                }
+              ],
+              "outputHashing": "all",
+              "customWebpackConfig": {
+                "path": "apps/portal/webpack.prod.config.js"
+              }
+            },
+            "development": {
+              "assets": [
+                "apps/portal/src/favicon.ico",
+                "apps/portal/src/assets",
+                {
+                  "glob": "**/*",
+                  "input": "./node_modules/@mdi/svg/svg",
+                  "output": "./assets/icons/mdi"
+                },
+                {
+                  "glob": "**/*.svg",
+                  "input": "./node_modules/simple-icons/icons",
+                  "output": "./assets/icons/simple-icons"
+                },
+                {
+                  "glob": "**/*",
+                  "input": "./libs/web-components/src/assets/fonts/Inter/static",
+                  "output": "./assets/fonts"
+                },
+                {
+                  "glob": "**/*",
+                  "input": "./dist/libs/themes",
+                  "output": "./assets/themes"
+                },
+                {
+                  "glob": "**/*.json",
+                  "input": "../web-application-manifests",
+                  "output": "./assets/repositories/central-factory"
+                }
+              ],
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@nrwl/angular:webpack-server",
+          "dependsOn": [
+            {
+              "target": "build-themes",
+              "projects": "dependencies"
+            }
+          ],
+          "configurations": {
+            "production": {
+              "browserTarget": "portal:build:production"
+            },
+            "demo": {
+              "browserTarget": "portal:build:production"
+            },
+            "development": {
+              "browserTarget": "portal:build:development"
+            }
+          },
+          "defaultConfiguration": "development",
+          "options": {
+            "proxyConfig": "apps/portal/proxy.conf.json",
+            "port": 5000,
+            "publicHost": "http://localhost:5000"
+          }
+        },
+        "extract-i18n": {
+          "builder": "ngx-build-plus:extract-i18n",
+          "options": {
+            "browserTarget": "portal:build",
+            "extraWebpackConfig": "apps/portal/webpack.config.js"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/portal/src/**/*.ts",
+              "apps/portal/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/portal"],
+          "options": {
+            "jestConfig": "apps/portal/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "electron": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "tsc -p apps/portal/tsconfig.electron.json"
+              },
+              {
+                "command": "cd apps/portal && npx electron"
+              }
+            ]
+          }
+        },
+        "electron-build": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "tsc -p apps/portal/tsconfig.electron.json"
+              },
+              {
+                "command": "npx electron-builder --linux -c apps/portal/electron-builder.json --dir"
+              }
+            ]
+          },
+          "configurations": {
+            "linux": {
+              "commands": [
+                {
+                  "command": "tsc -p apps/portal/tsconfig.electron.json"
+                },
+                {
+                  "command": "npx electron-builder --linux -c apps/portal/electron-builder.json --dir"
+                }
+              ]
+            },
+            "windows": {
+              "commands": [
+                {
+                  "command": "tsc -p apps/portal/tsconfig.electron.json"
+                },
+                {
+                  "command": "npx electron-builder --win -c apps/portal/electron-builder.json --dir"
+                }
+              ]
+            },
+            "mac": {
+              "commands": [
+                {
+                  "command": "tsc -p apps/portal/tsconfig.electron.json"
+                },
+                {
+                  "command": "npx electron-builder --mac -c apps/portal/electron-builder.json --dir"
+                }
+              ]
+            }
+          }
+        },
+        "electron-serve": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "wait-on tcp:5000"
+              },
+              {
+                "command": "npx tsc -p apps/portal/tsconfig.electron.json"
+              },
+              {
+                "command": "npx electron apps/portal/src/main.electron.js --serve"
+              }
+            ]
+          }
+        },
+        "build-api-docs": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p apps/portal/tsconfig.json -d dist/compodoc/portal --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "preferences": {
+      "projectType": "library",
+      "root": "libs/preferences",
+      "sourceRoot": "libs/preferences/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/preferences"],
+          "options": {
+            "jestConfig": "libs/preferences/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/preferences/src/**/*.ts",
+              "libs/preferences/src/**/*.html"
+            ]
+          }
+        },
+        "build-api-docs": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p libs/preferences/tsconfig.json -d dist/compodoc/preferences --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "server": {
+      "root": "apps/server",
+      "sourceRoot": "apps/server/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/server",
+            "main": "apps/server/src/main.ts",
+            "tsConfig": "apps/server/tsconfig.app.json",
+            "assets": ["apps/server/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/server/src/environments/environment.ts",
+                  "with": "apps/server/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "server:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/server/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/server"],
+          "options": {
+            "jestConfig": "apps/server/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "systems": {
+      "projectType": "library",
+      "root": "libs/systems",
+      "sourceRoot": "libs/systems/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/systems"],
+          "options": {
+            "jestConfig": "libs/systems/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/systems/src/**/*.ts",
+              "libs/systems/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "topics": {
+      "projectType": "library",
+      "root": "libs/topics",
+      "sourceRoot": "libs/topics/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/topics"],
+          "options": {
+            "jestConfig": "libs/topics/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/topics/src/**/*.ts",
+              "libs/topics/src/**/*.html"
+            ]
+          }
+        },
+        "build-api-docs": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p libs/applications/tsconfig.json -d dist/compodoc/applications --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "web-components": {
+      "projectType": "library",
+      "root": "libs/web-components",
+      "sourceRoot": "libs/web-components/src",
+      "prefix": "cf",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/web-components"],
+          "options": {
+            "jestConfig": "libs/web-components/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/web-components/src/**/*.ts",
+              "libs/web-components/src/**/*.html"
+            ]
+          }
+        },
+        "build-api-docs": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx compodoc -p libs/web-components/tsconfig.json -d dist/compodoc/web-components --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
+              }
+            ]
+          }
+        },
+        "build-themes": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx style-dictionary build -c libs/web-components/src/lib/themes/central-factory/config.js"
+              },
+              {
+                "command": "npx style-dictionary build -c libs/web-components/src/lib/themes/matrix/config.js"
+              },
+              {
+                "command": "npx style-dictionary build -c libs/web-components/src/lib/themes/bubbles/config.js"
+              },
+              {
+                "command": "npx style-dictionary build -c libs/web-components/src/lib/themes/metaverse/config.js"
+              }
+            ]
+          }
+        },
+        "storybook": {
+          "builder": "@nrwl/storybook:storybook",
+          "options": {
+            "uiFramework": "@storybook/angular",
+            "port": 4400,
+            "projectBuildConfig": "portal:build",
+            "config": {
+              "configFolder": "libs/web-components/.storybook",
+              "jsx": true
+            }
+          },
+          "configurations": {
+            "ci": {
+              "quiet": true
+            }
+          }
+        },
+        "build-storybook": {
+          "builder": "@nrwl/storybook:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "quiet": true,
+            "uiFramework": "@storybook/angular",
+            "projectBuildConfig": "portal:build",
+            "outputPath": "dist/storybook/web-components",
+            "config": {
+              "configFolder": "libs/web-components/.storybook"
+            }
+          }
+        }
+      },
+      "tags": []
+    },
+    "worlds": {
+      "projectType": "library",
+      "root": "libs/worlds",
+      "sourceRoot": "libs/worlds/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/worlds"],
+          "options": {
+            "jestConfig": "libs/worlds/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/worlds/src/**/*.ts",
+              "libs/worlds/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    }
+  }
+}

@@ -1,0 +1,213 @@
+name: Deploy Web
+on:
+  push:
+    branches: [main]
+env:
+  BEFORE_SHA: ${{ github.event.before }}
+  cache-name: npm
+
+jobs:
+  # release:
+  #   runs-on: ${{ matrix.os }}
+
+  #   strategy:
+  #     matrix:
+  #       os: [windows-latest]
+
+  #   steps:
+  #     - name: Checkout the repository
+  #       uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0
+
+  #     - name: Use Node.js 16.x
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 16.x
+
+  #     - name: Install dependencies
+  #       run: npm ci
+
+  #     - name: Build/release Electron app
+  #       uses: samuelmeuli/action-electron-builder@v1
+  #       with:
+  #         # GitHub token, automatically provided to the action
+  #         # (No need to define this secret in the repo settings)
+  #         github_token: ${{ secrets.GITHUB_TOKEN }}
+
+  #         args: "-c apps/portal/electron-builder.json"
+
+  #         # If the commit is tagged with a version (e.g. "v1.0.0"),
+  #         # release the app after building
+  #         release: ${{ startsWith(github.ref, 'refs/tags/v') }}
+  # test:
+
+  #   name: Run Lint & Tests
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #     - name: Checkout source
+  #       uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0
+
+  #     - name: Use Node.js 16.x
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 16.x
+
+  #     - name: Cache node modules
+  #       uses: actions/cache@v2
+  #       env:
+  #         cache-name: cache-node-modules
+  #       with:
+  #         # npm cache files are stored in `~/.npm` on Linux/macOS
+  #         path: ~/.npm
+  #         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-build-${{ env.cache-name }}-
+  #           ${{ runner.os }}-build-
+  #           ${{ runner.os }}-
+
+  #     - name: Install dependencies
+  #       run: npm install
+
+  #     - name: Run lint
+  #       run: npm run lint
+
+  #     - name: Send notification to Discord
+  #       uses: sarisia/actions-status-discord@v1
+  #       if: always()
+  #       with:
+  #         webhook: ${{ secrets.DISCORD_WEBHOOK }}
+  #         title: 'Deploy Web: Run Tests'
+  # build_on_mac:
+  #   runs-on: macos-latest
+  #   steps:
+  #     - name: Checkout the repository
+  #       uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0
+
+  #     - name: Use Node.js 16.x
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 16.
+
+  # build_on_windows:
+  #   runs-on: windows-2016
+  #   steps:
+  #     - name: Checkout the repository
+  #       uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0
+
+  #     - name: Use Node.js 16.x
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 16.x
+  #     - name: install node tools
+  #       run: npm install --global --production windows-build-tools@4.0.0
+  #     - name: install node-gyp
+  #       run: npm install --global node-gyp@latest
+  #     - name: Set node config to use python2.7
+  #       run: npm config set python python2.7
+  #     - name: Set node config to set msvs_version to 2015
+  #       run: npm config set msvs_version 2015
+  #     - name: Work around for Windows Server 2019
+  #       run: set path=%path%;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin
+
+  #     - name: Install dependencies
+  #       run: npm ci
+  #     - name: check env
+  #       env:
+  #         ELECTRON: true
+  #         APP_VERSION_NUMBER: 0.5.9
+  #       run: set
+
+  #     - name: Build Portal
+  #       run: npx nx build portal --base-href=/metaverse/apps/portal/
+
+  #     - name: Build Electron
+  #       env:
+  #         ELECTRON: true
+  #         APP_VERSION_NUMBER: 0.5.9
+  #       run: npx nx run electron:build
+  #     - name: see directory
+  #       run: ls ./electron_dist
+  #     - uses: lucyio/upload-to-release@master
+  #       with:
+  #         name: portal-win
+  #         path: ./electron_dist/squirrel-windows
+  #         action: unpublished
+  #         release_id: 0.5.9
+  #         release-repo: d3v0ps/metaverse
+
+  build:
+    runs-on: ubuntu-latest
+    # needs: test
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+
+      - name: Fetch repository
+        run: git fetch origin main
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Decorate CLI
+        run: npm run postinstall:decorate
+
+      # - name: Build docs
+      #   uses: nick-invision/retry@v2
+      #   with:
+      #     timeout_minutes: 10
+      #     max_attempts: 3
+      #     shell: bash
+      #     command: npx nx build codex
+
+      - name: Build Portal
+        run: npx nx build portal --base-href=/metaverse/apps/portal/ --c demo
+
+      # - name: Build Metadrones
+      #   run: npx nx build metadrones --base-href=/metaverse/apps/metadrones/
+
+      - name: Turn off History Expansion
+        run: set +H
+
+      - name: Add Index redirection to Portal
+        run: echo "<!DOCTYPE html><html><script type=\"text/javascript\">window.location = '/metaverse/apps/portal';</script></html>" > dist/index.html
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.6
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: dist/ #
+
+      - name: Send notification to Discord
+        uses: sarisia/actions-status-discord@v1
+        if: always()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          title: 'Generate Release: Publish Release'

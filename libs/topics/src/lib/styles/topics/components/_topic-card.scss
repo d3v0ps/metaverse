@@ -1,0 +1,52 @@
+@use 'web-components/abstracts/mixins/materials' as materials;
+
+.topic-card {
+  position: relative;
+
+  .heading {
+    justify-content: space-between;
+    .icon__svg {
+      vertical-align: sub;
+    }
+  }
+
+  .topic-background {
+    @include materials.clay;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
+
+  .topic-body {
+    @include materials.clay;
+    backdrop-filter: blur(5px);
+    margin-bottom: 2rem;
+    padding: 1rem;
+
+    &:hover {
+      backdrop-filter: blur(0px);
+    }
+
+    .topic-content {
+      width: 80%;
+      margin: .5rem auto;
+    }
+  }
+
+  .topic-applications {
+    .applications-carousel {
+      gap: 1rem;
+    }
+    .applications-carousel-item {
+      margin: 0;
+      .application-card {
+        padding: 0;
+        .application-icon {
+          background: var(--color-base-light-medium);
+        }
+      }
+    }
+  }
+}

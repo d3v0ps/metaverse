@@ -1,0 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+{{#each definitions}}
+{{#ifEnum .}}
+export enum {{name}} {
+  {{#each enum}}
+  {{.}} = '{{.}}',
+  {{/each}}
+}
+
+{{/ifEnum}}
+{{#ifObject .}}
+export type {{name}} = {
+  {{#gqlProperty templateProperties}}
+  {{name}}{{#if required}}{{else}}?{{/if}}: {{tsType}};
+  {{/gqlProperty}}
+}
+{{/ifObject}}
+
+{{/each}}

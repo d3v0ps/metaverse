@@ -1,0 +1,225 @@
+:root {
+
+  --form-control-color: rebeccapurple;
+}
+
+input,
+select,
+.input,
+.select {
+  font-size: var(--component-input-font-size);
+  font-family: inherit;
+  line-height: 2;
+  max-height: 3.2rem;
+
+  &.ng-select {
+    max-height: none;
+  }
+
+  background-color: var(--component-input-background-color);
+  // border: 1px solid var(--component-input-border-color);
+  border: 2px solid var(--component-input-border-color);
+  border-radius: var(--component-input-border-radius);
+  color: var(--component-input-text-color);
+  box-shadow: var(--component-input-shadow-outset),
+    inset var(--component-input-shadow-inset-primary),
+    inset var(--component-input-shadow-inset-secondary);
+  transition: 180ms box-shadow ease-in-out;
+
+  &--xs {
+    border-radius: 0.25rem;
+    line-height: 1;
+    max-height: 1.8rem;
+    &.ng-select {
+      max-height: 1.8rem;
+    }
+    .ng-select-container {
+      background: transparent !important;
+      box-shadow: none !important;
+      border: none !important;
+      height: auto !important;
+      align-items: flex-start;
+      max-height: 1.8rem;
+      margin: 0;
+      padding: 0;
+      input {
+        line-height: 1;
+        max-height: 1.8rem;
+      }
+      .ng-input {
+        top: 2px !important;
+      }
+    }
+  }
+
+  &[readonly] {
+    border-style: dotted;
+    color: var(--component-input-readonly-color);
+    cursor: not-allowed;
+  }
+
+  &[disabled] {
+    border-color: var(--component-input-disabled-border-color);
+    background-color: var(--component-input-disabled-background-color);
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--component-input-border-color);
+    //   border-color: hsl(var(--component-input-focus-h), var(--component-input-focus-s), var(--component-input-focus-l));
+    //   box-shadow: 0 0 0 3px hsla(var(--component-input-focus-h), var(--component-input-focus-s), calc(var(--component-input-focus-l) +
+    //           40%), 0.8);
+    //   outline: 3px solid transparent;
+  }
+
+  &:hover {
+    filter: brightness(1.1);
+  }
+}
+
+input {
+  padding: 0.6rem 1rem;
+}
+
+select {
+  padding: 0.6rem 1rem;
+  // background-image: var(--component-input-select-background-image);
+  background-image: var(--component-input-select-background-image);
+  background-repeat: no-repeat;
+  background-position-x: 95%;
+  background-position-y: 50%;
+  appearance: none;
+
+  option {
+    background-color: var(--component-input-background-color);
+    color: var(--component-input-text-color);
+  }
+}
+
+input[type='number'] {
+  appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    appearance: none;
+  }
+}
+
+input[type='file'] {
+  font-size: 0.9em;
+  padding-top: 0.35rem;
+}
+
+input[type='checkbox'] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  appearance: none;
+  /* For iOS < 15 */
+  // background-color: var(--form-background);
+  /* Not removed via appearance */
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+  background: transparent;
+
+  display: grid;
+  place-content: center;
+}
+
+input[type='checkbox']::before {
+  content: '';
+  width: 0.65em;
+  height: 0.65em;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--component-input-border-color);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+input[type='checkbox']:checked::before {
+  transform: scale(1);
+}
+
+input[type='checkbox']:focus {
+  outline: max(2px, 0.15em) solid var(--component-input-border-color);
+  outline-offset: max(2px, 0.15em);
+}
+
+input[type='checkbox']:disabled {
+  color: var(--component-input-disabled-border-color);
+  cursor: not-allowed;
+}
+
+textarea,
+.textarea {
+  resize: vertical;
+}
+
+input[type="radio"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--component-input-border-color);
+  /* Not removed via appearance */
+  margin: 0;
+  padding: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--color-base-primary-medium);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="radio"]:focus {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+}
+
+.radio-control {
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+}
+
+.radio-control + .radio-control {
+  margin-top: 1em;
+}
+
+.radio-control:focus-within {
+  color: var(--color-base-primary-medium);
+}
