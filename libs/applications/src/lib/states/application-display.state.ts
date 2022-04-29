@@ -55,6 +55,7 @@ export class ApplicationDisplayState {
     private startupApplicationsProvider: ApplicationShowCommand[]
   ) {
     this.startupApplicationsProvider.forEach((command) => this.show(command));
+    this.align();
   }
 
   open({ application, settings }: ApplicationOpenCommand) {
@@ -226,53 +227,69 @@ export class ApplicationDisplayState {
   }
 
   async align() {
-    const marginX = 15;
-    const paddingX = 15;
-    const marginY = 49;
-    const colNumber = 10;
+    const colNumber = 100;
+    const rowNumber = 100;
+    const marginX = 10;
+    const marginTop = 49;
+    const marginBot = 10;
+    const paddingX = 5;
+    const paddingY = 5;
     const vw = document.documentElement.clientWidth;
     const vh = document.documentElement.clientHeight;
-    const colWidth =
-      (vw - marginX * 2 - paddingX * (colNumber - 1)) / colNumber;
+    const gridWidth = vw - marginX * 2;
+    const gridHeight = vh - marginTop - marginBot;
+    const colWidth = gridWidth / colNumber;
+    const rowHeight = gridHeight / rowNumber;
+
     let events = this.openedApplications$.getValue();
 
-    const getWidthForColumns = (cols: number) => `${colWidth * cols}px`;
+    const getColWidth = (columns: number) => columns * colWidth - paddingX * 2;
+    const getColHeight = (columns: number) =>
+      columns * rowHeight - paddingY * 2;
+
+    const getWidthForColumns = (cols: number) => `${getColWidth(cols)}px`;
+    const getHeightForColumns = (cols: number) => `${getColHeight(cols)}px`;
 
     events = events.map((event) => {
       switch (event.settings.groupId) {
         case GROUP_IDS.AVATAR:
-          event.settings.width = getWidthForColumns(2);
-          event.settings.height = `calc(100vh - 35%)`;
-          event.settings.x = vw - colWidth * 2 - marginX;
-          event.settings.y = marginY;
+          event.settings.width = getWidthForColumns(20);
+          event.settings.height = getHeightForColumns(70);
+          console.debug('avatar height', event.settings.height);
+          event.settings.x = marginX + paddingX + getColWidth(80) + paddingY;
+          event.settings.y = marginTop + paddingY;
           break;
 
         case GROUP_IDS.KNOWLEDGE_BASE:
-          event.settings.width = getWidthForColumns(2);
-          event.settings.height = `calc(100vh - 40%)`;
-          event.settings.x = marginX;
-          event.settings.y = marginY;
+          event.settings.width = getWidthForColumns(20);
+          event.settings.height = getHeightForColumns(70);
+          event.settings.x = marginX + paddingX;
+          event.settings.y = marginTop + +paddingY;
           break;
 
         case GROUP_IDS.WORLD:
-          event.settings.width = getWidthForColumns(2);
-          event.settings.height = `calc(100vh - 70%)`;
-          event.settings.x = marginX;
-          event.settings.y = (vh * 67) / 100;
+          event.settings.width = getWidthForColumns(20);
+          event.settings.height = getHeightForColumns(30);
+          event.settings.x = marginX + paddingX;
+          event.settings.y =
+            marginTop + paddingY + getColHeight(70) + paddingY * 2;
           break;
 
         case GROUP_IDS.INVENTORY:
-          event.settings.width = getWidthForColumns(2);
-          event.settings.height = `calc(100vh - 75%)`;
-          event.settings.x = vw - colWidth * 2 - marginX;
-          event.settings.y = (vh * 72) / 100;
+          event.settings.width = getWidthForColumns(20);
+          event.settings.height = getHeightForColumns(30);
+          console.debug('inventory height', event.settings.height);
+          event.settings.x = marginX + paddingX + getColWidth(80) + paddingY;
+          event.settings.y =
+            marginTop + paddingY + getColHeight(70) + paddingY * 2;
           break;
 
         case GROUP_IDS.PORTALS:
-          event.settings.width = getWidthForColumns(6);
-          event.settings.height = `calc(100vh - 70%)`;
-          event.settings.x = marginX * 2 + (colWidth + paddingX) * 2 + paddingX;
-          event.settings.y = (vh * 67) / 100;
+          event.settings.width = getWidthForColumns(60);
+          event.settings.height = getHeightForColumns(30);
+          event.settings.x = marginX + paddingX + getColWidth(20) + paddingX;
+          event.settings.y =
+            marginTop + paddingY + getColHeight(70) + paddingY * 2;
           break;
 
         case GROUPLESS_ID:
