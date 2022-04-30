@@ -97,6 +97,7 @@ export type ApplicationDisplayGroup = {
               (selectedTabChange)="onSelectTab(group.groupId, $event)"
               theme="primary"
               cfBlock="applications-tabset"
+              [activeTab]="selectedApplications[group.groupId]"
             >
               <cf-tab
                 *ngFor="
@@ -202,6 +203,11 @@ export class ApplicationsWindowsManagerComponent {
   }
 
   onApplicationWindowMaximize(group: ApplicationDisplayGroup) {
+    if (this.maximizedApplicationDisplayGroup) {
+      this.applicationDisplayState.normalizeGroup(
+        this.maximizedApplicationDisplayGroup
+      );
+    }
     this.applicationDisplayState.maximizeGroup(group.groupId);
     this.maximizedApplicationDisplayGroup = group.groupId;
   }

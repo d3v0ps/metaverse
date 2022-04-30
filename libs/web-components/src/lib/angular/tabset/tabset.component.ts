@@ -58,15 +58,23 @@ export class TabsetComponent implements AfterContentInit {
   @Input() public customContentClass = '';
   @Input() public theme?: string;
   @Input() public alignment: 'horizontal' | 'vertical' = 'horizontal';
+  @Input() public activeTab?: number;
 
   @Output() public selectedTabChange = new EventEmitter();
 
   public ngAfterContentInit() {
-    const activeTabs = this.tabs.filter((tab: TabComponent) => tab.active);
+    const activeTab = this.tabs.some((tab: TabComponent) => tab.active);
 
-    if (activeTabs?.length === 0) {
-      this.selectTab(this.tabs.first);
+    if (activeTab) {
+      return;
     }
+
+    if (this.activeTab) {
+      this.selectTab(this.tabs.toArray()[this.activeTab]);
+      return;
+    }
+
+    this.selectTab(this.tabs.first);
   }
 
   public selectTab(tab: TabComponent): void {
