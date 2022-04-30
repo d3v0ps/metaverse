@@ -17,12 +17,17 @@ import type { Avatar } from '../../../models/avatar';
           [cfMod]="size"
         >
           <cf-avatar-appearance-portrait
-            [displayComponent]="'avataaars'"
-            [avatar]="avatar"
+            *ngIf="
+              avatar.appearances &&
+              avatar.appearances[0] &&
+              avatar.appearances[0].variations
+            "
+            [appearancePortrait]="avatar.appearances[0].variations['portrait']"
+            size="xs"
           >
           </cf-avatar-appearance-portrait>
           <br />
-          <h4 cfBlock="heading">
+          <h4 cfBlock="heading" style="justify-content: center">
             {{ avatar.identity?.givenName }} {{ avatar.identity?.familyName }}
           </h4>
           <p cfBlock="text">

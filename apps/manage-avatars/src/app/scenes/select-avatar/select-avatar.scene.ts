@@ -14,10 +14,10 @@ import { Observable, tap } from 'rxjs';
         avatars: avatars$ | async
       } as data"
     >
-      <div cfBlock="scene-content">
+      <div cfBlock="scene-content" cfMod="select-avatar">
         <div cfBlock="select-avatar">
           <h2 cfElem="title" *ngIf="data.avatars && data.avatars.length > 0">
-            Select an Avatar
+            Enter The World
           </h2>
           <div
             cfElem="avatars-carousel"
@@ -41,6 +41,16 @@ import { Observable, tap } from 'rxjs';
       </div>
     </ng-container>
   `,
+  styles: [
+    `
+      .scene-content {
+        &--select-avatar {
+          margin-top: 20vh;
+          height: 60vh;
+        }
+      }
+    `,
+  ],
 })
 export class SelectAvatarScene {
   public readonly avatars$: Observable<Avatar[]> =

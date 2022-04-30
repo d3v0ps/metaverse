@@ -15,7 +15,7 @@ import {
 import { AvailableThemesState } from '@central-factory/preferences/states/customization/available-themes.state';
 import { CustomizationSettingsState } from '@central-factory/preferences/states/customization/customization-settings.state';
 import { of, Subject } from 'rxjs';
-import { filter, takeUntil, tap } from 'rxjs/operators';
+import { filter, map, takeUntil, tap } from 'rxjs/operators';
 
 export type CustomizationForm = {
   theme: Theme;
@@ -60,6 +60,14 @@ export type CustomizationForm = {
                   {{ item.name }}
                 </ng-template>
               </ng-select>
+            </td>
+          </tr>
+          <tr *ngIf="form.controls.background.value.name === 'Custom'">
+            <td>
+              <label> Custom Background </label>
+            </td>
+            <td>
+              <input formControlName="customBackground" />
             </td>
           </tr>
         </table>
@@ -109,13 +117,22 @@ export class CustomizationScene
   public readonly form = new FormGroup({
     theme: new FormControl(null),
     background: new FormControl(null),
+    customBackground: new FormControl(null),
   });
 
   public readonly themes$ = this.availableThemesState.themes$;
   public readonly backgrounds$ = of([
     {
+      name: 'Custom',
+      url: '',
+    },
+    {
       name: 'Code',
       url: '',
+    },
+    {
+      name: 'Singularity',
+      url: 'http://www.youtube.com/embed/pfW3JhCUOD8',
     },
     {
       name: 'Eternity',
@@ -158,12 +175,80 @@ export class CustomizationScene
       url: 'http://www.youtube.com/embed/5RlXStnMirE',
     },
     {
+      name: 'Royal Library',
+      url: 'http://www.youtube.com/embed/CHFif_y2TyM',
+    },
+    {
       name: 'Japan',
       url: 'http://www.youtube.com/embed/hR3sK0_nNGA',
     },
     {
+      name: 'Paris Apartment',
+      url: 'http://www.youtube.com/embed/Dvu_2lzfd2I',
+    },
+    {
+      name: 'NYC Apartment',
+      url: 'http://www.youtube.com/embed/sVl9A21zCYk',
+    },
+    {
+      name: 'Hong Kong Apartment',
+      url: 'http://www.youtube.com/embed/sJ8ZoJNE4cU',
+    },
+    {
+      name: 'Tokio Apartment',
+      url: 'http://www.youtube.com/embed/hBGbt2CRDpA',
+    },
+    {
+      name: 'Toronto Window',
+      url: 'http://www.youtube.com/embed/bLAzpxidPN0',
+    },
+    {
+      name: 'Cozy Treehouse',
+      url: 'http://www.youtube.com/embed/xRItTqAU800',
+    },
+    {
+      name: 'Cozy Cabin',
+      url: 'http://www.youtube.com/embed/-mirqViyITY',
+    },
+    {
+      name: 'Cozy Cabin II',
+      url: 'http://www.youtube.com/embed/gKnG2WKtvgc',
+    },
+    {
+      name: 'Cozy Cabin III',
+      url: 'http://www.youtube.com/embed/yx4xb3rp750',
+    },
+    {
+      name: 'Beach House',
+      url: 'http://www.youtube.com/embed/5zkP39BtGBY',
+    },
+    {
+      name: 'Beach House II',
+      url: 'http://www.youtube.com/embed/DjlCNRSC07A',
+    },
+    {
+      name: 'Tropical Sunset',
+      url: 'http://www.youtube.com/embed/d7uCjM9vWlw',
+    },
+    {
+      name: 'Spring Coffee Shop',
+      url: 'http://www.youtube.com/embed/uby4pigzp6Q',
+    },
+    {
+      name: 'Victorian London',
+      url: 'http://www.youtube.com/embed/8q7o-Bg2gRA',
+    },
+    {
+      name: 'Anime Window',
+      url: 'http://www.youtube.com/embed/pl2-zgZBo5Y',
+    },
+    {
       name: 'Dunes',
       url: 'http://www.youtube.com/embed/hShxsAlJmfw',
+    },
+    {
+      name: 'Dark Planet',
+      url: 'http://www.youtube.com/embed/yCJHo-HC2d8',
     },
     {
       name: 'Gothic City',
@@ -176,6 +261,18 @@ export class CustomizationScene
     {
       name: 'Cyberpunk City II',
       url: 'http://www.youtube.com/embed/ouzhVyQv5ws',
+    },
+    {
+      name: 'Cyberpunk City III',
+      url: 'http://www.youtube.com/embed/W5KJsQMKbwM',
+    },
+    {
+      name: 'Cyberpunk City IV',
+      url: 'http://www.youtube.com/embed/0FyEM4g4eR0',
+    },
+    {
+      name: 'Matrix City',
+      url: 'http://www.youtube.com/embed/Wnagw1bEhBY',
     },
     {
       name: 'Space City',
@@ -198,7 +295,16 @@ export class CustomizationScene
   ngOnInit(): void {
     this.customizationSettingsState.customizationSettings$
       .pipe(
-        filter((customizationSettings) => !!customizationSettings),
+        filter<Customization>(
+          (customizationSettings) => !!customizationSettings
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ) as any,
+        map(({ theme, background }) => ({
+          theme,
+          background,
+          customBackground:
+            background.name === 'Custom' ? background.url : null,
+        })),
         tap((settings) =>
           this.form.patchValue(settings as Customization, { emitEvent: false })
         ),
@@ -209,6 +315,21 @@ export class CustomizationScene
     this.form.valueChanges
       .pipe(
         takeUntil(this.destroy$),
+        filter(
+          (customization) =>
+            customization.background.name !== 'Custom' ||
+            customization.customBackground
+        ),
+        map(({ theme, background, customBackground }) => ({
+          theme,
+          background:
+            background?.name === 'Custom'
+              ? {
+                  name: 'Custom',
+                  url: customBackground,
+                }
+              : background,
+        })),
         tap((settings) =>
           this.customizationSettingsState
             .setCustomizationSettings(

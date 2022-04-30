@@ -18,6 +18,12 @@ export interface AvatarMeta {
   root?: boolean;
   /** Indicates the generator template used to generate this avatar */
   generatorTemplate?: string;
+  /**
+   * Indicates wether this avatar's stats are managed by the user or not
+   *
+   * **Note: Managed avatars might not be accepted by certain servers**
+   * */
+  managed?: boolean;
 }
 
 export enum AvatarRelationshipKind {
