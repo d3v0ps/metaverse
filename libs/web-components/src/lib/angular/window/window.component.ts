@@ -57,6 +57,7 @@ import { ResizableEvent } from '../resizable/resizable.directive';
       >
         <div cfElem="controls">
           <button
+            *ngIf="closeable"
             cfBlock="button"
             [cfMod]="['danger', 'small', 'has-icon', 'only-icon', 'rounded']"
             (click)="hide()"
@@ -106,9 +107,11 @@ import { ResizableEvent } from '../resizable/resizable.directive';
 })
 export class WindowComponent implements AfterViewChecked {
   @Input() scrollTopEnable = true;
+  @Input() closeable = true;
   @Input() maximizable = false;
   @Input() backdrop = true;
   @Input() hideHeader = true;
+  @Input() overrideMaximize = false;
   @Input() width?: string;
   @Input() height?: string;
   @Input() x?: number;
@@ -122,6 +125,8 @@ export class WindowComponent implements AfterViewChecked {
   @Output() closeModal = new EventEmitter<boolean>();
   @Output() resizeWindow = new EventEmitter<ResizableEvent>();
   @Output() maximizeModal = new EventEmitter<boolean>();
+  @Output() maximizeWindow = new EventEmitter<boolean>();
+  @Output() normalizeWindow = new EventEmitter<boolean>();
 
   @ViewChild('modalRoot', { static: false }) modalRoot!: ElementRef;
   @ViewChild('modalBody', { static: false }) modalBody!: ElementRef;
@@ -131,7 +136,7 @@ export class WindowComponent implements AfterViewChecked {
 
   @Input() visible?: boolean;
   @Input() executePostDisplayActions?: boolean;
-  maximized?: boolean;
+  @Input() maximized?: boolean;
   preMaximizeRootWidth?: number;
   preMaximizeRootHeight?: number;
   preMaximizeBodyHeight?: number;
@@ -206,7 +211,7 @@ export class WindowComponent implements AfterViewChecked {
   }
 
   initDrag(event: MouseEvent | TouchEvent) {
-    if (event.target === this.closeIcon.nativeElement) {
+    if (this.closeIcon && event.target === this.closeIcon.nativeElement) {
       return;
     }
     if (!this.maximized) {
@@ -251,6 +256,13 @@ export class WindowComponent implements AfterViewChecked {
   }
 
   toggleMaximize(event: MouseEvent) {
+    if (this.overrideMaximize) {
+      this.maximized ? this.normalizeWindow.emit() : this.maximizeWindow.emit();
+      this.maximized = !this.maximized;
+      event.preventDefault();
+      return;
+    }
+
     if (this.maximized) {
       this.revertMaximize();
     } else {

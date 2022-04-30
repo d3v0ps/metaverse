@@ -27,7 +27,11 @@ export type ApplicationDisplayGroup = {
   selector: 'cf-applications-windows-manager',
   template: `
     <ng-container
-      *ngFor="let group of applicationGroups$ | async; let i = index"
+      *ngFor="
+        let group of applicationGroups$ | async;
+        let i = index;
+        trackBy: trackGroupBy
+      "
     >
       <cf-window
         [width]="group.width"
@@ -38,7 +42,10 @@ export type ApplicationDisplayGroup = {
         [visible]="true"
         [executePostDisplayActions]="true"
         [backdrop]="false"
+        [closeable]="false"
         [maximizable]="true"
+        [overrideMaximize]="true"
+        [maximized]="group.groupId === maximizedApplicationDisplayGroup"
         [ngStyle]="{
           'z-index': group.zIndex
         }"
@@ -48,6 +55,8 @@ export type ApplicationDisplayGroup = {
         (moveOnTopEnd)="group.zIndex = $event"
         (closeModal)="onApplicationWindowClose(group)"
         (resizeWindow)="onApplicationWindowResize($event, group)"
+        (maximizeWindow)="onApplicationWindowMaximize(group)"
+        (normalizeWindow)="onApplicationWindowNormalize(group)"
       >
         <ng-container class="window-header__content">
           <ng-container
@@ -87,9 +96,13 @@ export type ApplicationDisplayGroup = {
             <cf-tabset
               (selectedTabChange)="onSelectTab(group.groupId, $event)"
               theme="primary"
+              cfBlock="applications-tabset"
             >
               <cf-tab
-                *ngFor="let event of group.applications"
+                *ngFor="
+                  let event of group.applications;
+                  trackBy: trackApplicationBy
+                "
                 [title]="event.application.name"
                 [icon]="
                   (event.application.icons &&
@@ -155,6 +168,7 @@ export class ApplicationsWindowsManagerComponent {
   );
 
   selectedApplications: Record<string, number> = {};
+  maximizedApplicationDisplayGroup?: string;
 
   constructor(
     public localResolver: LocalApplicationComponentsResolver,
@@ -187,7 +201,25 @@ export class ApplicationsWindowsManagerComponent {
     );
   }
 
+  onApplicationWindowMaximize(group: ApplicationDisplayGroup) {
+    this.applicationDisplayState.maximizeGroup(group.groupId);
+    this.maximizedApplicationDisplayGroup = group.groupId;
+  }
+
+  onApplicationWindowNormalize(group: ApplicationDisplayGroup) {
+    this.applicationDisplayState.normalizeGroup(group.groupId);
+    this.maximizedApplicationDisplayGroup = undefined;
+  }
+
   onSelectTab(groupId: string, index: number) {
     this.selectedApplications[groupId] = index;
+  }
+
+  trackGroupBy(_index: number, item: any) {
+    return `${item.x} ${item.y} ${item.width} ${item.height}`;
+  }
+
+  trackApplicationBy(_index: number, item: any) {
+    return item.id;
   }
 }

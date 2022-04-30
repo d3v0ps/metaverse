@@ -1,4 +1,3 @@
-import { DatePipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { Avatar } from '@central-factory/avatars/models';
 
@@ -39,24 +38,15 @@ import { Avatar } from '@central-factory/avatars/models';
 })
 export class AssistantAvatarComponent {
   @Input() assistantIcon = 'assets/icons/mdi/robot-happy.svg';
-  @Input() set currentDate(date: Date) {
-    if (!this.selectedAvatar) {
+  @Input() set selectedAvatar(avatar: Avatar) {
+    if (!avatar) {
       return;
     }
     this.assistantMessage = `
-    Welcome back <a href="select-avatar" class="text text--primary">${
-      this.selectedAvatar.identity?.givenName
-    }</a>,<br />
-      It's ${new DatePipe('en').transform(date, 'LLL d, yyyy, HH:mm')}
-      <br />
-      What would you like to do?
-  `;
+      Welcome back <a href="select-avatar" class="text text--primary">${avatar.identity?.givenName}</a>,<br />
+        What would you like to do?
+    `;
   }
 
-  @Input() selectedAvatar?: Avatar;
-
-  @Input() assistantMessage = `
-    Welcome back,<br />
-      What would you like to do?
-  `;
+  @Input() assistantMessage?: string;
 }

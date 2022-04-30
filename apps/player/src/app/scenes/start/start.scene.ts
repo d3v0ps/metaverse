@@ -177,13 +177,10 @@ export interface ApplicationBanners {
                 </button>
               </div>
 
-              <div *ngIf="currentDate$ | async as currentDate">
-                <cf-assistant-avatar
-                  *ngIf="selectedAvatar$ | async as selectedAvatar"
-                  [currentDate]="currentDate"
-                  [selectedAvatar]="selectedAvatar"
-                ></cf-assistant-avatar>
-              </div>
+              <cf-assistant-avatar
+                *ngIf="selectedAvatar$ | async as selectedAvatar"
+                [selectedAvatar]="selectedAvatar"
+              ></cf-assistant-avatar>
 
               <ng-container
                 *ngIf="{

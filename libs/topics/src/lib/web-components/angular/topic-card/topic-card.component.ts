@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import {
   Application,
-  ApplicationShortcut
+  ApplicationShortcut,
 } from '@central-factory/applications/models/application';
 import { ApplicationShortcutView } from '@central-factory/applications/web-components/angular/application-shortcut/application-shortcut.component';
 import { Topic } from '../../../models/topic';
@@ -20,21 +20,19 @@ export type ApplicationWithShortcut = {
       <div cfBlock="topic-body">
         <cf-topic-header [topic]="topic"></cf-topic-header>
 
-        <div
-          cfBlock="topic-content"
-          *ngIf="topic.applications && topic.applications.length > 0"
-        >
+        <div cfBlock="topic-content" *ngIf="topic.applications?.length">
           <cf-topic-applications
             [applications]="topicApplications"
             [installedApplications]="installedApplications"
             [maxApplications]="maxApplications"
+            (applicationClick)="onApplicationCardClick($event)"
           >
           </cf-topic-applications>
         </div>
 
         <div
           cfBlock="topic-content"
-          *ngIf="showShortcuts && topic.shortcuts && topic.shortcuts.length > 0"
+          *ngIf="showShortcuts && topic.shortcuts?.length"
         >
           <cf-topic-shortcuts
             [shortcuts]="shortcuts"
@@ -42,16 +40,13 @@ export type ApplicationWithShortcut = {
           ></cf-topic-shortcuts>
         </div>
 
-        <div
-          cfBlock="topic-content"
-          *ngIf="showMedia && topic.media && topic.media.length > 0"
-        >
+        <div cfBlock="topic-content" *ngIf="showMedia && topic.media?.length">
           <cf-topic-media [topic]="topic"></cf-topic-media>
         </div>
 
         <div
           cfBlock="topic-content"
-          *ngIf="showCategories && topic.categories && topic.categories.length > 0"
+          *ngIf="showCategories && topic.categories?.length"
         >
           <cf-topic-categories
             [applicationsByCategory]="byCategory"
@@ -65,7 +60,6 @@ export type ApplicationWithShortcut = {
   `,
 })
 export class TopicCardComponent {
-
   @Input() maxApplications = 0;
 
   @Input() showShortcuts = true;

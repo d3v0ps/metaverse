@@ -227,6 +227,34 @@ export class ApplicationDisplayState {
   }
 
   async align() {
+    let events = this.openedApplications$.getValue();
+
+    events = events.map((event) => this.alignApplicationByGroup(event));
+
+    this.openedApplications$.next(events);
+  }
+
+  maximizeGroup(groupId: string) {
+    const events = this.openedApplications$.getValue();
+
+    events
+      .filter((event) => event.settings.groupId === groupId)
+      .forEach((event) => this.maximizeApplicationByGroup(event));
+
+    this.openedApplications$.next(events);
+  }
+
+  normalizeGroup(groupId: string) {
+    const events = this.openedApplications$.getValue();
+
+    events
+      .filter((event) => event.settings.groupId === groupId)
+      .forEach((event) => this.alignApplicationByGroup(event));
+
+    this.openedApplications$.next(events);
+  }
+
+  alignApplicationByGroup(event: ApplicationOpenedEvent) {
     const colNumber = 100;
     const rowNumber = 100;
     const marginX = 10;
@@ -241,65 +269,157 @@ export class ApplicationDisplayState {
     const colWidth = gridWidth / colNumber;
     const rowHeight = gridHeight / rowNumber;
 
-    let events = this.openedApplications$.getValue();
-
     const getColWidth = (columns: number) => columns * colWidth - paddingX * 2;
-    const getColHeight = (columns: number) =>
+    const getRowHeight = (columns: number) =>
       columns * rowHeight - paddingY * 2;
 
     const getWidthForColumns = (cols: number) => `${getColWidth(cols)}px`;
-    const getHeightForColumns = (cols: number) => `${getColHeight(cols)}px`;
+    const getHeightForRows = (rows: number) => `${getRowHeight(rows)}px`;
 
-    events = events.map((event) => {
-      switch (event.settings.groupId) {
-        case GROUP_IDS.AVATAR:
-          event.settings.width = getWidthForColumns(20);
-          event.settings.height = getHeightForColumns(70);
-          console.debug('avatar height', event.settings.height);
-          event.settings.x = marginX + paddingX + getColWidth(80) + paddingY;
-          event.settings.y = marginTop + paddingY;
-          break;
+    let displaySettings: {
+      x: number;
+      y: number;
+      width: string;
+      height: string;
+    } = {
+      x: event.settings.x || 0,
+      y: event.settings.y || 0,
+      width: event.settings.width || '100%',
+      height: event.settings.height || '100%',
+    };
 
-        case GROUP_IDS.KNOWLEDGE_BASE:
-          event.settings.width = getWidthForColumns(20);
-          event.settings.height = getHeightForColumns(70);
-          event.settings.x = marginX + paddingX;
-          event.settings.y = marginTop + +paddingY;
-          break;
+    switch (event.settings.groupId) {
+      case GROUP_IDS.AVATAR:
+        displaySettings = {
+          width: getWidthForColumns(20),
+          height: getHeightForRows(70),
+          x: marginX + paddingX + getColWidth(80) + paddingY,
+          y: marginTop + paddingY,
+        };
+        break;
 
-        case GROUP_IDS.WORLD:
-          event.settings.width = getWidthForColumns(20);
-          event.settings.height = getHeightForColumns(30);
-          event.settings.x = marginX + paddingX;
-          event.settings.y =
-            marginTop + paddingY + getColHeight(70) + paddingY * 2;
-          break;
+      case GROUP_IDS.KNOWLEDGE_BASE:
+        displaySettings = {
+          width: getWidthForColumns(20),
+          height: getHeightForRows(70),
+          x: marginX + paddingX,
+          y: marginTop + paddingY,
+        };
+        break;
 
-        case GROUP_IDS.INVENTORY:
-          event.settings.width = getWidthForColumns(20);
-          event.settings.height = getHeightForColumns(30);
-          console.debug('inventory height', event.settings.height);
-          event.settings.x = marginX + paddingX + getColWidth(80) + paddingY;
-          event.settings.y =
-            marginTop + paddingY + getColHeight(70) + paddingY * 2;
-          break;
+      case GROUP_IDS.WORLD:
+        displaySettings = {
+          width: getWidthForColumns(20),
+          height: getHeightForRows(30),
+          x: marginX + paddingX,
+          y: marginTop + paddingY + getRowHeight(70) + paddingY * 2,
+        };
+        break;
 
-        case GROUP_IDS.PORTALS:
-          event.settings.width = getWidthForColumns(60);
-          event.settings.height = getHeightForColumns(30);
-          event.settings.x = marginX + paddingX + getColWidth(20) + paddingX;
-          event.settings.y =
-            marginTop + paddingY + getColHeight(70) + paddingY * 2;
-          break;
+      case GROUP_IDS.INVENTORY:
+        displaySettings = {
+          width: getWidthForColumns(20),
+          height: getHeightForRows(30),
+          x: marginX + paddingX + getColWidth(80) + paddingY,
+          y: marginTop + paddingY + getRowHeight(70) + paddingY * 2,
+        };
+        break;
 
-        case GROUPLESS_ID:
-        default:
-          break;
-      }
+      case GROUP_IDS.PORTALS:
+        displaySettings = {
+          width: getWidthForColumns(60),
+          height: getHeightForRows(30),
+          x: marginX + paddingX + getColWidth(20) + paddingX,
+          y: marginTop + paddingY + getRowHeight(70) + paddingY * 2,
+        };
+        break;
 
-      return event;
+      case GROUPLESS_ID:
+      default:
+        break;
+    }
+
+    return Object.assign(event, {
+      ...event,
+      settings: {
+        ...event.settings,
+        ...displaySettings,
+      },
     });
+  }
 
-    this.openedApplications$.next(events);
+  maximizeApplicationByGroup(event: ApplicationOpenedEvent) {
+    const colNumber = 100;
+    const rowNumber = 100;
+    const marginX = 10;
+    const marginTop = 49;
+    const marginBot = 10;
+    const paddingX = 5;
+    const paddingY = 5;
+    const vw = document.documentElement.clientWidth;
+    const vh = document.documentElement.clientHeight;
+    const gridWidth = vw - marginX * 2;
+    const gridHeight = vh - marginTop - marginBot;
+    const colWidth = gridWidth / colNumber;
+    const rowHeight = gridHeight / rowNumber;
+
+    const getColWidth = (columns: number) => columns * colWidth - paddingX * 2;
+    const getRowHeight = (columns: number) =>
+      columns * rowHeight - paddingY * 2;
+
+    const getWidthForColumns = (cols: number) => `${getColWidth(cols)}px`;
+    const getHeightForRows = (rows: number) => `${getRowHeight(rows)}px`;
+
+    let displaySettings: {
+      x: number;
+      y: number;
+      width: string;
+      height: string;
+    } = {
+      x: event.settings.x || 0,
+      y: event.settings.y || 0,
+      width: event.settings.width || '100%',
+      height: event.settings.height || '100%',
+    };
+
+    switch (event.settings.groupId) {
+      case GROUP_IDS.AVATAR:
+        displaySettings = {
+          ...displaySettings,
+          width: getWidthForColumns(80),
+          x: marginX + paddingX + getColWidth(20) + paddingX,
+        };
+        break;
+      case GROUP_IDS.KNOWLEDGE_BASE:
+        displaySettings = {
+          ...displaySettings,
+          width: getWidthForColumns(80),
+          x: marginX + paddingX,
+        };
+        break;
+      case GROUP_IDS.PORTALS:
+        displaySettings = {
+          ...displaySettings,
+          height: getHeightForRows(70),
+          y: marginTop + paddingY + getRowHeight(30) + paddingY,
+        };
+        break;
+
+      case GROUP_IDS.WORLD:
+      case GROUP_IDS.INVENTORY:
+        displaySettings = {
+          height: getHeightForRows(70),
+          y: marginTop + paddingY,
+          width: getWidthForColumns(60),
+          x: marginX + paddingX + getColWidth(20) + paddingX,
+        };
+    }
+
+    return Object.assign(event, {
+      settings: {
+        ...event.settings,
+        ...displaySettings,
+      },
+    });
   }
 }

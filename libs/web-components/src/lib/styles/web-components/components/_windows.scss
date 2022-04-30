@@ -61,13 +61,6 @@
   }
 
 
-  &--maximized {
-    border-radius: 0;
-    .window-header {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
-  }
 }
 
 .window-header {
@@ -129,18 +122,25 @@
   align-items: flex-end;
 }
 
-.window-body {
-  .application-view, .scene, .world-map, .burg-map {
-    height: 100%;
-  }
-}
-
 .window-body .tabset-container {
   height: 100%;
   overflow: hidden;
   .tabset-content,
   .tabset-content .tab-content {
     height: 100%;
+  }
+}
+
+/** TODO: Refactor the following styles to be more generic */
+
+.window-body {
+  .application-view, .scene, .world-map, .burg-map {
+    height: 100%;
+  }
+}
+
+.applications-tabset {
+  .tab-content {
     > div {
       height: 100%;
 

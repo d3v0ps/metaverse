@@ -186,14 +186,14 @@ export type SelectOption = {
         flex-wrap: wrap;
         --margin: 1rem;
         --multiplier: calc(60rem - 100%);
-        margin: calc(var(--margin) * -1);
-        max-width: 100%;
+        /** margin: calc(var(--margin) * -1);
+        max-width: 100%; **/
 
         & > * {
           max-width: 100%;
           flex-grow: 1;
           flex-basis: calc(var(--multiplier) * 999);
-          margin: var(--margin);
+          /** margin: var(--margin); **/
         }
 
         & > :nth-child(2n - 1) {
@@ -212,12 +212,8 @@ export type SelectOption = {
         }
 
         &__editor {
-          box-shadow: var(--component-scene-content-shadow-outset),
-            inset var(--component-scene-content-shadow-inset-primary),
-            inset var(--component-scene-content-shadow-inset-secondary);
           border-radius: 20px;
           padding: 1rem;
-          background-color: var(--color-base-dark-medium);
         }
 
         /* &__editor, &__preview {
