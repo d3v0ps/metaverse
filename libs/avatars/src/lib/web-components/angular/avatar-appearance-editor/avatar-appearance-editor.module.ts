@@ -10,6 +10,8 @@ import { TabsetModule } from '@central-factory/web-components/angular/tabset/tab
 import { AvatarAppearanceCardModule } from '../avatar-appearance-card/avatar-appearance-card.module';
 import { AvatarAppearancePortraitModule } from '../avatar-appearance-portrait/avatar-appearance-portrait.module';
 import { AvatarAppearancePreviewModule } from '../avatar-appearance-preview/avatar-appearance-preview.module';
+import { AvatarIdentityModule } from '../avatar-identity/avatar-identity.module';
+import { AvatarInfoModule } from '../avatar-info/avatar-info.module';
 import { AvatarAppearanceEditorComponent } from './avatar-appearance-editor.component';
 import { AvatarAppearanceInfoFormComponent } from './components/avatar-appearance-info-form/avatar-appearance-info-form.component';
 import { AvatarAppearanceModelFormComponent } from './components/avatar-appearance-model-form/avatar-appearance-model-form.component';
@@ -39,6 +41,8 @@ import { AvatarAppearanceProvidersModule } from './components/avatar-appearance-
     AvatarAppearancePortraitModule,
     AvatarAppearanceProvidersModule,
     AvatarAppearancePortraitDesignerModule,
+    AvatarIdentityModule,
+    AvatarInfoModule,
   ],
   exports: [AvatarAppearanceEditorComponent],
 })

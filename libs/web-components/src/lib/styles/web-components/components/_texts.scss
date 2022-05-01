@@ -82,6 +82,12 @@ h5.heading,
 .typography--h5 {
   font-size: 1rem;
   margin-block-end: 0.5rem;
+  .icon__svg {
+    // TODO: Check why we need to use important
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    vertical-align: text-bottom;
+  }
 }
 
 .text {

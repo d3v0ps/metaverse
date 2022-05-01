@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Avatar } from '@central-factory/avatars/models';
-import { AvatarInfo } from '../avatar-info/avatar-info';
+import { AvatarInfo } from '../../../models/avatar-info';
 
 @Component({
   selector: 'cf-avatar-biography',
@@ -12,28 +12,35 @@ import { AvatarInfo } from '../avatar-info/avatar-info';
       </h4>
       <p cfElem="content">
         {{ avatar.identity?.givenName || '????' }}
-        {{ avatar.identity?.familyName || '????' }} is
-        {{
-          biography.archetype.identity?.givenName?.startsWith('A')
-            ? ' an '
-            : ' a '
-        }}
-        {{ biography.archetype?.identity?.givenName || '????' }} located at
-        <a
-          href=""
-          [ngStyle]="{
-            color: coatOfArmsColors[biography.locationBurg.coa.t1],
-            'border-color': coatOfArmsColors[biography.locationBurg.coa.t1]
-          }"
-        >
-          <i cfBlock="icon">
-            <img
-              cfElem="image"
-              *ngIf="biography.locationShield"
-              [src]="biography.locationShield"
-            />
-          </i>
-          {{ biography.locationBurg.name || '????' }} </a
+        {{ avatar.identity?.familyName || '????' }}
+        <ng-container *ngIf="biography.archetype">
+          is
+          {{
+            biography.archetype?.identity?.givenName?.startsWith('A')
+              ? ' an '
+              : ' a '
+          }}
+          {{ biography.archetype?.identity?.givenName || '????' }}
+        </ng-container>
+        <ng-container *ngIf="biography.currentPlace">
+          {{ !biography.archetype ? 'is ' : '' }}
+          located at
+          <a
+            href=""
+            [ngStyle]="{
+              color: coatOfArmsColor,
+              'border-color': coatOfArmsColor
+            }"
+          >
+            <i cfBlock="icon">
+              <img
+                cfElem="image"
+                *ngIf="biography.currentPlaceShield"
+                [src]="biography.currentPlaceShield"
+              />
+            </i>
+            {{ locationName }}
+          </a> </ng-container
         >.
       </p>
     </div>
@@ -90,4 +97,16 @@ export class AvatarBiographyComponent {
   @Input() avatar?: Avatar;
 
   @Input() biography?: AvatarInfo;
+
+  get locationName() {
+    return this.biography?.currentPlace?.name || '????';
+  }
+
+  get coatOfArmsColor() {
+    return (
+      (this.biography?.currentPlace?.coa?.t1 &&
+        this.coatOfArmsColors[this.biography.currentPlace.coa.t1]) ||
+      '#f0f0f0'
+    );
+  }
 }

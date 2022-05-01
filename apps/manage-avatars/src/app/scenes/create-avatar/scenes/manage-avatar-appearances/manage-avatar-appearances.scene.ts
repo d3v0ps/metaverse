@@ -1,20 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Appearance } from '@central-factory/avatars/models/appearance';
+import { Avatar } from '@central-factory/avatars/models/avatar';
 import { ManageAvatarAppearancesState } from '@central-factory/avatars/states/manage-avatar-appearances.state';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
 import { AvatarAppearanceEditorModel } from '@central-factory/avatars/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component';
 import { AvatarAppearancesCarouselDisplayMode } from '@central-factory/avatars/web-components/angular/avatar-appearances-carousel/avatar-appearances-carousel.component';
-import { map, switchMap, take, tap } from 'rxjs';
+import {
+  Burg,
+  Culture,
+  FantasyMapGeneratorMap,
+  Religion,
+} from '@central-factory/worlds/models/fmg-map';
+import { World } from '@central-factory/worlds/models/world';
+import { WorldsState } from '@central-factory/worlds/states/worlds.state';
+import {
+  combineLatest,
+  filter,
+  map,
+  Subject,
+  switchMap,
+  take,
+  takeUntil,
+  tap,
+} from 'rxjs';
 import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'cf-manage-avatar-appearances-scene',
   template: `
-    <div
-      cfBlock="manage-avatar-appearances"
-      *ngIf="appearances$ | async as appearances"
-    >
-      <div cfBlock="appearances-list" *ngIf="appearances.length > 0">
+    <div cfBlock="manage-avatar-appearances">
+      <!-- div cfBlock="appearances-list" *ngIf="appearances.length > 0">
         <div cfElem="content">
           <cf-avatar-appearances-carousel
             [appearances]="appearances"
@@ -24,7 +39,7 @@ import { v4 as uuid } from 'uuid';
           >
           </cf-avatar-appearances-carousel>
         </div>
-        <!-- div cfElem="footer">
+        <div cfElem="footer">
           <div cfBlock="form-buttons">
             <button
               cfBlock="button"
@@ -49,11 +64,11 @@ import { v4 as uuid } from 'uuid';
               <span elem="label">Confirm appearances</span>
             </button>
           </div>
-        </div -->
-      </div>
+        </div>
+      </div -->
       <div cfBlock="appearance-editor">
         <ng-container *ngIf="loading"> Loading... </ng-container>
-        <ng-container *ngIf="!selectedAppearance">
+        <!-- ng-container *ngIf="!selectedAppearance">
           <h3>
             <ng-container *ngIf="appearances.length > 0">
               You currently have {{ appearances.length }} appearances for this
@@ -73,10 +88,14 @@ import { v4 as uuid } from 'uuid';
             </cf-svg-icon>
             <span elem="label">Add a new appearance</span>
           </button>
-        </ng-container>
+        </ng-container -->
         <cf-avatar-appearance-editor
-          *ngIf="selectedAppearance"
+          [avatar]="avatar"
+          [world]="world"
           [appearance]="selectedAppearance"
+          [birthPlace]="birthPlace"
+          [culture]="culture"
+          [religion]="religion"
           (appearanceSubmit)="onAppearanceSubmit($event)"
           (portraitChange)="onPortraitChange($event)"
         ></cf-avatar-appearance-editor>
@@ -120,67 +139,8 @@ import { v4 as uuid } from 'uuid';
     `,
   ],
 })
-export class ManageAvatarAppearancesScene {
-  // appearances$ = new BehaviorSubject<Appearance[]>([
-  //   {
-  //     id: uuid(),
-  //     filename: '',
-  //     format: AppearanceFormat.Image,
-  //     variations: {
-  //       portrait: {
-  //         id: uuid(),
-  //         filename: '',
-  //         style: {
-  //           id: 'avataaars',
-  //           properties: {
-  //             skinColor: 'Pale',
-  //             topType: 'NoHair',
-  //             facialHairType: 'Blank',
-  //             eyeType: 'Default',
-  //             eyebrowType: 'Default',
-  //             mouthType: 'Default',
-  //             clotheType: 'ShirtCrewNeck',
-  //             clotheColor: 'Black',
-  //           }
-  //         }
-  //       },
-  //       dim2: {
-  //         id: uuid(),
-  //         filename: '',
-  //         style: {
-  //           id: 'lpc',
-  //           properties: {
-  //             // animation
-  //             animation: 'walk',
-  //             direction: 'south',
-
-  //             // body
-  //             hair: null,
-  //             ears: null,
-  //             nose: null,
-  //             facialHair: null,
-  //             // clothes
-  //             head: null,
-  //             headAccesory: null,
-  //             visor: null,
-  //             torso: null,
-  //             torso2: null,
-  //             // arms: 'plate/arms',
-  //             arms: null,
-  //             back: null,
-  //             legs: null,
-  //             feet: null,
-  //             // items
-  //             rightHand: null,
-  //             leftHand: null,
-  //             bothHands: null,
-
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // ])
+export class ManageAvatarAppearancesScene implements OnInit {
+  avatar$ = this.selectedAvatarState.avatar$;
 
   appearances$ = this.selectedAvatarState.avatar$.pipe(
     map((avatar) => (avatar ? avatar.appearances : [])),
@@ -190,16 +150,56 @@ export class ManageAvatarAppearancesScene {
     )
   );
 
+  avatar?: Avatar;
+  world?: World;
   selectedAppearance?: Appearance;
+  culture?: Culture;
+  birthPlace?: Burg;
+  religion?: Religion;
 
   carouselDisplayModes = AvatarAppearancesCarouselDisplayMode;
 
   loading = false;
 
+  private destroy$ = new Subject<void>();
+
   constructor(
     private manageAvatarAppearancesState: ManageAvatarAppearancesState,
-    private selectedAvatarState: SelectedAvatarState
+    private selectedAvatarState: SelectedAvatarState,
+    private worldsState: WorldsState
   ) {}
+
+  ngOnInit() {
+    combineLatest([this.worldsState.worlds$, this.selectedAvatarState.avatar$])
+      .pipe(
+        takeUntil(this.destroy$),
+        filter(([worlds, avatar]) => !!worlds && worlds.length > 0 && !!avatar),
+        tap(([worlds, avatar]) => {
+          const birthWorldId = avatar?.identity?.birthWorld || '001';
+          this.world = worlds.find((w) => w.id === birthWorldId);
+          this.avatar = avatar;
+          const map = this.world?.map as FantasyMapGeneratorMap;
+          const cultureId = avatar?.identity?.culture || 0;
+          const religionId = avatar?.identity?.religion || 0;
+          const birthPlaceId = avatar?.identity?.birthPlace || 1;
+          this.culture =
+            map.cells.cultures.find((c) => c.i === cultureId) ||
+            map.cells.cultures[0];
+          this.religion =
+            map.cells.religions.find((r) => r.i === religionId) ||
+            map.cells.religions[0];
+          this.birthPlace =
+            map.cells.burgs.find((b) => b.i === birthPlaceId) ||
+            map.cells.burgs[0];
+        })
+      )
+      .subscribe();
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   onAppearanceClick(appearance: Appearance) {
     this.selectedAppearance = appearance;

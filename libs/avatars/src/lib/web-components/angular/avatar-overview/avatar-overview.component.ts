@@ -27,9 +27,7 @@ export interface AvatarOverviewInput {
   selector: 'cf-avatar-overview',
   template: `
     <form [formGroup]="form" cfBlock="avatar-overview" *ngIf="form.value?.name">
-      <cf-avatar-appearance-portrait
-        [appearancePortrait]="form.value.appearance?.variations?.portrait"
-      ></cf-avatar-appearance-portrait>
+      <cf-avatar-appearance-portrait></cf-avatar-appearance-portrait>
 
       <div cfBlock="chatbox">
         <div cfElem="message">
@@ -95,7 +93,7 @@ export class AvatarOverviewComponent {
     this.form.reset({
       name: value.identity?.givenName,
       title: value.identity?.title,
-      welcomeMessage: value.identity?.welcomeMessage,
+      welcomeMessage: value.identity?.quote,
       smallPreviewUrl: '',
       appearance: {},
       bio: value.identity?.bio,

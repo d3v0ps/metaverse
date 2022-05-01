@@ -11,8 +11,8 @@ import faker from '@faker-js/faker/locale/en_US';
 import {
   Avatar,
   AvatarAppearance,
+  AvatarGender,
   AvatarRelationshipKind,
-  BodyType,
 } from '../../models/avatar';
 
 @Injectable({
@@ -23,7 +23,7 @@ export class AvatarAppearanceGenerator {
     const bodyType =
       preset.identity?.gender ||
       preset.appearance?.body?.type ||
-      faker.random.arrayElement(Object.values(BodyType));
+      faker.random.arrayElement(Object.values(AvatarGender));
 
     const humanSkins = bodyTypes.filter(
       (bodyType) =>
@@ -37,7 +37,7 @@ export class AvatarAppearanceGenerator {
     );
 
     const skins =
-      bodyType === BodyType.Male
+      bodyType === AvatarGender.Male
         ? humanSkins.filter(
             (bodyType) => !bodyType.id.toLowerCase().includes('pregnant')
           )
@@ -47,7 +47,7 @@ export class AvatarAppearanceGenerator {
 
     const hasFacialHair =
       preset.appearance?.facialHair?.style ||
-      (bodyType === BodyType.Male && faker.datatype.boolean());
+      (bodyType === AvatarGender.Male && faker.datatype.boolean());
 
     const relationships = preset.relationships || [];
 

@@ -21,8 +21,6 @@ export enum AvatarAppearancesCarouselDisplayMode {
 
       <ng-container *ngFor="let appearance of appearances">
         <cf-avatar-appearance-portrait
-          *ngIf="appearance.variations"
-          [appearancePortrait]="appearance.variations[variation]"
           [active]="appearance.id === selectedAppearanceId"
           (appearanceClick)="appearanceClick.emit(appearance)"
           size="xs"

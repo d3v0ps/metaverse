@@ -18,7 +18,7 @@ import { AppearanceVariation } from '../../../models/appearance';
   template: `
     <div
       cfBlock="avatar-appearance-portrait"
-      (click)="appearanceClick.emit(appearancePortrait)"
+      (click)="appearanceClick.emit(appearance)"
       [cfMod]="[
         active ? 'active' : 'inactive',
         rarity ? rarity : undefined,
@@ -26,13 +26,13 @@ import { AppearanceVariation } from '../../../models/appearance';
       ]"
     >
       <ng-container
-        *ngIf="appearancePortrait && appearancePortrait.style"
-        [ngSwitch]="appearancePortrait.style?.id"
+        *ngIf="appearance && appearance.style"
+        [ngSwitch]="appearance.style?.id"
       >
         <ng-container *ngSwitchCase="'avataaars'">
           <div cfElem="image">
             <cf-avatar-appearance-portrait-avataaars
-              [properties]="appearancePortrait.style.properties"
+              [properties]="appearance.style.properties"
             ></cf-avatar-appearance-portrait-avataaars>
           </div>
         </ng-container>
@@ -84,51 +84,26 @@ import { AppearanceVariation } from '../../../models/appearance';
 export class AvatarAppearancePortraitComponent {
   @Input() set avatar(value: Avatar | undefined) {
     this._avatar = value;
-    if (!value) {
-      return;
-    }
 
-    this.appearancePortrait = this.getAppearance(value);
-  }
-
-  @Input() set appearancePortrait(value: AppearanceVariation | undefined) {
-    if (!value) {
-      return;
-    }
-
-    this._appearancePortrait = value;
-
-    this.src = value?.src
-      ? this.domSanitizer.bypassSecurityTrustUrl(value.src)
-      : undefined;
-
-    switch (this.displayComponent) {
-      case 'lpc':
-        if (!this._avatar) {
-          return;
-        }
-
-        this.scenes = {
-          room: new PhaserScene(
-            {},
-            this.http,
-            this.phaserLayersFromLPCLayers(
-              Array.isArray(value.style.properties)
-                ? value.style.properties
-                : toLPCLayers(this._avatar)
-            ),
-            value.style.properties?.animation
-              ? `${value.style.properties.animation}/${value.style.properties.direction}`
-              : 'walk/south'
-          ),
-        };
-        break;
+    if (value && this.avatar) {
+      this.render();
     }
   }
-  get appearancePortrait(): AppearanceVariation | undefined {
-    return this._appearancePortrait;
+  get avatar(): Avatar | undefined {
+    return this._avatar;
   }
-  @Input() displayComponent: 'avataaars' | 'lpc' = 'lpc';
+
+  @Input() set displayComponent(value: 'avataaars' | 'lpc' | undefined) {
+    this._displayComponent = value;
+
+    if (value && this.avatar) {
+      this.render();
+    }
+  }
+  get displayComponent(): 'avataaars' | 'lpc' | undefined {
+    return this._displayComponent;
+  }
+
   @Input() emptyIcon = 'assets/icons/mdi/head-question.svg';
   @Input() showEmptyIcon = false;
   @Input() active = false;
@@ -139,12 +114,12 @@ export class AvatarAppearancePortraitComponent {
 
   @Output() appearanceClick = new EventEmitter<AppearanceVariation>();
 
-  scenes?: Record<string, Scene>;
-
+  public appearance?: AppearanceVariation;
+  public scenes?: Record<string, Scene>;
   public src?: SafeUrl;
 
-  private _appearancePortrait: AppearanceVariation | undefined;
   private _avatar: Avatar | undefined;
+  private _displayComponent: 'avataaars' | 'lpc' | undefined = 'lpc';
 
   constructor(private domSanitizer: DomSanitizer, private http: HttpClient) {}
 
@@ -186,18 +161,50 @@ export class AvatarAppearancePortraitComponent {
           },
         };
     }
+
+    return {
+      id: '',
+      filename: '',
+      style: {
+        id: '',
+        properties: {},
+      },
+    };
   }
 
-  getLpcUrl(appearancePortrait: AppearanceVariation | undefined) {
-    if (!appearancePortrait) {
-      return `assets/avatars/lpc/bases/Human/Child/Universal.png`;
+  private render() {
+    if (!this.avatar || !this.displayComponent) {
+      return;
     }
 
-    const urlParams = Object.values(appearancePortrait.style.properties).join(
-      '/'
-    );
+    this.appearance = this.getAppearance(this.avatar);
 
-    return `assets/avatars/lpc/bases/${urlParams}/Universal.png`;
+    this.src = this.appearance?.src
+      ? this.domSanitizer.bypassSecurityTrustUrl(this.appearance.src)
+      : undefined;
+
+    switch (this.displayComponent) {
+      case 'lpc':
+        if (!this.avatar) {
+          return;
+        }
+
+        this.scenes = {
+          room: new PhaserScene(
+            {},
+            this.http,
+            this.phaserLayersFromLPCLayers(
+              Array.isArray(this.appearance.style.properties)
+                ? this.appearance.style.properties
+                : toLPCLayers(this.avatar)
+            ),
+            this.appearance.style.properties?.animation
+              ? `${this.appearance.style.properties.animation}/${this.appearance.style.properties.direction}`
+              : 'walk/south'
+          ),
+        };
+        break;
+    }
   }
 
   private phaserLayersFromLPCLayers(

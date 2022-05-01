@@ -1,43 +1,34 @@
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-import { BemModule } from '@central-factory/web-components/angular/bem/bem.module';
-import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
-import { Meta, moduleMetadata, Story } from '@storybook/angular';
-import { avatarMock1 } from '../../../data/storybook/avatars';
-import { AvatarOverviewComponent } from './avatar-overview.component';
+// export default {
+//   title: 'Molecules/[Obsolete] AvatarsOverview',
+//   component: AvatarOverviewComponent,
+//   decorators: [
+//     moduleMetadata({
+//       imports: [
+//         HttpClientModule,
+//         SvgIconModule.forRoot(),
 
-export default {
-  title: 'Avatars/Overview',
-  component: AvatarOverviewComponent,
-  decorators: [
-    moduleMetadata({
-      imports: [
-        HttpClientModule,
-        SvgIconModule.forRoot(),
+//         CommonModule,
+//         ReactiveFormsModule,
+//         BemModule,
+//         SvgIconModule,
+//       ],
+//     }),
+//   ],
+// } as Meta<AvatarOverviewComponent>;
 
-        CommonModule,
-        ReactiveFormsModule,
-        BemModule,
-        SvgIconModule,
-      ],
-    }),
-  ],
-} as Meta<AvatarOverviewComponent>;
+// const Template: Story<AvatarOverviewComponent> = (
+//   args: AvatarOverviewComponent
+// ) => ({
+//   component: AvatarOverviewComponent,
+//   props: args,
+// });
 
-const Template: Story<AvatarOverviewComponent> = (
-  args: AvatarOverviewComponent
-) => ({
-  component: AvatarOverviewComponent,
-  props: args,
-});
+// export const Empty = Template.bind({});
+// Empty.args = {
+//   avatar: undefined,
+// };
 
-export const Empty = Template.bind({});
-Empty.args = {
-  avatar: undefined,
-};
-
-export const Filled = Template.bind({});
-Filled.args = {
-  avatar: avatarMock1,
-};
+// export const Filled = Template.bind({});
+// Filled.args = {
+//   avatar: avatarMock1,
+// };

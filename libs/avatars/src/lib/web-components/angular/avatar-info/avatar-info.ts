@@ -12,11 +12,11 @@ export type AvatarInfo = {
   religion: Religion;
   birthPlace: Burg;
   birthPlaceShield: string;
-  locationBurg: Burg;
-  locationShield: string;
+  locationBurg?: Burg;
+  locationShield?: string;
   partners: Avatar[];
   parents: Avatar[];
   children: Avatar[];
   professions: Record<'main' | 'secondary', AvatarProfession>;
-  archetype: Avatar;
+  archetype?: Avatar;
 };

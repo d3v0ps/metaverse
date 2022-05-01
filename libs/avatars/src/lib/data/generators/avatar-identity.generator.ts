@@ -10,9 +10,9 @@ import { GenderType } from '@faker-js/faker';
 import faker from '@faker-js/faker/locale/en_US';
 import {
   Avatar,
+  AvatarGender,
   AvatarIdentity,
   AvatarRelationshipKind,
-  BodyType,
 } from '../../models/avatar';
 import { professions } from '../demo/professions.data';
 
@@ -26,7 +26,7 @@ export class AvatarIdentityGenerator {
     const gender =
       preset.identity?.gender ||
       preset.appearance?.body?.type ||
-      faker.random.arrayElement(Object.values(BodyType));
+      faker.random.arrayElement(Object.values(AvatarGender));
 
     const birthPlace =
       preset.identity?.birthPlace || this.generateBirthPlace(preset, burgs);

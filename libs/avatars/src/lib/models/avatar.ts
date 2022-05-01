@@ -8,7 +8,7 @@ export enum SexualOrientation {
   Asexual = 'Asexual',
 }
 
-export enum BodyType {
+export enum AvatarGender {
   Male = 'Male',
   Female = 'Female',
 }
@@ -43,11 +43,12 @@ export type AvatarRelationship = {
 export type AvatarIdentity = {
   givenName?: string;
   familyName?: string;
-  gender?: BodyType;
-  welcomeMessage?: string;
+  gender?: AvatarGender;
+  quote?: string;
   title?: string;
   bio?: string;
   birthDate?: string;
+  birthWorld?: string;
   birthPlace?: number;
   archetype?: string;
   icon?: string;
@@ -61,7 +62,7 @@ export type AvatarIdentity = {
 export type AvatarAppearance = {
   body?: {
     skin?: string;
-    type?: BodyType;
+    type?: AvatarGender;
     shape?: string;
   };
   hair?: {

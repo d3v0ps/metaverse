@@ -41,15 +41,6 @@ export type SelectOption = {
         <ng-container *ngIf="propertiesForm.value">
           <cf-avatar-appearance-portrait
             *ngIf="styleForm.value"
-            [appearancePortrait]="{
-              id: '1',
-              filename: '',
-              format: formats.Image,
-              style: {
-                id: styleForm.value,
-                properties: propertiesForm.value
-              }
-            }"
             [rarity]="rarity"
           ></cf-avatar-appearance-portrait>
         </ng-container>

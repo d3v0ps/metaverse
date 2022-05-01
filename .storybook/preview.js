@@ -75,6 +75,22 @@ addParameters({
         color: '#fff',
       },
       title: 'Angular',
+    },
+    react: {
+      styles: {
+        backgroundColor: '#62dafc',
+        borderColor: '#62dafc',
+        color: '#282c35',
+      },
+      title: 'React',
+    },
+    phaser: {
+      styles: {
+        backgroundColor: '#913c8c',
+        borderColor: '#913c8c',
+        color: '#fff',
+      },
+      title: 'Phaser',
     }
   },
 });

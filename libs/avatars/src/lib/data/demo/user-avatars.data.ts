@@ -1,5 +1,8 @@
 import { Provider } from '@angular/core';
-import { BodyType } from '@central-factory/avatars/models';
+import {
+  AvatarGender,
+  SexualOrientation,
+} from '@central-factory/avatars/models';
 import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
 import type { UserAvatarDocType } from '../../collections/user-avatars.collection';
 import { Appearance, AppearanceFormat } from '../../models/appearance';
@@ -160,7 +163,7 @@ const avatar01Appearance: Appearance = {
 export const avatar01: UserAvatarDocType = {
   id: 'x1',
   identity: {
-    welcomeMessage: 'Hello!',
+    quote: 'Hello!',
     givenName: 'The Blacksmith',
     title: 'Unknown',
     bio: 'Welcome to The Central Factory Metaverse! Take a look around the Start section',
@@ -168,7 +171,7 @@ export const avatar01: UserAvatarDocType = {
   appearances: [avatar01Appearance],
   appearance: {
     body: {
-      type: BodyType.Male,
+      type: AvatarGender.Male,
       skin: 'light',
     },
     eyes: {
@@ -204,15 +207,24 @@ export const userAvatars: UserAvatarDocType[] = [
   {
     id: 'x0',
     identity: {
-      welcomeMessage: 'Hello!',
-      givenName: 'John Doe',
+      quote: 'Hello World 😄',
+      givenName: 'John',
+      familyName: 'Doe',
+      birthDate: '01/01/0920',
+      birthPlace: 0,
+      culture: 0,
+      gender: AvatarGender.Male,
+      mainProfession: 'technomancer',
+      secondaryProfession: 'fighter',
+      sexualOrientation: SexualOrientation.Heterosexual,
+      religion: 0,
       title: 'Unknown',
       bio: 'Welcome to The Central Factory Metaverse! Take a look around the Start section',
     },
-    appearances: [avatar00Appearance],
+    appearances: [],
     appearance: {
       body: {
-        type: BodyType.Male,
+        type: AvatarGender.Male,
         skin: 'light',
       },
       eyes: {

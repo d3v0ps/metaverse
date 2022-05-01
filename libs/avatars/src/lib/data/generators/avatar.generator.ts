@@ -6,9 +6,9 @@ import { World } from '@central-factory/worlds/models/world';
 import faker from '@faker-js/faker/locale/en_US';
 import { v4 as uuid } from 'uuid';
 import {
+  AvatarGender,
   AvatarRelationship,
   AvatarRelationshipKind,
-  BodyType,
   SexualOrientation,
 } from '../../models/avatar';
 import { AvatarAppearanceGenerator } from './avatar-appearance.generator';
@@ -185,12 +185,12 @@ export class AvatarGenerator {
           birthPlace: 0,
           culture: 0,
           familyName: '',
-          gender: BodyType.Male,
+          gender: AvatarGender.Male,
         },
         appearances: [],
         appearance: {
           body: {
-            type: BodyType.Male,
+            type: AvatarGender.Male,
             skin: 'light',
           },
           eyes: {
@@ -464,13 +464,13 @@ export class AvatarGenerator {
           avatar2.attributes.base.intelligence >= PANSEXUAL_INTELLECT_THRESHOLD
         );
       case SexualOrientation.Heterosexual:
-        return avatar1.appearance?.body?.type === BodyType.Male
-          ? avatar2.appearance?.body?.type === BodyType.Female
-          : avatar2.appearance?.body?.type === BodyType.Male;
+        return avatar1.appearance?.body?.type === AvatarGender.Male
+          ? avatar2.appearance?.body?.type === AvatarGender.Female
+          : avatar2.appearance?.body?.type === AvatarGender.Male;
       case SexualOrientation.Homosexual:
-        return avatar1.appearance?.body?.type === BodyType.Male
-          ? avatar2.appearance?.body?.type === BodyType.Male
-          : avatar2.appearance?.body?.type === BodyType.Female;
+        return avatar1.appearance?.body?.type === AvatarGender.Male
+          ? avatar2.appearance?.body?.type === AvatarGender.Male
+          : avatar2.appearance?.body?.type === AvatarGender.Female;
       case SexualOrientation.Bisexual:
         return true;
       default:

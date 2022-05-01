@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core';
-import { BodyType } from '@central-factory/avatars/models';
+import { AvatarGender } from '@central-factory/avatars/models';
 import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
 import type { UserAvatarDocType } from '../../collections/user-avatars.collection';
 import { AppearanceFormat } from '../../models/appearance';
@@ -8,13 +8,13 @@ export const userAvatars: UserAvatarDocType[] = [
   {
     id: '1',
     identity: {
-      welcomeMessage: 'Hello!',
+      quote: 'Hello!',
       givenName: 'Thomas Anderson',
       title: 'Software Engineer',
     },
     appearance: {
       body: {
-        type: BodyType.Male,
+        type: AvatarGender.Male,
       },
     },
     relationships: [],
@@ -173,13 +173,13 @@ export const userAvatars: UserAvatarDocType[] = [
   {
     id: '2',
     identity: {
-      welcomeMessage: 'Hello!',
+      quote: 'Hello!',
       givenName: 'Elliot Alderson',
       title: 'Software Engineer',
     },
     appearance: {
       body: {
-        type: BodyType.Male,
+        type: AvatarGender.Male,
       },
     },
     relationships: [],
@@ -216,13 +216,13 @@ export const userAvatars: UserAvatarDocType[] = [
   {
     id: '3',
     identity: {
-      welcomeMessage: 'Hello!',
+      quote: 'Hello!',
       givenName: 'Alan Turing',
       title: 'Software Engineer',
     },
     appearance: {
       body: {
-        type: BodyType.Male,
+        type: AvatarGender.Male,
       },
     },
     relationships: [],

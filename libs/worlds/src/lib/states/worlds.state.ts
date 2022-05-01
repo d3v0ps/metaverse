@@ -81,7 +81,7 @@ export class WorldsState {
             const worldBurgs = this.worlds$.value[1].map?.cells.burgs;
 
             if (worldBurgs && worldBurgs.length > 0) {
-              this.selectBurg(worldBurgs[1]);
+              this.selectBurg(worldBurgs[0]);
             }
           }
         })

@@ -16,15 +16,7 @@ import type { Avatar } from '../../../models/avatar';
           (click)="avatarClick.emit(avatar)"
           [cfMod]="size"
         >
-          <cf-avatar-appearance-portrait
-            *ngIf="
-              avatar.appearances &&
-              avatar.appearances[0] &&
-              avatar.appearances[0].variations
-            "
-            [appearancePortrait]="avatar.appearances[0].variations['portrait']"
-            size="xs"
-          >
+          <cf-avatar-appearance-portrait [avatar]="avatar" size="xs">
           </cf-avatar-appearance-portrait>
           <br />
           <h4 cfBlock="heading" style="justify-content: center">

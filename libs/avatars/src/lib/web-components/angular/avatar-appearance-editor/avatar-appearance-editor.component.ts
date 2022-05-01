@@ -5,6 +5,13 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
+import { Avatar } from '@central-factory/avatars/models';
+import {
+  Burg,
+  Culture,
+  Religion,
+} from '@central-factory/worlds/models/fmg-map';
+import { World } from '@central-factory/worlds/models/world';
 import { Appearance, AppearancePortrait } from '../../../models/appearance';
 import { AppearanceInfo } from '../../../models/appearance-info';
 import { AvatarAppearanceInfoFormComponent } from './components/avatar-appearance-info-form/avatar-appearance-info-form.component';
@@ -30,17 +37,15 @@ export type AvatarAppearanceEditorModel = {
       <div cfElem="body">
         <cf-tabset>
           <cf-tab
-            [title]="'Identity'"
-            icon="assets/icons/mdi/account.svg"
+            [title]="'Info'"
+            icon="assets/icons/mdi/badge-account.svg"
             [customClass]="'appearance-tab'"
           >
             <div cfBlock="appearance-tab-content-portrait">
-              <cf-avatar-appearance-portrait-designer
-                [appearancePortrait]="appearance?.variations?.others"
-                [availableStyles]="['dungeons']"
-                [rarity]="rarity"
-              >
-              </cf-avatar-appearance-portrait-designer>
+              <cf-avatar-info
+                [avatar]="avatar"
+                [world]="world"
+              ></cf-avatar-info>
             </div>
           </cf-tab>
           <cf-tab
@@ -92,77 +97,8 @@ export type AvatarAppearanceEditorModel = {
               </cf-avatar-appearance-portrait-designer>
             </div>
           </cf-tab>
-          <!-- cf-tab
-            [title]="'Notes'"
-            icon="assets/icons/mdi/book.svg"
-            [customClass]="'appearance-tab'"
-          >
-            <div cfBlock="appearance-tab-content-portrait">
-              <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.dim2"
-                [randomizeOutfit]="randomizeOutfit"
-                [randomizeInterval]="outfitRandomizeInterval"
-                [availableStyles]="['lpc', 'image']"
-                [rarity]="rarity"
-                (formSubmit)="onFormSubmit($event)">
-              </cf-avatar-appearance-portrait-designer>
-            </div>
-          </cf-tab>
-          <cf-tab
-            [title]="'2D Appearance'"
-            icon="assets/icons/mdi/human.svg"
-            [customClass]="'appearance-tab'"
-          >
-            <div cfBlock="appearance-tab-content-portrait">
-              <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.dim2"
-                [randomizeOutfit]="randomizeOutfit"
-                [randomizeInterval]="outfitRandomizeInterval"
-                [availableStyles]="['lpc', 'image']"
-                [rarity]="rarity"
-                (formSubmit)="onFormSubmit($event)">
-              </cf-avatar-appearance-portrait-designer>
-            </div>
-          </cf-tab -->
-          <!-- cf-tab
-            [title]="'3D Appearance'"
-            icon="assets/icons/mdi/human.svg"
-            [customClass]="'appearance-tab'"
-          >
-            <div cfBlock="appearance-tab-content-portrait">
-              <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.dim3"
-                [availableStyles]="['dim3-file']"
-                [rarity]="rarity">
-              </cf-avatar-appearance-portrait-designer>
-            </div>
-          </cf-tab -->
-          <!-- cf-tab
-            [title]="'Role-play'"
-            icon="assets/icons/mdi/sword-cross.svg"
-            [customClass]="'appearance-tab'"
-          >
-            <div cfBlock="appearance-tab-content-portrait">
-              <cf-avatar-appearance-portrait-designer [appearancePortrait]="appearance?.variations?.others"
-                [availableStyles]="['dungeons']"
-                [rarity]="rarity">
-              </cf-avatar-appearance-portrait-designer>
-            </div>
-          </cf-tab -->
         </cf-tabset>
       </div>
-
-      <!-- div cfElem="footer">
-        <div cfBlock="form-buttons">
-          <button
-            cfBlock="button"
-            [cfMod]="['primary', 'has-icon']"
-            (click)="onSaveButtonClick()"
-            [disabled]="!isValid"
-          >
-            <cf-svg-icon elem="icon" src="assets/icons/mdi/account-check.svg">
-            </cf-svg-icon>
-            Save
-          </button>
-        </div>
-      </div-->
     </div>
   `,
 })
@@ -174,7 +110,12 @@ export class AvatarAppearanceEditorComponent {
   @ViewChild(AvatarAppearanceInfoFormComponent)
   infoForm?: AvatarAppearanceInfoFormComponent;
 
+  @Input() avatar?: Avatar;
   @Input() appearance?: Appearance;
+  @Input() world?: World;
+  @Input() culture?: Culture;
+  @Input() religion?: Religion;
+  @Input() birthPlace?: Burg;
   @Input() rarity = 'common';
 
   @Output() portraitChange = new EventEmitter<{

@@ -4,7 +4,7 @@ import { Subject, takeUntil, tap } from 'rxjs';
 import { v4 as uuid } from 'uuid';
 import {
   AppearanceFormat,
-  AppearancePortrait
+  AppearancePortrait,
 } from '../../../../../models/appearance';
 import { AvatarAppearanceProvider } from '../avatar-appearance-providers/avatar-appearance-providers.component';
 
@@ -41,16 +41,7 @@ export type AvatarAppearancePortraitModelForm = {
           style="margin-bottom: 1rem;"
           *ngIf="form.value?.format && form.value?.src"
         >
-          <cf-avatar-appearance-portrait
-            [appearancePortrait]="{
-              id: form.value.id,
-              filename: form.value.filename || '',
-              format: form.value!.format,
-              src: form.value.src || '',
-              style: form.value.style
-            }"
-          >
-          </cf-avatar-appearance-portrait>
+          <cf-avatar-appearance-portrait> </cf-avatar-appearance-portrait>
         </div>
         <div
           style="margin-bottom: 1rem;"
@@ -81,7 +72,8 @@ export type AvatarAppearancePortraitModelForm = {
   `,
 })
 export class AvatarAppearancePortraitFormComponent
-  implements OnInit, OnDestroy {
+  implements OnInit, OnDestroy
+{
   @Input() set portrait(value: AppearancePortrait | undefined) {
     this.form.reset({
       id: value?.id || uuid(),
