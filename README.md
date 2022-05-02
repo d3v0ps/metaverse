@@ -2,14 +2,14 @@
 
 Metaverse Operating System made for the People.
 
-<div style="display: flex; gap: .5rem;">
+![Analogic Worlds](https://i.imgur.com/J1EvvyZ.png)
+Analogic Worlds
 
-![Analogic Worlds](https://i.imgur.com/ehAlzVP.png)
+![Digital Worlds II](https://i.imgur.com/79wKYrN.png)
 Digital Worlds
 
-![Digital Worlds](https://i.imgur.com/J1EvvyZ.png)
-Analogic Worlds
-</div>
+![Dev Mode](https://i.imgur.com/uUomYKu.png)
+Dev Mode
 
 ## Early Access Preview 05/2022
 
