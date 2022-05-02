@@ -2,7 +2,7 @@
 
 Metaverse Operating System made for the People.
 
-![Analogic Worlds](https://i.imgur.com/J1EvvyZ.png)
+![Analogic Worlds](https://i.imgur.com/cK5sXnJ.png)
 Analogic Worlds
 
 ![Digital Worlds II](https://i.imgur.com/79wKYrN.png)
