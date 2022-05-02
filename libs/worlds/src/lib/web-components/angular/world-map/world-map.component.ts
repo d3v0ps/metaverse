@@ -7,6 +7,9 @@ import { World } from '@central-factory/worlds/models/world';
   selector: 'cf-world-map',
   template: `
     <div cfBlock="world-map" *ngIf="world">
+      <ng-container *ngIf="!world.map">
+        <p>Sorry, this world is not yet available for viewing.</p>
+      </ng-container>
       <ng-container [ngSwitch]="world.kind">
         <ng-container *ngSwitchCase="'digital'">
           <iframe
@@ -16,11 +19,16 @@ import { World } from '@central-factory/worlds/models/world';
             [src]="worldUrl"
             (load)="mapLoad.emit()"
           ></iframe>
-          <ng-container *ngIf="!world.map">
-            <p>Sorry, this world is not yet available for viewing.</p>
-          </ng-container>
         </ng-container>
-        <ng-container *ngSwitchCase="'analog'"> Analog World </ng-container>
+        <ng-container *ngSwitchCase="'analog'">
+          <iframe
+            *ngIf="worldUrl && world.map"
+            width="100%"
+            height="100%"
+            [src]="worldUrl"
+            (load)="mapLoad.emit()"
+          ></iframe>
+        </ng-container>
       </ng-container>
     </div>
   `,
@@ -29,12 +37,8 @@ export class WorldMapComponent {
   @Input() set world(world: World | undefined) {
     this._world = world;
 
-    if (!world) {
-      return;
-    }
-
-    if (world.kind === 'digital') {
-      this.renderDigitalWorldMap(world);
+    if (this.world && this.burg) {
+      this.renderWorldMap(this.world, this.burg);
     }
   }
 
@@ -46,8 +50,8 @@ export class WorldMapComponent {
 
   @Input() set burg(burg: Burg | undefined) {
     this._burg = burg;
-    if (this.world) {
-      this.renderDigitalWorldMap(this.world);
+    if (this.world && this.burg) {
+      this.renderWorldMap(this.world, this.burg);
     }
   }
 
@@ -63,6 +67,20 @@ export class WorldMapComponent {
   private _burg?: Burg;
 
   constructor(private domSanitizer: DomSanitizer) {}
+
+  private renderWorldMap(world: World, location: Burg) {
+    if (world.kind === 'digital') {
+      this.renderDigitalWorldMap(world);
+    } else {
+      this.renderAnalogWorldMap(world, location);
+    }
+  }
+
+  private renderAnalogWorldMap(world: World, burg: Burg) {
+    this.worldUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(
+      `https://maps.google.com/maps?q=${burg?.x},${burg?.y}&t=&z=5&ie=UTF8&iwloc=&output=embed`
+    );
+  }
 
   private renderDigitalWorldMap(world: World) {
     const mapStyle =

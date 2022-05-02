@@ -59,7 +59,7 @@ export const startupApplicationsProviders: Provider[] = [
     provide: STARTUP_APPLICATIONS_PROVIDER,
     useValue: {
       name: ApplicationOpenCommand.name,
-      application: userApplicationsById['com.central-factory.world'],
+      application: userApplicationsById['com.central-factory.burg'],
       settings: {
         groupId: GROUP_IDS.WORLD,
         show: true,
@@ -71,7 +71,7 @@ export const startupApplicationsProviders: Provider[] = [
     provide: STARTUP_APPLICATIONS_PROVIDER,
     useValue: {
       name: ApplicationOpenCommand.name,
-      application: userApplicationsById['com.central-factory.burg'],
+      application: userApplicationsById['com.central-factory.world'],
       settings: {
         groupId: GROUP_IDS.WORLD,
         show: true,

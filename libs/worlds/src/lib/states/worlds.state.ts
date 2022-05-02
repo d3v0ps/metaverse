@@ -92,8 +92,9 @@ export class WorldsState {
                               (country, i) => ({
                                 name: country.name,
                                 population: country.population,
-                                i,
-                                location: country.location,
+                                i: country.cityId,
+                                y: country.location.longitude,
+                                x: country.location.latitude,
                               })
                             );
                             world.map = {
@@ -120,13 +121,7 @@ export class WorldsState {
           );
 
           if (worlds.length > 0) {
-            this.selectWorld(this.worlds$.value[1]);
-
-            const worldBurgs = this.worlds$.value[1].map?.cells.burgs;
-
-            if (worldBurgs && worldBurgs.length > 0) {
-              this.selectBurg(worldBurgs[0]);
-            }
+            this.selectWorld(this.worlds$.value[0]);
           }
         })
       )
@@ -191,6 +186,7 @@ export class WorldsState {
   }
 
   public selectBurg(burg: Burg) {
+    console.debug('selectedBurg', burg);
     this.selectedBurg$.next(burg);
   }
 
@@ -460,7 +456,13 @@ export class WorldsState {
         ],
       })
     );
-    this.selectBurg(world.map.cells.burgs[0]);
+    const worldBurgs: Burg[] = world.map?.cells.burgs;
+    if (worldBurgs.length) {
+      const startBurg =
+        worldBurgs.find((w) => w.i === 6355233) || worldBurgs[0];
+
+      this.selectBurg(startBurg);
+    }
   }
 
   private async _generateAvatars(world: World) {

@@ -20,7 +20,15 @@ import { World } from '@central-factory/worlds/models/world';
             <p>Sorry, this burg is not yet available for viewing.</p>
           </ng-container>
         </ng-container>
-        <ng-container *ngSwitchCase="'analog'"> Analog Burg </ng-container>
+        <ng-container *ngSwitchCase="'analog'">
+          <iframe
+            *ngIf="burgUrl && world.map"
+            width="100%"
+            height="100%"
+            [src]="burgUrl"
+            (load)="mapLoad.emit()"
+          ></iframe
+        ></ng-container>
       </ng-container>
     </div>
   `,
@@ -44,30 +52,51 @@ export class BurgMapComponent {
       return;
     }
 
+    if (this.world.kind === 'digital') {
+      this.renderDigitalBurgMap(this.world, burg);
+    } else {
+      this.renderAnalogBurgMap(this.world, burg);
+    }
+  }
+
+  @Output() mapLoad = new EventEmitter<void>();
+
+  burgUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(
+    'https://watabou.github.io/city-generator/?size=34&seed=4405163980001&name=Yvanethlond&population=12644&greens=0&farms=1&citadel=1&urban_castle=0&plaza=0&temple=0&walls=1&shantytown=0&coast=0&river=1&gates=-1'
+  );
+
+  constructor(private domSanitizer: DomSanitizer) {}
+
+  private renderAnalogBurgMap(world: World, burg: Burg) {
+    this.burgUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(
+      `https://maps.google.com/maps?q=${burg?.x},${burg?.y}&t=&z=9&ie=UTF8&iwloc=&output=embed`
+    );
+  }
+
+  private renderDigitalBurgMap(world: World, burg: Burg) {
     const sizeRaw =
       2.13 *
       Math.pow(
-        ((burg.population || 0) *
-          (this.world.map?.settings.populationRate || 0)) /
+        ((burg.population || 0) * (world.map?.settings.populationRate || 0)) /
           7,
         0.385
       );
     const { i = 0, name = '', population = 0 } = burg;
     const size = Math.min(Math.max(Math.ceil(sizeRaw), 6), 100);
-    const seed = this.getBurgSeed(burg, this.world);
-    const river = this.world.map?.cells.cells[burg.cell || 0].r ? 1 : 0;
+    const seed = this.getBurgSeed(burg, world);
+    const river = world.map?.cells.cells[burg.cell || 0].r ? 1 : 0;
     const coast = (burg.port || 0) > 0;
     const citadel = burg.citadel || 0;
     const each = (n: number) => (i: number) => i % n === 0;
     const urban_castle = +(citadel && each(2)(i));
-    const hub = this.world.map
-      ? this.world.map.cells.cells[burg.cell || 0].road > 50
+    const hub = world.map
+      ? world.map.cells.cells[burg.cell || 0].road > 50
       : false;
     const walls = burg.walls || 0;
     const plaza = burg.plaza || 0;
     const temple = burg.temple || 0;
     const shantytown = burg.shanty || 0;
-    const biome = this.world.map?.cells.cells[burg.cell || 0].biome || 0;
+    const biome = world.map?.cells.cells[burg.cell || 0].biome || 0;
     const arableBiomes = river ? [1, 2, 3, 4, 5, 6, 7, 8] : [5, 6, 7, 8];
     const farms = +arableBiomes.includes(biome);
     // const sea = coast && this.world.map.cells.cells[burg.cell || 0].haven ? getSeaDirections(cell) : null;
@@ -98,14 +127,6 @@ export class BurgMapComponent {
       url.toString()
     );
   }
-
-  @Output() mapLoad = new EventEmitter<void>();
-
-  burgUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(
-    'https://watabou.github.io/city-generator/?size=34&seed=4405163980001&name=Yvanethlond&population=12644&greens=0&farms=1&citadel=1&urban_castle=0&plaza=0&temple=0&walls=1&shantytown=0&coast=0&river=1&gates=-1'
-  );
-
-  constructor(private domSanitizer: DomSanitizer) {}
 
   private getBurgSeed(burg: Burg, world: World) {
     return (

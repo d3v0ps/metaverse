@@ -2,29 +2,9 @@ import { AccountType, Wallet } from '../../models/__generated__/types';
 
 export const demoWallets: Wallet[] = [
   {
-    id: '0',
-    name: 'Cash',
-    worldId: '001',
-    balance: {
-      crypto: '0',
-      fiat: '0',
-      stocks: '0',
-      total: '0',
-    },
-    accounts: [
-      {
-        id: '0',
-        name: 'Cash',
-        balance: '458.5',
-        currency: 'eur',
-        type: AccountType.Cash,
-      },
-    ],
-  },
-  {
     id: '1',
     name: 'Bank',
-    worldId: '001',
+    worldId: '000',
     balance: {
       crypto: '0',
       fiat: '0',
@@ -76,7 +56,7 @@ export const demoWallets: Wallet[] = [
   {
     id: '2',
     name: 'Travel',
-    worldId: '001',
+    worldId: '000',
     balance: {
       crypto: '0',
       fiat: '0',
@@ -97,7 +77,7 @@ export const demoWallets: Wallet[] = [
   {
     id: '3',
     name: 'Cryptos',
-    worldId: '001',
+    worldId: '000',
     balance: {
       crypto: '0',
       fiat: '0',
@@ -147,7 +127,7 @@ export const demoWallets: Wallet[] = [
   {
     id: '4',
     name: 'Stocks',
-    worldId: '001',
+    worldId: '000',
     balance: {
       crypto: '0',
       fiat: '0',
