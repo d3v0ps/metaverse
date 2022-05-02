@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Burg } from '@central-factory/worlds/models/fmg-map';
 import { World } from '@central-factory/worlds/models/world';
 
 @Component({
@@ -43,11 +44,23 @@ export class WorldMapComponent {
 
   worldUrl?: SafeResourceUrl;
 
+  @Input() set burg(burg: Burg | undefined) {
+    this._burg = burg;
+    if (this.world) {
+      this.renderDigitalWorldMap(this.world);
+    }
+  }
+
+  get burg(): Burg | undefined {
+    return this._burg;
+  }
+
   @Input() preset = 'political';
 
   @Output() mapLoad = new EventEmitter<void>();
 
   private _world?: World;
+  private _burg?: Burg;
 
   constructor(private domSanitizer: DomSanitizer) {}
 
@@ -58,8 +71,13 @@ export class WorldMapComponent {
 
     const protocol =
       document.URL.substring(0, 5) == 'http:' ? 'http:' : 'https:';
-
-    const url = `${protocol}//aitorllamas.com/Fantasy-Map-Generator/?seed=${world.map?.info.seed}&hideEditor=true&hideWelcomeMessage=true&presetStyle=${mapStyle}&preset=${this.preset}`;
+    const url = `${protocol}//aitorllamas.com/Fantasy-Map-Generator/?maplink=https://cdn.jsdelivr.net/gh/d3v0ps/metaverse@main/apps/portal/src/assets/worlds/${
+      world.id
+    }.map&burg=${
+      this.burg?.i || 0
+    }&hideEditor=true&hideWelcomeMessage=true&presetStyle=${mapStyle}&preset=${
+      this.preset
+    }`;
 
     this.worldUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(url);
   }

@@ -9,14 +9,23 @@ import { WorldsState } from '@central-factory/worlds/states/worlds.state';
 @Component({
   selector: 'cf-world-scene',
   template: `
-    <div cfBlock="scene" cfMod="world" *ngIf="world$ | async as world">
+    <div
+      cfBlock="scene"
+      cfMod="world"
+      *ngIf="{
+        world: world$ | async,
+        selectedBurg: selectedBurg$ | async
+      } as data"
+    >
       <!-- cf-avatars-list
         [avatars]="avatars"
         [world]="world"
         (selectAvatar)="selectedAvatar = $event"
       ></cf-avatars-list -->
       <cf-world-map
-        [world]="world"
+        *ngIf="data.world && data.selectedBurg"
+        [world]="data.world"
+        [burg]="data.selectedBurg"
         (mapLoad)="applicationLoad.emit()"
       ></cf-world-map>
       <!-- cf-avatar-info
@@ -69,6 +78,7 @@ export class WorldScene implements OnApplicationLoad {
   selectedAvatar?: Avatar;
 
   world$ = this.worldsState.selectedWorld$;
+  selectedBurg$ = this.worldsState.selectedBurg$;
 
   selectedHouse?: string;
 
