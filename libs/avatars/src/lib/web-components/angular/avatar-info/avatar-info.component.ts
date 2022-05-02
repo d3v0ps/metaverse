@@ -9,7 +9,7 @@ import { AvatarInfo } from '../../../models/avatar-info';
   selector: 'cf-avatar-info',
   template: `
     <div cfBlock="avatar-info" *ngIf="avatar && info">
-      <div cfElem="main-content">
+      <section cfElem="main-content">
         <div cfElem="heading">
           <div cfElem="appearances">
             <cf-avatar-appearance-portrait
@@ -158,7 +158,7 @@ import { AvatarInfo } from '../../../models/avatar-info';
             </section>
           </div>
         </div>
-      </div>
+      </section>
 
       <div cfElem="related-content">
         <div cfElem="appearances">

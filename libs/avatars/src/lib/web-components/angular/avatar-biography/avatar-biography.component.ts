@@ -6,11 +6,11 @@ import { AvatarInfo } from '../../../models/avatar-info';
   selector: 'cf-avatar-biography',
   template: `
     <div cfBlock="avatar-biography" *ngIf="avatar && biography">
-      <h4 cfBlock="heading">
+      <cf-typography type="h5" [bold]="true">
         {{ avatar.identity?.givenName || '????' }}
         {{ avatar.identity?.familyName || '????' }}
-      </h4>
-      <p cfElem="content">
+      </cf-typography>
+      <cf-typography type="p">
         {{ avatar.identity?.givenName || '????' }}
         {{ avatar.identity?.familyName || '????' }}
         <ng-container *ngIf="biography.archetype">
@@ -42,7 +42,7 @@ import { AvatarInfo } from '../../../models/avatar-info';
             {{ locationName }}
           </a> </ng-container
         >.
-      </p>
+      </cf-typography>
     </div>
   `,
   styles: [
@@ -52,7 +52,9 @@ import { AvatarInfo } from '../../../models/avatar-info';
         flex-wrap: wrap;
         overflow: auto;
 
-        &__content {
+        &__content,
+        .heading {
+          white-space: break-spaces;
           a {
             font-weight: 700;
             hover: {
@@ -64,17 +66,6 @@ import { AvatarInfo } from '../../../models/avatar-info';
 
         > * {
           height: 100%;
-        }
-
-        > *:nth-child(1) {
-          flex: 1 1 60%;
-          min-width: 30ch;
-        }
-
-        > *:nth-child(2) {
-          flex: 1 1 40%;
-          min-width: 25ch;
-          gap: 1rem;
         }
       }
     `,

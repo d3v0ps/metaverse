@@ -2,41 +2,23 @@
   display: flex;
   flex-wrap: wrap;
   height: 100%;
-  overflow: auto;
+  overflow: hidden;
 
   section {
     display: flex;
     gap: .5rem;
     margin-bottom: .2rem;
     padding: .5rem;
+    flex-direction: column;
   }
 
   .avatar-appearance-portrait {
     margin: 0 auto;
   }
 
-  > * {
-    height: 100%;
-  }
-
-  > *:nth-child(1) {
-    flex: 1 1 60%;
-    min-width: 30ch;
-  }
-
-  > *:nth-child(2) {
-    flex: 1 1 40%;
-    min-width: 25ch;
-    gap: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    .avatar-info__parents {
-      .avatars-carousel {
-        gap: 1rem;
-      }
-    }
-  }
+  // > * {
+  //   height: 100%;
+  // }
 
   &__heading {
     display: flex;
