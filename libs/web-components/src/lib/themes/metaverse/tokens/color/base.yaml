@@ -18,19 +18,19 @@ color:
 
     secondary:
       lightest:
-        value: "#c4a5ed"
+        value: "#fff471"
       lighter:
-        value: "#c4a5ed"
+        value: "#fff471"
       light:
-        value: "#c4a5ed"
+        value: "#fff471"
       medium:
-        value: "#c4a5ed"
+        value: "#f7dc70"
       dark:
-        value: "#c4a5ed"
+        value: "#aa974d"
       darker:
-        value: "#c4a5ed"
+        value: "#aa974d"
       darkest:
-        value: "#c4a5ed"
+        value: "#aa974d"
 
     light:
       lightest:

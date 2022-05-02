@@ -458,7 +458,7 @@ export class WorldsState {
     const worldBurgs: Burg[] = world.map?.cells.burgs;
     if (worldBurgs.length) {
       const startBurg =
-        worldBurgs.find((w) => w.i === 6355233) || worldBurgs[0];
+        worldBurgs.find((w) => w.i === 2988507) || worldBurgs[0];
 
       this.selectBurg(startBurg);
     }

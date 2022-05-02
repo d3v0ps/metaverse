@@ -156,9 +156,9 @@ export class WindowComponent implements AfterViewChecked {
 
   @HostListener('keydown.esc', ['$event'])
   onKeyDown(event: MouseEvent): void {
-    event.preventDefault();
-    event.stopPropagation();
-    this.hide();
+    // event.preventDefault();
+    // event.stopPropagation();
+    // this.hide();
   }
 
   @HostListener('window:resize')

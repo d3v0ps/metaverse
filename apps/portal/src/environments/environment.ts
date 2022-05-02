@@ -9,7 +9,7 @@ export const environment: Environment = {
   showSplashScreen: false,
 
   citiesUrl:
-    'https://parseapi.back4app.com/classes/Continentscountriescities_City?order=-population',
+    'https://parseapi.back4app.com/classes/Continentscountriescities_City?order=-population&limit=1000',
   citiesAppId: 'qJUnkLQtV1PhCFAaQJoLYNTWORGrCbckS81g4FKH', // This is your app's application id
   citiesApiKey: 'eoWJyk5sqEBGUX6gWM3fNpUjsWLURFUXIEwCFP8x', // This is your app's REST API key
   // citiesUrl: 'https://parseapi.back4app.com/classes/City?order=-population',
