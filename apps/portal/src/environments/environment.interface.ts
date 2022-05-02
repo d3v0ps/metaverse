@@ -14,6 +14,10 @@ export interface Environment {
   repositoryUrl: string;
   hostUrl: string;
   worldUrl: string;
+  citiesUrl?: string;
+  citiesAppId?: string;
+  citiesApiKey?: string;
+
   /** Url with the Metaverse's web site */
   webUrl: string;
   /** Url with the Metaverse's documentation site */

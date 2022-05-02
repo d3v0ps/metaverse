@@ -8,6 +8,11 @@ export const environment: Environment = {
   autologin: true,
   showSplashScreen: false,
 
+  citiesUrl:
+    'https://parseapi.back4app.com/classes/Continentscountriescities_City?order=-population',
+  citiesAppId: 'qJUnkLQtV1PhCFAaQJoLYNTWORGrCbckS81g4FKH', // This is your app's application id
+  citiesApiKey: 'eoWJyk5sqEBGUX6gWM3fNpUjsWLURFUXIEwCFP8x', // This is your app's REST API key
+
   repositoryUrl:
     'https://raw.githubusercontent.com/central-factory/web-application-manifests/main',
   worldUrl: 'assets/worlds/repository.json',

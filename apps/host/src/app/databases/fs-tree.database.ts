@@ -1,6 +1,7 @@
 import { Inject, Injectable, Provider } from '@nestjs/common';
 import { capital } from 'case';
 import { lstat, mkdirp, pathExists, readdir, readFile } from 'fs-extra';
+import { resolve } from 'path';
 import slugify from 'slugify';
 
 export type DatabaseQuery = {
@@ -187,7 +188,7 @@ export class FSTreeDatabase<
 
     for (let i = 0; i < children.length; i++) {
       const child = children[i];
-      const childPath = `${folder}/${child}`;
+      const childPath = resolve(folder, child);
       const childStat = await lstat(childPath);
 
       if (childStat.isDirectory()) {

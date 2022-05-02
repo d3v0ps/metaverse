@@ -23,6 +23,7 @@ import { AvatarGender } from '@central-factory/avatars/models/avatar';
 export class AvatarGenderComponent {
   @Input() gender?: AvatarGender;
   @Input() size = 'h5';
+  @Input() bold = false;
   @Input() showIcon = true;
   @Input() showLabel = false;
 }

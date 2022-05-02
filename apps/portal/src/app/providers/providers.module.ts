@@ -2,6 +2,7 @@ import { ModuleWithProviders, NgModule, Provider } from '@angular/core';
 import { applicationProviders } from './application/application.providers';
 import { componentsProviders } from './components/components.providers';
 import { dataProviders } from './data/data.providers';
+import { environmentProviders } from './environment.providers';
 import {
   PortalMocksModule,
   PortalMocksModuleConfig,
@@ -11,6 +12,7 @@ export const providers = [
   ...applicationProviders,
   ...componentsProviders,
   ...dataProviders,
+  environmentProviders,
 ];
 
 @NgModule()

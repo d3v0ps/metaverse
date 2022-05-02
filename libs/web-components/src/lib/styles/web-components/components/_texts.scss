@@ -16,6 +16,11 @@
 }
 
 .typography {
+  .icon {
+    &__image {
+      vertical-align: middle;
+    }
+  }
   &--bold {
     font-weight: bold;
   }

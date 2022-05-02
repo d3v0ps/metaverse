@@ -1,0 +1,71 @@
+.avatar-info {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  overflow: auto;
+
+  section {
+    display: flex;
+    gap: .5rem;
+    margin-bottom: .2rem;
+    padding: .5rem;
+  }
+
+  .avatar-appearance-portrait {
+    margin: 0 auto;
+  }
+
+  > * {
+    height: 100%;
+  }
+
+  > *:nth-child(1) {
+    flex: 1 1 60%;
+    min-width: 30ch;
+  }
+
+  > *:nth-child(2) {
+    flex: 1 1 40%;
+    min-width: 25ch;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    .avatar-info__parents {
+      .avatars-carousel {
+        gap: 1rem;
+      }
+    }
+  }
+
+  &__heading {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+
+    > * {
+      flex: 1 1 30%;
+      min-width: 20ch;
+    }
+
+    /* > *:nth-child(1) {
+            flex: 1 1 30%;
+            min-width: 20ch;
+          }
+
+          > *:nth-child(2) {
+            flex: 1 1 30%;
+            min-width: 20ch;
+          }
+
+          > *:nth-child(3) {
+            flex: 1 1 30%;
+            min-width: 20ch;
+          } */
+  }
+
+  &__basic-info {
+    display: flex;
+    justify-content: space-between;
+  }
+}

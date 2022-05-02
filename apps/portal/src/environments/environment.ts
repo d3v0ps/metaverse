@@ -7,6 +7,15 @@ export const environment: Environment = {
   useMocks: false,
   autologin: true,
   showSplashScreen: false,
+
+  citiesUrl:
+    'https://parseapi.back4app.com/classes/Continentscountriescities_City?order=-population',
+  citiesAppId: 'qJUnkLQtV1PhCFAaQJoLYNTWORGrCbckS81g4FKH', // This is your app's application id
+  citiesApiKey: 'eoWJyk5sqEBGUX6gWM3fNpUjsWLURFUXIEwCFP8x', // This is your app's REST API key
+  // citiesUrl: 'https://parseapi.back4app.com/classes/City?order=-population',
+  // citiesAppId: 'mxsebv4KoWIGkRntXwyzg6c6DhKWQuit8Ry9sHja', // This is your app's application id
+  // citiesApiKey: 'TpO0j3lG2PmEVMXlKYQACoOXKQrL3lwM0HwR9dbH', // This is your app's REST API key
+
   repositoryUrl:
     'https://raw.githubusercontent.com/central-factory/web-application-manifests/main',
   worldUrl: 'assets/worlds/repository.json',

@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, NgZone } from '@angular/core';
+import { Inject, Injectable, InjectionToken, NgZone } from '@angular/core';
 import { Application } from '@central-factory/applications/models/application';
 import { professions } from '@central-factory/avatars/data/demo/professions.data';
 import { AvatarGenerator } from '@central-factory/avatars/data/generators/avatar.generator';
@@ -8,7 +8,8 @@ import { EntityManager } from '@central-factory/persistence/services/entity-mana
 import { UserPreferencesState } from '@central-factory/preferences/states/user-preferences.state';
 import { BehaviorSubject, forkJoin, of, tap } from 'rxjs';
 import { map, share, switchMap } from 'rxjs/operators';
-import { Burg } from '../models/fmg-map';
+import { Back4App } from '../models/b4a-city';
+import { Burg, FantasyMapGeneratorMap } from '../models/fmg-map';
 import { World } from '../models/world';
 import { GENESIS_STATES, WORLD_STATES } from '../state-machines/world';
 
@@ -20,6 +21,14 @@ export type Category = { label: string; icon: string };
 export type Source = {
   src: string;
 };
+
+export const CITIES_URL = new InjectionToken<string>('CITIES_URL');
+export const CITIES_APPLICATION_ID = new InjectionToken<string>(
+  'CITIES_APPLICATION_ID'
+);
+export const CITIES_APPLICATION_KEY = new InjectionToken<string>(
+  'CITIES_APPLICATION_KEY'
+);
 
 @Injectable({
   providedIn: 'root',
@@ -40,7 +49,10 @@ export class WorldsState {
 
     private avatarGenerator: AvatarGenerator,
     private zone: NgZone,
-    private entityManager: EntityManager
+    private entityManager: EntityManager,
+    @Inject(CITIES_URL) private citiesUrl: string,
+    @Inject(CITIES_APPLICATION_ID) private citiesApplicationId: string,
+    @Inject(CITIES_APPLICATION_KEY) private citiesApiKey: string
   ) {
     this.entityManager.initialize$
       .pipe(
@@ -62,7 +74,39 @@ export class WorldsState {
         map((worlds) => worlds.reduce((acc, world) => acc.concat(world), [])),
         switchMap((sources) =>
           forkJoin(
-            sources.map((source) => this.httpClient.get<World>(source.src))
+            sources.map((source) =>
+              this.httpClient.get<World>(source.src).pipe(
+                switchMap((world) => {
+                  return world.kind === 'digital'
+                    ? of(world)
+                    : this.httpClient
+                        .get<{ results: Back4App.City[] }>(this.citiesUrl, {
+                          headers: {
+                            'X-Parse-Application-Id': this.citiesApplicationId,
+                            'X-Parse-REST-API-Key': this.citiesApiKey,
+                          },
+                        })
+                        .pipe(
+                          map(({ results: countries }) => {
+                            const burgs: Partial<Burg>[] = countries.map(
+                              (country, i) => ({
+                                name: country.name,
+                                population: country.population,
+                                i,
+                                location: country.location,
+                              })
+                            );
+                            world.map = {
+                              cells: {
+                                burgs,
+                              },
+                            } as FantasyMapGeneratorMap;
+                            return world;
+                          })
+                        );
+                })
+              )
+            )
           )
         ),
         tap((worlds) => {
@@ -416,6 +460,7 @@ export class WorldsState {
         ],
       })
     );
+    this.selectBurg(world.map.cells.burgs[0]);
   }
 
   private async _generateAvatars(world: World) {

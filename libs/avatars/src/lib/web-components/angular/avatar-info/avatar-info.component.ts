@@ -39,11 +39,13 @@ import { AvatarInfo } from '../../../models/avatar-info';
                 {{ info.archetype?.identity?.givenName }}
               </strong>
             </p>
-            <p>
-              <cf-svg-icon
-                src="assets/icons/mdi/gender-male-female.svg"
-              ></cf-svg-icon>
-              Gender:
+            <section>
+              <cf-typography type="h5" [bold]="true">
+                <cf-svg-icon
+                  src="assets/icons/mdi/gender-male-female.svg"
+                ></cf-svg-icon>
+                Gender:
+              </cf-typography>
               <cf-avatar-gender
                 *ngIf="avatar.identity?.gender"
                 [gender]="avatar.identity?.gender"
@@ -52,32 +54,43 @@ import { AvatarInfo } from '../../../models/avatar-info';
                   display: 'inline-block'
                 }"
               ></cf-avatar-gender>
-            </p>
-            <p>
-              <cf-svg-icon
-                src="assets/icons/mdi/account-group.svg"
-              ></cf-svg-icon>
-              Culture:
-              <strong [ngStyle]="{ color: info.culture.color }">
-                <cf-svg-icon cfElem="icon" [src]="info.cultureIcon">
-                </cf-svg-icon>
-                {{ info.culture.name }}</strong
-              >
-            </p>
-            <p>
+            </section>
+            <section>
+              <cf-typography type="h5" [bold]="true">
+                <cf-svg-icon
+                  src="assets/icons/mdi/account-group.svg"
+                ></cf-svg-icon>
+                Culture:
+              </cf-typography>
+              <p>
+                <cf-typography type="h5">
+                  <cf-svg-icon cfElem="icon" [src]="info.cultureIcon">
+                  </cf-svg-icon>
+                  {{ info.culture.name }}</cf-typography
+                >
+              </p>
+            </section>
+            <section>
               <cf-svg-icon src="assets/icons/mdi/cross.svg"></cf-svg-icon>
               Beliefs:
-              <ng-container *ngFor="let belief of info.beliefs">
-                <strong [ngStyle]="{ color: belief.color }">{{
-                  belief.name
-                }}</strong>
-              </ng-container>
-            </p>
+              <p>
+                <ng-container *ngFor="let belief of info.beliefs">
+                  <cf-typography
+                    type="h5"
+                    [bold]="true"
+                    [ngStyle]="{ color: belief.color }"
+                    >{{ belief.name }}
+                  </cf-typography>
+                </ng-container>
+              </p>
+            </section>
           </div>
           <div>
-            <p *ngIf="avatar.identity?.birthDate as birthDate">
-              <cf-svg-icon src="assets/icons/mdi/cake.svg"></cf-svg-icon>
-              Age:
+            <section *ngIf="avatar.identity?.birthDate as birthDate">
+              <cf-typography type="h5" [bold]="true">
+                <cf-svg-icon src="assets/icons/mdi/cake.svg"></cf-svg-icon>
+                Age:
+              </cf-typography>
               <strong>{{ birthDate | cfAge | async }}</strong>
               (born at
               {{ birthDate | cfDate | date: 'mediumDate' }}
@@ -90,30 +103,36 @@ import { AvatarInfo } from '../../../models/avatar-info';
               </i>
               {{ info.birthPlace?.name }}
               )
-            </p>
-            <p>
-              <cf-svg-icon src="assets/icons/mdi/city.svg"></cf-svg-icon>
-              Location:
-              <i cfBlock="icon" *ngIf="info.currentPlaceShield">
-                <img
-                  cfElem="image"
-                  *ngIf="info.currentPlaceShield"
-                  [src]="info.currentPlaceShield"
-                />
-              </i>
-              <strong
+            </section>
+            <section>
+              <cf-typography type="h5" [bold]="true">
+                <cf-svg-icon src="assets/icons/mdi/city.svg"></cf-svg-icon>
+                Location:
+              </cf-typography>
+              <cf-typography
+                type="h5"
+                [bold]="true"
                 [ngStyle]="{
                   color: coatOfArmsColor
                 }"
               >
-                {{ info.currentPlace?.name }}</strong
-              >
-            </p>
-            <p>
-              <cf-svg-icon
-                src="assets/icons/mdi/account-hard-hat.svg"
-              ></cf-svg-icon>
-              Professions:
+                <i cfBlock="icon" *ngIf="info.currentPlaceShield">
+                  <img
+                    cfElem="image"
+                    *ngIf="info.currentPlaceShield"
+                    [src]="info.currentPlaceShield"
+                  />
+                </i>
+                {{ info.currentPlace?.name }}
+              </cf-typography>
+            </section>
+            <section>
+              <cf-typography type="h5" [bold]="true">
+                <cf-svg-icon
+                  src="assets/icons/mdi/account-hard-hat.svg"
+                ></cf-svg-icon>
+                Professions:
+              </cf-typography>
               <cf-avatar-profession
                 *ngIf="info.professions.main"
                 [profession]="info.professions.main"
@@ -136,7 +155,7 @@ import { AvatarInfo } from '../../../models/avatar-info';
                 }"
               >
               </cf-avatar-profession>
-            </p>
+            </section>
           </div>
         </div>
       </div>
@@ -186,70 +205,6 @@ import { AvatarInfo } from '../../../models/avatar-info';
       </div>
     </div>
   `,
-  styles: [
-    `
-      .avatar-info {
-        display: flex;
-        flex-wrap: wrap;
-        height: 100%;
-        overflow: auto;
-
-        > * {
-          height: 100%;
-        }
-
-        > *:nth-child(1) {
-          flex: 1 1 60%;
-          min-width: 30ch;
-        }
-
-        > *:nth-child(2) {
-          flex: 1 1 40%;
-          min-width: 25ch;
-          gap: 1rem;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-end;
-          .avatar-info__parents {
-            .avatars-carousel {
-              gap: 1rem;
-            }
-          }
-        }
-
-        &__heading {
-          display: flex;
-          flex-wrap: wrap;
-          overflow: auto;
-
-          > * {
-            flex: 1 1 30%;
-            min-width: 20ch;
-          }
-
-          /* > *:nth-child(1) {
-            flex: 1 1 30%;
-            min-width: 20ch;
-          }
-
-          > *:nth-child(2) {
-            flex: 1 1 30%;
-            min-width: 20ch;
-          }
-
-          > *:nth-child(3) {
-            flex: 1 1 30%;
-            min-width: 20ch;
-          } */
-        }
-
-        &__basic-info {
-          display: flex;
-          justify-content: space-between;
-        }
-      }
-    `,
-  ],
 })
 export class AvatarInfoComponent {
   coatOfArmsColors: Record<string, string> = {
