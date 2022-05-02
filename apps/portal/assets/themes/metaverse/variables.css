@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 02 May 2022 22:38:55 GMT
+ * Generated on Mon, 02 May 2022 23:01:59 GMT
  */
 
 :root {
@@ -11,13 +11,13 @@
   --color-base-primary-dark: #65499c;
   --color-base-primary-darker: #65499c;
   --color-base-primary-darkest: #65499c;
-  --color-base-secondary-lightest: #c4a5ed;
-  --color-base-secondary-lighter: #c4a5ed;
-  --color-base-secondary-light: #c4a5ed;
-  --color-base-secondary-medium: #c4a5ed;
-  --color-base-secondary-dark: #c4a5ed;
-  --color-base-secondary-darker: #c4a5ed;
-  --color-base-secondary-darkest: #c4a5ed;
+  --color-base-secondary-lightest: #fff471;
+  --color-base-secondary-lighter: #fff471;
+  --color-base-secondary-light: #fff471;
+  --color-base-secondary-medium: #f7dc70;
+  --color-base-secondary-dark: #aa974d;
+  --color-base-secondary-darker: #aa974d;
+  --color-base-secondary-darkest: #aa974d;
   --color-base-light-lightest: #f4faff;
   --color-base-light-lighter: #e6e6e6;
   --color-base-light-light: #d1d1d1;
@@ -103,15 +103,15 @@
   --color-base-unique-darker: #217e87;
   --color-base-unique-darkest: #25676d;
   --color-font-primary: #c7a4ff;
-  --color-font-secondary: #c4a5ed;
+  --color-font-secondary: #fff471;
   --component-badge-color: #f1f1f1;
-  --component-badge-background-color: #c4a5ed;
+  --component-badge-background-color: #f7dc70;
   --component-button-font-size: 1rem;
   --component-button-color: #dee7e7;
   --component-button-background-color: #404040;
   --component-button-primary-background-color: #9575cd;
   --component-button-primary-color: #dee7e7;
-  --component-button-secondary-background-color: #c4a5ed;
+  --component-button-secondary-background-color: #f7dc70;
   --component-button-secondary-color: #dee7e7;
   --component-button-success-background-color: #4caf50;
   --component-button-success-color: #dee7e7;
@@ -124,17 +124,17 @@
   --component-button-big-font-size: 1.5rem;
   --component-card-color: #101010;
   --component-card-background-color: #404040;
-  --component-card-header-background-color: #c4a5ed;
-  --component-card-footer-background-color: #c4a5ed;
+  --component-card-header-background-color: #aa974d;
+  --component-card-footer-background-color: #aa974d;
   --component-card-title-color: #f1f1f1;
-  --component-card-icon-color: #c4a5ed;
+  --component-card-icon-color: #f7dc70;
   --component-chatbox-message-background-color: #101010;
   --component-chatbox-message-color: #dee7e7;
   --component-chatbox-username-background-color: #9575cd;
   --component-chatbox-username-color: #dee7e7;
   --component-chatbox-icon-color: #dee7e7;
   --component-chatbox-input-color: #dee7e7;
-  --component-chatbox-input-active-border-color: #c4a5ed;
+  --component-chatbox-input-active-border-color: #f7dc70;
   --component-input-font-size: 1rem;
   --component-input-border-color: #606060;
   --component-input-border-radius: 14px;
@@ -152,7 +152,7 @@
   --component-input-disabled-background-color: #202020;
   --component-input-primary-background-color: #9575cd;
   --component-input-primary-color: #dee7e7;
-  --component-input-secondary-background-color: #c4a5ed;
+  --component-input-secondary-background-color: #f7dc70;
   --component-input-secondary-color: #dee7e7;
   --component-input-success-background-color: #4caf50;
   --component-input-success-color: #dee7e7;
@@ -187,7 +187,7 @@
   --component-select-text-color: #dee7e7;
   --component-sidebar-button-background-color: #9575cd;
   --component-sidebar-button-color: #dee7e7;
-  --component-sidebar-button-active-background-color: #c4a5ed;
+  --component-sidebar-button-active-background-color: #f7dc70;
   --component-sidebar-button-active-color: #dee7e7;
   --component-splash-screen-background-color: #9575cd;
   --component-splash-screen-color: #dee7e7;
