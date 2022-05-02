@@ -186,7 +186,6 @@ export class WorldsState {
   }
 
   public selectBurg(burg: Burg) {
-    console.debug('selectedBurg', burg);
     this.selectedBurg$.next(burg);
   }
 
