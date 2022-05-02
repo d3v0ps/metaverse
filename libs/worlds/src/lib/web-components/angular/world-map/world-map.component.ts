@@ -71,9 +71,17 @@ export class WorldMapComponent {
 
     const protocol =
       document.URL.substring(0, 5) == 'http:' ? 'http:' : 'https:';
-    const url = `${protocol}//aitorllamas.com/Fantasy-Map-Generator/?maplink=https://cdn.jsdelivr.net/gh/d3v0ps/metaverse@main/apps/portal/src/assets/worlds/${
-      world.id
-    }.map&burg=${
+    // TODO: Replace this with .map file (not working right now)
+    // const url = `${protocol}//aitorllamas.com/Fantasy-Map-Generator/?options=default&maplink=${protocol}//aitorllamas.com/metaverse/apps/portal/assets/worlds/${
+    //   world.id
+    // }.map&burg=${
+    //   this.burg?.i || 0
+    // }&hideEditor=true&hideWelcomeMessage=true&presetStyle=${mapStyle}&preset=${
+    //   this.preset
+    // }`;
+    const url = `${protocol}//aitorllamas.com/Fantasy-Map-Generator/?seed=${
+      world.map?.info.seed
+    }&burg=${
       this.burg?.i || 0
     }&hideEditor=true&hideWelcomeMessage=true&presetStyle=${mapStyle}&preset=${
       this.preset
