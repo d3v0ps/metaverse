@@ -3,6 +3,9 @@
   flex-wrap: wrap;
   height: 100%;
   overflow: hidden;
+  &:hover, &:active {
+    overflow-y: auto
+  }
 
   section {
     display: flex;

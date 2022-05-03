@@ -22,8 +22,48 @@ import { AvatarInfo } from '../../../models/avatar-info';
               {{ avatar.identity?.givenName || '????' }}
               {{ avatar.identity?.familyName || '????' }}
             </cf-typography>
-            <cf-avatar-gender [gender]="avatar.identity?.gender">
-            </cf-avatar-gender>
+
+            <section>
+              <cf-typography type="h5" [bold]="true">
+                <cf-svg-icon
+                  src="assets/icons/mdi/map-marker.svg"
+                ></cf-svg-icon>
+                <span
+                  [ngStyle]="{
+                    color: coatOfArmsColor,
+                    cursor: 'pointer'
+                  }"
+                  >{{ info.currentPlace?.name }}</span
+                >
+                <i cfBlock="icon" *ngIf="info.currentPlaceShield">
+                  <img
+                    cfElem="image"
+                    *ngIf="info.currentPlaceShield"
+                    [src]="info.currentPlaceShield"
+                  />
+                </i>
+              </cf-typography>
+            </section>
+            <section *ngIf="avatar.identity?.birthDate as birthDate">
+              <cf-typography type="h5" [bold]="true" [cfPopover]="colorPopover">
+                <cf-svg-icon src="assets/icons/mdi/cake.svg"></cf-svg-icon>
+                {{ birthDate | cfAge }}
+              </cf-typography>
+            </section>
+            <section style="flex-direction: row; justify-content: flex-start;">
+              <cf-typography
+                type="h5"
+                [bold]="true"
+                [ngStyle]="{
+                  color: info.culture.color,
+                  cursor: 'pointer'
+                }"
+              >
+                <cf-svg-icon [src]="info.cultureIcon"> </cf-svg-icon>
+              </cf-typography>
+              <cf-avatar-gender [gender]="avatar.identity?.gender">
+              </cf-avatar-gender>
+            </section>
           </div>
           <div cfBlock="biography">
             <cf-avatar-biography
@@ -47,58 +87,22 @@ import { AvatarInfo } from '../../../models/avatar-info';
                 {{ info.archetype?.identity?.givenName }}
               </strong>
             </p>
-            <section>
-              <cf-typography
-                type="h5"
+            <section style="flex-direction: row;">
+              <cf-avatar-beliefs
+                [beliefs]="info.beliefs"
                 [ngStyle]="{
-                  color: info.culture.color,
-                  cursor: 'pointer'
+                  width: '50%'
                 }"
-              >
-                <cf-svg-icon [src]="info.cultureIcon"> </cf-svg-icon>
-                {{ info.culture.name }}
-              </cf-typography>
-            </section>
-            <section>
-              <cf-avatar-beliefs [beliefs]="info.beliefs"></cf-avatar-beliefs>
-            </section>
-          </div>
-          <div>
-            <section *ngIf="avatar.identity?.birthDate as birthDate">
-              <cf-typography type="h5" [bold]="true" [cfPopover]="colorPopover">
-                <cf-svg-icon src="assets/icons/mdi/cake.svg"></cf-svg-icon>
-                {{ birthDate | cfAge }}
-              </cf-typography>
-            </section>
-            <section>
-              <cf-typography type="h5" [bold]="true">
-                <cf-svg-icon src="assets/icons/mdi/city.svg"></cf-svg-icon>
-                <span
-                  [ngStyle]="{
-                    color: coatOfArmsColor,
-                    cursor: 'pointer'
-                  }"
-                  >{{ info.currentPlace?.name }}</span
-                >
-                <i cfBlock="icon" *ngIf="info.currentPlaceShield">
-                  <img
-                    cfElem="image"
-                    *ngIf="info.currentPlaceShield"
-                    [src]="info.currentPlaceShield"
-                  />
-                </i>
-              </cf-typography>
-            </section>
-            <section>
+              ></cf-avatar-beliefs>
               <cf-avatar-professions
                 [professions]="[
                   info.professions.main,
                   info.professions.secondary
                 ]"
-                [showLabel]="true"
                 [ngStyle]="{
                   display: 'inline-block',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  width: '50%'
                 }"
               >
                 ></cf-avatar-professions
