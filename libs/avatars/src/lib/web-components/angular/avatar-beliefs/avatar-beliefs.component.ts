@@ -5,12 +5,10 @@ import { Religion } from '@central-factory/worlds/models/fmg-map';
   selector: 'cf-avatar-beliefs',
   template: `
     <div cfBlock="avatar-beliefs">
-      <section>
-        <cf-typography type="h5" [bold]="true" *ngIf="showTitle">
-          <cf-svg-icon src="assets/icons/mdi/cross.svg"></cf-svg-icon>
-          Beliefs
-        </cf-typography>
-      </section>
+      <cf-typography type="h5" [bold]="true" *ngIf="showTitle">
+        <cf-svg-icon src="assets/icons/mdi/cross.svg"></cf-svg-icon>
+        Beliefs
+      </cf-typography>
 
       <section>
         <cf-typography [type]="size" [bold]="true">
@@ -40,13 +38,6 @@ import { Religion } from '@central-factory/worlds/models/fmg-map';
       </section>
     </div>
   `,
-  styles: [
-    `
-      :host {
-        text-align: center;
-      }
-    `,
-  ],
 })
 export class AvatarBeliefsComponent {
   @Input() beliefs?: Religion[];

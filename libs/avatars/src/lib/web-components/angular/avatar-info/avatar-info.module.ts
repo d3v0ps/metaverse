@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { AvatarAppearancePortraitModule } from '@central-factory/avatars/web-components/angular/avatar-appearance-portrait/avatar-appearance-portrait.module';
 import { AvatarsCarouselModule } from '@central-factory/avatars/web-components/angular/avatars-carousel/avatars-carousel.module';
 import { EssentialsModule } from '@central-factory/web-components/angular/essentials.module';
+import { PopoverModule } from '@central-factory/web-components/angular/popover/popover.module';
 import { AgeModule } from '@central-factory/worlds/web-components/angular/age/age.module';
 import { AvatarBeliefsModule } from '../avatar-beliefs/avatar-beliefs.module';
 import { AvatarBiographyModule } from '../avatar-biography/avatar-biography.module';
@@ -19,6 +20,7 @@ import { AvatarInfoComponent } from './avatar-info.component';
     AvatarProfessionModule,
     AvatarGenderModule,
     AvatarBeliefsModule,
+    PopoverModule,
   ],
   declarations: [AvatarInfoComponent],
   exports: [AvatarInfoComponent],

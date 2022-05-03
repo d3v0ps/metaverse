@@ -8,8 +8,9 @@
     display: flex;
     gap: .5rem;
     margin-bottom: .2rem;
-    padding: .5rem;
+    padding: .1rem;
     flex-direction: column;
+    justify-content: space-around;
   }
 
   .avatar-appearance-portrait {
@@ -49,5 +50,8 @@
   &__basic-info {
     display: flex;
     justify-content: space-between;
+    > div {
+      width: 100%;
+    }
   }
 }

@@ -5,14 +5,10 @@ import { AvatarProfession } from '@central-factory/worlds/models/world';
   selector: 'cf-avatar-professions',
   template: `
     <div cfBlock="avatar-professions">
-      <section>
-        <cf-typography type="h5" [bold]="true" *ngIf="showTitle">
-          <cf-svg-icon
-            src="assets/icons/mdi/account-hard-hat.svg"
-          ></cf-svg-icon>
-          Professions
-        </cf-typography>
-      </section>
+      <cf-typography type="h5" [bold]="true" *ngIf="showTitle">
+        <cf-svg-icon src="assets/icons/mdi/account-hard-hat.svg"></cf-svg-icon>
+        Professions
+      </cf-typography>
 
       <section>
         <cf-typography [type]="size" [bold]="true">
@@ -43,13 +39,6 @@ import { AvatarProfession } from '@central-factory/worlds/models/world';
       </section>
     </div>
   `,
-  styles: [
-    `
-      :host {
-        text-align: center;
-      }
-    `,
-  ],
 })
 export class AvatarProfessionsComponent {
   @Input() professions?: AvatarProfession[];

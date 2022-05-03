@@ -6,10 +6,6 @@ import { AvatarInfo } from '../../../models/avatar-info';
   selector: 'cf-avatar-biography',
   template: `
     <div cfBlock="avatar-biography" *ngIf="avatar && biography">
-      <cf-typography type="h5" [bold]="true">
-        {{ avatar.identity?.givenName || '????' }}
-        {{ avatar.identity?.familyName || '????' }}
-      </cf-typography>
       <cf-typography type="p">
         {{ avatar.identity?.givenName || '????' }}
         {{ avatar.identity?.familyName || '????' }}

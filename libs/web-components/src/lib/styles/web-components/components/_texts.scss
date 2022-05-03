@@ -17,8 +17,11 @@
 
 .typography {
   .icon {
+    position: relative;
     &__image {
-      vertical-align: middle;
+      vertical-align: sub;
+      position: absolute;
+      top: -.5rem;
     }
   }
   &--bold {

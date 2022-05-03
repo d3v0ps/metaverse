@@ -17,6 +17,12 @@ import { AvatarInfo } from '../../../models/avatar-info';
               displayComponent="avataaars"
             ></cf-avatar-appearance-portrait>
           </div>
+          <div cfBlock="name">
+            <cf-typography type="h5" [bold]="true">
+              {{ avatar.identity?.givenName || '????' }}
+              {{ avatar.identity?.familyName || '????' }}
+            </cf-typography>
+          </div>
           <div cfBlock="biography">
             <cf-avatar-biography
               [avatar]="avatar"
@@ -60,31 +66,20 @@ import { AvatarInfo } from '../../../models/avatar-info';
           </div>
           <div>
             <section *ngIf="avatar.identity?.birthDate as birthDate">
-              <cf-typography type="p" [bold]="true">
+              <cf-typography type="h5" [bold]="true" [cfPopover]="colorPopover">
                 <cf-svg-icon src="assets/icons/mdi/cake.svg"></cf-svg-icon>
-                (born at
-                {{ birthDate | cfDate | date: 'mediumDate' }}
-                <i cfBlock="icon">
-                  <img
-                    cfElem="image"
-                    *ngIf="info.birthPlaceShield"
-                    [src]="info.birthPlaceShield"
-                  />
-                </i>
-                {{ info.birthPlace?.name }}
-                )
+                {{ birthDate | cfAge | async }} years old
               </cf-typography>
             </section>
             <section>
-              <cf-typography
-                type="h5"
-                [bold]="true"
-                [ngStyle]="{
-                  color: coatOfArmsColor
-                }"
-              >
+              <cf-typography type="h5" [bold]="true">
                 <cf-svg-icon src="assets/icons/mdi/city.svg"></cf-svg-icon>
-                {{ info.currentPlace?.name }}
+                <span
+                  [ngStyle]="{
+                    color: coatOfArmsColor
+                  }"
+                  >{{ info.currentPlace?.name }}</span
+                >
                 <i cfBlock="icon" *ngIf="info.currentPlaceShield">
                   <img
                     cfElem="image"
@@ -156,6 +151,26 @@ import { AvatarInfo } from '../../../models/avatar-info';
         </div>
       </div>
     </div>
+
+    <cf-popover-content #colorPopover [closeOnClickOutside]="true">
+      <cf-typography
+        type="h5"
+        [bold]="true"
+        *ngIf="info && avatar?.identity?.birthDate as birthDate"
+      >
+        (born at
+        {{ birthDate | cfDate | date: 'mediumDate' }}
+        <i cfBlock="icon">
+          <img
+            cfElem="image"
+            *ngIf="info.birthPlaceShield"
+            [src]="info.birthPlaceShield"
+          />
+        </i>
+        {{ info.birthPlace?.name }}
+        )
+      </cf-typography>
+    </cf-popover-content>
   `,
 })
 export class AvatarInfoComponent {
