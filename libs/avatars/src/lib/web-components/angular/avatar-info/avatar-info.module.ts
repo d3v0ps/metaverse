@@ -3,6 +3,7 @@ import { AvatarAppearancePortraitModule } from '@central-factory/avatars/web-com
 import { AvatarsCarouselModule } from '@central-factory/avatars/web-components/angular/avatars-carousel/avatars-carousel.module';
 import { EssentialsModule } from '@central-factory/web-components/angular/essentials.module';
 import { AgeModule } from '@central-factory/worlds/web-components/angular/age/age.module';
+import { AvatarBeliefsModule } from '../avatar-beliefs/avatar-beliefs.module';
 import { AvatarBiographyModule } from '../avatar-biography/avatar-biography.module';
 import { AvatarGenderModule } from '../avatar-gender/avatar-gender.module';
 import { AvatarProfessionModule } from '../avatar-profession/avatar-profession.module';
@@ -17,6 +18,7 @@ import { AvatarInfoComponent } from './avatar-info.component';
     AvatarBiographyModule,
     AvatarProfessionModule,
     AvatarGenderModule,
+    AvatarBeliefsModule,
   ],
   declarations: [AvatarInfoComponent],
   exports: [AvatarInfoComponent],

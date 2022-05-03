@@ -210,7 +210,7 @@ export const userAvatars: UserAvatarDocType[] = [
       quote: 'Hello World 😄',
       givenName: 'John',
       familyName: 'Doe',
-      birthDate: '01/01/0920',
+      birthDate: '01/01/2021',
       birthPlace: 0,
       culture: 0,
       gender: AvatarGender.Male,

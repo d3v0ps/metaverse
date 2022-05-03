@@ -40,75 +40,43 @@ import { AvatarInfo } from '../../../models/avatar-info';
               </strong>
             </p>
             <section>
-              <cf-typography type="h5" [bold]="true">
-                <cf-svg-icon
-                  src="assets/icons/mdi/gender-male-female.svg"
-                ></cf-svg-icon>
-                Gender:
-              </cf-typography>
-              <cf-avatar-gender
-                *ngIf="avatar.identity?.gender"
-                [gender]="avatar.identity?.gender"
-                [showLabel]="true"
+              <cf-avatar-gender [gender]="avatar.identity?.gender">
+              </cf-avatar-gender>
+            </section>
+            <section>
+              <cf-typography
+                type="h5"
                 [ngStyle]="{
-                  display: 'inline-block'
+                  color: info.culture.color
                 }"
-              ></cf-avatar-gender>
-            </section>
-            <section>
-              <cf-typography type="h5" [bold]="true">
-                <cf-svg-icon
-                  src="assets/icons/mdi/account-group.svg"
-                ></cf-svg-icon>
-                Culture:
+              >
+                <cf-svg-icon cfElem="icon" [src]="info.cultureIcon">
+                </cf-svg-icon>
+                {{ info.culture.name }}
               </cf-typography>
-              <p>
-                <cf-typography type="h5">
-                  <cf-svg-icon cfElem="icon" [src]="info.cultureIcon">
-                  </cf-svg-icon>
-                  {{ info.culture.name }}</cf-typography
-                >
-              </p>
             </section>
             <section>
-              <cf-svg-icon src="assets/icons/mdi/cross.svg"></cf-svg-icon>
-              Beliefs:
-              <p>
-                <ng-container *ngFor="let belief of info.beliefs">
-                  <cf-typography
-                    type="h5"
-                    [bold]="true"
-                    [ngStyle]="{ color: belief.color }"
-                    >{{ belief.name }}
-                  </cf-typography>
-                </ng-container>
-              </p>
+              <cf-avatar-beliefs [beliefs]="info.beliefs"></cf-avatar-beliefs>
             </section>
           </div>
           <div>
             <section *ngIf="avatar.identity?.birthDate as birthDate">
-              <cf-typography type="h5" [bold]="true">
+              <cf-typography type="p" [bold]="true">
                 <cf-svg-icon src="assets/icons/mdi/cake.svg"></cf-svg-icon>
-                Age:
+                (born at
+                {{ birthDate | cfDate | date: 'mediumDate' }}
+                <i cfBlock="icon">
+                  <img
+                    cfElem="image"
+                    *ngIf="info.birthPlaceShield"
+                    [src]="info.birthPlaceShield"
+                  />
+                </i>
+                {{ info.birthPlace?.name }}
+                )
               </cf-typography>
-              <strong>{{ birthDate | cfAge | async }}</strong>
-              (born at
-              {{ birthDate | cfDate | date: 'mediumDate' }}
-              <i cfBlock="icon">
-                <img
-                  cfElem="image"
-                  *ngIf="info.birthPlaceShield"
-                  [src]="info.birthPlaceShield"
-                />
-              </i>
-              {{ info.birthPlace?.name }}
-              )
             </section>
             <section>
-              <cf-typography type="h5" [bold]="true">
-                <cf-svg-icon src="assets/icons/mdi/city.svg"></cf-svg-icon>
-                Location:
-              </cf-typography>
               <cf-typography
                 type="h5"
                 [bold]="true"
@@ -116,6 +84,8 @@ import { AvatarInfo } from '../../../models/avatar-info';
                   color: coatOfArmsColor
                 }"
               >
+                <cf-svg-icon src="assets/icons/mdi/city.svg"></cf-svg-icon>
+                {{ info.currentPlace?.name }}
                 <i cfBlock="icon" *ngIf="info.currentPlaceShield">
                   <img
                     cfElem="image"
@@ -123,38 +93,21 @@ import { AvatarInfo } from '../../../models/avatar-info';
                     [src]="info.currentPlaceShield"
                   />
                 </i>
-                {{ info.currentPlace?.name }}
               </cf-typography>
             </section>
             <section>
-              <cf-typography type="h5" [bold]="true">
-                <cf-svg-icon
-                  src="assets/icons/mdi/account-hard-hat.svg"
-                ></cf-svg-icon>
-                Professions:
-              </cf-typography>
-              <cf-avatar-profession
-                *ngIf="info.professions.main"
-                [profession]="info.professions.main"
+              <cf-avatar-professions
+                [professions]="[
+                  info.professions.main,
+                  info.professions.secondary
+                ]"
                 [showLabel]="true"
                 [ngStyle]="{
                   display: 'inline-block'
                 }"
               >
-              </cf-avatar-profession>
-              <ng-container
-                *ngIf="info.professions.main && info.professions.secondary"
-                >,</ng-container
+                ></cf-avatar-professions
               >
-              <cf-avatar-profession
-                *ngIf="info.professions.secondary"
-                [profession]="info.professions.secondary"
-                [showLabel]="true"
-                [ngStyle]="{
-                  display: 'inline-block'
-                }"
-              >
-              </cf-avatar-profession>
             </section>
           </div>
         </div>
