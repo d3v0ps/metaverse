@@ -68,7 +68,7 @@ import { AvatarInfo } from '../../../models/avatar-info';
             <section *ngIf="avatar.identity?.birthDate as birthDate">
               <cf-typography type="h5" [bold]="true" [cfPopover]="colorPopover">
                 <cf-svg-icon src="assets/icons/mdi/cake.svg"></cf-svg-icon>
-                {{ birthDate | cfAge | async }} years old
+                {{ birthDate | cfAge }}
               </cf-typography>
             </section>
             <section>

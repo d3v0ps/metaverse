@@ -2,11 +2,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { professions } from '@central-factory/avatars/data/demo/professions.data';
 import { userAvatars } from '@central-factory/avatars/data/demo/user-avatars.data';
 import { EssentialsModule } from '@central-factory/web-components/angular/essentials.module';
+import { PopoverModule } from '@central-factory/web-components/angular/popover/popover.module';
 import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
 import { AgeModule } from '@central-factory/worlds/web-components/angular/age/age.module';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { AvatarAppearancePortraitModule } from '../avatar-appearance-portrait/avatar-appearance-portrait.module';
+import { AvatarBeliefsModule } from '../avatar-beliefs/avatar-beliefs.module';
 import { AvatarBiographyModule } from '../avatar-biography/avatar-biography.module';
 import { AvatarGenderModule } from '../avatar-gender/avatar-gender.module';
 import { AvatarProfessionModule } from '../avatar-profession/avatar-profession.module';
@@ -28,6 +30,8 @@ export default {
         AvatarBiographyModule,
         AvatarProfessionModule,
         AvatarGenderModule,
+        AvatarBeliefsModule,
+        PopoverModule,
       ],
     }),
   ],
