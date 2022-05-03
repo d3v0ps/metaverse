@@ -50,8 +50,7 @@ import { AvatarInfo } from '../../../models/avatar-info';
                   color: info.culture.color
                 }"
               >
-                <cf-svg-icon cfElem="icon" [src]="info.cultureIcon">
-                </cf-svg-icon>
+                <cf-svg-icon [src]="info.cultureIcon"> </cf-svg-icon>
                 {{ info.culture.name }}
               </cf-typography>
             </section>
