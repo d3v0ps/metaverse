@@ -11,7 +11,13 @@ import { Religion } from '@central-factory/worlds/models/fmg-map';
       </cf-typography>
 
       <section>
-        <cf-typography [type]="size" [bold]="true">
+        <cf-typography
+          [type]="size"
+          [bold]="true"
+          [ngStyle]="{
+            cursor: 'pointer'
+          }"
+        >
           <ng-container *ngFor="let belief of beliefs; let last = last">
             <ng-container *ngIf="showIcon">
               <cf-svg-icon

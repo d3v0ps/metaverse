@@ -22,6 +22,8 @@ import { AvatarInfo } from '../../../models/avatar-info';
               {{ avatar.identity?.givenName || '????' }}
               {{ avatar.identity?.familyName || '????' }}
             </cf-typography>
+            <cf-avatar-gender [gender]="avatar.identity?.gender">
+            </cf-avatar-gender>
           </div>
           <div cfBlock="biography">
             <cf-avatar-biography
@@ -46,14 +48,11 @@ import { AvatarInfo } from '../../../models/avatar-info';
               </strong>
             </p>
             <section>
-              <cf-avatar-gender [gender]="avatar.identity?.gender">
-              </cf-avatar-gender>
-            </section>
-            <section>
               <cf-typography
                 type="h5"
                 [ngStyle]="{
-                  color: info.culture.color
+                  color: info.culture.color,
+                  cursor: 'pointer'
                 }"
               >
                 <cf-svg-icon [src]="info.cultureIcon"> </cf-svg-icon>
@@ -76,7 +75,8 @@ import { AvatarInfo } from '../../../models/avatar-info';
                 <cf-svg-icon src="assets/icons/mdi/city.svg"></cf-svg-icon>
                 <span
                   [ngStyle]="{
-                    color: coatOfArmsColor
+                    color: coatOfArmsColor,
+                    cursor: 'pointer'
                   }"
                   >{{ info.currentPlace?.name }}</span
                 >
@@ -97,7 +97,8 @@ import { AvatarInfo } from '../../../models/avatar-info';
                 ]"
                 [showLabel]="true"
                 [ngStyle]="{
-                  display: 'inline-block'
+                  display: 'inline-block',
+                  cursor: 'pointer'
                 }"
               >
                 ></cf-avatar-professions

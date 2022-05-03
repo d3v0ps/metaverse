@@ -19,8 +19,7 @@ import { AvatarInfo } from '../../../models/avatar-info';
           {{ biography.archetype?.identity?.givenName || '????' }}
         </ng-container>
         <ng-container *ngIf="biography.currentPlace">
-          {{ !biography.archetype ? 'is ' : '' }}
-          located at
+          was last time seen at
           <a
             href=""
             [ngStyle]="{
