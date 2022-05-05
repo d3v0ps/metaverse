@@ -3,7 +3,7 @@ import { Environment } from './environment.interface';
 /** Development environment config */
 export const environment: Environment = {
   production: false,
-  demo: true,
+  demo: false,
   useMocks: false,
   autologin: true,
   showSplashScreen: false,

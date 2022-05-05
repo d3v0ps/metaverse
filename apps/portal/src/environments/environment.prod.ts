@@ -5,7 +5,7 @@ export const environment: Environment = {
   production: true,
   demo: false,
   useMocks: false,
-  autologin: false,
+  autologin: true,
   showSplashScreen: true,
 
   citiesUrl:

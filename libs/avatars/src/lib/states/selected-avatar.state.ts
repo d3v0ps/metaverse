@@ -119,18 +119,19 @@ export class SelectedAvatarState {
         },
       })
       .subscribe((selectedAvatarId) => {
+        const id = selectedAvatarId?.value || 'x0';
         if (this.avatarQuerySubscription) {
           this.avatarQuerySubscription.unsubscribe();
         }
 
-        if (!selectedAvatarId || !this.userAvatarsRepository) {
+        if (!this.userAvatarsRepository) {
           return;
         }
 
         this.avatarQuerySubscription = this.userAvatarsRepository
           .observeOne({
             selector: {
-              id: selectedAvatarId.value,
+              id,
             },
           })
           .pipe(

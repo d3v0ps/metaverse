@@ -3,6 +3,7 @@ import { AvatarAppearancePortraitModule } from '@central-factory/avatars/web-com
 import { AvatarsCarouselModule } from '@central-factory/avatars/web-components/angular/avatars-carousel/avatars-carousel.module';
 import { EssentialsModule } from '@central-factory/web-components/angular/essentials.module';
 import { PopoverModule } from '@central-factory/web-components/angular/popover/popover.module';
+import { TabsetModule } from '@central-factory/web-components/angular/tabset/tabset.module';
 import { AgeModule } from '@central-factory/worlds/web-components/angular/age/age.module';
 import { AvatarBeliefsModule } from '../avatar-beliefs/avatar-beliefs.module';
 import { AvatarBiographyModule } from '../avatar-biography/avatar-biography.module';
@@ -21,6 +22,7 @@ import { AvatarInfoComponent } from './avatar-info.component';
     AvatarGenderModule,
     AvatarBeliefsModule,
     PopoverModule,
+    TabsetModule,
   ],
   declarations: [AvatarInfoComponent],
   exports: [AvatarInfoComponent],

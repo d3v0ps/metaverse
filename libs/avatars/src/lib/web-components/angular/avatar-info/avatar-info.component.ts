@@ -12,10 +12,20 @@ import { AvatarInfo } from '../../../models/avatar-info';
       <section cfElem="main-content">
         <div cfElem="heading">
           <div cfElem="appearances">
-            <cf-avatar-appearance-portrait
-              [avatar]="avatar"
-              displayComponent="avataaars"
-            ></cf-avatar-appearance-portrait>
+            <cf-tabset>
+              <cf-tab title="Portrait">
+                <cf-avatar-appearance-portrait
+                  [avatar]="avatar"
+                  displayComponent="avataaars"
+                ></cf-avatar-appearance-portrait>
+              </cf-tab>
+              <cf-tab title="Pixel">
+                <cf-avatar-appearance-portrait
+                  [avatar]="avatar"
+                  displayComponent="lpc"
+                ></cf-avatar-appearance-portrait>
+              </cf-tab>
+            </cf-tabset>
           </div>
           <div cfBlock="name">
             <cf-typography type="h5" [bold]="true">
@@ -113,12 +123,6 @@ import { AvatarInfo } from '../../../models/avatar-info';
       </section>
 
       <div cfElem="related-content">
-        <div cfElem="appearances">
-          <cf-avatar-appearance-portrait
-            [avatar]="avatar"
-          ></cf-avatar-appearance-portrait>
-        </div>
-
         <div cfElem="parents" *ngIf="info.parents && info.parents.length > 0">
           <h5>Parents</h5>
           <cf-avatars-carousel
