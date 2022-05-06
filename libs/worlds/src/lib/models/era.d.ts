@@ -31,6 +31,7 @@ export type WorldEvent = {
 };
 
 export type Era = {
+  id: string;
   name: string;
   shortName: string;
   description?: string;
