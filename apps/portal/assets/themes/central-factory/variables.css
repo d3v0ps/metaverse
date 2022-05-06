@@ -4,20 +4,20 @@
  */
 
 :root {
-  --color-base-primary-medium: #9575cd;
-  --color-base-primary-lightest: #e0c0ff;
-  --color-base-primary-lighter: #c7a7ff;
-  --color-base-primary-light: #ae8ee6;
-  --color-base-primary-darkest: #4a2a82;
-  --color-base-primary-darker: #63439b;
-  --color-base-primary-dark: #7c5cb4;
-  --color-base-secondary-medium: #f7dc70;
-  --color-base-secondary-lightest: #ffffbb;
-  --color-base-secondary-lighter: #ffffa2;
-  --color-base-secondary-light: #fff589;
-  --color-base-secondary-darkest: #ac9125;
-  --color-base-secondary-darker: #c5aa3e;
-  --color-base-secondary-dark: #dec357;
+  --color-base-primary-medium: #706fd3;
+  --color-base-primary-lightest: #bbbaff;
+  --color-base-primary-lighter: #a2a1ff;
+  --color-base-primary-light: #8988ec;
+  --color-base-primary-darkest: #252488;
+  --color-base-primary-darker: #3e3da1;
+  --color-base-primary-dark: #5756ba;
+  --color-base-secondary-medium: #d1d36f;
+  --color-base-secondary-lightest: #ffffba;
+  --color-base-secondary-lighter: #ffffa1;
+  --color-base-secondary-light: #eaec88;
+  --color-base-secondary-darkest: #868824;
+  --color-base-secondary-darker: #9fa13d;
+  --color-base-secondary-dark: #b8ba56;
   --color-base-light-medium: #dee7e7;
   --color-base-light-lightest: #ffffff;
   --color-base-light-lighter: #ffffff;
@@ -105,13 +105,13 @@
   --color-font-primary: #dee7e7;
   --color-font-secondary: #acb5b5;
   --component-badge-color: #dee7e7;
-  --component-badge-background-color: #f7dc70;
+  --component-badge-background-color: #d1d36f;
   --component-button-font-size: 1rem;
   --component-button-color: #dee7e7;
   --component-button-background-color: #404040;
-  --component-button-primary-background-color: #9575cd;
+  --component-button-primary-background-color: #706fd3;
   --component-button-primary-color: #dee7e7;
-  --component-button-secondary-background-color: #f7dc70;
+  --component-button-secondary-background-color: #d1d36f;
   --component-button-secondary-color: #dee7e7;
   --component-button-success-background-color: #4caf50;
   --component-button-success-color: #dee7e7;
@@ -124,17 +124,17 @@
   --component-button-big-font-size: 1.2rem;
   --component-card-color: #404040;
   --component-card-background-color: #404040;
-  --component-card-header-background-color: #f7dc70;
-  --component-card-footer-background-color: #f7dc70;
+  --component-card-header-background-color: #d1d36f;
+  --component-card-footer-background-color: #d1d36f;
   --component-card-title-color: #dee7e7;
-  --component-card-icon-color: #f7dc70;
+  --component-card-icon-color: #d1d36f;
   --component-chatbox-message-background-color: #404040;
   --component-chatbox-message-color: #dee7e7;
-  --component-chatbox-username-background-color: #9575cd;
+  --component-chatbox-username-background-color: #706fd3;
   --component-chatbox-username-color: #dee7e7;
   --component-chatbox-icon-color: #dee7e7;
   --component-chatbox-input-color: #dee7e7;
-  --component-chatbox-input-active-border-color: #f7dc70;
+  --component-chatbox-input-active-border-color: #d1d36f;
   --component-input-font-size: 1rem;
   --component-input-border-color: #404040;
   --component-input-border-radius: 14px;
@@ -150,9 +150,9 @@
   --component-input-select-background-image: url("data:image/svg+xml;utf8,<svg fill='%23fefefe' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
   --component-input-disabled-border-color: #404040;
   --component-input-disabled-background-color: #404040;
-  --component-input-primary-background-color: #9575cd;
+  --component-input-primary-background-color: #706fd3;
   --component-input-primary-color: #dee7e7;
-  --component-input-secondary-background-color: #f7dc70;
+  --component-input-secondary-background-color: #d1d36f;
   --component-input-secondary-color: #dee7e7;
   --component-input-success-background-color: #4caf50;
   --component-input-success-color: #dee7e7;
@@ -167,29 +167,29 @@
   --component-navbar-border-color: #404040;
   --component-navbar-color: #dee7e7;
   --component-navbar-title-color: #dee7e7;
-  --component-navbar-title-hover-color: #9575cd;
+  --component-navbar-title-hover-color: #706fd3;
   --component-navbar-list-item-color: #dee7e7;
   --component-navbar-list-item-hover-color: #dee7e7;
-  --component-scene-background-color: #9575cd;
+  --component-scene-background-color: #706fd3;
   --component-scene-content-expand: 90%;
   --component-scene-content-background-color: #404040;
   --component-scene-content-color: #dee7e7;
   --component-select-background-color: #404040;
   --component-select-border-color: #cccccc;
   --component-select-option-background-color: #dee7e7;
-  --component-select-opened-border-color: #9575cd;
-  --component-select-selected-background-color: #9575cd;
+  --component-select-opened-border-color: #706fd3;
+  --component-select-selected-background-color: #706fd3;
   --component-select-selected-color: #dee7e7;
-  --component-select-marked-background-color: #9575cd;
+  --component-select-marked-background-color: #706fd3;
   --component-select-marked-color: #dee7e7;
-  --component-select-focused-border-color: #9575cd;
+  --component-select-focused-border-color: #706fd3;
   --component-select-disabled-color: #f9f9f9;
   --component-select-text-color: #dee7e7;
-  --component-sidebar-button-background-color: #9575cd;
+  --component-sidebar-button-background-color: #706fd3;
   --component-sidebar-button-color: #dee7e7;
-  --component-sidebar-button-active-background-color: #f7dc70;
+  --component-sidebar-button-active-background-color: #d1d36f;
   --component-sidebar-button-active-color: #dee7e7;
-  --component-splash-screen-background-color: #9575cd;
+  --component-splash-screen-background-color: #706fd3;
   --component-splash-screen-color: #dee7e7;
   --component-tab-background-color: #404040;
   --component-tab-text-color: #dee7e7;
@@ -214,19 +214,4 @@
   --size-font-h5: 1rem; /* the extra large size of the font */
   --size-font-h6: 0.8rem; /* the extra large size of the font */
   --size-font-base: 1rem; /* the base size of the font */
-  --size-icon-xxs: 0.6rem; /* the small size of the icon */
-  --size-icon-xs: 0.8rem; /* the small size of the icon */
-  --size-icon-s: 1rem; /* the small size of the icon */
-  --size-icon-m: 1.2rem; /* the medium size of the icon */
-  --size-icon-l: 1.5rem; /* the large size of the icon */
-  --size-icon-xl: 1.8rem; /* the large size of the icon */
-  --size-icon-xxl: 2rem; /* the extra large size of the icon */
-  --size-icon-p: 1.2rem; /* the extra large size of the icon */
-  --size-icon-h1: 2rem; /* the extra large size of the icon */
-  --size-icon-h2: 1.8rem; /* the extra large size of the icon */
-  --size-icon-h3: 1.5rem; /* the extra large size of the icon */
-  --size-icon-h4: 1.2rem; /* the extra large size of the icon */
-  --size-icon-h5: 1rem; /* the extra large size of the icon */
-  --size-icon-h6: 0.8rem; /* the extra large size of the icon */
-  --size-icon-base: 1.2rem; /* the base size of the icon */
 }
