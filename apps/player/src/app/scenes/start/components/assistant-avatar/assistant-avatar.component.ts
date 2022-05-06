@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Avatar } from '@central-factory/avatars/models';
+import { Avatar } from '@central-factory/avatars/models/avatar';
 
 @Component({
   selector: 'cf-assistant-avatar',

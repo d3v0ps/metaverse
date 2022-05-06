@@ -1,10 +1,10 @@
-import { Avatar } from '@central-factory/avatars/models';
 import {
   Burg as Place,
   Culture,
   Religion as Belief,
 } from '@central-factory/worlds/models/fmg-map';
 import { AvatarProfession } from '@central-factory/worlds/models/world';
+import { Avatar } from './avatar';
 
 export type AvatarInfo = {
   culture: Culture;
@@ -14,7 +14,10 @@ export type AvatarInfo = {
   birthPlaceShield: string;
   currentPlace?: Place;
   currentPlaceShield?: string;
-  professions: Record<'main' | 'secondary', AvatarProfession>;
+  professions?: {
+    main?: AvatarProfession;
+    secondary?: AvatarProfession;
+  };
   avatar?: Avatar;
   partners: Avatar[];
   parents: Avatar[];

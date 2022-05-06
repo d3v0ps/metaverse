@@ -1,0 +1,1403 @@
+{
+  "$ref": "#/definitions/Root",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "definitions": {
+    "Biomes": {
+      "additionalProperties": false,
+      "properties": {
+        "area": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "biomesMartix": {},
+        "cells": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "color": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "cost": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "habitability": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "i": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "icons": {
+          "items": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "type": "array"
+        },
+        "iconsDensity": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "name": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "rural": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "urban": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "i",
+        "name",
+        "color",
+        "biomesMartix",
+        "habitability",
+        "iconsDensity",
+        "icons",
+        "cost",
+        "cells",
+        "area",
+        "rural",
+        "urban"
+      ],
+      "type": "object"
+    },
+    "Burg": {
+      "additionalProperties": false,
+      "properties": {
+        "MFCG": {
+          "type": "number"
+        },
+        "capital": {
+          "type": "number"
+        },
+        "cell": {
+          "type": "number"
+        },
+        "citadel": {
+          "type": "number"
+        },
+        "coa": {
+          "$ref": "#/definitions/CoatOfArms"
+        },
+        "coaSize": {
+          "type": "number"
+        },
+        "culture": {
+          "type": "number"
+        },
+        "feature": {
+          "type": "number"
+        },
+        "i": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        },
+        "plaza": {
+          "type": "number"
+        },
+        "population": {
+          "type": "number"
+        },
+        "port": {
+          "type": "number"
+        },
+        "shanty": {
+          "type": "number"
+        },
+        "state": {
+          "type": "number"
+        },
+        "temple": {
+          "type": "number"
+        },
+        "type": {
+          "type": "string"
+        },
+        "walls": {
+          "type": "number"
+        },
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "coa"
+      ],
+      "type": "object"
+    },
+    "CoatOfArms": {
+      "additionalProperties": false,
+      "properties": {
+        "charges": {
+          "items": {
+            "$ref": "#/definitions/CoatOfArmsCharge"
+          },
+          "type": "array"
+        },
+        "division": {
+          "$ref": "#/definitions/CoatOfArmsDivision"
+        },
+        "ordinaries": {
+          "items": {
+            "$ref": "#/definitions/CoatOfArmsOrdinary"
+          },
+          "type": "array"
+        },
+        "shield": {
+          "type": "string"
+        },
+        "t1": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "t1",
+        "shield"
+      ],
+      "type": "object"
+    },
+    "CoatOfArmsCharge": {
+      "additionalProperties": false,
+      "properties": {
+        "charge": {
+          "type": "string"
+        },
+        "p": {
+          "type": "string"
+        },
+        "size": {
+          "type": "number"
+        },
+        "t": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "charge",
+        "t",
+        "p",
+        "size"
+      ],
+      "type": "object"
+    },
+    "CoatOfArmsDivision": {
+      "additionalProperties": false,
+      "properties": {
+        "division": {
+          "type": "string"
+        },
+        "line": {
+          "type": "string"
+        },
+        "t": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "division",
+        "t",
+        "line"
+      ],
+      "type": "object"
+    },
+    "CoatOfArmsOrdinary": {
+      "additionalProperties": false,
+      "properties": {
+        "line": {
+          "type": "string"
+        },
+        "ordinary": {
+          "type": "string"
+        },
+        "t": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "ordinary",
+        "t"
+      ],
+      "type": "object"
+    },
+    "Culture": {
+      "additionalProperties": false,
+      "properties": {
+        "base": {
+          "type": "number"
+        },
+        "center": {
+          "type": "number"
+        },
+        "code": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        },
+        "expansionism": {
+          "type": "number"
+        },
+        "i": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        },
+        "origin": {
+          "type": "number"
+        },
+        "shield": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "i",
+        "base",
+        "shield"
+      ],
+      "type": "object"
+    },
+    "CultureNameBase": {
+      "additionalProperties": false,
+      "properties": {
+        "b": {
+          "type": "string"
+        },
+        "d": {
+          "type": "string"
+        },
+        "i": {
+          "type": "number"
+        },
+        "m": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "min": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "i",
+        "min",
+        "max",
+        "d",
+        "m",
+        "b"
+      ],
+      "type": "object"
+    },
+    "Era": {
+      "additionalProperties": false,
+      "properties": {
+        "color": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "endYear": {
+          "type": "number"
+        },
+        "events": {
+          "items": {
+            "$ref": "#/definitions/WorldEvent"
+          },
+          "type": "array"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "mapStyle": {
+          "$ref": "#/definitions/EraMapStyle"
+        },
+        "military": {
+          "items": {
+            "$ref": "#/definitions/MilitarySettings"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        },
+        "shortName": {
+          "type": "string"
+        },
+        "startYear": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "shortName",
+        "startYear",
+        "military",
+        "events"
+      ],
+      "type": "object"
+    },
+    "EraMapStyle": {
+      "enum": [
+        "default",
+        "ancient",
+        "gloom",
+        "light",
+        "watercolor",
+        "clean",
+        "atlas",
+        "cyberpunk",
+        "monochrome"
+      ],
+      "type": "string"
+    },
+    "FantasyMapGeneratorMap": {
+      "additionalProperties": false,
+      "properties": {
+        "biomes": {
+          "$ref": "#/definitions/Biomes"
+        },
+        "cells": {
+          "$ref": "#/definitions/MapCells"
+        },
+        "coords": {
+          "$ref": "#/definitions/MapCoords"
+        },
+        "id": {
+          "type": "string"
+        },
+        "info": {
+          "$ref": "#/definitions/MapInfo"
+        },
+        "nameBases": {
+          "items": {
+            "$ref": "#/definitions/CultureNameBase"
+          },
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/definitions/MapNote"
+          },
+          "type": "array"
+        },
+        "settings": {
+          "$ref": "#/definitions/MapSettings"
+        }
+      },
+      "required": [
+        "id",
+        "info",
+        "settings",
+        "coords",
+        "cells",
+        "biomes",
+        "notes",
+        "nameBases"
+      ],
+      "type": "object"
+    },
+    "MapCell": {
+      "additionalProperties": false,
+      "properties": {
+        "area": {
+          "type": "number"
+        },
+        "biome": {
+          "type": "number"
+        },
+        "burg": {
+          "type": "number"
+        },
+        "c": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "conf": {
+          "type": "number"
+        },
+        "crossroad": {
+          "type": "number"
+        },
+        "culture": {
+          "type": "number"
+        },
+        "f": {
+          "type": "number"
+        },
+        "fl": {
+          "type": "number"
+        },
+        "g": {
+          "type": "number"
+        },
+        "h": {
+          "type": "number"
+        },
+        "harbor": {
+          "type": "number"
+        },
+        "haven": {
+          "type": "number"
+        },
+        "i": {
+          "type": "number"
+        },
+        "p": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "pop": {
+          "type": "number"
+        },
+        "province": {
+          "type": "number"
+        },
+        "r": {
+          "type": "number"
+        },
+        "religion": {
+          "type": "number"
+        },
+        "road": {
+          "type": "number"
+        },
+        "s": {
+          "type": "number"
+        },
+        "state": {
+          "type": "number"
+        },
+        "t": {
+          "type": "number"
+        },
+        "v": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "i",
+        "v",
+        "c",
+        "p",
+        "g",
+        "h",
+        "area",
+        "f",
+        "t",
+        "haven",
+        "harbor",
+        "fl",
+        "r",
+        "conf",
+        "biome",
+        "s",
+        "pop",
+        "culture",
+        "burg",
+        "road",
+        "crossroad",
+        "state",
+        "religion",
+        "province"
+      ],
+      "type": "object"
+    },
+    "MapCells": {
+      "additionalProperties": false,
+      "properties": {
+        "burgs": {
+          "items": {
+            "$ref": "#/definitions/Burg"
+          },
+          "type": "array"
+        },
+        "cells": {
+          "items": {
+            "$ref": "#/definitions/MapCell"
+          },
+          "type": "array"
+        },
+        "cultures": {
+          "items": {
+            "$ref": "#/definitions/Culture"
+          },
+          "type": "array"
+        },
+        "features": {
+          "items": {},
+          "type": "array"
+        },
+        "markers": {
+          "items": {
+            "$ref": "#/definitions/MapMarker"
+          },
+          "type": "array"
+        },
+        "provinces": {
+          "items": {},
+          "type": "array"
+        },
+        "religions": {
+          "items": {
+            "$ref": "#/definitions/Religion"
+          },
+          "type": "array"
+        },
+        "rivers": {
+          "items": {
+            "$ref": "#/definitions/River"
+          },
+          "type": "array"
+        },
+        "states": {
+          "items": {
+            "$ref": "#/definitions/State"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "cells",
+        "features",
+        "cultures",
+        "burgs",
+        "states",
+        "provinces",
+        "religions",
+        "rivers",
+        "markers"
+      ],
+      "type": "object"
+    },
+    "MapCoords": {
+      "additionalProperties": false,
+      "properties": {
+        "latN": {
+          "type": "number"
+        },
+        "latS": {
+          "type": "number"
+        },
+        "latT": {
+          "type": "number"
+        },
+        "lonE": {
+          "type": "number"
+        },
+        "lonT": {
+          "type": "number"
+        },
+        "lonW": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "latT",
+        "latN",
+        "latS",
+        "lonT",
+        "lonW",
+        "lonE"
+      ],
+      "type": "object"
+    },
+    "MapInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "exportedAt": {
+          "type": "string"
+        },
+        "mapId": {
+          "type": "number"
+        },
+        "mapName": {
+          "type": "string"
+        },
+        "seed": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "description",
+        "exportedAt",
+        "mapName",
+        "seed",
+        "mapId"
+      ],
+      "type": "object"
+    },
+    "MapMarker": {
+      "additionalProperties": false,
+      "properties": {
+        "cell": {
+          "type": "number"
+        },
+        "dx": {
+          "type": "number"
+        },
+        "dy": {
+          "type": "number"
+        },
+        "i": {
+          "type": "number"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "px": {
+          "type": "number"
+        },
+        "type": {
+          "type": "string"
+        },
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "icon",
+        "type",
+        "x",
+        "y",
+        "cell",
+        "i"
+      ],
+      "type": "object"
+    },
+    "MapNote": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "legend": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "legend"
+      ],
+      "type": "object"
+    },
+    "MapOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "era": {
+          "type": "string"
+        },
+        "eraShort": {
+          "type": "string"
+        },
+        "military": {
+          "items": {
+            "$ref": "#/definitions/MilitarySettings"
+          },
+          "type": "array"
+        },
+        "pinNotes": {
+          "type": "boolean"
+        },
+        "showMFCGMap": {
+          "type": "boolean"
+        },
+        "stateLabelsMode": {
+          "type": "string"
+        },
+        "winds": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "year": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "pinNotes",
+        "showMFCGMap",
+        "winds",
+        "stateLabelsMode",
+        "year",
+        "era",
+        "eraShort",
+        "military"
+      ],
+      "type": "object"
+    },
+    "MapSettings": {
+      "additionalProperties": false,
+      "properties": {
+        "areaUnit": {
+          "type": "string"
+        },
+        "barBackColor": {
+          "type": "string"
+        },
+        "barBackOpacity": {
+          "type": "string"
+        },
+        "barLabel": {
+          "type": "string"
+        },
+        "barPosX": {
+          "type": "string"
+        },
+        "barPosY": {
+          "type": "string"
+        },
+        "barSize": {
+          "type": "string"
+        },
+        "distanceScale": {
+          "type": "string"
+        },
+        "distanceUnit": {
+          "type": "string"
+        },
+        "heightExponent": {
+          "type": "string"
+        },
+        "heightUnit": {
+          "type": "string"
+        },
+        "hideLabels": {
+          "type": "boolean"
+        },
+        "latitudeO": {
+          "type": "string"
+        },
+        "mapName": {
+          "type": "string"
+        },
+        "mapSize": {
+          "type": "string"
+        },
+        "options": {
+          "$ref": "#/definitions/MapOptions"
+        },
+        "populationRate": {
+          "type": "number"
+        },
+        "prec": {
+          "type": "string"
+        },
+        "rescaleLabels": {
+          "type": "boolean"
+        },
+        "stylePreset": {
+          "type": "string"
+        },
+        "temperatureEquator": {
+          "type": "string"
+        },
+        "temperaturePole": {
+          "type": "string"
+        },
+        "temperatureScale": {
+          "type": "string"
+        },
+        "urbanDensity": {
+          "type": "number"
+        },
+        "urbanization": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "distanceUnit",
+        "distanceScale",
+        "areaUnit",
+        "heightUnit",
+        "heightExponent",
+        "temperatureScale",
+        "barSize",
+        "barLabel",
+        "barBackOpacity",
+        "barBackColor",
+        "barPosX",
+        "barPosY",
+        "populationRate",
+        "urbanization",
+        "mapSize",
+        "latitudeO",
+        "temperatureEquator",
+        "temperaturePole",
+        "prec",
+        "options",
+        "mapName",
+        "hideLabels",
+        "stylePreset",
+        "rescaleLabels",
+        "urbanDensity"
+      ],
+      "type": "object"
+    },
+    "Meta": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "previewUrl": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "MilitarySettings": {
+      "additionalProperties": false,
+      "properties": {
+        "crew": {
+          "type": "number"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "power": {
+          "type": "number"
+        },
+        "rural": {
+          "type": "number"
+        },
+        "separate": {
+          "type": "number"
+        },
+        "type": {
+          "type": "string"
+        },
+        "urban": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "icon",
+        "name",
+        "rural",
+        "urban",
+        "crew",
+        "power",
+        "type",
+        "separate"
+      ],
+      "type": "object"
+    },
+    "Religion": {
+      "additionalProperties": false,
+      "properties": {
+        "center": {
+          "type": "number"
+        },
+        "code": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        },
+        "culture": {
+          "type": "number"
+        },
+        "deity": {
+          "type": "string"
+        },
+        "expansion": {
+          "type": "string"
+        },
+        "expansionism": {
+          "type": "number"
+        },
+        "form": {
+          "type": "string"
+        },
+        "i": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        },
+        "origin": {
+          "type": "number"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "i",
+        "name"
+      ],
+      "type": "object"
+    },
+    "River": {
+      "additionalProperties": false,
+      "properties": {
+        "basin": {
+          "type": "number"
+        },
+        "cells": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "discharge": {
+          "type": "number"
+        },
+        "i": {
+          "type": "number"
+        },
+        "length": {
+          "type": "number"
+        },
+        "mouth": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parent": {
+          "type": "number"
+        },
+        "source": {
+          "type": "number"
+        },
+        "sourceWidth": {
+          "type": "number"
+        },
+        "type": {
+          "type": "string"
+        },
+        "width": {
+          "type": "number"
+        },
+        "widthFactor": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "i",
+        "source",
+        "mouth",
+        "discharge",
+        "length",
+        "width",
+        "widthFactor",
+        "sourceWidth",
+        "parent",
+        "cells",
+        "basin",
+        "name",
+        "type"
+      ],
+      "type": "object"
+    },
+    "Root": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/FantasyMapGeneratorMap"
+        },
+        {
+          "$ref": "#/definitions/Era"
+        },
+        {
+          "$ref": "#/definitions/World"
+        }
+      ]
+    },
+    "State": {
+      "additionalProperties": false,
+      "properties": {
+        "alert": {
+          "type": "number"
+        },
+        "area": {
+          "type": "number"
+        },
+        "burgs": {
+          "type": "number"
+        },
+        "campaigns": {
+          "items": {
+            "$ref": "#/definitions/StateCampaign"
+          },
+          "type": "array"
+        },
+        "capital": {
+          "type": "number"
+        },
+        "cells": {
+          "type": "number"
+        },
+        "center": {
+          "type": "number"
+        },
+        "coa": {
+          "$ref": "#/definitions/CoatOfArms"
+        },
+        "color": {
+          "type": "string"
+        },
+        "culture": {
+          "type": "number"
+        },
+        "diplomacy": {
+          "items": {},
+          "type": "array"
+        },
+        "expansionism": {
+          "type": "number"
+        },
+        "form": {
+          "type": "string"
+        },
+        "formName": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "i": {
+          "type": "number"
+        },
+        "military": {
+          "items": {
+            "$ref": "#/definitions/StateMilitary"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        },
+        "neighbors": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "pole": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "provinces": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "rural": {
+          "type": "number"
+        },
+        "type": {
+          "type": "string"
+        },
+        "urban": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "i",
+        "name",
+        "urban",
+        "rural",
+        "burgs",
+        "area",
+        "cells",
+        "neighbors",
+        "diplomacy",
+        "provinces"
+      ],
+      "type": "object"
+    },
+    "StateCampaign": {
+      "additionalProperties": false,
+      "properties": {
+        "end": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        },
+        "start": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "name",
+        "start",
+        "end"
+      ],
+      "type": "object"
+    },
+    "StateMilitary": {
+      "additionalProperties": false,
+      "properties": {
+        "a": {
+          "type": "number"
+        },
+        "bx": {
+          "type": "number"
+        },
+        "by": {
+          "type": "number"
+        },
+        "cell": {
+          "type": "number"
+        },
+        "i": {
+          "type": "number"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "n": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        },
+        "state": {
+          "type": "number"
+        },
+        "u": {
+          "$ref": "#/definitions/StateMilitaryUnits"
+        },
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "i",
+        "a",
+        "cell",
+        "x",
+        "y",
+        "bx",
+        "by",
+        "u",
+        "n",
+        "name",
+        "state",
+        "icon"
+      ],
+      "type": "object"
+    },
+    "StateMilitaryUnits": {
+      "additionalProperties": false,
+      "properties": {
+        "archers": {
+          "type": "number"
+        },
+        "artillery": {
+          "type": "number"
+        },
+        "cavalry": {
+          "type": "number"
+        },
+        "fleet": {
+          "type": "number"
+        },
+        "infantry": {
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "World": {
+      "additionalProperties": false,
+      "properties": {
+        "archetypes": {
+          "items": {},
+          "type": "array"
+        },
+        "avatars": {
+          "items": {},
+          "type": "array"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "eras": {
+          "items": {},
+          "type": "array"
+        },
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "#/definitions/WorldKind"
+        },
+        "map": {},
+        "meta": {
+          "$ref": "#/definitions/Meta"
+        },
+        "professions": {
+          "items": {},
+          "type": "array"
+        },
+        "state": {},
+        "stats": {
+          "$ref": "#/definitions/WorldStats"
+        },
+        "year": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "meta",
+        "kind",
+        "year"
+      ],
+      "type": "object"
+    },
+    "WorldEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "end": {
+          "type": "number"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "start": {
+          "type": "number"
+        },
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/WorldEventType"
+        }
+      },
+      "required": [
+        "start",
+        "end",
+        "title",
+        "icon",
+        "type"
+      ],
+      "type": "object"
+    },
+    "WorldEventType": {
+      "enum": [
+        "WAR_DECLARATION",
+        "MILITARY_BATTLE",
+        "PEACE_AGREEMENT",
+        "NATURAL_DISASTER",
+        "DISEASE",
+        "CIVIL_WAR"
+      ],
+      "type": "string"
+    },
+    "WorldKind": {
+      "enum": [
+        "analog",
+        "digital",
+        "unknown"
+      ],
+      "type": "string"
+    },
+    "WorldStats": {
+      "additionalProperties": false,
+      "properties": {
+        "avatars": {
+          "type": "number"
+        },
+        "burgs": {
+          "type": "number"
+        },
+        "cultures": {
+          "type": "number"
+        },
+        "states": {
+          "type": "number"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "worlds"
+}

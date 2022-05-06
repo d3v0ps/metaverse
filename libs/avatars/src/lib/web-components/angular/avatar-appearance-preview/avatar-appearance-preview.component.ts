@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Appearance, AppearanceFormat } from '../../../models/appearance';
 
 @Component({
   selector: 'cf-avatar-appearance-preview',
@@ -25,10 +24,10 @@ import { Appearance, AppearanceFormat } from '../../../models/appearance';
   `,
 })
 export class AvatarAppearancePreviewComponent {
-  @Input() appearance?: Appearance;
+  @Input() appearance?: any;
 
   @Input() height = '300px';
   @Input() width = '100%';
 
-  appearanceFormats = AppearanceFormat;
+  appearanceFormats = { Model: '' };
 }

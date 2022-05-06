@@ -20,9 +20,7 @@ export const renderTypes = async (params: {
     ifObject: (
       schema: AugmentedJSONSchema,
       { fn }: { fn: (params: any) => string }
-    ) => {
-      return schema.type === 'object' ? fn(schema) : '';
-    },
+    ) => (schema.type === 'object' ? fn(schema) : ''),
     ifEnum: (
       schema: AugmentedJSONSchema,
       { fn }: { fn: (params: any) => string }

@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { AvatarGender } from '@central-factory/avatars/models';
+import { AvatarGender } from '@central-factory/avatars/models/__generated__/types';
 import { EssentialsModule } from '@central-factory/web-components/angular/essentials.module';
 import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';

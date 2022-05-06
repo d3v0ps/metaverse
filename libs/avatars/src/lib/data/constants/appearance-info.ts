@@ -22,16 +22,6 @@ export enum AppearanceInfoBodyType {
   Ectomorph = 'Ectomorph',
   Endomorph = 'Endomorph',
 }
-// {
-//   Thin = 'Thin',
-//   Slim = 'Slim',
-//   Muscular = 'Muscular',
-//   Thick = 'Thick',
-//   Chubby = 'Chubby',
-//   Fat = 'Fat',
-
-// }
-/** Light */
 
 export enum AppearanceInfoHairColor {
   '001' = '#fff5e1',
@@ -105,20 +95,3 @@ export enum AppearanceInfoEyeColor {
   '027' = '#3c1c10',
   '028' = '#291516',
 }
-
-export type AppearanceInfo = {
-  /** The appearance's skin color */
-  skinColor?: AppearanceInfoSkinColor | string;
-
-  /** The appearance's hair color */
-  hairColor?: AppearanceInfoHairColor | string;
-  hairStyle?: AppearanceInfoHairStyle | string;
-  hairLength?: number;
-
-  eyeColor?: AppearanceInfoEyeColor | string;
-
-  bodyType?: AppearanceInfoBodyType;
-  fatPercentage?: number;
-  height?: number;
-  weight?: number;
-};

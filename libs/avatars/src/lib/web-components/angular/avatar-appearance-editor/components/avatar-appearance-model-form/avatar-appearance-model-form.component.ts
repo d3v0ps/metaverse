@@ -2,12 +2,11 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { v4 as uuid } from 'uuid';
-import { Appearance, AppearanceFormat } from '../../../../../models/appearance';
 import { AvatarAppearanceProvider } from '../avatar-appearance-providers/avatar-appearance-providers.component';
 
 export type AvatarAppearanceModelForm = {
   id: string;
-  format: AppearanceFormat;
+  format: string;
   filename?: string;
   file?: File;
   src?: string;
@@ -73,26 +72,26 @@ export type AvatarAppearanceModelForm = {
   `,
 })
 export class AvatarAppearanceModelFormComponent implements OnInit, OnDestroy {
-  @Input() set appearance(value: Partial<Appearance> | undefined) {
+  @Input() set appearance(value: Partial<any> | undefined) {
     this.form.reset({
       id: value?.id || uuid(),
       filename: value?.filename || '',
-      format: value?.format || AppearanceFormat.Model,
+      format: value?.format || '',
       src: value?.src || undefined,
       file: undefined,
     });
   }
 
-  appearanceFormats = Object.keys(AppearanceFormat).map((key) => ({
+  appearanceFormats = Object.keys({ Image: '' }).map((key) => ({
     label: key,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    value: (AppearanceFormat as any)[key],
+    value: ({ Image: '' } as any)[key],
   }));
 
   form = new FormGroup({
     id: new FormControl(uuid()),
     filename: new FormControl('', [Validators.required]),
-    format: new FormControl(AppearanceFormat.Model),
+    format: new FormControl(''),
     src: new FormControl(),
     file: new FormControl(),
   });

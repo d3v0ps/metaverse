@@ -1,7 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { professions } from '@central-factory/avatars/data/demo/professions.data';
 import { mapAvatarToAvatarInfo } from '@central-factory/avatars/mappers/avatar-to-avatar-info.mapper';
-import { Avatar } from '@central-factory/avatars/models';
+import {
+  Avatar,
+  AvatarProfession,
+} from '@central-factory/avatars/models/avatar';
 import { World } from '@central-factory/worlds/models/world';
 import { AvatarInfo } from '../../../models/avatar-info';
 
@@ -105,10 +108,8 @@ import { AvatarInfo } from '../../../models/avatar-info';
                 }"
               ></cf-avatar-beliefs>
               <cf-avatar-professions
-                [professions]="[
-                  info.professions.main,
-                  info.professions.secondary
-                ]"
+                *ngIf="professions.length > 0"
+                [professions]="professions"
                 [ngStyle]="{
                   display: 'inline-block',
                   cursor: 'pointer',
@@ -216,6 +217,20 @@ export class AvatarInfoComponent {
   }
   get world() {
     return this._world;
+  }
+
+  get professions(): AvatarProfession[] {
+    const professions: AvatarProfession[] = [];
+
+    if (this.info?.professions?.main) {
+      professions.push(this.info.professions.main);
+    }
+
+    if (this.info?.professions?.secondary) {
+      professions.push(this.info.professions.secondary);
+    }
+
+    return professions;
   }
 
   info?: AvatarInfo;

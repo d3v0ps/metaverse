@@ -2,21 +2,20 @@ import { Provider } from '@angular/core';
 import {
   AvatarGender,
   SexualOrientation,
-} from '@central-factory/avatars/models';
+} from '@central-factory/avatars/models/__generated__/types';
 import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
 import type { UserAvatarDocType } from '../../collections/user-avatars.collection';
-import { Appearance, AppearanceFormat } from '../../models/appearance';
 
-const avatar00Appearance: Appearance = {
+const avatar00Appearance: any = {
   id: '1',
   filename: 'appearance.glb',
-  format: AppearanceFormat.Model,
+  format: '',
   src: 'assets/avatars/samples/thomas-anderson/default/appearance.glb',
   variations: {
     portrait: {
       id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
       filename: 'portrait.png',
-      format: AppearanceFormat.Image,
+      format: '',
       src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
       style: {
         id: 'avataaars',
@@ -37,7 +36,7 @@ const avatar00Appearance: Appearance = {
     dim2: {
       id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
       filename: 'portrait.png',
-      format: AppearanceFormat.Image,
+      format: '',
       src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
       style: {
         id: 'lpc',
@@ -74,7 +73,7 @@ const avatar00Appearance: Appearance = {
     dim3: {
       id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
       filename: 'portrait.png',
-      format: AppearanceFormat.Image,
+      format: '',
       src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
       style: {
         id: 'dim3-file',
@@ -84,16 +83,16 @@ const avatar00Appearance: Appearance = {
   },
 };
 
-const avatar01Appearance: Appearance = {
+const avatar01Appearance: any = {
   id: '2',
   filename: 'appearance.glb',
-  format: AppearanceFormat.Model,
+  format: '',
   src: 'assets/avatars/samples/thomas-anderson/default/appearance.glb',
   variations: {
     portrait: {
       id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
       filename: 'portrait.png',
-      format: AppearanceFormat.Image,
+      format: '',
       src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
       style: {
         id: 'avataaars',
@@ -114,7 +113,7 @@ const avatar01Appearance: Appearance = {
     dim2: {
       id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
       filename: 'portrait.png',
-      format: AppearanceFormat.Image,
+      format: '',
       src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
       style: {
         id: 'lpc',
@@ -150,7 +149,7 @@ const avatar01Appearance: Appearance = {
     dim3: {
       id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
       filename: 'portrait.png',
-      format: AppearanceFormat.Image,
+      format: '',
       src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
       style: {
         id: 'dim3-file',

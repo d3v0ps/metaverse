@@ -3,7 +3,7 @@ import {
   AvatarAppearance,
   AvatarIdentity,
   AvatarOutfit,
-} from '@central-factory/avatars/models';
+} from '@central-factory/avatars/models/avatar';
 import {
   Burg,
   Culture,

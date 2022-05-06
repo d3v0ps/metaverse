@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Burg } from '@central-factory/worlds/models/fmg-map';
+import { World } from '@central-factory/worlds/models/world';
 import {
   Avatar,
   AvatarRelationshipKind,
-} from '@central-factory/avatars/models/avatar';
-import { Burg } from '@central-factory/worlds/models/fmg-map';
-import { World } from '@central-factory/worlds/models/world';
+} from '../../../models/__generated__/types';
 
 @Component({
   selector: 'cf-avatars-list',

@@ -3,7 +3,7 @@ import { Inject, Injectable, InjectionToken, NgZone } from '@angular/core';
 import { Application } from '@central-factory/applications/models/application';
 import { professions } from '@central-factory/avatars/data/demo/professions.data';
 import { AvatarGenerator } from '@central-factory/avatars/data/generators/avatar.generator';
-import { Avatar } from '@central-factory/avatars/models';
+import { Avatar } from '@central-factory/avatars/models/avatar';
 import { EntityManager } from '@central-factory/persistence/services/entity-manager';
 import { UserPreferencesState } from '@central-factory/preferences/states/user-preferences.state';
 import { BehaviorSubject, forkJoin, of, tap } from 'rxjs';

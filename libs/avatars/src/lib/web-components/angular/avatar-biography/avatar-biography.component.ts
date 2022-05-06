@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Avatar } from '@central-factory/avatars/models';
+import { Avatar } from '@central-factory/avatars/models/avatar';
 import { AvatarInfo } from '../../../models/avatar-info';
 
 @Component({

@@ -4,7 +4,7 @@ import { Repository } from '@central-factory/persistence/services/repository';
 import { forkJoin, of, throwError } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { UserAvatarDocType } from '../collections/user-avatars.collection';
-import { Appearance, Avatar } from '../models';
+import { Avatar } from '../models/__generated__/types';
 import { AvatarAppearanceEditorModel } from '../web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component';
 
 @Injectable({
@@ -50,18 +50,18 @@ export class ManageAvatarAppearancesState {
 
     const modelUpload$ = model.file
       ? this.userAvatarsRepository.putAttachment(avatarId, {
-        data: model.file,
-        id: model.id,
-        type: 'model/vnd.gltf.binary',
-      })
+          data: model.file,
+          id: model.id,
+          type: 'model/vnd.gltf.binary',
+        })
       : of(model.id);
 
     const portraitUpload$ = portrait.file
       ? this.userAvatarsRepository.putAttachment(avatarId, {
-        data: portrait.file,
-        id: portrait.id,
-        type: 'image/png',
-      })
+          data: portrait.file,
+          id: portrait.id,
+          type: 'image/png',
+        })
       : of(portrait.id);
 
     return forkJoin([modelUpload$, portraitUpload$]).pipe(
@@ -81,9 +81,9 @@ export class ManageAvatarAppearancesState {
           (appearance) => appearance.id === model.id
         );
 
-        const appearance: Appearance = {
+        const appearance: any = {
           id: model.id,
-          format: model.format,
+          format: '' as any,
           filename: model.filename || alreadyExistingAppearance?.filename || '',
           src: model.file
             ? undefined
@@ -91,14 +91,15 @@ export class ManageAvatarAppearancesState {
           info,
           portrait: {
             id: portrait.id,
-            format: portrait.format,
+            format: '',
             filename:
               portrait.filename ||
               alreadyExistingAppearance?.variations?.portrait.filename ||
               '',
             src: portrait.file
               ? undefined
-              : portrait.src || alreadyExistingAppearance?.variations?.portrait.src,
+              : portrait.src ||
+                alreadyExistingAppearance?.variations?.portrait.src,
             style: portrait.style,
           },
         };

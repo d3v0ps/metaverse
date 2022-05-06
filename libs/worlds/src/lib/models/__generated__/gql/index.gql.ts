@@ -7,8 +7,8 @@ export class Biomes {
   @Field((type) => [Number])
   area?: number[];
 
-  @Field((type) => [BiomesMatrix])
-  biomesMartix?: BiomesMatrix[];
+  @Field()
+  biomesMartix?: any;
 
   @Field((type) => [Number])
   cells?: number[];
@@ -39,87 +39,6 @@ export class Biomes {
 
   @Field((type) => [Number])
   urban?: number[];
-}
-
-@ObjectType()
-export class BiomesMatrix {
-  @Field()
-  0?: number;
-
-  @Field()
-  1?: number;
-
-  @Field()
-  2?: number;
-
-  @Field()
-  3?: number;
-
-  @Field()
-  4?: number;
-
-  @Field()
-  5?: number;
-
-  @Field()
-  6?: number;
-
-  @Field()
-  7?: number;
-
-  @Field()
-  8?: number;
-
-  @Field()
-  9?: number;
-
-  @Field()
-  10?: number;
-
-  @Field()
-  11?: number;
-
-  @Field()
-  12?: number;
-
-  @Field()
-  13?: number;
-
-  @Field()
-  14?: number;
-
-  @Field()
-  15?: number;
-
-  @Field()
-  16?: number;
-
-  @Field()
-  17?: number;
-
-  @Field()
-  18?: number;
-
-  @Field()
-  19?: number;
-
-  @Field()
-  20?: number;
-
-  @Field()
-  21?: number;
-
-  @Field()
-  22?: number;
-
-  @Field()
-  23?: number;
-
-  @Field()
-  24?: number;
-
-  @Field()
-  25?: number;
 }
 
 @ObjectType()
@@ -316,6 +235,9 @@ export class Era {
   @Field()
   icon?: string;
 
+  @Field()
+  id?: string;
+
   @Field((type) => EraMapStyle)
   mapStyle?: EraMapStyle;
 
@@ -360,6 +282,9 @@ export class FantasyMapGeneratorMap {
 
   @Field((type) => MapCoords)
   coords?: MapCoords;
+
+  @Field()
+  id?: string;
 
   @Field((type) => MapInfo)
   info?: MapInfo;

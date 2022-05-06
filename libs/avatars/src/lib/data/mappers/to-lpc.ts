@@ -1,4 +1,4 @@
-import { Avatar } from '@central-factory/avatars/models';
+import { Avatar } from '@central-factory/avatars/models/avatar';
 
 const valueMappings: Record<
   string,

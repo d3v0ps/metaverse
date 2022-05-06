@@ -6,8 +6,8 @@ import {
   Religion as Belief,
 } from '@central-factory/worlds/models/fmg-map';
 import { AvatarProfession } from '@central-factory/worlds/models/world';
-import { Avatar, AvatarRelationshipKind } from '../models/avatar';
 import { AvatarInfo } from '../models/avatar-info';
+import { Avatar, AvatarRelationshipKind } from '../models/__generated__/types';
 
 // TODO: move this to a component
 export const cultureIcons: Record<string, string> = {

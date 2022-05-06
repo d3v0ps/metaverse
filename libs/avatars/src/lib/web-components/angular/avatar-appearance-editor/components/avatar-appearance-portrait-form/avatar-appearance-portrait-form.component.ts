@@ -2,15 +2,11 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subject, takeUntil, tap } from 'rxjs';
 import { v4 as uuid } from 'uuid';
-import {
-  AppearanceFormat,
-  AppearancePortrait,
-} from '../../../../../models/appearance';
 import { AvatarAppearanceProvider } from '../avatar-appearance-providers/avatar-appearance-providers.component';
 
 export type AvatarAppearancePortraitModelForm = {
   id: string;
-  format: AppearanceFormat;
+  format: string;
   filename?: string;
   file?: File;
   src?: string;
@@ -74,11 +70,11 @@ export type AvatarAppearancePortraitModelForm = {
 export class AvatarAppearancePortraitFormComponent
   implements OnInit, OnDestroy
 {
-  @Input() set portrait(value: AppearancePortrait | undefined) {
+  @Input() set portrait(value: any | undefined) {
     this.form.reset({
       id: value?.id || uuid(),
       filename: value?.filename || '',
-      format: value?.format || AppearanceFormat.Image,
+      format: value?.format || '',
       src: value?.src || undefined,
       file: undefined,
       style: value?.style || {
@@ -92,7 +88,7 @@ export class AvatarAppearancePortraitFormComponent
   form = new FormGroup({
     id: new FormControl(uuid()),
     filename: new FormControl(''),
-    format: new FormControl(AppearanceFormat.Image),
+    format: new FormControl(''),
     src: new FormControl(),
     file: new FormControl(),
     style: new FormControl(),

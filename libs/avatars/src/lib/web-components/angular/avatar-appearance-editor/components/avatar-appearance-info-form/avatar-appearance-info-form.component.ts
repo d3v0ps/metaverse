@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
-  AppearanceInfo,
   AppearanceInfoBodyType,
   AppearanceInfoEyeColor,
   AppearanceInfoHairColor,
   AppearanceInfoHairStyle,
   AppearanceInfoSkinColor,
-} from '../../../../../models/appearance-info';
+} from '../../../../../data/constants/appearance-info';
+import { AppearanceInfo } from '../../../../../models/appearance-info';
 
 @Component({
   selector: 'cf-avatar-appearance-info-form',

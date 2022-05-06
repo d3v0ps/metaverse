@@ -9,10 +9,6 @@ import {
   Output,
 } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import {
-  AppearanceFormat,
-  AppearanceVariation,
-} from '@central-factory/avatars/models/appearance';
 import { map, Subject, takeUntil, tap } from 'rxjs';
 import { avataaarsDesignStyle } from './design-styles/avataaars/avataaars.design-style';
 import { dim3FileDesignSystem } from './design-styles/dim3-file/dim3-file.design-style';
@@ -136,8 +132,8 @@ export type SelectOption = {
                         [ngValue]="option.id"
                       >
                         {{
-                          property.useDescriptionAsLabel
-                            ? option.description
+                          property['useDescriptionAsLabel']
+                            ? option['description']
                             : option.label
                         }}
                       </option>
@@ -231,7 +227,7 @@ export class AvatarAppearancePortraitDesignerComponent
   @Input() randomizeInterval = 0;
   @Input() rarity = 'common';
 
-  @Input() set appearancePortrait(value: AppearanceVariation | undefined) {
+  @Input() set appearancePortrait(value: any | undefined) {
     this._portrait = value;
     this.styleForm.setValue(value?.style.id || 'avataaars', {
       emitEvent: false,
@@ -245,7 +241,7 @@ export class AvatarAppearancePortraitDesignerComponent
     this.propertiesForm.patchValue(value?.style.properties || {});
     setTimeout(() => this.generateRandomAppearance(), 100);
   }
-  get appearancePortrait(): AppearanceVariation | undefined {
+  get appearancePortrait(): any | undefined {
     return this._portrait;
   }
 
@@ -277,7 +273,7 @@ export class AvatarAppearancePortraitDesignerComponent
   }>();
 
   showPreview = true;
-  formats = AppearanceFormat;
+  formats = { Image: '' };
   styleOptions: DesignStyle[] = [
     avataaarsDesignStyle,
     imageDesignStyle,
@@ -293,7 +289,7 @@ export class AvatarAppearancePortraitDesignerComponent
 
   private destroy$ = new Subject<void>();
 
-  private _portrait?: AppearanceVariation;
+  private _portrait?: any;
 
   private randomizeTimeout: any = null;
 

@@ -1,8 +1,7 @@
 import { Provider } from '@angular/core';
-import { AvatarGender } from '@central-factory/avatars/models';
+import { AvatarGender } from '@central-factory/avatars/models/__generated__/types';
 import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
 import type { UserAvatarDocType } from '../../collections/user-avatars.collection';
-import { AppearanceFormat } from '../../models/appearance';
 
 export const userAvatars: UserAvatarDocType[] = [
   {
@@ -22,13 +21,13 @@ export const userAvatars: UserAvatarDocType[] = [
       {
         id: '1',
         filename: 'appearance.glb',
-        format: AppearanceFormat.Model,
+        format: '',
         src: 'assets/avatars/samples/thomas-anderson/neo/appearance.glb',
         variations: {
           portrait: {
             id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
             filename: 'portrait.png',
-            format: AppearanceFormat.Image,
+            format: '',
             src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
             style: {
               id: 'avataaars',
@@ -49,7 +48,7 @@ export const userAvatars: UserAvatarDocType[] = [
           dim2: {
             id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
             filename: 'portrait.png',
-            format: AppearanceFormat.Image,
+            format: '',
             src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
             style: {
               id: 'lpc',
@@ -62,7 +61,7 @@ export const userAvatars: UserAvatarDocType[] = [
           dim3: {
             id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
             filename: 'portrait.png',
-            format: AppearanceFormat.Image,
+            format: '',
             src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
             style: {
               id: 'dim3-file',
@@ -73,7 +72,7 @@ export const userAvatars: UserAvatarDocType[] = [
         portrait: {
           id: '690798c7-9bf0-45ce-b76a-7982ee119322',
           filename: 'portrait.png',
-          format: AppearanceFormat.Image,
+          format: '',
           src: 'assets/avatars/samples/thomas-anderson/neo/portrait.png',
           style: {
             id: 'avataaars',
@@ -100,13 +99,13 @@ export const userAvatars: UserAvatarDocType[] = [
       {
         id: '2',
         filename: 'appearance.glb',
-        format: AppearanceFormat.Model,
+        format: '',
         src: 'assets/avatars/samples/thomas-anderson/default/appearance.glb',
         variations: {
           portrait: {
             id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
             filename: 'portrait.png',
-            format: AppearanceFormat.Image,
+            format: '',
             src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
             style: {
               id: 'avataaars',
@@ -126,7 +125,7 @@ export const userAvatars: UserAvatarDocType[] = [
           dim2: {
             id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
             filename: 'portrait.png',
-            format: AppearanceFormat.Image,
+            format: '',
             src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
             style: {
               id: 'lpc',
@@ -139,7 +138,7 @@ export const userAvatars: UserAvatarDocType[] = [
           dim3: {
             id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
             filename: 'portrait.png',
-            format: AppearanceFormat.Image,
+            format: '',
             src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
             style: {
               id: 'dim3-file',
@@ -150,7 +149,7 @@ export const userAvatars: UserAvatarDocType[] = [
         portrait: {
           id: '5a6ecf92-141f-46ca-aa9f-b67c009a5df1',
           filename: 'portrait.png',
-          format: AppearanceFormat.Image,
+          format: '',
           src: 'assets/avatars/samples/thomas-anderson/default/portrait.png',
           style: {
             id: 'avataaars',
@@ -187,12 +186,12 @@ export const userAvatars: UserAvatarDocType[] = [
       {
         id: '1',
         filename: 'appearance.glb',
-        format: AppearanceFormat.Model,
+        format: '',
         src: 'assets/avatars/samples/elliot-alderson/default/appearance.glb',
         portrait: {
           id: '74f583ff-8c6d-4433-9aa4-4d4a7903dac4',
           filename: 'portrait.png',
-          format: AppearanceFormat.Image,
+          format: '',
           src: 'assets/avatars/samples/elliot-alderson/default/portrait.png',
           style: {
             id: 'avataaars',
@@ -229,14 +228,14 @@ export const userAvatars: UserAvatarDocType[] = [
     appearances: [
       {
         id: '3',
-        format: AppearanceFormat.Model,
+        format: '',
         src: 'assets/avatars/samples/alan-turing/default/appearance.glb',
         filename: 'appearance.glb',
         variations: {
           portrait: {
             id: '8eccca39-ba05-4cf5-a106-3dffd9f563b0',
             filename: 'portrait.png',
-            format: AppearanceFormat.Image,
+            format: '',
             src: 'assets/avatars/samples/alan-turing/default/portrait.png',
             style: {
               id: 'avataaars',
@@ -257,7 +256,7 @@ export const userAvatars: UserAvatarDocType[] = [
           dim2: {
             id: '8eccca39-ba05-4cf5-a106-3dffd9f563b0',
             filename: 'portrait.png',
-            format: AppearanceFormat.Image,
+            format: '',
             src: 'assets/avatars/samples/alan-turing/default/portrait.png',
             style: {
               id: 'lpc',
@@ -270,7 +269,7 @@ export const userAvatars: UserAvatarDocType[] = [
           dim3: {
             id: '8eccca39-ba05-4cf5-a106-3dffd9f563b0',
             filename: 'portrait.png',
-            format: AppearanceFormat.Image,
+            format: '',
             src: 'assets/avatars/samples/alan-turing/default/portrait.png',
             style: {
               id: 'dim3-file',
@@ -281,7 +280,7 @@ export const userAvatars: UserAvatarDocType[] = [
         portrait: {
           id: '8eccca39-ba05-4cf5-a106-3dffd9f563b0',
           filename: 'portrait.png',
-          format: AppearanceFormat.Image,
+          format: '',
           src: 'assets/avatars/samples/alan-turing/default/portrait.png',
           style: {
             id: 'avataaars',

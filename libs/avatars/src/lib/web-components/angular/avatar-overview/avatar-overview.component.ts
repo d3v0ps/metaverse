@@ -1,8 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { AppearanceFormat } from '@central-factory/avatars/models/appearance';
-import type { Avatar } from '../../../models/avatar';
+import { Avatar } from '../../../models/avatar';
 
 export interface AvatarOverviewInput {
   welcomeMessage: string;
@@ -12,12 +11,12 @@ export interface AvatarOverviewInput {
   appearance: {
     id: string;
     filename: string;
-    format: AppearanceFormat;
+    format: string;
     src?: string;
     portrait: {
       id: string;
       filename: string;
-      format: AppearanceFormat;
+      format: string;
       src?: string;
     };
   };
@@ -119,12 +118,12 @@ export class AvatarOverviewComponent {
       id: new FormControl(''),
       filename: new FormControl(''),
       src: new FormControl(''),
-      format: new FormControl(AppearanceFormat.Model),
+      format: new FormControl(''),
       portrait: new FormGroup({
         id: new FormControl(''),
         filename: new FormControl(''),
         src: new FormControl(''),
-        format: new FormControl(AppearanceFormat.Image),
+        format: new FormControl(''),
         style: new FormControl({}),
       }),
       variations: new FormGroup({

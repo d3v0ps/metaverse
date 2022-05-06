@@ -1,4 +1,42 @@
-import type { Appearance } from './appearance';
+/** An Avatar */
+export type Avatar = {
+  /** The avatar's id */
+  id: string;
+
+  /** The avatar's identity */
+  identity?: AvatarIdentity;
+  /** The avatar's appearance */
+  appearance?: AvatarAppearance;
+  /** The avatar's attributes */
+  attributes?: AvatarAttributes;
+  /** The avatar's knowledge */
+  knowledge?: any;
+  // knowledge?: AvatarKnowledge;
+  /** The avatar's outfits */
+  outfits?: AvatarOutfit[];
+  selectedOutfit?: string;
+  location?: {
+    world?: string;
+    burg?: number;
+    coordinates?: {
+      x: number;
+      y: number;
+      z?: number;
+    };
+  };
+  // relationships?: any[];
+  relationships?: AvatarRelationship[];
+  children?: Avatar[];
+
+  /** The avatar's appearances */
+  appearances: any[];
+  // appearances: Appearance[];
+  /** The avatar's created at */
+  createdAt?: Date;
+  /** The avatar's updated at */
+  updatedAt?: Date;
+  _attachments?: any;
+};
 
 export enum SexualOrientation {
   Heterosexual = 'Heterosexual',
@@ -13,7 +51,7 @@ export enum AvatarGender {
   Female = 'Female',
 }
 
-export interface AvatarMeta {
+export type AvatarMeta = {
   /** Indicate wether this resource has parents or not */
   root?: boolean;
   /** Indicates the generator template used to generate this avatar */
@@ -24,15 +62,15 @@ export interface AvatarMeta {
    * **Note: Managed avatars might not be accepted by certain servers**
    * */
   managed?: boolean;
-}
+};
 
 export enum AvatarRelationshipKind {
-  Parent,
-  Child,
-  Sibling,
-  Spouse,
-  Friend,
-  Partner,
+  Parent = 'Parent',
+  Child = 'Child',
+  Sibling = 'Sibling',
+  Spouse = 'Spouse',
+  Friend = 'Friend',
+  Partner = 'Partner',
 }
 
 export type AvatarRelationship = {
@@ -90,9 +128,9 @@ export type AvatarAttributes = {
   };
 };
 
-export type AvatarKnowledge = {
-  skills?: Record<string, AvatarSkill>;
-};
+// export type AvatarKnowledge = {
+//   skills?: Record<string, AvatarSkill>;
+// };
 
 export type AvatarSkill = {
   id: string;
@@ -144,39 +182,11 @@ export type AvatarOutfit = {
   };
 };
 
-/** An Avatar */
-export type Avatar = {
-  /** The avatar's id */
+export type AvatarProfession = {
   id: string;
-
-  /** The avatar's identity */
-  identity?: AvatarIdentity;
-  /** The avatar's appearance */
-  appearance?: AvatarAppearance;
-  /** The avatar's attributes */
-  attributes?: AvatarAttributes;
-  /** The avatar's knowledge */
-  knowledge?: AvatarKnowledge;
-  /** The avatar's outfits */
-  outfits?: AvatarOutfit[];
-  selectedOutfit?: string;
-  location?: {
-    world?: string;
-    burg?: number;
-    coordinates?: {
-      x: number;
-      y: number;
-      z?: number;
-    };
-  };
-  relationships?: AvatarRelationship[];
-  children?: Avatar[];
-
-  /** The avatar's appearances */
-  appearances: Appearance[];
-  /** The avatar's created at */
-  createdAt?: Date;
-  /** The avatar's updated at */
-  updatedAt?: Date;
-  _attachments?: any;
+  label?: string;
+  description?: string;
+  icon?: string;
+  color?: string;
+  schools?: string[];
 };

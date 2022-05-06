@@ -13,7 +13,7 @@ import {
   AvatarAppearance,
   AvatarGender,
   AvatarRelationshipKind,
-} from '../../models/avatar';
+} from '../../models/__generated__/types';
 
 @Injectable({
   providedIn: 'root',

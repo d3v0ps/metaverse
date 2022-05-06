@@ -13,7 +13,7 @@ import {
   AvatarGender,
   AvatarIdentity,
   AvatarRelationshipKind,
-} from '../../models/avatar';
+} from '../../models/__generated__/types';
 import { professions } from '../demo/professions.data';
 
 @Injectable({

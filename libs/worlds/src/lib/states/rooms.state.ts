@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Avatar } from '@central-factory/avatars/models';
+import { Avatar } from '@central-factory/avatars/models/avatar';
 import { BehaviorSubject } from 'rxjs';
 import { Burg } from '../models/fmg-map';
 import { WorldsState } from './worlds.state';

@@ -10,7 +10,7 @@ import {
   AvatarRelationship,
   AvatarRelationshipKind,
   SexualOrientation,
-} from '../../models/avatar';
+} from '../../models/__generated__/types';
 import { AvatarAppearanceGenerator } from './avatar-appearance.generator';
 import { AvatarAttributesGenerator } from './avatar-attributes.generator';
 import { AvatarIdentityGenerator } from './avatar-identity.generator';

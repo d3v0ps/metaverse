@@ -13,7 +13,7 @@ import {
   throwError,
 } from 'rxjs';
 import type { UserAvatarDocType } from '../collections/user-avatars.collection';
-import { Appearance } from '../models';
+import { Appearance } from '../models/appearance';
 import type { Avatar } from '../models/avatar';
 
 @Injectable({
@@ -47,6 +47,8 @@ export class SelectedAvatarState {
           this.userAvatarsRepository = userAvatarsRepository;
 
           this.subscribeToDataChanges();
+
+          this.selectAvatar({ id: 'x0' } as any).subscribe();
         })
       )
       .subscribe();
@@ -119,7 +121,7 @@ export class SelectedAvatarState {
         },
       })
       .subscribe((selectedAvatarId) => {
-        const id = selectedAvatarId?.value || 'x0';
+        const id = selectedAvatarId?.value;
         if (this.avatarQuerySubscription) {
           this.avatarQuerySubscription.unsubscribe();
         }
