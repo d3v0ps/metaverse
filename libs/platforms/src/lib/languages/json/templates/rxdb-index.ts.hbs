@@ -1,0 +1,12 @@
+
+{{#each rootDefinitions}}
+export {
+  {{name}}DocType,
+  {{name}}Document,
+  {{name}}Collection,
+  {{camelCase name}}Schema,
+  {{camelCase name}}RxSchema,
+  {{constantCase name}}_COLLECTION_PROVIDER,
+} from './{{kebabCase name}}';
+
+{{/each}}

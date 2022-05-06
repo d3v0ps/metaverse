@@ -1,18 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { readFile } from 'fs-extra';
 import handlebars from 'handlebars';
+import * as baseHelpers from './helpers';
+
+export type Helper<T> = (val: T, { fn }: RenderHelperParams) => string;
+
+export type RenderHelperParams = { fn: (params: any) => string };
 
 export const render = async <TParams = any>(
   template: string,
   params?: TParams,
-  helpers: Record<
-    string,
-    (val: any, { fn }: { fn: (params: any) => string }) => string
-  > = {}
+  helpers: Record<string, Helper<any>> = {}
 ): Promise<string> => {
   const hs = handlebars.create();
 
-  Object.entries(helpers).forEach(([key, value]) => {
+  Object.entries({ ...baseHelpers, ...helpers }).forEach(([key, value]) => {
     hs.registerHelper(key, value);
   });
 

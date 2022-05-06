@@ -1,0 +1,41 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Provider } from '@angular/core';
+import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/services/entity-manager';
+import { RxDocument, RxCollection, RxJsonSchema } from 'rxdb';
+import { {{definition.name}} } from '../types';
+
+{{#ifObject definition}}
+export type {{name}}DocType = {{name}};
+export type {{name}}Document = RxDocument<{{name}}DocType>;
+export type {{name}}Collection = RxCollection<{{name}}Document>;
+
+export const {{camelCase name}}Schema = {{#gqlSchema .}}{{/gqlSchema}}
+
+export const {{camelCase name}}RxSchema: RxJsonSchema<
+  Omit<{{name}}DocType, '_attachments'>
+> = {
+  ...{{camelCase name}}Schema as any,
+  title: '{{name}}',
+  description: '{{capitalCase name}}',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const {{constantCase name}}_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: '{{capitalCase name}}',
+    creator: {
+      schema: {{camelCase name}}RxSchema,
+    },
+  },
+  multi: true,
+};
+{{/ifObject}}
+

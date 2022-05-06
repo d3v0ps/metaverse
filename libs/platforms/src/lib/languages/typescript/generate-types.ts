@@ -1,31 +1,24 @@
-import { parseTypes } from '@central-factory/platforms/languages/typescript/parse-types';
 import { Logger } from '@nestjs/common';
-import { ensureDir, readdir, writeFile } from 'fs-extra';
-import { dirname, resolve } from 'path';
+import { ensureDir, writeFile } from 'fs-extra';
+import { dirname } from 'path';
+import { JSONSchema } from '../json/types/json-schema';
 import { getNameFromRef } from '../json/utils/get-name-from-ref';
 import { renderTypes } from './render-types';
 
-const logger = new Logger('Generate GQL Types');
+const logger = new Logger('Generate Typescript Types');
 
-export const generateTypeScriptTypesFromFile = async (
-  input: string,
+export const generateTypeScriptTypesFromSchema = async (
+  schema: JSONSchema,
   output: string
 ): Promise<void> => {
-  const schema = await parseTypes(input);
-
-  if (!schema) {
-    throw new Error(`Unable to load schema from file ${input}`);
-  }
-
   if (!schema.definitions) {
-    throw new Error(`Schema does not contain definitions`);
+    throw new Error(`Schema ${schema.title} does not contain definitions`);
   }
 
   logger.verbose(
-    `[${input.replace(
-      process.cwd(),
-      ''
-    )}]: Generating types for the following root interfaces: [${schema.definitions[
+    `[${
+      schema.title
+    }]: Generating types for the following root definitions: [${schema.definitions[
       'Root'
     ].anyOf
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -67,22 +60,4 @@ export const generateTypeScriptTypesFromFile = async (
 
   await ensureDir(dirname(output));
   await writeFile(output, content);
-};
-
-export const generateTypescriptTypesFromFolder = async (
-  inputFolder: string,
-  outputFolder = resolve(inputFolder, '__generated__', 'types')
-): Promise<void[]> => {
-  const files = (await readdir(inputFolder)).filter((file) =>
-    file.endsWith('index.d.ts')
-  );
-
-  return Promise.all(
-    files.map((file) =>
-      generateTypeScriptTypesFromFile(
-        resolve(inputFolder, file),
-        resolve(outputFolder, file.replace('.d.ts', '.ts'))
-      )
-    )
-  );
 };
