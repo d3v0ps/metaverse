@@ -8,7 +8,7 @@ import { CurrencyMood } from '../currency/currency.component';
   template: `
     <div cfBlock="transactions-list-item" *ngIf="transaction">
       <div cfBlock="transaction-info">
-        <cf-typography type="h2" [bold]="true" *ngIf="transaction.description">
+        <cf-typography type="h5" [bold]="true" *ngIf="transaction.description">
           {{ transaction.description }}
         </cf-typography>
         <cf-typography type="p" [bold]="true">

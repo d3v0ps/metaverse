@@ -7,6 +7,11 @@
     overflow-y: auto
   }
 
+  /** TODO: remove height: 100%; */
+  .tab-content {
+    height: auto !important;
+  }
+
   section {
     display: flex;
     gap: .5rem;

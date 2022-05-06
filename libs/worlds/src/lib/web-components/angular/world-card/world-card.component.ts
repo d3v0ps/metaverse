@@ -131,7 +131,7 @@ import { createMachine, interpret, State } from 'xstate';
             ></cf-svg-icon>
             {{
               state.matches('genesis.populating')
-                ? 'Generating...'
+                ? 'Generating... ' + avatarGenerationPercentage + '%'
                 : 'Generate Avatars'
             }}
           </button>
@@ -219,6 +219,10 @@ export class WorldCardComponent {
   }
   get world(): World | undefined {
     return this._world;
+  }
+
+  get avatarGenerationPercentage(): number {
+    return Math.floor(((this.world?.avatars?.length || 0) * 100) / 42000);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

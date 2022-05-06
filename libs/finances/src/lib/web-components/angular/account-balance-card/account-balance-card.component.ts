@@ -9,7 +9,7 @@ import { Account, AccountType } from '../../../models/__generated__/types';
       *ngIf="account"
       [cfMod]="[active ? 'active' : null]"
     >
-      <cf-typography type="h2" [bold]="true">
+      <cf-typography type="h3" [bold]="true">
         <cf-svg-icon [src]="accountTypeIcons[account.type]"></cf-svg-icon>
         {{ account.name }}
       </cf-typography>
@@ -17,6 +17,7 @@ import { Account, AccountType } from '../../../models/__generated__/types';
         [currencyType]="account.currency || userCurrency"
         displayCurrency="eur"
         [value]="account.balance"
+        typographyType="h3"
       ></cf-currency>
       <ng-container
         *ngIf="account.currency && account.currency !== userCurrency"

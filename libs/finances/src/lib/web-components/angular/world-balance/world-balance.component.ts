@@ -10,6 +10,7 @@ import { Balance } from '@central-factory/finances/models/balance';
         <cf-currency
           [currencyType]="'eur'"
           [value]="balance.total"
+          typographyType="h3"
         ></cf-currency>
       </div>
       <div cfElem="item">
@@ -17,6 +18,7 @@ import { Balance } from '@central-factory/finances/models/balance';
         <cf-currency
           [currencyType]="'eur'"
           [value]="balance.fiat"
+          typographyType="h3"
         ></cf-currency>
       </div>
       <div cfElem="item">
@@ -24,6 +26,7 @@ import { Balance } from '@central-factory/finances/models/balance';
         <cf-currency
           [currencyType]="'eur'"
           [value]="balance.crypto"
+          typographyType="h3"
         ></cf-currency>
       </div>
       <div cfElem="item">
@@ -31,6 +34,7 @@ import { Balance } from '@central-factory/finances/models/balance';
         <cf-currency
           [currencyType]="'eur'"
           [value]="balance.stocks"
+          typographyType="h3"
         ></cf-currency>
       </div>
     </div>

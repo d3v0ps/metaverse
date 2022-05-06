@@ -55,6 +55,10 @@ export class CustomizationSettingsState {
       return throwError(() => new Error('Repositories not initialized'));
     }
 
+    const backgroundHasChanged =
+      settings.background.url !==
+      this.customizationSettings$.value?.background?.url;
+
     return this.userPreferencesRepository
       .upsert({
         id: `settings.customization${avatar ? `.${avatar}` : ''}`,
@@ -62,7 +66,9 @@ export class CustomizationSettingsState {
         value: settings,
         avatar,
       })
-      .pipe(tap(() => window.location.reload()));
+      .pipe(
+        tap(() => (backgroundHasChanged ? window.location.reload() : null))
+      );
   }
 
   private subscribeToDataChanges() {
