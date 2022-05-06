@@ -1,226 +1,310 @@
 color:
   base:
     primary:
-      lightest:
-        value: '#c7a4ff'
-      lighter:
-        value: '#c7a4ff'
-      light:
-        value: '#c7a4ff'
       medium:
         value: '#9575cd'
-      dark:
-        value: '#65499c'
-      darker:
-        value: '#65499c'
+      lightest:
+        value: '{color.base.primary.medium}'
+        lighten: 0.75
+      lighter:
+        value: '{color.base.primary.lightest}'
+        lighten: 0.5
+      light:
+        value: '{color.base.primary.lighter}'
+        lighten: 0.25
       darkest:
-        value: '#65499c'
+        value: '{color.base.primary.medium}'
+        darken: 0.75
+      darker:
+        value: '{color.base.primary.darkest}'
+        darken: 0.5
+      dark:
+        value: '{color.base.primary.darker}'
+        darken: 0.25
 
     secondary:
-      lightest:
-        value: "#fff471"
-      lighter:
-        value: "#fff471"
-      light:
-        value: "#fff471"
       medium:
         value: "#f7dc70"
-      dark:
-        value: "#aa974d"
-      darker:
-        value: "#aa974d"
+      lightest:
+        value: '{color.base.secondary.medium}'
+        lighten: 0.75
+      lighter:
+        value: '{color.base.secondary.lightest}'
+        lighten: 0.5
+      light:
+        value: '{color.base.secondary.lighter}'
+        lighten: 0.25
       darkest:
-        value: "#aa974d"
+        value: '{color.base.secondary.medium}'
+        darken: 0.75
+      darker:
+        value: '{color.base.secondary.darkest}'
+        darken: 0.5
+      dark:
+        value: '{color.base.secondary.darker}'
+        darken: 0.25
 
     light:
-      lightest:
-        value: '#F4FAFF'
-      lighter:
-        value: '#e6e6e6'
-      light:
-        value: '#d1d1d1'
       medium:
         value: '#DEE7E7'
-      dark:
-        value: '#fafafa'
-      darker:
-        value: '#d5d5d5'
+      lightest:
+        value: '{color.base.light.medium}'
+        lighten: 0.75
+      lighter:
+        value: '{color.base.light.lightest}'
+        lighten: 0.5
+      light:
+        value: '{color.base.light.lighter}'
+        lighten: 0.25
       darkest:
-        value: '#f1f1f1'
+        value: '{color.base.light.medium}'
+        darken: 0.75
+      darker:
+        value: '{color.base.light.darkest}'
+        darken: 0.5
+      dark:
+        value: '{color.base.light.darker}'
+        darken: 0.25
 
     dark:
-      lightest:
-        value: '#707070'
-      lighter:
-        value: '#606060'
-      light:
-        value: '#505050'
       medium:
         value: '#404040'
-      dark:
-        value: '#303030'
-      darker:
-        value: '#202020'
+      lightest:
+        value: '{color.base.dark.medium}'
+        lighten: 0.75
+      lighter:
+        value: '{color.base.dark.lightest}'
+        lighten: 0.5
+      light:
+        value: '{color.base.dark.lighter}'
+        lighten: 0.25
       darkest:
-        value: '#101010'
+        value: '{color.base.dark.medium}'
+        darken: 0.75
+      darker:
+        value: '{color.base.dark.darkest}'
+        darken: 0.5
+      dark:
+        value: '{color.base.dark.darker}'
+        darken: 0.25
 
     success:
-      lightest:
-        value: '#f9fbe7'
-      lighter:
-        value: '#f0f4c3'
-      light:
-        value: '#dcedc8'
       medium:
         value: '#4caf50'
-      dark:
-        value: '#43a047'
-      darker:
-        value: '#388e3c'
+      lightest:
+        value: '{color.base.success.medium}'
+        lighten: 0.75
+      lighter:
+        value: '{color.base.success.lightest}'
+        lighten: 0.5
+      light:
+        value: '{color.base.success.lighter}'
+        lighten: 0.25
       darkest:
-        value: '#2e7d32'
+        value: '{color.base.success.medium}'
+        darken: 0.75
+      darker:
+        value: '{color.base.success.darkest}'
+        darken: 0.5
+      dark:
+        value: '{color.base.success.darker}'
+        darken: 0.25
 
     warning:
-      lightest:
-        value: '#fff9c4'
-      lighter:
-        value: '#ffecb3'
-      light:
-        value: '#ffcc80'
       medium:
         value: '#ff9800'
-      dark:
-        value: '#fb8c00'
-      darker:
-        value: '#f57c00'
+      lightest:
+        value: '{color.base.warning.medium}'
+        lighten: 0.75
+      lighter:
+        value: '{color.base.warning.lightest}'
+        lighten: 0.5
+      light:
+        value: '{color.base.warning.lighter}'
+        lighten: 0.25
       darkest:
-        value: '#ef6c00'
+        value: '{color.base.warning.medium}'
+        darken: 0.75
+      darker:
+        value: '{color.base.warning.darkest}'
+        darken: 0.5
+      dark:
+        value: '{color.base.warning.darker}'
+        darken: 0.25
 
     danger:
-      lightest:
-        value: '#fcebea'
-      lighter:
-        value: '#f8bbd0'
-      light:
-        value: '#ef9a9a'
       medium:
         value: '#f44336'
-      dark:
-        value: '#e53935'
-      darker:
-        value: '#d32f2f'
+      lightest:
+        value: '{color.base.danger.medium}'
+        lighten: 0.75
+      lighter:
+        value: '{color.base.danger.lightest}'
+        lighten: 0.5
+      light:
+        value: '{color.base.danger.lighter}'
+        lighten: 0.25
       darkest:
-        value: '#c62828'
+        value: '{color.base.danger.medium}'
+        darken: 0.75
+      darker:
+        value: '{color.base.danger.darkest}'
+        darken: 0.5
+      dark:
+        value: '{color.base.danger.darker}'
+        darken: 0.25
 
     info:
-      lightest:
-        value: '#ede7f6'
-      lighter:
-        value: '#e3f2fd'
-      light:
-        value: '#bbdefb'
       medium:
         value: '#2196f3'
-      dark:
-        value: '#1976d2'
-      darker:
-        value: '#1565c0'
+      lightest:
+        value: '{color.base.info.medium}'
+        lighten: 0.75
+      lighter:
+        value: '{color.base.info.lightest}'
+        lighten: 0.5
+      light:
+        value: '{color.base.info.lighter}'
+        lighten: 0.25
       darkest:
-        value: '#0d47a1'
+        value: '{color.base.info.medium}'
+        darken: 0.75
+      darker:
+        value: '{color.base.info.darkest}'
+        darken: 0.5
+      dark:
+        value: '{color.base.info.darker}'
+        darken: 0.25
 
     common:
-      lightest:
-        value: '#d2d2d2'
-      lighter:
-        value: '#c1c1c1'
-      light:
-        value: '#b2b2b2'
       medium:
         value: '#a2a2a2'
-      dark:
-        value: '#929292'
-      darker:
-        value: '#818181'
+      lightest:
+        value: '{color.base.common.medium}'
+        lighten: 0.75
+      lighter:
+        value: '{color.base.common.lightest}'
+        lighten: 0.5
+      light:
+        value: '{color.base.common.lighter}'
+        lighten: 0.25
       darkest:
-        value: '#717171'
+        value: '{color.base.common.medium}'
+        darken: 0.75
+      darker:
+        value: '{color.base.common.darkest}'
+        darken: 0.5
+      dark:
+        value: '{color.base.common.darker}'
+        darken: 0.25
 
     uncommon:
-      lightest:
-        value: '#b3c7b4'
-      lighter:
-        value: '#99b39a'
-      light:
-        value: '#8eab8f'
       medium:
         value: '#83a384'
-      dark:
-        value: '#789b79'
-      darker:
-        value: '#678e68'
+      lightest:
+        value: '{color.base.uncommon.medium}'
+        lighten: 0.75
+      lighter:
+        value: '{color.base.uncommon.lightest}'
+        lighten: 0.5
+      light:
+        value: '{color.base.uncommon.lighter}'
+        lighten: 0.25
       darkest:
-        value: '#437445'
+        value: '{color.base.uncommon.medium}'
+        darken: 0.75
+      darker:
+        value: '{color.base.uncommon.darkest}'
+        darken: 0.5
+      dark:
+        value: '{color.base.uncommon.darker}'
+        darken: 0.25
 
     rare:
-      lightest:
-        value: '#8ab8cf'
-      lighter:
-        value: '#70a9c4'
-      light:
-        value: '#609fbd'
       medium:
         value: '#5095b6'
-      dark:
-        value: '#408baf'
-      darker:
-        value: '#3081a8'
+      lightest:
+        value: '{color.base.rare.medium}'
+        lighten: 0.75
+      lighter:
+        value: '{color.base.rare.lightest}'
+        lighten: 0.5
+      light:
+        value: '{color.base.rare.lighter}'
+        lighten: 0.25
       darkest:
-        value: '#19739e'
+        value: '{color.base.rare.medium}'
+        darken: 0.75
+      darker:
+        value: '{color.base.rare.darkest}'
+        darken: 0.5
+      dark:
+        value: '{color.base.rare.darker}'
+        darken: 0.25
 
     epic:
-      lightest:
-        value: '#c5a8d1'
-      lighter:
-        value: '#b48fc3'
-      light:
-        value: '#a173b4'
       medium:
         value: '#7c3b97'
-      dark:
-        value: '#722c8f'
-      darker:
-        value: '#641884'
+      lightest:
+        value: '{color.base.epic.medium}'
+        lighten: 0.75
+      lighter:
+        value: '{color.base.epic.lightest}'
+        lighten: 0.5
+      light:
+        value: '{color.base.epic.lighter}'
+        lighten: 0.25
       darkest:
-        value: '#550178'
+        value: '{color.base.epic.medium}'
+        darken: 0.75
+      darker:
+        value: '{color.base.epic.darkest}'
+        darken: 0.5
+      dark:
+        value: '{color.base.epic.darker}'
+        darken: 0.25
 
     legendary:
-      lightest:
-        value: '#f6d483'
-      lighter:
-        value: '#f4c85f'
-      light:
-        value: '#f1bc3c'
       medium:
         value: '#eead10'
-      dark:
-        value: '#d39b13'
-      darker:
-        value: '#be8d15'
+      lightest:
+        value: '{color.base.legendary.medium}'
+        lighten: 0.75
+      lighter:
+        value: '{color.base.legendary.lightest}'
+        lighten: 0.5
+      light:
+        value: '{color.base.legendary.lighter}'
+        lighten: 0.25
       darkest:
-        value: '#af8316'
+        value: '{color.base.legendary.medium}'
+        darken: 0.75
+      darker:
+        value: '{color.base.legendary.darkest}'
+        darken: 0.5
+      dark:
+        value: '{color.base.legendary.darker}'
+        darken: 0.25
 
     unique:
-      lightest:
-        value: '#7fe6f0'
-      lighter:
-        value: '#66e1ed'
-      light:
-        value: '#34d7e7'
       medium:
         value: '#15c3d4'
-      dark:
-        value: '#1c9ca8'
-      darker:
-        value: '#217e87'
+      lightest:
+        value: '{color.base.unique.medium}'
+        lighten: 0.75
+      lighter:
+        value: '{color.base.unique.lightest}'
+        lighten: 0.5
+      light:
+        value: '{color.base.unique.lighter}'
+        lighten: 0.25
       darkest:
-        value: '#25676d'
+        value: '{color.base.unique.medium}'
+        darken: 0.75
+      darker:
+        value: '{color.base.unique.darkest}'
+        darken: 0.5
+      dark:
+        value: '{color.base.unique.darker}'
+        darken: 0.25
 

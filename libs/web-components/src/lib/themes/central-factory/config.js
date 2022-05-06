@@ -6,8 +6,17 @@ module.exports = {
   source: ['libs/web-components/src/lib/themes/central-factory/tokens/**/*.yaml'],
   platforms: {
     css: {
-      transformGroup: 'css',
-      buildPath: 'dist/libs/central-factory/default/',
+      transforms: [
+        'attribute/cti',
+        'attribute/color',
+        'name/cti/kebab',
+        'time/seconds',
+        'content/icon',
+        'size/rem',
+        'color/css',
+        'color/light'
+      ],
+      buildPath: 'dist/libs/themes/central-factory/',
       files: [
         {
           format: 'css/variables',

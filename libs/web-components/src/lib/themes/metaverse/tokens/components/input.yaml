@@ -1,7 +1,7 @@
 component:
   input:
     font-size:
-      value: "{size.font.medium}"
+      value: "{size.font.m}"
     border:
       color:
         value: "{color.base.dark.lighter}"
@@ -80,5 +80,5 @@ component:
 
     big:
       font-size:
-        value: "{size.font.large}"
+        value: "{size.font.l}"
 

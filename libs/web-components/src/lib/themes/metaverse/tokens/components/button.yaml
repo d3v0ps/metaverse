@@ -1,7 +1,7 @@
 component:
   button:
     font-size:
-      value: "{size.font.medium}"
+      value: "{size.font.m}"
     color:
       value: "{color.base.light.medium}"
     background-color:
@@ -45,4 +45,4 @@ component:
 
     big:
       font-size:
-        value: "{size.font.large}"
+        value: "{size.font.l}"

@@ -1,6 +1,3 @@
 component:
   splash-screen:
-    background-color:
-      value: "{color.base.primary.medium}"
-    color:
-      value: "{color.base.light.medium}"
+    extend: true

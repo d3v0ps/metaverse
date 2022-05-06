@@ -38,6 +38,27 @@ export const Paragraph = () => ({
   ],
 });
 
+export const Sizes = () => ({
+  template: `
+    <cf-typography type="xxs">XXS. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum vulputate nisl, non commodo ligula maximus sed. Pellentesque quis ipsum felis</cf-typography>
+    <cf-typography type="xs">XS. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum vulputate nisl, non commodo ligula maximus sed. Pellentesque quis ipsum felis</cf-typography>
+    <cf-typography type="s">S. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum vulputate nisl, non commodo ligula maximus sed. Pellentesque quis ipsum felis</cf-typography>
+    <cf-typography type="m">M. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum vulputate nisl, non commodo ligula maximus sed. Pellentesque quis ipsum felis</cf-typography>
+    <cf-typography type="l">L. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum vulputate nisl, non commodo ligula maximus sed. Pellentesque quis ipsum felis</cf-typography>
+    <cf-typography type="xl">XL. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum vulputate nisl, non commodo ligula maximus sed. Pellentesque quis ipsum felis</cf-typography>
+    <cf-typography type="xxl">XXL. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum vulputate nisl, non commodo ligula maximus sed. Pellentesque quis ipsum felis</cf-typography>
+  `,
+  styles: [
+    `
+    :host {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  `,
+  ],
+});
+
 export const Headings = () => ({
   template: `
     <cf-typography type="h1">H1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec rutrum vulputate nisl, non commodo ligula maximus sed. Pellentesque quis ipsum felis</cf-typography>

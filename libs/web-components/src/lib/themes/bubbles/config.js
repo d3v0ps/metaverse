@@ -6,7 +6,16 @@ module.exports = {
   source: ['libs/web-components/src/lib/themes/bubbles/tokens/**/*.yaml'],
   platforms: {
     css: {
-      transformGroup: 'css',
+      transforms: [
+        'attribute/cti',
+        'attribute/color',
+        'name/cti/kebab',
+        'time/seconds',
+        'content/icon',
+        'size/rem',
+        'color/css',
+        'color/light'
+      ],
       buildPath: 'dist/libs/themes/bubbles/',
       files: [
         {

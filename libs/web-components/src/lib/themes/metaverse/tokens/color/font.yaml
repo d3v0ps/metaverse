@@ -1,6 +1,6 @@
 color:
   font:
     primary:
-      value: "{color.base.primary.light.value}"
+      value: "{color.base.light.medium.value}"
     secondary:
-      value: "{color.base.secondary.light.value}"
+      value: "{color.base.light.darker.value}"

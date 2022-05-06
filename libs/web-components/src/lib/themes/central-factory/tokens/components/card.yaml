@@ -1,21 +1,3 @@
 component:
   card:
-    color:
-      value: "{color.base.dark.darkest}"
-    background-color:
-      value: "{color.base.dark.medium}"
-
-    header:
-      background-color:
-        value: "{color.base.secondary.darkest}"
-    footer:
-      background-color:
-        value: "{color.base.secondary.darkest}"
-
-    title:
-      color:
-        value: "{color.base.light.darkest}"
-
-    icon:
-      color:
-        value: "{color.base.secondary.medium}"
+    extend: true

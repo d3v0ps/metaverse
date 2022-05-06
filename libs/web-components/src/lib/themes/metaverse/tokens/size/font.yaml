@@ -1,17 +1,47 @@
 size:
   font:
-    small:
-      value: '0.75'
+    xxs:
+      value: '0.5'
       comment: the small size of the font
-    medium:
+    xs:
+      value: '0.65'
+      comment: the small size of the font
+    s:
+      value: '0.8'
+      comment: the medium size of the font
+    m:
       value: '1'
       comment: the medium size of the font
-    large:
+    l:
+      value: '1.2'
+      comment: the medium size of the font
+    xl:
       value: '1.5'
       comment: the large size of the font
-    extra-large:
-      value: '2'
+    xxl:
+      value: '1.8'
+      comment: the extra large size of the font
+    p:
+      value: '{size.font.m.value}'
+      comment: the extra large size of the font
+    h1:
+      value: '{size.font.xxl.value}'
+      comment: the extra large size of the font
+    h2:
+      value: '{size.font.xl.value}'
+      comment: the extra large size of the font
+    h3:
+      value: '{size.font.l.value}'
+      comment: the extra large size of the font
+    h4:
+      value: '{size.font.l.value}'
+      comment: the extra large size of the font
+    h5:
+      value: '{size.font.m.value}'
+      comment: the extra large size of the font
+    h6:
+      value: '{size.font.s.value}'
       comment: the extra large size of the font
     base:
-      value: "{size.font.medium.value}"
+      value: "{size.font.m.value}"
       comment: the base size of the font

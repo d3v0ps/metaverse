@@ -1,21 +1,9 @@
 @use '../abstracts/variables/colors' as colors;
 
-.heading {
-  display: flex;
-  width: 100%;
-  margin-top: 0.5rem;
-  gap: 0.2rem;
-  &__icon {
-    display: contents;
-    .icon__svg {
-      fill: var(--component-text-color, var(--color-base-light-medium));
-      width: 1.5rem;
-      height: 1.5rem;
-    }
-  }
-}
+$typography-variations: "h1", "h2", "h3", "h4", "h5", "h6", "p", "xxs", "xs", "s", "m", "l", "xl", "xxl";
 
 .typography {
+  color: var(--component-typography-color, var(--color-font-primary));
   .icon {
     position: relative;
     &__image {
@@ -23,19 +11,47 @@
       position: absolute;
       top: -.5rem;
     }
+    &__svg {
+      vertical-align: middle;
+    }
   }
   &--bold {
     font-weight: bold;
   }
-}
 
-.typography--p {
-  font-size: 0.8rem;
-  line-height: 1.5;
-  color: var(--component-text-color, var(--color-base-light-medium));
-  .icon__svg {
-    width: 1rem;
-    height: 1rem;
+  @each $variation in $typography-variations {
+    &--#{$variation} {
+      font-size: var(--size-font-#{$variation});
+      .icon__svg {
+        // TODO: Check why we need to use important (h5)
+        width: var(--size-icon-#{$variation})  !important;
+        height:var(--size-icon-#{$variation})  !important;
+        vertical-align: text-bottom;
+      }
+      // line-height: 1.5;
+      margin-block-end: 0.5rem;
+    }
+  }
+
+  @each $color in colors.$color-variations {
+    .text, &--#{$color} {
+      color: var(
+        --component-text-#{$color}-color,
+        var(--color-base-#{$color}-medium)
+      );
+      .icon__svg {
+        fill: var(
+          --component-text-#{$color}-color,
+          var(--color-base-#{$color}-medium)
+        );
+      }
+      a {
+        color: var(
+          --component-text-#{$color}-color,
+          var(--color-base-#{$color}-medium)
+        );
+      }
+    }
   }
 }
 
@@ -46,57 +62,8 @@ a {
   }
 }
 
-.typography {
-  .icon__svg {
-    vertical-align: middle;
-  }
-}
 
-h1.heading,
-.typography--h1 {
-  font-size: 1.5rem;
-  .heading__icon {
-    .icon__svg {
-      width: 1.8rem;
-      height: 1.8rem;
-    }
-  }
-}
-
-h2.heading,
-.typography--h2 {
-  font-size: 1.4rem;
-  .heading__icon {
-    .icon__svg {
-      width: 1.7rem;
-      height: 1.7rem;
-    }
-  }
-}
-
-h4.heading,
-.typography--h4 {
-  font-size: 1.2rem;
-  .heading__icon {
-    .icon__svg {
-      width: 1.2rem;
-      height: 1.2rem;
-    }
-  }
-  margin-block-end: 0.5rem;
-}
-
-h5.heading,
-.typography--h5 {
-  font-size: 1rem;
-  margin-block-end: 0.5rem;
-  .icon__svg {
-    // TODO: Check why we need to use important
-    width: 1.4rem !important;
-    height: 1.4rem !important;
-    vertical-align: text-bottom;
-  }
-}
+/** DEPRECATED: use typography-variations instead */
 
 .text {
   margin: 0;
@@ -117,31 +84,6 @@ p {
       height: 24px !important;
       width: 24px !important;
       vertical-align: bottom;
-    }
-  }
-}
-
-@each $color in colors.$color-variations {
-  .text,
-  .typography,
-  .heading {
-    &--#{$color} {
-      color: var(
-        --component-text-#{$color}-color,
-        var(--color-base-#{$color}-medium)
-      );
-      .icon__svg {
-        fill: var(
-          --component-text-#{$color}-color,
-          var(--color-base-#{$color}-medium)
-        );
-      }
-      a {
-        color: var(
-          --component-text-#{$color}-color,
-          var(--color-base-#{$color}-medium)
-        );
-      }
     }
   }
 }

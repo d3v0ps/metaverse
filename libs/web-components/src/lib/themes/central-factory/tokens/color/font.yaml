@@ -1,6 +1,3 @@
 color:
   font:
-    primary:
-      value: "{color.base.primary.light.value}"
-    secondary:
-      value: "{color.base.secondary.light.value}"
+    extend: true

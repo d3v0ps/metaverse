@@ -1,0 +1,47 @@
+size:
+  icon:
+    xxs:
+      value: '0.6'
+      comment: the small size of the icon
+    xs:
+      value: '0.8'
+      comment: the small size of the icon
+    s:
+      value: '1'
+      comment: the small size of the icon
+    m:
+      value: '1.2'
+      comment: the medium size of the icon
+    l:
+      value: '1.5'
+      comment: the large size of the icon
+    xl:
+      value: '1.8'
+      comment: the large size of the icon
+    xxl:
+      value: '2'
+      comment: the extra large size of the icon
+    p:
+      value: '{size.icon.m.value}'
+      comment: the extra large size of the icon
+    h1:
+      value: '{size.icon.xxl.value}'
+      comment: the extra large size of the icon
+    h2:
+      value: '{size.icon.xl.value}'
+      comment: the extra large size of the icon
+    h3:
+      value: '{size.icon.l.value}'
+      comment: the extra large size of the icon
+    h4:
+      value: '{size.icon.m.value}'
+      comment: the extra large size of the icon
+    h5:
+      value: '{size.icon.s.value}'
+      comment: the extra large size of the icon
+    h6:
+      value: '{size.icon.xs.value}'
+      comment: the extra large size of the icon
+    base:
+      value: "{size.icon.m.value}"
+      comment: the base size of the icon
