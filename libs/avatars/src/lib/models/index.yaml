@@ -1,0 +1,17 @@
+imports:
+  avatar: ./avatar
+  appearance: ./avatar
+  attributes: ./avatar
+  identity: ./avatar
+  outfit: ./avatar
+  profession: ./profession
+  appearanceInfo: ./appearance-info
+
+roots:
+  - avatar
+  - appearance
+  - attributes
+  - identity
+  - outfit
+  - profession
+  - appearanceInfo

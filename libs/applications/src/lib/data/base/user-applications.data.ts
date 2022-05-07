@@ -1,14 +1,14 @@
 import {
   PermissionKind,
   PermissionMode,
-} from '@central-factory/permissions/models/__generated__/types';
+} from '@central-factory/permissions/__generated__/models';
 import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
 import type { UserApplicationDocType } from '../../collections/user-applications.collection';
 import {
   Application,
   ApplicationRenderingType,
   ColorVariation,
-} from '../../models/__generated__/types';
+} from '../../__generated__/models';
 
 export const userApplications: UserApplicationDocType[] = [
   {

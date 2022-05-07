@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { AvatarGender } from '@central-factory/avatars/models/__generated__/types';
+import { Gender } from '@central-factory/avatars/__generated__/models';
 import { EssentialsModule } from '@central-factory/web-components/angular/essentials.module';
 import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
@@ -17,7 +17,7 @@ export default {
   argTypes: {
     gender: {
       control: 'select',
-      options: [AvatarGender.Female, AvatarGender.Male],
+      options: [Gender.Female, Gender.Male],
     },
   },
   parameters: {
@@ -34,21 +34,21 @@ const Template: Story<AvatarGenderComponent> = (
 
 export const Icon = Template.bind({});
 Icon.args = {
-  gender: AvatarGender.Female,
+  gender: Gender.Female,
   showIcon: true,
   showLabel: false,
 };
 
 export const Label = Template.bind({});
 Label.args = {
-  gender: AvatarGender.Female,
+  gender: Gender.Female,
   showIcon: false,
   showLabel: true,
 };
 
 export const Full = Template.bind({});
 Full.args = {
-  gender: AvatarGender.Female,
+  gender: Gender.Female,
   showIcon: true,
   showLabel: true,
 };

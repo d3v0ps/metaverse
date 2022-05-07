@@ -71,13 +71,21 @@ export const renderRxDBSchema = async (params: {
     ifEnum: (schema: AugmentedJSONSchema, { fn }) =>
       schema.type === 'string' && schema.enum ? fn(schema) : '',
     gqlSchema: (current: AugmentedJSONSchema, { fn }) => {
-      const currentSchema: JSONSchema = (params.schema.definitions as any)[
-        current.name
-      ];
+      const currentSchema = JSON.parse(
+        JSON.stringify(
+          params.definitions.find((def) => def.name === current.name)
+        )
+      );
+
+      if (!currentSchema) {
+        return '';
+      }
+      removeRefs(currentSchema, params.definitions);
+      delete currentSchema['templateProperties'];
+      delete currentSchema['name'];
       // currentSchema.definitions = JSON.parse(
       //   JSON.stringify(params.schema.definitions)
       // );
-      removeRefs(currentSchema, params.definitions);
       return JSON.stringify(currentSchema, undefined, 2);
     },
   });

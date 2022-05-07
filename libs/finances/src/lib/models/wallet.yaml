@@ -1,0 +1,21 @@
+imports:
+  account: ./account
+  balance: ./balance
+
+types:
+  wallet:
+    id:
+      type: string
+      required: true
+    name:
+      type: string
+      required: true
+    worldId:
+      type: string
+      required: true
+    balance:
+      type: Balance
+      required: true
+    accounts:
+      type: Account[]
+      required: true

@@ -6,8 +6,8 @@ import type {
   RxDocument,
   RxJsonSchema,
 } from 'rxdb/dist/types/types';
-import type { Permission } from '../models/permission';
-import { permissionSchema } from '../models/__generated__/collections/permission';
+import { permissionSchema } from '../__generated__/collections/permission';
+import type { Permission } from '../__generated__/models';
 
 export type ApplicationPermissionDocType = Permission;
 

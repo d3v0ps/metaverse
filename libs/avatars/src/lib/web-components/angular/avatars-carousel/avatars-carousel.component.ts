@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { AvatarProfession, World } from '@central-factory/worlds/models/world';
-import type { Avatar } from '../../../models/avatar';
+import {
+  AvatarProfession,
+  World,
+} from '@central-factory/worlds/__generated__/models';
+import type { Avatar } from '../../../__generated__/models';
 
 @Component({
   selector: 'cf-avatars-carousel',
@@ -27,7 +30,7 @@ import type { Avatar } from '../../../models/avatar';
               cfElem="icon"
               [src]="
                 'assets/icons/mdi/gender-' +
-                avatar.appearance?.body?.type?.toLowerCase() +
+                avatar.appearance?.body?.style?.toLowerCase() +
                 '.svg'
               "
             ></cf-svg-icon>

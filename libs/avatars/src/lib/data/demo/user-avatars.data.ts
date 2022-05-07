@@ -1,8 +1,8 @@
 import { Provider } from '@angular/core';
 import {
-  AvatarGender,
+  Gender,
   SexualOrientation,
-} from '@central-factory/avatars/models/__generated__/types';
+} from '@central-factory/avatars/__generated__/models';
 import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
 import type { UserAvatarDocType } from '../../collections/user-avatars.collection';
 
@@ -170,8 +170,8 @@ export const avatar01: UserAvatarDocType = {
   appearances: [avatar01Appearance],
   appearance: {
     body: {
-      type: AvatarGender.Male,
-      skin: 'light',
+      style: Gender.Male,
+      color: 'light',
     },
     eyes: {
       color: 'purple',
@@ -212,7 +212,7 @@ export const userAvatars: UserAvatarDocType[] = [
       birthDate: '01/01/2021',
       birthPlace: 0,
       culture: 0,
-      gender: AvatarGender.Male,
+      gender: Gender.Male,
       mainProfession: 'technomancer',
       secondaryProfession: 'fighter',
       sexualOrientation: SexualOrientation.Heterosexual,
@@ -223,8 +223,8 @@ export const userAvatars: UserAvatarDocType[] = [
     appearances: [],
     appearance: {
       body: {
-        type: AvatarGender.Male,
-        skin: 'light',
+        style: Gender.Male,
+        color: 'light',
       },
       eyes: {
         color: 'purple',

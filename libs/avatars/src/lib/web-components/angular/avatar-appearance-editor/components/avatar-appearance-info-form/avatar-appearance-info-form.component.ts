@@ -7,7 +7,7 @@ import {
   AppearanceInfoHairStyle,
   AppearanceInfoSkinColor,
 } from '../../../../../data/constants/appearance-info';
-import { AppearanceInfo } from '../../../../../models/appearance-info';
+import { AppearanceInfo } from '../../../../../__generated__/models';
 
 @Component({
   selector: 'cf-avatar-appearance-info-form',

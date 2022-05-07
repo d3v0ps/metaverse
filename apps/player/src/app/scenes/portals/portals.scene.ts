@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
-import {
-  Application,
-  ApplicationAuthor,
-} from '@central-factory/applications/models/application';
 import { InstallApplicationsState } from '@central-factory/applications/states/install-application.state';
 import {
   ApplicationsByCategory,
   StoreApplicationsState,
 } from '@central-factory/applications/states/store-applications.state';
 import { UserApplicationsState } from '@central-factory/applications/states/user-applications.state';
+import {
+  Application,
+  ApplicationAuthor,
+} from '@central-factory/applications/__generated__/models';
 import { WindowComponent } from '@central-factory/web-components/angular/window/window.component';
 import { catchError, forkJoin, map, of, share, switchMap } from 'rxjs';
 

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Burg } from '@central-factory/worlds/models/fmg-map';
 import { WorldsState } from '@central-factory/worlds/states/worlds.state';
+import { Burg } from '@central-factory/worlds/__generated__/models';
 
 @Component({
   selector: 'cf-burg-selector',

@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Account } from '@central-factory/finances/models/account';
-import { Transaction } from '@central-factory/finances/models/transaction';
+import {
+  Account,
+  Transaction,
+} from '@central-factory/finances/__generated__/models';
 
 @Component({
   selector: 'cf-transactions-list',

@@ -1,16 +1,15 @@
 /* eslint-disable no-restricted-syntax */
 import { Injectable } from '@angular/core';
-import { Avatar } from '@central-factory/avatars/models/avatar';
-import { Burg } from '@central-factory/worlds/models/fmg-map';
-import { World } from '@central-factory/worlds/models/world';
+import { Avatar } from '@central-factory/avatars/__generated__/models';
+import { Burg, World } from '@central-factory/worlds/__generated__/models';
 import faker from '@faker-js/faker/locale/en_US';
 import { v4 as uuid } from 'uuid';
 import {
-  AvatarGender,
-  AvatarRelationship,
-  AvatarRelationshipKind,
+  Gender,
+  Relationship,
+  RelationshipKind,
   SexualOrientation,
-} from '../../models/__generated__/types';
+} from '../../__generated__/models';
 import { AvatarAppearanceGenerator } from './avatar-appearance.generator';
 import { AvatarAttributesGenerator } from './avatar-attributes.generator';
 import { AvatarIdentityGenerator } from './avatar-identity.generator';
@@ -185,13 +184,13 @@ export class AvatarGenerator {
           birthPlace: 0,
           culture: 0,
           familyName: '',
-          gender: AvatarGender.Male,
+          gender: Gender.Male,
         },
         appearances: [],
         appearance: {
           body: {
-            type: AvatarGender.Male,
-            skin: 'light',
+            style: Gender.Male,
+            color: 'light',
           },
           eyes: {
             color: 'purple',
@@ -384,11 +383,11 @@ export class AvatarGenerator {
         match.relationships = match.relationships || [];
 
         current.relationships.push({
-          kind: AvatarRelationshipKind.Spouse,
+          kind: RelationshipKind.Spouse,
           avatar: match.id,
         });
         match.relationships.push({
-          kind: AvatarRelationshipKind.Spouse,
+          kind: RelationshipKind.Spouse,
           avatar: current.id,
         });
 
@@ -403,7 +402,7 @@ export class AvatarGenerator {
     const nonMatched = generation.filter(
       (avatar) =>
         !avatar.relationships?.some(
-          ({ kind }) => kind === AvatarRelationshipKind.Spouse
+          ({ kind }) => kind === RelationshipKind.Spouse
         )
     );
 
@@ -440,11 +439,11 @@ export class AvatarGenerator {
           },
           relationships: [
             {
-              kind: AvatarRelationshipKind.Parent,
+              kind: RelationshipKind.Parent,
               avatar: parent1.id,
             },
             {
-              kind: AvatarRelationshipKind.Parent,
+              kind: RelationshipKind.Parent,
               avatar: parent2.id,
             },
           ],
@@ -464,13 +463,13 @@ export class AvatarGenerator {
           avatar2.attributes.base.intelligence >= PANSEXUAL_INTELLECT_THRESHOLD
         );
       case SexualOrientation.Heterosexual:
-        return avatar1.appearance?.body?.type === AvatarGender.Male
-          ? avatar2.appearance?.body?.type === AvatarGender.Female
-          : avatar2.appearance?.body?.type === AvatarGender.Male;
+        return avatar1.appearance?.body?.style === Gender.Male
+          ? avatar2.appearance?.body?.style === Gender.Female
+          : avatar2.appearance?.body?.style === Gender.Male;
       case SexualOrientation.Homosexual:
-        return avatar1.appearance?.body?.type === AvatarGender.Male
-          ? avatar2.appearance?.body?.type === AvatarGender.Male
-          : avatar2.appearance?.body?.type === AvatarGender.Female;
+        return avatar1.appearance?.body?.style === Gender.Male
+          ? avatar2.appearance?.body?.style === Gender.Male
+          : avatar2.appearance?.body?.style === Gender.Female;
       case SexualOrientation.Bisexual:
         return true;
       default:
@@ -479,15 +478,15 @@ export class AvatarGenerator {
   }
 
   generateRelationships(result: Avatar, world: World) {
-    const relationships: AvatarRelationship[] = result.relationships || [];
+    const relationships: Relationship[] = result.relationships || [];
 
     if (
       !relationships.some(
-        (relationship) => relationship.kind === AvatarRelationshipKind.Parent
+        (relationship) => relationship.kind === RelationshipKind.Parent
       )
     ) {
       relationships.push({
-        kind: AvatarRelationshipKind.Parent,
+        kind: RelationshipKind.Parent,
         avatar: '0',
       });
     }

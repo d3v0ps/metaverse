@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { Avatar } from '../../../models/avatar';
+import { Avatar } from '../../../__generated__/models';
 
 export interface AvatarOverviewInput {
   welcomeMessage: string;

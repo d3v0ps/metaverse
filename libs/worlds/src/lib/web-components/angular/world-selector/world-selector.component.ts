@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { World } from '@central-factory/worlds/models/world';
 import { WorldsState } from '@central-factory/worlds/states/worlds.state';
+import { World } from '@central-factory/worlds/__generated__/models';
 
 @Component({
   selector: 'cf-world-selector',

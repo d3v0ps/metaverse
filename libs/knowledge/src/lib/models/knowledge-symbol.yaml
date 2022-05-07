@@ -1,0 +1,16 @@
+imports:
+  meta: './core'
+  knowledgeFragment: './knowledge-fragment'
+types:
+
+  knowledgeSymbol:
+    id:
+      type: string
+    fragments:
+      type: KnowledgeFragment[]
+    icon:
+      type: string
+    meta:
+      type: Meta
+    title:
+      type: string

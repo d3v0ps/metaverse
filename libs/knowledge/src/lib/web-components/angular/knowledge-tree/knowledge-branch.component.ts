@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { KnowledgeSymbol } from '@central-factory/knowledge/models/knowledge-symbol';
+import { KnowledgeSymbol } from '@central-factory/knowledge/__generated__/models';
 
 export type KnowledgeTaxonomy = {
   id: string;

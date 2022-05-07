@@ -1,4 +1,4 @@
-import { AccountType, Wallet } from '../../models/__generated__/types';
+import { AccountType, Wallet } from '../../__generated__/models';
 
 export const demoWallets: Wallet[] = [
   {

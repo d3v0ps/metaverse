@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Dimensions } from '@central-factory/physics/models/value-objects/dimensions';
-import { Application } from './__generated__/types';
+import { Application } from '../__generated__/models';
 
 export type ApplicationOpenSettings<TParams = any> = {
   groupId?: string;

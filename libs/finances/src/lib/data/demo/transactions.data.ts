@@ -1,4 +1,4 @@
-import { Transaction } from '@central-factory/finances/models/transaction';
+import { Transaction } from '@central-factory/finances/__generated__/models';
 
 export const demoTransactions: Transaction[] = [
   {

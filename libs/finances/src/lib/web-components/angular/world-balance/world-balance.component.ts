@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Balance } from '@central-factory/finances/models/balance';
+import { Balance } from '@central-factory/finances/__generated__/models';
 
 @Component({
   selector: 'cf-world-balance',

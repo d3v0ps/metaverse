@@ -1,0 +1,30 @@
+
+enums:
+  permissionKind:
+    Collection: 'Collection'
+  permissionMode:
+    Read: 'Read'
+    Write: 'Write'
+    Delete: 'Delete'
+
+types:
+  permission:
+    id:
+      type: string
+      required: true
+    appId:
+      type: string
+      required: true
+    kind:
+      type: PermissionKind
+      required: true
+    mode:
+      type: PermissionMode
+      required: true
+    target:
+      type: string
+      required: true
+    createdAt:
+      type: string
+    updatedAt:
+      type: string

@@ -18,7 +18,9 @@ export const render = async <TParams = any>(
     hs.registerHelper(key, value);
   });
 
-  const renderTemplate = hs.compile(await readFile(template, 'utf-8'));
+  const renderTemplate = hs.compile(await readFile(template, 'utf-8'), {
+    noEscape: true,
+  });
 
   const render = renderTemplate(params);
 

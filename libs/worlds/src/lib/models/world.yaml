@@ -1,0 +1,70 @@
+
+enums:
+  worldKind:
+    Analog: 'analog'
+    Digital: 'digital'
+    Unknown: 'unknown'
+
+types:
+
+  world:
+    id:
+      type: string
+      required: true
+    meta:
+      type: Meta
+      required: true
+    state:
+      type: any
+    kind:
+      type: WorldKind
+      required: true
+    stats:
+      type: WorldStats
+
+    year:
+      type: number
+      required: true
+    displayName:
+      type: string
+    map:
+      type: any
+    eras:
+      type: any[]
+    archetypes:
+      type: any[]
+    avatars:
+      type: any[]
+    professions:
+      type: any[]
+
+  avatarProfession:
+    id:
+      type: string
+      required: true
+    label:
+      type: string
+    description:
+      type: string
+    icon:
+      type: string
+    color:
+      type: string
+    schools:
+      type: string[]
+
+  meta:
+    name:
+      type: string
+    previewUrl:
+      type: string
+
+  worldStats:
+    cultures:
+      type: number
+    states:
+      type: number
+    burgs:
+      type: number
+    avatars:
+      type: number

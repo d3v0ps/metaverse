@@ -1,0 +1,706 @@
+
+types:
+
+  fantasyMapGeneratorMap:
+    id:
+      type: string
+      required: true
+    info:
+      type: MapInfo
+      required: true
+    settings:
+      type: MapSettings
+      required: true
+    coords:
+      type: MapCoords
+      required: true
+    cells:
+      type: MapCells
+      required: true
+    biomes:
+      type: Biomes
+      required: true
+    notes:
+      type: MapNote[]
+      required: true
+    nameBases:
+      type: CultureNameBase[]
+      required: true
+
+  mapInfo:
+    version:
+      type: string
+      required: true
+    description:
+      type: string
+      required: true
+    exportedAt:
+      type: string
+      required: true
+    mapName:
+      type: string
+      required: true
+    seed:
+      type: string
+      required: true
+    mapId:
+      type: number
+      required: true
+
+  mapSettings:
+      distanceUnit:
+        type: string
+        required: true
+      distanceScale:
+        type: string
+        required: true
+      areaUnit:
+        type: string
+        required: true
+      heightUnit:
+        type: string
+        required: true
+      heightExponent:
+        type: string
+        required: true
+      temperatureScale:
+        type: string
+        required: true
+      barSize:
+        type: string
+        required: true
+      barLabel:
+        type: string
+        required: true
+      barBackOpacity:
+        type: string
+        required: true
+      barBackColor:
+        type: string
+        required: true
+      barPosX:
+        type: string
+        required: true
+      barPosY:
+        type: string
+        required: true
+      populationRate:
+        type: number
+        required: true
+      urbanization:
+        type: number
+        required: true
+      mapSize:
+        type: string
+        required: true
+      latitudeO:
+        type: string
+        required: true
+      temperatureEquator:
+        type: string
+        required: true
+      temperaturePole:
+        type: string
+        required: true
+      prec:
+        type: string
+        required: true
+      options:
+        type: MapOptions
+        required: true
+      mapName:
+        type: string
+        required: true
+      hideLabels:
+        type: boolean
+        required: true
+      stylePreset:
+        type: string
+        required: true
+      rescaleLabels:
+        type: boolean
+        required: true
+      urbanDensity:
+        type: number
+        required: true
+
+  mapOptions:
+    pinNotes:
+      type: boolean
+      required: true
+    showMFCGMap:
+      type: boolean
+      required: true
+    winds:
+      type: number[]
+      required: true
+    stateLabelsMode:
+      type: string
+      required: true
+    year:
+      type: number
+      required: true
+    era:
+      type: string
+      required: true
+    eraShort:
+      type: string
+      required: true
+    military:
+      type: MilitarySettings[]
+      required: true
+
+  militarySettings:
+    icon:
+      type: string
+      required: true
+    name:
+      type: string
+      required: true
+    rural:
+      type: number
+      required: true
+    urban:
+      type: number
+      required: true
+    crew:
+      type: number
+      required: true
+    power:
+      type: number
+      required: true
+    type:
+      type: string
+      required: true
+    separate:
+      type: number
+      required: true
+
+  mapCoords:
+    latT:
+      type: number
+      required: true
+    latN:
+      type: number
+      required: true
+    latS:
+      type: number
+      required: true
+    lonT:
+      type: number
+      required: true
+    lonW:
+      type: number
+      required: true
+    lonE:
+      type: number
+      required: true
+
+  mapCells:
+    cells:
+      type: MapCell[]
+      required: true
+    features:
+      type: any[]
+      required: true
+    cultures:
+      type: Culture[]
+      required: true
+    burgs:
+      type: Burg[]
+      required: true
+    states:
+      type: State[]
+      required: true
+    provinces:
+      type: any[]
+      required: true
+    religions:
+      type: Religion[]
+      required: true
+    rivers:
+      type: River[]
+      required: true
+    markers:
+      type: MapMarker[]
+      required: true
+
+  mapCell:
+    i:
+      type: number
+      required: true
+    v:
+      type: number[]
+      required: true
+    c:
+      type: number[]
+      required: true
+    p:
+      type: number[]
+      required: true
+    g:
+      type: number
+      required: true
+    h:
+      type: number
+      required: true
+    area:
+      type: number
+      required: true
+    f:
+      type: number
+      required: true
+    t:
+      type: number
+      required: true
+    haven:
+      type: number
+      required: true
+    harbor:
+      type: number
+      required: true
+    fl:
+      type: number
+      required: true
+    r:
+      type: number
+      required: true
+    conf:
+      type: number
+      required: true
+    biome:
+      type: number
+      required: true
+    s:
+      type: number
+      required: true
+    pop:
+      type: number
+      required: true
+    culture:
+      type: number
+      required: true
+    burg:
+      type: number
+      required: true
+    road:
+      type: number
+      required: true
+    crossroad:
+      type: number
+      required: true
+    state:
+      type: number
+      required: true
+    religion:
+      type: number
+      required: true
+    province:
+      type: number
+      required: true
+
+  culture:
+    name:
+      type: string
+      required: true
+    i:
+      type: number
+      required: true
+    base:
+      type: number
+      required: true
+    origin:
+      type: number
+    shield:
+      type: string
+      required: true
+    center:
+      type: number
+    color:
+      type: string
+    type:
+      type: string
+    expansionism:
+      type: number
+    code:
+      type: string
+
+  burg:
+    cell:
+      type: number
+    x:
+      type: number
+    y:
+      type: number
+    state:
+      type: number
+    i:
+      type: number
+    culture:
+      type: number
+    name:
+      type: string
+    feature:
+      type: number
+    capital:
+      type: number
+    port:
+      type: number
+    population:
+      type: number
+    type:
+      type: string
+    coa:
+      type: CoatOfArms
+      required: true
+    citadel:
+      type: number
+    plaza:
+      type: number
+    walls:
+      type: number
+    shanty:
+      type: number
+    temple:
+      type: number
+    MFCG:
+      type: number
+    coaSize:
+      type: number
+
+  state:
+    i:
+      type: number
+      required: true
+    name:
+      type: string
+      required: true
+    urban:
+      type: number
+      required: true
+    rural:
+      type: number
+      required: true
+    burgs:
+      type: number
+      required: true
+    area:
+      type: number
+      required: true
+    cells:
+      type: number
+      required: true
+    neighbors:
+      type: number[]
+      required: true
+    diplomacy:
+      type: any[]
+      required: true
+    provinces:
+      type: number[]
+      required: true
+    color:
+      type: string
+    expansionism:
+      type: number
+    capital:
+      type: number
+    type:
+      type: string
+    center:
+      type: number
+    culture:
+      type: number
+    coa:
+      type: CoatOfArms
+    campaigns:
+      type: StateCampaign[]
+    form:
+      type: string
+    formName:
+      type: string
+    fullName:
+      type: string
+    pole:
+      type: number[]
+    alert:
+      type: number
+    military:
+      type: StateMilitary[]
+
+  coatOfArms:
+    t1:
+      type: string
+      required: true
+    charges:
+      type: CoatOfArmsCharge[]
+    shield:
+      type: string
+      required: true
+    ordinaries:
+      type: CoatOfArmsOrdinary[]
+    division:
+      type: CoatOfArmsDivision
+
+  coatOfArmsCharge:
+    charge:
+      type: string
+      required: true
+    t:
+      type: string
+      required: true
+    p:
+      type: string
+      required: true
+    size:
+      type: number
+      required: true
+
+  coatOfArmsOrdinary:
+    ordinary:
+      type: string
+      required: true
+    t:
+      type: string
+      required: true
+    line:
+      type: string
+
+  coatOfArmsDivision:
+    division:
+      type: string
+      required: true
+    t:
+      type: string
+      required: true
+    line:
+      type: string
+      required: true
+
+  stateCampaign:
+    name:
+      type: string
+      required: true
+    start:
+      type: number
+      required: true
+    end:
+      type: number
+      required: true
+
+  stateMilitary:
+    i:
+      type: number
+      required: true
+    a:
+      type: number
+      required: true
+    cell:
+      type: number
+      required: true
+    x:
+      type: number
+      required: true
+    y:
+      type: number
+      required: true
+    bx:
+      type: number
+      required: true
+    by:
+      type: number
+      required: true
+    u:
+      type: StateMilitaryUnits
+      required: true
+    n:
+      type: number
+      required: true
+    name:
+      type: string
+      required: true
+    state:
+      type: number
+      required: true
+    icon:
+      type: string
+      required: true
+
+  stateMilitaryUnits:
+    archers:
+      type: number
+    cavalry:
+      type: number
+    artillery:
+      type: number
+    infantry:
+      type: number
+    fleet:
+      type: number
+
+  religion:
+    i:
+      type: number
+      required: true
+    name:
+      type: string
+      required: true
+    color:
+      type: string
+    culture:
+      type: number
+    type:
+      type: string
+    form:
+      type: string
+    deity:
+      type: string
+    center:
+      type: number
+    origin:
+      type: number
+    code:
+      type: string
+    expansion:
+      type: string
+    expansionism:
+      type: number
+
+  river:
+    i:
+      type: number
+      required: true
+    source:
+      type: number
+      required: true
+    mouth:
+      type: number
+      required: true
+    discharge:
+      type: number
+      required: true
+    length:
+      type: number
+      required: true
+    width:
+      type: number
+      required: true
+    widthFactor:
+      type: number
+      required: true
+    sourceWidth:
+      type: number
+      required: true
+    parent:
+      type: number
+      required: true
+    cells:
+      type: number[]
+      required: true
+    basin:
+      type: number
+      required: true
+    name:
+      type: string
+      required: true
+    type:
+      type: string
+      required: true
+
+  mapMarker:
+    icon:
+      type: string
+      required: true
+    type:
+      type: string
+      required: true
+    dx:
+      type: number
+    px:
+      type: number
+    x:
+      type: number
+      required: true
+    y:
+      type: number
+      required: true
+    cell:
+      type: number
+      required: true
+    i:
+      type: number
+      required: true
+    dy:
+      type: number
+
+  biomes:
+    i:
+      type: number[]
+      required: true
+    name:
+      type: string[]
+      required: true
+    color:
+      type: string[]
+      required: true
+    biomesMartix:
+      type: any
+      required: true
+    habitability:
+      type: number[]
+      required: true
+    iconsDensity:
+      type: number[]
+      required: true
+    icons:
+      type: string[][]
+      required: true
+    cost:
+      type: number[]
+      required: true
+    cells:
+      type: number[]
+      required: true
+    area:
+      type: number[]
+      required: true
+    rural:
+      type: number[]
+      required: true
+    urban:
+      type: number[]
+      required: true
+
+  mapNote:
+    id:
+      type: string
+      required: true
+    name:
+      type: string
+      required: true
+    legend:
+      type: string
+      required: true
+
+  cultureNameBase:
+    name:
+      type: string
+      required: true
+    i:
+      type: number
+      required: true
+    min:
+      type: number
+      required: true
+    max:
+      type: number
+      required: true
+    d:
+      type: string
+      required: true
+    m:
+      type: number
+      required: true
+    b:
+      type: string
+      required: true

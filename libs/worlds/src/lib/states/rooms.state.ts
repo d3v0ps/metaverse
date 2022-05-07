@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Avatar } from '@central-factory/avatars/models/avatar';
+import { Avatar } from '@central-factory/avatars/__generated__/models';
 import { BehaviorSubject } from 'rxjs';
-import { Burg } from '../models/fmg-map';
+import { Burg } from '../__generated__/models';
 import { WorldsState } from './worlds.state';
 
 export enum RoomKind {

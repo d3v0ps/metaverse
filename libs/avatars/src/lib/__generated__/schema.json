@@ -1,0 +1,453 @@
+{
+  "$ref": "#/definitions/Root",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "definitions": {
+    "Appearance": {
+      "additionalProperties": false,
+      "properties": {
+        "body": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/Colourable"
+            },
+            {
+              "$ref": "#/definitions/Stylable"
+            },
+            {
+              "$ref": "#/definitions/Shapeable"
+            }
+          ]
+        },
+        "ears": {
+          "$ref": "#/definitions/Shapeable"
+        },
+        "eyes": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/Colourable"
+            },
+            {
+              "$ref": "#/definitions/Shapeable"
+            }
+          ]
+        },
+        "facialHair": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/Colourable"
+            },
+            {
+              "$ref": "#/definitions/Stylable"
+            }
+          ]
+        },
+        "hair": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/Colourable"
+            },
+            {
+              "$ref": "#/definitions/Stylable"
+            }
+          ]
+        },
+        "nose": {
+          "$ref": "#/definitions/Shapeable"
+        }
+      },
+      "type": "object"
+    },
+    "AppearanceInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "bodyType": {
+          "type": "string"
+        },
+        "eyeColor": {
+          "type": "string"
+        },
+        "fatPercentage": {
+          "type": "number"
+        },
+        "hairColor": {
+          "type": "string"
+        },
+        "hairLength": {
+          "type": "number"
+        },
+        "hairStyle": {
+          "type": "string"
+        },
+        "height": {
+          "type": "number"
+        },
+        "skinColor": {
+          "type": "string"
+        },
+        "weight": {
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "Attributes": {
+      "additionalProperties": false,
+      "properties": {
+        "base": {}
+      },
+      "type": "object"
+    },
+    "Avatar": {
+      "additionalProperties": false,
+      "properties": {
+        "_attachments": {},
+        "appearance": {
+          "$ref": "#/definitions/Appearance"
+        },
+        "appearances": {
+          "items": {},
+          "type": "array"
+        },
+        "attributes": {
+          "$ref": "#/definitions/Attributes"
+        },
+        "children": {
+          "items": {
+            "$ref": "#/definitions/Avatar"
+          },
+          "type": "array"
+        },
+        "createdAt": {
+          "additionalProperties": false,
+          "description": "Enables basic storage and retrieval of dates and times. ",
+          "type": "object"
+        },
+        "id": {
+          "type": "string"
+        },
+        "identity": {
+          "$ref": "#/definitions/Identity"
+        },
+        "knowledge": {},
+        "location": {
+          "$ref": "#/definitions/Location"
+        },
+        "outfits": {
+          "items": {
+            "$ref": "#/definitions/Outfit"
+          },
+          "type": "array"
+        },
+        "relationships": {
+          "items": {
+            "$ref": "#/definitions/Relationship"
+          },
+          "type": "array"
+        },
+        "selectedOutfit": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "additionalProperties": false,
+          "description": "Enables basic storage and retrieval of dates and times. ",
+          "type": "object"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "Colourable": {
+      "additionalProperties": false,
+      "properties": {
+        "color": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Coordinates": {
+      "additionalProperties": false,
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "z": {
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "Gender": {
+      "enum": [
+        "Male",
+        "Female"
+      ],
+      "type": "string"
+    },
+    "HandsSlot": {
+      "additionalProperties": false,
+      "properties": {
+        "bothHands": {
+          "type": "string"
+        },
+        "leftHand": {
+          "type": "string"
+        },
+        "rightHand": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "HandsSlotGroup": {
+      "additionalProperties": false,
+      "properties": {
+        "slot1": {
+          "$ref": "#/definitions/HandsSlot"
+        },
+        "slot2": {
+          "$ref": "#/definitions/HandsSlot"
+        }
+      },
+      "type": "object"
+    },
+    "HeadSlot": {
+      "additionalProperties": false,
+      "properties": {
+        "headgear": {
+          "type": "string"
+        },
+        "visor": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Identity": {
+      "additionalProperties": false,
+      "properties": {
+        "archetype": {
+          "type": "string"
+        },
+        "bio": {
+          "type": "string"
+        },
+        "birthDate": {
+          "type": "string"
+        },
+        "birthPlace": {
+          "type": "number"
+        },
+        "birthWorld": {
+          "type": "string"
+        },
+        "culture": {
+          "type": "number"
+        },
+        "familyName": {
+          "type": "string"
+        },
+        "gender": {
+          "$ref": "#/definitions/Gender"
+        },
+        "givenName": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "mainProfession": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "string"
+        },
+        "religion": {
+          "type": "number"
+        },
+        "secondaryProfession": {
+          "type": "string"
+        },
+        "sexualOrientation": {
+          "$ref": "#/definitions/SexualOrientation"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Location": {
+      "additionalProperties": false,
+      "properties": {
+        "burg": {
+          "type": "number"
+        },
+        "coordinates": {
+          "$ref": "#/definitions/Coordinates"
+        },
+        "world": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Outfit": {
+      "additionalProperties": false,
+      "properties": {
+        "back": {
+          "type": "string"
+        },
+        "feet": {
+          "type": "string"
+        },
+        "hands": {
+          "$ref": "#/definitions/HandsSlotGroup"
+        },
+        "head": {
+          "$ref": "#/definitions/HeadSlot"
+        },
+        "legs": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "shoulders": {
+          "type": "string"
+        },
+        "torso": {
+          "$ref": "#/definitions/TorsoSlot"
+        }
+      },
+      "type": "object"
+    },
+    "Profession": {
+      "additionalProperties": false,
+      "properties": {
+        "color": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "schools": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "Relationship": {
+      "additionalProperties": false,
+      "properties": {
+        "avatar": {
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "#/definitions/RelationshipKind"
+        }
+      },
+      "type": "object"
+    },
+    "RelationshipKind": {
+      "enum": [
+        "Parent",
+        "Child",
+        "Sibling",
+        "Spouse",
+        "Friend",
+        "Partner"
+      ],
+      "type": "string"
+    },
+    "Root": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Avatar"
+        },
+        {
+          "$ref": "#/definitions/Appearance"
+        },
+        {
+          "$ref": "#/definitions/Attributes"
+        },
+        {
+          "$ref": "#/definitions/Identity"
+        },
+        {
+          "$ref": "#/definitions/Outfit"
+        },
+        {
+          "$ref": "#/definitions/Profession"
+        },
+        {
+          "$ref": "#/definitions/AppearanceInfo"
+        }
+      ]
+    },
+    "SexualOrientation": {
+      "enum": [
+        "Heterosexual",
+        "Homosexual",
+        "Bisexual",
+        "Pansexual",
+        "Asexual"
+      ],
+      "type": "string"
+    },
+    "Shapeable": {
+      "additionalProperties": false,
+      "properties": {
+        "shape": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Stylable": {
+      "additionalProperties": false,
+      "properties": {
+        "style": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "TorsoSlot": {
+      "additionalProperties": false,
+      "properties": {
+        "layer1": {
+          "type": "string"
+        },
+        "layer2": {
+          "type": "string"
+        },
+        "layer3": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "avatars"
+}

@@ -1,11 +1,13 @@
 import { generateTypeScriptGqlTypesFromSchema } from '@central-factory/platforms/languages/gql/generate-ts-gql-types';
 import { generateRxDBSchemasFromSchema } from '@central-factory/platforms/languages/json/generate-schema';
 import { getRootTypeNamesFromSchema } from '@central-factory/platforms/languages/json/utils/get-root-type-names-from-schema';
+import { generateTypescriptTokens } from '@central-factory/platforms/languages/typescript/generate-tokens';
 import { generateTypeScriptTypesFromSchema } from '@central-factory/platforms/languages/typescript/generate-types';
 import { parseTypes } from '@central-factory/platforms/languages/typescript/parse-types';
 import { Logger } from '@nestjs/common';
-import { outputJSON, readdir } from 'fs-extra';
-import { resolve } from 'path';
+import { outputJSON, readdir, readFile } from 'fs-extra';
+import { extname, resolve } from 'path';
+import { parse as parseYaml } from 'yaml';
 import { environment } from './environments/environment';
 
 const logger = new Logger('Generator');
@@ -16,23 +18,42 @@ const logger = new Logger('Generator');
 
   await Promise.all(
     modules.map(async (mod) => {
-      const inputFolder = resolve(
-        process.cwd(),
-        'libs',
-        mod,
-        'src',
-        'lib',
-        'models'
-      );
+      const libFolder = resolve(process.cwd(), 'libs', mod, 'src', 'lib');
+      const inputFolder = resolve(libFolder, 'models');
+      const output = resolve(libFolder, '__generated__');
+
       try {
-        const files = (await readdir(inputFolder)).filter((file) =>
+        const tokens = (await readdir(inputFolder)).filter(
+          (file) => file.endsWith('.yaml') || file.endsWith('.yml')
+        );
+
+        if (tokens.length) {
+          await Promise.all(
+            tokens.map(async (token) => {
+              const input = resolve(inputFolder, token);
+              const content = await readFile(input, 'utf8');
+              const schema = await parseYaml(content);
+              const extension = extname(token);
+
+              await generateTypescriptTokens(
+                schema,
+                resolve(output, 'types', token.replace(extension, '.d.ts'))
+              );
+            })
+          );
+        }
+
+        const filesFolder = tokens.length
+          ? resolve(output, 'types')
+          : inputFolder;
+
+        const files = (await readdir(filesFolder)).filter((file) =>
           file.endsWith('index.d.ts')
         );
 
         return Promise.all(
           files.map(async (file) => {
-            const input = resolve(inputFolder, file);
-            const output = resolve(inputFolder, '__generated__');
+            const input = resolve(filesFolder, file);
             const schema = await parseTypes(input);
 
             if (!schema) {
@@ -59,7 +80,7 @@ const logger = new Logger('Generator');
               ),
               generateTypeScriptTypesFromSchema(
                 schema,
-                resolve(output, 'types', 'index.ts')
+                resolve(output, 'models', 'index.ts')
               ),
               generateRxDBSchemasFromSchema(
                 schema,

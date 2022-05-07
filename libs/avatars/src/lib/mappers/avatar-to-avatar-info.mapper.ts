@@ -1,13 +1,13 @@
 import { mapFMGCultureId } from '@central-factory/worlds/mappers/fmg-culture-id.mapper';
 import {
+  AvatarProfession,
   Burg as Place,
   Culture,
   CultureNameBase,
   Religion as Belief,
-} from '@central-factory/worlds/models/fmg-map';
-import { AvatarProfession } from '@central-factory/worlds/models/world';
+} from '@central-factory/worlds/__generated__/models';
 import { AvatarInfo } from '../models/avatar-info';
-import { Avatar, AvatarRelationshipKind } from '../models/__generated__/types';
+import { Avatar, RelationshipKind } from '../__generated__/models';
 
 // TODO: move this to a component
 export const cultureIcons: Record<string, string> = {
@@ -85,10 +85,10 @@ export const getRelatedAvatars = (
     .reduce<Record<string, Avatar[]>>(
       (acc, { kind, avatar }) => {
         switch (kind) {
-          case AvatarRelationshipKind.Spouse:
+          case RelationshipKind.Spouse:
             acc.partners.push(avatar);
             break;
-          case AvatarRelationshipKind.Parent:
+          case RelationshipKind.Parent:
             acc.parents.push(avatar);
             break;
         }
@@ -101,7 +101,7 @@ export const getRelatedAvatars = (
   relatedAvatars.children = avatars.filter((avatar: Avatar) =>
     avatar.relationships?.some(
       (relationship) =>
-        relationship.kind === AvatarRelationshipKind.Parent &&
+        relationship.kind === RelationshipKind.Parent &&
         relationship.avatar === avatar?.id
     )
   );

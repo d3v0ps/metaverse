@@ -1,0 +1,4 @@
+imports:
+  application: './application'
+roots:
+  - application

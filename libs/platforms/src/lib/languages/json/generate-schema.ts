@@ -6,6 +6,7 @@ import { JSONSchema } from '../json/types/json-schema';
 import { renderRxDBIndex } from './render-rxdb-index';
 import { renderRxDBSchema } from './render-rxdb-schema';
 import { getRootTypeNamesFromSchema } from './utils/get-root-type-names-from-schema';
+import { getType } from './utils/get-type';
 
 const logger = new Logger('Generate RxDB Schemas');
 
@@ -13,19 +14,42 @@ export const generateRxDBSchemasFromSchema = async (
   schema: JSONSchema,
   outputFolder: string
 ): Promise<void> => {
-  if (!schema.definitions) {
-    throw new Error(`Schema ${schema.title} does not contain definitions`);
-  }
-
   const schemaDefinitions = Object.assign({}, schema.definitions);
   const rootTypeNames = getRootTypeNamesFromSchema('Root', schema);
+  const namedDefinitions = Object.entries(schemaDefinitions).map(
+    ([name, definition]) => ({ ...definition, name })
+  );
 
   delete schemaDefinitions['Root'];
 
-  const definitions = Object.entries(schemaDefinitions).map(
-    ([name, schema]) => ({
+  const definitions = namedDefinitions.map((definition) => {
+    let schema: JSONSchema & { name: string } = definition;
+    if (definition.allOf || definition.anyOf || definition.$ref) {
+      const { result } = getType(definition, namedDefinitions);
+      schema = result
+        .map((ref) => schemaDefinitions[ref] as JSONSchema)
+        .reduce<typeof schema>(
+          (acc, def) => ({
+            ...acc,
+            properties: {
+              ...acc.properties,
+              ...def.properties,
+            },
+            required: Array.isArray(acc.required)
+              ? acc.required.concat(def.required as string[])
+              : (def.required as string[]),
+          }),
+          {
+            name: definition.name,
+            type: 'object',
+            properties: {},
+            required: [],
+          }
+        );
+    }
+
+    return {
       ...schema,
-      name,
       templateProperties: schema.properties
         ? Object.entries(schema.properties).map(([name, propSchema]) => {
             const requiredInRoot = Array.isArray(schema.required)
@@ -44,8 +68,8 @@ export const generateRxDBSchemasFromSchema = async (
             };
           })
         : [],
-    })
-  );
+    };
+  });
 
   const rootDefinitions = definitions.filter((def) =>
     rootTypeNames.includes(def.name)
@@ -54,6 +78,7 @@ export const generateRxDBSchemasFromSchema = async (
   await ensureDir(outputFolder);
   await Promise.all(
     rootDefinitions.map(async (definition) => {
+      const name = definition.name;
       const content = await renderRxDBSchema({
         schema,
         definition,

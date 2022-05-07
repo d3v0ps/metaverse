@@ -1,0 +1,40 @@
+
+types:
+  tax:
+    id:
+      type: string
+      required: true
+    name:
+      type: string
+      required: true
+    rate:
+      type: number
+      required: true
+    financialEntityCode:
+      type: string
+      required: true
+    createdAt:
+      type: Date
+      required: true
+    updatedAt:
+      type: Date
+      required: true
+    period:
+      type: TaxPeriod
+      required: true
+
+
+  taxPeriod:
+    start:
+      type: Date
+      required: true
+    end:
+      type: Date
+      required: true
+    payStart:
+      type: Date
+      required: true
+    payEnd:
+      type: Date
+      required: true
+

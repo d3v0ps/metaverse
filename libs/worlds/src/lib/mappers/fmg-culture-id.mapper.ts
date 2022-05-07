@@ -1,4 +1,4 @@
-import { CultureNameBase } from '../models/fmg-map';
+import { CultureNameBase } from '../__generated__/models';
 
 export const cultureIds: Record<string, string[]> = {
   asian: [

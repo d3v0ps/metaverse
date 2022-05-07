@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { combineLatest, map, Observable } from 'rxjs';
-import type { Application } from '../models/application';
+import type { Application } from '../__generated__/models';
 import { StoreApplicationsState } from './store-applications.state';
 import { UserApplicationsState } from './user-applications.state';
 

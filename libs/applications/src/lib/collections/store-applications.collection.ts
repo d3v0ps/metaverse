@@ -5,8 +5,8 @@ import type {
   RxDocument,
   RxJsonSchema,
 } from 'rxdb/dist/types/types';
-import type { Application } from '../models/application';
-import { applicationSchema } from '../models/__generated__/collections';
+import { applicationSchema } from '../__generated__/collections';
+import type { Application } from '../__generated__/models';
 export type StoreApplicationDocType = Application;
 
 export type StoreApplicationDocument = RxDocument<StoreApplicationDocType>;

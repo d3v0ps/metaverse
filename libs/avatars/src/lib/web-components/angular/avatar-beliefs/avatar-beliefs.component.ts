@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Religion } from '@central-factory/worlds/models/fmg-map';
+import { Religion } from '@central-factory/worlds/__generated__/models';
 
 @Component({
   selector: 'cf-avatar-beliefs',

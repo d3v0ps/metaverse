@@ -4,8 +4,8 @@ import { Repository } from '@central-factory/persistence/services/repository';
 import { forkJoin, of, throwError } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { UserAvatarDocType } from '../collections/user-avatars.collection';
-import { Avatar } from '../models/__generated__/types';
 import { AvatarAppearanceEditorModel } from '../web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component';
+import { Avatar } from '../__generated__/models';
 
 @Injectable({
   providedIn: 'root',
@@ -77,6 +77,7 @@ export class ManageAvatarAppearancesState {
           return throwError(() => new Error('Avatar not found'));
         }
 
+        avatar.appearances = avatar.appearances || [];
         const alreadyExistingAppearance = avatar.appearances.find(
           (appearance) => appearance.id === model.id
         );

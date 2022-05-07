@@ -1,17 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, InjectionToken, NgZone } from '@angular/core';
-import { Application } from '@central-factory/applications/models/application';
+import { Application } from '@central-factory/applications/__generated__/models';
 import { professions } from '@central-factory/avatars/data/demo/professions.data';
 import { AvatarGenerator } from '@central-factory/avatars/data/generators/avatar.generator';
-import { Avatar } from '@central-factory/avatars/models/avatar';
+import { Avatar } from '@central-factory/avatars/__generated__/models';
 import { EntityManager } from '@central-factory/persistence/services/entity-manager';
 import { UserPreferencesState } from '@central-factory/preferences/states/user-preferences.state';
 import { BehaviorSubject, forkJoin, of, tap } from 'rxjs';
 import { map, share, switchMap } from 'rxjs/operators';
 import { Back4App } from '../models/b4a-city';
-import { Burg, FantasyMapGeneratorMap } from '../models/fmg-map';
-import { World } from '../models/world';
 import { GENESIS_STATES, WORLD_STATES } from '../state-machines/world';
+import { Burg, FantasyMapGeneratorMap, World } from '../__generated__/models';
 
 export type ApplicationsByCategory = Record<string, Application[]>;
 export type ApplicationsByAuthor = Record<string, Application[]>;

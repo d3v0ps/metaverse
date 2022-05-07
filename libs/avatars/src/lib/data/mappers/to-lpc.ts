@@ -1,4 +1,4 @@
-import { Avatar } from '@central-factory/avatars/models/avatar';
+import { Avatar } from '@central-factory/avatars/__generated__/models';
 
 const valueMappings: Record<
   string,
@@ -108,7 +108,7 @@ export const toLPCLayers = ({
     (selectedOutfit && outfits?.find((o) => o.name === selectedOutfit)) ||
     outfits[0];
 
-  const bodyType = appearance?.body?.type?.toLowerCase() || 'female';
+  const bodyType = appearance?.body?.style?.toLowerCase() || 'female';
 
   return [
     {
@@ -119,7 +119,7 @@ export const toLPCLayers = ({
     {
       name: 'Body',
       description: 'Body layer',
-      src: [baseUrl, 'body', bodyType, `${appearance.body?.skin}.png`].join(
+      src: [baseUrl, 'body', bodyType, `${appearance.body?.color}.png`].join(
         '/'
       ),
     },
@@ -191,7 +191,7 @@ export const toLPCLayers = ({
             'body',
             bodyType,
             'ears',
-            `${appearance.ears?.shape}_${appearance.body?.skin}.png`,
+            `${appearance.ears?.shape}_${appearance.body?.color}.png`,
           ].join('/'),
         }
       : null,
@@ -204,7 +204,7 @@ export const toLPCLayers = ({
             'body',
             bodyType,
             'nose',
-            `${appearance.nose?.shape}_${appearance.body?.skin}.png`,
+            `${appearance.nose?.shape}_${appearance.body?.color}.png`,
           ].join('/'),
         }
       : null,

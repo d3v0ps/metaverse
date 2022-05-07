@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { toAvataaars } from '@central-factory/avatars/data/mappers/to-avataaars';
 import { toLPCLayers } from '@central-factory/avatars/data/mappers/to-lpc';
-import { Avatar } from '@central-factory/avatars/models/avatar';
+import { Avatar } from '@central-factory/avatars/__generated__/models';
 import {
   GameLayer,
   GameLayerType,

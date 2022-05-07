@@ -1,0 +1,274 @@
+{
+  "$ref": "#/definitions/Root",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "definitions": {
+    "Application": {
+      "additionalProperties": false,
+      "properties": {
+        "additionalProperties": {
+          "$ref": "#/definitions/ApplicationAdditionalProperties"
+        },
+        "backgroundColor": {
+          "type": "string"
+        },
+        "categories": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "iarcRatingId": {
+          "type": "string"
+        },
+        "icons": {
+          "items": {
+            "$ref": "#/definitions/ApplicationIcon"
+          },
+          "type": "array"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "screenshots": {
+          "items": {
+            "$ref": "#/definitions/ApplicationScreenshot"
+          },
+          "type": "array"
+        },
+        "shortName": {
+          "type": "string"
+        },
+        "shortcuts": {
+          "items": {
+            "$ref": "#/definitions/ApplicationShortcut"
+          },
+          "type": "array"
+        },
+        "startUrl": {
+          "type": "string"
+        },
+        "themeColor": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "startUrl"
+      ],
+      "type": "object"
+    },
+    "ApplicationAdditionalProperties": {
+      "additionalProperties": false,
+      "properties": {
+        "author": {
+          "$ref": "#/definitions/ApplicationAuthor"
+        },
+        "colors": {
+          "items": {
+            "$ref": "#/definitions/ApplicationColor"
+          },
+          "type": "array"
+        },
+        "defaultShortcut": {
+          "type": "string"
+        },
+        "disabled": {
+          "type": "boolean"
+        },
+        "internal": {
+          "type": "boolean"
+        },
+        "originalManifest": {
+          "type": "string"
+        },
+        "permissions": {
+          "items": {
+            "$ref": "#/definitions/ApplicationPermission"
+          },
+          "type": "array"
+        },
+        "renderingType": {
+          "$ref": "#/definitions/ApplicationRenderingType"
+        },
+        "sidebarShortcuts": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "starred": {
+          "type": "boolean"
+        },
+        "supportsBrowser": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "author"
+      ],
+      "type": "object"
+    },
+    "ApplicationAuthor": {
+      "additionalProperties": false,
+      "properties": {
+        "icon": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ],
+      "type": "object"
+    },
+    "ApplicationColor": {
+      "additionalProperties": false,
+      "properties": {
+        "color": {
+          "type": "string"
+        },
+        "variation": {
+          "$ref": "#/definitions/ColorVariation"
+        }
+      },
+      "type": "object"
+    },
+    "ApplicationIcon": {
+      "additionalProperties": false,
+      "properties": {
+        "sizes": {
+          "type": "string"
+        },
+        "src": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "src",
+        "sizes",
+        "type"
+      ],
+      "type": "object"
+    },
+    "ApplicationPermission": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "mode": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ApplicationRenderingType": {
+      "enum": [
+        "Webview",
+        "Local",
+        "AngularElement",
+        "WebpackModuleFederation",
+        "Unknown"
+      ],
+      "type": "string"
+    },
+    "ApplicationScreenshot": {
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "platform": {
+          "type": "string"
+        },
+        "sizes": {
+          "type": "string"
+        },
+        "src": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "src",
+        "sizes",
+        "type",
+        "platform",
+        "label"
+      ],
+      "type": "object"
+    },
+    "ApplicationShortcut": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "icons": {
+          "items": {
+            "$ref": "#/definitions/ApplicationIcon"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        },
+        "shortName": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "url"
+      ],
+      "type": "object"
+    },
+    "ColorVariation": {
+      "enum": [
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger",
+        "info",
+        "light",
+        "dark"
+      ],
+      "type": "string"
+    },
+    "Root": {
+      "$ref": "#/definitions/Application"
+    }
+  },
+  "title": "applications"
+}

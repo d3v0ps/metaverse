@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Avatar } from '../../../models/avatar';
+import { Avatar } from '../../../__generated__/models';
 
 export type AvatarDialogMessage = {
   content: string;

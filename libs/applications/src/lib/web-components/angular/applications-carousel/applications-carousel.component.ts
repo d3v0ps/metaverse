@@ -1,6 +1,6 @@
 import { CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Application } from '@central-factory/applications/models/application';
+import { Application } from '@central-factory/applications/__generated__/models';
 
 @Component({
   selector: 'cf-applications-carousel',
@@ -63,13 +63,17 @@ export class ApplicationsCarouselComponent {
   };
   @Input() set applicationsPerPage(value: number | undefined) {
     this._applicationsPerPage = value || 0;
-    this.carouselApplications = this._applications.slice(0, this.applicationsPerPage) || [];
-  };
+    this.carouselApplications =
+      this._applications.slice(0, this.applicationsPerPage) || [];
+  }
 
   @Input() set applications(value: Application[] | undefined) {
     this._applications = value || [];
-    this.carouselApplications = this._applications.slice(0, this.applicationsPerPage);
-  };
+    this.carouselApplications = this._applications.slice(
+      0,
+      this.applicationsPerPage
+    );
+  }
   get applications(): Application[] | undefined {
     return this._applications;
   }

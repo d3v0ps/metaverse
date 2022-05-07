@@ -3,15 +3,15 @@ import { transition, trigger, useAnimation } from '@angular/animations';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import {
-  Application,
-  ApplicationShortcut,
-} from '@central-factory/applications/models/application';
 import { ApplicationDisplayState } from '@central-factory/applications/states/application-display.state';
 import { RecentlyOpenedApplicationsState } from '@central-factory/applications/states/recently-opened-applications.state';
 import { SelectedApplicationState } from '@central-factory/applications/states/selected-application.state';
-import type { Avatar } from '@central-factory/avatars/models/avatar';
+import {
+  Application,
+  ApplicationShortcut,
+} from '@central-factory/applications/__generated__/models';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
+import type { Avatar } from '@central-factory/avatars/__generated__/models';
 import { EntityManager } from '@central-factory/persistence/services/entity-manager';
 import { Repository } from '@central-factory/persistence/services/repository';
 import { CustomizationSettingsState } from '@central-factory/preferences/states/customization/customization-settings.state';

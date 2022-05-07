@@ -10,14 +10,14 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { OnApplicationLoad } from '@central-factory/applications/models/application-interfaces';
-import { FantasyMapGeneratorMap } from '@central-factory/worlds/models/fmg-map';
+import { FantasyMapGeneratorMap } from '@central-factory/worlds/__generated__/models';
 import {
   Application,
   ApplicationIcon,
   ApplicationRenderingType,
   ApplicationShortcut,
   ColorVariation,
-} from '../../../models/__generated__/types';
+} from '../../../__generated__/models';
 
 @Component({
   selector: 'cf-application-view',

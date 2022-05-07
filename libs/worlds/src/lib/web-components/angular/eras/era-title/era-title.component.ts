@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Era } from '@central-factory/worlds/models/era';
+import { Era } from '@central-factory/worlds/__generated__/models';
 
 @Component({
   selector: 'cf-era-title',

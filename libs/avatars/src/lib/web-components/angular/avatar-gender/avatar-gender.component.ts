@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AvatarGender } from '@central-factory/avatars/models/__generated__/types';
+import { Gender } from '@central-factory/avatars/__generated__/models';
 
 @Component({
   selector: 'cf-avatar-gender',
@@ -21,7 +21,7 @@ import { AvatarGender } from '@central-factory/avatars/models/__generated__/type
   `,
 })
 export class AvatarGenderComponent {
-  @Input() gender?: AvatarGender;
+  @Input() gender?: Gender;
   @Input() size = 'h5';
   @Input() bold = false;
   @Input() showIcon = true;

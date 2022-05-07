@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { KnowledgeSymbol } from '../../../models/knowledge-symbol';
+import { KnowledgeSymbol } from '../../../__generated__/models';
 
 @Component({
   selector: 'cf-knowledge-symbol-view',

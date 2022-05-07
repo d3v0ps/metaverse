@@ -8,7 +8,7 @@ import { UserApplicationDocType } from '../collections/user-applications.collect
 import {
   Application,
   ApplicationAdditionalProperties,
-} from '../models/application';
+} from '../__generated__/models';
 import {
   ApplicationOrigin,
   AvailableApplicationsState,

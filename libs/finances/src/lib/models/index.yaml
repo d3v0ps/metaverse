@@ -1,0 +1,18 @@
+
+imports:
+  account: './account'
+  balance: './balance'
+  invoice: './invoice'
+  product: './product'
+  tax: './tax'
+  transaction: './transaction'
+  wallet: './wallet'
+roots:
+  - account
+  - balance
+  - invoice
+  - product
+  - tax
+  - transaction
+  - wallet
+

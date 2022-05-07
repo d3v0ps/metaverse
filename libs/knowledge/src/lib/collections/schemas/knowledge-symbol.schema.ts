@@ -3,7 +3,7 @@ import type {
   RxDocument,
   RxJsonSchema,
 } from 'rxdb/dist/types/types';
-import type { KnowledgeSymbol } from '../../models/knowledge-symbol';
+import type { KnowledgeSymbol } from '../../__generated__/models';
 
 export type KnowledgeSymbolDocType = KnowledgeSymbol & {
   createdAt?: Date;

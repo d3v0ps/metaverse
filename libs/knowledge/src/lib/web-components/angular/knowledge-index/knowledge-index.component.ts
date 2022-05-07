@@ -7,8 +7,8 @@ import {
   Output,
 } from '@angular/core';
 import { OnApplicationLoad } from '@central-factory/applications/models/application-interfaces';
-import { World } from '@central-factory/worlds/models/world';
 import { WorldsState } from '@central-factory/worlds/states/worlds.state';
+import { World } from '@central-factory/worlds/__generated__/models';
 import {
   catchError,
   filter,
@@ -18,7 +18,7 @@ import {
   takeUntil,
   tap,
 } from 'rxjs';
-import { KnowledgeSymbol } from '../../../models/knowledge-symbol';
+import { KnowledgeSymbol } from '../../../__generated__/models';
 import { KnowledgeTaxonomy } from '../knowledge-tree/knowledge-branch.component';
 
 @Component({

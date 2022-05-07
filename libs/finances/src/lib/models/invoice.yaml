@@ -1,0 +1,46 @@
+
+enums:
+  invoiceState:
+    Draft: draft
+    Sent: sent
+    Paid: paid
+
+types:
+  invoice:
+    id:
+      type: string
+      required: true
+    state:
+      type: InvoiceState
+    sender:
+      type: string
+    receiver:
+      type: string
+    createdAt:
+      type: string
+    updatedAt:
+      type: string
+    items:
+      type: InvoiceItem[]
+    total:
+      type: string
+    paidAt:
+      type: string
+
+  invoiceItem:
+    id:
+      type: string
+    productId:
+      type: string
+    name:
+      type: string
+    description:
+      type: string
+    price:
+      type: number
+    quantity:
+      type: number
+    createdAt:
+      type: Date
+    updatedAt:
+      type: Date

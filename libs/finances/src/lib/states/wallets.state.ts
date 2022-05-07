@@ -15,9 +15,13 @@ import {
 } from '../data/demo/transactions.data';
 import { demoWallets } from '../data/demo/wallets.data';
 import { CurrencyMapper } from '../mappers/currency.mapper';
-import { Balance } from '../models/balance';
-import { Transaction } from '../models/transaction';
-import { Account, AccountType, Wallet } from '../models/__generated__/types';
+import {
+  Account,
+  AccountType,
+  Balance,
+  Transaction,
+  Wallet,
+} from '../__generated__/models';
 
 @Injectable({
   providedIn: 'root',

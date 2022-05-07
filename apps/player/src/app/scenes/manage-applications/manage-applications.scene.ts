@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Application } from '@central-factory/applications/models/application';
 import { UserApplicationsState } from '@central-factory/applications/states/user-applications.state';
+import { Application } from '@central-factory/applications/__generated__/models';
 import { map } from 'rxjs/operators';
 
 /** Manage scene */

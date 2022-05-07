@@ -1,0 +1,213 @@
+
+enums:
+  sexualOrientation:
+    Heterosexual: Heterosexual
+    Homosexual: Homosexual
+    Bisexual: Bisexual
+    Pansexual: Pansexual
+    Asexual: Asexual
+  Gender:
+    Male: Male
+    Female: Female
+  relationshipKind:
+    Parent: Parent
+    Child: Child
+    Sibling: Sibling
+    Spouse: Spouse
+    Friend: Friend
+    Partner: Partner
+
+types:
+  shapeable:
+    shape:
+      type: string
+  colourable:
+    color:
+      type: string
+  stylable:
+    style:
+      type: string
+
+  avatar:
+    id:
+      type: string
+      required: true
+      description: The avatar's id
+
+    identity:
+      type: Identity
+      description: The avatar's identity
+
+    appearance:
+      type: Appearance
+      description: The avatar's appearance
+
+    attributes:
+      type: Attributes
+      description: The avatar's attributes
+
+    knowledge:
+      type: any
+      # type: AvatarKnowledge
+      description: The avatar's knowledge
+    outfits:
+      type: Outfit[]
+      description: The avatar's outfits
+    selectedOutfit:
+      type: string
+      description: The avatar's selected outfit
+    location:
+      type: Location
+      description: The avatar's location
+    relationships:
+      type: Relationship[]
+    children:
+      type: Avatar[]
+    appearances:
+      type: any[]
+      description: Use appearance & outfits instead
+      deprecated: true
+    createdAt:
+      type: Date
+    updatedAt:
+      type: Date
+    _attachments:
+      type: any
+
+  meta:
+    root:
+      type: boolean
+      description: Wether this resource has parents or not
+    generatorTemplate:
+      type: string
+      description: The generator template used to generate this avatar
+    managed:
+      type: boolean
+      description: wether this avatar's stats are managed by the user or not. Note Managed avatars might not be accepted by certain servers
+
+  relationship:
+    kind:
+      type: RelationshipKind
+    avatar:
+      type: string
+
+  identity:
+    givenName:
+      type: string
+    familyName:
+      type: string
+    gender:
+      type: Gender
+    quote:
+      type: string
+    title:
+      type: string
+    bio:
+      type: string
+    birthDate:
+      type: string
+    birthWorld:
+      type: string
+    birthPlace:
+      type: number
+    archetype:
+      type: string
+    icon:
+      type: string
+    culture:
+      type: number
+    religion:
+      type: number
+    mainProfession:
+      type: string
+    secondaryProfession:
+      type: string
+    sexualOrientation:
+      type: SexualOrientation
+
+  appearance:
+    body:
+      type: Colourable & Stylable & Shapeable
+    hair:
+      type: Colourable & Stylable
+    facialHair:
+      type: Colourable & Stylable
+    eyes:
+      type: Colourable & Shapeable
+    ears:
+      type: Shapeable
+    nose:
+      type: Shapeable
+
+  attributes:
+    base:
+      type: any
+
+  skill:
+    id:
+      type: string
+    level:
+      type: number
+    experience:
+      type: number
+
+  outfit:
+    name:
+      type: string
+    head:
+      type: HeadSlot
+    torso:
+      type: TorsoSlot
+    shoulders:
+      type: string
+    legs:
+      type: string
+    feet:
+      type: string
+    back:
+      type: string
+    hands:
+      type: HandsSlotGroup
+
+  headSlot:
+    headgear:
+      type: string
+    visor:
+      type: string
+  torsoSlot:
+    layer1:
+      type: string
+    layer2:
+      type: string
+    layer3:
+      type: string
+  handsSlotGroup:
+    slot1:
+      type: HandsSlot
+    slot2:
+      type: HandsSlot
+
+  handsSlot:
+    rightHand:
+      type: string
+    leftHand:
+      type: string
+    bothHands:
+      type: string
+
+  location:
+    world:
+      type: string
+    burg:
+      type: number
+    coordinates:
+      type: Coordinates
+
+  coordinates:
+    x:
+      type: number
+    y:
+      type: number
+    z:
+      type: number
+      required: false

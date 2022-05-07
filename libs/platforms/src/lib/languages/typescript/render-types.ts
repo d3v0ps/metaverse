@@ -30,7 +30,7 @@ export const renderTypes = async (params: {
       { fn }: { fn: (params: any) => string }
     ) => {
       const propertiesRender = properties.map((property) => {
-        const { tsType, decoratorType } = getType(property);
+        const { tsType, decoratorType } = getType(property, params.definitions);
         return `${fn({ ...property, tsType, decoratorType })}`;
       });
 

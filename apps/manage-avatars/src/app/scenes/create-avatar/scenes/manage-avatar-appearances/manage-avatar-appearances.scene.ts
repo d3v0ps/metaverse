@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Appearance } from '@central-factory/avatars/models/appearance';
-import { Avatar } from '@central-factory/avatars/models/avatar';
 import { ManageAvatarAppearancesState } from '@central-factory/avatars/states/manage-avatar-appearances.state';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
 import { AvatarAppearanceEditorModel } from '@central-factory/avatars/web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component';
 import { AvatarAppearancesCarouselDisplayMode } from '@central-factory/avatars/web-components/angular/avatar-appearances-carousel/avatar-appearances-carousel.component';
+import { Avatar } from '@central-factory/avatars/__generated__/models';
+import { WorldsState } from '@central-factory/worlds/states/worlds.state';
 import {
   Burg,
   Culture,
   FantasyMapGeneratorMap,
   Religion,
-} from '@central-factory/worlds/models/fmg-map';
-import { World } from '@central-factory/worlds/models/world';
-import { WorldsState } from '@central-factory/worlds/states/worlds.state';
+  World,
+} from '@central-factory/worlds/__generated__/models';
 import {
   combineLatest,
   filter,
@@ -146,7 +146,8 @@ export class ManageAvatarAppearancesScene implements OnInit {
     map((avatar) => (avatar ? avatar.appearances : [])),
     tap(
       (appearances) =>
-        (this.selectedAppearance = this.selectedAppearance || appearances[0])
+        (this.selectedAppearance =
+          this.selectedAppearance || (appearances as any[])[0])
     )
   );
 
@@ -218,7 +219,7 @@ export class ManageAvatarAppearancesScene implements OnInit {
     this.appearances$.pipe(
       take(1),
       switchMap((appearances) => {
-        const appearance = appearances.find(
+        const appearance = appearances?.find(
           (appearance) => this.selectedAppearance?.id === appearance.id
         );
 

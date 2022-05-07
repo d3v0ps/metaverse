@@ -28,28 +28,28 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-        library: { type: "module" },
+      library: { type: "module" },
 
-        // For remotes (please adjust)
-        // name: "portal",
-        // filename: "remoteEntry.js",
-        // exposes: {
-        //     './Component': './apps/portal/src/app/app.component.ts',
-        // },
+      // For remotes (please adjust)
+      // name: "portal",
+      // filename: "remoteEntry.js",
+      // exposes: {
+      //     './Component': './apps/portal/src/app/app.component.ts',
+      // },
 
-        // For hosts (please adjust)
-        remotes: {
-            "@central-factory/metadrones": metadronesUrl,
-        },
+      // For hosts (please adjust)
+      remotes: {
+        "@central-factory/metadrones": metadronesUrl,
+      },
 
-        shared: share({
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: '~13.1.0' },
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: '~13.1.0' },
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: '~13.1.0' },
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: '~13.1.0' },
+      shared: share({
+        "@angular/core": { singleton: true, strictVersion: true, requiredVersion: '~13.1.0' },
+        "@angular/common": { singleton: true, strictVersion: true, requiredVersion: '~13.1.0' },
+        "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: '~13.1.0' },
+        "@angular/router": { singleton: true, strictVersion: true, requiredVersion: '~13.1.0' },
 
-          ...sharedMappings.getDescriptors()
-        })
+        ...sharedMappings.getDescriptors()
+      })
 
     }),
     sharedMappings.getPlugin()

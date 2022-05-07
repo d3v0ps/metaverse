@@ -6,24 +6,24 @@ import { facialHairStyles } from '@central-factory/avatars/web-components/angula
 import { hairColors } from '@central-factory/avatars/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/design-styles/lpc/hair-colors';
 import { hairStyles } from '@central-factory/avatars/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/design-styles/lpc/hair-styles';
 import { noses } from '@central-factory/avatars/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/design-styles/lpc/noses';
-import { World } from '@central-factory/worlds/models/world';
+import { World } from '@central-factory/worlds/__generated__/models';
 import faker from '@faker-js/faker/locale/en_US';
 import {
+  Appearance,
   Avatar,
-  AvatarAppearance,
-  AvatarGender,
-  AvatarRelationshipKind,
-} from '../../models/__generated__/types';
+  Gender,
+  RelationshipKind,
+} from '../../__generated__/models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AvatarAppearanceGenerator {
-  generate(preset: Partial<Avatar> = {}, world: World): AvatarAppearance {
+  generate(preset: Partial<Avatar> = {}, world: World): Appearance {
     const bodyType =
       preset.identity?.gender ||
-      preset.appearance?.body?.type ||
-      faker.random.arrayElement(Object.values(AvatarGender));
+      preset.appearance?.body?.style ||
+      faker.random.arrayElement(Object.values(Gender));
 
     const humanSkins = bodyTypes.filter(
       (bodyType) =>
@@ -37,7 +37,7 @@ export class AvatarAppearanceGenerator {
     );
 
     const skins =
-      bodyType === AvatarGender.Male
+      bodyType === Gender.Male
         ? humanSkins.filter(
             (bodyType) => !bodyType.id.toLowerCase().includes('pregnant')
           )
@@ -47,14 +47,12 @@ export class AvatarAppearanceGenerator {
 
     const hasFacialHair =
       preset.appearance?.facialHair?.style ||
-      (bodyType === AvatarGender.Male && faker.datatype.boolean());
+      (bodyType === Gender.Male && faker.datatype.boolean());
 
     const relationships = preset.relationships || [];
 
     const parents = relationships
-      .filter(
-        (relationship) => relationship.kind === AvatarRelationshipKind.Parent
-      )
+      .filter((relationship) => relationship.kind === RelationshipKind.Parent)
       .map((relationship) =>
         world.avatars?.find((avatar) => avatar.id === relationship.avatar)
       );
@@ -66,11 +64,11 @@ export class AvatarAppearanceGenerator {
 
     return {
       body: {
-        type: preset.appearance?.body?.type || bodyType,
+        style: preset.appearance?.body?.style || bodyType,
         shape: preset.appearance?.body?.shape || 'Default',
-        skin:
-          preset.appearance?.body?.skin ||
-          faker.random.arrayElement(parents)?.appearance?.body?.skin ||
+        color:
+          preset.appearance?.body?.color ||
+          faker.random.arrayElement(parents)?.appearance?.body?.color ||
           faker.random.arrayElement(skins).id,
       },
       eyes: {

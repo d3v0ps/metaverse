@@ -5,15 +5,14 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Avatar } from '@central-factory/avatars/models/avatar';
 import {
   Burg,
   Culture,
   Religion,
-} from '@central-factory/worlds/models/fmg-map';
-import { World } from '@central-factory/worlds/models/world';
+  World,
+} from '@central-factory/worlds/__generated__/models';
 import { Appearance, AppearancePortrait } from '../../../models/appearance';
-import { AppearanceInfo } from '../../../models/appearance-info';
+import { AppearanceInfo, Avatar } from '../../../__generated__/models';
 import { AvatarAppearanceInfoFormComponent } from './components/avatar-appearance-info-form/avatar-appearance-info-form.component';
 import {
   AvatarAppearanceModelForm,

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Account } from '@central-factory/finances/models/account';
+import { Account } from '@central-factory/finances/__generated__/models';
 
 @Component({
   selector: 'cf-accounts-carousel',

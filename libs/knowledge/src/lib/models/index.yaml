@@ -1,0 +1,10 @@
+imports:
+  displayable: './core'
+  indexable: './core'
+  meta: './core'
+  loadable: './core'
+  knowledgeFragment: './knowledge-fragment'
+  knowledgeSymbol: './knowledge-symbol'
+roots:
+  - knowledgeFragment
+  - knowledgeSymbol

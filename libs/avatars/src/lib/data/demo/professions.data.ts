@@ -1,4 +1,4 @@
-import { AvatarProfession } from '@central-factory/worlds/models/world';
+import { AvatarProfession } from '@central-factory/worlds/__generated__/models';
 
 export const skills = [
   {

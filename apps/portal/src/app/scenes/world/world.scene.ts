@@ -2,8 +2,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { ActionPlanner } from '@central-factory/actors/services/action-planner';
 import { OnApplicationLoad } from '@central-factory/applications/models/application-interfaces';
 import { AvatarGenerator } from '@central-factory/avatars/data/generators/avatar.generator';
-import { Avatar } from '@central-factory/avatars/models/avatar';
 import { AvatarLivingState } from '@central-factory/avatars/states/living-avatar.state';
+import { Avatar } from '@central-factory/avatars/__generated__/models';
 import { WorldsState } from '@central-factory/worlds/states/worlds.state';
 
 @Component({

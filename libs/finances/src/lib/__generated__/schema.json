@@ -1,0 +1,376 @@
+{
+  "$ref": "#/definitions/Root",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "definitions": {
+    "Account": {
+      "additionalProperties": false,
+      "properties": {
+        "balance": {
+          "type": "string"
+        },
+        "createdAt": {
+          "additionalProperties": false,
+          "description": "Enables basic storage and retrieval of dates and times. ",
+          "type": "object"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "referenceId": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/AccountType"
+        },
+        "updatedAt": {
+          "additionalProperties": false,
+          "description": "Enables basic storage and retrieval of dates and times. ",
+          "type": "object"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "type",
+        "balance"
+      ],
+      "type": "object"
+    },
+    "AccountType": {
+      "enum": [
+        "Cash",
+        "Bank",
+        "CreditCard",
+        "DebitCard",
+        "RechargeCard",
+        "Loan",
+        "Crypto",
+        "Stock",
+        "Other"
+      ],
+      "type": "string"
+    },
+    "Balance": {
+      "additionalProperties": false,
+      "properties": {
+        "crypto": {
+          "type": "string"
+        },
+        "fiat": {
+          "type": "string"
+        },
+        "stocks": {
+          "type": "string"
+        },
+        "total": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "total",
+        "fiat",
+        "crypto",
+        "stocks"
+      ],
+      "type": "object"
+    },
+    "Invoice": {
+      "additionalProperties": false,
+      "properties": {
+        "createdAt": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/definitions/InvoiceItem"
+          },
+          "type": "array"
+        },
+        "paidAt": {
+          "type": "string"
+        },
+        "receiver": {
+          "type": "string"
+        },
+        "sender": {
+          "type": "string"
+        },
+        "state": {
+          "$ref": "#/definitions/InvoiceState"
+        },
+        "total": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "type": "object"
+    },
+    "InvoiceItem": {
+      "additionalProperties": false,
+      "properties": {
+        "createdAt": {
+          "additionalProperties": false,
+          "description": "Enables basic storage and retrieval of dates and times. ",
+          "type": "object"
+        },
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        },
+        "productId": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "number"
+        },
+        "updatedAt": {
+          "additionalProperties": false,
+          "description": "Enables basic storage and retrieval of dates and times. ",
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "InvoiceState": {
+      "enum": [
+        "draft",
+        "sent",
+        "paid"
+      ],
+      "type": "string"
+    },
+    "Product": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "originalPrice": {
+          "type": "number"
+        },
+        "originalPriceCurrency": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "name",
+        "price",
+        "originalPrice",
+        "originalPriceCurrency"
+      ],
+      "type": "object"
+    },
+    "Root": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Account"
+        },
+        {
+          "$ref": "#/definitions/Balance"
+        },
+        {
+          "$ref": "#/definitions/Invoice"
+        },
+        {
+          "$ref": "#/definitions/Product"
+        },
+        {
+          "$ref": "#/definitions/Tax"
+        },
+        {
+          "$ref": "#/definitions/Transaction"
+        },
+        {
+          "$ref": "#/definitions/Wallet"
+        }
+      ]
+    },
+    "Tax": {
+      "additionalProperties": false,
+      "properties": {
+        "createdAt": {
+          "additionalProperties": false,
+          "description": "Enables basic storage and retrieval of dates and times. ",
+          "type": "object"
+        },
+        "financialEntityCode": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "period": {
+          "$ref": "#/definitions/TaxPeriod"
+        },
+        "rate": {
+          "type": "number"
+        },
+        "updatedAt": {
+          "additionalProperties": false,
+          "description": "Enables basic storage and retrieval of dates and times. ",
+          "type": "object"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "rate",
+        "financialEntityCode",
+        "createdAt",
+        "updatedAt",
+        "period"
+      ],
+      "type": "object"
+    },
+    "TaxPeriod": {
+      "additionalProperties": false,
+      "properties": {
+        "end": {
+          "additionalProperties": false,
+          "description": "Enables basic storage and retrieval of dates and times. ",
+          "type": "object"
+        },
+        "payEnd": {
+          "additionalProperties": false,
+          "description": "Enables basic storage and retrieval of dates and times. ",
+          "type": "object"
+        },
+        "payStart": {
+          "additionalProperties": false,
+          "description": "Enables basic storage and retrieval of dates and times. ",
+          "type": "object"
+        },
+        "start": {
+          "additionalProperties": false,
+          "description": "Enables basic storage and retrieval of dates and times. ",
+          "type": "object"
+        }
+      },
+      "required": [
+        "start",
+        "end",
+        "payStart",
+        "payEnd"
+      ],
+      "type": "object"
+    },
+    "Transaction": {
+      "additionalProperties": false,
+      "properties": {
+        "account": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "destination": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "invoice": {
+          "type": "string"
+        },
+        "origin": {
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "date",
+        "amount",
+        "currency",
+        "account",
+        "tags",
+        "origin",
+        "destination"
+      ],
+      "type": "object"
+    },
+    "Wallet": {
+      "additionalProperties": false,
+      "properties": {
+        "accounts": {
+          "items": {
+            "$ref": "#/definitions/Account"
+          },
+          "type": "array"
+        },
+        "balance": {
+          "$ref": "#/definitions/Balance"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "worldId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "worldId",
+        "balance",
+        "accounts"
+      ],
+      "type": "object"
+    }
+  },
+  "title": "finances"
+}

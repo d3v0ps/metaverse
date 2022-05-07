@@ -1522,7 +1522,8 @@
               "crypto-js/enc-utf8",
               "is-my-json-valid",
               "modifyjs",
-              "avataaars"
+              "avataaars",
+              "debug"
             ],
             "customWebpackConfig": {
               "path": "apps/portal/webpack.config.js"

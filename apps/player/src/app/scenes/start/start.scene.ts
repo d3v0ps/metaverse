@@ -8,11 +8,6 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { OnApplicationLoad } from '@central-factory/applications/models/application-interfaces';
-import {
-  Application,
-  ApplicationRenderingType,
-  ApplicationShortcut,
-} from '@central-factory/applications/models/__generated__/types';
 import { InstallApplicationsState } from '@central-factory/applications/states/install-application.state';
 import {
   ApplicationOrigin,
@@ -22,6 +17,11 @@ import { RecentlyOpenedApplicationsState } from '@central-factory/applications/s
 import { SelectedApplicationState } from '@central-factory/applications/states/selected-application.state';
 import { StoreApplicationsState } from '@central-factory/applications/states/store-applications.state';
 import { UserApplicationsState } from '@central-factory/applications/states/user-applications.state';
+import {
+  Application,
+  ApplicationRenderingType,
+  ApplicationShortcut,
+} from '@central-factory/applications/__generated__/models';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
 import { ClockService } from '@central-factory/physics/services/clock.service';
 import { UserTopicsState } from '@central-factory/topics/states/user-topics.state';

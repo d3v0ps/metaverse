@@ -3,7 +3,7 @@ import { EntityManager } from '@central-factory/persistence/services/entity-mana
 import { Repository } from '@central-factory/persistence/services/repository';
 import { BehaviorSubject, forkJoin, switchMap, tap } from 'rxjs';
 import { UserApplicationDocType } from '../collections/user-applications.collection';
-import type { Application } from '../models/application';
+import type { Application } from '../__generated__/models';
 
 @Injectable({
   providedIn: 'root',

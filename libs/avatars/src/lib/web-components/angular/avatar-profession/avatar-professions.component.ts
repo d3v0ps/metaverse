@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AvatarProfession } from '@central-factory/worlds/models/world';
+import { AvatarProfession } from '@central-factory/worlds/__generated__/models';
 
 @Component({
   selector: 'cf-avatar-professions',

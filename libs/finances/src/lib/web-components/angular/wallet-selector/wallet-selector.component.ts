@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Wallet } from '@central-factory/finances/models/wallet';
 import { WalletsState } from '@central-factory/finances/states/wallets.state';
+import { Wallet } from '@central-factory/finances/__generated__/models';
 
 @Component({
   selector: 'cf-wallet-selector',

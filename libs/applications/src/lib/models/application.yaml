@@ -1,0 +1,144 @@
+enums:
+
+  applicationRenderingType:
+    Webview: Webview
+    Local: Local
+    AngularElement: AngularElement
+    WebpackModuleFederation: WebpackModuleFederation
+    Unknown: Unknown
+
+  colorVariation:
+    Primary: primary
+    Secondary: secondary
+    Success: success
+    Warning: warning
+    Danger: danger
+    Info: info
+    Light: light
+    Dark: dark
+
+types:
+
+  applicationIcon:
+    src:
+      type: string
+      required: true
+    sizes:
+      type: string
+      required: true
+    type:
+      type: string
+      required: true
+
+  applicationAuthor:
+    id:
+      type: string
+      required: true
+    name:
+      type: string
+      required: true
+    icon:
+      type: string
+
+  applicationScreenshot:
+    src:
+      type: string
+      required: true
+    sizes:
+      type: string
+      required: true
+    type:
+      type: string
+      required: true
+    platform:
+      type: string
+      required: true
+    label:
+      type: string
+      required: true
+  # Non Web Manifest standard included properties
+  applicationPermission:
+    kind:
+      type: string
+    mode:
+      type: string
+    target:
+      type: string
+  applicationColor:
+    color:
+      type: string
+    variation:
+      type: ColorVariation
+  applicationAdditionalProperties:
+    originalManifest:
+      type: string
+    author:
+      type: ApplicationAuthor
+      required: true
+    renderingType:
+      type: ApplicationRenderingType
+    starred:
+      type: boolean
+    internal:
+      type: boolean
+    disabled:
+      type: boolean
+    supportsBrowser:
+      type: boolean
+    permissions:
+      type: ApplicationPermission[]
+    defaultShortcut:
+      type: string
+    sidebarShortcuts:
+      type: string[]
+    colors:
+      type: ApplicationColor[]
+
+  applicationShortcut:
+    name:
+      type: string
+      required: true
+    url:
+      type: string
+      required: true
+    icons:
+      type: ApplicationIcon[]
+    shortName:
+      type: string
+    description:
+      type: string
+
+  application:
+    id:
+      type: string
+      required: true
+    name:
+      type: string
+      required: true
+    shortName:
+      type: string
+    description:
+      type: string
+    startUrl:
+      type: string
+      required: true
+    icons:
+      type: ApplicationIcon[]
+    themeColor:
+      type: string
+    backgroundColor:
+      type: string
+    screenshots:
+      type: ApplicationScreenshot[]
+    iarcRatingId:
+      type: string
+    categories:
+      type: string[]
+    additionalProperties:
+      type: ApplicationAdditionalProperties
+    shortcuts:
+      type: ApplicationShortcut[]
+    createdAt:
+      type: string
+    updatedAt:
+      type: string

@@ -3,9 +3,9 @@ import { professions } from '@central-factory/avatars/data/demo/professions.data
 import { mapAvatarToAvatarInfo } from '@central-factory/avatars/mappers/avatar-to-avatar-info.mapper';
 import {
   Avatar,
-  AvatarProfession,
-} from '@central-factory/avatars/models/avatar';
-import { World } from '@central-factory/worlds/models/world';
+  Profession,
+} from '@central-factory/avatars/__generated__/models';
+import { World } from '@central-factory/worlds/__generated__/models';
 import { AvatarInfo } from '../../../models/avatar-info';
 
 @Component({
@@ -219,8 +219,8 @@ export class AvatarInfoComponent {
     return this._world;
   }
 
-  get professions(): AvatarProfession[] {
-    const professions: AvatarProfession[] = [];
+  get professions(): Profession[] {
+    const professions: Profession[] = [];
 
     if (this.info?.professions?.main) {
       professions.push(this.info.professions.main);

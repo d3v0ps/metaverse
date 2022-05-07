@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Account, AccountType } from '../../../models/__generated__/types';
+import { Account, AccountType } from '../../../__generated__/models';
 
 @Component({
   selector: 'cf-account-balance-card',

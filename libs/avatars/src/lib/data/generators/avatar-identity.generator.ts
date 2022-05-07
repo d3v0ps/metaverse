@@ -4,29 +4,28 @@ import {
   Culture,
   MapCell,
   Religion,
-} from '@central-factory/worlds/models/fmg-map';
-import { World } from '@central-factory/worlds/models/world';
+  World,
+} from '@central-factory/worlds/__generated__/models';
 import { GenderType } from '@faker-js/faker';
 import faker from '@faker-js/faker/locale/en_US';
 import {
   Avatar,
-  AvatarGender,
-  AvatarIdentity,
-  AvatarRelationshipKind,
-} from '../../models/__generated__/types';
+  Gender,
+  Identity,
+  RelationshipKind,
+} from '../../__generated__/models';
 import { professions } from '../demo/professions.data';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AvatarIdentityGenerator {
-  generate(preset: Partial<Avatar> = {}, world: World): AvatarIdentity {
+  generate(preset: Partial<Avatar> = {}, world: World): Identity {
     const { burgs = [], cells = [] } = world.map ? world.map.cells : {};
 
-    const gender =
-      preset.identity?.gender ||
-      preset.appearance?.body?.type ||
-      faker.random.arrayElement(Object.values(AvatarGender));
+    const gender = (preset.identity?.gender ||
+      preset.appearance?.body?.style ||
+      faker.random.arrayElement(Object.values(Gender))) as Gender;
 
     const birthPlace =
       preset.identity?.birthPlace || this.generateBirthPlace(preset, burgs);
@@ -40,9 +39,7 @@ export class AvatarIdentityGenerator {
     const relationships = preset.relationships || [];
 
     const parents = relationships
-      .filter(
-        (relationship) => relationship.kind === AvatarRelationshipKind.Parent
-      )
+      .filter((relationship) => relationship.kind === RelationshipKind.Parent)
       .map((relationship) =>
         world.avatars?.find((avatar) => avatar.id === relationship.avatar)
       ) as Avatar[];
@@ -79,7 +76,7 @@ export class AvatarIdentityGenerator {
       preset.identity?.givenName ||
       faker.name.firstName(
         (preset.identity?.gender ||
-          preset.appearance?.body?.type) as unknown as GenderType
+          preset.appearance?.body?.style) as unknown as GenderType
       )
     );
   }
@@ -89,7 +86,7 @@ export class AvatarIdentityGenerator {
       preset.identity?.familyName ||
       faker.name.lastName(
         (preset.identity?.gender ||
-          preset.appearance?.body?.type) as unknown as GenderType
+          preset.appearance?.body?.style) as unknown as GenderType
       )
     );
   }

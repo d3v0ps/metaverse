@@ -16,8 +16,8 @@ export const {{camelCase name}}RxSchema: RxJsonSchema<
   Omit<{{name}}DocType, '_attachments'>
 > = {
   ...{{camelCase name}}Schema as any,
-  title: '{{name}}',
-  description: '{{capitalCase name}}',
+  title: '{{pascalCase name}}',
+  description: '{{titleCase name}}',
   version: 0,
   keyCompression: true,
   primaryKey: 'id',
@@ -30,7 +30,7 @@ export const {{camelCase name}}RxSchema: RxJsonSchema<
 export const {{constantCase name}}_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: '{{capitalCase name}}',
+    name: '{{camelCase name}}',
     creator: {
       schema: {{camelCase name}}RxSchema,
     },

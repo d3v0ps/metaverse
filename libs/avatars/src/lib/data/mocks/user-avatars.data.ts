@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core';
-import { AvatarGender } from '@central-factory/avatars/models/__generated__/types';
+import { Gender } from '@central-factory/avatars/__generated__/models';
 import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
 import type { UserAvatarDocType } from '../../collections/user-avatars.collection';
 
@@ -13,7 +13,7 @@ export const userAvatars: UserAvatarDocType[] = [
     },
     appearance: {
       body: {
-        type: AvatarGender.Male,
+        style: Gender.Male,
       },
     },
     relationships: [],
@@ -178,7 +178,7 @@ export const userAvatars: UserAvatarDocType[] = [
     },
     appearance: {
       body: {
-        type: AvatarGender.Male,
+        style: Gender.Male,
       },
     },
     relationships: [],
@@ -221,7 +221,7 @@ export const userAvatars: UserAvatarDocType[] = [
     },
     appearance: {
       body: {
-        type: AvatarGender.Male,
+        style: Gender.Male,
       },
     },
     relationships: [],

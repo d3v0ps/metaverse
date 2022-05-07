@@ -8,7 +8,7 @@ import {
 import {
   Application,
   ApplicationShortcut,
-} from '@central-factory/applications/models/application';
+} from '@central-factory/applications/__generated__/models';
 import hotkeys from 'hotkeys-js';
 
 @Component({

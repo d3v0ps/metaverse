@@ -4,7 +4,7 @@ import { isElectron } from '@central-factory/web-components/shared/platform/desk
 import type {
   Application,
   ApplicationShortcut,
-} from '../../../../../models/application';
+} from '../../../../../__generated__/models';
 
 @Component({
   selector: 'cf-application-webview',

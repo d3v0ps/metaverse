@@ -5,6 +5,7 @@ import { EssentialsModule } from '@central-factory/web-components/angular/essent
 import { PopoverModule } from '@central-factory/web-components/angular/popover/popover.module';
 import { SvgIconModule } from '@central-factory/web-components/angular/svg-icon/svg-icon.module';
 import { AgeModule } from '@central-factory/worlds/web-components/angular/age/age.module';
+import { WorldKind } from '@central-factory/worlds/__generated__/models';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { AvatarAppearancePortraitModule } from '../avatar-appearance-portrait/avatar-appearance-portrait.module';
@@ -50,7 +51,7 @@ Full.args = {
   avatar: userAvatars[0],
   world: {
     id: '0',
-    kind: 'digital',
+    kind: WorldKind.Digital,
     year: 2020,
     meta: {
       name: 'Digital World',

@@ -1,0 +1,11 @@
+imports:
+  era: './era'
+  fantasyMapGeneratorMap: './fmg-map'
+  world: './world'
+  avatarProfession: './world'
+
+roots:
+  - era
+  - fantasyMapGeneratorMap
+  - world
+  - avatarProfession

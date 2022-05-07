@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import type { Avatar } from '@central-factory/avatars/models/avatar';
 import { AvailableAvatarsState } from '@central-factory/avatars/states/available-avatars.state';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
+import type { Avatar } from '@central-factory/avatars/__generated__/models';
 import { Observable, tap } from 'rxjs';
 
 /** Select Avatar scene */

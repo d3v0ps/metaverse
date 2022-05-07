@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { World } from '@central-factory/worlds/models/world';
+import { World } from '@central-factory/worlds/__generated__/models';
 
 @Component({
   selector: 'cf-worlds-list',

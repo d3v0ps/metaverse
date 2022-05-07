@@ -4,7 +4,7 @@ import { ApplicationCloseCommand } from '@central-factory/applications/models/ap
 import {
   Application,
   ColorVariation,
-} from '@central-factory/applications/models/__generated__/types';
+} from '@central-factory/applications/__generated__/models';
 import { map } from 'rxjs';
 import { LocalApplicationComponentsResolver } from '../../../resolvers/components/local-applications/local-application-components.resolver';
 import { ApplicationDisplayState } from '../../../states/application-display.state';

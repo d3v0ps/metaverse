@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ApplicationShortcutView } from '@central-factory/applications/web-components/angular/application-shortcut/application-shortcut.component';
 import {
   Application,
   ApplicationShortcut,
-} from '@central-factory/applications/models/application';
-import { ApplicationShortcutView } from '@central-factory/applications/web-components/angular/application-shortcut/application-shortcut.component';
+} from '@central-factory/applications/__generated__/models';
 
 @Component({
   selector: 'cf-topic-shortcuts',

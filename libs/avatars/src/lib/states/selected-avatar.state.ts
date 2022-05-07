@@ -14,7 +14,7 @@ import {
 } from 'rxjs';
 import type { UserAvatarDocType } from '../collections/user-avatars.collection';
 import { Appearance } from '../models/appearance';
-import type { Avatar } from '../models/avatar';
+import type { Avatar } from '../__generated__/models';
 
 @Injectable({
   providedIn: 'root',
@@ -96,15 +96,17 @@ export class SelectedAvatarState {
 
     const avatarUpdate: Avatar = JSON.parse(JSON.stringify(avatar));
 
-    const appearanceIndex = avatarUpdate.appearances.findIndex(
-      (avatarAppearance) => avatarAppearance.id === appearance.id
-    );
+    if (avatarUpdate.appearances) {
+      const appearanceIndex = avatarUpdate.appearances.findIndex(
+        (avatarAppearance) => avatarAppearance.id === appearance.id
+      );
 
-    if (!appearanceIndex) {
-      throw new Error('Appearance not found');
+      if (!appearanceIndex) {
+        throw new Error('Appearance not found');
+      }
+
+      Object.assign(avatarUpdate.appearances[appearanceIndex], appearance);
     }
-
-    Object.assign(avatarUpdate.appearances[appearanceIndex], appearance);
 
     return this.userAvatarsRepository.upsert(avatarUpdate);
   }
@@ -152,7 +154,7 @@ export class SelectedAvatarState {
                 avatar.id
               ).pipe(
                 map((attachments) => {
-                  avatar.appearances.forEach((appearance) => {
+                  avatar.appearances?.forEach((appearance) => {
                     const portraitAttachment = attachments.find(
                       (attachment) =>
                         attachment.id === appearance.variations?.portrait.id

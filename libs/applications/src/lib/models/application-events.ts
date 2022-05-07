@@ -1,4 +1,4 @@
-import { Application } from './__generated__/types';
+import { Application } from '../__generated__/models';
 
 export type ApplicationOpenedSettings<TParams = any> = {
   groupId?: string;

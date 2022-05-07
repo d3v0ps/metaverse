@@ -1,4 +1,4 @@
-import type { Avatar } from '@central-factory/avatars/models/avatar';
+import type { Avatar } from '@central-factory/avatars/__generated__/models';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export enum MimeType {

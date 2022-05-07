@@ -1,0 +1,74 @@
+imports:
+  militarySettings: './fmg-map'
+
+enums:
+
+  worldEventType:
+    WAR_DECLARATION: 'WAR_DECLARATION'
+    MILITARY_BATTLE: 'MILITARY_BATTLE'
+    PEACE_AGREEMENT: 'PEACE_AGREEMENT'
+    NATURAL_DISASTER: 'NATURAL_DISASTER'
+    DISEASE: 'DISEASE'
+    CIVIL_WAR: 'CIVIL_WAR'
+
+  eraMapStyle:
+    Default: 'default'
+    Ancient: 'ancient'
+    Gloom: 'gloom'
+    Light: 'light'
+    WaterColor: 'watercolor'
+    Clean: 'clean'
+    Atlas: 'atlas'
+    Cyberpunk: 'cyberpunk'
+    Monochrome: 'monochrome'
+
+types:
+
+  era:
+    id:
+      type: string
+      required: true
+    name:
+      type: string
+      required: true
+    shortName:
+      type: string
+      required: true
+    description:
+      type: string
+    startYear:
+      type: number
+      required: true
+    endYear:
+      type: number
+    icon:
+      type: string
+    color:
+      type: string
+    military:
+      type: MilitarySettings[]
+      required: true
+    events:
+      type: WorldEvent[]
+      required: true
+    mapStyle:
+      type: EraMapStyle
+
+  worldEvent:
+    start:
+      type: number
+      required: true
+    end:
+      type: number
+      required: true
+    title:
+      type: string
+      required: true
+    description:
+      type: string
+    icon:
+      type: string
+      required: true
+    type:
+      type: WorldEventType
+      required: true

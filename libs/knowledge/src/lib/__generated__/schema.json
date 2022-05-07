@@ -1,0 +1,112 @@
+{
+  "$ref": "#/definitions/Root",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "definitions": {
+    "Displayable": {
+      "additionalProperties": false,
+      "properties": {
+        "component": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "content"
+      ],
+      "type": "object"
+    },
+    "Indexable": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta"
+        }
+      },
+      "type": "object"
+    },
+    "KnowledgeFragment": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Indexable"
+        },
+        {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Loadable"
+            },
+            {
+              "$ref": "#/definitions/Displayable"
+            }
+          ]
+        }
+      ]
+    },
+    "KnowledgeSymbol": {
+      "additionalProperties": false,
+      "properties": {
+        "fragments": {
+          "items": {
+            "$ref": "#/definitions/KnowledgeFragment"
+          },
+          "type": "array"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Loadable": {
+      "additionalProperties": false,
+      "properties": {
+        "src": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Meta": {
+      "additionalProperties": false,
+      "properties": {
+        "cover": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Root": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/KnowledgeFragment"
+        },
+        {
+          "$ref": "#/definitions/KnowledgeSymbol"
+        }
+      ]
+    }
+  },
+  "title": "knowledge"
+}

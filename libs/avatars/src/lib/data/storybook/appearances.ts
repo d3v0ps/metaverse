@@ -1,16 +1,16 @@
-import { Appearance, AppearanceFormat } from '../../models/appearance';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { userAvatars } from '../mocks/user-avatars.data';
 
-export const glbAppearanceMock: Appearance = {
+export const glbAppearanceMock: any = {
   id: 'image-appearance-id',
   filename: '',
-  format: AppearanceFormat.Image,
+  format: '',
 };
 
-export const imageAppearanceMock: Appearance = {
+export const imageAppearanceMock: any = {
   id: 'image-appearance-id',
   filename: '',
-  format: AppearanceFormat.Image,
+  format: '',
 };
 
-export const appearancesMocks: Appearance[] = userAvatars[0].appearances;
+export const appearancesMocks: any[] = userAvatars[0].appearances as any[];

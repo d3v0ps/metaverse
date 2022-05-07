@@ -1,0 +1,29 @@
+types:
+
+  displayable:
+    component:
+      type: string
+    content:
+      type: string
+      required: true
+
+  indexable:
+    id:
+      type: string
+
+    meta:
+      type: Meta
+
+  loadable:
+    src:
+      type: string
+
+  meta:
+    cover:
+      type: string
+    description:
+      type: string
+    subtitle:
+      type: string
+    title:
+      type: string

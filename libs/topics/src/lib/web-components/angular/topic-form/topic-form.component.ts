@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Application } from '@central-factory/applications/models/application';
+import { Application } from '@central-factory/applications/__generated__/models';
 import { Topic } from '../../../models/topic';
 
 @Component({
@@ -191,9 +191,9 @@ import { Topic } from '../../../models/topic';
 export class TopicFormComponent {
   @Input() set topic(value: Topic | undefined) {
     this._topic = value;
-    this.form.controls.title.setValue(value?.title);
-    this.form.controls.icon.setValue(value?.icon);
-    this.form.controls.background.setValue(value?.background);
+    this.form.controls['title'].setValue(value?.title);
+    this.form.controls['icon'].setValue(value?.icon);
+    this.form.controls['background'].setValue(value?.background);
   }
   get topic(): Topic | undefined {
     return this._topic;
@@ -229,7 +229,7 @@ export class TopicFormComponent {
       [] as any[]
     );
 
-    this.form.controls?.applications?.setValue(
+    this.form.controls['applications'].setValue(
       this.topicApplications.map((application) => application.id)
     );
 

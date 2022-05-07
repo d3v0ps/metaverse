@@ -4,10 +4,13 @@ import {
   EventEmitter,
   Input,
   Output,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import { isElectron } from '@central-factory/web-components/shared/platform/desktop/is-electron';
-import { Application, ApplicationShortcut } from '../../../models/application';
+import {
+  Application,
+  ApplicationShortcut,
+} from '../../../__generated__/models';
 
 @Component({
   selector: 'cf-application-sheet',

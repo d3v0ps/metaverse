@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { World } from '@central-factory/worlds/models/world';
-import { Avatar, AvatarAttributes } from '../../models/avatar';
+import { World } from '@central-factory/worlds/__generated__/models';
+import { Attributes, Avatar } from '../../__generated__/models';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,7 @@ export class AvatarAttributesGenerator {
   generate(
     preset: Partial<Avatar> = {},
     { map, archetypes }: World
-  ): AvatarAttributes {
+  ): Attributes {
     return {};
   }
 }

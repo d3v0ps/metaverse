@@ -1,0 +1,15 @@
+
+types:
+  balance:
+    total:
+      type: string
+      required: true
+    fiat:
+      type: string
+      required: true
+    crypto:
+      type: string
+      required: true
+    stocks:
+      type: string
+      required: true

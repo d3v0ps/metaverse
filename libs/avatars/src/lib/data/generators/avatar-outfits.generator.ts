@@ -9,18 +9,15 @@ import { leftHands } from '@central-factory/avatars/web-components/angular/avata
 import { legs } from '@central-factory/avatars/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/design-styles/lpc/legs';
 import { rightHands } from '@central-factory/avatars/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/design-styles/lpc/right-hands';
 import { torsos } from '@central-factory/avatars/web-components/angular/avatar-appearance-editor/components/avatar-appearance-portrait-designer/design-styles/lpc/torsos';
-import { World } from '@central-factory/worlds/models/world';
+import { World } from '@central-factory/worlds/__generated__/models';
 import faker from '@faker-js/faker/locale/en_US';
-import { Avatar, AvatarOutfit } from '../../models/avatar';
+import { Avatar, Outfit } from '../../__generated__/models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AvatarOutfitsGenerator {
-  generate(
-    preset: Partial<Avatar> = {},
-    { map, archetypes }: World
-  ): AvatarOutfit[] {
+  generate(preset: Partial<Avatar> = {}, { map, archetypes }: World): Outfit[] {
     if (preset.outfits) {
       return preset.outfits;
     }

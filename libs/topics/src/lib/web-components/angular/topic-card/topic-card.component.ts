@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { ApplicationShortcutView } from '@central-factory/applications/web-components/angular/application-shortcut/application-shortcut.component';
 import {
   Application,
   ApplicationShortcut,
-} from '@central-factory/applications/models/application';
-import { ApplicationShortcutView } from '@central-factory/applications/web-components/angular/application-shortcut/application-shortcut.component';
+} from '@central-factory/applications/__generated__/models';
 import { Topic } from '../../../models/topic';
 
 export type ApplicationWithShortcut = {

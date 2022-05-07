@@ -6,7 +6,7 @@ import {
   Permission,
   PermissionKind,
   PermissionMode,
-} from '@central-factory/permissions/models/permission';
+} from '@central-factory/permissions/__generated__/models';
 import { defer, from, map, Observable, throwError } from 'rxjs';
 
 @Injectable({

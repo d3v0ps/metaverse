@@ -1,0 +1,32 @@
+types:
+  transaction:
+    id:
+      type: string
+      required: true
+    date:
+      type: string
+      required: true
+    description:
+      type: string
+    amount:
+      type: string
+      required: true
+    currency:
+      type: string
+      required: true
+    account:
+      type: string
+      required: true
+    category:
+      type: string
+    tags:
+      type: string[]
+      required: true
+    origin:
+      type: string
+      required: true
+    destination:
+      type: string
+      required: true
+    invoice:
+      type: string

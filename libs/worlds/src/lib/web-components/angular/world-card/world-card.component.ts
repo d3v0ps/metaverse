@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { World } from '@central-factory/worlds/models/world';
 import { worldStates } from '@central-factory/worlds/state-machines/world';
+import { World } from '@central-factory/worlds/__generated__/models';
 import { BehaviorSubject } from 'rxjs';
 import { createMachine, interpret, State } from 'xstate';
 

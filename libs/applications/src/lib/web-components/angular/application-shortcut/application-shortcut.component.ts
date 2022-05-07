@@ -5,7 +5,7 @@ import {
   ApplicationRenderingType,
   ApplicationShortcut,
   ColorVariation,
-} from '../../../models/__generated__/types';
+} from '../../../__generated__/models';
 
 export type ApplicationShortcutView = {
   label: string;

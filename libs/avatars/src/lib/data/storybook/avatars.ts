@@ -1,4 +1,4 @@
-import type { Avatar } from '../../models/avatar';
+import type { Avatar } from '../../__generated__/models';
 import { userAvatars } from '../mocks/user-avatars.data';
 
 export const avatarMock1: Avatar = userAvatars[0];

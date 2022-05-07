@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AvailableApplicationsState } from '@central-factory/applications/states/manage-applications.state';
 import { BehaviorSubject, map, Subscription, tap } from 'rxjs';
-import { Application } from '../models/application';
+import { Application } from '../__generated__/models';
 
 @Injectable({
   providedIn: 'root',

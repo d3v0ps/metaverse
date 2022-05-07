@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Burg } from '@central-factory/worlds/models/fmg-map';
-import { World } from '@central-factory/worlds/models/world';
+import { Burg, World } from '@central-factory/worlds/__generated__/models';
 
 @Component({
   selector: 'cf-burg-map',

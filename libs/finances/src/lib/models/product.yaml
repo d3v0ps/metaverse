@@ -1,0 +1,17 @@
+
+types:
+  product:
+    name:
+      type: string
+      required: true
+    price:
+      type: number
+      required: true
+    originalPrice:
+      type: number
+      required: true
+    originalPriceCurrency:
+      type: string
+      required: true
+    description:
+      type: string

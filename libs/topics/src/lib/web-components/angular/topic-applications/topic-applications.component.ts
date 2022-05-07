@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Application } from '@central-factory/applications/models/application';
+import { Application } from '@central-factory/applications/__generated__/models';
 
 @Component({
   selector: 'cf-topic-applications',
@@ -14,7 +14,9 @@ import { Application } from '@central-factory/applications/models/application';
         [showDescription]="false"
         [applications]="applications"
         [installedApplications]="installedApplications"
-        [applicationsPerPage]="maxApplications ? maxApplications : applications.length"
+        [applicationsPerPage]="
+          maxApplications ? maxApplications : applications.length
+        "
         [cardStyle]="{
           width: '100%'
         }"

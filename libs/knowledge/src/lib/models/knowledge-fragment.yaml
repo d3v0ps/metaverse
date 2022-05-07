@@ -1,0 +1,15 @@
+imports:
+  displayable: './core'
+  indexable: './core'
+  loadable: './core'
+enums:
+  knowledgeFragmentKind:
+    Markdown: 'Markdown'
+    # Text: 'Text'
+    Image: 'Image'
+    Video: 'Video'
+    Component: 'Component'
+    RelatedContent: 'RelatedContent'
+types:
+  knowledgeFragment:
+    type: Indexable & (Loadable | Displayable)

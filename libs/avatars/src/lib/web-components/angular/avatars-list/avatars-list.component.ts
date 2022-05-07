@@ -1,10 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Burg } from '@central-factory/worlds/models/fmg-map';
-import { World } from '@central-factory/worlds/models/world';
-import {
-  Avatar,
-  AvatarRelationshipKind,
-} from '../../../models/__generated__/types';
+import { Burg, World } from '@central-factory/worlds/__generated__/models';
+import { Avatar, RelationshipKind } from '../../../__generated__/models';
 
 @Component({
   selector: 'cf-avatars-list',
@@ -123,7 +119,7 @@ export class AvatarsListComponent {
   private getGenerationNumber(avatar: Avatar, level = 0): number {
     const parents =
       avatar.relationships?.filter(
-        (relationship) => relationship.kind === AvatarRelationshipKind.Parent
+        (relationship) => relationship.kind === RelationshipKind.Parent
       ) || [];
     const parent = this.avatars.find(
       (avatar) => avatar.id === parents[0]?.avatar

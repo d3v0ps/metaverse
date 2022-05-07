@@ -1,4 +1,4 @@
-import { AvatarAppearance } from '@central-factory/avatars/models/avatar';
+import { Appearance } from '@central-factory/avatars/__generated__/models';
 
 const valueMappings: Record<
   string,
@@ -98,10 +98,10 @@ const valueMappings: Record<
 };
 
 export const toAvataaars = (
-  appearance: AvatarAppearance
+  appearance: Appearance
 ): Record<string, string> => ({
   skinColor:
-    valueMappings.skinColor[appearance.body?.skin || 'light'] || 'Light',
+    valueMappings.skinColor[appearance.body?.color || 'light'] || 'Light',
   topType:
     valueMappings.topType[appearance.hair?.style || 'long'] ||
     'LongHairStraightStrand',

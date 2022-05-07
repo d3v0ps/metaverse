@@ -3,7 +3,7 @@ import { EntityManager } from '@central-factory/persistence/services/entity-mana
 import { Repository } from '@central-factory/persistence/services/repository';
 import { BehaviorSubject, forkJoin, map, of, switchMap, tap } from 'rxjs';
 import type { UserAvatarDocType } from '../collections/user-avatars.collection';
-import type { Avatar } from '../models/avatar';
+import type { Avatar } from '../__generated__/models';
 
 @Injectable({
   providedIn: 'root',
@@ -58,7 +58,7 @@ export class AvailableAvatarsState {
                     avatar.id
                   ).pipe(
                     map((attachments) => {
-                      avatar.appearances.forEach((appearance) => {
+                      avatar.appearances?.forEach((appearance) => {
                         const portraitAttachment = attachments.find(
                           (attachment) =>
                             attachment.id === appearance.variations?.portrait.id

@@ -5,7 +5,7 @@ import type {
   RxDocument,
   RxJsonSchema,
 } from 'rxdb/dist/types/types';
-import type { Avatar } from '../models/avatar';
+import type { Avatar } from '../__generated__/models';
 
 export type UserAvatarDocType = Avatar;
 

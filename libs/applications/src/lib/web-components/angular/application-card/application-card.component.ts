@@ -6,7 +6,7 @@ import {
   Output,
 } from '@angular/core';
 import { isElectron } from '@central-factory/web-components/shared/platform/desktop/is-electron';
-import { Application } from '../../../models/application';
+import { Application } from '../../../__generated__/models';
 
 @Component({
   selector: 'cf-application-card',

@@ -1,14 +1,14 @@
 import { Component, Input } from '@angular/core';
 import {
-  AvatarAppearance,
-  AvatarIdentity,
-  AvatarOutfit,
-} from '@central-factory/avatars/models/avatar';
+  Appearance,
+  Identity,
+  Outfit,
+} from '@central-factory/avatars/__generated__/models';
 import {
   Burg,
   Culture,
   Religion,
-} from '@central-factory/worlds/models/fmg-map';
+} from '@central-factory/worlds/__generated__/models';
 
 @Component({
   selector: 'cf-avatar-identity',
@@ -150,10 +150,10 @@ import {
   `,
 })
 export class AvatarIdentityComponent {
-  @Input() identity?: AvatarIdentity;
+  @Input() identity?: Identity;
   @Input() birthPlace?: Burg;
   @Input() culture?: Culture;
   @Input() religion?: Religion;
-  @Input() appearance?: AvatarAppearance;
-  @Input() outfit?: AvatarOutfit;
+  @Input() appearance?: Appearance;
+  @Input() outfit?: Outfit;
 }

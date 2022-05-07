@@ -1,1 +1,1 @@
-export * from './lib/models';
+export * from './lib/__generated__/models';

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { KnowledgeSymbol } from '@central-factory/knowledge/models/knowledge-symbol';
+import { KnowledgeSymbol } from '@central-factory/knowledge/__generated__/models';
 
 @Component({
   selector: 'cf-knowledge-leaf',
@@ -10,7 +10,12 @@ import { KnowledgeSymbol } from '@central-factory/knowledge/models/knowledge-sym
       (click)="symbolClick.emit(symbol)"
     >
       <div cfBlock="text">
-        <cf-svg-icon cfBlock="icon" cfMod="s" [src]="symbol.icon">
+        <cf-svg-icon
+          *ngIf="symbol.icon"
+          cfBlock="icon"
+          cfMod="s"
+          [src]="symbol.icon"
+        >
         </cf-svg-icon>
         {{ symbol.title | titlecase }}
       </div>
