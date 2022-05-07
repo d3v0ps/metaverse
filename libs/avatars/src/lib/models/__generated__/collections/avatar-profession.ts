@@ -29,7 +29,7 @@ export const avatarProfessionSchema = {
     },
     "schools": {
       "items": {
-        "type": "object"
+        "type": "string"
       },
       "type": "array"
     }

@@ -13,19 +13,31 @@ export const fantasyMapGeneratorMapSchema = {
   "additionalProperties": false,
   "properties": {
     "biomes": {
-      "type": "object"
+      "$ref": "#/definitions/Biomes",
+      "items": {
+        "type": "object"
+      }
     },
     "cells": {
-      "type": "object"
+      "$ref": "#/definitions/MapCells",
+      "items": {
+        "type": "object"
+      }
     },
     "coords": {
-      "type": "object"
+      "$ref": "#/definitions/MapCoords",
+      "items": {
+        "type": "object"
+      }
     },
     "id": {
       "type": "string"
     },
     "info": {
-      "type": "object"
+      "$ref": "#/definitions/MapInfo",
+      "items": {
+        "type": "object"
+      }
     },
     "nameBases": {
       "items": {
@@ -40,7 +52,10 @@ export const fantasyMapGeneratorMapSchema = {
       "type": "array"
     },
     "settings": {
-      "type": "object"
+      "$ref": "#/definitions/MapSettings",
+      "items": {
+        "type": "object"
+      }
     }
   },
   "required": [

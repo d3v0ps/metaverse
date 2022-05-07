@@ -13,6 +13,11 @@ import { WorldsState } from '@central-factory/worlds/states/worlds.state';
         selectedWorld: selectedWorld$ | async
       } as data"
     >
+      <cf-avatars-list
+        *ngIf="showAvatars"
+        [world]="data.selectedWorld || undefined"
+        [avatars]="data.selectedWorld?.avatars || []"
+      ></cf-avatars-list>
       <cf-worlds-list
         *ngIf="data.worlds"
         [worlds]="data.worlds"
@@ -24,6 +29,7 @@ import { WorldsState } from '@central-factory/worlds/states/worlds.state';
       <cf-world-card
         [world]="data.selectedWorld || undefined"
         (generateClick)="onRegenerateClick($event)"
+        (showAvatarsClick)="onShowAvatarsClick($event)"
       ></cf-world-card>
     </div>
   `,
@@ -57,6 +63,8 @@ export class WorldsManagerComponent implements OnInit, OnApplicationLoad {
   worlds$ = this.worldsState.worlds$;
   selectedWorld$ = this.worldsState.selectedWorld$;
 
+  showAvatars = false;
+
   @Output() applicationLoad = new EventEmitter<void>();
 
   constructor(private worldsState: WorldsState) {}
@@ -67,6 +75,11 @@ export class WorldsManagerComponent implements OnInit, OnApplicationLoad {
 
   onRegenerateClick(world: World) {
     this.worldsState.generateAvatars(world);
+  }
+
+  onShowAvatarsClick(world: World) {
+    this.showAvatars = !this.showAvatars;
+    this.onWorldSelect(world);
   }
 
   onWorldSelect(world: World) {

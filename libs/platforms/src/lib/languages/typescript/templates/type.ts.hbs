@@ -4,7 +4,7 @@
 {{#ifEnum .}}
 export enum {{name}} {
   {{#each enum}}
-  {{.}} = '{{.}}',
+  {{pascalCase .}} = '{{.}}',
   {{/each}}
 }
 

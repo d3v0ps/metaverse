@@ -9,7 +9,7 @@ import {
   ApplicationAdditionalProperties,
   ApplicationRenderingType,
   ColorVariation,
-} from '../models/application';
+} from '../models/__generated__/types';
 
 export type ApplicationsByCategory = Record<string, Application[]>;
 export type ApplicationsByAuthor = Record<string, Application[]>;

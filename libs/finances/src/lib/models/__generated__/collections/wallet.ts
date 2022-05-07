@@ -19,7 +19,10 @@ export const walletSchema = {
       "type": "array"
     },
     "balance": {
-      "type": "object"
+      "$ref": "#/definitions/Balance",
+      "items": {
+        "type": "object"
+      }
     },
     "id": {
       "type": "string"

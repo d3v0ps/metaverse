@@ -7,12 +7,12 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import { OnApplicationLoad } from '@central-factory/applications/models/application-interfaces';
 import {
   Application,
   ApplicationRenderingType,
   ApplicationShortcut,
-} from '@central-factory/applications/models/application';
-import { OnApplicationLoad } from '@central-factory/applications/models/application-interfaces';
+} from '@central-factory/applications/models/__generated__/types';
 import { InstallApplicationsState } from '@central-factory/applications/states/install-application.state';
 import {
   ApplicationOrigin,

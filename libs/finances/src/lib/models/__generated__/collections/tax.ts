@@ -27,7 +27,10 @@ export const taxSchema = {
       "type": "string"
     },
     "period": {
-      "type": "object"
+      "$ref": "#/definitions/TaxPeriod",
+      "items": {
+        "type": "object"
+      }
     },
     "rate": {
       "type": "number"

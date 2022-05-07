@@ -1,11 +1,11 @@
 export enum PermissionKind {
-  Collection = 'collection',
+  Collection = 'Collection',
 }
 
 export enum PermissionMode {
-  Read = 'read',
-  Write = 'write',
-  Delete = 'delete',
+  Read = 'Read',
+  Write = 'Write',
+  Delete = 'Delete',
 }
 
 export type Permission = {

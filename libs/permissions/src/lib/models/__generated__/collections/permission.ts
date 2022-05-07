@@ -3,45 +3,39 @@
 import { Provider } from '@angular/core';
 import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/services/entity-manager';
 import { RxDocument, RxCollection, RxJsonSchema } from 'rxdb';
-import { Invoice } from '../types';
+import { Permission } from '../types';
 
-export type InvoiceDocType = Invoice;
-export type InvoiceDocument = RxDocument<InvoiceDocType>;
-export type InvoiceCollection = RxCollection<InvoiceDocument>;
+export type PermissionDocType = Permission;
+export type PermissionDocument = RxDocument<PermissionDocType>;
+export type PermissionCollection = RxCollection<PermissionDocument>;
 
-export const invoiceSchema = {
+export const permissionSchema = {
   "additionalProperties": false,
   "properties": {
+    "appId": {
+      "type": "string"
+    },
     "createdAt": {
       "type": "string"
     },
     "id": {
       "type": "string"
     },
-    "items": {
-      "items": {
-        "type": "object"
-      },
-      "type": "array"
-    },
-    "paidAt": {
-      "type": "string"
-    },
-    "receiver": {
-      "type": "string"
-    },
-    "sender": {
-      "type": "string"
-    },
-    "state": {
+    "kind": {
       "type": "string",
       "enum": [
-        "draft",
-        "sent",
-        "paid"
+        "Collection"
       ]
     },
-    "total": {
+    "mode": {
+      "type": "string",
+      "enum": [
+        "Read",
+        "Write",
+        "Delete"
+      ]
+    },
+    "target": {
       "type": "string"
     },
     "updatedAt": {
@@ -49,17 +43,21 @@ export const invoiceSchema = {
     }
   },
   "required": [
-    "id"
+    "id",
+    "appId",
+    "kind",
+    "mode",
+    "target"
   ],
   "type": "object"
 }
 
-export const invoiceRxSchema: RxJsonSchema<
-  Omit<InvoiceDocType, '_attachments'>
+export const permissionRxSchema: RxJsonSchema<
+  Omit<PermissionDocType, '_attachments'>
 > = {
-  ...invoiceSchema as any,
-  title: 'Invoice',
-  description: 'Invoice',
+  ...permissionSchema as any,
+  title: 'Permission',
+  description: 'Permission',
   version: 0,
   keyCompression: true,
   primaryKey: 'id',
@@ -69,12 +67,12 @@ export const invoiceRxSchema: RxJsonSchema<
   },
 };
 
-export const INVOICE_COLLECTION_PROVIDER: Provider = {
+export const PERMISSION_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'Invoice',
+    name: 'Permission',
     creator: {
-      schema: invoiceRxSchema,
+      schema: permissionRxSchema,
     },
   },
   multi: true,

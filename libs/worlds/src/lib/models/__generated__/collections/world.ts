@@ -13,45 +13,48 @@ export const worldSchema = {
   "additionalProperties": false,
   "properties": {
     "archetypes": {
-      "items": {
-        "type": "object"
-      },
+      "items": {},
       "type": "array"
     },
     "avatars": {
-      "items": {
-        "type": "object"
-      },
+      "items": {},
       "type": "array"
     },
     "displayName": {
       "type": "string"
     },
     "eras": {
-      "items": {
-        "type": "object"
-      },
+      "items": {},
       "type": "array"
     },
     "id": {
       "type": "string"
     },
     "kind": {
-      "type": "object"
+      "type": "string",
+      "enum": [
+        "analog",
+        "digital",
+        "unknown"
+      ]
     },
     "map": {},
     "meta": {
-      "type": "object"
-    },
-    "professions": {
+      "$ref": "#/definitions/Meta",
       "items": {
         "type": "object"
-      },
+      }
+    },
+    "professions": {
+      "items": {},
       "type": "array"
     },
     "state": {},
     "stats": {
-      "type": "object"
+      "$ref": "#/definitions/WorldStats",
+      "items": {
+        "type": "object"
+      }
     },
     "year": {
       "type": "number"

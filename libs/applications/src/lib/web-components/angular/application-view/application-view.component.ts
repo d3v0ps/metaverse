@@ -17,7 +17,7 @@ import {
   ApplicationRenderingType,
   ApplicationShortcut,
   ColorVariation,
-} from '../../../models/application';
+} from '../../../models/__generated__/types';
 
 @Component({
   selector: 'cf-application-view',
@@ -48,13 +48,13 @@ import {
       <ng-container
         [ngSwitch]="application.additionalProperties?.renderingType"
       >
-        <ng-container *ngSwitchCase="'webview'">
+        <ng-container *ngSwitchCase="'Webview'">
           <cf-application-webview
             [application]="application"
             [applicationShortcut]="applicationShortcut"
           ></cf-application-webview>
         </ng-container>
-        <ng-container *ngSwitchCase="'local'">
+        <ng-container *ngSwitchCase="'Local'">
           <div cfBlock="application-local-module" *ngIf="localResolver">
             <ng-template
               *ngxComponentOutlet="
@@ -64,7 +64,7 @@ import {
             </ng-template>
           </div>
         </ng-container>
-        <!-- ng-container *ngSwitchCase="'angular-element'">
+        <!-- ng-container *ngSwitchCase="'AngularElement'">
           <div cfBlock="application-remote-module">
             <div
               *axLazyElement="application.startUrl"
@@ -72,7 +72,7 @@ import {
             </div>
           </div>
         </ng-container -->
-        <ng-container *ngSwitchCase="'webpack-module-federation'">
+        <ng-container *ngSwitchCase="'WebpackModuleFederation'">
           <div cfBlock="application-remote-module">
             <ng-template #lazyloadedApplication></ng-template>
           </div>

@@ -1,5 +1,6 @@
 import { generateTypeScriptGqlTypesFromSchema } from '@central-factory/platforms/languages/gql/generate-ts-gql-types';
 import { generateRxDBSchemasFromSchema } from '@central-factory/platforms/languages/json/generate-schema';
+import { getRootTypeNamesFromSchema } from '@central-factory/platforms/languages/json/utils/get-root-type-names-from-schema';
 import { generateTypeScriptTypesFromSchema } from '@central-factory/platforms/languages/typescript/generate-types';
 import { parseTypes } from '@central-factory/platforms/languages/typescript/parse-types';
 import { Logger } from '@nestjs/common';
@@ -7,7 +8,7 @@ import { outputJSON, readdir } from 'fs-extra';
 import { resolve } from 'path';
 import { environment } from './environments/environment';
 
-const logger = new Logger('Main');
+const logger = new Logger('Generator');
 
 (async () => {
   const modules = environment.modules;
@@ -41,6 +42,14 @@ const logger = new Logger('Main');
             }
 
             schema.title = mod;
+
+            const rootTypeNames = getRootTypeNamesFromSchema('Root', schema);
+
+            logger.verbose(
+              `[${schema.title}]: Root definitions: [${rootTypeNames.join(
+                ', '
+              )}]. Total: ${Object.keys(schema.definitions)?.length}`
+            );
 
             return Promise.all([
               outputJSON(resolve(output, 'schema.json'), schema, { spaces: 2 }),

@@ -2,7 +2,6 @@ import { Logger } from '@nestjs/common';
 import { ensureDir, writeFile } from 'fs-extra';
 import { dirname } from 'path';
 import { JSONSchema } from '../json/types/json-schema';
-import { getNameFromRef } from '../json/utils/get-name-from-ref';
 import { renderTypes } from './render-types';
 
 const logger = new Logger('Generate Typescript Types');
@@ -14,19 +13,6 @@ export const generateTypeScriptTypesFromSchema = async (
   if (!schema.definitions) {
     throw new Error(`Schema ${schema.title} does not contain definitions`);
   }
-
-  logger.verbose(
-    `[${
-      schema.title
-    }]: Generating types for the following root definitions: [${schema.definitions[
-      'Root'
-    ].anyOf
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      ?.map((x) => getNameFromRef(x.$ref!))
-      .join(', ')}]. Total definitions found: ${
-      Object.keys(schema.definitions)?.length
-    }`
-  );
 
   const definitions = Object.assign({}, schema.definitions);
   delete definitions['Root'];

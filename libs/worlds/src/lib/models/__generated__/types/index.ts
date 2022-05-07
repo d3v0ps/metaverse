@@ -169,15 +169,15 @@ export type Era = {
 }
 
 export enum EraMapStyle {
-  default = 'default',
-  ancient = 'ancient',
-  gloom = 'gloom',
-  light = 'light',
-  watercolor = 'watercolor',
-  clean = 'clean',
-  atlas = 'atlas',
-  cyberpunk = 'cyberpunk',
-  monochrome = 'monochrome',
+  Default = 'default',
+  Ancient = 'ancient',
+  Gloom = 'gloom',
+  Light = 'light',
+  Watercolor = 'watercolor',
+  Clean = 'clean',
+  Atlas = 'atlas',
+  Cyberpunk = 'cyberpunk',
+  Monochrome = 'monochrome',
 }
 
 
@@ -610,19 +610,19 @@ export type WorldEvent = {
 }
 
 export enum WorldEventType {
-  WAR_DECLARATION = 'WAR_DECLARATION',
-  MILITARY_BATTLE = 'MILITARY_BATTLE',
-  PEACE_AGREEMENT = 'PEACE_AGREEMENT',
-  NATURAL_DISASTER = 'NATURAL_DISASTER',
-  DISEASE = 'DISEASE',
-  CIVIL_WAR = 'CIVIL_WAR',
+  WarDeclaration = 'WAR_DECLARATION',
+  MilitaryBattle = 'MILITARY_BATTLE',
+  PeaceAgreement = 'PEACE_AGREEMENT',
+  NaturalDisaster = 'NATURAL_DISASTER',
+  Disease = 'DISEASE',
+  CivilWar = 'CIVIL_WAR',
 }
 
 
 export enum WorldKind {
-  analog = 'analog',
-  digital = 'digital',
-  unknown = 'unknown',
+  Analog = 'analog',
+  Digital = 'digital',
+  Unknown = 'unknown',
 }
 
 

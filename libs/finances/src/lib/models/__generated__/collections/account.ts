@@ -36,7 +36,18 @@ export const accountSchema = {
       "type": "string"
     },
     "type": {
-      "type": "object"
+      "type": "string",
+      "enum": [
+        "Cash",
+        "Bank",
+        "CreditCard",
+        "DebitCard",
+        "RechargeCard",
+        "Loan",
+        "Crypto",
+        "Stock",
+        "Other"
+      ]
     },
     "updatedAt": {
       "additionalProperties": false,

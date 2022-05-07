@@ -3,9 +3,9 @@ import { kebab as kebabCase } from 'case';
 import { ensureDir, writeFile } from 'fs-extra';
 import { resolve } from 'path';
 import { JSONSchema } from '../json/types/json-schema';
-import { getNameFromRef } from '../json/utils/get-name-from-ref';
 import { renderRxDBIndex } from './render-rxdb-index';
 import { renderRxDBSchema } from './render-rxdb-schema';
+import { getRootTypeNamesFromSchema } from './utils/get-root-type-names-from-schema';
 
 const logger = new Logger('Generate RxDB Schemas');
 
@@ -17,23 +17,9 @@ export const generateRxDBSchemasFromSchema = async (
     throw new Error(`Schema ${schema.title} does not contain definitions`);
   }
 
-  logger.verbose(
-    `[${
-      schema.title
-    }]: Generating schemas for the following root definitions: [${schema.definitions[
-      'Root'
-    ].anyOf
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      ?.map((x) => getNameFromRef(x.$ref!))
-      .join(', ')}]. Total definitions found: ${
-      Object.keys(schema.definitions)?.length
-    }`
-  );
-
   const schemaDefinitions = Object.assign({}, schema.definitions);
-  const rootTypes = schemaDefinitions['Root'].anyOf as any as JSONSchema[];
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const rootTypeNames = rootTypes.map((x) => getNameFromRef(x.$ref!));
+  const rootTypeNames = getRootTypeNamesFromSchema('Root', schema);
+
   delete schemaDefinitions['Root'];
 
   const definitions = Object.entries(schemaDefinitions).map(

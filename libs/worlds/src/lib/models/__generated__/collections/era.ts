@@ -34,7 +34,18 @@ export const eraSchema = {
       "type": "string"
     },
     "mapStyle": {
-      "type": "object"
+      "type": "string",
+      "enum": [
+        "default",
+        "ancient",
+        "gloom",
+        "light",
+        "watercolor",
+        "clean",
+        "atlas",
+        "cyberpunk",
+        "monochrome"
+      ]
     },
     "military": {
       "items": {

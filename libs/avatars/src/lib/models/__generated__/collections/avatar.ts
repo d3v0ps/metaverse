@@ -15,19 +15,23 @@ export const avatarSchema = {
   "properties": {
     "_attachments": {},
     "appearance": {
+      "$ref": "#/definitions/AvatarAppearance",
       "description": "The avatar's appearance ",
-      "type": "object"
+      "items": {
+        "type": "object"
+      }
     },
     "appearances": {
       "description": "The avatar's appearances ",
-      "items": {
-        "type": "object"
-      },
+      "items": {},
       "type": "array"
     },
     "attributes": {
+      "$ref": "#/definitions/AvatarAttributes",
       "description": "The avatar's attributes ",
-      "type": "object"
+      "items": {
+        "type": "object"
+      }
     },
     "children": {
       "items": {
@@ -45,8 +49,11 @@ export const avatarSchema = {
       "type": "string"
     },
     "identity": {
+      "$ref": "#/definitions/AvatarIdentity",
       "description": "The avatar's identity ",
-      "type": "object"
+      "items": {
+        "type": "object"
+      }
     },
     "knowledge": {
       "description": "The avatar's knowledge "

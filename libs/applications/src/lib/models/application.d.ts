@@ -1,14 +1,9 @@
-import {
-  PermissionKind,
-  PermissionMode
-} from '@central-factory/permissions/models/permission';
-
 export enum ApplicationRenderingType {
-  Webview = 'webview',
-  Local = 'local',
-  AngularElement = 'angular-element',
-  WebpackModuleFederation = 'webpack-module-federation',
-  Unknown = 'unknown',
+  Webview = 'Webview',
+  Local = 'Local',
+  AngularElement = 'AngularElement',
+  WebpackModuleFederation = 'WebpackModuleFederation',
+  Unknown = 'Unknown',
 }
 
 export type ApplicationIcon = {
@@ -52,8 +47,8 @@ export type ApplicationAdditionalProperties = {
   disabled?: boolean;
   supportsBrowser?: boolean;
   permissions?: {
-    kind: PermissionKind;
-    mode: PermissionMode;
+    kind: string;
+    mode: string;
     target: string;
   }[];
   defaultShortcut?: string;

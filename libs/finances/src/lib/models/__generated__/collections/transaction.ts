@@ -44,7 +44,7 @@ export const transactionSchema = {
     },
     "tags": {
       "items": {
-        "type": "object"
+        "type": "string"
       },
       "type": "array"
     }

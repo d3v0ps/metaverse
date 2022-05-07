@@ -3,7 +3,7 @@
 import {
   PermissionKind,
   PermissionMode,
-} from '@central-factory/permissions/models/permission';
+} from '@central-factory/permissions/models/__generated__/types';
 import {
   BlobBuffer,
   MangoQuery,

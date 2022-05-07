@@ -1,0 +1,58 @@
+{
+  "$ref": "#/definitions/Root",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "definitions": {
+    "Permission": {
+      "additionalProperties": false,
+      "properties": {
+        "appId": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "#/definitions/PermissionKind"
+        },
+        "mode": {
+          "$ref": "#/definitions/PermissionMode"
+        },
+        "target": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "appId",
+        "kind",
+        "mode",
+        "target"
+      ],
+      "type": "object"
+    },
+    "PermissionKind": {
+      "enum": [
+        "Collection"
+      ],
+      "type": "string"
+    },
+    "PermissionMode": {
+      "enum": [
+        "Read",
+        "Write",
+        "Delete"
+      ],
+      "type": "string"
+    },
+    "Root": {
+      "$ref": "#/definitions/Permission"
+    }
+  },
+  "title": "permissions"
+}

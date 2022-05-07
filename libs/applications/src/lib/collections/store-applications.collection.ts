@@ -6,7 +6,7 @@ import type {
   RxJsonSchema,
 } from 'rxdb/dist/types/types';
 import type { Application } from '../models/application';
-import { applicationsSchema } from './applications.schema';
+import { applicationSchema } from '../models/__generated__/collections';
 export type StoreApplicationDocType = Application;
 
 export type StoreApplicationDocument = RxDocument<StoreApplicationDocType>;
@@ -21,7 +21,7 @@ export const storeApplicationsSchema: RxJsonSchema<StoreApplicationDocType> = {
   keyCompression: true,
   primaryKey: 'id',
   type: 'object',
-  properties: applicationsSchema.properties,
+  properties: applicationSchema.properties,
   required: ['id', 'name', 'startUrl', 'createdAt', 'updatedAt'],
 };
 

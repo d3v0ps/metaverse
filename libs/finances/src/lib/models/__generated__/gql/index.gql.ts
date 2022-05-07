@@ -123,9 +123,9 @@ export class InvoiceItem {
 }
 
 export enum InvoiceState {
-  draft = 'draft',
-  sent = 'sent',
-  paid = 'paid',
+  Draft = 'draft',
+  Sent = 'sent',
+  Paid = 'paid',
 }
 
 registerEnumType(InvoiceState, {

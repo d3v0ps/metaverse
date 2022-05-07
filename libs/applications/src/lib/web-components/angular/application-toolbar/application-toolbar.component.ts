@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Application, ColorVariation } from '../../../models/application';
+import {
+  Application,
+  ColorVariation,
+} from '../../../models/__generated__/types';
 
 @Component({
   selector: 'cf-application-toolbar',

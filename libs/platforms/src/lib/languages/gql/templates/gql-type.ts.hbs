@@ -6,7 +6,7 @@ import { Field, ObjectType, registerEnumType } from '@nestjs/graphql';
 {{#ifEnum .}}
 export enum {{name}} {
   {{#each enum}}
-  {{.}} = '{{.}}',
+  {{pascalCase .}} = '{{.}}',
   {{/each}}
 }
 

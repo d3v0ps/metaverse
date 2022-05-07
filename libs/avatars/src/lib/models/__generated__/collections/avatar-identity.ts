@@ -34,7 +34,11 @@ export const avatarIdentitySchema = {
       "type": "string"
     },
     "gender": {
-      "type": "object"
+      "type": "string",
+      "enum": [
+        "Male",
+        "Female"
+      ]
     },
     "givenName": {
       "type": "string"
@@ -55,7 +59,14 @@ export const avatarIdentitySchema = {
       "type": "string"
     },
     "sexualOrientation": {
-      "type": "object"
+      "type": "string",
+      "enum": [
+        "Heterosexual",
+        "Homosexual",
+        "Bisexual",
+        "Pansexual",
+        "Asexual"
+      ]
     },
     "title": {
       "type": "string"

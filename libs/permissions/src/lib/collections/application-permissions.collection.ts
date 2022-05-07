@@ -7,6 +7,7 @@ import type {
   RxJsonSchema,
 } from 'rxdb/dist/types/types';
 import type { Permission } from '../models/permission';
+import { permissionSchema } from '../models/__generated__/collections/permission';
 
 export type ApplicationPermissionDocType = Permission;
 
@@ -28,38 +29,7 @@ export const applicationPermissionsSchema: RxJsonSchema<ApplicationPermissionDoc
       separator: ':',
     },
     type: 'object',
-    properties: {
-      id: {
-        type: 'string',
-        description: 'Id',
-      },
-      appId: {
-        type: 'string',
-        description: 'AppId',
-      },
-      kind: {
-        type: 'string',
-        description: 'Kind',
-        enum: ['collection'],
-      },
-      mode: {
-        type: 'string',
-        description: 'Mode',
-        enum: ['read', 'write', 'delete'],
-      },
-      target: {
-        type: 'string',
-        description: 'Target',
-      },
-      createdAt: {
-        format: 'date-time',
-        type: 'string',
-      },
-      updatedAt: {
-        format: 'date-time',
-        type: 'string',
-      },
-    },
+    properties: permissionSchema.properties,
     required: ['id', 'appId', 'kind', 'mode', 'target'],
     encrypted: ['kind', 'mode', 'target'],
   };

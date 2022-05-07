@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Component, HostListener } from '@angular/core';
+import { ApplicationCloseCommand } from '@central-factory/applications/models/application-commands';
 import {
   Application,
   ColorVariation,
-} from '@central-factory/applications/models/application';
-import { ApplicationCloseCommand } from '@central-factory/applications/models/application-commands';
+} from '@central-factory/applications/models/__generated__/types';
 import { map } from 'rxjs';
 import { LocalApplicationComponentsResolver } from '../../../resolvers/components/local-applications/local-application-components.resolver';
 import { ApplicationDisplayState } from '../../../states/application-display.state';

@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  modules: ['worlds', 'finances'],
+  modules: ['permissions', 'applications', 'avatars', 'worlds', 'finances'],
 };
