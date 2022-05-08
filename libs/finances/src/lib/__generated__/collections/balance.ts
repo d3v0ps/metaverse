@@ -49,12 +49,42 @@ export const balanceRxSchema: RxJsonSchema<
   },
 };
 
+export const userBalanceRxSchema: RxJsonSchema<
+  Omit<BalanceDocType, '_attachments'>
+> = {
+  ...balanceSchema as any,
+  title: 'User Balance',
+  description: 'User Balance',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const BALANCE_COLLECTION_NAME = 'balance';
+
 export const BALANCE_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'balance',
+    name: BALANCE_COLLECTION_NAME,
     creator: {
       schema: balanceRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_BALANCE_COLLECTION_NAME = 'userbalance';
+
+export const USER_BALANCE_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_BALANCE_COLLECTION_NAME,
+    creator: {
+      schema: userBalanceRxSchema,
     },
   },
   multi: true,

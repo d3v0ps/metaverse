@@ -58,12 +58,42 @@ export const appearanceInfoRxSchema: RxJsonSchema<
   },
 };
 
+export const userAppearanceInfoRxSchema: RxJsonSchema<
+  Omit<AppearanceInfoDocType, '_attachments'>
+> = {
+  ...appearanceInfoSchema as any,
+  title: 'User AppearanceInfo',
+  description: 'User Appearance Info',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const APPEARANCE_INFO_COLLECTION_NAME = 'appearance-info';
+
 export const APPEARANCE_INFO_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'appearanceInfo',
+    name: APPEARANCE_INFO_COLLECTION_NAME,
     creator: {
       schema: appearanceInfoRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_APPEARANCE_INFO_COLLECTION_NAME = 'userappearance-info';
+
+export const USER_APPEARANCE_INFO_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_APPEARANCE_INFO_COLLECTION_NAME,
+    creator: {
+      schema: userAppearanceInfoRxSchema,
     },
   },
   multi: true,

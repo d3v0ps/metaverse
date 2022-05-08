@@ -30,6 +30,7 @@ export type Application = {
   themeColor?: string;
 
   updatedAt?: string;
+  _attachments?: any;
 }
 
 export type ApplicationAdditionalProperties = {
@@ -54,6 +55,7 @@ export type ApplicationAdditionalProperties = {
   starred?: boolean;
 
   supportsBrowser?: boolean;
+  _attachments?: any;
 }
 
 export type ApplicationAuthor = {
@@ -62,12 +64,14 @@ export type ApplicationAuthor = {
   id: string;
 
   name: string;
+  _attachments?: any;
 }
 
 export type ApplicationColor = {
   color?: string;
 
   variation?: ColorVariation;
+  _attachments?: any;
 }
 
 export type ApplicationIcon = {
@@ -76,6 +80,7 @@ export type ApplicationIcon = {
   src: string;
 
   type: string;
+  _attachments?: any;
 }
 
 export type ApplicationPermission = {
@@ -84,6 +89,7 @@ export type ApplicationPermission = {
   mode?: string;
 
   target?: string;
+  _attachments?: any;
 }
 
 export enum ApplicationRenderingType {
@@ -105,6 +111,7 @@ export type ApplicationScreenshot = {
   src: string;
 
   type: string;
+  _attachments?: any;
 }
 
 export type ApplicationShortcut = {
@@ -117,6 +124,7 @@ export type ApplicationShortcut = {
   shortName?: string;
 
   url: string;
+  _attachments?: any;
 }
 
 export enum ColorVariation {

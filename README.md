@@ -1,5 +1,7 @@
 # The Central Factory's Metaverse
 
+In memory of Aaron Swartz, Antonio Escohotado and so many others who fought for people's freedom.
+
 Metaverse Operating System made for the People.
 
 ![Analogic Worlds](https://i.imgur.com/yyQP5vJ.png)

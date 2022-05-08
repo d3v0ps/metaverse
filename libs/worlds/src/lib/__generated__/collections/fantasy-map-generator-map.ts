@@ -86,12 +86,42 @@ export const fantasyMapGeneratorMapRxSchema: RxJsonSchema<
   },
 };
 
+export const userFantasyMapGeneratorMapRxSchema: RxJsonSchema<
+  Omit<FantasyMapGeneratorMapDocType, '_attachments'>
+> = {
+  ...fantasyMapGeneratorMapSchema as any,
+  title: 'User FantasyMapGeneratorMap',
+  description: 'User Fantasy Map Generator Map',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const FANTASY_MAP_GENERATOR_MAP_COLLECTION_NAME = 'fantasy-map-generator-map';
+
 export const FANTASY_MAP_GENERATOR_MAP_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'fantasyMapGeneratorMap',
+    name: FANTASY_MAP_GENERATOR_MAP_COLLECTION_NAME,
     creator: {
       schema: fantasyMapGeneratorMapRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_FANTASY_MAP_GENERATOR_MAP_COLLECTION_NAME = 'userfantasy-map-generator-map';
+
+export const USER_FANTASY_MAP_GENERATOR_MAP_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_FANTASY_MAP_GENERATOR_MAP_COLLECTION_NAME,
+    creator: {
+      schema: userFantasyMapGeneratorMapRxSchema,
     },
   },
   multi: true,

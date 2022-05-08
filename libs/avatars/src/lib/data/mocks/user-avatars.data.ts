@@ -1,9 +1,12 @@
 import { Provider } from '@angular/core';
 import { Gender } from '@central-factory/avatars/__generated__/models';
 import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
-import type { UserAvatarDocType } from '../../collections/user-avatars.collection';
+import {
+  AvatarDocType,
+  USER_AVATAR_COLLECTION_NAME,
+} from '../../__generated__/collections/avatar';
 
-export const userAvatars: UserAvatarDocType[] = [
+export const userAvatars: AvatarDocType[] = [
   {
     id: '1',
     identity: {
@@ -306,7 +309,7 @@ export const userAvatars: UserAvatarDocType[] = [
 export const USER_AVATARS_MOCKS_DATA_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_INITIAL_DATA_TOKEN,
   useValue: {
-    name: 'useravatars',
+    name: USER_AVATAR_COLLECTION_NAME,
     upsert: true,
     data: userAvatars,
   },

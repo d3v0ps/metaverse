@@ -68,11 +68,9 @@ types:
       description: Use appearance & outfits instead
       deprecated: true
     createdAt:
-      type: Date
+      type: string
     updatedAt:
-      type: Date
-    _attachments:
-      type: any
+      type: string
 
   meta:
     root:

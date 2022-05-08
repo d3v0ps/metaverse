@@ -4,7 +4,10 @@ import {
   SexualOrientation,
 } from '@central-factory/avatars/__generated__/models';
 import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
-import type { UserAvatarDocType } from '../../collections/user-avatars.collection';
+import {
+  AvatarDocType,
+  USER_AVATAR_COLLECTION_NAME,
+} from '../../__generated__/collections/avatar';
 
 const avatar00Appearance: any = {
   id: '1',
@@ -159,7 +162,7 @@ const avatar01Appearance: any = {
   },
 };
 
-export const avatar01: UserAvatarDocType = {
+export const avatar01: AvatarDocType = {
   id: 'x1',
   identity: {
     quote: 'Hello!',
@@ -202,7 +205,7 @@ export const avatar01: UserAvatarDocType = {
   ],
 };
 
-export const userAvatars: UserAvatarDocType[] = [
+export const userAvatars: AvatarDocType[] = [
   {
     id: 'x0',
     identity: {
@@ -259,7 +262,7 @@ export const userAvatars: UserAvatarDocType[] = [
 export const USER_AVATARS_DEMO_DATA_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_INITIAL_DATA_TOKEN,
   useValue: {
-    name: 'useravatars',
+    name: USER_AVATAR_COLLECTION_NAME,
     upsert: true,
     data: userAvatars,
   },

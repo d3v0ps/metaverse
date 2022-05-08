@@ -1,0 +1,47 @@
+
+
+enums:
+  priority:
+    Low: low
+    Medium: medium
+    High: high
+
+types:
+  trigger:
+    name:
+      type: string
+    rules:
+      type: any
+
+  topic:
+    id:
+      type: string
+      required: true
+    priority:
+      type: Priority
+      required: true
+    title:
+      type: string
+      required: true
+    description:
+      type: string
+    icon:
+      type: string
+    themeColor:
+      type: string
+    background:
+      type: string
+    applications:
+      type: string[]
+    categories:
+      type: string[]
+    shortcuts:
+      type: string[]
+    triggers:
+      type: Trigger[]
+    media:
+      type: any
+    createdAt:
+      type: string
+    updatedAt:
+      type: string

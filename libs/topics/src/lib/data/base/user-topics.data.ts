@@ -1,10 +1,11 @@
 import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
-import { Topic } from '../../models/topic';
+import { USER_TOPIC_COLLECTION_NAME } from '@central-factory/topics/__generated__/collections/topic';
+import { Priority, Topic } from '../../__generated__/models';
 
 export const userTopics: Topic[] = [
   {
     id: 'morning.routine',
-    priority: 'low',
+    priority: Priority.Low,
     icon: 'assets/icons/mdi/weather-sunny.svg',
     title: 'Morning Routine',
     background:
@@ -39,7 +40,7 @@ export const userTopics: Topic[] = [
   },
   {
     id: 'meal.time',
-    priority: 'medium',
+    priority: Priority.Medium,
     icon: 'assets/icons/mdi/silverware.svg',
     title: 'Meal Time',
     background:
@@ -94,7 +95,7 @@ export const userTopics: Topic[] = [
   },
   {
     id: 'plan.day',
-    priority: 'low',
+    priority: Priority.Low,
     icon: 'assets/icons/mdi/account-check.svg',
     title: 'Plan your day',
     background:
@@ -128,7 +129,7 @@ export const userTopics: Topic[] = [
   },
   {
     id: 'daily.meeting',
-    priority: 'high',
+    priority: Priority.High,
     icon: 'assets/icons/mdi/video.svg',
     title: 'Daily Meeting',
     background:
@@ -158,7 +159,7 @@ export const userTopics: Topic[] = [
   },
   {
     id: 'work.matrix',
-    priority: 'medium',
+    priority: Priority.Medium,
     icon: 'assets/icons/mdi/account-network.svg',
     title: 'Work at The Matrix',
     background:
@@ -204,7 +205,7 @@ export const userTopics: Topic[] = [
   },
   {
     id: 'coding.night',
-    priority: 'low',
+    priority: Priority.Low,
     icon: 'assets/icons/mdi/account-network.svg',
     title: 'Coding Nights',
     background:
@@ -250,7 +251,7 @@ export const userTopics: Topic[] = [
   },
   {
     id: 'gaming.night',
-    priority: 'low',
+    priority: Priority.Low,
     icon: 'assets/icons/mdi/google-controller.svg',
     themeColor: 'light',
     background:
@@ -307,7 +308,7 @@ export const userTopics: Topic[] = [
 export const USER_TOPICS_INITIAL_DATA_PROVIDER = {
   provide: ENTITY_MANAGER_INITIAL_DATA_TOKEN,
   useValue: {
-    name: 'usertopics',
+    name: USER_TOPIC_COLLECTION_NAME,
     upsert: true,
     data: userTopics,
   },

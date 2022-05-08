@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { EntityManager } from '@central-factory/persistence/services/entity-manager';
 import { Repository } from '@central-factory/persistence/services/repository';
 import { BehaviorSubject, forkJoin, map, of, switchMap, tap } from 'rxjs';
-import type { UserAvatarDocType } from '../collections/user-avatars.collection';
+import {
+  AvatarDocType,
+  USER_AVATAR_COLLECTION_NAME,
+} from '../__generated__/collections/avatar';
 import type { Avatar } from '../__generated__/models';
 
 @Injectable({
@@ -11,15 +14,15 @@ import type { Avatar } from '../__generated__/models';
 export class AvailableAvatarsState {
   avatars$ = new BehaviorSubject<Avatar[]>([]);
 
-  private userAvatarsRepository?: Repository<UserAvatarDocType>;
+  private userAvatarsRepository?: Repository<AvatarDocType>;
 
   constructor(private entityManager: EntityManager) {
     this.entityManager.initialize$
       .pipe(
         switchMap(() =>
           forkJoin([
-            this.entityManager.getRepository<UserAvatarDocType>(
-              'useravatars',
+            this.entityManager.getRepository<AvatarDocType>(
+              USER_AVATAR_COLLECTION_NAME,
               'com.central-factory.avatars'
             ),
           ])
@@ -46,8 +49,8 @@ export class AvailableAvatarsState {
             ? forkJoin(
                 avatars.map((avatar) => {
                   const hasAttachments =
-                    avatar._attachments &&
-                    Object.keys(avatar._attachments).length > 0;
+                    (avatar as any)._attachments &&
+                    Object.keys((avatar as any)._attachments).length > 0;
 
                   if (!hasAttachments) {
                     return of(avatar);
@@ -58,7 +61,7 @@ export class AvailableAvatarsState {
                     avatar.id
                   ).pipe(
                     map((attachments) => {
-                      avatar.appearances?.forEach((appearance) => {
+                      avatar.appearances?.forEach((appearance: any) => {
                         const portraitAttachment = attachments.find(
                           (attachment) =>
                             attachment.id === appearance.variations?.portrait.id

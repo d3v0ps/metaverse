@@ -3,23 +3,26 @@ import { EntityManager } from '@central-factory/persistence/services/entity-mana
 import { Repository } from '@central-factory/persistence/services/repository';
 import { forkJoin, of, throwError } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { UserAvatarDocType } from '../collections/user-avatars.collection';
 import { AvatarAppearanceEditorModel } from '../web-components/angular/avatar-appearance-editor/avatar-appearance-editor.component';
+import {
+  AvatarDocType,
+  USER_AVATAR_COLLECTION_NAME,
+} from '../__generated__/collections/avatar';
 import { Avatar } from '../__generated__/models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ManageAvatarAppearancesState {
-  private userAvatarsRepository?: Repository<UserAvatarDocType>;
+  private userAvatarsRepository?: Repository<AvatarDocType>;
 
   constructor(private entityManager: EntityManager) {
     this.entityManager.initialize$
       .pipe(
         switchMap(() =>
           forkJoin([
-            this.entityManager.getRepository<UserAvatarDocType>(
-              'useravatars',
+            this.entityManager.getRepository<AvatarDocType>(
+              USER_AVATAR_COLLECTION_NAME,
               'com.central-factory.avatars'
             ),
           ])

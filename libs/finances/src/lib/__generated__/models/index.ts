@@ -18,6 +18,7 @@ export type Account = {
   type: AccountType;
 
   updatedAt?: any;
+  _attachments?: any;
 }
 
 export enum AccountType {
@@ -41,6 +42,7 @@ export type Balance = {
   stocks: string;
 
   total: string;
+  _attachments?: any;
 }
 
 export type Invoice = {
@@ -61,6 +63,7 @@ export type Invoice = {
   total?: string;
 
   updatedAt?: string;
+  _attachments?: any;
 }
 
 export type InvoiceItem = {
@@ -79,6 +82,7 @@ export type InvoiceItem = {
   quantity?: number;
 
   updatedAt?: any;
+  _attachments?: any;
 }
 
 export enum InvoiceState {
@@ -98,6 +102,7 @@ export type Product = {
   originalPriceCurrency: string;
 
   price: number;
+  _attachments?: any;
 }
 
 export type Tax = {
@@ -114,6 +119,7 @@ export type Tax = {
   rate: number;
 
   updatedAt: any;
+  _attachments?: any;
 }
 
 export type TaxPeriod = {
@@ -124,6 +130,7 @@ export type TaxPeriod = {
   payStart: any;
 
   start: any;
+  _attachments?: any;
 }
 
 export type Transaction = {
@@ -148,6 +155,7 @@ export type Transaction = {
   origin: string;
 
   tags: string[];
+  _attachments?: any;
 }
 
 export type Wallet = {
@@ -160,5 +168,6 @@ export type Wallet = {
   name: string;
 
   worldId: string;
+  _attachments?: any;
 }
 

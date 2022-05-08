@@ -4,7 +4,7 @@ import {
   Application,
   ApplicationShortcut,
 } from '@central-factory/applications/__generated__/models';
-import { Topic } from '../../../models/topic';
+import { Topic } from '../../../__generated__/models';
 
 export type ApplicationWithShortcut = {
   application: Application;

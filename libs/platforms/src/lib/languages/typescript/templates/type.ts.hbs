@@ -14,6 +14,7 @@ export type {{name}} = {
   {{#gqlProperty templateProperties}}
   {{name}}{{#if required}}{{else}}?{{/if}}: {{tsType}};
   {{/gqlProperty}}
+  _attachments?: any;
 }
 {{/ifObject}}
 

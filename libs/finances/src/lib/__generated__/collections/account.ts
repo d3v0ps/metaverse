@@ -79,12 +79,42 @@ export const accountRxSchema: RxJsonSchema<
   },
 };
 
+export const userAccountRxSchema: RxJsonSchema<
+  Omit<AccountDocType, '_attachments'>
+> = {
+  ...accountSchema as any,
+  title: 'User Account',
+  description: 'User Account',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const ACCOUNT_COLLECTION_NAME = 'account';
+
 export const ACCOUNT_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'account',
+    name: ACCOUNT_COLLECTION_NAME,
     creator: {
       schema: accountRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_ACCOUNT_COLLECTION_NAME = 'useraccount';
+
+export const USER_ACCOUNT_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_ACCOUNT_COLLECTION_NAME,
+    creator: {
+      schema: userAccountRxSchema,
     },
   },
   multi: true,

@@ -100,7 +100,6 @@
     "Avatar": {
       "additionalProperties": false,
       "properties": {
-        "_attachments": {},
         "appearance": {
           "$ref": "#/definitions/Appearance"
         },
@@ -118,9 +117,7 @@
           "type": "array"
         },
         "createdAt": {
-          "additionalProperties": false,
-          "description": "Enables basic storage and retrieval of dates and times. ",
-          "type": "object"
+          "type": "string"
         },
         "id": {
           "type": "string"
@@ -148,9 +145,7 @@
           "type": "string"
         },
         "updatedAt": {
-          "additionalProperties": false,
-          "description": "Enables basic storage and retrieval of dates and times. ",
-          "type": "object"
+          "type": "string"
         }
       },
       "required": [

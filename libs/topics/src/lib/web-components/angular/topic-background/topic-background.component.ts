@@ -1,5 +1,5 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
-import { Topic } from '../../../models/topic';
+import { Topic } from '../../../__generated__/models';
 
 @Component({
   selector: 'cf-topic-background',

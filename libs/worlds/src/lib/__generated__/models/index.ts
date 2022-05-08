@@ -12,6 +12,7 @@ export type AvatarProfession = {
   label?: string;
 
   schools?: string[];
+  _attachments?: any;
 }
 
 export type Biomes = {
@@ -38,6 +39,7 @@ export type Biomes = {
   rural: number[];
 
   urban: number[];
+  _attachments?: any;
 }
 
 export type Burg = {
@@ -80,6 +82,7 @@ export type Burg = {
   x?: number;
 
   y?: number;
+  _attachments?: any;
 }
 
 export type CoatOfArms = {
@@ -92,6 +95,7 @@ export type CoatOfArms = {
   shield: string;
 
   t1: string;
+  _attachments?: any;
 }
 
 export type CoatOfArmsCharge = {
@@ -102,6 +106,7 @@ export type CoatOfArmsCharge = {
   size: number;
 
   t: string;
+  _attachments?: any;
 }
 
 export type CoatOfArmsDivision = {
@@ -110,6 +115,7 @@ export type CoatOfArmsDivision = {
   line: string;
 
   t: string;
+  _attachments?: any;
 }
 
 export type CoatOfArmsOrdinary = {
@@ -118,6 +124,7 @@ export type CoatOfArmsOrdinary = {
   ordinary: string;
 
   t: string;
+  _attachments?: any;
 }
 
 export type Culture = {
@@ -140,6 +147,7 @@ export type Culture = {
   shield: string;
 
   type?: string;
+  _attachments?: any;
 }
 
 export type CultureNameBase = {
@@ -156,6 +164,7 @@ export type CultureNameBase = {
   min: number;
 
   name: string;
+  _attachments?: any;
 }
 
 export type Era = {
@@ -180,6 +189,7 @@ export type Era = {
   shortName: string;
 
   startYear: number;
+  _attachments?: any;
 }
 
 export enum EraMapStyle {
@@ -211,6 +221,7 @@ export type FantasyMapGeneratorMap = {
   notes: MapNote[];
 
   settings: MapSettings;
+  _attachments?: any;
 }
 
 export type MapCell = {
@@ -261,6 +272,7 @@ export type MapCell = {
   t: number;
 
   v: number[];
+  _attachments?: any;
 }
 
 export type MapCells = {
@@ -281,6 +293,7 @@ export type MapCells = {
   rivers: River[];
 
   states: State[];
+  _attachments?: any;
 }
 
 export type MapCoords = {
@@ -295,6 +308,7 @@ export type MapCoords = {
   lonT: number;
 
   lonW: number;
+  _attachments?: any;
 }
 
 export type MapInfo = {
@@ -309,6 +323,7 @@ export type MapInfo = {
   seed: string;
 
   version: string;
+  _attachments?: any;
 }
 
 export type MapMarker = {
@@ -329,6 +344,7 @@ export type MapMarker = {
   x: number;
 
   y: number;
+  _attachments?: any;
 }
 
 export type MapNote = {
@@ -337,6 +353,7 @@ export type MapNote = {
   legend: string;
 
   name: string;
+  _attachments?: any;
 }
 
 export type MapOptions = {
@@ -355,6 +372,7 @@ export type MapOptions = {
   winds: number[];
 
   year: number;
+  _attachments?: any;
 }
 
 export type MapSettings = {
@@ -407,12 +425,14 @@ export type MapSettings = {
   urbanDensity: number;
 
   urbanization: number;
+  _attachments?: any;
 }
 
 export type Meta = {
   name?: string;
 
   previewUrl?: string;
+  _attachments?: any;
 }
 
 export type MilitarySettings = {
@@ -431,6 +451,7 @@ export type MilitarySettings = {
   type: string;
 
   urban: number;
+  _attachments?: any;
 }
 
 export type Religion = {
@@ -457,6 +478,7 @@ export type Religion = {
   origin?: number;
 
   type?: string;
+  _attachments?: any;
 }
 
 export type River = {
@@ -485,6 +507,7 @@ export type River = {
   width: number;
 
   widthFactor: number;
+  _attachments?: any;
 }
 
 export type State = {
@@ -535,6 +558,7 @@ export type State = {
   type?: string;
 
   urban: number;
+  _attachments?: any;
 }
 
 export type StateCampaign = {
@@ -543,6 +567,7 @@ export type StateCampaign = {
   name: string;
 
   start: number;
+  _attachments?: any;
 }
 
 export type StateMilitary = {
@@ -569,6 +594,7 @@ export type StateMilitary = {
   x: number;
 
   y: number;
+  _attachments?: any;
 }
 
 export type StateMilitaryUnits = {
@@ -581,6 +607,7 @@ export type StateMilitaryUnits = {
   fleet?: number;
 
   infantry?: number;
+  _attachments?: any;
 }
 
 export type World = {
@@ -607,6 +634,7 @@ export type World = {
   stats?: WorldStats;
 
   year: number;
+  _attachments?: any;
 }
 
 export type WorldEvent = {
@@ -621,6 +649,7 @@ export type WorldEvent = {
   title: string;
 
   type: WorldEventType;
+  _attachments?: any;
 }
 
 export enum WorldEventType {
@@ -648,5 +677,6 @@ export type WorldStats = {
   cultures?: number;
 
   states?: number;
+  _attachments?: any;
 }
 

@@ -12,8 +12,11 @@ import {
   tap,
   throwError,
 } from 'rxjs';
-import type { UserAvatarDocType } from '../collections/user-avatars.collection';
 import { Appearance } from '../models/appearance';
+import {
+  AvatarDocType,
+  USER_AVATAR_COLLECTION_NAME,
+} from '../__generated__/collections/avatar';
 import type { Avatar } from '../__generated__/models';
 
 @Injectable({
@@ -23,7 +26,7 @@ export class SelectedAvatarState {
   avatar$ = new BehaviorSubject<Avatar | undefined>(undefined);
 
   private userPreferencesRepository?: Repository<UserPreferenceDocType>;
-  private userAvatarsRepository?: Repository<UserAvatarDocType>;
+  private userAvatarsRepository?: Repository<AvatarDocType>;
 
   private avatarQuerySubscription?: Subscription;
 
@@ -36,8 +39,8 @@ export class SelectedAvatarState {
               'userpreferences',
               'com.central-factory.avatars'
             ),
-            this.entityManager.getRepository<UserAvatarDocType>(
-              'useravatars',
+            this.entityManager.getRepository<AvatarDocType>(
+              USER_AVATAR_COLLECTION_NAME,
               'com.central-factory.avatars'
             ),
           ])
@@ -142,8 +145,8 @@ export class SelectedAvatarState {
             switchMap((avatar) => {
               const hasAttachments =
                 avatar &&
-                avatar._attachments &&
-                Object.keys(avatar._attachments).length > 0;
+                (avatar as any)._attachments &&
+                Object.keys((avatar as any)._attachments).length > 0;
 
               if (!hasAttachments || !avatar) {
                 return of(avatar);

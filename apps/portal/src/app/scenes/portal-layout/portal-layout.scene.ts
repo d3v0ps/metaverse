@@ -6,6 +6,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { ApplicationDisplayState } from '@central-factory/applications/states/application-display.state';
 import { RecentlyOpenedApplicationsState } from '@central-factory/applications/states/recently-opened-applications.state';
 import { SelectedApplicationState } from '@central-factory/applications/states/selected-application.state';
+import { USER_APPLICATION_COLLECTION_NAME } from '@central-factory/applications/__generated__/collections/application';
 import {
   Application,
   ApplicationShortcut,
@@ -380,7 +381,7 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
         switchMap(() =>
           forkJoin([
             this.entityManager.getRepository<Application>(
-              'userapplications',
+              USER_APPLICATION_COLLECTION_NAME,
               'com.central-factory.portal'
             ),
           ])

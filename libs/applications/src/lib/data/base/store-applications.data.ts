@@ -1,11 +1,12 @@
+import { APPLICATION_COLLECTION_NAME } from '@central-factory/applications/__generated__/collections/application';
 import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
-import type { StoreApplicationDocType } from '../../collections/store-applications.collection';
+import type { ApplicationDocType } from '../../__generated__/collections/application';
 import {
   ApplicationRenderingType,
-  ColorVariation
-} from '../../models/application';
+  ColorVariation,
+} from '../../__generated__/models';
 
-export const storeApplications: StoreApplicationDocType[] = [
+export const storeApplications: ApplicationDocType[] = [
   {
     id: 'com.central-factory.metadrones',
     name: 'Metadrones',
@@ -2706,7 +2707,7 @@ export const storeApplications: StoreApplicationDocType[] = [
 export const STORE_APPLICATIONS_INITIAL_DATA_PROVIDER = {
   provide: ENTITY_MANAGER_INITIAL_DATA_TOKEN,
   useValue: {
-    name: 'storeapplications',
+    name: APPLICATION_COLLECTION_NAME,
     upsert: true,
     data: storeApplications,
   },

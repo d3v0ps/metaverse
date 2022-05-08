@@ -55,9 +55,8 @@ export type Avatar = {
   relationships?: Relationship[];
   children?: Avatar[];
   appearances?: any[];
-  createdAt?: Date;
-  updatedAt?: Date;
-  _attachments?: any;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 

@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 import { EntityManager } from '@central-factory/persistence/services/entity-manager';
 import { Repository } from '@central-factory/persistence/services/repository';
 import { BehaviorSubject, forkJoin, switchMap, tap } from 'rxjs';
-import { UserTopicDocType } from '../collections/user-topics.collection';
-import type { Topic } from '../models/topic';
+import {
+  TopicDocType,
+  USER_TOPIC_COLLECTION_NAME,
+} from '../__generated__/collections/topic';
+import type { Topic } from '../__generated__/models';
 
 @Injectable({
   providedIn: 'root',
@@ -11,15 +14,15 @@ import type { Topic } from '../models/topic';
 export class UserTopicsState {
   public readonly topics$ = new BehaviorSubject<Topic[]>([]);
 
-  private userTopicsRepository?: Repository<UserTopicDocType>;
+  private userTopicsRepository?: Repository<TopicDocType>;
 
   constructor(private entityManager: EntityManager) {
     this.entityManager.initialize$
       .pipe(
         switchMap(() =>
           forkJoin([
-            this.entityManager.getRepository<UserTopicDocType>(
-              'usertopics',
+            this.entityManager.getRepository<TopicDocType>(
+              USER_TOPIC_COLLECTION_NAME,
               'com.central-factory.portals'
             ),
           ])

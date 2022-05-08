@@ -89,12 +89,42 @@ export const eraRxSchema: RxJsonSchema<
   },
 };
 
+export const userEraRxSchema: RxJsonSchema<
+  Omit<EraDocType, '_attachments'>
+> = {
+  ...eraSchema as any,
+  title: 'User Era',
+  description: 'User Era',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const ERA_COLLECTION_NAME = 'era';
+
 export const ERA_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'era',
+    name: ERA_COLLECTION_NAME,
     creator: {
       schema: eraRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_ERA_COLLECTION_NAME = 'userera';
+
+export const USER_ERA_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_ERA_COLLECTION_NAME,
+    creator: {
+      schema: userEraRxSchema,
     },
   },
   multi: true,

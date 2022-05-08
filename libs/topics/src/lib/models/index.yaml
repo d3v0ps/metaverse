@@ -1,0 +1,4 @@
+imports:
+  topic: './topic'
+roots:
+  - topic

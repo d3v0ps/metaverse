@@ -77,12 +77,42 @@ export const transactionRxSchema: RxJsonSchema<
   },
 };
 
+export const userTransactionRxSchema: RxJsonSchema<
+  Omit<TransactionDocType, '_attachments'>
+> = {
+  ...transactionSchema as any,
+  title: 'User Transaction',
+  description: 'User Transaction',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const TRANSACTION_COLLECTION_NAME = 'transaction';
+
 export const TRANSACTION_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'transaction',
+    name: TRANSACTION_COLLECTION_NAME,
     creator: {
       schema: transactionRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_TRANSACTION_COLLECTION_NAME = 'usertransaction';
+
+export const USER_TRANSACTION_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_TRANSACTION_COLLECTION_NAME,
+    creator: {
+      schema: userTransactionRxSchema,
     },
   },
   multi: true,

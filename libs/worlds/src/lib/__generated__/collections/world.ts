@@ -84,12 +84,42 @@ export const worldRxSchema: RxJsonSchema<
   },
 };
 
+export const userWorldRxSchema: RxJsonSchema<
+  Omit<WorldDocType, '_attachments'>
+> = {
+  ...worldSchema as any,
+  title: 'User World',
+  description: 'User World',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const WORLD_COLLECTION_NAME = 'world';
+
 export const WORLD_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'world',
+    name: WORLD_COLLECTION_NAME,
     creator: {
       schema: worldRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_WORLD_COLLECTION_NAME = 'userworld';
+
+export const USER_WORLD_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_WORLD_COLLECTION_NAME,
+    creator: {
+      schema: userWorldRxSchema,
     },
   },
   multi: true,

@@ -27,12 +27,42 @@ export const {{camelCase name}}RxSchema: RxJsonSchema<
   },
 };
 
+export const user{{pascalCase name}}RxSchema: RxJsonSchema<
+  Omit<{{name}}DocType, '_attachments'>
+> = {
+  ...{{camelCase name}}Schema as any,
+  title: 'User {{pascalCase name}}',
+  description: 'User {{titleCase name}}',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const {{constantCase name}}_COLLECTION_NAME = '{{kebabCase name}}';
+
 export const {{constantCase name}}_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: '{{camelCase name}}',
+    name: {{constantCase name}}_COLLECTION_NAME,
     creator: {
       schema: {{camelCase name}}RxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_{{constantCase name}}_COLLECTION_NAME = 'user{{kebabCase name}}';
+
+export const USER_{{constantCase name}}_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_{{constantCase name}}_COLLECTION_NAME,
+    creator: {
+      schema: user{{pascalCase name}}RxSchema,
     },
   },
   multi: true,

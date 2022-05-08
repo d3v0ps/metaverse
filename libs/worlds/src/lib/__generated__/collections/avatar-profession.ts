@@ -55,12 +55,42 @@ export const avatarProfessionRxSchema: RxJsonSchema<
   },
 };
 
+export const userAvatarProfessionRxSchema: RxJsonSchema<
+  Omit<AvatarProfessionDocType, '_attachments'>
+> = {
+  ...avatarProfessionSchema as any,
+  title: 'User AvatarProfession',
+  description: 'User Avatar Profession',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const AVATAR_PROFESSION_COLLECTION_NAME = 'avatar-profession';
+
 export const AVATAR_PROFESSION_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'avatarProfession',
+    name: AVATAR_PROFESSION_COLLECTION_NAME,
     creator: {
       schema: avatarProfessionRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_AVATAR_PROFESSION_COLLECTION_NAME = 'useravatar-profession';
+
+export const USER_AVATAR_PROFESSION_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_AVATAR_PROFESSION_COLLECTION_NAME,
+    creator: {
+      schema: userAvatarProfessionRxSchema,
     },
   },
   multi: true,

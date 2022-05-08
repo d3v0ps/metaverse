@@ -52,12 +52,42 @@ export const productRxSchema: RxJsonSchema<
   },
 };
 
+export const userProductRxSchema: RxJsonSchema<
+  Omit<ProductDocType, '_attachments'>
+> = {
+  ...productSchema as any,
+  title: 'User Product',
+  description: 'User Product',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const PRODUCT_COLLECTION_NAME = 'product';
+
 export const PRODUCT_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'product',
+    name: PRODUCT_COLLECTION_NAME,
     creator: {
       schema: productRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_PRODUCT_COLLECTION_NAME = 'userproduct';
+
+export const USER_PRODUCT_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_PRODUCT_COLLECTION_NAME,
+    creator: {
+      schema: userProductRxSchema,
     },
   },
   multi: true,

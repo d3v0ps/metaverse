@@ -61,9 +61,6 @@ export class Attributes {
 
 @ObjectType()
 export class Avatar {
-  @Field()
-  _attachments?: any;
-
   @Field((type) => Appearance)
   appearance?: Appearance;
 
@@ -77,7 +74,7 @@ export class Avatar {
   children?: Avatar[];
 
   @Field()
-  createdAt?: any;
+  createdAt?: string;
 
   @Field()
   id?: string;
@@ -101,7 +98,7 @@ export class Avatar {
   selectedOutfit?: string;
 
   @Field()
-  updatedAt?: any;
+  updatedAt?: string;
 }
 
 @ObjectType()

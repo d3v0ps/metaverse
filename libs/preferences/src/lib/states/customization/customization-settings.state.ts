@@ -93,7 +93,7 @@ export class CustomizationSettingsState {
     combineLatest([
       this.userPreferencesRepository.observeOne({
         selector: {
-          key: 'userAvatars.selectedAvatar',
+          key: `userAvatars.selectedAvatar`,
         },
       }),
       this.userPreferencesRepository.observe({

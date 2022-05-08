@@ -30,6 +30,7 @@ import { isElectron } from '@central-factory/web-components/shared/platform/desk
 import { Subject } from 'rxjs';
 import { delay, filter, map, switchMap, take, tap } from 'rxjs/operators';
 import { v4 as uuid } from 'uuid';
+import { Priority } from '../../../../../../libs/topics/src/lib/__generated__/models';
 
 export interface ApplicationBanners {
   [key: string]: {
@@ -327,7 +328,7 @@ export class StartScene implements OnInit, OnDestroy, OnApplicationLoad {
     this.userTopicsState
       .addTopic({
         id: uuid(),
-        priority: 'low',
+        priority: Priority.Low,
         title: '',
         icon: '',
         description: '',

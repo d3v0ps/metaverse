@@ -59,10 +59,10 @@ export const ENTITY_MANAGER_INITIAL_DATA_TOKEN = new InjectionToken<
 })
 export class EntityManager<
   DatabaseCollections extends {
-    applicationpermissions: RxCollection;
+    permission: RxCollection;
     [collectionName: string]: RxCollection;
   } = {
-    applicationpermissions: RxCollection;
+    permission: RxCollection;
     [collectionName: string]: RxCollection;
   }
 > {
@@ -88,7 +88,7 @@ export class EntityManager<
   public setupDatabase(name: string, password: string): Observable<void> {
     return this.createDatabase(name, password).pipe(
       switchMap((db) => this.addBaseCollections(db)),
-      tap((db) => this.acl.initialize(db.applicationpermissions)),
+      tap((db) => this.acl.initialize(db.userpermission)),
       switchMap((db) => this.addInitialData(db)),
       tap(() => this.initialize$.next()),
       map(() => undefined)
@@ -201,7 +201,7 @@ export class EntityManager<
 
                 return from(collection.upsert(doc)).pipe(
                   switchMap(() => {
-                    if (data.name !== 'userapplications') {
+                    if (data.name !== 'userapplication') {
                       return of(undefined);
                     }
 
@@ -219,7 +219,7 @@ export class EntityManager<
 
                     return forkJoin(
                       permissions.map((permission: any) =>
-                        db.applicationpermissions.upsert(permission)
+                        db.userpermission.upsert(permission)
                       )
                     );
                   })

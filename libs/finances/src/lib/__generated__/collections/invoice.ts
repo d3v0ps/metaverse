@@ -69,12 +69,42 @@ export const invoiceRxSchema: RxJsonSchema<
   },
 };
 
+export const userInvoiceRxSchema: RxJsonSchema<
+  Omit<InvoiceDocType, '_attachments'>
+> = {
+  ...invoiceSchema as any,
+  title: 'User Invoice',
+  description: 'User Invoice',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const INVOICE_COLLECTION_NAME = 'invoice';
+
 export const INVOICE_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'invoice',
+    name: INVOICE_COLLECTION_NAME,
     creator: {
       schema: invoiceRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_INVOICE_COLLECTION_NAME = 'userinvoice';
+
+export const USER_INVOICE_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_INVOICE_COLLECTION_NAME,
+    creator: {
+      schema: userInvoiceRxSchema,
     },
   },
   multi: true,

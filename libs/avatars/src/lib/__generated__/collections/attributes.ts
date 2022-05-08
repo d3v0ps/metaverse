@@ -32,12 +32,42 @@ export const attributesRxSchema: RxJsonSchema<
   },
 };
 
+export const userAttributesRxSchema: RxJsonSchema<
+  Omit<AttributesDocType, '_attachments'>
+> = {
+  ...attributesSchema as any,
+  title: 'User Attributes',
+  description: 'User Attributes',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const ATTRIBUTES_COLLECTION_NAME = 'attributes';
+
 export const ATTRIBUTES_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'attributes',
+    name: ATTRIBUTES_COLLECTION_NAME,
     creator: {
       schema: attributesRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_ATTRIBUTES_COLLECTION_NAME = 'userattributes';
+
+export const USER_ATTRIBUTES_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_ATTRIBUTES_COLLECTION_NAME,
+    creator: {
+      schema: userAttributesRxSchema,
     },
   },
   multi: true,

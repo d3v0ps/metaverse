@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Application } from '@central-factory/applications/__generated__/models';
-import { Topic } from '../../../models/topic';
+import { Topic } from '../../../__generated__/models';
 
 @Component({
   selector: 'cf-topic-form',

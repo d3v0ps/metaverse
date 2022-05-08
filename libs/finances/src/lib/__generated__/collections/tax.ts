@@ -68,12 +68,42 @@ export const taxRxSchema: RxJsonSchema<
   },
 };
 
+export const userTaxRxSchema: RxJsonSchema<
+  Omit<TaxDocType, '_attachments'>
+> = {
+  ...taxSchema as any,
+  title: 'User Tax',
+  description: 'User Tax',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const TAX_COLLECTION_NAME = 'tax';
+
 export const TAX_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'tax',
+    name: TAX_COLLECTION_NAME,
     creator: {
       schema: taxRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_TAX_COLLECTION_NAME = 'usertax';
+
+export const USER_TAX_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_TAX_COLLECTION_NAME,
+    creator: {
+      schema: userTaxRxSchema,
     },
   },
   multi: true,

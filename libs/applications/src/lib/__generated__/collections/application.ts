@@ -96,12 +96,42 @@ export const applicationRxSchema: RxJsonSchema<
   },
 };
 
+export const userApplicationRxSchema: RxJsonSchema<
+  Omit<ApplicationDocType, '_attachments'>
+> = {
+  ...applicationSchema as any,
+  title: 'User Application',
+  description: 'User Application',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const APPLICATION_COLLECTION_NAME = 'application';
+
 export const APPLICATION_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'application',
+    name: APPLICATION_COLLECTION_NAME,
     creator: {
       schema: applicationRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_APPLICATION_COLLECTION_NAME = 'userapplication';
+
+export const USER_APPLICATION_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_APPLICATION_COLLECTION_NAME,
+    creator: {
+      schema: userApplicationRxSchema,
     },
   },
   multi: true,

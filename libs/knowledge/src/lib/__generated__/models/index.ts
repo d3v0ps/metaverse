@@ -4,12 +4,14 @@ export type Displayable = {
   component?: string;
 
   content: string;
+  _attachments?: any;
 }
 
 export type Indexable = {
   id?: string;
 
   meta?: Meta;
+  _attachments?: any;
 }
 
 export type KnowledgeFragment = {
@@ -22,6 +24,7 @@ export type KnowledgeFragment = {
   component?: string;
 
   content?: string;
+  _attachments?: any;
 }
 
 export type KnowledgeSymbol = {
@@ -34,10 +37,12 @@ export type KnowledgeSymbol = {
   meta?: Meta;
 
   title?: string;
+  _attachments?: any;
 }
 
 export type Loadable = {
   src?: string;
+  _attachments?: any;
 }
 
 export type Meta = {
@@ -48,5 +53,6 @@ export type Meta = {
   subtitle?: string;
 
   title?: string;
+  _attachments?: any;
 }
 

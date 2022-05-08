@@ -1,0 +1,91 @@
+{
+  "$ref": "#/definitions/Root",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "definitions": {
+    "Priority": {
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "type": "string"
+    },
+    "Root": {
+      "$ref": "#/definitions/Topic"
+    },
+    "Topic": {
+      "additionalProperties": false,
+      "properties": {
+        "applications": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "background": {
+          "type": "string"
+        },
+        "categories": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "media": {},
+        "priority": {
+          "$ref": "#/definitions/Priority"
+        },
+        "shortcuts": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "themeColor": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "triggers": {
+          "items": {
+            "$ref": "#/definitions/Trigger"
+          },
+          "type": "array"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "priority",
+        "title"
+      ],
+      "type": "object"
+    },
+    "Trigger": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "rules": {}
+      },
+      "type": "object"
+    }
+  },
+  "title": "topics"
+}

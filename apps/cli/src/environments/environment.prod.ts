@@ -6,6 +6,7 @@ export const environment = {
     'avatars',
     'worlds',
     'finances',
+    'topics',
     'knowledge',
   ],
 };

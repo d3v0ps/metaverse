@@ -64,12 +64,42 @@ export const outfitRxSchema: RxJsonSchema<
   },
 };
 
+export const userOutfitRxSchema: RxJsonSchema<
+  Omit<OutfitDocType, '_attachments'>
+> = {
+  ...outfitSchema as any,
+  title: 'User Outfit',
+  description: 'User Outfit',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const OUTFIT_COLLECTION_NAME = 'outfit';
+
 export const OUTFIT_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'outfit',
+    name: OUTFIT_COLLECTION_NAME,
     creator: {
       schema: outfitRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_OUTFIT_COLLECTION_NAME = 'useroutfit';
+
+export const USER_OUTFIT_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_OUTFIT_COLLECTION_NAME,
+    creator: {
+      schema: userOutfitRxSchema,
     },
   },
   multi: true,

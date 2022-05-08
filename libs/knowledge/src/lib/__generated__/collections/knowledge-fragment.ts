@@ -53,12 +53,42 @@ export const knowledgeFragmentRxSchema: RxJsonSchema<
   },
 };
 
+export const userKnowledgeFragmentRxSchema: RxJsonSchema<
+  Omit<KnowledgeFragmentDocType, '_attachments'>
+> = {
+  ...knowledgeFragmentSchema as any,
+  title: 'User KnowledgeFragment',
+  description: 'User Knowledge Fragment',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const KNOWLEDGE_FRAGMENT_COLLECTION_NAME = 'knowledge-fragment';
+
 export const KNOWLEDGE_FRAGMENT_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'knowledgeFragment',
+    name: KNOWLEDGE_FRAGMENT_COLLECTION_NAME,
     creator: {
       schema: knowledgeFragmentRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_KNOWLEDGE_FRAGMENT_COLLECTION_NAME = 'userknowledge-fragment';
+
+export const USER_KNOWLEDGE_FRAGMENT_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_KNOWLEDGE_FRAGMENT_COLLECTION_NAME,
+    creator: {
+      schema: userKnowledgeFragmentRxSchema,
     },
   },
   multi: true,

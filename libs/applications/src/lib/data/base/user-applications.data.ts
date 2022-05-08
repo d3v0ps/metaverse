@@ -1,16 +1,22 @@
+import { USER_AVATAR_COLLECTION_NAME } from '@central-factory/avatars/__generated__/collections/avatar';
 import {
   PermissionKind,
   PermissionMode,
 } from '@central-factory/permissions/__generated__/models';
 import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
-import type { UserApplicationDocType } from '../../collections/user-applications.collection';
+import { USER_TOPIC_COLLECTION_NAME } from '@central-factory/topics/__generated__/collections/topic';
+import {
+  ApplicationDocType,
+  APPLICATION_COLLECTION_NAME,
+  USER_APPLICATION_COLLECTION_NAME,
+} from '../../__generated__/collections/application';
 import {
   Application,
   ApplicationRenderingType,
   ColorVariation,
 } from '../../__generated__/models';
 
-export const userApplications: UserApplicationDocType[] = [
+export const userApplications: ApplicationDocType[] = [
   {
     id: 'com.central-factory.portal',
     name: 'Central Factory Portal',
@@ -38,12 +44,12 @@ export const userApplications: UserApplicationDocType[] = [
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Read,
-          target: 'useravatars',
+          target: USER_APPLICATION_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Read,
-          target: 'userapplications',
+          target: USER_APPLICATION_COLLECTION_NAME,
         },
       ],
     },
@@ -103,47 +109,47 @@ export const userApplications: UserApplicationDocType[] = [
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Read,
-          target: 'userapplications',
+          target: USER_APPLICATION_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Write,
-          target: 'userapplications',
+          target: USER_APPLICATION_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Delete,
-          target: 'userapplications',
+          target: USER_APPLICATION_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Read,
-          target: 'storeapplications',
+          target: APPLICATION_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Write,
-          target: 'storeapplications',
+          target: APPLICATION_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Delete,
-          target: 'storeapplications',
+          target: APPLICATION_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Read,
-          target: 'usertopics',
+          target: USER_TOPIC_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Write,
-          target: 'usertopics',
+          target: USER_TOPIC_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Delete,
-          target: 'usertopics',
+          target: USER_TOPIC_COLLECTION_NAME,
         },
       ],
     },
@@ -190,17 +196,17 @@ export const userApplications: UserApplicationDocType[] = [
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Read,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Write,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Delete,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
@@ -258,17 +264,17 @@ export const userApplications: UserApplicationDocType[] = [
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Read,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Write,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Delete,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
@@ -326,17 +332,17 @@ export const userApplications: UserApplicationDocType[] = [
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Read,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Write,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Delete,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
@@ -394,17 +400,17 @@ export const userApplications: UserApplicationDocType[] = [
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Read,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Write,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Delete,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
@@ -462,17 +468,17 @@ export const userApplications: UserApplicationDocType[] = [
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Read,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Write,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Delete,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
@@ -541,17 +547,17 @@ export const userApplications: UserApplicationDocType[] = [
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Read,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Write,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Delete,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
@@ -614,17 +620,17 @@ export const userApplications: UserApplicationDocType[] = [
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Read,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Write,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
           mode: PermissionMode.Delete,
-          target: 'useravatars',
+          target: USER_AVATAR_COLLECTION_NAME,
         },
         {
           kind: PermissionKind.Collection,
@@ -949,7 +955,7 @@ export const userApplicationsById: Record<string, Application> =
 export const USER_APPLICATIONS_INITIAL_DATA_PROVIDER = {
   provide: ENTITY_MANAGER_INITIAL_DATA_TOKEN,
   useValue: {
-    name: 'userapplications',
+    name: USER_APPLICATION_COLLECTION_NAME,
     upsert: true,
     data: userApplications,
   },

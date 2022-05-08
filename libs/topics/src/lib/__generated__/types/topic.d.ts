@@ -1,15 +1,24 @@
-import { Media } from '@central-factory/web-components/angular/media/media.component';
 
-export type TopicTrigger = {
+
+
+
+export enum Priority {
+  Low = 'low',
+  Medium = 'medium',
+  High = 'high',
+}
+
+
+
+export type Trigger = {
   name?: string;
   rules?: any;
-};
+}
 
-export type TopicPriority = 'low' | 'medium' | 'high';
 
 export type Topic = {
   id: string;
-  priority: TopicPriority;
+  priority: Priority;
   title: string;
   description?: string;
   icon?: string;
@@ -18,8 +27,11 @@ export type Topic = {
   applications?: string[];
   categories?: string[];
   shortcuts?: string[];
-  triggers?: TopicTrigger[];
-  media?: Media[];
+  triggers?: Trigger[];
+  media?: any;
   createdAt?: string;
   updatedAt?: string;
-};
+}
+
+
+export type Root = Trigger | Topic;

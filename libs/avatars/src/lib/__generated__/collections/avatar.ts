@@ -12,7 +12,6 @@ export type AvatarCollection = RxCollection<AvatarDocument>;
 export const avatarSchema = {
   "additionalProperties": false,
   "properties": {
-    "_attachments": {},
     "appearance": {
       "$ref": "#/definitions/Appearance",
       "items": {
@@ -36,9 +35,7 @@ export const avatarSchema = {
       "type": "array"
     },
     "createdAt": {
-      "additionalProperties": false,
-      "description": "Enables basic storage and retrieval of dates and times. ",
-      "type": "object"
+      "type": "string"
     },
     "id": {
       "type": "string"
@@ -72,9 +69,7 @@ export const avatarSchema = {
       "type": "string"
     },
     "updatedAt": {
-      "additionalProperties": false,
-      "description": "Enables basic storage and retrieval of dates and times. ",
-      "type": "object"
+      "type": "string"
     }
   },
   "required": [
@@ -98,12 +93,42 @@ export const avatarRxSchema: RxJsonSchema<
   },
 };
 
+export const userAvatarRxSchema: RxJsonSchema<
+  Omit<AvatarDocType, '_attachments'>
+> = {
+  ...avatarSchema as any,
+  title: 'User Avatar',
+  description: 'User Avatar',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const AVATAR_COLLECTION_NAME = 'avatar';
+
 export const AVATAR_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'avatar',
+    name: AVATAR_COLLECTION_NAME,
     creator: {
       schema: avatarRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_AVATAR_COLLECTION_NAME = 'useravatar';
+
+export const USER_AVATAR_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_AVATAR_COLLECTION_NAME,
+    creator: {
+      schema: userAvatarRxSchema,
     },
   },
   multi: true,

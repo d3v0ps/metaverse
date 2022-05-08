@@ -14,6 +14,7 @@ export type Permission = {
   target: string;
 
   updatedAt?: string;
+  _attachments?: any;
 }
 
 export enum PermissionKind {

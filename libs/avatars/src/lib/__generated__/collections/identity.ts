@@ -90,12 +90,42 @@ export const identityRxSchema: RxJsonSchema<
   },
 };
 
+export const userIdentityRxSchema: RxJsonSchema<
+  Omit<IdentityDocType, '_attachments'>
+> = {
+  ...identitySchema as any,
+  title: 'User Identity',
+  description: 'User Identity',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const IDENTITY_COLLECTION_NAME = 'identity';
+
 export const IDENTITY_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'identity',
+    name: IDENTITY_COLLECTION_NAME,
     creator: {
       schema: identityRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_IDENTITY_COLLECTION_NAME = 'useridentity';
+
+export const USER_IDENTITY_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_IDENTITY_COLLECTION_NAME,
+    creator: {
+      schema: userIdentityRxSchema,
     },
   },
   multi: true,

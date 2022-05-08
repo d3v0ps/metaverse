@@ -6,6 +6,10 @@ import { map, switchMap, tap } from 'rxjs/operators';
 import { StoreApplicationDocType } from '../collections/store-applications.collection';
 import { UserApplicationDocType } from '../collections/user-applications.collection';
 import {
+  APPLICATION_COLLECTION_NAME,
+  USER_APPLICATION_COLLECTION_NAME,
+} from '../__generated__/collections/application';
+import {
   Application,
   ApplicationAdditionalProperties,
 } from '../__generated__/models';
@@ -42,11 +46,11 @@ export class StarredApplicationsState {
         switchMap(() =>
           forkJoin([
             this.entityManager.getRepository<UserApplicationDocType>(
-              'userapplications',
+              USER_APPLICATION_COLLECTION_NAME,
               'com.central-factory.portals'
             ),
             this.entityManager.getRepository<StoreApplicationDocType>(
-              'storeapplications',
+              APPLICATION_COLLECTION_NAME,
               'com.central-factory.portals'
             ),
           ])

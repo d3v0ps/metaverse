@@ -55,12 +55,42 @@ export const professionRxSchema: RxJsonSchema<
   },
 };
 
+export const userProfessionRxSchema: RxJsonSchema<
+  Omit<ProfessionDocType, '_attachments'>
+> = {
+  ...professionSchema as any,
+  title: 'User Profession',
+  description: 'User Profession',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const PROFESSION_COLLECTION_NAME = 'profession';
+
 export const PROFESSION_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'profession',
+    name: PROFESSION_COLLECTION_NAME,
     creator: {
       schema: professionRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_PROFESSION_COLLECTION_NAME = 'userprofession';
+
+export const USER_PROFESSION_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_PROFESSION_COLLECTION_NAME,
+    creator: {
+      schema: userProfessionRxSchema,
     },
   },
   multi: true,

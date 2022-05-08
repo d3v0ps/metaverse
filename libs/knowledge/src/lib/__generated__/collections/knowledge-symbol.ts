@@ -52,12 +52,42 @@ export const knowledgeSymbolRxSchema: RxJsonSchema<
   },
 };
 
+export const userKnowledgeSymbolRxSchema: RxJsonSchema<
+  Omit<KnowledgeSymbolDocType, '_attachments'>
+> = {
+  ...knowledgeSymbolSchema as any,
+  title: 'User KnowledgeSymbol',
+  description: 'User Knowledge Symbol',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const KNOWLEDGE_SYMBOL_COLLECTION_NAME = 'knowledge-symbol';
+
 export const KNOWLEDGE_SYMBOL_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'knowledgeSymbol',
+    name: KNOWLEDGE_SYMBOL_COLLECTION_NAME,
     creator: {
       schema: knowledgeSymbolRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_KNOWLEDGE_SYMBOL_COLLECTION_NAME = 'userknowledge-symbol';
+
+export const USER_KNOWLEDGE_SYMBOL_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_KNOWLEDGE_SYMBOL_COLLECTION_NAME,
+    creator: {
+      schema: userKnowledgeSymbolRxSchema,
     },
   },
   multi: true,

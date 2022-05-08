@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { ApplicationPermissionsCollection } from '@central-factory/permissions/collections/application-permissions.collection';
+import {
+  PermissionCollection,
+  PermissionDocument,
+} from '@central-factory/permissions/__generated__/collections/permission';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import {
   Permission,
@@ -13,11 +16,11 @@ import { defer, from, map, Observable, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class ACL {
-  private collection?: ApplicationPermissionsCollection;
+  private collection?: PermissionCollection;
 
   private isInitialized = false;
 
-  initialize(collection: ApplicationPermissionsCollection) {
+  initialize(collection: PermissionCollection) {
     if (this.isInitialized) {
       return;
     }
@@ -34,9 +37,9 @@ export class ACL {
         );
       }
 
-      return from(this.collection.bulkInsert(permissions)).pipe(
-        map(({ success }) => !!success)
-      );
+      return from(
+        this.collection.bulkInsert(permissions as PermissionDocument[])
+      ).pipe(map(({ success }) => !!success));
     });
   }
 

@@ -86,12 +86,42 @@ export const appearanceRxSchema: RxJsonSchema<
   },
 };
 
+export const userAppearanceRxSchema: RxJsonSchema<
+  Omit<AppearanceDocType, '_attachments'>
+> = {
+  ...appearanceSchema as any,
+  title: 'User Appearance',
+  description: 'User Appearance',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const APPEARANCE_COLLECTION_NAME = 'appearance';
+
 export const APPEARANCE_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'appearance',
+    name: APPEARANCE_COLLECTION_NAME,
     creator: {
       schema: appearanceRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_APPEARANCE_COLLECTION_NAME = 'userappearance';
+
+export const USER_APPEARANCE_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_APPEARANCE_COLLECTION_NAME,
+    creator: {
+      schema: userAppearanceRxSchema,
     },
   },
   multi: true,

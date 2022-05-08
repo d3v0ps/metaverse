@@ -67,12 +67,42 @@ export const permissionRxSchema: RxJsonSchema<
   },
 };
 
+export const userPermissionRxSchema: RxJsonSchema<
+  Omit<PermissionDocType, '_attachments'>
+> = {
+  ...permissionSchema as any,
+  title: 'User Permission',
+  description: 'User Permission',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const PERMISSION_COLLECTION_NAME = 'permission';
+
 export const PERMISSION_COLLECTION_PROVIDER: Provider = {
   provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   useValue: {
-    name: 'permission',
+    name: PERMISSION_COLLECTION_NAME,
     creator: {
       schema: permissionRxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_PERMISSION_COLLECTION_NAME = 'userpermission';
+
+export const USER_PERMISSION_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_PERMISSION_COLLECTION_NAME,
+    creator: {
+      schema: userPermissionRxSchema,
     },
   },
   multi: true,
