@@ -1,6 +1,6 @@
 import { generateTypeScriptGqlTypesFromSchema } from '@central-factory/platforms/languages/gql/generate-ts-gql-types';
-import { generateRxDBSchemasFromSchema } from '@central-factory/platforms/languages/json/generate-schema';
 import { getRootTypeNamesFromSchema } from '@central-factory/platforms/languages/json/utils/get-root-type-names-from-schema';
+import { generateRxDBSchemasFromSchema } from '@central-factory/platforms/languages/typescript/generate-rxdb-schema';
 import { generateTypescriptTokens } from '@central-factory/platforms/languages/typescript/generate-tokens';
 import { generateTypeScriptTypesFromSchema } from '@central-factory/platforms/languages/typescript/generate-types';
 import { parseTypes } from '@central-factory/platforms/languages/typescript/parse-types';
@@ -80,7 +80,7 @@ const logger = new Logger('Generator');
               ),
               generateTypeScriptTypesFromSchema(
                 schema,
-                resolve(output, 'models', 'index.ts')
+                resolve(output, 'models')
               ),
               generateRxDBSchemasFromSchema(
                 schema,

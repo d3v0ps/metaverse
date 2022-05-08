@@ -6,7 +6,6 @@ export enum Priority {
   High = 'high',
 }
 
-
 export type Topic = {
   applications?: string[];
 

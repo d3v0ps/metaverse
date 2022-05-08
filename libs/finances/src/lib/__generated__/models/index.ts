@@ -33,7 +33,6 @@ export enum AccountType {
   Other = 'Other',
 }
 
-
 export type Balance = {
   crypto: string;
 
@@ -90,7 +89,6 @@ export enum InvoiceState {
   Sent = 'sent',
   Paid = 'paid',
 }
-
 
 export type Product = {
   description?: string;

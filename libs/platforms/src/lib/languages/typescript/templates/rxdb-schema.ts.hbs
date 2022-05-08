@@ -3,14 +3,14 @@
 import { Provider } from '@angular/core';
 import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/services/entity-manager';
 import { RxDocument, RxCollection, RxJsonSchema } from 'rxdb';
-import { {{definition.name}} } from '../types';
+import { {{schema.name}} } from '../types';
 
-{{#ifObject definition}}
+{{#ifObject schema}}
 export type {{name}}DocType = {{name}};
 export type {{name}}Document = RxDocument<{{name}}DocType>;
 export type {{name}}Collection = RxCollection<{{name}}Document>;
 
-export const {{camelCase name}}Schema = {{#gqlSchema .}}{{/gqlSchema}}
+export const {{camelCase name}}Schema = {{#jsonSchema .}}{{/jsonSchema}}
 
 export const {{camelCase name}}RxSchema: RxJsonSchema<
   Omit<{{name}}DocType, '_attachments'>

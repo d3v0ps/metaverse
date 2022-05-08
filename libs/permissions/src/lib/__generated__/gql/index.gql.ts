@@ -5,22 +5,22 @@ import { Field, ObjectType, registerEnumType } from '@nestjs/graphql';
 @ObjectType()
 export class Permission {
   @Field()
-  appId?: string;
+  appId!: string;
 
   @Field()
   createdAt?: string;
 
   @Field()
-  id?: string;
+  id!: string;
 
   @Field((type) => PermissionKind)
-  kind?: PermissionKind;
+  kind!: PermissionKind;
 
   @Field((type) => PermissionMode)
-  mode?: PermissionMode;
+  mode!: PermissionMode;
 
   @Field()
-  target?: string;
+  target!: string;
 
   @Field()
   updatedAt?: string;

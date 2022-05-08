@@ -89,7 +89,6 @@ export enum Gender {
   Female = 'Female',
 }
 
-
 export type HandsSlot = {
   bothHands?: string;
 
@@ -207,7 +206,6 @@ export enum RelationshipKind {
   Partner = 'Partner',
 }
 
-
 export enum SexualOrientation {
   Heterosexual = 'Heterosexual',
   Homosexual = 'Homosexual',
@@ -215,7 +213,6 @@ export enum SexualOrientation {
   Pansexual = 'Pansexual',
   Asexual = 'Asexual',
 }
-
 
 export type Shapeable = {
   shape?: string;

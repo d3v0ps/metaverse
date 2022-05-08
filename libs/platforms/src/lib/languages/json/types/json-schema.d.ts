@@ -1,6 +1,9 @@
+import { JSONSchema4 as JSONSchema } from 'json-schema';
+
 export { JSONSchema4 as JSONSchema } from 'json-schema';
 
-export type AugmentedJSONSchema = JSONSchema & {
-  name: string;
-  templateProperties: AugmentedJSONSchema[];
+export type NamedJSONSchema = JSONSchema & { name: string };
+
+export type AugmentedJSONSchema = NamedJSONSchema & {
+  templateProperties?: AugmentedJSONSchema[];
 };

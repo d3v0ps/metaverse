@@ -21,11 +21,9 @@ export enum PermissionKind {
   Collection = 'Collection',
 }
 
-
 export enum PermissionMode {
   Read = 'Read',
   Write = 'Write',
   Delete = 'Delete',
 }
-
 

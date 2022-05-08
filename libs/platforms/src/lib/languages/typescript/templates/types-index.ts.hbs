@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-{{#ifEnum schema}}
+{{#each schemas}}
+{{#ifEnum .}}
 export enum {{name}} {
   {{#each enum}}
   {{pascalCase .}} = '{{.}}',
@@ -8,11 +9,13 @@ export enum {{name}} {
 }
 
 {{/ifEnum}}
-{{#ifObject schema}}
+{{#ifObject .}}
 export type {{name}} = {
-  {{#typeProperty templateProperties}}{{name}}{{#if required}}{{else}}?{{/if}}: {{tsType}};{{/typeProperty}}
+  {{#typeProperty templateProperties}}
+  {{name}}{{#if required}}{{else}}?{{/if}}: {{tsType}};
+  {{/typeProperty}}
   _attachments?: any;
 }
 
 {{/ifObject}}
-
+{{/each}}

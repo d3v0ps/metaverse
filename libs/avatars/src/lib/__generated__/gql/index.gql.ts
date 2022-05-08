@@ -77,7 +77,7 @@ export class Avatar {
   createdAt?: string;
 
   @Field()
-  id?: string;
+  id!: string;
 
   @Field((type) => Identity)
   identity?: Identity;
@@ -262,7 +262,7 @@ export class Profession {
   icon?: string;
 
   @Field()
-  id?: string;
+  id!: string;
 
   @Field()
   label?: string;

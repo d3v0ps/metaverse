@@ -14,7 +14,7 @@ export class AvatarProfession {
   icon?: string;
 
   @Field()
-  id?: string;
+  id!: string;
 
   @Field()
   label?: string;
@@ -26,40 +26,40 @@ export class AvatarProfession {
 @ObjectType()
 export class Biomes {
   @Field((type) => [Number])
-  area?: number[];
+  area!: number[];
 
   @Field()
-  biomesMartix?: any;
+  biomesMartix!: any;
 
   @Field((type) => [Number])
-  cells?: number[];
+  cells!: number[];
 
   @Field((type) => [String])
-  color?: string[];
+  color!: string[];
 
   @Field((type) => [Number])
-  cost?: number[];
+  cost!: number[];
 
   @Field((type) => [Number])
-  habitability?: number[];
+  habitability!: number[];
 
   @Field((type) => [Number])
-  i?: number[];
+  i!: number[];
 
   @Field((type) => [])
-  icons?: string[][];
+  icons!: string[][];
 
   @Field((type) => [Number])
-  iconsDensity?: number[];
+  iconsDensity!: number[];
 
   @Field((type) => [String])
-  name?: string[];
+  name!: string[];
 
   @Field((type) => [Number])
-  rural?: number[];
+  rural!: number[];
 
   @Field((type) => [Number])
-  urban?: number[];
+  urban!: number[];
 }
 
 @ObjectType()
@@ -77,7 +77,7 @@ export class Burg {
   citadel?: number;
 
   @Field((type) => CoatOfArms)
-  coa?: CoatOfArms;
+  coa!: CoatOfArms;
 
   @Field()
   coaSize?: number;
@@ -137,37 +137,37 @@ export class CoatOfArms {
   ordinaries?: CoatOfArmsOrdinary[];
 
   @Field()
-  shield?: string;
+  shield!: string;
 
   @Field()
-  t1?: string;
+  t1!: string;
 }
 
 @ObjectType()
 export class CoatOfArmsCharge {
   @Field()
-  charge?: string;
+  charge!: string;
 
   @Field()
-  p?: string;
+  p!: string;
 
   @Field()
-  size?: number;
+  size!: number;
 
   @Field()
-  t?: string;
+  t!: string;
 }
 
 @ObjectType()
 export class CoatOfArmsDivision {
   @Field()
-  division?: string;
+  division!: string;
 
   @Field()
-  line?: string;
+  line!: string;
 
   @Field()
-  t?: string;
+  t!: string;
 }
 
 @ObjectType()
@@ -176,16 +176,16 @@ export class CoatOfArmsOrdinary {
   line?: string;
 
   @Field()
-  ordinary?: string;
+  ordinary!: string;
 
   @Field()
-  t?: string;
+  t!: string;
 }
 
 @ObjectType()
 export class Culture {
   @Field()
-  base?: number;
+  base!: number;
 
   @Field()
   center?: number;
@@ -200,16 +200,16 @@ export class Culture {
   expansionism?: number;
 
   @Field()
-  i?: number;
+  i!: number;
 
   @Field()
-  name?: string;
+  name!: string;
 
   @Field()
   origin?: number;
 
   @Field()
-  shield?: string;
+  shield!: string;
 
   @Field()
   type?: string;
@@ -218,25 +218,25 @@ export class Culture {
 @ObjectType()
 export class CultureNameBase {
   @Field()
-  b?: string;
+  b!: string;
 
   @Field()
-  d?: string;
+  d!: string;
 
   @Field()
-  i?: number;
+  i!: number;
 
   @Field()
-  m?: number;
+  m!: number;
 
   @Field()
-  max?: number;
+  max!: number;
 
   @Field()
-  min?: number;
+  min!: number;
 
   @Field()
-  name?: string;
+  name!: string;
 }
 
 @ObjectType()
@@ -251,28 +251,28 @@ export class Era {
   endYear?: number;
 
   @Field((type) => [WorldEvent])
-  events?: WorldEvent[];
+  events!: WorldEvent[];
 
   @Field()
   icon?: string;
 
   @Field()
-  id?: string;
+  id!: string;
 
   @Field((type) => EraMapStyle)
   mapStyle?: EraMapStyle;
 
   @Field((type) => [MilitarySettings])
-  military?: MilitarySettings[];
+  military!: MilitarySettings[];
 
   @Field()
-  name?: string;
+  name!: string;
 
   @Field()
-  shortName?: string;
+  shortName!: string;
 
   @Field()
-  startYear?: number;
+  startYear!: number;
 }
 
 export enum EraMapStyle {
@@ -296,181 +296,181 @@ registerEnumType(EraMapStyle, {
 @ObjectType()
 export class FantasyMapGeneratorMap {
   @Field((type) => Biomes)
-  biomes?: Biomes;
+  biomes!: Biomes;
 
   @Field((type) => MapCells)
-  cells?: MapCells;
+  cells!: MapCells;
 
   @Field((type) => MapCoords)
-  coords?: MapCoords;
+  coords!: MapCoords;
 
   @Field()
-  id?: string;
+  id!: string;
 
   @Field((type) => MapInfo)
-  info?: MapInfo;
+  info!: MapInfo;
 
   @Field((type) => [CultureNameBase])
-  nameBases?: CultureNameBase[];
+  nameBases!: CultureNameBase[];
 
   @Field((type) => [MapNote])
-  notes?: MapNote[];
+  notes!: MapNote[];
 
   @Field((type) => MapSettings)
-  settings?: MapSettings;
+  settings!: MapSettings;
 }
 
 @ObjectType()
 export class MapCell {
   @Field()
-  area?: number;
+  area!: number;
 
   @Field()
-  biome?: number;
+  biome!: number;
 
   @Field()
-  burg?: number;
+  burg!: number;
 
   @Field((type) => [Number])
-  c?: number[];
+  c!: number[];
 
   @Field()
-  conf?: number;
+  conf!: number;
 
   @Field()
-  crossroad?: number;
+  crossroad!: number;
 
   @Field()
-  culture?: number;
+  culture!: number;
 
   @Field()
-  f?: number;
+  f!: number;
 
   @Field()
-  fl?: number;
+  fl!: number;
 
   @Field()
-  g?: number;
+  g!: number;
 
   @Field()
-  h?: number;
+  h!: number;
 
   @Field()
-  harbor?: number;
+  harbor!: number;
 
   @Field()
-  haven?: number;
+  haven!: number;
 
   @Field()
-  i?: number;
+  i!: number;
 
   @Field((type) => [Number])
-  p?: number[];
+  p!: number[];
 
   @Field()
-  pop?: number;
+  pop!: number;
 
   @Field()
-  province?: number;
+  province!: number;
 
   @Field()
-  r?: number;
+  r!: number;
 
   @Field()
-  religion?: number;
+  religion!: number;
 
   @Field()
-  road?: number;
+  road!: number;
 
   @Field()
-  s?: number;
+  s!: number;
 
   @Field()
-  state?: number;
+  state!: number;
 
   @Field()
-  t?: number;
+  t!: number;
 
   @Field((type) => [Number])
-  v?: number[];
+  v!: number[];
 }
 
 @ObjectType()
 export class MapCells {
   @Field((type) => [Burg])
-  burgs?: Burg[];
+  burgs!: Burg[];
 
   @Field((type) => [MapCell])
-  cells?: MapCell[];
+  cells!: MapCell[];
 
   @Field((type) => [Culture])
-  cultures?: Culture[];
+  cultures!: Culture[];
 
   @Field((type) => [])
-  features?: any[];
+  features!: any[];
 
   @Field((type) => [MapMarker])
-  markers?: MapMarker[];
+  markers!: MapMarker[];
 
   @Field((type) => [])
-  provinces?: any[];
+  provinces!: any[];
 
   @Field((type) => [Religion])
-  religions?: Religion[];
+  religions!: Religion[];
 
   @Field((type) => [River])
-  rivers?: River[];
+  rivers!: River[];
 
   @Field((type) => [State])
-  states?: State[];
+  states!: State[];
 }
 
 @ObjectType()
 export class MapCoords {
   @Field()
-  latN?: number;
+  latN!: number;
 
   @Field()
-  latS?: number;
+  latS!: number;
 
   @Field()
-  latT?: number;
+  latT!: number;
 
   @Field()
-  lonE?: number;
+  lonE!: number;
 
   @Field()
-  lonT?: number;
+  lonT!: number;
 
   @Field()
-  lonW?: number;
+  lonW!: number;
 }
 
 @ObjectType()
 export class MapInfo {
   @Field()
-  description?: string;
+  description!: string;
 
   @Field()
-  exportedAt?: string;
+  exportedAt!: string;
 
   @Field()
-  mapId?: number;
+  mapId!: number;
 
   @Field()
-  mapName?: string;
+  mapName!: string;
 
   @Field()
-  seed?: string;
+  seed!: string;
 
   @Field()
-  version?: string;
+  version!: string;
 }
 
 @ObjectType()
 export class MapMarker {
   @Field()
-  cell?: number;
+  cell!: number;
 
   @Field()
   dx?: number;
@@ -479,139 +479,139 @@ export class MapMarker {
   dy?: number;
 
   @Field()
-  i?: number;
+  i!: number;
 
   @Field()
-  icon?: string;
+  icon!: string;
 
   @Field()
   px?: number;
 
   @Field()
-  type?: string;
+  type!: string;
 
   @Field()
-  x?: number;
+  x!: number;
 
   @Field()
-  y?: number;
+  y!: number;
 }
 
 @ObjectType()
 export class MapNote {
   @Field()
-  id?: string;
+  id!: string;
 
   @Field()
-  legend?: string;
+  legend!: string;
 
   @Field()
-  name?: string;
+  name!: string;
 }
 
 @ObjectType()
 export class MapOptions {
   @Field()
-  era?: string;
+  era!: string;
 
   @Field()
-  eraShort?: string;
+  eraShort!: string;
 
   @Field((type) => [MilitarySettings])
-  military?: MilitarySettings[];
+  military!: MilitarySettings[];
 
   @Field()
-  pinNotes?: boolean;
+  pinNotes!: boolean;
 
   @Field()
-  showMFCGMap?: boolean;
+  showMFCGMap!: boolean;
 
   @Field()
-  stateLabelsMode?: string;
+  stateLabelsMode!: string;
 
   @Field((type) => [Number])
-  winds?: number[];
+  winds!: number[];
 
   @Field()
-  year?: number;
+  year!: number;
 }
 
 @ObjectType()
 export class MapSettings {
   @Field()
-  areaUnit?: string;
+  areaUnit!: string;
 
   @Field()
-  barBackColor?: string;
+  barBackColor!: string;
 
   @Field()
-  barBackOpacity?: string;
+  barBackOpacity!: string;
 
   @Field()
-  barLabel?: string;
+  barLabel!: string;
 
   @Field()
-  barPosX?: string;
+  barPosX!: string;
 
   @Field()
-  barPosY?: string;
+  barPosY!: string;
 
   @Field()
-  barSize?: string;
+  barSize!: string;
 
   @Field()
-  distanceScale?: string;
+  distanceScale!: string;
 
   @Field()
-  distanceUnit?: string;
+  distanceUnit!: string;
 
   @Field()
-  heightExponent?: string;
+  heightExponent!: string;
 
   @Field()
-  heightUnit?: string;
+  heightUnit!: string;
 
   @Field()
-  hideLabels?: boolean;
+  hideLabels!: boolean;
 
   @Field()
-  latitudeO?: string;
+  latitudeO!: string;
 
   @Field()
-  mapName?: string;
+  mapName!: string;
 
   @Field()
-  mapSize?: string;
+  mapSize!: string;
 
   @Field((type) => MapOptions)
-  options?: MapOptions;
+  options!: MapOptions;
 
   @Field()
-  populationRate?: number;
+  populationRate!: number;
 
   @Field()
-  prec?: string;
+  prec!: string;
 
   @Field()
-  rescaleLabels?: boolean;
+  rescaleLabels!: boolean;
 
   @Field()
-  stylePreset?: string;
+  stylePreset!: string;
 
   @Field()
-  temperatureEquator?: string;
+  temperatureEquator!: string;
 
   @Field()
-  temperaturePole?: string;
+  temperaturePole!: string;
 
   @Field()
-  temperatureScale?: string;
+  temperatureScale!: string;
 
   @Field()
-  urbanDensity?: number;
+  urbanDensity!: number;
 
   @Field()
-  urbanization?: number;
+  urbanization!: number;
 }
 
 @ObjectType()
@@ -626,28 +626,28 @@ export class Meta {
 @ObjectType()
 export class MilitarySettings {
   @Field()
-  crew?: number;
+  crew!: number;
 
   @Field()
-  icon?: string;
+  icon!: string;
 
   @Field()
-  name?: string;
+  name!: string;
 
   @Field()
-  power?: number;
+  power!: number;
 
   @Field()
-  rural?: number;
+  rural!: number;
 
   @Field()
-  separate?: number;
+  separate!: number;
 
   @Field()
-  type?: string;
+  type!: string;
 
   @Field()
-  urban?: number;
+  urban!: number;
 }
 
 @ObjectType()
@@ -677,10 +677,10 @@ export class Religion {
   form?: string;
 
   @Field()
-  i?: number;
+  i!: number;
 
   @Field()
-  name?: string;
+  name!: string;
 
   @Field()
   origin?: number;
@@ -692,43 +692,43 @@ export class Religion {
 @ObjectType()
 export class River {
   @Field()
-  basin?: number;
+  basin!: number;
 
   @Field((type) => [Number])
-  cells?: number[];
+  cells!: number[];
 
   @Field()
-  discharge?: number;
+  discharge!: number;
 
   @Field()
-  i?: number;
+  i!: number;
 
   @Field()
-  length?: number;
+  length!: number;
 
   @Field()
-  mouth?: number;
+  mouth!: number;
 
   @Field()
-  name?: string;
+  name!: string;
 
   @Field()
-  parent?: number;
+  parent!: number;
 
   @Field()
-  source?: number;
+  source!: number;
 
   @Field()
-  sourceWidth?: number;
+  sourceWidth!: number;
 
   @Field()
-  type?: string;
+  type!: string;
 
   @Field()
-  width?: number;
+  width!: number;
 
   @Field()
-  widthFactor?: number;
+  widthFactor!: number;
 }
 
 @ObjectType()
@@ -737,10 +737,10 @@ export class State {
   alert?: number;
 
   @Field()
-  area?: number;
+  area!: number;
 
   @Field()
-  burgs?: number;
+  burgs!: number;
 
   @Field((type) => [StateCampaign])
   campaigns?: StateCampaign[];
@@ -749,7 +749,7 @@ export class State {
   capital?: number;
 
   @Field()
-  cells?: number;
+  cells!: number;
 
   @Field()
   center?: number;
@@ -764,7 +764,7 @@ export class State {
   culture?: number;
 
   @Field((type) => [])
-  diplomacy?: any[];
+  diplomacy!: any[];
 
   @Field()
   expansionism?: number;
@@ -779,82 +779,82 @@ export class State {
   fullName?: string;
 
   @Field()
-  i?: number;
+  i!: number;
 
   @Field((type) => [StateMilitary])
   military?: StateMilitary[];
 
   @Field()
-  name?: string;
+  name!: string;
 
   @Field((type) => [Number])
-  neighbors?: number[];
+  neighbors!: number[];
 
   @Field((type) => [Number])
   pole?: number[];
 
   @Field((type) => [Number])
-  provinces?: number[];
+  provinces!: number[];
 
   @Field()
-  rural?: number;
+  rural!: number;
 
   @Field()
   type?: string;
 
   @Field()
-  urban?: number;
+  urban!: number;
 }
 
 @ObjectType()
 export class StateCampaign {
   @Field()
-  end?: number;
+  end!: number;
 
   @Field()
-  name?: string;
+  name!: string;
 
   @Field()
-  start?: number;
+  start!: number;
 }
 
 @ObjectType()
 export class StateMilitary {
   @Field()
-  a?: number;
+  a!: number;
 
   @Field()
-  bx?: number;
+  bx!: number;
 
   @Field()
-  by?: number;
+  by!: number;
 
   @Field()
-  cell?: number;
+  cell!: number;
 
   @Field()
-  i?: number;
+  i!: number;
 
   @Field()
-  icon?: string;
+  icon!: string;
 
   @Field()
-  n?: number;
+  n!: number;
 
   @Field()
-  name?: string;
+  name!: string;
 
   @Field()
-  state?: number;
+  state!: number;
 
   @Field((type) => StateMilitaryUnits)
-  u?: StateMilitaryUnits;
+  u!: StateMilitaryUnits;
 
   @Field()
-  x?: number;
+  x!: number;
 
   @Field()
-  y?: number;
+  y!: number;
 }
 
 @ObjectType()
@@ -890,16 +890,16 @@ export class World {
   eras?: any[];
 
   @Field()
-  id?: string;
+  id!: string;
 
   @Field((type) => WorldKind)
-  kind?: WorldKind;
+  kind!: WorldKind;
 
   @Field()
   map?: any;
 
   @Field((type) => Meta)
-  meta?: Meta;
+  meta!: Meta;
 
   @Field((type) => [])
   professions?: any[];
@@ -911,7 +911,7 @@ export class World {
   stats?: WorldStats;
 
   @Field()
-  year?: number;
+  year!: number;
 }
 
 @ObjectType()
@@ -920,19 +920,19 @@ export class WorldEvent {
   description?: string;
 
   @Field()
-  end?: number;
+  end!: number;
 
   @Field()
-  icon?: string;
+  icon!: string;
 
   @Field()
-  start?: number;
+  start!: number;
 
   @Field()
-  title?: string;
+  title!: string;
 
   @Field((type) => WorldEventType)
-  type?: WorldEventType;
+  type!: WorldEventType;
 }
 
 export enum WorldEventType {

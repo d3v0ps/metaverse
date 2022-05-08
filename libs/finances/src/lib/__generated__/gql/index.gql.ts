@@ -5,7 +5,7 @@ import { Field, ObjectType, registerEnumType } from '@nestjs/graphql';
 @ObjectType()
 export class Account {
   @Field()
-  balance?: string;
+  balance!: string;
 
   @Field()
   createdAt?: any;
@@ -17,16 +17,16 @@ export class Account {
   description?: string;
 
   @Field()
-  id?: string;
+  id!: string;
 
   @Field()
-  name?: string;
+  name!: string;
 
   @Field()
   referenceId?: string;
 
   @Field((type) => AccountType)
-  type?: AccountType;
+  type!: AccountType;
 
   @Field()
   updatedAt?: any;
@@ -53,16 +53,16 @@ registerEnumType(AccountType, {
 @ObjectType()
 export class Balance {
   @Field()
-  crypto?: string;
+  crypto!: string;
 
   @Field()
-  fiat?: string;
+  fiat!: string;
 
   @Field()
-  stocks?: string;
+  stocks!: string;
 
   @Field()
-  total?: string;
+  total!: string;
 }
 
 @ObjectType()
@@ -71,7 +71,7 @@ export class Invoice {
   createdAt?: string;
 
   @Field()
-  id?: string;
+  id!: string;
 
   @Field((type) => [InvoiceItem])
   items?: InvoiceItem[];
@@ -140,108 +140,108 @@ export class Product {
   description?: string;
 
   @Field()
-  name?: string;
+  name!: string;
 
   @Field()
-  originalPrice?: number;
+  originalPrice!: number;
 
   @Field()
-  originalPriceCurrency?: string;
+  originalPriceCurrency!: string;
 
   @Field()
-  price?: number;
+  price!: number;
 }
 
 @ObjectType()
 export class Tax {
   @Field()
-  createdAt?: any;
+  createdAt!: any;
 
   @Field()
-  financialEntityCode?: string;
+  financialEntityCode!: string;
 
   @Field()
-  id?: string;
+  id!: string;
 
   @Field()
-  name?: string;
+  name!: string;
 
   @Field((type) => TaxPeriod)
-  period?: TaxPeriod;
+  period!: TaxPeriod;
 
   @Field()
-  rate?: number;
+  rate!: number;
 
   @Field()
-  updatedAt?: any;
+  updatedAt!: any;
 }
 
 @ObjectType()
 export class TaxPeriod {
   @Field()
-  end?: any;
+  end!: any;
 
   @Field()
-  payEnd?: any;
+  payEnd!: any;
 
   @Field()
-  payStart?: any;
+  payStart!: any;
 
   @Field()
-  start?: any;
+  start!: any;
 }
 
 @ObjectType()
 export class Transaction {
   @Field()
-  account?: string;
+  account!: string;
 
   @Field()
-  amount?: string;
+  amount!: string;
 
   @Field()
   category?: string;
 
   @Field()
-  currency?: string;
+  currency!: string;
 
   @Field()
-  date?: string;
+  date!: string;
 
   @Field()
   description?: string;
 
   @Field()
-  destination?: string;
+  destination!: string;
 
   @Field()
-  id?: string;
+  id!: string;
 
   @Field()
   invoice?: string;
 
   @Field()
-  origin?: string;
+  origin!: string;
 
   @Field((type) => [String])
-  tags?: string[];
+  tags!: string[];
 }
 
 @ObjectType()
 export class Wallet {
   @Field((type) => [Account])
-  accounts?: Account[];
+  accounts!: Account[];
 
   @Field((type) => Balance)
-  balance?: Balance;
+  balance!: Balance;
 
   @Field()
-  id?: string;
+  id!: string;
 
   @Field()
-  name?: string;
+  name!: string;
 
   @Field()
-  worldId?: string;
+  worldId!: string;
 }
 

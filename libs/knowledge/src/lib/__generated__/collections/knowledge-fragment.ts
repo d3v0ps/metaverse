@@ -10,6 +10,21 @@ export type KnowledgeFragmentDocument = RxDocument<KnowledgeFragmentDocType>;
 export type KnowledgeFragmentCollection = RxCollection<KnowledgeFragmentDocument>;
 
 export const knowledgeFragmentSchema = {
+  "allOf": [
+    {
+      "$ref": "#/definitions/Indexable"
+    },
+    {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Loadable"
+        },
+        {
+          "$ref": "#/definitions/Displayable"
+        }
+      ]
+    }
+  ],
   "type": "object",
   "properties": {
     "id": {

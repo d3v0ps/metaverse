@@ -8,7 +8,7 @@ export class Displayable {
   component?: string;
 
   @Field()
-  content?: string;
+  content!: string;
 }
 
 @ObjectType()
@@ -35,7 +35,7 @@ export class KnowledgeFragment {
   component?: string;
 
   @Field()
-  content?: string;
+  content!: string;
 }
 
 @ObjectType()

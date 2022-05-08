@@ -204,7 +204,6 @@ export enum EraMapStyle {
   Monochrome = 'monochrome',
 }
 
-
 export type FantasyMapGeneratorMap = {
   biomes: Biomes;
 
@@ -661,13 +660,11 @@ export enum WorldEventType {
   CivilWar = 'CIVIL_WAR',
 }
 
-
 export enum WorldKind {
   Analog = 'analog',
   Digital = 'digital',
   Unknown = 'unknown',
 }
-
 
 export type WorldStats = {
   avatars?: number;

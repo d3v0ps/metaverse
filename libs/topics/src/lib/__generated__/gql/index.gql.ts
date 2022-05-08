@@ -35,13 +35,13 @@ export class Topic {
   icon?: string;
 
   @Field()
-  id?: string;
+  id!: string;
 
   @Field()
   media?: any;
 
   @Field((type) => Priority)
-  priority?: Priority;
+  priority!: Priority;
 
   @Field((type) => [String])
   shortcuts?: string[];
@@ -50,7 +50,7 @@ export class Topic {
   themeColor?: string;
 
   @Field()
-  title?: string;
+  title!: string;
 
   @Field((type) => [Trigger])
   triggers?: Trigger[];

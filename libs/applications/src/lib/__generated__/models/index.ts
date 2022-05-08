@@ -100,7 +100,6 @@ export enum ApplicationRenderingType {
   Unknown = 'Unknown',
 }
 
-
 export type ApplicationScreenshot = {
   label: string;
 
@@ -137,5 +136,4 @@ export enum ColorVariation {
   Light = 'light',
   Dark = 'dark',
 }
-
 

@@ -1,85 +1,78 @@
+import type { HelperParams } from '@central-factory/platforms/engines/handlebars/helpers';
+import { render } from '@central-factory/platforms/engines/handlebars/render';
 import { Logger } from '@nestjs/common';
-import { ensureDir, writeFile } from 'fs-extra';
-import { dirname } from 'path';
-import { JSONSchema } from '../json/types/json-schema';
+import { ensureDir, rmdir, writeFile } from 'fs-extra';
+import { resolve } from 'path';
+import { AugmentedJSONSchema, JSONSchema } from '../json/types/json-schema';
+import { getSchemasFromRoot } from '../json/utils/get-schemas-from-root';
 import { getType } from '../json/utils/get-type';
-import { AugmentedJSONSchema, renderTypes } from './render-types';
 
 const logger = new Logger('Generate Typescript Types');
 
-export const generateTypeScriptTypesFromSchema = async (
-  schema: JSONSchema,
-  output: string
-): Promise<void> => {
-  const definitions = Object.assign({}, schema.definitions);
-  delete definitions['Root'];
+const typeTemplatePath = resolve(
+  process.cwd(),
+  'libs/platforms/src/lib/languages/typescript/templates/type.ts.hbs'
+);
 
-  const namedDefinitions = Object.entries(definitions).map(
-    ([name, definition]) => ({ ...definition, name })
-  );
+const indexTemplatePath = resolve(
+  process.cwd(),
+  'libs/platforms/src/lib/languages/typescript/templates/types-index.ts.hbs'
+);
 
-  const templateParams = {
-    definitions: Object.entries(definitions).reduce<AugmentedJSONSchema[]>(
-      (acc, [name, schema]) => {
-        let resultSchema = schema;
-        if (schema.allOf || schema.anyOf || schema.$ref) {
-          const { result } = getType(schema, namedDefinitions);
-          resultSchema = result
-            .map((ref) => definitions[ref])
-            .reduce(
-              (acc, def) => ({
-                ...acc,
-                properties: {
-                  ...acc.properties,
-                  ...def.properties,
-                },
-                required: Array.isArray(acc.required)
-                  ? acc.required.concat(def.required as string[])
-                  : (def.required as string[]),
-              }),
-              {
-                type: 'object',
-                properties: {},
-                required: [],
-              }
-            );
-        }
+const typeProperty =
+  (schemas: AugmentedJSONSchema[]) =>
+  (
+    properties: AugmentedJSONSchema['templateProperties'],
+    { fn }: HelperParams
+  ) => {
+    if (!properties) {
+      return '';
+    }
 
-        const result: AugmentedJSONSchema = {
-          ...resultSchema,
-          name,
-          templateProperties: resultSchema.properties
-            ? Object.entries(resultSchema.properties).map(
-                ([name, propSchema]) => {
-                  const requiredInRoot = Array.isArray(schema.required)
-                    ? schema.required?.includes(name)
-                    : false;
+    const propertiesRender = properties.map((property) => {
+      const { tsType, decoratorType } = getType(property, schemas);
+      return `${fn({ ...property, tsType, decoratorType })}`;
+    });
 
-                  return {
-                    ...propSchema,
-                    name,
-                    required:
-                      requiredInRoot ||
-                      (Array.isArray(propSchema.required)
-                        ? propSchema.required?.includes(name)
-                        : propSchema.required === true),
-                    templateProperties: [],
-                  };
-                }
-              )
-            : [],
-        };
-
-        acc.push(result);
-
-        return acc;
-      },
-      []
-    ),
+    return propertiesRender.join('\n');
   };
 
-  const content = await renderTypes(templateParams);
+export const generateTypeScriptTypesFromSchema = async (
+  schema: JSONSchema,
+  outputFolder: string
+): Promise<void> => {
+  const schemas = getSchemasFromRoot(schema);
 
-  await ensureDir(dirname(output));
-  await writeFile(output, content);
+  await rmdir(outputFolder, { recursive: true, force: true } as any);
+  await ensureDir(outputFolder);
+
+  // await Promise.all(
+  //   schemas.map(async (schema) => {
+  //     const content = await render(
+  //       typeTemplatePath,
+  //       {
+  //         schema,
+  //       },
+  //       {
+  //         typeProperty: typeProperty(schemas),
+  //       }
+  //     );
+  //     await writeFile(
+  //       resolve(outputFolder, `${kebabCase(schema.name)}.ts`),
+  //       content
+  //     );
+  //   })
+  // );
+
+  const content = await render(
+    indexTemplatePath,
+    {
+      schemas,
+    },
+    {
+      typeProperty: typeProperty(schemas),
+    }
+  );
+
+  await writeFile(resolve(outputFolder, 'index.ts'), content);
 };

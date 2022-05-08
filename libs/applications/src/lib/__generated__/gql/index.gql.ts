@@ -26,10 +26,10 @@ export class Application {
   icons?: ApplicationIcon[];
 
   @Field()
-  id?: string;
+  id!: string;
 
   @Field()
-  name?: string;
+  name!: string;
 
   @Field((type) => [ApplicationScreenshot])
   screenshots?: ApplicationScreenshot[];
@@ -41,7 +41,7 @@ export class Application {
   shortcuts?: ApplicationShortcut[];
 
   @Field()
-  startUrl?: string;
+  startUrl!: string;
 
   @Field()
   themeColor?: string;
@@ -53,7 +53,7 @@ export class Application {
 @ObjectType()
 export class ApplicationAdditionalProperties {
   @Field((type) => ApplicationAuthor)
-  author?: ApplicationAuthor;
+  author!: ApplicationAuthor;
 
   @Field((type) => [ApplicationColor])
   colors?: ApplicationColor[];
@@ -92,10 +92,10 @@ export class ApplicationAuthor {
   icon?: string;
 
   @Field()
-  id?: string;
+  id!: string;
 
   @Field()
-  name?: string;
+  name!: string;
 }
 
 @ObjectType()
@@ -110,13 +110,13 @@ export class ApplicationColor {
 @ObjectType()
 export class ApplicationIcon {
   @Field()
-  sizes?: string;
+  sizes!: string;
 
   @Field()
-  src?: string;
+  src!: string;
 
   @Field()
-  type?: string;
+  type!: string;
 }
 
 @ObjectType()
@@ -148,19 +148,19 @@ registerEnumType(ApplicationRenderingType, {
 @ObjectType()
 export class ApplicationScreenshot {
   @Field()
-  label?: string;
+  label!: string;
 
   @Field()
-  platform?: string;
+  platform!: string;
 
   @Field()
-  sizes?: string;
+  sizes!: string;
 
   @Field()
-  src?: string;
+  src!: string;
 
   @Field()
-  type?: string;
+  type!: string;
 }
 
 @ObjectType()
@@ -172,13 +172,13 @@ export class ApplicationShortcut {
   icons?: ApplicationIcon[];
 
   @Field()
-  name?: string;
+  name!: string;
 
   @Field()
   shortName?: string;
 
   @Field()
-  url?: string;
+  url!: string;
 }
 
 export enum ColorVariation {

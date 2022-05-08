@@ -23,7 +23,7 @@ export type KnowledgeFragment = {
 
   component?: string;
 
-  content?: string;
+  content: string;
   _attachments?: any;
 }
 

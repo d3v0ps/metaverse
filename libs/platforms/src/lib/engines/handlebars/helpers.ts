@@ -1,5 +1,7 @@
 import { AugmentedJSONSchema } from '../../languages/json/types/json-schema';
 
+export type HelperParams = { fn: (params: any) => string };
+
 export {
   camel as camelCase,
   constant as constantCase,
@@ -11,12 +13,8 @@ export {
 
 export const pluralize = (word: string): string => `${word}s`;
 
-export const ifObject = (
-  schema: AugmentedJSONSchema,
-  { fn }: { fn: (params: any) => string }
-) => (schema.type === 'object' ? fn(schema) : '');
+export const ifObject = (schema: AugmentedJSONSchema, { fn }: HelperParams) =>
+  schema.type === 'object' ? fn(schema) : '';
 
-export const ifEnum = (
-  schema: AugmentedJSONSchema,
-  { fn }: { fn: (params: any) => string }
-) => (schema.type === 'string' && schema.enum ? fn(schema) : '');
+export const ifEnum = (schema: AugmentedJSONSchema, { fn }: HelperParams) =>
+  schema.type === 'string' && schema.enum ? fn(schema) : '';
