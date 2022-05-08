@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DocumentsModule } from './documents/documents.module';
 import { ExchangeRatesModule } from './finances/exchange-rates.module';
+import { PackagesModule } from './packages/packages.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { ExchangeRatesModule } from './finances/exchange-rates.module';
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'apps/host/static/schema.gql'),
     }),
+    PackagesModule,
     DocumentsModule,
     ExchangeRatesModule,
   ],
