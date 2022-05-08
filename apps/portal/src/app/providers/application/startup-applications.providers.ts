@@ -95,7 +95,7 @@ export const startupApplicationsProviders: Provider[] = [
     provide: STARTUP_APPLICATIONS_PROVIDER,
     useValue: {
       name: ApplicationOpenCommand.name,
-      application: userApplicationsById['com.central-factory.devtools'],
+      application: userApplicationsById['com.central-factory.portals'],
       settings: {
         groupId: GROUP_IDS.PORTALS,
         show: true,
@@ -107,7 +107,7 @@ export const startupApplicationsProviders: Provider[] = [
     provide: STARTUP_APPLICATIONS_PROVIDER,
     useValue: {
       name: ApplicationOpenCommand.name,
-      application: userApplicationsById['com.central-factory.portals'],
+      application: userApplicationsById['com.central-factory.devtools'],
       settings: {
         groupId: GROUP_IDS.PORTALS,
         show: true,

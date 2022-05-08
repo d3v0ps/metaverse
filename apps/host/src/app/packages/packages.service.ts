@@ -36,7 +36,6 @@ export class PackagesService {
     return new Promise<void>((resolve, reject) => {
       const child = spawn('node_modules/.bin/nx', ['g', type, name]);
       child.stdout.on('data', (data) => {
-        console.log(data);
         resolve();
       });
 
@@ -137,7 +136,10 @@ export class PackagesService {
         await readdir(modelsFolder)
       ).filter((file) => file.endsWith('.yaml') || file.endsWith('.yml'));
 
-      return modelNames;
+      return modelNames.map((model) => ({
+        name: model.replace(extname(model), ''),
+        file: model,
+      }));
     }
 
     return [];

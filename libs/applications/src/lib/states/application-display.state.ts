@@ -400,8 +400,8 @@ export class ApplicationDisplayState {
       case GROUP_IDS.PORTALS:
         displaySettings = {
           ...displaySettings,
-          height: getHeightForRows(70),
-          y: marginTop + paddingY + getRowHeight(30) + paddingY,
+          height: getHeightForRows(100),
+          y: marginTop + paddingY + getRowHeight(0) + paddingY,
         };
         break;
 

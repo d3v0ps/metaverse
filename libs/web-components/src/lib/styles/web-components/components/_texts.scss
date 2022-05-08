@@ -3,7 +3,7 @@
 $typography-variations: "h1", "h2", "h3", "h4", "h5", "h6", "p", "xxs", "xs", "s", "m", "l", "xl", "xxl";
 
 .typography {
-  color: var(--component-typography-color, var(--color-font-primary));
+  // color: var(--component-typography-color, var(--color-font-primary));
   .icon {
     position: relative;
     &__image {
@@ -29,7 +29,7 @@ $typography-variations: "h1", "h2", "h3", "h4", "h5", "h6", "p", "xxs", "xs", "s
         vertical-align: text-bottom;
       }
       // line-height: 1.5;
-      margin-block-end: 0.5rem;
+      margin-block-end: 0.2rem;
     }
   }
 

@@ -308,3 +308,18 @@ color:
         value: '{color.base.unique.darker}'
         darken: 0.25
 
+  syntax:
+    type:
+      value: '#80ffbb'
+    enum:
+      value: '#80ffbb'
+    key:
+      value: '#e1e7d3'
+    property:
+      value: '#9bfcff'
+    string:
+      value: '#99ff90'
+    file:
+      value: '#c4c5ff'
+    ignore:
+      value: '#6a63a1'

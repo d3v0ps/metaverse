@@ -56,7 +56,7 @@ import { of } from 'rxjs';
 })
 export class SystemToolbarComponent {
   clock$ = this.clock.everyMinute$;
-  version$ = of('0.0.1');
+  version$ = of('0.0.3');
 
   constructor(private clock: ClockService) {}
 }

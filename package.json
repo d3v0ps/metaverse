@@ -1,6 +1,6 @@
 {
   "name": "@central-factory/metaverse",
-  "version": "0.0.0",
+  "version": "ea-0.0.3",
   "license": "MIT",
   "author": {
     "name": "Central Factory"
@@ -53,6 +53,7 @@
     "@nestjs/platform-express": "^8.4.3",
     "@ng-select/ng-select": "^8.1.1",
     "@ngxd/core": "^13.0.0",
+    "@vscode/codicons": "0.0.29",
     "apollo-server-express": "^3.6.7",
     "avataaars": "^1.2.1",
     "case": "^1.6.3",

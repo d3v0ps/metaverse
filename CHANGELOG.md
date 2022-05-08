@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Early Access
 
+## [ea-0.0.3] - 2022-05-08
+### Added
+- Added devtools as a new way to work with the Domain Tokens
+
+![](https://i.imgur.com/ATOIafx.png)
+
 ## [ea-0.0.2] - 2022-05-07
 ### Added
 - Fixed some display issues

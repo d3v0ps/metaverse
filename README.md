@@ -13,6 +13,9 @@ Digital Worlds
 ![Dev Mode](https://i.imgur.com/uUomYKu.png)
 Dev Mode
 
+![Integrated DevTools](https://i.imgur.com/ATOIafx.png)
+Integrated DevTools
+
 ## Early Access Preview 05/2022
 
 ### Context

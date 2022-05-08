@@ -92,8 +92,8 @@ import { ResizableEvent } from '../resizable/resizable.directive';
         cfBlock="window-body"
         #modalBody
         [ngStyle]="{
-          height: '100%',
-          width: '100%'
+          height: height,
+          width: width
         }"
       >
         <ng-content select=".window-body__content"></ng-content>

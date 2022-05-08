@@ -1518,6 +1518,11 @@
               },
               {
                 "glob": "**/*",
+                "input": "./node_modules/@vscode/codicons/src/icons",
+                "output": "./assets/icons/codicons"
+              },
+              {
+                "glob": "**/*",
                 "input": "./libs/web-components/src/assets/fonts/Inter/static",
                 "output": "./assets/fonts"
               },
@@ -1606,6 +1611,11 @@
                   "glob": "**/*.svg",
                   "input": "./node_modules/simple-icons/icons",
                   "output": "./assets/icons/simple-icons"
+                },
+                {
+                  "glob": "**/*",
+                  "input": "./node_modules/@vscode/codicons/src/icons",
+                  "output": "./assets/icons/codicons"
                 },
                 {
                   "glob": "**/*",
