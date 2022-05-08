@@ -255,6 +255,32 @@
       },
       "tags": []
     },
+    "cms": {
+      "projectType": "library",
+      "root": "libs/cms",
+      "sourceRoot": "libs/cms/src",
+      "prefix": "central-factory",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/cms"],
+          "options": {
+            "jestConfig": "libs/cms/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/cms/src/**/*.ts",
+              "libs/cms/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "codex": {
       "projectType": "application",
       "root": "apps/codex",

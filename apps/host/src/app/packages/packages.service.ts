@@ -1,5 +1,6 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
+import { spawn } from 'child_process';
 import { lstat, pathExists, readdir, readFile, readJSON } from 'fs-extra';
 import { resolve } from 'path';
 import { from, map, Observable, of, switchMap } from 'rxjs';
@@ -32,7 +33,15 @@ export class PackagesService {
   }
 
   createPackage(name: string, type: 'app' | 'lib') {
-    throw new Error('Method not implemented.');
+    return new Promise<void>((resolve, reject) => {
+      const child = spawn('node_modules/.bin/nx', ['g', type, name]);
+      child.stdout.on('data', (data) => {
+        console.log(data);
+        resolve();
+      });
+
+      child.on('close', () => resolve());
+    });
   }
 
   retypePackage(name: string, type: 'app' | 'lib') {
