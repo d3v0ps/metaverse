@@ -65,4 +65,6 @@ export const generateTypescriptTokens = async (
 
   await ensureDir(dirname(outputFolder));
   await writeFile(outputFolder, content);
+
+  logger.log(`[${schema.name}]: Generated. Total: ${types?.length}`);
 };

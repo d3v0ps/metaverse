@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { Observable } from 'rxjs';
+import { PackagesGenerator } from './packages.generator';
 import {
   Package,
   PackageModelToken,
@@ -10,7 +11,10 @@ import {
   path: 'packages',
 })
 export class PackagesController {
-  constructor(private readonly service: PackagesService) {}
+  constructor(
+    private readonly service: PackagesService,
+    private readonly generator: PackagesGenerator
+  ) {}
 
   @Get('/')
   getPackages(): Observable<Package[]> {
@@ -25,6 +29,11 @@ export class PackagesController {
     return this.service.createPackage(name, type);
   }
 
+  @Post('/generate')
+  generate(@Query('packages') packages: string[]) {
+    return this.generator.generate(packages);
+  }
+
   @Get('/:name')
   getPackage(@Param('name') name: string): Observable<Package> {
     return this.service.getPackage(name);
@@ -33,6 +42,11 @@ export class PackagesController {
   @Get('/:name/models')
   getModels(@Param('name') name: string): Observable<PackageModelToken[]> {
     return this.service.getModels(name);
+  }
+
+  @Post('/:name/generate')
+  generatePackage(@Param('name') name: string) {
+    return this.generator.generate([name]);
   }
 
   @Post('/:name/retype')

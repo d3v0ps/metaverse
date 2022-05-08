@@ -74,4 +74,10 @@ export const generateRxDBSchemasFromSchema = async (
     schemas: rootSchemas,
   });
   await writeFile(resolve(outputFolder, `index.ts`), indexContent);
+
+  logger.log(
+    `[${schema.title}]: Generated. Total: ${
+      Object.keys(schema.definitions as any)?.length
+    }`
+  );
 };

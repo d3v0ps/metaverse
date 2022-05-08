@@ -75,4 +75,10 @@ export const generateTypeScriptTypesFromSchema = async (
   );
 
   await writeFile(resolve(outputFolder, 'index.ts'), content);
+
+  logger.log(
+    `[${schema.title}]: Generated. Total: ${
+      Object.keys(schema.definitions as any)?.length
+    }`
+  );
 };

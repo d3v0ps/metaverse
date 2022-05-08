@@ -43,4 +43,10 @@ export const generateTypeScriptGqlTypesFromSchema = async (
 
   await ensureDir(dirname(output));
   await writeFile(output, content);
+
+  logger.log(
+    `[${schema.title}]: Generated. Total: ${
+      Object.keys(schema.definitions as any)?.length
+    }`
+  );
 };
