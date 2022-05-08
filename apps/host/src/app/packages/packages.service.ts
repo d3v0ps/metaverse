@@ -2,8 +2,8 @@ import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { spawn } from 'child_process';
 import { lstat, pathExists, readdir, readFile, readJSON } from 'fs-extra';
-import { resolve } from 'path';
-import { from, map, Observable, of, switchMap } from 'rxjs';
+import { extname, resolve } from 'path';
+import { forkJoin, from, map, Observable, of, switchMap } from 'rxjs';
 import { parse as parseYaml } from 'yaml';
 
 export type Workspace = {
@@ -66,32 +66,21 @@ export class PackagesService {
     return of(this.packages[name]);
   }
 
-  getPackages(): Observable<Record<string, Package>> {
+  getPackages(): Observable<Package[]> {
     if (Object.keys(this.packages).length === 0) {
       return from(this.fetchPackages()).pipe(
         switchMap(() => this.getPackages())
       );
     }
 
-    return of(this.packages);
+    return of(Object.values(this.packages));
   }
 
   getModels(packageName: string): Observable<PackageModelToken[]> {
     return this.getPackage(packageName).pipe(
       switchMap((pkg) => {
-        return Promise.all(
-          pkg.models.map(async (name) => {
-            const tokenPath = resolve(
-              process.cwd(),
-              pkg.project.root,
-              'src',
-              'lib',
-              'models',
-              name
-            );
-            const content = parseYaml(await readFile(tokenPath, 'utf8'));
-            return { name, ...content };
-          })
+        return forkJoin(
+          pkg.models.map((name) => this.getPackageModel(pkg, name))
         );
       })
     );
@@ -99,20 +88,7 @@ export class PackagesService {
 
   getModel(packageName: string, name: string): Observable<PackageModelToken> {
     return this.getPackage(packageName).pipe(
-      switchMap((pkg: Package) => {
-        const tokenPath = resolve(
-          process.cwd(),
-          pkg.project.root,
-          'src',
-          'lib',
-          'models',
-          name
-        );
-
-        return from(readFile(tokenPath, 'utf8')).pipe(
-          map((content) => ({ name, ...parseYaml(content) }))
-        );
-      })
+      switchMap((pkg: Package) => this.getPackageModel(pkg, name))
     );
   }
 
@@ -165,5 +141,25 @@ export class PackagesService {
     }
 
     return [];
+  }
+
+  private getPackageModel(
+    pkg: Package,
+    model: string
+  ): Observable<PackageModelToken> {
+    const tokenPath = resolve(
+      process.cwd(),
+      pkg.project.root,
+      'src',
+      'lib',
+      'models',
+      model
+    );
+
+    const name = model.replace(extname(model), '');
+
+    return from(readFile(tokenPath, 'utf8')).pipe(
+      map((content) => ({ name, file: model, ...parseYaml(content) }))
+    );
   }
 }

@@ -13,7 +13,7 @@ export class PackagesController {
   constructor(private readonly service: PackagesService) {}
 
   @Get('/')
-  getPackages(): Observable<Record<string, Package>> {
+  getPackages(): Observable<Package[]> {
     return this.service.getPackages();
   }
 

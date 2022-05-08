@@ -158,7 +158,7 @@ export const userApplications: ApplicationDocType[] = [
     id: 'com.central-factory.devtools',
     name: 'DevTools',
     description: 'Inspect and play with your data.',
-    startUrl: 'WorldsManagerScene',
+    startUrl: 'CMS',
     icons: [
       {
         src: 'assets/icons/mdi/code-not-equal-variant.svg',

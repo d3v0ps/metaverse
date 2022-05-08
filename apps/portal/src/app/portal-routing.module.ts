@@ -132,6 +132,14 @@ export const routes: Routes = [
         canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
       },
       {
+        path: 'cms',
+        loadChildren: () =>
+          import(
+            '@central-factory/cms/web-components/angular/cms/cms.module'
+          ).then((m) => m.CMSModule),
+        canActivate: [IsDatabaseCreatedGuard, IsAvatarSelectedGuard],
+      },
+      {
         path: '',
         redirectTo: 'start',
         pathMatch: 'full',

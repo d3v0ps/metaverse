@@ -1,6 +1,7 @@
 import { Provider } from '@angular/core';
 import { LOCAL_APPLICATION_COMPONENTS_PROVIDER } from '@central-factory/applications/resolvers/components/local-applications/local-application-components.provider';
 import { MarketplaceComponent } from '@central-factory/assets/web-components/angular/marketplace/marketplace.component';
+import { CMSComponent } from '@central-factory/cms/web-components/angular/cms/cms.component';
 import { DevtoolsComponent } from '@central-factory/devtools/web-components/angular/devtools/devtools.component';
 import { WalletScene } from '@central-factory/finances/web-components/angular/wallet/wallet.scene';
 import { InventoryScene } from '@central-factory/inventory/scenes/inventory/inventory.scene';
@@ -26,6 +27,7 @@ export enum PortalLocalApplicationType {
   WorldsManagerScene = 'WorldsManagerScene',
   KnowledgeIndexScene = 'KnowledgeIndexScene',
   WalletScene = 'WalletScene',
+  CMS = 'CMS',
 }
 
 export const portalLocalApplicationComponentsProviders: Provider[] = [
@@ -123,6 +125,14 @@ export const portalLocalApplicationComponentsProviders: Provider[] = [
     useValue: {
       type: PortalLocalApplicationType.WalletScene,
       component: WalletScene,
+    },
+    multi: true,
+  },
+  {
+    provide: LOCAL_APPLICATION_COMPONENTS_PROVIDER,
+    useValue: {
+      type: PortalLocalApplicationType.CMS,
+      component: CMSComponent,
     },
     multi: true,
   },
