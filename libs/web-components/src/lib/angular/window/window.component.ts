@@ -175,6 +175,7 @@ export class WindowComponent implements AfterViewChecked {
       if (this.scrollTopEnable) {
         this.modalBody.nativeElement.scrollTop = 0;
       }
+      this.center();
       this.openModal.emit(true);
     }, 1);
   }
@@ -198,8 +199,11 @@ export class WindowComponent implements AfterViewChecked {
       this.modalRoot.nativeElement.style.visibility = 'visible';
     }
 
-    const x = Math.max((window.innerWidth - elementWidth) / 2, 0);
-    const y = Math.max((window.innerHeight - elementHeight) / 2, 0);
+    const innerWidth = this.element.nativeElement.offsetWidth;
+    const innerHeight = this.element.nativeElement.offsetHeight;
+
+    const x = Math.max(innerWidth / 2, 0);
+    const y = Math.max(innerHeight / 2, 0);
 
     this.width = elementWidth;
     this.height = elementHeight;

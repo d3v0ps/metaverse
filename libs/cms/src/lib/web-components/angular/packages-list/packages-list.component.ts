@@ -27,24 +27,34 @@ import { Package } from '@central-factory/cms/states/packages.state';
                 {{ pkg.name | cfCase }}
               </cf-typography>
             </section>
-            <cf-typography [clickable]="true">
-              <cf-svg-icon src="assets/icons/mdi/plus.svg"></cf-svg-icon>
-            </cf-typography>
           </section>
           <section elem="children" *ngIf="!collapsedPackages[pkg.name]">
-            <div cfBlock="models" *ngIf="pkg.models.length">
-              <cf-typography (click)="onChildClick(pkg, 'models')">
-                <cf-svg-icon
-                  src="assets/icons/mdi/chevron-{{
-                    expandedChildren[pkg.name + '/models'] ? 'up' : 'down'
-                  }}.svg"
-                ></cf-svg-icon>
-                <cf-svg-icon
-                  src="assets/icons/codicons/symbol-variable.svg"
-                ></cf-svg-icon>
-                Models ({{ pkg.models.length }})
-              </cf-typography>
-              <ng-container *ngIf="expandedChildren[pkg.name + '/models']">
+            <div cfBlock="models">
+              <section cfElem="header">
+                <cf-typography (click)="onChildClick(pkg, 'models')">
+                  <cf-svg-icon
+                    src="assets/icons/mdi/chevron-{{
+                      expandedChildren[pkg.name + '/models'] ? 'up' : 'down'
+                    }}.svg"
+                  ></cf-svg-icon>
+                  <cf-svg-icon
+                    src="assets/icons/codicons/symbol-variable.svg"
+                  ></cf-svg-icon>
+                  Models ({{ pkg.models.length }})
+                </cf-typography>
+                <cf-typography
+                  cfElem="create-icon"
+                  [clickable]="true"
+                  (click)="createModelClick.emit(pkg)"
+                >
+                  <cf-svg-icon src="assets/icons/mdi/plus.svg"></cf-svg-icon>
+                </cf-typography>
+              </section>
+              <ng-container
+                *ngIf="
+                  pkg.models.length && expandedChildren[pkg.name + '/models']
+                "
+              >
                 <div cfBlock="model" *ngFor="let model of pkg.models">
                   <cf-typography
                     cfElem="name"
@@ -75,11 +85,25 @@ import { Package } from '@central-factory/cms/states/packages.state';
           justify-content: space-between;
         }
         &__name {
+          cursor: pointer;
           display: flex;
         }
       }
       .models {
         padding-left: 1rem;
+        &__header {
+          cursor: pointer;
+          justify-content: space-between;
+        }
+        &__create-icon {
+          display: none;
+          cursor: pointer;
+        }
+        &:hover {
+          .models__create-icon {
+            display: block;
+          }
+        }
       }
       .model {
         padding-left: 1rem;
@@ -91,6 +115,9 @@ import { Package } from '@central-factory/cms/states/packages.state';
           }
         }
       }
+
+      .models {
+      }
     `,
   ],
 })
@@ -100,12 +127,15 @@ export class PackagesListComponent {
     pkg: any;
     model: string;
   }>();
+  @Output() packageClick = new EventEmitter<Package>();
+  @Output() createModelClick = new EventEmitter<Package>();
 
   collapsedPackages: Record<string, boolean> = {};
   expandedChildren: Record<string, boolean> = {};
 
   onPackageClick(pkg: Package) {
     this.collapsedPackages[pkg.name] = !this.collapsedPackages[pkg.name];
+    this.packageClick.emit(pkg);
   }
 
   onChildClick(pkg: Package, model: string) {

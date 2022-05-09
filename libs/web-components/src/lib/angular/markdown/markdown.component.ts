@@ -17,17 +17,15 @@ export class MarkdownComponent {
       return;
     }
 
+    this._content = value;
+
     const hasFrontMatter = value.startsWith('---');
 
-    if (!hasFrontMatter) {
-      this._content = value;
-      return;
+    if (hasFrontMatter) {
+      const [_, frontMatter, ...fragments] = value.split('---');
+      this._content = fragments.join('---');
+      this.frontMatter = frontMatter;
     }
-
-    const [_, frontMatter, ...fragments] = value.split('---');
-
-    this._content = fragments.join('---');
-    this.frontMatter = frontMatter;
 
     this.render();
   }

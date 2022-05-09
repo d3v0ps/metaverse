@@ -1,9 +1,17 @@
 import { HttpService } from '@nestjs/axios';
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
+import { camel } from 'case';
 import { spawn } from 'child_process';
-import { lstat, pathExists, readdir, readFile, readJSON } from 'fs-extra';
+import {
+  ensureDir,
+  lstat,
+  pathExists,
+  readdir,
+  readFile,
+  readJSON,
+  writeFile,
+} from 'fs-extra';
 import { extname, resolve } from 'path';
-import { forkJoin, from, map, Observable, of, switchMap } from 'rxjs';
 import { parse as parseYaml } from 'yaml';
 
 export type Workspace = {
@@ -16,13 +24,17 @@ export type WorkspaceProject = {
 
 export type Package = {
   name: string;
-  models: string[];
+  models: PackageModelToken[];
   project: WorkspaceProject;
+  readme: string;
 };
 
 export type PackageModelToken = {
   name: string;
+  file: string;
 };
+
+const logger = new Logger('PackagesGenerator');
 
 @Injectable()
 export class PackagesService {
@@ -51,44 +63,64 @@ export class PackagesService {
     throw new Error('Method not implemented.');
   }
 
-  createModel(packageName: string, name: string) {
-    throw new Error('Method not implemented.');
-  }
+  async createModel(packageName: string, name: string) {
+    const workspace: Workspace = await readJSON(
+      resolve(process.cwd(), 'angular.json')
+    );
 
-  getPackage(name: string): Observable<Package> {
-    if (Object.keys(this.packages).length === 0) {
-      return from(this.fetchPackages()).pipe(
-        switchMap(() => this.getPackage(name))
-      );
+    const project = workspace.projects[packageName];
+
+    if (!project) {
+      throw new Error('Package not found');
     }
 
-    return of(this.packages[name]);
+    const projectFolder = resolve(process.cwd(), project.root);
+    const modelsFolder = resolve(projectFolder, 'src', 'lib', 'models');
+
+    const template = `
+      types:
+        ${camel(name)}:
+          id:
+            type: string
+            required: true
+    `;
+
+    await ensureDir(modelsFolder);
+    await writeFile(resolve(modelsFolder, `${name}.yaml`), template);
+
+    logger.log(`Model successfully created in ${packageName}/${name}`);
   }
 
-  getPackages(): Observable<Package[]> {
+  async getPackage(name: string): Promise<Package> {
     if (Object.keys(this.packages).length === 0) {
-      return from(this.fetchPackages()).pipe(
-        switchMap(() => this.getPackages())
-      );
+      await this.fetchPackages();
     }
 
-    return of(Object.values(this.packages));
+    return this.packages[name];
   }
 
-  getModels(packageName: string): Observable<PackageModelToken[]> {
-    return this.getPackage(packageName).pipe(
-      switchMap((pkg) => {
-        return forkJoin(
-          pkg.models.map((name) => this.getPackageModel(pkg, name))
-        );
-      })
+  async getPackages(): Promise<Package[]> {
+    if (Object.keys(this.packages).length === 0) {
+      await this.fetchPackages();
+    }
+
+    return Object.values(this.packages);
+  }
+
+  async getModels(packageName: string): Promise<PackageModelToken[]> {
+    const pkg = await this.getPackage(packageName);
+
+    return Promise.all(
+      pkg.models.map((model) => this.getPackageModel(pkg, model.name))
     );
   }
 
-  getModel(packageName: string, name: string): Observable<PackageModelToken> {
-    return this.getPackage(packageName).pipe(
-      switchMap((pkg: Package) => this.getPackageModel(pkg, name))
-    );
+  async getModel(
+    packageName: string,
+    name: string
+  ): Promise<PackageModelToken> {
+    const pkg = await this.getPackage(packageName);
+    return this.getPackageModel(pkg, name);
   }
 
   private async fetchPackages() {
@@ -96,11 +128,15 @@ export class PackagesService {
       resolve(process.cwd(), 'angular.json')
     );
 
-    const packages = (
+    const packages: Package[] = (
       await Promise.all(
         Object.entries(workspace.projects).map(async ([name, project]) => {
           const projectFolder = resolve(process.cwd(), project.root);
           const isDirectory = (await lstat(projectFolder)).isDirectory();
+          const readmePath = resolve(projectFolder, 'README.md');
+          const readme = (await pathExists(readmePath))
+            ? await readFile(readmePath, 'utf8')
+            : '';
 
           if (!isDirectory) {
             return null;
@@ -112,6 +148,7 @@ export class PackagesService {
             name,
             models,
             project,
+            readme,
           };
         })
       )
@@ -125,7 +162,9 @@ export class PackagesService {
     packages;
   }
 
-  private async fetchModels(project: WorkspaceProject) {
+  private async fetchModels(
+    project: WorkspaceProject
+  ): Promise<PackageModelToken[]> {
     const projectFolder = resolve(process.cwd(), project.root);
     const modelsFolder = resolve(projectFolder, 'src', 'lib', 'models');
 
@@ -136,32 +175,51 @@ export class PackagesService {
         await readdir(modelsFolder)
       ).filter((file) => file.endsWith('.yaml') || file.endsWith('.yml'));
 
-      return modelNames.map((model) => ({
-        name: model.replace(extname(model), ''),
-        file: model,
-      }));
+      return Promise.all(
+        modelNames.map(async (model) => {
+          const hasExtension =
+            model.endsWith('.yaml') || model.endsWith('.yml');
+          const tokenPath = resolve(
+            process.cwd(),
+            project.root,
+            'src',
+            'lib',
+            'models',
+            hasExtension ? model : `${model}.yaml`
+          );
+
+          const content = await readFile(tokenPath, 'utf8');
+
+          return {
+            name: model.replace(extname(model), ''),
+            file: model,
+            ...parseYaml(content),
+          };
+        })
+      );
     }
 
     return [];
   }
 
-  private getPackageModel(
+  private async getPackageModel(
     pkg: Package,
     model: string
-  ): Observable<PackageModelToken> {
+  ): Promise<PackageModelToken> {
+    const hasExtension = model.endsWith('.yaml') || model.endsWith('.yml');
     const tokenPath = resolve(
       process.cwd(),
       pkg.project.root,
       'src',
       'lib',
       'models',
-      model
+      hasExtension ? model : `${model}.yaml`
     );
 
     const name = model.replace(extname(model), '');
 
-    return from(readFile(tokenPath, 'utf8')).pipe(
-      map((content) => ({ name, file: model, ...parseYaml(content) }))
-    );
+    const content = await readFile(tokenPath, 'utf8');
+
+    return { name, file: model, ...parseYaml(content) };
   }
 }

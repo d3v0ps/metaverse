@@ -21,6 +21,8 @@ export type Model = {
 
 export type Package = {
   name: string;
+  readme?: string;
+  models: Model[];
 };
 
 @Injectable({ providedIn: 'root' })
@@ -49,8 +51,21 @@ export class PackagesState {
       .get(`http://localhost:3333/api/packages/${packageName}/models/${name}`)
       .pipe(catchError((error) => of([])))
       .subscribe((data: any) => {
-        this.selectedPackage$.next(foundPackage);
+        this.selectPackage(packageName);
         this.selectedModel$.next(data);
       });
+  }
+
+  selectPackage(packageName: string) {
+    const foundPackage = this.packages$.value.find(
+      (pkg) => pkg.name === packageName
+    );
+
+    if (!foundPackage) {
+      return;
+    }
+
+    this.selectedPackage$.next(foundPackage);
+    this.selectedModel$.next(undefined);
   }
 }

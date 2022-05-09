@@ -1,11 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'cf-model-imports-list',
   template: `
     <div cfBlock="model-imports-list" *ngIf="imports">
       <cf-typography *ngIf="showHeader" type="h3">Imports</cf-typography>
-      <div cfBlock="import" *ngFor="let import of imports | keyvalue">
+      <div
+        cfBlock="import"
+        *ngFor="let import of imports | keyvalue"
+        (click)="importClick.emit(import)"
+      >
         <cf-typography>
           <cf-svg-icon
             cfElem="icon"
@@ -22,8 +26,13 @@ import { Component, Input } from '@angular/core';
     `
       .import {
         padding-left: 1rem;
+        cursor: pointer;
+        :hover {
+          text-decoration: underline;
+        }
         &__icon {
           color: var(--color-syntax-type);
+          margin-right: 0.3rem;
         }
         &__name {
           color: var(--color-syntax-type);
@@ -37,5 +46,6 @@ import { Component, Input } from '@angular/core';
 })
 export class ModelImportsListComponent {
   @Input() imports: Record<string, string> = {};
+  @Output() importClick = new EventEmitter<{ key: string; value: string }>();
   @Input() showHeader = true;
 }

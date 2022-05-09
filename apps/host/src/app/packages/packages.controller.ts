@@ -1,5 +1,4 @@
 import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
-import { Observable } from 'rxjs';
 import { PackagesGenerator } from './packages.generator';
 import {
   Package,
@@ -17,12 +16,12 @@ export class PackagesController {
   ) {}
 
   @Get('/')
-  getPackages(): Observable<Package[]> {
+  async getPackages(): Promise<Package[]> {
     return this.service.getPackages();
   }
 
   @Post('/')
-  createPackage(
+  async createPackage(
     @Query('name') name: string,
     @Query('type') type: 'lib' | 'app' = 'lib'
   ) {
@@ -30,27 +29,27 @@ export class PackagesController {
   }
 
   @Post('/generate')
-  generate(@Query('packages') packages: string[]) {
+  async generate(@Query('packages') packages: string[]) {
     return this.generator.generate(packages);
   }
 
   @Get('/:name')
-  getPackage(@Param('name') name: string): Observable<Package> {
+  async getPackage(@Param('name') name: string): Promise<Package> {
     return this.service.getPackage(name);
   }
 
   @Get('/:name/models')
-  getModels(@Param('name') name: string): Observable<PackageModelToken[]> {
+  async getModels(@Param('name') name: string): Promise<PackageModelToken[]> {
     return this.service.getModels(name);
   }
 
   @Post('/:name/generate')
-  generatePackage(@Param('name') name: string) {
+  async generatePackage(@Param('name') name: string) {
     return this.generator.generate([name]);
   }
 
   @Post('/:name/retype')
-  retypePackage(
+  async retypePackage(
     @Param('name') name: string,
     @Query('newType') newType: 'lib' | 'app' = 'lib'
   ) {
@@ -58,7 +57,7 @@ export class PackagesController {
   }
 
   @Post('/:name/rename')
-  renamePackage(
+  async renamePackage(
     @Param('name') name: string,
     @Query('newName') newName: string
   ) {
@@ -66,15 +65,15 @@ export class PackagesController {
   }
 
   @Post('/:name/models')
-  createModel(@Param('name') name: string, @Body('model') model: string) {
+  async createModel(@Param('name') name: string, @Body('model') model: string) {
     return this.service.createModel(name, model);
   }
 
   @Get('/:name/models/:model')
-  getModel(
+  async getModel(
     @Param('name') name: string,
     @Param('model') model: string
-  ): Observable<PackageModelToken> {
+  ): Promise<PackageModelToken> {
     return this.service.getModel(name, model);
   }
 }

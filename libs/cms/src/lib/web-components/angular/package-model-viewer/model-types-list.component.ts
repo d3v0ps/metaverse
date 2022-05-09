@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'cf-model-types-list',
@@ -36,11 +36,14 @@ import { Component, Input } from '@angular/core';
             <ng-container
               *ngIf="isTypeDefinition(type.value); else propsTemplate"
             >
-              <pre>{{ type.value['type'] }}</pre>
+              <pre (click)="onTypeDefClick(type)">{{ type.value['type'] }}</pre>
             </ng-container>
             <ng-template #propsTemplate>
               <ng-container *ngFor="let prop of type.value | keyvalue">
-                <div cfBlock="type-member">
+                <div
+                  cfBlock="type-member"
+                  (click)="typeClick.emit(prop.value.type)"
+                >
                   <cf-typography type="s">
                     <cf-svg-icon
                       cfElem="icon"
@@ -65,6 +68,10 @@ import { Component, Input } from '@angular/core';
     `
       .type {
         padding-left: 1.5rem;
+        cursor: pointer;
+        :hover {
+          text-decoration: underline;
+        }
         &__icon,
         &__name {
           color: var(--color-syntax-type);
@@ -96,6 +103,7 @@ export class ModelTypesListComponent {
   > = {};
   @Input() showHeader = true;
   @Input() collapsed = false;
+  @Output() typeClick = new EventEmitter<string>();
 
   expandedTypes: Record<string, boolean> = {};
 
@@ -113,5 +121,9 @@ export class ModelTypesListComponent {
     } else {
       this.expandedTypes[type] = true;
     }
+  }
+
+  onTypeDefClick(type: any) {
+    this.typeClick.emit(type.value.type);
   }
 }

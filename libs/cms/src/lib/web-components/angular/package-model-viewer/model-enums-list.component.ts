@@ -59,6 +59,10 @@ import { Component, Input } from '@angular/core';
     `
       .enum {
         padding-left: 1.5rem;
+        cursor: pointer;
+        :hover {
+          text-decoration: underline;
+        }
         &__icon,
         &__name {
           color: var(--color-syntax-enum);
