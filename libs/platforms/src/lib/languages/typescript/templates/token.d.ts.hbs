@@ -1,34 +1,30 @@
+{{importTokens imports}}
 
-{{#each imports}}
-import { {{pascalCase name}} } from '{{path}}';
-{{/each}}
-
-{{#each imports}}
-export { {{pascalCase name}} } from '{{path}}';
-{{/each}}
+{{exportTokens imports}}
 
 {{#each enums}}
-
 export enum {{pascalCase name}} {
-  {{#each properties}}
+{{#each properties}}
   {{name}} = '{{type}}',
-  {{/each}}
+{{/each}}
 }
 
 {{/each}}
-
 {{#each types}}
-
 {{#if isUnion}}
-export type {{pascalCase name}} = {{raw.type}}
+export type {{pascalCase name}} = {{raw.type}};
+
 {{else}}
 export type {{pascalCase name}} = {
-  {{#each properties}}
+{{#each properties}}
+{{#if isRecord}}
+  {{typeRecordToken raw.type}}
+{{ else }}
   {{name}}{{#unless required}}?{{/unless}}: {{type}};
-  {{/each}}
-}
 {{/if}}
-
 {{/each}}
+};
 
+{{/if}}
+{{/each}}
 export type Root ={{#each roots}} {{pascalCase . }}{{#unless @last}} |{{/unless}}{{/each}};

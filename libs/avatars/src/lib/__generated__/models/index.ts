@@ -15,6 +15,7 @@ export type Appearance = {
   _attachments?: any;
 }
 
+
 export type AppearanceInfo = {
   bodyType?: string;
 
@@ -36,10 +37,12 @@ export type AppearanceInfo = {
   _attachments?: any;
 }
 
+
 export type Attributes = {
   base?: any;
   _attachments?: any;
 }
+
 
 export type Avatar = {
   appearance?: Appearance;
@@ -70,10 +73,12 @@ export type Avatar = {
   _attachments?: any;
 }
 
+
 export type Colourable = {
   color?: string;
   _attachments?: any;
 }
+
 
 export type Coordinates = {
   x?: number;
@@ -84,10 +89,12 @@ export type Coordinates = {
   _attachments?: any;
 }
 
+
 export enum Gender {
   Male = 'Male',
   Female = 'Female',
 }
+
 
 export type HandsSlot = {
   bothHands?: string;
@@ -98,6 +105,7 @@ export type HandsSlot = {
   _attachments?: any;
 }
 
+
 export type HandsSlotGroup = {
   slot1?: HandsSlot;
 
@@ -105,12 +113,14 @@ export type HandsSlotGroup = {
   _attachments?: any;
 }
 
+
 export type HeadSlot = {
   headgear?: string;
 
   visor?: string;
   _attachments?: any;
 }
+
 
 export type Identity = {
   archetype?: string;
@@ -147,6 +157,7 @@ export type Identity = {
   _attachments?: any;
 }
 
+
 export type Location = {
   burg?: number;
 
@@ -155,6 +166,7 @@ export type Location = {
   world?: string;
   _attachments?: any;
 }
+
 
 export type Outfit = {
   back?: string;
@@ -175,6 +187,7 @@ export type Outfit = {
   _attachments?: any;
 }
 
+
 export type Profession = {
   color?: string;
 
@@ -190,12 +203,14 @@ export type Profession = {
   _attachments?: any;
 }
 
+
 export type Relationship = {
   avatar?: string;
 
   kind?: RelationshipKind;
   _attachments?: any;
 }
+
 
 export enum RelationshipKind {
   Parent = 'Parent',
@@ -206,6 +221,7 @@ export enum RelationshipKind {
   Partner = 'Partner',
 }
 
+
 export enum SexualOrientation {
   Heterosexual = 'Heterosexual',
   Homosexual = 'Homosexual',
@@ -214,15 +230,18 @@ export enum SexualOrientation {
   Asexual = 'Asexual',
 }
 
+
 export type Shapeable = {
   shape?: string;
   _attachments?: any;
 }
 
+
 export type Stylable = {
   style?: string;
   _attachments?: any;
 }
+
 
 export type TorsoSlot = {
   layer1?: string;
@@ -232,4 +251,5 @@ export type TorsoSlot = {
   layer3?: string;
   _attachments?: any;
 }
+
 

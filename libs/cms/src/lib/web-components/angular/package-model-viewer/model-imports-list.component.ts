@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ImportToken } from '@central-factory/platforms/__generated__/models';
 
 @Component({
   selector: 'cf-model-imports-list',
@@ -7,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       <cf-typography *ngIf="showHeader" type="h3">Imports</cf-typography>
       <div
         cfBlock="import"
-        *ngFor="let import of imports | keyvalue"
+        *ngFor="let import of imports"
         (click)="importClick.emit(import)"
       >
         <cf-typography>
@@ -15,9 +16,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
             cfElem="icon"
             src="assets/icons/codicons/link.svg"
           ></cf-svg-icon>
-          <span cfElem="name">{{ import.key | cfCase }}</span
+          <span cfElem="name">{{ import.name | cfCase }}</span
           >:
-          <span cfElem="value">{{ import.value | json }}</span>
+          <span cfElem="value">{{ import.path | json }}</span>
         </cf-typography>
       </div>
     </div>
@@ -45,7 +46,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   ],
 })
 export class ModelImportsListComponent {
-  @Input() imports: Record<string, string> = {};
-  @Output() importClick = new EventEmitter<{ key: string; value: string }>();
+  @Input() imports: ImportToken[] = [];
+  @Output() importClick = new EventEmitter<ImportToken>();
   @Input() showHeader = true;
 }

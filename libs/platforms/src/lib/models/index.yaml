@@ -1,0 +1,12 @@
+
+imports:
+  package: './package'
+  tokensSchema: './tokens-schema'
+  workspace: './workspace'
+  workspaceProject: './workspace'
+
+roots:
+  - Package
+  - TokensSchema
+  - Workspace
+  - WorkspaceProject

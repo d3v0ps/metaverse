@@ -10,7 +10,12 @@ export enum {{name}} {
 {{/ifEnum}}
 {{#ifObject schema}}
 export type {{name}} = {
-  {{#typeProperty templateProperties}}{{name}}{{#if required}}{{else}}?{{/if}}: {{tsType}};{{/typeProperty}}
+{{#ifRecord .}}
+  [key: {{key}}]: {{value}};
+{{/ifRecord}}
+{{#typeProperty templateProperties}}
+  {{name}}{{#if required}}{{else}}?{{/if}}: {{tsType}};
+{{/typeProperty}}
   _attachments?: any;
 }
 

@@ -14,8 +14,6 @@ export enum AccountType {
   Other = 'Other',
 }
 
-
-
 export type Account = {
   id: string;
   referenceId?: string;
@@ -26,7 +24,6 @@ export type Account = {
   currency?: string;
   createdAt?: Date;
   updatedAt?: Date;
-}
-
+};
 
 export type Root = Account;

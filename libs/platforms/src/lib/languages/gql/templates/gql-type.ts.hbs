@@ -19,10 +19,13 @@ registerEnumType({{name}}, {
 {{#ifObject .}}
 @ObjectType()
 export class {{name}} {
-  {{#gqlProperty templateProperties}}
+{{#ifRecord .}}
+  [key: {{key}}]: {{value}};
+{{/ifRecord}}
+{{#gqlProperty templateProperties}}
   @Field({{#if decoratorType}}(type) => {{decoratorType}}{{/if}})
   {{name}}{{#if required}}!{{else}}?{{/if}}: {{tsType}};
-  {{/gqlProperty}}
+{{/gqlProperty}}
 }
 {{/ifObject}}
 

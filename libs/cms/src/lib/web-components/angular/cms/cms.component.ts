@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
+import { ImportToken } from '@central-factory/platforms/__generated__/models';
 import { WindowComponent } from '@central-factory/web-components/angular/window/window.component';
 import { camel } from 'case';
 import { share } from 'rxjs';
-import { Model, Package, PackagesState } from '../../../states/packages.state';
+import { Package, PackagesState } from '../../../states/packages.state';
 
 @Component({
   selector: 'cf-cms',
@@ -22,7 +23,8 @@ import { Model, Package, PackagesState } from '../../../states/packages.state';
         cfElem="model-editor"
         *ngIf="{
           selectedModel: selectedModel$ | async,
-          selectedPackage: selectedPackage$ | async
+          selectedPackage: selectedPackage$ | async,
+          selectedType: selectedType$ | async
         } as data"
       >
         <ng-container *ngIf="data.selectedPackage && !data.selectedModel">
@@ -32,8 +34,9 @@ import { Model, Package, PackagesState } from '../../../states/packages.state';
           *ngIf="data.selectedModel && data.selectedPackage"
           [model]="data.selectedModel"
           [package]="data.selectedPackage"
+          [type]="data.selectedType || undefined"
           (importClick)="onImportClick($event)"
-          (rootClick)="onRootClick($event)"
+          (rootClick)="onTypeClick($event)"
           (typeClick)="onTypeClick($event)"
         >
         </cf-package-model-viewer>
@@ -80,6 +83,7 @@ export class CMSComponent {
   packages$ = this.packagesState.packages$.pipe(share());
   selectedPackage$ = this.packagesState.selectedPackage$.pipe(share());
   selectedModel$ = this.packagesState.selectedModel$.pipe(share());
+  selectedType$ = this.packagesState.selectedType$.pipe(share());
 
   constructor(private packagesState: PackagesState) {}
 
@@ -96,42 +100,8 @@ export class CMSComponent {
     this.addModelWindow?.show();
   }
 
-  onImportClick({ key, value }: any) {
-    const pkg = this.packagesState.packages$.value.find((pkg) => {
-      const match = pkg.models.some(
-        (model) => model.types && key in model.types
-      );
-      return match;
-    });
-
-    if (!pkg) {
-      return;
-    }
-
-    const model = pkg.models.find(
-      (model) => model.types && key in model.types
-    ) as Model;
-
-    this.packagesState.selectModel(pkg?.name, model.name);
-  }
-
-  onRootClick(value: string) {
-    const pkg = this.packagesState.packages$.value.find((pkg) => {
-      const match = pkg.models.some(
-        (model) => model.types && value in model.types
-      );
-      return match;
-    });
-
-    if (!pkg) {
-      return;
-    }
-
-    const model = pkg.models.find(
-      (model) => model.types && value in model.types
-    ) as Model;
-
-    this.packagesState.selectModel(pkg?.name, model.name);
+  onImportClick(token: ImportToken) {
+    this.onTypeClick(token.name);
   }
 
   onTypeClick(value: string) {
@@ -141,28 +111,11 @@ export class CMSComponent {
       .replace('|', '')
       .split(' ');
 
-    const type = camel(types[0]);
+    const typeName = camel(types[0]);
 
-    if (!type) {
+    if (!typeName) {
       throw new Error(`No type found in ${value}`);
     }
-
-    const pkg = this.packagesState.packages$.value.find((pkg) =>
-      pkg.models.some((model) => model.types && type in model.types)
-    );
-
-    if (!pkg) {
-      throw new Error(`No pkg found for type ${type}`);
-    }
-
-    const model = pkg.models.find(
-      (model) => model.types && type in model.types
-    );
-
-    if (!model) {
-      throw new Error(`No model found for type ${type}`);
-    }
-
-    this.packagesState.selectModel(pkg.name, model.name);
+    this.packagesState.selectType(typeName);
   }
 }

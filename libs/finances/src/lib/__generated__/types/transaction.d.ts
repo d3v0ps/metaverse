@@ -2,7 +2,6 @@
 
 
 
-
 export type Transaction = {
   id: string;
   date: string;
@@ -15,7 +14,6 @@ export type Transaction = {
   origin: string;
   destination: string;
   invoice?: string;
-}
-
+};
 
 export type Root = Transaction;

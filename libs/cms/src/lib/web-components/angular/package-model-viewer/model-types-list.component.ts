@@ -1,4 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
+import { TypeToken } from '@central-factory/platforms/__generated__/models';
 
 @Component({
   selector: 'cf-model-types-list',
@@ -16,34 +25,34 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
         Types
       </cf-typography>
       <ng-container *ngIf="!collapsed">
-        <div cfBlock="type" *ngFor="let type of types | keyvalue">
-          <cf-typography [clickable]="true" (click)="onTypeNameClick(type.key)">
+        <div cfBlock="type" *ngFor="let type of types">
+          <cf-typography
+            [clickable]="true"
+            (click)="onTypeNameClick(type.name)"
+          >
             <cf-svg-icon
               cfElem="visibility-toggle"
               src="assets/icons/mdi/chevron-{{
-                expandedTypes[type.key] ? 'up' : 'down'
+                expandedTypes[type.name] ? 'up' : 'down'
               }}.svg"
             ></cf-svg-icon>
             <cf-svg-icon
               cfElem="icon"
               src="assets/icons/codicons/symbol-class.svg"
             ></cf-svg-icon>
-            <span cfElem="name">
-              {{ type.key | cfCase }}
+            <span cfElem="name" #typeNames>
+              {{ type.name | cfCase }}
             </span>
           </cf-typography>
-          <ng-container *ngIf="expandedTypes[type.key]">
-            <ng-container
-              *ngIf="isTypeDefinition(type.value); else propsTemplate"
-            >
-              <pre (click)="onTypeDefClick(type)">{{ type.value['type'] }}</pre>
+          <ng-container *ngIf="expandedTypes[type.name]">
+            <ng-container *ngIf="type.isUnion; else propsTemplate">
+              <pre (click)="onTypeDefClick(type)">{{
+                type.properties[0].type
+              }}</pre>
             </ng-container>
             <ng-template #propsTemplate>
-              <ng-container *ngFor="let prop of type.value | keyvalue">
-                <div
-                  cfBlock="type-member"
-                  (click)="typeClick.emit(prop.value.type)"
-                >
+              <ng-container *ngFor="let prop of type.properties">
+                <div cfBlock="type-member" (click)="typeClick.emit(prop.type)">
                   <cf-typography type="s">
                     <cf-svg-icon
                       cfElem="icon"
@@ -52,9 +61,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
                   </cf-typography>
                   <cf-typography type="s">
                     <span cfElem="name"
-                      >{{ prop.key }}{{ prop.value.required ? '' : '?' }}</span
+                      >{{ prop.name }}{{ prop.required ? '' : '?' }}</span
                     >:
-                    <span cfElem="value">{{ prop.value.type }}</span>
+                    <span cfElem="value">{{ prop.type }}</span>
                   </cf-typography>
                 </div>
               </ng-container>
@@ -97,15 +106,39 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   ],
 })
 export class ModelTypesListComponent {
-  @Input() types: Record<
-    string,
-    { [key: string]: { type: string; required?: boolean } }
-  > = {};
+  @Input() types: TypeToken[] = [];
+  @Input() set type(value: TypeToken | undefined) {
+    this._type = value;
+
+    if (!value) {
+      return;
+    }
+
+    setTimeout(() => {
+      if (!this.typeNames) {
+        return;
+      }
+      const index = this.types.findIndex((t) => t.name === value.name);
+      const typeName = this.typeNames.get(index);
+      if (typeName) {
+        typeName.nativeElement.scrollIntoView({ behavior: 'smooth' });
+        this.expandedTypes[value.name] = true;
+      }
+    }, 1);
+  }
+  get type(): TypeToken | undefined {
+    return this._type;
+  }
   @Input() showHeader = true;
   @Input() collapsed = false;
+
+  @ViewChildren('typeNames') typeNames?: QueryList<ElementRef>;
+
   @Output() typeClick = new EventEmitter<string>();
 
   expandedTypes: Record<string, boolean> = {};
+
+  private _type?: TypeToken;
 
   isTypeDefinition(data: any) {
     return data.type && Object.keys(data).length === 1;
@@ -123,7 +156,7 @@ export class ModelTypesListComponent {
     }
   }
 
-  onTypeDefClick(type: any) {
-    this.typeClick.emit(type.value.type);
+  onTypeDefClick(type: TypeToken) {
+    this.typeClick.emit(type.raw.type);
   }
 }

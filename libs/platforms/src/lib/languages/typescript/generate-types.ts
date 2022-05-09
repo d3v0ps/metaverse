@@ -1,9 +1,10 @@
 import type { HelperParams } from '@central-factory/platforms/engines/handlebars/helpers';
 import { render } from '@central-factory/platforms/engines/handlebars/render';
 import { Logger } from '@nestjs/common';
-import { ensureDir, rmdir, writeFile } from 'fs-extra';
+import { ensureDir, writeFile } from 'fs-extra';
 import { resolve } from 'path';
 import { AugmentedJSONSchema, JSONSchema } from '../json/types/json-schema';
+import { getNameFromRef } from '../json/utils/get-name-from-ref';
 import { getSchemasFromRoot } from '../json/utils/get-schemas-from-root';
 import { getType } from '../json/utils/get-type';
 
@@ -37,13 +38,29 @@ const typeProperty =
     return propertiesRender.join('\n');
   };
 
+const ifRecord = (schema: AugmentedJSONSchema, { fn }: HelperParams) => {
+  const isRecord =
+    schema.type === 'object' && !schema.templateProperties?.length;
+  const typeRef =
+    typeof schema.additionalProperties === 'object'
+      ? schema.additionalProperties.$ref
+      : undefined;
+
+  if (!isRecord || !typeRef) {
+    return '';
+  }
+
+  const name = getNameFromRef(typeRef);
+
+  return isRecord ? fn({ key: 'string', value: name }) : '';
+};
+
 export const generateTypeScriptTypesFromSchema = async (
   schema: JSONSchema,
   outputFolder: string
 ): Promise<void> => {
   const schemas = getSchemasFromRoot(schema);
 
-  await rmdir(outputFolder, { recursive: true, force: true } as any);
   await ensureDir(outputFolder);
 
   // await Promise.all(
@@ -71,6 +88,7 @@ export const generateTypeScriptTypesFromSchema = async (
     },
     {
       typeProperty: typeProperty(schemas),
+      ifRecord,
     }
   );
 

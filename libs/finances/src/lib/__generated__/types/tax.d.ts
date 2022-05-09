@@ -2,7 +2,6 @@
 
 
 
-
 export type Tax = {
   id: string;
   name: string;
@@ -11,15 +10,13 @@ export type Tax = {
   createdAt: Date;
   updatedAt: Date;
   period: TaxPeriod;
-}
-
+};
 
 export type TaxPeriod = {
   start: Date;
   end: Date;
   payStart: Date;
   payEnd: Date;
-}
-
+};
 
 export type Root = Tax | TaxPeriod;

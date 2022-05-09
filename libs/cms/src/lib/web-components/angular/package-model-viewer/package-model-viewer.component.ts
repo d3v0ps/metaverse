@@ -1,5 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Model, Package } from '../../../states/packages.state';
+import {
+  ImportToken,
+  TokensSchema,
+  TypeToken,
+} from '@central-factory/platforms/__generated__/models';
+import { Package } from '../../../states/packages.state';
 
 @Component({
   selector: 'cf-package-model-viewer',
@@ -37,27 +42,28 @@ import { Model, Package } from '../../../states/packages.state';
         </cf-typography>
       </div>
       <div cfBlock="content">
-        <div cfElem="item" *ngIf="model.imports">
+        <div cfElem="item" *ngIf="model.imports.length">
           <cf-model-imports-list
             [imports]="model.imports"
             (importClick)="importClick.emit($event)"
           ></cf-model-imports-list>
         </div>
 
-        <div cfElem="item" *ngIf="model.roots">
+        <div cfElem="item" *ngIf="model.roots.length">
           <cf-model-roots-list
             [roots]="model.roots"
             (rootClick)="rootClick.emit($event)"
           ></cf-model-roots-list>
         </div>
 
-        <div cfElem="item" *ngIf="model.enums">
+        <div cfElem="item" *ngIf="model.enums.length">
           <cf-model-enums-list [enums]="model.enums"></cf-model-enums-list>
         </div>
 
-        <div cfElem="item" *ngIf="model.types">
+        <div cfElem="item" *ngIf="model.types.length">
           <cf-model-types-list
             [types]="model.types"
+            [type]="type"
             (typeClick)="typeClick.emit($event)"
           ></cf-model-types-list>
         </div>
@@ -86,9 +92,10 @@ import { Model, Package } from '../../../states/packages.state';
 })
 export class PackageModelViewerComponent {
   @Input() package?: Package;
-  @Input() model?: Model;
+  @Input() model?: TokensSchema;
+  @Input() type?: TypeToken;
 
-  @Output() importClick = new EventEmitter<{ key: string; value: string }>();
+  @Output() importClick = new EventEmitter<ImportToken>();
   @Output() rootClick = new EventEmitter<string>();
   @Output() typeClick = new EventEmitter<string>();
 }

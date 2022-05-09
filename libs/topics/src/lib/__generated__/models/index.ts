@@ -6,6 +6,7 @@ export enum Priority {
   High = 'high',
 }
 
+
 export type Topic = {
   applications?: string[];
 
@@ -37,10 +38,12 @@ export type Topic = {
   _attachments?: any;
 }
 
+
 export type Trigger = {
   name?: string;
 
   rules?: any;
   _attachments?: any;
 }
+
 

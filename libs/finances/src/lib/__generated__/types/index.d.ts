@@ -1,4 +1,3 @@
-
 import { Account } from './account';
 import { Balance } from './balance';
 import { Invoice } from './invoice';
@@ -14,7 +13,5 @@ export { Product } from './product';
 export { Tax } from './tax';
 export { Transaction } from './transaction';
 export { Wallet } from './wallet';
-
-
 
 export type Root = Account | Balance | Invoice | Product | Tax | Transaction | Wallet;

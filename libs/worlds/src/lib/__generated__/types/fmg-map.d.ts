@@ -2,7 +2,6 @@
 
 
 
-
 export type FantasyMapGeneratorMap = {
   id: string;
   info: MapInfo;
@@ -12,8 +11,7 @@ export type FantasyMapGeneratorMap = {
   biomes: Biomes;
   notes: MapNote[];
   nameBases: CultureNameBase[];
-}
-
+};
 
 export type MapInfo = {
   version: string;
@@ -22,8 +20,7 @@ export type MapInfo = {
   mapName: string;
   seed: string;
   mapId: number;
-}
-
+};
 
 export type MapSettings = {
   distanceUnit: string;
@@ -51,8 +48,7 @@ export type MapSettings = {
   stylePreset: string;
   rescaleLabels: boolean;
   urbanDensity: number;
-}
-
+};
 
 export type MapOptions = {
   pinNotes: boolean;
@@ -63,8 +59,7 @@ export type MapOptions = {
   era: string;
   eraShort: string;
   military: MilitarySettings[];
-}
-
+};
 
 export type MilitarySettings = {
   icon: string;
@@ -75,8 +70,7 @@ export type MilitarySettings = {
   power: number;
   type: string;
   separate: number;
-}
-
+};
 
 export type MapCoords = {
   latT: number;
@@ -85,8 +79,7 @@ export type MapCoords = {
   lonT: number;
   lonW: number;
   lonE: number;
-}
-
+};
 
 export type MapCells = {
   cells: MapCell[];
@@ -98,8 +91,7 @@ export type MapCells = {
   religions: Religion[];
   rivers: River[];
   markers: MapMarker[];
-}
-
+};
 
 export type MapCell = {
   i: number;
@@ -126,8 +118,7 @@ export type MapCell = {
   state: number;
   religion: number;
   province: number;
-}
-
+};
 
 export type Culture = {
   name: string;
@@ -140,8 +131,7 @@ export type Culture = {
   type?: string;
   expansionism?: number;
   code?: string;
-}
-
+};
 
 export type Burg = {
   cell?: number;
@@ -164,8 +154,7 @@ export type Burg = {
   temple?: number;
   MFCG?: number;
   coaSize?: number;
-}
-
+};
 
 export type State = {
   i: number;
@@ -192,8 +181,7 @@ export type State = {
   pole?: number[];
   alert?: number;
   military?: StateMilitary[];
-}
-
+};
 
 export type CoatOfArms = {
   t1: string;
@@ -201,37 +189,32 @@ export type CoatOfArms = {
   shield: string;
   ordinaries?: CoatOfArmsOrdinary[];
   division?: CoatOfArmsDivision;
-}
-
+};
 
 export type CoatOfArmsCharge = {
   charge: string;
   t: string;
   p: string;
   size: number;
-}
-
+};
 
 export type CoatOfArmsOrdinary = {
   ordinary: string;
   t: string;
   line?: string;
-}
-
+};
 
 export type CoatOfArmsDivision = {
   division: string;
   t: string;
   line: string;
-}
-
+};
 
 export type StateCampaign = {
   name: string;
   start: number;
   end: number;
-}
-
+};
 
 export type StateMilitary = {
   i: number;
@@ -246,8 +229,7 @@ export type StateMilitary = {
   name: string;
   state: number;
   icon: string;
-}
-
+};
 
 export type StateMilitaryUnits = {
   archers?: number;
@@ -255,8 +237,7 @@ export type StateMilitaryUnits = {
   artillery?: number;
   infantry?: number;
   fleet?: number;
-}
-
+};
 
 export type Religion = {
   i: number;
@@ -271,8 +252,7 @@ export type Religion = {
   code?: string;
   expansion?: string;
   expansionism?: number;
-}
-
+};
 
 export type River = {
   i: number;
@@ -288,8 +268,7 @@ export type River = {
   basin: number;
   name: string;
   type: string;
-}
-
+};
 
 export type MapMarker = {
   icon: string;
@@ -301,8 +280,7 @@ export type MapMarker = {
   cell: number;
   i: number;
   dy?: number;
-}
-
+};
 
 export type Biomes = {
   i: number[];
@@ -317,15 +295,13 @@ export type Biomes = {
   area: number[];
   rural: number[];
   urban: number[];
-}
-
+};
 
 export type MapNote = {
   id: string;
   name: string;
   legend: string;
-}
-
+};
 
 export type CultureNameBase = {
   name: string;
@@ -335,7 +311,6 @@ export type CultureNameBase = {
   d: string;
   m: number;
   b: string;
-}
-
+};
 
 export type Root = FantasyMapGeneratorMap | MapInfo | MapSettings | MapOptions | MilitarySettings | MapCoords | MapCells | MapCell | Culture | Burg | State | CoatOfArms | CoatOfArmsCharge | CoatOfArmsOrdinary | CoatOfArmsDivision | StateCampaign | StateMilitary | StateMilitaryUnits | Religion | River | MapMarker | Biomes | MapNote | CultureNameBase;

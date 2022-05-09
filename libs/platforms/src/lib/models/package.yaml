@@ -1,0 +1,19 @@
+
+imports:
+  tokensSchema: './tokens-schema'
+  workspaceProject: './workspace'
+
+types:
+  package:
+    name:
+      type: string
+      required: true
+    models:
+      type: TokensSchema[]
+      required: true
+    project:
+      type: WorkspaceProject
+      required: true
+    readme:
+      type: string
+      required: false

@@ -1,10 +1,20 @@
+import { Logger } from '@nestjs/common';
 import { AugmentedJSONSchema } from '../types/json-schema';
 import { getNameFromRef } from './get-name-from-ref';
+
+const logger = new Logger('Remove JSON Schema Refs');
 
 export const removeRefs = (
   schema: AugmentedJSONSchema,
   definitions: AugmentedJSONSchema[]
 ) => {
+  if (!schema.properties) {
+    logger.warn(
+      `Unable to remove properties for schema ${schema.name} with type ${schema.type}`
+    );
+    return;
+  }
+
   schema.properties = Object.entries(
     schema.properties as {
       [k: string]: AugmentedJSONSchema;

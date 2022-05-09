@@ -1,10 +1,10 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
-import { PackagesGenerator } from './packages.generator';
 import {
   Package,
-  PackageModelToken,
-  PackagesService,
-} from './packages.service';
+  TokensSchema,
+} from '@central-factory/platforms/__generated__/models';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { PackagesGenerator } from './packages.generator';
+import { PackagesService } from './packages.service';
 
 @Controller({
   path: 'packages',
@@ -30,7 +30,9 @@ export class PackagesController {
 
   @Post('/generate')
   async generate(@Query('packages') packages: string[]) {
-    return this.generator.generate(packages);
+    // NOTE: Don't wait for the promise to resolve
+    this.generator.generate(packages);
+    return;
   }
 
   @Get('/:name')
@@ -39,13 +41,15 @@ export class PackagesController {
   }
 
   @Get('/:name/models')
-  async getModels(@Param('name') name: string): Promise<PackageModelToken[]> {
+  async getModels(@Param('name') name: string): Promise<TokensSchema[]> {
     return this.service.getModels(name);
   }
 
   @Post('/:name/generate')
   async generatePackage(@Param('name') name: string) {
-    return this.generator.generate([name]);
+    // NOTE: Don't wait for the promise to resolve
+    this.generator.generate([name]);
+    return;
   }
 
   @Post('/:name/retype')
@@ -73,7 +77,7 @@ export class PackagesController {
   async getModel(
     @Param('name') name: string,
     @Param('model') model: string
-  ): Promise<PackageModelToken> {
+  ): Promise<TokensSchema> {
     return this.service.getModel(name, model);
   }
 }

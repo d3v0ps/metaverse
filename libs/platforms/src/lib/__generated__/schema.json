@@ -1,0 +1,203 @@
+{
+  "$ref": "#/definitions/Root",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "definitions": {
+    "EnumToken": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "properties": {
+          "items": {
+            "$ref": "#/definitions/Prop"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "properties"
+      ],
+      "type": "object"
+    },
+    "ImportToken": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "path"
+      ],
+      "type": "object"
+    },
+    "Package": {
+      "additionalProperties": false,
+      "properties": {
+        "models": {
+          "items": {
+            "$ref": "#/definitions/TokensSchema"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        },
+        "project": {
+          "$ref": "#/definitions/WorkspaceProject"
+        },
+        "readme": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "models",
+        "project"
+      ],
+      "type": "object"
+    },
+    "Prop": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PropItem": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "type": "object"
+    },
+    "Root": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Package"
+        },
+        {
+          "$ref": "#/definitions/TokensSchema"
+        },
+        {
+          "$ref": "#/definitions/Workspace"
+        },
+        {
+          "$ref": "#/definitions/WorkspaceProject"
+        }
+      ]
+    },
+    "TokensSchema": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "enums": {
+          "items": {
+            "$ref": "#/definitions/EnumToken"
+          },
+          "type": "array"
+        },
+        "file": {
+          "type": "string"
+        },
+        "imports": {
+          "items": {
+            "$ref": "#/definitions/ImportToken"
+          },
+          "type": "array"
+        },
+        "name": {
+          "type": "string"
+        },
+        "roots": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "types": {
+          "items": {
+            "$ref": "#/definitions/TypeToken"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "imports",
+        "types",
+        "enums",
+        "roots"
+      ],
+      "type": "object"
+    },
+    "TypeToken": {
+      "additionalProperties": false,
+      "properties": {
+        "isUnion": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "properties": {
+          "items": {
+            "$ref": "#/definitions/Prop"
+          },
+          "type": "array"
+        },
+        "raw": {
+          "$ref": "#/definitions/Typing"
+        }
+      },
+      "required": [
+        "name",
+        "isUnion",
+        "raw",
+        "properties"
+      ],
+      "type": "object"
+    },
+    "Typing": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Prop"
+        },
+        {
+          "$ref": "#/definitions/PropItem"
+        }
+      ]
+    },
+    "Workspace": {
+      "additionalProperties": {
+        "$ref": "#/definitions/WorkspaceProject"
+      },
+      "type": "object"
+    },
+    "WorkspaceProject": {
+      "additionalProperties": false,
+      "properties": {
+        "root": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "title": "platforms"
+}

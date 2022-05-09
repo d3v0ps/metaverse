@@ -1,3 +1,4 @@
+import { augmentTokensSchema } from '@central-factory/platforms/languages/typescript/utils/augment-tokens-schema';
 import { HttpService } from '@nestjs/axios';
 import { Injectable, Logger } from '@nestjs/common';
 import { camel } from 'case';
@@ -14,27 +15,14 @@ import {
 import { extname, resolve } from 'path';
 import { parse as parseYaml } from 'yaml';
 
-export type Workspace = {
-  projects: Record<string, WorkspaceProject>;
-};
+import {
+  Package,
+  TokensSchema,
+  Workspace,
+  WorkspaceProject,
+} from '@central-factory/platforms/__generated__/models';
 
-export type WorkspaceProject = {
-  root: string;
-};
-
-export type Package = {
-  name: string;
-  models: PackageModelToken[];
-  project: WorkspaceProject;
-  readme: string;
-};
-
-export type PackageModelToken = {
-  name: string;
-  file: string;
-};
-
-const logger = new Logger('PackagesGenerator');
+const logger = new Logger('PackagesService');
 
 @Injectable()
 export class PackagesService {
@@ -107,7 +95,7 @@ export class PackagesService {
     return Object.values(this.packages);
   }
 
-  async getModels(packageName: string): Promise<PackageModelToken[]> {
+  async getModels(packageName: string): Promise<TokensSchema[]> {
     const pkg = await this.getPackage(packageName);
 
     return Promise.all(
@@ -115,10 +103,7 @@ export class PackagesService {
     );
   }
 
-  async getModel(
-    packageName: string,
-    name: string
-  ): Promise<PackageModelToken> {
+  async getModel(packageName: string, name: string): Promise<TokensSchema> {
     const pkg = await this.getPackage(packageName);
     return this.getPackageModel(pkg, name);
   }
@@ -164,7 +149,7 @@ export class PackagesService {
 
   private async fetchModels(
     project: WorkspaceProject
-  ): Promise<PackageModelToken[]> {
+  ): Promise<TokensSchema[]> {
     const projectFolder = resolve(process.cwd(), project.root);
     const modelsFolder = resolve(projectFolder, 'src', 'lib', 'models');
 
@@ -190,11 +175,11 @@ export class PackagesService {
 
           const content = await readFile(tokenPath, 'utf8');
 
-          return {
+          return augmentTokensSchema({
+            ...parseYaml(content),
             name: model.replace(extname(model), ''),
             file: model,
-            ...parseYaml(content),
-          };
+          });
         })
       );
     }
@@ -205,7 +190,7 @@ export class PackagesService {
   private async getPackageModel(
     pkg: Package,
     model: string
-  ): Promise<PackageModelToken> {
+  ): Promise<TokensSchema> {
     const hasExtension = model.endsWith('.yaml') || model.endsWith('.yml');
     const tokenPath = resolve(
       process.cwd(),
@@ -220,6 +205,16 @@ export class PackagesService {
 
     const content = await readFile(tokenPath, 'utf8');
 
-    return { name, file: model, ...parseYaml(content) };
+    const augmentedSchema = augmentTokensSchema({
+      name,
+      file: model,
+      ...parseYaml(content),
+    });
+
+    if (name !== 'index') {
+      augmentedSchema.roots = [];
+    }
+
+    return augmentedSchema;
   }
 }

@@ -1,0 +1,64 @@
+
+types:
+  prop:
+    name:
+      type: string
+    type:
+      type: string
+    required:
+      type: boolean
+  propItem:
+    type: Record<string, string>
+  typing:
+    type: Prop | PropItem
+
+  typeToken:
+    name:
+      type: string
+      required: true
+    isUnion:
+      type: boolean
+      required: true
+    raw:
+      type: Typing
+      required: true
+    properties:
+      type: Prop[]
+      required: true
+
+  enumToken:
+    name:
+      type: string
+      required: true
+    properties:
+      type: Prop[]
+      required: true
+
+  importToken:
+    name:
+      type: string
+      required: true
+    path:
+      type: string
+      required: true
+
+  tokensSchema:
+    name:
+      type: string
+      required: true
+    file:
+      type: string
+    description:
+      type: string
+    imports:
+      type: ImportToken[]
+      required: true
+    types:
+      type: TypeToken[]
+      required: true
+    enums:
+      type: EnumToken[]
+      required: true
+    roots:
+      type: string[]
+      required: true

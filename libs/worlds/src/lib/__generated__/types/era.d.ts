@@ -1,8 +1,6 @@
-
 import { MilitarySettings } from './fmg-map';
 
 export { MilitarySettings } from './fmg-map';
-
 
 export enum WorldEventType {
   WAR_DECLARATION = 'WAR_DECLARATION',
@@ -12,7 +10,6 @@ export enum WorldEventType {
   DISEASE = 'DISEASE',
   CIVIL_WAR = 'CIVIL_WAR',
 }
-
 
 export enum EraMapStyle {
   Default = 'default',
@@ -26,8 +23,6 @@ export enum EraMapStyle {
   Monochrome = 'monochrome',
 }
 
-
-
 export type Era = {
   id: string;
   name: string;
@@ -40,8 +35,7 @@ export type Era = {
   military: MilitarySettings[];
   events: WorldEvent[];
   mapStyle?: EraMapStyle;
-}
-
+};
 
 export type WorldEvent = {
   start: number;
@@ -50,7 +44,6 @@ export type WorldEvent = {
   description?: string;
   icon: string;
   type: WorldEventType;
-}
-
+};
 
 export type Root = Era | WorldEvent;

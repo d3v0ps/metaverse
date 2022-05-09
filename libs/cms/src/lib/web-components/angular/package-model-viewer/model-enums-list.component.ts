@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { EnumToken } from '@central-factory/platforms/__generated__/models';
 
 @Component({
   selector: 'cf-model-enums-list',
@@ -16,12 +17,15 @@ import { Component, Input } from '@angular/core';
         Enums
       </cf-typography>
       <ng-container *ngIf="!collapsed">
-        <div cfBlock="enum" *ngFor="let enum of enums | keyvalue">
-          <cf-typography [clickable]="true" (click)="onEnumNameClick(enum.key)">
+        <div cfBlock="enum" *ngFor="let enum of enums">
+          <cf-typography
+            [clickable]="true"
+            (click)="onEnumNameClick(enum.name)"
+          >
             <cf-svg-icon
               cfElem="visibility-toggle"
               src="assets/icons/mdi/chevron-{{
-                expandedEnums[enum.key] ? 'up' : 'down'
+                expandedEnums[enum.name] ? 'up' : 'down'
               }}.svg"
             ></cf-svg-icon>
             <cf-svg-icon
@@ -29,11 +33,11 @@ import { Component, Input } from '@angular/core';
               src="assets/icons/codicons/symbol-class.svg"
             ></cf-svg-icon>
             <span cfElem="name">
-              {{ enum.key | cfCase }}
+              {{ enum.name | cfCase }}
             </span>
           </cf-typography>
-          <ng-container *ngIf="expandedEnums[enum.key]">
-            <ng-container *ngFor="let prop of enum.value | keyvalue">
+          <ng-container *ngIf="expandedEnums[enum.name]">
+            <ng-container *ngFor="let prop of enum.properties">
               <div cfBlock="enum-member">
                 <cf-typography type="s">
                   <cf-svg-icon
@@ -42,10 +46,10 @@ import { Component, Input } from '@angular/core';
                   ></cf-svg-icon>
                 </cf-typography>
                 <cf-typography type="s">
-                  <span cfElem="name">{{ prop.key }}</span
+                  <span cfElem="name">{{ prop.name }}</span
                   >:
                   <span cfElem="value">{{
-                    prop.value | json
+                    prop.type | json
                   }}</span></cf-typography
                 >
               </div>
@@ -88,7 +92,7 @@ import { Component, Input } from '@angular/core';
   ],
 })
 export class ModelEnumsListComponent {
-  @Input() enums: Record<string, any> = {};
+  @Input() enums: EnumToken[] = [];
   @Input() showHeader = true;
   @Input() collapsed = false;
 

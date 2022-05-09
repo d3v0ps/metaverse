@@ -8,8 +8,6 @@ export enum InvoiceState {
   Paid = 'paid',
 }
 
-
-
 export type Invoice = {
   id: string;
   state?: InvoiceState;
@@ -20,8 +18,7 @@ export type Invoice = {
   items?: InvoiceItem[];
   total?: string;
   paidAt?: string;
-}
-
+};
 
 export type InvoiceItem = {
   id?: string;
@@ -32,7 +29,6 @@ export type InvoiceItem = {
   quantity?: number;
   createdAt?: Date;
   updatedAt?: Date;
-}
-
+};
 
 export type Root = Invoice | InvoiceItem;

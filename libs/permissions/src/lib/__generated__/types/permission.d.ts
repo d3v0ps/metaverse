@@ -6,14 +6,11 @@ export enum PermissionKind {
   Collection = 'Collection',
 }
 
-
 export enum PermissionMode {
   Read = 'Read',
   Write = 'Write',
   Delete = 'Delete',
 }
-
-
 
 export type Permission = {
   id: string;
@@ -23,7 +20,6 @@ export type Permission = {
   target: string;
   createdAt?: string;
   updatedAt?: string;
-}
-
+};
 
 export type Root = Permission;

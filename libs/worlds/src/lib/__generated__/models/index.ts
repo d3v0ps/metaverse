@@ -15,6 +15,7 @@ export type AvatarProfession = {
   _attachments?: any;
 }
 
+
 export type Biomes = {
   area: number[];
 
@@ -41,6 +42,7 @@ export type Biomes = {
   urban: number[];
   _attachments?: any;
 }
+
 
 export type Burg = {
   MFCG?: number;
@@ -85,6 +87,7 @@ export type Burg = {
   _attachments?: any;
 }
 
+
 export type CoatOfArms = {
   charges?: CoatOfArmsCharge[];
 
@@ -98,6 +101,7 @@ export type CoatOfArms = {
   _attachments?: any;
 }
 
+
 export type CoatOfArmsCharge = {
   charge: string;
 
@@ -109,6 +113,7 @@ export type CoatOfArmsCharge = {
   _attachments?: any;
 }
 
+
 export type CoatOfArmsDivision = {
   division: string;
 
@@ -118,6 +123,7 @@ export type CoatOfArmsDivision = {
   _attachments?: any;
 }
 
+
 export type CoatOfArmsOrdinary = {
   line?: string;
 
@@ -126,6 +132,7 @@ export type CoatOfArmsOrdinary = {
   t: string;
   _attachments?: any;
 }
+
 
 export type Culture = {
   base: number;
@@ -150,6 +157,7 @@ export type Culture = {
   _attachments?: any;
 }
 
+
 export type CultureNameBase = {
   b: string;
 
@@ -166,6 +174,7 @@ export type CultureNameBase = {
   name: string;
   _attachments?: any;
 }
+
 
 export type Era = {
   color?: string;
@@ -192,6 +201,7 @@ export type Era = {
   _attachments?: any;
 }
 
+
 export enum EraMapStyle {
   Default = 'default',
   Ancient = 'ancient',
@@ -203,6 +213,7 @@ export enum EraMapStyle {
   Cyberpunk = 'cyberpunk',
   Monochrome = 'monochrome',
 }
+
 
 export type FantasyMapGeneratorMap = {
   biomes: Biomes;
@@ -222,6 +233,7 @@ export type FantasyMapGeneratorMap = {
   settings: MapSettings;
   _attachments?: any;
 }
+
 
 export type MapCell = {
   area: number;
@@ -274,6 +286,7 @@ export type MapCell = {
   _attachments?: any;
 }
 
+
 export type MapCells = {
   burgs: Burg[];
 
@@ -295,6 +308,7 @@ export type MapCells = {
   _attachments?: any;
 }
 
+
 export type MapCoords = {
   latN: number;
 
@@ -310,6 +324,7 @@ export type MapCoords = {
   _attachments?: any;
 }
 
+
 export type MapInfo = {
   description: string;
 
@@ -324,6 +339,7 @@ export type MapInfo = {
   version: string;
   _attachments?: any;
 }
+
 
 export type MapMarker = {
   cell: number;
@@ -346,6 +362,7 @@ export type MapMarker = {
   _attachments?: any;
 }
 
+
 export type MapNote = {
   id: string;
 
@@ -354,6 +371,7 @@ export type MapNote = {
   name: string;
   _attachments?: any;
 }
+
 
 export type MapOptions = {
   era: string;
@@ -373,6 +391,7 @@ export type MapOptions = {
   year: number;
   _attachments?: any;
 }
+
 
 export type MapSettings = {
   areaUnit: string;
@@ -427,12 +446,14 @@ export type MapSettings = {
   _attachments?: any;
 }
 
+
 export type Meta = {
   name?: string;
 
   previewUrl?: string;
   _attachments?: any;
 }
+
 
 export type MilitarySettings = {
   crew: number;
@@ -452,6 +473,7 @@ export type MilitarySettings = {
   urban: number;
   _attachments?: any;
 }
+
 
 export type Religion = {
   center?: number;
@@ -479,6 +501,7 @@ export type Religion = {
   type?: string;
   _attachments?: any;
 }
+
 
 export type River = {
   basin: number;
@@ -508,6 +531,7 @@ export type River = {
   widthFactor: number;
   _attachments?: any;
 }
+
 
 export type State = {
   alert?: number;
@@ -560,6 +584,7 @@ export type State = {
   _attachments?: any;
 }
 
+
 export type StateCampaign = {
   end: number;
 
@@ -568,6 +593,7 @@ export type StateCampaign = {
   start: number;
   _attachments?: any;
 }
+
 
 export type StateMilitary = {
   a: number;
@@ -596,6 +622,7 @@ export type StateMilitary = {
   _attachments?: any;
 }
 
+
 export type StateMilitaryUnits = {
   archers?: number;
 
@@ -608,6 +635,7 @@ export type StateMilitaryUnits = {
   infantry?: number;
   _attachments?: any;
 }
+
 
 export type World = {
   archetypes?: any[];
@@ -636,6 +664,7 @@ export type World = {
   _attachments?: any;
 }
 
+
 export type WorldEvent = {
   description?: string;
 
@@ -651,6 +680,7 @@ export type WorldEvent = {
   _attachments?: any;
 }
 
+
 export enum WorldEventType {
   WarDeclaration = 'WAR_DECLARATION',
   MilitaryBattle = 'MILITARY_BATTLE',
@@ -660,11 +690,13 @@ export enum WorldEventType {
   CivilWar = 'CIVIL_WAR',
 }
 
+
 export enum WorldKind {
   Analog = 'analog',
   Digital = 'digital',
   Unknown = 'unknown',
 }
+
 
 export type WorldStats = {
   avatars?: number;
@@ -676,4 +708,5 @@ export type WorldStats = {
   states?: number;
   _attachments?: any;
 }
+
 

@@ -1,0 +1,8 @@
+
+types:
+  workspace:
+    projects:
+      type: Record<string, WorkspaceProject>
+  workspaceProject:
+    root:
+      type: string

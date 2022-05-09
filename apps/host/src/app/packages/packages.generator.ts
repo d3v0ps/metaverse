@@ -5,9 +5,8 @@ import { generateTypescriptTokens } from '@central-factory/platforms/languages/t
 import { generateTypeScriptTypesFromSchema } from '@central-factory/platforms/languages/typescript/generate-types';
 import { parseTypes } from '@central-factory/platforms/languages/typescript/parse-types';
 import { Injectable, Logger } from '@nestjs/common';
-import { outputJSON, pathExists, readdir, readFile } from 'fs-extra';
+import { outputJSON, pathExists, readdir, readFile, rmdir } from 'fs-extra';
 import { extname, resolve } from 'path';
-import { lastValueFrom } from 'rxjs';
 import { parse as parseYaml } from 'yaml';
 import { PackagesService } from './packages.service';
 
@@ -18,7 +17,7 @@ export class PackagesGenerator {
   constructor(private service: PackagesService) {}
 
   async generate(packageNames?: string[]) {
-    const packages = (await lastValueFrom(this.service.getPackages())).filter(
+    const packages = (await this.service.getPackages()).filter(
       (pkg) => !packageNames || packageNames.includes(pkg.name)
     );
 
@@ -38,6 +37,8 @@ export class PackagesGenerator {
         );
         const inputFolder = resolve(libFolder, 'models');
         const output = resolve(libFolder, '__generated__');
+
+        await rmdir(output, { force: true, recursive: true } as any);
 
         const inputFolderExists = await pathExists(inputFolder);
 
@@ -60,7 +61,7 @@ export class PackagesGenerator {
                 const extension = extname(token);
 
                 schema.name = token.replace(extension, '');
-
+                schema.file = input;
                 await generateTypescriptTokens(
                   schema,
                   resolve(output, 'types', token.replace(extension, '.d.ts'))

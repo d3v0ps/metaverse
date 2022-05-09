@@ -1,12 +1,6 @@
+import { Displayable, Indexable, Loadable } from './core';
 
-import { Displayable } from './core';
-import { Indexable } from './core';
-import { Loadable } from './core';
-
-export { Displayable } from './core';
-export { Indexable } from './core';
-export { Loadable } from './core';
-
+export { Displayable, Indexable, Loadable } from './core';
 
 export enum KnowledgeFragmentKind {
   Markdown = 'Markdown',
@@ -16,9 +10,6 @@ export enum KnowledgeFragmentKind {
   RelatedContent = 'RelatedContent',
 }
 
-
-
-export type KnowledgeFragment = Indexable & (Loadable | Displayable)
-
+export type KnowledgeFragment = Indexable & (Loadable | Displayable);
 
 export type Root = KnowledgeFragment;

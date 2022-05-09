@@ -33,6 +33,7 @@ export type Application = {
   _attachments?: any;
 }
 
+
 export type ApplicationAdditionalProperties = {
   author: ApplicationAuthor;
 
@@ -58,6 +59,7 @@ export type ApplicationAdditionalProperties = {
   _attachments?: any;
 }
 
+
 export type ApplicationAuthor = {
   icon?: string;
 
@@ -67,12 +69,14 @@ export type ApplicationAuthor = {
   _attachments?: any;
 }
 
+
 export type ApplicationColor = {
   color?: string;
 
   variation?: ColorVariation;
   _attachments?: any;
 }
+
 
 export type ApplicationIcon = {
   sizes: string;
@@ -83,6 +87,7 @@ export type ApplicationIcon = {
   _attachments?: any;
 }
 
+
 export type ApplicationPermission = {
   kind?: string;
 
@@ -92,6 +97,7 @@ export type ApplicationPermission = {
   _attachments?: any;
 }
 
+
 export enum ApplicationRenderingType {
   Webview = 'Webview',
   Local = 'Local',
@@ -99,6 +105,7 @@ export enum ApplicationRenderingType {
   WebpackModuleFederation = 'WebpackModuleFederation',
   Unknown = 'Unknown',
 }
+
 
 export type ApplicationScreenshot = {
   label: string;
@@ -113,6 +120,7 @@ export type ApplicationScreenshot = {
   _attachments?: any;
 }
 
+
 export type ApplicationShortcut = {
   description?: string;
 
@@ -126,6 +134,7 @@ export type ApplicationShortcut = {
   _attachments?: any;
 }
 
+
 export enum ColorVariation {
   Primary = 'primary',
   Secondary = 'secondary',
@@ -136,4 +145,5 @@ export enum ColorVariation {
   Light = 'light',
   Dark = 'dark',
 }
+
 

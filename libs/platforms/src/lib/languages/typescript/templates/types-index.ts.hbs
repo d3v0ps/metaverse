@@ -3,19 +3,23 @@
 {{#each schemas}}
 {{#ifEnum .}}
 export enum {{name}} {
-  {{#each enum}}
+{{#each enum}}
   {{pascalCase .}} = '{{.}}',
-  {{/each}}
+{{/each}}
 }
 
 {{/ifEnum}}
 {{#ifObject .}}
 export type {{name}} = {
-  {{#typeProperty templateProperties}}
-  {{name}}{{#if required}}{{else}}?{{/if}}: {{tsType}};
-  {{/typeProperty}}
+{{#ifRecord .}}
+  [key: {{key}}]: {{value}};
+{{/ifRecord}}
+{{#typeProperty templateProperties}}
+  {{name}}{{#unless required}}?{{/unless}}: {{tsType}};
+{{/typeProperty}}
   _attachments?: any;
 }
 
 {{/ifObject}}
+
 {{/each}}

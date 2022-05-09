@@ -1,7 +1,10 @@
 import { render } from '@central-factory/platforms/engines/handlebars/render';
 import { Logger } from '@nestjs/common';
+import { pascal } from 'case';
 import { ensureDir, writeFile } from 'fs-extra';
 import { dirname, resolve } from 'path';
+import { ImportToken } from '../../__generated__/models';
+import { augmentTokensSchema } from './utils/augment-tokens-schema';
 
 const logger = new Logger('Generate Typescript Tokens');
 
@@ -25,46 +28,72 @@ export const generateTypescriptTokens = async (
   schema: any,
   outputFolder: string
 ): Promise<void> => {
-  const types = Object.entries(
-    (schema.types as Record<string, Typing>) || {}
-  ).map(([name, properties]) => ({
-    name,
-    isUnion:
-      properties['type'] &&
-      typeof properties['type'] === 'string' &&
-      (properties['type'].includes('|') || properties['type'].includes('&')),
-    raw: properties,
-    properties: Object.entries(properties).map(([name, value]) =>
-      Object.assign(
-        {
-          name,
-        },
-        typeof value === 'string' ? {} : value
-      )
-    ),
-  }));
+  const templateParams = augmentTokensSchema(schema);
 
-  const templateParams = {
-    types,
-    roots: schema.roots || types.map((type) => type.name),
-    imports: schema.imports
-      ? Object.entries(schema.imports).map(([name, path]) => ({ name, path }))
-      : [],
-    enums: schema.enums
-      ? Object.entries(schema.enums).map(([name, properties]) => ({
-          name,
-          properties: Object.entries(properties as any).map(([name, type]) => ({
-            name,
-            type,
-          })),
-        }))
-      : [],
-  };
+  const content = await render(templatePath, templateParams, {
+    importTokens: (imports: ImportToken[]) =>
+      imports
+        .reduce<
+          {
+            path: string;
+            tokens: ImportToken[];
+          }[]
+        >((acc, curr) => {
+          let group = acc.find((item) => item.path === curr.path);
+          if (group) {
+            group.tokens.push(curr);
+          } else {
+            group = { path: curr.path, tokens: [curr] };
+            acc.push(group);
+          }
 
-  const content = await render(templatePath, templateParams);
+          return acc;
+        }, [])
+        .map(
+          (g) =>
+            `import { ${g.tokens
+              .map((t) => pascal(t.name))
+              .join(', ')} } from '${g.path}';`
+        )
+        .join('\n'),
+    exportTokens: (imports: ImportToken[]) =>
+      imports
+        .reduce<
+          {
+            path: string;
+            tokens: ImportToken[];
+          }[]
+        >((acc, curr) => {
+          let group = acc.find((item) => item.path === curr.path);
+          if (group) {
+            group.tokens.push(curr);
+          } else {
+            group = { path: curr.path, tokens: [curr] };
+            acc.push(group);
+          }
+
+          return acc;
+        }, [])
+        .map(
+          (g) =>
+            `export { ${g.tokens
+              .map((t) => pascal(t.name))
+              .join(', ')} } from '${g.path}';`
+        )
+        .join('\n'),
+    typeRecordToken: (type: string) => {
+      const [key, value] = type
+        .replace(/Record<([^>]+)>/, '$1')
+        .split(',')
+        .map((t) => t.trim());
+      return `[key: ${key}]: ${value};`;
+    },
+  });
 
   await ensureDir(dirname(outputFolder));
   await writeFile(outputFolder, content);
 
-  logger.log(`[${schema.name}]: Generated. Total: ${types?.length}`);
+  logger.log(
+    `[${schema.name}]: Generated. Total: ${templateParams.types?.length}`
+  );
 };

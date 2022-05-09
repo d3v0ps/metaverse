@@ -2,7 +2,6 @@
 
 
 
-
 export type AppearanceInfo = {
   skinColor?: string;
   hairColor?: string;
@@ -13,7 +12,6 @@ export type AppearanceInfo = {
   fatPercentage?: number;
   height?: number;
   weight?: number;
-}
-
+};
 
 export type Root = AppearanceInfo;

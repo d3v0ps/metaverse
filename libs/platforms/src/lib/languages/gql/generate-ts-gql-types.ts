@@ -4,6 +4,7 @@ import { Logger } from '@nestjs/common';
 import { ensureDir, writeFile } from 'fs-extra';
 import { dirname, resolve } from 'path';
 import { AugmentedJSONSchema, JSONSchema } from '../json/types/json-schema';
+import { getNameFromRef } from '../json/utils/get-name-from-ref';
 import { getSchemasFromRoot } from '../json/utils/get-schemas-from-root';
 import { getType } from '../json/utils/get-type';
 
@@ -25,6 +26,23 @@ const gqlProperty =
     return propertiesRender.join('\n');
   };
 
+const ifRecord = (schema: AugmentedJSONSchema, { fn }: HelperParams) => {
+  const isRecord =
+    schema.type === 'object' && !schema.templateProperties?.length;
+  const typeRef =
+    typeof schema.additionalProperties === 'object'
+      ? schema.additionalProperties.$ref
+      : undefined;
+
+  if (!isRecord || !typeRef) {
+    return '';
+  }
+
+  const name = getNameFromRef(typeRef);
+
+  return isRecord ? fn({ key: 'string', value: name }) : '';
+};
+
 export const generateTypeScriptGqlTypesFromSchema = async (
   schema: JSONSchema,
   output: string
@@ -38,6 +56,7 @@ export const generateTypeScriptGqlTypesFromSchema = async (
     },
     {
       gqlProperty: gqlProperty(schemas),
+      ifRecord,
     }
   );
 

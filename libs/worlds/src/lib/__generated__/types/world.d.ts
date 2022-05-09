@@ -8,8 +8,6 @@ export enum WorldKind {
   Unknown = 'unknown',
 }
 
-
-
 export type World = {
   id: string;
   meta: Meta;
@@ -23,8 +21,7 @@ export type World = {
   archetypes?: any[];
   avatars?: any[];
   professions?: any[];
-}
-
+};
 
 export type AvatarProfession = {
   id: string;
@@ -33,21 +30,18 @@ export type AvatarProfession = {
   icon?: string;
   color?: string;
   schools?: string[];
-}
-
+};
 
 export type Meta = {
   name?: string;
   previewUrl?: string;
-}
-
+};
 
 export type WorldStats = {
   cultures?: number;
   states?: number;
   burgs?: number;
   avatars?: number;
-}
-
+};
 
 export type Root = World | AvatarProfession | Meta | WorldStats;

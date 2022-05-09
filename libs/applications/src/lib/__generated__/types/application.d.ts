@@ -10,7 +10,6 @@ export enum ApplicationRenderingType {
   Unknown = 'Unknown',
 }
 
-
 export enum ColorVariation {
   Primary = 'primary',
   Secondary = 'secondary',
@@ -22,21 +21,17 @@ export enum ColorVariation {
   Dark = 'dark',
 }
 
-
-
 export type ApplicationIcon = {
   src: string;
   sizes: string;
   type: string;
-}
-
+};
 
 export type ApplicationAuthor = {
   id: string;
   name: string;
   icon?: string;
-}
-
+};
 
 export type ApplicationScreenshot = {
   src: string;
@@ -44,21 +39,18 @@ export type ApplicationScreenshot = {
   type: string;
   platform: string;
   label: string;
-}
-
+};
 
 export type ApplicationPermission = {
   kind?: string;
   mode?: string;
   target?: string;
-}
-
+};
 
 export type ApplicationColor = {
   color?: string;
   variation?: ColorVariation;
-}
-
+};
 
 export type ApplicationAdditionalProperties = {
   originalManifest?: string;
@@ -72,8 +64,7 @@ export type ApplicationAdditionalProperties = {
   defaultShortcut?: string;
   sidebarShortcuts?: string[];
   colors?: ApplicationColor[];
-}
-
+};
 
 export type ApplicationShortcut = {
   name: string;
@@ -81,8 +72,7 @@ export type ApplicationShortcut = {
   icons?: ApplicationIcon[];
   shortName?: string;
   description?: string;
-}
-
+};
 
 export type Application = {
   id: string;
@@ -100,7 +90,6 @@ export type Application = {
   shortcuts?: ApplicationShortcut[];
   createdAt?: string;
   updatedAt?: string;
-}
-
+};
 
 export type Root = ApplicationIcon | ApplicationAuthor | ApplicationScreenshot | ApplicationPermission | ApplicationColor | ApplicationAdditionalProperties | ApplicationShortcut | Application;

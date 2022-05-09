@@ -8,13 +8,10 @@ export enum Priority {
   High = 'high',
 }
 
-
-
 export type Trigger = {
   name?: string;
   rules?: any;
-}
-
+};
 
 export type Topic = {
   id: string;
@@ -31,7 +28,6 @@ export type Topic = {
   media?: any;
   createdAt?: string;
   updatedAt?: string;
-}
-
+};
 
 export type Root = Trigger | Topic;
