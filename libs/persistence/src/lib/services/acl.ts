@@ -10,7 +10,7 @@ import {
   PermissionKind,
   PermissionMode,
 } from '@central-factory/permissions/__generated__/models';
-import { defer, from, map, Observable, throwError } from 'rxjs';
+import { defer, from, map, Observable, of, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -19,10 +19,15 @@ export class ACL {
   private collection?: PermissionCollection;
 
   private isInitialized = false;
+  private mockDataFn?: () => boolean;
 
-  initialize(collection: PermissionCollection) {
+  initialize(collection: PermissionCollection, mockDataFn?: () => boolean) {
     if (this.isInitialized) {
       return;
+    }
+
+    if (mockDataFn) {
+      this.mockDataFn = mockDataFn;
     }
 
     this.collection = collection;
@@ -30,6 +35,9 @@ export class ACL {
   }
 
   requestPermissions(permissions: Permission[]): Observable<boolean> {
+    if (this.mockDataFn) {
+      return of(this.mockDataFn());
+    }
     return defer(() => {
       if (!this.isInitialized || !this.collection) {
         return throwError(
@@ -49,6 +57,10 @@ export class ACL {
     mode: PermissionMode;
     target: string;
   }): Observable<boolean> {
+    if (this.mockDataFn) {
+      return of(this.mockDataFn());
+    }
+
     return defer(() => {
       if (!this.isInitialized || !this.collection) {
         return throwError(

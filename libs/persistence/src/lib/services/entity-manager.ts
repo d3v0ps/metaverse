@@ -54,6 +54,14 @@ export const ENTITY_MANAGER_INITIAL_DATA_TOKEN = new InjectionToken<
   }[]
 >('ENTITY_MANAGER_INITIAL_DATA_TOKEN');
 
+export const ENTITY_MANAGER_ACL_ENABLED_TOKEN = new InjectionToken<boolean>(
+  'ENTITY_MANAGER_ACL_ENABLED_TOKEN',
+  {
+    providedIn: 'root',
+    factory: () => true,
+  }
+);
+
 @Injectable({
   providedIn: 'root',
 })
@@ -72,6 +80,8 @@ export class EntityManager<
 
   constructor(
     private readonly acl: ACL,
+    @Inject(ENTITY_MANAGER_ACL_ENABLED_TOKEN)
+    private readonly aclEnabled: boolean,
     @Inject(ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN)
     private readonly baseCollections: {
       name: string;
@@ -86,9 +96,10 @@ export class EntityManager<
   ) {}
 
   public setupDatabase(name: string, password: string): Observable<void> {
+    const mockAclFn = this.aclEnabled ? undefined : () => true;
     return this.createDatabase(name, password).pipe(
       switchMap((db) => this.addBaseCollections(db)),
-      tap((db) => this.acl.initialize(db.userpermission)),
+      tap((db) => this.acl.initialize(db.userpermission, mockAclFn)),
       switchMap((db) => this.addInitialData(db)),
       tap(() => this.initialize$.next()),
       map(() => undefined)
@@ -202,6 +213,10 @@ export class EntityManager<
                 return from(collection.upsert(doc)).pipe(
                   switchMap(() => {
                     if (data.name !== 'userapplication') {
+                      return of(undefined);
+                    }
+
+                    if (!this.aclEnabled) {
                       return of(undefined);
                     }
 
