@@ -180,7 +180,7 @@ jobs:
         run: npm run postinstall:decorate
 
       - name: Summarize install
-        run: echo ‘### Dependencies Installed! :rocket:’ >> $GITHUB_STEP_SUMMARY
+        run: echo '### Dependencies Installed! :heavy_check_mark:' >> $GITHUB_STEP_SUMMARY
 
       # - name: Build docs
       #   uses: nick-invision/retry@v2
@@ -194,7 +194,7 @@ jobs:
         run: npx nx build portal --base-href=/metaverse/apps/portal/ --c demo
 
       - name: Summarize build
-        run: echo ‘### Portal Built! :rocket:’ >> $GITHUB_STEP_SUMMARY
+        run: echo '### Portal Built! :heavy_check_mark:' >> $GITHUB_STEP_SUMMARY
 
       # - name: Build Metadrones
       #   run: npx nx build metadrones --base-href=/metaverse/apps/metadrones/
@@ -212,11 +212,15 @@ jobs:
           folder: dist/ #
 
       - name: Summarize deploy
-        run: echo ‘### Deployed to Pages! :rocket:’ >> $GITHUB_STEP_SUMMARY
+        run: echo '### Deployed to Pages! :rocket:' >> $GITHUB_STEP_SUMMARY
 
       - name: Send notification to Discord
         uses: sarisia/actions-status-discord@v1
         if: always()
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          title: 'Generate Release: Publish Release'
+          title: 'Release Metaverse'
+          image: https://i.imgur.com/hWLwnVr.png
+          color: 0x9575cd
+          username: Arnold
+          avatar_url: 'https://github.com/central-factory'

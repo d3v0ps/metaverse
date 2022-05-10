@@ -35,6 +35,7 @@ The first stable version (v1.0.0) will be released later this year.
 My priority right now is to improve the user experience, fixing bugs and enabling the data writing layer.
 
 Once this is done, I will start including the features that I consider a priority from the point of view of usability as an application:
+
 * P2P chat rooms with video calling and streaming system.
 * 2D pixel art explorable maps of procedural cities
 * Inventory and equipment. Shopping system.
@@ -46,7 +47,6 @@ Once this is done, I will start including the features that I consider a priorit
 
 I would appreciate any kind of help or support with the project, either through feedback, both bugs and new proposals. Please take the time to explore the web or the code even with all its gaps and feel free to contact me if you have any suggestions. You can find me on GitHub as [D3v0ps](https://github.com/d3v0ps) or contact me directly at my email address: [aitorllj93@gmail.com](mailto:aitorllj93@gmail.com)
 
-
 ---
 
 ## About this Repository
@@ -56,7 +56,6 @@ TypeScript Open Source packages for the Metaverse.
 This code includes The Central Factory's Metaverse Core packages and Community Editions.
 
 Property of [The Central Factory Foundation](https://github.com/central-factory/foundation). [MIT Licensed software](https://github.com/central-factory/metaverse/raw/main/LICENSE)
-
 
 ## Development
 
@@ -75,7 +74,6 @@ nx serve codex
 nx run web-components:build-themes
 ```
 
-
 ## Running storybook
 
 ```sh
@@ -83,19 +81,26 @@ nx run <module>:storybook
 # Example:
 nx run assets:storybook
 ```
+
 ## Running linters & tests
 
 ```sh
 nx run-many --target=lint --all
 ```
 
+## Running CI workflows
+
+```sh
+act -j build -s DISCORD_WEBHOOK=https://discordapp.com/api/webhooks/723456789/abcdefghijklmnopqrstuvwxyz
+```
+
 ## Troubleshooting
 
-### You need to make sure that /mnt/d/Workspace/metaverse/node_modules/electron/dist/chrome-sandbox is owned by root and has mode 4755.
+### You need to make sure that /mnt/d/Workspace/metaverse/node_modules/electron/dist/chrome-sandbox is owned by root and has mode 4755
 
 This is probably because you're running the app from a Windows Subsystem for Linux (WSL) container. The easiest way to fix this is to install the Electron npm package for Windows:
 
-```sh	
+```sh
 # Uninstall the Electron package for Linux
 npm uninstall electron
 # Change npm config platform
