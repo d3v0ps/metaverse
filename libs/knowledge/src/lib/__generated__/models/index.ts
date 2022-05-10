@@ -5,16 +5,14 @@ export type Displayable = {
 
   content: string;
   _attachments?: any;
-}
-
+};
 
 export type Indexable = {
   id?: string;
 
   meta?: Meta;
   _attachments?: any;
-}
-
+};
 
 export type KnowledgeFragment = {
   id?: string;
@@ -27,8 +25,7 @@ export type KnowledgeFragment = {
 
   content: string;
   _attachments?: any;
-}
-
+};
 
 export type KnowledgeSymbol = {
   fragments?: KnowledgeFragment[];
@@ -41,14 +38,12 @@ export type KnowledgeSymbol = {
 
   title?: string;
   _attachments?: any;
-}
-
+};
 
 export type Loadable = {
   src?: string;
   _attachments?: any;
-}
-
+};
 
 export type Meta = {
   cover?: string;
@@ -59,6 +54,5 @@ export type Meta = {
 
   title?: string;
   _attachments?: any;
-}
-
+};
 

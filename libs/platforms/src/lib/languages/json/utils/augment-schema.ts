@@ -1,8 +1,10 @@
+import { JSONSchema4TypeName } from 'json-schema';
 import {
   AugmentedJSONSchema,
   JSONSchema,
   NamedJSONSchema,
 } from '../types/json-schema';
+import { getNameFromRef } from './get-name-from-ref';
 import { getType } from './get-type';
 
 export const parseUnionTypes = (
@@ -53,8 +55,23 @@ export const augmentSchema = (
             ? schema.required?.includes(name)
             : false;
 
+          const isRecord =
+            propSchema.type === 'object' &&
+            (propSchema as any).additionalProperties?.$ref
+              ? true
+              : false;
+
+          const typeName = (
+            isRecord
+              ? getNameFromRef((propSchema as any).additionalProperties?.$ref)
+              : propSchema.type
+          ) as JSONSchema4TypeName;
+
           return {
             ...propSchema,
+            isUnion: isUnion(propSchema),
+            isRecord,
+            type: typeName,
             name,
             required:
               requiredInRoot ||

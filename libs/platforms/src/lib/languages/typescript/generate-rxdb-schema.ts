@@ -31,7 +31,13 @@ const jsonSchema =
     }
     removeRefs(currentSchema, schemas);
     delete currentSchema['templateProperties'];
+    delete currentSchema['typeProperties'];
     delete currentSchema['name'];
+    Object.values(currentSchema.properties).forEach((property: any) => {
+      if (property.$ref || property.allOf || property.anyOf) {
+        delete property['type'];
+      }
+    });
     // currentSchema.definitions = JSON.parse(
     //   JSON.stringify(params.schema.definitions)
     // );

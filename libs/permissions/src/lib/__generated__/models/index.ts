@@ -15,18 +15,15 @@ export type Permission = {
 
   updatedAt?: string;
   _attachments?: any;
-}
-
+};
 
 export enum PermissionKind {
   Collection = 'Collection',
-}
-
+};
 
 export enum PermissionMode {
   Read = 'Read',
   Write = 'Write',
   Delete = 'Delete',
-}
-
+};
 

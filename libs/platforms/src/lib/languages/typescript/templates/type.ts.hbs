@@ -14,7 +14,10 @@ export type {{name}} = {
   [key: {{key}}]: {{value}};
 {{/ifRecord}}
 {{#typeProperty templateProperties}}
-  {{name}}{{#if required}}{{else}}?{{/if}}: {{tsType}};
+   {{name}}{{#if required}}{{else}}?{{/if}}:{{#ifRecord .}} {
+    [key: {{key}}]: {{value}};
+  }{{else}}{{tsType}}
+  {{/ifRecord}};
 {{/typeProperty}}
   _attachments?: any;
 }

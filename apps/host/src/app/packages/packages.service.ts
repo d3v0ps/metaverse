@@ -109,13 +109,15 @@ export class PackagesService {
   }
 
   private async fetchPackages() {
-    const workspace: Workspace = await readJSON(
+    const workspace: any = await readJSON(
       resolve(process.cwd(), 'angular.json')
     );
 
     const packages: Package[] = (
       await Promise.all(
-        Object.entries(workspace.projects).map(async ([name, project]) => {
+        Object.entries(
+          workspace.projects as Record<string, WorkspaceProject>
+        ).map(async ([name, project]) => {
           const projectFolder = resolve(process.cwd(), project.root);
           const isDirectory = (await lstat(projectFolder)).isDirectory();
           const readmePath = resolve(projectFolder, 'README.md');

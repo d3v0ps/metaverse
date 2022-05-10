@@ -13,8 +13,7 @@ export type Appearance = {
 
   nose?: Shapeable;
   _attachments?: any;
-}
-
+};
 
 export type AppearanceInfo = {
   bodyType?: string;
@@ -35,14 +34,12 @@ export type AppearanceInfo = {
 
   weight?: number;
   _attachments?: any;
-}
-
+};
 
 export type Attributes = {
   base?: any;
   _attachments?: any;
-}
-
+};
 
 export type Avatar = {
   appearance?: Appearance;
@@ -71,14 +68,12 @@ export type Avatar = {
 
   updatedAt?: string;
   _attachments?: any;
-}
-
+};
 
 export type Colourable = {
   color?: string;
   _attachments?: any;
-}
-
+};
 
 export type Coordinates = {
   x?: number;
@@ -87,14 +82,12 @@ export type Coordinates = {
 
   z?: number;
   _attachments?: any;
-}
-
+};
 
 export enum Gender {
   Male = 'Male',
   Female = 'Female',
-}
-
+};
 
 export type HandsSlot = {
   bothHands?: string;
@@ -103,24 +96,21 @@ export type HandsSlot = {
 
   rightHand?: string;
   _attachments?: any;
-}
-
+};
 
 export type HandsSlotGroup = {
   slot1?: HandsSlot;
 
   slot2?: HandsSlot;
   _attachments?: any;
-}
-
+};
 
 export type HeadSlot = {
   headgear?: string;
 
   visor?: string;
   _attachments?: any;
-}
-
+};
 
 export type Identity = {
   archetype?: string;
@@ -155,8 +145,7 @@ export type Identity = {
 
   title?: string;
   _attachments?: any;
-}
-
+};
 
 export type Location = {
   burg?: number;
@@ -165,8 +154,7 @@ export type Location = {
 
   world?: string;
   _attachments?: any;
-}
-
+};
 
 export type Outfit = {
   back?: string;
@@ -185,8 +173,7 @@ export type Outfit = {
 
   torso?: TorsoSlot;
   _attachments?: any;
-}
-
+};
 
 export type Profession = {
   color?: string;
@@ -201,16 +188,14 @@ export type Profession = {
 
   schools?: string[];
   _attachments?: any;
-}
-
+};
 
 export type Relationship = {
   avatar?: string;
 
   kind?: RelationshipKind;
   _attachments?: any;
-}
-
+};
 
 export enum RelationshipKind {
   Parent = 'Parent',
@@ -219,8 +204,7 @@ export enum RelationshipKind {
   Spouse = 'Spouse',
   Friend = 'Friend',
   Partner = 'Partner',
-}
-
+};
 
 export enum SexualOrientation {
   Heterosexual = 'Heterosexual',
@@ -228,20 +212,17 @@ export enum SexualOrientation {
   Bisexual = 'Bisexual',
   Pansexual = 'Pansexual',
   Asexual = 'Asexual',
-}
-
+};
 
 export type Shapeable = {
   shape?: string;
   _attachments?: any;
-}
-
+};
 
 export type Stylable = {
   style?: string;
   _attachments?: any;
-}
-
+};
 
 export type TorsoSlot = {
   layer1?: string;
@@ -250,6 +231,5 @@ export type TorsoSlot = {
 
   layer3?: string;
   _attachments?: any;
-}
-
+};
 

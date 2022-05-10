@@ -104,12 +104,37 @@ export class Typing {
 
 @ObjectType()
 export class Workspace {
-  [key: string]: WorkspaceProject;
+  @Field((type) => WorkspaceConfig)
+  config?: WorkspaceConfig;
+}
+
+@ObjectType()
+export class WorkspaceConfig {
+  @Field()
+  projects?: any;
+
+  @Field()
+  version?: string;
 }
 
 @ObjectType()
 export class WorkspaceProject {
   @Field()
+  architect?: any;
+
+  @Field()
+  prefix?: string;
+
+  @Field()
+  projectType?: string;
+
+  @Field()
   root?: string;
+
+  @Field()
+  sourceRoot?: string;
+
+  @Field((type) => [String])
+  tags?: string[];
 }
 

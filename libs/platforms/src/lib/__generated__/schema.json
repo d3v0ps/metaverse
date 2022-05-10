@@ -184,16 +184,50 @@
       ]
     },
     "Workspace": {
-      "additionalProperties": {
-        "$ref": "#/definitions/WorkspaceProject"
+      "additionalProperties": false,
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/WorkspaceConfig"
+        }
+      },
+      "type": "object"
+    },
+    "WorkspaceConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "projects": {
+          "additionalProperties": {
+            "$ref": "#/definitions/WorkspaceProject"
+          },
+          "type": "object"
+        },
+        "version": {
+          "type": "string"
+        }
       },
       "type": "object"
     },
     "WorkspaceProject": {
       "additionalProperties": false,
       "properties": {
+        "architect": {},
+        "prefix": {
+          "type": "string"
+        },
+        "projectType": {
+          "type": "string"
+        },
         "root": {
           "type": "string"
+        },
+        "sourceRoot": {
+          "type": "string"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         }
       },
       "type": "object"

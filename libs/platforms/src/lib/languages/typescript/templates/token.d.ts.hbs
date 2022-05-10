@@ -17,10 +17,16 @@ export type {{pascalCase name}} = {{raw.type}};
 {{else}}
 export type {{pascalCase name}} = {
 {{#each properties}}
-{{#if isRecord}}
+{{#if ../isRecord}}
   {{typeRecordToken raw.type}}
 {{ else }}
+  {{#if isRecord }}
+  {{name}}{{#unless required}}?{{/unless}}: {
+    {{typeRecordToken raw.type}}
+  }
+  {{else}}
   {{name}}{{#unless required}}?{{/unless}}: {{type}};
+  {{/if}}
 {{/if}}
 {{/each}}
 };
