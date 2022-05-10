@@ -48,7 +48,7 @@ export const MaterialDesignIcons: Story = () => ({
       src="assets/icons/mdi/magnify.svg">
     </cf-svg-icon>
     <cf-svg-icon [svgStyle]="{ width: '24px', height: '24px', fill: 'var(--color-base-light-medium)', margin: '0 0.5rem' }"
-      src="assets/icons/mdi/acocount.svg">
+      src="assets/icons/mdi/account.svg">
     </cf-svg-icon>
     <cf-svg-icon [svgStyle]="{ width: '24px', height: '24px', fill: 'var(--color-base-light-medium)', margin: '0 0.5rem' }"
       src="assets/icons/mdi/home.svg">
@@ -57,6 +57,74 @@ export const MaterialDesignIcons: Story = () => ({
       <cf-link [link]="{
         title: 'See all the icons available here',
         sourceUrl: 'https://materialdesignicons.com/'
+      }"></cf-link>
+    </div>
+  `,
+  styles: [
+    `
+      h2 {
+        margin-block-start: 0;
+      }
+      .more-info {
+        margin-top: 1rem;
+        display: flex;
+      }
+    `,
+  ],
+});
+
+export const Codicons: Story = () => ({
+  template: `
+    <h2>
+      <a href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" target="_blank">Codicons</a>
+    </h2>
+    <cf-svg-icon [svgStyle]="{ width: '24px', height: '24px', fill: 'var(--color-base-light-medium)', margin: '0 0.5rem' }"
+      src="assets/icons/codicons/symbol-class.svg">
+    </cf-svg-icon>
+    <cf-svg-icon [svgStyle]="{ width: '24px', height: '24px', fill: 'var(--color-base-light-medium)', margin: '0 0.5rem' }"
+      src="assets/icons/codicons/symbol-ruler.svg">
+    </cf-svg-icon>
+    <cf-svg-icon [svgStyle]="{ width: '24px', height: '24px', fill: 'var(--color-base-light-medium)', margin: '0 0.5rem' }"
+      src="assets/icons/codicons/symbol-misc.svg">
+    </cf-svg-icon>
+    <div class="more-info">
+      <cf-link [link]="{
+        title: 'See all the icons available here',
+        sourceUrl: 'https://microsoft.github.io/vscode-codicons/dist/codicon.html'
+      }"></cf-link>
+    </div>
+  `,
+  styles: [
+    `
+      h2 {
+        margin-block-start: 0;
+      }
+      .more-info {
+        margin-top: 1rem;
+        display: flex;
+      }
+    `,
+  ],
+});
+
+export const FluentIcons: Story = () => ({
+  template: `
+    <h2>
+      <a href="https://github.com/misolori/vscode-fluent-icons" target="_blank">Fluent Icons</a>
+    </h2>
+    <cf-svg-icon [svgStyle]="{ width: '24px', height: '24px', fill: 'var(--color-base-light-medium)', margin: '0 0.5rem' }"
+      src="assets/icons/fluent-icons/symbol-class.svg">
+    </cf-svg-icon>
+    <cf-svg-icon [svgStyle]="{ width: '24px', height: '24px', fill: 'var(--color-base-light-medium)', margin: '0 0.5rem' }"
+      src="assets/icons/fluent-icons/symbol-ruler.svg">
+    </cf-svg-icon>
+    <cf-svg-icon [svgStyle]="{ width: '24px', height: '24px', fill: 'var(--color-base-light-medium)', margin: '0 0.5rem' }"
+      src="assets/icons/fluent-icons/symbol-misc.svg">
+    </cf-svg-icon>
+    <div class="more-info">
+      <cf-link [link]="{
+        title: 'See all the icons available here',
+        sourceUrl: 'https://github.com/misolori/vscode-fluent-icons'
       }"></cf-link>
     </div>
   `,

@@ -18,7 +18,7 @@ import { Package } from '@central-factory/cms/states/packages.state';
               </cf-typography>
               <cf-typography theme="secondary">
                 <cf-svg-icon
-                  src="assets/icons/codicons/{{
+                  src="assets/icons/fluent-icons/{{
                     pkg.project.projectType === 'library'
                       ? 'symbol-method'
                       : 'symbol-structure'
@@ -38,7 +38,7 @@ import { Package } from '@central-factory/cms/states/packages.state';
                     }}.svg"
                   ></cf-svg-icon>
                   <cf-svg-icon
-                    src="assets/icons/codicons/symbol-variable.svg"
+                    src="assets/icons/fluent-icons/symbol-variable.svg"
                   ></cf-svg-icon>
                   Models ({{ pkg.models.length }})
                 </cf-typography>
@@ -63,7 +63,7 @@ import { Package } from '@central-factory/cms/states/packages.state';
                     (click)="modelClick.emit({ pkg, model })"
                   >
                     <cf-svg-icon
-                      src="assets/icons/codicons/symbol-{{
+                      src="assets/icons/fluent-icons/symbol-{{
                         model.name === 'index' ? 'ruler' : 'misc'
                       }}.svg"
                     ></cf-svg-icon>

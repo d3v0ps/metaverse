@@ -30,7 +30,7 @@ import { EnumToken } from '@central-factory/platforms/__generated__/models';
             ></cf-svg-icon>
             <cf-svg-icon
               cfElem="icon"
-              src="assets/icons/codicons/symbol-class.svg"
+              src="assets/icons/fluent-icons/symbol-class.svg"
             ></cf-svg-icon>
             <span cfElem="name">
               {{ enum.name | cfCase }}
@@ -42,7 +42,7 @@ import { EnumToken } from '@central-factory/platforms/__generated__/models';
                 <cf-typography type="s">
                   <cf-svg-icon
                     cfElem="icon"
-                    src="assets/icons/codicons/symbol-enum-member.svg"
+                    src="assets/icons/fluent-icons/symbol-enum-member.svg"
                   ></cf-svg-icon>
                 </cf-typography>
                 <cf-typography type="s">

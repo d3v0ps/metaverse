@@ -179,6 +179,9 @@ jobs:
       - name: Decorate CLI
         run: npm run postinstall:decorate
 
+      - name: Summarize install
+        run: echo ‘### Dependencies Installed! :rocket:’ >> $GITHUB_STEP_SUMMARY
+
       # - name: Build docs
       #   uses: nick-invision/retry@v2
       #   with:
@@ -189,6 +192,9 @@ jobs:
 
       - name: Build Portal
         run: npx nx build portal --base-href=/metaverse/apps/portal/ --c demo
+
+      - name: Summarize build
+        run: echo ‘### Portal Built! :rocket:’ >> $GITHUB_STEP_SUMMARY
 
       # - name: Build Metadrones
       #   run: npx nx build metadrones --base-href=/metaverse/apps/metadrones/
@@ -204,6 +210,9 @@ jobs:
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: dist/ #
+
+      - name: Summarize deploy
+        run: echo ‘### Deployed to Pages! :rocket:’ >> $GITHUB_STEP_SUMMARY
 
       - name: Send notification to Discord
         uses: sarisia/actions-status-discord@v1

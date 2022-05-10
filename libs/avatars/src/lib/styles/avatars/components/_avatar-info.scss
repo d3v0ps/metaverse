@@ -1,6 +1,7 @@
 .avatar-info {
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
   height: 100%;
   overflow: hidden;
   &:hover, &:active {
@@ -33,6 +34,7 @@
     display: flex;
     flex-wrap: wrap;
     overflow: auto;
+    gap: 1rem;
 
     > * {
       flex: 1 1 30%;

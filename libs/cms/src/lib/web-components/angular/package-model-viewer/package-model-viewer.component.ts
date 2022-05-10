@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
-  ImportToken,
-  TokensSchema,
-  TypeToken,
+    ImportToken,
+    TokensSchema,
+    TypeToken
 } from '@central-factory/platforms/__generated__/models';
 import { Package } from '../../../states/packages.state';
 
@@ -17,7 +17,7 @@ import { Package } from '../../../states/packages.state';
           [cfMod]="model.name === 'index' ? 'index' : undefined"
         >
           <cf-svg-icon
-            src="assets/icons/codicons/symbol-{{
+            src="assets/icons/fluent-icons/symbol-{{
               model.name === 'index' ? 'ruler' : 'misc'
             }}.svg"
           ></cf-svg-icon>

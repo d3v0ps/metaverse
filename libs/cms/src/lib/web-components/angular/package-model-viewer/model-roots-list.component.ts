@@ -12,7 +12,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       >
         <cf-typography>
           <cf-svg-icon
-            src="assets/icons/codicons/symbol-class.svg"
+            src="assets/icons/fluent-icons/symbol-class.svg"
           ></cf-svg-icon>
           {{ root | cfCase }}
         </cf-typography>

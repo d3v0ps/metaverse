@@ -1523,6 +1523,11 @@
               },
               {
                 "glob": "**/*",
+                "input": "./node_modules/fluent-icons/src/icons",
+                "output": "./assets/icons/fluent-icons"
+              },
+              {
+                "glob": "**/*",
                 "input": "./libs/web-components/src/assets/fonts/Inter/static",
                 "output": "./assets/fonts"
               },
@@ -1616,6 +1621,11 @@
                   "glob": "**/*",
                   "input": "./node_modules/@vscode/codicons/src/icons",
                   "output": "./assets/icons/codicons"
+                },
+                {
+                  "glob": "**/*",
+                  "input": "./node_modules/fluent-icons/src/icons",
+                  "output": "./assets/icons/fluent-icons"
                 },
                 {
                   "glob": "**/*",

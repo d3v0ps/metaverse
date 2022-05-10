@@ -1,6 +1,6 @@
 {
   "name": "@central-factory/metaverse",
-  "version": "ea-0.0.3",
+  "version": "0.0.3",
   "license": "MIT",
   "author": {
     "name": "Central Factory"
@@ -62,6 +62,7 @@
     "electron-store": "^8.0.1",
     "express-pouchdb": "^4.2.0",
     "fastpriorityqueue": "^0.7.1",
+    "fluent-icons": "github:misolori/vscode-fluent-icons",
     "fs-extra": "^10.0.1",
     "graphql": "^16.3.0",
     "handlebars": "^4.7.7",

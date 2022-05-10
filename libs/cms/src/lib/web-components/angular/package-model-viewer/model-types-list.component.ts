@@ -1,11 +1,11 @@
 import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  Output,
-  QueryList,
-  ViewChildren,
+    Component,
+    ElementRef,
+    EventEmitter,
+    Input,
+    Output,
+    QueryList,
+    ViewChildren
 } from '@angular/core';
 import { TypeToken } from '@central-factory/platforms/__generated__/models';
 
@@ -38,7 +38,7 @@ import { TypeToken } from '@central-factory/platforms/__generated__/models';
             ></cf-svg-icon>
             <cf-svg-icon
               cfElem="icon"
-              src="assets/icons/codicons/symbol-class.svg"
+              src="assets/icons/fluent-icons/symbol-class.svg"
             ></cf-svg-icon>
             <span cfElem="name" #typeNames>
               {{ type.name | cfCase }}
@@ -56,7 +56,7 @@ import { TypeToken } from '@central-factory/platforms/__generated__/models';
                   <cf-typography type="s">
                     <cf-svg-icon
                       cfElem="icon"
-                      src="assets/icons/codicons/symbol-property.svg"
+                      src="assets/icons/fluent-icons/symbol-property.svg"
                     ></cf-svg-icon>
                   </cf-typography>
                   <cf-typography type="s">

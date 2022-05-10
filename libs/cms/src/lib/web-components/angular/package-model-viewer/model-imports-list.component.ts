@@ -14,7 +14,7 @@ import { ImportToken } from '@central-factory/platforms/__generated__/models';
         <cf-typography>
           <cf-svg-icon
             cfElem="icon"
-            src="assets/icons/codicons/link.svg"
+            src="assets/icons/fluent-icons/link.svg"
           ></cf-svg-icon>
           <span cfElem="name">{{ import.name | cfCase }}</span
           >:
