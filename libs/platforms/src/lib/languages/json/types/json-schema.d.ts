@@ -6,4 +6,5 @@ export type NamedJSONSchema = JSONSchema & { name: string };
 
 export type AugmentedJSONSchema = NamedJSONSchema & {
   templateProperties?: AugmentedJSONSchema[];
+  typeProperties?: any[];
 };

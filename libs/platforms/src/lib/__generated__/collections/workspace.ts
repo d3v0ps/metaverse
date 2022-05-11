@@ -10,8 +10,14 @@ export type WorkspaceDocument = RxDocument<WorkspaceDocType>;
 export type WorkspaceCollection = RxCollection<WorkspaceDocument>;
 
 export const workspaceSchema = {
-  "additionalProperties": {
-    "$ref": "#/definitions/WorkspaceProject"
+  "additionalProperties": false,
+  "properties": {
+    "config": {
+      "$ref": "#/definitions/WorkspaceConfig",
+      "items": {
+        "type": "object"
+      }
+    }
   },
   "type": "object"
 }

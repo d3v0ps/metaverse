@@ -12,8 +12,24 @@ export type WorkspaceProjectCollection = RxCollection<WorkspaceProjectDocument>;
 export const workspaceProjectSchema = {
   "additionalProperties": false,
   "properties": {
+    "architect": {},
+    "prefix": {
+      "type": "string"
+    },
+    "projectType": {
+      "type": "string"
+    },
     "root": {
       "type": "string"
+    },
+    "sourceRoot": {
+      "type": "string"
+    },
+    "tags": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
     }
   },
   "type": "object"

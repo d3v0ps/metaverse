@@ -5,16 +5,14 @@ export type EnumToken = {
 
   properties: Prop[];
   _attachments?: any;
-}
-
+};
 
 export type ImportToken = {
   name: string;
 
   path: string;
   _attachments?: any;
-}
-
+};
 
 export type Package = {
   models: TokensSchema[];
@@ -25,8 +23,7 @@ export type Package = {
 
   readme?: string;
   _attachments?: any;
-}
-
+};
 
 export type Prop = {
   name?: string;
@@ -35,13 +32,11 @@ export type Prop = {
 
   type?: string;
   _attachments?: any;
-}
-
+};
 
 export type PropItem = {
   _attachments?: any;
-}
-
+};
 
 export type TokensSchema = {
   description?: string;
@@ -58,8 +53,7 @@ export type TokensSchema = {
 
   types: TypeToken[];
   _attachments?: any;
-}
-
+};
 
 export type TypeToken = {
   isUnion: boolean;
@@ -70,8 +64,7 @@ export type TypeToken = {
 
   raw: Typing;
   _attachments?: any;
-}
-
+};
 
 export type Typing = {
   name?: string;
@@ -80,18 +73,34 @@ export type Typing = {
 
   type?: string;
   _attachments?: any;
-}
-
+};
 
 export type Workspace = {
-  [key: string]: WorkspaceProject;
+  config?: WorkspaceConfig;
   _attachments?: any;
-}
+};
 
+export type WorkspaceConfig = {
+  projects?: {
+    [key: string]: WorkspaceProject;
+  };
+
+  version?: string;
+  _attachments?: any;
+};
 
 export type WorkspaceProject = {
-  root?: string;
-  _attachments?: any;
-}
+  architect?: any;
 
+  prefix?: string;
+
+  projectType?: string;
+
+  root?: string;
+
+  sourceRoot?: string;
+
+  tags?: string[];
+  _attachments?: any;
+};
 
