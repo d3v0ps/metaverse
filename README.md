@@ -1,8 +1,37 @@
+
+<div align="right">
+
+[![d3v0ps - metaverse](https://img.shields.io/static/v1?label=d3v0ps&message=metaverse&color=blue&logo=github)](https://github.com/d3v0ps/metaverse "Go to GitHub repo")
+[![stars - metaverse](https://img.shields.io/github/stars/d3v0ps/metaverse?style=social)](https://github.com/d3v0ps/metaverse)
+[![forks - metaverse](https://img.shields.io/github/forks/d3v0ps/metaverse?style=social)](https://github.com/d3v0ps/metaverse)
+  
+</div>
+
 # The Central Factory's Metaverse
 
 In memory of Aaron Swartz, Antonio Escohotado and so many others who fought for people's freedom.
 
 Metaverse Operating System made for the People.
+
+<div align="center">
+
+[![Make it yours](https://img.shields.io/badge/Fork-Make_it_yours-2ea44f?style=for-the-badge)](https://github.com/d3v0ps/metaverse/generate)
+[![Play - Metaverse Portal](https://img.shields.io/badge/Play-Metaverse_Portal-2ea44f?style=for-the-badge)](https://d3v0ps.github.io/metaverse)
+[![view - Documentation](https://img.shields.io/badge/view-Documentation-blue?style=for-the-badge)](http://aitorllamas.com/metaverse/apps/codex "Go to project documentation")
+</div>
+
+_Repo metadata_
+
+<div align="center">
+  
+[![Deploy Web](https://github.com/d3v0ps/metaverse/workflows/Deploy%20Web/badge.svg)](https://github.com/d3v0ps/metaverse/actions?query=workflow:"Deploy+Web")
+[![GitHub tag](https://img.shields.io/github/tag/d3v0ps/metaverse?include_prereleases=&sort=semver&color=blue)](https://github.com/d3v0ps/metaverse/releases/)
+[![License](https://img.shields.io/badge/License-MIT-blue)](#license)
+[![issues - metaverse](https://img.shields.io/github/issues/d3v0ps/metaverse)](https://github.com/d3v0ps/metaverse/issues)
+</div>
+
+## Gallery
+
 
 ![Analogic Worlds](https://i.imgur.com/yyQP5vJ.png)
 Analogic Worlds
