@@ -1,17 +1,44 @@
 
-<div align="right">
+<table>
+<tr>
+<th align="left">
+<img width="641" height="1">
+<p align="left">
+  <a href="https://github.com/d3v0ps/metaverse" alt="Go to GitHub repo" target="_blank">
+    <img src="https://img.shields.io/static/v1?label=d3v0ps&message=metaverse&color=blue&logo=github" />
+  </a>
+  <a href="https://github.com/d3v0ps/metaverse" alt="Stars" target="_blank">
+    <img src="https://img.shields.io/github/stars/d3v0ps/metaverse?style=social" />
+  </a>
+  <a href="https://github.com/d3v0ps/metaverse" alt="Forks" target="_blank">
+    <img src="https://img.shields.io/github/forks/d3v0ps/metaverse?style=social" />
+  </a>
+</span>
+</th>
+<th align="right">
+<img width="641" height="1">
+<p align="right">
+  <a href="https://discord.gg/rQNdFKQhgq" alt="Follow the Twitter Account" target="_blank">
+    <img src="https://img.shields.io/badge/twitter-%231da1f2.svg?&style=for-the-badge&logo=twitter&logoColor=white" />
+  </a>
+  <a href="https://discord.gg/rQNdFKQhgq" alt="Join the Discord Server" target="_blank">
+    <img src="https://img.shields.io/badge/discord-%237289da.svg?&style=for-the-badge&logo=discord&logoColor=white" />
+  </a>
+</p>
+</th>
+</tr>
+</table>
 
-[![d3v0ps - metaverse](https://img.shields.io/static/v1?label=d3v0ps&message=metaverse&color=blue&logo=github)](https://github.com/d3v0ps/metaverse "Go to GitHub repo")
-[![stars - metaverse](https://img.shields.io/github/stars/d3v0ps/metaverse?style=social)](https://github.com/d3v0ps/metaverse)
-[![forks - metaverse](https://img.shields.io/github/forks/d3v0ps/metaverse?style=social)](https://github.com/d3v0ps/metaverse)
+<div align="center">
   
-</div>
-
 # The Central Factory's Metaverse
 
 In memory of Aaron Swartz, Antonio Escohotado and so many others who fought for people's freedom.
 
-Metaverse Operating System made for the People.
+A Metaverse Operating System made for the People.
+  
+  
+</div>
 
 <div align="center">
 
@@ -19,8 +46,6 @@ Metaverse Operating System made for the People.
 [![Play - Metaverse Portal](https://img.shields.io/badge/Play-Metaverse_Portal-2ea44f?style=for-the-badge)](https://d3v0ps.github.io/metaverse)
 [![view - Documentation](https://img.shields.io/badge/view-Documentation-blue?style=for-the-badge)](http://aitorllamas.com/metaverse/apps/codex "Go to project documentation")
 </div>
-
-_Repo metadata_
 
 <div align="center">
   
@@ -30,20 +55,57 @@ _Repo metadata_
 [![issues - metaverse](https://img.shields.io/github/issues/d3v0ps/metaverse)](https://github.com/d3v0ps/metaverse/issues)
 </div>
 
+<div align="center">
+  
 ## Gallery
+  
+</div>
 
 
-![Analogic Worlds](https://i.imgur.com/yyQP5vJ.png)
-Analogic Worlds
+<table>
+  <tr>
+    <th>
+    <img width="641" height="1">
+    </th>
+    <th>
+    <img width="641" height="1">
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://i.imgur.com/yyQP5vJ.png)" alt="Analogic Worlds" target="_blank">
+        <img src="https://i.imgur.com/yyQP5vJ.png" />
+      </a>
+      <label>Analogic Worlds</label>
+    </span>
+    </td>
+    <td>
+    <p>
+      <a href="https://i.imgur.com/79wKYrN.png)" alt="Digital Worlds" target="_blank">
+        <img src="https://i.imgur.com/79wKYrN.png" />
+      </a>
+      <label>Digital Worlds</label>
+    </p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://i.imgur.com/uUomYKu.png)" alt="Dev Worlds" target="_blank">
+        <img src="https://i.imgur.com/uUomYKu.png" />
+      </a>
+      <label>Dev Mode</label>
+    </td>
+    <td>
+      <a href="https://i.imgur.com/ATOIafx.png)" alt="Integrated DevTools" target="_blank">
+        <img src="https://i.imgur.com/ATOIafx.png" />
+      </a>
+      <label>Integrated DevTools</label>
+    </td>
+  </tr>
+</table>
 
-![Digital Worlds II](https://i.imgur.com/79wKYrN.png)
-Digital Worlds
+  
 
-![Dev Mode](https://i.imgur.com/uUomYKu.png)
-Dev Mode
-
-![Integrated DevTools](https://i.imgur.com/ATOIafx.png)
-Integrated DevTools
 
 ## Early Access Preview 05/2022
 
