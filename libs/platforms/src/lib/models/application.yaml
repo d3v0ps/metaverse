@@ -1,0 +1,22 @@
+
+imports:
+  package: './package'
+  tokensSchema: './tokens-schema'
+  workspace: './workspace'
+
+types:
+  domain:
+    tokens:
+      type: TokensSchema[]
+    i18n:
+      type: Record<string, any>
+      required: true
+  application:
+    package:
+      type: Package
+    workspace:
+      type: Workspace
+    domain:
+      type: Domain
+    readme:
+      type: string

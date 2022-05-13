@@ -1,31 +1,33 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
+  Application,
+  Package,
   TokensSchema,
   TypeToken,
 } from '@central-factory/platforms/__generated__/models';
 import { BehaviorSubject, catchError, of } from 'rxjs';
 
-export type Package = {
-  name: string;
-  readme?: string;
-  models: TokensSchema[];
-};
-
 @Injectable({ providedIn: 'root' })
 export class PackagesState {
+  application$ = new BehaviorSubject<Application | undefined>(undefined);
   packages$ = new BehaviorSubject<Package[]>([]);
   selectedPackage$ = new BehaviorSubject<Package | undefined>(undefined);
   selectedModel$ = new BehaviorSubject<TokensSchema | undefined>(undefined);
   selectedType$ = new BehaviorSubject<TypeToken | undefined>(undefined);
 
-  private baseUrl = `http://localhost:3333/api/packages`;
+  private baseUrl = `http://localhost:3333/api`;
+  private packagesUrl = `${this.baseUrl}/packages`;
 
   constructor(private http: HttpClient) {
     this.http
-      .get(this.baseUrl)
+      .get<Application>(this.baseUrl)
+      .pipe(catchError((error) => of(undefined)))
+      .subscribe((data) => this.application$.next(data));
+    this.http
+      .get<Package[]>(this.packagesUrl)
       .pipe(catchError((error) => of([])))
-      .subscribe((data: any) => this.packages$.next(data));
+      .subscribe((data) => this.packages$.next(data));
   }
 
   selectModel(packageName: string, name: string) {
@@ -38,12 +40,17 @@ export class PackagesState {
     }
 
     this.http
-      .get(`${this.baseUrl}/${packageName}/models/${name}`)
+      .get(`${this.packagesUrl}/${packageName}/models/${name}`)
       .pipe(catchError((error) => of([])))
       .subscribe((data: any) => {
         this.selectPackage(packageName);
         this.selectedModel$.next(data);
       });
+  }
+
+  selectApplication(application: Application) {
+    this.selectedPackage$.next(undefined);
+    this.selectedModel$.next(undefined);
   }
 
   selectPackage(packageName: string) {
@@ -61,8 +68,9 @@ export class PackagesState {
 
   selectType(typeName: string) {
     const pkg = this.packages$.value.find((pkg) =>
-      pkg.models.some(
-        (model) => model.types && model.types.some((t) => t.name === typeName)
+      (pkg as any).models.some(
+        (model: TokensSchema) =>
+          model.types && model.types.some((t) => t.name === typeName)
       )
     );
 
@@ -70,8 +78,9 @@ export class PackagesState {
       throw new Error(`No pkg found for type ${typeName}`);
     }
 
-    const model = pkg.models.find(
-      (model) => model.types && model.types.some((t) => t.name === typeName)
+    const model = (pkg as any).models.find(
+      (model: TokensSchema) =>
+        model.types && model.types.some((t) => t.name === typeName)
     );
 
     if (!model || !model.types) {

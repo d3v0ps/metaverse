@@ -1,19 +1,35 @@
 
-imports:
-  tokensSchema: './tokens-schema'
-  workspaceProject: './workspace'
+
+
 
 types:
   package:
     name:
       type: string
       required: true
-    models:
-      type: TokensSchema[]
-      required: true
-    project:
-      type: WorkspaceProject
-      required: true
+    type:
+      type: string
+    version:
+      type: string
+    license:
+      type: string
+    author:
+      type: Author
+    description:
+      type: string
+    scripts:
+      type: Record<string, string>
+    private:
+      type: boolean
+    dependencies:
+      type: Record<string, string>
+    devDependencies:
+      type: Record<string, string>
+
     readme:
       type: string
-      required: false
+
+
+  author:
+    name:
+      type: string

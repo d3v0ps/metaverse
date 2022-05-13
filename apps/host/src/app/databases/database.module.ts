@@ -1,23 +1,24 @@
+import { FSTreeRepositoryAdapter } from '@central-factory/persistence/adapters/fs-tree.adapter';
+import { TAGS_PROVIDER } from '@central-factory/persistence/data/tags';
+import { FSTreeRepository } from '@central-factory/persistence/repositories/fs-tree.repository';
+import { TAGS_PROVIDER_INJECTION_TOKEN } from '@central-factory/persistence/repository';
 import { Module } from '@nestjs/common';
-import {
-  FSTreeDatabase,
-  ICONS_PROVIDER,
-  MOUNT_PROVIDER,
-  ROOTS_PROVIDER,
-} from './fs-tree.database';
-import { FSTreeRepository } from './fs-tree.repository';
-import { GoogleSearchRepository } from './google-search.repository';
 
 @Module({
   imports: [],
   providers: [
-    FSTreeDatabase,
-    FSTreeRepository,
-    GoogleSearchRepository,
-    ICONS_PROVIDER,
-    MOUNT_PROVIDER,
-    ROOTS_PROVIDER,
+    TAGS_PROVIDER,
+    {
+      provide: FSTreeRepositoryAdapter,
+      useClass: FSTreeRepositoryAdapter,
+      inject: [TAGS_PROVIDER_INJECTION_TOKEN],
+    },
+    {
+      provide: FSTreeRepository,
+      useClass: FSTreeRepository,
+      inject: [FSTreeRepositoryAdapter],
+    },
   ],
-  exports: [FSTreeDatabase, FSTreeRepository, GoogleSearchRepository],
+  exports: [FSTreeRepository, FSTreeRepositoryAdapter],
 })
 export class DatabaseModule {}

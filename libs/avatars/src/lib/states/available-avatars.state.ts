@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { EntityManager } from '@central-factory/persistence/services/entity-manager';
-import { Repository } from '@central-factory/persistence/services/repository';
+import { EntityManager } from '@central-factory/persistence/entity-manager';
+import { Repository } from '@central-factory/persistence/repository';
 import { BehaviorSubject, forkJoin, map, of, switchMap, tap } from 'rxjs';
 import {
   AvatarDocType,
@@ -54,6 +54,12 @@ export class AvailableAvatarsState {
 
                   if (!hasAttachments) {
                     return of(avatar);
+                  }
+
+                  if (!this.userAvatarsRepository?.getAllAttachments) {
+                    throw new Error(
+                      'Repository does not implement attachments'
+                    );
                   }
 
                   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion

@@ -1,13 +1,11 @@
 
 types:
   workspace:
-    config:
-      type: WorkspaceConfig
-  workspaceConfig:
     version:
       type: string
     projects:
       type: Record<string, WorkspaceProject>
+
   workspaceProject:
     projectType:
       type: string

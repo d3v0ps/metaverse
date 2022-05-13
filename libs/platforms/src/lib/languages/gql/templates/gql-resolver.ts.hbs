@@ -1,0 +1,69 @@
+
+
+import { Inject } from '@nestjs/common';
+import { Args, Int, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
+import { {{pascalCase name}}Service } from './{{pascalCase name}}.service';
+import { PubSub, PUB_SUB_PROVIDER } from '@central-factory/platforms/languages/gql/providers/pubsub';
+import { {{pascalCase name}}, Create{{pascalCase name}}Input, Create{{pascalCase name}}Payload } from './{{pascalCase name}}.model';
+import { {{pascalCase name}} } from ''../models/'';
+
+@Resolver((of) => {{pascalCase name}})
+export class {{pascalCase name}}Resolver {
+  constructor(
+    @Inject(PUB_SUB_PROVIDER) private pubSub: PubSub,
+    private service:  {{pascalCase name}}Service
+  ) {}
+
+  @Subscription((returns) =>  AddedMessage<{{pascalCase name}}>)
+  {{pascalCase name}}Added() {
+    return this.service.subscribe('{{pascalCase name}}Added');
+  }
+
+  @Subscription((returns) =>  UpdatedMessage<{{pascalCase name}}>)
+  {{pascalCase name}}Updated() {
+    return this.service.subscribe('{{pascalCase name}}Updated');
+  }
+
+  @Subscription((returns) =>  DeletedMessage<{{pascalCase name}}>)
+  {{pascalCase name}}Deleted() {
+    return this.service.subscribe('{{pascalCase name}}Deleted');
+  }
+
+  @Query((returns) => FoundAllMessage<{{pascalCase name}}>)
+  async findAll{{pascalCase name}}(
+    @Args('payload') payload: FoundAllPayload<{{pascalCase name}}>
+  ): Promise<FoundAllMessage<{{pascalCase name}}>> {
+    return this.service.findAll(payload);
+  }
+
+  @Query((returns) => FoundOneMessage<{{pascalCase name}}>)
+  async findOne{{pascalCase name}}(
+    @Args('payload') payload: FindOnePayload<{{pascalCase name}}>
+  ): Promise<FoundOneMessage<{{pascalCase name}}>> {
+    return this.service.findOne(payload);
+  }
+
+  @Mutation(returns => CreatedMessage<{{pascalCase name}}>)
+  create{{pascalCase name}}(
+
+    @Args('payload') payload: CreatePayload<{{pascalCase name}}>
+  ): CreatePayload<{{pascalCase name}}> {
+    return this.service.create(payload);
+  }
+
+  @Mutation(returns => UpdatedMessage<{{pascalCase name}}>)
+  update{{pascalCase name}}(
+
+    @Args('payload') payload: UpdatePayload<{{pascalCase name}}>
+  ): UpdatePayload<{{pascalCase name}}> {
+    return this.service.update(payload);
+  }
+
+  @Mutation(returns => DeletedMessage<{{pascalCase name}}>)
+  delete{{pascalCase name}}(
+
+    @Args('payload') payload: DeletePayload<{{pascalCase name}}>
+  ): CreatePayload<{{pascalCase name}}> {
+    return this.service.delete(payload);
+  }
+}

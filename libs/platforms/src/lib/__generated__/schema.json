@@ -2,6 +2,45 @@
   "$ref": "#/definitions/Root",
   "$schema": "http://json-schema.org/draft-06/schema#",
   "definitions": {
+    "Application": {
+      "additionalProperties": false,
+      "properties": {
+        "domains": {
+          "$ref": "#/definitions/Domain"
+        },
+        "package": {
+          "$ref": "#/definitions/Package"
+        },
+        "readme": {
+          "type": "string"
+        },
+        "workspace": {
+          "$ref": "#/definitions/Workspace"
+        }
+      },
+      "type": "object"
+    },
+    "Author": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Domain": {
+      "additionalProperties": false,
+      "properties": {
+        "tokens": {
+          "items": {
+            "$ref": "#/definitions/TokensSchema"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "EnumToken": {
       "additionalProperties": false,
       "properties": {
@@ -40,26 +79,48 @@
     "Package": {
       "additionalProperties": false,
       "properties": {
-        "models": {
-          "items": {
-            "$ref": "#/definitions/TokensSchema"
+        "author": {
+          "$ref": "#/definitions/Author"
+        },
+        "dependencies": {
+          "additionalProperties": {
+            "type": "string"
           },
-          "type": "array"
+          "type": "object"
+        },
+        "description": {
+          "type": "string"
+        },
+        "devDependencies": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "license": {
+          "type": "string"
         },
         "name": {
           "type": "string"
         },
-        "project": {
-          "$ref": "#/definitions/WorkspaceProject"
+        "private": {
+          "type": "boolean"
         },
         "readme": {
+          "type": "string"
+        },
+        "scripts": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "version": {
           "type": "string"
         }
       },
       "required": [
-        "name",
-        "models",
-        "project"
+        "name"
       ],
       "type": "object"
     },
@@ -86,6 +147,9 @@
     },
     "Root": {
       "anyOf": [
+        {
+          "$ref": "#/definitions/Application"
+        },
         {
           "$ref": "#/definitions/Package"
         },
@@ -122,6 +186,9 @@
           "type": "array"
         },
         "name": {
+          "type": "string"
+        },
+        "domain": {
           "type": "string"
         },
         "roots": {
@@ -184,15 +251,6 @@
       ]
     },
     "Workspace": {
-      "additionalProperties": false,
-      "properties": {
-        "config": {
-          "$ref": "#/definitions/WorkspaceConfig"
-        }
-      },
-      "type": "object"
-    },
-    "WorkspaceConfig": {
       "additionalProperties": false,
       "properties": {
         "projects": {

@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {
   ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
   ENTITY_MANAGER_INITIAL_DATA_TOKEN,
-} from '@central-factory/persistence/services/entity-manager';
+} from '@central-factory/persistence/entity-manager';
 import { BADGE } from '@geometricpanda/storybook-addon-badges';
 import { Meta, moduleMetadata, Story } from '@storybook/angular';
 import { SvgIconModule } from '../svg-icon/svg-icon.module';

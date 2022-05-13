@@ -1,15 +1,34 @@
 import { Component, ViewChild } from '@angular/core';
-import { ImportToken } from '@central-factory/platforms/__generated__/models';
+import {
+  ImportToken,
+  Package,
+} from '@central-factory/platforms/__generated__/models';
 import { WindowComponent } from '@central-factory/web-components/angular/window/window.component';
 import { camel } from 'case';
 import { share } from 'rxjs';
-import { Package, PackagesState } from '../../../states/packages.state';
+import { PackagesState } from '../../../states/packages.state';
 
 @Component({
   selector: 'cf-cms',
   template: `
-    <div cfBlock="cms">
+    <div cfBlock="cms" *ngIf="application$ | async as application">
       <div cfElem="packages-list">
+        <cf-typography
+          style="h5"
+          [clickable]="true"
+          (click)="onApplicationClick()"
+        >
+          <cf-svg-icon src="assets/icons/codicons/repo.svg"></cf-svg-icon>
+          {{ application.package?.name }}
+        </cf-typography>
+
+        <div>
+          <cf-button text="Terraform" icon="assets/icons/mdi/plus.svg">
+          </cf-button>
+          <cf-button text="Avatars Directory" icon="assets/icons/mdi/plus.svg">
+          </cf-button>
+        </div>
+
         <cf-packages-list
           *ngIf="packages$ | async as packages"
           [packages]="packages"
@@ -27,6 +46,9 @@ import { Package, PackagesState } from '../../../states/packages.state';
           selectedType: selectedType$ | async
         } as data"
       >
+        <ng-container *ngIf="!data.selectedPackage && application">
+          <cf-markdown [content]="application.readme"></cf-markdown>
+        </ng-container>
         <ng-container *ngIf="data.selectedPackage && !data.selectedModel">
           <cf-markdown [content]="data.selectedPackage.readme"></cf-markdown>
         </ng-container>
@@ -80,12 +102,21 @@ export class CMSComponent {
   @ViewChild('addModelWindow', { static: true })
   addModelWindow?: WindowComponent;
 
+  application$ = this.packagesState.application$.pipe(share());
   packages$ = this.packagesState.packages$.pipe(share());
   selectedPackage$ = this.packagesState.selectedPackage$.pipe(share());
   selectedModel$ = this.packagesState.selectedModel$.pipe(share());
   selectedType$ = this.packagesState.selectedType$.pipe(share());
 
   constructor(private packagesState: PackagesState) {}
+
+  onApplicationClick() {
+    const application = this.packagesState.application$.value;
+
+    if (application) {
+      this.packagesState.selectApplication(application);
+    }
+  }
 
   onPackageClick(pkg: Package) {
     this.packagesState.selectPackage(pkg.name);

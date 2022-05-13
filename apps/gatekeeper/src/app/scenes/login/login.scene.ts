@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EntityManager } from '@central-factory/persistence/services/entity-manager';
+import { EntityManager } from '@central-factory/persistence/entity-manager';
 import { catchError, tap, throwError } from 'rxjs';
 
 export type LoginForm = {

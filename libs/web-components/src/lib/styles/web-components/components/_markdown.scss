@@ -19,6 +19,24 @@
 
       .h1 {
         margin: .5rem 0 !important;
+        font-size: var(--size-font-h2);
+        line-height: var(--size-font-h2);
+      }
+      .h2 {
+        font-size: var(--size-font-h3);
+        line-height: var(--size-font-h3);
+      }
+      .h3 {
+        font-size: var(--size-font-h4);
+        line-height: var(--size-font-h4);
+      }
+      .h4 {
+        font-size: var(--size-font-h5);
+        line-height: var(--size-font-h5);
+      }
+      .paragraph {
+        font-size: var(--size-font-s);
+        line-height: var(--size-font-s);
       }
     }
   }

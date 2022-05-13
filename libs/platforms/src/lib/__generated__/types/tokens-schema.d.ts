@@ -1,11 +1,18 @@
-
-
-
+export enum SymbolType {
+  Array = 'array',
+  Primitive = 'primitive',
+  Record = 'record',
+  Scalar = 'scalar',
+  Type = 'type',
+  Union = 'union',
+}
 
 export type Prop = {
   name?: string;
-  type?: string;
+  raw?: Typing;
   required?: boolean;
+  symbol: SymbolType;
+  type?: string;
 };
 
 export type PropItem = {
@@ -16,9 +23,9 @@ export type Typing = Prop | PropItem;
 
 export type TypeToken = {
   name: string;
-  isUnion: boolean;
-  raw: Typing;
   properties: Prop[];
+  raw: Typing;
+  symbol: SymbolType;
 };
 
 export type EnumToken = {
@@ -31,8 +38,19 @@ export type ImportToken = {
   path: string;
 };
 
+export enum RecommendationState {
+  workingDraft = 'workingDraft',
+  candidateRecommendation = 'candidateRecommendation',
+  proposedRecommendation = 'proposedRecommendation',
+  recommendation = 'recommendation',
+  stable = 'stable',
+  deprecated = 'deprecated',
+}
+
 export type TokensSchema = {
   name: string;
+  symbol: SymbolType;
+  state: RecommendationState;
   file?: string;
   description?: string;
   imports: ImportToken[];
@@ -41,4 +59,11 @@ export type TokensSchema = {
   roots: string[];
 };
 
-export type Root = Prop | PropItem | Typing | TypeToken | EnumToken | ImportToken | TokensSchema;
+export type Root =
+  | Prop
+  | PropItem
+  | Typing
+  | TypeToken
+  | EnumToken
+  | ImportToken
+  | TokensSchema;

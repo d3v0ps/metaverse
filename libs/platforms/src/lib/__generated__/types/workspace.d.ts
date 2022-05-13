@@ -3,10 +3,6 @@
 
 
 export type Workspace = {
-  config?: WorkspaceConfig;
-};
-
-export type WorkspaceConfig = {
   version?: string;
   projects?: {
     [key: string]: WorkspaceProject;
@@ -22,4 +18,4 @@ export type WorkspaceProject = {
   tags?: string[];
 };
 
-export type Root = Workspace | WorkspaceConfig | WorkspaceProject;
+export type Root = Workspace | WorkspaceProject;

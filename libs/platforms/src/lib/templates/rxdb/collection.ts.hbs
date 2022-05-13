@@ -1,0 +1,72 @@
+{{#select .}}
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Provider } from '@angular/core';
+import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/entity-manager';
+import { RxDocument, RxCollection, RxJsonSchema } from 'rxdb';
+import { {{schema.name}} } from '../types';
+
+{{#ifObject schema}}
+export type {{name}}DocType = {{name}};
+export type {{name}}Document = RxDocument<{{name}}DocType>;
+export type {{name}}Collection = RxCollection<{{name}}Document>;
+
+export const {{camelCase name}}Schema = {{#jsonSchema .}}{{/jsonSchema}}
+
+export const {{camelCase name}}RxSchema: RxJsonSchema<
+  Omit<{{name}}DocType, '_attachments'>
+> = {
+  ...{{camelCase name}}Schema as any,
+  title: '{{pascalCase name}}',
+  description: '{{titleCase name}}',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const user{{pascalCase name}}RxSchema: RxJsonSchema<
+  Omit<{{name}}DocType, '_attachments'>
+> = {
+  ...{{camelCase name}}Schema as any,
+  title: 'User {{pascalCase name}}',
+  description: 'User {{titleCase name}}',
+  version: 0,
+  keyCompression: true,
+  primaryKey: 'id',
+  type: 'object',
+  attachments: {
+    encrypted: false,
+  },
+};
+
+export const {{constantCase name}}_COLLECTION_NAME = '{{kebabCase name}}';
+
+export const {{constantCase name}}_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: {{constantCase name}}_COLLECTION_NAME,
+    creator: {
+      schema: {{camelCase name}}RxSchema,
+    },
+  },
+  multi: true,
+};
+
+export const USER_{{constantCase name}}_COLLECTION_NAME = 'user{{kebabCase name}}';
+
+export const USER_{{constantCase name}}_COLLECTION_PROVIDER: Provider = {
+  provide: ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN,
+  useValue: {
+    name: USER_{{constantCase name}}_COLLECTION_NAME,
+    creator: {
+      schema: user{{pascalCase name}}RxSchema,
+    },
+  },
+  multi: true,
+};
+{{/ifObject}}
+{{/select}}

@@ -1,17 +1,23 @@
-import { Module } from '@nestjs/common';
-import { DatabaseModule } from '../databases/database.module';
+import { GoogleSearchRepository } from '@central-factory/persistence/repositories/google-search.repository';
+import { CacheModule, Module } from '@nestjs/common';
 import { MarkdownKnowledgeFragmentsDatabase } from '../knowledge-fragments/markdown-knowledge-fragments.database';
 import { MarkdownKnowledgeFragmentsRepository } from '../knowledge-fragments/markdown-knowledge-fragments.repository';
 import { DocumentsController } from './documents.controller';
+import {
+  documentsProviders,
+  GOOGLE_SEARCH_REPOSITORY,
+} from './documents.providers';
 import { DocumentsResolver } from './documents.resolver';
-import { DocumentsService } from './documents.service';
 import { DocumentTreeResolver } from './tree.resolver';
-
 @Module({
-  imports: [DatabaseModule],
+  imports: [CacheModule.register()],
   controllers: [DocumentsController],
   providers: [
-    DocumentsService,
+    ...documentsProviders,
+    {
+      provide: GoogleSearchRepository,
+      useExisting: GOOGLE_SEARCH_REPOSITORY,
+    },
     MarkdownKnowledgeFragmentsDatabase,
     MarkdownKnowledgeFragmentsRepository,
     DocumentsResolver,

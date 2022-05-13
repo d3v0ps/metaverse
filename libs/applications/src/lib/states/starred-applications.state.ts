@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { EntityManager } from '@central-factory/persistence/services/entity-manager';
-import { Repository } from '@central-factory/persistence/services/repository';
+import { EntityManager } from '@central-factory/persistence/entity-manager';
+import { Repository } from '@central-factory/persistence/repository';
 import { forkJoin } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { StoreApplicationDocType } from '../collections/store-applications.collection';
-import { UserApplicationDocType } from '../collections/user-applications.collection';
+import { ApplicationDocType } from '../__generated__/collections';
 import {
   APPLICATION_COLLECTION_NAME,
   USER_APPLICATION_COLLECTION_NAME,
@@ -34,8 +33,8 @@ export class StarredApplicationsState {
     })
   );
 
-  private userApplicationsRepository?: Repository<UserApplicationDocType>;
-  private storeApplicationsRepository?: Repository<StoreApplicationDocType>;
+  private userApplicationsRepository?: Repository<ApplicationDocType>;
+  private storeApplicationsRepository?: Repository<ApplicationDocType>;
 
   constructor(
     private entityManager: EntityManager,
@@ -45,11 +44,11 @@ export class StarredApplicationsState {
       .pipe(
         switchMap(() =>
           forkJoin([
-            this.entityManager.getRepository<UserApplicationDocType>(
+            this.entityManager.getRepository<ApplicationDocType>(
               USER_APPLICATION_COLLECTION_NAME,
               'com.central-factory.portals'
             ),
-            this.entityManager.getRepository<StoreApplicationDocType>(
+            this.entityManager.getRepository<ApplicationDocType>(
               APPLICATION_COLLECTION_NAME,
               'com.central-factory.portals'
             ),

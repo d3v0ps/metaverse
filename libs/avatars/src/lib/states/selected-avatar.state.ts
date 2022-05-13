@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { EntityManager } from '@central-factory/persistence/services/entity-manager';
-import { Repository } from '@central-factory/persistence/services/repository';
+import { EntityManager } from '@central-factory/persistence/entity-manager';
+import { Repository } from '@central-factory/persistence/repository';
 import type { UserPreferenceDocType } from '@central-factory/preferences/collections/user-preferences.collection';
 import {
   BehaviorSubject,
@@ -152,39 +152,48 @@ export class SelectedAvatarState {
                 return of(avatar);
               }
 
+              if (
+                !this.userAvatarsRepository ||
+                !this.userAvatarsRepository.getAllAttachments
+              ) {
+                throw new Error('Repositories not initialized');
+              }
+
               // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-              return this.userAvatarsRepository!.getAllAttachments(
-                avatar.id
-              ).pipe(
-                map((attachments) => {
-                  avatar.appearances?.forEach((appearance) => {
-                    const portraitAttachment = attachments.find(
-                      (attachment) =>
-                        attachment.id === appearance.variations?.portrait.id
-                    );
-
-                    if (portraitAttachment && appearance.variations?.portrait) {
-                      appearance.variations.portrait.src = URL.createObjectURL(
-                        portraitAttachment.data as Blob
+              return this.userAvatarsRepository
+                .getAllAttachments(avatar.id)
+                .pipe(
+                  map((attachments) => {
+                    avatar.appearances?.forEach((appearance) => {
+                      const portraitAttachment = attachments.find(
+                        (attachment) =>
+                          attachment.id === appearance.variations?.portrait.id
                       );
-                    }
 
-                    const modelAttachment = attachments.find(
-                      (attachment) => attachment.id === appearance.id
-                    );
+                      if (
+                        portraitAttachment &&
+                        appearance.variations?.portrait
+                      ) {
+                        appearance.variations.portrait.src =
+                          URL.createObjectURL(portraitAttachment.data as Blob);
+                      }
 
-                    if (modelAttachment) {
-                      appearance.src = URL.createObjectURL(
-                        modelAttachment.data as Blob
+                      const modelAttachment = attachments.find(
+                        (attachment) => attachment.id === appearance.id
                       );
-                    }
-                  });
 
-                  avatar.selectedOutfit = '0';
+                      if (modelAttachment) {
+                        appearance.src = URL.createObjectURL(
+                          modelAttachment.data as Blob
+                        );
+                      }
+                    });
 
-                  return avatar;
-                })
-              );
+                    avatar.selectedOutfit = '0';
+
+                    return avatar;
+                  })
+                );
             }),
             tap((selectedAvatar) => this.avatar$.next(selectedAvatar as Avatar))
           )

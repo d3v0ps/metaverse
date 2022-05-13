@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core';
-import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
+import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/entity-manager';
 import { Asset } from '../../models/asset';
 import { equipmentsMocks } from '../storybook/equipments';
 

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Provider } from '@angular/core';
-import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/services/entity-manager';
-import { RxDocument, RxCollection, RxJsonSchema } from 'rxdb';
+import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/entity-manager';
+import { RxCollection, RxDocument, RxJsonSchema } from 'rxdb';
 import { Workspace } from '../types';
 
 export type WorkspaceDocType = Workspace;
@@ -10,22 +10,25 @@ export type WorkspaceDocument = RxDocument<WorkspaceDocType>;
 export type WorkspaceCollection = RxCollection<WorkspaceDocument>;
 
 export const workspaceSchema = {
-  "additionalProperties": false,
-  "properties": {
-    "config": {
-      "$ref": "#/definitions/WorkspaceConfig",
-      "items": {
-        "type": "object"
-      }
-    }
+  additionalProperties: false,
+  properties: {
+    projects: {
+      additionalProperties: {
+        $ref: '#/definitions/WorkspaceProject',
+      },
+      type: 'object',
+    },
+    version: {
+      type: 'string',
+    },
   },
-  "type": "object"
-}
+  type: 'object',
+};
 
 export const workspaceRxSchema: RxJsonSchema<
   Omit<WorkspaceDocType, '_attachments'>
 > = {
-  ...workspaceSchema as any,
+  ...(workspaceSchema as any),
   title: 'Workspace',
   description: 'Workspace',
   version: 0,
@@ -40,7 +43,7 @@ export const workspaceRxSchema: RxJsonSchema<
 export const userWorkspaceRxSchema: RxJsonSchema<
   Omit<WorkspaceDocType, '_attachments'>
 > = {
-  ...workspaceSchema as any,
+  ...(workspaceSchema as any),
   title: 'User Workspace',
   description: 'User Workspace',
   version: 0,
@@ -77,4 +80,3 @@ export const USER_WORKSPACE_COLLECTION_PROVIDER: Provider = {
   },
   multi: true,
 };
-

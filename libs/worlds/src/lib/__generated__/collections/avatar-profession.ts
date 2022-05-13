@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Provider } from '@angular/core';
-import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/services/entity-manager';
-import { RxDocument, RxCollection, RxJsonSchema } from 'rxdb';
+import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/entity-manager';
+import { RxCollection, RxDocument, RxJsonSchema } from 'rxdb';
 import { AvatarProfession } from '../types';
 
 export type AvatarProfessionDocType = AvatarProfession;
@@ -10,40 +10,38 @@ export type AvatarProfessionDocument = RxDocument<AvatarProfessionDocType>;
 export type AvatarProfessionCollection = RxCollection<AvatarProfessionDocument>;
 
 export const avatarProfessionSchema = {
-  "additionalProperties": false,
-  "properties": {
-    "color": {
-      "type": "string"
+  additionalProperties: false,
+  properties: {
+    color: {
+      type: 'string',
     },
-    "description": {
-      "type": "string"
+    description: {
+      type: 'string',
     },
-    "icon": {
-      "type": "string"
+    icon: {
+      type: 'string',
     },
-    "id": {
-      "type": "string"
+    id: {
+      type: 'string',
     },
-    "label": {
-      "type": "string"
+    label: {
+      type: 'string',
     },
-    "schools": {
-      "items": {
-        "type": "string"
+    schools: {
+      items: {
+        type: 'string',
       },
-      "type": "array"
-    }
+      type: 'array',
+    },
   },
-  "required": [
-    "id"
-  ],
-  "type": "object"
-}
+  required: ['id'],
+  type: 'object',
+};
 
 export const avatarProfessionRxSchema: RxJsonSchema<
   Omit<AvatarProfessionDocType, '_attachments'>
 > = {
-  ...avatarProfessionSchema as any,
+  ...(avatarProfessionSchema as any),
   title: 'AvatarProfession',
   description: 'Avatar Profession',
   version: 0,
@@ -58,7 +56,7 @@ export const avatarProfessionRxSchema: RxJsonSchema<
 export const userAvatarProfessionRxSchema: RxJsonSchema<
   Omit<AvatarProfessionDocType, '_attachments'>
 > = {
-  ...avatarProfessionSchema as any,
+  ...(avatarProfessionSchema as any),
   title: 'User AvatarProfession',
   description: 'User Avatar Profession',
   version: 0,
@@ -95,4 +93,3 @@ export const USER_AVATAR_PROFESSION_COLLECTION_PROVIDER: Provider = {
   },
   multi: true,
 };
-

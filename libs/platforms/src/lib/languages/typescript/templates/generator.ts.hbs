@@ -1,0 +1,45 @@
+
+import faker from '@faker-js/faker/locale/en_US';
+
+export class {{pascalCase name}}Generator {
+
+  private generators = {
+    ...faker,
+    fromOptions: (opt) => opt,
+  };
+
+  constructor(
+    private lang = 'en_US',
+  ) {
+    import(`@faker-js/faker/locale/${lang}`).then(f => this.generators = {
+      ...f,
+      noop: (opt) => opt,
+    })
+  }
+
+  async generate(preset: Partial<{{pascalCase name}}> = {}, state: any): Promise<{{pascalCase name}}> {
+    const {
+      {{#each properties}}
+      {{name}},
+      {{/each}}
+    } = preset;
+
+    const {{pascalCase name}} = {
+      {{#each properties}}
+      {{name}}: getGenerator('{{#if generator}}{{generator}}{{#else}}datatype.{{type}}{{/if}}')({{#if generatorOptions}}, {{generatorOptions}}{{/if}}),
+      {{/each}}
+      {{/each}}
+    };
+
+    return {{pascalCase name}};
+  }
+
+  private getGenerator = (generatorName: string) => {
+    const path = generatorName.split('.');
+    let generator = this.generators;
+    for (const key of path) {
+      generator = generator[key];
+    }
+    return generator || this.generators.datatype.string;
+  };
+}

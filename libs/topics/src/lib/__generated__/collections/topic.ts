@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Provider } from '@angular/core';
-import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/services/entity-manager';
-import { RxDocument, RxCollection, RxJsonSchema } from 'rxdb';
+import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/entity-manager';
+import { RxCollection, RxDocument, RxJsonSchema } from 'rxdb';
 import { Topic } from '../types';
 
 export type TopicDocType = Topic;
@@ -10,78 +10,68 @@ export type TopicDocument = RxDocument<TopicDocType>;
 export type TopicCollection = RxCollection<TopicDocument>;
 
 export const topicSchema = {
-  "additionalProperties": false,
-  "properties": {
-    "applications": {
-      "items": {
-        "type": "string"
+  additionalProperties: false,
+  properties: {
+    applications: {
+      items: {
+        type: 'string',
       },
-      "type": "array"
+      type: 'array',
     },
-    "background": {
-      "type": "string"
+    background: {
+      type: 'string',
     },
-    "categories": {
-      "items": {
-        "type": "string"
+    categories: {
+      items: {
+        type: 'string',
       },
-      "type": "array"
+      type: 'array',
     },
-    "createdAt": {
-      "type": "string"
+    createdAt: {
+      type: 'string',
     },
-    "description": {
-      "type": "string"
+    description: {
+      type: 'string',
     },
-    "icon": {
-      "type": "string"
+    icon: {
+      type: 'string',
     },
-    "id": {
-      "type": "string"
+    id: {
+      type: 'string',
     },
-    "media": {},
-    "priority": {
-      "type": "string",
-      "enum": [
-        "low",
-        "medium",
-        "high"
-      ]
+    media: {},
+    priority: {
+      type: 'string',
+      enum: ['low', 'medium', 'high'],
     },
-    "shortcuts": {
-      "items": {
-        "type": "string"
+    shortcuts: {
+      items: {
+        type: 'string',
       },
-      "type": "array"
+      type: 'array',
     },
-    "themeColor": {
-      "type": "string"
+    themeColor: {
+      type: 'string',
     },
-    "title": {
-      "type": "string"
+    title: {
+      type: 'string',
     },
-    "triggers": {
-      "items": {
-        "type": "object"
+    triggers: {
+      items: {
+        type: 'object',
       },
-      "type": "array"
+      type: 'array',
     },
-    "updatedAt": {
-      "type": "string"
-    }
+    updatedAt: {
+      type: 'string',
+    },
   },
-  "required": [
-    "id",
-    "priority",
-    "title"
-  ],
-  "type": "object"
-}
+  required: ['id', 'priority', 'title'],
+  type: 'object',
+};
 
-export const topicRxSchema: RxJsonSchema<
-  Omit<TopicDocType, '_attachments'>
-> = {
-  ...topicSchema as any,
+export const topicRxSchema: RxJsonSchema<Omit<TopicDocType, '_attachments'>> = {
+  ...(topicSchema as any),
   title: 'Topic',
   description: 'Topic',
   version: 0,
@@ -96,7 +86,7 @@ export const topicRxSchema: RxJsonSchema<
 export const userTopicRxSchema: RxJsonSchema<
   Omit<TopicDocType, '_attachments'>
 > = {
-  ...topicSchema as any,
+  ...(topicSchema as any),
   title: 'User Topic',
   description: 'User Topic',
   version: 0,
@@ -133,4 +123,3 @@ export const USER_TOPIC_COLLECTION_PROVIDER: Provider = {
   },
   multi: true,
 };
-

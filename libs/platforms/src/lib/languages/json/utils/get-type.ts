@@ -1,95 +1,125 @@
-import { JSONSchema } from '../types/json-schema';
-import { getNameFromRef } from './get-name-from-ref';
+import { pascalCase } from '@central-factory/platforms/engines/handlebars/helpers';
+import { Domain } from '@central-factory/platforms/__generated__/models';
+import {
+  Prop,
+  TypeToken,
+} from '@central-factory/platforms/__generated__/types/tokens-schema';
 
 export const getType = (
-  { name, type, items, $ref, allOf, anyOf }: JSONSchema,
-  definitions: JSONSchema[]
+  { name, type, isArray, isUnion, isRecord }: Prop,
+  domain: Domain
 ): {
   result: string[];
   type: string;
   tsType: string;
   decoratorType?: string;
+  unionType?: string;
+  unionDecoratorType?: string;
 } => {
-  if (anyOf) {
-    return anyOf.reduce(
-      (acc, schema) => {
-        const { type, tsType, decoratorType, result } = getType(
-          schema,
-          definitions
-        );
-
-        return {
-          ...acc,
-          type: acc.type ? [acc.type, type].join(' | ') : type,
-          tsType: acc.tsType ? [acc.tsType, tsType].join(' | ') : tsType,
-          decoratorType,
-          result: acc.result.concat(result),
-        };
-      },
-      { type: '', tsType: '', result: [] as string[] }
-    );
+  if (!type) {
+    return { type: 'any', tsType: 'any', result: ['any'] };
   }
 
-  if (allOf) {
-    return allOf.reduce(
-      (acc, schema) => {
-        const { type, tsType, decoratorType, result } = getType(
-          schema,
-          definitions
-        );
+  if (isUnion) {
+    return (type?.split('|') || [])
+      .map((t) => t.trim())
+      .reduce(
+        (acc, unionType) => {
+          // if (unionType === 'DateTime') {
+          //   unionType = 'Date';
+          // }
+          // if (unionType === 'Time') {
+          //   unionType = 'Number';
+          // }
+          // if (unionType === 'Integer') {
+          //   unionType = 'Number';
+          // }
 
-        return {
-          ...acc,
-          type: acc.type ? [acc.type, type].join(' & ') : type,
-          tsType: acc.tsType ? [acc.tsType, tsType].join(' & ') : tsType,
-          decoratorType,
-          result: acc.result.concat(result),
-        };
-      },
-      { type: '', tsType: '', result: [] as string[] }
-    );
-  }
+          let typeToken = domain.tokens?.reduce<TypeToken | undefined>(
+            (acc, token) =>
+              acc ||
+              (token.types.find((t) => t.name === unionType) as TypeToken),
+            undefined
+          ) as TypeToken;
 
-  switch (type) {
-    case 'number':
-    case 'string':
-    case 'boolean':
-      return { type, tsType: type, result: [type] };
-    case 'array':
-      // eslint-disable-next-line no-case-declarations
-      const itemSchema = Array.isArray(items) ? items[0] : items;
+          if (typeToken.isAlias && !typeToken.isScalar && !typeToken.isUnion) {
+            typeToken = domain.tokens?.reduce<TypeToken | undefined>(
+              (acc, token) =>
+                acc ||
+                (token.types.find(
+                  (t) => t.name === typeToken.raw
+                ) as TypeToken),
+              undefined
+            ) as TypeToken;
+          }
 
-      if (!itemSchema) {
-        throw new Error(`Item Schema for array ${name} is not defined`);
-      }
+          const typeProp = getType({ type: unionType }, domain);
 
-      // eslint-disable-next-line no-case-declarations
-      const { type: itemType, tsType: itemTsType } = getType(
-        itemSchema,
-        definitions
+          return {
+            ...acc,
+            type: acc.type
+              ? [acc.type, typeProp.type].join(' | ')
+              : typeProp.type,
+            tsType: acc.tsType
+              ? [acc.tsType, typeProp.tsType].join(' | ')
+              : typeProp.tsType,
+            decoratorType: `${name}Union`,
+            unionType: `${acc.result
+              .concat(
+                typeToken.isScalar
+                  ? pascalCase(typeToken.name.replace('URL', 'Url') + 'Type')
+                  : typeProp.type
+              )
+              .join('| ')}`,
+            unionDecoratorType: `[${acc.resultDecorator
+              .concat(
+                typeToken.isScalar
+                  ? pascalCase(typeToken.name.replace('URL', 'Url') + 'Scalar')
+                  : typeProp.type
+              )
+              .join(', ')}]`,
+            result: acc.result.concat(
+              typeToken.isScalar
+                ? pascalCase(typeToken.name.replace('URL', 'Url') + 'Type')
+                : typeProp.type
+            ),
+            resultDecorator: acc.resultDecorator.concat(
+              typeToken.isScalar
+                ? pascalCase(typeToken.name.replace('URL', 'Url') + 'Scalar')
+                : typeProp.type
+            ),
+          };
+        },
+        {
+          name,
+          type: '',
+          tsType: '',
+          result: [] as string[],
+          resultDecorator: [] as string[],
+        }
       );
-
-      return {
-        type,
-        tsType: `${itemTsType}[]`,
-        decoratorType:
-          itemType === 'array' || itemType === 'any'
-            ? `[]`
-            : `[${itemTsType[0].toUpperCase() + itemTsType.substring(1)}]`,
-        result: [type],
-      };
-    default:
-      if ($ref) {
-        const itemType = getNameFromRef($ref);
-        return {
-          type: itemType,
-          tsType: itemType,
-          decoratorType: `${itemType}`,
-          result: [itemType],
-        };
-      }
-      break;
   }
 
-  return { type: 'any', tsType: 'any', result: ['any'] };
+  if (isArray) {
+    return {
+      result: [type],
+      type,
+      tsType: type,
+      decoratorType: `[${type?.replace('[]', '')}]`,
+    };
+  }
+
+  if (isRecord) {
+    return { type, tsType: type, decoratorType: 'GraphQLJSON', result: [type] };
+  }
+
+  // switch (type) {
+  //   case 'number':
+  //   case 'string':
+  //   case 'boolean':
+  //   default:
+  //     return { type, tsType: type, result: [type] };
+  // }
+
+  return { type, tsType: type, decoratorType: type, result: [type] };
 };

@@ -585,7 +585,28 @@
             "outputPath": "dist/apps/host",
             "main": "apps/host/src/main.ts",
             "tsConfig": "apps/host/tsconfig.app.json",
-            "assets": ["apps/host/src/assets"]
+            "assets": [
+              "apps/host/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./dist/libs/themes",
+                "output": "./assets/themes"
+              }
+            ],
+            "styles": ["apps/portal/src/styles/index.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/web-components/src/lib/styles",
+                "libs/applications/src/lib/styles",
+                "libs/avatars/src/lib/styles",
+                "libs/assets/src/lib/styles",
+                "libs/topics/src/lib/styles",
+                "libs/worlds/src/lib/styles",
+                "libs/finances/src/lib/styles",
+                "apps/manage-avatars/src/styles",
+                "apps/player/src/styles"
+              ]
+            }
           },
           "configurations": {
             "production": {

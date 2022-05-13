@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Inject, Injectable, InjectionToken } from '@angular/core';
-import * as PouchdbAdapterIdb from 'pouchdb-adapter-idb';
+// import * as PouchdbAdapterIdb from 'pouchdb-adapter-idb';
 import { RxDBAttachmentsPlugin } from 'rxdb/plugins/attachments';
 import {
   addRxPlugin,
@@ -29,42 +28,28 @@ import {
 } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 import { ACL } from './acl';
+import { RepositoryAdapterProvider } from './adapter';
+import { RxDbRepositoryAdapter } from './adapters/rxdb.adapter';
 import { Repository } from './repository';
 
-addPouchPlugin(PouchdbAdapterIdb);
-addRxPlugin(RxDBDevModePlugin);
-addRxPlugin(RxDBValidatePlugin);
-addRxPlugin(RxDBEncryptionPlugin);
-addRxPlugin(RxDBQueryBuilderPlugin);
-addRxPlugin(RxDBUpdatePlugin);
-addRxPlugin(RxDBAttachmentsPlugin);
+export const ENTITY_MANAGER_REPOSITORY_ADAPTER_TOKEN =
+  'ENTITY_MANAGER_REPOSITORY_ADAPTER_TOKEN';
+export const ENTITY_MANAGER_DB_ADAPTER_TOKEN =
+  'ENTITY_MANAGER_DB_ADAPTER_TOKEN';
 
-export const ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN = new InjectionToken<
-  {
-    name: string;
-    creator: RxCollectionCreator;
-  }[]
->('ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN');
+export const ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN =
+  'ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN';
 
-export const ENTITY_MANAGER_INITIAL_DATA_TOKEN = new InjectionToken<
-  {
-    name: string;
-    data: any[];
-    upsert?: boolean;
-  }[]
->('ENTITY_MANAGER_INITIAL_DATA_TOKEN');
+export const ENTITY_MANAGER_INITIAL_DATA_TOKEN =
+  'ENTITY_MANAGER_INITIAL_DATA_TOKEN';
 
-export const ENTITY_MANAGER_ACL_ENABLED_TOKEN = new InjectionToken<boolean>(
-  'ENTITY_MANAGER_ACL_ENABLED_TOKEN',
-  {
-    providedIn: 'root',
-    factory: () => true,
-  }
-);
+export const ENTITY_MANAGER_ACL_ENABLED_TOKEN =
+  'ENTITY_MANAGER_ACL_ENABLED_TOKEN';
+export const ENTITY_MANAGER_ACL_ENABLED_PROVIDER = {
+  provide: ENTITY_MANAGER_ACL_ENABLED_TOKEN,
+  useValue: false,
+};
 
-@Injectable({
-  providedIn: 'root',
-})
 export class EntityManager<
   DatabaseCollections extends {
     permission: RxCollection;
@@ -76,31 +61,82 @@ export class EntityManager<
 > {
   public initialize$ = new ReplaySubject<void>(0);
 
+  public get app() {
+    return this._dbExpressApp;
+  }
+
   private _dbInstance?: RxDatabase<DatabaseCollections>;
+  private _dbServer?: any;
+  private _dbPouchApp?: any;
+  private _dbExpressApp?: any;
 
   constructor(
-    private readonly acl: ACL,
-    @Inject(ENTITY_MANAGER_ACL_ENABLED_TOKEN)
-    private readonly aclEnabled: boolean,
-    @Inject(ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN)
     private readonly baseCollections: {
       name: string;
       creator: RxCollectionCreator;
-    }[],
-    @Inject(ENTITY_MANAGER_INITIAL_DATA_TOKEN)
+    }[] = [],
     private readonly initialData: {
       name: string;
       data: any[];
       upsert?: boolean;
-    }[]
-  ) {}
+    }[] = [],
+    private readonly dbAdapter: {
+      name: string;
+      adapter: string;
+    },
+    private readonly repositoryAdapters: RepositoryAdapterProvider[] = [],
+    private readonly aclEnabled = ENTITY_MANAGER_ACL_ENABLED_PROVIDER.useValue,
+    private readonly acl: ACL = new ACL()
+  ) {
+    console.debug('adapters', repositoryAdapters);
+  }
 
-  public setupDatabase(name: string, password: string): Observable<void> {
+  private async addPlugins(server = false) {
+    if (server) {
+      const { RxDBServerPlugin } = await import('rxdb/plugins/server');
+      addRxPlugin(RxDBServerPlugin);
+    }
+    addRxPlugin(RxDBDevModePlugin);
+    addRxPlugin(RxDBValidatePlugin);
+    addRxPlugin(RxDBEncryptionPlugin);
+    addRxPlugin(RxDBQueryBuilderPlugin);
+    addRxPlugin(RxDBUpdatePlugin);
+    addRxPlugin(RxDBAttachmentsPlugin);
+
+    addPouchPlugin(this.dbAdapter.adapter);
+  }
+
+  public setupDatabase(
+    name: string,
+    password: string,
+    createServer = false
+  ): Observable<void> {
     const mockAclFn = this.aclEnabled ? undefined : () => true;
-    return this.createDatabase(name, password).pipe(
+
+    return from(this.addPlugins(createServer)).pipe(
+      switchMap(() => this.createDatabase(name, password)),
       switchMap((db) => this.addBaseCollections(db)),
       tap((db) => this.acl.initialize(db.userpermission, mockAclFn)),
-      switchMap((db) => this.addInitialData(db)),
+      switchMap((db) => this.addInitialData(db).pipe(map(() => db))),
+      switchMap((db) => {
+        if (!createServer || !this._dbInstance?.server) {
+          return of(db);
+        }
+
+        return from(
+          this._dbInstance.server({
+            startServer: false,
+          })
+        ).pipe(
+          map(({ app, pouchApp, server }) => {
+            this._dbExpressApp = app;
+            this._dbPouchApp = pouchApp;
+            this._dbServer = server;
+
+            return db;
+          })
+        );
+      }),
       tap(() => this.initialize$.next()),
       map(() => undefined)
     );
@@ -117,7 +153,7 @@ export class EntityManager<
   >(
     collectionName: keyof DatabaseCollections,
     appId: string
-  ): Observable<Repository<RxDocumentType, OrmMethods, StaticMethods>> {
+  ): Observable<Repository<RxDocumentType>> {
     if (!this._dbInstance) {
       return throwError(() => new Error('Database not initialized'));
     }
@@ -130,11 +166,21 @@ export class EntityManager<
       return throwError(() => new Error('Collection not initialized'));
     }
 
-    const repository = new Repository<
-      RxDocumentType,
-      OrmMethods,
-      StaticMethods
-    >(appId, collection, this.acl);
+    const adapter = this.repositoryAdapters.find(
+      (adapter) => adapter.name === 'rxdb'
+    ) as RepositoryAdapterProvider<RxDbRepositoryAdapter<RxDocumentType, any>>;
+
+    if (!adapter) {
+      return throwError(() => new Error('Adapter not initialized'));
+    }
+
+    const adapterInstance = new adapter.adapter<RxDocumentType>(
+      appId,
+      collection,
+      this.acl
+    );
+
+    const repository = new Repository(adapterInstance);
 
     return of(repository);
   }
@@ -148,7 +194,7 @@ export class EntityManager<
         createRxDatabase<RxDatabase<DatabaseCollections>>({
           name,
           password,
-          storage: getRxStoragePouch('idb'),
+          storage: getRxStoragePouch(this.dbAdapter.name),
         })
       ).pipe(tap((db) => (this._dbInstance = db)))
     );
@@ -191,6 +237,10 @@ export class EntityManager<
   }
 
   private addInitialData(db: RxDatabase<DatabaseCollections>): Observable<any> {
+    if (!this.initialData.length) {
+      return of([]);
+    }
+
     return forkJoin(
       this.initialData.map((data) => {
         const collection = db[data.name];

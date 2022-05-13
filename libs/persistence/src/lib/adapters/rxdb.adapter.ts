@@ -19,7 +19,8 @@ import {
   switchMap,
   throwError,
 } from 'rxjs';
-import { ACL } from './acl';
+import { ACL } from '../acl';
+import type { RepositoryAdapter } from '../adapter';
 
 export type Query<Type> = MangoQuery<Type> | undefined;
 export type Update = any;
@@ -30,11 +31,12 @@ export type Attachment = {
   type: string;
 };
 
-export class Repository<
+export class RxDbRepositoryAdapter<
   RxDocumentType = any & { _attachments?: any },
   OrmMethods = any,
   StaticMethods = any
-> {
+> implements RepositoryAdapter<RxDocumentType, Query<RxDocumentType>>
+{
   constructor(
     private readonly appId: string,
     private readonly collection: RxCollection<
@@ -59,17 +61,17 @@ export class Repository<
     );
   }
 
-  findOne(query?: Query<RxDocumentType>): Observable<RxDocumentType | null> {
-    return this.requestPermission(PermissionMode.Read).pipe(
-      switchMap(() => this.collection.findOne(query).exec()),
-      map((doc) => (doc ? this.docToJSON(doc) : null))
-    );
-  }
-
   find(query?: Query<RxDocumentType>): Observable<RxDocumentType[]> {
     return this.requestPermission(PermissionMode.Read).pipe(
       switchMap(() => this.collection.find(query).exec()),
       map((docs) => docs.map((doc) => this.docToJSON(doc)))
+    );
+  }
+
+  findOne(query?: Query<RxDocumentType>): Observable<RxDocumentType | null> {
+    return this.requestPermission(PermissionMode.Read).pipe(
+      switchMap(() => this.collection.findOne(query).exec()),
+      map((doc) => (doc ? this.docToJSON(doc) : null))
     );
   }
 

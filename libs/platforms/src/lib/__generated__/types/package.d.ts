@@ -1,14 +1,28 @@
-import { TokensSchema } from './tokens-schema';
-import { WorkspaceProject } from './workspace';
 
-export { TokensSchema } from './tokens-schema';
-export { WorkspaceProject } from './workspace';
+
+
 
 export type Package = {
   name: string;
-  models: TokensSchema[];
-  project: WorkspaceProject;
+  version?: string;
+  license?: string;
+  author?: Author;
+  description?: string;
+  scripts?: {
+    [key: string]: string;
+  }
+  private?: boolean;
+  dependencies?: {
+    [key: string]: string;
+  }
+  devDependencies?: {
+    [key: string]: string;
+  }
   readme?: string;
 };
 
-export type Root = Package;
+export type Author = {
+  name?: string;
+};
+
+export type Root = Package | Author;

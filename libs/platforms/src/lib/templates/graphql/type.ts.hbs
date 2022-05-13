@@ -1,0 +1,214 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Field, ObjectType, createUnionType, registerEnumType, Scalar, CustomScalar } from '@nestjs/graphql';
+import { ValueNode } from 'graphql';
+import GraphQLJSON from 'graphql-type-json';
+
+// #region Dependecy Imports
+/**
+ * ==================
+ * Dependency Imports
+ * ==================
+ */
+
+{{#each token.imports}}{{#ifExternal .}}{{else}}
+import { {{pascalCase name}} } from '{{path}}';
+{{/ifExternal}}{{/each}}
+// #endregion
+
+// #region Enumerations
+/**
+ * ============
+ * Enumerations
+ * ============
+ */
+
+{{#each token.enums}}
+export enum {{pascalCase name}} {
+  {{#each properties}}
+  {{pascalCase name}} = '{{type}}',
+  {{/each}}
+}
+registerEnumType({{pascalCase name}}, {
+  name: '{{pascalCase name}}',
+  description: '',
+});
+
+{{/each}}
+// #endregion
+
+// #region Primitive Scalars
+/**
+ * =================
+ * Primitive Scalars
+ * =================
+ */
+
+{{#each token.types}}
+{{#symbol "primitive" .}}
+export type {{pascalCase name}}Type = {{camelCase raw.type }};
+@Scalar('{{pascalCase name}}')
+export class {{pascalCase name}}Scalar implements CustomScalar<{{pascalCase name}}Type, {{pascalCase name}}Type> {
+
+  parseValue(value: unknown): {{pascalCase name}}Type {
+    return value as {{pascalCase name}}Type;
+  }
+
+  serialize(value: unknown): {{pascalCase name}}Type {
+    return value as {{pascalCase name}}Type;
+  }
+
+  parseLiteral(ast: ValueNode): {{pascalCase name}}Type {
+    return (ast as any).value || null;
+  }
+}
+
+{{/symbol}}
+{{/each}}
+// #endregion
+
+// #region Custom Scalars
+/**
+ * ==============
+ * Custom Scalars
+ * ==============
+ */
+
+{{#each token.types}}
+{{#symbol "scalar" .}}
+export type {{pascalCase name}}Type = {{ raw.type }}Type;
+@Scalar('{{pascalCase name}}')
+export class {{pascalCase name}}Scalar implements CustomScalar<{{pascalCase name}}Type, {{pascalCase name}}Type> {
+
+  parseValue(value: unknown): {{pascalCase name}}Type {
+    return value as {{pascalCase name}}Type;
+  }
+
+  serialize(value: unknown): {{pascalCase name}}Type {
+    return value as {{pascalCase name}}Type;
+  }
+
+  parseLiteral(ast: ValueNode): {{pascalCase name}}Type {
+    return (ast as any).value || null;
+  }
+}
+
+{{/symbol}}
+{{/each}}
+// #endregion
+
+// #region Type Aliases
+/**
+ * ==============
+ * Type Aliases
+ * ==============
+ */
+
+{{#each token.types}}
+{{#symbol "alias" .}}
+export type {{pascalCase name}} = {{gqlUnionType raw.type .. "Type" " | "}};
+export const {{pascalCase name}}Union = createUnionType({
+  name: '{{pascalCase name}}',
+  types: () => [{{gqlUnionType raw.type .. "Union" ", "}}] as const,
+});
+
+{{/symbol}}
+{{/each}}
+// #endregion
+
+// #region Union Types
+/**
+ * ===========
+ * Union Types
+ * ===========
+ */
+
+{{#each token.types}}
+{{#symbol "union" .}}
+export const {{pascalCase name}}Union = createUnionType({
+  name: '{{pascalCase name}}',
+  types: () => [{{gqlUnionType raw.type .. "Scalar" ", "}}] as const,
+});
+{{/symbol}}
+{{/each}}
+// #endregion
+
+// #region Inferred Union Types
+/**
+ * ===============================
+ * Inferred Union Types from Props
+ * ===============================
+ */
+
+{{#each token.types}}
+{{#symbol "type" .}}
+{{#each properties}}
+{{#symbol "union" .}}
+{{#single ../../singleRegistry id .}}
+export type {{pascalCase ../name}}_{{pascalCase name}} = {{gqlUnionType raw.type ../.. "Type" " | "}};
+export const {{pascalCase ../name}}_{{pascalCase name}}Union = createUnionType({
+  name: '{{pascalCase ../name}}_{{pascalCase name}}',
+  types: () => [{{gqlUnionType raw.type ../.. "Union" ", "}}] as const,
+});
+
+{{/single}}
+{{/symbol}}
+{{/each}}
+{{/symbol}}
+{{/each}}
+// #endregion
+
+// #region Record Types
+/**
+ * ============
+ * Record Types
+ * ============
+ */
+
+{{#each token.types}}
+{{#symbol "record" .}}
+@ObjectType()
+export class {{pascalCase name}} {
+  {{#each properties}}
+  [key: {{key}}]: {{value}};
+  {{/each}}
+}
+{{/symbol}}
+{{/each}}
+// #endregion
+
+// #region Object Types
+/**
+ * ============
+ * Object Types
+ * ============
+ */
+
+{{#each token.types}}
+{{#symbol "type" .}}
+@ObjectType()
+export class {{pascalCase name}}{{#if extendsType}} extends {{extendsType}} {{/if}}{
+{{#each properties}}
+  @Field((type) => {{#symbol "union" .}}{{pascalCase ../name}}_{{/symbol}}{{gqlDecoratorType . ../..}})
+  {{name}}{{#if required}}!{{else}}?{{/if}}: {{#symbol "union" .}}{{pascalCase ../name}}_{{/symbol}}{{gqlType . ../..}};
+{{/each}}
+}
+{{/symbol}}
+{{/each}}
+// #endregion
+
+// #region Type Roots
+/**
+ * ============
+ * Type Roots
+ * ============
+ */
+
+@ObjectType()
+export class {{templateName .}} {
+{{#each token.roots}}
+  @Field((type) => [{{pascalCase .}}])
+  {{pluralize .}}!: {{pascalCase .}}[];
+{{/each}}
+}
+// #endregion

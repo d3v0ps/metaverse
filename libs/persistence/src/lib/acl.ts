@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import {
   PermissionCollection,
@@ -12,9 +11,6 @@ import {
 } from '@central-factory/permissions/__generated__/models';
 import { defer, from, map, Observable, of, throwError } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
 export class ACL {
   private collection?: PermissionCollection;
 

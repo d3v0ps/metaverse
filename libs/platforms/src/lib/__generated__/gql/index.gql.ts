@@ -1,10 +1,67 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Field, ObjectType, registerEnumType } from '@nestjs/graphql';
+import GraphQLJSON from 'graphql-type-json';
+
+export enum SymbolType {
+  Alias = 'alias',
+  Array = 'array',
+  Primitive = 'primitive',
+  Record = 'record',
+  Scalar = 'scalar',
+  Type = 'type',
+  Union = 'union',
+}
+
+export enum RecommendationState {
+  workingDraft = 'workingDraft',
+  candidateRecommendation = 'candidateRecommendation',
+  proposedRecommendation = 'proposedRecommendation',
+  recommendation = 'recommendation',
+  stable = 'stable',
+  deprecated = 'deprecated',
+}
+
+registerEnumType(RecommendationState, { name: 'RecommendationState' });
+registerEnumType(SymbolType, { name: 'SymbolType' });
+
+@ObjectType()
+export class Typing {
+  @Field((type) => String)
+  name?: string;
+
+  @Field((type) => Boolean)
+  required?: boolean;
+
+  @Field((type) => String)
+  type?: string;
+}
+
+@ObjectType()
+export class Prop {
+  @Field((type) => String)
+  name?: string;
+  @Field((type) => Typing)
+  raw?: Typing;
+
+  @Field((type) => Boolean)
+  required?: boolean;
+  @Field((type) => SymbolType)
+  symbol!: SymbolType;
+
+  @Field((type) => String)
+  type?: string;
+}
+
+@ObjectType()
+export class Author {
+  @Field((type) => String)
+  name?: string;
+}
 
 @ObjectType()
 export class EnumToken {
-  @Field()
+  @Field((type) => String)
   name!: string;
 
   @Field((type) => [Prop])
@@ -13,60 +70,48 @@ export class EnumToken {
 
 @ObjectType()
 export class ImportToken {
-  @Field()
+  @Field((type) => String)
   name!: string;
 
-  @Field()
+  @Field((type) => String)
   path!: string;
 }
 
 @ObjectType()
-export class Package {
-  @Field((type) => [TokensSchema])
-  models!: TokensSchema[];
-
-  @Field()
+export class TypeToken {
+  @Field((type) => String)
   name!: string;
 
-  @Field((type) => WorkspaceProject)
-  project!: WorkspaceProject;
+  @Field((type) => [Prop])
+  properties!: Prop[];
 
-  @Field()
-  readme?: string;
-}
+  @Field((type) => Typing)
+  raw!: Typing;
 
-@ObjectType()
-export class Prop {
-  @Field()
-  name?: string;
-
-  @Field()
-  required?: boolean;
-
-  @Field()
-  type?: string;
-}
-
-@ObjectType()
-export class PropItem {
+  @Field((type) => SymbolType)
+  symbol!: SymbolType;
 }
 
 @ObjectType()
 export class TokensSchema {
-  @Field()
+  @Field((type) => RecommendationState)
+  state?: RecommendationState;
+  @Field((type) => String)
   description?: string;
 
   @Field((type) => [EnumToken])
   enums!: EnumToken[];
 
-  @Field()
+  @Field((type) => String)
   file?: string;
 
   @Field((type) => [ImportToken])
   imports!: ImportToken[];
 
-  @Field()
+  @Field((type) => String)
   name!: string;
+  @Field((type) => String)
+  domain!: string;
 
   @Field((type) => [String])
   roots!: string[];
@@ -76,65 +121,87 @@ export class TokensSchema {
 }
 
 @ObjectType()
-export class TypeToken {
-  @Field()
-  isUnion!: boolean;
+export class Domain {
+  @Field((type) => String)
+  name?: string;
+  @Field((type) => [TokensSchema])
+  tokens?: TokensSchema[];
+}
 
-  @Field()
+@ObjectType()
+export class Package {
+  @Field((type) => Author)
+  author?: Author;
+
+  @Field((type) => GraphQLJSON)
+  dependencies?: any;
+
+  @Field((type) => String)
+  description?: string;
+
+  @Field((type) => GraphQLJSON)
+  devDependencies?: any;
+
+  @Field((type) => String)
+  license?: string;
+
+  @Field((type) => String)
   name!: string;
 
-  @Field((type) => [Prop])
-  properties!: Prop[];
+  @Field((type) => Boolean)
+  private?: boolean;
 
-  @Field((type) => Typing)
-  raw!: Typing;
-}
+  @Field((type) => String)
+  readme?: string;
 
-@ObjectType()
-export class Typing {
-  @Field()
-  name?: string;
+  @Field((type) => GraphQLJSON)
+  scripts?: any;
 
-  @Field()
-  required?: boolean;
-
-  @Field()
-  type?: string;
-}
-
-@ObjectType()
-export class Workspace {
-  @Field((type) => WorkspaceConfig)
-  config?: WorkspaceConfig;
-}
-
-@ObjectType()
-export class WorkspaceConfig {
-  @Field()
-  projects?: any;
-
-  @Field()
+  @Field((type) => String)
   version?: string;
 }
 
 @ObjectType()
 export class WorkspaceProject {
-  @Field()
+  @Field((type) => GraphQLJSON)
   architect?: any;
 
-  @Field()
+  @Field((type) => String)
   prefix?: string;
 
-  @Field()
+  @Field((type) => String)
   projectType?: string;
 
-  @Field()
+  @Field((type) => String)
   root?: string;
 
-  @Field()
+  @Field((type) => String)
   sourceRoot?: string;
 
   @Field((type) => [String])
   tags?: string[];
 }
 
+@ObjectType()
+export class Workspace {
+  @Field((type) => GraphQLJSON)
+  projects?: any;
+
+  @Field((type) => String)
+  version?: string;
+}
+
+@ObjectType()
+export class Application {
+  @Field((type) => [Domain])
+  domains?: Domain[];
+
+  @Field((type) => Package)
+  package?: Package;
+
+  @Field()
+  readme?: string;
+
+  @Field((type) => Workspace)
+  workspace?: Workspace;
+}

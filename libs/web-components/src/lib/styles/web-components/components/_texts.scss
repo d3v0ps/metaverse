@@ -18,6 +18,16 @@ $typography-variations: "h1", "h2", "h3", "h4", "h5", "h6", "p", "xxs", "xs", "s
   &--bold {
     font-weight: bold;
   }
+  &--clickable {
+    cursor: pointer;
+
+  }
+  :hover {
+    .typography--clickable {
+      text-decoration: underline;
+    }
+  }
+
 
   @each $variation in $typography-variations {
     &--#{$variation} {

@@ -1,6 +1,6 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { EntityManager } from '../services/entity-manager';
+import { EntityManager } from '../entity-manager';
 
 export const ON_DATABASE_CREATED_GUARD_FAILURE_REDIRECT_TOKEN =
   new InjectionToken<string>(

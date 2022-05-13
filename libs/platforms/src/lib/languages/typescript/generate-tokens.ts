@@ -6,7 +6,7 @@ import { dirname, resolve } from 'path';
 import { ImportToken } from '../../__generated__/models';
 import { augmentTokensSchema } from './utils/augment-tokens-schema';
 
-const logger = new Logger('Generate Typescript Tokens');
+const logger = new Logger('generateTypescriptTokens');
 
 type PropItem = {
   [key: string]: {

@@ -1,0 +1,229 @@
+
+asyncapi: 2.4.0
+info:
+  title: Content Management System
+  version: 1.0.0
+  description: This system is in charge of managing the content.
+  contact:
+    name: Central Factory
+    url: https://aitorllamas.com/metaverse
+    email: aitorllj93@gmail.com
+  license:
+    name: MIT
+tags:
+  - name: document
+
+servers:
+  local-oapi:
+    url: http://localhost:3000/api
+    description: Development server
+    protocol: openapi
+    protocolVersion: '1.1.0'
+  local-ws:
+    url: ws://localhost:3000
+    description: Development server
+    protocol: wss
+  local-gql:
+    url: http://localhost:3000/graphql
+    description: Development server
+    protocol: graphql
+  public-oapi:
+    url: https://aitorllamas.com/metaverse/api
+    description: Public server with latest changes
+    protocol: openapi
+    protocolVersion: '1.1.0'
+  public-ws:
+    url: wss://aitorllamas.com/metaverse
+    description: Public server with latest changes
+    protocol: wss
+  public-gql:
+    url: https://aitorllamas.com/metaverse/graphql
+    description: Public server with latest changes
+    protocol: graphql
+
+defaultContentType: application/json
+
+channels:
+  document/created:
+    publish:
+      description: Inform about document creations.
+      operationId: document/create
+      message:
+        $ref: '#/components/messages/documentCreated'
+      tags:
+        - name: document-create
+    subscribe:
+      operationId: document/created
+      message:
+        $ref: '#/components/messages/documentCreated'
+      description: A new document has been created.
+      tags:
+        - name: document-create
+  document/{documentId}/updated/:
+    parameters:
+      documentId:
+        $ref: '#/components/parameters/documentId'
+    publish:
+      description: Inform about document updates.
+      operationId: document/update
+      message:
+        $ref: '#/components/messages/documentUpdated'
+      tags:
+        - name: document-update
+    subscribe:
+      operationId: document/updated
+      message:
+        $ref: '#/components/messages/documentUpdated'
+      description: A document has been updated.
+      tags:
+        - name: document-update
+  document/{documentId}/deleted/:
+    parameters:
+      documentId:
+        $ref: '#/components/parameters/documentId'
+    publish:
+      description: Inform about document deletion.
+      operationId: document/delete
+      tags:
+        - name: document-delete
+    subscribe:
+      operationId: document/deleted
+      message:
+        $ref: '#/components/messages/documentDeleted'
+      description: A document has been deleted.
+      tags:
+        - name: document-delete
+  document/{documentId}/content/added:
+    parameters:
+      documentId:
+        $ref: '#/components/parameters/documentId'
+    publish:
+      description: Inform about document content additions.
+      operationId: document/content/add
+      message:
+        $ref: '#/components/messages/documentContentAdded'
+      tags:
+        - name: document-content-add
+    subscribe:
+      operationId: document/content/added
+      message:
+        $ref: '#/components/messages/documentContentAdded'
+      description: A new document has been created.
+      tags:
+        - name: document-content-add
+
+components:
+
+  messages:
+    documentCreated:
+      name: documentCreated
+      title: Document Created
+      description: Inform about document creation.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/commonHeaders'
+      payload:
+        $ref: '#/components/schemas/documentCreatedPayload'
+      tags:
+        - name: document-create
+    documentUpdated:
+      name: documentCreated
+      title: Document Updated
+      description: Inform about document updates.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/commonHeaders'
+      payload:
+        $ref: '#/components/schemas/documentUpdatedPayload'
+      tags:
+        - name: document-update
+    documentDeleted:
+      name: documentDeleted
+      title: Document Deleted
+      description: Inform about document deletion.
+      contentType: application/json
+      traits:
+        - $ref: '#/components/messageTraits/commonHeaders'
+      payload:
+        $ref: '#/components/schemas/documentDeletedPayload'
+      tags:
+        - name: document-delete
+    documentContentAdded:
+      name: documentContentAdded
+      title: Document Content Added
+      description: Inform about document content addition.
+      contentType: application/json.
+      traits:
+        - $ref: '#/components/messageTraits/commonHeaders'
+      payload:
+        $ref: '#/components/schemas/documentContentAddedPayload'
+      tags:
+        - name: document-content-add
+
+  schemas:
+    documentCreatedPayload:
+      title: 'Document Created Payload'
+      $ref: '#/components/schemas/document'
+      tags:
+        - name: document-create
+    documentUpdatedPayload:
+      title: 'Document Updated Payload'
+      $ref: '#/components/schemas/document'
+      tags:
+        - name: document-update
+    documentDeletedPayload:
+      title: 'Document Deleted Payload'
+      $ref: '#/components/schemas/document'
+      tags:
+        - name: document-delete
+    documentContentAddedPayload:
+      title: 'Document Content Added Payload'
+      $ref: '#/components/schemas/document'
+      tags:
+        - name: document-content-add
+
+    document:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The document id.
+        title:
+          type: string
+          description: The document title.
+        content:
+          $ref: '#/components/schemas/documentContent'
+          type: string
+          description: The document content.
+        createdAt:
+          type: string
+          description: The document creation date.
+    documentContent:
+      type: string
+
+  securitySchemes:
+    saslScram:
+      type: scramSha256
+      description: Provide your username and password for SASL/SCRAM authentication
+
+  parameters:
+    documentId:
+      description: The ID of the document.
+      schema:
+        type: string
+
+  messageTraits:
+    commonHeaders:
+      headers:
+        type: object
+        properties:
+          my-app-header:
+            type: integer
+            minimum: 0
+            maximum: 100
+
+  operationTraits:
+    kafka:
+      bindings:
+        kafka:
+          clientId: my-app-id

@@ -1,0 +1,14250 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Field, ObjectType, createUnionType, registerEnumType, Scalar, CustomScalar } from '@nestjs/graphql';
+import { ValueNode } from 'graphql';
+import GraphQLJSON from 'graphql-type-json';
+
+// #region Dependecy Imports
+/**
+ * ==================
+ * Dependency Imports
+ * ==================
+ */
+
+
+// #endregion
+
+// #region Enumerations
+/**
+ * ============
+ * Enumerations
+ * ============
+ */
+
+export enum StatusEnumeration {
+}
+registerEnumType(StatusEnumeration, {
+  name: 'StatusEnumeration',
+  description: '',
+});
+
+export enum NLNonprofitType {
+  NonprofitANBI = 'NonprofitANBI',
+  NonprofitSBBI = 'NonprofitSBBI',
+}
+registerEnumType(NLNonprofitType, {
+  name: 'NLNonprofitType',
+  description: '',
+});
+
+export enum WearableSizeGroupEnumeration {
+  WearableSizeGroupShort = 'WearableSizeGroupShort',
+  WearableSizeGroupExtraTall = 'WearableSizeGroupExtraTall',
+  WearableSizeGroupMaternity = 'WearableSizeGroupMaternity',
+  WearableSizeGroupWomens = 'WearableSizeGroupWomens',
+  WearableSizeGroupBig = 'WearableSizeGroupBig',
+  WearableSizeGroupRegular = 'WearableSizeGroupRegular',
+  WearableSizeGroupMens = 'WearableSizeGroupMens',
+  WearableSizeGroupMisses = 'WearableSizeGroupMisses',
+  WearableSizeGroupHusky = 'WearableSizeGroupHusky',
+  WearableSizeGroupPetite = 'WearableSizeGroupPetite',
+  WearableSizeGroupInfants = 'WearableSizeGroupInfants',
+  WearableSizeGroupGirls = 'WearableSizeGroupGirls',
+  WearableSizeGroupPlus = 'WearableSizeGroupPlus',
+  WearableSizeGroupJuniors = 'WearableSizeGroupJuniors',
+  WearableSizeGroupTall = 'WearableSizeGroupTall',
+  WearableSizeGroupExtraShort = 'WearableSizeGroupExtraShort',
+  WearableSizeGroupBoys = 'WearableSizeGroupBoys',
+}
+registerEnumType(WearableSizeGroupEnumeration, {
+  name: 'WearableSizeGroupEnumeration',
+  description: '',
+});
+
+export enum DrugCostCategory {
+  Wholesale = 'Wholesale',
+  ReimbursementCap = 'ReimbursementCap',
+  Retail = 'Retail',
+}
+registerEnumType(DrugCostCategory, {
+  name: 'DrugCostCategory',
+  description: '',
+});
+
+export enum MedicalProcedureType {
+  PercutaneousProcedure = 'PercutaneousProcedure',
+  NoninvasiveProcedure = 'NoninvasiveProcedure',
+}
+registerEnumType(MedicalProcedureType, {
+  name: 'MedicalProcedureType',
+  description: '',
+});
+
+export enum PriceTypeEnumeration {
+  SalePrice = 'SalePrice',
+  Srp = 'SRP',
+  ListPrice = 'ListPrice',
+  InvoicePrice = 'InvoicePrice',
+  MinimumAdvertisedPrice = 'MinimumAdvertisedPrice',
+  Msrp = 'MSRP',
+}
+registerEnumType(PriceTypeEnumeration, {
+  name: 'PriceTypeEnumeration',
+  description: '',
+});
+
+export enum PaymentStatusType {
+  PaymentDue = 'PaymentDue',
+  PaymentDeclined = 'PaymentDeclined',
+  PaymentAutomaticallyApplied = 'PaymentAutomaticallyApplied',
+  PaymentComplete = 'PaymentComplete',
+  PaymentPastDue = 'PaymentPastDue',
+}
+registerEnumType(PaymentStatusType, {
+  name: 'PaymentStatusType',
+  description: '',
+});
+
+export enum BoardingPolicyType {
+  GroupBoardingPolicy = 'GroupBoardingPolicy',
+  ZoneBoardingPolicy = 'ZoneBoardingPolicy',
+}
+registerEnumType(BoardingPolicyType, {
+  name: 'BoardingPolicyType',
+  description: '',
+});
+
+export enum OfferItemCondition {
+  DamagedCondition = 'DamagedCondition',
+  RefurbishedCondition = 'RefurbishedCondition',
+  UsedCondition = 'UsedCondition',
+  NewCondition = 'NewCondition',
+}
+registerEnumType(OfferItemCondition, {
+  name: 'OfferItemCondition',
+  description: '',
+});
+
+export enum MeasurementTypeEnumeration {
+}
+registerEnumType(MeasurementTypeEnumeration, {
+  name: 'MeasurementTypeEnumeration',
+  description: '',
+});
+
+export enum MusicAlbumReleaseType {
+  EPRelease = 'EPRelease',
+  BroadcastRelease = 'BroadcastRelease',
+  SingleRelease = 'SingleRelease',
+  AlbumRelease = 'AlbumRelease',
+}
+registerEnumType(MusicAlbumReleaseType, {
+  name: 'MusicAlbumReleaseType',
+  description: '',
+});
+
+export enum EventAttendanceModeEnumeration {
+  OfflineEventAttendanceMode = 'OfflineEventAttendanceMode',
+  MixedEventAttendanceMode = 'MixedEventAttendanceMode',
+  OnlineEventAttendanceMode = 'OnlineEventAttendanceMode',
+}
+registerEnumType(EventAttendanceModeEnumeration, {
+  name: 'EventAttendanceModeEnumeration',
+  description: '',
+});
+
+export enum PaymentMethod {
+}
+registerEnumType(PaymentMethod, {
+  name: 'PaymentMethod',
+  description: '',
+});
+
+export enum BodyMeasurementTypeEnumeration {
+  BodyMeasurementHand = 'BodyMeasurementHand',
+  BodyMeasurementHips = 'BodyMeasurementHips',
+  BodyMeasurementUnderbust = 'BodyMeasurementUnderbust',
+  BodyMeasurementWeight = 'BodyMeasurementWeight',
+  BodyMeasurementHeight = 'BodyMeasurementHeight',
+  BodyMeasurementChest = 'BodyMeasurementChest',
+  BodyMeasurementFoot = 'BodyMeasurementFoot',
+  BodyMeasurementHead = 'BodyMeasurementHead',
+  BodyMeasurementNeck = 'BodyMeasurementNeck',
+  BodyMeasurementBust = 'BodyMeasurementBust',
+  BodyMeasurementInsideLeg = 'BodyMeasurementInsideLeg',
+  BodyMeasurementWaist = 'BodyMeasurementWaist',
+  BodyMeasurementArm = 'BodyMeasurementArm',
+}
+registerEnumType(BodyMeasurementTypeEnumeration, {
+  name: 'BodyMeasurementTypeEnumeration',
+  description: '',
+});
+
+export enum PhysicalActivityCategory {
+  Balance = 'Balance',
+  AnaerobicActivity = 'AnaerobicActivity',
+  Flexibility = 'Flexibility',
+  OccupationalActivity = 'OccupationalActivity',
+  LeisureTimeActivity = 'LeisureTimeActivity',
+  AerobicActivity = 'AerobicActivity',
+  StrengthTraining = 'StrengthTraining',
+}
+registerEnumType(PhysicalActivityCategory, {
+  name: 'PhysicalActivityCategory',
+  description: '',
+});
+
+export enum InfectiousAgentClass {
+  Bacteria = 'Bacteria',
+  Protozoa = 'Protozoa',
+  Fungus = 'Fungus',
+  Virus = 'Virus',
+  Prion = 'Prion',
+  MulticellularParasite = 'MulticellularParasite',
+}
+registerEnumType(InfectiousAgentClass, {
+  name: 'InfectiousAgentClass',
+  description: '',
+});
+
+export enum ItemAvailability {
+  OutOfStock = 'OutOfStock',
+  Discontinued = 'Discontinued',
+  OnlineOnly = 'OnlineOnly',
+  InStock = 'InStock',
+  InStoreOnly = 'InStoreOnly',
+  SoldOut = 'SoldOut',
+  PreSale = 'PreSale',
+  BackOrder = 'BackOrder',
+  PreOrder = 'PreOrder',
+  LimitedAvailability = 'LimitedAvailability',
+}
+registerEnumType(ItemAvailability, {
+  name: 'ItemAvailability',
+  description: '',
+});
+
+export enum DayOfWeek {
+  Thursday = 'Thursday',
+  Saturday = 'Saturday',
+  Tuesday = 'Tuesday',
+  Friday = 'Friday',
+  Monday = 'Monday',
+  Wednesday = 'Wednesday',
+  PublicHolidays = 'PublicHolidays',
+  Sunday = 'Sunday',
+}
+registerEnumType(DayOfWeek, {
+  name: 'DayOfWeek',
+  description: '',
+});
+
+export enum Specialty {
+}
+registerEnumType(Specialty, {
+  name: 'Specialty',
+  description: '',
+});
+
+export enum ContactPointOption {
+  HearingImpairedSupported = 'HearingImpairedSupported',
+  TollFree = 'TollFree',
+}
+registerEnumType(ContactPointOption, {
+  name: 'ContactPointOption',
+  description: '',
+});
+
+export enum HealthAspectEnumeration {
+  SideEffectsHealthAspect = 'SideEffectsHealthAspect',
+  AllergiesHealthAspect = 'AllergiesHealthAspect',
+  BenefitsHealthAspect = 'BenefitsHealthAspect',
+  SymptomsHealthAspect = 'SymptomsHealthAspect',
+  StagesHealthAspect = 'StagesHealthAspect',
+  PrognosisHealthAspect = 'PrognosisHealthAspect',
+  HowItWorksHealthAspect = 'HowItWorksHealthAspect',
+  PregnancyHealthAspect = 'PregnancyHealthAspect',
+  SelfCareHealthAspect = 'SelfCareHealthAspect',
+  SeeDoctorHealthAspect = 'SeeDoctorHealthAspect',
+  TreatmentsHealthAspect = 'TreatmentsHealthAspect',
+  HowOrWhereHealthAspect = 'HowOrWhereHealthAspect',
+  OverviewHealthAspect = 'OverviewHealthAspect',
+  EffectivenessHealthAspect = 'EffectivenessHealthAspect',
+  TypesHealthAspect = 'TypesHealthAspect',
+  ContagiousnessHealthAspect = 'ContagiousnessHealthAspect',
+  SafetyHealthAspect = 'SafetyHealthAspect',
+  PreventionHealthAspect = 'PreventionHealthAspect',
+  LivingWithHealthAspect = 'LivingWithHealthAspect',
+  ScreeningHealthAspect = 'ScreeningHealthAspect',
+  MayTreatHealthAspect = 'MayTreatHealthAspect',
+  UsageOrScheduleHealthAspect = 'UsageOrScheduleHealthAspect',
+  RisksOrComplicationsHealthAspect = 'RisksOrComplicationsHealthAspect',
+  IngredientsHealthAspect = 'IngredientsHealthAspect',
+  CausesHealthAspect = 'CausesHealthAspect',
+  GettingAccessHealthAspect = 'GettingAccessHealthAspect',
+  PatientExperienceHealthAspect = 'PatientExperienceHealthAspect',
+  RelatedTopicsHealthAspect = 'RelatedTopicsHealthAspect',
+  MisconceptionsHealthAspect = 'MisconceptionsHealthAspect',
+}
+registerEnumType(HealthAspectEnumeration, {
+  name: 'HealthAspectEnumeration',
+  description: '',
+});
+
+export enum CarUsageType {
+  TaxiVehicleUsage = 'TaxiVehicleUsage',
+  DrivingSchoolVehicleUsage = 'DrivingSchoolVehicleUsage',
+  RentalVehicleUsage = 'RentalVehicleUsage',
+}
+registerEnumType(CarUsageType, {
+  name: 'CarUsageType',
+  description: '',
+});
+
+export enum AdultOrientedEnumeration {
+  ReducedRelevanceForChildrenConsideration = 'ReducedRelevanceForChildrenConsideration',
+  SexualContentConsideration = 'SexualContentConsideration',
+  UnclassifiedAdultConsideration = 'UnclassifiedAdultConsideration',
+  HealthcareConsideration = 'HealthcareConsideration',
+  NarcoticConsideration = 'NarcoticConsideration',
+  WeaponConsideration = 'WeaponConsideration',
+  TobaccoNicotineConsideration = 'TobaccoNicotineConsideration',
+  AlcoholConsideration = 'AlcoholConsideration',
+  DangerousGoodConsideration = 'DangerousGoodConsideration',
+  ViolenceConsideration = 'ViolenceConsideration',
+}
+registerEnumType(AdultOrientedEnumeration, {
+  name: 'AdultOrientedEnumeration',
+  description: '',
+});
+
+export enum NonprofitType {
+}
+registerEnumType(NonprofitType, {
+  name: 'NonprofitType',
+  description: '',
+});
+
+export enum ReturnFeesEnumeration {
+  ReturnFeesCustomerResponsibility = 'ReturnFeesCustomerResponsibility',
+  OriginalShippingFees = 'OriginalShippingFees',
+  ReturnShippingFees = 'ReturnShippingFees',
+  FreeReturn = 'FreeReturn',
+  RestockingFees = 'RestockingFees',
+}
+registerEnumType(ReturnFeesEnumeration, {
+  name: 'ReturnFeesEnumeration',
+  description: '',
+});
+
+export enum MedicalEvidenceLevel {
+  EvidenceLevelA = 'EvidenceLevelA',
+  EvidenceLevelB = 'EvidenceLevelB',
+  EvidenceLevelC = 'EvidenceLevelC',
+}
+registerEnumType(MedicalEvidenceLevel, {
+  name: 'MedicalEvidenceLevel',
+  description: '',
+});
+
+export enum LegalForceStatus {
+  NotInForce = 'NotInForce',
+  InForce = 'InForce',
+  PartiallyInForce = 'PartiallyInForce',
+}
+registerEnumType(LegalForceStatus, {
+  name: 'LegalForceStatus',
+  description: '',
+});
+
+export enum EnergyEfficiencyEnumeration {
+}
+registerEnumType(EnergyEfficiencyEnumeration, {
+  name: 'EnergyEfficiencyEnumeration',
+  description: '',
+});
+
+export enum Enumeration {
+}
+registerEnumType(Enumeration, {
+  name: 'Enumeration',
+  description: '',
+});
+
+export enum MedicalImagingTechnique {
+  XRay = 'XRay',
+  Pet = 'PET',
+  Mri = 'MRI',
+  Ultrasound = 'Ultrasound',
+  Ct = 'CT',
+}
+registerEnumType(MedicalImagingTechnique, {
+  name: 'MedicalImagingTechnique',
+  description: '',
+});
+
+export enum LegalValueLevel {
+  DefinitiveLegalValue = 'DefinitiveLegalValue',
+  UnofficialLegalValue = 'UnofficialLegalValue',
+  OfficialLegalValue = 'OfficialLegalValue',
+  AuthoritativeLegalValue = 'AuthoritativeLegalValue',
+}
+registerEnumType(LegalValueLevel, {
+  name: 'LegalValueLevel',
+  description: '',
+});
+
+export enum MedicineSystem {
+  Homeopathic = 'Homeopathic',
+  TraditionalChinese = 'TraditionalChinese',
+  Chiropractic = 'Chiropractic',
+  Osteopathic = 'Osteopathic',
+  WesternConventional = 'WesternConventional',
+  Ayurvedic = 'Ayurvedic',
+}
+registerEnumType(MedicineSystem, {
+  name: 'MedicineSystem',
+  description: '',
+});
+
+export enum QualitativeValue {
+}
+registerEnumType(QualitativeValue, {
+  name: 'QualitativeValue',
+  description: '',
+});
+
+export enum ReturnMethodEnumeration {
+  ReturnByMail = 'ReturnByMail',
+  ReturnAtKiosk = 'ReturnAtKiosk',
+  ReturnInStore = 'ReturnInStore',
+}
+registerEnumType(ReturnMethodEnumeration, {
+  name: 'ReturnMethodEnumeration',
+  description: '',
+});
+
+export enum GameAvailabilityEnumeration {
+  FullGameAvailability = 'FullGameAvailability',
+  DemoGameAvailability = 'DemoGameAvailability',
+}
+registerEnumType(GameAvailabilityEnumeration, {
+  name: 'GameAvailabilityEnumeration',
+  description: '',
+});
+
+export enum RsvpResponseType {
+  RsvpResponseNo = 'RsvpResponseNo',
+  RsvpResponseMaybe = 'RsvpResponseMaybe',
+  RsvpResponseYes = 'RsvpResponseYes',
+}
+registerEnumType(RsvpResponseType, {
+  name: 'RsvpResponseType',
+  description: '',
+});
+
+export enum MedicalObservationalStudyDesign {
+  Registry = 'Registry',
+  CohortStudy = 'CohortStudy',
+  Observational = 'Observational',
+  CrossSectional = 'CrossSectional',
+  CaseSeries = 'CaseSeries',
+  Longitudinal = 'Longitudinal',
+}
+registerEnumType(MedicalObservationalStudyDesign, {
+  name: 'MedicalObservationalStudyDesign',
+  description: '',
+});
+
+export enum DrugPregnancyCategory {
+  FDAcategoryC = 'FDAcategoryC',
+  FDAcategoryA = 'FDAcategoryA',
+  FDAcategoryX = 'FDAcategoryX',
+  FDAcategoryB = 'FDAcategoryB',
+  FDAcategoryD = 'FDAcategoryD',
+  FDAnotEvaluated = 'FDAnotEvaluated',
+}
+registerEnumType(DrugPregnancyCategory, {
+  name: 'DrugPregnancyCategory',
+  description: '',
+});
+
+export enum SizeSpecification {
+}
+registerEnumType(SizeSpecification, {
+  name: 'SizeSpecification',
+  description: '',
+});
+
+export enum EUEnergyEfficiencyEnumeration {
+  EUEnergyEfficiencyCategoryD = 'EUEnergyEfficiencyCategoryD',
+  EUEnergyEfficiencyCategoryA2Plus = 'EUEnergyEfficiencyCategoryA2Plus',
+  EUEnergyEfficiencyCategoryE = 'EUEnergyEfficiencyCategoryE',
+  EUEnergyEfficiencyCategoryA3Plus = 'EUEnergyEfficiencyCategoryA3Plus',
+  EUEnergyEfficiencyCategoryA1Plus = 'EUEnergyEfficiencyCategoryA1Plus',
+  EUEnergyEfficiencyCategoryA = 'EUEnergyEfficiencyCategoryA',
+  EUEnergyEfficiencyCategoryB = 'EUEnergyEfficiencyCategoryB',
+  EUEnergyEfficiencyCategoryF = 'EUEnergyEfficiencyCategoryF',
+  EUEnergyEfficiencyCategoryC = 'EUEnergyEfficiencyCategoryC',
+  EUEnergyEfficiencyCategoryG = 'EUEnergyEfficiencyCategoryG',
+}
+registerEnumType(EUEnergyEfficiencyEnumeration, {
+  name: 'EUEnergyEfficiencyEnumeration',
+  description: '',
+});
+
+export enum UKNonprofitType {
+  UnincorporatedAssociationCharity = 'UnincorporatedAssociationCharity',
+  UKTrust = 'UKTrust',
+  CharitableIncorporatedOrganization = 'CharitableIncorporatedOrganization',
+  LimitedByGuaranteeCharity = 'LimitedByGuaranteeCharity',
+}
+registerEnumType(UKNonprofitType, {
+  name: 'UKNonprofitType',
+  description: '',
+});
+
+export enum SteeringPositionValue {
+  LeftHandDriving = 'LeftHandDriving',
+  RightHandDriving = 'RightHandDriving',
+}
+registerEnumType(SteeringPositionValue, {
+  name: 'SteeringPositionValue',
+  description: '',
+});
+
+export enum RefundTypeEnumeration {
+  StoreCreditRefund = 'StoreCreditRefund',
+  ExchangeRefund = 'ExchangeRefund',
+  FullRefund = 'FullRefund',
+}
+registerEnumType(RefundTypeEnumeration, {
+  name: 'RefundTypeEnumeration',
+  description: '',
+});
+
+export enum EnergyStarEnergyEfficiencyEnumeration {
+  EnergyStarCertified = 'EnergyStarCertified',
+}
+registerEnumType(EnergyStarEnergyEfficiencyEnumeration, {
+  name: 'EnergyStarEnergyEfficiencyEnumeration',
+  description: '',
+});
+
+export enum SizeGroupEnumeration {
+}
+registerEnumType(SizeGroupEnumeration, {
+  name: 'SizeGroupEnumeration',
+  description: '',
+});
+
+export enum GameServerStatus {
+  OnlineFull = 'OnlineFull',
+  OfflinePermanently = 'OfflinePermanently',
+  Online = 'Online',
+  OfflineTemporarily = 'OfflineTemporarily',
+}
+registerEnumType(GameServerStatus, {
+  name: 'GameServerStatus',
+  description: '',
+});
+
+export enum MedicalStudyStatus {
+  Recruiting = 'Recruiting',
+  NotYetRecruiting = 'NotYetRecruiting',
+  ResultsNotAvailable = 'ResultsNotAvailable',
+  Suspended = 'Suspended',
+  ActiveNotRecruiting = 'ActiveNotRecruiting',
+  EnrollingByInvitation = 'EnrollingByInvitation',
+  Completed = 'Completed',
+  ResultsAvailable = 'ResultsAvailable',
+  Terminated = 'Terminated',
+  Withdrawn = 'Withdrawn',
+}
+registerEnumType(MedicalStudyStatus, {
+  name: 'MedicalStudyStatus',
+  description: '',
+});
+
+export enum DeliveryMethod {
+  ParcelService = 'ParcelService',
+  OnSitePickup = 'OnSitePickup',
+  LockerDelivery = 'LockerDelivery',
+}
+registerEnumType(DeliveryMethod, {
+  name: 'DeliveryMethod',
+  description: '',
+});
+
+export enum DigitalPlatformEnumeration {
+  MobileWebPlatform = 'MobileWebPlatform',
+  AndroidPlatform = 'AndroidPlatform',
+  GenericWebPlatform = 'GenericWebPlatform',
+  DesktopWebPlatform = 'DesktopWebPlatform',
+  IOSPlatform = 'IOSPlatform',
+}
+registerEnumType(DigitalPlatformEnumeration, {
+  name: 'DigitalPlatformEnumeration',
+  description: '',
+});
+
+export enum MedicalAudienceType {
+  MedicalResearcher = 'MedicalResearcher',
+  Clinician = 'Clinician',
+}
+registerEnumType(MedicalAudienceType, {
+  name: 'MedicalAudienceType',
+  description: '',
+});
+
+export enum GamePlayMode {
+  MultiPlayer = 'MultiPlayer',
+  CoOp = 'CoOp',
+  SinglePlayer = 'SinglePlayer',
+}
+registerEnumType(GamePlayMode, {
+  name: 'GamePlayMode',
+  description: '',
+});
+
+export enum OrderStatus {
+  OrderCancelled = 'OrderCancelled',
+  OrderProblem = 'OrderProblem',
+  OrderDelivered = 'OrderDelivered',
+  OrderReturned = 'OrderReturned',
+  OrderPaymentDue = 'OrderPaymentDue',
+  OrderInTransit = 'OrderInTransit',
+  OrderProcessing = 'OrderProcessing',
+  OrderPickupAvailable = 'OrderPickupAvailable',
+}
+registerEnumType(OrderStatus, {
+  name: 'OrderStatus',
+  description: '',
+});
+
+export enum DigitalDocumentPermissionType {
+  CommentPermission = 'CommentPermission',
+  ReadPermission = 'ReadPermission',
+  WritePermission = 'WritePermission',
+}
+registerEnumType(DigitalDocumentPermissionType, {
+  name: 'DigitalDocumentPermissionType',
+  description: '',
+});
+
+export enum GenderType {
+  Male = 'Male',
+  Female = 'Female',
+}
+registerEnumType(GenderType, {
+  name: 'GenderType',
+  description: '',
+});
+
+export enum USNonprofitType {
+  Nonprofit501c4 = 'Nonprofit501c4',
+  Nonprofit501c23 = 'Nonprofit501c23',
+  Nonprofit501k = 'Nonprofit501k',
+  Nonprofit501c1 = 'Nonprofit501c1',
+  Nonprofit501n = 'Nonprofit501n',
+  Nonprofit501c7 = 'Nonprofit501c7',
+  Nonprofit501c9 = 'Nonprofit501c9',
+  Nonprofit501c3 = 'Nonprofit501c3',
+  Nonprofit501c2 = 'Nonprofit501c2',
+  Nonprofit501a = 'Nonprofit501a',
+  Nonprofit501c21 = 'Nonprofit501c21',
+  Nonprofit501e = 'Nonprofit501e',
+  Nonprofit501c14 = 'Nonprofit501c14',
+  Nonprofit501c28 = 'Nonprofit501c28',
+  Nonprofit501c18 = 'Nonprofit501c18',
+  Nonprofit501c27 = 'Nonprofit501c27',
+  Nonprofit501d = 'Nonprofit501d',
+  Nonprofit501c25 = 'Nonprofit501c25',
+  Nonprofit501c15 = 'Nonprofit501c15',
+  Nonprofit501c12 = 'Nonprofit501c12',
+  Nonprofit501c13 = 'Nonprofit501c13',
+  Nonprofit501c26 = 'Nonprofit501c26',
+  Nonprofit501c8 = 'Nonprofit501c8',
+  Nonprofit501c10 = 'Nonprofit501c10',
+  Nonprofit501c11 = 'Nonprofit501c11',
+  Nonprofit501f = 'Nonprofit501f',
+  Nonprofit501c5 = 'Nonprofit501c5',
+  Nonprofit501c20 = 'Nonprofit501c20',
+  Nonprofit501c6 = 'Nonprofit501c6',
+  Nonprofit527 = 'Nonprofit527',
+  Nonprofit501c19 = 'Nonprofit501c19',
+  Nonprofit501c16 = 'Nonprofit501c16',
+  Nonprofit501c24 = 'Nonprofit501c24',
+  Nonprofit501q = 'Nonprofit501q',
+  Nonprofit501c22 = 'Nonprofit501c22',
+  Nonprofit501c17 = 'Nonprofit501c17',
+}
+registerEnumType(USNonprofitType, {
+  name: 'USNonprofitType',
+  description: '',
+});
+
+export enum BusinessEntityType {
+}
+registerEnumType(BusinessEntityType, {
+  name: 'BusinessEntityType',
+  description: '',
+});
+
+export enum ItemListOrderType {
+  ItemListUnordered = 'ItemListUnordered',
+  ItemListOrderDescending = 'ItemListOrderDescending',
+  ItemListOrderAscending = 'ItemListOrderAscending',
+}
+registerEnumType(ItemListOrderType, {
+  name: 'ItemListOrderType',
+  description: '',
+});
+
+export enum DriveWheelConfigurationValue {
+  FrontWheelDriveConfiguration = 'FrontWheelDriveConfiguration',
+  FourWheelDriveConfiguration = 'FourWheelDriveConfiguration',
+  AllWheelDriveConfiguration = 'AllWheelDriveConfiguration',
+  RearWheelDriveConfiguration = 'RearWheelDriveConfiguration',
+}
+registerEnumType(DriveWheelConfigurationValue, {
+  name: 'DriveWheelConfigurationValue',
+  description: '',
+});
+
+export enum BedType {
+}
+registerEnumType(BedType, {
+  name: 'BedType',
+  description: '',
+});
+
+export enum WarrantyScope {
+}
+registerEnumType(WarrantyScope, {
+  name: 'WarrantyScope',
+  description: '',
+});
+
+export enum EventStatusType {
+  EventCancelled = 'EventCancelled',
+  EventScheduled = 'EventScheduled',
+  EventRescheduled = 'EventRescheduled',
+  EventPostponed = 'EventPostponed',
+  EventMovedOnline = 'EventMovedOnline',
+}
+registerEnumType(EventStatusType, {
+  name: 'EventStatusType',
+  description: '',
+});
+
+export enum MapCategoryType {
+  SeatingMap = 'SeatingMap',
+  VenueMap = 'VenueMap',
+  ParkingMap = 'ParkingMap',
+  TransitMap = 'TransitMap',
+}
+registerEnumType(MapCategoryType, {
+  name: 'MapCategoryType',
+  description: '',
+});
+
+export enum SizeSystemEnumeration {
+  SizeSystemMetric = 'SizeSystemMetric',
+  SizeSystemImperial = 'SizeSystemImperial',
+}
+registerEnumType(SizeSystemEnumeration, {
+  name: 'SizeSystemEnumeration',
+  description: '',
+});
+
+export enum WearableMeasurementTypeEnumeration {
+  WearableMeasurementSleeve = 'WearableMeasurementSleeve',
+  WearableMeasurementChestOrBust = 'WearableMeasurementChestOrBust',
+  WearableMeasurementOutsideLeg = 'WearableMeasurementOutsideLeg',
+  WearableMeasurementCup = 'WearableMeasurementCup',
+  WearableMeasurementCollar = 'WearableMeasurementCollar',
+  WearableMeasurementWaist = 'WearableMeasurementWaist',
+  WearableMeasurementHips = 'WearableMeasurementHips',
+  WearableMeasurementWidth = 'WearableMeasurementWidth',
+  WearableMeasurementBack = 'WearableMeasurementBack',
+  WearableMeasurementLength = 'WearableMeasurementLength',
+  WearableMeasurementHeight = 'WearableMeasurementHeight',
+  WearableMeasurementInseam = 'WearableMeasurementInseam',
+}
+registerEnumType(WearableMeasurementTypeEnumeration, {
+  name: 'WearableMeasurementTypeEnumeration',
+  description: '',
+});
+
+export enum MusicReleaseFormatType {
+  CDFormat = 'CDFormat',
+  DigitalAudioTapeFormat = 'DigitalAudioTapeFormat',
+  DigitalFormat = 'DigitalFormat',
+  LaserDiscFormat = 'LaserDiscFormat',
+  VinylFormat = 'VinylFormat',
+  CassetteFormat = 'CassetteFormat',
+  DVDFormat = 'DVDFormat',
+}
+registerEnumType(MusicReleaseFormatType, {
+  name: 'MusicReleaseFormatType',
+  description: '',
+});
+
+export enum ReservationStatusType {
+  ReservationPending = 'ReservationPending',
+  ReservationConfirmed = 'ReservationConfirmed',
+  ReservationCancelled = 'ReservationCancelled',
+  ReservationHold = 'ReservationHold',
+}
+registerEnumType(ReservationStatusType, {
+  name: 'ReservationStatusType',
+  description: '',
+});
+
+export enum GovernmentBenefitsType {
+  HealthCare = 'HealthCare',
+  BusinessSupport = 'BusinessSupport',
+  OneTimePayments = 'OneTimePayments',
+  DisabilitySupport = 'DisabilitySupport',
+  ParentalSupport = 'ParentalSupport',
+  UnemploymentSupport = 'UnemploymentSupport',
+  PaidLeave = 'PaidLeave',
+  BasicIncome = 'BasicIncome',
+}
+registerEnumType(GovernmentBenefitsType, {
+  name: 'GovernmentBenefitsType',
+  description: '',
+});
+
+export enum DrugPrescriptionStatus {
+  Otc = 'OTC',
+  PrescriptionOnly = 'PrescriptionOnly',
+}
+registerEnumType(DrugPrescriptionStatus, {
+  name: 'DrugPrescriptionStatus',
+  description: '',
+});
+
+export enum MediaManipulationRatingEnumeration {
+  OriginalMediaContent = 'OriginalMediaContent',
+  SatireOrParodyContent = 'SatireOrParodyContent',
+  EditedOrCroppedContent = 'EditedOrCroppedContent',
+  DecontextualizedContent = 'DecontextualizedContent',
+  StagedContent = 'StagedContent',
+  TransformedContent = 'TransformedContent',
+}
+registerEnumType(MediaManipulationRatingEnumeration, {
+  name: 'MediaManipulationRatingEnumeration',
+  description: '',
+});
+
+export enum MedicalEnumeration {
+}
+registerEnumType(MedicalEnumeration, {
+  name: 'MedicalEnumeration',
+  description: '',
+});
+
+export enum MedicalTrialDesign {
+  PlaceboControlledTrial = 'PlaceboControlledTrial',
+  DoubleBlindedTrial = 'DoubleBlindedTrial',
+  MultiCenterTrial = 'MultiCenterTrial',
+  InternationalTrial = 'InternationalTrial',
+  TripleBlindedTrial = 'TripleBlindedTrial',
+  OpenTrial = 'OpenTrial',
+  RandomizedTrial = 'RandomizedTrial',
+  SingleBlindedTrial = 'SingleBlindedTrial',
+  SingleCenterTrial = 'SingleCenterTrial',
+}
+registerEnumType(MedicalTrialDesign, {
+  name: 'MedicalTrialDesign',
+  description: '',
+});
+
+export enum BookFormatType {
+  AudiobookFormat = 'AudiobookFormat',
+  GraphicNovel = 'GraphicNovel',
+  Paperback = 'Paperback',
+  Hardcover = 'Hardcover',
+  EBook = 'EBook',
+}
+registerEnumType(BookFormatType, {
+  name: 'BookFormatType',
+  description: '',
+});
+
+export enum ReturnLabelSourceEnumeration {
+  ReturnLabelCustomerResponsibility = 'ReturnLabelCustomerResponsibility',
+  ReturnLabelDownloadAndPrint = 'ReturnLabelDownloadAndPrint',
+  ReturnLabelInBox = 'ReturnLabelInBox',
+}
+registerEnumType(ReturnLabelSourceEnumeration, {
+  name: 'ReturnLabelSourceEnumeration',
+  description: '',
+});
+
+export enum BusinessFunction {
+}
+registerEnumType(BusinessFunction, {
+  name: 'BusinessFunction',
+  description: '',
+});
+
+export enum MusicAlbumProductionType {
+  SoundtrackAlbum = 'SoundtrackAlbum',
+  RemixAlbum = 'RemixAlbum',
+  SpokenWordAlbum = 'SpokenWordAlbum',
+  MixtapeAlbum = 'MixtapeAlbum',
+  CompilationAlbum = 'CompilationAlbum',
+  DJMixAlbum = 'DJMixAlbum',
+  LiveAlbum = 'LiveAlbum',
+  DemoAlbum = 'DemoAlbum',
+  StudioAlbum = 'StudioAlbum',
+}
+registerEnumType(MusicAlbumProductionType, {
+  name: 'MusicAlbumProductionType',
+  description: '',
+});
+
+export enum WearableSizeSystemEnumeration {
+  WearableSizeSystemJP = 'WearableSizeSystemJP',
+  WearableSizeSystemCN = 'WearableSizeSystemCN',
+  WearableSizeSystemDE = 'WearableSizeSystemDE',
+  WearableSizeSystemAU = 'WearableSizeSystemAU',
+  WearableSizeSystemBR = 'WearableSizeSystemBR',
+  WearableSizeSystemEurope = 'WearableSizeSystemEurope',
+  WearableSizeSystemGS1 = 'WearableSizeSystemGS1',
+  WearableSizeSystemMX = 'WearableSizeSystemMX',
+  WearableSizeSystemEN13402 = 'WearableSizeSystemEN13402',
+  WearableSizeSystemUK = 'WearableSizeSystemUK',
+  WearableSizeSystemUS = 'WearableSizeSystemUS',
+  WearableSizeSystemIT = 'WearableSizeSystemIT',
+  WearableSizeSystemFR = 'WearableSizeSystemFR',
+  WearableSizeSystemContinental = 'WearableSizeSystemContinental',
+}
+registerEnumType(WearableSizeSystemEnumeration, {
+  name: 'WearableSizeSystemEnumeration',
+  description: '',
+});
+
+export enum RestrictedDiet {
+  VeganDiet = 'VeganDiet',
+  LowFatDiet = 'LowFatDiet',
+  KosherDiet = 'KosherDiet',
+  HinduDiet = 'HinduDiet',
+  HalalDiet = 'HalalDiet',
+  VegetarianDiet = 'VegetarianDiet',
+  LowSaltDiet = 'LowSaltDiet',
+  LowCalorieDiet = 'LowCalorieDiet',
+  LowLactoseDiet = 'LowLactoseDiet',
+  GlutenFreeDiet = 'GlutenFreeDiet',
+  DiabeticDiet = 'DiabeticDiet',
+}
+registerEnumType(RestrictedDiet, {
+  name: 'RestrictedDiet',
+  description: '',
+});
+
+export enum MerchantReturnEnumeration {
+  MerchantReturnNotPermitted = 'MerchantReturnNotPermitted',
+  MerchantReturnUnlimitedWindow = 'MerchantReturnUnlimitedWindow',
+  MerchantReturnFiniteReturnWindow = 'MerchantReturnFiniteReturnWindow',
+  MerchantReturnUnspecified = 'MerchantReturnUnspecified',
+}
+registerEnumType(MerchantReturnEnumeration, {
+  name: 'MerchantReturnEnumeration',
+  description: '',
+});
+
+export enum MedicalDevicePurpose {
+  Therapeutic = 'Therapeutic',
+  Diagnostic = 'Diagnostic',
+}
+registerEnumType(MedicalDevicePurpose, {
+  name: 'MedicalDevicePurpose',
+  description: '',
+});
+
+export enum PriceComponentTypeEnumeration {
+  Subscription = 'Subscription',
+  Installment = 'Installment',
+  ActivationFee = 'ActivationFee',
+  Downpayment = 'Downpayment',
+  CleaningFee = 'CleaningFee',
+  DistanceFee = 'DistanceFee',
+}
+registerEnumType(PriceComponentTypeEnumeration, {
+  name: 'PriceComponentTypeEnumeration',
+  description: '',
+});
+
+export enum ActionStatusType {
+  PotentialActionStatus = 'PotentialActionStatus',
+  ActiveActionStatus = 'ActiveActionStatus',
+  FailedActionStatus = 'FailedActionStatus',
+  CompletedActionStatus = 'CompletedActionStatus',
+}
+registerEnumType(ActionStatusType, {
+  name: 'ActionStatusType',
+  description: '',
+});
+
+// #endregion
+
+// #region Primitive Scalars
+/**
+ * =================
+ * Primitive Scalars
+ * =================
+ */
+
+export type TextType = string;
+@Scalar('Text')
+export class TextScalar implements CustomScalar<TextType, TextType> {
+
+  parseValue(value: unknown): TextType {
+    return value as TextType;
+  }
+
+  serialize(value: unknown): TextType {
+    return value as TextType;
+  }
+
+  parseLiteral(ast: ValueNode): TextType {
+    return (ast as any).value || null;
+  }
+}
+
+export type NumberType = number;
+@Scalar('Number')
+export class NumberScalar implements CustomScalar<NumberType, NumberType> {
+
+  parseValue(value: unknown): NumberType {
+    return value as NumberType;
+  }
+
+  serialize(value: unknown): NumberType {
+    return value as NumberType;
+  }
+
+  parseLiteral(ast: ValueNode): NumberType {
+    return (ast as any).value || null;
+  }
+}
+
+export type BooleanType = boolean;
+@Scalar('Boolean')
+export class BooleanScalar implements CustomScalar<BooleanType, BooleanType> {
+
+  parseValue(value: unknown): BooleanType {
+    return value as BooleanType;
+  }
+
+  serialize(value: unknown): BooleanType {
+    return value as BooleanType;
+  }
+
+  parseLiteral(ast: ValueNode): BooleanType {
+    return (ast as any).value || null;
+  }
+}
+
+export type DateType = string;
+@Scalar('Date')
+export class DateScalar implements CustomScalar<DateType, DateType> {
+
+  parseValue(value: unknown): DateType {
+    return value as DateType;
+  }
+
+  serialize(value: unknown): DateType {
+    return value as DateType;
+  }
+
+  parseLiteral(ast: ValueNode): DateType {
+    return (ast as any).value || null;
+  }
+}
+
+export type IntegerType = number;
+@Scalar('Integer')
+export class IntegerScalar implements CustomScalar<IntegerType, IntegerType> {
+
+  parseValue(value: unknown): IntegerType {
+    return value as IntegerType;
+  }
+
+  serialize(value: unknown): IntegerType {
+    return value as IntegerType;
+  }
+
+  parseLiteral(ast: ValueNode): IntegerType {
+    return (ast as any).value || null;
+  }
+}
+
+export type FloatType = number;
+@Scalar('Float')
+export class FloatScalar implements CustomScalar<FloatType, FloatType> {
+
+  parseValue(value: unknown): FloatType {
+    return value as FloatType;
+  }
+
+  serialize(value: unknown): FloatType {
+    return value as FloatType;
+  }
+
+  parseLiteral(ast: ValueNode): FloatType {
+    return (ast as any).value || null;
+  }
+}
+
+export type TimeType = number;
+@Scalar('Time')
+export class TimeScalar implements CustomScalar<TimeType, TimeType> {
+
+  parseValue(value: unknown): TimeType {
+    return value as TimeType;
+  }
+
+  serialize(value: unknown): TimeType {
+    return value as TimeType;
+  }
+
+  parseLiteral(ast: ValueNode): TimeType {
+    return (ast as any).value || null;
+  }
+}
+
+// #endregion
+
+// #region Custom Scalars
+/**
+ * ==============
+ * Custom Scalars
+ * ==============
+ */
+
+export type UrlType = TextType;
+@Scalar('Url')
+export class UrlScalar implements CustomScalar<UrlType, UrlType> {
+
+  parseValue(value: unknown): UrlType {
+    return value as UrlType;
+  }
+
+  serialize(value: unknown): UrlType {
+    return value as UrlType;
+  }
+
+  parseLiteral(ast: ValueNode): UrlType {
+    return (ast as any).value || null;
+  }
+}
+
+export type CssSelectorTypeType = TextType;
+@Scalar('CssSelectorType')
+export class CssSelectorTypeScalar implements CustomScalar<CssSelectorTypeType, CssSelectorTypeType> {
+
+  parseValue(value: unknown): CssSelectorTypeType {
+    return value as CssSelectorTypeType;
+  }
+
+  serialize(value: unknown): CssSelectorTypeType {
+    return value as CssSelectorTypeType;
+  }
+
+  parseLiteral(ast: ValueNode): CssSelectorTypeType {
+    return (ast as any).value || null;
+  }
+}
+
+export type XPathTypeType = TextType;
+@Scalar('XPathType')
+export class XPathTypeScalar implements CustomScalar<XPathTypeType, XPathTypeType> {
+
+  parseValue(value: unknown): XPathTypeType {
+    return value as XPathTypeType;
+  }
+
+  serialize(value: unknown): XPathTypeType {
+    return value as XPathTypeType;
+  }
+
+  parseLiteral(ast: ValueNode): XPathTypeType {
+    return (ast as any).value || null;
+  }
+}
+
+export type DateTimeType = DateType;
+@Scalar('DateTime')
+export class DateTimeScalar implements CustomScalar<DateTimeType, DateTimeType> {
+
+  parseValue(value: unknown): DateTimeType {
+    return value as DateTimeType;
+  }
+
+  serialize(value: unknown): DateTimeType {
+    return value as DateTimeType;
+  }
+
+  parseLiteral(ast: ValueNode): DateTimeType {
+    return (ast as any).value || null;
+  }
+}
+
+// #endregion
+
+// #region Type Aliases
+/**
+ * ==============
+ * Type Aliases
+ * ==============
+ */
+
+export type Restaurant = FoodEstablishment;
+export const RestaurantUnion = createUnionType({
+  name: 'Restaurant',
+  types: () => [FoodEstablishment] as const,
+});
+
+export type FundingScheme = Organization;
+export const FundingSchemeUnion = createUnionType({
+  name: 'FundingScheme',
+  types: () => [Organization] as const,
+});
+
+export type InternetCafe = LocalBusiness;
+export const InternetCafeUnion = createUnionType({
+  name: 'InternetCafe',
+  types: () => [LocalBusiness] as const,
+});
+
+export type MensClothingStore = Store;
+export const MensClothingStoreUnion = createUnionType({
+  name: 'MensClothingStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type CheckOutAction = CommunicateAction;
+export const CheckOutActionUnion = createUnionType({
+  name: 'CheckOutAction',
+  types: () => [CommunicateAction] as const,
+});
+
+export type ApprovedIndication = MedicalIndication;
+export const ApprovedIndicationUnion = createUnionType({
+  name: 'ApprovedIndication',
+  types: () => [MedicalEntity] as const,
+});
+
+export type TelevisionStation = LocalBusiness;
+export const TelevisionStationUnion = createUnionType({
+  name: 'TelevisionStation',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Festival = Event;
+export const FestivalUnion = createUnionType({
+  name: 'Festival',
+  types: () => [Event] as const,
+});
+
+export type MarryAction = InteractAction;
+export const MarryActionUnion = createUnionType({
+  name: 'MarryAction',
+  types: () => [Action] as const,
+});
+
+export type GolfCourse = SportsActivityLocation;
+export const GolfCourseUnion = createUnionType({
+  name: 'GolfCourse',
+  types: () => [LocalBusiness] as const,
+});
+
+export type TravelAgency = LocalBusiness;
+export const TravelAgencyUnion = createUnionType({
+  name: 'TravelAgency',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Mountain = Landform;
+export const MountainUnion = createUnionType({
+  name: 'Mountain',
+  types: () => [Place] as const,
+});
+
+export type RVPark = CivicStructure;
+export const RVParkUnion = createUnionType({
+  name: 'RVPark',
+  types: () => [CivicStructure] as const,
+});
+
+export type MovieRentalStore = Store;
+export const MovieRentalStoreUnion = createUnionType({
+  name: 'MovieRentalStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type BikeStore = Store;
+export const BikeStoreUnion = createUnionType({
+  name: 'BikeStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Energy = Quantity;
+export const EnergyUnion = createUnionType({
+  name: 'Energy',
+  types: () => [Thing] as const,
+});
+
+export type BrokerageAccount = InvestmentOrDeposit;
+export const BrokerageAccountUnion = createUnionType({
+  name: 'BrokerageAccount',
+  types: () => [InvestmentOrDeposit] as const,
+});
+
+export type SchoolDistrict = AdministrativeArea;
+export const SchoolDistrictUnion = createUnionType({
+  name: 'SchoolDistrict',
+  types: () => [Place] as const,
+});
+
+export type OpinionNewsArticle = NewsArticle;
+export const OpinionNewsArticleUnion = createUnionType({
+  name: 'OpinionNewsArticle',
+  types: () => [NewsArticle] as const,
+});
+
+export type Drawing = CreativeWork;
+export const DrawingUnion = createUnionType({
+  name: 'Drawing',
+  types: () => [CreativeWork] as const,
+});
+
+export type MovingCompany = HomeAndConstructionBusiness;
+export const MovingCompanyUnion = createUnionType({
+  name: 'MovingCompany',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Ngo = Organization;
+export const NgoUnion = createUnionType({
+  name: 'Ngo',
+  types: () => [Organization] as const,
+});
+
+export type GasStation = AutomotiveBusiness;
+export const GasStationUnion = createUnionType({
+  name: 'GasStation',
+  types: () => [LocalBusiness] as const,
+});
+
+export type RecommendedDoseSchedule = DoseSchedule;
+export const RecommendedDoseScheduleUnion = createUnionType({
+  name: 'RecommendedDoseSchedule',
+  types: () => [DoseSchedule] as const,
+});
+
+export type AboutPage = WebPage;
+export const AboutPageUnion = createUnionType({
+  name: 'AboutPage',
+  types: () => [WebPage] as const,
+});
+
+export type EndorsementRating = Rating;
+export const EndorsementRatingUnion = createUnionType({
+  name: 'EndorsementRating',
+  types: () => [Rating] as const,
+});
+
+export type ShortStory = CreativeWork;
+export const ShortStoryUnion = createUnionType({
+  name: 'ShortStory',
+  types: () => [CreativeWork] as const,
+});
+
+export type UserPageVisits = UserInteraction;
+export const UserPageVisitsUnion = createUnionType({
+  name: 'UserPageVisits',
+  types: () => [Event] as const,
+});
+
+export type PerformingArtsTheater = CivicStructure;
+export const PerformingArtsTheaterUnion = createUnionType({
+  name: 'PerformingArtsTheater',
+  types: () => [CivicStructure] as const,
+});
+
+export type SubscribeAction = InteractAction;
+export const SubscribeActionUnion = createUnionType({
+  name: 'SubscribeAction',
+  types: () => [Action] as const,
+});
+
+export type OfferForLease = Offer;
+export const OfferForLeaseUnion = createUnionType({
+  name: 'OfferForLease',
+  types: () => [Offer] as const,
+});
+
+export type CompleteDataFeed = DataFeed;
+export const CompleteDataFeedUnion = createUnionType({
+  name: 'CompleteDataFeed',
+  types: () => [DataFeed] as const,
+});
+
+export type OutletStore = Store;
+export const OutletStoreUnion = createUnionType({
+  name: 'OutletStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Country = AdministrativeArea;
+export const CountryUnion = createUnionType({
+  name: 'Country',
+  types: () => [Place] as const,
+});
+
+export type BoatReservation = Reservation;
+export const BoatReservationUnion = createUnionType({
+  name: 'BoatReservation',
+  types: () => [Reservation] as const,
+});
+
+export type ElementarySchool = EducationalOrganization;
+export const ElementarySchoolUnion = createUnionType({
+  name: 'ElementarySchool',
+  types: () => [EducationalOrganization] as const,
+});
+
+export type DanceEvent = Event;
+export const DanceEventUnion = createUnionType({
+  name: 'DanceEvent',
+  types: () => [Event] as const,
+});
+
+export type DeleteAction = UpdateAction;
+export const DeleteActionUnion = createUnionType({
+  name: 'DeleteAction',
+  types: () => [UpdateAction] as const,
+});
+
+export type DiscussionForumPosting = SocialMediaPosting;
+export const DiscussionForumPostingUnion = createUnionType({
+  name: 'DiscussionForumPosting',
+  types: () => [SocialMediaPosting] as const,
+});
+
+export type PublicSwimmingPool = SportsActivityLocation;
+export const PublicSwimmingPoolUnion = createUnionType({
+  name: 'PublicSwimmingPool',
+  types: () => [LocalBusiness] as const,
+});
+
+export type BackgroundNewsArticle = NewsArticle;
+export const BackgroundNewsArticleUnion = createUnionType({
+  name: 'BackgroundNewsArticle',
+  types: () => [NewsArticle] as const,
+});
+
+export type WearAction = UseAction;
+export const WearActionUnion = createUnionType({
+  name: 'WearAction',
+  types: () => [ConsumeAction] as const,
+});
+
+export type SocialEvent = Event;
+export const SocialEventUnion = createUnionType({
+  name: 'SocialEvent',
+  types: () => [Event] as const,
+});
+
+export type AutoRepair = AutomotiveBusiness;
+export const AutoRepairUnion = createUnionType({
+  name: 'AutoRepair',
+  types: () => [LocalBusiness] as const,
+});
+
+export type SubwayStation = CivicStructure;
+export const SubwayStationUnion = createUnionType({
+  name: 'SubwayStation',
+  types: () => [CivicStructure] as const,
+});
+
+export type DaySpa = HealthAndBeautyBusiness;
+export const DaySpaUnion = createUnionType({
+  name: 'DaySpa',
+  types: () => [LocalBusiness] as const,
+});
+
+export type RadioStation = LocalBusiness;
+export const RadioStationUnion = createUnionType({
+  name: 'RadioStation',
+  types: () => [LocalBusiness] as const,
+});
+
+export type ShoeStore = Store;
+export const ShoeStoreUnion = createUnionType({
+  name: 'ShoeStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type SportsActivityLocation = LocalBusiness;
+export const SportsActivityLocationUnion = createUnionType({
+  name: 'SportsActivityLocation',
+  types: () => [LocalBusiness] as const,
+});
+
+export type TieAction = AchieveAction;
+export const TieActionUnion = createUnionType({
+  name: 'TieAction',
+  types: () => [Action] as const,
+});
+
+export type AutoRental = AutomotiveBusiness;
+export const AutoRentalUnion = createUnionType({
+  name: 'AutoRental',
+  types: () => [LocalBusiness] as const,
+});
+
+export type MotorcycleRepair = AutomotiveBusiness;
+export const MotorcycleRepairUnion = createUnionType({
+  name: 'MotorcycleRepair',
+  types: () => [LocalBusiness] as const,
+});
+
+export type MedicalRiskCalculator = MedicalRiskEstimator;
+export const MedicalRiskCalculatorUnion = createUnionType({
+  name: 'MedicalRiskCalculator',
+  types: () => [MedicalRiskEstimator] as const,
+});
+
+export type CableOrSatelliteService = Service;
+export const CableOrSatelliteServiceUnion = createUnionType({
+  name: 'CableOrSatelliteService',
+  types: () => [Service] as const,
+});
+
+export type PaintAction = CreateAction;
+export const PaintActionUnion = createUnionType({
+  name: 'PaintAction',
+  types: () => [Action] as const,
+});
+
+export type CancelAction = PlanAction;
+export const CancelActionUnion = createUnionType({
+  name: 'CancelAction',
+  types: () => [PlanAction] as const,
+});
+
+export type AutoWash = AutomotiveBusiness;
+export const AutoWashUnion = createUnionType({
+  name: 'AutoWash',
+  types: () => [LocalBusiness] as const,
+});
+
+export type NailSalon = HealthAndBeautyBusiness;
+export const NailSalonUnion = createUnionType({
+  name: 'NailSalon',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Painting = CreativeWork;
+export const PaintingUnion = createUnionType({
+  name: 'Painting',
+  types: () => [CreativeWork] as const,
+});
+
+export type TaxiService = Service;
+export const TaxiServiceUnion = createUnionType({
+  name: 'TaxiService',
+  types: () => [Service] as const,
+});
+
+export type InteractAction = Action;
+export const InteractActionUnion = createUnionType({
+  name: 'InteractAction',
+  types: () => [Action] as const,
+});
+
+export type ReadAction = ConsumeAction;
+export const ReadActionUnion = createUnionType({
+  name: 'ReadAction',
+  types: () => [ConsumeAction] as const,
+});
+
+export type BookStore = Store;
+export const BookStoreUnion = createUnionType({
+  name: 'BookStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type LandmarksOrHistoricalBuildings = Place;
+export const LandmarksOrHistoricalBuildingsUnion = createUnionType({
+  name: 'LandmarksOrHistoricalBuildings',
+  types: () => [Place] as const,
+});
+
+export type CoverArt = VisualArtwork;
+export const CoverArtUnion = createUnionType({
+  name: 'CoverArt',
+  types: () => [VisualArtwork] as const,
+});
+
+export type ChildCare = LocalBusiness;
+export const ChildCareUnion = createUnionType({
+  name: 'ChildCare',
+  types: () => [LocalBusiness] as const,
+});
+
+export type GroceryStore = Store;
+export const GroceryStoreUnion = createUnionType({
+  name: 'GroceryStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Continent = Landform;
+export const ContinentUnion = createUnionType({
+  name: 'Continent',
+  types: () => [Place] as const,
+});
+
+export type SportsClub = SportsActivityLocation;
+export const SportsClubUnion = createUnionType({
+  name: 'SportsClub',
+  types: () => [LocalBusiness] as const,
+});
+
+export type SearchRescueOrganization = Organization;
+export const SearchRescueOrganizationUnion = createUnionType({
+  name: 'SearchRescueOrganization',
+  types: () => [Organization] as const,
+});
+
+export type OfferForPurchase = Offer;
+export const OfferForPurchaseUnion = createUnionType({
+  name: 'OfferForPurchase',
+  types: () => [Offer] as const,
+});
+
+export type PostOffice = GovernmentOffice;
+export const PostOfficeUnion = createUnionType({
+  name: 'PostOffice',
+  types: () => [LocalBusiness] as const,
+});
+
+export type HobbyShop = Store;
+export const HobbyShopUnion = createUnionType({
+  name: 'HobbyShop',
+  types: () => [LocalBusiness] as const,
+});
+
+export type GovernmentOffice = LocalBusiness;
+export const GovernmentOfficeUnion = createUnionType({
+  name: 'GovernmentOffice',
+  types: () => [LocalBusiness] as const,
+});
+
+export type VeterinaryCare = MedicalOrganization;
+export const VeterinaryCareUnion = createUnionType({
+  name: 'VeterinaryCare',
+  types: () => [MedicalOrganization] as const,
+});
+
+export type Bridge = CivicStructure;
+export const BridgeUnion = createUnionType({
+  name: 'Bridge',
+  types: () => [CivicStructure] as const,
+});
+
+export type HealthAndBeautyBusiness = LocalBusiness;
+export const HealthAndBeautyBusinessUnion = createUnionType({
+  name: 'HealthAndBeautyBusiness',
+  types: () => [LocalBusiness] as const,
+});
+
+export type IgnoreAction = AssessAction;
+export const IgnoreActionUnion = createUnionType({
+  name: 'IgnoreAction',
+  types: () => [Action] as const,
+});
+
+export type WPSideBar = WebPageElement;
+export const WPSideBarUnion = createUnionType({
+  name: 'WPSideBar',
+  types: () => [WebPageElement] as const,
+});
+
+export type ReportedDoseSchedule = DoseSchedule;
+export const ReportedDoseScheduleUnion = createUnionType({
+  name: 'ReportedDoseSchedule',
+  types: () => [DoseSchedule] as const,
+});
+
+export type GovernmentPermit = Permit;
+export const GovernmentPermitUnion = createUnionType({
+  name: 'GovernmentPermit',
+  types: () => [Permit] as const,
+});
+
+export type CurrencyConversionService = FinancialProduct;
+export const CurrencyConversionServiceUnion = createUnionType({
+  name: 'CurrencyConversionService',
+  types: () => [FinancialProduct] as const,
+});
+
+export type BoatTerminal = CivicStructure;
+export const BoatTerminalUnion = createUnionType({
+  name: 'BoatTerminal',
+  types: () => [CivicStructure] as const,
+});
+
+export type SaleEvent = Event;
+export const SaleEventUnion = createUnionType({
+  name: 'SaleEvent',
+  types: () => [Event] as const,
+});
+
+export type BedAndBreakfast = LodgingBusiness;
+export const BedAndBreakfastUnion = createUnionType({
+  name: 'BedAndBreakfast',
+  types: () => [LodgingBusiness] as const,
+});
+
+export type Intangible = Thing;
+export const IntangibleUnion = createUnionType({
+  name: 'Intangible',
+  types: () => [Thing] as const,
+});
+
+export type SuspendAction = ControlAction;
+export const SuspendActionUnion = createUnionType({
+  name: 'SuspendAction',
+  types: () => [Action] as const,
+});
+
+export type AdministrativeArea = Place;
+export const AdministrativeAreaUnion = createUnionType({
+  name: 'AdministrativeArea',
+  types: () => [Place] as const,
+});
+
+export type PetStore = Store;
+export const PetStoreUnion = createUnionType({
+  name: 'PetStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type ArriveAction = MoveAction;
+export const ArriveActionUnion = createUnionType({
+  name: 'ArriveAction',
+  types: () => [MoveAction] as const,
+});
+
+export type BusReservation = Reservation;
+export const BusReservationUnion = createUnionType({
+  name: 'BusReservation',
+  types: () => [Reservation] as const,
+});
+
+export type UserLikes = UserInteraction;
+export const UserLikesUnion = createUnionType({
+  name: 'UserLikes',
+  types: () => [Event] as const,
+});
+
+export type AllocateAction = OrganizeAction;
+export const AllocateActionUnion = createUnionType({
+  name: 'AllocateAction',
+  types: () => [Action] as const,
+});
+
+export type HairSalon = HealthAndBeautyBusiness;
+export const HairSalonUnion = createUnionType({
+  name: 'HairSalon',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Hostel = LodgingBusiness;
+export const HostelUnion = createUnionType({
+  name: 'Hostel',
+  types: () => [LodgingBusiness] as const,
+});
+
+export type ResearchOrganization = Organization;
+export const ResearchOrganizationUnion = createUnionType({
+  name: 'ResearchOrganization',
+  types: () => [Organization] as const,
+});
+
+export type BarOrPub = FoodEstablishment;
+export const BarOrPubUnion = createUnionType({
+  name: 'BarOrPub',
+  types: () => [FoodEstablishment] as const,
+});
+
+export type Cemetery = CivicStructure;
+export const CemeteryUnion = createUnionType({
+  name: 'Cemetery',
+  types: () => [CivicStructure] as const,
+});
+
+export type LegislativeBuilding = GovernmentBuilding;
+export const LegislativeBuildingUnion = createUnionType({
+  name: 'LegislativeBuilding',
+  types: () => [CivicStructure] as const,
+});
+
+export type RadioBroadcastService = BroadcastService;
+export const RadioBroadcastServiceUnion = createUnionType({
+  name: 'RadioBroadcastService',
+  types: () => [BroadcastService] as const,
+});
+
+export type ComputerLanguage = Intangible;
+export const ComputerLanguageUnion = createUnionType({
+  name: 'ComputerLanguage',
+  types: () => [Thing] as const,
+});
+
+export type Museum = CivicStructure;
+export const MuseumUnion = createUnionType({
+  name: 'Museum',
+  types: () => [CivicStructure] as const,
+});
+
+export type ToyStore = Store;
+export const ToyStoreUnion = createUnionType({
+  name: 'ToyStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type RadioEpisode = Episode;
+export const RadioEpisodeUnion = createUnionType({
+  name: 'RadioEpisode',
+  types: () => [Episode] as const,
+});
+
+export type GatedResidenceCommunity = Residence;
+export const GatedResidenceCommunityUnion = createUnionType({
+  name: 'GatedResidenceCommunity',
+  types: () => [Residence] as const,
+});
+
+export type FastFoodRestaurant = FoodEstablishment;
+export const FastFoodRestaurantUnion = createUnionType({
+  name: 'FastFoodRestaurant',
+  types: () => [FoodEstablishment] as const,
+});
+
+export type Vessel = AnatomicalStructure;
+export const VesselUnion = createUnionType({
+  name: 'Vessel',
+  types: () => [AnatomicalStructure] as const,
+});
+
+export type UserPlusOnes = UserInteraction;
+export const UserPlusOnesUnion = createUnionType({
+  name: 'UserPlusOnes',
+  types: () => [Event] as const,
+});
+
+export type BowlingAlley = SportsActivityLocation;
+export const BowlingAlleyUnion = createUnionType({
+  name: 'BowlingAlley',
+  types: () => [LocalBusiness] as const,
+});
+
+export type ConvenienceStore = Store;
+export const ConvenienceStoreUnion = createUnionType({
+  name: 'ConvenienceStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type TaxiStand = CivicStructure;
+export const TaxiStandUnion = createUnionType({
+  name: 'TaxiStand',
+  types: () => [CivicStructure] as const,
+});
+
+export type Motel = LodgingBusiness;
+export const MotelUnion = createUnionType({
+  name: 'Motel',
+  types: () => [LodgingBusiness] as const,
+});
+
+export type AutomotiveBusiness = LocalBusiness;
+export const AutomotiveBusinessUnion = createUnionType({
+  name: 'AutomotiveBusiness',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Mosque = PlaceOfWorship;
+export const MosqueUnion = createUnionType({
+  name: 'Mosque',
+  types: () => [CivicStructure] as const,
+});
+
+export type Courthouse = GovernmentBuilding;
+export const CourthouseUnion = createUnionType({
+  name: 'Courthouse',
+  types: () => [CivicStructure] as const,
+});
+
+export type Aquarium = CivicStructure;
+export const AquariumUnion = createUnionType({
+  name: 'Aquarium',
+  types: () => [CivicStructure] as const,
+});
+
+export type Electrician = HomeAndConstructionBusiness;
+export const ElectricianUnion = createUnionType({
+  name: 'Electrician',
+  types: () => [LocalBusiness] as const,
+});
+
+export type School = EducationalOrganization;
+export const SchoolUnion = createUnionType({
+  name: 'School',
+  types: () => [EducationalOrganization] as const,
+});
+
+export type Manuscript = CreativeWork;
+export const ManuscriptUnion = createUnionType({
+  name: 'Manuscript',
+  types: () => [CreativeWork] as const,
+});
+
+export type SearchResultsPage = WebPage;
+export const SearchResultsPageUnion = createUnionType({
+  name: 'SearchResultsPage',
+  types: () => [WebPage] as const,
+});
+
+export type ContactPage = WebPage;
+export const ContactPageUnion = createUnionType({
+  name: 'ContactPage',
+  types: () => [WebPage] as const,
+});
+
+export type AcceptAction = AllocateAction;
+export const AcceptActionUnion = createUnionType({
+  name: 'AcceptAction',
+  types: () => [Action] as const,
+});
+
+export type LakeBodyOfWater = BodyOfWater;
+export const LakeBodyOfWaterUnion = createUnionType({
+  name: 'LakeBodyOfWater',
+  types: () => [Place] as const,
+});
+
+export type DepartmentStore = Store;
+export const DepartmentStoreUnion = createUnionType({
+  name: 'DepartmentStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Distillery = FoodEstablishment;
+export const DistilleryUnion = createUnionType({
+  name: 'Distillery',
+  types: () => [FoodEstablishment] as const,
+});
+
+export type ComedyEvent = Event;
+export const ComedyEventUnion = createUnionType({
+  name: 'ComedyEvent',
+  types: () => [Event] as const,
+});
+
+export type Statement = CreativeWork;
+export const StatementUnion = createUnionType({
+  name: 'Statement',
+  types: () => [CreativeWork] as const,
+});
+
+export type RadiationTherapy = MedicalTherapy;
+export const RadiationTherapyUnion = createUnionType({
+  name: 'RadiationTherapy',
+  types: () => [MedicalTherapy] as const,
+});
+
+export type CriticReview = Review;
+export const CriticReviewUnion = createUnionType({
+  name: 'CriticReview',
+  types: () => [Review] as const,
+});
+
+export type RecyclingCenter = LocalBusiness;
+export const RecyclingCenterUnion = createUnionType({
+  name: 'RecyclingCenter',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Duration = Quantity;
+export const DurationUnion = createUnionType({
+  name: 'Duration',
+  types: () => [Thing] as const,
+});
+
+export type Synagogue = PlaceOfWorship;
+export const SynagogueUnion = createUnionType({
+  name: 'Synagogue',
+  types: () => [CivicStructure] as const,
+});
+
+export type ListenAction = ConsumeAction;
+export const ListenActionUnion = createUnionType({
+  name: 'ListenAction',
+  types: () => [ConsumeAction] as const,
+});
+
+export type AppendAction = InsertAction;
+export const AppendActionUnion = createUnionType({
+  name: 'AppendAction',
+  types: () => [InsertAction] as const,
+});
+
+export type Winery = FoodEstablishment;
+export const WineryUnion = createUnionType({
+  name: 'Winery',
+  types: () => [FoodEstablishment] as const,
+});
+
+export type MeetingRoom = Room;
+export const MeetingRoomUnion = createUnionType({
+  name: 'MeetingRoom',
+  types: () => [Accommodation] as const,
+});
+
+export type PhotographAction = CreateAction;
+export const PhotographActionUnion = createUnionType({
+  name: 'PhotographAction',
+  types: () => [Action] as const,
+});
+
+export type MotorizedBicycle = Vehicle;
+export const MotorizedBicycleUnion = createUnionType({
+  name: 'MotorizedBicycle',
+  types: () => [Vehicle] as const,
+});
+
+export type ComicSeries = Periodical;
+export const ComicSeriesUnion = createUnionType({
+  name: 'ComicSeries',
+  types: () => [CreativeWorkSeries] as const,
+});
+
+export type MedicalContraindication = MedicalEntity;
+export const MedicalContraindicationUnion = createUnionType({
+  name: 'MedicalContraindication',
+  types: () => [MedicalEntity] as const,
+});
+
+export type CheckoutPage = WebPage;
+export const CheckoutPageUnion = createUnionType({
+  name: 'CheckoutPage',
+  types: () => [WebPage] as const,
+});
+
+export type TheaterEvent = Event;
+export const TheaterEventUnion = createUnionType({
+  name: 'TheaterEvent',
+  types: () => [Event] as const,
+});
+
+export type Store = LocalBusiness;
+export const StoreUnion = createUnionType({
+  name: 'Store',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Notary = LegalService;
+export const NotaryUnion = createUnionType({
+  name: 'Notary',
+  types: () => [LocalBusiness] as const,
+});
+
+export type LegalService = LocalBusiness;
+export const LegalServiceUnion = createUnionType({
+  name: 'LegalService',
+  types: () => [LocalBusiness] as const,
+});
+
+export type QuoteAction = TradeAction;
+export const QuoteActionUnion = createUnionType({
+  name: 'QuoteAction',
+  types: () => [TradeAction] as const,
+});
+
+export type AMRadioChannel = RadioChannel;
+export const AMRadioChannelUnion = createUnionType({
+  name: 'AMRadioChannel',
+  types: () => [BroadcastChannel] as const,
+});
+
+export type InsuranceAgency = FinancialService;
+export const InsuranceAgencyUnion = createUnionType({
+  name: 'InsuranceAgency',
+  types: () => [FinancialService] as const,
+});
+
+export type SelfStorage = LocalBusiness;
+export const SelfStorageUnion = createUnionType({
+  name: 'SelfStorage',
+  types: () => [LocalBusiness] as const,
+});
+
+export type City = AdministrativeArea;
+export const CityUnion = createUnionType({
+  name: 'City',
+  types: () => [Place] as const,
+});
+
+export type CovidTestingFacility = MedicalClinic;
+export const CovidTestingFacilityUnion = createUnionType({
+  name: 'CovidTestingFacility',
+  types: () => [MedicalClinic] as const,
+});
+
+export type MusicVideoObject = MediaObject;
+export const MusicVideoObjectUnion = createUnionType({
+  name: 'MusicVideoObject',
+  types: () => [MediaObject] as const,
+});
+
+export type CorrectionComment = Comment;
+export const CorrectionCommentUnion = createUnionType({
+  name: 'CorrectionComment',
+  types: () => [Comment] as const,
+});
+
+export type AssignAction = AllocateAction;
+export const AssignActionUnion = createUnionType({
+  name: 'AssignAction',
+  types: () => [Action] as const,
+});
+
+export type Mass = Quantity;
+export const MassUnion = createUnionType({
+  name: 'Mass',
+  types: () => [Thing] as const,
+});
+
+export type OrganizeAction = Action;
+export const OrganizeActionUnion = createUnionType({
+  name: 'OrganizeAction',
+  types: () => [Action] as const,
+});
+
+export type FMRadioChannel = RadioChannel;
+export const FMRadioChannelUnion = createUnionType({
+  name: 'FMRadioChannel',
+  types: () => [BroadcastChannel] as const,
+});
+
+export type BuddhistTemple = PlaceOfWorship;
+export const BuddhistTempleUnion = createUnionType({
+  name: 'BuddhistTemple',
+  types: () => [CivicStructure] as const,
+});
+
+export type PawnShop = Store;
+export const PawnShopUnion = createUnionType({
+  name: 'PawnShop',
+  types: () => [LocalBusiness] as const,
+});
+
+export type WPHeader = WebPageElement;
+export const WPHeaderUnion = createUnionType({
+  name: 'WPHeader',
+  types: () => [WebPageElement] as const,
+});
+
+export type TrainReservation = Reservation;
+export const TrainReservationUnion = createUnionType({
+  name: 'TrainReservation',
+  types: () => [Reservation] as const,
+});
+
+export type OnlineStore = OnlineBusiness;
+export const OnlineStoreUnion = createUnionType({
+  name: 'OnlineStore',
+  types: () => [Organization] as const,
+});
+
+export type VideoGallery = MediaGallery;
+export const VideoGalleryUnion = createUnionType({
+  name: 'VideoGallery',
+  types: () => [WebPage] as const,
+});
+
+export type Motorcycle = Vehicle;
+export const MotorcycleUnion = createUnionType({
+  name: 'Motorcycle',
+  types: () => [Vehicle] as const,
+});
+
+export type AnalysisNewsArticle = NewsArticle;
+export const AnalysisNewsArticleUnion = createUnionType({
+  name: 'AnalysisNewsArticle',
+  types: () => [NewsArticle] as const,
+});
+
+export type Play = CreativeWork;
+export const PlayUnion = createUnionType({
+  name: 'Play',
+  types: () => [CreativeWork] as const,
+});
+
+export type Zoo = CivicStructure;
+export const ZooUnion = createUnionType({
+  name: 'Zoo',
+  types: () => [CivicStructure] as const,
+});
+
+export type ShoppingCenter = LocalBusiness;
+export const ShoppingCenterUnion = createUnionType({
+  name: 'ShoppingCenter',
+  types: () => [LocalBusiness] as const,
+});
+
+export type CheckInAction = CommunicateAction;
+export const CheckInActionUnion = createUnionType({
+  name: 'CheckInAction',
+  types: () => [CommunicateAction] as const,
+});
+
+export type Hotel = LodgingBusiness;
+export const HotelUnion = createUnionType({
+  name: 'Hotel',
+  types: () => [LodgingBusiness] as const,
+});
+
+export type AchieveAction = Action;
+export const AchieveActionUnion = createUnionType({
+  name: 'AchieveAction',
+  types: () => [Action] as const,
+});
+
+export type CafeOrCoffeeShop = FoodEstablishment;
+export const CafeOrCoffeeShopUnion = createUnionType({
+  name: 'CafeOrCoffeeShop',
+  types: () => [FoodEstablishment] as const,
+});
+
+export type ArtGallery = EntertainmentBusiness;
+export const ArtGalleryUnion = createUnionType({
+  name: 'ArtGallery',
+  types: () => [LocalBusiness] as const,
+});
+
+export type BusStop = CivicStructure;
+export const BusStopUnion = createUnionType({
+  name: 'BusStop',
+  types: () => [CivicStructure] as const,
+});
+
+export type EntertainmentBusiness = LocalBusiness;
+export const EntertainmentBusinessUnion = createUnionType({
+  name: 'EntertainmentBusiness',
+  types: () => [LocalBusiness] as const,
+});
+
+export type BloodTest = MedicalTest;
+export const BloodTestUnion = createUnionType({
+  name: 'BloodTest',
+  types: () => [MedicalTest] as const,
+});
+
+export type OfficeEquipmentStore = Store;
+export const OfficeEquipmentStoreUnion = createUnionType({
+  name: 'OfficeEquipmentStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type ShareAction = CommunicateAction;
+export const ShareActionUnion = createUnionType({
+  name: 'ShareAction',
+  types: () => [CommunicateAction] as const,
+});
+
+export type BreadcrumbList = ItemList;
+export const BreadcrumbListUnion = createUnionType({
+  name: 'BreadcrumbList',
+  types: () => [ItemList] as const,
+});
+
+export type WebContent = CreativeWork;
+export const WebContentUnion = createUnionType({
+  name: 'WebContent',
+  types: () => [CreativeWork] as const,
+});
+
+export type RoofingContractor = HomeAndConstructionBusiness;
+export const RoofingContractorUnion = createUnionType({
+  name: 'RoofingContractor',
+  types: () => [LocalBusiness] as const,
+});
+
+export type MobilePhoneStore = Store;
+export const MobilePhoneStoreUnion = createUnionType({
+  name: 'MobilePhoneStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type EmailMessage = Message;
+export const EmailMessageUnion = createUnionType({
+  name: 'EmailMessage',
+  types: () => [Message] as const,
+});
+
+export type FAQPage = WebPage;
+export const FAQPageUnion = createUnionType({
+  name: 'FAQPage',
+  types: () => [WebPage] as const,
+});
+
+export type FindAction = Action;
+export const FindActionUnion = createUnionType({
+  name: 'FindAction',
+  types: () => [Action] as const,
+});
+
+export type Park = CivicStructure;
+export const ParkUnion = createUnionType({
+  name: 'Park',
+  types: () => [CivicStructure] as const,
+});
+
+export type GovernmentOrganization = Organization;
+export const GovernmentOrganizationUnion = createUnionType({
+  name: 'GovernmentOrganization',
+  types: () => [Organization] as const,
+});
+
+export type EventReservation = Reservation;
+export const EventReservationUnion = createUnionType({
+  name: 'EventReservation',
+  types: () => [Reservation] as const,
+});
+
+export type DisagreeAction = ReactAction;
+export const DisagreeActionUnion = createUnionType({
+  name: 'DisagreeAction',
+  types: () => [Action] as const,
+});
+
+export type IceCreamShop = FoodEstablishment;
+export const IceCreamShopUnion = createUnionType({
+  name: 'IceCreamShop',
+  types: () => [FoodEstablishment] as const,
+});
+
+export type HinduTemple = PlaceOfWorship;
+export const HinduTempleUnion = createUnionType({
+  name: 'HinduTemple',
+  types: () => [CivicStructure] as const,
+});
+
+export type AccountingService = FinancialService;
+export const AccountingServiceUnion = createUnionType({
+  name: 'AccountingService',
+  types: () => [FinancialService] as const,
+});
+
+export type DanceGroup = PerformingGroup;
+export const DanceGroupUnion = createUnionType({
+  name: 'DanceGroup',
+  types: () => [Organization] as const,
+});
+
+export type EmergencyService = LocalBusiness;
+export const EmergencyServiceUnion = createUnionType({
+  name: 'EmergencyService',
+  types: () => [LocalBusiness] as const,
+});
+
+export type BefriendAction = InteractAction;
+export const BefriendActionUnion = createUnionType({
+  name: 'BefriendAction',
+  types: () => [Action] as const,
+});
+
+export type HighSchool = EducationalOrganization;
+export const HighSchoolUnion = createUnionType({
+  name: 'HighSchool',
+  types: () => [EducationalOrganization] as const,
+});
+
+export type MiddleSchool = EducationalOrganization;
+export const MiddleSchoolUnion = createUnionType({
+  name: 'MiddleSchool',
+  types: () => [EducationalOrganization] as const,
+});
+
+export type StructuredValue = Intangible;
+export const StructuredValueUnion = createUnionType({
+  name: 'StructuredValue',
+  types: () => [Thing] as const,
+});
+
+export type Waterfall = BodyOfWater;
+export const WaterfallUnion = createUnionType({
+  name: 'Waterfall',
+  types: () => [Place] as const,
+});
+
+export type GardenStore = Store;
+export const GardenStoreUnion = createUnionType({
+  name: 'GardenStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type MusicVenue = CivicStructure;
+export const MusicVenueUnion = createUnionType({
+  name: 'MusicVenue',
+  types: () => [CivicStructure] as const,
+});
+
+export type MedicalSymptom = MedicalSignOrSymptom;
+export const MedicalSymptomUnion = createUnionType({
+  name: 'MedicalSymptom',
+  types: () => [MedicalSignOrSymptom] as const,
+});
+
+export type OceanBodyOfWater = BodyOfWater;
+export const OceanBodyOfWaterUnion = createUnionType({
+  name: 'OceanBodyOfWater',
+  types: () => [Place] as const,
+});
+
+export type EmployerAggregateRating = AggregateRating;
+export const EmployerAggregateRatingUnion = createUnionType({
+  name: 'EmployerAggregateRating',
+  types: () => [AggregateRating] as const,
+});
+
+export type PreOrderAction = TradeAction;
+export const PreOrderActionUnion = createUnionType({
+  name: 'PreOrderAction',
+  types: () => [TradeAction] as const,
+});
+
+export type RejectAction = AllocateAction;
+export const RejectActionUnion = createUnionType({
+  name: 'RejectAction',
+  types: () => [Action] as const,
+});
+
+export type VideoObjectSnapshot = VideoObject;
+export const VideoObjectSnapshotUnion = createUnionType({
+  name: 'VideoObjectSnapshot',
+  types: () => [VideoObject] as const,
+});
+
+export type ExerciseGym = SportsActivityLocation;
+export const ExerciseGymUnion = createUnionType({
+  name: 'ExerciseGym',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Photograph = CreativeWork;
+export const PhotographUnion = createUnionType({
+  name: 'Photograph',
+  types: () => [CreativeWork] as const,
+});
+
+export type DepartAction = MoveAction;
+export const DepartActionUnion = createUnionType({
+  name: 'DepartAction',
+  types: () => [MoveAction] as const,
+});
+
+export type DeactivateAction = ControlAction;
+export const DeactivateActionUnion = createUnionType({
+  name: 'DeactivateAction',
+  types: () => [Action] as const,
+});
+
+export type MedicalGuidelineContraindication = MedicalGuideline;
+export const MedicalGuidelineContraindicationUnion = createUnionType({
+  name: 'MedicalGuidelineContraindication',
+  types: () => [MedicalGuideline] as const,
+});
+
+export type ResumeAction = ControlAction;
+export const ResumeActionUnion = createUnionType({
+  name: 'ResumeAction',
+  types: () => [Action] as const,
+});
+
+export type ReactAction = AssessAction;
+export const ReactActionUnion = createUnionType({
+  name: 'ReactAction',
+  types: () => [Action] as const,
+});
+
+export type Conversation = CreativeWork;
+export const ConversationUnion = createUnionType({
+  name: 'Conversation',
+  types: () => [CreativeWork] as const,
+});
+
+export type Plumber = HomeAndConstructionBusiness;
+export const PlumberUnion = createUnionType({
+  name: 'Plumber',
+  types: () => [LocalBusiness] as const,
+});
+
+export type TrainStation = CivicStructure;
+export const TrainStationUnion = createUnionType({
+  name: 'TrainStation',
+  types: () => [CivicStructure] as const,
+});
+
+export type MediaGallery = CollectionPage;
+export const MediaGalleryUnion = createUnionType({
+  name: 'MediaGallery',
+  types: () => [WebPage] as const,
+});
+
+export type ImageObjectSnapshot = ImageObject;
+export const ImageObjectSnapshotUnion = createUnionType({
+  name: 'ImageObjectSnapshot',
+  types: () => [ImageObject] as const,
+});
+
+export type LifestyleModification = MedicalEntity;
+export const LifestyleModificationUnion = createUnionType({
+  name: 'LifestyleModification',
+  types: () => [MedicalEntity] as const,
+});
+
+export type BlogPosting = SocialMediaPosting;
+export const BlogPostingUnion = createUnionType({
+  name: 'BlogPosting',
+  types: () => [SocialMediaPosting] as const,
+});
+
+export type LikeAction = ReactAction;
+export const LikeActionUnion = createUnionType({
+  name: 'LikeAction',
+  types: () => [Action] as const,
+});
+
+export type MotorcycleDealer = AutomotiveBusiness;
+export const MotorcycleDealerUnion = createUnionType({
+  name: 'MotorcycleDealer',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Atlas = CreativeWork;
+export const AtlasUnion = createUnionType({
+  name: 'Atlas',
+  types: () => [CreativeWork] as const,
+});
+
+export type UserTweets = UserInteraction;
+export const UserTweetsUnion = createUnionType({
+  name: 'UserTweets',
+  types: () => [Event] as const,
+});
+
+export type PodcastEpisode = Episode;
+export const PodcastEpisodeUnion = createUnionType({
+  name: 'PodcastEpisode',
+  types: () => [Episode] as const,
+});
+
+export type Bone = AnatomicalStructure;
+export const BoneUnion = createUnionType({
+  name: 'Bone',
+  types: () => [AnatomicalStructure] as const,
+});
+
+export type BodyOfWater = Landform;
+export const BodyOfWaterUnion = createUnionType({
+  name: 'BodyOfWater',
+  types: () => [Place] as const,
+});
+
+export type Season = CreativeWork;
+export const SeasonUnion = createUnionType({
+  name: 'Season',
+  types: () => [CreativeWork] as const,
+});
+
+export type DataType = Class;
+export const DataTypeUnion = createUnionType({
+  name: 'DataType',
+  types: () => [Class] as const,
+});
+
+export type Locksmith = HomeAndConstructionBusiness;
+export const LocksmithUnion = createUnionType({
+  name: 'Locksmith',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Attorney = LegalService;
+export const AttorneyUnion = createUnionType({
+  name: 'Attorney',
+  types: () => [LocalBusiness] as const,
+});
+
+export type MusicStore = Store;
+export const MusicStoreUnion = createUnionType({
+  name: 'MusicStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type ImageGallery = MediaGallery;
+export const ImageGalleryUnion = createUnionType({
+  name: 'ImageGallery',
+  types: () => [WebPage] as const,
+});
+
+export type ConfirmAction = InformAction;
+export const ConfirmActionUnion = createUnionType({
+  name: 'ConfirmAction',
+  types: () => [InformAction] as const,
+});
+
+export type UserCheckins = UserInteraction;
+export const UserCheckinsUnion = createUnionType({
+  name: 'UserCheckins',
+  types: () => [Event] as const,
+});
+
+export type HowToTool = HowToItem;
+export const HowToToolUnion = createUnionType({
+  name: 'HowToTool',
+  types: () => [HowToItem] as const,
+});
+
+export type Ligament = AnatomicalStructure;
+export const LigamentUnion = createUnionType({
+  name: 'Ligament',
+  types: () => [AnatomicalStructure] as const,
+});
+
+export type Preschool = EducationalOrganization;
+export const PreschoolUnion = createUnionType({
+  name: 'Preschool',
+  types: () => [EducationalOrganization] as const,
+});
+
+export type Resort = LodgingBusiness;
+export const ResortUnion = createUnionType({
+  name: 'Resort',
+  types: () => [LodgingBusiness] as const,
+});
+
+export type Code = CreativeWork;
+export const CodeUnion = createUnionType({
+  name: 'Code',
+  types: () => [CreativeWork] as const,
+});
+
+export type DiscoverAction = FindAction;
+export const DiscoverActionUnion = createUnionType({
+  name: 'DiscoverAction',
+  types: () => [Action] as const,
+});
+
+export type EmploymentAgency = LocalBusiness;
+export const EmploymentAgencyUnion = createUnionType({
+  name: 'EmploymentAgency',
+  types: () => [LocalBusiness] as const,
+});
+
+export type AskPublicNewsArticle = NewsArticle;
+export const AskPublicNewsArticleUnion = createUnionType({
+  name: 'AskPublicNewsArticle',
+  types: () => [NewsArticle] as const,
+});
+
+export type RadioSeason = CreativeWorkSeason;
+export const RadioSeasonUnion = createUnionType({
+  name: 'RadioSeason',
+  types: () => [CreativeWorkSeason] as const,
+});
+
+export type BusinessEvent = Event;
+export const BusinessEventUnion = createUnionType({
+  name: 'BusinessEvent',
+  types: () => [Event] as const,
+});
+
+export type AssessAction = Action;
+export const AssessActionUnion = createUnionType({
+  name: 'AssessAction',
+  types: () => [Action] as const,
+});
+
+export type AudioObjectSnapshot = AudioObject;
+export const AudioObjectSnapshotUnion = createUnionType({
+  name: 'AudioObjectSnapshot',
+  types: () => [AudioObject] as const,
+});
+
+export type BeautySalon = HealthAndBeautyBusiness;
+export const BeautySalonUnion = createUnionType({
+  name: 'BeautySalon',
+  types: () => [LocalBusiness] as const,
+});
+
+export type FoodService = Service;
+export const FoodServiceUnion = createUnionType({
+  name: 'FoodService',
+  types: () => [Service] as const,
+});
+
+export type PodcastSeason = CreativeWorkSeason;
+export const PodcastSeasonUnion = createUnionType({
+  name: 'PodcastSeason',
+  types: () => [CreativeWorkSeason] as const,
+});
+
+export type AdultEntertainment = EntertainmentBusiness;
+export const AdultEntertainmentUnion = createUnionType({
+  name: 'AdultEntertainment',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Table = WebPageElement;
+export const TableUnion = createUnionType({
+  name: 'Table',
+  types: () => [WebPageElement] as const,
+});
+
+export type RadioChannel = BroadcastChannel;
+export const RadioChannelUnion = createUnionType({
+  name: 'RadioChannel',
+  types: () => [BroadcastChannel] as const,
+});
+
+export type UserDownloads = UserInteraction;
+export const UserDownloadsUnion = createUnionType({
+  name: 'UserDownloads',
+  types: () => [Event] as const,
+});
+
+export type Series = Intangible;
+export const SeriesUnion = createUnionType({
+  name: 'Series',
+  types: () => [Thing] as const,
+});
+
+export type Language = Intangible;
+export const LanguageUnion = createUnionType({
+  name: 'Language',
+  types: () => [Thing] as const,
+});
+
+export type CollegeOrUniversity = EducationalOrganization;
+export const CollegeOrUniversityUnion = createUnionType({
+  name: 'CollegeOrUniversity',
+  types: () => [EducationalOrganization] as const,
+});
+
+export type TattooParlor = HealthAndBeautyBusiness;
+export const TattooParlorUnion = createUnionType({
+  name: 'TattooParlor',
+  types: () => [LocalBusiness] as const,
+});
+
+export type MusicEvent = Event;
+export const MusicEventUnion = createUnionType({
+  name: 'MusicEvent',
+  types: () => [Event] as const,
+});
+
+export type MovieClip = Clip;
+export const MovieClipUnion = createUnionType({
+  name: 'MovieClip',
+  types: () => [Clip] as const,
+});
+
+export type State = AdministrativeArea;
+export const StateUnion = createUnionType({
+  name: 'State',
+  types: () => [Place] as const,
+});
+
+export type ComputerStore = Store;
+export const ComputerStoreUnion = createUnionType({
+  name: 'ComputerStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Pond = BodyOfWater;
+export const PondUnion = createUnionType({
+  name: 'Pond',
+  types: () => [Place] as const,
+});
+
+export type HousePainter = HomeAndConstructionBusiness;
+export const HousePainterUnion = createUnionType({
+  name: 'HousePainter',
+  types: () => [LocalBusiness] as const,
+});
+
+export type EmployerReview = Review;
+export const EmployerReviewUnion = createUnionType({
+  name: 'EmployerReview',
+  types: () => [Review] as const,
+});
+
+export type AutoBodyShop = AutomotiveBusiness;
+export const AutoBodyShopUnion = createUnionType({
+  name: 'AutoBodyShop',
+  types: () => [LocalBusiness] as const,
+});
+
+export type AutomatedTeller = FinancialService;
+export const AutomatedTellerUnion = createUnionType({
+  name: 'AutomatedTeller',
+  types: () => [FinancialService] as const,
+});
+
+export type AgreeAction = ReactAction;
+export const AgreeActionUnion = createUnionType({
+  name: 'AgreeAction',
+  types: () => [Action] as const,
+});
+
+export type Newspaper = Periodical;
+export const NewspaperUnion = createUnionType({
+  name: 'Newspaper',
+  types: () => [CreativeWorkSeries] as const,
+});
+
+export type ProfessionalService = LocalBusiness;
+export const ProfessionalServiceUnion = createUnionType({
+  name: 'ProfessionalService',
+  types: () => [LocalBusiness] as const,
+});
+
+export type UserReview = Review;
+export const UserReviewUnion = createUnionType({
+  name: 'UserReview',
+  types: () => [Review] as const,
+});
+
+export type QAPage = WebPage;
+export const QAPageUnion = createUnionType({
+  name: 'QAPage',
+  types: () => [WebPage] as const,
+});
+
+export type AdvertiserContentArticle = Article;
+export const AdvertiserContentArticleUnion = createUnionType({
+  name: 'AdvertiserContentArticle',
+  types: () => [Article] as const,
+});
+
+export type HardwareStore = Store;
+export const HardwareStoreUnion = createUnionType({
+  name: 'HardwareStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type TennisComplex = SportsActivityLocation;
+export const TennisComplexUnion = createUnionType({
+  name: 'TennisComplex',
+  types: () => [LocalBusiness] as const,
+});
+
+export type CheckAction = FindAction;
+export const CheckActionUnion = createUnionType({
+  name: 'CheckAction',
+  types: () => [Action] as const,
+});
+
+export type PlaceOfWorship = CivicStructure;
+export const PlaceOfWorshipUnion = createUnionType({
+  name: 'PlaceOfWorship',
+  types: () => [CivicStructure] as const,
+});
+
+export type LibrarySystem = Organization;
+export const LibrarySystemUnion = createUnionType({
+  name: 'LibrarySystem',
+  types: () => [Organization] as const,
+});
+
+export type CollectionPage = WebPage;
+export const CollectionPageUnion = createUnionType({
+  name: 'CollectionPage',
+  types: () => [WebPage] as const,
+});
+
+export type ProfilePage = WebPage;
+export const ProfilePageUnion = createUnionType({
+  name: 'ProfilePage',
+  types: () => [WebPage] as const,
+});
+
+export type HomeAndConstructionBusiness = LocalBusiness;
+export const HomeAndConstructionBusinessUnion = createUnionType({
+  name: 'HomeAndConstructionBusiness',
+  types: () => [LocalBusiness] as const,
+});
+
+export type PhysicalTherapy = MedicalTherapy;
+export const PhysicalTherapyUnion = createUnionType({
+  name: 'PhysicalTherapy',
+  types: () => [MedicalTherapy] as const,
+});
+
+export type ViewAction = ConsumeAction;
+export const ViewActionUnion = createUnionType({
+  name: 'ViewAction',
+  types: () => [ConsumeAction] as const,
+});
+
+export type Casino = EntertainmentBusiness;
+export const CasinoUnion = createUnionType({
+  name: 'Casino',
+  types: () => [LocalBusiness] as const,
+});
+
+export type VideoGameClip = Clip;
+export const VideoGameClipUnion = createUnionType({
+  name: 'VideoGameClip',
+  types: () => [Clip] as const,
+});
+
+export type TireShop = Store;
+export const TireShopUnion = createUnionType({
+  name: 'TireShop',
+  types: () => [LocalBusiness] as const,
+});
+
+export type PrependAction = InsertAction;
+export const PrependActionUnion = createUnionType({
+  name: 'PrependAction',
+  types: () => [InsertAction] as const,
+});
+
+export type WholesaleStore = Store;
+export const WholesaleStoreUnion = createUnionType({
+  name: 'WholesaleStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Project = Organization;
+export const ProjectUnion = createUnionType({
+  name: 'Project',
+  types: () => [Organization] as const,
+});
+
+export type RealEstateAgent = LocalBusiness;
+export const RealEstateAgentUnion = createUnionType({
+  name: 'RealEstateAgent',
+  types: () => [LocalBusiness] as const,
+});
+
+export type WorkersUnion = Organization;
+export const WorkersUnionUnion = createUnionType({
+  name: 'WorkersUnion',
+  types: () => [Organization] as const,
+});
+
+export type DrawAction = CreateAction;
+export const DrawActionUnion = createUnionType({
+  name: 'DrawAction',
+  types: () => [Action] as const,
+});
+
+export type ActivateAction = ControlAction;
+export const ActivateActionUnion = createUnionType({
+  name: 'ActivateAction',
+  types: () => [Action] as const,
+});
+
+export type Playground = CivicStructure;
+export const PlaygroundUnion = createUnionType({
+  name: 'Playground',
+  types: () => [CivicStructure] as const,
+});
+
+export type TelevisionChannel = BroadcastChannel;
+export const TelevisionChannelUnion = createUnionType({
+  name: 'TelevisionChannel',
+  types: () => [BroadcastChannel] as const,
+});
+
+export type ElectronicsStore = Store;
+export const ElectronicsStoreUnion = createUnionType({
+  name: 'ElectronicsStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type PresentationDigitalDocument = DigitalDocument;
+export const PresentationDigitalDocumentUnion = createUnionType({
+  name: 'PresentationDigitalDocument',
+  types: () => [DigitalDocument] as const,
+});
+
+export type CityHall = GovernmentBuilding;
+export const CityHallUnion = createUnionType({
+  name: 'CityHall',
+  types: () => [CivicStructure] as const,
+});
+
+export type FundingAgency = Project;
+export const FundingAgencyUnion = createUnionType({
+  name: 'FundingAgency',
+  types: () => [Organization] as const,
+});
+
+export type MedicalBusiness = LocalBusiness;
+export const MedicalBusinessUnion = createUnionType({
+  name: 'MedicalBusiness',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Crematorium = CivicStructure;
+export const CrematoriumUnion = createUnionType({
+  name: 'Crematorium',
+  types: () => [CivicStructure] as const,
+});
+
+export type EatAction = ConsumeAction;
+export const EatActionUnion = createUnionType({
+  name: 'EatAction',
+  types: () => [ConsumeAction] as const,
+});
+
+export type OnDemandEvent = PublicationEvent;
+export const OnDemandEventUnion = createUnionType({
+  name: 'OnDemandEvent',
+  types: () => [PublicationEvent] as const,
+});
+
+export type ChildrensEvent = Event;
+export const ChildrensEventUnion = createUnionType({
+  name: 'ChildrensEvent',
+  types: () => [Event] as const,
+});
+
+export type AnimalShelter = LocalBusiness;
+export const AnimalShelterUnion = createUnionType({
+  name: 'AnimalShelter',
+  types: () => [LocalBusiness] as const,
+});
+
+export type AmusementPark = EntertainmentBusiness;
+export const AmusementParkUnion = createUnionType({
+  name: 'AmusementPark',
+  types: () => [LocalBusiness] as const,
+});
+
+export type ReportageNewsArticle = NewsArticle;
+export const ReportageNewsArticleUnion = createUnionType({
+  name: 'ReportageNewsArticle',
+  types: () => [NewsArticle] as const,
+});
+
+export type BrainStructure = AnatomicalStructure;
+export const BrainStructureUnion = createUnionType({
+  name: 'BrainStructure',
+  types: () => [AnatomicalStructure] as const,
+});
+
+export type OnlineBusiness = Organization;
+export const OnlineBusinessUnion = createUnionType({
+  name: 'OnlineBusiness',
+  types: () => [Organization] as const,
+});
+
+export type VisualArtsEvent = Event;
+export const VisualArtsEventUnion = createUnionType({
+  name: 'VisualArtsEvent',
+  types: () => [Event] as const,
+});
+
+export type Canal = BodyOfWater;
+export const CanalUnion = createUnionType({
+  name: 'Canal',
+  types: () => [Place] as const,
+});
+
+export type SatiricalArticle = Article;
+export const SatiricalArticleUnion = createUnionType({
+  name: 'SatiricalArticle',
+  types: () => [Article] as const,
+});
+
+export type Church = PlaceOfWorship;
+export const ChurchUnion = createUnionType({
+  name: 'Church',
+  types: () => [CivicStructure] as const,
+});
+
+export type GovernmentBuilding = CivicStructure;
+export const GovernmentBuildingUnion = createUnionType({
+  name: 'GovernmentBuilding',
+  types: () => [CivicStructure] as const,
+});
+
+export type ClothingStore = Store;
+export const ClothingStoreUnion = createUnionType({
+  name: 'ClothingStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type CatholicChurch = Church;
+export const CatholicChurchUnion = createUnionType({
+  name: 'CatholicChurch',
+  types: () => [CivicStructure] as const,
+});
+
+export type Researcher = Audience;
+export const ResearcherUnion = createUnionType({
+  name: 'Researcher',
+  types: () => [Audience] as const,
+});
+
+export type SportingGoodsStore = Store;
+export const SportingGoodsStoreUnion = createUnionType({
+  name: 'SportingGoodsStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type FilmAction = CreateAction;
+export const FilmActionUnion = createUnionType({
+  name: 'FilmAction',
+  types: () => [Action] as const,
+});
+
+export type Consortium = Organization;
+export const ConsortiumUnion = createUnionType({
+  name: 'Consortium',
+  types: () => [Organization] as const,
+});
+
+export type FoodEvent = Event;
+export const FoodEventUnion = createUnionType({
+  name: 'FoodEvent',
+  types: () => [Event] as const,
+});
+
+export type ReserveAction = PlanAction;
+export const ReserveActionUnion = createUnionType({
+  name: 'ReserveAction',
+  types: () => [PlanAction] as const,
+});
+
+export type ParkingFacility = CivicStructure;
+export const ParkingFacilityUnion = createUnionType({
+  name: 'ParkingFacility',
+  types: () => [CivicStructure] as const,
+});
+
+export type PreventionIndication = MedicalIndication;
+export const PreventionIndicationUnion = createUnionType({
+  name: 'PreventionIndication',
+  types: () => [MedicalEntity] as const,
+});
+
+export type UserPlays = UserInteraction;
+export const UserPlaysUnion = createUnionType({
+  name: 'UserPlays',
+  types: () => [Event] as const,
+});
+
+export type InvestmentFund = InvestmentOrDeposit;
+export const InvestmentFundUnion = createUnionType({
+  name: 'InvestmentFund',
+  types: () => [InvestmentOrDeposit] as const,
+});
+
+export type Barcode = ImageObject;
+export const BarcodeUnion = createUnionType({
+  name: 'Barcode',
+  types: () => [ImageObject] as const,
+});
+
+export type LiteraryEvent = Event;
+export const LiteraryEventUnion = createUnionType({
+  name: 'LiteraryEvent',
+  types: () => [Event] as const,
+});
+
+export type Library = LocalBusiness;
+export const LibraryUnion = createUnionType({
+  name: 'Library',
+  types: () => [LocalBusiness] as const,
+});
+
+export type WantAction = ReactAction;
+export const WantActionUnion = createUnionType({
+  name: 'WantAction',
+  types: () => [Action] as const,
+});
+
+export type DislikeAction = ReactAction;
+export const DislikeActionUnion = createUnionType({
+  name: 'DislikeAction',
+  types: () => [Action] as const,
+});
+
+export type Optician = MedicalBusiness;
+export const OpticianUnion = createUnionType({
+  name: 'Optician',
+  types: () => [LocalBusiness] as const,
+});
+
+export type Brewery = FoodEstablishment;
+export const BreweryUnion = createUnionType({
+  name: 'Brewery',
+  types: () => [FoodEstablishment] as const,
+});
+
+export type TheaterGroup = PerformingGroup;
+export const TheaterGroupUnion = createUnionType({
+  name: 'TheaterGroup',
+  types: () => [Organization] as const,
+});
+
+export type CampingPitch = Accommodation;
+export const CampingPitchUnion = createUnionType({
+  name: 'CampingPitch',
+  types: () => [Accommodation] as const,
+});
+
+export type SiteNavigationElement = WebPageElement;
+export const SiteNavigationElementUnion = createUnionType({
+  name: 'SiteNavigationElement',
+  types: () => [WebPageElement] as const,
+});
+
+export type RiverBodyOfWater = BodyOfWater;
+export const RiverBodyOfWaterUnion = createUnionType({
+  name: 'RiverBodyOfWater',
+  types: () => [Place] as const,
+});
+
+export type DownloadAction = TransferAction;
+export const DownloadActionUnion = createUnionType({
+  name: 'DownloadAction',
+  types: () => [TransferAction] as const,
+});
+
+export type Bakery = FoodEstablishment;
+export const BakeryUnion = createUnionType({
+  name: 'Bakery',
+  types: () => [FoodEstablishment] as const,
+});
+
+export type Florist = Store;
+export const FloristUnion = createUnionType({
+  name: 'Florist',
+  types: () => [LocalBusiness] as const,
+});
+
+export type UnRegisterAction = InteractAction;
+export const UnRegisterActionUnion = createUnionType({
+  name: 'UnRegisterAction',
+  types: () => [Action] as const,
+});
+
+export type Beach = CivicStructure;
+export const BeachUnion = createUnionType({
+  name: 'Beach',
+  types: () => [CivicStructure] as const,
+});
+
+export type SurgicalProcedure = MedicalProcedure;
+export const SurgicalProcedureUnion = createUnionType({
+  name: 'SurgicalProcedure',
+  types: () => [MedicalProcedure] as const,
+});
+
+export type Taxi = Service;
+export const TaxiUnion = createUnionType({
+  name: 'Taxi',
+  types: () => [Service] as const,
+});
+
+export type Embassy = GovernmentBuilding;
+export const EmbassyUnion = createUnionType({
+  name: 'Embassy',
+  types: () => [CivicStructure] as const,
+});
+
+export type ControlAction = Action;
+export const ControlActionUnion = createUnionType({
+  name: 'ControlAction',
+  types: () => [Action] as const,
+});
+
+export type Quiz = LearningResource;
+export const QuizUnion = createUnionType({
+  name: 'Quiz',
+  types: () => [LearningResource] as const,
+});
+
+export type GeneralContractor = HomeAndConstructionBusiness;
+export const GeneralContractorUnion = createUnionType({
+  name: 'GeneralContractor',
+  types: () => [LocalBusiness] as const,
+});
+
+export type HomeGoodsStore = Store;
+export const HomeGoodsStoreUnion = createUnionType({
+  name: 'HomeGoodsStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type DryCleaningOrLaundry = LocalBusiness;
+export const DryCleaningOrLaundryUnion = createUnionType({
+  name: 'DryCleaningOrLaundry',
+  types: () => [LocalBusiness] as const,
+});
+
+export type WPAdBlock = WebPageElement;
+export const WPAdBlockUnion = createUnionType({
+  name: 'WPAdBlock',
+  types: () => [WebPageElement] as const,
+});
+
+export type BookmarkAction = OrganizeAction;
+export const BookmarkActionUnion = createUnionType({
+  name: 'BookmarkAction',
+  types: () => [Action] as const,
+});
+
+export type SpreadsheetDigitalDocument = DigitalDocument;
+export const SpreadsheetDigitalDocumentUnion = createUnionType({
+  name: 'SpreadsheetDigitalDocument',
+  types: () => [DigitalDocument] as const,
+});
+
+export type JewelryStore = Store;
+export const JewelryStoreUnion = createUnionType({
+  name: 'JewelryStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type ResearchProject = Project;
+export const ResearchProjectUnion = createUnionType({
+  name: 'ResearchProject',
+  types: () => [Organization] as const,
+});
+
+export type SheetMusic = CreativeWork;
+export const SheetMusicUnion = createUnionType({
+  name: 'SheetMusic',
+  types: () => [CreativeWork] as const,
+});
+
+export type BankOrCreditUnion = FinancialService;
+export const BankOrCreditUnionUnion = createUnionType({
+  name: 'BankOrCreditUnion',
+  types: () => [FinancialService] as const,
+});
+
+export type TreatmentIndication = MedicalIndication;
+export const TreatmentIndicationUnion = createUnionType({
+  name: 'TreatmentIndication',
+  types: () => [MedicalEntity] as const,
+});
+
+export type TouristInformationCenter = LocalBusiness;
+export const TouristInformationCenterUnion = createUnionType({
+  name: 'TouristInformationCenter',
+  types: () => [LocalBusiness] as const,
+});
+
+export type OfferCatalog = ItemList;
+export const OfferCatalogUnion = createUnionType({
+  name: 'OfferCatalog',
+  types: () => [ItemList] as const,
+});
+
+export type OccupationalTherapy = MedicalTherapy;
+export const OccupationalTherapyUnion = createUnionType({
+  name: 'OccupationalTherapy',
+  types: () => [MedicalTherapy] as const,
+});
+
+export type BookSeries = CreativeWorkSeries;
+export const BookSeriesUnion = createUnionType({
+  name: 'BookSeries',
+  types: () => [CreativeWorkSeries] as const,
+});
+
+export type ScholarlyArticle = Article;
+export const ScholarlyArticleUnion = createUnionType({
+  name: 'ScholarlyArticle',
+  types: () => [Article] as const,
+});
+
+export type ExhibitionEvent = Event;
+export const ExhibitionEventUnion = createUnionType({
+  name: 'ExhibitionEvent',
+  types: () => [Event] as const,
+});
+
+export type PerformingGroup = Organization;
+export const PerformingGroupUnion = createUnionType({
+  name: 'PerformingGroup',
+  types: () => [Organization] as const,
+});
+
+export type PsychologicalTreatment = TherapeuticProcedure;
+export const PsychologicalTreatmentUnion = createUnionType({
+  name: 'PsychologicalTreatment',
+  types: () => [TherapeuticProcedure] as const,
+});
+
+export type VirtualLocation = Intangible;
+export const VirtualLocationUnion = createUnionType({
+  name: 'VirtualLocation',
+  types: () => [Thing] as const,
+});
+
+export type WPFooter = WebPageElement;
+export const WPFooterUnion = createUnionType({
+  name: 'WPFooter',
+  types: () => [WebPageElement] as const,
+});
+
+export type UseAction = ConsumeAction;
+export const UseActionUnion = createUnionType({
+  name: 'UseAction',
+  types: () => [ConsumeAction] as const,
+});
+
+export type EventVenue = CivicStructure;
+export const EventVenueUnion = createUnionType({
+  name: 'EventVenue',
+  types: () => [CivicStructure] as const,
+});
+
+export type Hackathon = Event;
+export const HackathonUnion = createUnionType({
+  name: 'Hackathon',
+  types: () => [Event] as const,
+});
+
+export type CreateAction = Action;
+export const CreateActionUnion = createUnionType({
+  name: 'CreateAction',
+  types: () => [Action] as const,
+});
+
+export type FurnitureStore = Store;
+export const FurnitureStoreUnion = createUnionType({
+  name: 'FurnitureStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type DiagnosticProcedure = MedicalProcedure;
+export const DiagnosticProcedureUnion = createUnionType({
+  name: 'DiagnosticProcedure',
+  types: () => [MedicalProcedure] as const,
+});
+
+export type DrinkAction = ConsumeAction;
+export const DrinkActionUnion = createUnionType({
+  name: 'DrinkAction',
+  types: () => [ConsumeAction] as const,
+});
+
+export type Room = Accommodation;
+export const RoomUnion = createUnionType({
+  name: 'Room',
+  types: () => [Accommodation] as const,
+});
+
+export type SeaBodyOfWater = BodyOfWater;
+export const SeaBodyOfWaterUnion = createUnionType({
+  name: 'SeaBodyOfWater',
+  types: () => [Place] as const,
+});
+
+export type MedicalIntangible = MedicalEntity;
+export const MedicalIntangibleUnion = createUnionType({
+  name: 'MedicalIntangible',
+  types: () => [MedicalEntity] as const,
+});
+
+export type TakeAction = TransferAction;
+export const TakeActionUnion = createUnionType({
+  name: 'TakeAction',
+  types: () => [TransferAction] as const,
+});
+
+export type HVACBusiness = HomeAndConstructionBusiness;
+export const HVACBusinessUnion = createUnionType({
+  name: 'HVACBusiness',
+  types: () => [LocalBusiness] as const,
+});
+
+export type ComedyClub = EntertainmentBusiness;
+export const ComedyClubUnion = createUnionType({
+  name: 'ComedyClub',
+  types: () => [LocalBusiness] as const,
+});
+
+export type MedicalIndication = MedicalEntity;
+export const MedicalIndicationUnion = createUnionType({
+  name: 'MedicalIndication',
+  types: () => [MedicalEntity] as const,
+});
+
+export type Landform = Place;
+export const LandformUnion = createUnionType({
+  name: 'Landform',
+  types: () => [Place] as const,
+});
+
+export type DefenceEstablishment = GovernmentBuilding;
+export const DefenceEstablishmentUnion = createUnionType({
+  name: 'DefenceEstablishment',
+  types: () => [CivicStructure] as const,
+});
+
+export type Poster = CreativeWork;
+export const PosterUnion = createUnionType({
+  name: 'Poster',
+  types: () => [CreativeWork] as const,
+});
+
+export type Reservoir = BodyOfWater;
+export const ReservoirUnion = createUnionType({
+  name: 'Reservoir',
+  types: () => [Place] as const,
+});
+
+export type Volcano = Landform;
+export const VolcanoUnion = createUnionType({
+  name: 'Volcano',
+  types: () => [Place] as const,
+});
+
+export type BusStation = CivicStructure;
+export const BusStationUnion = createUnionType({
+  name: 'BusStation',
+  types: () => [CivicStructure] as const,
+});
+
+export type Periodical = CreativeWorkSeries;
+export const PeriodicalUnion = createUnionType({
+  name: 'Periodical',
+  types: () => [CreativeWorkSeries] as const,
+});
+
+export type RadioClip = Clip;
+export const RadioClipUnion = createUnionType({
+  name: 'RadioClip',
+  types: () => [Clip] as const,
+});
+
+export type MaximumDoseSchedule = DoseSchedule;
+export const MaximumDoseScheduleUnion = createUnionType({
+  name: 'MaximumDoseSchedule',
+  types: () => [DoseSchedule] as const,
+});
+
+export type ItemPage = WebPage;
+export const ItemPageUnion = createUnionType({
+  name: 'ItemPage',
+  types: () => [WebPage] as const,
+});
+
+export type PublicToilet = CivicStructure;
+export const PublicToiletUnion = createUnionType({
+  name: 'PublicToilet',
+  types: () => [CivicStructure] as const,
+});
+
+export type AutoDealer = AutomotiveBusiness;
+export const AutoDealerUnion = createUnionType({
+  name: 'AutoDealer',
+  types: () => [LocalBusiness] as const,
+});
+
+export type RegisterAction = InteractAction;
+export const RegisterActionUnion = createUnionType({
+  name: 'RegisterAction',
+  types: () => [Action] as const,
+});
+
+export type ScheduleAction = PlanAction;
+export const ScheduleActionUnion = createUnionType({
+  name: 'ScheduleAction',
+  types: () => [PlanAction] as const,
+});
+
+export type TextDigitalDocument = DigitalDocument;
+export const TextDigitalDocumentUnion = createUnionType({
+  name: 'TextDigitalDocument',
+  types: () => [DigitalDocument] as const,
+});
+
+export type LiquorStore = Store;
+export const LiquorStoreUnion = createUnionType({
+  name: 'LiquorStore',
+  types: () => [LocalBusiness] as const,
+});
+
+export type AddAction = UpdateAction;
+export const AddActionUnion = createUnionType({
+  name: 'AddAction',
+  types: () => [UpdateAction] as const,
+});
+
+export type NightClub = EntertainmentBusiness;
+export const NightClubUnion = createUnionType({
+  name: 'NightClub',
+  types: () => [LocalBusiness] as const,
+});
+
+export type ApplyAction = OrganizeAction;
+export const ApplyActionUnion = createUnionType({
+  name: 'ApplyAction',
+  types: () => [Action] as const,
+});
+
+export type UserInteraction = Event;
+export const UserInteractionUnion = createUnionType({
+  name: 'UserInteraction',
+  types: () => [Event] as const,
+});
+
+export type UserBlocks = UserInteraction;
+export const UserBlocksUnion = createUnionType({
+  name: 'UserBlocks',
+  types: () => [Event] as const,
+});
+
+export type Quantity = Intangible;
+export const QuantityUnion = createUnionType({
+  name: 'Quantity',
+  types: () => [Thing] as const,
+});
+
+export type Distance = Quantity;
+export const DistanceUnion = createUnionType({
+  name: 'Distance',
+  types: () => [Thing] as const,
+});
+
+export type InstallAction = ConsumeAction;
+export const InstallActionUnion = createUnionType({
+  name: 'InstallAction',
+  types: () => [ConsumeAction] as const,
+});
+
+export type VitalSign = MedicalSign;
+export const VitalSignUnion = createUnionType({
+  name: 'VitalSign',
+  types: () => [MedicalSign] as const,
+});
+
+export type WatchAction = ConsumeAction;
+export const WatchActionUnion = createUnionType({
+  name: 'WatchAction',
+  types: () => [ConsumeAction] as const,
+});
+
+export type NoteDigitalDocument = DigitalDocument;
+export const NoteDigitalDocumentUnion = createUnionType({
+  name: 'NoteDigitalDocument',
+  types: () => [DigitalDocument] as const,
+});
+
+export type PaymentService = FinancialProduct;
+export const PaymentServiceUnion = createUnionType({
+  name: 'PaymentService',
+  types: () => [FinancialProduct] as const,
+});
+
+export type Sculpture = CreativeWork;
+export const SculptureUnion = createUnionType({
+  name: 'Sculpture',
+  types: () => [CreativeWork] as const,
+});
+
+// #endregion
+
+// #region Union Types
+/**
+ * ===========
+ * Union Types
+ * ===========
+ */
+
+// #endregion
+
+// #region Inferred Union Types
+/**
+ * ===============================
+ * Inferred Union Types from Props
+ * ===============================
+ */
+
+export type Class_SupersededBy = TextType | Class | Property;
+export const Class_SupersededByUnion = createUnionType({
+  name: 'Class_SupersededBy',
+  types: () => [TextScalar, Class, Property] as const,
+});
+
+export type MedicalProcedure_Preparation = MedicalEntity | TextType;
+export const MedicalProcedure_PreparationUnion = createUnionType({
+  name: 'MedicalProcedure_Preparation',
+  types: () => [MedicalEntity, TextScalar] as const,
+});
+
+export type MedicalProcedure_Status = TextType;
+export const MedicalProcedure_StatusUnion = createUnionType({
+  name: 'MedicalProcedure_Status',
+  types: () => [TextScalar] as const,
+});
+
+export type Hospital_AvailableService = MedicalTest | MedicalProcedure | MedicalTherapy;
+export const Hospital_AvailableServiceUnion = createUnionType({
+  name: 'Hospital_AvailableService',
+  types: () => [MedicalTest, MedicalProcedure, MedicalTherapy] as const,
+});
+
+export type Hospital_HealthcareReportingData = Dataset | CDCPMDRecord;
+export const Hospital_HealthcareReportingDataUnion = createUnionType({
+  name: 'Hospital_HealthcareReportingData',
+  types: () => [Dataset, CDCPMDRecord] as const,
+});
+
+export type BuyAction_Seller = Organization | Person;
+export const BuyAction_SellerUnion = createUnionType({
+  name: 'BuyAction_Seller',
+  types: () => [Organization, Person] as const,
+});
+
+export type BuyAction_Vendor = Person | Organization;
+export const BuyAction_VendorUnion = createUnionType({
+  name: 'BuyAction_Vendor',
+  types: () => [Person, Organization] as const,
+});
+
+export type PriceSpecification_ValidFrom = DateTimeType | DateType;
+export const PriceSpecification_ValidFromUnion = createUnionType({
+  name: 'PriceSpecification_ValidFrom',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type PriceSpecification_ValidThrough = DateTimeType | DateType;
+export const PriceSpecification_ValidThroughUnion = createUnionType({
+  name: 'PriceSpecification_ValidThrough',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type PriceSpecification_Price = NumberType | TextType;
+export const PriceSpecification_PriceUnion = createUnionType({
+  name: 'PriceSpecification_Price',
+  types: () => [NumberScalar, TextScalar] as const,
+});
+
+export type SportsEvent_HomeTeam = Person | SportsTeam;
+export const SportsEvent_HomeTeamUnion = createUnionType({
+  name: 'SportsEvent_HomeTeam',
+  types: () => [Person, SportsTeam] as const,
+});
+
+export type SportsEvent_AwayTeam = SportsTeam | Person;
+export const SportsEvent_AwayTeamUnion = createUnionType({
+  name: 'SportsEvent_AwayTeam',
+  types: () => [SportsTeam, Person] as const,
+});
+
+export type SportsEvent_Competitor = Person | SportsTeam;
+export const SportsEvent_CompetitorUnion = createUnionType({
+  name: 'SportsEvent_Competitor',
+  types: () => [Person, SportsTeam] as const,
+});
+
+export type SportsEvent_Sport = TextType | UrlType;
+export const SportsEvent_SportUnion = createUnionType({
+  name: 'SportsEvent_Sport',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type EducationalOccupationalCredential_EducationalLevel = UrlType | DefinedTerm | TextType;
+export const EducationalOccupationalCredential_EducationalLevelUnion = createUnionType({
+  name: 'EducationalOccupationalCredential_EducationalLevel',
+  types: () => [UrlScalar, DefinedTerm, TextScalar] as const,
+});
+
+export type EducationalOccupationalCredential_CredentialCategory = UrlType | DefinedTerm | TextType;
+export const EducationalOccupationalCredential_CredentialCategoryUnion = createUnionType({
+  name: 'EducationalOccupationalCredential_CredentialCategory',
+  types: () => [UrlScalar, DefinedTerm, TextScalar] as const,
+});
+
+export type EducationalOccupationalCredential_CompetencyRequired = TextType | DefinedTerm | UrlType;
+export const EducationalOccupationalCredential_CompetencyRequiredUnion = createUnionType({
+  name: 'EducationalOccupationalCredential_CompetencyRequired',
+  types: () => [TextScalar, DefinedTerm, UrlScalar] as const,
+});
+
+export type MedicalClinic_AvailableService = MedicalTest | MedicalProcedure | MedicalTherapy;
+export const MedicalClinic_AvailableServiceUnion = createUnionType({
+  name: 'MedicalClinic_AvailableService',
+  types: () => [MedicalTest, MedicalProcedure, MedicalTherapy] as const,
+});
+
+export type LearningResource_Teaches = DefinedTerm | TextType;
+export const LearningResource_TeachesUnion = createUnionType({
+  name: 'LearningResource_Teaches',
+  types: () => [DefinedTerm, TextScalar] as const,
+});
+
+export type LearningResource_EducationalLevel = UrlType | DefinedTerm | TextType;
+export const LearningResource_EducationalLevelUnion = createUnionType({
+  name: 'LearningResource_EducationalLevel',
+  types: () => [UrlScalar, DefinedTerm, TextScalar] as const,
+});
+
+export type LearningResource_Assesses = TextType | DefinedTerm;
+export const LearningResource_AssessesUnion = createUnionType({
+  name: 'LearningResource_Assesses',
+  types: () => [TextScalar, DefinedTerm] as const,
+});
+
+export type LearningResource_EducationalUse = DefinedTerm | TextType;
+export const LearningResource_EducationalUseUnion = createUnionType({
+  name: 'LearningResource_EducationalUse',
+  types: () => [DefinedTerm, TextScalar] as const,
+});
+
+export type LearningResource_CompetencyRequired = TextType | DefinedTerm | UrlType;
+export const LearningResource_CompetencyRequiredUnion = createUnionType({
+  name: 'LearningResource_CompetencyRequired',
+  types: () => [TextScalar, DefinedTerm, UrlScalar] as const,
+});
+
+export type LearningResource_LearningResourceType = DefinedTerm | TextType;
+export const LearningResource_LearningResourceTypeUnion = createUnionType({
+  name: 'LearningResource_LearningResourceType',
+  types: () => [DefinedTerm, TextScalar] as const,
+});
+
+export type Brand_Logo = UrlType | ImageObject;
+export const Brand_LogoUnion = createUnionType({
+  name: 'Brand_Logo',
+  types: () => [UrlScalar, ImageObject] as const,
+});
+
+export type ContactPoint_AvailableLanguage = TextType | Language;
+export const ContactPoint_AvailableLanguageUnion = createUnionType({
+  name: 'ContactPoint_AvailableLanguage',
+  types: () => [TextScalar, Thing] as const,
+});
+
+export type ContactPoint_ServiceArea = GeoShape | AdministrativeArea | Place;
+export const ContactPoint_ServiceAreaUnion = createUnionType({
+  name: 'ContactPoint_ServiceArea',
+  types: () => [GeoShape, Place] as const,
+});
+
+export type ContactPoint_AreaServed = AdministrativeArea | GeoShape | TextType | Place;
+export const ContactPoint_AreaServedUnion = createUnionType({
+  name: 'ContactPoint_AreaServed',
+  types: () => [Place, GeoShape, TextScalar] as const,
+});
+
+export type ContactPoint_ProductSupported = TextType | Product;
+export const ContactPoint_ProductSupportedUnion = createUnionType({
+  name: 'ContactPoint_ProductSupported',
+  types: () => [TextScalar, Product] as const,
+});
+
+export type JobPosting_EstimatedSalary = MonetaryAmountDistribution | MonetaryAmount | NumberType;
+export const JobPosting_EstimatedSalaryUnion = createUnionType({
+  name: 'JobPosting_EstimatedSalary',
+  types: () => [MonetaryAmountDistribution, MonetaryAmount, NumberScalar] as const,
+});
+
+export type JobPosting_PhysicalRequirement = UrlType | TextType | DefinedTerm;
+export const JobPosting_PhysicalRequirementUnion = createUnionType({
+  name: 'JobPosting_PhysicalRequirement',
+  types: () => [UrlScalar, TextScalar, DefinedTerm] as const,
+});
+
+export type JobPosting_SensoryRequirement = DefinedTerm | UrlType | TextType;
+export const JobPosting_SensoryRequirementUnion = createUnionType({
+  name: 'JobPosting_SensoryRequirement',
+  types: () => [DefinedTerm, UrlScalar, TextScalar] as const,
+});
+
+export type JobPosting_JobStartDate = DateType | TextType;
+export const JobPosting_JobStartDateUnion = createUnionType({
+  name: 'JobPosting_JobStartDate',
+  types: () => [DateScalar, TextScalar] as const,
+});
+
+export type JobPosting_ExperienceRequirements = TextType | OccupationalExperienceRequirements;
+export const JobPosting_ExperienceRequirementsUnion = createUnionType({
+  name: 'JobPosting_ExperienceRequirements',
+  types: () => [TextScalar, OccupationalExperienceRequirements] as const,
+});
+
+export type JobPosting_SecurityClearanceRequirement = UrlType | TextType;
+export const JobPosting_SecurityClearanceRequirementUnion = createUnionType({
+  name: 'JobPosting_SecurityClearanceRequirement',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type JobPosting_EducationRequirements = EducationalOccupationalCredential | TextType;
+export const JobPosting_EducationRequirementsUnion = createUnionType({
+  name: 'JobPosting_EducationRequirements',
+  types: () => [EducationalOccupationalCredential, TextScalar] as const,
+});
+
+export type JobPosting_Industry = DefinedTerm | TextType;
+export const JobPosting_IndustryUnion = createUnionType({
+  name: 'JobPosting_Industry',
+  types: () => [DefinedTerm, TextScalar] as const,
+});
+
+export type JobPosting_BaseSalary = NumberType | PriceSpecification | MonetaryAmount;
+export const JobPosting_BaseSalaryUnion = createUnionType({
+  name: 'JobPosting_BaseSalary',
+  types: () => [NumberScalar, PriceSpecification, MonetaryAmount] as const,
+});
+
+export type JobPosting_DatePosted = DateType | DateTimeType;
+export const JobPosting_DatePostedUnion = createUnionType({
+  name: 'JobPosting_DatePosted',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type JobPosting_Skills = TextType | DefinedTerm;
+export const JobPosting_SkillsUnion = createUnionType({
+  name: 'JobPosting_Skills',
+  types: () => [TextScalar, DefinedTerm] as const,
+});
+
+export type JobPosting_ValidThrough = DateTimeType | DateType;
+export const JobPosting_ValidThroughUnion = createUnionType({
+  name: 'JobPosting_ValidThrough',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type JobPosting_Qualifications = TextType | EducationalOccupationalCredential;
+export const JobPosting_QualificationsUnion = createUnionType({
+  name: 'JobPosting_Qualifications',
+  types: () => [TextScalar, EducationalOccupationalCredential] as const,
+});
+
+export type JobPosting_OccupationalCategory = CategoryCode | TextType;
+export const JobPosting_OccupationalCategoryUnion = createUnionType({
+  name: 'JobPosting_OccupationalCategory',
+  types: () => [CategoryCode, TextScalar] as const,
+});
+
+export type Accommodation_NumberOfRooms = QuantitativeValue | NumberType;
+export const Accommodation_NumberOfRoomsUnion = createUnionType({
+  name: 'Accommodation_NumberOfRooms',
+  types: () => [QuantitativeValue, NumberScalar] as const,
+});
+
+export type Accommodation_LeaseLength = QuantitativeValue | Duration;
+export const Accommodation_LeaseLengthUnion = createUnionType({
+  name: 'Accommodation_LeaseLength',
+  types: () => [QuantitativeValue, Thing] as const,
+});
+
+export type Accommodation_NumberOfBedrooms = NumberType | QuantitativeValue;
+export const Accommodation_NumberOfBedroomsUnion = createUnionType({
+  name: 'Accommodation_NumberOfBedrooms',
+  types: () => [NumberScalar, QuantitativeValue] as const,
+});
+
+export type Accommodation_PetsAllowed = TextType | BooleanType;
+export const Accommodation_PetsAllowedUnion = createUnionType({
+  name: 'Accommodation_PetsAllowed',
+  types: () => [TextScalar, BooleanScalar] as const,
+});
+
+export type HotelRoom_Bed = BedDetails | TextType;
+export const HotelRoom_BedUnion = createUnionType({
+  name: 'HotelRoom_Bed',
+  types: () => [BedDetails, TextScalar] as const,
+});
+
+export type PlayGameAction_GameAvailabilityType = TextType;
+export const PlayGameAction_GameAvailabilityTypeUnion = createUnionType({
+  name: 'PlayGameAction_GameAvailabilityType',
+  types: () => [TextScalar] as const,
+});
+
+export type Reservation_TotalPrice = PriceSpecification | NumberType | TextType;
+export const Reservation_TotalPriceUnion = createUnionType({
+  name: 'Reservation_TotalPrice',
+  types: () => [PriceSpecification, NumberScalar, TextScalar] as const,
+});
+
+export type Reservation_Provider = Organization | Person;
+export const Reservation_ProviderUnion = createUnionType({
+  name: 'Reservation_Provider',
+  types: () => [Organization, Person] as const,
+});
+
+export type Reservation_Broker = Person | Organization;
+export const Reservation_BrokerUnion = createUnionType({
+  name: 'Reservation_Broker',
+  types: () => [Person, Organization] as const,
+});
+
+export type Reservation_BookingAgent = Person | Organization;
+export const Reservation_BookingAgentUnion = createUnionType({
+  name: 'Reservation_BookingAgent',
+  types: () => [Person, Organization] as const,
+});
+
+export type Reservation_UnderName = Organization | Person;
+export const Reservation_UnderNameUnion = createUnionType({
+  name: 'Reservation_UnderName',
+  types: () => [Organization, Person] as const,
+});
+
+export type Person_KnowsAbout = UrlType | TextType | Thing;
+export const Person_KnowsAboutUnion = createUnionType({
+  name: 'Person_KnowsAbout',
+  types: () => [UrlScalar, TextScalar, Thing] as const,
+});
+
+export type Person_NetWorth = MonetaryAmount | PriceSpecification;
+export const Person_NetWorthUnion = createUnionType({
+  name: 'Person_NetWorth',
+  types: () => [MonetaryAmount, PriceSpecification] as const,
+});
+
+export type Person_WorkLocation = Place | ContactPoint;
+export const Person_WorkLocationUnion = createUnionType({
+  name: 'Person_WorkLocation',
+  types: () => [Place, ContactPoint] as const,
+});
+
+export type Person_HomeLocation = Place | ContactPoint;
+export const Person_HomeLocationUnion = createUnionType({
+  name: 'Person_HomeLocation',
+  types: () => [Place, ContactPoint] as const,
+});
+
+export type Person_Height = Distance | QuantitativeValue;
+export const Person_HeightUnion = createUnionType({
+  name: 'Person_Height',
+  types: () => [Thing, QuantitativeValue] as const,
+});
+
+export type Person_Gender = TextType;
+export const Person_GenderUnion = createUnionType({
+  name: 'Person_Gender',
+  types: () => [TextScalar] as const,
+});
+
+export type Person_JobTitle = TextType | DefinedTerm;
+export const Person_JobTitleUnion = createUnionType({
+  name: 'Person_JobTitle',
+  types: () => [TextScalar, DefinedTerm] as const,
+});
+
+export type Person_Funder = Organization | Person;
+export const Person_FunderUnion = createUnionType({
+  name: 'Person_Funder',
+  types: () => [Organization, Person] as const,
+});
+
+export type Person_Address = TextType | PostalAddress;
+export const Person_AddressUnion = createUnionType({
+  name: 'Person_Address',
+  types: () => [TextScalar, PostalAddress] as const,
+});
+
+export type Person_MemberOf = ProgramMembership | Organization;
+export const Person_MemberOfUnion = createUnionType({
+  name: 'Person_MemberOf',
+  types: () => [ProgramMembership, Organization] as const,
+});
+
+export type Person_PublishingPrinciples = UrlType | CreativeWork;
+export const Person_PublishingPrinciplesUnion = createUnionType({
+  name: 'Person_PublishingPrinciples',
+  types: () => [UrlScalar, CreativeWork] as const,
+});
+
+export type Person_Brand = Organization | Brand;
+export const Person_BrandUnion = createUnionType({
+  name: 'Person_Brand',
+  types: () => [Organization, Brand] as const,
+});
+
+export type Person_Sponsor = Organization | Person;
+export const Person_SponsorUnion = createUnionType({
+  name: 'Person_Sponsor',
+  types: () => [Organization, Person] as const,
+});
+
+export type Person_AlumniOf = EducationalOrganization | Organization;
+export const Person_AlumniOfUnion = createUnionType({
+  name: 'Person_AlumniOf',
+  types: () => [EducationalOrganization, Organization] as const,
+});
+
+export type Person_KnowsLanguage = Language | TextType;
+export const Person_KnowsLanguageUnion = createUnionType({
+  name: 'Person_KnowsLanguage',
+  types: () => [Thing, TextScalar] as const,
+});
+
+export type Person_Colleague = Person | UrlType;
+export const Person_ColleagueUnion = createUnionType({
+  name: 'Person_Colleague',
+  types: () => [Person, UrlScalar] as const,
+});
+
+export type Person_Owns = Product | OwnershipInfo;
+export const Person_OwnsUnion = createUnionType({
+  name: 'Person_Owns',
+  types: () => [Product, OwnershipInfo] as const,
+});
+
+export type QuantitativeValue_ValueReference = TextType | DefinedTerm | StructuredValue | PropertyValue | QuantitativeValue;
+export const QuantitativeValue_ValueReferenceUnion = createUnionType({
+  name: 'QuantitativeValue_ValueReference',
+  types: () => [TextScalar, DefinedTerm, Thing, PropertyValue, QuantitativeValue] as const,
+});
+
+export type QuantitativeValue_Value = TextType | NumberType | StructuredValue | BooleanType;
+export const QuantitativeValue_ValueUnion = createUnionType({
+  name: 'QuantitativeValue_Value',
+  types: () => [TextScalar, NumberScalar, Thing, BooleanScalar] as const,
+});
+
+export type QuantitativeValue_UnitCode = TextType | UrlType;
+export const QuantitativeValue_UnitCodeUnion = createUnionType({
+  name: 'QuantitativeValue_UnitCode',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type ParcelDelivery_Provider = Organization | Person;
+export const ParcelDelivery_ProviderUnion = createUnionType({
+  name: 'ParcelDelivery_Provider',
+  types: () => [Organization, Person] as const,
+});
+
+export type ParcelDelivery_ExpectedArrivalUntil = DateType | DateTimeType;
+export const ParcelDelivery_ExpectedArrivalUntilUnion = createUnionType({
+  name: 'ParcelDelivery_ExpectedArrivalUntil',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type ParcelDelivery_ExpectedArrivalFrom = DateType | DateTimeType;
+export const ParcelDelivery_ExpectedArrivalFromUnion = createUnionType({
+  name: 'ParcelDelivery_ExpectedArrivalFrom',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type Invoice_TotalPaymentDue = MonetaryAmount | PriceSpecification;
+export const Invoice_TotalPaymentDueUnion = createUnionType({
+  name: 'Invoice_TotalPaymentDue',
+  types: () => [MonetaryAmount, PriceSpecification] as const,
+});
+
+export type Invoice_Category = UrlType | TextType | Thing | CategoryCode;
+export const Invoice_CategoryUnion = createUnionType({
+  name: 'Invoice_Category',
+  types: () => [UrlScalar, TextScalar, Thing, CategoryCode] as const,
+});
+
+export type Invoice_Customer = Organization | Person;
+export const Invoice_CustomerUnion = createUnionType({
+  name: 'Invoice_Customer',
+  types: () => [Organization, Person] as const,
+});
+
+export type Invoice_Provider = Organization | Person;
+export const Invoice_ProviderUnion = createUnionType({
+  name: 'Invoice_Provider',
+  types: () => [Organization, Person] as const,
+});
+
+export type Invoice_MinimumPaymentDue = MonetaryAmount | PriceSpecification;
+export const Invoice_MinimumPaymentDueUnion = createUnionType({
+  name: 'Invoice_MinimumPaymentDue',
+  types: () => [MonetaryAmount, PriceSpecification] as const,
+});
+
+export type Invoice_PaymentDueDate = DateTimeType | DateType;
+export const Invoice_PaymentDueDateUnion = createUnionType({
+  name: 'Invoice_PaymentDueDate',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type Invoice_Broker = Person | Organization;
+export const Invoice_BrokerUnion = createUnionType({
+  name: 'Invoice_Broker',
+  types: () => [Person, Organization] as const,
+});
+
+export type Invoice_PaymentStatus = TextType;
+export const Invoice_PaymentStatusUnion = createUnionType({
+  name: 'Invoice_PaymentStatus',
+  types: () => [TextScalar] as const,
+});
+
+export type DrugCost_CostPerUnit = NumberType | TextType;
+export const DrugCost_CostPerUnitUnion = createUnionType({
+  name: 'DrugCost_CostPerUnit',
+  types: () => [NumberScalar, TextScalar] as const,
+});
+
+export type LodgingReservation_LodgingUnitType = TextType;
+export const LodgingReservation_LodgingUnitTypeUnion = createUnionType({
+  name: 'LodgingReservation_LodgingUnitType',
+  types: () => [TextScalar] as const,
+});
+
+export type LodgingReservation_CheckoutTime = DateTimeType | TimeType;
+export const LodgingReservation_CheckoutTimeUnion = createUnionType({
+  name: 'LodgingReservation_CheckoutTime',
+  types: () => [DateTimeScalar, TimeScalar] as const,
+});
+
+export type LodgingReservation_NumAdults = IntegerType | QuantitativeValue;
+export const LodgingReservation_NumAdultsUnion = createUnionType({
+  name: 'LodgingReservation_NumAdults',
+  types: () => [IntegerScalar, QuantitativeValue] as const,
+});
+
+export type LodgingReservation_CheckinTime = DateTimeType | TimeType;
+export const LodgingReservation_CheckinTimeUnion = createUnionType({
+  name: 'LodgingReservation_CheckinTime',
+  types: () => [DateTimeScalar, TimeScalar] as const,
+});
+
+export type LodgingReservation_NumChildren = IntegerType | QuantitativeValue;
+export const LodgingReservation_NumChildrenUnion = createUnionType({
+  name: 'LodgingReservation_NumChildren',
+  types: () => [IntegerScalar, QuantitativeValue] as const,
+});
+
+export type TipAction_Recipient = Person | Audience | ContactPoint | Organization;
+export const TipAction_RecipientUnion = createUnionType({
+  name: 'TipAction_Recipient',
+  types: () => [Person, Audience, ContactPoint, Organization] as const,
+});
+
+export type Event_Translator = Person | Organization;
+export const Event_TranslatorUnion = createUnionType({
+  name: 'Event_Translator',
+  types: () => [Person, Organization] as const,
+});
+
+export type Event_StartDate = DateTimeType | DateType;
+export const Event_StartDateUnion = createUnionType({
+  name: 'Event_StartDate',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type Event_Composer = Organization | Person;
+export const Event_ComposerUnion = createUnionType({
+  name: 'Event_Composer',
+  types: () => [Organization, Person] as const,
+});
+
+export type Event_Keywords = DefinedTerm | TextType | UrlType;
+export const Event_KeywordsUnion = createUnionType({
+  name: 'Event_Keywords',
+  types: () => [DefinedTerm, TextScalar, UrlScalar] as const,
+});
+
+export type Event_Offers = Offer | Demand;
+export const Event_OffersUnion = createUnionType({
+  name: 'Event_Offers',
+  types: () => [Offer, Demand] as const,
+});
+
+export type Event_EndDate = DateType | DateTimeType;
+export const Event_EndDateUnion = createUnionType({
+  name: 'Event_EndDate',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type Event_Funder = Organization | Person;
+export const Event_FunderUnion = createUnionType({
+  name: 'Event_Funder',
+  types: () => [Organization, Person] as const,
+});
+
+export type Event_Performer = Organization | Person;
+export const Event_PerformerUnion = createUnionType({
+  name: 'Event_Performer',
+  types: () => [Organization, Person] as const,
+});
+
+export type Event_Location = PostalAddress | TextType | Place | VirtualLocation;
+export const Event_LocationUnion = createUnionType({
+  name: 'Event_Location',
+  types: () => [PostalAddress, TextScalar, Place, Thing] as const,
+});
+
+export type Event_Performers = Person | Organization;
+export const Event_PerformersUnion = createUnionType({
+  name: 'Event_Performers',
+  types: () => [Person, Organization] as const,
+});
+
+export type Event_Organizer = Person | Organization;
+export const Event_OrganizerUnion = createUnionType({
+  name: 'Event_Organizer',
+  types: () => [Person, Organization] as const,
+});
+
+export type Event_Sponsor = Organization | Person;
+export const Event_SponsorUnion = createUnionType({
+  name: 'Event_Sponsor',
+  types: () => [Organization, Person] as const,
+});
+
+export type Event_DoorTime = TimeType | DateTimeType;
+export const Event_DoorTimeUnion = createUnionType({
+  name: 'Event_DoorTime',
+  types: () => [TimeScalar, DateTimeScalar] as const,
+});
+
+export type Event_InLanguage = TextType | Language;
+export const Event_InLanguageUnion = createUnionType({
+  name: 'Event_InLanguage',
+  types: () => [TextScalar, Thing] as const,
+});
+
+export type Event_Attendee = Person | Organization;
+export const Event_AttendeeUnion = createUnionType({
+  name: 'Event_Attendee',
+  types: () => [Person, Organization] as const,
+});
+
+export type Event_Contributor = Organization | Person;
+export const Event_ContributorUnion = createUnionType({
+  name: 'Event_Contributor',
+  types: () => [Organization, Person] as const,
+});
+
+export type Event_Attendees = Person | Organization;
+export const Event_AttendeesUnion = createUnionType({
+  name: 'Event_Attendees',
+  types: () => [Person, Organization] as const,
+});
+
+export type FoodEstablishment_AcceptsReservations = TextType | BooleanType | UrlType;
+export const FoodEstablishment_AcceptsReservationsUnion = createUnionType({
+  name: 'FoodEstablishment_AcceptsReservations',
+  types: () => [TextScalar, BooleanScalar, UrlScalar] as const,
+});
+
+export type FoodEstablishment_HasMenu = UrlType | TextType | Menu;
+export const FoodEstablishment_HasMenuUnion = createUnionType({
+  name: 'FoodEstablishment_HasMenu',
+  types: () => [UrlScalar, TextScalar, Menu] as const,
+});
+
+export type FoodEstablishment_Menu = UrlType | Menu | TextType;
+export const FoodEstablishment_MenuUnion = createUnionType({
+  name: 'FoodEstablishment_Menu',
+  types: () => [UrlScalar, Menu, TextScalar] as const,
+});
+
+export type Diet_Endorsers = Person | Organization;
+export const Diet_EndorsersUnion = createUnionType({
+  name: 'Diet_Endorsers',
+  types: () => [Person, Organization] as const,
+});
+
+export type MusicAlbum_ByArtist = Person | MusicGroup;
+export const MusicAlbum_ByArtistUnion = createUnionType({
+  name: 'MusicAlbum_ByArtist',
+  types: () => [Person, MusicGroup] as const,
+});
+
+export type Nerve_SensoryUnit = SuperficialAnatomy | AnatomicalStructure;
+export const Nerve_SensoryUnitUnion = createUnionType({
+  name: 'Nerve_SensoryUnit',
+  types: () => [SuperficialAnatomy, AnatomicalStructure] as const,
+});
+
+export type DataFeedItem_DateDeleted = DateTimeType | DateType;
+export const DataFeedItem_DateDeletedUnion = createUnionType({
+  name: 'DataFeedItem_DateDeleted',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type DataFeedItem_DateCreated = DateType | DateTimeType;
+export const DataFeedItem_DateCreatedUnion = createUnionType({
+  name: 'DataFeedItem_DateCreated',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type DataFeedItem_DateModified = DateTimeType | DateType;
+export const DataFeedItem_DateModifiedUnion = createUnionType({
+  name: 'DataFeedItem_DateModified',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type HowToSupply_EstimatedCost = TextType | MonetaryAmount;
+export const HowToSupply_EstimatedCostUnion = createUnionType({
+  name: 'HowToSupply_EstimatedCost',
+  types: () => [TextScalar, MonetaryAmount] as const,
+});
+
+export type ExercisePlan_Repetitions = NumberType | QuantitativeValue;
+export const ExercisePlan_RepetitionsUnion = createUnionType({
+  name: 'ExercisePlan_Repetitions',
+  types: () => [NumberScalar, QuantitativeValue] as const,
+});
+
+export type ExercisePlan_Intensity = QuantitativeValue | TextType;
+export const ExercisePlan_IntensityUnion = createUnionType({
+  name: 'ExercisePlan_Intensity',
+  types: () => [QuantitativeValue, TextScalar] as const,
+});
+
+export type ExercisePlan_Workload = QuantitativeValue | Energy;
+export const ExercisePlan_WorkloadUnion = createUnionType({
+  name: 'ExercisePlan_Workload',
+  types: () => [QuantitativeValue, Thing] as const,
+});
+
+export type ExercisePlan_ActivityDuration = Duration | QuantitativeValue;
+export const ExercisePlan_ActivityDurationUnion = createUnionType({
+  name: 'ExercisePlan_ActivityDuration',
+  types: () => [Thing, QuantitativeValue] as const,
+});
+
+export type ExercisePlan_RestPeriods = TextType | QuantitativeValue;
+export const ExercisePlan_RestPeriodsUnion = createUnionType({
+  name: 'ExercisePlan_RestPeriods',
+  types: () => [TextScalar, QuantitativeValue] as const,
+});
+
+export type ExercisePlan_ActivityFrequency = TextType | QuantitativeValue;
+export const ExercisePlan_ActivityFrequencyUnion = createUnionType({
+  name: 'ExercisePlan_ActivityFrequency',
+  types: () => [TextScalar, QuantitativeValue] as const,
+});
+
+export type PaymentCard_CashBack = NumberType | BooleanType;
+export const PaymentCard_CashBackUnion = createUnionType({
+  name: 'PaymentCard_CashBack',
+  types: () => [NumberScalar, BooleanScalar] as const,
+});
+
+export type PaymentCard_MonthlyMinimumRepaymentAmount = MonetaryAmount | NumberType;
+export const PaymentCard_MonthlyMinimumRepaymentAmountUnion = createUnionType({
+  name: 'PaymentCard_MonthlyMinimumRepaymentAmount',
+  types: () => [MonetaryAmount, NumberScalar] as const,
+});
+
+export type ProductGroup_VariesBy = TextType | DefinedTerm;
+export const ProductGroup_VariesByUnion = createUnionType({
+  name: 'ProductGroup_VariesBy',
+  types: () => [TextScalar, DefinedTerm] as const,
+});
+
+export type AuthorizeAction_Recipient = Person | Audience | ContactPoint | Organization;
+export const AuthorizeAction_RecipientUnion = createUnionType({
+  name: 'AuthorizeAction_Recipient',
+  types: () => [Person, Audience, ContactPoint, Organization] as const,
+});
+
+export type MovieSeries_MusicBy = Person | MusicGroup;
+export const MovieSeries_MusicByUnion = createUnionType({
+  name: 'MovieSeries_MusicBy',
+  types: () => [Person, MusicGroup] as const,
+});
+
+export type ReturnAction_Recipient = Person | Audience | ContactPoint | Organization;
+export const ReturnAction_RecipientUnion = createUnionType({
+  name: 'ReturnAction_Recipient',
+  types: () => [Person, Audience, ContactPoint, Organization] as const,
+});
+
+export type FinancialProduct_AnnualPercentageRate = NumberType | QuantitativeValue;
+export const FinancialProduct_AnnualPercentageRateUnion = createUnionType({
+  name: 'FinancialProduct_AnnualPercentageRate',
+  types: () => [NumberScalar, QuantitativeValue] as const,
+});
+
+export type FinancialProduct_FeesAndCommissionsSpecification = UrlType | TextType;
+export const FinancialProduct_FeesAndCommissionsSpecificationUnion = createUnionType({
+  name: 'FinancialProduct_FeesAndCommissionsSpecification',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type FinancialProduct_InterestRate = NumberType | QuantitativeValue;
+export const FinancialProduct_InterestRateUnion = createUnionType({
+  name: 'FinancialProduct_InterestRate',
+  types: () => [NumberScalar, QuantitativeValue] as const,
+});
+
+export type VideoObject_Caption = TextType | MediaObject;
+export const VideoObject_CaptionUnion = createUnionType({
+  name: 'VideoObject_Caption',
+  types: () => [TextScalar, MediaObject] as const,
+});
+
+export type VideoObject_MusicBy = Person | MusicGroup;
+export const VideoObject_MusicByUnion = createUnionType({
+  name: 'VideoObject_MusicBy',
+  types: () => [Person, MusicGroup] as const,
+});
+
+export type MusicRelease_CreditedTo = Person | Organization;
+export const MusicRelease_CreditedToUnion = createUnionType({
+  name: 'MusicRelease_CreditedTo',
+  types: () => [Person, Organization] as const,
+});
+
+export type Dataset_VariableMeasured = PropertyValue | TextType;
+export const Dataset_VariableMeasuredUnion = createUnionType({
+  name: 'Dataset_VariableMeasured',
+  types: () => [PropertyValue, TextScalar] as const,
+});
+
+export type Dataset_MeasurementTechnique = TextType | UrlType;
+export const Dataset_MeasurementTechniqueUnion = createUnionType({
+  name: 'Dataset_MeasurementTechnique',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type Physician_AvailableService = MedicalTest | MedicalProcedure | MedicalTherapy;
+export const Physician_AvailableServiceUnion = createUnionType({
+  name: 'Physician_AvailableService',
+  types: () => [MedicalTest, MedicalProcedure, MedicalTherapy] as const,
+});
+
+export type TaxiReservation_PartySize = IntegerType | QuantitativeValue;
+export const TaxiReservation_PartySizeUnion = createUnionType({
+  name: 'TaxiReservation_PartySize',
+  types: () => [IntegerScalar, QuantitativeValue] as const,
+});
+
+export type Taxon_ParentTaxon = UrlType | Taxon | TextType;
+export const Taxon_ParentTaxonUnion = createUnionType({
+  name: 'Taxon_ParentTaxon',
+  types: () => [UrlScalar, Taxon, TextScalar] as const,
+});
+
+export type Taxon_TaxonRank = PropertyValue | UrlType | TextType;
+export const Taxon_TaxonRankUnion = createUnionType({
+  name: 'Taxon_TaxonRank',
+  types: () => [PropertyValue, UrlScalar, TextScalar] as const,
+});
+
+export type Taxon_ChildTaxon = TextType | Taxon | UrlType;
+export const Taxon_ChildTaxonUnion = createUnionType({
+  name: 'Taxon_ChildTaxon',
+  types: () => [TextScalar, Taxon, UrlScalar] as const,
+});
+
+export type TVSeries_Season = UrlType | CreativeWorkSeason;
+export const TVSeries_SeasonUnion = createUnionType({
+  name: 'TVSeries_Season',
+  types: () => [UrlScalar, CreativeWorkSeason] as const,
+});
+
+export type TVSeries_MusicBy = Person | MusicGroup;
+export const TVSeries_MusicByUnion = createUnionType({
+  name: 'TVSeries_MusicBy',
+  types: () => [Person, MusicGroup] as const,
+});
+
+export type Service_Category = UrlType | TextType | Thing | CategoryCode;
+export const Service_CategoryUnion = createUnionType({
+  name: 'Service_Category',
+  types: () => [UrlScalar, TextScalar, Thing, CategoryCode] as const,
+});
+
+export type Service_Offers = Offer | Demand;
+export const Service_OffersUnion = createUnionType({
+  name: 'Service_Offers',
+  types: () => [Offer, Demand] as const,
+});
+
+export type Service_Provider = Organization | Person;
+export const Service_ProviderUnion = createUnionType({
+  name: 'Service_Provider',
+  types: () => [Organization, Person] as const,
+});
+
+export type Service_TermsOfService = UrlType | TextType;
+export const Service_TermsOfServiceUnion = createUnionType({
+  name: 'Service_TermsOfService',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type Service_Broker = Person | Organization;
+export const Service_BrokerUnion = createUnionType({
+  name: 'Service_Broker',
+  types: () => [Person, Organization] as const,
+});
+
+export type Service_IsSimilarTo = Service | Product;
+export const Service_IsSimilarToUnion = createUnionType({
+  name: 'Service_IsSimilarTo',
+  types: () => [Service, Product] as const,
+});
+
+export type Service_Brand = Organization | Brand;
+export const Service_BrandUnion = createUnionType({
+  name: 'Service_Brand',
+  types: () => [Organization, Brand] as const,
+});
+
+export type Service_Logo = UrlType | ImageObject;
+export const Service_LogoUnion = createUnionType({
+  name: 'Service_Logo',
+  types: () => [UrlScalar, ImageObject] as const,
+});
+
+export type Service_ServiceArea = GeoShape | AdministrativeArea | Place;
+export const Service_ServiceAreaUnion = createUnionType({
+  name: 'Service_ServiceArea',
+  types: () => [GeoShape, Place] as const,
+});
+
+export type Service_ServiceType = TextType;
+export const Service_ServiceTypeUnion = createUnionType({
+  name: 'Service_ServiceType',
+  types: () => [TextScalar] as const,
+});
+
+export type Service_AreaServed = AdministrativeArea | GeoShape | TextType | Place;
+export const Service_AreaServedUnion = createUnionType({
+  name: 'Service_AreaServed',
+  types: () => [Place, GeoShape, TextScalar] as const,
+});
+
+export type Service_IsRelatedTo = Service | Product;
+export const Service_IsRelatedToUnion = createUnionType({
+  name: 'Service_IsRelatedTo',
+  types: () => [Service, Product] as const,
+});
+
+export type VisualArtwork_Width = QuantitativeValue | Distance;
+export const VisualArtwork_WidthUnion = createUnionType({
+  name: 'VisualArtwork_Width',
+  types: () => [QuantitativeValue, Thing] as const,
+});
+
+export type VisualArtwork_Height = Distance | QuantitativeValue;
+export const VisualArtwork_HeightUnion = createUnionType({
+  name: 'VisualArtwork_Height',
+  types: () => [Thing, QuantitativeValue] as const,
+});
+
+export type VisualArtwork_Surface = UrlType | TextType;
+export const VisualArtwork_SurfaceUnion = createUnionType({
+  name: 'VisualArtwork_Surface',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type VisualArtwork_Artform = TextType | UrlType;
+export const VisualArtwork_ArtformUnion = createUnionType({
+  name: 'VisualArtwork_Artform',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type VisualArtwork_ArtworkSurface = UrlType | TextType;
+export const VisualArtwork_ArtworkSurfaceUnion = createUnionType({
+  name: 'VisualArtwork_ArtworkSurface',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type VisualArtwork_ArtEdition = IntegerType | TextType;
+export const VisualArtwork_ArtEditionUnion = createUnionType({
+  name: 'VisualArtwork_ArtEdition',
+  types: () => [IntegerScalar, TextScalar] as const,
+});
+
+export type VisualArtwork_Depth = Distance | QuantitativeValue;
+export const VisualArtwork_DepthUnion = createUnionType({
+  name: 'VisualArtwork_Depth',
+  types: () => [Thing, QuantitativeValue] as const,
+});
+
+export type VisualArtwork_ArtMedium = UrlType | TextType;
+export const VisualArtwork_ArtMediumUnion = createUnionType({
+  name: 'VisualArtwork_ArtMedium',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type DefinedTerm_InDefinedTermSet = UrlType | DefinedTermSet;
+export const DefinedTerm_InDefinedTermSetUnion = createUnionType({
+  name: 'DefinedTerm_InDefinedTermSet',
+  types: () => [UrlScalar, DefinedTermSet] as const,
+});
+
+export type Order_Merchant = Organization | Person;
+export const Order_MerchantUnion = createUnionType({
+  name: 'Order_Merchant',
+  types: () => [Organization, Person] as const,
+});
+
+export type Order_Seller = Organization | Person;
+export const Order_SellerUnion = createUnionType({
+  name: 'Order_Seller',
+  types: () => [Organization, Person] as const,
+});
+
+export type Order_Customer = Organization | Person;
+export const Order_CustomerUnion = createUnionType({
+  name: 'Order_Customer',
+  types: () => [Organization, Person] as const,
+});
+
+export type Order_PaymentDueDate = DateTimeType | DateType;
+export const Order_PaymentDueDateUnion = createUnionType({
+  name: 'Order_PaymentDueDate',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type Order_Broker = Person | Organization;
+export const Order_BrokerUnion = createUnionType({
+  name: 'Order_Broker',
+  types: () => [Person, Organization] as const,
+});
+
+export type Order_Discount = TextType | NumberType;
+export const Order_DiscountUnion = createUnionType({
+  name: 'Order_Discount',
+  types: () => [TextScalar, NumberScalar] as const,
+});
+
+export type Order_OrderDate = DateType | DateTimeType;
+export const Order_OrderDateUnion = createUnionType({
+  name: 'Order_OrderDate',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type Order_OrderedItem = Service | OrderItem | Product;
+export const Order_OrderedItemUnion = createUnionType({
+  name: 'Order_OrderedItem',
+  types: () => [Service, OrderItem, Product] as const,
+});
+
+export type Claim_ClaimInterpreter = Person | Organization;
+export const Claim_ClaimInterpreterUnion = createUnionType({
+  name: 'Claim_ClaimInterpreter',
+  types: () => [Person, Organization] as const,
+});
+
+export type InvestmentOrDeposit_Amount = NumberType | MonetaryAmount;
+export const InvestmentOrDeposit_AmountUnion = createUnionType({
+  name: 'InvestmentOrDeposit_Amount',
+  types: () => [NumberScalar, MonetaryAmount] as const,
+});
+
+export type Game_GameLocation = Place | UrlType | PostalAddress;
+export const Game_GameLocationUnion = createUnionType({
+  name: 'Game_GameLocation',
+  types: () => [Place, UrlScalar, PostalAddress] as const,
+});
+
+export type PronounceableText_InLanguage = TextType | Language;
+export const PronounceableText_InLanguageUnion = createUnionType({
+  name: 'PronounceableText_InLanguage',
+  types: () => [TextScalar, Thing] as const,
+});
+
+export type SportsTeam_Gender = TextType;
+export const SportsTeam_GenderUnion = createUnionType({
+  name: 'SportsTeam_Gender',
+  types: () => [TextScalar] as const,
+});
+
+export type DietarySupplement_LegalStatus = DrugLegalStatus | TextType;
+export const DietarySupplement_LegalStatusUnion = createUnionType({
+  name: 'DietarySupplement_LegalStatus',
+  types: () => [DrugLegalStatus, TextScalar] as const,
+});
+
+export type UnitPriceSpecification_PriceType = TextType;
+export const UnitPriceSpecification_PriceTypeUnion = createUnionType({
+  name: 'UnitPriceSpecification_PriceType',
+  types: () => [TextScalar] as const,
+});
+
+export type UnitPriceSpecification_UnitCode = TextType | UrlType;
+export const UnitPriceSpecification_UnitCodeUnion = createUnionType({
+  name: 'UnitPriceSpecification_UnitCode',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type UnitPriceSpecification_BillingDuration = Duration | QuantitativeValue | NumberType;
+export const UnitPriceSpecification_BillingDurationUnion = createUnionType({
+  name: 'UnitPriceSpecification_BillingDuration',
+  types: () => [Thing, QuantitativeValue, NumberScalar] as const,
+});
+
+export type Schedule_StartDate = DateTimeType | DateType;
+export const Schedule_StartDateUnion = createUnionType({
+  name: 'Schedule_StartDate',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type Schedule_ExceptDate = DateTimeType | DateType;
+export const Schedule_ExceptDateUnion = createUnionType({
+  name: 'Schedule_ExceptDate',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type Schedule_StartTime = DateTimeType | TimeType;
+export const Schedule_StartTimeUnion = createUnionType({
+  name: 'Schedule_StartTime',
+  types: () => [DateTimeScalar, TimeScalar] as const,
+});
+
+export type Schedule_EndDate = DateType | DateTimeType;
+export const Schedule_EndDateUnion = createUnionType({
+  name: 'Schedule_EndDate',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type Schedule_RepeatFrequency = TextType | Duration;
+export const Schedule_RepeatFrequencyUnion = createUnionType({
+  name: 'Schedule_RepeatFrequency',
+  types: () => [TextScalar, Thing] as const,
+});
+
+export type Schedule_EndTime = DateTimeType | TimeType;
+export const Schedule_EndTimeUnion = createUnionType({
+  name: 'Schedule_EndTime',
+  types: () => [DateTimeScalar, TimeScalar] as const,
+});
+
+export type Schedule_ByDay = TextType;
+export const Schedule_ByDayUnion = createUnionType({
+  name: 'Schedule_ByDay',
+  types: () => [TextScalar] as const,
+});
+
+export type Message_BccRecipient = Person | ContactPoint | Organization;
+export const Message_BccRecipientUnion = createUnionType({
+  name: 'Message_BccRecipient',
+  types: () => [Person, ContactPoint, Organization] as const,
+});
+
+export type Message_Recipient = Person | Audience | ContactPoint | Organization;
+export const Message_RecipientUnion = createUnionType({
+  name: 'Message_Recipient',
+  types: () => [Person, Audience, ContactPoint, Organization] as const,
+});
+
+export type Message_CcRecipient = Person | Organization | ContactPoint;
+export const Message_CcRecipientUnion = createUnionType({
+  name: 'Message_CcRecipient',
+  types: () => [Person, Organization, ContactPoint] as const,
+});
+
+export type Message_ToRecipient = ContactPoint | Person | Audience | Organization;
+export const Message_ToRecipientUnion = createUnionType({
+  name: 'Message_ToRecipient',
+  types: () => [ContactPoint, Person, Audience, Organization] as const,
+});
+
+export type Message_DateRead = DateType | DateTimeType;
+export const Message_DateReadUnion = createUnionType({
+  name: 'Message_DateRead',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type Message_Sender = Person | Audience | Organization;
+export const Message_SenderUnion = createUnionType({
+  name: 'Message_Sender',
+  types: () => [Person, Audience, Organization] as const,
+});
+
+export type BroadcastService_BroadcastFrequency = BroadcastFrequencySpecification | TextType;
+export const BroadcastService_BroadcastFrequencyUnion = createUnionType({
+  name: 'BroadcastService_BroadcastFrequency',
+  types: () => [BroadcastFrequencySpecification, TextScalar] as const,
+});
+
+export type BroadcastService_InLanguage = TextType | Language;
+export const BroadcastService_InLanguageUnion = createUnionType({
+  name: 'BroadcastService_InLanguage',
+  types: () => [TextScalar, Thing] as const,
+});
+
+export type RepaymentSpecification_DownPayment = NumberType | MonetaryAmount;
+export const RepaymentSpecification_DownPaymentUnion = createUnionType({
+  name: 'RepaymentSpecification_DownPayment',
+  types: () => [NumberScalar, MonetaryAmount] as const,
+});
+
+export type Demand_ItemOffered = Trip | Event | Product | AggregateOffer | CreativeWork | MenuItem | Service;
+export const Demand_ItemOfferedUnion = createUnionType({
+  name: 'Demand_ItemOffered',
+  types: () => [Trip, Event, Product, AggregateOffer, CreativeWork, MenuItem, Service] as const,
+});
+
+export type Demand_AcceptedPaymentMethod = LoanOrCredit | TextType;
+export const Demand_AcceptedPaymentMethodUnion = createUnionType({
+  name: 'Demand_AcceptedPaymentMethod',
+  types: () => [LoanOrCredit, TextScalar] as const,
+});
+
+export type Demand_Seller = Organization | Person;
+export const Demand_SellerUnion = createUnionType({
+  name: 'Demand_Seller',
+  types: () => [Organization, Person] as const,
+});
+
+export type Demand_IneligibleRegion = Place | TextType | GeoShape;
+export const Demand_IneligibleRegionUnion = createUnionType({
+  name: 'Demand_IneligibleRegion',
+  types: () => [Place, TextScalar, GeoShape] as const,
+});
+
+export type Demand_ValidFrom = DateTimeType | DateType;
+export const Demand_ValidFromUnion = createUnionType({
+  name: 'Demand_ValidFrom',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type Demand_AvailabilityEnds = DateType | DateTimeType | TimeType;
+export const Demand_AvailabilityEndsUnion = createUnionType({
+  name: 'Demand_AvailabilityEnds',
+  types: () => [DateScalar, DateTimeScalar, TimeScalar] as const,
+});
+
+export type Demand_EligibleRegion = GeoShape | TextType | Place;
+export const Demand_EligibleRegionUnion = createUnionType({
+  name: 'Demand_EligibleRegion',
+  types: () => [GeoShape, TextScalar, Place] as const,
+});
+
+export type Demand_AreaServed = AdministrativeArea | GeoShape | TextType | Place;
+export const Demand_AreaServedUnion = createUnionType({
+  name: 'Demand_AreaServed',
+  types: () => [Place, GeoShape, TextScalar] as const,
+});
+
+export type Demand_ValidThrough = DateTimeType | DateType;
+export const Demand_ValidThroughUnion = createUnionType({
+  name: 'Demand_ValidThrough',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type Demand_AvailabilityStarts = TimeType | DateTimeType | DateType;
+export const Demand_AvailabilityStartsUnion = createUnionType({
+  name: 'Demand_AvailabilityStarts',
+  types: () => [TimeScalar, DateTimeScalar, DateScalar] as const,
+});
+
+export type WebAPI_Documentation = CreativeWork | UrlType;
+export const WebAPI_DocumentationUnion = createUnionType({
+  name: 'WebAPI_Documentation',
+  types: () => [CreativeWork, UrlScalar] as const,
+});
+
+export type LymphaticVessel_RegionDrained = AnatomicalSystem | AnatomicalStructure;
+export const LymphaticVessel_RegionDrainedUnion = createUnionType({
+  name: 'LymphaticVessel_RegionDrained',
+  types: () => [AnatomicalSystem, AnatomicalStructure] as const,
+});
+
+export type Product_Material = TextType | UrlType | Product;
+export const Product_MaterialUnion = createUnionType({
+  name: 'Product_Material',
+  types: () => [TextScalar, UrlScalar, Product] as const,
+});
+
+export type Product_Width = QuantitativeValue | Distance;
+export const Product_WidthUnion = createUnionType({
+  name: 'Product_Width',
+  types: () => [QuantitativeValue, Thing] as const,
+});
+
+export type Product_Pattern = DefinedTerm | TextType;
+export const Product_PatternUnion = createUnionType({
+  name: 'Product_Pattern',
+  types: () => [DefinedTerm, TextScalar] as const,
+});
+
+export type Product_Category = UrlType | TextType | Thing | CategoryCode;
+export const Product_CategoryUnion = createUnionType({
+  name: 'Product_Category',
+  types: () => [UrlScalar, TextScalar, Thing, CategoryCode] as const,
+});
+
+export type Product_Height = Distance | QuantitativeValue;
+export const Product_HeightUnion = createUnionType({
+  name: 'Product_Height',
+  types: () => [Thing, QuantitativeValue] as const,
+});
+
+export type Product_Keywords = DefinedTerm | TextType | UrlType;
+export const Product_KeywordsUnion = createUnionType({
+  name: 'Product_Keywords',
+  types: () => [DefinedTerm, TextScalar, UrlScalar] as const,
+});
+
+export type Product_Offers = Offer | Demand;
+export const Product_OffersUnion = createUnionType({
+  name: 'Product_Offers',
+  types: () => [Offer, Demand] as const,
+});
+
+export type Product_IsSimilarTo = Service | Product;
+export const Product_IsSimilarToUnion = createUnionType({
+  name: 'Product_IsSimilarTo',
+  types: () => [Service, Product] as const,
+});
+
+export type Product_Depth = Distance | QuantitativeValue;
+export const Product_DepthUnion = createUnionType({
+  name: 'Product_Depth',
+  types: () => [Thing, QuantitativeValue] as const,
+});
+
+export type Product_IsVariantOf = ProductModel | ProductGroup;
+export const Product_IsVariantOfUnion = createUnionType({
+  name: 'Product_IsVariantOf',
+  types: () => [ProductModel, ProductGroup] as const,
+});
+
+export type Product_Brand = Organization | Brand;
+export const Product_BrandUnion = createUnionType({
+  name: 'Product_Brand',
+  types: () => [Organization, Brand] as const,
+});
+
+export type Product_Logo = UrlType | ImageObject;
+export const Product_LogoUnion = createUnionType({
+  name: 'Product_Logo',
+  types: () => [UrlScalar, ImageObject] as const,
+});
+
+export type Product_Model = ProductModel | TextType;
+export const Product_ModelUnion = createUnionType({
+  name: 'Product_Model',
+  types: () => [ProductModel, TextScalar] as const,
+});
+
+export type Product_Size = QuantitativeValue | DefinedTerm | TextType;
+export const Product_SizeUnion = createUnionType({
+  name: 'Product_Size',
+  types: () => [QuantitativeValue, DefinedTerm, TextScalar] as const,
+});
+
+export type Product_IsRelatedTo = Service | Product;
+export const Product_IsRelatedToUnion = createUnionType({
+  name: 'Product_IsRelatedTo',
+  types: () => [Service, Product] as const,
+});
+
+export type BroadcastChannel_Genre = UrlType | TextType;
+export const BroadcastChannel_GenreUnion = createUnionType({
+  name: 'BroadcastChannel_Genre',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type BroadcastChannel_BroadcastFrequency = BroadcastFrequencySpecification | TextType;
+export const BroadcastChannel_BroadcastFrequencyUnion = createUnionType({
+  name: 'BroadcastChannel_BroadcastFrequency',
+  types: () => [BroadcastFrequencySpecification, TextScalar] as const,
+});
+
+export type PhysicalActivity_Category = UrlType | TextType | Thing | CategoryCode;
+export const PhysicalActivity_CategoryUnion = createUnionType({
+  name: 'PhysicalActivity_Category',
+  types: () => [UrlScalar, TextScalar, Thing, CategoryCode] as const,
+});
+
+export type PhysicalActivity_AssociatedAnatomy = AnatomicalStructure | AnatomicalSystem | SuperficialAnatomy;
+export const PhysicalActivity_AssociatedAnatomyUnion = createUnionType({
+  name: 'PhysicalActivity_AssociatedAnatomy',
+  types: () => [AnatomicalStructure, AnatomicalSystem, SuperficialAnatomy] as const,
+});
+
+export type CreativeWorkSeason_StartDate = DateTimeType | DateType;
+export const CreativeWorkSeason_StartDateUnion = createUnionType({
+  name: 'CreativeWorkSeason_StartDate',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type CreativeWorkSeason_EndDate = DateType | DateTimeType;
+export const CreativeWorkSeason_EndDateUnion = createUnionType({
+  name: 'CreativeWorkSeason_EndDate',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type CreativeWorkSeason_SeasonNumber = TextType | IntegerType;
+export const CreativeWorkSeason_SeasonNumberUnion = createUnionType({
+  name: 'CreativeWorkSeason_SeasonNumber',
+  types: () => [TextScalar, IntegerScalar] as const,
+});
+
+export type Chapter_PageStart = TextType | IntegerType;
+export const Chapter_PageStartUnion = createUnionType({
+  name: 'Chapter_PageStart',
+  types: () => [TextScalar, IntegerScalar] as const,
+});
+
+export type Chapter_PageEnd = TextType | IntegerType;
+export const Chapter_PageEndUnion = createUnionType({
+  name: 'Chapter_PageEnd',
+  types: () => [TextScalar, IntegerScalar] as const,
+});
+
+export type EducationalOccupationalProgram_ProgramPrerequisites = AlignmentObject | Course | EducationalOccupationalCredential | TextType;
+export const EducationalOccupationalProgram_ProgramPrerequisitesUnion = createUnionType({
+  name: 'EducationalOccupationalProgram_ProgramPrerequisites',
+  types: () => [AlignmentObject, Course, EducationalOccupationalCredential, TextScalar] as const,
+});
+
+export type EducationalOccupationalProgram_StartDate = DateTimeType | DateType;
+export const EducationalOccupationalProgram_StartDateUnion = createUnionType({
+  name: 'EducationalOccupationalProgram_StartDate',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type EducationalOccupationalProgram_Offers = Offer | Demand;
+export const EducationalOccupationalProgram_OffersUnion = createUnionType({
+  name: 'EducationalOccupationalProgram_Offers',
+  types: () => [Offer, Demand] as const,
+});
+
+export type EducationalOccupationalProgram_TypicalCreditsPerTerm = IntegerType | StructuredValue;
+export const EducationalOccupationalProgram_TypicalCreditsPerTermUnion = createUnionType({
+  name: 'EducationalOccupationalProgram_TypicalCreditsPerTerm',
+  types: () => [IntegerScalar, Thing] as const,
+});
+
+export type EducationalOccupationalProgram_EndDate = DateType | DateTimeType;
+export const EducationalOccupationalProgram_EndDateUnion = createUnionType({
+  name: 'EducationalOccupationalProgram_EndDate',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type EducationalOccupationalProgram_Provider = Organization | Person;
+export const EducationalOccupationalProgram_ProviderUnion = createUnionType({
+  name: 'EducationalOccupationalProgram_Provider',
+  types: () => [Organization, Person] as const,
+});
+
+export type EducationalOccupationalProgram_EducationalCredentialAwarded = UrlType | EducationalOccupationalCredential | TextType;
+export const EducationalOccupationalProgram_EducationalCredentialAwardedUnion = createUnionType({
+  name: 'EducationalOccupationalProgram_EducationalCredentialAwarded',
+  types: () => [UrlScalar, EducationalOccupationalCredential, TextScalar] as const,
+});
+
+export type EducationalOccupationalProgram_NumberOfCredits = IntegerType | StructuredValue;
+export const EducationalOccupationalProgram_NumberOfCreditsUnion = createUnionType({
+  name: 'EducationalOccupationalProgram_NumberOfCredits',
+  types: () => [IntegerScalar, Thing] as const,
+});
+
+export type EducationalOccupationalProgram_OccupationalCredentialAwarded = EducationalOccupationalCredential | TextType | UrlType;
+export const EducationalOccupationalProgram_OccupationalCredentialAwardedUnion = createUnionType({
+  name: 'EducationalOccupationalProgram_OccupationalCredentialAwarded',
+  types: () => [EducationalOccupationalCredential, TextScalar, UrlScalar] as const,
+});
+
+export type EducationalOccupationalProgram_EducationalProgramMode = UrlType | TextType;
+export const EducationalOccupationalProgram_EducationalProgramModeUnion = createUnionType({
+  name: 'EducationalOccupationalProgram_EducationalProgramMode',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type EducationalOccupationalProgram_ProgramType = TextType | DefinedTerm;
+export const EducationalOccupationalProgram_ProgramTypeUnion = createUnionType({
+  name: 'EducationalOccupationalProgram_ProgramType',
+  types: () => [TextScalar, DefinedTerm] as const,
+});
+
+export type EducationalOccupationalProgram_FinancialAidEligible = TextType | DefinedTerm;
+export const EducationalOccupationalProgram_FinancialAidEligibleUnion = createUnionType({
+  name: 'EducationalOccupationalProgram_FinancialAidEligible',
+  types: () => [TextScalar, DefinedTerm] as const,
+});
+
+export type EducationalOccupationalProgram_OccupationalCategory = CategoryCode | TextType;
+export const EducationalOccupationalProgram_OccupationalCategoryUnion = createUnionType({
+  name: 'EducationalOccupationalProgram_OccupationalCategory',
+  types: () => [CategoryCode, TextScalar] as const,
+});
+
+export type ApartmentComplex_NumberOfBedrooms = NumberType | QuantitativeValue;
+export const ApartmentComplex_NumberOfBedroomsUnion = createUnionType({
+  name: 'ApartmentComplex_NumberOfBedrooms',
+  types: () => [NumberScalar, QuantitativeValue] as const,
+});
+
+export type ApartmentComplex_PetsAllowed = TextType | BooleanType;
+export const ApartmentComplex_PetsAllowedUnion = createUnionType({
+  name: 'ApartmentComplex_PetsAllowed',
+  types: () => [TextScalar, BooleanScalar] as const,
+});
+
+export type PropertyValueSpecification_DefaultValue = TextType | Thing;
+export const PropertyValueSpecification_DefaultValueUnion = createUnionType({
+  name: 'PropertyValueSpecification_DefaultValue',
+  types: () => [TextScalar, Thing] as const,
+});
+
+export type MediaObject_Width = QuantitativeValue | Distance;
+export const MediaObject_WidthUnion = createUnionType({
+  name: 'MediaObject_Width',
+  types: () => [QuantitativeValue, Thing] as const,
+});
+
+export type MediaObject_Height = Distance | QuantitativeValue;
+export const MediaObject_HeightUnion = createUnionType({
+  name: 'MediaObject_Height',
+  types: () => [Thing, QuantitativeValue] as const,
+});
+
+export type MediaObject_StartTime = DateTimeType | TimeType;
+export const MediaObject_StartTimeUnion = createUnionType({
+  name: 'MediaObject_StartTime',
+  types: () => [DateTimeScalar, TimeScalar] as const,
+});
+
+export type MediaObject_IneligibleRegion = Place | TextType | GeoShape;
+export const MediaObject_IneligibleRegionUnion = createUnionType({
+  name: 'MediaObject_IneligibleRegion',
+  types: () => [Place, TextScalar, GeoShape] as const,
+});
+
+export type MediaObject_RequiresSubscription = MediaSubscription | BooleanType;
+export const MediaObject_RequiresSubscriptionUnion = createUnionType({
+  name: 'MediaObject_RequiresSubscription',
+  types: () => [MediaSubscription, BooleanScalar] as const,
+});
+
+export type MediaObject_EncodingFormat = TextType | UrlType;
+export const MediaObject_EncodingFormatUnion = createUnionType({
+  name: 'MediaObject_EncodingFormat',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type MediaObject_EndTime = DateTimeType | TimeType;
+export const MediaObject_EndTimeUnion = createUnionType({
+  name: 'MediaObject_EndTime',
+  types: () => [DateTimeScalar, TimeScalar] as const,
+});
+
+export type ChooseAction_Option = TextType | Thing;
+export const ChooseAction_OptionUnion = createUnionType({
+  name: 'ChooseAction_Option',
+  types: () => [TextScalar, Thing] as const,
+});
+
+export type ChooseAction_ActionOption = Thing | TextType;
+export const ChooseAction_ActionOptionUnion = createUnionType({
+  name: 'ChooseAction_ActionOption',
+  types: () => [Thing, TextScalar] as const,
+});
+
+export type AudioObject_Caption = TextType | MediaObject;
+export const AudioObject_CaptionUnion = createUnionType({
+  name: 'AudioObject_Caption',
+  types: () => [TextScalar, MediaObject] as const,
+});
+
+export type Review_NegativeNotes = ListItem | TextType | WebContent | ItemList;
+export const Review_NegativeNotesUnion = createUnionType({
+  name: 'Review_NegativeNotes',
+  types: () => [ListItem, TextScalar, CreativeWork, ItemList] as const,
+});
+
+export type Review_PositiveNotes = WebContent | TextType | ListItem | ItemList;
+export const Review_PositiveNotesUnion = createUnionType({
+  name: 'Review_PositiveNotes',
+  types: () => [CreativeWork, TextScalar, ListItem, ItemList] as const,
+});
+
+export type ScreeningEvent_SubtitleLanguage = Language | TextType;
+export const ScreeningEvent_SubtitleLanguageUnion = createUnionType({
+  name: 'ScreeningEvent_SubtitleLanguage',
+  types: () => [Thing, TextScalar] as const,
+});
+
+export type OwnershipInfo_TypeOfGood = Product | Service;
+export const OwnershipInfo_TypeOfGoodUnion = createUnionType({
+  name: 'OwnershipInfo_TypeOfGood',
+  types: () => [Product, Service] as const,
+});
+
+export type OwnershipInfo_AcquiredFrom = Organization | Person;
+export const OwnershipInfo_AcquiredFromUnion = createUnionType({
+  name: 'OwnershipInfo_AcquiredFrom',
+  types: () => [Organization, Person] as const,
+});
+
+export type Movie_TitleEIDR = UrlType | TextType;
+export const Movie_TitleEIDRUnion = createUnionType({
+  name: 'Movie_TitleEIDR',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type Movie_SubtitleLanguage = Language | TextType;
+export const Movie_SubtitleLanguageUnion = createUnionType({
+  name: 'Movie_SubtitleLanguage',
+  types: () => [Thing, TextScalar] as const,
+});
+
+export type Movie_MusicBy = Person | MusicGroup;
+export const Movie_MusicByUnion = createUnionType({
+  name: 'Movie_MusicBy',
+  types: () => [Person, MusicGroup] as const,
+});
+
+export type Thing_MainEntityOfPage = CreativeWork | UrlType;
+export const Thing_MainEntityOfPageUnion = createUnionType({
+  name: 'Thing_MainEntityOfPage',
+  types: () => [CreativeWork, UrlScalar] as const,
+});
+
+export type Thing_Image = UrlType | ImageObject;
+export const Thing_ImageUnion = createUnionType({
+  name: 'Thing_Image',
+  types: () => [UrlScalar, ImageObject] as const,
+});
+
+export type Thing_SubjectOf = Event | CreativeWork;
+export const Thing_SubjectOfUnion = createUnionType({
+  name: 'Thing_SubjectOf',
+  types: () => [Event, CreativeWork] as const,
+});
+
+export type Thing_Identifier = UrlType | TextType | PropertyValue;
+export const Thing_IdentifierUnion = createUnionType({
+  name: 'Thing_Identifier',
+  types: () => [UrlScalar, TextScalar, PropertyValue] as const,
+});
+
+export type BedDetails_TypeOfBed = TextType;
+export const BedDetails_TypeOfBedUnion = createUnionType({
+  name: 'BedDetails_TypeOfBed',
+  types: () => [TextScalar] as const,
+});
+
+export type SellAction_Buyer = Person | Organization;
+export const SellAction_BuyerUnion = createUnionType({
+  name: 'SellAction_Buyer',
+  types: () => [Person, Organization] as const,
+});
+
+export type Seat_SeatingType = TextType;
+export const Seat_SeatingTypeUnion = createUnionType({
+  name: 'Seat_SeatingType',
+  types: () => [TextScalar] as const,
+});
+
+export type CategoryCode_InCodeSet = CategoryCodeSet | UrlType;
+export const CategoryCode_InCodeSetUnion = createUnionType({
+  name: 'CategoryCode_InCodeSet',
+  types: () => [CategoryCodeSet, UrlScalar] as const,
+});
+
+export type BroadcastFrequencySpecification_BroadcastSignalModulation = TextType;
+export const BroadcastFrequencySpecification_BroadcastSignalModulationUnion = createUnionType({
+  name: 'BroadcastFrequencySpecification_BroadcastSignalModulation',
+  types: () => [TextScalar] as const,
+});
+
+export type BroadcastFrequencySpecification_BroadcastFrequencyValue = NumberType | QuantitativeValue;
+export const BroadcastFrequencySpecification_BroadcastFrequencyValueUnion = createUnionType({
+  name: 'BroadcastFrequencySpecification_BroadcastFrequencyValue',
+  types: () => [NumberScalar, QuantitativeValue] as const,
+});
+
+export type BroadcastEvent_SubtitleLanguage = Language | TextType;
+export const BroadcastEvent_SubtitleLanguageUnion = createUnionType({
+  name: 'BroadcastEvent_SubtitleLanguage',
+  types: () => [Thing, TextScalar] as const,
+});
+
+export type EngineSpecification_FuelType = TextType | UrlType;
+export const EngineSpecification_FuelTypeUnion = createUnionType({
+  name: 'EngineSpecification_FuelType',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type EngineSpecification_EngineType = TextType | UrlType;
+export const EngineSpecification_EngineTypeUnion = createUnionType({
+  name: 'EngineSpecification_EngineType',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type SendAction_Recipient = Person | Audience | ContactPoint | Organization;
+export const SendAction_RecipientUnion = createUnionType({
+  name: 'SendAction_Recipient',
+  types: () => [Person, Audience, ContactPoint, Organization] as const,
+});
+
+export type DoseSchedule_DoseValue = NumberType | TextType;
+export const DoseSchedule_DoseValueUnion = createUnionType({
+  name: 'DoseSchedule_DoseValue',
+  types: () => [NumberScalar, TextScalar] as const,
+});
+
+export type CommunicateAction_Recipient = Person | Audience | ContactPoint | Organization;
+export const CommunicateAction_RecipientUnion = createUnionType({
+  name: 'CommunicateAction_Recipient',
+  types: () => [Person, Audience, ContactPoint, Organization] as const,
+});
+
+export type CommunicateAction_InLanguage = TextType | Language;
+export const CommunicateAction_InLanguageUnion = createUnionType({
+  name: 'CommunicateAction_InLanguage',
+  types: () => [TextScalar, Thing] as const,
+});
+
+export type RentAction_Landlord = Person | Organization;
+export const RentAction_LandlordUnion = createUnionType({
+  name: 'RentAction_Landlord',
+  types: () => [Person, Organization] as const,
+});
+
+export type GeoShape_AddressCountry = Country | TextType;
+export const GeoShape_AddressCountryUnion = createUnionType({
+  name: 'GeoShape_AddressCountry',
+  types: () => [Place, TextScalar] as const,
+});
+
+export type GeoShape_Address = TextType | PostalAddress;
+export const GeoShape_AddressUnion = createUnionType({
+  name: 'GeoShape_Address',
+  types: () => [TextScalar, PostalAddress] as const,
+});
+
+export type GeoShape_Elevation = TextType | NumberType;
+export const GeoShape_ElevationUnion = createUnionType({
+  name: 'GeoShape_Elevation',
+  types: () => [TextScalar, NumberScalar] as const,
+});
+
+export type House_NumberOfRooms = QuantitativeValue | NumberType;
+export const House_NumberOfRoomsUnion = createUnionType({
+  name: 'House_NumberOfRooms',
+  types: () => [QuantitativeValue, NumberScalar] as const,
+});
+
+export type HowToSection_Steps = ItemList | CreativeWork | TextType;
+export const HowToSection_StepsUnion = createUnionType({
+  name: 'HowToSection_Steps',
+  types: () => [ItemList, CreativeWork, TextScalar] as const,
+});
+
+export type SoftwareSourceCode_ProgrammingLanguage = TextType | ComputerLanguage;
+export const SoftwareSourceCode_ProgrammingLanguageUnion = createUnionType({
+  name: 'SoftwareSourceCode_ProgrammingLanguage',
+  types: () => [TextScalar, Thing] as const,
+});
+
+export type MusicGroup_Genre = UrlType | TextType;
+export const MusicGroup_GenreUnion = createUnionType({
+  name: 'MusicGroup_Genre',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type MusicGroup_Track = ItemList | MusicRecording;
+export const MusicGroup_TrackUnion = createUnionType({
+  name: 'MusicGroup_Track',
+  types: () => [ItemList, MusicRecording] as const,
+});
+
+export type EducationEvent_Teaches = DefinedTerm | TextType;
+export const EducationEvent_TeachesUnion = createUnionType({
+  name: 'EducationEvent_Teaches',
+  types: () => [DefinedTerm, TextScalar] as const,
+});
+
+export type EducationEvent_EducationalLevel = UrlType | DefinedTerm | TextType;
+export const EducationEvent_EducationalLevelUnion = createUnionType({
+  name: 'EducationEvent_EducationalLevel',
+  types: () => [UrlScalar, DefinedTerm, TextScalar] as const,
+});
+
+export type EducationEvent_Assesses = TextType | DefinedTerm;
+export const EducationEvent_AssessesUnion = createUnionType({
+  name: 'EducationEvent_Assesses',
+  types: () => [TextScalar, DefinedTerm] as const,
+});
+
+export type ArchiveComponent_ItemLocation = Place | TextType | PostalAddress;
+export const ArchiveComponent_ItemLocationUnion = createUnionType({
+  name: 'ArchiveComponent_ItemLocation',
+  types: () => [Place, TextScalar, PostalAddress] as const,
+});
+
+export type Recipe_RecipeInstructions = TextType | CreativeWork | ItemList;
+export const Recipe_RecipeInstructionsUnion = createUnionType({
+  name: 'Recipe_RecipeInstructions',
+  types: () => [TextScalar, CreativeWork, ItemList] as const,
+});
+
+export type Recipe_RecipeYield = TextType | QuantitativeValue;
+export const Recipe_RecipeYieldUnion = createUnionType({
+  name: 'Recipe_RecipeYield',
+  types: () => [TextScalar, QuantitativeValue] as const,
+});
+
+export type Vehicle_NumberOfForwardGears = QuantitativeValue | NumberType;
+export const Vehicle_NumberOfForwardGearsUnion = createUnionType({
+  name: 'Vehicle_NumberOfForwardGears',
+  types: () => [QuantitativeValue, NumberScalar] as const,
+});
+
+export type Vehicle_NumberOfPreviousOwners = NumberType | QuantitativeValue;
+export const Vehicle_NumberOfPreviousOwnersUnion = createUnionType({
+  name: 'Vehicle_NumberOfPreviousOwners',
+  types: () => [NumberScalar, QuantitativeValue] as const,
+});
+
+export type Vehicle_NumberOfAirbags = TextType | NumberType;
+export const Vehicle_NumberOfAirbagsUnion = createUnionType({
+  name: 'Vehicle_NumberOfAirbags',
+  types: () => [TextScalar, NumberScalar] as const,
+});
+
+export type Vehicle_FuelType = TextType | UrlType;
+export const Vehicle_FuelTypeUnion = createUnionType({
+  name: 'Vehicle_FuelType',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type Vehicle_VehicleTransmission = TextType | UrlType;
+export const Vehicle_VehicleTransmissionUnion = createUnionType({
+  name: 'Vehicle_VehicleTransmission',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type Vehicle_DriveWheelConfiguration = TextType;
+export const Vehicle_DriveWheelConfigurationUnion = createUnionType({
+  name: 'Vehicle_DriveWheelConfiguration',
+  types: () => [TextScalar] as const,
+});
+
+export type Vehicle_NumberOfAxles = NumberType | QuantitativeValue;
+export const Vehicle_NumberOfAxlesUnion = createUnionType({
+  name: 'Vehicle_NumberOfAxles',
+  types: () => [NumberScalar, QuantitativeValue] as const,
+});
+
+export type Vehicle_NumberOfDoors = QuantitativeValue | NumberType;
+export const Vehicle_NumberOfDoorsUnion = createUnionType({
+  name: 'Vehicle_NumberOfDoors',
+  types: () => [QuantitativeValue, NumberScalar] as const,
+});
+
+export type Vehicle_VehicleSeatingCapacity = QuantitativeValue | NumberType;
+export const Vehicle_VehicleSeatingCapacityUnion = createUnionType({
+  name: 'Vehicle_VehicleSeatingCapacity',
+  types: () => [QuantitativeValue, NumberScalar] as const,
+});
+
+export type Vehicle_SeatingCapacity = QuantitativeValue | NumberType;
+export const Vehicle_SeatingCapacityUnion = createUnionType({
+  name: 'Vehicle_SeatingCapacity',
+  types: () => [QuantitativeValue, NumberScalar] as const,
+});
+
+export type Vehicle_BodyType = TextType | UrlType;
+export const Vehicle_BodyTypeUnion = createUnionType({
+  name: 'Vehicle_BodyType',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type Vehicle_MeetsEmissionStandard = TextType | UrlType;
+export const Vehicle_MeetsEmissionStandardUnion = createUnionType({
+  name: 'Vehicle_MeetsEmissionStandard',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type Vehicle_VehicleSpecialUsage = TextType;
+export const Vehicle_VehicleSpecialUsageUnion = createUnionType({
+  name: 'Vehicle_VehicleSpecialUsage',
+  types: () => [TextScalar] as const,
+});
+
+export type Permit_ValidFrom = DateTimeType | DateType;
+export const Permit_ValidFromUnion = createUnionType({
+  name: 'Permit_ValidFrom',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type DonateAction_Recipient = Person | Audience | ContactPoint | Organization;
+export const DonateAction_RecipientUnion = createUnionType({
+  name: 'DonateAction_Recipient',
+  types: () => [Person, Audience, ContactPoint, Organization] as const,
+});
+
+export type EmployeeRole_BaseSalary = NumberType | PriceSpecification | MonetaryAmount;
+export const EmployeeRole_BaseSalaryUnion = createUnionType({
+  name: 'EmployeeRole_BaseSalary',
+  types: () => [NumberScalar, PriceSpecification, MonetaryAmount] as const,
+});
+
+export type TouristTrip_TouristType = Audience | TextType;
+export const TouristTrip_TouristTypeUnion = createUnionType({
+  name: 'TouristTrip_TouristType',
+  types: () => [Audience, TextScalar] as const,
+});
+
+export type PeopleAudience_SuggestedGender = TextType;
+export const PeopleAudience_SuggestedGenderUnion = createUnionType({
+  name: 'PeopleAudience_SuggestedGender',
+  types: () => [TextScalar] as const,
+});
+
+export type Suite_NumberOfRooms = QuantitativeValue | NumberType;
+export const Suite_NumberOfRoomsUnion = createUnionType({
+  name: 'Suite_NumberOfRooms',
+  types: () => [QuantitativeValue, NumberScalar] as const,
+});
+
+export type Suite_Bed = BedDetails | TextType;
+export const Suite_BedUnion = createUnionType({
+  name: 'Suite_Bed',
+  types: () => [BedDetails, TextScalar] as const,
+});
+
+export type GeospatialGeometry_GeoContains = Place | GeospatialGeometry;
+export const GeospatialGeometry_GeoContainsUnion = createUnionType({
+  name: 'GeospatialGeometry_GeoContains',
+  types: () => [Place, GeospatialGeometry] as const,
+});
+
+export type GeospatialGeometry_GeoIntersects = GeospatialGeometry | Place;
+export const GeospatialGeometry_GeoIntersectsUnion = createUnionType({
+  name: 'GeospatialGeometry_GeoIntersects',
+  types: () => [GeospatialGeometry, Place] as const,
+});
+
+export type GeospatialGeometry_GeoTouches = Place | GeospatialGeometry;
+export const GeospatialGeometry_GeoTouchesUnion = createUnionType({
+  name: 'GeospatialGeometry_GeoTouches',
+  types: () => [Place, GeospatialGeometry] as const,
+});
+
+export type GeospatialGeometry_GeoCoveredBy = Place | GeospatialGeometry;
+export const GeospatialGeometry_GeoCoveredByUnion = createUnionType({
+  name: 'GeospatialGeometry_GeoCoveredBy',
+  types: () => [Place, GeospatialGeometry] as const,
+});
+
+export type GeospatialGeometry_GeoEquals = Place | GeospatialGeometry;
+export const GeospatialGeometry_GeoEqualsUnion = createUnionType({
+  name: 'GeospatialGeometry_GeoEquals',
+  types: () => [Place, GeospatialGeometry] as const,
+});
+
+export type GeospatialGeometry_GeoCrosses = GeospatialGeometry | Place;
+export const GeospatialGeometry_GeoCrossesUnion = createUnionType({
+  name: 'GeospatialGeometry_GeoCrosses',
+  types: () => [GeospatialGeometry, Place] as const,
+});
+
+export type GeospatialGeometry_GeoCovers = GeospatialGeometry | Place;
+export const GeospatialGeometry_GeoCoversUnion = createUnionType({
+  name: 'GeospatialGeometry_GeoCovers',
+  types: () => [GeospatialGeometry, Place] as const,
+});
+
+export type GeospatialGeometry_GeoWithin = Place | GeospatialGeometry;
+export const GeospatialGeometry_GeoWithinUnion = createUnionType({
+  name: 'GeospatialGeometry_GeoWithin',
+  types: () => [Place, GeospatialGeometry] as const,
+});
+
+export type GeospatialGeometry_GeoDisjoint = GeospatialGeometry | Place;
+export const GeospatialGeometry_GeoDisjointUnion = createUnionType({
+  name: 'GeospatialGeometry_GeoDisjoint',
+  types: () => [GeospatialGeometry, Place] as const,
+});
+
+export type GeospatialGeometry_GeoOverlaps = GeospatialGeometry | Place;
+export const GeospatialGeometry_GeoOverlapsUnion = createUnionType({
+  name: 'GeospatialGeometry_GeoOverlaps',
+  types: () => [GeospatialGeometry, Place] as const,
+});
+
+export type TouristDestination_TouristType = Audience | TextType;
+export const TouristDestination_TouristTypeUnion = createUnionType({
+  name: 'TouristDestination_TouristType',
+  types: () => [Audience, TextScalar] as const,
+});
+
+export type ListItem_Position = IntegerType | TextType;
+export const ListItem_PositionUnion = createUnionType({
+  name: 'ListItem_Position',
+  types: () => [IntegerScalar, TextScalar] as const,
+});
+
+export type RealEstateListing_LeaseLength = QuantitativeValue | Duration;
+export const RealEstateListing_LeaseLengthUnion = createUnionType({
+  name: 'RealEstateListing_LeaseLength',
+  types: () => [QuantitativeValue, Thing] as const,
+});
+
+export type RealEstateListing_DatePosted = DateType | DateTimeType;
+export const RealEstateListing_DatePostedUnion = createUnionType({
+  name: 'RealEstateListing_DatePosted',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type OpeningHoursSpecification_ValidFrom = DateTimeType | DateType;
+export const OpeningHoursSpecification_ValidFromUnion = createUnionType({
+  name: 'OpeningHoursSpecification_ValidFrom',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type OpeningHoursSpecification_ValidThrough = DateTimeType | DateType;
+export const OpeningHoursSpecification_ValidThroughUnion = createUnionType({
+  name: 'OpeningHoursSpecification_ValidThrough',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type BioChemEntity_TaxonomicRange = UrlType | DefinedTerm | TextType | Taxon;
+export const BioChemEntity_TaxonomicRangeUnion = createUnionType({
+  name: 'BioChemEntity_TaxonomicRange',
+  types: () => [UrlScalar, DefinedTerm, TextScalar, Taxon] as const,
+});
+
+export type BioChemEntity_IsInvolvedInBiologicalProcess = PropertyValue | UrlType | DefinedTerm;
+export const BioChemEntity_IsInvolvedInBiologicalProcessUnion = createUnionType({
+  name: 'BioChemEntity_IsInvolvedInBiologicalProcess',
+  types: () => [PropertyValue, UrlScalar, DefinedTerm] as const,
+});
+
+export type BioChemEntity_IsLocatedInSubcellularLocation = PropertyValue | DefinedTerm | UrlType;
+export const BioChemEntity_IsLocatedInSubcellularLocationUnion = createUnionType({
+  name: 'BioChemEntity_IsLocatedInSubcellularLocation',
+  types: () => [PropertyValue, DefinedTerm, UrlScalar] as const,
+});
+
+export type BioChemEntity_AssociatedDisease = UrlType | PropertyValue | MedicalCondition;
+export const BioChemEntity_AssociatedDiseaseUnion = createUnionType({
+  name: 'BioChemEntity_AssociatedDisease',
+  types: () => [UrlScalar, PropertyValue, MedicalCondition] as const,
+});
+
+export type BioChemEntity_HasMolecularFunction = PropertyValue | DefinedTerm | UrlType;
+export const BioChemEntity_HasMolecularFunctionUnion = createUnionType({
+  name: 'BioChemEntity_HasMolecularFunction',
+  types: () => [PropertyValue, DefinedTerm, UrlScalar] as const,
+});
+
+export type BioChemEntity_HasRepresentation = TextType | PropertyValue | UrlType;
+export const BioChemEntity_HasRepresentationUnion = createUnionType({
+  name: 'BioChemEntity_HasRepresentation',
+  types: () => [TextScalar, PropertyValue, UrlScalar] as const,
+});
+
+export type Drug_LegalStatus = DrugLegalStatus | TextType;
+export const Drug_LegalStatusUnion = createUnionType({
+  name: 'Drug_LegalStatus',
+  types: () => [DrugLegalStatus, TextScalar] as const,
+});
+
+export type Drug_Warning = UrlType | TextType;
+export const Drug_WarningUnion = createUnionType({
+  name: 'Drug_Warning',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type Drug_PrescriptionStatus = TextType;
+export const Drug_PrescriptionStatusUnion = createUnionType({
+  name: 'Drug_PrescriptionStatus',
+  types: () => [TextScalar] as const,
+});
+
+export type MedicalDevice_Contraindication = TextType | MedicalContraindication;
+export const MedicalDevice_ContraindicationUnion = createUnionType({
+  name: 'MedicalDevice_Contraindication',
+  types: () => [TextScalar, MedicalEntity] as const,
+});
+
+export type Property_SupersededBy = TextType | Class | Property;
+export const Property_SupersededByUnion = createUnionType({
+  name: 'Property_SupersededBy',
+  types: () => [TextScalar, Class, Property] as const,
+});
+
+export type HowToItem_RequiredQuantity = QuantitativeValue | NumberType | TextType;
+export const HowToItem_RequiredQuantityUnion = createUnionType({
+  name: 'HowToItem_RequiredQuantity',
+  types: () => [QuantitativeValue, NumberScalar, TextScalar] as const,
+});
+
+export type Answer_AnswerExplanation = WebContent | Comment;
+export const Answer_AnswerExplanationUnion = createUnionType({
+  name: 'Answer_AnswerExplanation',
+  types: () => [CreativeWork, Comment] as const,
+});
+
+export type Organization_OwnershipFundingInfo = UrlType | AboutPage | TextType | CreativeWork;
+export const Organization_OwnershipFundingInfoUnion = createUnionType({
+  name: 'Organization_OwnershipFundingInfo',
+  types: () => [UrlScalar, WebPage, TextScalar, CreativeWork] as const,
+});
+
+export type Organization_KnowsAbout = UrlType | TextType | Thing;
+export const Organization_KnowsAboutUnion = createUnionType({
+  name: 'Organization_KnowsAbout',
+  types: () => [UrlScalar, TextScalar, Thing] as const,
+});
+
+export type Organization_Member = Organization | Person;
+export const Organization_MemberUnion = createUnionType({
+  name: 'Organization_Member',
+  types: () => [Organization, Person] as const,
+});
+
+export type Organization_Keywords = DefinedTerm | TextType | UrlType;
+export const Organization_KeywordsUnion = createUnionType({
+  name: 'Organization_Keywords',
+  types: () => [DefinedTerm, TextScalar, UrlScalar] as const,
+});
+
+export type Organization_Funder = Organization | Person;
+export const Organization_FunderUnion = createUnionType({
+  name: 'Organization_Funder',
+  types: () => [Organization, Person] as const,
+});
+
+export type Organization_CorrectionsPolicy = UrlType | CreativeWork;
+export const Organization_CorrectionsPolicyUnion = createUnionType({
+  name: 'Organization_CorrectionsPolicy',
+  types: () => [UrlScalar, CreativeWork] as const,
+});
+
+export type Organization_Location = PostalAddress | TextType | Place | VirtualLocation;
+export const Organization_LocationUnion = createUnionType({
+  name: 'Organization_Location',
+  types: () => [PostalAddress, TextScalar, Place, Thing] as const,
+});
+
+export type Organization_Address = TextType | PostalAddress;
+export const Organization_AddressUnion = createUnionType({
+  name: 'Organization_Address',
+  types: () => [TextScalar, PostalAddress] as const,
+});
+
+export type Organization_MemberOf = ProgramMembership | Organization;
+export const Organization_MemberOfUnion = createUnionType({
+  name: 'Organization_MemberOf',
+  types: () => [ProgramMembership, Organization] as const,
+});
+
+export type Organization_PublishingPrinciples = UrlType | CreativeWork;
+export const Organization_PublishingPrinciplesUnion = createUnionType({
+  name: 'Organization_PublishingPrinciples',
+  types: () => [UrlScalar, CreativeWork] as const,
+});
+
+export type Organization_DiversityStaffingReport = UrlType | Article;
+export const Organization_DiversityStaffingReportUnion = createUnionType({
+  name: 'Organization_DiversityStaffingReport',
+  types: () => [UrlScalar, Article] as const,
+});
+
+export type Organization_DiversityPolicy = CreativeWork | UrlType;
+export const Organization_DiversityPolicyUnion = createUnionType({
+  name: 'Organization_DiversityPolicy',
+  types: () => [CreativeWork, UrlScalar] as const,
+});
+
+export type Organization_EthicsPolicy = UrlType | CreativeWork;
+export const Organization_EthicsPolicyUnion = createUnionType({
+  name: 'Organization_EthicsPolicy',
+  types: () => [UrlScalar, CreativeWork] as const,
+});
+
+export type Organization_Brand = Organization | Brand;
+export const Organization_BrandUnion = createUnionType({
+  name: 'Organization_Brand',
+  types: () => [Organization, Brand] as const,
+});
+
+export type Organization_Sponsor = Organization | Person;
+export const Organization_SponsorUnion = createUnionType({
+  name: 'Organization_Sponsor',
+  types: () => [Organization, Person] as const,
+});
+
+export type Organization_Logo = UrlType | ImageObject;
+export const Organization_LogoUnion = createUnionType({
+  name: 'Organization_Logo',
+  types: () => [UrlScalar, ImageObject] as const,
+});
+
+export type Organization_ActionableFeedbackPolicy = UrlType | CreativeWork;
+export const Organization_ActionableFeedbackPolicyUnion = createUnionType({
+  name: 'Organization_ActionableFeedbackPolicy',
+  types: () => [UrlScalar, CreativeWork] as const,
+});
+
+export type Organization_ServiceArea = GeoShape | AdministrativeArea | Place;
+export const Organization_ServiceAreaUnion = createUnionType({
+  name: 'Organization_ServiceArea',
+  types: () => [GeoShape, Place] as const,
+});
+
+export type Organization_UnnamedSourcesPolicy = CreativeWork | UrlType;
+export const Organization_UnnamedSourcesPolicyUnion = createUnionType({
+  name: 'Organization_UnnamedSourcesPolicy',
+  types: () => [CreativeWork, UrlScalar] as const,
+});
+
+export type Organization_AreaServed = AdministrativeArea | GeoShape | TextType | Place;
+export const Organization_AreaServedUnion = createUnionType({
+  name: 'Organization_AreaServed',
+  types: () => [Place, GeoShape, TextScalar] as const,
+});
+
+export type Organization_KnowsLanguage = Language | TextType;
+export const Organization_KnowsLanguageUnion = createUnionType({
+  name: 'Organization_KnowsLanguage',
+  types: () => [Thing, TextScalar] as const,
+});
+
+export type Organization_Owns = Product | OwnershipInfo;
+export const Organization_OwnsUnion = createUnionType({
+  name: 'Organization_Owns',
+  types: () => [Product, OwnershipInfo] as const,
+});
+
+export type Organization_Members = Person | Organization;
+export const Organization_MembersUnion = createUnionType({
+  name: 'Organization_Members',
+  types: () => [Person, Organization] as const,
+});
+
+export type Article_PageStart = TextType | IntegerType;
+export const Article_PageStartUnion = createUnionType({
+  name: 'Article_PageStart',
+  types: () => [TextScalar, IntegerScalar] as const,
+});
+
+export type Article_PageEnd = TextType | IntegerType;
+export const Article_PageEndUnion = createUnionType({
+  name: 'Article_PageEnd',
+  types: () => [TextScalar, IntegerScalar] as const,
+});
+
+export type Article_Backstory = TextType | CreativeWork;
+export const Article_BackstoryUnion = createUnionType({
+  name: 'Article_Backstory',
+  types: () => [TextScalar, CreativeWork] as const,
+});
+
+export type Article_Speakable = UrlType | SpeakableSpecification;
+export const Article_SpeakableUnion = createUnionType({
+  name: 'Article_Speakable',
+  types: () => [UrlScalar, SpeakableSpecification] as const,
+});
+
+export type DefinedRegion_AddressCountry = Country | TextType;
+export const DefinedRegion_AddressCountryUnion = createUnionType({
+  name: 'DefinedRegion_AddressCountry',
+  types: () => [Place, TextScalar] as const,
+});
+
+export type Ticket_TicketToken = UrlType | TextType;
+export const Ticket_TicketTokenUnion = createUnionType({
+  name: 'Ticket_TicketToken',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type Ticket_TotalPrice = PriceSpecification | NumberType | TextType;
+export const Ticket_TotalPriceUnion = createUnionType({
+  name: 'Ticket_TotalPrice',
+  types: () => [PriceSpecification, NumberScalar, TextScalar] as const,
+});
+
+export type Ticket_DateIssued = DateType | DateTimeType;
+export const Ticket_DateIssuedUnion = createUnionType({
+  name: 'Ticket_DateIssued',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type Ticket_UnderName = Organization | Person;
+export const Ticket_UnderNameUnion = createUnionType({
+  name: 'Ticket_UnderName',
+  types: () => [Organization, Person] as const,
+});
+
+export type Trip_ArrivalTime = TimeType | DateTimeType;
+export const Trip_ArrivalTimeUnion = createUnionType({
+  name: 'Trip_ArrivalTime',
+  types: () => [TimeScalar, DateTimeScalar] as const,
+});
+
+export type Trip_Offers = Offer | Demand;
+export const Trip_OffersUnion = createUnionType({
+  name: 'Trip_Offers',
+  types: () => [Offer, Demand] as const,
+});
+
+export type Trip_DepartureTime = TimeType | DateTimeType;
+export const Trip_DepartureTimeUnion = createUnionType({
+  name: 'Trip_DepartureTime',
+  types: () => [TimeScalar, DateTimeScalar] as const,
+});
+
+export type Trip_Provider = Organization | Person;
+export const Trip_ProviderUnion = createUnionType({
+  name: 'Trip_Provider',
+  types: () => [Organization, Person] as const,
+});
+
+export type Trip_Itinerary = ItemList | Place;
+export const Trip_ItineraryUnion = createUnionType({
+  name: 'Trip_Itinerary',
+  types: () => [ItemList, Place] as const,
+});
+
+export type OrderItem_OrderedItem = Service | OrderItem | Product;
+export const OrderItem_OrderedItemUnion = createUnionType({
+  name: 'OrderItem_OrderedItem',
+  types: () => [Service, OrderItem, Product] as const,
+});
+
+export type MerchantReturnPolicy_ReturnPolicyCountry = Country | TextType;
+export const MerchantReturnPolicy_ReturnPolicyCountryUnion = createUnionType({
+  name: 'MerchantReturnPolicy_ReturnPolicyCountry',
+  types: () => [Place, TextScalar] as const,
+});
+
+export type MerchantReturnPolicy_RestockingFee = MonetaryAmount | NumberType;
+export const MerchantReturnPolicy_RestockingFeeUnion = createUnionType({
+  name: 'MerchantReturnPolicy_RestockingFee',
+  types: () => [MonetaryAmount, NumberScalar] as const,
+});
+
+export type MerchantReturnPolicy_MerchantReturnDays = DateTimeType | IntegerType | DateType;
+export const MerchantReturnPolicy_MerchantReturnDaysUnion = createUnionType({
+  name: 'MerchantReturnPolicy_MerchantReturnDays',
+  types: () => [DateTimeScalar, IntegerScalar, DateScalar] as const,
+});
+
+export type MerchantReturnPolicy_ApplicableCountry = TextType | Country;
+export const MerchantReturnPolicy_ApplicableCountryUnion = createUnionType({
+  name: 'MerchantReturnPolicy_ApplicableCountry',
+  types: () => [TextScalar, Place] as const,
+});
+
+export type MonetaryGrant_Funder = Organization | Person;
+export const MonetaryGrant_FunderUnion = createUnionType({
+  name: 'MonetaryGrant_Funder',
+  types: () => [Organization, Person] as const,
+});
+
+export type MonetaryGrant_Amount = NumberType | MonetaryAmount;
+export const MonetaryGrant_AmountUnion = createUnionType({
+  name: 'MonetaryGrant_Amount',
+  types: () => [NumberScalar, MonetaryAmount] as const,
+});
+
+export type CompoundPriceSpecification_PriceType = TextType;
+export const CompoundPriceSpecification_PriceTypeUnion = createUnionType({
+  name: 'CompoundPriceSpecification_PriceType',
+  types: () => [TextScalar] as const,
+});
+
+export type SoftwareApplication_MemoryRequirements = TextType | UrlType;
+export const SoftwareApplication_MemoryRequirementsUnion = createUnionType({
+  name: 'SoftwareApplication_MemoryRequirements',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type SoftwareApplication_StorageRequirements = UrlType | TextType;
+export const SoftwareApplication_StorageRequirementsUnion = createUnionType({
+  name: 'SoftwareApplication_StorageRequirements',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type SoftwareApplication_ApplicationSubCategory = UrlType | TextType;
+export const SoftwareApplication_ApplicationSubCategoryUnion = createUnionType({
+  name: 'SoftwareApplication_ApplicationSubCategory',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type SoftwareApplication_ApplicationCategory = TextType | UrlType;
+export const SoftwareApplication_ApplicationCategoryUnion = createUnionType({
+  name: 'SoftwareApplication_ApplicationCategory',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type SoftwareApplication_SoftwareRequirements = UrlType | TextType;
+export const SoftwareApplication_SoftwareRequirementsUnion = createUnionType({
+  name: 'SoftwareApplication_SoftwareRequirements',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type SoftwareApplication_Requirements = UrlType | TextType;
+export const SoftwareApplication_RequirementsUnion = createUnionType({
+  name: 'SoftwareApplication_Requirements',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type SoftwareApplication_Screenshot = ImageObject | UrlType;
+export const SoftwareApplication_ScreenshotUnion = createUnionType({
+  name: 'SoftwareApplication_Screenshot',
+  types: () => [ImageObject, UrlScalar] as const,
+});
+
+export type SoftwareApplication_FeatureList = TextType | UrlType;
+export const SoftwareApplication_FeatureListUnion = createUnionType({
+  name: 'SoftwareApplication_FeatureList',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type SoftwareApplication_ReleaseNotes = UrlType | TextType;
+export const SoftwareApplication_ReleaseNotesUnion = createUnionType({
+  name: 'SoftwareApplication_ReleaseNotes',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type Apartment_NumberOfRooms = QuantitativeValue | NumberType;
+export const Apartment_NumberOfRoomsUnion = createUnionType({
+  name: 'Apartment_NumberOfRooms',
+  types: () => [QuantitativeValue, NumberScalar] as const,
+});
+
+export type WebPage_ReviewedBy = Organization | Person;
+export const WebPage_ReviewedByUnion = createUnionType({
+  name: 'WebPage_ReviewedBy',
+  types: () => [Organization, Person] as const,
+});
+
+export type WebPage_Speakable = UrlType | SpeakableSpecification;
+export const WebPage_SpeakableUnion = createUnionType({
+  name: 'WebPage_Speakable',
+  types: () => [UrlScalar, SpeakableSpecification] as const,
+});
+
+export type WebPage_Breadcrumb = BreadcrumbList | TextType;
+export const WebPage_BreadcrumbUnion = createUnionType({
+  name: 'WebPage_Breadcrumb',
+  types: () => [ItemList, TextScalar] as const,
+});
+
+export type CourseInstance_CourseMode = UrlType | TextType;
+export const CourseInstance_CourseModeUnion = createUnionType({
+  name: 'CourseInstance_CourseMode',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type HowTo_Yield = TextType | QuantitativeValue;
+export const HowTo_YieldUnion = createUnionType({
+  name: 'HowTo_Yield',
+  types: () => [TextScalar, QuantitativeValue] as const,
+});
+
+export type HowTo_EstimatedCost = TextType | MonetaryAmount;
+export const HowTo_EstimatedCostUnion = createUnionType({
+  name: 'HowTo_EstimatedCost',
+  types: () => [TextScalar, MonetaryAmount] as const,
+});
+
+export type HowTo_Supply = HowToSupply | TextType;
+export const HowTo_SupplyUnion = createUnionType({
+  name: 'HowTo_Supply',
+  types: () => [HowToSupply, TextScalar] as const,
+});
+
+export type HowTo_Step = HowToStep | HowToSection | TextType | CreativeWork;
+export const HowTo_StepUnion = createUnionType({
+  name: 'HowTo_Step',
+  types: () => [HowToStep, HowToSection, TextScalar, CreativeWork] as const,
+});
+
+export type HowTo_Tool = HowToTool | TextType;
+export const HowTo_ToolUnion = createUnionType({
+  name: 'HowTo_Tool',
+  types: () => [HowToItem, TextScalar] as const,
+});
+
+export type HowTo_Steps = ItemList | CreativeWork | TextType;
+export const HowTo_StepsUnion = createUnionType({
+  name: 'HowTo_Steps',
+  types: () => [ItemList, CreativeWork, TextScalar] as const,
+});
+
+export type PublicationEvent_PublishedBy = Organization | Person;
+export const PublicationEvent_PublishedByUnion = createUnionType({
+  name: 'PublicationEvent_PublishedBy',
+  types: () => [Organization, Person] as const,
+});
+
+export type FinancialService_FeesAndCommissionsSpecification = UrlType | TextType;
+export const FinancialService_FeesAndCommissionsSpecificationUnion = createUnionType({
+  name: 'FinancialService_FeesAndCommissionsSpecification',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type InteractionCounter_StartTime = DateTimeType | TimeType;
+export const InteractionCounter_StartTimeUnion = createUnionType({
+  name: 'InteractionCounter_StartTime',
+  types: () => [DateTimeScalar, TimeScalar] as const,
+});
+
+export type InteractionCounter_Location = PostalAddress | TextType | Place | VirtualLocation;
+export const InteractionCounter_LocationUnion = createUnionType({
+  name: 'InteractionCounter_Location',
+  types: () => [PostalAddress, TextScalar, Place, Thing] as const,
+});
+
+export type InteractionCounter_InteractionService = SoftwareApplication | WebSite;
+export const InteractionCounter_InteractionServiceUnion = createUnionType({
+  name: 'InteractionCounter_InteractionService',
+  types: () => [SoftwareApplication, WebSite] as const,
+});
+
+export type InteractionCounter_EndTime = DateTimeType | TimeType;
+export const InteractionCounter_EndTimeUnion = createUnionType({
+  name: 'InteractionCounter_EndTime',
+  types: () => [DateTimeScalar, TimeScalar] as const,
+});
+
+export type CreativeWorkSeries_StartDate = DateTimeType | DateType;
+export const CreativeWorkSeries_StartDateUnion = createUnionType({
+  name: 'CreativeWorkSeries_StartDate',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type CreativeWorkSeries_EndDate = DateType | DateTimeType;
+export const CreativeWorkSeries_EndDateUnion = createUnionType({
+  name: 'CreativeWorkSeries_EndDate',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type AggregateOffer_HighPrice = TextType | NumberType;
+export const AggregateOffer_HighPriceUnion = createUnionType({
+  name: 'AggregateOffer_HighPrice',
+  types: () => [TextScalar, NumberScalar] as const,
+});
+
+export type AggregateOffer_Offers = Offer | Demand;
+export const AggregateOffer_OffersUnion = createUnionType({
+  name: 'AggregateOffer_Offers',
+  types: () => [Offer, Demand] as const,
+});
+
+export type AggregateOffer_LowPrice = TextType | NumberType;
+export const AggregateOffer_LowPriceUnion = createUnionType({
+  name: 'AggregateOffer_LowPrice',
+  types: () => [TextScalar, NumberScalar] as const,
+});
+
+export type LodgingBusiness_NumberOfRooms = QuantitativeValue | NumberType;
+export const LodgingBusiness_NumberOfRoomsUnion = createUnionType({
+  name: 'LodgingBusiness_NumberOfRooms',
+  types: () => [QuantitativeValue, NumberScalar] as const,
+});
+
+export type LodgingBusiness_AvailableLanguage = TextType | Language;
+export const LodgingBusiness_AvailableLanguageUnion = createUnionType({
+  name: 'LodgingBusiness_AvailableLanguage',
+  types: () => [TextScalar, Thing] as const,
+});
+
+export type LodgingBusiness_CheckoutTime = DateTimeType | TimeType;
+export const LodgingBusiness_CheckoutTimeUnion = createUnionType({
+  name: 'LodgingBusiness_CheckoutTime',
+  types: () => [DateTimeScalar, TimeScalar] as const,
+});
+
+export type LodgingBusiness_CheckinTime = DateTimeType | TimeType;
+export const LodgingBusiness_CheckinTimeUnion = createUnionType({
+  name: 'LodgingBusiness_CheckinTime',
+  types: () => [DateTimeScalar, TimeScalar] as const,
+});
+
+export type LodgingBusiness_PetsAllowed = TextType | BooleanType;
+export const LodgingBusiness_PetsAllowedUnion = createUnionType({
+  name: 'LodgingBusiness_PetsAllowed',
+  types: () => [TextScalar, BooleanScalar] as const,
+});
+
+export type DataFeed_DataFeedElement = Thing | DataFeedItem | TextType;
+export const DataFeed_DataFeedElementUnion = createUnionType({
+  name: 'DataFeed_DataFeedElement',
+  types: () => [Thing, DataFeedItem, TextScalar] as const,
+});
+
+export type TradeAction_Price = NumberType | TextType;
+export const TradeAction_PriceUnion = createUnionType({
+  name: 'TradeAction_Price',
+  types: () => [NumberScalar, TextScalar] as const,
+});
+
+export type Place_GeoContains = Place | GeospatialGeometry;
+export const Place_GeoContainsUnion = createUnionType({
+  name: 'Place_GeoContains',
+  types: () => [Place, GeospatialGeometry] as const,
+});
+
+export type Place_Keywords = DefinedTerm | TextType | UrlType;
+export const Place_KeywordsUnion = createUnionType({
+  name: 'Place_Keywords',
+  types: () => [DefinedTerm, TextScalar, UrlScalar] as const,
+});
+
+export type Place_GeoIntersects = GeospatialGeometry | Place;
+export const Place_GeoIntersectsUnion = createUnionType({
+  name: 'Place_GeoIntersects',
+  types: () => [GeospatialGeometry, Place] as const,
+});
+
+export type Place_Latitude = TextType | NumberType;
+export const Place_LatitudeUnion = createUnionType({
+  name: 'Place_Latitude',
+  types: () => [TextScalar, NumberScalar] as const,
+});
+
+export type Place_GeoTouches = Place | GeospatialGeometry;
+export const Place_GeoTouchesUnion = createUnionType({
+  name: 'Place_GeoTouches',
+  types: () => [Place, GeospatialGeometry] as const,
+});
+
+export type Place_GeoCoveredBy = Place | GeospatialGeometry;
+export const Place_GeoCoveredByUnion = createUnionType({
+  name: 'Place_GeoCoveredBy',
+  types: () => [Place, GeospatialGeometry] as const,
+});
+
+export type Place_Address = TextType | PostalAddress;
+export const Place_AddressUnion = createUnionType({
+  name: 'Place_Address',
+  types: () => [TextScalar, PostalAddress] as const,
+});
+
+export type Place_GeoEquals = Place | GeospatialGeometry;
+export const Place_GeoEqualsUnion = createUnionType({
+  name: 'Place_GeoEquals',
+  types: () => [Place, GeospatialGeometry] as const,
+});
+
+export type Place_GeoCrosses = GeospatialGeometry | Place;
+export const Place_GeoCrossesUnion = createUnionType({
+  name: 'Place_GeoCrosses',
+  types: () => [GeospatialGeometry, Place] as const,
+});
+
+export type Place_Photos = ImageObject | Photograph;
+export const Place_PhotosUnion = createUnionType({
+  name: 'Place_Photos',
+  types: () => [ImageObject, CreativeWork] as const,
+});
+
+export type Place_GeoCovers = GeospatialGeometry | Place;
+export const Place_GeoCoversUnion = createUnionType({
+  name: 'Place_GeoCovers',
+  types: () => [GeospatialGeometry, Place] as const,
+});
+
+export type Place_Logo = UrlType | ImageObject;
+export const Place_LogoUnion = createUnionType({
+  name: 'Place_Logo',
+  types: () => [UrlScalar, ImageObject] as const,
+});
+
+export type Place_GeoWithin = Place | GeospatialGeometry;
+export const Place_GeoWithinUnion = createUnionType({
+  name: 'Place_GeoWithin',
+  types: () => [Place, GeospatialGeometry] as const,
+});
+
+export type Place_GeoDisjoint = GeospatialGeometry | Place;
+export const Place_GeoDisjointUnion = createUnionType({
+  name: 'Place_GeoDisjoint',
+  types: () => [GeospatialGeometry, Place] as const,
+});
+
+export type Place_GeoOverlaps = GeospatialGeometry | Place;
+export const Place_GeoOverlapsUnion = createUnionType({
+  name: 'Place_GeoOverlaps',
+  types: () => [GeospatialGeometry, Place] as const,
+});
+
+export type Place_Photo = Photograph | ImageObject;
+export const Place_PhotoUnion = createUnionType({
+  name: 'Place_Photo',
+  types: () => [CreativeWork, ImageObject] as const,
+});
+
+export type Place_HasMap = UrlType | Map;
+export const Place_HasMapUnion = createUnionType({
+  name: 'Place_HasMap',
+  types: () => [UrlScalar, Map] as const,
+});
+
+export type Place_Longitude = NumberType | TextType;
+export const Place_LongitudeUnion = createUnionType({
+  name: 'Place_Longitude',
+  types: () => [NumberScalar, TextScalar] as const,
+});
+
+export type Place_Geo = GeoCoordinates | GeoShape;
+export const Place_GeoUnion = createUnionType({
+  name: 'Place_Geo',
+  types: () => [GeoCoordinates, GeoShape] as const,
+});
+
+export type PublicationVolume_PageStart = TextType | IntegerType;
+export const PublicationVolume_PageStartUnion = createUnionType({
+  name: 'PublicationVolume_PageStart',
+  types: () => [TextScalar, IntegerScalar] as const,
+});
+
+export type PublicationVolume_PageEnd = TextType | IntegerType;
+export const PublicationVolume_PageEndUnion = createUnionType({
+  name: 'PublicationVolume_PageEnd',
+  types: () => [TextScalar, IntegerScalar] as const,
+});
+
+export type PublicationVolume_VolumeNumber = IntegerType | TextType;
+export const PublicationVolume_VolumeNumberUnion = createUnionType({
+  name: 'PublicationVolume_VolumeNumber',
+  types: () => [IntegerScalar, TextScalar] as const,
+});
+
+export type ReceiveAction_Sender = Person | Audience | Organization;
+export const ReceiveAction_SenderUnion = createUnionType({
+  name: 'ReceiveAction_Sender',
+  types: () => [Person, Audience, Organization] as const,
+});
+
+export type AnatomicalSystem_ComprisedOf = AnatomicalStructure | AnatomicalSystem;
+export const AnatomicalSystem_ComprisedOfUnion = createUnionType({
+  name: 'AnatomicalSystem_ComprisedOf',
+  types: () => [AnatomicalStructure, AnatomicalSystem] as const,
+});
+
+export type EndorseAction_Endorsee = Person | Organization;
+export const EndorseAction_EndorseeUnion = createUnionType({
+  name: 'EndorseAction_Endorsee',
+  types: () => [Person, Organization] as const,
+});
+
+export type MedicalTherapy_Contraindication = TextType | MedicalContraindication;
+export const MedicalTherapy_ContraindicationUnion = createUnionType({
+  name: 'MedicalTherapy_Contraindication',
+  types: () => [TextScalar, MedicalEntity] as const,
+});
+
+export type TouristAttraction_TouristType = Audience | TextType;
+export const TouristAttraction_TouristTypeUnion = createUnionType({
+  name: 'TouristAttraction_TouristType',
+  types: () => [Audience, TextScalar] as const,
+});
+
+export type TouristAttraction_AvailableLanguage = TextType | Language;
+export const TouristAttraction_AvailableLanguageUnion = createUnionType({
+  name: 'TouristAttraction_AvailableLanguage',
+  types: () => [TextScalar, Thing] as const,
+});
+
+export type ServiceChannel_AvailableLanguage = TextType | Language;
+export const ServiceChannel_AvailableLanguageUnion = createUnionType({
+  name: 'ServiceChannel_AvailableLanguage',
+  types: () => [TextScalar, Thing] as const,
+});
+
+export type ImageObject_Caption = TextType | MediaObject;
+export const ImageObject_CaptionUnion = createUnionType({
+  name: 'ImageObject_Caption',
+  types: () => [TextScalar, MediaObject] as const,
+});
+
+export type ImageObject_ExifData = PropertyValue | TextType;
+export const ImageObject_ExifDataUnion = createUnionType({
+  name: 'ImageObject_ExifData',
+  types: () => [PropertyValue, TextScalar] as const,
+});
+
+export type MonetaryAmount_ValidFrom = DateTimeType | DateType;
+export const MonetaryAmount_ValidFromUnion = createUnionType({
+  name: 'MonetaryAmount_ValidFrom',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type MonetaryAmount_Value = TextType | NumberType | StructuredValue | BooleanType;
+export const MonetaryAmount_ValueUnion = createUnionType({
+  name: 'MonetaryAmount_Value',
+  types: () => [TextScalar, NumberScalar, Thing, BooleanScalar] as const,
+});
+
+export type MonetaryAmount_ValidThrough = DateTimeType | DateType;
+export const MonetaryAmount_ValidThroughUnion = createUnionType({
+  name: 'MonetaryAmount_ValidThrough',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type GeoCoordinates_AddressCountry = Country | TextType;
+export const GeoCoordinates_AddressCountryUnion = createUnionType({
+  name: 'GeoCoordinates_AddressCountry',
+  types: () => [Place, TextScalar] as const,
+});
+
+export type GeoCoordinates_Latitude = TextType | NumberType;
+export const GeoCoordinates_LatitudeUnion = createUnionType({
+  name: 'GeoCoordinates_Latitude',
+  types: () => [TextScalar, NumberScalar] as const,
+});
+
+export type GeoCoordinates_Address = TextType | PostalAddress;
+export const GeoCoordinates_AddressUnion = createUnionType({
+  name: 'GeoCoordinates_Address',
+  types: () => [TextScalar, PostalAddress] as const,
+});
+
+export type GeoCoordinates_Elevation = TextType | NumberType;
+export const GeoCoordinates_ElevationUnion = createUnionType({
+  name: 'GeoCoordinates_Elevation',
+  types: () => [TextScalar, NumberScalar] as const,
+});
+
+export type GeoCoordinates_Longitude = NumberType | TextType;
+export const GeoCoordinates_LongitudeUnion = createUnionType({
+  name: 'GeoCoordinates_Longitude',
+  types: () => [NumberScalar, TextScalar] as const,
+});
+
+export type ActionAccessSpecification_Category = UrlType | TextType | Thing | CategoryCode;
+export const ActionAccessSpecification_CategoryUnion = createUnionType({
+  name: 'ActionAccessSpecification_Category',
+  types: () => [UrlScalar, TextScalar, Thing, CategoryCode] as const,
+});
+
+export type ActionAccessSpecification_IneligibleRegion = Place | TextType | GeoShape;
+export const ActionAccessSpecification_IneligibleRegionUnion = createUnionType({
+  name: 'ActionAccessSpecification_IneligibleRegion',
+  types: () => [Place, TextScalar, GeoShape] as const,
+});
+
+export type ActionAccessSpecification_RequiresSubscription = MediaSubscription | BooleanType;
+export const ActionAccessSpecification_RequiresSubscriptionUnion = createUnionType({
+  name: 'ActionAccessSpecification_RequiresSubscription',
+  types: () => [MediaSubscription, BooleanScalar] as const,
+});
+
+export type ActionAccessSpecification_AvailabilityEnds = DateType | DateTimeType | TimeType;
+export const ActionAccessSpecification_AvailabilityEndsUnion = createUnionType({
+  name: 'ActionAccessSpecification_AvailabilityEnds',
+  types: () => [DateScalar, DateTimeScalar, TimeScalar] as const,
+});
+
+export type ActionAccessSpecification_EligibleRegion = GeoShape | TextType | Place;
+export const ActionAccessSpecification_EligibleRegionUnion = createUnionType({
+  name: 'ActionAccessSpecification_EligibleRegion',
+  types: () => [GeoShape, TextScalar, Place] as const,
+});
+
+export type ActionAccessSpecification_AvailabilityStarts = TimeType | DateTimeType | DateType;
+export const ActionAccessSpecification_AvailabilityStartsUnion = createUnionType({
+  name: 'ActionAccessSpecification_AvailabilityStarts',
+  types: () => [TimeScalar, DateTimeScalar, DateScalar] as const,
+});
+
+export type Gene_ExpressedIn = AnatomicalStructure | BioChemEntity | DefinedTerm | AnatomicalSystem;
+export const Gene_ExpressedInUnion = createUnionType({
+  name: 'Gene_ExpressedIn',
+  types: () => [AnatomicalStructure, BioChemEntity, DefinedTerm, AnatomicalSystem] as const,
+});
+
+export type TVEpisode_TitleEIDR = UrlType | TextType;
+export const TVEpisode_TitleEIDRUnion = createUnionType({
+  name: 'TVEpisode_TitleEIDR',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type TVEpisode_SubtitleLanguage = Language | TextType;
+export const TVEpisode_SubtitleLanguageUnion = createUnionType({
+  name: 'TVEpisode_SubtitleLanguage',
+  types: () => [Thing, TextScalar] as const,
+});
+
+export type Legislation_LegislationType = CategoryCode | TextType;
+export const Legislation_LegislationTypeUnion = createUnionType({
+  name: 'Legislation_LegislationType',
+  types: () => [CategoryCode, TextScalar] as const,
+});
+
+export type Legislation_Jurisdiction = TextType | AdministrativeArea;
+export const Legislation_JurisdictionUnion = createUnionType({
+  name: 'Legislation_Jurisdiction',
+  types: () => [TextScalar, Place] as const,
+});
+
+export type Legislation_LegislationIdentifier = TextType | UrlType;
+export const Legislation_LegislationIdentifierUnion = createUnionType({
+  name: 'Legislation_LegislationIdentifier',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type Legislation_LegislationResponsible = Organization | Person;
+export const Legislation_LegislationResponsibleUnion = createUnionType({
+  name: 'Legislation_LegislationResponsible',
+  types: () => [Organization, Person] as const,
+});
+
+export type Legislation_LegislationJurisdiction = AdministrativeArea | TextType;
+export const Legislation_LegislationJurisdictionUnion = createUnionType({
+  name: 'Legislation_LegislationJurisdiction',
+  types: () => [Place, TextScalar] as const,
+});
+
+export type Legislation_LegislationPassedBy = Person | Organization;
+export const Legislation_LegislationPassedByUnion = createUnionType({
+  name: 'Legislation_LegislationPassedBy',
+  types: () => [Person, Organization] as const,
+});
+
+export type SpecialAnnouncement_Category = UrlType | TextType | Thing | CategoryCode;
+export const SpecialAnnouncement_CategoryUnion = createUnionType({
+  name: 'SpecialAnnouncement_Category',
+  types: () => [UrlScalar, TextScalar, Thing, CategoryCode] as const,
+});
+
+export type SpecialAnnouncement_DiseaseSpreadStatistics = Dataset | Observation | WebContent | UrlType;
+export const SpecialAnnouncement_DiseaseSpreadStatisticsUnion = createUnionType({
+  name: 'SpecialAnnouncement_DiseaseSpreadStatistics',
+  types: () => [Dataset, Observation, CreativeWork, UrlScalar] as const,
+});
+
+export type SpecialAnnouncement_GettingTestedInfo = WebContent | UrlType;
+export const SpecialAnnouncement_GettingTestedInfoUnion = createUnionType({
+  name: 'SpecialAnnouncement_GettingTestedInfo',
+  types: () => [CreativeWork, UrlScalar] as const,
+});
+
+export type SpecialAnnouncement_AnnouncementLocation = CivicStructure | LocalBusiness;
+export const SpecialAnnouncement_AnnouncementLocationUnion = createUnionType({
+  name: 'SpecialAnnouncement_AnnouncementLocation',
+  types: () => [CivicStructure, LocalBusiness] as const,
+});
+
+export type SpecialAnnouncement_TravelBans = UrlType | WebContent;
+export const SpecialAnnouncement_TravelBansUnion = createUnionType({
+  name: 'SpecialAnnouncement_TravelBans',
+  types: () => [UrlScalar, CreativeWork] as const,
+});
+
+export type SpecialAnnouncement_DiseasePreventionInfo = UrlType | WebContent;
+export const SpecialAnnouncement_DiseasePreventionInfoUnion = createUnionType({
+  name: 'SpecialAnnouncement_DiseasePreventionInfo',
+  types: () => [UrlScalar, CreativeWork] as const,
+});
+
+export type SpecialAnnouncement_PublicTransportClosuresInfo = UrlType | WebContent;
+export const SpecialAnnouncement_PublicTransportClosuresInfoUnion = createUnionType({
+  name: 'SpecialAnnouncement_PublicTransportClosuresInfo',
+  types: () => [UrlScalar, CreativeWork] as const,
+});
+
+export type SpecialAnnouncement_SchoolClosuresInfo = WebContent | UrlType;
+export const SpecialAnnouncement_SchoolClosuresInfoUnion = createUnionType({
+  name: 'SpecialAnnouncement_SchoolClosuresInfo',
+  types: () => [CreativeWork, UrlScalar] as const,
+});
+
+export type SpecialAnnouncement_DatePosted = DateType | DateTimeType;
+export const SpecialAnnouncement_DatePostedUnion = createUnionType({
+  name: 'SpecialAnnouncement_DatePosted',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type SpecialAnnouncement_NewsUpdatesAndGuidelines = UrlType | WebContent;
+export const SpecialAnnouncement_NewsUpdatesAndGuidelinesUnion = createUnionType({
+  name: 'SpecialAnnouncement_NewsUpdatesAndGuidelines',
+  types: () => [UrlScalar, CreativeWork] as const,
+});
+
+export type SpecialAnnouncement_QuarantineGuidelines = UrlType | WebContent;
+export const SpecialAnnouncement_QuarantineGuidelinesUnion = createUnionType({
+  name: 'SpecialAnnouncement_QuarantineGuidelines',
+  types: () => [UrlScalar, CreativeWork] as const,
+});
+
+export type SpecialAnnouncement_WebFeed = DataFeed | UrlType;
+export const SpecialAnnouncement_WebFeedUnion = createUnionType({
+  name: 'SpecialAnnouncement_WebFeed',
+  types: () => [DataFeed, UrlScalar] as const,
+});
+
+export type MediaReview_OriginalMediaLink = UrlType | MediaObject | WebPage;
+export const MediaReview_OriginalMediaLinkUnion = createUnionType({
+  name: 'MediaReview_OriginalMediaLink',
+  types: () => [UrlScalar, MediaObject, WebPage] as const,
+});
+
+export type FoodEstablishmentReservation_PartySize = IntegerType | QuantitativeValue;
+export const FoodEstablishmentReservation_PartySizeUnion = createUnionType({
+  name: 'FoodEstablishmentReservation_PartySize',
+  types: () => [IntegerScalar, QuantitativeValue] as const,
+});
+
+export type FoodEstablishmentReservation_StartTime = DateTimeType | TimeType;
+export const FoodEstablishmentReservation_StartTimeUnion = createUnionType({
+  name: 'FoodEstablishmentReservation_StartTime',
+  types: () => [DateTimeScalar, TimeScalar] as const,
+});
+
+export type FoodEstablishmentReservation_EndTime = DateTimeType | TimeType;
+export const FoodEstablishmentReservation_EndTimeUnion = createUnionType({
+  name: 'FoodEstablishmentReservation_EndTime',
+  types: () => [DateTimeScalar, TimeScalar] as const,
+});
+
+export type PublicationIssue_PageStart = TextType | IntegerType;
+export const PublicationIssue_PageStartUnion = createUnionType({
+  name: 'PublicationIssue_PageStart',
+  types: () => [TextScalar, IntegerScalar] as const,
+});
+
+export type PublicationIssue_PageEnd = TextType | IntegerType;
+export const PublicationIssue_PageEndUnion = createUnionType({
+  name: 'PublicationIssue_PageEnd',
+  types: () => [TextScalar, IntegerScalar] as const,
+});
+
+export type PublicationIssue_IssueNumber = IntegerType | TextType;
+export const PublicationIssue_IssueNumberUnion = createUnionType({
+  name: 'PublicationIssue_IssueNumber',
+  types: () => [IntegerScalar, TextScalar] as const,
+});
+
+export type CDCPMDRecord_CvdCollectionDate = DateTimeType | TextType;
+export const CDCPMDRecord_CvdCollectionDateUnion = createUnionType({
+  name: 'CDCPMDRecord_CvdCollectionDate',
+  types: () => [DateTimeScalar, TextScalar] as const,
+});
+
+export type CDCPMDRecord_DatePosted = DateType | DateTimeType;
+export const CDCPMDRecord_DatePostedUnion = createUnionType({
+  name: 'CDCPMDRecord_DatePosted',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type WriteAction_InLanguage = TextType | Language;
+export const WriteAction_InLanguageUnion = createUnionType({
+  name: 'WriteAction_InLanguage',
+  types: () => [TextScalar, Thing] as const,
+});
+
+export type MedicalEntity_LegalStatus = DrugLegalStatus | TextType;
+export const MedicalEntity_LegalStatusUnion = createUnionType({
+  name: 'MedicalEntity_LegalStatus',
+  types: () => [DrugLegalStatus, TextScalar] as const,
+});
+
+export type ExchangeRateSpecification_ExchangeRateSpread = NumberType | MonetaryAmount;
+export const ExchangeRateSpecification_ExchangeRateSpreadUnion = createUnionType({
+  name: 'ExchangeRateSpecification_ExchangeRateSpread',
+  types: () => [NumberScalar, MonetaryAmount] as const,
+});
+
+export type MusicPlaylist_Track = ItemList | MusicRecording;
+export const MusicPlaylist_TrackUnion = createUnionType({
+  name: 'MusicPlaylist_Track',
+  types: () => [ItemList, MusicRecording] as const,
+});
+
+export type Role_NamedPosition = TextType | UrlType;
+export const Role_NamedPositionUnion = createUnionType({
+  name: 'Role_NamedPosition',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type Role_StartDate = DateTimeType | DateType;
+export const Role_StartDateUnion = createUnionType({
+  name: 'Role_StartDate',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type Role_EndDate = DateType | DateTimeType;
+export const Role_EndDateUnion = createUnionType({
+  name: 'Role_EndDate',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type Role_RoleName = UrlType | TextType;
+export const Role_RoleNameUnion = createUnionType({
+  name: 'Role_RoleName',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type CreativeWork_Teaches = DefinedTerm | TextType;
+export const CreativeWork_TeachesUnion = createUnionType({
+  name: 'CreativeWork_Teaches',
+  types: () => [DefinedTerm, TextScalar] as const,
+});
+
+export type CreativeWork_EducationalLevel = UrlType | DefinedTerm | TextType;
+export const CreativeWork_EducationalLevelUnion = createUnionType({
+  name: 'CreativeWork_EducationalLevel',
+  types: () => [UrlScalar, DefinedTerm, TextScalar] as const,
+});
+
+export type CreativeWork_CreativeWorkStatus = TextType | DefinedTerm;
+export const CreativeWork_CreativeWorkStatusUnion = createUnionType({
+  name: 'CreativeWork_CreativeWorkStatus',
+  types: () => [TextScalar, DefinedTerm] as const,
+});
+
+export type CreativeWork_Material = TextType | UrlType | Product;
+export const CreativeWork_MaterialUnion = createUnionType({
+  name: 'CreativeWork_Material',
+  types: () => [TextScalar, UrlScalar, Product] as const,
+});
+
+export type CreativeWork_FileFormat = UrlType | TextType;
+export const CreativeWork_FileFormatUnion = createUnionType({
+  name: 'CreativeWork_FileFormat',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type CreativeWork_Translator = Person | Organization;
+export const CreativeWork_TranslatorUnion = createUnionType({
+  name: 'CreativeWork_Translator',
+  types: () => [Person, Organization] as const,
+});
+
+export type CreativeWork_Assesses = TextType | DefinedTerm;
+export const CreativeWork_AssessesUnion = createUnionType({
+  name: 'CreativeWork_Assesses',
+  types: () => [TextScalar, DefinedTerm] as const,
+});
+
+export type CreativeWork_SchemaVersion = TextType | UrlType;
+export const CreativeWork_SchemaVersionUnion = createUnionType({
+  name: 'CreativeWork_SchemaVersion',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type CreativeWork_Pattern = DefinedTerm | TextType;
+export const CreativeWork_PatternUnion = createUnionType({
+  name: 'CreativeWork_Pattern',
+  types: () => [DefinedTerm, TextScalar] as const,
+});
+
+export type CreativeWork_EducationalUse = DefinedTerm | TextType;
+export const CreativeWork_EducationalUseUnion = createUnionType({
+  name: 'CreativeWork_EducationalUse',
+  types: () => [DefinedTerm, TextScalar] as const,
+});
+
+export type CreativeWork_Genre = UrlType | TextType;
+export const CreativeWork_GenreUnion = createUnionType({
+  name: 'CreativeWork_Genre',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type CreativeWork_Keywords = DefinedTerm | TextType | UrlType;
+export const CreativeWork_KeywordsUnion = createUnionType({
+  name: 'CreativeWork_Keywords',
+  types: () => [DefinedTerm, TextScalar, UrlScalar] as const,
+});
+
+export type CreativeWork_Position = IntegerType | TextType;
+export const CreativeWork_PositionUnion = createUnionType({
+  name: 'CreativeWork_Position',
+  types: () => [IntegerScalar, TextScalar] as const,
+});
+
+export type CreativeWork_Offers = Offer | Demand;
+export const CreativeWork_OffersUnion = createUnionType({
+  name: 'CreativeWork_Offers',
+  types: () => [Offer, Demand] as const,
+});
+
+export type CreativeWork_MaterialExtent = QuantitativeValue | TextType;
+export const CreativeWork_MaterialExtentUnion = createUnionType({
+  name: 'CreativeWork_MaterialExtent',
+  types: () => [QuantitativeValue, TextScalar] as const,
+});
+
+export type CreativeWork_CopyrightHolder = Organization | Person;
+export const CreativeWork_CopyrightHolderUnion = createUnionType({
+  name: 'CreativeWork_CopyrightHolder',
+  types: () => [Organization, Person] as const,
+});
+
+export type CreativeWork_Producer = Organization | Person;
+export const CreativeWork_ProducerUnion = createUnionType({
+  name: 'CreativeWork_Producer',
+  types: () => [Organization, Person] as const,
+});
+
+export type CreativeWork_Publisher = Person | Organization;
+export const CreativeWork_PublisherUnion = createUnionType({
+  name: 'CreativeWork_Publisher',
+  types: () => [Person, Organization] as const,
+});
+
+export type CreativeWork_Funder = Organization | Person;
+export const CreativeWork_FunderUnion = createUnionType({
+  name: 'CreativeWork_Funder',
+  types: () => [Organization, Person] as const,
+});
+
+export type CreativeWork_UsageInfo = CreativeWork | UrlType;
+export const CreativeWork_UsageInfoUnion = createUnionType({
+  name: 'CreativeWork_UsageInfo',
+  types: () => [CreativeWork, UrlScalar] as const,
+});
+
+export type CreativeWork_Provider = Organization | Person;
+export const CreativeWork_ProviderUnion = createUnionType({
+  name: 'CreativeWork_Provider',
+  types: () => [Organization, Person] as const,
+});
+
+export type CreativeWork_SdPublisher = Organization | Person;
+export const CreativeWork_SdPublisherUnion = createUnionType({
+  name: 'CreativeWork_SdPublisher',
+  types: () => [Organization, Person] as const,
+});
+
+export type CreativeWork_IsBasedOn = CreativeWork | UrlType | Product;
+export const CreativeWork_IsBasedOnUnion = createUnionType({
+  name: 'CreativeWork_IsBasedOn',
+  types: () => [CreativeWork, UrlScalar, Product] as const,
+});
+
+export type CreativeWork_PublishingPrinciples = UrlType | CreativeWork;
+export const CreativeWork_PublishingPrinciplesUnion = createUnionType({
+  name: 'CreativeWork_PublishingPrinciples',
+  types: () => [UrlScalar, CreativeWork] as const,
+});
+
+export type CreativeWork_DateCreated = DateType | DateTimeType;
+export const CreativeWork_DateCreatedUnion = createUnionType({
+  name: 'CreativeWork_DateCreated',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type CreativeWork_EditEIDR = UrlType | TextType;
+export const CreativeWork_EditEIDRUnion = createUnionType({
+  name: 'CreativeWork_EditEIDR',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type CreativeWork_Author = Person | Organization;
+export const CreativeWork_AuthorUnion = createUnionType({
+  name: 'CreativeWork_Author',
+  types: () => [Person, Organization] as const,
+});
+
+export type CreativeWork_DateModified = DateTimeType | DateType;
+export const CreativeWork_DateModifiedUnion = createUnionType({
+  name: 'CreativeWork_DateModified',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type CreativeWork_Sponsor = Organization | Person;
+export const CreativeWork_SponsorUnion = createUnionType({
+  name: 'CreativeWork_Sponsor',
+  types: () => [Organization, Person] as const,
+});
+
+export type CreativeWork_EncodingFormat = TextType | UrlType;
+export const CreativeWork_EncodingFormatUnion = createUnionType({
+  name: 'CreativeWork_EncodingFormat',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type CreativeWork_Maintainer = Person | Organization;
+export const CreativeWork_MaintainerUnion = createUnionType({
+  name: 'CreativeWork_Maintainer',
+  types: () => [Person, Organization] as const,
+});
+
+export type CreativeWork_AcquireLicensePage = CreativeWork | UrlType;
+export const CreativeWork_AcquireLicensePageUnion = createUnionType({
+  name: 'CreativeWork_AcquireLicensePage',
+  types: () => [CreativeWork, UrlScalar] as const,
+});
+
+export type CreativeWork_DatePublished = DateType | DateTimeType;
+export const CreativeWork_DatePublishedUnion = createUnionType({
+  name: 'CreativeWork_DatePublished',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type CreativeWork_SdLicense = CreativeWork | UrlType;
+export const CreativeWork_SdLicenseUnion = createUnionType({
+  name: 'CreativeWork_SdLicense',
+  types: () => [CreativeWork, UrlScalar] as const,
+});
+
+export type CreativeWork_Correction = UrlType | TextType | CorrectionComment;
+export const CreativeWork_CorrectionUnion = createUnionType({
+  name: 'CreativeWork_Correction',
+  types: () => [UrlScalar, TextScalar, Comment] as const,
+});
+
+export type CreativeWork_ContentRating = TextType | Rating;
+export const CreativeWork_ContentRatingUnion = createUnionType({
+  name: 'CreativeWork_ContentRating',
+  types: () => [TextScalar, Rating] as const,
+});
+
+export type CreativeWork_Size = QuantitativeValue | DefinedTerm | TextType;
+export const CreativeWork_SizeUnion = createUnionType({
+  name: 'CreativeWork_Size',
+  types: () => [QuantitativeValue, DefinedTerm, TextScalar] as const,
+});
+
+export type CreativeWork_IsPartOf = UrlType | CreativeWork;
+export const CreativeWork_IsPartOfUnion = createUnionType({
+  name: 'CreativeWork_IsPartOf',
+  types: () => [UrlScalar, CreativeWork] as const,
+});
+
+export type CreativeWork_Temporal = DateTimeType | TextType;
+export const CreativeWork_TemporalUnion = createUnionType({
+  name: 'CreativeWork_Temporal',
+  types: () => [DateTimeScalar, TextScalar] as const,
+});
+
+export type CreativeWork_InLanguage = TextType | Language;
+export const CreativeWork_InLanguageUnion = createUnionType({
+  name: 'CreativeWork_InLanguage',
+  types: () => [TextScalar, Thing] as const,
+});
+
+export type CreativeWork_License = UrlType | CreativeWork;
+export const CreativeWork_LicenseUnion = createUnionType({
+  name: 'CreativeWork_License',
+  types: () => [UrlScalar, CreativeWork] as const,
+});
+
+export type CreativeWork_Creator = Organization | Person;
+export const CreativeWork_CreatorUnion = createUnionType({
+  name: 'CreativeWork_Creator',
+  types: () => [Organization, Person] as const,
+});
+
+export type CreativeWork_IsBasedOnUrl = UrlType | CreativeWork | Product;
+export const CreativeWork_IsBasedOnUrlUnion = createUnionType({
+  name: 'CreativeWork_IsBasedOnUrl',
+  types: () => [UrlScalar, CreativeWork, Product] as const,
+});
+
+export type CreativeWork_Citation = CreativeWork | TextType;
+export const CreativeWork_CitationUnion = createUnionType({
+  name: 'CreativeWork_Citation',
+  types: () => [CreativeWork, TextScalar] as const,
+});
+
+export type CreativeWork_Version = NumberType | TextType;
+export const CreativeWork_VersionUnion = createUnionType({
+  name: 'CreativeWork_Version',
+  types: () => [NumberScalar, TextScalar] as const,
+});
+
+export type CreativeWork_ArchivedAt = WebPage | UrlType;
+export const CreativeWork_ArchivedAtUnion = createUnionType({
+  name: 'CreativeWork_ArchivedAt',
+  types: () => [WebPage, UrlScalar] as const,
+});
+
+export type CreativeWork_LearningResourceType = DefinedTerm | TextType;
+export const CreativeWork_LearningResourceTypeUnion = createUnionType({
+  name: 'CreativeWork_LearningResourceType',
+  types: () => [DefinedTerm, TextScalar] as const,
+});
+
+export type CreativeWork_Audio = AudioObject | MusicRecording | Clip;
+export const CreativeWork_AudioUnion = createUnionType({
+  name: 'CreativeWork_Audio',
+  types: () => [AudioObject, MusicRecording, Clip] as const,
+});
+
+export type CreativeWork_TemporalCoverage = UrlType | DateTimeType | TextType;
+export const CreativeWork_TemporalCoverageUnion = createUnionType({
+  name: 'CreativeWork_TemporalCoverage',
+  types: () => [UrlScalar, DateTimeScalar, TextScalar] as const,
+});
+
+export type CreativeWork_Contributor = Organization | Person;
+export const CreativeWork_ContributorUnion = createUnionType({
+  name: 'CreativeWork_Contributor',
+  types: () => [Organization, Person] as const,
+});
+
+export type CreativeWork_Video = Clip | VideoObject;
+export const CreativeWork_VideoUnion = createUnionType({
+  name: 'CreativeWork_Video',
+  types: () => [Clip, VideoObject] as const,
+});
+
+export type GeoCircle_GeoRadius = NumberType | TextType | Distance;
+export const GeoCircle_GeoRadiusUnion = createUnionType({
+  name: 'GeoCircle_GeoRadius',
+  types: () => [NumberScalar, TextScalar, Thing] as const,
+});
+
+export type MolecularEntity_MonoisotopicMolecularWeight = TextType | QuantitativeValue;
+export const MolecularEntity_MonoisotopicMolecularWeightUnion = createUnionType({
+  name: 'MolecularEntity_MonoisotopicMolecularWeight',
+  types: () => [TextScalar, QuantitativeValue] as const,
+});
+
+export type MolecularEntity_MolecularWeight = QuantitativeValue | TextType;
+export const MolecularEntity_MolecularWeightUnion = createUnionType({
+  name: 'MolecularEntity_MolecularWeight',
+  types: () => [QuantitativeValue, TextScalar] as const,
+});
+
+export type PostalAddress_AddressCountry = Country | TextType;
+export const PostalAddress_AddressCountryUnion = createUnionType({
+  name: 'PostalAddress_AddressCountry',
+  types: () => [Place, TextScalar] as const,
+});
+
+export type ShippingRateSettings_FreeShippingThreshold = MonetaryAmount | DeliveryChargeSpecification;
+export const ShippingRateSettings_FreeShippingThresholdUnion = createUnionType({
+  name: 'ShippingRateSettings_FreeShippingThreshold',
+  types: () => [MonetaryAmount, DeliveryChargeSpecification] as const,
+});
+
+export type DeliveryChargeSpecification_IneligibleRegion = Place | TextType | GeoShape;
+export const DeliveryChargeSpecification_IneligibleRegionUnion = createUnionType({
+  name: 'DeliveryChargeSpecification_IneligibleRegion',
+  types: () => [Place, TextScalar, GeoShape] as const,
+});
+
+export type DeliveryChargeSpecification_EligibleRegion = GeoShape | TextType | Place;
+export const DeliveryChargeSpecification_EligibleRegionUnion = createUnionType({
+  name: 'DeliveryChargeSpecification_EligibleRegion',
+  types: () => [GeoShape, TextScalar, Place] as const,
+});
+
+export type DeliveryChargeSpecification_AreaServed = AdministrativeArea | GeoShape | TextType | Place;
+export const DeliveryChargeSpecification_AreaServedUnion = createUnionType({
+  name: 'DeliveryChargeSpecification_AreaServed',
+  types: () => [Place, GeoShape, TextScalar] as const,
+});
+
+export type MedicalWebPage_MedicalAudience = TextType | MedicalAudience;
+export const MedicalWebPage_MedicalAudienceUnion = createUnionType({
+  name: 'MedicalWebPage_MedicalAudience',
+  types: () => [TextScalar, MedicalAudience] as const,
+});
+
+export type MedicalTest_NormalRange = TextType;
+export const MedicalTest_NormalRangeUnion = createUnionType({
+  name: 'MedicalTest_NormalRange',
+  types: () => [TextScalar] as const,
+});
+
+export type VideoGame_GamePlatform = TextType | UrlType | Thing;
+export const VideoGame_GamePlatformUnion = createUnionType({
+  name: 'VideoGame_GamePlatform',
+  types: () => [TextScalar, UrlScalar, Thing] as const,
+});
+
+export type VideoGame_MusicBy = Person | MusicGroup;
+export const VideoGame_MusicByUnion = createUnionType({
+  name: 'VideoGame_MusicBy',
+  types: () => [Person, MusicGroup] as const,
+});
+
+export type LocationFeatureSpecification_ValidFrom = DateTimeType | DateType;
+export const LocationFeatureSpecification_ValidFromUnion = createUnionType({
+  name: 'LocationFeatureSpecification_ValidFrom',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type LocationFeatureSpecification_ValidThrough = DateTimeType | DateType;
+export const LocationFeatureSpecification_ValidThroughUnion = createUnionType({
+  name: 'LocationFeatureSpecification_ValidThrough',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type ProgramMembership_MembershipPointsEarned = NumberType | QuantitativeValue;
+export const ProgramMembership_MembershipPointsEarnedUnion = createUnionType({
+  name: 'ProgramMembership_MembershipPointsEarned',
+  types: () => [NumberScalar, QuantitativeValue] as const,
+});
+
+export type ProgramMembership_Member = Organization | Person;
+export const ProgramMembership_MemberUnion = createUnionType({
+  name: 'ProgramMembership_Member',
+  types: () => [Organization, Person] as const,
+});
+
+export type ProgramMembership_Members = Person | Organization;
+export const ProgramMembership_MembersUnion = createUnionType({
+  name: 'ProgramMembership_Members',
+  types: () => [Person, Organization] as const,
+});
+
+export type PayAction_Recipient = Person | Audience | ContactPoint | Organization;
+export const PayAction_RecipientUnion = createUnionType({
+  name: 'PayAction_Recipient',
+  types: () => [Person, Audience, ContactPoint, Organization] as const,
+});
+
+export type DataDownload_MeasurementTechnique = TextType | UrlType;
+export const DataDownload_MeasurementTechniqueUnion = createUnionType({
+  name: 'DataDownload_MeasurementTechnique',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type ProductModel_IsVariantOf = ProductModel | ProductGroup;
+export const ProductModel_IsVariantOfUnion = createUnionType({
+  name: 'ProductModel_IsVariantOf',
+  types: () => [ProductModel, ProductGroup] as const,
+});
+
+export type RadioSeries_Season = UrlType | CreativeWorkSeason;
+export const RadioSeries_SeasonUnion = createUnionType({
+  name: 'RadioSeries_Season',
+  types: () => [UrlScalar, CreativeWorkSeason] as const,
+});
+
+export type RadioSeries_MusicBy = Person | MusicGroup;
+export const RadioSeries_MusicByUnion = createUnionType({
+  name: 'RadioSeries_MusicBy',
+  types: () => [Person, MusicGroup] as const,
+});
+
+export type FlightReservation_PassengerPriorityStatus = TextType;
+export const FlightReservation_PassengerPriorityStatusUnion = createUnionType({
+  name: 'FlightReservation_PassengerPriorityStatus',
+  types: () => [TextScalar] as const,
+});
+
+export type WorkBasedProgram_OccupationalCategory = CategoryCode | TextType;
+export const WorkBasedProgram_OccupationalCategoryUnion = createUnionType({
+  name: 'WorkBasedProgram_OccupationalCategory',
+  types: () => [CategoryCode, TextScalar] as const,
+});
+
+export type SuperficialAnatomy_RelatedAnatomy = AnatomicalSystem | AnatomicalStructure;
+export const SuperficialAnatomy_RelatedAnatomyUnion = createUnionType({
+  name: 'SuperficialAnatomy_RelatedAnatomy',
+  types: () => [AnatomicalSystem, AnatomicalStructure] as const,
+});
+
+export type Flight_FlightDistance = Distance | TextType;
+export const Flight_FlightDistanceUnion = createUnionType({
+  name: 'Flight_FlightDistance',
+  types: () => [Thing, TextScalar] as const,
+});
+
+export type Flight_Aircraft = Vehicle | TextType;
+export const Flight_AircraftUnion = createUnionType({
+  name: 'Flight_Aircraft',
+  types: () => [Vehicle, TextScalar] as const,
+});
+
+export type Flight_Seller = Organization | Person;
+export const Flight_SellerUnion = createUnionType({
+  name: 'Flight_Seller',
+  types: () => [Organization, Person] as const,
+});
+
+export type Flight_EstimatedFlightDuration = TextType | Duration;
+export const Flight_EstimatedFlightDurationUnion = createUnionType({
+  name: 'Flight_EstimatedFlightDuration',
+  types: () => [TextScalar, Thing] as const,
+});
+
+export type DatedMoneySpecification_StartDate = DateTimeType | DateType;
+export const DatedMoneySpecification_StartDateUnion = createUnionType({
+  name: 'DatedMoneySpecification_StartDate',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type DatedMoneySpecification_EndDate = DateType | DateTimeType;
+export const DatedMoneySpecification_EndDateUnion = createUnionType({
+  name: 'DatedMoneySpecification_EndDate',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type DatedMoneySpecification_Amount = NumberType | MonetaryAmount;
+export const DatedMoneySpecification_AmountUnion = createUnionType({
+  name: 'DatedMoneySpecification_Amount',
+  types: () => [NumberScalar, MonetaryAmount] as const,
+});
+
+export type HowToDirection_AfterMedia = UrlType | MediaObject;
+export const HowToDirection_AfterMediaUnion = createUnionType({
+  name: 'HowToDirection_AfterMedia',
+  types: () => [UrlScalar, MediaObject] as const,
+});
+
+export type HowToDirection_Supply = HowToSupply | TextType;
+export const HowToDirection_SupplyUnion = createUnionType({
+  name: 'HowToDirection_Supply',
+  types: () => [HowToSupply, TextScalar] as const,
+});
+
+export type HowToDirection_DuringMedia = UrlType | MediaObject;
+export const HowToDirection_DuringMediaUnion = createUnionType({
+  name: 'HowToDirection_DuringMedia',
+  types: () => [UrlScalar, MediaObject] as const,
+});
+
+export type HowToDirection_BeforeMedia = UrlType | MediaObject;
+export const HowToDirection_BeforeMediaUnion = createUnionType({
+  name: 'HowToDirection_BeforeMedia',
+  types: () => [UrlScalar, MediaObject] as const,
+});
+
+export type HowToDirection_Tool = HowToTool | TextType;
+export const HowToDirection_ToolUnion = createUnionType({
+  name: 'HowToDirection_Tool',
+  types: () => [HowToItem, TextScalar] as const,
+});
+
+export type EntryPoint_ActionPlatform = TextType | UrlType;
+export const EntryPoint_ActionPlatformUnion = createUnionType({
+  name: 'EntryPoint_ActionPlatform',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type PodcastSeries_WebFeed = DataFeed | UrlType;
+export const PodcastSeries_WebFeedUnion = createUnionType({
+  name: 'PodcastSeries_WebFeed',
+  types: () => [DataFeed, UrlScalar] as const,
+});
+
+export type MusicComposition_Composer = Organization | Person;
+export const MusicComposition_ComposerUnion = createUnionType({
+  name: 'MusicComposition_Composer',
+  types: () => [Organization, Person] as const,
+});
+
+export type LinkRole_InLanguage = TextType | Language;
+export const LinkRole_InLanguageUnion = createUnionType({
+  name: 'LinkRole_InLanguage',
+  types: () => [TextScalar, Thing] as const,
+});
+
+export type Question_SuggestedAnswer = ItemList | Answer;
+export const Question_SuggestedAnswerUnion = createUnionType({
+  name: 'Question_SuggestedAnswer',
+  types: () => [ItemList, Answer] as const,
+});
+
+export type Question_AcceptedAnswer = Answer | ItemList;
+export const Question_AcceptedAnswerUnion = createUnionType({
+  name: 'Question_AcceptedAnswer',
+  types: () => [Answer, ItemList] as const,
+});
+
+export type MedicalCondition_Status = TextType;
+export const MedicalCondition_StatusUnion = createUnionType({
+  name: 'MedicalCondition_Status',
+  types: () => [TextScalar] as const,
+});
+
+export type MedicalCondition_AssociatedAnatomy = AnatomicalStructure | AnatomicalSystem | SuperficialAnatomy;
+export const MedicalCondition_AssociatedAnatomyUnion = createUnionType({
+  name: 'MedicalCondition_AssociatedAnatomy',
+  types: () => [AnatomicalStructure, AnatomicalSystem, SuperficialAnatomy] as const,
+});
+
+export type SportsOrganization_Sport = TextType | UrlType;
+export const SportsOrganization_SportUnion = createUnionType({
+  name: 'SportsOrganization_Sport',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type Rating_WorstRating = TextType | NumberType;
+export const Rating_WorstRatingUnion = createUnionType({
+  name: 'Rating_WorstRating',
+  types: () => [TextScalar, NumberScalar] as const,
+});
+
+export type Rating_Author = Person | Organization;
+export const Rating_AuthorUnion = createUnionType({
+  name: 'Rating_Author',
+  types: () => [Person, Organization] as const,
+});
+
+export type Rating_BestRating = TextType | NumberType;
+export const Rating_BestRatingUnion = createUnionType({
+  name: 'Rating_BestRating',
+  types: () => [TextScalar, NumberScalar] as const,
+});
+
+export type Rating_RatingValue = NumberType | TextType;
+export const Rating_RatingValueUnion = createUnionType({
+  name: 'Rating_RatingValue',
+  types: () => [NumberScalar, TextScalar] as const,
+});
+
+export type BusTrip_DepartureBusStop = BusStop | BusStation;
+export const BusTrip_DepartureBusStopUnion = createUnionType({
+  name: 'BusTrip_DepartureBusStop',
+  types: () => [CivicStructure] as const,
+});
+
+export type BusTrip_ArrivalBusStop = BusStation | BusStop;
+export const BusTrip_ArrivalBusStopUnion = createUnionType({
+  name: 'BusTrip_ArrivalBusStop',
+  types: () => [CivicStructure] as const,
+});
+
+export type MenuItem_MenuAddOn = MenuItem | MenuSection;
+export const MenuItem_MenuAddOnUnion = createUnionType({
+  name: 'MenuItem_MenuAddOn',
+  types: () => [MenuItem, MenuSection] as const,
+});
+
+export type MenuItem_Offers = Offer | Demand;
+export const MenuItem_OffersUnion = createUnionType({
+  name: 'MenuItem_Offers',
+  types: () => [Offer, Demand] as const,
+});
+
+export type TypeAndQuantityNode_TypeOfGood = Product | Service;
+export const TypeAndQuantityNode_TypeOfGoodUnion = createUnionType({
+  name: 'TypeAndQuantityNode_TypeOfGood',
+  types: () => [Product, Service] as const,
+});
+
+export type TypeAndQuantityNode_UnitCode = TextType | UrlType;
+export const TypeAndQuantityNode_UnitCodeUnion = createUnionType({
+  name: 'TypeAndQuantityNode_UnitCode',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type Quotation_SpokenByCharacter = Person | Organization;
+export const Quotation_SpokenByCharacterUnion = createUnionType({
+  name: 'Quotation_SpokenByCharacter',
+  types: () => [Person, Organization] as const,
+});
+
+export type MerchantReturnPolicySeasonalOverride_StartDate = DateTimeType | DateType;
+export const MerchantReturnPolicySeasonalOverride_StartDateUnion = createUnionType({
+  name: 'MerchantReturnPolicySeasonalOverride_StartDate',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type MerchantReturnPolicySeasonalOverride_EndDate = DateType | DateTimeType;
+export const MerchantReturnPolicySeasonalOverride_EndDateUnion = createUnionType({
+  name: 'MerchantReturnPolicySeasonalOverride_EndDate',
+  types: () => [DateScalar, DateTimeScalar] as const,
+});
+
+export type MerchantReturnPolicySeasonalOverride_MerchantReturnDays = DateTimeType | IntegerType | DateType;
+export const MerchantReturnPolicySeasonalOverride_MerchantReturnDaysUnion = createUnionType({
+  name: 'MerchantReturnPolicySeasonalOverride_MerchantReturnDays',
+  types: () => [DateTimeScalar, IntegerScalar, DateScalar] as const,
+});
+
+export type Grant_Funder = Organization | Person;
+export const Grant_FunderUnion = createUnionType({
+  name: 'Grant_Funder',
+  types: () => [Organization, Person] as const,
+});
+
+export type Grant_FundedItem = Product | Person | BioChemEntity | Event | MedicalEntity | CreativeWork | Organization;
+export const Grant_FundedItemUnion = createUnionType({
+  name: 'Grant_FundedItem',
+  types: () => [Product, Person, BioChemEntity, Event, MedicalEntity, CreativeWork, Organization] as const,
+});
+
+export type Grant_Sponsor = Organization | Person;
+export const Grant_SponsorUnion = createUnionType({
+  name: 'Grant_Sponsor',
+  types: () => [Organization, Person] as const,
+});
+
+export type Offer_ItemOffered = Trip | Event | Product | AggregateOffer | CreativeWork | MenuItem | Service;
+export const Offer_ItemOfferedUnion = createUnionType({
+  name: 'Offer_ItemOffered',
+  types: () => [Trip, Event, Product, AggregateOffer, CreativeWork, MenuItem, Service] as const,
+});
+
+export type Offer_Category = UrlType | TextType | Thing | CategoryCode;
+export const Offer_CategoryUnion = createUnionType({
+  name: 'Offer_Category',
+  types: () => [UrlScalar, TextScalar, Thing, CategoryCode] as const,
+});
+
+export type Offer_AcceptedPaymentMethod = LoanOrCredit | TextType;
+export const Offer_AcceptedPaymentMethodUnion = createUnionType({
+  name: 'Offer_AcceptedPaymentMethod',
+  types: () => [LoanOrCredit, TextScalar] as const,
+});
+
+export type Offer_Seller = Organization | Person;
+export const Offer_SellerUnion = createUnionType({
+  name: 'Offer_Seller',
+  types: () => [Organization, Person] as const,
+});
+
+export type Offer_IneligibleRegion = Place | TextType | GeoShape;
+export const Offer_IneligibleRegionUnion = createUnionType({
+  name: 'Offer_IneligibleRegion',
+  types: () => [Place, TextScalar, GeoShape] as const,
+});
+
+export type Offer_LeaseLength = QuantitativeValue | Duration;
+export const Offer_LeaseLengthUnion = createUnionType({
+  name: 'Offer_LeaseLength',
+  types: () => [QuantitativeValue, Thing] as const,
+});
+
+export type Offer_OfferedBy = Person | Organization;
+export const Offer_OfferedByUnion = createUnionType({
+  name: 'Offer_OfferedBy',
+  types: () => [Person, Organization] as const,
+});
+
+export type Offer_ValidFrom = DateTimeType | DateType;
+export const Offer_ValidFromUnion = createUnionType({
+  name: 'Offer_ValidFrom',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type Offer_AvailabilityEnds = DateType | DateTimeType | TimeType;
+export const Offer_AvailabilityEndsUnion = createUnionType({
+  name: 'Offer_AvailabilityEnds',
+  types: () => [DateScalar, DateTimeScalar, TimeScalar] as const,
+});
+
+export type Offer_EligibleRegion = GeoShape | TextType | Place;
+export const Offer_EligibleRegionUnion = createUnionType({
+  name: 'Offer_EligibleRegion',
+  types: () => [GeoShape, TextScalar, Place] as const,
+});
+
+export type Offer_AreaServed = AdministrativeArea | GeoShape | TextType | Place;
+export const Offer_AreaServedUnion = createUnionType({
+  name: 'Offer_AreaServed',
+  types: () => [Place, GeoShape, TextScalar] as const,
+});
+
+export type Offer_ValidThrough = DateTimeType | DateType;
+export const Offer_ValidThroughUnion = createUnionType({
+  name: 'Offer_ValidThrough',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type Offer_Price = NumberType | TextType;
+export const Offer_PriceUnion = createUnionType({
+  name: 'Offer_Price',
+  types: () => [NumberScalar, TextScalar] as const,
+});
+
+export type Offer_AvailabilityStarts = TimeType | DateTimeType | DateType;
+export const Offer_AvailabilityStartsUnion = createUnionType({
+  name: 'Offer_AvailabilityStarts',
+  types: () => [TimeScalar, DateTimeScalar, DateScalar] as const,
+});
+
+export type MusicRecording_ByArtist = Person | MusicGroup;
+export const MusicRecording_ByArtistUnion = createUnionType({
+  name: 'MusicRecording_ByArtist',
+  types: () => [Person, MusicGroup] as const,
+});
+
+export type Joint_FunctionalClass = TextType | MedicalEntity;
+export const Joint_FunctionalClassUnion = createUnionType({
+  name: 'Joint_FunctionalClass',
+  types: () => [TextScalar, MedicalEntity] as const,
+});
+
+export type MoneyTransfer_BeneficiaryBank = BankOrCreditUnion | TextType;
+export const MoneyTransfer_BeneficiaryBankUnion = createUnionType({
+  name: 'MoneyTransfer_BeneficiaryBank',
+  types: () => [FinancialService, TextScalar] as const,
+});
+
+export type MoneyTransfer_Amount = NumberType | MonetaryAmount;
+export const MoneyTransfer_AmountUnion = createUnionType({
+  name: 'MoneyTransfer_Amount',
+  types: () => [NumberScalar, MonetaryAmount] as const,
+});
+
+export type ItemList_ItemListElement = Thing | ListItem | TextType;
+export const ItemList_ItemListElementUnion = createUnionType({
+  name: 'ItemList_ItemListElement',
+  types: () => [Thing, ListItem, TextScalar] as const,
+});
+
+export type ItemList_ItemListOrder = TextType;
+export const ItemList_ItemListOrderUnion = createUnionType({
+  name: 'ItemList_ItemListOrder',
+  types: () => [TextScalar] as const,
+});
+
+export type NewsMediaOrganization_OwnershipFundingInfo = UrlType | AboutPage | TextType | CreativeWork;
+export const NewsMediaOrganization_OwnershipFundingInfoUnion = createUnionType({
+  name: 'NewsMediaOrganization_OwnershipFundingInfo',
+  types: () => [UrlScalar, WebPage, TextScalar, CreativeWork] as const,
+});
+
+export type NewsMediaOrganization_CorrectionsPolicy = UrlType | CreativeWork;
+export const NewsMediaOrganization_CorrectionsPolicyUnion = createUnionType({
+  name: 'NewsMediaOrganization_CorrectionsPolicy',
+  types: () => [UrlScalar, CreativeWork] as const,
+});
+
+export type NewsMediaOrganization_DiversityStaffingReport = UrlType | Article;
+export const NewsMediaOrganization_DiversityStaffingReportUnion = createUnionType({
+  name: 'NewsMediaOrganization_DiversityStaffingReport',
+  types: () => [UrlScalar, Article] as const,
+});
+
+export type NewsMediaOrganization_DiversityPolicy = CreativeWork | UrlType;
+export const NewsMediaOrganization_DiversityPolicyUnion = createUnionType({
+  name: 'NewsMediaOrganization_DiversityPolicy',
+  types: () => [CreativeWork, UrlScalar] as const,
+});
+
+export type NewsMediaOrganization_EthicsPolicy = UrlType | CreativeWork;
+export const NewsMediaOrganization_EthicsPolicyUnion = createUnionType({
+  name: 'NewsMediaOrganization_EthicsPolicy',
+  types: () => [UrlScalar, CreativeWork] as const,
+});
+
+export type NewsMediaOrganization_MissionCoveragePrioritiesPolicy = CreativeWork | UrlType;
+export const NewsMediaOrganization_MissionCoveragePrioritiesPolicyUnion = createUnionType({
+  name: 'NewsMediaOrganization_MissionCoveragePrioritiesPolicy',
+  types: () => [CreativeWork, UrlScalar] as const,
+});
+
+export type NewsMediaOrganization_ActionableFeedbackPolicy = UrlType | CreativeWork;
+export const NewsMediaOrganization_ActionableFeedbackPolicyUnion = createUnionType({
+  name: 'NewsMediaOrganization_ActionableFeedbackPolicy',
+  types: () => [UrlScalar, CreativeWork] as const,
+});
+
+export type NewsMediaOrganization_Masthead = UrlType | CreativeWork;
+export const NewsMediaOrganization_MastheadUnion = createUnionType({
+  name: 'NewsMediaOrganization_Masthead',
+  types: () => [UrlScalar, CreativeWork] as const,
+});
+
+export type NewsMediaOrganization_UnnamedSourcesPolicy = CreativeWork | UrlType;
+export const NewsMediaOrganization_UnnamedSourcesPolicyUnion = createUnionType({
+  name: 'NewsMediaOrganization_UnnamedSourcesPolicy',
+  types: () => [CreativeWork, UrlScalar] as const,
+});
+
+export type NewsMediaOrganization_VerificationFactCheckingPolicy = UrlType | CreativeWork;
+export const NewsMediaOrganization_VerificationFactCheckingPolicyUnion = createUnionType({
+  name: 'NewsMediaOrganization_VerificationFactCheckingPolicy',
+  types: () => [UrlScalar, CreativeWork] as const,
+});
+
+export type NewsMediaOrganization_NoBylinesPolicy = CreativeWork | UrlType;
+export const NewsMediaOrganization_NoBylinesPolicyUnion = createUnionType({
+  name: 'NewsMediaOrganization_NoBylinesPolicy',
+  types: () => [CreativeWork, UrlScalar] as const,
+});
+
+export type SingleFamilyResidence_NumberOfRooms = QuantitativeValue | NumberType;
+export const SingleFamilyResidence_NumberOfRoomsUnion = createUnionType({
+  name: 'SingleFamilyResidence_NumberOfRooms',
+  types: () => [QuantitativeValue, NumberScalar] as const,
+});
+
+export type Occupation_EstimatedSalary = MonetaryAmountDistribution | MonetaryAmount | NumberType;
+export const Occupation_EstimatedSalaryUnion = createUnionType({
+  name: 'Occupation_EstimatedSalary',
+  types: () => [MonetaryAmountDistribution, MonetaryAmount, NumberScalar] as const,
+});
+
+export type Occupation_ExperienceRequirements = TextType | OccupationalExperienceRequirements;
+export const Occupation_ExperienceRequirementsUnion = createUnionType({
+  name: 'Occupation_ExperienceRequirements',
+  types: () => [TextScalar, OccupationalExperienceRequirements] as const,
+});
+
+export type Occupation_EducationRequirements = EducationalOccupationalCredential | TextType;
+export const Occupation_EducationRequirementsUnion = createUnionType({
+  name: 'Occupation_EducationRequirements',
+  types: () => [EducationalOccupationalCredential, TextScalar] as const,
+});
+
+export type Occupation_Skills = TextType | DefinedTerm;
+export const Occupation_SkillsUnion = createUnionType({
+  name: 'Occupation_Skills',
+  types: () => [TextScalar, DefinedTerm] as const,
+});
+
+export type Occupation_Qualifications = TextType | EducationalOccupationalCredential;
+export const Occupation_QualificationsUnion = createUnionType({
+  name: 'Occupation_Qualifications',
+  types: () => [TextScalar, EducationalOccupationalCredential] as const,
+});
+
+export type Occupation_OccupationalCategory = CategoryCode | TextType;
+export const Occupation_OccupationalCategoryUnion = createUnionType({
+  name: 'Occupation_OccupationalCategory',
+  types: () => [CategoryCode, TextScalar] as const,
+});
+
+export type LoanOrCredit_LoanType = UrlType | TextType;
+export const LoanOrCredit_LoanTypeUnion = createUnionType({
+  name: 'LoanOrCredit_LoanType',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type LoanOrCredit_RequiredCollateral = TextType | Thing;
+export const LoanOrCredit_RequiredCollateralUnion = createUnionType({
+  name: 'LoanOrCredit_RequiredCollateral',
+  types: () => [TextScalar, Thing] as const,
+});
+
+export type LoanOrCredit_Amount = NumberType | MonetaryAmount;
+export const LoanOrCredit_AmountUnion = createUnionType({
+  name: 'LoanOrCredit_Amount',
+  types: () => [NumberScalar, MonetaryAmount] as const,
+});
+
+export type FollowAction_Followee = Organization | Person;
+export const FollowAction_FolloweeUnion = createUnionType({
+  name: 'FollowAction_Followee',
+  types: () => [Organization, Person] as const,
+});
+
+export type CookAction_FoodEstablishment = Place | FoodEstablishment;
+export const CookAction_FoodEstablishmentUnion = createUnionType({
+  name: 'CookAction_FoodEstablishment',
+  types: () => [Place, FoodEstablishment] as const,
+});
+
+export type BankAccount_BankAccountType = TextType | UrlType;
+export const BankAccount_BankAccountTypeUnion = createUnionType({
+  name: 'BankAccount_BankAccountType',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type BorrowAction_Lender = Person | Organization;
+export const BorrowAction_LenderUnion = createUnionType({
+  name: 'BorrowAction_Lender',
+  types: () => [Person, Organization] as const,
+});
+
+export type PropertyValue_ValueReference = TextType | DefinedTerm | StructuredValue | PropertyValue | QuantitativeValue;
+export const PropertyValue_ValueReferenceUnion = createUnionType({
+  name: 'PropertyValue_ValueReference',
+  types: () => [TextScalar, DefinedTerm, Thing, PropertyValue, QuantitativeValue] as const,
+});
+
+export type PropertyValue_PropertyID = TextType | UrlType;
+export const PropertyValue_PropertyIDUnion = createUnionType({
+  name: 'PropertyValue_PropertyID',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type PropertyValue_MeasurementTechnique = TextType | UrlType;
+export const PropertyValue_MeasurementTechniqueUnion = createUnionType({
+  name: 'PropertyValue_MeasurementTechnique',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type PropertyValue_Value = TextType | NumberType | StructuredValue | BooleanType;
+export const PropertyValue_ValueUnion = createUnionType({
+  name: 'PropertyValue_Value',
+  types: () => [TextScalar, NumberScalar, Thing, BooleanScalar] as const,
+});
+
+export type PropertyValue_UnitCode = TextType | UrlType;
+export const PropertyValue_UnitCodeUnion = createUnionType({
+  name: 'PropertyValue_UnitCode',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type Recommendation_Category = UrlType | TextType | Thing | CategoryCode;
+export const Recommendation_CategoryUnion = createUnionType({
+  name: 'Recommendation_Category',
+  types: () => [UrlScalar, TextScalar, Thing, CategoryCode] as const,
+});
+
+export type MathSolver_MathExpression = SolveMathAction | TextType;
+export const MathSolver_MathExpressionUnion = createUnionType({
+  name: 'MathSolver_MathExpression',
+  types: () => [SolveMathAction, TextScalar] as const,
+});
+
+export type MedicalStudy_Status = TextType;
+export const MedicalStudy_StatusUnion = createUnionType({
+  name: 'MedicalStudy_Status',
+  types: () => [TextScalar] as const,
+});
+
+export type MedicalStudy_Sponsor = Organization | Person;
+export const MedicalStudy_SponsorUnion = createUnionType({
+  name: 'MedicalStudy_Sponsor',
+  types: () => [Organization, Person] as const,
+});
+
+export type GiveAction_Recipient = Person | Audience | ContactPoint | Organization;
+export const GiveAction_RecipientUnion = createUnionType({
+  name: 'GiveAction_Recipient',
+  types: () => [Person, Audience, ContactPoint, Organization] as const,
+});
+
+export type DigitalDocumentPermission_Grantee = Person | Audience | ContactPoint | Organization;
+export const DigitalDocumentPermission_GranteeUnion = createUnionType({
+  name: 'DigitalDocumentPermission_Grantee',
+  types: () => [Person, Audience, ContactPoint, Organization] as const,
+});
+
+export type DataCatalog_MeasurementTechnique = TextType | UrlType;
+export const DataCatalog_MeasurementTechniqueUnion = createUnionType({
+  name: 'DataCatalog_MeasurementTechnique',
+  types: () => [TextScalar, UrlScalar] as const,
+});
+
+export type SeekToAction_StartOffset = NumberType | HyperTocEntry;
+export const SeekToAction_StartOffsetUnion = createUnionType({
+  name: 'SeekToAction_StartOffset',
+  types: () => [NumberScalar, HyperTocEntry] as const,
+});
+
+export type Course_CoursePrerequisites = TextType | AlignmentObject | Course;
+export const Course_CoursePrerequisitesUnion = createUnionType({
+  name: 'Course_CoursePrerequisites',
+  types: () => [TextScalar, AlignmentObject, Course] as const,
+});
+
+export type Course_EducationalCredentialAwarded = UrlType | EducationalOccupationalCredential | TextType;
+export const Course_EducationalCredentialAwardedUnion = createUnionType({
+  name: 'Course_EducationalCredentialAwarded',
+  types: () => [UrlScalar, EducationalOccupationalCredential, TextScalar] as const,
+});
+
+export type Course_NumberOfCredits = IntegerType | StructuredValue;
+export const Course_NumberOfCreditsUnion = createUnionType({
+  name: 'Course_NumberOfCredits',
+  types: () => [IntegerScalar, Thing] as const,
+});
+
+export type Course_OccupationalCredentialAwarded = EducationalOccupationalCredential | TextType | UrlType;
+export const Course_OccupationalCredentialAwardedUnion = createUnionType({
+  name: 'Course_OccupationalCredentialAwarded',
+  types: () => [EducationalOccupationalCredential, TextScalar, UrlScalar] as const,
+});
+
+export type Clip_StartOffset = NumberType | HyperTocEntry;
+export const Clip_StartOffsetUnion = createUnionType({
+  name: 'Clip_StartOffset',
+  types: () => [NumberScalar, HyperTocEntry] as const,
+});
+
+export type Clip_EndOffset = NumberType | HyperTocEntry;
+export const Clip_EndOffsetUnion = createUnionType({
+  name: 'Clip_EndOffset',
+  types: () => [NumberScalar, HyperTocEntry] as const,
+});
+
+export type Clip_ClipNumber = TextType | IntegerType;
+export const Clip_ClipNumberUnion = createUnionType({
+  name: 'Clip_ClipNumber',
+  types: () => [TextScalar, IntegerScalar] as const,
+});
+
+export type Clip_MusicBy = Person | MusicGroup;
+export const Clip_MusicByUnion = createUnionType({
+  name: 'Clip_MusicBy',
+  types: () => [Person, MusicGroup] as const,
+});
+
+export type UserComments_CommentTime = DateTimeType | DateType;
+export const UserComments_CommentTimeUnion = createUnionType({
+  name: 'UserComments_CommentTime',
+  types: () => [DateTimeScalar, DateScalar] as const,
+});
+
+export type UserComments_Creator = Organization | Person;
+export const UserComments_CreatorUnion = createUnionType({
+  name: 'UserComments_Creator',
+  types: () => [Organization, Person] as const,
+});
+
+export type HealthInsurancePlan_UsesHealthPlanIdStandard = UrlType | TextType;
+export const HealthInsurancePlan_UsesHealthPlanIdStandardUnion = createUnionType({
+  name: 'HealthInsurancePlan_UsesHealthPlanIdStandard',
+  types: () => [UrlScalar, TextScalar] as const,
+});
+
+export type Vein_RegionDrained = AnatomicalSystem | AnatomicalStructure;
+export const Vein_RegionDrainedUnion = createUnionType({
+  name: 'Vein_RegionDrained',
+  types: () => [AnatomicalSystem, AnatomicalStructure] as const,
+});
+
+export type GovernmentService_Jurisdiction = TextType | AdministrativeArea;
+export const GovernmentService_JurisdictionUnion = createUnionType({
+  name: 'GovernmentService_Jurisdiction',
+  types: () => [TextScalar, Place] as const,
+});
+
+export type VideoGameSeries_Season = UrlType | CreativeWorkSeason;
+export const VideoGameSeries_SeasonUnion = createUnionType({
+  name: 'VideoGameSeries_Season',
+  types: () => [UrlScalar, CreativeWorkSeason] as const,
+});
+
+export type VideoGameSeries_GamePlatform = TextType | UrlType | Thing;
+export const VideoGameSeries_GamePlatformUnion = createUnionType({
+  name: 'VideoGameSeries_GamePlatform',
+  types: () => [TextScalar, UrlScalar, Thing] as const,
+});
+
+export type VideoGameSeries_MusicBy = Person | MusicGroup;
+export const VideoGameSeries_MusicByUnion = createUnionType({
+  name: 'VideoGameSeries_MusicBy',
+  types: () => [Person, MusicGroup] as const,
+});
+
+export type VideoGameSeries_GameLocation = Place | UrlType | PostalAddress;
+export const VideoGameSeries_GameLocationUnion = createUnionType({
+  name: 'VideoGameSeries_GameLocation',
+  types: () => [Place, UrlScalar, PostalAddress] as const,
+});
+
+export type Episode_EpisodeNumber = IntegerType | TextType;
+export const Episode_EpisodeNumberUnion = createUnionType({
+  name: 'Episode_EpisodeNumber',
+  types: () => [IntegerScalar, TextScalar] as const,
+});
+
+export type Episode_MusicBy = Person | MusicGroup;
+export const Episode_MusicByUnion = createUnionType({
+  name: 'Episode_MusicBy',
+  types: () => [Person, MusicGroup] as const,
+});
+
+export type Action_Agent = Organization | Person;
+export const Action_AgentUnion = createUnionType({
+  name: 'Action_Agent',
+  types: () => [Organization, Person] as const,
+});
+
+export type Action_StartTime = DateTimeType | TimeType;
+export const Action_StartTimeUnion = createUnionType({
+  name: 'Action_StartTime',
+  types: () => [DateTimeScalar, TimeScalar] as const,
+});
+
+export type Action_Provider = Organization | Person;
+export const Action_ProviderUnion = createUnionType({
+  name: 'Action_Provider',
+  types: () => [Organization, Person] as const,
+});
+
+export type Action_Location = PostalAddress | TextType | Place | VirtualLocation;
+export const Action_LocationUnion = createUnionType({
+  name: 'Action_Location',
+  types: () => [PostalAddress, TextScalar, Place, Thing] as const,
+});
+
+export type Action_EndTime = DateTimeType | TimeType;
+export const Action_EndTimeUnion = createUnionType({
+  name: 'Action_EndTime',
+  types: () => [DateTimeScalar, TimeScalar] as const,
+});
+
+export type Action_Participant = Organization | Person;
+export const Action_ParticipantUnion = createUnionType({
+  name: 'Action_Participant',
+  types: () => [Organization, Person] as const,
+});
+
+export type FloorPlan_NumberOfRooms = QuantitativeValue | NumberType;
+export const FloorPlan_NumberOfRoomsUnion = createUnionType({
+  name: 'FloorPlan_NumberOfRooms',
+  types: () => [QuantitativeValue, NumberScalar] as const,
+});
+
+export type FloorPlan_NumberOfBedrooms = NumberType | QuantitativeValue;
+export const FloorPlan_NumberOfBedroomsUnion = createUnionType({
+  name: 'FloorPlan_NumberOfBedrooms',
+  types: () => [NumberScalar, QuantitativeValue] as const,
+});
+
+export type FloorPlan_PetsAllowed = TextType | BooleanType;
+export const FloorPlan_PetsAllowedUnion = createUnionType({
+  name: 'FloorPlan_PetsAllowed',
+  types: () => [TextScalar, BooleanScalar] as const,
+});
+
+export type FloorPlan_LayoutImage = ImageObject | UrlType;
+export const FloorPlan_LayoutImageUnion = createUnionType({
+  name: 'FloorPlan_LayoutImage',
+  types: () => [ImageObject, UrlScalar] as const,
+});
+
+// #endregion
+
+// #region Record Types
+/**
+ * ============
+ * Record Types
+ * ============
+ */
+
+// #endregion
+
+// #region Object Types
+/**
+ * ============
+ * Object Types
+ * ============
+ */
+
+@ObjectType()
+export class Class extends Intangible {
+  @Field((type) => Class_SupersededByUnion)
+  supersededBy?: Class_SupersededBy;
+}
+@ObjectType()
+export class LocalBusiness{
+  @Field((type) => Organization)
+  branchOf?: Organization;
+  @Field((type) => TextScalar)
+  openingHours?: TextType;
+  @Field((type) => TextScalar)
+  priceRange?: TextType;
+  @Field((type) => TextScalar)
+  paymentAccepted?: TextType;
+  @Field((type) => TextScalar)
+  currenciesAccepted?: TextType;
+}
+@ObjectType()
+export class MedicalProcedure extends MedicalEntity {
+  @Field((type) => MedicalProcedureType)
+  procedureType?: MedicalProcedureType;
+  @Field((type) => MedicalProcedure_PreparationUnion)
+  preparation?: MedicalProcedure_Preparation;
+  @Field((type) => TextScalar)
+  bodyLocation?: TextType;
+  @Field((type) => MedicalProcedure_StatusUnion)
+  status?: MedicalProcedure_Status;
+  @Field((type) => TextScalar)
+  howPerformed?: TextType;
+  @Field((type) => TextScalar)
+  followup?: TextType;
+}
+@ObjectType()
+export class Hospital{
+  @Field((type) => Hospital_AvailableServiceUnion)
+  availableService?: Hospital_AvailableService;
+  @Field((type) => Hospital_HealthcareReportingDataUnion)
+  healthcareReportingData?: Hospital_HealthcareReportingData;
+  @Field((type) => MedicalSpecialty)
+  medicalSpecialty?: MedicalSpecialty;
+}
+@ObjectType()
+export class BuyAction extends TradeAction {
+  @Field((type) => WarrantyPromise)
+  warrantyPromise?: WarrantyPromise;
+  @Field((type) => BuyAction_SellerUnion)
+  seller?: BuyAction_Seller;
+  @Field((type) => BuyAction_VendorUnion)
+  vendor?: BuyAction_Vendor;
+}
+@ObjectType()
+export class PriceSpecification extends StructuredValue {
+  @Field((type) => NumberScalar)
+  minPrice?: NumberType;
+  @Field((type) => QuantitativeValue)
+  eligibleQuantity?: QuantitativeValue;
+  @Field((type) => PriceSpecification_ValidFromUnion)
+  validFrom?: PriceSpecification_ValidFrom;
+  @Field((type) => NumberScalar)
+  maxPrice?: NumberType;
+  @Field((type) => TextScalar)
+  priceCurrency?: TextType;
+  @Field((type) => BooleanScalar)
+  valueAddedTaxIncluded?: BooleanType;
+  @Field((type) => PriceSpecification)
+  eligibleTransactionVolume?: PriceSpecification;
+  @Field((type) => PriceSpecification_ValidThroughUnion)
+  validThrough?: PriceSpecification_ValidThrough;
+  @Field((type) => PriceSpecification_PriceUnion)
+  price?: PriceSpecification_Price;
+}
+@ObjectType()
+export class SportsEvent extends Event {
+  @Field((type) => SportsEvent_HomeTeamUnion)
+  homeTeam?: SportsEvent_HomeTeam;
+  @Field((type) => SportsEvent_AwayTeamUnion)
+  awayTeam?: SportsEvent_AwayTeam;
+  @Field((type) => SportsEvent_CompetitorUnion)
+  competitor?: SportsEvent_Competitor;
+  @Field((type) => SportsEvent_SportUnion)
+  sport?: SportsEvent_Sport;
+}
+@ObjectType()
+export class WinAction extends AchieveAction {
+  @Field((type) => Person)
+  loser?: Person;
+}
+@ObjectType()
+export class PlayAction extends Action {
+  @Field((type) => Audience)
+  audience?: Audience;
+  @Field((type) => Event)
+  event?: Event;
+}
+@ObjectType()
+export class PoliceStation{
+}
+@ObjectType()
+export class EducationalOccupationalCredential extends CreativeWork {
+  @Field((type) => DurationUnion)
+  validFor?: Duration;
+  @Field((type) => EducationalOccupationalCredential_EducationalLevelUnion)
+  educationalLevel?: EducationalOccupationalCredential_EducationalLevel;
+  @Field((type) => EducationalOccupationalCredential_CredentialCategoryUnion)
+  credentialCategory?: EducationalOccupationalCredential_CredentialCategory;
+  @Field((type) => Organization)
+  recognizedBy?: Organization;
+  @Field((type) => EducationalOccupationalCredential_CompetencyRequiredUnion)
+  competencyRequired?: EducationalOccupationalCredential_CompetencyRequired;
+  @Field((type) => AdministrativeAreaUnion)
+  validIn?: AdministrativeArea;
+}
+@ObjectType()
+export class MedicalClinic{
+  @Field((type) => MedicalClinic_AvailableServiceUnion)
+  availableService?: MedicalClinic_AvailableService;
+  @Field((type) => MedicalSpecialty)
+  medicalSpecialty?: MedicalSpecialty;
+}
+@ObjectType()
+export class LearningResource extends CreativeWork {
+  @Field((type) => LearningResource_TeachesUnion)
+  teaches?: LearningResource_Teaches;
+  @Field((type) => LearningResource_EducationalLevelUnion)
+  educationalLevel?: LearningResource_EducationalLevel;
+  @Field((type) => LearningResource_AssessesUnion)
+  assesses?: LearningResource_Assesses;
+  @Field((type) => LearningResource_EducationalUseUnion)
+  educationalUse?: LearningResource_EducationalUse;
+  @Field((type) => AlignmentObject)
+  educationalAlignment?: AlignmentObject;
+  @Field((type) => LearningResource_CompetencyRequiredUnion)
+  competencyRequired?: LearningResource_CompetencyRequired;
+  @Field((type) => LearningResource_LearningResourceTypeUnion)
+  learningResourceType?: LearningResource_LearningResourceType;
+}
+@ObjectType()
+export class Brand extends Intangible {
+  @Field((type) => Review)
+  review?: Review;
+  @Field((type) => AggregateRating)
+  aggregateRating?: AggregateRating;
+  @Field((type) => TextScalar)
+  slogan?: TextType;
+  @Field((type) => Brand_LogoUnion)
+  logo?: Brand_Logo;
+}
+@ObjectType()
+export class ContactPoint extends StructuredValue {
+  @Field((type) => TextScalar)
+  telephone?: TextType;
+  @Field((type) => OpeningHoursSpecification)
+  hoursAvailable?: OpeningHoursSpecification;
+  @Field((type) => TextScalar)
+  email?: TextType;
+  @Field((type) => ContactPointOption)
+  contactOption?: ContactPointOption;
+  @Field((type) => ContactPoint_AvailableLanguageUnion)
+  availableLanguage?: ContactPoint_AvailableLanguage;
+  @Field((type) => ContactPoint_ServiceAreaUnion)
+  serviceArea?: ContactPoint_ServiceArea;
+  @Field((type) => ContactPoint_AreaServedUnion)
+  areaServed?: ContactPoint_AreaServed;
+  @Field((type) => TextScalar)
+  contactType?: TextType;
+  @Field((type) => ContactPoint_ProductSupportedUnion)
+  productSupported?: ContactPoint_ProductSupported;
+  @Field((type) => TextScalar)
+  faxNumber?: TextType;
+}
+@ObjectType()
+export class JobPosting extends Intangible {
+  @Field((type) => TextScalar)
+  employerOverview?: TextType;
+  @Field((type) => JobPosting_EstimatedSalaryUnion)
+  estimatedSalary?: JobPosting_EstimatedSalary;
+  @Field((type) => TextScalar)
+  jobLocationType?: TextType;
+  @Field((type) => TextScalar)
+  responsibilities?: TextType;
+  @Field((type) => Place)
+  jobLocation?: Place;
+  @Field((type) => JobPosting_PhysicalRequirementUnion)
+  physicalRequirement?: JobPosting_PhysicalRequirement;
+  @Field((type) => TextScalar)
+  incentives?: TextType;
+  @Field((type) => BooleanScalar)
+  directApply?: BooleanType;
+  @Field((type) => JobPosting_SensoryRequirementUnion)
+  sensoryRequirement?: JobPosting_SensoryRequirement;
+  @Field((type) => AdministrativeAreaUnion)
+  applicantLocationRequirements?: AdministrativeArea;
+  @Field((type) => TextScalar)
+  workHours?: TextType;
+  @Field((type) => JobPosting_JobStartDateUnion)
+  jobStartDate?: JobPosting_JobStartDate;
+  @Field((type) => TextScalar)
+  employmentType?: TextType;
+  @Field((type) => TextScalar)
+  specialCommitments?: TextType;
+  @Field((type) => ContactPoint)
+  applicationContact?: ContactPoint;
+  @Field((type) => TextScalar)
+  incentiveCompensation?: TextType;
+  @Field((type) => Occupation)
+  relevantOccupation?: Occupation;
+  @Field((type) => IntegerScalar)
+  totalJobOpenings?: IntegerType;
+  @Field((type) => JobPosting_ExperienceRequirementsUnion)
+  experienceRequirements?: JobPosting_ExperienceRequirements;
+  @Field((type) => TextScalar)
+  jobBenefits?: TextType;
+  @Field((type) => TextScalar)
+  salaryCurrency?: TextType;
+  @Field((type) => BooleanScalar)
+  experienceInPlaceOfEducation?: BooleanType;
+  @Field((type) => JobPosting_SecurityClearanceRequirementUnion)
+  securityClearanceRequirement?: JobPosting_SecurityClearanceRequirement;
+  @Field((type) => TextScalar)
+  eligibilityToWorkRequirement?: TextType;
+  @Field((type) => JobPosting_EducationRequirementsUnion)
+  educationRequirements?: JobPosting_EducationRequirements;
+  @Field((type) => TextScalar)
+  benefits?: TextType;
+  @Field((type) => JobPosting_IndustryUnion)
+  industry?: JobPosting_Industry;
+  @Field((type) => JobPosting_BaseSalaryUnion)
+  baseSalary?: JobPosting_BaseSalary;
+  @Field((type) => JobPosting_DatePostedUnion)
+  datePosted?: JobPosting_DatePosted;
+  @Field((type) => JobPosting_SkillsUnion)
+  skills?: JobPosting_Skills;
+  @Field((type) => TextScalar)
+  title?: TextType;
+  @Field((type) => Organization)
+  hiringOrganization?: Organization;
+  @Field((type) => BooleanScalar)
+  jobImmediateStart?: BooleanType;
+  @Field((type) => JobPosting_ValidThroughUnion)
+  validThrough?: JobPosting_ValidThrough;
+  @Field((type) => Organization)
+  employmentUnit?: Organization;
+  @Field((type) => JobPosting_QualificationsUnion)
+  qualifications?: JobPosting_Qualifications;
+  @Field((type) => JobPosting_OccupationalCategoryUnion)
+  occupationalCategory?: JobPosting_OccupationalCategory;
+}
+@ObjectType()
+export class Accommodation extends Place {
+  @Field((type) => TextScalar)
+  floorLevel?: TextType;
+  @Field((type) => IntegerScalar)
+  numberOfBathroomsTotal?: IntegerType;
+  @Field((type) => Accommodation_NumberOfRoomsUnion)
+  numberOfRooms?: Accommodation_NumberOfRooms;
+  @Field((type) => Accommodation_LeaseLengthUnion)
+  leaseLength?: Accommodation_LeaseLength;
+  @Field((type) => NumberScalar)
+  yearBuilt?: NumberType;
+  @Field((type) => TextScalar)
+  accommodationCategory?: TextType;
+  @Field((type) => LocationFeatureSpecification)
+  amenityFeature?: LocationFeatureSpecification;
+  @Field((type) => UrlScalar)
+  tourBookingPage?: UrlType;
+  @Field((type) => Accommodation_NumberOfBedroomsUnion)
+  numberOfBedrooms?: Accommodation_NumberOfBedrooms;
+  @Field((type) => NumberScalar)
+  numberOfPartialBathrooms?: NumberType;
+  @Field((type) => QuantitativeValue)
+  floorSize?: QuantitativeValue;
+  @Field((type) => FloorPlan)
+  accommodationFloorPlan?: FloorPlan;
+  @Field((type) => NumberScalar)
+  numberOfFullBathrooms?: NumberType;
+  @Field((type) => TextScalar)
+  permittedUsage?: TextType;
+  @Field((type) => Accommodation_PetsAllowedUnion)
+  petsAllowed?: Accommodation_PetsAllowed;
+}
+@ObjectType()
+export class MedicalRiskScore extends MedicalRiskEstimator {
+  @Field((type) => TextScalar)
+  algorithm?: TextType;
+}
+@ObjectType()
+export class HotelRoom extends Room {
+  @Field((type) => HotelRoom_BedUnion)
+  bed?: HotelRoom_Bed;
+  @Field((type) => QuantitativeValue)
+  occupancy?: QuantitativeValue;
+}
+@ObjectType()
+export class PlayGameAction extends ConsumeAction {
+  @Field((type) => PlayGameAction_GameAvailabilityTypeUnion)
+  gameAvailabilityType?: PlayGameAction_GameAvailabilityType;
+}
+@ObjectType()
+export class Reservation extends Intangible {
+  @Field((type) => DateTimeScalar)
+  modifiedTime?: DateTimeType;
+  @Field((type) => Reservation_TotalPriceUnion)
+  totalPrice?: Reservation_TotalPrice;
+  @Field((type) => Ticket)
+  reservedTicket?: Ticket;
+  @Field((type) => ReservationStatusType)
+  reservationStatus?: ReservationStatusType;
+  @Field((type) => Reservation_ProviderUnion)
+  provider?: Reservation_Provider;
+  @Field((type) => Reservation_BrokerUnion)
+  broker?: Reservation_Broker;
+  @Field((type) => DateTimeScalar)
+  bookingTime?: DateTimeType;
+  @Field((type) => ProgramMembership)
+  programMembershipUsed?: ProgramMembership;
+  @Field((type) => Reservation_BookingAgentUnion)
+  bookingAgent?: Reservation_BookingAgent;
+  @Field((type) => TextScalar)
+  priceCurrency?: TextType;
+  @Field((type) => TextScalar)
+  reservationId?: TextType;
+  @Field((type) => Reservation_UnderNameUnion)
+  underName?: Reservation_UnderName;
+  @Field((type) => Thing)
+  reservationFor?: Thing;
+}
+@ObjectType()
+export class TrackAction extends FindAction {
+  @Field((type) => DeliveryMethod)
+  deliveryMethod?: DeliveryMethod;
+}
+@ObjectType()
+export class Person extends Thing {
+  @Field((type) => Person)
+  spouse?: Person;
+  @Field((type) => TextScalar)
+  additionalName?: TextType;
+  @Field((type) => EducationalOccupationalCredential)
+  hasCredential?: EducationalOccupationalCredential;
+  @Field((type) => TextScalar)
+  telephone?: TextType;
+  @Field((type) => TextScalar)
+  honorificPrefix?: TextType;
+  @Field((type) => Person)
+  parents?: Person;
+  @Field((type) => TextScalar)
+  familyName?: TextType;
+  @Field((type) => TextScalar)
+  givenName?: TextType;
+  @Field((type) => Person_KnowsAboutUnion)
+  knowsAbout?: Person_KnowsAbout;
+  @Field((type) => Event)
+  performerIn?: Event;
+  @Field((type) => Person_NetWorthUnion)
+  netWorth?: Person_NetWorth;
+  @Field((type) => TextScalar)
+  award?: TextType;
+  @Field((type) => Person_WorkLocationUnion)
+  workLocation?: Person_WorkLocation;
+  @Field((type) => TextScalar)
+  honorificSuffix?: TextType;
+  @Field((type) => Place)
+  deathPlace?: Place;
+  @Field((type) => Person_HomeLocationUnion)
+  homeLocation?: Person_HomeLocation;
+  @Field((type) => Grant)
+  funding?: Grant;
+  @Field((type) => TextScalar)
+  vatID?: TextType;
+  @Field((type) => Person_HeightUnion)
+  height?: Person_Height;
+  @Field((type) => TextScalar)
+  globalLocationNumber?: TextType;
+  @Field((type) => ContactPoint)
+  contactPoints?: ContactPoint;
+  @Field((type) => Occupation)
+  hasOccupation?: Occupation;
+  @Field((type) => Person_GenderUnion)
+  gender?: Person_Gender;
+  @Field((type) => Person)
+  parent?: Person;
+  @Field((type) => TextScalar)
+  awards?: TextType;
+  @Field((type) => Person)
+  sibling?: Person;
+  @Field((type) => Person_JobTitleUnion)
+  jobTitle?: Person_JobTitle;
+  @Field((type) => DateScalar)
+  birthDate?: DateType;
+  @Field((type) => Person_FunderUnion)
+  funder?: Person_Funder;
+  @Field((type) => Offer)
+  makesOffer?: Offer;
+  @Field((type) => Person)
+  children?: Person;
+  @Field((type) => Organization)
+  worksFor?: Organization;
+  @Field((type) => Person)
+  knows?: Person;
+  @Field((type) => InteractionCounter)
+  interactionStatistic?: InteractionCounter;
+  @Field((type) => Person_AddressUnion)
+  address?: Person_Address;
+  @Field((type) => Person_MemberOfUnion)
+  memberOf?: Person_MemberOf;
+  @Field((type) => Person_PublishingPrinciplesUnion)
+  publishingPrinciples?: Person_PublishingPrinciples;
+  @Field((type) => Person)
+  colleagues?: Person;
+  @Field((type) => DateScalar)
+  deathDate?: DateType;
+  @Field((type) => TextScalar)
+  email?: TextType;
+  @Field((type) => Organization)
+  affiliation?: Organization;
+  @Field((type) => Person)
+  siblings?: Person;
+  @Field((type) => Place)
+  birthPlace?: Place;
+  @Field((type) => Person_BrandUnion)
+  brand?: Person_Brand;
+  @Field((type) => Person_SponsorUnion)
+  sponsor?: Person_Sponsor;
+  @Field((type) => TextScalar)
+  naics?: TextType;
+  @Field((type) => ContactPoint)
+  contactPoint?: ContactPoint;
+  @Field((type) => TextScalar)
+  callSign?: TextType;
+  @Field((type) => TextScalar)
+  isicV4?: TextType;
+  @Field((type) => Place)
+  hasPOS?: Place;
+  @Field((type) => Person_AlumniOfUnion)
+  alumniOf?: Person_AlumniOf;
+  @Field((type) => TextScalar)
+  duns?: TextType;
+  @Field((type) => QuantitativeValue)
+  weight?: QuantitativeValue;
+  @Field((type) => Person_KnowsLanguageUnion)
+  knowsLanguage?: Person_KnowsLanguage;
+  @Field((type) => Person)
+  relatedTo?: Person;
+  @Field((type) => Person_ColleagueUnion)
+  colleague?: Person_Colleague;
+  @Field((type) => Demand)
+  seeks?: Demand;
+  @Field((type) => TextScalar)
+  taxID?: TextType;
+  @Field((type) => Person_OwnsUnion)
+  owns?: Person_Owns;
+  @Field((type) => OfferCatalogUnion)
+  hasOfferCatalog?: OfferCatalog;
+  @Field((type) => Person)
+  follows?: Person;
+  @Field((type) => CountryUnion)
+  nationality?: Country;
+  @Field((type) => TextScalar)
+  faxNumber?: TextType;
+}
+@ObjectType()
+export class StadiumOrArena{
+}
+@ObjectType()
+export class MedicalGuideline extends MedicalEntity {
+  @Field((type) => MedicalEvidenceLevel)
+  evidenceLevel?: MedicalEvidenceLevel;
+  @Field((type) => TextScalar)
+  evidenceOrigin?: TextType;
+  @Field((type) => MedicalEntity)
+  guidelineSubject?: MedicalEntity;
+  @Field((type) => DateScalar)
+  guidelineDate?: DateType;
+}
+@ObjectType()
+export class QuantitativeValue extends StructuredValue {
+  @Field((type) => QuantitativeValue_ValueReferenceUnion)
+  valueReference?: QuantitativeValue_ValueReference;
+  @Field((type) => NumberScalar)
+  maxValue?: NumberType;
+  @Field((type) => TextScalar)
+  unitText?: TextType;
+  @Field((type) => NumberScalar)
+  minValue?: NumberType;
+  @Field((type) => QuantitativeValue_ValueUnion)
+  value?: QuantitativeValue_Value;
+  @Field((type) => QuantitativeValue_UnitCodeUnion)
+  unitCode?: QuantitativeValue_UnitCode;
+  @Field((type) => PropertyValue)
+  additionalProperty?: PropertyValue;
+}
+@ObjectType()
+export class Campground{
+}
+@ObjectType()
+export class ParcelDelivery extends Intangible {
+  @Field((type) => PostalAddress)
+  originAddress?: PostalAddress;
+  @Field((type) => TextScalar)
+  trackingNumber?: TextType;
+  @Field((type) => Product)
+  itemShipped?: Product;
+  @Field((type) => ParcelDelivery_ProviderUnion)
+  provider?: ParcelDelivery_Provider;
+  @Field((type) => UrlScalar)
+  trackingUrl?: UrlType;
+  @Field((type) => PostalAddress)
+  deliveryAddress?: PostalAddress;
+  @Field((type) => ParcelDelivery_ExpectedArrivalUntilUnion)
+  expectedArrivalUntil?: ParcelDelivery_ExpectedArrivalUntil;
+  @Field((type) => DeliveryEvent)
+  deliveryStatus?: DeliveryEvent;
+  @Field((type) => ParcelDelivery_ExpectedArrivalFromUnion)
+  expectedArrivalFrom?: ParcelDelivery_ExpectedArrivalFrom;
+  @Field((type) => Organization)
+  carrier?: Organization;
+  @Field((type) => DeliveryMethod)
+  hasDeliveryMethod?: DeliveryMethod;
+  @Field((type) => Order)
+  partOfOrder?: Order;
+}
+@ObjectType()
+export class SpeakableSpecification extends Intangible {
+  @Field((type) => CssSelectorTypeScalar)
+  cssSelector?: CssSelectorTypeType;
+  @Field((type) => XPathTypeScalar)
+  xpath?: XPathTypeType;
+}
+@ObjectType()
+export class InformAction extends CommunicateAction {
+  @Field((type) => Event)
+  event?: Event;
+}
+@ObjectType()
+export class ReviewNewsArticle{
+}
+@ObjectType()
+export class DeliveryTimeSettings extends StructuredValue {
+  @Field((type) => DefinedRegion)
+  shippingDestination?: DefinedRegion;
+  @Field((type) => TextScalar)
+  transitTimeLabel?: TextType;
+  @Field((type) => BooleanScalar)
+  isUnlabelledFallback?: BooleanType;
+  @Field((type) => ShippingDeliveryTime)
+  deliveryTime?: ShippingDeliveryTime;
+}
+@ObjectType()
+export class Invoice extends Intangible {
+  @Field((type) => Invoice_TotalPaymentDueUnion)
+  totalPaymentDue?: Invoice_TotalPaymentDue;
+  @Field((type) => DurationUnion)
+  billingPeriod?: Duration;
+  @Field((type) => Order)
+  referencesOrder?: Order;
+  @Field((type) => TextScalar)
+  accountId?: TextType;
+  @Field((type) => Invoice_CategoryUnion)
+  category?: Invoice_Category;
+  @Field((type) => DateScalar)
+  scheduledPaymentDate?: DateType;
+  @Field((type) => TextScalar)
+  confirmationNumber?: TextType;
+  @Field((type) => Invoice_CustomerUnion)
+  customer?: Invoice_Customer;
+  @Field((type) => Invoice_ProviderUnion)
+  provider?: Invoice_Provider;
+  @Field((type) => Invoice_MinimumPaymentDueUnion)
+  minimumPaymentDue?: Invoice_MinimumPaymentDue;
+  @Field((type) => Invoice_PaymentDueDateUnion)
+  paymentDueDate?: Invoice_PaymentDueDate;
+  @Field((type) => Invoice_BrokerUnion)
+  broker?: Invoice_Broker;
+  @Field((type) => Invoice_PaymentStatusUnion)
+  paymentStatus?: Invoice_PaymentStatus;
+  @Field((type) => TextScalar)
+  paymentMethodId?: TextType;
+  @Field((type) => DateTimeScalar)
+  paymentDue?: DateTimeType;
+  @Field((type) => PaymentMethod)
+  paymentMethod?: PaymentMethod;
+}
+@ObjectType()
+export class DrugCost extends MedicalEntity {
+  @Field((type) => AdministrativeAreaUnion)
+  applicableLocation?: AdministrativeArea;
+  @Field((type) => DrugCost_CostPerUnitUnion)
+  costPerUnit?: DrugCost_CostPerUnit;
+  @Field((type) => DrugCostCategory)
+  costCategory?: DrugCostCategory;
+  @Field((type) => TextScalar)
+  drugUnit?: TextType;
+  @Field((type) => TextScalar)
+  costCurrency?: TextType;
+  @Field((type) => TextScalar)
+  costOrigin?: TextType;
+}
+@ObjectType()
+export class Car extends Vehicle {
+  @Field((type) => QuantitativeValue)
+  roofLoad?: QuantitativeValue;
+  @Field((type) => TextScalar)
+  acrissCode?: TextType;
+}
+@ObjectType()
+export class LodgingReservation extends Reservation {
+  @Field((type) => LodgingReservation_LodgingUnitTypeUnion)
+  lodgingUnitType?: LodgingReservation_LodgingUnitType;
+  @Field((type) => TextScalar)
+  lodgingUnitDescription?: TextType;
+  @Field((type) => LodgingReservation_CheckoutTimeUnion)
+  checkoutTime?: LodgingReservation_CheckoutTime;
+  @Field((type) => LodgingReservation_NumAdultsUnion)
+  numAdults?: LodgingReservation_NumAdults;
+  @Field((type) => LodgingReservation_CheckinTimeUnion)
+  checkinTime?: LodgingReservation_CheckinTime;
+  @Field((type) => LodgingReservation_NumChildrenUnion)
+  numChildren?: LodgingReservation_NumChildren;
+}
+@ObjectType()
+export class TipAction extends TradeAction {
+  @Field((type) => TipAction_RecipientUnion)
+  recipient?: TipAction_Recipient;
+}
+@ObjectType()
+export class Event extends Thing {
+  @Field((type) => Event)
+  superEvent?: Event;
+  @Field((type) => EventAttendanceModeEnumeration)
+  eventAttendanceMode?: EventAttendanceModeEnumeration;
+  @Field((type) => Review)
+  review?: Review;
+  @Field((type) => Event_TranslatorUnion)
+  translator?: Event_Translator;
+  @Field((type) => Event_StartDateUnion)
+  startDate?: Event_StartDate;
+  @Field((type) => Event_ComposerUnion)
+  composer?: Event_Composer;
+  @Field((type) => IntegerScalar)
+  maximumAttendeeCapacity?: IntegerType;
+  @Field((type) => IntegerScalar)
+  maximumVirtualAttendeeCapacity?: IntegerType;
+  @Field((type) => Person)
+  director?: Person;
+  @Field((type) => Grant)
+  funding?: Grant;
+  @Field((type) => Event_KeywordsUnion)
+  keywords?: Event_Keywords;
+  @Field((type) => Audience)
+  audience?: Audience;
+  @Field((type) => Event_OffersUnion)
+  offers?: Event_Offers;
+  @Field((type) => Event)
+  subEvent?: Event;
+  @Field((type) => Person)
+  actor?: Person;
+  @Field((type) => EventStatusType)
+  eventStatus?: EventStatusType;
+  @Field((type) => Event_EndDateUnion)
+  endDate?: Event_EndDate;
+  @Field((type) => Event_FunderUnion)
+  funder?: Event_Funder;
+  @Field((type) => Event_PerformerUnion)
+  performer?: Event_Performer;
+  @Field((type) => AggregateRating)
+  aggregateRating?: AggregateRating;
+  @Field((type) => TextScalar)
+  typicalAgeRange?: TextType;
+  @Field((type) => Event_LocationUnion)
+  location?: Event_Location;
+  @Field((type) => Event_PerformersUnion)
+  performers?: Event_Performers;
+  @Field((type) => DurationUnion)
+  duration?: Duration;
+  @Field((type) => Event_OrganizerUnion)
+  organizer?: Event_Organizer;
+  @Field((type) => Event_SponsorUnion)
+  sponsor?: Event_Sponsor;
+  @Field((type) => DateScalar)
+  previousStartDate?: DateType;
+  @Field((type) => BooleanScalar)
+  isAccessibleForFree?: BooleanType;
+  @Field((type) => IntegerScalar)
+  remainingAttendeeCapacity?: IntegerType;
+  @Field((type) => Event)
+  subEvents?: Event;
+  @Field((type) => CreativeWork)
+  workPerformed?: CreativeWork;
+  @Field((type) => Event_DoorTimeUnion)
+  doorTime?: Event_DoorTime;
+  @Field((type) => Event_InLanguageUnion)
+  inLanguage?: Event_InLanguage;
+  @Field((type) => Thing)
+  about?: Thing;
+  @Field((type) => CreativeWork)
+  recordedIn?: CreativeWork;
+  @Field((type) => IntegerScalar)
+  maximumPhysicalAttendeeCapacity?: IntegerType;
+  @Field((type) => Event_AttendeeUnion)
+  attendee?: Event_Attendee;
+  @Field((type) => CreativeWork)
+  workFeatured?: CreativeWork;
+  @Field((type) => Schedule)
+  eventSchedule?: Schedule;
+  @Field((type) => Event_ContributorUnion)
+  contributor?: Event_Contributor;
+  @Field((type) => Event_AttendeesUnion)
+  attendees?: Event_Attendees;
+}
+@ObjectType()
+export class FoodEstablishment extends LocalBusiness {
+  @Field((type) => Rating)
+  starRating?: Rating;
+  @Field((type) => TextScalar)
+  servesCuisine?: TextType;
+  @Field((type) => FoodEstablishment_AcceptsReservationsUnion)
+  acceptsReservations?: FoodEstablishment_AcceptsReservations;
+  @Field((type) => FoodEstablishment_HasMenuUnion)
+  hasMenu?: FoodEstablishment_HasMenu;
+  @Field((type) => FoodEstablishment_MenuUnion)
+  menu?: FoodEstablishment_Menu;
+}
+@ObjectType()
+export class HealthClub{
+}
+@ObjectType()
+export class Diet{
+  @Field((type) => TextScalar)
+  expertConsiderations?: TextType;
+  @Field((type) => TextScalar)
+  risks?: TextType;
+  @Field((type) => TextScalar)
+  physiologicalBenefits?: TextType;
+  @Field((type) => Diet_EndorsersUnion)
+  endorsers?: Diet_Endorsers;
+  @Field((type) => TextScalar)
+  dietFeatures?: TextType;
+}
+@ObjectType()
+export class MusicAlbum extends MusicPlaylist {
+  @Field((type) => MusicAlbumProductionType)
+  albumProductionType?: MusicAlbumProductionType;
+  @Field((type) => MusicAlbumReleaseType)
+  albumReleaseType?: MusicAlbumReleaseType;
+  @Field((type) => MusicRelease)
+  albumRelease?: MusicRelease;
+  @Field((type) => MusicAlbum_ByArtistUnion)
+  byArtist?: MusicAlbum_ByArtist;
+}
+@ObjectType()
+export class ExerciseAction extends PlayAction {
+  @Field((type) => SportsTeam)
+  sportsTeam?: SportsTeam;
+  @Field((type) => Place)
+  course?: Place;
+  @Field((type) => Place)
+  fromLocation?: Place;
+  @Field((type) => Diet)
+  diet?: Diet;
+  @Field((type) => SportsActivityLocationUnion)
+  sportsActivityLocation?: SportsActivityLocation;
+  @Field((type) => DistanceUnion)
+  distance?: Distance;
+  @Field((type) => ExercisePlan)
+  exercisePlan?: ExercisePlan;
+  @Field((type) => SportsEvent)
+  sportsEvent?: SportsEvent;
+  @Field((type) => Diet)
+  exerciseRelatedDiet?: Diet;
+  @Field((type) => Person)
+  opponent?: Person;
+  @Field((type) => Place)
+  exerciseCourse?: Place;
+  @Field((type) => Place)
+  toLocation?: Place;
+  @Field((type) => TextScalar)
+  exerciseType?: TextType;
+}
+@ObjectType()
+export class AutoPartsStore{
+}
+@ObjectType()
+export class QuantitativeValueDistribution extends StructuredValue {
+  @Field((type) => NumberScalar)
+  percentile75?: NumberType;
+  @Field((type) => NumberScalar)
+  median?: NumberType;
+  @Field((type) => NumberScalar)
+  percentile10?: NumberType;
+  @Field((type) => NumberScalar)
+  percentile25?: NumberType;
+  @Field((type) => NumberScalar)
+  percentile90?: NumberType;
+  @Field((type) => DurationUnion)
+  duration?: Duration;
+}
+@ObjectType()
+export class Nerve extends AnatomicalStructure {
+  @Field((type) => Nerve_SensoryUnitUnion)
+  sensoryUnit?: Nerve_SensoryUnit;
+  @Field((type) => AnatomicalStructure)
+  branch?: AnatomicalStructure;
+  @Field((type) => BrainStructureUnion)
+  sourcedFrom?: BrainStructure;
+  @Field((type) => Muscle)
+  nerveMotor?: Muscle;
+}
+@ObjectType()
+export class DataFeedItem extends Intangible {
+  @Field((type) => DataFeedItem_DateDeletedUnion)
+  dateDeleted?: DataFeedItem_DateDeleted;
+  @Field((type) => DataFeedItem_DateCreatedUnion)
+  dateCreated?: DataFeedItem_DateCreated;
+  @Field((type) => DataFeedItem_DateModifiedUnion)
+  dateModified?: DataFeedItem_DateModified;
+  @Field((type) => Thing)
+  item?: Thing;
+}
+@ObjectType()
+export class Corporation extends Organization {
+  @Field((type) => TextScalar)
+  tickerSymbol?: TextType;
+}
+@ObjectType()
+export class HowToSupply extends HowToItem {
+  @Field((type) => HowToSupply_EstimatedCostUnion)
+  estimatedCost?: HowToSupply_EstimatedCost;
+}
+@ObjectType()
+export class ExercisePlan{
+  @Field((type) => ExercisePlan_RepetitionsUnion)
+  repetitions?: ExercisePlan_Repetitions;
+  @Field((type) => ExercisePlan_IntensityUnion)
+  intensity?: ExercisePlan_Intensity;
+  @Field((type) => ExercisePlan_WorkloadUnion)
+  workload?: ExercisePlan_Workload;
+  @Field((type) => ExercisePlan_ActivityDurationUnion)
+  activityDuration?: ExercisePlan_ActivityDuration;
+  @Field((type) => ExercisePlan_RestPeriodsUnion)
+  restPeriods?: ExercisePlan_RestPeriods;
+  @Field((type) => ExercisePlan_ActivityFrequencyUnion)
+  activityFrequency?: ExercisePlan_ActivityFrequency;
+  @Field((type) => TextScalar)
+  additionalVariable?: TextType;
+  @Field((type) => TextScalar)
+  exerciseType?: TextType;
+}
+@ObjectType()
+export class PaymentCard{
+  @Field((type) => PaymentCard_CashBackUnion)
+  cashBack?: PaymentCard_CashBack;
+  @Field((type) => PaymentCard_MonthlyMinimumRepaymentAmountUnion)
+  monthlyMinimumRepaymentAmount?: PaymentCard_MonthlyMinimumRepaymentAmount;
+  @Field((type) => MonetaryAmount)
+  floorLimit?: MonetaryAmount;
+  @Field((type) => BooleanScalar)
+  contactlessPayment?: BooleanType;
+}
+@ObjectType()
+export class ProductGroup extends Product {
+  @Field((type) => Product)
+  hasVariant?: Product;
+  @Field((type) => TextScalar)
+  productGroupID?: TextType;
+  @Field((type) => ProductGroup_VariesByUnion)
+  variesBy?: ProductGroup_VariesBy;
+}
+@ObjectType()
+export class PerformanceRole extends Role {
+  @Field((type) => TextScalar)
+  characterName?: TextType;
+}
+@ObjectType()
+export class AuthorizeAction extends AllocateAction {
+  @Field((type) => AuthorizeAction_RecipientUnion)
+  recipient?: AuthorizeAction_Recipient;
+}
+@ObjectType()
+export class MortgageLoan extends LoanOrCredit {
+  @Field((type) => MonetaryAmount)
+  loanMortgageMandateAmount?: MonetaryAmount;
+  @Field((type) => BooleanScalar)
+  domiciledMortgage?: BooleanType;
+}
+@ObjectType()
+export class MovieSeries extends CreativeWorkSeries {
+  @Field((type) => Person)
+  director?: Person;
+  @Field((type) => Person)
+  actor?: Person;
+  @Field((type) => VideoObject)
+  trailer?: VideoObject;
+  @Field((type) => Organization)
+  productionCompany?: Organization;
+  @Field((type) => Person)
+  actors?: Person;
+  @Field((type) => MovieSeries_MusicByUnion)
+  musicBy?: MovieSeries_MusicBy;
+  @Field((type) => Person)
+  directors?: Person;
+}
+@ObjectType()
+export class ReturnAction extends TransferAction {
+  @Field((type) => ReturnAction_RecipientUnion)
+  recipient?: ReturnAction_Recipient;
+}
+@ObjectType()
+export class FinancialProduct extends Service {
+  @Field((type) => FinancialProduct_AnnualPercentageRateUnion)
+  annualPercentageRate?: FinancialProduct_AnnualPercentageRate;
+  @Field((type) => FinancialProduct_FeesAndCommissionsSpecificationUnion)
+  feesAndCommissionsSpecification?: FinancialProduct_FeesAndCommissionsSpecification;
+  @Field((type) => FinancialProduct_InterestRateUnion)
+  interestRate?: FinancialProduct_InterestRate;
+}
+@ObjectType()
+export class Book extends CreativeWork {
+  @Field((type) => TextScalar)
+  isbn?: TextType;
+  @Field((type) => Person)
+  illustrator?: Person;
+  @Field((type) => IntegerScalar)
+  numberOfPages?: IntegerType;
+  @Field((type) => BooleanScalar)
+  abridged?: BooleanType;
+  @Field((type) => BookFormatType)
+  bookFormat?: BookFormatType;
+  @Field((type) => TextScalar)
+  bookEdition?: TextType;
+}
+@ObjectType()
+export class VideoObject extends MediaObject {
+  @Field((type) => TextScalar)
+  embeddedTextCaption?: TextType;
+  @Field((type) => Person)
+  director?: Person;
+  @Field((type) => Person)
+  actor?: Person;
+  @Field((type) => VideoObject_CaptionUnion)
+  caption?: VideoObject_Caption;
+  @Field((type) => ImageObject)
+  thumbnail?: ImageObject;
+  @Field((type) => TextScalar)
+  transcript?: TextType;
+  @Field((type) => TextScalar)
+  videoQuality?: TextType;
+  @Field((type) => TextScalar)
+  videoFrameSize?: TextType;
+  @Field((type) => Person)
+  actors?: Person;
+  @Field((type) => VideoObject_MusicByUnion)
+  musicBy?: VideoObject_MusicBy;
+  @Field((type) => Person)
+  directors?: Person;
+}
+@ObjectType()
+export class MusicRelease extends MusicPlaylist {
+  @Field((type) => MusicAlbum)
+  releaseOf?: MusicAlbum;
+  @Field((type) => MusicReleaseFormatType)
+  musicReleaseFormat?: MusicReleaseFormatType;
+  @Field((type) => DurationUnion)
+  duration?: Duration;
+  @Field((type) => MusicRelease_CreditedToUnion)
+  creditedTo?: MusicRelease_CreditedTo;
+  @Field((type) => Organization)
+  recordLabel?: Organization;
+  @Field((type) => TextScalar)
+  catalogNumber?: TextType;
+}
+@ObjectType()
+export class Dataset extends CreativeWork {
+  @Field((type) => DataCatalog)
+  catalog?: DataCatalog;
+  @Field((type) => DataCatalog)
+  includedDataCatalog?: DataCatalog;
+  @Field((type) => Dataset_VariableMeasuredUnion)
+  variableMeasured?: Dataset_VariableMeasured;
+  @Field((type) => Dataset_MeasurementTechniqueUnion)
+  measurementTechnique?: Dataset_MeasurementTechnique;
+  @Field((type) => DateTimeScalar)
+  datasetTimeInterval?: DateTimeType;
+  @Field((type) => DataDownload)
+  distribution?: DataDownload;
+  @Field((type) => TextScalar)
+  issn?: TextType;
+  @Field((type) => DataCatalog)
+  includedInDataCatalog?: DataCatalog;
+}
+@ObjectType()
+export class Physician{
+  @Field((type) => Physician_AvailableServiceUnion)
+  availableService?: Physician_AvailableService;
+  @Field((type) => MedicalSpecialty)
+  medicalSpecialty?: MedicalSpecialty;
+  @Field((type) => Hospital)
+  hospitalAffiliation?: Hospital;
+}
+@ObjectType()
+export class TaxiReservation extends Reservation {
+  @Field((type) => TaxiReservation_PartySizeUnion)
+  partySize?: TaxiReservation_PartySize;
+  @Field((type) => DateTimeScalar)
+  pickupTime?: DateTimeType;
+  @Field((type) => Place)
+  pickupLocation?: Place;
+}
+@ObjectType()
+export class MedicalScholarlyArticle extends ScholarlyArticle {
+  @Field((type) => TextScalar)
+  publicationType?: TextType;
+}
+@ObjectType()
+export class CategoryCodeSet extends DefinedTermSet {
+  @Field((type) => CategoryCode)
+  hasCategoryCode?: CategoryCode;
+}
+@ObjectType()
+export class Taxon extends Thing {
+  @Field((type) => Taxon_ParentTaxonUnion)
+  parentTaxon?: Taxon_ParentTaxon;
+  @Field((type) => Taxon_TaxonRankUnion)
+  taxonRank?: Taxon_TaxonRank;
+  @Field((type) => Taxon_ChildTaxonUnion)
+  childTaxon?: Taxon_ChildTaxon;
+  @Field((type) => DefinedTerm)
+  hasDefinedTerm?: DefinedTerm;
+}
+@ObjectType()
+export class TVSeries{
+  @Field((type) => TVSeries_SeasonUnion)
+  season?: TVSeries_Season;
+  @Field((type) => CreativeWorkSeason)
+  containsSeason?: CreativeWorkSeason;
+  @Field((type) => CountryUnion)
+  countryOfOrigin?: Country;
+  @Field((type) => Person)
+  director?: Person;
+  @Field((type) => Person)
+  actor?: Person;
+  @Field((type) => VideoObject)
+  trailer?: VideoObject;
+  @Field((type) => Episode)
+  episodes?: Episode;
+  @Field((type) => IntegerScalar)
+  numberOfEpisodes?: IntegerType;
+  @Field((type) => CreativeWorkSeason)
+  seasons?: CreativeWorkSeason;
+  @Field((type) => Organization)
+  productionCompany?: Organization;
+  @Field((type) => Person)
+  actors?: Person;
+  @Field((type) => IntegerScalar)
+  numberOfSeasons?: IntegerType;
+  @Field((type) => TVSeries_MusicByUnion)
+  musicBy?: TVSeries_MusicBy;
+  @Field((type) => Episode)
+  episode?: Episode;
+  @Field((type) => Person)
+  directors?: Person;
+}
+@ObjectType()
+export class Service extends Intangible {
+  @Field((type) => Review)
+  review?: Review;
+  @Field((type) => TextScalar)
+  award?: TextType;
+  @Field((type) => Audience)
+  serviceAudience?: Audience;
+  @Field((type) => Service_CategoryUnion)
+  category?: Service_Category;
+  @Field((type) => OpeningHoursSpecification)
+  hoursAvailable?: OpeningHoursSpecification;
+  @Field((type) => Audience)
+  audience?: Audience;
+  @Field((type) => Service_OffersUnion)
+  offers?: Service_Offers;
+  @Field((type) => Thing)
+  serviceOutput?: Thing;
+  @Field((type) => Service_ProviderUnion)
+  provider?: Service_Provider;
+  @Field((type) => Service_TermsOfServiceUnion)
+  termsOfService?: Service_TermsOfService;
+  @Field((type) => TextScalar)
+  providerMobility?: TextType;
+  @Field((type) => Service_BrokerUnion)
+  broker?: Service_Broker;
+  @Field((type) => AggregateRating)
+  aggregateRating?: AggregateRating;
+  @Field((type) => Service_IsSimilarToUnion)
+  isSimilarTo?: Service_IsSimilarTo;
+  @Field((type) => ServiceChannel)
+  availableChannel?: ServiceChannel;
+  @Field((type) => TextScalar)
+  slogan?: TextType;
+  @Field((type) => Service_BrandUnion)
+  brand?: Service_Brand;
+  @Field((type) => Service_LogoUnion)
+  logo?: Service_Logo;
+  @Field((type) => Thing)
+  produces?: Thing;
+  @Field((type) => Service_ServiceAreaUnion)
+  serviceArea?: Service_ServiceArea;
+  @Field((type) => Service_ServiceTypeUnion)
+  serviceType?: Service_ServiceType;
+  @Field((type) => Service_AreaServedUnion)
+  areaServed?: Service_AreaServed;
+  @Field((type) => Service_IsRelatedToUnion)
+  isRelatedTo?: Service_IsRelatedTo;
+  @Field((type) => OfferCatalogUnion)
+  hasOfferCatalog?: OfferCatalog;
+}
+@ObjectType()
+export class VisualArtwork extends CreativeWork {
+  @Field((type) => VisualArtwork_WidthUnion)
+  width?: VisualArtwork_Width;
+  @Field((type) => Person)
+  letterer?: Person;
+  @Field((type) => VisualArtwork_HeightUnion)
+  height?: VisualArtwork_Height;
+  @Field((type) => VisualArtwork_SurfaceUnion)
+  surface?: VisualArtwork_Surface;
+  @Field((type) => Person)
+  colorist?: Person;
+  @Field((type) => Person)
+  inker?: Person;
+  @Field((type) => VisualArtwork_ArtformUnion)
+  artform?: VisualArtwork_Artform;
+  @Field((type) => VisualArtwork_ArtworkSurfaceUnion)
+  artworkSurface?: VisualArtwork_ArtworkSurface;
+  @Field((type) => VisualArtwork_ArtEditionUnion)
+  artEdition?: VisualArtwork_ArtEdition;
+  @Field((type) => VisualArtwork_DepthUnion)
+  depth?: VisualArtwork_Depth;
+  @Field((type) => Person)
+  penciler?: Person;
+  @Field((type) => Person)
+  artist?: Person;
+  @Field((type) => VisualArtwork_ArtMediumUnion)
+  artMedium?: VisualArtwork_ArtMedium;
+}
+@ObjectType()
+export class DefinedTerm extends Intangible {
+  @Field((type) => TextScalar)
+  termCode?: TextType;
+  @Field((type) => DefinedTerm_InDefinedTermSetUnion)
+  inDefinedTermSet?: DefinedTerm_InDefinedTermSet;
+}
+@ObjectType()
+export class Order extends Intangible {
+  @Field((type) => ParcelDelivery)
+  orderDelivery?: ParcelDelivery;
+  @Field((type) => PostalAddress)
+  billingAddress?: PostalAddress;
+  @Field((type) => Offer)
+  acceptedOffer?: Offer;
+  @Field((type) => Order_MerchantUnion)
+  merchant?: Order_Merchant;
+  @Field((type) => OrderStatus)
+  orderStatus?: OrderStatus;
+  @Field((type) => TextScalar)
+  confirmationNumber?: TextType;
+  @Field((type) => Invoice)
+  partOfInvoice?: Invoice;
+  @Field((type) => TextScalar)
+  orderNumber?: TextType;
+  @Field((type) => Order_SellerUnion)
+  seller?: Order_Seller;
+  @Field((type) => Order_CustomerUnion)
+  customer?: Order_Customer;
+  @Field((type) => Order_PaymentDueDateUnion)
+  paymentDueDate?: Order_PaymentDueDate;
+  @Field((type) => Order_BrokerUnion)
+  broker?: Order_Broker;
+  @Field((type) => TextScalar)
+  discountCode?: TextType;
+  @Field((type) => Order_DiscountUnion)
+  discount?: Order_Discount;
+  @Field((type) => TextScalar)
+  paymentMethodId?: TextType;
+  @Field((type) => UrlScalar)
+  paymentUrl?: UrlType;
+  @Field((type) => TextScalar)
+  discountCurrency?: TextType;
+  @Field((type) => DateTimeScalar)
+  paymentDue?: DateTimeType;
+  @Field((type) => Order_OrderDateUnion)
+  orderDate?: Order_OrderDate;
+  @Field((type) => BooleanScalar)
+  isGift?: BooleanType;
+  @Field((type) => Order_OrderedItemUnion)
+  orderedItem?: Order_OrderedItem;
+  @Field((type) => PaymentMethod)
+  paymentMethod?: PaymentMethod;
+}
+@ObjectType()
+export class BusOrCoach extends Vehicle {
+  @Field((type) => QuantitativeValue)
+  roofLoad?: QuantitativeValue;
+  @Field((type) => TextScalar)
+  acrissCode?: TextType;
+}
+@ObjectType()
+export class Claim extends CreativeWork {
+  @Field((type) => Claim_ClaimInterpreterUnion)
+  claimInterpreter?: Claim_ClaimInterpreter;
+  @Field((type) => CreativeWork)
+  firstAppearance?: CreativeWork;
+  @Field((type) => CreativeWork)
+  appearance?: CreativeWork;
+}
+@ObjectType()
+export class AggregateRating extends Rating {
+  @Field((type) => Thing)
+  itemReviewed?: Thing;
+  @Field((type) => IntegerScalar)
+  reviewCount?: IntegerType;
+  @Field((type) => IntegerScalar)
+  ratingCount?: IntegerType;
+}
+@ObjectType()
+export class InvestmentOrDeposit extends FinancialProduct {
+  @Field((type) => InvestmentOrDeposit_AmountUnion)
+  amount?: InvestmentOrDeposit_Amount;
+}
+@ObjectType()
+export class Game extends CreativeWork {
+  @Field((type) => Thing)
+  characterAttribute?: Thing;
+  @Field((type) => Thing)
+  gameItem?: Thing;
+  @Field((type) => QuantitativeValue)
+  numberOfPlayers?: QuantitativeValue;
+  @Field((type) => Thing)
+  quest?: Thing;
+  @Field((type) => Game_GameLocationUnion)
+  gameLocation?: Game_GameLocation;
+}
+@ObjectType()
+export class LegislationObject{
+  @Field((type) => LegalValueLevel)
+  legislationLegalValue?: LegalValueLevel;
+}
+@ObjectType()
+export class PronounceableText extends Text {
+  @Field((type) => TextScalar)
+  phoneticText?: TextType;
+  @Field((type) => TextScalar)
+  speechToTextMarkup?: TextType;
+  @Field((type) => TextScalar)
+  textValue?: TextType;
+  @Field((type) => PronounceableText_InLanguageUnion)
+  inLanguage?: PronounceableText_InLanguage;
+}
+@ObjectType()
+export class SportsTeam extends SportsOrganization {
+  @Field((type) => Person)
+  athlete?: Person;
+  @Field((type) => SportsTeam_GenderUnion)
+  gender?: SportsTeam_Gender;
+  @Field((type) => Person)
+  coach?: Person;
+}
+@ObjectType()
+export class ProductCollection{
+  @Field((type) => TypeAndQuantityNode)
+  includesObject?: TypeAndQuantityNode;
+}
+@ObjectType()
+export class DietarySupplement extends Substance {
+  @Field((type) => TextScalar)
+  targetPopulation?: TextType;
+  @Field((type) => RecommendedDoseScheduleUnion)
+  recommendedIntake?: RecommendedDoseSchedule;
+  @Field((type) => DietarySupplement_LegalStatusUnion)
+  legalStatus?: DietarySupplement_LegalStatus;
+  @Field((type) => TextScalar)
+  mechanismOfAction?: TextType;
+  @Field((type) => MaximumDoseScheduleUnion)
+  maximumIntake?: MaximumDoseSchedule;
+  @Field((type) => TextScalar)
+  activeIngredient?: TextType;
+  @Field((type) => TextScalar)
+  proprietaryName?: TextType;
+  @Field((type) => TextScalar)
+  nonProprietaryName?: TextType;
+  @Field((type) => Organization)
+  manufacturer?: Organization;
+  @Field((type) => BooleanScalar)
+  isProprietary?: BooleanType;
+  @Field((type) => TextScalar)
+  safetyConsideration?: TextType;
+}
+@ObjectType()
+export class UnitPriceSpecification extends PriceSpecification {
+  @Field((type) => UnitPriceSpecification_PriceTypeUnion)
+  priceType?: UnitPriceSpecification_PriceType;
+  @Field((type) => TextScalar)
+  unitText?: TextType;
+  @Field((type) => NumberScalar)
+  billingIncrement?: NumberType;
+  @Field((type) => UnitPriceSpecification_UnitCodeUnion)
+  unitCode?: UnitPriceSpecification_UnitCode;
+  @Field((type) => UnitPriceSpecification_BillingDurationUnion)
+  billingDuration?: UnitPriceSpecification_BillingDuration;
+  @Field((type) => QuantitativeValue)
+  referenceQuantity?: QuantitativeValue;
+  @Field((type) => PriceComponentTypeEnumeration)
+  priceComponentType?: PriceComponentTypeEnumeration;
+  @Field((type) => NumberScalar)
+  billingStart?: NumberType;
+}
+@ObjectType()
+export class CivicStructure extends Place {
+  @Field((type) => TextScalar)
+  openingHours?: TextType;
+}
+@ObjectType()
+export class Schedule extends Intangible {
+  @Field((type) => TextScalar)
+  scheduleTimezone?: TextType;
+  @Field((type) => Schedule_StartDateUnion)
+  startDate?: Schedule_StartDate;
+  @Field((type) => Schedule_ExceptDateUnion)
+  exceptDate?: Schedule_ExceptDate;
+  @Field((type) => Schedule_StartTimeUnion)
+  startTime?: Schedule_StartTime;
+  @Field((type) => IntegerScalar)
+  repeatCount?: IntegerType;
+  @Field((type) => Schedule_EndDateUnion)
+  endDate?: Schedule_EndDate;
+  @Field((type) => Schedule_RepeatFrequencyUnion)
+  repeatFrequency?: Schedule_RepeatFrequency;
+  @Field((type) => DurationUnion)
+  duration?: Duration;
+  @Field((type) => IntegerScalar)
+  byMonthDay?: IntegerType;
+  @Field((type) => Schedule_EndTimeUnion)
+  endTime?: Schedule_EndTime;
+  @Field((type) => IntegerScalar)
+  byMonth?: IntegerType;
+  @Field((type) => Schedule_ByDayUnion)
+  byDay?: Schedule_ByDay;
+  @Field((type) => IntegerScalar)
+  byMonthWeek?: IntegerType;
+}
+@ObjectType()
+export class Message extends CreativeWork {
+  @Field((type) => Message_BccRecipientUnion)
+  bccRecipient?: Message_BccRecipient;
+  @Field((type) => Message_RecipientUnion)
+  recipient?: Message_Recipient;
+  @Field((type) => DateTimeScalar)
+  dateReceived?: DateTimeType;
+  @Field((type) => Message_CcRecipientUnion)
+  ccRecipient?: Message_CcRecipient;
+  @Field((type) => CreativeWork)
+  messageAttachment?: CreativeWork;
+  @Field((type) => Message_ToRecipientUnion)
+  toRecipient?: Message_ToRecipient;
+  @Field((type) => DateTimeScalar)
+  dateSent?: DateTimeType;
+  @Field((type) => Message_DateReadUnion)
+  dateRead?: Message_DateRead;
+  @Field((type) => Message_SenderUnion)
+  sender?: Message_Sender;
+}
+@ObjectType()
+export class BroadcastService extends Service {
+  @Field((type) => BroadcastService)
+  parentService?: BroadcastService;
+  @Field((type) => TextScalar)
+  broadcastDisplayName?: TextType;
+  @Field((type) => TextScalar)
+  videoFormat?: TextType;
+  @Field((type) => TextScalar)
+  broadcastTimezone?: TextType;
+  @Field((type) => BroadcastService_BroadcastFrequencyUnion)
+  broadcastFrequency?: BroadcastService_BroadcastFrequency;
+  @Field((type) => TextScalar)
+  callSign?: TextType;
+  @Field((type) => BroadcastService_InLanguageUnion)
+  inLanguage?: BroadcastService_InLanguage;
+  @Field((type) => BroadcastChannel)
+  hasBroadcastChannel?: BroadcastChannel;
+  @Field((type) => Organization)
+  broadcaster?: Organization;
+  @Field((type) => Organization)
+  broadcastAffiliateOf?: Organization;
+  @Field((type) => Place)
+  area?: Place;
+}
+@ObjectType()
+export class DrugLegalStatus extends MedicalIntangible {
+  @Field((type) => AdministrativeAreaUnion)
+  applicableLocation?: AdministrativeArea;
+}
+@ObjectType()
+export class RepaymentSpecification extends StructuredValue {
+  @Field((type) => NumberScalar)
+  numberOfLoanPayments?: NumberType;
+  @Field((type) => MonetaryAmount)
+  earlyPrepaymentPenalty?: MonetaryAmount;
+  @Field((type) => MonetaryAmount)
+  loanPaymentAmount?: MonetaryAmount;
+  @Field((type) => NumberScalar)
+  loanPaymentFrequency?: NumberType;
+  @Field((type) => RepaymentSpecification_DownPaymentUnion)
+  downPayment?: RepaymentSpecification_DownPayment;
+}
+@ObjectType()
+export class Muscle extends AnatomicalStructure {
+  @Field((type) => AnatomicalStructure)
+  insertion?: AnatomicalStructure;
+  @Field((type) => Muscle)
+  antagonist?: Muscle;
+  @Field((type) => Nerve)
+  nerve?: Nerve;
+  @Field((type) => VesselUnion)
+  bloodSupply?: Vessel;
+  @Field((type) => TextScalar)
+  muscleAction?: TextType;
+}
+@ObjectType()
+export class Demand extends Intangible {
+  @Field((type) => TextScalar)
+  gtin12?: TextType;
+  @Field((type) => Demand_ItemOfferedUnion)
+  itemOffered?: Demand_ItemOffered;
+  @Field((type) => TextScalar)
+  mpn?: TextType;
+  @Field((type) => TypeAndQuantityNode)
+  includesObject?: TypeAndQuantityNode;
+  @Field((type) => BusinessFunction)
+  businessFunction?: BusinessFunction;
+  @Field((type) => OfferItemCondition)
+  itemCondition?: OfferItemCondition;
+  @Field((type) => TextScalar)
+  gtin?: TextType;
+  @Field((type) => QuantitativeValue)
+  eligibleQuantity?: QuantitativeValue;
+  @Field((type) => Demand_AcceptedPaymentMethodUnion)
+  acceptedPaymentMethod?: Demand_AcceptedPaymentMethod;
+  @Field((type) => WarrantyPromise)
+  warranty?: WarrantyPromise;
+  @Field((type) => Demand_SellerUnion)
+  seller?: Demand_Seller;
+  @Field((type) => Demand_IneligibleRegionUnion)
+  ineligibleRegion?: Demand_IneligibleRegion;
+  @Field((type) => QuantitativeValue)
+  deliveryLeadTime?: QuantitativeValue;
+  @Field((type) => DeliveryMethod)
+  availableDeliveryMethod?: DeliveryMethod;
+  @Field((type) => Demand_ValidFromUnion)
+  validFrom?: Demand_ValidFrom;
+  @Field((type) => Demand_AvailabilityEndsUnion)
+  availabilityEnds?: Demand_AvailabilityEnds;
+  @Field((type) => Demand_EligibleRegionUnion)
+  eligibleRegion?: Demand_EligibleRegion;
+  @Field((type) => TextScalar)
+  gtin8?: TextType;
+  @Field((type) => QuantitativeValue)
+  inventoryLevel?: QuantitativeValue;
+  @Field((type) => TextScalar)
+  sku?: TextType;
+  @Field((type) => QuantitativeValue)
+  advanceBookingRequirement?: QuantitativeValue;
+  @Field((type) => TextScalar)
+  gtin14?: TextType;
+  @Field((type) => PriceSpecification)
+  eligibleTransactionVolume?: PriceSpecification;
+  @Field((type) => Demand_AreaServedUnion)
+  areaServed?: Demand_AreaServed;
+  @Field((type) => BusinessEntityType)
+  eligibleCustomerType?: BusinessEntityType;
+  @Field((type) => ItemAvailability)
+  availability?: ItemAvailability;
+  @Field((type) => TextScalar)
+  gtin13?: TextType;
+  @Field((type) => Demand_ValidThroughUnion)
+  validThrough?: Demand_ValidThrough;
+  @Field((type) => PriceSpecification)
+  priceSpecification?: PriceSpecification;
+  @Field((type) => Demand_AvailabilityStartsUnion)
+  availabilityStarts?: Demand_AvailabilityStarts;
+  @Field((type) => QuantitativeValue)
+  eligibleDuration?: QuantitativeValue;
+  @Field((type) => Place)
+  availableAtOrFrom?: Place;
+  @Field((type) => TextScalar)
+  serialNumber?: TextType;
+}
+@ObjectType()
+export class WebAPI extends Service {
+  @Field((type) => WebAPI_DocumentationUnion)
+  documentation?: WebAPI_Documentation;
+}
+@ObjectType()
+export class ShippingDeliveryTime extends StructuredValue {
+  @Field((type) => QuantitativeValue)
+  transitTime?: QuantitativeValue;
+  @Field((type) => OpeningHoursSpecification)
+  businessDays?: OpeningHoursSpecification;
+  @Field((type) => QuantitativeValue)
+  handlingTime?: QuantitativeValue;
+  @Field((type) => TimeScalar)
+  cutoffTime?: TimeType;
+}
+@ObjectType()
+export class LymphaticVessel extends Vessel {
+  @Field((type) => VesselUnion)
+  runsTo?: Vessel;
+  @Field((type) => LymphaticVessel_RegionDrainedUnion)
+  regionDrained?: LymphaticVessel_RegionDrained;
+  @Field((type) => VesselUnion)
+  originatesFrom?: Vessel;
+}
+@ObjectType()
+export class Product extends Thing {
+  @Field((type) => Product)
+  isAccessoryOrSparePartFor?: Product;
+  @Field((type) => AdultOrientedEnumeration)
+  hasAdultConsideration?: AdultOrientedEnumeration;
+  @Field((type) => TextScalar)
+  gtin12?: TextType;
+  @Field((type) => TextScalar)
+  nsn?: TextType;
+  @Field((type) => Product_MaterialUnion)
+  material?: Product_Material;
+  @Field((type) => Review)
+  review?: Review;
+  @Field((type) => TextScalar)
+  award?: TextType;
+  @Field((type) => Product_WidthUnion)
+  width?: Product_Width;
+  @Field((type) => CountryUnion)
+  countryOfOrigin?: Country;
+  @Field((type) => Product_PatternUnion)
+  pattern?: Product_Pattern;
+  @Field((type) => Product_CategoryUnion)
+  category?: Product_Category;
+  @Field((type) => Grant)
+  funding?: Grant;
+  @Field((type) => TextScalar)
+  mpn?: TextType;
+  @Field((type) => Product_HeightUnion)
+  height?: Product_Height;
+  @Field((type) => Product_KeywordsUnion)
+  keywords?: Product_Keywords;
+  @Field((type) => DateScalar)
+  purchaseDate?: DateType;
+  @Field((type) => EnergyConsumptionDetails)
+  hasEnergyConsumptionDetails?: EnergyConsumptionDetails;
+  @Field((type) => Audience)
+  audience?: Audience;
+  @Field((type) => Product_OffersUnion)
+  offers?: Product_Offers;
+  @Field((type) => DateScalar)
+  productionDate?: DateType;
+  @Field((type) => OfferItemCondition)
+  itemCondition?: OfferItemCondition;
+  @Field((type) => TextScalar)
+  awards?: TextType;
+  @Field((type) => TextScalar)
+  gtin?: TextType;
+  @Field((type) => TextScalar)
+  productID?: TextType;
+  @Field((type) => TextScalar)
+  countryOfAssembly?: TextType;
+  @Field((type) => TextScalar)
+  color?: TextType;
+  @Field((type) => AggregateRating)
+  aggregateRating?: AggregateRating;
+  @Field((type) => Product_IsSimilarToUnion)
+  isSimilarTo?: Product_IsSimilarTo;
+  @Field((type) => Product_DepthUnion)
+  depth?: Product_Depth;
+  @Field((type) => TextScalar)
+  countryOfLastProcessing?: TextType;
+  @Field((type) => Product_IsVariantOfUnion)
+  isVariantOf?: Product_IsVariantOf;
+  @Field((type) => TextScalar)
+  slogan?: TextType;
+  @Field((type) => Product_BrandUnion)
+  brand?: Product_Brand;
+  @Field((type) => Organization)
+  manufacturer?: Organization;
+  @Field((type) => QuantitativeValue)
+  hasMeasurement?: QuantitativeValue;
+  @Field((type) => Product)
+  isConsumableFor?: Product;
+  @Field((type) => Product_LogoUnion)
+  logo?: Product_Logo;
+  @Field((type) => TextScalar)
+  gtin8?: TextType;
+  @Field((type) => TextScalar)
+  sku?: TextType;
+  @Field((type) => TextScalar)
+  inProductGroupWithID?: TextType;
+  @Field((type) => Product_ModelUnion)
+  model?: Product_Model;
+  @Field((type) => MerchantReturnPolicy)
+  hasMerchantReturnPolicy?: MerchantReturnPolicy;
+  @Field((type) => DateScalar)
+  releaseDate?: DateType;
+  @Field((type) => TextScalar)
+  gtin14?: TextType;
+  @Field((type) => QuantitativeValue)
+  weight?: QuantitativeValue;
+  @Field((type) => Product_SizeUnion)
+  size?: Product_Size;
+  @Field((type) => PropertyValue)
+  additionalProperty?: PropertyValue;
+  @Field((type) => TextScalar)
+  gtin13?: TextType;
+  @Field((type) => Review)
+  reviews?: Review;
+  @Field((type) => BooleanScalar)
+  isFamilyFriendly?: BooleanType;
+  @Field((type) => Product_IsRelatedToUnion)
+  isRelatedTo?: Product_IsRelatedTo;
+}
+@ObjectType()
+export class BroadcastChannel extends Intangible {
+  @Field((type) => BroadcastChannel_GenreUnion)
+  genre?: BroadcastChannel_Genre;
+  @Field((type) => BroadcastChannel_BroadcastFrequencyUnion)
+  broadcastFrequency?: BroadcastChannel_BroadcastFrequency;
+  @Field((type) => BroadcastService)
+  providesBroadcastService?: BroadcastService;
+  @Field((type) => TextScalar)
+  broadcastChannelId?: TextType;
+  @Field((type) => CableOrSatelliteServiceUnion)
+  inBroadcastLineup?: CableOrSatelliteService;
+  @Field((type) => TextScalar)
+  broadcastServiceTier?: TextType;
+}
+@ObjectType()
+export class WebSite extends CreativeWork {
+  @Field((type) => TextScalar)
+  issn?: TextType;
+}
+@ObjectType()
+export class MedicalRiskFactor extends MedicalEntity {
+  @Field((type) => MedicalEntity)
+  increasesRiskOf?: MedicalEntity;
+}
+@ObjectType()
+export class PhysicalActivity extends LifestyleModification {
+  @Field((type) => PhysicalActivity_CategoryUnion)
+  category?: PhysicalActivity_Category;
+  @Field((type) => TextScalar)
+  pathophysiology?: TextType;
+  @Field((type) => PhysicalActivity_AssociatedAnatomyUnion)
+  associatedAnatomy?: PhysicalActivity_AssociatedAnatomy;
+  @Field((type) => TextScalar)
+  epidemiology?: TextType;
+}
+@ObjectType()
+export class CreativeWorkSeason extends CreativeWork {
+  @Field((type) => CreativeWorkSeason_StartDateUnion)
+  startDate?: CreativeWorkSeason_StartDate;
+  @Field((type) => Person)
+  director?: Person;
+  @Field((type) => Person)
+  actor?: Person;
+  @Field((type) => VideoObject)
+  trailer?: VideoObject;
+  @Field((type) => CreativeWorkSeason_EndDateUnion)
+  endDate?: CreativeWorkSeason_EndDate;
+  @Field((type) => Episode)
+  episodes?: Episode;
+  @Field((type) => IntegerScalar)
+  numberOfEpisodes?: IntegerType;
+  @Field((type) => CreativeWorkSeries)
+  partOfSeries?: CreativeWorkSeries;
+  @Field((type) => Organization)
+  productionCompany?: Organization;
+  @Field((type) => CreativeWorkSeason_SeasonNumberUnion)
+  seasonNumber?: CreativeWorkSeason_SeasonNumber;
+  @Field((type) => Episode)
+  episode?: Episode;
+}
+@ObjectType()
+export class Chapter extends CreativeWork {
+  @Field((type) => Chapter_PageStartUnion)
+  pageStart?: Chapter_PageStart;
+  @Field((type) => Chapter_PageEndUnion)
+  pageEnd?: Chapter_PageEnd;
+  @Field((type) => TextScalar)
+  pagination?: TextType;
+}
+@ObjectType()
+export class EducationalOccupationalProgram extends Intangible {
+  @Field((type) => EducationalOccupationalProgram_ProgramPrerequisitesUnion)
+  programPrerequisites?: EducationalOccupationalProgram_ProgramPrerequisites;
+  @Field((type) => Course)
+  hasCourse?: Course;
+  @Field((type) => EducationalOccupationalProgram_StartDateUnion)
+  startDate?: EducationalOccupationalProgram_StartDate;
+  @Field((type) => MonetaryAmountDistribution)
+  salaryUponCompletion?: MonetaryAmountDistribution;
+  @Field((type) => NumberScalar)
+  termsPerYear?: NumberType;
+  @Field((type) => DayOfWeek)
+  dayOfWeek?: DayOfWeek;
+  @Field((type) => EducationalOccupationalProgram_OffersUnion)
+  offers?: EducationalOccupationalProgram_Offers;
+  @Field((type) => EducationalOccupationalProgram_TypicalCreditsPerTermUnion)
+  typicalCreditsPerTerm?: EducationalOccupationalProgram_TypicalCreditsPerTerm;
+  @Field((type) => DateScalar)
+  applicationStartDate?: DateType;
+  @Field((type) => TextScalar)
+  timeOfDay?: TextType;
+  @Field((type) => EducationalOccupationalProgram_EndDateUnion)
+  endDate?: EducationalOccupationalProgram_EndDate;
+  @Field((type) => EducationalOccupationalProgram_ProviderUnion)
+  provider?: EducationalOccupationalProgram_Provider;
+  @Field((type) => MonetaryAmountDistribution)
+  trainingSalary?: MonetaryAmountDistribution;
+  @Field((type) => EducationalOccupationalProgram_EducationalCredentialAwardedUnion)
+  educationalCredentialAwarded?: EducationalOccupationalProgram_EducationalCredentialAwarded;
+  @Field((type) => EducationalOccupationalProgram_NumberOfCreditsUnion)
+  numberOfCredits?: EducationalOccupationalProgram_NumberOfCredits;
+  @Field((type) => DurationUnion)
+  timeToComplete?: Duration;
+  @Field((type) => EducationalOccupationalProgram_OccupationalCredentialAwardedUnion)
+  occupationalCredentialAwarded?: EducationalOccupationalProgram_OccupationalCredentialAwarded;
+  @Field((type) => DurationUnion)
+  termDuration?: Duration;
+  @Field((type) => EducationalOccupationalProgram_EducationalProgramModeUnion)
+  educationalProgramMode?: EducationalOccupationalProgram_EducationalProgramMode;
+  @Field((type) => EducationalOccupationalProgram_ProgramTypeUnion)
+  programType?: EducationalOccupationalProgram_ProgramType;
+  @Field((type) => IntegerScalar)
+  maximumEnrollment?: IntegerType;
+  @Field((type) => EducationalOccupationalProgram_FinancialAidEligibleUnion)
+  financialAidEligible?: EducationalOccupationalProgram_FinancialAidEligible;
+  @Field((type) => DateScalar)
+  applicationDeadline?: DateType;
+  @Field((type) => EducationalOccupationalProgram_OccupationalCategoryUnion)
+  occupationalCategory?: EducationalOccupationalProgram_OccupationalCategory;
+}
+@ObjectType()
+export class ApartmentComplex extends Residence {
+  @Field((type) => QuantitativeValue)
+  numberOfAccommodationUnits?: QuantitativeValue;
+  @Field((type) => QuantitativeValue)
+  numberOfAvailableAccommodationUnits?: QuantitativeValue;
+  @Field((type) => UrlScalar)
+  tourBookingPage?: UrlType;
+  @Field((type) => ApartmentComplex_NumberOfBedroomsUnion)
+  numberOfBedrooms?: ApartmentComplex_NumberOfBedrooms;
+  @Field((type) => ApartmentComplex_PetsAllowedUnion)
+  petsAllowed?: ApartmentComplex_PetsAllowed;
+}
+@ObjectType()
+export class PropertyValueSpecification extends Intangible {
+  @Field((type) => NumberScalar)
+  valueMaxLength?: NumberType;
+  @Field((type) => BooleanScalar)
+  readonlyValue?: BooleanType;
+  @Field((type) => NumberScalar)
+  maxValue?: NumberType;
+  @Field((type) => TextScalar)
+  valueName?: TextType;
+  @Field((type) => PropertyValueSpecification_DefaultValueUnion)
+  defaultValue?: PropertyValueSpecification_DefaultValue;
+  @Field((type) => NumberScalar)
+  valueMinLength?: NumberType;
+  @Field((type) => BooleanScalar)
+  valueRequired?: BooleanType;
+  @Field((type) => NumberScalar)
+  minValue?: NumberType;
+  @Field((type) => TextScalar)
+  valuePattern?: TextType;
+  @Field((type) => NumberScalar)
+  stepValue?: NumberType;
+  @Field((type) => BooleanScalar)
+  multipleValues?: BooleanType;
+}
+@ObjectType()
+export class MediaObject extends CreativeWork {
+  @Field((type) => TextScalar)
+  contentSize?: TextType;
+  @Field((type) => UrlScalar)
+  contentUrl?: UrlType;
+  @Field((type) => MediaObject_WidthUnion)
+  width?: MediaObject_Width;
+  @Field((type) => MediaObject_HeightUnion)
+  height?: MediaObject_Height;
+  @Field((type) => Place)
+  regionsAllowed?: Place;
+  @Field((type) => MediaObject_StartTimeUnion)
+  startTime?: MediaObject_StartTime;
+  @Field((type) => NewsArticle)
+  associatedArticle?: NewsArticle;
+  @Field((type) => MediaObject_IneligibleRegionUnion)
+  ineligibleRegion?: MediaObject_IneligibleRegion;
+  @Field((type) => MediaObject_RequiresSubscriptionUnion)
+  requiresSubscription?: MediaObject_RequiresSubscription;
+  @Field((type) => TextScalar)
+  playerType?: TextType;
+  @Field((type) => CreativeWork)
+  encodesCreativeWork?: CreativeWork;
+  @Field((type) => DurationUnion)
+  duration?: Duration;
+  @Field((type) => MediaObject_EncodingFormatUnion)
+  encodingFormat?: MediaObject_EncodingFormat;
+  @Field((type) => DateScalar)
+  uploadDate?: DateType;
+  @Field((type) => UrlScalar)
+  embedUrl?: UrlType;
+  @Field((type) => TextScalar)
+  bitrate?: TextType;
+  @Field((type) => MediaObject_EndTimeUnion)
+  endTime?: MediaObject_EndTime;
+  @Field((type) => Organization)
+  productionCompany?: Organization;
+  @Field((type) => TextScalar)
+  sha256?: TextType;
+  @Field((type) => Claim)
+  interpretedAsClaim?: Claim;
+}
+@ObjectType()
+export class RsvpAction extends InformAction {
+  @Field((type) => RsvpResponseType)
+  rsvpResponse?: RsvpResponseType;
+  @Field((type) => Comment)
+  comment?: Comment;
+  @Field((type) => NumberScalar)
+  additionalNumberOfGuests?: NumberType;
+}
+@ObjectType()
+export class ChooseAction extends AssessAction {
+  @Field((type) => ChooseAction_OptionUnion)
+  option?: ChooseAction_Option;
+  @Field((type) => ChooseAction_ActionOptionUnion)
+  actionOption?: ChooseAction_ActionOption;
+}
+@ObjectType()
+export class AudioObject extends MediaObject {
+  @Field((type) => TextScalar)
+  embeddedTextCaption?: TextType;
+  @Field((type) => AudioObject_CaptionUnion)
+  caption?: AudioObject_Caption;
+  @Field((type) => TextScalar)
+  transcript?: TextType;
+}
+@ObjectType()
+export class Review extends CreativeWork {
+  @Field((type) => Rating)
+  reviewRating?: Rating;
+  @Field((type) => Thing)
+  itemReviewed?: Thing;
+  @Field((type) => Review_NegativeNotesUnion)
+  negativeNotes?: Review_NegativeNotes;
+  @Field((type) => TextScalar)
+  reviewAspect?: TextType;
+  @Field((type) => Review)
+  associatedClaimReview?: Review;
+  @Field((type) => Review_PositiveNotesUnion)
+  positiveNotes?: Review_PositiveNotes;
+  @Field((type) => Review)
+  associatedReview?: Review;
+  @Field((type) => Review)
+  associatedMediaReview?: Review;
+  @Field((type) => TextScalar)
+  reviewBody?: TextType;
+}
+@ObjectType()
+export class MoveAction extends Action {
+  @Field((type) => Place)
+  fromLocation?: Place;
+  @Field((type) => Place)
+  toLocation?: Place;
+}
+@ObjectType()
+export class NewsArticle extends Article {
+  @Field((type) => TextScalar)
+  printEdition?: TextType;
+  @Field((type) => TextScalar)
+  printColumn?: TextType;
+  @Field((type) => TextScalar)
+  printPage?: TextType;
+  @Field((type) => TextScalar)
+  printSection?: TextType;
+  @Field((type) => TextScalar)
+  dateline?: TextType;
+}
+@ObjectType()
+export class ScreeningEvent extends Event {
+  @Field((type) => ScreeningEvent_SubtitleLanguageUnion)
+  subtitleLanguage?: ScreeningEvent_SubtitleLanguage;
+  @Field((type) => TextScalar)
+  videoFormat?: TextType;
+  @Field((type) => Movie)
+  workPresented?: Movie;
+}
+@ObjectType()
+export class OwnershipInfo extends StructuredValue {
+  @Field((type) => DateTimeScalar)
+  ownedFrom?: DateTimeType;
+  @Field((type) => OwnershipInfo_TypeOfGoodUnion)
+  typeOfGood?: OwnershipInfo_TypeOfGood;
+  @Field((type) => OwnershipInfo_AcquiredFromUnion)
+  acquiredFrom?: OwnershipInfo_AcquiredFrom;
+  @Field((type) => DateTimeScalar)
+  ownedThrough?: DateTimeType;
+}
+@ObjectType()
+export class Movie extends CreativeWork {
+  @Field((type) => CountryUnion)
+  countryOfOrigin?: Country;
+  @Field((type) => Person)
+  director?: Person;
+  @Field((type) => Movie_TitleEIDRUnion)
+  titleEIDR?: Movie_TitleEIDR;
+  @Field((type) => Movie_SubtitleLanguageUnion)
+  subtitleLanguage?: Movie_SubtitleLanguage;
+  @Field((type) => Person)
+  actor?: Person;
+  @Field((type) => VideoObject)
+  trailer?: VideoObject;
+  @Field((type) => DurationUnion)
+  duration?: Duration;
+  @Field((type) => Organization)
+  productionCompany?: Organization;
+  @Field((type) => Person)
+  actors?: Person;
+  @Field((type) => Movie_MusicByUnion)
+  musicBy?: Movie_MusicBy;
+  @Field((type) => Person)
+  directors?: Person;
+}
+@ObjectType()
+export class Thing{
+  @Field((type) => Thing_MainEntityOfPageUnion)
+  mainEntityOfPage?: Thing_MainEntityOfPage;
+  @Field((type) => TextScalar)
+  alternateName?: TextType;
+  @Field((type) => TextScalar)
+  name?: TextType;
+  @Field((type) => Action)
+  potentialAction?: Action;
+  @Field((type) => Thing_ImageUnion)
+  image?: Thing_Image;
+  @Field((type) => UrlScalar)
+  url?: UrlType;
+  @Field((type) => TextScalar)
+  description?: TextType;
+  @Field((type) => Thing_SubjectOfUnion)
+  subjectOf?: Thing_SubjectOf;
+  @Field((type) => UrlScalar)
+  additionalType?: UrlType;
+  @Field((type) => TextScalar)
+  disambiguatingDescription?: TextType;
+  @Field((type) => UrlScalar)
+  sameAs?: UrlType;
+  @Field((type) => Thing_IdentifierUnion)
+  identifier?: Thing_Identifier;
+}
+@ObjectType()
+export class BedDetails extends Intangible {
+  @Field((type) => BedDetails_TypeOfBedUnion)
+  typeOfBed?: BedDetails_TypeOfBed;
+  @Field((type) => NumberScalar)
+  numberOfBeds?: NumberType;
+}
+@ObjectType()
+export class SellAction extends TradeAction {
+  @Field((type) => WarrantyPromise)
+  warrantyPromise?: WarrantyPromise;
+  @Field((type) => SellAction_BuyerUnion)
+  buyer?: SellAction_Buyer;
+}
+@ObjectType()
+export class RentalCarReservation extends Reservation {
+  @Field((type) => Place)
+  dropoffLocation?: Place;
+  @Field((type) => DateTimeScalar)
+  dropoffTime?: DateTimeType;
+  @Field((type) => DateTimeScalar)
+  pickupTime?: DateTimeType;
+  @Field((type) => Place)
+  pickupLocation?: Place;
+}
+@ObjectType()
+export class MediaReviewItem extends CreativeWork {
+  @Field((type) => MediaObject)
+  mediaItemAppearance?: MediaObject;
+}
+@ObjectType()
+export class Seat extends Intangible {
+  @Field((type) => Seat_SeatingTypeUnion)
+  seatingType?: Seat_SeatingType;
+  @Field((type) => TextScalar)
+  seatSection?: TextType;
+  @Field((type) => TextScalar)
+  seatRow?: TextType;
+  @Field((type) => TextScalar)
+  seatNumber?: TextType;
+}
+@ObjectType()
+export class MovieTheater{
+  @Field((type) => NumberScalar)
+  screenCount?: NumberType;
+}
+@ObjectType()
+export class PerformAction extends PlayAction {
+  @Field((type) => EntertainmentBusinessUnion)
+  entertainmentBusiness?: EntertainmentBusiness;
+}
+@ObjectType()
+export class CategoryCode extends DefinedTerm {
+  @Field((type) => TextScalar)
+  codeValue?: TextType;
+  @Field((type) => CategoryCode_InCodeSetUnion)
+  inCodeSet?: CategoryCode_InCodeSet;
+}
+@ObjectType()
+export class BroadcastFrequencySpecification extends Intangible {
+  @Field((type) => TextScalar)
+  broadcastSubChannel?: TextType;
+  @Field((type) => BroadcastFrequencySpecification_BroadcastSignalModulationUnion)
+  broadcastSignalModulation?: BroadcastFrequencySpecification_BroadcastSignalModulation;
+  @Field((type) => BroadcastFrequencySpecification_BroadcastFrequencyValueUnion)
+  broadcastFrequencyValue?: BroadcastFrequencySpecification_BroadcastFrequencyValue;
+}
+@ObjectType()
+export class SolveMathAction extends Action {
+  @Field((type) => TextScalar)
+  eduQuestionType?: TextType;
+}
+@ObjectType()
+export class BroadcastEvent extends PublicationEvent {
+  @Field((type) => BroadcastEvent_SubtitleLanguageUnion)
+  subtitleLanguage?: BroadcastEvent_SubtitleLanguage;
+  @Field((type) => TextScalar)
+  videoFormat?: TextType;
+  @Field((type) => Event)
+  broadcastOfEvent?: Event;
+  @Field((type) => BooleanScalar)
+  isLiveBroadcast?: BooleanType;
+}
+@ObjectType()
+export class IndividualProduct extends Product {
+  @Field((type) => TextScalar)
+  serialNumber?: TextType;
+}
+@ObjectType()
+export class InfectiousDisease extends MedicalCondition {
+  @Field((type) => InfectiousAgentClass)
+  infectiousAgentClass?: InfectiousAgentClass;
+  @Field((type) => TextScalar)
+  infectiousAgent?: TextType;
+  @Field((type) => TextScalar)
+  transmissionMethod?: TextType;
+}
+@ObjectType()
+export class ReplyAction extends CommunicateAction {
+  @Field((type) => Comment)
+  resultComment?: Comment;
+}
+@ObjectType()
+export class PalliativeProcedure{
+}
+@ObjectType()
+export class EngineSpecification extends StructuredValue {
+  @Field((type) => EngineSpecification_FuelTypeUnion)
+  fuelType?: EngineSpecification_FuelType;
+  @Field((type) => QuantitativeValue)
+  torque?: QuantitativeValue;
+  @Field((type) => QuantitativeValue)
+  engineDisplacement?: QuantitativeValue;
+  @Field((type) => QuantitativeValue)
+  enginePower?: QuantitativeValue;
+  @Field((type) => EngineSpecification_EngineTypeUnion)
+  engineType?: EngineSpecification_EngineType;
+}
+@ObjectType()
+export class SendAction extends TransferAction {
+  @Field((type) => SendAction_RecipientUnion)
+  recipient?: SendAction_Recipient;
+  @Field((type) => DeliveryMethod)
+  deliveryMethod?: DeliveryMethod;
+}
+@ObjectType()
+export class Report extends Article {
+  @Field((type) => TextScalar)
+  reportNumber?: TextType;
+}
+@ObjectType()
+export class DoseSchedule extends MedicalIntangible {
+  @Field((type) => TextScalar)
+  targetPopulation?: TextType;
+  @Field((type) => TextScalar)
+  frequency?: TextType;
+  @Field((type) => TextScalar)
+  doseUnit?: TextType;
+  @Field((type) => DoseSchedule_DoseValueUnion)
+  doseValue?: DoseSchedule_DoseValue;
+}
+@ObjectType()
+export class UpdateAction extends Action {
+  @Field((type) => Thing)
+  targetCollection?: Thing;
+  @Field((type) => Thing)
+  collection?: Thing;
+}
+@ObjectType()
+export class DefinedTermSet extends CreativeWork {
+  @Field((type) => DefinedTerm)
+  hasDefinedTerm?: DefinedTerm;
+}
+@ObjectType()
+export class LoseAction extends AchieveAction {
+  @Field((type) => Person)
+  winner?: Person;
+}
+@ObjectType()
+export class OrderAction extends TradeAction {
+  @Field((type) => DeliveryMethod)
+  deliveryMethod?: DeliveryMethod;
+}
+@ObjectType()
+export class ComicIssue extends PublicationIssue {
+  @Field((type) => Person)
+  letterer?: Person;
+  @Field((type) => Person)
+  colorist?: Person;
+  @Field((type) => TextScalar)
+  variantCover?: TextType;
+  @Field((type) => Person)
+  inker?: Person;
+  @Field((type) => Person)
+  penciler?: Person;
+  @Field((type) => Person)
+  artist?: Person;
+}
+@ObjectType()
+export class CommunicateAction extends InteractAction {
+  @Field((type) => CommunicateAction_RecipientUnion)
+  recipient?: CommunicateAction_Recipient;
+  @Field((type) => CommunicateAction_InLanguageUnion)
+  inLanguage?: CommunicateAction_InLanguage;
+  @Field((type) => LanguageUnion)
+  language?: Language;
+  @Field((type) => Thing)
+  about?: Thing;
+}
+@ObjectType()
+export class ArchiveOrganization extends LocalBusiness {
+  @Field((type) => ArchiveComponent)
+  archiveHeld?: ArchiveComponent;
+}
+@ObjectType()
+export class MobileApplication extends SoftwareApplication {
+  @Field((type) => TextScalar)
+  carrierRequirements?: TextType;
+}
+@ObjectType()
+export class Blog extends CreativeWork {
+  @Field((type) => BlogPostingUnion)
+  blogPosts?: BlogPosting;
+  @Field((type) => TextScalar)
+  issn?: TextType;
+  @Field((type) => BlogPostingUnion)
+  blogPost?: BlogPosting;
+}
+@ObjectType()
+export class RentAction extends TradeAction {
+  @Field((type) => RentAction_LandlordUnion)
+  landlord?: RentAction_Landlord;
+  @Field((type) => RealEstateAgentUnion)
+  realEstateAgent?: RealEstateAgent;
+}
+@ObjectType()
+export class PhysicalExam{
+}
+@ObjectType()
+export class CreditCard{
+}
+@ObjectType()
+export class GeoShape extends StructuredValue {
+  @Field((type) => GeoShape_AddressCountryUnion)
+  addressCountry?: GeoShape_AddressCountry;
+  @Field((type) => TextScalar)
+  circle?: TextType;
+  @Field((type) => TextScalar)
+  line?: TextType;
+  @Field((type) => TextScalar)
+  polygon?: TextType;
+  @Field((type) => GeoShape_AddressUnion)
+  address?: GeoShape_Address;
+  @Field((type) => TextScalar)
+  postalCode?: TextType;
+  @Field((type) => GeoShape_ElevationUnion)
+  elevation?: GeoShape_Elevation;
+  @Field((type) => TextScalar)
+  box?: TextType;
+}
+@ObjectType()
+export class House extends Accommodation {
+  @Field((type) => House_NumberOfRoomsUnion)
+  numberOfRooms?: House_NumberOfRooms;
+}
+@ObjectType()
+export class ConsumeAction extends Action {
+  @Field((type) => Offer)
+  expectsAcceptanceOf?: Offer;
+  @Field((type) => ActionAccessSpecification)
+  actionAccessibilityRequirement?: ActionAccessSpecification;
+}
+@ObjectType()
+export class HowToSection{
+  @Field((type) => HowToSection_StepsUnion)
+  steps?: HowToSection_Steps;
+}
+@ObjectType()
+export class APIReference extends TechArticle {
+  @Field((type) => TextScalar)
+  assembly?: TextType;
+  @Field((type) => TextScalar)
+  targetPlatform?: TextType;
+  @Field((type) => TextScalar)
+  executableLibraryName?: TextType;
+  @Field((type) => TextScalar)
+  programmingModel?: TextType;
+  @Field((type) => TextScalar)
+  assemblyVersion?: TextType;
+}
+@ObjectType()
+export class SoftwareSourceCode extends CreativeWork {
+  @Field((type) => SoftwareSourceCode_ProgrammingLanguageUnion)
+  programmingLanguage?: SoftwareSourceCode_ProgrammingLanguage;
+  @Field((type) => TextScalar)
+  sampleType?: TextType;
+  @Field((type) => TextScalar)
+  runtimePlatform?: TextType;
+  @Field((type) => TextScalar)
+  runtime?: TextType;
+  @Field((type) => SoftwareApplication)
+  targetProduct?: SoftwareApplication;
+  @Field((type) => UrlScalar)
+  codeRepository?: UrlType;
+  @Field((type) => TextScalar)
+  codeSampleType?: TextType;
+}
+@ObjectType()
+export class ThreeDModel extends MediaObject {
+  @Field((type) => BooleanScalar)
+  isResizable?: BooleanType;
+}
+@ObjectType()
+export class MusicGroup extends PerformingGroup {
+  @Field((type) => MusicRecording)
+  tracks?: MusicRecording;
+  @Field((type) => MusicGroup_GenreUnion)
+  genre?: MusicGroup_Genre;
+  @Field((type) => Person)
+  musicGroupMember?: Person;
+  @Field((type) => MusicAlbum)
+  albums?: MusicAlbum;
+  @Field((type) => MusicGroup_TrackUnion)
+  track?: MusicGroup_Track;
+  @Field((type) => MusicAlbum)
+  album?: MusicAlbum;
+}
+@ObjectType()
+export class Guide extends CreativeWork {
+  @Field((type) => TextScalar)
+  reviewAspect?: TextType;
+}
+@ObjectType()
+export class EducationEvent extends Event {
+  @Field((type) => EducationEvent_TeachesUnion)
+  teaches?: EducationEvent_Teaches;
+  @Field((type) => EducationEvent_EducationalLevelUnion)
+  educationalLevel?: EducationEvent_EducationalLevel;
+  @Field((type) => EducationEvent_AssessesUnion)
+  assesses?: EducationEvent_Assesses;
+}
+@ObjectType()
+export class ArchiveComponent extends CreativeWork {
+  @Field((type) => ArchiveOrganization)
+  holdingArchive?: ArchiveOrganization;
+  @Field((type) => ArchiveComponent_ItemLocationUnion)
+  itemLocation?: ArchiveComponent_ItemLocation;
+}
+@ObjectType()
+export class TVSeason{
+  @Field((type) => CountryUnion)
+  countryOfOrigin?: Country;
+  @Field((type) => TVSeries)
+  partOfTVSeries?: TVSeries;
+}
+@ObjectType()
+export class Recipe extends HowTo {
+  @Field((type) => Recipe_RecipeInstructionsUnion)
+  recipeInstructions?: Recipe_RecipeInstructions;
+  @Field((type) => TextScalar)
+  ingredients?: TextType;
+  @Field((type) => TextScalar)
+  recipeCuisine?: TextType;
+  @Field((type) => RestrictedDiet)
+  suitableForDiet?: RestrictedDiet;
+  @Field((type) => NutritionInformation)
+  nutrition?: NutritionInformation;
+  @Field((type) => TextScalar)
+  cookingMethod?: TextType;
+  @Field((type) => TextScalar)
+  recipeIngredient?: TextType;
+  @Field((type) => Recipe_RecipeYieldUnion)
+  recipeYield?: Recipe_RecipeYield;
+  @Field((type) => DurationUnion)
+  cookTime?: Duration;
+  @Field((type) => TextScalar)
+  recipeCategory?: TextType;
+}
+@ObjectType()
+export class Vehicle extends Product {
+  @Field((type) => QuantitativeValue)
+  fuelCapacity?: QuantitativeValue;
+  @Field((type) => QuantitativeValue)
+  accelerationTime?: QuantitativeValue;
+  @Field((type) => QuantitativeValue)
+  speed?: QuantitativeValue;
+  @Field((type) => QuantitativeValue)
+  trailerWeight?: QuantitativeValue;
+  @Field((type) => EngineSpecification)
+  vehicleEngine?: EngineSpecification;
+  @Field((type) => NumberScalar)
+  emissionsCO2?: NumberType;
+  @Field((type) => DateScalar)
+  purchaseDate?: DateType;
+  @Field((type) => Vehicle_NumberOfForwardGearsUnion)
+  numberOfForwardGears?: Vehicle_NumberOfForwardGears;
+  @Field((type) => QuantitativeValue)
+  weightTotal?: QuantitativeValue;
+  @Field((type) => DateScalar)
+  productionDate?: DateType;
+  @Field((type) => Vehicle_NumberOfPreviousOwnersUnion)
+  numberOfPreviousOwners?: Vehicle_NumberOfPreviousOwners;
+  @Field((type) => SteeringPositionValue)
+  steeringPosition?: SteeringPositionValue;
+  @Field((type) => QuantitativeValue)
+  wheelbase?: QuantitativeValue;
+  @Field((type) => TextScalar)
+  vehicleInteriorType?: TextType;
+  @Field((type) => Vehicle_NumberOfAirbagsUnion)
+  numberOfAirbags?: Vehicle_NumberOfAirbags;
+  @Field((type) => Vehicle_FuelTypeUnion)
+  fuelType?: Vehicle_FuelType;
+  @Field((type) => QuantitativeValue)
+  cargoVolume?: QuantitativeValue;
+  @Field((type) => Vehicle_VehicleTransmissionUnion)
+  vehicleTransmission?: Vehicle_VehicleTransmission;
+  @Field((type) => QuantitativeValue)
+  payload?: QuantitativeValue;
+  @Field((type) => Vehicle_DriveWheelConfigurationUnion)
+  driveWheelConfiguration?: Vehicle_DriveWheelConfiguration;
+  @Field((type) => TextScalar)
+  knownVehicleDamages?: TextType;
+  @Field((type) => QuantitativeValue)
+  fuelConsumption?: QuantitativeValue;
+  @Field((type) => TextScalar)
+  vehicleInteriorColor?: TextType;
+  @Field((type) => Vehicle_NumberOfAxlesUnion)
+  numberOfAxles?: Vehicle_NumberOfAxles;
+  @Field((type) => DateScalar)
+  modelDate?: DateType;
+  @Field((type) => Vehicle_NumberOfDoorsUnion)
+  numberOfDoors?: Vehicle_NumberOfDoors;
+  @Field((type) => Vehicle_VehicleSeatingCapacityUnion)
+  vehicleSeatingCapacity?: Vehicle_VehicleSeatingCapacity;
+  @Field((type) => TextScalar)
+  callSign?: TextType;
+  @Field((type) => QuantitativeValue)
+  tongueWeight?: QuantitativeValue;
+  @Field((type) => QuantitativeValue)
+  fuelEfficiency?: QuantitativeValue;
+  @Field((type) => DateScalar)
+  vehicleModelDate?: DateType;
+  @Field((type) => TextScalar)
+  vehicleConfiguration?: TextType;
+  @Field((type) => QuantitativeValue)
+  mileageFromOdometer?: QuantitativeValue;
+  @Field((type) => Vehicle_SeatingCapacityUnion)
+  seatingCapacity?: Vehicle_SeatingCapacity;
+  @Field((type) => Vehicle_BodyTypeUnion)
+  bodyType?: Vehicle_BodyType;
+  @Field((type) => DateScalar)
+  dateVehicleFirstRegistered?: DateType;
+  @Field((type) => TextScalar)
+  vehicleIdentificationNumber?: TextType;
+  @Field((type) => Vehicle_MeetsEmissionStandardUnion)
+  meetsEmissionStandard?: Vehicle_MeetsEmissionStandard;
+  @Field((type) => Vehicle_VehicleSpecialUsageUnion)
+  vehicleSpecialUsage?: Vehicle_VehicleSpecialUsage;
+}
+@ObjectType()
+export class Permit extends Intangible {
+  @Field((type) => DurationUnion)
+  validFor?: Duration;
+  @Field((type) => Organization)
+  issuedBy?: Organization;
+  @Field((type) => DateScalar)
+  validUntil?: DateType;
+  @Field((type) => Permit_ValidFromUnion)
+  validFrom?: Permit_ValidFrom;
+  @Field((type) => Service)
+  issuedThrough?: Service;
+  @Field((type) => AdministrativeAreaUnion)
+  validIn?: AdministrativeArea;
+  @Field((type) => Audience)
+  permitAudience?: Audience;
+}
+@ObjectType()
+export class DonateAction extends TradeAction {
+  @Field((type) => DonateAction_RecipientUnion)
+  recipient?: DonateAction_Recipient;
+}
+@ObjectType()
+export class PostalCodeRangeSpecification extends StructuredValue {
+  @Field((type) => TextScalar)
+  postalCodeEnd?: TextType;
+  @Field((type) => TextScalar)
+  postalCodeBegin?: TextType;
+}
+@ObjectType()
+export class EmployeeRole extends OrganizationRole {
+  @Field((type) => TextScalar)
+  salaryCurrency?: TextType;
+  @Field((type) => EmployeeRole_BaseSalaryUnion)
+  baseSalary?: EmployeeRole_BaseSalary;
+}
+@ObjectType()
+export class TouristTrip extends Trip {
+  @Field((type) => TouristTrip_TouristTypeUnion)
+  touristType?: TouristTrip_TouristType;
+}
+@ObjectType()
+export class PathologyTest extends MedicalTest {
+  @Field((type) => TextScalar)
+  tissueSample?: TextType;
+}
+@ObjectType()
+export class OrganizationRole extends Role {
+  @Field((type) => NumberScalar)
+  numberedPosition?: NumberType;
+}
+@ObjectType()
+export class PeopleAudience extends Audience {
+  @Field((type) => IntegerScalar)
+  requiredMinAge?: IntegerType;
+  @Field((type) => NumberScalar)
+  suggestedMaxAge?: NumberType;
+  @Field((type) => MedicalCondition)
+  healthCondition?: MedicalCondition;
+  @Field((type) => QuantitativeValue)
+  suggestedMeasurement?: QuantitativeValue;
+  @Field((type) => QuantitativeValue)
+  suggestedAge?: QuantitativeValue;
+  @Field((type) => IntegerScalar)
+  requiredMaxAge?: IntegerType;
+  @Field((type) => NumberScalar)
+  suggestedMinAge?: NumberType;
+  @Field((type) => TextScalar)
+  requiredGender?: TextType;
+  @Field((type) => PeopleAudience_SuggestedGenderUnion)
+  suggestedGender?: PeopleAudience_SuggestedGender;
+}
+@ObjectType()
+export class Suite extends Accommodation {
+  @Field((type) => Suite_NumberOfRoomsUnion)
+  numberOfRooms?: Suite_NumberOfRooms;
+  @Field((type) => Suite_BedUnion)
+  bed?: Suite_Bed;
+  @Field((type) => QuantitativeValue)
+  occupancy?: QuantitativeValue;
+}
+@ObjectType()
+export class Comment extends CreativeWork {
+  @Field((type) => Comment)
+  parentItem?: Comment;
+  @Field((type) => IntegerScalar)
+  downvoteCount?: IntegerType;
+  @Field((type) => IntegerScalar)
+  upvoteCount?: IntegerType;
+}
+@ObjectType()
+export class GeospatialGeometry extends Intangible {
+  @Field((type) => GeospatialGeometry_GeoContainsUnion)
+  geoContains?: GeospatialGeometry_GeoContains;
+  @Field((type) => GeospatialGeometry_GeoIntersectsUnion)
+  geoIntersects?: GeospatialGeometry_GeoIntersects;
+  @Field((type) => GeospatialGeometry_GeoTouchesUnion)
+  geoTouches?: GeospatialGeometry_GeoTouches;
+  @Field((type) => GeospatialGeometry_GeoCoveredByUnion)
+  geoCoveredBy?: GeospatialGeometry_GeoCoveredBy;
+  @Field((type) => GeospatialGeometry_GeoEqualsUnion)
+  geoEquals?: GeospatialGeometry_GeoEquals;
+  @Field((type) => GeospatialGeometry_GeoCrossesUnion)
+  geoCrosses?: GeospatialGeometry_GeoCrosses;
+  @Field((type) => GeospatialGeometry_GeoCoversUnion)
+  geoCovers?: GeospatialGeometry_GeoCovers;
+  @Field((type) => GeospatialGeometry_GeoWithinUnion)
+  geoWithin?: GeospatialGeometry_GeoWithin;
+  @Field((type) => GeospatialGeometry_GeoDisjointUnion)
+  geoDisjoint?: GeospatialGeometry_GeoDisjoint;
+  @Field((type) => GeospatialGeometry_GeoOverlapsUnion)
+  geoOverlaps?: GeospatialGeometry_GeoOverlaps;
+}
+@ObjectType()
+export class TouristDestination extends Place {
+  @Field((type) => TouristDestination_TouristTypeUnion)
+  touristType?: TouristDestination_TouristType;
+  @Field((type) => TouristAttraction)
+  includesAttraction?: TouristAttraction;
+}
+@ObjectType()
+export class WarrantyPromise extends StructuredValue {
+  @Field((type) => WarrantyScope)
+  warrantyScope?: WarrantyScope;
+  @Field((type) => QuantitativeValue)
+  durationOfWarranty?: QuantitativeValue;
+}
+@ObjectType()
+export class ListItem extends Intangible {
+  @Field((type) => ListItem_PositionUnion)
+  position?: ListItem_Position;
+  @Field((type) => ListItem)
+  nextItem?: ListItem;
+  @Field((type) => Thing)
+  item?: Thing;
+  @Field((type) => ListItem)
+  previousItem?: ListItem;
+}
+@ObjectType()
+export class RealEstateListing extends WebPage {
+  @Field((type) => RealEstateListing_LeaseLengthUnion)
+  leaseLength?: RealEstateListing_LeaseLength;
+  @Field((type) => RealEstateListing_DatePostedUnion)
+  datePosted?: RealEstateListing_DatePosted;
+}
+@ObjectType()
+export class MedicalAudience{
+}
+@ObjectType()
+export class PlanAction extends OrganizeAction {
+  @Field((type) => DateTimeScalar)
+  scheduledTime?: DateTimeType;
+}
+@ObjectType()
+export class AmpStory{
+}
+@ObjectType()
+export class DrugStrength extends MedicalIntangible {
+  @Field((type) => AdministrativeAreaUnion)
+  availableIn?: AdministrativeArea;
+  @Field((type) => TextScalar)
+  strengthUnit?: TextType;
+  @Field((type) => MaximumDoseScheduleUnion)
+  maximumIntake?: MaximumDoseSchedule;
+  @Field((type) => TextScalar)
+  activeIngredient?: TextType;
+  @Field((type) => NumberScalar)
+  strengthValue?: NumberType;
+}
+@ObjectType()
+export class OpeningHoursSpecification extends StructuredValue {
+  @Field((type) => TimeScalar)
+  closes?: TimeType;
+  @Field((type) => DayOfWeek)
+  dayOfWeek?: DayOfWeek;
+  @Field((type) => OpeningHoursSpecification_ValidFromUnion)
+  validFrom?: OpeningHoursSpecification_ValidFrom;
+  @Field((type) => TimeScalar)
+  opens?: TimeType;
+  @Field((type) => OpeningHoursSpecification_ValidThroughUnion)
+  validThrough?: OpeningHoursSpecification_ValidThrough;
+}
+@ObjectType()
+export class BioChemEntity extends Thing {
+  @Field((type) => Grant)
+  funding?: Grant;
+  @Field((type) => Gene)
+  isEncodedByBioChemEntity?: Gene;
+  @Field((type) => BioChemEntity)
+  isPartOfBioChemEntity?: BioChemEntity;
+  @Field((type) => BioChemEntity_TaxonomicRangeUnion)
+  taxonomicRange?: BioChemEntity_TaxonomicRange;
+  @Field((type) => BioChemEntity_IsInvolvedInBiologicalProcessUnion)
+  isInvolvedInBiologicalProcess?: BioChemEntity_IsInvolvedInBiologicalProcess;
+  @Field((type) => BioChemEntity_IsLocatedInSubcellularLocationUnion)
+  isLocatedInSubcellularLocation?: BioChemEntity_IsLocatedInSubcellularLocation;
+  @Field((type) => BioChemEntity_AssociatedDiseaseUnion)
+  associatedDisease?: BioChemEntity_AssociatedDisease;
+  @Field((type) => BioChemEntity_HasMolecularFunctionUnion)
+  hasMolecularFunction?: BioChemEntity_HasMolecularFunction;
+  @Field((type) => BioChemEntity)
+  hasBioChemEntityPart?: BioChemEntity;
+  @Field((type) => BioChemEntity)
+  bioChemInteraction?: BioChemEntity;
+  @Field((type) => BioChemEntity_HasRepresentationUnion)
+  hasRepresentation?: BioChemEntity_HasRepresentation;
+  @Field((type) => BioChemEntity)
+  bioChemSimilarity?: BioChemEntity;
+  @Field((type) => DefinedTerm)
+  biologicalRole?: DefinedTerm;
+}
+@ObjectType()
+export class HealthTopicContent extends WebContent {
+  @Field((type) => HealthAspectEnumeration)
+  hasHealthAspect?: HealthAspectEnumeration;
+}
+@ObjectType()
+export class ReviewAction extends AssessAction {
+  @Field((type) => Review)
+  resultReview?: Review;
+}
+@ObjectType()
+export class Map extends CreativeWork {
+  @Field((type) => MapCategoryType)
+  mapType?: MapCategoryType;
+}
+@ObjectType()
+export class Drug extends Substance {
+  @Field((type) => DrugPregnancyCategory)
+  pregnancyCategory?: DrugPregnancyCategory;
+  @Field((type) => TextScalar)
+  overdosage?: TextType;
+  @Field((type) => Drug_LegalStatusUnion)
+  legalStatus?: Drug_LegalStatus;
+  @Field((type) => TextScalar)
+  mechanismOfAction?: TextType;
+  @Field((type) => TextScalar)
+  clinicalPharmacology?: TextType;
+  @Field((type) => TextScalar)
+  rxcui?: TextType;
+  @Field((type) => Drug)
+  interactingDrug?: Drug;
+  @Field((type) => TextScalar)
+  dosageForm?: TextType;
+  @Field((type) => UrlScalar)
+  labelDetails?: UrlType;
+  @Field((type) => MaximumDoseScheduleUnion)
+  maximumIntake?: MaximumDoseSchedule;
+  @Field((type) => TextScalar)
+  activeIngredient?: TextType;
+  @Field((type) => Drug)
+  relatedDrug?: Drug;
+  @Field((type) => TextScalar)
+  administrationRoute?: TextType;
+  @Field((type) => TextScalar)
+  drugUnit?: TextType;
+  @Field((type) => TextScalar)
+  foodWarning?: TextType;
+  @Field((type) => Drug_WarningUnion)
+  warning?: Drug_Warning;
+  @Field((type) => Drug_PrescriptionStatusUnion)
+  prescriptionStatus?: Drug_PrescriptionStatus;
+  @Field((type) => TextScalar)
+  proprietaryName?: TextType;
+  @Field((type) => DrugClass)
+  drugClass?: DrugClass;
+  @Field((type) => UrlScalar)
+  prescribingInfo?: UrlType;
+  @Field((type) => HealthInsurancePlan)
+  includedInHealthInsurancePlan?: HealthInsurancePlan;
+  @Field((type) => TextScalar)
+  nonProprietaryName?: TextType;
+  @Field((type) => Organization)
+  manufacturer?: Organization;
+  @Field((type) => BooleanScalar)
+  isProprietary?: BooleanType;
+  @Field((type) => TextScalar)
+  clincalPharmacology?: TextType;
+  @Field((type) => BooleanScalar)
+  isAvailableGenerically?: BooleanType;
+  @Field((type) => TextScalar)
+  breastfeedingWarning?: TextType;
+  @Field((type) => TextScalar)
+  pregnancyWarning?: TextType;
+  @Field((type) => TextScalar)
+  alcoholWarning?: TextType;
+  @Field((type) => DoseSchedule)
+  doseSchedule?: DoseSchedule;
+  @Field((type) => DrugStrength)
+  availableStrength?: DrugStrength;
+}
+@ObjectType()
+export class MedicalDevice extends MedicalEntity {
+  @Field((type) => MedicalEntity)
+  adverseOutcome?: MedicalEntity;
+  @Field((type) => TextScalar)
+  preOp?: TextType;
+  @Field((type) => MedicalEntity)
+  seriousAdverseOutcome?: MedicalEntity;
+  @Field((type) => TextScalar)
+  postOp?: TextType;
+  @Field((type) => TextScalar)
+  procedure?: TextType;
+  @Field((type) => MedicalDevice_ContraindicationUnion)
+  contraindication?: MedicalDevice_Contraindication;
+}
+@ObjectType()
+export class Property extends Intangible {
+  @Field((type) => Class)
+  domainIncludes?: Class;
+  @Field((type) => Property_SupersededByUnion)
+  supersededBy?: Property_SupersededBy;
+  @Field((type) => Class)
+  rangeIncludes?: Class;
+  @Field((type) => Property)
+  inverseOf?: Property;
+}
+@ObjectType()
+export class HowToItem extends ListItem {
+  @Field((type) => HowToItem_RequiredQuantityUnion)
+  requiredQuantity?: HowToItem_RequiredQuantity;
+}
+@ObjectType()
+export class ParentAudience extends PeopleAudience {
+  @Field((type) => NumberScalar)
+  childMaxAge?: NumberType;
+  @Field((type) => NumberScalar)
+  childMinAge?: NumberType;
+}
+@ObjectType()
+export class Audiobook{
+  @Field((type) => Person)
+  readBy?: Person;
+  @Field((type) => DurationUnion)
+  duration?: Duration;
+}
+@ObjectType()
+export class Residence extends Place {
+  @Field((type) => FloorPlan)
+  accommodationFloorPlan?: FloorPlan;
+}
+@ObjectType()
+export class Answer extends Comment {
+  @Field((type) => Answer_AnswerExplanationUnion)
+  answerExplanation?: Answer_AnswerExplanation;
+}
+@ObjectType()
+export class Organization extends Thing {
+  @Field((type) => Organization_OwnershipFundingInfoUnion)
+  ownershipFundingInfo?: Organization_OwnershipFundingInfo;
+  @Field((type) => EducationalOccupationalCredential)
+  hasCredential?: EducationalOccupationalCredential;
+  @Field((type) => Person)
+  founders?: Person;
+  @Field((type) => TextScalar)
+  telephone?: TextType;
+  @Field((type) => Review)
+  review?: Review;
+  @Field((type) => Organization_KnowsAboutUnion)
+  knowsAbout?: Organization_KnowsAbout;
+  @Field((type) => TextScalar)
+  award?: TextType;
+  @Field((type) => Organization_MemberUnion)
+  member?: Organization_Member;
+  @Field((type) => Person)
+  employee?: Person;
+  @Field((type) => DateScalar)
+  dissolutionDate?: DateType;
+  @Field((type) => Grant)
+  funding?: Grant;
+  @Field((type) => TextScalar)
+  vatID?: TextType;
+  @Field((type) => TextScalar)
+  globalLocationNumber?: TextType;
+  @Field((type) => Organization_KeywordsUnion)
+  keywords?: Organization_Keywords;
+  @Field((type) => ContactPoint)
+  contactPoints?: ContactPoint;
+  @Field((type) => Organization)
+  subOrganization?: Organization;
+  @Field((type) => TextScalar)
+  awards?: TextType;
+  @Field((type) => QuantitativeValue)
+  numberOfEmployees?: QuantitativeValue;
+  @Field((type) => Organization_FunderUnion)
+  funder?: Organization_Funder;
+  @Field((type) => Offer)
+  makesOffer?: Offer;
+  @Field((type) => TextScalar)
+  legalName?: TextType;
+  @Field((type) => Organization_CorrectionsPolicyUnion)
+  correctionsPolicy?: Organization_CorrectionsPolicy;
+  @Field((type) => AggregateRating)
+  aggregateRating?: AggregateRating;
+  @Field((type) => InteractionCounter)
+  interactionStatistic?: InteractionCounter;
+  @Field((type) => Organization_LocationUnion)
+  location?: Organization_Location;
+  @Field((type) => Organization_AddressUnion)
+  address?: Organization_Address;
+  @Field((type) => Organization_MemberOfUnion)
+  memberOf?: Organization_MemberOf;
+  @Field((type) => Organization_PublishingPrinciplesUnion)
+  publishingPrinciples?: Organization_PublishingPrinciples;
+  @Field((type) => Organization_DiversityStaffingReportUnion)
+  diversityStaffingReport?: Organization_DiversityStaffingReport;
+  @Field((type) => Organization_DiversityPolicyUnion)
+  diversityPolicy?: Organization_DiversityPolicy;
+  @Field((type) => TextScalar)
+  email?: TextType;
+  @Field((type) => Person)
+  employees?: Person;
+  @Field((type) => NonprofitType)
+  nonprofitStatus?: NonprofitType;
+  @Field((type) => TextScalar)
+  slogan?: TextType;
+  @Field((type) => Organization_EthicsPolicyUnion)
+  ethicsPolicy?: Organization_EthicsPolicy;
+  @Field((type) => Organization_BrandUnion)
+  brand?: Organization_Brand;
+  @Field((type) => Organization_SponsorUnion)
+  sponsor?: Organization_Sponsor;
+  @Field((type) => Organization_LogoUnion)
+  logo?: Organization_Logo;
+  @Field((type) => Organization_ActionableFeedbackPolicyUnion)
+  actionableFeedbackPolicy?: Organization_ActionableFeedbackPolicy;
+  @Field((type) => TextScalar)
+  naics?: TextType;
+  @Field((type) => ContactPoint)
+  contactPoint?: ContactPoint;
+  @Field((type) => Organization_ServiceAreaUnion)
+  serviceArea?: Organization_ServiceArea;
+  @Field((type) => TextScalar)
+  isicV4?: TextType;
+  @Field((type) => MerchantReturnPolicy)
+  hasMerchantReturnPolicy?: MerchantReturnPolicy;
+  @Field((type) => Place)
+  hasPOS?: Place;
+  @Field((type) => Person)
+  founder?: Person;
+  @Field((type) => Organization_UnnamedSourcesPolicyUnion)
+  unnamedSourcesPolicy?: Organization_UnnamedSourcesPolicy;
+  @Field((type) => Place)
+  foundingLocation?: Place;
+  @Field((type) => TextScalar)
+  duns?: TextType;
+  @Field((type) => Organization)
+  parentOrganization?: Organization;
+  @Field((type) => Person)
+  alumni?: Person;
+  @Field((type) => TextScalar)
+  leiCode?: TextType;
+  @Field((type) => Organization_AreaServedUnion)
+  areaServed?: Organization_AreaServed;
+  @Field((type) => DateScalar)
+  foundingDate?: DateType;
+  @Field((type) => Organization_KnowsLanguageUnion)
+  knowsLanguage?: Organization_KnowsLanguage;
+  @Field((type) => Review)
+  reviews?: Review;
+  @Field((type) => Demand)
+  seeks?: Demand;
+  @Field((type) => TextScalar)
+  taxID?: TextType;
+  @Field((type) => Organization_OwnsUnion)
+  owns?: Organization_Owns;
+  @Field((type) => OfferCatalogUnion)
+  hasOfferCatalog?: OfferCatalog;
+  @Field((type) => Organization_MembersUnion)
+  members?: Organization_Members;
+  @Field((type) => Event)
+  events?: Event;
+  @Field((type) => TextScalar)
+  iso6523Code?: TextType;
+  @Field((type) => Organization)
+  department?: Organization;
+  @Field((type) => TextScalar)
+  faxNumber?: TextType;
+  @Field((type) => Event)
+  event?: Event;
+}
+@ObjectType()
+export class FireStation{
+}
+@ObjectType()
+export class Article extends CreativeWork {
+  @Field((type) => Article_PageStartUnion)
+  pageStart?: Article_PageStart;
+  @Field((type) => TextScalar)
+  articleSection?: TextType;
+  @Field((type) => Article_PageEndUnion)
+  pageEnd?: Article_PageEnd;
+  @Field((type) => Article_BackstoryUnion)
+  backstory?: Article_Backstory;
+  @Field((type) => IntegerScalar)
+  wordCount?: IntegerType;
+  @Field((type) => TextScalar)
+  articleBody?: TextType;
+  @Field((type) => Article_SpeakableUnion)
+  speakable?: Article_Speakable;
+  @Field((type) => TextScalar)
+  pagination?: TextType;
+}
+@ObjectType()
+export class InsertAction extends AddAction {
+  @Field((type) => Place)
+  toLocation?: Place;
+}
+@ObjectType()
+export class DepositAccount{
+}
+@ObjectType()
+export class DefinedRegion extends StructuredValue {
+  @Field((type) => DefinedRegion_AddressCountryUnion)
+  addressCountry?: DefinedRegion_AddressCountry;
+  @Field((type) => TextScalar)
+  addressRegion?: TextType;
+  @Field((type) => PostalCodeRangeSpecification)
+  postalCodeRange?: PostalCodeRangeSpecification;
+  @Field((type) => TextScalar)
+  postalCodePrefix?: TextType;
+  @Field((type) => TextScalar)
+  postalCode?: TextType;
+}
+@ObjectType()
+export class ImagingTest extends MedicalTest {
+  @Field((type) => MedicalImagingTechnique)
+  imagingTechnique?: MedicalImagingTechnique;
+}
+@ObjectType()
+export class MedicalOrganization extends Organization {
+  @Field((type) => BooleanScalar)
+  isAcceptingNewPatients?: BooleanType;
+  @Field((type) => TextScalar)
+  healthPlanNetworkId?: TextType;
+  @Field((type) => MedicalSpecialty)
+  medicalSpecialty?: MedicalSpecialty;
+}
+@ObjectType()
+export class Ticket extends Intangible {
+  @Field((type) => Ticket_TicketTokenUnion)
+  ticketToken?: Ticket_TicketToken;
+  @Field((type) => Seat)
+  ticketedSeat?: Seat;
+  @Field((type) => Ticket_TotalPriceUnion)
+  totalPrice?: Ticket_TotalPrice;
+  @Field((type) => Organization)
+  issuedBy?: Organization;
+  @Field((type) => TextScalar)
+  ticketNumber?: TextType;
+  @Field((type) => Ticket_DateIssuedUnion)
+  dateIssued?: Ticket_DateIssued;
+  @Field((type) => TextScalar)
+  priceCurrency?: TextType;
+  @Field((type) => Ticket_UnderNameUnion)
+  underName?: Ticket_UnderName;
+}
+@ObjectType()
+export class HowToStep{
+}
+@ObjectType()
+export class Airport extends CivicStructure {
+  @Field((type) => TextScalar)
+  iataCode?: TextType;
+  @Field((type) => TextScalar)
+  icaoCode?: TextType;
+}
+@ObjectType()
+export class Trip extends Intangible {
+  @Field((type) => Trip_ArrivalTimeUnion)
+  arrivalTime?: Trip_ArrivalTime;
+  @Field((type) => Trip_OffersUnion)
+  offers?: Trip_Offers;
+  @Field((type) => Trip_DepartureTimeUnion)
+  departureTime?: Trip_DepartureTime;
+  @Field((type) => Trip_ProviderUnion)
+  provider?: Trip_Provider;
+  @Field((type) => Trip)
+  subTrip?: Trip;
+  @Field((type) => Trip_ItineraryUnion)
+  itinerary?: Trip_Itinerary;
+  @Field((type) => Trip)
+  partOfTrip?: Trip;
+}
+@ObjectType()
+export class OrderItem extends Intangible {
+  @Field((type) => ParcelDelivery)
+  orderDelivery?: ParcelDelivery;
+  @Field((type) => OrderStatus)
+  orderItemStatus?: OrderStatus;
+  @Field((type) => NumberScalar)
+  orderQuantity?: NumberType;
+  @Field((type) => TextScalar)
+  orderItemNumber?: TextType;
+  @Field((type) => OrderItem_OrderedItemUnion)
+  orderedItem?: OrderItem_OrderedItem;
+}
+@ObjectType()
+export class MerchantReturnPolicy extends Intangible {
+  @Field((type) => MerchantReturnEnumeration)
+  returnPolicyCategory?: MerchantReturnEnumeration;
+  @Field((type) => MerchantReturnPolicy_ReturnPolicyCountryUnion)
+  returnPolicyCountry?: MerchantReturnPolicy_ReturnPolicyCountry;
+  @Field((type) => UrlScalar)
+  merchantReturnLink?: UrlType;
+  @Field((type) => MerchantReturnPolicy_RestockingFeeUnion)
+  restockingFee?: MerchantReturnPolicy_RestockingFee;
+  @Field((type) => MonetaryAmount)
+  itemDefectReturnShippingFeesAmount?: MonetaryAmount;
+  @Field((type) => ReturnFeesEnumeration)
+  itemDefectReturnFees?: ReturnFeesEnumeration;
+  @Field((type) => BooleanScalar)
+  inStoreReturnsOffered?: BooleanType;
+  @Field((type) => OfferItemCondition)
+  itemCondition?: OfferItemCondition;
+  @Field((type) => ReturnLabelSourceEnumeration)
+  itemDefectReturnLabelSource?: ReturnLabelSourceEnumeration;
+  @Field((type) => ReturnLabelSourceEnumeration)
+  returnLabelSource?: ReturnLabelSourceEnumeration;
+  @Field((type) => MonetaryAmount)
+  customerRemorseReturnShippingFeesAmount?: MonetaryAmount;
+  @Field((type) => RefundTypeEnumeration)
+  refundType?: RefundTypeEnumeration;
+  @Field((type) => MonetaryAmount)
+  returnShippingFeesAmount?: MonetaryAmount;
+  @Field((type) => MerchantReturnPolicy_MerchantReturnDaysUnion)
+  merchantReturnDays?: MerchantReturnPolicy_MerchantReturnDays;
+  @Field((type) => ReturnMethodEnumeration)
+  returnMethod?: ReturnMethodEnumeration;
+  @Field((type) => PropertyValue)
+  additionalProperty?: PropertyValue;
+  @Field((type) => ReturnLabelSourceEnumeration)
+  customerRemorseReturnLabelSource?: ReturnLabelSourceEnumeration;
+  @Field((type) => ReturnFeesEnumeration)
+  customerRemorseReturnFees?: ReturnFeesEnumeration;
+  @Field((type) => MerchantReturnPolicySeasonalOverride)
+  returnPolicySeasonalOverride?: MerchantReturnPolicySeasonalOverride;
+  @Field((type) => MerchantReturnPolicy_ApplicableCountryUnion)
+  applicableCountry?: MerchantReturnPolicy_ApplicableCountry;
+  @Field((type) => ReturnFeesEnumeration)
+  returnFees?: ReturnFeesEnumeration;
+}
+@ObjectType()
+export class Patient{
+  @Field((type) => MedicalCondition)
+  healthCondition?: MedicalCondition;
+  @Field((type) => Drug)
+  drug?: Drug;
+  @Field((type) => MedicalCondition)
+  diagnosis?: MedicalCondition;
+}
+@ObjectType()
+export class AskAction extends CommunicateAction {
+  @Field((type) => Question)
+  question?: Question;
+}
+@ObjectType()
+export class MonetaryGrant extends Grant {
+  @Field((type) => MonetaryGrant_FunderUnion)
+  funder?: MonetaryGrant_Funder;
+  @Field((type) => MonetaryGrant_AmountUnion)
+  amount?: MonetaryGrant_Amount;
+}
+@ObjectType()
+export class EducationalAudience extends Audience {
+  @Field((type) => TextScalar)
+  educationalRole?: TextType;
+}
+@ObjectType()
+export class CompoundPriceSpecification extends PriceSpecification {
+  @Field((type) => UnitPriceSpecification)
+  priceComponent?: UnitPriceSpecification;
+  @Field((type) => CompoundPriceSpecification_PriceTypeUnion)
+  priceType?: CompoundPriceSpecification_PriceType;
+}
+@ObjectType()
+export class JoinAction extends InteractAction {
+  @Field((type) => Event)
+  event?: Event;
+}
+@ObjectType()
+export class GameServer extends Intangible {
+  @Field((type) => GameServerStatus)
+  serverStatus?: GameServerStatus;
+  @Field((type) => VideoGame)
+  game?: VideoGame;
+  @Field((type) => IntegerScalar)
+  playersOnline?: IntegerType;
+}
+@ObjectType()
+export class MediaSubscription extends Intangible {
+  @Field((type) => Offer)
+  expectsAcceptanceOf?: Offer;
+  @Field((type) => Organization)
+  authenticator?: Organization;
+}
+@ObjectType()
+export class ClaimReview extends Review {
+  @Field((type) => TextScalar)
+  claimReviewed?: TextType;
+}
+@ObjectType()
+export class DDxElement extends MedicalIntangible {
+  @Field((type) => MedicalSignOrSymptom)
+  distinguishingSign?: MedicalSignOrSymptom;
+  @Field((type) => MedicalCondition)
+  diagnosis?: MedicalCondition;
+}
+@ObjectType()
+export class SoftwareApplication extends CreativeWork {
+  @Field((type) => TextScalar)
+  countriesSupported?: TextType;
+  @Field((type) => UrlScalar)
+  installUrl?: UrlType;
+  @Field((type) => TextScalar)
+  operatingSystem?: TextType;
+  @Field((type) => SoftwareApplication_MemoryRequirementsUnion)
+  memoryRequirements?: SoftwareApplication_MemoryRequirements;
+  @Field((type) => TextScalar)
+  softwareVersion?: TextType;
+  @Field((type) => SoftwareApplication_StorageRequirementsUnion)
+  storageRequirements?: SoftwareApplication_StorageRequirements;
+  @Field((type) => CreativeWork)
+  softwareHelp?: CreativeWork;
+  @Field((type) => SoftwareApplication_ApplicationSubCategoryUnion)
+  applicationSubCategory?: SoftwareApplication_ApplicationSubCategory;
+  @Field((type) => UrlScalar)
+  downloadUrl?: UrlType;
+  @Field((type) => SoftwareApplication_ApplicationCategoryUnion)
+  applicationCategory?: SoftwareApplication_ApplicationCategory;
+  @Field((type) => TextScalar)
+  countriesNotSupported?: TextType;
+  @Field((type) => SoftwareApplication_SoftwareRequirementsUnion)
+  softwareRequirements?: SoftwareApplication_SoftwareRequirements;
+  @Field((type) => SoftwareApplication)
+  softwareAddOn?: SoftwareApplication;
+  @Field((type) => TextScalar)
+  applicationSuite?: TextType;
+  @Field((type) => SoftwareApplication_RequirementsUnion)
+  requirements?: SoftwareApplication_Requirements;
+  @Field((type) => TextScalar)
+  permissions?: TextType;
+  @Field((type) => TextScalar)
+  processorRequirements?: TextType;
+  @Field((type) => SoftwareApplication_ScreenshotUnion)
+  screenshot?: SoftwareApplication_Screenshot;
+  @Field((type) => SoftwareApplication_FeatureListUnion)
+  featureList?: SoftwareApplication_FeatureList;
+  @Field((type) => SoftwareApplication_ReleaseNotesUnion)
+  releaseNotes?: SoftwareApplication_ReleaseNotes;
+  @Field((type) => DataFeed)
+  supportingData?: DataFeed;
+  @Field((type) => TextScalar)
+  fileSize?: TextType;
+  @Field((type) => TextScalar)
+  device?: TextType;
+  @Field((type) => TextScalar)
+  availableOnDevice?: TextType;
+}
+@ObjectType()
+export class SocialMediaPosting extends Article {
+  @Field((type) => CreativeWork)
+  sharedContent?: CreativeWork;
+}
+@ObjectType()
+export class MedicalRiskEstimator extends MedicalEntity {
+  @Field((type) => MedicalEntity)
+  estimatesRiskOf?: MedicalEntity;
+  @Field((type) => MedicalRiskFactor)
+  includedRiskFactor?: MedicalRiskFactor;
+}
+@ObjectType()
+export class Apartment extends Accommodation {
+  @Field((type) => Apartment_NumberOfRoomsUnion)
+  numberOfRooms?: Apartment_NumberOfRooms;
+  @Field((type) => QuantitativeValue)
+  occupancy?: QuantitativeValue;
+}
+@ObjectType()
+export class WebPage extends CreativeWork {
+  @Field((type) => DateScalar)
+  lastReviewed?: DateType;
+  @Field((type) => Specialty)
+  specialty?: Specialty;
+  @Field((type) => ImageObject)
+  primaryImageOfPage?: ImageObject;
+  @Field((type) => UrlScalar)
+  significantLink?: UrlType;
+  @Field((type) => WebPage_ReviewedByUnion)
+  reviewedBy?: WebPage_ReviewedBy;
+  @Field((type) => WebPageElement)
+  mainContentOfPage?: WebPageElement;
+  @Field((type) => UrlScalar)
+  relatedLink?: UrlType;
+  @Field((type) => WebPage_SpeakableUnion)
+  speakable?: WebPage_Speakable;
+  @Field((type) => WebPage_BreadcrumbUnion)
+  breadcrumb?: WebPage_Breadcrumb;
+  @Field((type) => UrlScalar)
+  significantLinks?: UrlType;
+}
+@ObjectType()
+export class HealthPlanNetwork extends Intangible {
+  @Field((type) => TextScalar)
+  healthPlanNetworkId?: TextType;
+  @Field((type) => BooleanScalar)
+  healthPlanCostSharing?: BooleanType;
+  @Field((type) => TextScalar)
+  healthPlanNetworkTier?: TextType;
+}
+@ObjectType()
+export class MedicalSpecialty{
+}
+@ObjectType()
+export class CourseInstance extends Event {
+  @Field((type) => Person)
+  instructor?: Person;
+  @Field((type) => TextScalar)
+  courseWorkload?: TextType;
+  @Field((type) => CourseInstance_CourseModeUnion)
+  courseMode?: CourseInstance_CourseMode;
+}
+@ObjectType()
+export class HowTo extends CreativeWork {
+  @Field((type) => HowTo_YieldUnion)
+  yield?: HowTo_Yield;
+  @Field((type) => HowTo_EstimatedCostUnion)
+  estimatedCost?: HowTo_EstimatedCost;
+  @Field((type) => HowTo_SupplyUnion)
+  supply?: HowTo_Supply;
+  @Field((type) => HowTo_StepUnion)
+  step?: HowTo_Step;
+  @Field((type) => DurationUnion)
+  totalTime?: Duration;
+  @Field((type) => HowTo_ToolUnion)
+  tool?: HowTo_Tool;
+  @Field((type) => DurationUnion)
+  prepTime?: Duration;
+  @Field((type) => HowTo_StepsUnion)
+  steps?: HowTo_Steps;
+  @Field((type) => DurationUnion)
+  performTime?: Duration;
+}
+@ObjectType()
+export class PublicationEvent extends Event {
+  @Field((type) => PublicationEvent_PublishedByUnion)
+  publishedBy?: PublicationEvent_PublishedBy;
+  @Field((type) => BooleanScalar)
+  free?: BooleanType;
+  @Field((type) => BroadcastService)
+  publishedOn?: BroadcastService;
+}
+@ObjectType()
+export class SomeProducts extends Product {
+  @Field((type) => QuantitativeValue)
+  inventoryLevel?: QuantitativeValue;
+}
+@ObjectType()
+export class FinancialService extends LocalBusiness {
+  @Field((type) => FinancialService_FeesAndCommissionsSpecificationUnion)
+  feesAndCommissionsSpecification?: FinancialService_FeesAndCommissionsSpecification;
+}
+@ObjectType()
+export class InteractionCounter extends StructuredValue {
+  @Field((type) => InteractionCounter_StartTimeUnion)
+  startTime?: InteractionCounter_StartTime;
+  @Field((type) => IntegerScalar)
+  userInteractionCount?: IntegerType;
+  @Field((type) => InteractionCounter_LocationUnion)
+  location?: InteractionCounter_Location;
+  @Field((type) => Action)
+  interactionType?: Action;
+  @Field((type) => InteractionCounter_InteractionServiceUnion)
+  interactionService?: InteractionCounter_InteractionService;
+  @Field((type) => InteractionCounter_EndTimeUnion)
+  endTime?: InteractionCounter_EndTime;
+}
+@ObjectType()
+export class LiveBlogPosting extends BlogPosting {
+  @Field((type) => DateTimeScalar)
+  coverageEndTime?: DateTimeType;
+  @Field((type) => DateTimeScalar)
+  coverageStartTime?: DateTimeType;
+  @Field((type) => BlogPostingUnion)
+  liveBlogUpdate?: BlogPosting;
+}
+@ObjectType()
+export class Substance extends MedicalEntity {
+  @Field((type) => MaximumDoseScheduleUnion)
+  maximumIntake?: MaximumDoseSchedule;
+  @Field((type) => TextScalar)
+  activeIngredient?: TextType;
+}
+@ObjectType()
+export class CreativeWorkSeries{
+  @Field((type) => CreativeWorkSeries_StartDateUnion)
+  startDate?: CreativeWorkSeries_StartDate;
+  @Field((type) => CreativeWorkSeries_EndDateUnion)
+  endDate?: CreativeWorkSeries_EndDate;
+  @Field((type) => TextScalar)
+  issn?: TextType;
+}
+@ObjectType()
+export class EventSeries{
+}
+@ObjectType()
+export class BusinessAudience extends Audience {
+  @Field((type) => QuantitativeValue)
+  yearlyRevenue?: QuantitativeValue;
+  @Field((type) => QuantitativeValue)
+  numberOfEmployees?: QuantitativeValue;
+  @Field((type) => QuantitativeValue)
+  yearsInOperation?: QuantitativeValue;
+}
+@ObjectType()
+export class AggregateOffer extends Offer {
+  @Field((type) => AggregateOffer_HighPriceUnion)
+  highPrice?: AggregateOffer_HighPrice;
+  @Field((type) => AggregateOffer_OffersUnion)
+  offers?: AggregateOffer_Offers;
+  @Field((type) => AggregateOffer_LowPriceUnion)
+  lowPrice?: AggregateOffer_LowPrice;
+  @Field((type) => IntegerScalar)
+  offerCount?: IntegerType;
+}
+@ObjectType()
+export class TechArticle extends Article {
+  @Field((type) => TextScalar)
+  dependencies?: TextType;
+  @Field((type) => TextScalar)
+  proficiencyLevel?: TextType;
+}
+@ObjectType()
+export class NutritionInformation extends StructuredValue {
+  @Field((type) => MassUnion)
+  fatContent?: Mass;
+  @Field((type) => TextScalar)
+  servingSize?: TextType;
+  @Field((type) => MassUnion)
+  proteinContent?: Mass;
+  @Field((type) => EnergyUnion)
+  calories?: Energy;
+  @Field((type) => MassUnion)
+  sodiumContent?: Mass;
+  @Field((type) => MassUnion)
+  cholesterolContent?: Mass;
+  @Field((type) => MassUnion)
+  sugarContent?: Mass;
+  @Field((type) => MassUnion)
+  carbohydrateContent?: Mass;
+  @Field((type) => MassUnion)
+  transFatContent?: Mass;
+  @Field((type) => MassUnion)
+  fiberContent?: Mass;
+  @Field((type) => MassUnion)
+  unsaturatedFatContent?: Mass;
+  @Field((type) => MassUnion)
+  saturatedFatContent?: Mass;
+}
+@ObjectType()
+export class LodgingBusiness extends LocalBusiness {
+  @Field((type) => LodgingBusiness_NumberOfRoomsUnion)
+  numberOfRooms?: LodgingBusiness_NumberOfRooms;
+  @Field((type) => Audience)
+  audience?: Audience;
+  @Field((type) => Rating)
+  starRating?: Rating;
+  @Field((type) => LocationFeatureSpecification)
+  amenityFeature?: LocationFeatureSpecification;
+  @Field((type) => LodgingBusiness_AvailableLanguageUnion)
+  availableLanguage?: LodgingBusiness_AvailableLanguage;
+  @Field((type) => LodgingBusiness_CheckoutTimeUnion)
+  checkoutTime?: LodgingBusiness_CheckoutTime;
+  @Field((type) => LodgingBusiness_CheckinTimeUnion)
+  checkinTime?: LodgingBusiness_CheckinTime;
+  @Field((type) => LodgingBusiness_PetsAllowedUnion)
+  petsAllowed?: LodgingBusiness_PetsAllowed;
+}
+@ObjectType()
+export class DataFeed extends Dataset {
+  @Field((type) => DataFeed_DataFeedElementUnion)
+  dataFeedElement?: DataFeed_DataFeedElement;
+}
+@ObjectType()
+export class TherapeuticProcedure extends MedicalProcedure {
+  @Field((type) => MedicalEntity)
+  adverseOutcome?: MedicalEntity;
+  @Field((type) => Drug)
+  drug?: Drug;
+  @Field((type) => DoseSchedule)
+  doseSchedule?: DoseSchedule;
+}
+@ObjectType()
+export class TradeAction extends Action {
+  @Field((type) => TextScalar)
+  priceCurrency?: TextType;
+  @Field((type) => PriceSpecification)
+  priceSpecification?: PriceSpecification;
+  @Field((type) => TradeAction_PriceUnion)
+  price?: TradeAction_Price;
+}
+@ObjectType()
+export class Place extends Thing {
+  @Field((type) => TextScalar)
+  telephone?: TextType;
+  @Field((type) => Review)
+  review?: Review;
+  @Field((type) => UrlScalar)
+  maps?: UrlType;
+  @Field((type) => Place_GeoContainsUnion)
+  geoContains?: Place_GeoContains;
+  @Field((type) => IntegerScalar)
+  maximumAttendeeCapacity?: IntegerType;
+  @Field((type) => Place)
+  containsPlace?: Place;
+  @Field((type) => BooleanScalar)
+  smokingAllowed?: BooleanType;
+  @Field((type) => TextScalar)
+  globalLocationNumber?: TextType;
+  @Field((type) => Place_KeywordsUnion)
+  keywords?: Place_Keywords;
+  @Field((type) => Place_GeoIntersectsUnion)
+  geoIntersects?: Place_GeoIntersects;
+  @Field((type) => Place_LatitudeUnion)
+  latitude?: Place_Latitude;
+  @Field((type) => Place_GeoTouchesUnion)
+  geoTouches?: Place_GeoTouches;
+  @Field((type) => Place_GeoCoveredByUnion)
+  geoCoveredBy?: Place_GeoCoveredBy;
+  @Field((type) => AggregateRating)
+  aggregateRating?: AggregateRating;
+  @Field((type) => Place_AddressUnion)
+  address?: Place_Address;
+  @Field((type) => Place_GeoEqualsUnion)
+  geoEquals?: Place_GeoEquals;
+  @Field((type) => UrlScalar)
+  map?: UrlType;
+  @Field((type) => BooleanScalar)
+  publicAccess?: BooleanType;
+  @Field((type) => Place_GeoCrossesUnion)
+  geoCrosses?: Place_GeoCrosses;
+  @Field((type) => Place)
+  containedInPlace?: Place;
+  @Field((type) => LocationFeatureSpecification)
+  amenityFeature?: LocationFeatureSpecification;
+  @Field((type) => TextScalar)
+  slogan?: TextType;
+  @Field((type) => Place_PhotosUnion)
+  photos?: Place_Photos;
+  @Field((type) => Place_GeoCoversUnion)
+  geoCovers?: Place_GeoCovers;
+  @Field((type) => Place)
+  containedIn?: Place;
+  @Field((type) => BooleanScalar)
+  hasDriveThroughService?: BooleanType;
+  @Field((type) => Place_LogoUnion)
+  logo?: Place_Logo;
+  @Field((type) => BooleanScalar)
+  isAccessibleForFree?: BooleanType;
+  @Field((type) => Place_GeoWithinUnion)
+  geoWithin?: Place_GeoWithin;
+  @Field((type) => Place_GeoDisjointUnion)
+  geoDisjoint?: Place_GeoDisjoint;
+  @Field((type) => UrlScalar)
+  tourBookingPage?: UrlType;
+  @Field((type) => TextScalar)
+  isicV4?: TextType;
+  @Field((type) => Place_GeoOverlapsUnion)
+  geoOverlaps?: Place_GeoOverlaps;
+  @Field((type) => TextScalar)
+  branchCode?: TextType;
+  @Field((type) => PropertyValue)
+  additionalProperty?: PropertyValue;
+  @Field((type) => OpeningHoursSpecification)
+  openingHoursSpecification?: OpeningHoursSpecification;
+  @Field((type) => Review)
+  reviews?: Review;
+  @Field((type) => Place_PhotoUnion)
+  photo?: Place_Photo;
+  @Field((type) => OpeningHoursSpecification)
+  specialOpeningHoursSpecification?: OpeningHoursSpecification;
+  @Field((type) => Place_HasMapUnion)
+  hasMap?: Place_HasMap;
+  @Field((type) => Place_LongitudeUnion)
+  longitude?: Place_Longitude;
+  @Field((type) => Place_GeoUnion)
+  geo?: Place_Geo;
+  @Field((type) => Event)
+  events?: Event;
+  @Field((type) => TextScalar)
+  faxNumber?: TextType;
+  @Field((type) => Event)
+  event?: Event;
+}
+@ObjectType()
+export class PublicationVolume extends CreativeWork {
+  @Field((type) => PublicationVolume_PageStartUnion)
+  pageStart?: PublicationVolume_PageStart;
+  @Field((type) => PublicationVolume_PageEndUnion)
+  pageEnd?: PublicationVolume_PageEnd;
+  @Field((type) => PublicationVolume_VolumeNumberUnion)
+  volumeNumber?: PublicationVolume_VolumeNumber;
+  @Field((type) => TextScalar)
+  pagination?: TextType;
+}
+@ObjectType()
+export class ReceiveAction extends TransferAction {
+  @Field((type) => ReceiveAction_SenderUnion)
+  sender?: ReceiveAction_Sender;
+  @Field((type) => DeliveryMethod)
+  deliveryMethod?: DeliveryMethod;
+}
+@ObjectType()
+export class AnatomicalSystem extends MedicalEntity {
+  @Field((type) => MedicalTherapy)
+  relatedTherapy?: MedicalTherapy;
+  @Field((type) => MedicalCondition)
+  relatedCondition?: MedicalCondition;
+  @Field((type) => AnatomicalStructure)
+  relatedStructure?: AnatomicalStructure;
+  @Field((type) => TextScalar)
+  associatedPathophysiology?: TextType;
+  @Field((type) => AnatomicalSystem_ComprisedOfUnion)
+  comprisedOf?: AnatomicalSystem_ComprisedOf;
+}
+@ObjectType()
+export class EndorseAction extends ReactAction {
+  @Field((type) => EndorseAction_EndorseeUnion)
+  endorsee?: EndorseAction_Endorsee;
+}
+@ObjectType()
+export class EnergyConsumptionDetails extends Intangible {
+  @Field((type) => EUEnergyEfficiencyEnumeration)
+  energyEfficiencyScaleMin?: EUEnergyEfficiencyEnumeration;
+  @Field((type) => EnergyEfficiencyEnumeration)
+  hasEnergyEfficiencyCategory?: EnergyEfficiencyEnumeration;
+  @Field((type) => EUEnergyEfficiencyEnumeration)
+  energyEfficiencyScaleMax?: EUEnergyEfficiencyEnumeration;
+}
+@ObjectType()
+export class MedicalTherapy extends TherapeuticProcedure {
+  @Field((type) => MedicalTherapy)
+  duplicateTherapy?: MedicalTherapy;
+  @Field((type) => MedicalEntity)
+  seriousAdverseOutcome?: MedicalEntity;
+  @Field((type) => MedicalTherapy_ContraindicationUnion)
+  contraindication?: MedicalTherapy_Contraindication;
+}
+@ObjectType()
+export class MedicalGuidelineRecommendation extends MedicalGuideline {
+  @Field((type) => TextScalar)
+  recommendationStrength?: TextType;
+}
+@ObjectType()
+export class TouristAttraction extends Place {
+  @Field((type) => TouristAttraction_TouristTypeUnion)
+  touristType?: TouristAttraction_TouristType;
+  @Field((type) => TouristAttraction_AvailableLanguageUnion)
+  availableLanguage?: TouristAttraction_AvailableLanguage;
+}
+@ObjectType()
+export class ServiceChannel extends Intangible {
+  @Field((type) => Service)
+  providesService?: Service;
+  @Field((type) => ContactPoint)
+  serviceSmsNumber?: ContactPoint;
+  @Field((type) => PostalAddress)
+  servicePostalAddress?: PostalAddress;
+  @Field((type) => UrlScalar)
+  serviceUrl?: UrlType;
+  @Field((type) => ContactPoint)
+  servicePhone?: ContactPoint;
+  @Field((type) => ServiceChannel_AvailableLanguageUnion)
+  availableLanguage?: ServiceChannel_AvailableLanguage;
+  @Field((type) => DurationUnion)
+  processingTime?: Duration;
+  @Field((type) => Place)
+  serviceLocation?: Place;
+}
+@ObjectType()
+export class ImageObject extends MediaObject {
+  @Field((type) => TextScalar)
+  embeddedTextCaption?: TextType;
+  @Field((type) => BooleanScalar)
+  representativeOfPage?: BooleanType;
+  @Field((type) => ImageObject_CaptionUnion)
+  caption?: ImageObject_Caption;
+  @Field((type) => ImageObject)
+  thumbnail?: ImageObject;
+  @Field((type) => ImageObject_ExifDataUnion)
+  exifData?: ImageObject_ExifData;
+}
+@ObjectType()
+export class Protein extends BioChemEntity {
+  @Field((type) => TextScalar)
+  hasBioPolymerSequence?: TextType;
+}
+@ObjectType()
+export class MonetaryAmount extends StructuredValue {
+  @Field((type) => NumberScalar)
+  maxValue?: NumberType;
+  @Field((type) => NumberScalar)
+  minValue?: NumberType;
+  @Field((type) => MonetaryAmount_ValidFromUnion)
+  validFrom?: MonetaryAmount_ValidFrom;
+  @Field((type) => MonetaryAmount_ValueUnion)
+  value?: MonetaryAmount_Value;
+  @Field((type) => TextScalar)
+  currency?: TextType;
+  @Field((type) => MonetaryAmount_ValidThroughUnion)
+  validThrough?: MonetaryAmount_ValidThrough;
+}
+@ObjectType()
+export class Collection extends CreativeWork {
+  @Field((type) => IntegerScalar)
+  collectionSize?: IntegerType;
+}
+@ObjectType()
+export class GeoCoordinates extends StructuredValue {
+  @Field((type) => GeoCoordinates_AddressCountryUnion)
+  addressCountry?: GeoCoordinates_AddressCountry;
+  @Field((type) => GeoCoordinates_LatitudeUnion)
+  latitude?: GeoCoordinates_Latitude;
+  @Field((type) => GeoCoordinates_AddressUnion)
+  address?: GeoCoordinates_Address;
+  @Field((type) => TextScalar)
+  postalCode?: TextType;
+  @Field((type) => GeoCoordinates_ElevationUnion)
+  elevation?: GeoCoordinates_Elevation;
+  @Field((type) => GeoCoordinates_LongitudeUnion)
+  longitude?: GeoCoordinates_Longitude;
+}
+@ObjectType()
+export class ActionAccessSpecification extends Intangible {
+  @Field((type) => Offer)
+  expectsAcceptanceOf?: Offer;
+  @Field((type) => ActionAccessSpecification_CategoryUnion)
+  category?: ActionAccessSpecification_Category;
+  @Field((type) => ActionAccessSpecification_IneligibleRegionUnion)
+  ineligibleRegion?: ActionAccessSpecification_IneligibleRegion;
+  @Field((type) => ActionAccessSpecification_RequiresSubscriptionUnion)
+  requiresSubscription?: ActionAccessSpecification_RequiresSubscription;
+  @Field((type) => ActionAccessSpecification_AvailabilityEndsUnion)
+  availabilityEnds?: ActionAccessSpecification_AvailabilityEnds;
+  @Field((type) => ActionAccessSpecification_EligibleRegionUnion)
+  eligibleRegion?: ActionAccessSpecification_EligibleRegion;
+  @Field((type) => ActionAccessSpecification_AvailabilityStartsUnion)
+  availabilityStarts?: ActionAccessSpecification_AvailabilityStarts;
+}
+@ObjectType()
+export class Gene extends BioChemEntity {
+  @Field((type) => Gene)
+  alternativeOf?: Gene;
+  @Field((type) => TextScalar)
+  hasBioPolymerSequence?: TextType;
+  @Field((type) => BioChemEntity)
+  encodesBioChemEntity?: BioChemEntity;
+  @Field((type) => Gene_ExpressedInUnion)
+  expressedIn?: Gene_ExpressedIn;
+}
+@ObjectType()
+export class TVEpisode extends Episode {
+  @Field((type) => CountryUnion)
+  countryOfOrigin?: Country;
+  @Field((type) => TVEpisode_TitleEIDRUnion)
+  titleEIDR?: TVEpisode_TitleEIDR;
+  @Field((type) => TVEpisode_SubtitleLanguageUnion)
+  subtitleLanguage?: TVEpisode_SubtitleLanguage;
+  @Field((type) => TVSeries)
+  partOfTVSeries?: TVSeries;
+}
+@ObjectType()
+export class Legislation extends CreativeWork {
+  @Field((type) => Legislation)
+  legislationTransposes?: Legislation;
+  @Field((type) => LegalForceStatus)
+  legislationLegalForce?: LegalForceStatus;
+  @Field((type) => Legislation_LegislationTypeUnion)
+  legislationType?: Legislation_LegislationType;
+  @Field((type) => Legislation_JurisdictionUnion)
+  jurisdiction?: Legislation_Jurisdiction;
+  @Field((type) => Legislation_LegislationIdentifierUnion)
+  legislationIdentifier?: Legislation_LegislationIdentifier;
+  @Field((type) => Legislation)
+  legislationChanges?: Legislation;
+  @Field((type) => Legislation_LegislationResponsibleUnion)
+  legislationResponsible?: Legislation_LegislationResponsible;
+  @Field((type) => Legislation_LegislationJurisdictionUnion)
+  legislationJurisdiction?: Legislation_LegislationJurisdiction;
+  @Field((type) => DateScalar)
+  legislationDate?: DateType;
+  @Field((type) => Legislation_LegislationPassedByUnion)
+  legislationPassedBy?: Legislation_LegislationPassedBy;
+  @Field((type) => Legislation)
+  legislationConsolidates?: Legislation;
+  @Field((type) => Legislation)
+  legislationApplies?: Legislation;
+  @Field((type) => DateScalar)
+  legislationDateVersion?: DateType;
+}
+@ObjectType()
+export class SpecialAnnouncement extends CreativeWork {
+  @Field((type) => GovernmentService)
+  governmentBenefitsInfo?: GovernmentService;
+  @Field((type) => SpecialAnnouncement_CategoryUnion)
+  category?: SpecialAnnouncement_Category;
+  @Field((type) => SpecialAnnouncement_DiseaseSpreadStatisticsUnion)
+  diseaseSpreadStatistics?: SpecialAnnouncement_DiseaseSpreadStatistics;
+  @Field((type) => SpecialAnnouncement_GettingTestedInfoUnion)
+  gettingTestedInfo?: SpecialAnnouncement_GettingTestedInfo;
+  @Field((type) => SpecialAnnouncement_AnnouncementLocationUnion)
+  announcementLocation?: SpecialAnnouncement_AnnouncementLocation;
+  @Field((type) => SpecialAnnouncement_TravelBansUnion)
+  travelBans?: SpecialAnnouncement_TravelBans;
+  @Field((type) => SpecialAnnouncement_DiseasePreventionInfoUnion)
+  diseasePreventionInfo?: SpecialAnnouncement_DiseasePreventionInfo;
+  @Field((type) => SpecialAnnouncement_PublicTransportClosuresInfoUnion)
+  publicTransportClosuresInfo?: SpecialAnnouncement_PublicTransportClosuresInfo;
+  @Field((type) => SpecialAnnouncement_SchoolClosuresInfoUnion)
+  schoolClosuresInfo?: SpecialAnnouncement_SchoolClosuresInfo;
+  @Field((type) => SpecialAnnouncement_DatePostedUnion)
+  datePosted?: SpecialAnnouncement_DatePosted;
+  @Field((type) => SpecialAnnouncement_NewsUpdatesAndGuidelinesUnion)
+  newsUpdatesAndGuidelines?: SpecialAnnouncement_NewsUpdatesAndGuidelines;
+  @Field((type) => SpecialAnnouncement_QuarantineGuidelinesUnion)
+  quarantineGuidelines?: SpecialAnnouncement_QuarantineGuidelines;
+  @Field((type) => SpecialAnnouncement_WebFeedUnion)
+  webFeed?: SpecialAnnouncement_WebFeed;
+}
+@ObjectType()
+export class MediaReview extends Review {
+  @Field((type) => TextScalar)
+  originalMediaContextDescription?: TextType;
+  @Field((type) => MediaManipulationRatingEnumeration)
+  mediaAuthenticityCategory?: MediaManipulationRatingEnumeration;
+  @Field((type) => MediaReview_OriginalMediaLinkUnion)
+  originalMediaLink?: MediaReview_OriginalMediaLink;
+}
+@ObjectType()
+export class SkiResort{
+}
+@ObjectType()
+export class FoodEstablishmentReservation extends Reservation {
+  @Field((type) => FoodEstablishmentReservation_PartySizeUnion)
+  partySize?: FoodEstablishmentReservation_PartySize;
+  @Field((type) => FoodEstablishmentReservation_StartTimeUnion)
+  startTime?: FoodEstablishmentReservation_StartTime;
+  @Field((type) => FoodEstablishmentReservation_EndTimeUnion)
+  endTime?: FoodEstablishmentReservation_EndTime;
+}
+@ObjectType()
+export class PublicationIssue extends CreativeWork {
+  @Field((type) => PublicationIssue_PageStartUnion)
+  pageStart?: PublicationIssue_PageStart;
+  @Field((type) => PublicationIssue_PageEndUnion)
+  pageEnd?: PublicationIssue_PageEnd;
+  @Field((type) => PublicationIssue_IssueNumberUnion)
+  issueNumber?: PublicationIssue_IssueNumber;
+  @Field((type) => TextScalar)
+  pagination?: TextType;
+}
+@ObjectType()
+export class CDCPMDRecord extends StructuredValue {
+  @Field((type) => NumberScalar)
+  cvdNumBedsOcc?: NumberType;
+  @Field((type) => NumberScalar)
+  cvdNumICUBedsOcc?: NumberType;
+  @Field((type) => NumberScalar)
+  cvdNumVent?: NumberType;
+  @Field((type) => NumberScalar)
+  cvdNumC19Died?: NumberType;
+  @Field((type) => NumberScalar)
+  cvdNumTotBeds?: NumberType;
+  @Field((type) => TextScalar)
+  cvdFacilityCounty?: TextType;
+  @Field((type) => NumberScalar)
+  cvdNumICUBeds?: NumberType;
+  @Field((type) => CDCPMDRecord_CvdCollectionDateUnion)
+  cvdCollectionDate?: CDCPMDRecord_CvdCollectionDate;
+  @Field((type) => NumberScalar)
+  cvdNumC19HOPats?: NumberType;
+  @Field((type) => NumberScalar)
+  cvdNumC19OFMechVentPats?: NumberType;
+  @Field((type) => TextScalar)
+  cvdFacilityId?: TextType;
+  @Field((type) => NumberScalar)
+  cvdNumVentUse?: NumberType;
+  @Field((type) => NumberScalar)
+  cvdNumBeds?: NumberType;
+  @Field((type) => NumberScalar)
+  cvdNumC19MechVentPats?: NumberType;
+  @Field((type) => CDCPMDRecord_DatePostedUnion)
+  datePosted?: CDCPMDRecord_DatePosted;
+  @Field((type) => NumberScalar)
+  cvdNumC19OverflowPats?: NumberType;
+  @Field((type) => NumberScalar)
+  cvdNumC19HospPats?: NumberType;
+}
+@ObjectType()
+export class WriteAction extends CreateAction {
+  @Field((type) => WriteAction_InLanguageUnion)
+  inLanguage?: WriteAction_InLanguage;
+  @Field((type) => LanguageUnion)
+  language?: Language;
+}
+@ObjectType()
+export class Dentist{
+}
+@ObjectType()
+export class MedicalEntity extends Thing {
+  @Field((type) => MedicalEntity_LegalStatusUnion)
+  legalStatus?: MedicalEntity_LegalStatus;
+  @Field((type) => Grant)
+  funding?: Grant;
+  @Field((type) => MedicalStudy)
+  study?: MedicalStudy;
+  @Field((type) => MedicalCode)
+  code?: MedicalCode;
+  @Field((type) => MedicalGuideline)
+  guideline?: MedicalGuideline;
+  @Field((type) => Organization)
+  recognizingAuthority?: Organization;
+  @Field((type) => MedicineSystem)
+  medicineSystem?: MedicineSystem;
+  @Field((type) => MedicalSpecialty)
+  relevantSpecialty?: MedicalSpecialty;
+}
+@ObjectType()
+export class ExchangeRateSpecification extends StructuredValue {
+  @Field((type) => UnitPriceSpecification)
+  currentExchangeRate?: UnitPriceSpecification;
+  @Field((type) => ExchangeRateSpecification_ExchangeRateSpreadUnion)
+  exchangeRateSpread?: ExchangeRateSpecification_ExchangeRateSpread;
+  @Field((type) => TextScalar)
+  currency?: TextType;
+}
+@ObjectType()
+export class MusicPlaylist extends CreativeWork {
+  @Field((type) => MusicRecording)
+  tracks?: MusicRecording;
+  @Field((type) => IntegerScalar)
+  numTracks?: IntegerType;
+  @Field((type) => MusicPlaylist_TrackUnion)
+  track?: MusicPlaylist_Track;
+}
+@ObjectType()
+export class Role extends Intangible {
+  @Field((type) => Role_NamedPositionUnion)
+  namedPosition?: Role_NamedPosition;
+  @Field((type) => Role_StartDateUnion)
+  startDate?: Role_StartDate;
+  @Field((type) => Role_EndDateUnion)
+  endDate?: Role_EndDate;
+  @Field((type) => Role_RoleNameUnion)
+  roleName?: Role_RoleName;
+}
+@ObjectType()
+export class CreativeWork extends Thing {
+  @Field((type) => CreativeWork_TeachesUnion)
+  teaches?: CreativeWork_Teaches;
+  @Field((type) => CreativeWork_EducationalLevelUnion)
+  educationalLevel?: CreativeWork_EducationalLevel;
+  @Field((type) => TextScalar)
+  abstract?: TextType;
+  @Field((type) => CreativeWork_CreativeWorkStatusUnion)
+  creativeWorkStatus?: CreativeWork_CreativeWorkStatus;
+  @Field((type) => DateScalar)
+  expires?: DateType;
+  @Field((type) => DateTimeScalar)
+  contentReferenceTime?: DateTimeType;
+  @Field((type) => CreativeWork_MaterialUnion)
+  material?: CreativeWork_Material;
+  @Field((type) => Review)
+  review?: Review;
+  @Field((type) => CreativeWork_FileFormatUnion)
+  fileFormat?: CreativeWork_FileFormat;
+  @Field((type) => TextScalar)
+  text?: TextType;
+  @Field((type) => CreativeWork_TranslatorUnion)
+  translator?: CreativeWork_Translator;
+  @Field((type) => TextScalar)
+  award?: TextType;
+  @Field((type) => CreativeWork_AssessesUnion)
+  assesses?: CreativeWork_Assesses;
+  @Field((type) => TextScalar)
+  copyrightNotice?: TextType;
+  @Field((type) => CreativeWork_SchemaVersionUnion)
+  schemaVersion?: CreativeWork_SchemaVersion;
+  @Field((type) => CountryUnion)
+  countryOfOrigin?: Country;
+  @Field((type) => CreativeWork_PatternUnion)
+  pattern?: CreativeWork_Pattern;
+  @Field((type) => Person)
+  accountablePerson?: Person;
+  @Field((type) => Grant)
+  funding?: Grant;
+  @Field((type) => CreativeWork_EducationalUseUnion)
+  educationalUse?: CreativeWork_EducationalUse;
+  @Field((type) => CreativeWork_GenreUnion)
+  genre?: CreativeWork_Genre;
+  @Field((type) => CreativeWork_KeywordsUnion)
+  keywords?: CreativeWork_Keywords;
+  @Field((type) => CreativeWork_PositionUnion)
+  position?: CreativeWork_Position;
+  @Field((type) => TextScalar)
+  accessibilityHazard?: TextType;
+  @Field((type) => TextScalar)
+  alternativeHeadline?: TextType;
+  @Field((type) => Audience)
+  audience?: Audience;
+  @Field((type) => CreativeWork_OffersUnion)
+  offers?: CreativeWork_Offers;
+  @Field((type) => Place)
+  locationCreated?: Place;
+  @Field((type) => MediaObject)
+  associatedMedia?: MediaObject;
+  @Field((type) => CreativeWork_MaterialExtentUnion)
+  materialExtent?: CreativeWork_MaterialExtent;
+  @Field((type) => Thing)
+  mainEntity?: Thing;
+  @Field((type) => CreativeWork_CopyrightHolderUnion)
+  copyrightHolder?: CreativeWork_CopyrightHolder;
+  @Field((type) => TextScalar)
+  awards?: TextType;
+  @Field((type) => Place)
+  contentLocation?: Place;
+  @Field((type) => DateScalar)
+  sdDatePublished?: DateType;
+  @Field((type) => CreativeWork_ProducerUnion)
+  producer?: CreativeWork_Producer;
+  @Field((type) => Place)
+  spatial?: Place;
+  @Field((type) => CreativeWork_PublisherUnion)
+  publisher?: CreativeWork_Publisher;
+  @Field((type) => Organization)
+  sourceOrganization?: Organization;
+  @Field((type) => Person)
+  character?: Person;
+  @Field((type) => CreativeWork_FunderUnion)
+  funder?: CreativeWork_Funder;
+  @Field((type) => CreativeWork)
+  exampleOfWork?: CreativeWork;
+  @Field((type) => CreativeWork_UsageInfoUnion)
+  usageInfo?: CreativeWork_UsageInfo;
+  @Field((type) => CreativeWork_ProviderUnion)
+  provider?: CreativeWork_Provider;
+  @Field((type) => CreativeWork_SdPublisherUnion)
+  sdPublisher?: CreativeWork_SdPublisher;
+  @Field((type) => Comment)
+  comment?: Comment;
+  @Field((type) => TextScalar)
+  accessibilityFeature?: TextType;
+  @Field((type) => PublicationEvent)
+  publication?: PublicationEvent;
+  @Field((type) => CreativeWork)
+  translationOfWork?: CreativeWork;
+  @Field((type) => TextScalar)
+  interactivityType?: TextType;
+  @Field((type) => IntegerScalar)
+  commentCount?: IntegerType;
+  @Field((type) => TextScalar)
+  accessMode?: TextType;
+  @Field((type) => AggregateRating)
+  aggregateRating?: AggregateRating;
+  @Field((type) => DurationUnion)
+  timeRequired?: Duration;
+  @Field((type) => TextScalar)
+  typicalAgeRange?: TextType;
+  @Field((type) => InteractionCounter)
+  interactionStatistic?: InteractionCounter;
+  @Field((type) => NumberScalar)
+  copyrightYear?: NumberType;
+  @Field((type) => CreativeWork_IsBasedOnUnion)
+  isBasedOn?: CreativeWork_IsBasedOn;
+  @Field((type) => CreativeWork)
+  workExample?: CreativeWork;
+  @Field((type) => CreativeWork_PublishingPrinciplesUnion)
+  publishingPrinciples?: CreativeWork_PublishingPrinciples;
+  @Field((type) => UrlScalar)
+  discussionUrl?: UrlType;
+  @Field((type) => PublicationEvent)
+  releasedEvent?: PublicationEvent;
+  @Field((type) => CreativeWork_DateCreatedUnion)
+  dateCreated?: CreativeWork_DateCreated;
+  @Field((type) => CreativeWork)
+  workTranslation?: CreativeWork;
+  @Field((type) => Person)
+  editor?: Person;
+  @Field((type) => TextScalar)
+  creditText?: TextType;
+  @Field((type) => Event)
+  recordedAt?: Event;
+  @Field((type) => CreativeWork_EditEIDRUnion)
+  editEIDR?: CreativeWork_EditEIDR;
+  @Field((type) => CreativeWork_AuthorUnion)
+  author?: CreativeWork_Author;
+  @Field((type) => CreativeWork_DateModifiedUnion)
+  dateModified?: CreativeWork_DateModified;
+  @Field((type) => CreativeWork_SponsorUnion)
+  sponsor?: CreativeWork_Sponsor;
+  @Field((type) => TextScalar)
+  accessibilitySummary?: TextType;
+  @Field((type) => CreativeWork_EncodingFormatUnion)
+  encodingFormat?: CreativeWork_EncodingFormat;
+  @Field((type) => CreativeWork_MaintainerUnion)
+  maintainer?: CreativeWork_Maintainer;
+  @Field((type) => AlignmentObject)
+  educationalAlignment?: AlignmentObject;
+  @Field((type) => CreativeWork_AcquireLicensePageUnion)
+  acquireLicensePage?: CreativeWork_AcquireLicensePage;
+  @Field((type) => BooleanScalar)
+  isAccessibleForFree?: BooleanType;
+  @Field((type) => CreativeWork_DatePublishedUnion)
+  datePublished?: CreativeWork_DatePublished;
+  @Field((type) => Place)
+  spatialCoverage?: Place;
+  @Field((type) => CreativeWork_SdLicenseUnion)
+  sdLicense?: CreativeWork_SdLicense;
+  @Field((type) => TextScalar)
+  conditionsOfAccess?: TextType;
+  @Field((type) => CreativeWork_CorrectionUnion)
+  correction?: CreativeWork_Correction;
+  @Field((type) => CreativeWork_ContentRatingUnion)
+  contentRating?: CreativeWork_ContentRating;
+  @Field((type) => CreativeWork_SizeUnion)
+  size?: CreativeWork_Size;
+  @Field((type) => CreativeWork_IsPartOfUnion)
+  isPartOf?: CreativeWork_IsPartOf;
+  @Field((type) => CreativeWork_TemporalUnion)
+  temporal?: CreativeWork_Temporal;
+  @Field((type) => UrlScalar)
+  thumbnailUrl?: UrlType;
+  @Field((type) => CreativeWork_InLanguageUnion)
+  inLanguage?: CreativeWork_InLanguage;
+  @Field((type) => CreativeWork_LicenseUnion)
+  license?: CreativeWork_License;
+  @Field((type) => CreativeWork_CreatorUnion)
+  creator?: CreativeWork_Creator;
+  @Field((type) => Review)
+  reviews?: Review;
+  @Field((type) => Thing)
+  about?: Thing;
+  @Field((type) => BooleanScalar)
+  isFamilyFriendly?: BooleanType;
+  @Field((type) => TextScalar)
+  headline?: TextType;
+  @Field((type) => TextScalar)
+  accessibilityAPI?: TextType;
+  @Field((type) => Organization)
+  publisherImprint?: Organization;
+  @Field((type) => CreativeWork_IsBasedOnUrlUnion)
+  isBasedOnUrl?: CreativeWork_IsBasedOnUrl;
+  @Field((type) => MediaObject)
+  encodings?: MediaObject;
+  @Field((type) => Claim)
+  interpretedAsClaim?: Claim;
+  @Field((type) => TextScalar)
+  accessibilityControl?: TextType;
+  @Field((type) => CreativeWork_CitationUnion)
+  citation?: CreativeWork_Citation;
+  @Field((type) => CreativeWork_VersionUnion)
+  version?: CreativeWork_Version;
+  @Field((type) => CreativeWork_ArchivedAtUnion)
+  archivedAt?: CreativeWork_ArchivedAt;
+  @Field((type) => CreativeWork_LearningResourceTypeUnion)
+  learningResourceType?: CreativeWork_LearningResourceType;
+  @Field((type) => MediaObject)
+  encoding?: MediaObject;
+  @Field((type) => CreativeWork_AudioUnion)
+  audio?: CreativeWork_Audio;
+  @Field((type) => Thing)
+  mentions?: Thing;
+  @Field((type) => ItemList)
+  accessModeSufficient?: ItemList;
+  @Field((type) => CreativeWork)
+  hasPart?: CreativeWork;
+  @Field((type) => CreativeWork_TemporalCoverageUnion)
+  temporalCoverage?: CreativeWork_TemporalCoverage;
+  @Field((type) => CreativeWork_ContributorUnion)
+  contributor?: CreativeWork_Contributor;
+  @Field((type) => CreativeWork_VideoUnion)
+  video?: CreativeWork_Video;
+}
+@ObjectType()
+export class DrugClass extends MedicalEntity {
+  @Field((type) => Drug)
+  drug?: Drug;
+}
+@ObjectType()
+export class GeoCircle extends GeoShape {
+  @Field((type) => GeoCircle_GeoRadiusUnion)
+  geoRadius?: GeoCircle_GeoRadius;
+  @Field((type) => GeoCoordinates)
+  geoMidpoint?: GeoCoordinates;
+}
+@ObjectType()
+export class OfferShippingDetails extends StructuredValue {
+  @Field((type) => DefinedRegion)
+  shippingDestination?: DefinedRegion;
+  @Field((type) => BooleanScalar)
+  doesNotShip?: BooleanType;
+  @Field((type) => UrlScalar)
+  shippingSettingsLink?: UrlType;
+  @Field((type) => TextScalar)
+  transitTimeLabel?: TextType;
+  @Field((type) => TextScalar)
+  shippingLabel?: TextType;
+  @Field((type) => ShippingDeliveryTime)
+  deliveryTime?: ShippingDeliveryTime;
+  @Field((type) => MonetaryAmount)
+  shippingRate?: MonetaryAmount;
+}
+@ObjectType()
+export class MolecularEntity extends BioChemEntity {
+  @Field((type) => TextScalar)
+  inChIKey?: TextType;
+  @Field((type) => TextScalar)
+  iupacName?: TextType;
+  @Field((type) => MolecularEntity_MonoisotopicMolecularWeightUnion)
+  monoisotopicMolecularWeight?: MolecularEntity_MonoisotopicMolecularWeight;
+  @Field((type) => TextScalar)
+  molecularFormula?: TextType;
+  @Field((type) => DefinedTerm)
+  potentialUse?: DefinedTerm;
+  @Field((type) => DefinedTerm)
+  chemicalRole?: DefinedTerm;
+  @Field((type) => MolecularEntity_MolecularWeightUnion)
+  molecularWeight?: MolecularEntity_MolecularWeight;
+  @Field((type) => TextScalar)
+  inChI?: TextType;
+  @Field((type) => TextScalar)
+  smiles?: TextType;
+}
+@ObjectType()
+export class HyperToc extends CreativeWork {
+  @Field((type) => HyperTocEntry)
+  tocEntry?: HyperTocEntry;
+  @Field((type) => MediaObject)
+  associatedMedia?: MediaObject;
+}
+@ObjectType()
+export class PostalAddress extends ContactPoint {
+  @Field((type) => PostalAddress_AddressCountryUnion)
+  addressCountry?: PostalAddress_AddressCountry;
+  @Field((type) => TextScalar)
+  addressRegion?: TextType;
+  @Field((type) => TextScalar)
+  addressLocality?: TextType;
+  @Field((type) => TextScalar)
+  postalCode?: TextType;
+  @Field((type) => TextScalar)
+  postOfficeBoxNumber?: TextType;
+  @Field((type) => TextScalar)
+  streetAddress?: TextType;
+}
+@ObjectType()
+export class ShippingRateSettings extends StructuredValue {
+  @Field((type) => DefinedRegion)
+  shippingDestination?: DefinedRegion;
+  @Field((type) => BooleanScalar)
+  doesNotShip?: BooleanType;
+  @Field((type) => TextScalar)
+  shippingLabel?: TextType;
+  @Field((type) => BooleanScalar)
+  isUnlabelledFallback?: BooleanType;
+  @Field((type) => MonetaryAmount)
+  shippingRate?: MonetaryAmount;
+  @Field((type) => ShippingRateSettings_FreeShippingThresholdUnion)
+  freeShippingThreshold?: ShippingRateSettings_FreeShippingThreshold;
+}
+@ObjectType()
+export class Thesis extends CreativeWork {
+  @Field((type) => TextScalar)
+  inSupportOf?: TextType;
+}
+@ObjectType()
+export class LeaveAction extends InteractAction {
+  @Field((type) => Event)
+  event?: Event;
+}
+@ObjectType()
+export class SearchAction extends Action {
+  @Field((type) => TextScalar)
+  query?: TextType;
+}
+@ObjectType()
+export class MonetaryAmountDistribution extends QuantitativeValueDistribution {
+  @Field((type) => TextScalar)
+  currency?: TextType;
+}
+@ObjectType()
+export class DeliveryChargeSpecification extends PriceSpecification {
+  @Field((type) => DeliveryChargeSpecification_IneligibleRegionUnion)
+  ineligibleRegion?: DeliveryChargeSpecification_IneligibleRegion;
+  @Field((type) => DeliveryChargeSpecification_EligibleRegionUnion)
+  eligibleRegion?: DeliveryChargeSpecification_EligibleRegion;
+  @Field((type) => DeliveryChargeSpecification_AreaServedUnion)
+  areaServed?: DeliveryChargeSpecification_AreaServed;
+  @Field((type) => DeliveryMethod)
+  appliesToDeliveryMethod?: DeliveryMethod;
+}
+@ObjectType()
+export class MedicalWebPage extends WebPage {
+  @Field((type) => TextScalar)
+  aspect?: TextType;
+  @Field((type) => MedicalWebPage_MedicalAudienceUnion)
+  medicalAudience?: MedicalWebPage_MedicalAudience;
+}
+@ObjectType()
+export class InviteAction extends CommunicateAction {
+  @Field((type) => Event)
+  event?: Event;
+}
+@ObjectType()
+export class DiagnosticLab extends MedicalOrganization {
+  @Field((type) => MedicalTest)
+  availableTest?: MedicalTest;
+}
+@ObjectType()
+export class MedicalTest extends MedicalEntity {
+  @Field((type) => MedicalCondition)
+  usedToDiagnose?: MedicalCondition;
+  @Field((type) => Drug)
+  affectedBy?: Drug;
+  @Field((type) => MedicalTest_NormalRangeUnion)
+  normalRange?: MedicalTest_NormalRange;
+  @Field((type) => MedicalSign)
+  signDetected?: MedicalSign;
+  @Field((type) => MedicalDevice)
+  usesDevice?: MedicalDevice;
+}
+@ObjectType()
+export class Airline extends Organization {
+  @Field((type) => TextScalar)
+  iataCode?: TextType;
+  @Field((type) => BoardingPolicyType)
+  boardingPolicy?: BoardingPolicyType;
+}
+@ObjectType()
+export class VideoGame{
+  @Field((type) => Person)
+  director?: Person;
+  @Field((type) => Person)
+  actor?: Person;
+  @Field((type) => VideoObject)
+  trailer?: VideoObject;
+  @Field((type) => TextScalar)
+  gameEdition?: TextType;
+  @Field((type) => CreativeWork)
+  cheatCode?: CreativeWork;
+  @Field((type) => GameServer)
+  gameServer?: GameServer;
+  @Field((type) => CreativeWork)
+  gameTip?: CreativeWork;
+  @Field((type) => Person)
+  actors?: Person;
+  @Field((type) => GamePlayMode)
+  playMode?: GamePlayMode;
+  @Field((type) => VideoGame_GamePlatformUnion)
+  gamePlatform?: VideoGame_GamePlatform;
+  @Field((type) => VideoGame_MusicByUnion)
+  musicBy?: VideoGame_MusicBy;
+  @Field((type) => Person)
+  directors?: Person;
+}
+@ObjectType()
+export class LocationFeatureSpecification extends PropertyValue {
+  @Field((type) => OpeningHoursSpecification)
+  hoursAvailable?: OpeningHoursSpecification;
+  @Field((type) => LocationFeatureSpecification_ValidFromUnion)
+  validFrom?: LocationFeatureSpecification_ValidFrom;
+  @Field((type) => LocationFeatureSpecification_ValidThroughUnion)
+  validThrough?: LocationFeatureSpecification_ValidThrough;
+}
+@ObjectType()
+export class ProgramMembership extends Intangible {
+  @Field((type) => ProgramMembership_MembershipPointsEarnedUnion)
+  membershipPointsEarned?: ProgramMembership_MembershipPointsEarned;
+  @Field((type) => ProgramMembership_MemberUnion)
+  member?: ProgramMembership_Member;
+  @Field((type) => TextScalar)
+  membershipNumber?: TextType;
+  @Field((type) => Organization)
+  hostingOrganization?: Organization;
+  @Field((type) => TextScalar)
+  programName?: TextType;
+  @Field((type) => ProgramMembership_MembersUnion)
+  members?: ProgramMembership_Members;
+}
+@ObjectType()
+export class MedicalConditionStage extends MedicalIntangible {
+  @Field((type) => TextScalar)
+  subStageSuffix?: TextType;
+  @Field((type) => NumberScalar)
+  stageAsNumber?: NumberType;
+}
+@ObjectType()
+export class PayAction extends TradeAction {
+  @Field((type) => PayAction_RecipientUnion)
+  recipient?: PayAction_Recipient;
+}
+@ObjectType()
+export class HealthPlanFormulary extends Intangible {
+  @Field((type) => BooleanScalar)
+  offersPrescriptionByMail?: BooleanType;
+  @Field((type) => TextScalar)
+  healthPlanDrugTier?: TextType;
+  @Field((type) => BooleanScalar)
+  healthPlanCostSharing?: BooleanType;
+}
+@ObjectType()
+export class DataDownload extends MediaObject {
+  @Field((type) => DataDownload_MeasurementTechniqueUnion)
+  measurementTechnique?: DataDownload_MeasurementTechnique;
+}
+@ObjectType()
+export class WebPageElement extends CreativeWork {
+  @Field((type) => CssSelectorTypeScalar)
+  cssSelector?: CssSelectorTypeType;
+  @Field((type) => XPathTypeScalar)
+  xpath?: XPathTypeType;
+}
+@ObjectType()
+export class ProductModel extends Product {
+  @Field((type) => ProductModel)
+  successorOf?: ProductModel;
+  @Field((type) => ProductModel)
+  predecessorOf?: ProductModel;
+  @Field((type) => ProductModel_IsVariantOfUnion)
+  isVariantOf?: ProductModel_IsVariantOf;
+}
+@ObjectType()
+export class MedicalObservationalStudy extends MedicalStudy {
+  @Field((type) => MedicalObservationalStudyDesign)
+  studyDesign?: MedicalObservationalStudyDesign;
+}
+@ObjectType()
+export class RadioSeries extends CreativeWorkSeries {
+  @Field((type) => RadioSeries_SeasonUnion)
+  season?: RadioSeries_Season;
+  @Field((type) => CreativeWorkSeason)
+  containsSeason?: CreativeWorkSeason;
+  @Field((type) => Person)
+  director?: Person;
+  @Field((type) => Person)
+  actor?: Person;
+  @Field((type) => VideoObject)
+  trailer?: VideoObject;
+  @Field((type) => Episode)
+  episodes?: Episode;
+  @Field((type) => IntegerScalar)
+  numberOfEpisodes?: IntegerType;
+  @Field((type) => CreativeWorkSeason)
+  seasons?: CreativeWorkSeason;
+  @Field((type) => Organization)
+  productionCompany?: Organization;
+  @Field((type) => Person)
+  actors?: Person;
+  @Field((type) => IntegerScalar)
+  numberOfSeasons?: IntegerType;
+  @Field((type) => RadioSeries_MusicByUnion)
+  musicBy?: RadioSeries_MusicBy;
+  @Field((type) => Episode)
+  episode?: Episode;
+  @Field((type) => Person)
+  directors?: Person;
+}
+@ObjectType()
+export class FlightReservation extends Reservation {
+  @Field((type) => FlightReservation_PassengerPriorityStatusUnion)
+  passengerPriorityStatus?: FlightReservation_PassengerPriorityStatus;
+  @Field((type) => TextScalar)
+  boardingGroup?: TextType;
+  @Field((type) => TextScalar)
+  securityScreening?: TextType;
+  @Field((type) => TextScalar)
+  passengerSequenceNumber?: TextType;
+}
+@ObjectType()
+export class WorkBasedProgram extends EducationalOccupationalProgram {
+  @Field((type) => MonetaryAmountDistribution)
+  trainingSalary?: MonetaryAmountDistribution;
+  @Field((type) => WorkBasedProgram_OccupationalCategoryUnion)
+  occupationalCategory?: WorkBasedProgram_OccupationalCategory;
+}
+@ObjectType()
+export class BoatTrip extends Trip {
+  @Field((type) => BoatTerminalUnion)
+  arrivalBoatTerminal?: BoatTerminal;
+  @Field((type) => BoatTerminalUnion)
+  departureBoatTerminal?: BoatTerminal;
+}
+@ObjectType()
+export class TrainTrip extends Trip {
+  @Field((type) => TextScalar)
+  trainName?: TextType;
+  @Field((type) => TrainStationUnion)
+  departureStation?: TrainStation;
+  @Field((type) => TextScalar)
+  departurePlatform?: TextType;
+  @Field((type) => TextScalar)
+  trainNumber?: TextType;
+  @Field((type) => TextScalar)
+  arrivalPlatform?: TextType;
+  @Field((type) => TrainStationUnion)
+  arrivalStation?: TrainStation;
+}
+@ObjectType()
+export class SuperficialAnatomy extends MedicalEntity {
+  @Field((type) => MedicalTherapy)
+  relatedTherapy?: MedicalTherapy;
+  @Field((type) => TextScalar)
+  significance?: TextType;
+  @Field((type) => SuperficialAnatomy_RelatedAnatomyUnion)
+  relatedAnatomy?: SuperficialAnatomy_RelatedAnatomy;
+  @Field((type) => MedicalCondition)
+  relatedCondition?: MedicalCondition;
+  @Field((type) => TextScalar)
+  associatedPathophysiology?: TextType;
+}
+@ObjectType()
+export class Flight extends Trip {
+  @Field((type) => Flight_FlightDistanceUnion)
+  flightDistance?: Flight_FlightDistance;
+  @Field((type) => DateTimeScalar)
+  webCheckinTime?: DateTimeType;
+  @Field((type) => Flight_AircraftUnion)
+  aircraft?: Flight_Aircraft;
+  @Field((type) => Flight_SellerUnion)
+  seller?: Flight_Seller;
+  @Field((type) => Airport)
+  arrivalAirport?: Airport;
+  @Field((type) => TextScalar)
+  arrivalTerminal?: TextType;
+  @Field((type) => Airport)
+  departureAirport?: Airport;
+  @Field((type) => TextScalar)
+  arrivalGate?: TextType;
+  @Field((type) => TextScalar)
+  departureTerminal?: TextType;
+  @Field((type) => Organization)
+  carrier?: Organization;
+  @Field((type) => Flight_EstimatedFlightDurationUnion)
+  estimatedFlightDuration?: Flight_EstimatedFlightDuration;
+  @Field((type) => TextScalar)
+  departureGate?: TextType;
+  @Field((type) => TextScalar)
+  flightNumber?: TextType;
+  @Field((type) => TextScalar)
+  mealService?: TextType;
+  @Field((type) => BoardingPolicyType)
+  boardingPolicy?: BoardingPolicyType;
+}
+@ObjectType()
+export class DatedMoneySpecification extends StructuredValue {
+  @Field((type) => DatedMoneySpecification_StartDateUnion)
+  startDate?: DatedMoneySpecification_StartDate;
+  @Field((type) => DatedMoneySpecification_EndDateUnion)
+  endDate?: DatedMoneySpecification_EndDate;
+  @Field((type) => TextScalar)
+  currency?: TextType;
+  @Field((type) => DatedMoneySpecification_AmountUnion)
+  amount?: DatedMoneySpecification_Amount;
+}
+@ObjectType()
+export class HowToDirection{
+  @Field((type) => HowToDirection_AfterMediaUnion)
+  afterMedia?: HowToDirection_AfterMedia;
+  @Field((type) => HowToDirection_SupplyUnion)
+  supply?: HowToDirection_Supply;
+  @Field((type) => HowToDirection_DuringMediaUnion)
+  duringMedia?: HowToDirection_DuringMedia;
+  @Field((type) => DurationUnion)
+  totalTime?: Duration;
+  @Field((type) => HowToDirection_BeforeMediaUnion)
+  beforeMedia?: HowToDirection_BeforeMedia;
+  @Field((type) => HowToDirection_ToolUnion)
+  tool?: HowToDirection_Tool;
+  @Field((type) => DurationUnion)
+  prepTime?: Duration;
+  @Field((type) => DurationUnion)
+  performTime?: Duration;
+}
+@ObjectType()
+export class ComicStory extends CreativeWork {
+  @Field((type) => Person)
+  letterer?: Person;
+  @Field((type) => Person)
+  colorist?: Person;
+  @Field((type) => Person)
+  inker?: Person;
+  @Field((type) => Person)
+  penciler?: Person;
+  @Field((type) => Person)
+  artist?: Person;
+}
+@ObjectType()
+export class EntryPoint extends Intangible {
+  @Field((type) => SoftwareApplication)
+  actionApplication?: SoftwareApplication;
+  @Field((type) => SoftwareApplication)
+  application?: SoftwareApplication;
+  @Field((type) => EntryPoint_ActionPlatformUnion)
+  actionPlatform?: EntryPoint_ActionPlatform;
+  @Field((type) => TextScalar)
+  httpMethod?: TextType;
+  @Field((type) => TextScalar)
+  urlTemplate?: TextType;
+  @Field((type) => TextScalar)
+  encodingType?: TextType;
+  @Field((type) => TextScalar)
+  contentType?: TextType;
+}
+@ObjectType()
+export class TransferAction extends Action {
+  @Field((type) => Place)
+  fromLocation?: Place;
+  @Field((type) => Place)
+  toLocation?: Place;
+}
+@ObjectType()
+export class PodcastSeries extends CreativeWorkSeries {
+  @Field((type) => Person)
+  actor?: Person;
+  @Field((type) => PodcastSeries_WebFeedUnion)
+  webFeed?: PodcastSeries_WebFeed;
+}
+@ObjectType()
+export class MedicalSign extends MedicalSignOrSymptom {
+  @Field((type) => MedicalTest)
+  identifyingTest?: MedicalTest;
+  @Field((type) => PhysicalExam)
+  identifyingExam?: PhysicalExam;
+}
+@ObjectType()
+export class Observation extends Intangible {
+  @Field((type) => DataTypeUnion)
+  measuredValue?: DataType;
+  @Field((type) => StatisticalPopulation)
+  observedNode?: StatisticalPopulation;
+  @Field((type) => Property)
+  measuredProperty?: Property;
+  @Field((type) => DateTimeScalar)
+  observationDate?: DateTimeType;
+  @Field((type) => QuantitativeValue)
+  marginOfError?: QuantitativeValue;
+}
+@ObjectType()
+export class AlignmentObject extends Intangible {
+  @Field((type) => TextScalar)
+  alignmentType?: TextType;
+  @Field((type) => TextScalar)
+  educationalFramework?: TextType;
+  @Field((type) => TextScalar)
+  targetDescription?: TextType;
+  @Field((type) => TextScalar)
+  targetName?: TextType;
+  @Field((type) => UrlScalar)
+  targetUrl?: UrlType;
+}
+@ObjectType()
+export class MusicComposition extends CreativeWork {
+  @Field((type) => TextScalar)
+  iswcCode?: TextType;
+  @Field((type) => MusicComposition_ComposerUnion)
+  composer?: MusicComposition_Composer;
+  @Field((type) => TextScalar)
+  musicCompositionForm?: TextType;
+  @Field((type) => MusicComposition)
+  includedComposition?: MusicComposition;
+  @Field((type) => MusicRecording)
+  recordedAs?: MusicRecording;
+  @Field((type) => Event)
+  firstPerformance?: Event;
+  @Field((type) => MusicComposition)
+  musicArrangement?: MusicComposition;
+  @Field((type) => CreativeWork)
+  lyrics?: CreativeWork;
+  @Field((type) => TextScalar)
+  musicalKey?: TextType;
+  @Field((type) => Person)
+  lyricist?: Person;
+}
+@ObjectType()
+export class MedicalTestPanel extends MedicalTest {
+  @Field((type) => MedicalTest)
+  subTest?: MedicalTest;
+}
+@ObjectType()
+export class LinkRole extends Role {
+  @Field((type) => TextScalar)
+  linkRelationship?: TextType;
+  @Field((type) => LinkRole_InLanguageUnion)
+  inLanguage?: LinkRole_InLanguage;
+}
+@ObjectType()
+export class Question extends Comment {
+  @Field((type) => Question_SuggestedAnswerUnion)
+  suggestedAnswer?: Question_SuggestedAnswer;
+  @Field((type) => Question_AcceptedAnswerUnion)
+  acceptedAnswer?: Question_AcceptedAnswer;
+  @Field((type) => IntegerScalar)
+  answerCount?: IntegerType;
+  @Field((type) => TextScalar)
+  eduQuestionType?: TextType;
+}
+@ObjectType()
+export class MedicalCondition extends MedicalEntity {
+  @Field((type) => TextScalar)
+  possibleComplication?: TextType;
+  @Field((type) => TextScalar)
+  naturalProgression?: TextType;
+  @Field((type) => MedicalTherapy)
+  primaryPrevention?: MedicalTherapy;
+  @Field((type) => MedicalCondition_StatusUnion)
+  status?: MedicalCondition_Status;
+  @Field((type) => DDxElement)
+  differentialDiagnosis?: DDxElement;
+  @Field((type) => MedicalConditionStage)
+  stage?: MedicalConditionStage;
+  @Field((type) => TextScalar)
+  pathophysiology?: TextType;
+  @Field((type) => Drug)
+  drug?: Drug;
+  @Field((type) => MedicalTherapy)
+  secondaryPrevention?: MedicalTherapy;
+  @Field((type) => MedicalCondition_AssociatedAnatomyUnion)
+  associatedAnatomy?: MedicalCondition_AssociatedAnatomy;
+  @Field((type) => MedicalSignOrSymptom)
+  signOrSymptom?: MedicalSignOrSymptom;
+  @Field((type) => MedicalTest)
+  typicalTest?: MedicalTest;
+  @Field((type) => TextScalar)
+  epidemiology?: TextType;
+  @Field((type) => MedicalRiskFactor)
+  riskFactor?: MedicalRiskFactor;
+  @Field((type) => TextScalar)
+  expectedPrognosis?: TextType;
+  @Field((type) => MedicalTherapy)
+  possibleTreatment?: MedicalTherapy;
+}
+@ObjectType()
+export class SportsOrganization extends Organization {
+  @Field((type) => SportsOrganization_SportUnion)
+  sport?: SportsOrganization_Sport;
+}
+@ObjectType()
+export class Rating extends Intangible {
+  @Field((type) => TextScalar)
+  reviewAspect?: TextType;
+  @Field((type) => Rating_WorstRatingUnion)
+  worstRating?: Rating_WorstRating;
+  @Field((type) => Rating_AuthorUnion)
+  author?: Rating_Author;
+  @Field((type) => Rating_BestRatingUnion)
+  bestRating?: Rating_BestRating;
+  @Field((type) => Rating_RatingValueUnion)
+  ratingValue?: Rating_RatingValue;
+  @Field((type) => TextScalar)
+  ratingExplanation?: TextType;
+}
+@ObjectType()
+export class ChemicalSubstance extends BioChemEntity {
+  @Field((type) => TextScalar)
+  chemicalComposition?: TextType;
+  @Field((type) => DefinedTerm)
+  potentialUse?: DefinedTerm;
+  @Field((type) => DefinedTerm)
+  chemicalRole?: DefinedTerm;
+}
+@ObjectType()
+export class BusTrip extends Trip {
+  @Field((type) => BusTrip_DepartureBusStopUnion)
+  departureBusStop?: BusTrip_DepartureBusStop;
+  @Field((type) => TextScalar)
+  busName?: TextType;
+  @Field((type) => BusTrip_ArrivalBusStopUnion)
+  arrivalBusStop?: BusTrip_ArrivalBusStop;
+  @Field((type) => TextScalar)
+  busNumber?: TextType;
+}
+@ObjectType()
+export class MenuItem extends Intangible {
+  @Field((type) => MenuItem_MenuAddOnUnion)
+  menuAddOn?: MenuItem_MenuAddOn;
+  @Field((type) => MenuItem_OffersUnion)
+  offers?: MenuItem_Offers;
+  @Field((type) => RestrictedDiet)
+  suitableForDiet?: RestrictedDiet;
+  @Field((type) => NutritionInformation)
+  nutrition?: NutritionInformation;
+}
+@ObjectType()
+export class TypeAndQuantityNode extends StructuredValue {
+  @Field((type) => TextScalar)
+  unitText?: TextType;
+  @Field((type) => BusinessFunction)
+  businessFunction?: BusinessFunction;
+  @Field((type) => TypeAndQuantityNode_TypeOfGoodUnion)
+  typeOfGood?: TypeAndQuantityNode_TypeOfGood;
+  @Field((type) => NumberScalar)
+  amountOfThisGood?: NumberType;
+  @Field((type) => TypeAndQuantityNode_UnitCodeUnion)
+  unitCode?: TypeAndQuantityNode_UnitCode;
+}
+@ObjectType()
+export class HowToTip{
+}
+@ObjectType()
+export class ComicCoverArt{
+}
+@ObjectType()
+export class Quotation extends CreativeWork {
+  @Field((type) => Quotation_SpokenByCharacterUnion)
+  spokenByCharacter?: Quotation_SpokenByCharacter;
+}
+@ObjectType()
+export class MerchantReturnPolicySeasonalOverride extends Intangible {
+  @Field((type) => MerchantReturnEnumeration)
+  returnPolicyCategory?: MerchantReturnEnumeration;
+  @Field((type) => MerchantReturnPolicySeasonalOverride_StartDateUnion)
+  startDate?: MerchantReturnPolicySeasonalOverride_StartDate;
+  @Field((type) => MerchantReturnPolicySeasonalOverride_EndDateUnion)
+  endDate?: MerchantReturnPolicySeasonalOverride_EndDate;
+  @Field((type) => MerchantReturnPolicySeasonalOverride_MerchantReturnDaysUnion)
+  merchantReturnDays?: MerchantReturnPolicySeasonalOverride_MerchantReturnDays;
+}
+@ObjectType()
+export class ReplaceAction extends UpdateAction {
+  @Field((type) => Thing)
+  replacee?: Thing;
+  @Field((type) => Thing)
+  replacer?: Thing;
+}
+@ObjectType()
+export class DeliveryEvent extends Event {
+  @Field((type) => TextScalar)
+  accessCode?: TextType;
+  @Field((type) => DateTimeScalar)
+  availableThrough?: DateTimeType;
+  @Field((type) => DeliveryMethod)
+  hasDeliveryMethod?: DeliveryMethod;
+  @Field((type) => DateTimeScalar)
+  availableFrom?: DateTimeType;
+}
+@ObjectType()
+export class DigitalDocument extends CreativeWork {
+  @Field((type) => DigitalDocumentPermission)
+  hasDigitalDocumentPermission?: DigitalDocumentPermission;
+}
+@ObjectType()
+export class Menu extends CreativeWork {
+  @Field((type) => MenuSection)
+  hasMenuSection?: MenuSection;
+  @Field((type) => MenuItem)
+  hasMenuItem?: MenuItem;
+}
+@ObjectType()
+export class Grant extends Intangible {
+  @Field((type) => Grant_FunderUnion)
+  funder?: Grant_Funder;
+  @Field((type) => Grant_FundedItemUnion)
+  fundedItem?: Grant_FundedItem;
+  @Field((type) => Grant_SponsorUnion)
+  sponsor?: Grant_Sponsor;
+}
+@ObjectType()
+export class Offer extends Intangible {
+  @Field((type) => AdultOrientedEnumeration)
+  hasAdultConsideration?: AdultOrientedEnumeration;
+  @Field((type) => TextScalar)
+  gtin12?: TextType;
+  @Field((type) => Review)
+  review?: Review;
+  @Field((type) => Offer_ItemOfferedUnion)
+  itemOffered?: Offer_ItemOffered;
+  @Field((type) => Offer_CategoryUnion)
+  category?: Offer_Category;
+  @Field((type) => DateScalar)
+  priceValidUntil?: DateType;
+  @Field((type) => OfferShippingDetails)
+  shippingDetails?: OfferShippingDetails;
+  @Field((type) => TextScalar)
+  mpn?: TextType;
+  @Field((type) => TypeAndQuantityNode)
+  includesObject?: TypeAndQuantityNode;
+  @Field((type) => BusinessFunction)
+  businessFunction?: BusinessFunction;
+  @Field((type) => OfferItemCondition)
+  itemCondition?: OfferItemCondition;
+  @Field((type) => TextScalar)
+  gtin?: TextType;
+  @Field((type) => QuantitativeValue)
+  eligibleQuantity?: QuantitativeValue;
+  @Field((type) => Offer_AcceptedPaymentMethodUnion)
+  acceptedPaymentMethod?: Offer_AcceptedPaymentMethod;
+  @Field((type) => WarrantyPromise)
+  warranty?: WarrantyPromise;
+  @Field((type) => Offer_SellerUnion)
+  seller?: Offer_Seller;
+  @Field((type) => Offer_IneligibleRegionUnion)
+  ineligibleRegion?: Offer_IneligibleRegion;
+  @Field((type) => Offer_LeaseLengthUnion)
+  leaseLength?: Offer_LeaseLength;
+  @Field((type) => AggregateRating)
+  aggregateRating?: AggregateRating;
+  @Field((type) => Offer_OfferedByUnion)
+  offeredBy?: Offer_OfferedBy;
+  @Field((type) => QuantitativeValue)
+  deliveryLeadTime?: QuantitativeValue;
+  @Field((type) => DeliveryMethod)
+  availableDeliveryMethod?: DeliveryMethod;
+  @Field((type) => Offer_ValidFromUnion)
+  validFrom?: Offer_ValidFrom;
+  @Field((type) => Offer_AvailabilityEndsUnion)
+  availabilityEnds?: Offer_AvailabilityEnds;
+  @Field((type) => Offer_EligibleRegionUnion)
+  eligibleRegion?: Offer_EligibleRegion;
+  @Field((type) => QuantitativeValue)
+  hasMeasurement?: QuantitativeValue;
+  @Field((type) => TextScalar)
+  gtin8?: TextType;
+  @Field((type) => QuantitativeValue)
+  inventoryLevel?: QuantitativeValue;
+  @Field((type) => TextScalar)
+  sku?: TextType;
+  @Field((type) => Offer)
+  addOn?: Offer;
+  @Field((type) => MerchantReturnPolicy)
+  hasMerchantReturnPolicy?: MerchantReturnPolicy;
+  @Field((type) => QuantitativeValue)
+  advanceBookingRequirement?: QuantitativeValue;
+  @Field((type) => TextScalar)
+  gtin14?: TextType;
+  @Field((type) => TextScalar)
+  priceCurrency?: TextType;
+  @Field((type) => PriceSpecification)
+  eligibleTransactionVolume?: PriceSpecification;
+  @Field((type) => Offer_AreaServedUnion)
+  areaServed?: Offer_AreaServed;
+  @Field((type) => BusinessEntityType)
+  eligibleCustomerType?: BusinessEntityType;
+  @Field((type) => ItemAvailability)
+  availability?: ItemAvailability;
+  @Field((type) => TextScalar)
+  gtin13?: TextType;
+  @Field((type) => Review)
+  reviews?: Review;
+  @Field((type) => BooleanScalar)
+  isFamilyFriendly?: BooleanType;
+  @Field((type) => Offer_ValidThroughUnion)
+  validThrough?: Offer_ValidThrough;
+  @Field((type) => PriceSpecification)
+  priceSpecification?: PriceSpecification;
+  @Field((type) => Offer_PriceUnion)
+  price?: Offer_Price;
+  @Field((type) => Offer_AvailabilityStartsUnion)
+  availabilityStarts?: Offer_AvailabilityStarts;
+  @Field((type) => QuantitativeValue)
+  eligibleDuration?: QuantitativeValue;
+  @Field((type) => Place)
+  availableAtOrFrom?: Place;
+  @Field((type) => TextScalar)
+  serialNumber?: TextType;
+}
+@ObjectType()
+export class MusicRecording extends CreativeWork {
+  @Field((type) => TextScalar)
+  isrcCode?: TextType;
+  @Field((type) => MusicPlaylist)
+  inPlaylist?: MusicPlaylist;
+  @Field((type) => MusicAlbum)
+  inAlbum?: MusicAlbum;
+  @Field((type) => MusicComposition)
+  recordingOf?: MusicComposition;
+  @Field((type) => DurationUnion)
+  duration?: Duration;
+  @Field((type) => MusicRecording_ByArtistUnion)
+  byArtist?: MusicRecording_ByArtist;
+}
+@ObjectType()
+export class MedicalCode{
+  @Field((type) => TextScalar)
+  codeValue?: TextType;
+  @Field((type) => TextScalar)
+  codingSystem?: TextType;
+}
+@ObjectType()
+export class Joint extends AnatomicalStructure {
+  @Field((type) => TextScalar)
+  structuralClass?: TextType;
+  @Field((type) => TextScalar)
+  biomechnicalClass?: TextType;
+  @Field((type) => Joint_FunctionalClassUnion)
+  functionalClass?: Joint_FunctionalClass;
+}
+@ObjectType()
+export class MoneyTransfer extends TransferAction {
+  @Field((type) => MoneyTransfer_BeneficiaryBankUnion)
+  beneficiaryBank?: MoneyTransfer_BeneficiaryBank;
+  @Field((type) => MoneyTransfer_AmountUnion)
+  amount?: MoneyTransfer_Amount;
+}
+@ObjectType()
+export class MenuSection extends CreativeWork {
+  @Field((type) => MenuSection)
+  hasMenuSection?: MenuSection;
+  @Field((type) => MenuItem)
+  hasMenuItem?: MenuItem;
+}
+@ObjectType()
+export class MedicalSignOrSymptom extends MedicalCondition {
+  @Field((type) => MedicalTherapy)
+  possibleTreatment?: MedicalTherapy;
+}
+@ObjectType()
+export class ItemList extends Intangible {
+  @Field((type) => IntegerScalar)
+  numberOfItems?: IntegerType;
+  @Field((type) => ItemList_ItemListElementUnion)
+  itemListElement?: ItemList_ItemListElement;
+  @Field((type) => ItemList_ItemListOrderUnion)
+  itemListOrder?: ItemList_ItemListOrder;
+}
+@ObjectType()
+export class PaymentChargeSpecification extends PriceSpecification {
+  @Field((type) => PaymentMethod)
+  appliesToPaymentMethod?: PaymentMethod;
+  @Field((type) => DeliveryMethod)
+  appliesToDeliveryMethod?: DeliveryMethod;
+}
+@ObjectType()
+export class NewsMediaOrganization extends Organization {
+  @Field((type) => NewsMediaOrganization_OwnershipFundingInfoUnion)
+  ownershipFundingInfo?: NewsMediaOrganization_OwnershipFundingInfo;
+  @Field((type) => NewsMediaOrganization_CorrectionsPolicyUnion)
+  correctionsPolicy?: NewsMediaOrganization_CorrectionsPolicy;
+  @Field((type) => NewsMediaOrganization_DiversityStaffingReportUnion)
+  diversityStaffingReport?: NewsMediaOrganization_DiversityStaffingReport;
+  @Field((type) => NewsMediaOrganization_DiversityPolicyUnion)
+  diversityPolicy?: NewsMediaOrganization_DiversityPolicy;
+  @Field((type) => NewsMediaOrganization_EthicsPolicyUnion)
+  ethicsPolicy?: NewsMediaOrganization_EthicsPolicy;
+  @Field((type) => NewsMediaOrganization_MissionCoveragePrioritiesPolicyUnion)
+  missionCoveragePrioritiesPolicy?: NewsMediaOrganization_MissionCoveragePrioritiesPolicy;
+  @Field((type) => NewsMediaOrganization_ActionableFeedbackPolicyUnion)
+  actionableFeedbackPolicy?: NewsMediaOrganization_ActionableFeedbackPolicy;
+  @Field((type) => NewsMediaOrganization_MastheadUnion)
+  masthead?: NewsMediaOrganization_Masthead;
+  @Field((type) => NewsMediaOrganization_UnnamedSourcesPolicyUnion)
+  unnamedSourcesPolicy?: NewsMediaOrganization_UnnamedSourcesPolicy;
+  @Field((type) => NewsMediaOrganization_VerificationFactCheckingPolicyUnion)
+  verificationFactCheckingPolicy?: NewsMediaOrganization_VerificationFactCheckingPolicy;
+  @Field((type) => NewsMediaOrganization_NoBylinesPolicyUnion)
+  noBylinesPolicy?: NewsMediaOrganization_NoBylinesPolicy;
+}
+@ObjectType()
+export class WebApplication extends SoftwareApplication {
+  @Field((type) => TextScalar)
+  browserRequirements?: TextType;
+}
+@ObjectType()
+export class Audience extends Intangible {
+  @Field((type) => TextScalar)
+  audienceType?: TextType;
+  @Field((type) => AdministrativeAreaUnion)
+  geographicArea?: AdministrativeArea;
+}
+@ObjectType()
+export class Artery extends Vessel {
+  @Field((type) => AnatomicalStructure)
+  supplyTo?: AnatomicalStructure;
+  @Field((type) => AnatomicalStructure)
+  arterialBranch?: AnatomicalStructure;
+}
+@ObjectType()
+export class SingleFamilyResidence extends House {
+  @Field((type) => SingleFamilyResidence_NumberOfRoomsUnion)
+  numberOfRooms?: SingleFamilyResidence_NumberOfRooms;
+  @Field((type) => QuantitativeValue)
+  occupancy?: QuantitativeValue;
+}
+@ObjectType()
+export class MedicalTrial extends MedicalStudy {
+  @Field((type) => MedicalTrialDesign)
+  trialDesign?: MedicalTrialDesign;
+}
+@ObjectType()
+export class EducationalOrganization{
+  @Field((type) => Person)
+  alumni?: Person;
+}
+@ObjectType()
+export class Occupation extends Intangible {
+  @Field((type) => Occupation_EstimatedSalaryUnion)
+  estimatedSalary?: Occupation_EstimatedSalary;
+  @Field((type) => TextScalar)
+  responsibilities?: TextType;
+  @Field((type) => AdministrativeAreaUnion)
+  occupationLocation?: AdministrativeArea;
+  @Field((type) => Occupation_ExperienceRequirementsUnion)
+  experienceRequirements?: Occupation_ExperienceRequirements;
+  @Field((type) => Occupation_EducationRequirementsUnion)
+  educationRequirements?: Occupation_EducationRequirements;
+  @Field((type) => Occupation_SkillsUnion)
+  skills?: Occupation_Skills;
+  @Field((type) => Occupation_QualificationsUnion)
+  qualifications?: Occupation_Qualifications;
+  @Field((type) => Occupation_OccupationalCategoryUnion)
+  occupationalCategory?: Occupation_OccupationalCategory;
+}
+@ObjectType()
+export class LoanOrCredit extends FinancialProduct {
+  @Field((type) => BooleanScalar)
+  renegotiableLoan?: BooleanType;
+  @Field((type) => LoanOrCredit_LoanTypeUnion)
+  loanType?: LoanOrCredit_LoanType;
+  @Field((type) => BooleanScalar)
+  recourseLoan?: BooleanType;
+  @Field((type) => QuantitativeValue)
+  loanTerm?: QuantitativeValue;
+  @Field((type) => DurationUnion)
+  gracePeriod?: Duration;
+  @Field((type) => LoanOrCredit_RequiredCollateralUnion)
+  requiredCollateral?: LoanOrCredit_RequiredCollateral;
+  @Field((type) => TextScalar)
+  currency?: TextType;
+  @Field((type) => LoanOrCredit_AmountUnion)
+  amount?: LoanOrCredit_Amount;
+  @Field((type) => RepaymentSpecification)
+  loanRepaymentForm?: RepaymentSpecification;
+}
+@ObjectType()
+export class MedicalCause extends MedicalEntity {
+  @Field((type) => MedicalEntity)
+  causeOf?: MedicalEntity;
+}
+@ObjectType()
+export class FollowAction extends InteractAction {
+  @Field((type) => FollowAction_FolloweeUnion)
+  followee?: FollowAction_Followee;
+}
+@ObjectType()
+export class CookAction extends CreateAction {
+  @Field((type) => Recipe)
+  recipe?: Recipe;
+  @Field((type) => CookAction_FoodEstablishmentUnion)
+  foodEstablishment?: CookAction_FoodEstablishment;
+  @Field((type) => FoodEventUnion)
+  foodEvent?: FoodEvent;
+}
+@ObjectType()
+export class BankAccount extends FinancialProduct {
+  @Field((type) => BankAccount_BankAccountTypeUnion)
+  bankAccountType?: BankAccount_BankAccountType;
+  @Field((type) => MonetaryAmount)
+  accountMinimumInflow?: MonetaryAmount;
+  @Field((type) => MonetaryAmount)
+  accountOverdraftLimit?: MonetaryAmount;
+}
+@ObjectType()
+export class BorrowAction extends TransferAction {
+  @Field((type) => BorrowAction_LenderUnion)
+  lender?: BorrowAction_Lender;
+}
+@ObjectType()
+export class PropertyValue extends StructuredValue {
+  @Field((type) => PropertyValue_ValueReferenceUnion)
+  valueReference?: PropertyValue_ValueReference;
+  @Field((type) => PropertyValue_PropertyIDUnion)
+  propertyID?: PropertyValue_PropertyID;
+  @Field((type) => NumberScalar)
+  maxValue?: NumberType;
+  @Field((type) => TextScalar)
+  unitText?: TextType;
+  @Field((type) => PropertyValue_MeasurementTechniqueUnion)
+  measurementTechnique?: PropertyValue_MeasurementTechnique;
+  @Field((type) => NumberScalar)
+  minValue?: NumberType;
+  @Field((type) => PropertyValue_ValueUnion)
+  value?: PropertyValue_Value;
+  @Field((type) => PropertyValue_UnitCodeUnion)
+  unitCode?: PropertyValue_UnitCode;
+}
+@ObjectType()
+export class Pharmacy{
+}
+@ObjectType()
+export class TravelAction extends MoveAction {
+  @Field((type) => DistanceUnion)
+  distance?: Distance;
+}
+@ObjectType()
+export class Recommendation extends Review {
+  @Field((type) => Recommendation_CategoryUnion)
+  category?: Recommendation_Category;
+}
+@ObjectType()
+export class OccupationalExperienceRequirements extends Intangible {
+  @Field((type) => NumberScalar)
+  monthsOfExperience?: NumberType;
+}
+@ObjectType()
+export class TVClip extends Clip {
+  @Field((type) => TVSeries)
+  partOfTVSeries?: TVSeries;
+}
+@ObjectType()
+export class MathSolver extends CreativeWork {
+  @Field((type) => MathSolver_MathExpressionUnion)
+  mathExpression?: MathSolver_MathExpression;
+}
+@ObjectType()
+export class LendAction extends TransferAction {
+  @Field((type) => Person)
+  borrower?: Person;
+}
+@ObjectType()
+export class VoteAction extends ChooseAction {
+  @Field((type) => Person)
+  candidate?: Person;
+}
+@ObjectType()
+export class MedicalStudy extends MedicalEntity {
+  @Field((type) => MedicalCondition)
+  healthCondition?: MedicalCondition;
+  @Field((type) => MedicalStudy_StatusUnion)
+  status?: MedicalStudy_Status;
+  @Field((type) => MedicalEntity)
+  studySubject?: MedicalEntity;
+  @Field((type) => AdministrativeAreaUnion)
+  studyLocation?: AdministrativeArea;
+  @Field((type) => MedicalStudy_SponsorUnion)
+  sponsor?: MedicalStudy_Sponsor;
+}
+@ObjectType()
+export class GiveAction extends TransferAction {
+  @Field((type) => GiveAction_RecipientUnion)
+  recipient?: GiveAction_Recipient;
+}
+@ObjectType()
+export class DigitalDocumentPermission extends Intangible {
+  @Field((type) => DigitalDocumentPermission_GranteeUnion)
+  grantee?: DigitalDocumentPermission_Grantee;
+  @Field((type) => DigitalDocumentPermissionType)
+  permissionType?: DigitalDocumentPermissionType;
+}
+@ObjectType()
+export class ReservationPackage extends Reservation {
+  @Field((type) => Reservation)
+  subReservation?: Reservation;
+}
+@ObjectType()
+export class AnatomicalStructure extends MedicalEntity {
+  @Field((type) => TextScalar)
+  bodyLocation?: TextType;
+  @Field((type) => AnatomicalStructure)
+  connectedTo?: AnatomicalStructure;
+  @Field((type) => AnatomicalSystem)
+  partOfSystem?: AnatomicalSystem;
+  @Field((type) => MedicalTherapy)
+  relatedTherapy?: MedicalTherapy;
+  @Field((type) => ImageObject)
+  diagram?: ImageObject;
+  @Field((type) => MedicalCondition)
+  relatedCondition?: MedicalCondition;
+  @Field((type) => AnatomicalStructure)
+  subStructure?: AnatomicalStructure;
+  @Field((type) => TextScalar)
+  associatedPathophysiology?: TextType;
+}
+@ObjectType()
+export class DataCatalog extends CreativeWork {
+  @Field((type) => DataCatalog_MeasurementTechniqueUnion)
+  measurementTechnique?: DataCatalog_MeasurementTechnique;
+  @Field((type) => Dataset)
+  dataset?: Dataset;
+}
+@ObjectType()
+export class SeekToAction extends Action {
+  @Field((type) => SeekToAction_StartOffsetUnion)
+  startOffset?: SeekToAction_StartOffset;
+}
+@ObjectType()
+export class Course{
+  @Field((type) => Course_CoursePrerequisitesUnion)
+  coursePrerequisites?: Course_CoursePrerequisites;
+  @Field((type) => Course_EducationalCredentialAwardedUnion)
+  educationalCredentialAwarded?: Course_EducationalCredentialAwarded;
+  @Field((type) => Course_NumberOfCreditsUnion)
+  numberOfCredits?: Course_NumberOfCredits;
+  @Field((type) => Course_OccupationalCredentialAwardedUnion)
+  occupationalCredentialAwarded?: Course_OccupationalCredentialAwarded;
+  @Field((type) => TextScalar)
+  courseCode?: TextType;
+  @Field((type) => CourseInstance)
+  hasCourseInstance?: CourseInstance;
+}
+@ObjectType()
+export class HealthPlanCostSharingSpecification extends Intangible {
+  @Field((type) => NumberScalar)
+  healthPlanCoinsuranceRate?: NumberType;
+  @Field((type) => TextScalar)
+  healthPlanCoinsuranceOption?: TextType;
+  @Field((type) => TextScalar)
+  healthPlanPharmacyCategory?: TextType;
+  @Field((type) => PriceSpecification)
+  healthPlanCopay?: PriceSpecification;
+  @Field((type) => TextScalar)
+  healthPlanCopayOption?: TextType;
+}
+@ObjectType()
+export class Clip extends CreativeWork {
+  @Field((type) => Clip_StartOffsetUnion)
+  startOffset?: Clip_StartOffset;
+  @Field((type) => Clip_EndOffsetUnion)
+  endOffset?: Clip_EndOffset;
+  @Field((type) => Person)
+  director?: Person;
+  @Field((type) => Person)
+  actor?: Person;
+  @Field((type) => Episode)
+  partOfEpisode?: Episode;
+  @Field((type) => Clip_ClipNumberUnion)
+  clipNumber?: Clip_ClipNumber;
+  @Field((type) => CreativeWorkSeries)
+  partOfSeries?: CreativeWorkSeries;
+  @Field((type) => CreativeWorkSeason)
+  partOfSeason?: CreativeWorkSeason;
+  @Field((type) => Person)
+  actors?: Person;
+  @Field((type) => Clip_MusicByUnion)
+  musicBy?: Clip_MusicBy;
+  @Field((type) => Person)
+  directors?: Person;
+}
+@ObjectType()
+export class UserComments extends UserInteraction {
+  @Field((type) => UrlScalar)
+  replyToUrl?: UrlType;
+  @Field((type) => CreativeWork)
+  discusses?: CreativeWork;
+  @Field((type) => UserComments_CommentTimeUnion)
+  commentTime?: UserComments_CommentTime;
+  @Field((type) => TextScalar)
+  commentText?: TextType;
+  @Field((type) => UserComments_CreatorUnion)
+  creator?: UserComments_Creator;
+}
+@ObjectType()
+export class HealthInsurancePlan extends Intangible {
+  @Field((type) => HealthPlanFormulary)
+  includesHealthPlanFormulary?: HealthPlanFormulary;
+  @Field((type) => UrlScalar)
+  benefitsSummaryUrl?: UrlType;
+  @Field((type) => TextScalar)
+  healthPlanDrugOption?: TextType;
+  @Field((type) => TextScalar)
+  healthPlanDrugTier?: TextType;
+  @Field((type) => TextScalar)
+  healthPlanId?: TextType;
+  @Field((type) => ContactPoint)
+  contactPoint?: ContactPoint;
+  @Field((type) => HealthInsurancePlan_UsesHealthPlanIdStandardUnion)
+  usesHealthPlanIdStandard?: HealthInsurancePlan_UsesHealthPlanIdStandard;
+  @Field((type) => HealthPlanNetwork)
+  includesHealthPlanNetwork?: HealthPlanNetwork;
+  @Field((type) => UrlScalar)
+  healthPlanMarketingUrl?: UrlType;
+}
+@ObjectType()
+export class HyperTocEntry extends CreativeWork {
+  @Field((type) => HyperTocEntry)
+  tocContinuation?: HyperTocEntry;
+  @Field((type) => MediaObject)
+  associatedMedia?: MediaObject;
+  @Field((type) => TextScalar)
+  utterances?: TextType;
+}
+@ObjectType()
+export class Vein extends Vessel {
+  @Field((type) => Vein_RegionDrainedUnion)
+  regionDrained?: Vein_RegionDrained;
+  @Field((type) => AnatomicalStructure)
+  tributary?: AnatomicalStructure;
+  @Field((type) => VesselUnion)
+  drainsTo?: Vessel;
+}
+@ObjectType()
+export class GovernmentService extends Service {
+  @Field((type) => GovernmentService_JurisdictionUnion)
+  jurisdiction?: GovernmentService_Jurisdiction;
+  @Field((type) => Organization)
+  serviceOperator?: Organization;
+}
+@ObjectType()
+export class VideoGameSeries extends CreativeWorkSeries {
+  @Field((type) => VideoGameSeries_SeasonUnion)
+  season?: VideoGameSeries_Season;
+  @Field((type) => CreativeWorkSeason)
+  containsSeason?: CreativeWorkSeason;
+  @Field((type) => Person)
+  director?: Person;
+  @Field((type) => Person)
+  actor?: Person;
+  @Field((type) => VideoObject)
+  trailer?: VideoObject;
+  @Field((type) => Episode)
+  episodes?: Episode;
+  @Field((type) => Thing)
+  characterAttribute?: Thing;
+  @Field((type) => IntegerScalar)
+  numberOfEpisodes?: IntegerType;
+  @Field((type) => CreativeWorkSeason)
+  seasons?: CreativeWorkSeason;
+  @Field((type) => CreativeWork)
+  cheatCode?: CreativeWork;
+  @Field((type) => Thing)
+  gameItem?: Thing;
+  @Field((type) => Organization)
+  productionCompany?: Organization;
+  @Field((type) => Person)
+  actors?: Person;
+  @Field((type) => GamePlayMode)
+  playMode?: GamePlayMode;
+  @Field((type) => VideoGameSeries_GamePlatformUnion)
+  gamePlatform?: VideoGameSeries_GamePlatform;
+  @Field((type) => IntegerScalar)
+  numberOfSeasons?: IntegerType;
+  @Field((type) => VideoGameSeries_MusicByUnion)
+  musicBy?: VideoGameSeries_MusicBy;
+  @Field((type) => QuantitativeValue)
+  numberOfPlayers?: QuantitativeValue;
+  @Field((type) => Thing)
+  quest?: Thing;
+  @Field((type) => VideoGameSeries_GameLocationUnion)
+  gameLocation?: VideoGameSeries_GameLocation;
+  @Field((type) => Episode)
+  episode?: Episode;
+  @Field((type) => Person)
+  directors?: Person;
+}
+@ObjectType()
+export class StatisticalPopulation extends Intangible {
+  @Field((type) => Class)
+  populationType?: Class;
+  @Field((type) => IntegerScalar)
+  numConstraints?: IntegerType;
+  @Field((type) => IntegerScalar)
+  constrainingProperty?: IntegerType;
+}
+@ObjectType()
+export class Episode extends CreativeWork {
+  @Field((type) => Episode_EpisodeNumberUnion)
+  episodeNumber?: Episode_EpisodeNumber;
+  @Field((type) => Person)
+  director?: Person;
+  @Field((type) => Person)
+  actor?: Person;
+  @Field((type) => VideoObject)
+  trailer?: VideoObject;
+  @Field((type) => CreativeWorkSeries)
+  partOfSeries?: CreativeWorkSeries;
+  @Field((type) => DurationUnion)
+  duration?: Duration;
+  @Field((type) => CreativeWorkSeason)
+  partOfSeason?: CreativeWorkSeason;
+  @Field((type) => Organization)
+  productionCompany?: Organization;
+  @Field((type) => Person)
+  actors?: Person;
+  @Field((type) => Episode_MusicByUnion)
+  musicBy?: Episode_MusicBy;
+  @Field((type) => Person)
+  directors?: Person;
+}
+@ObjectType()
+export class CommentAction extends CommunicateAction {
+  @Field((type) => Comment)
+  resultComment?: Comment;
+}
+@ObjectType()
+export class Action extends Thing {
+  @Field((type) => Action_AgentUnion)
+  agent?: Action_Agent;
+  @Field((type) => Action_StartTimeUnion)
+  startTime?: Action_StartTime;
+  @Field((type) => ActionStatusType)
+  actionStatus?: ActionStatusType;
+  @Field((type) => Action_ProviderUnion)
+  provider?: Action_Provider;
+  @Field((type) => Thing)
+  result?: Thing;
+  @Field((type) => Action_LocationUnion)
+  location?: Action_Location;
+  @Field((type) => Thing)
+  object?: Thing;
+  @Field((type) => EntryPoint)
+  target?: EntryPoint;
+  @Field((type) => Action_EndTimeUnion)
+  endTime?: Action_EndTime;
+  @Field((type) => Action_ParticipantUnion)
+  participant?: Action_Participant;
+  @Field((type) => Thing)
+  instrument?: Thing;
+  @Field((type) => Thing)
+  error?: Thing;
+}
+@ObjectType()
+export class FloorPlan extends Intangible {
+  @Field((type) => Accommodation)
+  isPlanForApartment?: Accommodation;
+  @Field((type) => IntegerScalar)
+  numberOfBathroomsTotal?: IntegerType;
+  @Field((type) => FloorPlan_NumberOfRoomsUnion)
+  numberOfRooms?: FloorPlan_NumberOfRooms;
+  @Field((type) => QuantitativeValue)
+  numberOfAccommodationUnits?: QuantitativeValue;
+  @Field((type) => QuantitativeValue)
+  numberOfAvailableAccommodationUnits?: QuantitativeValue;
+  @Field((type) => LocationFeatureSpecification)
+  amenityFeature?: LocationFeatureSpecification;
+  @Field((type) => FloorPlan_NumberOfBedroomsUnion)
+  numberOfBedrooms?: FloorPlan_NumberOfBedrooms;
+  @Field((type) => NumberScalar)
+  numberOfPartialBathrooms?: NumberType;
+  @Field((type) => QuantitativeValue)
+  floorSize?: QuantitativeValue;
+  @Field((type) => NumberScalar)
+  numberOfFullBathrooms?: NumberType;
+  @Field((type) => FloorPlan_PetsAllowedUnion)
+  petsAllowed?: FloorPlan_PetsAllowed;
+  @Field((type) => FloorPlan_LayoutImageUnion)
+  layoutImage?: FloorPlan_LayoutImage;
+}
+// #endregion
+
+// #region Type Roots
+/**
+ * ============
+ * Type Roots
+ * ============
+ */
+
+@ObjectType()
+export class CmsThing {
+  @Field((type) => [LocalBusiness])
+  LocalBusinesses!: LocalBusiness[];
+  @Field((type) => [MedicalProcedure])
+  MedicalProcedures!: MedicalProcedure[];
+  @Field((type) => [Hospital])
+  Hospitals!: Hospital[];
+  @Field((type) => [BuyAction])
+  BuyActions!: BuyAction[];
+  @Field((type) => [PriceSpecification])
+  PriceSpecifications!: PriceSpecification[];
+  @Field((type) => [SportsEvent])
+  SportsEvents!: SportsEvent[];
+  @Field((type) => [WinAction])
+  WinActions!: WinAction[];
+  @Field((type) => [PlayAction])
+  PlayActions!: PlayAction[];
+  @Field((type) => [PoliceStation])
+  PoliceStations!: PoliceStation[];
+  @Field((type) => [EducationalOccupationalCredential])
+  EducationalOccupationalCredentials!: EducationalOccupationalCredential[];
+  @Field((type) => [MedicalClinic])
+  MedicalClinics!: MedicalClinic[];
+  @Field((type) => [LearningResource])
+  LearningResources!: LearningResource[];
+  @Field((type) => [Brand])
+  Brands!: Brand[];
+  @Field((type) => [ContactPoint])
+  ContactPoints!: ContactPoint[];
+  @Field((type) => [JobPosting])
+  JobPostings!: JobPosting[];
+  @Field((type) => [Accommodation])
+  Accommodations!: Accommodation[];
+  @Field((type) => [MedicalRiskScore])
+  MedicalRiskScores!: MedicalRiskScore[];
+  @Field((type) => [HotelRoom])
+  HotelRooms!: HotelRoom[];
+  @Field((type) => [PlayGameAction])
+  PlayGameActions!: PlayGameAction[];
+  @Field((type) => [Reservation])
+  Reservations!: Reservation[];
+  @Field((type) => [TrackAction])
+  TrackActions!: TrackAction[];
+  @Field((type) => [Person])
+  People!: Person[];
+  @Field((type) => [StadiumOrArena])
+  StadiumOrArenas!: StadiumOrArena[];
+  @Field((type) => [MedicalGuideline])
+  MedicalGuidelines!: MedicalGuideline[];
+  @Field((type) => [QuantitativeValue])
+  QuantitativeValues!: QuantitativeValue[];
+  @Field((type) => [Campground])
+  Campgrounds!: Campground[];
+  @Field((type) => [ParcelDelivery])
+  ParcelDeliveries!: ParcelDelivery[];
+  @Field((type) => [SpeakableSpecification])
+  SpeakableSpecifications!: SpeakableSpecification[];
+  @Field((type) => [InformAction])
+  InformActions!: InformAction[];
+  @Field((type) => [ReviewNewsArticle])
+  ReviewNewsArticles!: ReviewNewsArticle[];
+  @Field((type) => [DeliveryTimeSettings])
+  DeliveryTimeSettings!: DeliveryTimeSettings[];
+  @Field((type) => [Invoice])
+  Invoices!: Invoice[];
+  @Field((type) => [DrugCost])
+  DrugCosts!: DrugCost[];
+  @Field((type) => [Car])
+  Cars!: Car[];
+  @Field((type) => [LodgingReservation])
+  LodgingReservations!: LodgingReservation[];
+  @Field((type) => [TipAction])
+  TipActions!: TipAction[];
+  @Field((type) => [Event])
+  Events!: Event[];
+  @Field((type) => [FoodEstablishment])
+  FoodEstablishments!: FoodEstablishment[];
+  @Field((type) => [HealthClub])
+  HealthClubs!: HealthClub[];
+  @Field((type) => [Diet])
+  Diets!: Diet[];
+  @Field((type) => [MusicAlbum])
+  MusicAlbums!: MusicAlbum[];
+  @Field((type) => [ExerciseAction])
+  ExerciseActions!: ExerciseAction[];
+  @Field((type) => [AutoPartsStore])
+  AutoPartsStores!: AutoPartsStore[];
+  @Field((type) => [QuantitativeValueDistribution])
+  QuantitativeValueDistributions!: QuantitativeValueDistribution[];
+  @Field((type) => [Nerve])
+  Nerves!: Nerve[];
+  @Field((type) => [DataFeedItem])
+  DataFeedItems!: DataFeedItem[];
+  @Field((type) => [Corporation])
+  Corporations!: Corporation[];
+  @Field((type) => [HowToSupply])
+  HowToSupplies!: HowToSupply[];
+  @Field((type) => [ExercisePlan])
+  ExercisePlans!: ExercisePlan[];
+  @Field((type) => [PaymentCard])
+  PaymentCards!: PaymentCard[];
+  @Field((type) => [ProductGroup])
+  ProductGroups!: ProductGroup[];
+  @Field((type) => [PerformanceRole])
+  PerformanceRoles!: PerformanceRole[];
+  @Field((type) => [AuthorizeAction])
+  AuthorizeActions!: AuthorizeAction[];
+  @Field((type) => [MortgageLoan])
+  MortgageLoans!: MortgageLoan[];
+  @Field((type) => [MovieSeries])
+  MovieSeries!: MovieSeries[];
+  @Field((type) => [ReturnAction])
+  ReturnActions!: ReturnAction[];
+  @Field((type) => [FinancialProduct])
+  FinancialProducts!: FinancialProduct[];
+  @Field((type) => [Book])
+  Books!: Book[];
+  @Field((type) => [VideoObject])
+  VideoObjects!: VideoObject[];
+  @Field((type) => [MusicRelease])
+  MusicReleases!: MusicRelease[];
+  @Field((type) => [Dataset])
+  Datasets!: Dataset[];
+  @Field((type) => [Physician])
+  Physicians!: Physician[];
+  @Field((type) => [TaxiReservation])
+  TaxiReservations!: TaxiReservation[];
+  @Field((type) => [MedicalScholarlyArticle])
+  MedicalScholarlyArticles!: MedicalScholarlyArticle[];
+  @Field((type) => [CategoryCodeSet])
+  CategoryCodeSets!: CategoryCodeSet[];
+  @Field((type) => [Taxon])
+  Taxons!: Taxon[];
+  @Field((type) => [TVSeries])
+  TVSeries!: TVSeries[];
+  @Field((type) => [Service])
+  Services!: Service[];
+  @Field((type) => [VisualArtwork])
+  VisualArtworks!: VisualArtwork[];
+  @Field((type) => [DefinedTerm])
+  DefinedTerms!: DefinedTerm[];
+  @Field((type) => [Order])
+  Orders!: Order[];
+  @Field((type) => [BusOrCoach])
+  BusOrCoaches!: BusOrCoach[];
+  @Field((type) => [Claim])
+  Claims!: Claim[];
+  @Field((type) => [AggregateRating])
+  AggregateRatings!: AggregateRating[];
+  @Field((type) => [InvestmentOrDeposit])
+  InvestmentOrDeposits!: InvestmentOrDeposit[];
+  @Field((type) => [Game])
+  Games!: Game[];
+  @Field((type) => [LegislationObject])
+  LegislationObjects!: LegislationObject[];
+  @Field((type) => [PronounceableText])
+  PronounceableTexts!: PronounceableText[];
+  @Field((type) => [SportsTeam])
+  SportsTeams!: SportsTeam[];
+  @Field((type) => [ProductCollection])
+  ProductCollections!: ProductCollection[];
+  @Field((type) => [DietarySupplement])
+  DietarySupplements!: DietarySupplement[];
+  @Field((type) => [UnitPriceSpecification])
+  UnitPriceSpecifications!: UnitPriceSpecification[];
+  @Field((type) => [CivicStructure])
+  CivicStructures!: CivicStructure[];
+  @Field((type) => [Schedule])
+  Schedules!: Schedule[];
+  @Field((type) => [Message])
+  Messages!: Message[];
+  @Field((type) => [BroadcastService])
+  BroadcastServices!: BroadcastService[];
+  @Field((type) => [DrugLegalStatus])
+  DrugLegalStatuses!: DrugLegalStatus[];
+  @Field((type) => [RepaymentSpecification])
+  RepaymentSpecifications!: RepaymentSpecification[];
+  @Field((type) => [Muscle])
+  Muscles!: Muscle[];
+  @Field((type) => [Demand])
+  Demands!: Demand[];
+  @Field((type) => [WebAPI])
+  WebAPIS!: WebAPI[];
+  @Field((type) => [ShippingDeliveryTime])
+  ShippingDeliveryTimes!: ShippingDeliveryTime[];
+  @Field((type) => [LymphaticVessel])
+  LymphaticVessels!: LymphaticVessel[];
+  @Field((type) => [Product])
+  Products!: Product[];
+  @Field((type) => [BroadcastChannel])
+  BroadcastChannels!: BroadcastChannel[];
+  @Field((type) => [WebSite])
+  WebSites!: WebSite[];
+  @Field((type) => [MedicalRiskFactor])
+  MedicalRiskFactors!: MedicalRiskFactor[];
+  @Field((type) => [PhysicalActivity])
+  PhysicalActivities!: PhysicalActivity[];
+  @Field((type) => [CreativeWorkSeason])
+  CreativeWorkSeasons!: CreativeWorkSeason[];
+  @Field((type) => [Chapter])
+  Chapters!: Chapter[];
+  @Field((type) => [EducationalOccupationalProgram])
+  EducationalOccupationalPrograms!: EducationalOccupationalProgram[];
+  @Field((type) => [ApartmentComplex])
+  ApartmentComplexes!: ApartmentComplex[];
+  @Field((type) => [PropertyValueSpecification])
+  PropertyValueSpecifications!: PropertyValueSpecification[];
+  @Field((type) => [MediaObject])
+  MediaObjects!: MediaObject[];
+  @Field((type) => [RsvpAction])
+  RsvpActions!: RsvpAction[];
+  @Field((type) => [ChooseAction])
+  ChooseActions!: ChooseAction[];
+  @Field((type) => [AudioObject])
+  AudioObjects!: AudioObject[];
+  @Field((type) => [Review])
+  Reviews!: Review[];
+  @Field((type) => [MoveAction])
+  MoveActions!: MoveAction[];
+  @Field((type) => [NewsArticle])
+  NewsArticles!: NewsArticle[];
+  @Field((type) => [ScreeningEvent])
+  ScreeningEvents!: ScreeningEvent[];
+  @Field((type) => [OwnershipInfo])
+  OwnershipInfos!: OwnershipInfo[];
+  @Field((type) => [Movie])
+  Movies!: Movie[];
+  @Field((type) => [Thing])
+  Things!: Thing[];
+  @Field((type) => [BedDetails])
+  BedDetails!: BedDetails[];
+  @Field((type) => [SellAction])
+  SellActions!: SellAction[];
+  @Field((type) => [RentalCarReservation])
+  RentalCarReservations!: RentalCarReservation[];
+  @Field((type) => [MediaReviewItem])
+  MediaReviewItems!: MediaReviewItem[];
+  @Field((type) => [Seat])
+  Seats!: Seat[];
+  @Field((type) => [MovieTheater])
+  MovieTheaters!: MovieTheater[];
+  @Field((type) => [PerformAction])
+  PerformActions!: PerformAction[];
+  @Field((type) => [CategoryCode])
+  CategoryCodes!: CategoryCode[];
+  @Field((type) => [BroadcastFrequencySpecification])
+  BroadcastFrequencySpecifications!: BroadcastFrequencySpecification[];
+  @Field((type) => [SolveMathAction])
+  SolveMathActions!: SolveMathAction[];
+  @Field((type) => [BroadcastEvent])
+  BroadcastEvents!: BroadcastEvent[];
+  @Field((type) => [IndividualProduct])
+  IndividualProducts!: IndividualProduct[];
+  @Field((type) => [InfectiousDisease])
+  InfectiousDiseases!: InfectiousDisease[];
+  @Field((type) => [ReplyAction])
+  ReplyActions!: ReplyAction[];
+  @Field((type) => [PalliativeProcedure])
+  PalliativeProcedures!: PalliativeProcedure[];
+  @Field((type) => [EngineSpecification])
+  EngineSpecifications!: EngineSpecification[];
+  @Field((type) => [SendAction])
+  SendActions!: SendAction[];
+  @Field((type) => [Report])
+  Reports!: Report[];
+  @Field((type) => [DoseSchedule])
+  DoseSchedules!: DoseSchedule[];
+  @Field((type) => [UpdateAction])
+  UpdateActions!: UpdateAction[];
+  @Field((type) => [DefinedTermSet])
+  DefinedTermSets!: DefinedTermSet[];
+  @Field((type) => [LoseAction])
+  LoseActions!: LoseAction[];
+  @Field((type) => [OrderAction])
+  OrderActions!: OrderAction[];
+  @Field((type) => [ComicIssue])
+  ComicIssues!: ComicIssue[];
+  @Field((type) => [CommunicateAction])
+  CommunicateActions!: CommunicateAction[];
+  @Field((type) => [ArchiveOrganization])
+  ArchiveOrganizations!: ArchiveOrganization[];
+  @Field((type) => [MobileApplication])
+  MobileApplications!: MobileApplication[];
+  @Field((type) => [Blog])
+  Blogs!: Blog[];
+  @Field((type) => [RentAction])
+  RentActions!: RentAction[];
+  @Field((type) => [PhysicalExam])
+  PhysicalExams!: PhysicalExam[];
+  @Field((type) => [CreditCard])
+  CreditCards!: CreditCard[];
+  @Field((type) => [GeoShape])
+  GeoShapes!: GeoShape[];
+  @Field((type) => [House])
+  Houses!: House[];
+  @Field((type) => [ConsumeAction])
+  ConsumeActions!: ConsumeAction[];
+  @Field((type) => [HowToSection])
+  HowToSections!: HowToSection[];
+  @Field((type) => [APIReference])
+  APIReferences!: APIReference[];
+  @Field((type) => [SoftwareSourceCode])
+  SoftwareSourceCodes!: SoftwareSourceCode[];
+  @Field((type) => [ThreeDModel])
+  threeDModels!: ThreeDModel[];
+  @Field((type) => [MusicGroup])
+  MusicGroups!: MusicGroup[];
+  @Field((type) => [Guide])
+  Guides!: Guide[];
+  @Field((type) => [EducationEvent])
+  EducationEvents!: EducationEvent[];
+  @Field((type) => [ArchiveComponent])
+  ArchiveComponents!: ArchiveComponent[];
+  @Field((type) => [TVSeason])
+  TVSeasons!: TVSeason[];
+  @Field((type) => [Recipe])
+  Recipes!: Recipe[];
+  @Field((type) => [Vehicle])
+  Vehicles!: Vehicle[];
+  @Field((type) => [Permit])
+  Permits!: Permit[];
+  @Field((type) => [DonateAction])
+  DonateActions!: DonateAction[];
+  @Field((type) => [PostalCodeRangeSpecification])
+  PostalCodeRangeSpecifications!: PostalCodeRangeSpecification[];
+  @Field((type) => [EmployeeRole])
+  EmployeeRoles!: EmployeeRole[];
+  @Field((type) => [TouristTrip])
+  TouristTrips!: TouristTrip[];
+  @Field((type) => [PathologyTest])
+  PathologyTests!: PathologyTest[];
+  @Field((type) => [OrganizationRole])
+  OrganizationRoles!: OrganizationRole[];
+  @Field((type) => [PeopleAudience])
+  PeopleAudiences!: PeopleAudience[];
+  @Field((type) => [Suite])
+  Suites!: Suite[];
+  @Field((type) => [Comment])
+  Comments!: Comment[];
+  @Field((type) => [GeospatialGeometry])
+  GeospatialGeometries!: GeospatialGeometry[];
+  @Field((type) => [TouristDestination])
+  TouristDestinations!: TouristDestination[];
+  @Field((type) => [WarrantyPromise])
+  WarrantyPromises!: WarrantyPromise[];
+  @Field((type) => [ListItem])
+  ListItems!: ListItem[];
+  @Field((type) => [RealEstateListing])
+  RealEstateListings!: RealEstateListing[];
+  @Field((type) => [MedicalAudience])
+  MedicalAudiences!: MedicalAudience[];
+  @Field((type) => [PlanAction])
+  PlanActions!: PlanAction[];
+  @Field((type) => [AmpStory])
+  AmpStories!: AmpStory[];
+  @Field((type) => [DrugStrength])
+  DrugStrengths!: DrugStrength[];
+  @Field((type) => [OpeningHoursSpecification])
+  OpeningHoursSpecifications!: OpeningHoursSpecification[];
+  @Field((type) => [BioChemEntity])
+  BioChemEntities!: BioChemEntity[];
+  @Field((type) => [HealthTopicContent])
+  HealthTopicContents!: HealthTopicContent[];
+  @Field((type) => [ReviewAction])
+  ReviewActions!: ReviewAction[];
+  @Field((type) => [Map])
+  Maps!: Map[];
+  @Field((type) => [Drug])
+  Drugs!: Drug[];
+  @Field((type) => [MedicalDevice])
+  MedicalDevices!: MedicalDevice[];
+  @Field((type) => [Property])
+  Properties!: Property[];
+  @Field((type) => [HowToItem])
+  HowToItems!: HowToItem[];
+  @Field((type) => [ParentAudience])
+  ParentAudiences!: ParentAudience[];
+  @Field((type) => [Audiobook])
+  Audiobooks!: Audiobook[];
+  @Field((type) => [Residence])
+  Residences!: Residence[];
+  @Field((type) => [Answer])
+  Answers!: Answer[];
+  @Field((type) => [Organization])
+  Organizations!: Organization[];
+  @Field((type) => [FireStation])
+  FireStations!: FireStation[];
+  @Field((type) => [Article])
+  Articles!: Article[];
+  @Field((type) => [InsertAction])
+  InsertActions!: InsertAction[];
+  @Field((type) => [DepositAccount])
+  DepositAccounts!: DepositAccount[];
+  @Field((type) => [DefinedRegion])
+  DefinedRegions!: DefinedRegion[];
+  @Field((type) => [ImagingTest])
+  ImagingTests!: ImagingTest[];
+  @Field((type) => [MedicalOrganization])
+  MedicalOrganizations!: MedicalOrganization[];
+  @Field((type) => [Ticket])
+  Tickets!: Ticket[];
+  @Field((type) => [HowToStep])
+  HowToSteps!: HowToStep[];
+  @Field((type) => [Airport])
+  Airports!: Airport[];
+  @Field((type) => [Trip])
+  Trips!: Trip[];
+  @Field((type) => [OrderItem])
+  OrderItems!: OrderItem[];
+  @Field((type) => [MerchantReturnPolicy])
+  MerchantReturnPolicies!: MerchantReturnPolicy[];
+  @Field((type) => [Patient])
+  Patients!: Patient[];
+  @Field((type) => [AskAction])
+  AskActions!: AskAction[];
+  @Field((type) => [MonetaryGrant])
+  MonetaryGrants!: MonetaryGrant[];
+  @Field((type) => [EducationalAudience])
+  EducationalAudiences!: EducationalAudience[];
+  @Field((type) => [CompoundPriceSpecification])
+  CompoundPriceSpecifications!: CompoundPriceSpecification[];
+  @Field((type) => [JoinAction])
+  JoinActions!: JoinAction[];
+  @Field((type) => [GameServer])
+  GameServers!: GameServer[];
+  @Field((type) => [MediaSubscription])
+  MediaSubscriptions!: MediaSubscription[];
+  @Field((type) => [ClaimReview])
+  ClaimReviews!: ClaimReview[];
+  @Field((type) => [DDxElement])
+  DDxElements!: DDxElement[];
+  @Field((type) => [SoftwareApplication])
+  SoftwareApplications!: SoftwareApplication[];
+  @Field((type) => [SocialMediaPosting])
+  SocialMediaPostings!: SocialMediaPosting[];
+  @Field((type) => [MedicalRiskEstimator])
+  MedicalRiskEstimators!: MedicalRiskEstimator[];
+  @Field((type) => [Apartment])
+  Apartments!: Apartment[];
+  @Field((type) => [WebPage])
+  WebPages!: WebPage[];
+  @Field((type) => [HealthPlanNetwork])
+  HealthPlanNetworks!: HealthPlanNetwork[];
+  @Field((type) => [MedicalSpecialty])
+  MedicalSpecialties!: MedicalSpecialty[];
+  @Field((type) => [CourseInstance])
+  CourseInstances!: CourseInstance[];
+  @Field((type) => [HowTo])
+  HowTos!: HowTo[];
+  @Field((type) => [PublicationEvent])
+  PublicationEvents!: PublicationEvent[];
+  @Field((type) => [SomeProducts])
+  SomeProducts!: SomeProducts[];
+  @Field((type) => [FinancialService])
+  FinancialServices!: FinancialService[];
+  @Field((type) => [InteractionCounter])
+  InteractionCounters!: InteractionCounter[];
+  @Field((type) => [LiveBlogPosting])
+  LiveBlogPostings!: LiveBlogPosting[];
+  @Field((type) => [Substance])
+  Substances!: Substance[];
+  @Field((type) => [CreativeWorkSeries])
+  CreativeWorkSeries!: CreativeWorkSeries[];
+  @Field((type) => [EventSeries])
+  EventSeries!: EventSeries[];
+  @Field((type) => [BusinessAudience])
+  BusinessAudiences!: BusinessAudience[];
+  @Field((type) => [AggregateOffer])
+  AggregateOffers!: AggregateOffer[];
+  @Field((type) => [TechArticle])
+  TechArticles!: TechArticle[];
+  @Field((type) => [NutritionInformation])
+  NutritionInformations!: NutritionInformation[];
+  @Field((type) => [LodgingBusiness])
+  LodgingBusinesses!: LodgingBusiness[];
+  @Field((type) => [DataFeed])
+  DataFeeds!: DataFeed[];
+  @Field((type) => [TherapeuticProcedure])
+  TherapeuticProcedures!: TherapeuticProcedure[];
+  @Field((type) => [TradeAction])
+  TradeActions!: TradeAction[];
+  @Field((type) => [Place])
+  Places!: Place[];
+  @Field((type) => [PublicationVolume])
+  PublicationVolumes!: PublicationVolume[];
+  @Field((type) => [ReceiveAction])
+  ReceiveActions!: ReceiveAction[];
+  @Field((type) => [AnatomicalSystem])
+  AnatomicalSystems!: AnatomicalSystem[];
+  @Field((type) => [EndorseAction])
+  EndorseActions!: EndorseAction[];
+  @Field((type) => [EnergyConsumptionDetails])
+  EnergyConsumptionDetails!: EnergyConsumptionDetails[];
+  @Field((type) => [MedicalTherapy])
+  MedicalTherapies!: MedicalTherapy[];
+  @Field((type) => [MedicalGuidelineRecommendation])
+  MedicalGuidelineRecommendations!: MedicalGuidelineRecommendation[];
+  @Field((type) => [TouristAttraction])
+  TouristAttractions!: TouristAttraction[];
+  @Field((type) => [ServiceChannel])
+  ServiceChannels!: ServiceChannel[];
+  @Field((type) => [ImageObject])
+  ImageObjects!: ImageObject[];
+  @Field((type) => [Protein])
+  Proteins!: Protein[];
+  @Field((type) => [MonetaryAmount])
+  MonetaryAmounts!: MonetaryAmount[];
+  @Field((type) => [Collection])
+  Collections!: Collection[];
+  @Field((type) => [GeoCoordinates])
+  GeoCoordinates!: GeoCoordinates[];
+  @Field((type) => [ActionAccessSpecification])
+  ActionAccessSpecifications!: ActionAccessSpecification[];
+  @Field((type) => [Gene])
+  Genes!: Gene[];
+  @Field((type) => [TVEpisode])
+  TVEpisodes!: TVEpisode[];
+  @Field((type) => [Legislation])
+  Legislations!: Legislation[];
+  @Field((type) => [SpecialAnnouncement])
+  SpecialAnnouncements!: SpecialAnnouncement[];
+  @Field((type) => [MediaReview])
+  MediaReviews!: MediaReview[];
+  @Field((type) => [SkiResort])
+  SkiResorts!: SkiResort[];
+  @Field((type) => [FoodEstablishmentReservation])
+  FoodEstablishmentReservations!: FoodEstablishmentReservation[];
+  @Field((type) => [PublicationIssue])
+  PublicationIssues!: PublicationIssue[];
+  @Field((type) => [CDCPMDRecord])
+  CDCPMDRecords!: CDCPMDRecord[];
+  @Field((type) => [WriteAction])
+  WriteActions!: WriteAction[];
+  @Field((type) => [Dentist])
+  Dentists!: Dentist[];
+  @Field((type) => [MedicalEntity])
+  MedicalEntities!: MedicalEntity[];
+  @Field((type) => [ExchangeRateSpecification])
+  ExchangeRateSpecifications!: ExchangeRateSpecification[];
+  @Field((type) => [MusicPlaylist])
+  MusicPlaylists!: MusicPlaylist[];
+  @Field((type) => [Role])
+  Roles!: Role[];
+  @Field((type) => [CreativeWork])
+  CreativeWorks!: CreativeWork[];
+  @Field((type) => [DrugClass])
+  DrugClasses!: DrugClass[];
+  @Field((type) => [GeoCircle])
+  GeoCircles!: GeoCircle[];
+  @Field((type) => [OfferShippingDetails])
+  OfferShippingDetails!: OfferShippingDetails[];
+  @Field((type) => [MolecularEntity])
+  MolecularEntities!: MolecularEntity[];
+  @Field((type) => [HyperToc])
+  HyperTocs!: HyperToc[];
+  @Field((type) => [PostalAddress])
+  PostalAddresses!: PostalAddress[];
+  @Field((type) => [ShippingRateSettings])
+  ShippingRateSettings!: ShippingRateSettings[];
+  @Field((type) => [Thesis])
+  Theses!: Thesis[];
+  @Field((type) => [LeaveAction])
+  LeaveActions!: LeaveAction[];
+  @Field((type) => [SearchAction])
+  SearchActions!: SearchAction[];
+  @Field((type) => [MonetaryAmountDistribution])
+  MonetaryAmountDistributions!: MonetaryAmountDistribution[];
+  @Field((type) => [DeliveryChargeSpecification])
+  DeliveryChargeSpecifications!: DeliveryChargeSpecification[];
+  @Field((type) => [MedicalWebPage])
+  MedicalWebPages!: MedicalWebPage[];
+  @Field((type) => [InviteAction])
+  InviteActions!: InviteAction[];
+  @Field((type) => [DiagnosticLab])
+  DiagnosticLabs!: DiagnosticLab[];
+  @Field((type) => [MedicalTest])
+  MedicalTests!: MedicalTest[];
+  @Field((type) => [Airline])
+  Airlines!: Airline[];
+  @Field((type) => [VideoGame])
+  VideoGames!: VideoGame[];
+  @Field((type) => [LocationFeatureSpecification])
+  LocationFeatureSpecifications!: LocationFeatureSpecification[];
+  @Field((type) => [ProgramMembership])
+  ProgramMemberships!: ProgramMembership[];
+  @Field((type) => [MedicalConditionStage])
+  MedicalConditionStages!: MedicalConditionStage[];
+  @Field((type) => [PayAction])
+  PayActions!: PayAction[];
+  @Field((type) => [HealthPlanFormulary])
+  HealthPlanFormularies!: HealthPlanFormulary[];
+  @Field((type) => [DataDownload])
+  DataDownloads!: DataDownload[];
+  @Field((type) => [WebPageElement])
+  WebPageElements!: WebPageElement[];
+  @Field((type) => [ProductModel])
+  ProductModels!: ProductModel[];
+  @Field((type) => [MedicalObservationalStudy])
+  MedicalObservationalStudies!: MedicalObservationalStudy[];
+  @Field((type) => [Class])
+  Classes!: Class[];
+  @Field((type) => [RadioSeries])
+  RadioSeries!: RadioSeries[];
+  @Field((type) => [FlightReservation])
+  FlightReservations!: FlightReservation[];
+  @Field((type) => [WorkBasedProgram])
+  WorkBasedPrograms!: WorkBasedProgram[];
+  @Field((type) => [BoatTrip])
+  BoatTrips!: BoatTrip[];
+  @Field((type) => [TrainTrip])
+  TrainTrips!: TrainTrip[];
+  @Field((type) => [SuperficialAnatomy])
+  SuperficialAnatomies!: SuperficialAnatomy[];
+  @Field((type) => [Flight])
+  Flights!: Flight[];
+  @Field((type) => [DatedMoneySpecification])
+  DatedMoneySpecifications!: DatedMoneySpecification[];
+  @Field((type) => [HowToDirection])
+  HowToDirections!: HowToDirection[];
+  @Field((type) => [ComicStory])
+  ComicStories!: ComicStory[];
+  @Field((type) => [EntryPoint])
+  EntryPoints!: EntryPoint[];
+  @Field((type) => [TransferAction])
+  TransferActions!: TransferAction[];
+  @Field((type) => [PodcastSeries])
+  PodcastSeries!: PodcastSeries[];
+  @Field((type) => [MedicalSign])
+  MedicalSigns!: MedicalSign[];
+  @Field((type) => [Observation])
+  Observations!: Observation[];
+  @Field((type) => [AlignmentObject])
+  AlignmentObjects!: AlignmentObject[];
+  @Field((type) => [MusicComposition])
+  MusicCompositions!: MusicComposition[];
+  @Field((type) => [MedicalTestPanel])
+  MedicalTestPanels!: MedicalTestPanel[];
+  @Field((type) => [LinkRole])
+  LinkRoles!: LinkRole[];
+  @Field((type) => [Question])
+  Questions!: Question[];
+  @Field((type) => [MedicalCondition])
+  MedicalConditions!: MedicalCondition[];
+  @Field((type) => [SportsOrganization])
+  SportsOrganizations!: SportsOrganization[];
+  @Field((type) => [Rating])
+  Ratings!: Rating[];
+  @Field((type) => [ChemicalSubstance])
+  ChemicalSubstances!: ChemicalSubstance[];
+  @Field((type) => [BusTrip])
+  BusTrips!: BusTrip[];
+  @Field((type) => [MenuItem])
+  MenuItems!: MenuItem[];
+  @Field((type) => [TypeAndQuantityNode])
+  TypeAndQuantityNodes!: TypeAndQuantityNode[];
+  @Field((type) => [HowToTip])
+  HowToTips!: HowToTip[];
+  @Field((type) => [ComicCoverArt])
+  ComicCoverArts!: ComicCoverArt[];
+  @Field((type) => [Quotation])
+  Quotations!: Quotation[];
+  @Field((type) => [MerchantReturnPolicySeasonalOverride])
+  MerchantReturnPolicySeasonalOverrides!: MerchantReturnPolicySeasonalOverride[];
+  @Field((type) => [ReplaceAction])
+  ReplaceActions!: ReplaceAction[];
+  @Field((type) => [DeliveryEvent])
+  DeliveryEvents!: DeliveryEvent[];
+  @Field((type) => [DigitalDocument])
+  DigitalDocuments!: DigitalDocument[];
+  @Field((type) => [Menu])
+  Menus!: Menu[];
+  @Field((type) => [Grant])
+  Grants!: Grant[];
+  @Field((type) => [Offer])
+  Offers!: Offer[];
+  @Field((type) => [MusicRecording])
+  MusicRecordings!: MusicRecording[];
+  @Field((type) => [MedicalCode])
+  MedicalCodes!: MedicalCode[];
+  @Field((type) => [Joint])
+  Joints!: Joint[];
+  @Field((type) => [MoneyTransfer])
+  MoneyTransfers!: MoneyTransfer[];
+  @Field((type) => [MenuSection])
+  MenuSections!: MenuSection[];
+  @Field((type) => [MedicalSignOrSymptom])
+  MedicalSignOrSymptoms!: MedicalSignOrSymptom[];
+  @Field((type) => [ItemList])
+  ItemLists!: ItemList[];
+  @Field((type) => [PaymentChargeSpecification])
+  PaymentChargeSpecifications!: PaymentChargeSpecification[];
+  @Field((type) => [NewsMediaOrganization])
+  NewsMediaOrganizations!: NewsMediaOrganization[];
+  @Field((type) => [WebApplication])
+  WebApplications!: WebApplication[];
+  @Field((type) => [Audience])
+  Audiences!: Audience[];
+  @Field((type) => [Artery])
+  Arteries!: Artery[];
+  @Field((type) => [SingleFamilyResidence])
+  SingleFamilyResidences!: SingleFamilyResidence[];
+  @Field((type) => [MedicalTrial])
+  MedicalTrials!: MedicalTrial[];
+  @Field((type) => [EducationalOrganization])
+  EducationalOrganizations!: EducationalOrganization[];
+  @Field((type) => [Occupation])
+  Occupations!: Occupation[];
+  @Field((type) => [LoanOrCredit])
+  LoanOrCredits!: LoanOrCredit[];
+  @Field((type) => [MedicalCause])
+  MedicalCauses!: MedicalCause[];
+  @Field((type) => [FollowAction])
+  FollowActions!: FollowAction[];
+  @Field((type) => [CookAction])
+  CookActions!: CookAction[];
+  @Field((type) => [BankAccount])
+  BankAccounts!: BankAccount[];
+  @Field((type) => [BorrowAction])
+  BorrowActions!: BorrowAction[];
+  @Field((type) => [PropertyValue])
+  PropertyValues!: PropertyValue[];
+  @Field((type) => [Pharmacy])
+  Pharmacies!: Pharmacy[];
+  @Field((type) => [TravelAction])
+  TravelActions!: TravelAction[];
+  @Field((type) => [Recommendation])
+  Recommendations!: Recommendation[];
+  @Field((type) => [OccupationalExperienceRequirements])
+  OccupationalExperienceRequirements!: OccupationalExperienceRequirements[];
+  @Field((type) => [TVClip])
+  TVClips!: TVClip[];
+  @Field((type) => [MathSolver])
+  MathSolvers!: MathSolver[];
+  @Field((type) => [LendAction])
+  LendActions!: LendAction[];
+  @Field((type) => [VoteAction])
+  VoteActions!: VoteAction[];
+  @Field((type) => [MedicalStudy])
+  MedicalStudies!: MedicalStudy[];
+  @Field((type) => [GiveAction])
+  GiveActions!: GiveAction[];
+  @Field((type) => [DigitalDocumentPermission])
+  DigitalDocumentPermissions!: DigitalDocumentPermission[];
+  @Field((type) => [ReservationPackage])
+  ReservationPackages!: ReservationPackage[];
+  @Field((type) => [AnatomicalStructure])
+  AnatomicalStructures!: AnatomicalStructure[];
+  @Field((type) => [DataCatalog])
+  DataCatalogs!: DataCatalog[];
+  @Field((type) => [SeekToAction])
+  SeekToActions!: SeekToAction[];
+  @Field((type) => [Course])
+  Courses!: Course[];
+  @Field((type) => [HealthPlanCostSharingSpecification])
+  HealthPlanCostSharingSpecifications!: HealthPlanCostSharingSpecification[];
+  @Field((type) => [Clip])
+  Clips!: Clip[];
+  @Field((type) => [UserComments])
+  UserComments!: UserComments[];
+  @Field((type) => [HealthInsurancePlan])
+  HealthInsurancePlans!: HealthInsurancePlan[];
+  @Field((type) => [HyperTocEntry])
+  HyperTocEntries!: HyperTocEntry[];
+  @Field((type) => [Vein])
+  Veins!: Vein[];
+  @Field((type) => [GovernmentService])
+  GovernmentServices!: GovernmentService[];
+  @Field((type) => [VideoGameSeries])
+  VideoGameSeries!: VideoGameSeries[];
+  @Field((type) => [StatisticalPopulation])
+  StatisticalPopulations!: StatisticalPopulation[];
+  @Field((type) => [Episode])
+  Episodes!: Episode[];
+  @Field((type) => [CommentAction])
+  CommentActions!: CommentAction[];
+  @Field((type) => [Action])
+  Actions!: Action[];
+  @Field((type) => [FloorPlan])
+  FloorPlans!: FloorPlan[];
+}
+// #endregion

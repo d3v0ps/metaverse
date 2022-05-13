@@ -6,7 +6,6 @@ import { ActionPlanner } from './action-planner';
 
 const logPlan = (plan: any) => {
   if (!plan) return;
-  console.log(`-- Best plan(${plan.cost}) for ${plan.goal.label} --`);
   plan.actions.map((a: any, i: number) => console.log(`${i + 1}) ${a}`));
 };
 

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Provider } from '@angular/core';
-import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/services/entity-manager';
-import { RxDocument, RxCollection, RxJsonSchema } from 'rxdb';
+import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/entity-manager';
+import { RxCollection, RxDocument, RxJsonSchema } from 'rxdb';
 import { AppearanceInfo } from '../types';
 
 export type AppearanceInfoDocType = AppearanceInfo;
@@ -10,43 +10,43 @@ export type AppearanceInfoDocument = RxDocument<AppearanceInfoDocType>;
 export type AppearanceInfoCollection = RxCollection<AppearanceInfoDocument>;
 
 export const appearanceInfoSchema = {
-  "additionalProperties": false,
-  "properties": {
-    "bodyType": {
-      "type": "string"
+  additionalProperties: false,
+  properties: {
+    bodyType: {
+      type: 'string',
     },
-    "eyeColor": {
-      "type": "string"
+    eyeColor: {
+      type: 'string',
     },
-    "fatPercentage": {
-      "type": "number"
+    fatPercentage: {
+      type: 'number',
     },
-    "hairColor": {
-      "type": "string"
+    hairColor: {
+      type: 'string',
     },
-    "hairLength": {
-      "type": "number"
+    hairLength: {
+      type: 'number',
     },
-    "hairStyle": {
-      "type": "string"
+    hairStyle: {
+      type: 'string',
     },
-    "height": {
-      "type": "number"
+    height: {
+      type: 'number',
     },
-    "skinColor": {
-      "type": "string"
+    skinColor: {
+      type: 'string',
     },
-    "weight": {
-      "type": "number"
-    }
+    weight: {
+      type: 'number',
+    },
   },
-  "type": "object"
-}
+  type: 'object',
+};
 
 export const appearanceInfoRxSchema: RxJsonSchema<
   Omit<AppearanceInfoDocType, '_attachments'>
 > = {
-  ...appearanceInfoSchema as any,
+  ...(appearanceInfoSchema as any),
   title: 'AppearanceInfo',
   description: 'Appearance Info',
   version: 0,
@@ -61,7 +61,7 @@ export const appearanceInfoRxSchema: RxJsonSchema<
 export const userAppearanceInfoRxSchema: RxJsonSchema<
   Omit<AppearanceInfoDocType, '_attachments'>
 > = {
-  ...appearanceInfoSchema as any,
+  ...(appearanceInfoSchema as any),
   title: 'User AppearanceInfo',
   description: 'User Appearance Info',
   version: 0,
@@ -98,4 +98,3 @@ export const USER_APPEARANCE_INFO_COLLECTION_PROVIDER: Provider = {
   },
   multi: true,
 };
-

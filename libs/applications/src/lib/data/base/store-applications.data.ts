@@ -1,5 +1,5 @@
 import { APPLICATION_COLLECTION_NAME } from '@central-factory/applications/__generated__/collections/application';
-import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
+import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/entity-manager';
 import type { ApplicationDocType } from '../../__generated__/collections/application';
 import {
   ApplicationRenderingType,

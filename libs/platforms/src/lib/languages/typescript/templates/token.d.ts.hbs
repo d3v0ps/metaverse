@@ -1,7 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-types */
 {{importTokens imports}}
-
 {{exportTokens imports}}
-
 {{#each enums}}
 export enum {{pascalCase name}} {
 {{#each properties}}
@@ -11,8 +10,8 @@ export enum {{pascalCase name}} {
 
 {{/each}}
 {{#each types}}
-{{#if isUnion}}
-export type {{pascalCase name}} = {{raw.type}};
+{{#if isAlias}}
+export type {{pascalCase name}} = {{raw}};
 
 {{else}}
 export type {{pascalCase name}} = {

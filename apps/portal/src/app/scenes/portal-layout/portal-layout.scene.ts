@@ -13,8 +13,8 @@ import {
 } from '@central-factory/applications/__generated__/models';
 import { SelectedAvatarState } from '@central-factory/avatars/states/selected-avatar.state';
 import type { Avatar } from '@central-factory/avatars/__generated__/models';
-import { EntityManager } from '@central-factory/persistence/services/entity-manager';
-import { Repository } from '@central-factory/persistence/services/repository';
+import { EntityManager } from '@central-factory/persistence/entity-manager';
+import { Repository } from '@central-factory/persistence/repository';
 import { CustomizationSettingsState } from '@central-factory/preferences/states/customization/customization-settings.state';
 import { bounceIn } from '@central-factory/web-components/angular/animations/bounce-in.animation';
 import { fadeInUp } from '@central-factory/web-components/angular/animations/fade-in-up.animation';
@@ -438,9 +438,8 @@ export class PortalLayoutScene implements OnInit, OnDestroy {
     // }, 100);
   }
 
-  public onCatchClick() {
-    console.log('catch');
-  }
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  public onCatchClick() {}
 
   private subscribeToDataChanges(
     userApplicationsRepository: Repository<Application>
