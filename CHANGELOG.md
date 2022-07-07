@@ -1,4 +1,5 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
@@ -6,21 +7,49 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Early Access
 
-## [ea-0.0.3] - 2022-05-08
-### Added
-- Added devtools as a new way to work with the Domain Tokens
+## [ea-0.1.0] - 2022-07-10
 
-![](https://i.imgur.com/ATOIafx.png)
+### Added
+
+#### Persistence
+
+* Added isomorphism to the Entity Manager. Meet the new **Mono Entity Framework**
+
+![Imgur](https://i.imgur.com/puYHhsI.png)
+
+#### Platforms
+
+* Normalized `TokenSchema` types so now code generation rendering should be easier. Old generators not working anymore so hope to complete the templates soon.
+* Added support for [Schema.org](https://schema.org) `import` types. Thus the reason for the changes.
+
+### CMS
+
+* Added support for schema.org `import` types on the Platforms module.
+
+#### Host
+
+* Added some data visualization to the `Application &  Repository` layer endpoints.
+
+## [ea-0.0.3] - 2022-05-08
+
+### Added
+
+* Added devtools as a new way to work with the Domain Tokens
+
+![Devtools](https://i.imgur.com/ATOIafx.png)
 
 ## [ea-0.0.2] - 2022-05-07
+
 ### Added
-- Fixed some display issues
-- Updated theme engine to support inheritance and mixins
-- Added Domain Tokens: code generation for domain models
 
-![](https://i.imgur.com/QfwUv09.png)
+* Fixed some display iss
+ues
+* Updated theme engine to support inheritance and mixins
+* Added Domain Tokens: code generation for domain models
 
-![](https://i.imgur.com/tNORaoV.png)
+![Domain Token](https://i.imgur.com/QfwUv09.png)
+
+![Generated](https://i.imgur.com/tNORaoV.png)
 
 ## [ea-0.0.1] - 2022-05-01
 
@@ -41,6 +70,7 @@ The first stable version (v1.0.0) will be released later this year.
 My priority right now is to improve the user experience, fixing bugs and enabling the data writing layer.
 
 Once this is done, I will start including the features that I consider a priority from the point of view of usability as an application:
+
 * P2P chat rooms with video calling and streaming system.
 * 2D pixel art explorable maps of procedural cities
 * Inventory and equipment. Shopping system.
