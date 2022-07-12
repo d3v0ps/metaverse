@@ -14,7 +14,7 @@ import { AppService } from './app.service';
 import { DocumentsModule } from './documents/documents.module';
 import { DomainModule } from './domain/domain.module';
 import { ExchangeRatesModule } from './finances/exchange-rates.module';
-import { AppThrottlerGuard } from './guards/gql-throttler.guard';
+import { RequestThrottlerGuard } from './guards/request-throttler.guard';
 import { PackagesModule } from './packages/packages.module';
 
 @Module({
@@ -66,7 +66,7 @@ import { PackagesModule } from './packages/packages.module';
     // ClockTask,
     {
       provide: APP_GUARD,
-      useClass: AppThrottlerGuard,
+      useClass: RequestThrottlerGuard,
     },
   ],
 })

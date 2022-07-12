@@ -3,7 +3,7 @@ import { GqlExecutionContext } from '@nestjs/graphql';
 import { ThrottlerGuard } from '@nestjs/throttler';
 
 @Injectable()
-export class AppThrottlerGuard extends ThrottlerGuard {
+export class RequestThrottlerGuard extends ThrottlerGuard {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     switch (context.getType() as string) {
       case 'graphql':
