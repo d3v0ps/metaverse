@@ -9,7 +9,7 @@
           "vars": "all",
           "args": "after-used",
           "ignoreRestSiblings": false,
-          "argsIgnorePattern": "of|returns"
+          "argsIgnorePattern": "of|returns|type|T"
         }]
       }
     },
