@@ -4,8 +4,11 @@ import {
   Meta as TMeta,
   Section as TSection,
 } from '@central-factory/notes/models/meta';
+import {
+  File,
+  NodeJSON as TNodeJSON,
+} from '@central-factory/persistence/adapters/fs-tree.adapter';
 import { ApiProperty } from '@nestjs/swagger';
-import { File, NodeJSON as TNodeJSON } from '../databases/fs-tree.database';
 
 export class Meta implements TMeta {
   @ApiProperty()
@@ -42,6 +45,8 @@ export class Document implements TDocument {
 export class NodeJSON implements TNodeJSON {
   @ApiProperty()
   id: string;
+  @ApiProperty()
+  type: string;
   @ApiProperty()
   title: string;
   @ApiProperty()

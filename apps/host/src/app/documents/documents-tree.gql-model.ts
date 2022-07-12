@@ -1,5 +1,8 @@
+import {
+  File,
+  NodeJSON,
+} from '@central-factory/persistence/adapters/fs-tree.adapter';
 import { Field, ObjectType } from '@nestjs/graphql';
-import { File, NodeJSON } from '../databases/fs-tree.database';
 
 @ObjectType()
 export class DocumentNodeFile implements File {
@@ -7,12 +10,16 @@ export class DocumentNodeFile implements File {
   id: string;
   @Field()
   title: string;
+  @Field()
+  type: string;
 }
 
 @ObjectType()
 export class DocumentNode implements NodeJSON {
   @Field()
   id: string;
+  @Field()
+  type: string;
 
   @Field()
   title: string;
