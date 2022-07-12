@@ -87,9 +87,7 @@ export class EntityManager<
     private readonly repositoryAdapters: RepositoryAdapterProvider[] = [],
     private readonly aclEnabled = ENTITY_MANAGER_ACL_ENABLED_PROVIDER.useValue,
     private readonly acl: ACL = new ACL()
-  ) {
-    console.debug('adapters', repositoryAdapters);
-  }
+  ) {}
 
   private async addPlugins(server = false) {
     if (server) {

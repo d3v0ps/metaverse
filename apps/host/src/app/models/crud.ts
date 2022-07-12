@@ -1,34 +1,43 @@
-export type CreatePayload<T = any> = {
-  data: T;
-};
-export type CreatedMessage<T = any> = {
-  id: string;
-  item: T;
-};
-export type UpdatePayload<T = any> = {
-  id: string;
-  data: T;
-};
-export type UpdatedMessage<T = any> = {
-  id: string;
-  item: T;
-};
-export type DeletePayload<T = any> = {
-  id: string;
-};
-export type DeletedMessage<T = any> = {
-  id: string;
-  item: T;
-};
-export type FindAllPayload<T = any> = {
+/** Queries */
+
+export type FindAllPayload<T = unknown> = {
   where?: Partial<T>;
 };
-export type FoundAllMessage<T = any> = {
+export type FoundAllMessage<T = unknown> = {
   items: T[];
 };
-export type FindOnePayload<T = any> = {
+
+export type FindOnePayload<T = unknown> = {
   where: Partial<T>;
 };
-export type FoundOneMessage<T = any> = {
+export type FoundOneMessage<T = unknown> = {
   item: T;
+};
+
+/** Commands */
+
+export type CreatePayload<T = unknown> = {
+  data: T;
+};
+export type CreatedMessage<T = unknown> = {
+  id: string;
+  item: T;
+};
+
+export type UpdatePayload<T = unknown> = {
+  id: string;
+  data: T;
+};
+export type UpdatedMessage<T = unknown> = {
+  id: string;
+  item: T;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export type DeletePayload<T = unknown> = {
+  id: string;
+};
+export type DeletedMessage<T = unknown> = {
+  id: string;
+  item?: T;
 };

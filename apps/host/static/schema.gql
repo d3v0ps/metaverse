@@ -123,10 +123,12 @@ type Document {
 type DocumentNodeFile {
   id: String!
   title: String!
+  type: String!
 }
 
 type DocumentNode {
   id: String!
+  type: String!
   title: String!
   slug: String!
   icon: String!
