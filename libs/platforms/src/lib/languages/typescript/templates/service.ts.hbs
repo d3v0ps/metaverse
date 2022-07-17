@@ -1,0 +1,81 @@
+import {
+  CreatePayload,
+  CreatedMessage,
+  DeletePayload,
+  DeletedMessage,
+  FindAllPayload,
+  FoundAllMessage,
+  FindOnePayload,
+  FoundOneMessage,
+  UpdatePayload,
+  UpdatedMessage,
+} from '@central-factory/network';
+import { EntityManager } from '@central-factory/persistence/entity-manager';
+import { PubSub, PUB_SUB_PROVIDER } from '@central-factory/platforms/languages/gql/providers/pubsub';
+import { {{pascalCase name}} } from '../models';
+
+export class {{pascalCase name}}Service {
+
+  private repository = this.em.getRepository('{{pascalCase name}}');
+
+  constructor(
+    @Inject(PUB_SUB_PROVIDER) private pubSub: PubSub,
+    private em: EntityManager,
+  ) {}
+
+  subscribe(event: '{{name}}Added | '{{name}}Updated | '{{name}}Deleted') {
+    return this.pubSub.asyncIterator(event);
+  }
+
+
+  async create{{pascalCase name}}(payload: CreatePayload<{{pascalCase name}}>): Promise<CreatedMessage<{{pascalCase name}}>> {
+    const created = await this.repository.create();
+
+    this.pubSub.publish('{{pascalCase name}}Added', {
+      {{name}}Created: created
+    });
+
+    return { item: created };
+  }
+
+  async update{{pascalCase name}}(payload: UpdatePayload<{{pascalCase name}}>): Promise<UpdatedMessage<{{pascalCase name}}>> {
+    const updated = await this.repository.update();
+
+    this.pubSub.publish('{{pascalCase name}}Updated', {
+      {{name}}Updated: updated
+    });
+
+    return { item: updated };
+  }
+
+  async findAll(payload: FindAllPayload<{{pascalCase name}}>): Promise<FoundAllMessage<{{pascalCase name}}>> {
+    const found = await this.repository.findAll();
+
+    this.pubSub.publish('{{pascalCase name}}FoundAll', {
+      {{name}}Found: found
+    });
+
+
+    return { items: found };
+  }
+
+  async findOne(payload: FindOnePayload<{{pascalCase name}}>): Promise<FoundOneMessage<{{pascalCase name}}>> {
+    const found = await this.repository.find();
+
+    this.pubSub.publish('{{pascalCase name}}FoundOne', {
+      {{name}}Found: found
+    });
+
+    return { item: found };
+  }
+
+  async delete(payload: DeletePayload<{{pascalCase name}}>): Promise<DeletedMessage<{{pascalCase name}}>> {
+    const deleted = await this.repository.delete();
+
+    this.pubSub.publish('{{pascalCase name}}Deleted', {
+      {{name}}Deleted: deleted
+    });
+
+    return { item: deleted };
+  }
+}

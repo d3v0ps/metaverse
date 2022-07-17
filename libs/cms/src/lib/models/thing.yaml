@@ -1,0 +1,3 @@
+
+imports:
+  thing: https://schema.org/version/latest/schemaorg-current-https.jsonld

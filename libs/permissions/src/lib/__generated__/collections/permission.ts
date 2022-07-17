@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Provider } from '@angular/core';
-import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/services/entity-manager';
-import { RxDocument, RxCollection, RxJsonSchema } from 'rxdb';
+import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/entity-manager';
+import { RxCollection, RxDocument, RxJsonSchema } from 'rxdb';
 import { Permission } from '../types';
 
 export type PermissionDocType = Permission;
@@ -10,52 +10,40 @@ export type PermissionDocument = RxDocument<PermissionDocType>;
 export type PermissionCollection = RxCollection<PermissionDocument>;
 
 export const permissionSchema = {
-  "additionalProperties": false,
-  "properties": {
-    "appId": {
-      "type": "string"
+  additionalProperties: false,
+  properties: {
+    appId: {
+      type: 'string',
     },
-    "createdAt": {
-      "type": "string"
+    createdAt: {
+      type: 'string',
     },
-    "id": {
-      "type": "string"
+    id: {
+      type: 'string',
     },
-    "kind": {
-      "type": "string",
-      "enum": [
-        "Collection"
-      ]
+    kind: {
+      type: 'string',
+      enum: ['Collection'],
     },
-    "mode": {
-      "type": "string",
-      "enum": [
-        "Read",
-        "Write",
-        "Delete"
-      ]
+    mode: {
+      type: 'string',
+      enum: ['Read', 'Write', 'Delete'],
     },
-    "target": {
-      "type": "string"
+    target: {
+      type: 'string',
     },
-    "updatedAt": {
-      "type": "string"
-    }
+    updatedAt: {
+      type: 'string',
+    },
   },
-  "required": [
-    "id",
-    "appId",
-    "kind",
-    "mode",
-    "target"
-  ],
-  "type": "object"
-}
+  required: ['id', 'appId', 'kind', 'mode', 'target'],
+  type: 'object',
+};
 
 export const permissionRxSchema: RxJsonSchema<
   Omit<PermissionDocType, '_attachments'>
 > = {
-  ...permissionSchema as any,
+  ...(permissionSchema as any),
   title: 'Permission',
   description: 'Permission',
   version: 0,
@@ -70,7 +58,7 @@ export const permissionRxSchema: RxJsonSchema<
 export const userPermissionRxSchema: RxJsonSchema<
   Omit<PermissionDocType, '_attachments'>
 > = {
-  ...permissionSchema as any,
+  ...(permissionSchema as any),
   title: 'User Permission',
   description: 'User Permission',
   version: 0,
@@ -107,4 +95,3 @@ export const USER_PERMISSION_COLLECTION_PROVIDER: Provider = {
   },
   multi: true,
 };
-

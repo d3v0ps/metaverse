@@ -36,15 +36,14 @@
 In memory of Aaron Swartz, Antonio Escohotado and so many others who fought for people's freedom.
 
 A Metaverse Operating System made for the People.
-  
-  
+
 </div>
 
 <div align="center">
 
 [![Make it yours](https://img.shields.io/badge/Fork-Make_it_yours-2ea44f?style=for-the-badge)](https://github.com/d3v0ps/metaverse/generate)
 [![Play - Metaverse Portal](https://img.shields.io/badge/Play-Metaverse_Portal-2ea44f?style=for-the-badge)](https://d3v0ps.github.io/metaverse)
-[![view - Documentation](https://img.shields.io/badge/view-Documentation-blue?style=for-the-badge)](http://aitorllamas.com/metaverse/apps/codex "Go to project documentation")
+[![view - Documentation](https://img.shields.io/badge/read-Documentation-blue?style=for-the-badge)](http://aitorllamas.com/metaverse/apps/codex "Go to project documentation")
 </div>
 
 <div align="center">
@@ -60,7 +59,6 @@ A Metaverse Operating System made for the People.
 ## Gallery
   
 </div>
-
 
 <table>
   <tr>
@@ -103,9 +101,6 @@ A Metaverse Operating System made for the People.
     </td>
   </tr>
 </table>
-
-  
-
 
 ## Early Access Preview 05/2022
 

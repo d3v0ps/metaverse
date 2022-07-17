@@ -1,0 +1,196 @@
+
+enums:
+  resourceState:
+    - draft
+    - published
+    - archived
+    - deleted
+  visibility:
+    - hidden
+    - visible
+  serverType:
+    - portal
+    - local
+    - remote
+
+
+types:
+  string: string
+  number: number
+  date: string
+  boolean: boolean
+
+
+  manageable:
+    meta:
+      type: Meta
+
+  meta:
+    servers:
+      type: Server[]
+      default: []
+    visibility:
+      type: Visibility
+      default: hidden
+      generator: helpers.arrayElement
+      generatorOptions:
+        - hidden
+        - visible
+    tags:
+      type: Record<string, any>
+      required: true
+      description: A list of tags.
+      default:
+        link: href
+        time: meta.createdAt
+        content: url
+      generator: lorem.word
+
+    state:
+      type: ResourceState
+      required: true
+      description: The resource state.
+      default: 'draft'
+      generator: helpers.arrayElement
+      generatorOptions:
+        - draft
+        - published
+        - archived
+        - deleted
+    related:
+      type: Manageable[]
+      required: true
+      description: A list of related resources.
+      default: []
+    pagination:
+      type: Pagination
+
+    title:
+      type: string
+      required: true
+      description: A name given to the resource
+      generator: company.catchPhrase
+    subject:
+      type: string
+      description: The topic of the resource
+      generator: company.catchPhrase
+    description:
+      type: string
+      description: An account of the resource
+      generator: lorem.lines
+      generatorOptions: 2
+
+    referenceId:
+      type: string
+      description: A unique identifier for the resource
+      generator: datatype.uuid
+    referenceUrl:
+      type: string
+      description: A URL to the resource
+      generator: internet.url
+
+
+    createdBy:
+      type: string
+      comment: An entity primarly responsible for making the resource.
+      generator: internet.userName
+    createdAt:
+      type: Date
+      description: The date and time when the object was created.
+      generator: datatype.dateTime
+
+
+    updatedBy:
+      type: string
+      description: An entity primarly responsible for making the resource.
+      generator: internet.userName
+    updatedAt:
+      type: Date
+      description: The date and time when the object was last updated.
+      generator: datatype.dateTime
+
+    publishedBy:
+      type: string
+      comment: An entity primarly responsible for making the resource.
+      generator: internet.userName
+    publishedAt:
+      type: Date
+      description: The date and time when the object was published.
+      generator: datatype.dateTime
+
+    deletedBy:
+      type: string
+      comment: An entity primarly responsible for making the resource.
+      generator: internet.userName
+    deletedAt:
+      type: Date
+      description: The date and time when the object was published.
+      generator: datatype.dateTime
+
+  server:
+    id:
+      type: string
+      generator: datatype.uuid
+    name:
+      type: string
+      generator: internet.domainName
+    type:
+      type: ServerType
+      default: remote
+      generator: helpers.arrayElement
+      generatorOptions:
+        - portal
+        - local
+        - remote
+
+  pagination:
+    page:
+      type: number
+      required: true
+      default: 0
+      description: The current page.
+    pageSize:
+      type: number
+      required: true
+      default: 10
+      description: The number of items per page.
+    total:
+      type: number
+      required: true
+      default: 0
+      description: The total number of items.
+    totalPages:
+      type: number
+      required: true
+      default: 1
+      description: The total number of pages.
+    hasNextPage:
+      type: boolean
+      required: true
+      default: false
+      description: Whether there is a next page.
+    hasPreviousPage:
+      type: boolean
+      required: true
+      default: false
+      description: Whether there is a previous page.
+    nextPage:
+      type: number
+      required: true
+      default: 0
+      description: The next page.
+    previousPage:
+      type: number
+      required: true
+      default: 0
+      description: The previous page.
+    firstPage:
+      type: number
+      required: true
+      default: 0
+      description: The first page.
+    lastPage:
+      type: number
+      required: true
+      default: 0
+      description: The last page.

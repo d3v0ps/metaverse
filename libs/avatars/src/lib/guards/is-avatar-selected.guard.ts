@@ -1,6 +1,6 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { EntityManager } from '@central-factory/persistence/services/entity-manager';
+import { EntityManager } from '@central-factory/persistence/entity-manager';
 import type { UserPreferenceDocType } from '@central-factory/preferences/collections/user-preferences.collection';
 import { map, Observable, switchMap, tap } from 'rxjs';
 

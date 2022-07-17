@@ -1,0 +1,74 @@
+
+
+import { Inject } from '@nestjs/common';
+import { Sse, Controller, Get, Post, Put, Header, Body, Query, Param } from '@nestjs/common';
+import { ApiTags, ApiOkResponse, ApiCreatedResponse, ApiFoundResponse } from '@nestjs/swagger';
+import { {{pascalCase name}}Service } from './{{pascalCase name}}.service';
+import { {{pascalCase name}}, Create{{pascalCase name}}Input, Create{{pascalCase name}}Payload } from './{{pascalCase name}}.model';
+
+@ApiTags('{{kebabCase name}}')
+@Controller('{{camelCase name}}')
+export class {{pascalCase name}}Controller {
+  constructor(
+    private service:  {{pascalCase name}}Service
+  ) {}
+
+  @Sse('added')
+  {{pascalCase name}}Added() {
+    return this.service.subscribe('{{pascalCase name}}Added');
+  }
+
+  @Sse('updated')
+  {{pascalCase name}}Updated() {
+    return this.service.subscribe('{{pascalCase name}}Updated');
+  }
+
+  @Sse('deleted')
+  {{pascalCase name}}Deleted() {
+    return this.service.subscribe('{{pascalCase name}}Deleted');
+  }
+
+  @Get()
+  @ApiFoundResponse()
+  async findAll{{pascalCase name}}(
+    @Query('payload') payload: FoundAllPayload<{{pascalCase name}}>
+  ): Promise<FoundAllMessage<{{pascalCase name}}>> {
+    return this.service.findAll(payload);
+  }
+
+  @Get(':id')
+  @ApiFoundResponse()
+  async findOneById{{pascalCase name}}(
+    @Param('id') id: string,
+  ): Promise<FoundOneMessage<{{pascalCase name}}>> {
+    return this.service.findOne({ id });
+  }
+
+  @Post()
+  @Header('Cache-Control', 'none')
+  @ApiCreatedResponse()
+  create{{pascalCase name}}(
+    @Body('payload') payload: CreatePayload<{{pascalCase name}}>
+  ): CreatePayload<{{pascalCase name}}> {
+    return this.service.create(payload);
+  }
+
+  @Put(':id')
+  @Header('Cache-Control', 'none')
+  @ApiOkResponse()
+  update{{pascalCase name}}(
+    @Param('id') id: string,
+    @Query('payload') payload: UpdatePayload<{{pascalCase name}}>
+  ): UpdatePayload<{{pascalCase name}}> {
+    return this.service.update({ id, ...payload });
+  }
+
+  @Delete(':id')
+  @Header('Cache-Control', 'none')
+  @ApiOkResponse()
+  delete{{pascalCase name}}(
+    @Param('id') id: string,
+  ): CreatePayload<{{pascalCase name}}> {
+    return this.service.delete({ id });
+  }
+}

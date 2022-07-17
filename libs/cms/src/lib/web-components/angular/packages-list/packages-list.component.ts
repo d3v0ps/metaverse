@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Package } from '@central-factory/cms/states/packages.state';
+import { Package } from '@central-factory/platforms/__generated__/models';
 
 @Component({
   selector: 'cf-packages-list',
@@ -8,15 +8,15 @@ import { Package } from '@central-factory/cms/states/packages.state';
       <ng-container *ngFor="let pkg of packages">
         <div cfBlock="packages-list-item">
           <section cfElem="info">
-            <section cfElem="name" (click)="onPackageClick(pkg)">
-              <cf-typography>
+            <section cfElem="name">
+              <cf-typography (click)="onPackageCollapseClick(pkg)">
                 <cf-svg-icon
                   src="assets/icons/mdi/chevron-{{
                     collapsedPackages[pkg.name] ? 'down' : 'up'
                   }}.svg"
                 ></cf-svg-icon>
               </cf-typography>
-              <cf-typography theme="secondary">
+              <cf-typography theme="secondary" (click)="onPackageClick(pkg)">
                 <cf-svg-icon
                   src="assets/icons/fluent-icons/{{
                     pkg.project.projectType === 'library'
@@ -133,8 +133,11 @@ export class PackagesListComponent {
   collapsedPackages: Record<string, boolean> = {};
   expandedChildren: Record<string, boolean> = {};
 
-  onPackageClick(pkg: Package) {
+  onPackageCollapseClick(pkg: Package) {
     this.collapsedPackages[pkg.name] = !this.collapsedPackages[pkg.name];
+  }
+
+  onPackageClick(pkg: Package) {
     this.packageClick.emit(pkg);
   }
 

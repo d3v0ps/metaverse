@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Provider } from '@angular/core';
-import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/services/entity-manager';
-import { RxDocument, RxCollection, RxJsonSchema } from 'rxdb';
+import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/entity-manager';
+import { RxCollection, RxDocument, RxJsonSchema } from 'rxdb';
 import { Wallet } from '../types';
 
 export type WalletDocType = Wallet;
@@ -10,59 +10,52 @@ export type WalletDocument = RxDocument<WalletDocType>;
 export type WalletCollection = RxCollection<WalletDocument>;
 
 export const walletSchema = {
-  "additionalProperties": false,
-  "properties": {
-    "accounts": {
-      "items": {
-        "type": "object"
+  additionalProperties: false,
+  properties: {
+    accounts: {
+      items: {
+        type: 'object',
       },
-      "type": "array"
+      type: 'array',
     },
-    "balance": {
-      "$ref": "#/definitions/Balance",
-      "items": {
-        "type": "object"
-      }
+    balance: {
+      $ref: '#/definitions/Balance',
+      items: {
+        type: 'object',
+      },
     },
-    "id": {
-      "type": "string"
+    id: {
+      type: 'string',
     },
-    "name": {
-      "type": "string"
+    name: {
+      type: 'string',
     },
-    "worldId": {
-      "type": "string"
-    }
+    worldId: {
+      type: 'string',
+    },
   },
-  "required": [
-    "id",
-    "name",
-    "worldId",
-    "balance",
-    "accounts"
-  ],
-  "type": "object"
-}
-
-export const walletRxSchema: RxJsonSchema<
-  Omit<WalletDocType, '_attachments'>
-> = {
-  ...walletSchema as any,
-  title: 'Wallet',
-  description: 'Wallet',
-  version: 0,
-  keyCompression: true,
-  primaryKey: 'id',
+  required: ['id', 'name', 'worldId', 'balance', 'accounts'],
   type: 'object',
-  attachments: {
-    encrypted: false,
-  },
 };
+
+export const walletRxSchema: RxJsonSchema<Omit<WalletDocType, '_attachments'>> =
+  {
+    ...(walletSchema as any),
+    title: 'Wallet',
+    description: 'Wallet',
+    version: 0,
+    keyCompression: true,
+    primaryKey: 'id',
+    type: 'object',
+    attachments: {
+      encrypted: false,
+    },
+  };
 
 export const userWalletRxSchema: RxJsonSchema<
   Omit<WalletDocType, '_attachments'>
 > = {
-  ...walletSchema as any,
+  ...(walletSchema as any),
   title: 'User Wallet',
   description: 'User Wallet',
   version: 0,
@@ -99,4 +92,3 @@ export const USER_WALLET_COLLECTION_PROVIDER: Provider = {
   },
   multi: true,
 };
-

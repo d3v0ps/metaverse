@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { EntityManager } from '@central-factory/persistence/services/entity-manager';
+import { EntityManager } from '@central-factory/persistence/entity-manager';
 import { UserPreferencesState } from '@central-factory/preferences/states/user-preferences.state';
 import { BehaviorSubject, forkJoin, Observable, of, tap } from 'rxjs';
 import { map, share, switchMap } from 'rxjs/operators';

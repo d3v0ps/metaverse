@@ -8,7 +8,7 @@ import { getNameFromRef } from '../json/utils/get-name-from-ref';
 import { getSchemasFromRoot } from '../json/utils/get-schemas-from-root';
 import { getType } from '../json/utils/get-type';
 
-const logger = new Logger('Generate GQL Types');
+const logger = new Logger('generateTypeScriptGqlTypesFromSchema');
 
 const templatePath = resolve(
   process.cwd(),

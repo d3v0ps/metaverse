@@ -1,13 +1,16 @@
 import {
-    Component,
-    ElementRef,
-    EventEmitter,
-    Input,
-    Output,
-    QueryList,
-    ViewChildren
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  QueryList,
+  ViewChildren,
 } from '@angular/core';
-import { TypeToken } from '@central-factory/platforms/__generated__/models';
+import {
+  SymbolType,
+  TypeToken,
+} from '@central-factory/platforms/__generated__/models';
 
 @Component({
   selector: 'cf-model-types-list',
@@ -45,7 +48,9 @@ import { TypeToken } from '@central-factory/platforms/__generated__/models';
             </span>
           </cf-typography>
           <ng-container *ngIf="expandedTypes[type.name]">
-            <ng-container *ngIf="type.isUnion; else propsTemplate">
+            <ng-container
+              *ngIf="type.symbol === symbolTypes.Union; else propsTemplate"
+            >
               <pre (click)="onTypeDefClick(type)">{{
                 type.properties[0].type
               }}</pre>
@@ -135,6 +140,8 @@ export class ModelTypesListComponent {
   @ViewChildren('typeNames') typeNames?: QueryList<ElementRef>;
 
   @Output() typeClick = new EventEmitter<string>();
+
+  symbolTypes = SymbolType;
 
   expandedTypes: Record<string, boolean> = {};
 

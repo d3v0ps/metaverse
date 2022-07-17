@@ -1,0 +1,93 @@
+{{#if index}}
+{{#each token.roots}}
+export { {{pascalCase .}}Resolver } from './{{kebabCase .}}';
+{{/each}}
+{{else}}
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
+import { PubSub, PUB_SUB_PROVIDER } from '@central-factory/platforms/languages/gql/providers/pubsub';
+import { Inject } from '@nestjs/common';
+import { Args, Mutation, Query, Resolver, Subscription } from '@nestjs/graphql';
+
+{{#each token.types}}
+import { {{pascalCase name}} } from '../types';
+
+import {
+  {{pascalCase name}}FindAllPayload,
+  {{pascalCase name}}FoundAllMessage,
+  {{pascalCase name}}FindOnePayload,
+  {{pascalCase name}}FoundOneMessage,
+  {{pascalCase name}}CreatePayload,
+  {{pascalCase name}}CreatedMessage,
+  {{pascalCase name}}UpdatePayload,
+  {{pascalCase name}}UpdatedMessage,
+  {{pascalCase name}}DeletePayload,
+  {{pascalCase name}}DeletedMessage,
+ } from '../dtos';
+
+// import { {{pascalCase name}}Service } from './{{kebabCase name}}.service';
+// import { {{pascalCase name}}, Create{{pascalCase name}}Input, Create{{pascalCase name}}Payload } from './{{kebabCase name}}.model';
+
+@Resolver((of) => {{pascalCase name}})
+export class {{pascalCase name}}Resolver {
+  constructor(
+    @Inject(PUB_SUB_PROVIDER) private pubSub: PubSub,
+    private service:  /** {{pascalCase name}}Service **/ any,
+  ) {}
+
+  @Subscription((returns) =>  {{pascalCase name}}CreatedMessage)
+  {{pascalCase name}}Created() {
+    return this.service.subscribe('{{pascalCase name}}Created');
+  }
+
+  @Subscription((returns) =>  {{pascalCase name}}UpdatedMessage)
+  {{pascalCase name}}Updated() {
+    return this.service.subscribe('{{pascalCase name}}Updated');
+  }
+
+  @Subscription((returns) =>  {{pascalCase name}}DeletedMessage)
+  {{pascalCase name}}Deleted() {
+    return this.service.subscribe('{{pascalCase name}}Deleted');
+  }
+
+  @Query((returns) => {{pascalCase name}}FoundAllMessage)
+  async findAll{{pascalCase name}}(
+    @Args('payload') payload: {{pascalCase name}}FindAllPayload
+  ): Promise<{{pascalCase name}}FoundAllMessage> {
+    return this.service.findAll(payload);
+  }
+
+  @Query((returns) => {{pascalCase name}}FoundOneMessage)
+  async findOne{{pascalCase name}}(
+    @Args('payload') payload: {{pascalCase name}}FindOnePayload
+  ): Promise<{{pascalCase name}}FoundOneMessage> {
+    return this.service.findOne(payload);
+  }
+
+  @Mutation(returns => {{pascalCase name}}CreatedMessage)
+  create{{pascalCase name}}(
+
+    @Args('payload') payload: {{pascalCase name}}CreatePayload
+  ): {{pascalCase name}}CreatedMessage {
+    return this.service.create(payload);
+  }
+
+  @Mutation(returns => {{pascalCase name}}UpdatedMessage)
+  update{{pascalCase name}}(
+
+    @Args('payload') payload: {{pascalCase name}}UpdatePayload
+  ): {{pascalCase name}}UpdatedMessage {
+    return this.service.update(payload);
+  }
+
+  @Mutation(returns => {{pascalCase name}}DeletedMessage)
+  delete{{pascalCase name}}(
+
+    @Args('payload') payload: {{pascalCase name}}DeletePayload
+  ): {{pascalCase name}}DeletedMessage {
+    return this.service.delete(payload);
+  }
+}
+{{/each}}
+{{/if}}

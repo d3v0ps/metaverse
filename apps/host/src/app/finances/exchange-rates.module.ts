@@ -1,10 +1,15 @@
 import { HttpModule } from '@nestjs/axios';
-import { Module } from '@nestjs/common';
+import { CacheModule, Module } from '@nestjs/common';
 import { ExchangeRatesController } from './exchange-rates.controller';
 import { ExchangesRatesService } from './exchanges-rates.service';
 
 @Module({
-  imports: [HttpModule],
+  imports: [
+    HttpModule,
+    CacheModule.register({
+      ttl: 36000,
+    }),
+  ],
   controllers: [ExchangeRatesController],
   providers: [ExchangesRatesService],
 })

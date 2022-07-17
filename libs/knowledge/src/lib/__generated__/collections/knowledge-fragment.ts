@@ -1,62 +1,59 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Provider } from '@angular/core';
-import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/services/entity-manager';
-import { RxDocument, RxCollection, RxJsonSchema } from 'rxdb';
+import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/entity-manager';
+import { RxCollection, RxDocument, RxJsonSchema } from 'rxdb';
 import { KnowledgeFragment } from '../types';
 
 export type KnowledgeFragmentDocType = KnowledgeFragment;
 export type KnowledgeFragmentDocument = RxDocument<KnowledgeFragmentDocType>;
-export type KnowledgeFragmentCollection = RxCollection<KnowledgeFragmentDocument>;
+export type KnowledgeFragmentCollection =
+  RxCollection<KnowledgeFragmentDocument>;
 
 export const knowledgeFragmentSchema = {
-  "allOf": [
+  allOf: [
     {
-      "$ref": "#/definitions/Indexable"
+      $ref: '#/definitions/Indexable',
     },
     {
-      "anyOf": [
+      anyOf: [
         {
-          "$ref": "#/definitions/Loadable"
+          $ref: '#/definitions/Loadable',
         },
         {
-          "$ref": "#/definitions/Displayable"
-        }
-      ]
-    }
+          $ref: '#/definitions/Displayable',
+        },
+      ],
+    },
   ],
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string"
+  type: 'object',
+  properties: {
+    id: {
+      type: 'string',
     },
-    "meta": {
-      "$ref": "#/definitions/Meta",
-      "items": {
-        "type": "object"
-      }
+    meta: {
+      $ref: '#/definitions/Meta',
+      items: {
+        type: 'object',
+      },
     },
-    "src": {
-      "type": "string"
+    src: {
+      type: 'string',
     },
-    "component": {
-      "type": "string"
+    component: {
+      type: 'string',
     },
-    "content": {
-      "type": "string"
-    }
+    content: {
+      type: 'string',
+    },
   },
-  "required": [
-    null,
-    null,
-    "content"
-  ]
-}
+  required: [null, null, 'content'],
+};
 
 export const knowledgeFragmentRxSchema: RxJsonSchema<
   Omit<KnowledgeFragmentDocType, '_attachments'>
 > = {
-  ...knowledgeFragmentSchema as any,
+  ...(knowledgeFragmentSchema as any),
   title: 'KnowledgeFragment',
   description: 'Knowledge Fragment',
   version: 0,
@@ -71,7 +68,7 @@ export const knowledgeFragmentRxSchema: RxJsonSchema<
 export const userKnowledgeFragmentRxSchema: RxJsonSchema<
   Omit<KnowledgeFragmentDocType, '_attachments'>
 > = {
-  ...knowledgeFragmentSchema as any,
+  ...(knowledgeFragmentSchema as any),
   title: 'User KnowledgeFragment',
   description: 'User Knowledge Fragment',
   version: 0,
@@ -108,4 +105,3 @@ export const USER_KNOWLEDGE_FRAGMENT_COLLECTION_PROVIDER: Provider = {
   },
   multi: true,
 };
-

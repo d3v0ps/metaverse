@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * This file includes polyfills needed by Angular and is loaded before the app.
  * You can add your own extra polyfills to this file.
@@ -53,13 +54,14 @@
  *  (window as any).__Zone_enable_cross_context_check = true;
  *
  */
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+import * as process from 'process';
+(window as any).process = process;
 (window as any).global = window;
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-(window as any).process = {
-  env: { DEBUG: undefined },
+(window as any).process.env = {
+  ...(window as any).process.env,
+  DEBUG: undefined,
 };
+global.Buffer = global.Buffer || require('buffer').Buffer;
 
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.

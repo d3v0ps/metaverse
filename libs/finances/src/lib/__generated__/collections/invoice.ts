@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Provider } from '@angular/core';
-import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/services/entity-manager';
-import { RxDocument, RxCollection, RxJsonSchema } from 'rxdb';
+import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/entity-manager';
+import { RxCollection, RxDocument, RxJsonSchema } from 'rxdb';
 import { Invoice } from '../types';
 
 export type InvoiceDocType = Invoice;
@@ -10,54 +10,48 @@ export type InvoiceDocument = RxDocument<InvoiceDocType>;
 export type InvoiceCollection = RxCollection<InvoiceDocument>;
 
 export const invoiceSchema = {
-  "additionalProperties": false,
-  "properties": {
-    "createdAt": {
-      "type": "string"
+  additionalProperties: false,
+  properties: {
+    createdAt: {
+      type: 'string',
     },
-    "id": {
-      "type": "string"
+    id: {
+      type: 'string',
     },
-    "items": {
-      "items": {
-        "type": "object"
+    items: {
+      items: {
+        type: 'object',
       },
-      "type": "array"
+      type: 'array',
     },
-    "paidAt": {
-      "type": "string"
+    paidAt: {
+      type: 'string',
     },
-    "receiver": {
-      "type": "string"
+    receiver: {
+      type: 'string',
     },
-    "sender": {
-      "type": "string"
+    sender: {
+      type: 'string',
     },
-    "state": {
-      "type": "string",
-      "enum": [
-        "draft",
-        "sent",
-        "paid"
-      ]
+    state: {
+      type: 'string',
+      enum: ['draft', 'sent', 'paid'],
     },
-    "total": {
-      "type": "string"
+    total: {
+      type: 'string',
     },
-    "updatedAt": {
-      "type": "string"
-    }
+    updatedAt: {
+      type: 'string',
+    },
   },
-  "required": [
-    "id"
-  ],
-  "type": "object"
-}
+  required: ['id'],
+  type: 'object',
+};
 
 export const invoiceRxSchema: RxJsonSchema<
   Omit<InvoiceDocType, '_attachments'>
 > = {
-  ...invoiceSchema as any,
+  ...(invoiceSchema as any),
   title: 'Invoice',
   description: 'Invoice',
   version: 0,
@@ -72,7 +66,7 @@ export const invoiceRxSchema: RxJsonSchema<
 export const userInvoiceRxSchema: RxJsonSchema<
   Omit<InvoiceDocType, '_attachments'>
 > = {
-  ...invoiceSchema as any,
+  ...(invoiceSchema as any),
   title: 'User Invoice',
   description: 'User Invoice',
   version: 0,
@@ -109,4 +103,3 @@ export const USER_INVOICE_COLLECTION_PROVIDER: Provider = {
   },
   multi: true,
 };
-

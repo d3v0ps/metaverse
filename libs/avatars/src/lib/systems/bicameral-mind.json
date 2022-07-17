@@ -1,0 +1,81 @@
+{
+  "id": "BicameralMind",
+  "type": "parallel",
+  "states": {
+    "Observer": {
+      "initial": "idle",
+      "states": {
+        "idle": {
+          "on": {
+            "eventReceived": {
+              "target": "processing_event"
+            }
+          }
+        },
+        "processing_event": {
+          "on": {
+            "eventProcesse": {
+              "target": "processing_event_completed"
+            }
+          }
+        },
+        "processing_event_completed": {
+          "always": {
+            "target": "idle"
+          }
+        }
+      }
+    },
+    "Mediator": {
+      "initial": "Action Planner",
+      "states": {
+        "Action Planner": {
+          "initial": "Idle",
+          "states": {
+            "Idle": {
+              "always": {
+                "target": "Planning Action"
+              }
+            },
+            "Planning Action": {
+              "initial": "Idle",
+              "states": {
+                "Idle": {
+                  "always": {
+                    "target": "Planning"
+                  }
+                },
+                "Error": {
+                  "always": {
+                    "target": "#BicameralMind.Mediator.Action Planner.Action Planned"
+                  }
+                },
+                "Completed": {
+                  "on": {
+                    "Action Planned": {
+                      "target": "#BicameralMind.Mediator.Action Planner.Idle"
+                    }
+                  }
+                },
+                "Planning": {
+                  "on": {
+                    "Unable to plan an Actio": {
+                      "target": "Error"
+                    },
+                    "Playbook Not Found": {
+                      "target": "Error"
+                    },
+                    "Action Planned": {
+                      "target": "Completed"
+                    }
+                  }
+                }
+              }
+            },
+            "Action Planned": {}
+          }
+        }
+      }
+    }
+  }
+}

@@ -4,12 +4,42 @@ enums:
     Analog: 'analog'
     Digital: 'digital'
     Unknown: 'unknown'
+  astronomicalObjectType:
+    - star
+    - planet
+    - moon
+    - asteroid
+    - comet
+    - asteroidBelt
+    - asteroidCluster
+    - asteroidRing
+    - cometCluster
+    - cometRing
+    - cometHole
+    - asteroidNebula
+    - cometNebula
+    - asteroidCloud
+    - cometCloud
 
 types:
 
+  astronomicalObject:
+    id:
+      type: string
+      required: true
+    type:
+      type: AstronomicalObjectType
+      required: true
+
+  # TODO: Rename it to Universe
   world:
     id:
       type: string
+      required: true
+    astronomicalObject:
+      type: AstronomicalObject
+    fragments:
+      type: World[]
       required: true
     meta:
       type: Meta
@@ -32,6 +62,8 @@ types:
     eras:
       type: any[]
     archetypes:
+      type: any[]
+    burgs:
       type: any[]
     avatars:
       type: any[]

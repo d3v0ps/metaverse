@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Provider } from '@angular/core';
-import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/services/entity-manager';
-import { RxDocument, RxCollection, RxJsonSchema } from 'rxdb';
+import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/entity-manager';
+import { RxCollection, RxDocument, RxJsonSchema } from 'rxdb';
 import { TokensSchema } from '../types';
 
 export type TokensSchemaDocType = TokensSchema;
@@ -10,56 +10,56 @@ export type TokensSchemaDocument = RxDocument<TokensSchemaDocType>;
 export type TokensSchemaCollection = RxCollection<TokensSchemaDocument>;
 
 export const tokensSchemaSchema = {
-  "additionalProperties": false,
-  "properties": {
-    "description": {
-      "type": "string"
+  additionalProperties: false,
+  properties: {
+    description: {
+      type: 'string',
     },
-    "enums": {
-      "items": {
-        "type": "object"
+    enums: {
+      items: {
+        type: 'object',
       },
-      "type": "array"
+      type: 'array',
     },
-    "file": {
-      "type": "string"
+    file: {
+      type: 'string',
     },
-    "imports": {
-      "items": {
-        "type": "object"
+    imports: {
+      items: {
+        type: 'object',
       },
-      "type": "array"
+      type: 'array',
     },
-    "name": {
-      "type": "string"
+    name: {
+      type: 'string',
     },
-    "roots": {
-      "items": {
-        "type": "string"
+    domain: {
+      type: 'string',
+    },
+    state: {
+      type: 'string',
+    },
+    roots: {
+      items: {
+        type: 'string',
       },
-      "type": "array"
+      type: 'array',
     },
-    "types": {
-      "items": {
-        "type": "object"
+    types: {
+      items: {
+        type: 'object',
       },
-      "type": "array"
-    }
+      type: 'array',
+    },
   },
-  "required": [
-    "name",
-    "imports",
-    "types",
-    "enums",
-    "roots"
-  ],
-  "type": "object"
-}
+  required: ['name', 'imports', 'types', 'enums', 'roots'],
+  type: 'object',
+};
 
 export const tokensSchemaRxSchema: RxJsonSchema<
   Omit<TokensSchemaDocType, '_attachments'>
 > = {
-  ...tokensSchemaSchema as any,
+  ...(tokensSchemaSchema as any),
   title: 'TokensSchema',
   description: 'Tokens Schema',
   version: 0,
@@ -74,7 +74,7 @@ export const tokensSchemaRxSchema: RxJsonSchema<
 export const userTokensSchemaRxSchema: RxJsonSchema<
   Omit<TokensSchemaDocType, '_attachments'>
 > = {
-  ...tokensSchemaSchema as any,
+  ...(tokensSchemaSchema as any),
   title: 'User TokensSchema',
   description: 'User Tokens Schema',
   version: 0,
@@ -111,4 +111,3 @@ export const USER_TOKENS_SCHEMA_COLLECTION_PROVIDER: Provider = {
   },
   multi: true,
 };
-

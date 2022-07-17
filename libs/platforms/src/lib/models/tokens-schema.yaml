@@ -7,6 +7,15 @@ types:
       type: string
     required:
       type: boolean
+    isAlias:
+      type: boolean
+      required: true
+    isUnion:
+      type: boolean
+    isRecord:
+      type: boolean
+    raw:
+      type: Typing
   propItem:
     type: Record<string, string>
   typing:
@@ -16,7 +25,13 @@ types:
     name:
       type: string
       required: true
+    isAlias:
+      type: boolean
+      required: true
     isUnion:
+      type: boolean
+      required: true
+    isRecord:
       type: boolean
       required: true
     raw:

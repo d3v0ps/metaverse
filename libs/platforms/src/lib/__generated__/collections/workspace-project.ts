@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Provider } from '@angular/core';
-import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/services/entity-manager';
-import { RxDocument, RxCollection, RxJsonSchema } from 'rxdb';
+import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/entity-manager';
+import { RxCollection, RxDocument, RxJsonSchema } from 'rxdb';
 import { WorkspaceProject } from '../types';
 
 export type WorkspaceProjectDocType = WorkspaceProject;
@@ -10,35 +10,35 @@ export type WorkspaceProjectDocument = RxDocument<WorkspaceProjectDocType>;
 export type WorkspaceProjectCollection = RxCollection<WorkspaceProjectDocument>;
 
 export const workspaceProjectSchema = {
-  "additionalProperties": false,
-  "properties": {
-    "architect": {},
-    "prefix": {
-      "type": "string"
+  additionalProperties: false,
+  properties: {
+    architect: {},
+    prefix: {
+      type: 'string',
     },
-    "projectType": {
-      "type": "string"
+    projectType: {
+      type: 'string',
     },
-    "root": {
-      "type": "string"
+    root: {
+      type: 'string',
     },
-    "sourceRoot": {
-      "type": "string"
+    sourceRoot: {
+      type: 'string',
     },
-    "tags": {
-      "items": {
-        "type": "string"
+    tags: {
+      items: {
+        type: 'string',
       },
-      "type": "array"
-    }
+      type: 'array',
+    },
   },
-  "type": "object"
-}
+  type: 'object',
+};
 
 export const workspaceProjectRxSchema: RxJsonSchema<
   Omit<WorkspaceProjectDocType, '_attachments'>
 > = {
-  ...workspaceProjectSchema as any,
+  ...(workspaceProjectSchema as any),
   title: 'WorkspaceProject',
   description: 'Workspace Project',
   version: 0,
@@ -53,7 +53,7 @@ export const workspaceProjectRxSchema: RxJsonSchema<
 export const userWorkspaceProjectRxSchema: RxJsonSchema<
   Omit<WorkspaceProjectDocType, '_attachments'>
 > = {
-  ...workspaceProjectSchema as any,
+  ...(workspaceProjectSchema as any),
   title: 'User WorkspaceProject',
   description: 'User Workspace Project',
   version: 0,
@@ -90,4 +90,3 @@ export const USER_WORKSPACE_PROJECT_COLLECTION_PROVIDER: Provider = {
   },
   multi: true,
 };
-

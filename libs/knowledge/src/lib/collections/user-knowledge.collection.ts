@@ -1,5 +1,5 @@
 import { Provider } from '@angular/core';
-import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/services/entity-manager';
+import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/entity-manager';
 import type { RxJsonSchema } from 'rxdb/dist/types/types';
 import {
   KnowledgeSymbolDocType,

@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
-import { EntityManager } from '@central-factory/persistence/services/entity-manager';
-import { Repository } from '@central-factory/persistence/services/repository';
+import { EntityManager } from '@central-factory/persistence/entity-manager';
+import { Repository } from '@central-factory/persistence/repository';
 import {
   BehaviorSubject,
   forkJoin,

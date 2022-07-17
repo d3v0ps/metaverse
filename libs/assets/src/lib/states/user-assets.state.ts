@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { EntityManager } from '@central-factory/persistence/services/entity-manager';
-import { Repository } from '@central-factory/persistence/services/repository';
+import { EntityManager } from '@central-factory/persistence/entity-manager';
+import { Repository } from '@central-factory/persistence/repository';
 import { BehaviorSubject, forkJoin, switchMap, tap } from 'rxjs';
 import type { UserAssetDocType } from '../collections/user-assets.collection';
 import { Asset } from '../models/asset';

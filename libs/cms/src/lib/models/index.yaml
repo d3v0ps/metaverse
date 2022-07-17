@@ -1,0 +1,57 @@
+
+imports:
+#  thing: https://schema.org/version/latest/schemaorg-all-https.nt
+#  avatar: '@central-factory/avatars'
+#  world: '@central-factory/worlds'
+#  burg: '@central-factory/worlds'
+#  room: '@central-factory/worlds'
+#  map: '@central-factory/worlds'
+  thing: ./thing
+  meta: ./meta
+
+types:
+  # metaversable: Avatar | World | Burg | Room | Map
+  # content: Thing | Metaversable
+  document:
+    # <>:
+    #   T:
+    #     extends: Thing
+    meta:
+      type: Meta
+    content:
+      # type: Content | Content[]
+      type: Thing
+
+
+generators:
+
+  articles:
+    type: Article
+    amount: 5
+    properties:
+      name: lorem.sentence
+      thumbnailUrl: image.animals
+
+      articleBody: lorem.paragraph
+
+  images:
+    type: MediaObject
+    amount: 5
+    properties:
+      content:
+        name:
+          generator: lorem.sentence
+        thumbnailUrl:
+          generator: image.animals
+
+        contentUrl: image.animals
+        encodingFormat:
+          generator: fromOptions
+          generatorOptions: 'image/jpeg'
+
+
+#  worlds:
+#    type: World
+#    amount: 5
+roots:
+  - Document

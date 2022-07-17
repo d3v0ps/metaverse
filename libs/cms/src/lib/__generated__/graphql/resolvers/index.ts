@@ -1,0 +1,1 @@
+export { DocumentResolver } from './document';

@@ -585,7 +585,28 @@
             "outputPath": "dist/apps/host",
             "main": "apps/host/src/main.ts",
             "tsConfig": "apps/host/tsconfig.app.json",
-            "assets": ["apps/host/src/assets"]
+            "assets": [
+              "apps/host/src/assets",
+              {
+                "glob": "**/*",
+                "input": "./dist/libs/themes",
+                "output": "./assets/themes"
+              }
+            ],
+            "styles": ["apps/portal/src/styles/index.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "libs/web-components/src/lib/styles",
+                "libs/applications/src/lib/styles",
+                "libs/avatars/src/lib/styles",
+                "libs/assets/src/lib/styles",
+                "libs/topics/src/lib/styles",
+                "libs/worlds/src/lib/styles",
+                "libs/finances/src/lib/styles",
+                "apps/manage-avatars/src/styles",
+                "apps/player/src/styles"
+              ]
+            }
           },
           "configurations": {
             "production": {
@@ -1821,58 +1842,6 @@
                 "command": "npx compodoc -p libs/preferences/tsconfig.json -d dist/compodoc/preferences --theme postmark --hideGenerator --disableInternal --customFavicon apps/codex/static/img/favicon.ico --customLogo apps/codex/static/img/logo.svg"
               }
             ]
-          }
-        }
-      },
-      "tags": []
-    },
-    "server": {
-      "root": "apps/server",
-      "sourceRoot": "apps/server/src",
-      "projectType": "application",
-      "architect": {
-        "build": {
-          "builder": "@nrwl/node:build",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/apps/server",
-            "main": "apps/server/src/main.ts",
-            "tsConfig": "apps/server/tsconfig.app.json",
-            "assets": ["apps/server/src/assets"]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/server/src/environments/environment.ts",
-                  "with": "apps/server/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "server:build"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["apps/server/**/*.ts"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/server"],
-          "options": {
-            "jestConfig": "apps/server/jest.config.js",
-            "passWithNoTests": true
           }
         }
       },

@@ -8,7 +8,7 @@ import { getRootTypeNamesFromSchema } from '../json/utils/get-root-type-names-fr
 import { getSchemasFromRoot } from '../json/utils/get-schemas-from-root';
 import { removeRefs } from '../json/utils/remove-refs';
 
-const logger = new Logger('Generate RxDB Schemas');
+const logger = new Logger('generateRxDBSchemasFromSchema');
 
 const schemaTemplatePath = resolve(
   process.cwd(),

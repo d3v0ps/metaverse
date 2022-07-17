@@ -1,11 +1,8 @@
 import { augmentTokensSchema } from '@central-factory/platforms/languages/typescript/utils/augment-tokens-schema';
-import { HttpService } from '@nestjs/axios';
-import { Injectable, Logger } from '@nestjs/common';
+import { Logger } from '@nestjs/common';
 import { camel } from 'case';
-import { spawn } from 'child_process';
 import {
   ensureDir,
-  lstat,
   pathExists,
   readdir,
   readFile,
@@ -15,40 +12,75 @@ import {
 import { extname, resolve } from 'path';
 import { parse as parseYaml } from 'yaml';
 
+import { Repository } from '@central-factory/persistence/repository';
 import {
   Package,
   TokensSchema,
   Workspace,
   WorkspaceProject,
 } from '@central-factory/platforms/__generated__/models';
+import { lastValueFrom, Observable } from 'rxjs';
 
 const logger = new Logger('PackagesService');
 
-@Injectable()
-export class PackagesService {
-  private packages: Record<string, Package> = {};
+import { FSPackagesRepositoryAdapter } from '@central-factory/persistence/adapters/fs-packages.adapter';
 
-  constructor(private http: HttpService) {
-    this.fetchPackages();
+type IdParam = string | string[];
+export type PackagesQuery = {
+  id?: IdParam;
+  name?: string;
+  type?: 'app' | 'lib';
+};
+
+export class PackagesService {
+  constructor(private repository: Repository<Package, PackagesQuery>) {}
+
+  getPackage(name: string): Observable<Package> {
+    return this.repository.findOne({ name });
+  }
+
+  getPackages(): Observable<Package[]> {
+    return this.repository.find();
   }
 
   createPackage(name: string, type: 'app' | 'lib') {
-    return new Promise<void>((resolve, reject) => {
-      const child = spawn('node_modules/.bin/nx', ['g', type, name]);
-      child.stdout.on('data', (data) => {
-        resolve();
-      });
-
-      child.on('close', () => resolve());
+    return this.repository.insert({
+      name,
+      type,
     });
   }
 
+  generatePackages(id: IdParam) {
+    const adapter = this.repository.getAdapter<FSPackagesRepositoryAdapter>();
+    if (!('generate' in adapter)) {
+      throw new Error(
+        `Generate not implemented in ${adapter.constructor.name}`
+      );
+    }
+
+    return adapter.generate({ id });
+  }
+
   retypePackage(name: string, type: 'app' | 'lib') {
-    throw new Error('Method not implemented.');
+    const adapter = this.repository.getAdapter<FSPackagesRepositoryAdapter>();
+    if (!('retype' in adapter)) {
+      throw new Error(
+        `Generate not implemented in ${adapter.constructor.name}`
+      );
+    }
+
+    return adapter.retype(name, type);
   }
 
   renamePackage(name: string, newName: string) {
-    throw new Error('Method not implemented.');
+    const adapter = this.repository.getAdapter<FSPackagesRepositoryAdapter>();
+    if (!('rename' in adapter)) {
+      throw new Error(
+        `Generate not implemented in ${adapter.constructor.name}`
+      );
+    }
+
+    return adapter.rename(name, newName);
   }
 
   async createModel(packageName: string, name: string) {
@@ -79,74 +111,18 @@ export class PackagesService {
     logger.log(`Model successfully created in ${packageName}/${name}`);
   }
 
-  async getPackage(name: string): Promise<Package> {
-    if (Object.keys(this.packages).length === 0) {
-      await this.fetchPackages();
-    }
-
-    return this.packages[name];
-  }
-
-  async getPackages(): Promise<Package[]> {
-    if (Object.keys(this.packages).length === 0) {
-      await this.fetchPackages();
-    }
-
-    return Object.values(this.packages);
-  }
-
   async getModels(packageName: string): Promise<TokensSchema[]> {
-    const pkg = await this.getPackage(packageName);
-
+    const pkg = await lastValueFrom(this.getPackage(packageName));
     return Promise.all(
-      pkg.models.map((model) => this.getPackageModel(pkg, model.name))
+      (pkg as unknown as { models: { name: string }[] }).models.map((model) =>
+        this.getPackageModel(pkg, model.name)
+      )
     );
   }
 
   async getModel(packageName: string, name: string): Promise<TokensSchema> {
-    const pkg = await this.getPackage(packageName);
+    const pkg = await lastValueFrom(this.getPackage(packageName));
     return this.getPackageModel(pkg, name);
-  }
-
-  private async fetchPackages() {
-    const workspace: any = await readJSON(
-      resolve(process.cwd(), 'angular.json')
-    );
-
-    const packages: Package[] = (
-      await Promise.all(
-        Object.entries(
-          workspace.projects as Record<string, WorkspaceProject>
-        ).map(async ([name, project]) => {
-          const projectFolder = resolve(process.cwd(), project.root);
-          const isDirectory = (await lstat(projectFolder)).isDirectory();
-          const readmePath = resolve(projectFolder, 'README.md');
-          const readme = (await pathExists(readmePath))
-            ? await readFile(readmePath, 'utf8')
-            : '';
-
-          if (!isDirectory) {
-            return null;
-          }
-
-          const models = await this.fetchModels(project);
-
-          return {
-            name,
-            models,
-            project,
-            readme,
-          };
-        })
-      )
-    ).filter(Boolean);
-
-    this.packages = packages.reduce(
-      (acc, curr) => Object.assign(acc, { [curr.name]: curr }),
-      {}
-    );
-
-    packages;
   }
 
   private async fetchModels(
@@ -196,7 +172,7 @@ export class PackagesService {
     const hasExtension = model.endsWith('.yaml') || model.endsWith('.yml');
     const tokenPath = resolve(
       process.cwd(),
-      pkg.project.root,
+      (pkg as unknown as { project: WorkspaceProject }).project.root,
       'src',
       'lib',
       'models',

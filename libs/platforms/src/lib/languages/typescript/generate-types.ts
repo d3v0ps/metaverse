@@ -8,7 +8,7 @@ import { getNameFromRef } from '../json/utils/get-name-from-ref';
 import { getSchemasFromRoot } from '../json/utils/get-schemas-from-root';
 import { getType } from '../json/utils/get-type';
 
-const logger = new Logger('Generate Typescript Types');
+const logger = new Logger('generateTypeScriptTypesFromSchema');
 
 const typeTemplatePath = resolve(
   process.cwd(),
@@ -31,7 +31,12 @@ const typeProperty =
     }
 
     const propertiesRender = properties.map((property) => {
-      const { tsType, decoratorType } = getType(property, schemas);
+      const { tsType, decoratorType } = getType(
+        { name: property.name },
+        {
+          tokens: schemas as any,
+        }
+      );
       return `${fn({ ...property, tsType, decoratorType })}`;
     });
 

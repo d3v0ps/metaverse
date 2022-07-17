@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Provider } from '@angular/core';
-import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/services/entity-manager';
-import { RxDocument, RxCollection, RxJsonSchema } from 'rxdb';
+import { ENTITY_MANAGER_BASE_COLLECTIONS_TOKEN } from '@central-factory/persistence/entity-manager';
+import { RxCollection, RxDocument, RxJsonSchema } from 'rxdb';
 import { Profession } from '../types';
 
 export type ProfessionDocType = Profession;
@@ -10,40 +10,38 @@ export type ProfessionDocument = RxDocument<ProfessionDocType>;
 export type ProfessionCollection = RxCollection<ProfessionDocument>;
 
 export const professionSchema = {
-  "additionalProperties": false,
-  "properties": {
-    "color": {
-      "type": "string"
+  additionalProperties: false,
+  properties: {
+    color: {
+      type: 'string',
     },
-    "description": {
-      "type": "string"
+    description: {
+      type: 'string',
     },
-    "icon": {
-      "type": "string"
+    icon: {
+      type: 'string',
     },
-    "id": {
-      "type": "string"
+    id: {
+      type: 'string',
     },
-    "label": {
-      "type": "string"
+    label: {
+      type: 'string',
     },
-    "schools": {
-      "items": {
-        "type": "string"
+    schools: {
+      items: {
+        type: 'string',
       },
-      "type": "array"
-    }
+      type: 'array',
+    },
   },
-  "required": [
-    "id"
-  ],
-  "type": "object"
-}
+  required: ['id'],
+  type: 'object',
+};
 
 export const professionRxSchema: RxJsonSchema<
   Omit<ProfessionDocType, '_attachments'>
 > = {
-  ...professionSchema as any,
+  ...(professionSchema as any),
   title: 'Profession',
   description: 'Profession',
   version: 0,
@@ -58,7 +56,7 @@ export const professionRxSchema: RxJsonSchema<
 export const userProfessionRxSchema: RxJsonSchema<
   Omit<ProfessionDocType, '_attachments'>
 > = {
-  ...professionSchema as any,
+  ...(professionSchema as any),
   title: 'User Profession',
   description: 'User Profession',
   version: 0,
@@ -95,4 +93,3 @@ export const USER_PROFESSION_COLLECTION_PROVIDER: Provider = {
   },
   multi: true,
 };
-

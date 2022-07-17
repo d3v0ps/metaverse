@@ -3,9 +3,10 @@ import {
   Document,
   Section,
 } from '@central-factory/notes/models/meta';
+import { FSTreeRepository } from '@central-factory/persistence/repositories/fs-tree.repository';
+import { GoogleSearchRepository } from '@central-factory/persistence/repositories/google-search.repository';
 import { Controller } from '@nestjs/common';
-import { FSTreeRepository } from '../databases/fs-tree.repository';
-import { GoogleSearchRepository } from '../databases/google-search.repository';
+import { lastValueFrom } from 'rxjs';
 
 @Controller()
 export class DocumentsService {
@@ -15,15 +16,16 @@ export class DocumentsService {
   ) {}
 
   async getRoot(root: string) {
-    return this.repository.findTree(root);
+    return this.repository.findTree({ root });
   }
 
   async getFolder(root: string, id: string) {
-    return this.repository.findTree(root, id);
+    return this.repository.findTree({ root, id });
   }
 
   async getDocument(root: string, id: string): Promise<Document> {
     const documentSection = await this.getDocumentSection(root, id);
+
     const { title, queryString } = documentSection.documents[0].meta;
     const searchSection = await this.getSearchSection(id, queryString);
 
@@ -36,11 +38,25 @@ export class DocumentsService {
     };
   }
 
+  async updateDocument(
+    root: string,
+    id: string,
+    content: string
+  ): Promise<void> {
+    return lastValueFrom(
+      this.repository.upsert({ root, id, content, type: 'file' })
+    ).then(() => {
+      return;
+    });
+  }
+
   private async getSearchSection(
     id: string,
     queryString: string
   ): Promise<Section> {
-    const searchResults = await this.searchRepository.search(queryString);
+    const searchResults = await lastValueFrom(
+      this.searchRepository.find(queryString)
+    );
 
     return {
       id: `${id}.search`,
@@ -56,16 +72,27 @@ export class DocumentsService {
     };
   }
 
-  private async getDocumentSection(
-    root: string,
-    documentId: string
-  ): Promise<Section> {
-    const [file, content] = await Promise.all([
-      this.repository.findById(root, documentId),
-      this.repository.getContent(root, documentId),
-    ]);
+  private async getDocumentSection(root: string, id: string): Promise<Section> {
+    const result = await lastValueFrom(this.repository.findOne({ root, id }));
 
-    const { title, id, slug } = file;
+    if (!result) {
+      return {
+        id,
+        title: 'Not Found',
+        content: '',
+        documents: [
+          {
+            id,
+            meta: {
+              contentType: ContentType.TEXT,
+              title: 'Not Found',
+            },
+          },
+        ],
+      };
+    }
+
+    const { id: fileId, content, title, slug, children = [] } = result;
     const parent = slug.split('/').slice(0, -1).pop();
 
     const queryString = parent ? `${parent} ${title}` : title;
@@ -76,7 +103,7 @@ export class DocumentsService {
       content,
       documents: [
         {
-          id: file.id,
+          id: fileId,
           content,
           meta: {
             contentType: ContentType.TEXT,
@@ -84,6 +111,7 @@ export class DocumentsService {
             queryString,
           },
         },
+        ...children,
       ],
     };
   }

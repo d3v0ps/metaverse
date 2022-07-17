@@ -1,4 +1,4 @@
-import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
+import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/entity-manager';
 import { environment } from '../../../../../../../apps/portal/src/environments/environment';
 import { Customization } from '../../../models/customization';
 import { Preference } from '../../../models/preference';

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Metaverse Host - {{ title }}</title>
+  </head>
+  <body>
+    <h1>Metaverse Host - List</h1>
+    <p>
+      This is the index page of the Metaverse Host.
+    </p>
+    <ul>
+      <li><a href="/db">Reactive Database -> Status: Okay</a></li>
+      <li><a href="/api">HTTP API -> Status: Okay</a></li>
+      <li><a href="/graphql">Data Graph -> Status: Okay</a></li>
+    </ul>
+    <article>
+      <h2>JSON</h2>
+      {{#each .}}<pre>
+        <code>
+          {{json . }}
+        </code>
+      {{/each}}
+      </pre>
+    </article>
+  </body>
+</html>

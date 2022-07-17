@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
-    ImportToken,
-    TokensSchema,
-    TypeToken
+  ImportToken,
+  Package,
+  TokensSchema,
+  TypeToken,
 } from '@central-factory/platforms/__generated__/models';
-import { Package } from '../../../states/packages.state';
 
 @Component({
   selector: 'cf-package-model-viewer',

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="assets/themes/metaverse/variables.css">
+    <title>{{#if package }}{{ package.name }}{{else}}@central-factory/metaverse{{/if}}</title>
+  </head>
+  <body>
+    <style>
+      * {
+        color: #85e2ff;
+        font-size: var(--size-font-base);
+      }
+      body {
+        background-color: #2d2b55;
+        margin: 0;
+        padding: 3rem 0;
+      }
+      header, article, footer {
+        margin: 0 auto;
+        width: 80%;
+        display: flex;
+        gap: 2rem;
+      }
+      header, footer {
+        border-radius: 20px;
+        box-shadow: var(--component-input-shadow-outset),
+          inset var(--component-input-shadow-inset-primary),
+          inset var(--component-input-shadow-inset-secondary);
+        padding: 1rem;
+      }
+      header > section, article > section {
+        flex: 1;
+      }
+      article > section:nth-child(2) {
+        flex: 2;
+      }
+      header, article {
+        margin-bottom: 2rem;
+      }
+      header > section:last-child {
+        text-align: right;
+      }
+      article > section {
+        border-radius: 20px;
+        box-shadow: var(--component-input-shadow-outset),
+          inset var(--component-input-shadow-inset-primary),
+          inset var(--component-input-shadow-inset-secondary);
+        padding: 1rem;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        color: #a5ff83;
+        margin: 0 0 0.5rem 0;
+      }
+      h1 {
+        font-size: var(--size-font-h1);
+      }
+      h3 {
+        font-size: var(--size-font-h3);
+      }
+      h4 {
+        color: #f67327;
+        font-size: var(--size-font-h4);
+      }
+      h5 {
+        font-size: var(--size-font-h5);
+      }
+      h6 {
+        color: #fbd71e;
+        font-size: var(--size-font-h6);
+      }
+      p {
+        font-size: var(--size-font-p);
+      }
+      ul {
+        margin: auto auto .5rem auto;
+        padding: 0;
+      }
+      ul.row {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      ul > li > ul {
+        padding: 0 1rem;
+      }
+      li {
+        list-style: none;
+      }
+      a {
+        color: var(--color-base-secondary-medium);
+        text-decoration: none;
+      }
+
+      .card {
+        max-height: 300px;
+        overflow: hidden;
+        flex: 1;
+      }
+      .card:hover {
+        overflow: auto;
+      }
+    </style>
+    <header>
+      <section>
+        <h1>{{#if package }}{{ package.name }} v{{ package.version }}{{else}}@central-factory/metaverse{{/if}}</h1>
+        <p>
+          This is the index page of the Metaverse Host.
+        </p>
+      </section>
+      <section>
+        <ul>
+          <li><a href="/db">Reactive Database -> Status: Okay</a></li>
+          <li><a href="/api">HTTP API -> Status: Okay</a></li>
+          <li><a href="/graphql">Data Graph -> Status: Okay</a></li>
+        </ul>
+      </section>
+    </header>
+    <article>
+      {{#if workspace }}
+      <section>
+        <h3>Projects</h3>
+        <ul>
+        {{#kv workspace.projects}}
+          <li><a href="?fields=workspace%2Cdomains&domains={{ key }}">{{pascalCase key }}</a></li>
+        {{/kv}}
+        </ul>
+      </section>
+      {{/if}}
+      {{#if domains }}
+      <section>
+        <h3>Domains</h3>
+        <ul>
+        {{#each domains}}
+        {{#if tokens }}
+          <li>
+            <h4>{{pascalCase name }}</h4>
+            <ul class="row">
+              {{#each tokens}}
+              <li class="card">
+              {{#ifDistinct name 'index' }}<h5>{{pascalCase ../name }}</h5>{{/ifDistinct}}
+
+              {{#ifEquals name "index"}}
+
+              <h6>Roots</h6>
+              <ul>
+              {{#each ../roots}}
+                <li>
+                  {{pascalCase . }}
+                </li>
+              {{/each}}
+              </ul>
+
+              {{else}}
+
+              {{#if ../enums}}
+              <h6>Enums</h6>
+              <ul>
+              {{#each ../enums}}
+                <li>
+                  {{pascalCase name}}
+                </li>
+              {{/each}}
+              </ul>
+              {{/if}}
+
+              {{#if ../types}}
+              <h6>Types</h6>
+              <ul>
+              {{#each ../types}}
+                <li>
+                  {{pascalCase name}}
+                </li>
+              {{/each}}
+              </ul>
+              {{/if}}
+
+              {{/ifEquals}}
+              </li>
+              {{/each}}
+            </ul>
+          </li>
+        {{/if}}
+        {{/each}}
+        </ul>
+      </section>
+      {{/if}}
+      {{#if package }}
+      <section>
+        <h3>Dependencies</h3>
+        <ul>
+        {{#kv package.dependencies}}
+          <li>{{ key }}: {{ value }}</li>
+        {{/kv}}
+        </ul>
+        <h3>DevDependencies</h3>
+        <ul>
+        {{#kv package.devDependencies}}
+          <li>{{ key }}: {{ value }}</li>
+        {{/kv}}
+        </ul>
+      </section>
+      {{/if}}
+      </article>
+      <footer>
+        <p>
+          License {{ package.license }}
+        </p>
+    </div>
+  </body>
+</html>

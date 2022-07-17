@@ -4,7 +4,7 @@ import { Application } from '@central-factory/applications/__generated__/models'
 import { professions } from '@central-factory/avatars/data/demo/professions.data';
 import { AvatarGenerator } from '@central-factory/avatars/data/generators/avatar.generator';
 import { Avatar } from '@central-factory/avatars/__generated__/models';
-import { EntityManager } from '@central-factory/persistence/services/entity-manager';
+import { EntityManager } from '@central-factory/persistence/entity-manager';
 import { UserPreferencesState } from '@central-factory/preferences/states/user-preferences.state';
 import { BehaviorSubject, forkJoin, of, tap } from 'rxjs';
 import { map, share, switchMap } from 'rxjs/operators';

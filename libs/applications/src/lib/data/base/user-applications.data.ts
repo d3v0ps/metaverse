@@ -3,7 +3,7 @@ import {
   PermissionKind,
   PermissionMode,
 } from '@central-factory/permissions/__generated__/models';
-import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/services/entity-manager';
+import { ENTITY_MANAGER_INITIAL_DATA_TOKEN } from '@central-factory/persistence/entity-manager';
 import { USER_TOPIC_COLLECTION_NAME } from '@central-factory/topics/__generated__/collections/topic';
 import {
   ApplicationDocType,

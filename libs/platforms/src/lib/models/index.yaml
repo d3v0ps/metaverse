@@ -1,11 +1,13 @@
 
 imports:
+  application: './application'
   package: './package'
   tokensSchema: './tokens-schema'
   workspace: './workspace'
   workspaceProject: './workspace'
 
 roots:
+  - Application
   - Package
   - TokensSchema
   - Workspace

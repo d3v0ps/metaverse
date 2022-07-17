@@ -2,6 +2,107 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Typing {
+  name: String!
+  required: Boolean!
+  type: String!
+}
+
+type Prop {
+  name: String!
+  raw: Typing!
+  required: Boolean!
+  symbol: SymbolType!
+  type: String!
+}
+
+enum SymbolType {
+  Alias
+  Array
+  Primitive
+  Record
+  Scalar
+  Type
+  Union
+}
+
+type Author {
+  name: String!
+}
+
+type EnumToken {
+  name: String!
+  properties: [Prop!]!
+}
+
+type ImportToken {
+  name: String!
+  path: String!
+}
+
+type TypeToken {
+  name: String!
+  properties: [Prop!]!
+  raw: Typing!
+  symbol: SymbolType!
+}
+
+type TokensSchema {
+  state: RecommendationState!
+  description: String!
+  enums: [EnumToken!]!
+  file: String!
+  imports: [ImportToken!]!
+  name: String!
+  domain: String!
+  roots: [String!]!
+  types: [TypeToken!]!
+}
+
+enum RecommendationState {
+  workingDraft
+  candidateRecommendation
+  proposedRecommendation
+  recommendation
+  stable
+  deprecated
+}
+
+type Domain {
+  name: String!
+  tokens: [TokensSchema!]!
+}
+
+type Package {
+  author: Author!
+  dependencies: JSON!
+  description: String!
+  devDependencies: JSON!
+  license: String!
+  name: String!
+  private: Boolean!
+  readme: String!
+  scripts: JSON!
+  version: String!
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+type Workspace {
+  projects: JSON!
+  version: String!
+}
+
+type Application {
+  domains: [Domain!]!
+  package: Package!
+  readme: String!
+  workspace: Workspace!
+}
+
 type Meta {
   contentType: String!
   title: String!
@@ -22,10 +123,12 @@ type Document {
 type DocumentNodeFile {
   id: String!
   title: String!
+  type: String!
 }
 
 type DocumentNode {
   id: String!
+  type: String!
   title: String!
   slug: String!
   icon: String!
@@ -35,6 +138,11 @@ type DocumentNode {
 }
 
 type Query {
+  repository(domains: [String!]!): Application!
   getDocument(root: String!, id: String!): Document!
   getNodes(root: String!, id: String): [DocumentNode!]!
+}
+
+type Mutation {
+  generate(packageNames: [String!]!): ID!
 }
