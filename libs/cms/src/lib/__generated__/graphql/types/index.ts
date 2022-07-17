@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Field, ObjectType, createUnionType, registerEnumType, Scalar, CustomScalar } from '@nestjs/graphql';
+import { Int, Field, ObjectType, createUnionType, registerEnumType, Scalar, CustomScalar } from '@nestjs/graphql';
 import { ValueNode } from 'graphql';
 import GraphQLJSON from 'graphql-type-json';
+
+// TODO: Fix empty cases (see Volcano)
 
 // #region Dependecy Imports
 /**
@@ -45,21 +47,32 @@ import { Meta } from './meta';
 
 // #endregion
 
-// #region Type Aliases
+// #region Types
 /**
  * ==============
- * Type Aliases
+ * Types
  * ==============
  */
 
-// #endregion
-
-// #region Union Types
+@ObjectType({
+  description: `The document type`
+})
 /**
- * ===========
- * Union Types
- * ===========
+ * The document type
  */
+export class Document {
+  @Field((type) => Meta)
+  /**
+ * The meta of the document
+ */
+  meta?: Meta;
+  @Field((type) => Thing)
+  /**
+ * The content of the document
+ */
+  content?: Thing;
+}
+
 
 // #endregion
 
@@ -72,37 +85,20 @@ import { Meta } from './meta';
 
 // #endregion
 
-// #region Record Types
-/**
- * ============
- * Record Types
- * ============
- */
-
-// #endregion
-
-// #region Object Types
-/**
- * ============
- * Object Types
- * ============
- */
-
-@ObjectType()
-export class Document{
-  @Field((type) => Meta)
-  meta?: Meta;
-  @Field((type) => Thing)
-  content?: Thing;
-}
-// #endregion
-
 // #region Type Roots
 /**
  * ============
  * Type Roots
  * ============
  */
+
+export enum CmsIndexTypes {
+  Document = 'Document',
+}
+registerEnumType(CmsIndexTypes, {
+  name: 'CmsIndexTypes',
+  description: `CmsIndex Types Enum`,
+});
 
 @ObjectType()
 export class CmsIndex {
