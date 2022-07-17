@@ -1,0 +1,97 @@
+{{#if index}}
+{{#each token.roots}}
+export {
+  {{pascalCase .}}FindAllPayload,
+  {{pascalCase .}}FoundAllMessage,
+  {{pascalCase .}}FindOnePayload,
+  {{pascalCase .}}FoundOneMessage,
+  {{pascalCase .}}CreatePayload,
+  {{pascalCase .}}CreatedMessage,
+  {{pascalCase .}}UpdatePayload,
+  {{pascalCase .}}UpdatedMessage,
+  {{pascalCase .}}DeletePayload,
+  {{pascalCase .}}DeletedMessage,
+} from './{{kebabCase .}}';
+{{/each}}
+{{else}}
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
+import { Field, ObjectType, } from '@nestjs/graphql';
+
+import {
+  FindAllPayload,
+  FoundAllMessage,
+  FindOnePayload,
+  FoundOneMessage,
+  CreatePayload,
+  CreatedMessage,
+  UpdatePayload,
+  UpdatedMessage,
+  DeletePayload,
+  DeletedMessage,
+ } from '@central-factory/platforms/languages/gql/dtos';
+
+{{#each token.types}}
+
+import { {{pascalCase name}} } from '../types';
+
+@ObjectType()
+export class {{pascalCase name}}FindAllPayload extends FindAllPayload<{{pascalCase name}}> {
+  @Field((type) => {{pascalCase name}})
+  override where?: Partial<{{pascalCase name}}>;
+}
+
+@ObjectType()
+export class {{pascalCase name}}FoundAllMessage extends FoundAllMessage<{{pascalCase name}}> {
+  @Field((type) => [{{pascalCase name}}])
+  override items: {{pascalCase name}}[] = [];
+}
+
+@ObjectType()
+export class {{pascalCase name}}FindOnePayload extends FindOnePayload<{{pascalCase name}}> {
+  @Field((type) => {{pascalCase name}})
+  override where?: Partial<{{pascalCase name}}>;
+}
+
+@ObjectType()
+export class {{pascalCase name}}FoundOneMessage extends FoundOneMessage<{{pascalCase name}}> {
+  @Field((type) => {{pascalCase name}})
+  override item?: {{pascalCase name}};
+}
+
+@ObjectType()
+export class {{pascalCase name}}CreatePayload extends CreatePayload<{{pascalCase name}}> {
+  @Field((type) => {{pascalCase name}})
+  override data!: Partial<{{pascalCase name}}>;
+}
+
+@ObjectType()
+export class {{pascalCase name}}CreatedMessage extends CreatedMessage<{{pascalCase name}}> {
+  @Field((type) => {{pascalCase name}})
+  override item!: {{pascalCase name}};
+}
+
+@ObjectType()
+export class {{pascalCase name}}UpdatePayload extends UpdatePayload<{{pascalCase name}}> {
+  @Field((type) => {{pascalCase name}})
+  override data!: Partial<{{pascalCase name}}>;
+}
+
+@ObjectType()
+export class {{pascalCase name}}UpdatedMessage extends UpdatedMessage<{{pascalCase name}}> {
+  @Field((type) => {{pascalCase name}})
+  override item!: {{pascalCase name}};
+}
+
+@ObjectType()
+export class {{pascalCase name}}DeletePayload extends DeletePayload<{{pascalCase name}}> {
+}
+
+@ObjectType()
+export class {{pascalCase name}}DeletedMessage extends DeletedMessage<{{pascalCase name}}> {
+  @Field((type) => {{pascalCase name}})
+  override item?: {{pascalCase name}};
+}
+{{/each}}
+{{/if}}

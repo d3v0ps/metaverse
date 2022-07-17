@@ -1,4 +1,5 @@
-import { pascal } from 'case';
+import * as cases from 'case';
+import { capital, pascal } from 'case';
 import * as _pluralize from 'pluralize';
 import { AugmentedJSONSchema } from '../../languages/json/types/json-schema';
 import { getNameFromRef } from '../../languages/json/utils/get-name-from-ref';
@@ -12,24 +13,28 @@ import {
   TypeToken,
 } from '../../__generated__/models';
 
-export const pluralize = _pluralize.bind(_pluralize);
-export type HelperParams = {
-  fn: (params: any) => string;
-  inverse: (params: any) => string;
+export type HelperParams<TFn = unknown, TInverse = TFn> = {
+  fn: (params: TFn) => string;
+  inverse: (params: TInverse) => string;
 };
+
+export type DomainTokenContext = Domain & { token: TokensSchema };
+
+export const pluralize = _pluralize.bind(_pluralize);
 
 export {
   camel as camelCase,
+  capital as capitalCase,
   constant as constantCase,
   kebab as kebabCase,
   pascal as pascalCase,
-  title as capitalCase,
   title as titleCase,
 } from 'case';
 
 export const json = (context: unknown) => JSON.stringify(context, null, 2);
-export const comment = (context: unknown) =>
-  `/**\n *\n * ${json(context)}\n *\n */`;
+export const comment = (context?: unknown) =>
+  context ? `/**\n * ${context}\n */` : '';
+export const jsonComment = (context?: unknown) => comment(json(context));
 
 export const kv = (context: Record<string, unknown>, { fn }: HelperParams) =>
   Object.entries(context)
@@ -89,6 +94,18 @@ export const getDefinitionRecursive = (
   return definition as TypeToken;
 };
 
+export const gqlPrimitiveType = (primitive: string): string => {
+  switch (primitive) {
+    case 'boolean':
+    case 'string':
+      return capital(primitive);
+    case 'number':
+      return 'Int';
+  }
+
+  return primitive;
+};
+
 export const gqlTypeName = (
   type: string,
   context: Domain & { token: TokensSchema },
@@ -97,16 +114,10 @@ export const gqlTypeName = (
   const symbol = getSymbol(type);
   const typeDef = context.token.types.find((t) => t.name === type);
   const enumDef = context.token.enums.find((t) => t.name === type);
-  const primitiveTypeDef = getDefinitionRecursive(type, context);
+  // const primitiveTypeDef = getDefinitionRecursive(type, context);
 
-  if (symbol === SymbolType.Scalar || symbol === SymbolType.Primitive) {
+  if (symbol === SymbolType.Primitive) {
     return pascal(`${type}${suffix === 'Union' ? 'Scalar' : suffix}`);
-  }
-
-  if (type === 'Url') {
-    console.log('symbol', symbol);
-    const definition = getDefinitionRecursive(type, context);
-    console.log('definition', definition);
   }
 
   if (
@@ -146,7 +157,7 @@ export const gqlUnionType = (
         .join(separator);
 
 export const gqlType = (
-  { id, symbol, type, name }: Prop,
+  { symbol, type, name }: Prop,
   context: Domain & { token: TokensSchema }
 ) => {
   if (symbol === SymbolType.Type) {
@@ -158,8 +169,8 @@ export const gqlType = (
 
   return symbol === SymbolType.Alias || symbol === SymbolType.Union
     ? pascal(`${name}`)
-    : [SymbolType.Scalar, SymbolType.Primitive].includes(symbol)
-    ? pascal(`${type}Type`)
+    : [SymbolType.Primitive].includes(symbol)
+    ? pascal(`${type}Scalar`)
     : type;
 };
 
@@ -167,6 +178,14 @@ export const gqlDecoratorType = (
   { symbol, type, name }: Prop,
   context: Domain & { token: TokensSchema }
 ) => {
+  if (symbol === SymbolType.Array) {
+    return `[${type.replace(/\[\]/, '')}]`;
+  }
+
+  if (symbol === SymbolType.Record) {
+    return 'JSON';
+  }
+
   if (symbol === SymbolType.Type) {
     const def = context.token.types.find((t) => t.name === type);
     if (def?.symbol === SymbolType.Alias) {
@@ -231,8 +250,18 @@ export const ifRecord = (schema: AugmentedJSONSchema, { fn }: HelperParams) => {
 export const ifExternal = (token: ImportToken, { fn, inverse }: HelperParams) =>
   token.path.startsWith('http') ? fn(token) : inverse(token);
 
-export const templateName = (ctx: Domain & { token: TokensSchema }) =>
-  `${pascal(ctx.name as string)}${pascal(ctx.token.name)}`;
+export const templateName = (
+  ctx: Domain & { token: TokensSchema },
+  stringCase: string
+) =>
+  stringCase in cases
+    ? (cases as any)[stringCase](`${ctx.name}${fileName(ctx)}`)
+    : `${ctx.name}${fileName(ctx)}`;
+
+export const fileName = (
+  ctx: Domain & { token: TokensSchema },
+  stringCase: string = 'pascal'
+) => `${(cases as any)[stringCase](ctx.token.name)}`;
 
 export const symbol = (
   type: SymbolType,
@@ -240,4 +269,59 @@ export const symbol = (
   { fn, inverse }: HelperParams
 ) => {
   return token.symbol === type ? fn(token) : inverse(token);
+};
+
+export const isOverride = (
+  prop: Prop,
+  type: TypeToken,
+  { token }: DomainTokenContext,
+  { fn, inverse }: HelperParams
+): string => {
+  // Disabled override as we are no class-based inheritance now.
+  return inverse(prop);
+
+  // const parent = type.extendsType
+  //   ? token.types.find((t) => t.name === type.extendsType)
+  //   : undefined;
+
+  // const parentHasProp =
+  //   parent && parent.properties.some((p) => p.name === prop.name);
+  // const mustCheckPreviousAncestor =
+  //   parent && !parentHasProp && parent.extendsType;
+
+  // if (mustCheckPreviousAncestor) {
+  //   return isOverride(prop, parent, { token }, { fn, inverse });
+  // }
+
+  // return parentHasProp ? fn(prop) : inverse(prop);
+};
+
+export const tokenIsIndex = (token: TypeToken, { fn, inverse }: HelperParams) =>
+  token.name === 'index' ? fn(token) : inverse(token);
+
+export const concretes = (
+  token: TokensSchema,
+  { fn, inverse }: HelperParams
+) => {
+  const aliases = token.types?.filter(
+    (t) => t.symbol === SymbolType.Type && t.extendsType
+  );
+
+  return token.types
+    .reduce((result, alias) => {
+      if (!alias.extendsType) {
+        return result;
+      }
+
+      const group = result.find((g) => g.name === alias.extendsType);
+
+      if (!group) {
+        result.push({ name: alias.extendsType, aliases: [alias] });
+      } else {
+        group.aliases.push(alias);
+      }
+
+      return result;
+    }, [] as { name: string; aliases: TypeToken[] }[])
+    .reduce((result, group) => `${result}${fn(group)}`, '');
 };

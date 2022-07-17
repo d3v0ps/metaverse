@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { Generator } from '@central-factory/persistence/interfaces/generator';
+import { pascalCase } from '@central-factory/platforms/engines/handlebars/helpers';
 import { render } from '@central-factory/platforms/engines/handlebars/render';
 import { asyncForEach } from '@central-factory/platforms/languages/typescript/std/async/foreach';
 import { asyncReduce } from '@central-factory/platforms/languages/typescript/std/async/reduce';
@@ -8,6 +9,7 @@ import {
   Domain,
   Package,
   TokensSchema,
+  TypeToken,
   Workspace,
 } from '@central-factory/platforms/__generated__/models';
 import { Logger } from '@nestjs/common';
@@ -125,6 +127,7 @@ export class PackagesGenerator extends Generator {
       return this.renderTemplate(baseUrl, node, {
         ...domain,
         token: domain.tokens.find((token) => token.name === 'index'),
+        index: true,
       } as unknown);
     }
 
@@ -168,26 +171,49 @@ export class PackagesGenerator extends Generator {
     node: TemplateNode,
     domain: Domain
   ) {
-    await asyncForEach(
-      domain.tokens.filter((token) => token.name !== 'index'),
-      async (token) => {
-        const tokenNode = {
-          ...node,
-          name: node.name.replace('{...roots}', token.name),
-        };
+    const domainRoot = domain.tokens.find((token) => token.name === 'index');
 
-        try {
-          const result = await this._generate(baseUrl, tokenNode, {
-            ...domain,
-            token,
-          });
-          return result;
-        } catch (err) {
-          console.error(`Error generating ${token.name}`, err);
-          throw err;
-        }
+    if (!domainRoot) {
+      return;
+    }
+
+    const rootTypes: [TypeToken, TokensSchema][] = domain.tokens
+      .reduce(
+        (acc, token) =>
+          acc.concat([
+            [
+              token.types.find((t) =>
+                domainRoot.roots.includes(pascalCase(t.name))
+              ),
+              token,
+            ],
+          ]),
+        []
+      )
+      .filter(([t]) => t);
+
+    await asyncForEach(rootTypes, async ([type, token]) => {
+      const rootNode = {
+        ...node,
+        name: node.name.replace('{...roots}', type.name),
+      };
+
+      try {
+        const result = await this._generate(baseUrl, rootNode, {
+          ...domain,
+          token: {
+            ...token,
+            types: [type],
+            roots: [type.name],
+          },
+        });
+        return result;
+      } catch (err) {
+        console.error(`Error generating ${type.name}`, err);
+        throw err;
       }
-    );
+    });
+
     return node;
   }
 
@@ -214,6 +240,7 @@ export class PackagesGenerator extends Generator {
       await writeFile(outputUrl, formatted, 'utf-8');
     } catch (err) {
       console.error(`Error rendering ${templateUrl}`, err);
+      console.error('Node', node);
       return node;
     }
   }

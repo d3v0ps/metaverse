@@ -8,6 +8,8 @@ export type SchemaOrgNode = {
     | Pick<SchemaOrgNode, '@id'>
     | Pick<SchemaOrgNode, '@id'>[];
   'rdfs:subClassOf'?: Pick<SchemaOrgNode, '@id'>;
+  'rdfs:comment'?: string;
+  'rdfs:label'?: string;
 };
 
 export type SchemaOrg = {

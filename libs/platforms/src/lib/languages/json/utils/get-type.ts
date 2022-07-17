@@ -1,12 +1,13 @@
 import { pascalCase } from '@central-factory/platforms/engines/handlebars/helpers';
-import { Domain } from '@central-factory/platforms/__generated__/models';
 import {
+  Domain,
   Prop,
+  SymbolType,
   TypeToken,
-} from '@central-factory/platforms/__generated__/types/tokens-schema';
+} from '@central-factory/platforms/__generated__/models';
 
 export const getType = (
-  { name, type, isArray, isUnion, isRecord }: Prop,
+  { name, type, symbol }: Prop,
   domain: Domain
 ): {
   result: string[];
@@ -20,7 +21,7 @@ export const getType = (
     return { type: 'any', tsType: 'any', result: ['any'] };
   }
 
-  if (isUnion) {
+  if (symbol === SymbolType.Union) {
     return (type?.split('|') || [])
       .map((t) => t.trim())
       .reduce(
@@ -42,7 +43,7 @@ export const getType = (
             undefined
           ) as TypeToken;
 
-          if (typeToken.isAlias && !typeToken.isScalar && !typeToken.isUnion) {
+          if (typeToken.symbol === SymbolType.Alias) {
             typeToken = domain.tokens?.reduce<TypeToken | undefined>(
               (acc, token) =>
                 acc ||
@@ -53,7 +54,10 @@ export const getType = (
             ) as TypeToken;
           }
 
-          const typeProp = getType({ type: unionType }, domain);
+          const typeProp = getType(
+            { type: unionType, symbol: typeToken.symbol } as Prop,
+            domain
+          );
 
           return {
             ...acc,
@@ -66,25 +70,25 @@ export const getType = (
             decoratorType: `${name}Union`,
             unionType: `${acc.result
               .concat(
-                typeToken.isScalar
+                typeToken.symbol === SymbolType.Scalar
                   ? pascalCase(typeToken.name.replace('URL', 'Url') + 'Type')
                   : typeProp.type
               )
               .join('| ')}`,
             unionDecoratorType: `[${acc.resultDecorator
               .concat(
-                typeToken.isScalar
+                typeToken.symbol === SymbolType.Scalar
                   ? pascalCase(typeToken.name.replace('URL', 'Url') + 'Scalar')
                   : typeProp.type
               )
               .join(', ')}]`,
             result: acc.result.concat(
-              typeToken.isScalar
+              typeToken.symbol === SymbolType.Scalar
                 ? pascalCase(typeToken.name.replace('URL', 'Url') + 'Type')
                 : typeProp.type
             ),
             resultDecorator: acc.resultDecorator.concat(
-              typeToken.isScalar
+              typeToken.symbol === SymbolType.Scalar
                 ? pascalCase(typeToken.name.replace('URL', 'Url') + 'Scalar')
                 : typeProp.type
             ),
@@ -100,7 +104,7 @@ export const getType = (
       );
   }
 
-  if (isArray) {
+  if (symbol === SymbolType.Array) {
     return {
       result: [type],
       type,
@@ -109,7 +113,7 @@ export const getType = (
     };
   }
 
-  if (isRecord) {
+  if (symbol === SymbolType.Record) {
     return { type, tsType: type, decoratorType: 'GraphQLJSON', result: [type] };
   }
 

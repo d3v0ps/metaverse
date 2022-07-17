@@ -34,6 +34,9 @@ export type Domain = {
 
 export type EnumToken = {
   name: string;
+  type?: string;
+  description?: string;
+  label?: string;
 
   properties: Prop[];
   _attachments?: any;
@@ -73,6 +76,8 @@ export type Package = {
 export type Prop = {
   id: string;
   name?: string;
+  description?: string;
+  label?: string;
   raw?: Typing;
   required?: boolean;
   symbol: SymbolType;
@@ -126,6 +131,8 @@ export type TokensSchema = {
 
 export type TypeToken = {
   name: string;
+  description?: string;
+  label?: string;
   properties: Prop[];
   raw: Typing;
   symbol: SymbolType;
@@ -137,6 +144,8 @@ export type TypeToken = {
 export type Typing = {
   name?: string;
   $extends?: string;
+  $label?: string;
+  $description?: string;
 
   required?: boolean;
 

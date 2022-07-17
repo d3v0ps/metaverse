@@ -6,7 +6,10 @@ import { TAGS_PROVIDER } from '@central-factory/persistence/data/tags';
 import { FSTreeRepository } from '@central-factory/persistence/repositories/fs-tree.repository';
 import { generateExternalTypes } from '@central-factory/platforms/languages/typescript/generate-external-types';
 import { augmentTokensSchema } from '@central-factory/platforms/languages/typescript/utils/augment-tokens-schema';
-import { TokensSchema } from '@central-factory/platforms/__generated__/models';
+import {
+  TokensSchema,
+  TypeToken,
+} from '@central-factory/platforms/__generated__/models';
 import { Provider } from '@nestjs/common';
 import { extname } from 'path';
 import { parse } from 'yaml';
@@ -18,6 +21,24 @@ export const TOKENS_REPOSITORY_ADAPTER_OPTIONS =
   'tokensRepositoryAdapterOptions';
 
 export const TOKENS_REPOSITORY_CONTENT_PARSER = 'tokensRepositoryContentParser';
+
+const sortTypesByInheritance = ({ types, imports }: TokensSchema) => {
+  const sorted: TypeToken[] = [];
+
+  while (types.length > 0) {
+    const type = types.shift();
+
+    const parentIsDefined =
+      type.symbol === 'union' ||
+      !type.extendsType ||
+      imports.some((i) => i.name === type.extendsType) ||
+      sorted.some((t) => t.name === type.extendsType);
+
+    parentIsDefined ? sorted.push(type) : types.push(type);
+  }
+
+  return sorted;
+};
 
 export const domainProviders: Provider[] = [
   {
@@ -47,7 +68,7 @@ export const domainProviders: Provider[] = [
       const externalSchemas = await generateExternalTypes(data);
       const schema = augmentTokensSchema(data);
 
-      return [...externalSchemas, schema].reduce<TokensSchema>(
+      const result = [...externalSchemas, schema].reduce<TokensSchema>(
         (result, { imports, enums, types, roots }) =>
           Object.assign(result, {
             imports: result.imports.concat(imports),
@@ -67,6 +88,10 @@ export const domainProviders: Provider[] = [
           types: [],
         }
       );
+
+      Object.assign(result, { types: sortTypesByInheritance(result) });
+
+      return result;
     },
   },
   {

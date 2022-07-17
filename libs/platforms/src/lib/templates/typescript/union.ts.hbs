@@ -1,0 +1,19 @@
+import {
+{{#each token.types}}
+  {{pascalCase name }},
+{{/each}}
+} from './{{fileName . 'kebab'}}.models';
+
+{{#concretes token }}
+export type AllThe{{pluralize name }}TypesUnion = {{#each aliases}}{{pascalCase name }}{{#unless @last}} | {{/unless}}{{/each}};
+export type AllThe{{pluralize name }}TypeNamesUnion = {{#each aliases}}'{{pascalCase name }}'{{#unless @last}} | {{/unless}}{{/each}};
+export const AllThe{{pluralize name }}TypeNames: string[] = [{{#each aliases}}'{{pascalCase name }}'{{#unless @last}}, {{/unless}}{{/each}}];
+{{/concretes}}
+
+export type AllThe{{templateName . 'pascal'}}Typenames = {{#each token.types }}'{{pascalCase name }}'{{#unless @last}} | {{/unless}}{{/each}};
+
+export const AllThe{{templateName . 'pascal'}}Typenames: string[] = [
+  {{#each token.types }}
+    '{{pascalCase name }}',
+  {{/each}}
+];

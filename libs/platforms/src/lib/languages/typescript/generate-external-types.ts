@@ -1,6 +1,6 @@
-import { TokensSchema } from '@central-factory/platforms/__generated__/models';
 import { Logger } from '@nestjs/common';
 import { resolve } from 'path';
+import { TokensSchema, TokensSchemaInput } from '../../__generated__/models';
 import { augmentTokensSchema } from './utils/augment-tokens-schema';
 import {
   generateTypesFromSchemaOrg,
@@ -12,10 +12,10 @@ const logger = new Logger('generateExternalTypes');
 const isExternal = ({ path }: { path: string }) => path.startsWith('http');
 
 export const generateExternalTypes = async (
-  schema: any,
+  inputSchema: TokensSchemaInput,
   outputFolder?: string
 ): Promise<TokensSchema[]> => {
-  const tokensSchema = augmentTokensSchema(schema);
+  const tokensSchema = augmentTokensSchema(inputSchema);
 
   const imports = tokensSchema.imports || [];
 
@@ -38,7 +38,22 @@ export const generateExternalTypes = async (
 
         const schema = await generateTypesFromSchemaOrg(
           url,
-          outputFolder ? resolve(outputFolder, `${schemaName}.d.ts`) : undefined
+          outputFolder
+            ? resolve(outputFolder, `${schemaName}.d.ts`)
+            : undefined,
+          {
+            ...inputSchema,
+            types: {
+              ...inputSchema.types,
+
+              DateTime: {
+                $extends: 'Date',
+              },
+              Time: {
+                $extends: 'Number',
+              },
+            },
+          }
         );
 
         if (!schema) {
@@ -52,8 +67,18 @@ export const generateExternalTypes = async (
         schema.file = url;
 
         schema.types = schema.types || {};
-        schema.types['DateTime'] = 'Date';
-        schema.types['Time'] = 'Number';
+        // schema.types = schema.types
+        //   ? {
+        //       DateTime: {
+        //         $extends: 'Date',
+        //       },
+        //       Time: {
+        //         $extends: 'Date',
+        //       },
+        //       ...(inputSchema.types || {}),
+        //       ...schema.types,
+        //     }
+        //   : {};
 
         return augmentTokensSchema(schema);
       })

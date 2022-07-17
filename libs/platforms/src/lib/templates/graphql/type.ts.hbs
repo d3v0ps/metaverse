@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Field, ObjectType, createUnionType, registerEnumType, Scalar, CustomScalar } from '@nestjs/graphql';
+import { Int, Field, ObjectType, createUnionType, registerEnumType, Scalar, CustomScalar } from '@nestjs/graphql';
 import { ValueNode } from 'graphql';
 import GraphQLJSON from 'graphql-type-json';
+
+// TODO: Fix empty cases (see Volcano)
 
 // #region Dependecy Imports
 /**
@@ -24,15 +26,43 @@ import { {{pascalCase name}} } from '{{path}}';
  */
 
 {{#each token.enums}}
-export enum {{pascalCase name}} {
+{{#if properties.length }}
+{{comment description}}
+export enum {{pascalCase name}}Enum {
   {{#each properties}}
+  {{comment description}}
   {{pascalCase name}} = '{{type}}',
   {{/each}}
 }
-registerEnumType({{pascalCase name}}, {
-  name: '{{pascalCase name}}',
-  description: '',
+
+registerEnumType({{pascalCase name}}Enum, {
+  name: '{{pascalCase name}}Enum',
+  description: `{{description}}`,
 });
+
+@ObjectType({
+  description: `{{description}}`,
+})
+export class {{pascalCase name}} {
+  @Field((type) => {{pascalCase name}}Enum)
+  {{comment description}}
+  value!: {{pascalCase name}}Enum;
+}
+
+{{else}}
+{{comment description}}
+export type {{pascalCase name}}Enum = string;
+
+@ObjectType({
+  description: `{{description}}`
+})
+export class {{pascalCase name}} {
+  @Field()
+  {{comment description}}
+  value!: {{pascalCase name}}Enum;
+}
+
+{{/if}}
 
 {{/each}}
 // #endregion
@@ -46,21 +76,16 @@ registerEnumType({{pascalCase name}}, {
 
 {{#each token.types}}
 {{#symbol "primitive" .}}
-export type {{pascalCase name}}Type = {{camelCase raw.type }};
-@Scalar('{{pascalCase name}}')
-export class {{pascalCase name}}Scalar implements CustomScalar<{{pascalCase name}}Type, {{pascalCase name}}Type> {
-
-  parseValue(value: unknown): {{pascalCase name}}Type {
-    return value as {{pascalCase name}}Type;
-  }
-
-  serialize(value: unknown): {{pascalCase name}}Type {
-    return value as {{pascalCase name}}Type;
-  }
-
-  parseLiteral(ast: ValueNode): {{pascalCase name}}Type {
-    return (ast as any).value || null;
-  }
+{{comment description}}
+export type {{pascalCase name}}Type = {{raw.type}};
+@ObjectType({
+  description: `{{description}}`,
+})
+{{comment description}}
+export class {{pascalCase name}}Scalar {
+  @Field((type) => {{gqlPrimitiveType raw.type }})
+  {{comment description}}
+  value!: {{pascalCase name}}Type;
 }
 
 {{/symbol}}
@@ -76,61 +101,81 @@ export class {{pascalCase name}}Scalar implements CustomScalar<{{pascalCase name
 
 {{#each token.types}}
 {{#symbol "scalar" .}}
+{{comment description}}
 export type {{pascalCase name}}Type = {{ raw.type }}Type;
-@Scalar('{{pascalCase name}}')
-export class {{pascalCase name}}Scalar implements CustomScalar<{{pascalCase name}}Type, {{pascalCase name}}Type> {
-
-  parseValue(value: unknown): {{pascalCase name}}Type {
-    return value as {{pascalCase name}}Type;
-  }
-
-  serialize(value: unknown): {{pascalCase name}}Type {
-    return value as {{pascalCase name}}Type;
-  }
-
-  parseLiteral(ast: ValueNode): {{pascalCase name}}Type {
-    return (ast as any).value || null;
-  }
+@ObjectType({
+  description: `{{description}}`,
+})
+{{comment description}}
+export class {{pascalCase name}}Scalar {
+  @Field((type) => {{ raw.type }}Scalar)
+  {{comment description}}
+  value!: {{pascalCase name}}Type;
 }
 
 {{/symbol}}
 {{/each}}
 // #endregion
 
-// #region Type Aliases
+// #region Types
 /**
  * ==============
- * Type Aliases
+ * Types
  * ==============
  */
 
 {{#each token.types}}
+{{#symbol "record" .}}
+@ObjectType({
+  description: `{{description}}`,
+})
+{{comment description}}
+export class {{pascalCase name}} {
+  {{#each properties}}
+  {{comment description}}
+  [key: {{key}}]: {{value}};
+  {{/each}}
+}
+
+{{/symbol}}
 {{#symbol "alias" .}}
-export type {{pascalCase name}} = {{gqlUnionType raw.type .. "Type" " | "}};
+@ObjectType({
+  description: `{{description}}`,
+})
+{{comment description}}
+export class {{pascalCase name}} extends {{gqlUnionType raw.type .. "Type" " | "}} {
+{{#each properties}}
+  @Field((type) => {{#symbol "union" .}}{{pascalCase ../name}}_{{/symbol}}{{gqlDecoratorType . ../..}})
+  {{comment description}}
+  {{name}}{{#if required}}!{{else}}?{{/if}}: {{#symbol "union" .}}{{pascalCase ../name}}_{{/symbol}}{{gqlType . ../..}};
+{{/each}}
+}
+
+{{/symbol}}
+{{#symbol "union" .}}
+{{comment description}}
 export const {{pascalCase name}}Union = createUnionType({
   name: '{{pascalCase name}}',
+  description: `{{description}}`,
   types: () => [{{gqlUnionType raw.type .. "Union" ", "}}] as const,
 });
+{{/symbol}}
+{{#symbol "type" .}}
+@ObjectType({
+  description: `{{description}}`
+})
+{{comment description}}
+export class {{pascalCase name}} {
+{{#each properties}}
+  @Field((type) => {{#symbol "union" .}}{{pascalCase ../name}}_{{/symbol}}{{gqlDecoratorType . ../..}})
+  {{comment description}}
+  {{#isOverride . .. ../..}}override {{/isOverride}}{{name}}{{#if required}}!{{else}}?{{/if}}: {{#symbol "union" .}}{{pascalCase ../name}}_{{/symbol}}{{gqlType . ../..}};
+{{/each}}
+}
 
 {{/symbol}}
 {{/each}}
-// #endregion
 
-// #region Union Types
-/**
- * ===========
- * Union Types
- * ===========
- */
-
-{{#each token.types}}
-{{#symbol "union" .}}
-export const {{pascalCase name}}Union = createUnionType({
-  name: '{{pascalCase name}}',
-  types: () => [{{gqlUnionType raw.type .. "Scalar" ", "}}] as const,
-});
-{{/symbol}}
-{{/each}}
 // #endregion
 
 // #region Inferred Union Types
@@ -145,7 +190,7 @@ export const {{pascalCase name}}Union = createUnionType({
 {{#each properties}}
 {{#symbol "union" .}}
 {{#single ../../singleRegistry id .}}
-export type {{pascalCase ../name}}_{{pascalCase name}} = {{gqlUnionType raw.type ../.. "Type" " | "}};
+export type {{pascalCase ../name}}_{{pascalCase name}} = {{gqlUnionType raw.type ../.. "Union" " | "}};
 export const {{pascalCase ../name}}_{{pascalCase name}}Union = createUnionType({
   name: '{{pascalCase ../name}}_{{pascalCase name}}',
   types: () => [{{gqlUnionType raw.type ../.. "Union" ", "}}] as const,
@@ -158,45 +203,6 @@ export const {{pascalCase ../name}}_{{pascalCase name}}Union = createUnionType({
 {{/each}}
 // #endregion
 
-// #region Record Types
-/**
- * ============
- * Record Types
- * ============
- */
-
-{{#each token.types}}
-{{#symbol "record" .}}
-@ObjectType()
-export class {{pascalCase name}} {
-  {{#each properties}}
-  [key: {{key}}]: {{value}};
-  {{/each}}
-}
-{{/symbol}}
-{{/each}}
-// #endregion
-
-// #region Object Types
-/**
- * ============
- * Object Types
- * ============
- */
-
-{{#each token.types}}
-{{#symbol "type" .}}
-@ObjectType()
-export class {{pascalCase name}}{{#if extendsType}} extends {{extendsType}} {{/if}}{
-{{#each properties}}
-  @Field((type) => {{#symbol "union" .}}{{pascalCase ../name}}_{{/symbol}}{{gqlDecoratorType . ../..}})
-  {{name}}{{#if required}}!{{else}}?{{/if}}: {{#symbol "union" .}}{{pascalCase ../name}}_{{/symbol}}{{gqlType . ../..}};
-{{/each}}
-}
-{{/symbol}}
-{{/each}}
-// #endregion
-
 // #region Type Roots
 /**
  * ============
@@ -204,8 +210,18 @@ export class {{pascalCase name}}{{#if extendsType}} extends {{extendsType}} {{/i
  * ============
  */
 
+export enum {{templateName . 'pascal'}}Types {
+{{#each token.types}}
+  {{pascalCase name}} = '{{pascalCase name}}',
+{{/each}}
+}
+registerEnumType({{templateName . 'pascal'}}Types, {
+  name: '{{templateName . 'pascal'}}Types',
+  description: `{{templateName . 'pascal'}} Types Enum`,
+});
+
 @ObjectType()
-export class {{templateName .}} {
+export class {{templateName . 'pascal'}} {
 {{#each token.roots}}
   @Field((type) => [{{pascalCase .}}])
   {{pluralize .}}!: {{pascalCase .}}[];

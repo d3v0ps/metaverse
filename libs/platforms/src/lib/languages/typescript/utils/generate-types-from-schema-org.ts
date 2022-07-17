@@ -1,27 +1,22 @@
-import {
-  TokensSchemaInput,
-  TypeToken,
-} from '@central-factory/platforms/__generated__/models';
 import axios from 'axios';
 import { writeFile } from 'fs-extra';
 import { extname } from 'path';
 import { lastValueFrom, map, switchMap } from 'rxjs';
 import { spawnWithResult } from '../../../engines/nodejs/child-process/spawn';
+import {
+  SymbolType,
+  TokensSchemaInput,
+  TypeToken,
+} from '../../../__generated__/models';
 import { SchemaOrg, SchemaOrgNode } from '../models/schema-org';
+import { getSymbol } from './augment-tokens-schema';
 import {
   getTypeNameFromId,
   isEnumRecursive,
+  primitives,
   schemaOrgToEnumToken,
   schemaOrgToTypeToken,
 } from './schema-org-to-type-token';
-
-const primitives = {
-  Text: 'string',
-  Number: 'number',
-  Boolean: 'boolean',
-  Date: 'string',
-  Class: 'any',
-};
 
 const headers = `
 /* --- Patches ---  */
@@ -66,9 +61,27 @@ export const generateTypesFromNtFile = (url: string, outputFile?: string) =>
 
 export const generateTypesFromJsonld = async (
   url: string,
-  outputFile?: string
+  outputFile?: string,
+  overrides: TokensSchemaInput = {}
 ): Promise<TokensSchemaInput> => {
   const { data } = await axios.get<SchemaOrg>(url);
+
+  data['@graph'].unshift(
+    ...[
+      ...Object.entries(overrides.types || {}).map(([id, type]) => ({
+        '@id': id,
+        '@type': 'rdfs:Class',
+        'rdfs:subClassOf':
+          typeof type === 'string' || type.$extends
+            ? {
+                '@id': `schema:${
+                  typeof type === 'string' ? type : type.$extends
+                }`,
+              }
+            : undefined,
+      })),
+    ]
+  );
 
   const types: Record<string, TypeToken> = data['@graph']
     .filter((t) => isType(t, data))
@@ -91,7 +104,11 @@ export const generateTypesFromJsonld = async (
     );
 
   const roots = Object.entries(types)
-    .filter(([k, v]) => typeof v !== 'string')
+    .filter(
+      ([k, v]) =>
+        typeof v !== 'string' &&
+        getSymbol(k, SymbolType.Type) === SymbolType.Type
+    )
     .map(([k]) => k);
 
   return {
@@ -108,8 +125,14 @@ export const generateTypesFromJsonld = async (
 
 export type SchemaOrgFormat = 'nt' | 'jsonld';
 
-export const generateTypesFromSchemaOrg = (url: string, outputFile?: string) =>
+export const generateTypesFromSchemaOrg = (
+  url: string,
+  outputFile?: string,
+  overrides?: TokensSchemaInput
+) =>
   ({
     nt: () => generateTypesFromNtFile(url, outputFile),
-    jsonld: () => generateTypesFromJsonld(url, outputFile),
-  }[(url.split('.').pop() || 'jsonld') as SchemaOrgFormat]());
+    jsonld: () => generateTypesFromJsonld(url, outputFile, overrides),
+  }[
+    (url.split('.').pop() || 'jsonld') as SchemaOrgFormat
+  ]() as Promise<TokensSchemaInput>);

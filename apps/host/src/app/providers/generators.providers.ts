@@ -34,15 +34,37 @@ export const packageGenerators: Record<string, TemplateNode> = {
     children: [
       {
         type: 'folder',
-        name: 'models',
+        name: 'types',
         children: [
           {
             type: 'file',
-            name: 'index.ts',
-            template: 'typescript/models',
+            name: '{...tokens}.models.ts',
+            template: 'typescript/model',
           },
         ],
       },
+      {
+        type: 'folder',
+        name: 'types',
+        children: [
+          {
+            type: 'file',
+            name: '{...tokens}.unions.ts',
+            template: 'typescript/union',
+          },
+        ],
+      },
+      // {
+      //   type: 'folder',
+      //   name: 'models',
+      //   children: [
+      //     {
+      //       type: 'file',
+      //       name: 'index.ts',
+      //       template: 'typescript/models',
+      //     },
+      //   ],
+      // },
       // {
       //   type: 'folder',
       //   name: 'services',
@@ -132,6 +154,22 @@ export const packageGenerators: Record<string, TemplateNode> = {
         ],
       },
       {
+        name: 'dtos',
+        type: 'folder',
+        children: [
+          {
+            type: 'file',
+            name: '{...roots}.ts',
+            template: 'graphql/dto',
+          },
+          {
+            type: 'file',
+            name: 'index.ts',
+            template: 'graphql/dto',
+          },
+        ],
+      },
+      {
         name: 'resolvers',
         type: 'folder',
         children: [
@@ -143,7 +181,7 @@ export const packageGenerators: Record<string, TemplateNode> = {
           {
             type: 'file',
             name: 'index.ts',
-            template: 'graphql/resolvers',
+            template: 'graphql/resolver',
           },
         ],
       },
